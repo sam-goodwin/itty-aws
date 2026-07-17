@@ -15,7 +15,7 @@ export interface DisableConsoleInput {
   subscriptionId: string;
   default: string;
 }
-export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableConsoleInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -30,7 +30,7 @@ export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DisableConsoleOutput {
   properties?: { disabled?: boolean };
 }
-export const DisableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableConsoleOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
@@ -48,7 +48,7 @@ export const DisableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const DisableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisableConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisableConsoleInput,
   outputSchema: DisableConsoleOutput,
 }));
@@ -57,7 +57,7 @@ export interface EnableConsoleInput {
   subscriptionId: string;
   default: string;
 }
-export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableConsoleInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -72,7 +72,7 @@ export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface EnableConsoleOutput {
   properties?: { disabled?: boolean };
 }
-export const EnableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableConsoleOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
@@ -90,7 +90,7 @@ export const EnableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const EnableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnableConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnableConsoleInput,
   outputSchema: EnableConsoleOutput,
 }));
@@ -99,7 +99,7 @@ export interface GetConsoleStatusInput {
   subscriptionId: string;
   default: string;
 }
-export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConsoleStatusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -114,15 +114,13 @@ export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetConsoleStatusOutput {
   properties?: { disabled?: boolean };
 }
-export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    properties: Schema.optional(
-      Schema.Struct({
-        disabled: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<GetConsoleStatusOutput>;
+export const GetConsoleStatusOutput = /*@__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
+}) as unknown as Schema.Codec<GetConsoleStatusOutput>;
 
 // The operation
 /**
@@ -134,15 +132,13 @@ export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param default - Default parameter. Leave the value as "default".
  */
-export const GetConsoleStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetConsoleStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetConsoleStatusInput,
   outputSchema: GetConsoleStatusOutput,
 }));
 // Input Schema
 export interface ListOperationsInput {}
-export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListOperationsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SerialConsole/operations",
@@ -163,7 +159,7 @@ export interface ListOperationsOutput {
     };
   }[];
 }
-export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -188,7 +184,7 @@ export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListOperations = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOperationsInput,
   outputSchema: ListOperationsOutput,
 }));
@@ -202,7 +198,7 @@ export interface SerialPortsConnectInput {
   serialPort: string;
 }
 export const SerialPortsConnectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -222,7 +218,7 @@ export interface SerialPortsConnectOutput {
   connectionString?: Redacted.Redacted<string>;
 }
 export const SerialPortsConnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionString: Schema.optional(SensitiveOutputString),
   }) as unknown as Schema.Codec<SerialPortsConnectOutput>;
 
@@ -238,7 +234,7 @@ export const SerialPortsConnectOutput =
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsConnect = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsConnectInput,
   outputSchema: SerialPortsConnectOutput,
 }));
@@ -255,24 +251,20 @@ export interface SerialPortsCreateInput {
     connectionState?: "active" | "inactive";
   };
 }
-export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
-    parentResourceType: Schema.String.pipe(T.PathParam()),
-    parentResource: Schema.String.pipe(T.PathParam()),
-    serialPort: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
-        connectionState: Schema.optional(
-          Schema.Literals(["active", "inactive"]),
-        ),
-      }),
-    ),
-  },
-).pipe(
+export const SerialPortsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  parentResourceType: Schema.String.pipe(T.PathParam()),
+  parentResource: Schema.String.pipe(T.PathParam()),
+  serialPort: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+      connectionState: Schema.optional(Schema.Literals(["active", "inactive"])),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
@@ -295,7 +287,7 @@ export interface SerialPortsCreateOutput {
   };
 }
 export const SerialPortsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -327,7 +319,7 @@ export const SerialPortsCreateOutput =
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsCreateInput,
   outputSchema: SerialPortsCreateOutput,
 }));
@@ -340,7 +332,7 @@ export interface SerialPortsGetInput {
   parentResource: string;
   serialPort: string;
 }
-export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -369,7 +361,7 @@ export interface SerialPortsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -401,7 +393,7 @@ export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param parentResource - The name of the parent resource.
  * @param serialPort - The name of the serial port to connect to.
  */
-export const SerialPortsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsGetInput,
   outputSchema: SerialPortsGetOutput,
 }));
@@ -413,7 +405,7 @@ export interface SerialPortsListInput {
   parentResourceType: string;
   parentResource: string;
 }
-export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -443,7 +435,7 @@ export interface SerialPortsListOutput {
     };
   }[];
 }
-export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SerialPortsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -490,7 +482,7 @@ export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param parentResourceType - The resource type of the parent resource. For example: 'virtualMachines' or 'virtualMachineScaleSets'
  * @param parentResource - The name of the parent resource.
  */
-export const SerialPortsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SerialPortsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SerialPortsListInput,
   outputSchema: SerialPortsListOutput,
 }));
@@ -499,7 +491,7 @@ export interface SerialPortsListBySubscriptionsInput {
   subscriptionId: string;
 }
 export const SerialPortsListBySubscriptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -526,7 +518,7 @@ export interface SerialPortsListBySubscriptionsOutput {
   }[];
 }
 export const SerialPortsListBySubscriptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -570,7 +562,7 @@ export const SerialPortsListBySubscriptionsOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SerialPortsListBySubscriptions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SerialPortsListBySubscriptionsInput,
     outputSchema: SerialPortsListBySubscriptionsOutput,
   }));

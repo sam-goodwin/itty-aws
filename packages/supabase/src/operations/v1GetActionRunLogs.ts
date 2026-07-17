@@ -9,7 +9,7 @@ export interface V1GetActionRunLogsInput {
   run_id: string;
 }
 export const V1GetActionRunLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19,7 +19,7 @@ export const V1GetActionRunLogsInput =
 // Output Schema
 export type V1GetActionRunLogsOutput = void;
 export const V1GetActionRunLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1GetActionRunLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1GetActionRunLogsOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const V1GetActionRunLogsOutput =
  * @param ref - Project ref
  * @param run_id - Action Run ID
  */
-export const v1GetActionRunLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetActionRunLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetActionRunLogsInput,
   outputSchema: V1GetActionRunLogsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

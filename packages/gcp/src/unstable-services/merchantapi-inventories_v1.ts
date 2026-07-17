@@ -30,7 +30,7 @@ export interface Interval {
 }
 
 export const Interval: Schema.Codec<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Interval" });
@@ -38,7 +38,7 @@ export const Interval: Schema.Codec<Interval> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -50,7 +50,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -73,7 +73,7 @@ export interface InventoryLoyaltyProgram {
 }
 
 export const InventoryLoyaltyProgram: Schema.Codec<InventoryLoyaltyProgram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     programLabel: Schema.optional(Schema.String),
     cashbackForFutureUse: Schema.optional(Price),
     loyaltyPoints: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface RegionalInventoryAttributes {
 }
 
 export const RegionalInventoryAttributes: Schema.Codec<RegionalInventoryAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availability: Schema.optional(Schema.String),
     salePriceEffectiveDate: Schema.optional(Interval),
     loyaltyPrograms: Schema.optional(Schema.Array(InventoryLoyaltyProgram)),
@@ -123,7 +123,7 @@ export interface RegionalInventory {
 }
 
 export const RegionalInventory: Schema.Codec<RegionalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     base64EncodedName: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface LocalInventoryAttributes {
 }
 
 export const LocalInventoryAttributes: Schema.Codec<LocalInventoryAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availability: Schema.optional(Schema.String),
     pickupMethod: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.String),
@@ -205,7 +205,7 @@ export interface LocalInventory {
 }
 
 export const LocalInventory: Schema.Codec<LocalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     base64EncodedName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newValue: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export interface ListRegionalInventoriesResponse {
 }
 
 export const ListRegionalInventoriesResponse: Schema.Codec<ListRegionalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListRegionalInventoriesResponse" });
@@ -292,7 +292,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     managingAccount: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
@@ -312,7 +312,7 @@ export interface ListLocalInventoriesResponse {
 }
 
 export const ListLocalInventoriesResponse: Schema.Codec<ListLocalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     localInventories: Schema.optional(Schema.Array(LocalInventory)),
   }).annotate({ identifier: "ListLocalInventoriesResponse" });
@@ -379,7 +379,7 @@ export interface InsertAccountsProductsLocalInventoriesRequest {
 }
 
 export const InsertAccountsProductsLocalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(LocalInventory).pipe(T.HttpBody()),
   }).pipe(
@@ -393,7 +393,7 @@ export const InsertAccountsProductsLocalInventoriesRequest =
 
 export type InsertAccountsProductsLocalInventoriesResponse = LocalInventory;
 export const InsertAccountsProductsLocalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LocalInventory;
+  /*@__PURE__*/ LocalInventory;
 
 export type InsertAccountsProductsLocalInventoriesError =
   | DefaultErrors
@@ -408,7 +408,7 @@ export const insertAccountsProductsLocalInventories: API.OperationMethod<
   InsertAccountsProductsLocalInventoriesResponse,
   InsertAccountsProductsLocalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsProductsLocalInventoriesRequest,
   output: InsertAccountsProductsLocalInventoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -424,7 +424,7 @@ export interface ListAccountsProductsLocalInventoriesRequest {
 }
 
 export const ListAccountsProductsLocalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -439,7 +439,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
 export type ListAccountsProductsLocalInventoriesResponse =
   ListLocalInventoriesResponse;
 export const ListAccountsProductsLocalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocalInventoriesResponse;
+  /*@__PURE__*/ ListLocalInventoriesResponse;
 
 export type ListAccountsProductsLocalInventoriesError =
   | DefaultErrors
@@ -452,7 +452,7 @@ export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
   ListAccountsProductsLocalInventoriesResponse,
   ListAccountsProductsLocalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsLocalInventoriesRequest,
   output: ListAccountsProductsLocalInventoriesResponse,
   errors: [NotFound, Forbidden],
@@ -468,7 +468,7 @@ export interface DeleteAccountsProductsLocalInventoriesRequest {
 }
 
 export const DeleteAccountsProductsLocalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "inventories/v1/{+name}" }),
@@ -477,7 +477,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest =
 
 export type DeleteAccountsProductsLocalInventoriesResponse = Empty;
 export const DeleteAccountsProductsLocalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteAccountsProductsLocalInventoriesError =
   | DefaultErrors
@@ -492,7 +492,7 @@ export const deleteAccountsProductsLocalInventories: API.OperationMethod<
   DeleteAccountsProductsLocalInventoriesResponse,
   DeleteAccountsProductsLocalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsLocalInventoriesRequest,
   output: DeleteAccountsProductsLocalInventoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -508,7 +508,7 @@ export interface ListAccountsProductsRegionalInventoriesRequest {
 }
 
 export const ListAccountsProductsRegionalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -523,7 +523,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
 export type ListAccountsProductsRegionalInventoriesResponse =
   ListRegionalInventoriesResponse;
 export const ListAccountsProductsRegionalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRegionalInventoriesResponse;
+  /*@__PURE__*/ ListRegionalInventoriesResponse;
 
 export type ListAccountsProductsRegionalInventoriesError =
   | DefaultErrors
@@ -536,7 +536,7 @@ export const listAccountsProductsRegionalInventories: API.PaginatedOperationMeth
   ListAccountsProductsRegionalInventoriesResponse,
   ListAccountsProductsRegionalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRegionalInventoriesRequest,
   output: ListAccountsProductsRegionalInventoriesResponse,
   errors: [NotFound, Forbidden],
@@ -552,7 +552,7 @@ export interface DeleteAccountsProductsRegionalInventoriesRequest {
 }
 
 export const DeleteAccountsProductsRegionalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "inventories/v1/{+name}" }),
@@ -561,7 +561,7 @@ export const DeleteAccountsProductsRegionalInventoriesRequest =
 
 export type DeleteAccountsProductsRegionalInventoriesResponse = Empty;
 export const DeleteAccountsProductsRegionalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteAccountsProductsRegionalInventoriesError =
   | DefaultErrors
@@ -576,7 +576,7 @@ export const deleteAccountsProductsRegionalInventories: API.OperationMethod<
   DeleteAccountsProductsRegionalInventoriesResponse,
   DeleteAccountsProductsRegionalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsRegionalInventoriesRequest,
   output: DeleteAccountsProductsRegionalInventoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -590,7 +590,7 @@ export interface InsertAccountsProductsRegionalInventoriesRequest {
 }
 
 export const InsertAccountsProductsRegionalInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RegionalInventory).pipe(T.HttpBody()),
   }).pipe(
@@ -605,7 +605,7 @@ export const InsertAccountsProductsRegionalInventoriesRequest =
 export type InsertAccountsProductsRegionalInventoriesResponse =
   RegionalInventory;
 export const InsertAccountsProductsRegionalInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RegionalInventory;
+  /*@__PURE__*/ RegionalInventory;
 
 export type InsertAccountsProductsRegionalInventoriesError =
   | DefaultErrors
@@ -620,7 +620,7 @@ export const insertAccountsProductsRegionalInventories: API.OperationMethod<
   InsertAccountsProductsRegionalInventoriesResponse,
   InsertAccountsProductsRegionalInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsProductsRegionalInventoriesRequest,
   output: InsertAccountsProductsRegionalInventoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

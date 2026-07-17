@@ -13,7 +13,7 @@ export interface PostRefundsRefundCancelInput {
   expand?: string[];
 }
 export const PostRefundsRefundCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refund: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -693,7 +693,7 @@ export interface PostRefundsRefundCancelOutput {
     | null;
 }
 export const PostRefundsRefundCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -1041,9 +1041,7 @@ export const PostRefundsRefundCancelOutput =
  * <p>Cancels a refund with a status of <code>requires_action</code>.</p>
  * <p>You can’t cancel refunds in other states. Only refunds for payment methods that require customer action can enter the <code>requires_action</code> state.</p>
  */
-export const PostRefundsRefundCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostRefundsRefundCancelInput,
-    outputSchema: PostRefundsRefundCancelOutput,
-  }),
-);
+export const PostRefundsRefundCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostRefundsRefundCancelInput,
+  outputSchema: PostRefundsRefundCancelOutput,
+}));

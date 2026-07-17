@@ -7,7 +7,7 @@ export interface LlmSkillsMarketplaceInstallCommandRetrieveInput {
   project_id: string;
 }
 export const LlmSkillsMarketplaceInstallCommandRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -34,7 +34,7 @@ export interface LlmSkillsMarketplaceInstallCommandRetrieveOutput {
   last_rolled_at: string | null;
 }
 export const LlmSkillsMarketplaceInstallCommandRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals(["absent", "exists", "created", "rotated"]),
     connected: Schema.Boolean,
     plugin_name: Schema.String,
@@ -60,7 +60,7 @@ export const LlmSkillsMarketplaceInstallCommandRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmSkillsMarketplaceInstallCommandRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmSkillsMarketplaceInstallCommandRetrieveInput,
     outputSchema: LlmSkillsMarketplaceInstallCommandRetrieveOutput,
   }));

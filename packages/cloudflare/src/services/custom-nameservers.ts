@@ -58,7 +58,7 @@ interface Dnsrecord {
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-const Dnsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([
@@ -86,7 +86,7 @@ interface GetCustomNameserverResponseResult {
   nsSet?: number | null;
 }
 const GetCustomNameserverResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsRecords: Schema.Array(Dnsrecord),
       nsName: Schema.String,
@@ -117,7 +117,7 @@ export interface GetCustomNameserverRequest {
 }
 
 export const GetCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -139,7 +139,7 @@ export interface GetCustomNameserverResponse {
 }
 
 export const GetCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetCustomNameserverResponseResult),
     }),
@@ -155,7 +155,7 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
   GetCustomNameserverResponse,
   GetCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCustomNameserverRequest,
   output: GetCustomNameserverResponse,
   errors: [CustomNameserversNotEnabled, Forbidden],
@@ -175,7 +175,7 @@ export interface CreateCustomNameserverRequest {
 }
 
 export const CreateCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       nsName: Schema.String,
@@ -203,7 +203,7 @@ export interface CreateCustomNameserverResponse {
 }
 
 export const CreateCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsRecords: Schema.Array(Dnsrecord),
       nsName: Schema.String,
@@ -237,7 +237,7 @@ export const createCustomNameserver: API.OperationMethod<
   CreateCustomNameserverResponse,
   CreateCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomNameserverRequest,
   output: CreateCustomNameserverResponse,
   errors: [
@@ -254,7 +254,7 @@ export interface DeleteCustomNameserverRequest {
 }
 
 export const DeleteCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customNSId: Schema.String.pipe(T.HttpPath("customNSId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -271,7 +271,7 @@ export interface DeleteCustomNameserverResponse {
 }
 
 export const DeleteCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -288,7 +288,7 @@ export const deleteCustomNameserver: API.PaginatedOperationMethod<
   DeleteCustomNameserverResponse,
   DeleteCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DeleteCustomNameserverRequest,
   output: DeleteCustomNameserverResponse,
   errors: [CustomNameserversNotEnabled, CustomNameserverNotFound, Forbidden],

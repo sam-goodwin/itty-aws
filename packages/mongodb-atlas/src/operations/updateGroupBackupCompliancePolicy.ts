@@ -11,7 +11,7 @@ export interface UpdateGroupBackupCompliancePolicyInput {
   pretty?: boolean;
 }
 export const UpdateGroupBackupCompliancePolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     overwriteBackupPolicies: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupBackupCompliancePolicyInput =
 // Output Schema
 export type UpdateGroupBackupCompliancePolicyOutput = void;
 export const UpdateGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupBackupCompliancePolicyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupBackupCompliancePolicyOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const UpdateGroupBackupCompliancePolicyOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const updateGroupBackupCompliancePolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupBackupCompliancePolicyInput,
     outputSchema: UpdateGroupBackupCompliancePolicyOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

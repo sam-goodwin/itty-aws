@@ -35,7 +35,7 @@ export interface BatchExportsRunsCancelCreateInput {
   backfill?: string | null;
 }
 export const BatchExportsRunsCancelCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -77,7 +77,7 @@ export const BatchExportsRunsCancelCreateInput =
 // Output Schema
 export type BatchExportsRunsCancelCreateOutput = void;
 export const BatchExportsRunsCancelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsCancelCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsCancelCreateOutput>;
 
 // The operation
 /**
@@ -87,7 +87,7 @@ export const BatchExportsRunsCancelCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const batchExportsRunsCancelCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BatchExportsRunsCancelCreateInput,
     outputSchema: BatchExportsRunsCancelCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

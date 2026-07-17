@@ -11,7 +11,7 @@ export interface ListGroupDataFederationInput {
   type?: "USER" | "ONLINE_ARCHIVE";
 }
 export const ListGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupDataFederationInput =
 // Output Schema
 export type ListGroupDataFederationOutput = void;
 export const ListGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const ListGroupDataFederationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param type - Type of Federated Database Instances to return.
  */
-export const listGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupDataFederationInput,
-    outputSchema: ListGroupDataFederationOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupDataFederationInput,
+  outputSchema: ListGroupDataFederationOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

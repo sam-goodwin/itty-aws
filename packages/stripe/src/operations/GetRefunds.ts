@@ -17,7 +17,7 @@ export interface GetRefundsInput {
   payment_intent?: string;
   starting_after?: string;
 }
-export const GetRefundsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRefundsInput = /*@__PURE__*/ Schema.Struct({
   charge: Schema.optional(Schema.String),
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -709,7 +709,7 @@ export interface GetRefundsOutput {
   object: "list";
   url: string;
 }
-export const GetRefundsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRefundsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -1075,7 +1075,7 @@ export const GetRefundsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param payment_intent - Only return refunds for the PaymentIntent specified by this ID.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetRefunds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetRefunds = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRefundsInput,
   outputSchema: GetRefundsOutput,
 }));

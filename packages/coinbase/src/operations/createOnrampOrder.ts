@@ -23,31 +23,29 @@ export interface CreateOnrampOrderInput {
   clientIp?: string;
   domain?: string;
 }
-export const CreateOnrampOrderInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    agreementAcceptedAt: Schema.String,
-    destinationAddress: Schema.String,
-    destinationNetwork: Schema.String,
-    email: Schema.String,
-    isQuote: Schema.optional(Schema.Boolean),
-    partnerOrderRef: Schema.optional(Schema.String),
-    partnerUserRef: Schema.String,
-    paymentAmount: Schema.optional(Schema.String),
-    paymentCurrency: Schema.String,
-    paymentMethod: Schema.Literals([
-      "GUEST_CHECKOUT_APPLE_PAY",
-      "GUEST_CHECKOUT_GOOGLE_PAY",
-    ]),
-    phoneNumber: Schema.String,
-    phoneNumberVerifiedAt: Schema.String,
-    smsVerificationId: Schema.optional(Schema.String),
-    emailVerificationId: Schema.optional(Schema.String),
-    purchaseAmount: Schema.optional(Schema.String),
-    purchaseCurrency: Schema.String,
-    clientIp: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-  },
-).pipe(
+export const CreateOnrampOrderInput = /*@__PURE__*/ Schema.Struct({
+  agreementAcceptedAt: Schema.String,
+  destinationAddress: Schema.String,
+  destinationNetwork: Schema.String,
+  email: Schema.String,
+  isQuote: Schema.optional(Schema.Boolean),
+  partnerOrderRef: Schema.optional(Schema.String),
+  partnerUserRef: Schema.String,
+  paymentAmount: Schema.optional(Schema.String),
+  paymentCurrency: Schema.String,
+  paymentMethod: Schema.Literals([
+    "GUEST_CHECKOUT_APPLE_PAY",
+    "GUEST_CHECKOUT_GOOGLE_PAY",
+  ]),
+  phoneNumber: Schema.String,
+  phoneNumberVerifiedAt: Schema.String,
+  smsVerificationId: Schema.optional(Schema.String),
+  emailVerificationId: Schema.optional(Schema.String),
+  purchaseAmount: Schema.optional(Schema.String),
+  purchaseCurrency: Schema.String,
+  clientIp: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}).pipe(
   T.Http({ method: "POST", path: "/v2/onramp/orders" }),
 ) as unknown as Schema.Codec<CreateOnrampOrderInput>;
 
@@ -86,7 +84,7 @@ export interface CreateOnrampOrderOutput {
   };
 }
 export const CreateOnrampOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.Struct({
       orderId: Schema.String,
       paymentTotal: Schema.String,
@@ -138,7 +136,7 @@ export const CreateOnrampOrderOutput =
  * This API currently only supports the payment method `GUEST_CHECKOUT_APPLE_PAY`.
  * For detailed integration instructions and to get access to this API, refer to the  [Apple Pay Onramp API docs](https://docs.cdp.coinbase.com/onramp-&-offramp/onramp-apis/apple-pay-onramp-api).
  */
-export const createOnrampOrder = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOnrampOrder = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOnrampOrderInput,
   outputSchema: CreateOnrampOrderOutput,
 }));

@@ -30,7 +30,7 @@ export interface RepeatedEnumAttributeValue {
 }
 
 export const RepeatedEnumAttributeValue: Schema.Codec<RepeatedEnumAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unsetValues: Schema.optional(Schema.Array(Schema.String)),
     setValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RepeatedEnumAttributeValue" });
@@ -41,7 +41,7 @@ export interface UriAttributeValue {
 }
 
 export const UriAttributeValue: Schema.Codec<UriAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "UriAttributeValue" });
 
@@ -57,7 +57,7 @@ export interface RelevantLocation {
 }
 
 export const RelevantLocation: Schema.Codec<RelevantLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeId: Schema.optional(Schema.String),
     relationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "RelevantLocation" });
@@ -72,7 +72,7 @@ export interface MoreHoursType {
 }
 
 export const MoreHoursType: Schema.Codec<MoreHoursType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localizedDisplayName: Schema.optional(Schema.String),
     hoursTypeId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface ServiceType {
 }
 
 export const ServiceType: Schema.Codec<ServiceType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     serviceTypeId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceType" });
@@ -103,7 +103,7 @@ export interface Category {
 }
 
 export const Category: Schema.Codec<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     moreHoursTypes: Schema.optional(Schema.Array(MoreHoursType)),
     serviceTypes: Schema.optional(Schema.Array(ServiceType)),
@@ -118,7 +118,7 @@ export interface ListCategoriesResponse {
 }
 
 export const ListCategoriesResponse: Schema.Codec<ListCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(Category)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCategoriesResponse" });
@@ -133,7 +133,7 @@ export interface Mybusinessbusinessinformation_Date {
 }
 
 export const Mybusinessbusinessinformation_Date: Schema.Codec<Mybusinessbusinessinformation_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -154,7 +154,7 @@ export interface OpenInfo {
 }
 
 export const OpenInfo: Schema.Codec<OpenInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     canReopen: Schema.optional(Schema.Boolean),
     openingDate: Schema.optional(Mybusinessbusinessinformation_Date),
@@ -172,7 +172,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Codec<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minutes: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
@@ -209,7 +209,7 @@ export interface TimePeriod {
 }
 
 export const TimePeriod: Schema.Codec<TimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     closeTime: Schema.optional(TimeOfDay),
     openDay: Schema.optional(Schema.String),
     openTime: Schema.optional(TimeOfDay),
@@ -224,7 +224,7 @@ export interface MoreHours {
 }
 
 export const MoreHours: Schema.Codec<MoreHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hoursTypeId: Schema.optional(Schema.String),
     periods: Schema.optional(Schema.Array(TimePeriod)),
   }).annotate({ identifier: "MoreHours" });
@@ -232,7 +232,7 @@ export const MoreHours: Schema.Codec<MoreHours> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -244,7 +244,7 @@ export interface ChainName {
 }
 
 export const ChainName: Schema.Codec<ChainName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChainName" });
@@ -255,7 +255,7 @@ export interface ChainUri {
 }
 
 export const ChainUri: Schema.Codec<ChainUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChainUri" });
 
@@ -271,7 +271,7 @@ export interface Chain {
 }
 
 export const Chain: Schema.Codec<Chain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chainNames: Schema.optional(Schema.Array(ChainName)),
     name: Schema.optional(Schema.String),
     locationCount: Schema.optional(Schema.Number),
@@ -284,7 +284,7 @@ export interface SearchChainsResponse {
 }
 
 export const SearchChainsResponse: Schema.Codec<SearchChainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chains: Schema.optional(Schema.Array(Chain)),
   }).annotate({ identifier: "SearchChainsResponse" });
 
@@ -314,7 +314,7 @@ export interface PostalAddress {
 }
 
 export const PostalAddress: Schema.Codec<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sublocality: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     recipients: Schema.optional(Schema.Array(Schema.String)),
@@ -338,7 +338,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -352,7 +352,7 @@ export interface FreeFormServiceItem {
 }
 
 export const FreeFormServiceItem: Schema.Codec<FreeFormServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     label: Schema.optional(Label),
   }).annotate({ identifier: "FreeFormServiceItem" });
@@ -365,7 +365,7 @@ export interface StructuredServiceItem {
 }
 
 export const StructuredServiceItem: Schema.Codec<StructuredServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceTypeId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "StructuredServiceItem" });
@@ -380,7 +380,7 @@ export interface RelationshipData {
 }
 
 export const RelationshipData: Schema.Codec<RelationshipData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     childrenLocations: Schema.optional(Schema.Array(RelevantLocation)),
     parentLocation: Schema.optional(RelevantLocation),
     parentChain: Schema.optional(Schema.String),
@@ -394,7 +394,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -419,7 +419,7 @@ export interface Attribute {
 }
 
 export const Attribute: Schema.Codec<Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Unknown)),
     repeatedEnumValue: Schema.optional(RepeatedEnumAttributeValue),
     uriValues: Schema.optional(Schema.Array(UriAttributeValue)),
@@ -435,7 +435,7 @@ export interface PlaceInfo {
 }
 
 export const PlaceInfo: Schema.Codec<PlaceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeId: Schema.optional(Schema.String),
     placeName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceInfo" });
@@ -446,7 +446,7 @@ export interface Places {
 }
 
 export const Places: Schema.Codec<Places> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeInfos: Schema.optional(Schema.Array(PlaceInfo)),
   }).annotate({ identifier: "Places" });
 
@@ -464,7 +464,7 @@ export interface ServiceAreaBusiness {
 }
 
 export const ServiceAreaBusiness: Schema.Codec<ServiceAreaBusiness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     businessType: Schema.optional(Schema.String),
     places: Schema.optional(Places),
     regionCode: Schema.optional(Schema.String),
@@ -478,7 +478,7 @@ export interface AttributeValueMetadata {
 }
 
 export const AttributeValueMetadata: Schema.Codec<AttributeValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AttributeValueMetadata" });
@@ -507,7 +507,7 @@ export interface AttributeMetadata {
 }
 
 export const AttributeMetadata: Schema.Codec<AttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueType: Schema.optional(Schema.String),
     repeatable: Schema.optional(Schema.Boolean),
     valueMetadata: Schema.optional(Schema.Array(AttributeValueMetadata)),
@@ -525,7 +525,7 @@ export interface Categories {
 }
 
 export const Categories: Schema.Codec<Categories> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryCategory: Schema.optional(Category),
     additionalCategories: Schema.optional(Schema.Array(Category)),
   }).annotate({ identifier: "Categories" });
@@ -538,7 +538,7 @@ export interface PhoneNumbers {
 }
 
 export const PhoneNumbers: Schema.Codec<PhoneNumbers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additionalPhones: Schema.optional(Schema.Array(Schema.String)),
     primaryPhone: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhoneNumbers" });
@@ -549,7 +549,7 @@ export interface AdWordsLocationExtensions {
 }
 
 export const AdWordsLocationExtensions: Schema.Codec<AdWordsLocationExtensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adPhone: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdWordsLocationExtensions" });
 
@@ -559,7 +559,7 @@ export interface Profile {
 }
 
 export const Profile: Schema.Codec<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "Profile" });
 
@@ -573,7 +573,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -589,7 +589,7 @@ export interface ServiceItem {
 }
 
 export const ServiceItem: Schema.Codec<ServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     price: Schema.optional(Money),
     structuredServiceItem: Schema.optional(StructuredServiceItem),
     freeFormServiceItem: Schema.optional(FreeFormServiceItem),
@@ -629,7 +629,7 @@ export interface Metadata {
 }
 
 export const Metadata: Schema.Codec<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canHaveBusinessCalls: Schema.optional(Schema.Boolean),
     hasGoogleUpdated: Schema.optional(Schema.Boolean),
     canOperateLodgingData: Schema.optional(Schema.Boolean),
@@ -653,7 +653,7 @@ export interface BusinessHours {
 }
 
 export const BusinessHours: Schema.Codec<BusinessHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     periods: Schema.optional(Schema.Array(TimePeriod)),
   }).annotate({ identifier: "BusinessHours" });
 
@@ -671,7 +671,7 @@ export interface SpecialHourPeriod {
 }
 
 export const SpecialHourPeriod: Schema.Codec<SpecialHourPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     closed: Schema.optional(Schema.Boolean),
     openTime: Schema.optional(TimeOfDay),
     endDate: Schema.optional(Mybusinessbusinessinformation_Date),
@@ -685,7 +685,7 @@ export interface SpecialHours {
 }
 
 export const SpecialHours: Schema.Codec<SpecialHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     specialHourPeriods: Schema.optional(Schema.Array(SpecialHourPeriod)),
   }).annotate({ identifier: "SpecialHours" });
 
@@ -733,7 +733,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categories: Schema.optional(Categories),
     moreHours: Schema.optional(Schema.Array(MoreHours)),
     serviceArea: Schema.optional(ServiceAreaBusiness),
@@ -766,7 +766,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -780,7 +780,7 @@ export interface ListAttributeMetadataResponse {
 }
 
 export const ListAttributeMetadataResponse: Schema.Codec<ListAttributeMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     attributeMetadata: Schema.optional(Schema.Array(AttributeMetadata)),
   }).annotate({ identifier: "ListAttributeMetadataResponse" });
@@ -795,7 +795,7 @@ export interface GoogleLocation {
 }
 
 export const GoogleLocation: Schema.Codec<GoogleLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     name: Schema.optional(Schema.String),
     requestAdminRightsUri: Schema.optional(Schema.String),
@@ -807,7 +807,7 @@ export interface SearchGoogleLocationsResponse {
 }
 
 export const SearchGoogleLocationsResponse: Schema.Codec<SearchGoogleLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleLocations: Schema.optional(Schema.Array(GoogleLocation)),
   }).annotate({ identifier: "SearchGoogleLocationsResponse" });
 
@@ -821,7 +821,7 @@ export interface SearchGoogleLocationsRequest {
 }
 
 export const SearchGoogleLocationsRequest: Schema.Codec<SearchGoogleLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     query: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -833,7 +833,7 @@ export interface BatchGetCategoriesResponse {
 }
 
 export const BatchGetCategoriesResponse: Schema.Codec<BatchGetCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(Category)),
   }).annotate({ identifier: "BatchGetCategoriesResponse" });
 
@@ -845,7 +845,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(Attribute)),
   }).annotate({ identifier: "Attributes" });
@@ -860,7 +860,7 @@ export interface GoogleUpdatedLocation {
 }
 
 export const GoogleUpdatedLocation: Schema.Codec<GoogleUpdatedLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diffMask: Schema.optional(Schema.String),
     pendingMask: Schema.optional(Schema.String),
     location: Schema.optional(Location),
@@ -925,7 +925,7 @@ export interface GetChainsRequest {
   name: string;
 }
 
-export const GetChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChainsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -933,7 +933,7 @@ export const GetChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetChainsRequest>;
 
 export type GetChainsResponse = Chain;
-export const GetChainsResponse = /*@__PURE__*/ /*#__PURE__*/ Chain;
+export const GetChainsResponse = /*@__PURE__*/ Chain;
 
 export type GetChainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -943,7 +943,7 @@ export const getChains: API.OperationMethod<
   GetChainsResponse,
   GetChainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChainsRequest,
   output: GetChainsResponse,
   errors: [NotFound, Forbidden],
@@ -956,7 +956,7 @@ export interface SearchChainsRequest {
   chainName?: string;
 }
 
-export const SearchChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchChainsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   chainName: Schema.optional(Schema.String).pipe(T.HttpQuery("chainName")),
 }).pipe(
@@ -965,8 +965,7 @@ export const SearchChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SearchChainsRequest>;
 
 export type SearchChainsResponse_Op = SearchChainsResponse;
-export const SearchChainsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchChainsResponse;
+export const SearchChainsResponse_Op = /*@__PURE__*/ SearchChainsResponse;
 
 export type SearchChainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -976,7 +975,7 @@ export const searchChains: API.OperationMethod<
   SearchChainsResponse_Op,
   SearchChainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchChainsRequest,
   output: SearchChainsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -988,7 +987,7 @@ export interface SearchGoogleLocationsRequest_Op {
 }
 
 export const SearchGoogleLocationsRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(SearchGoogleLocationsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -1001,7 +1000,7 @@ export const SearchGoogleLocationsRequest_Op =
 
 export type SearchGoogleLocationsResponse_Op = SearchGoogleLocationsResponse;
 export const SearchGoogleLocationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchGoogleLocationsResponse;
+  /*@__PURE__*/ SearchGoogleLocationsResponse;
 
 export type SearchGoogleLocationsError =
   | DefaultErrors
@@ -1016,7 +1015,7 @@ export const searchGoogleLocations: API.OperationMethod<
   SearchGoogleLocationsResponse_Op,
   SearchGoogleLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchGoogleLocationsRequest_Op,
   output: SearchGoogleLocationsResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1038,7 +1037,7 @@ export interface ListAccountsLocationsRequest {
 }
 
 export const ListAccountsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1052,7 +1051,7 @@ export const ListAccountsLocationsRequest =
 
 export type ListAccountsLocationsResponse = ListLocationsResponse;
 export const ListAccountsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListAccountsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1062,7 +1061,7 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
   ListAccountsLocationsResponse,
   ListAccountsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLocationsRequest,
   output: ListAccountsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1084,7 +1083,7 @@ export interface CreateAccountsLocationsRequest {
 }
 
 export const CreateAccountsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -1097,8 +1096,7 @@ export const CreateAccountsLocationsRequest =
   ) as unknown as Schema.Codec<CreateAccountsLocationsRequest>;
 
 export type CreateAccountsLocationsResponse = Location;
-export const CreateAccountsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const CreateAccountsLocationsResponse = /*@__PURE__*/ Location;
 
 export type CreateAccountsLocationsError =
   | DefaultErrors
@@ -1113,7 +1111,7 @@ export const createAccountsLocations: API.OperationMethod<
   CreateAccountsLocationsResponse,
   CreateAccountsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsLocationsRequest,
   output: CreateAccountsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1127,7 +1125,7 @@ export interface GetGoogleUpdatedLocationsRequest {
 }
 
 export const GetGoogleUpdatedLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -1137,7 +1135,7 @@ export const GetGoogleUpdatedLocationsRequest =
 
 export type GetGoogleUpdatedLocationsResponse = GoogleUpdatedLocation;
 export const GetGoogleUpdatedLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleUpdatedLocation;
+  /*@__PURE__*/ GoogleUpdatedLocation;
 
 export type GetGoogleUpdatedLocationsError =
   | DefaultErrors
@@ -1150,7 +1148,7 @@ export const getGoogleUpdatedLocations: API.OperationMethod<
   GetGoogleUpdatedLocationsResponse,
   GetGoogleUpdatedLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGoogleUpdatedLocationsRequest,
   output: GetGoogleUpdatedLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1166,7 +1164,7 @@ export interface UpdateAttributesLocationsRequest {
 }
 
 export const UpdateAttributesLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributeMask: Schema.optional(Schema.String).pipe(
       T.HttpQuery("attributeMask"),
     ),
@@ -1178,8 +1176,7 @@ export const UpdateAttributesLocationsRequest =
   ) as unknown as Schema.Codec<UpdateAttributesLocationsRequest>;
 
 export type UpdateAttributesLocationsResponse = Attributes;
-export const UpdateAttributesLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attributes;
+export const UpdateAttributesLocationsResponse = /*@__PURE__*/ Attributes;
 
 export type UpdateAttributesLocationsError =
   | DefaultErrors
@@ -1194,7 +1191,7 @@ export const updateAttributesLocations: API.OperationMethod<
   UpdateAttributesLocationsResponse,
   UpdateAttributesLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAttributesLocationsRequest,
   output: UpdateAttributesLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1206,7 +1203,7 @@ export interface GetAttributesLocationsRequest {
 }
 
 export const GetAttributesLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1214,8 +1211,7 @@ export const GetAttributesLocationsRequest =
   ) as unknown as Schema.Codec<GetAttributesLocationsRequest>;
 
 export type GetAttributesLocationsResponse = Attributes;
-export const GetAttributesLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attributes;
+export const GetAttributesLocationsResponse = /*@__PURE__*/ Attributes;
 
 export type GetAttributesLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1225,7 +1221,7 @@ export const getAttributesLocations: API.OperationMethod<
   GetAttributesLocationsResponse,
   GetAttributesLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttributesLocationsRequest,
   output: GetAttributesLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1238,7 +1234,7 @@ export interface GetLocationsRequest {
   name: string;
 }
 
-export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLocationsRequest = /*@__PURE__*/ Schema.Struct({
   readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
@@ -1247,7 +1243,7 @@ export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetLocationsRequest>;
 
 export type GetLocationsResponse = Location;
-export const GetLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1257,7 +1253,7 @@ export const getLocations: API.OperationMethod<
   GetLocationsResponse,
   GetLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLocationsRequest,
   output: GetLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1274,7 +1270,7 @@ export interface PatchLocationsRequest {
   body?: Location;
 }
 
-export const PatchLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchLocationsRequest = /*@__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
   validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -1287,7 +1283,7 @@ export const PatchLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchLocationsRequest>;
 
 export type PatchLocationsResponse = Location;
-export const PatchLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
+export const PatchLocationsResponse = /*@__PURE__*/ Location;
 
 export type PatchLocationsError =
   | DefaultErrors
@@ -1302,7 +1298,7 @@ export const patchLocations: API.OperationMethod<
   PatchLocationsResponse,
   PatchLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLocationsRequest,
   output: PatchLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1313,17 +1309,15 @@ export interface DeleteLocationsRequest {
   name: string;
 }
 
-export const DeleteLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
+export const DeleteLocationsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Codec<DeleteLocationsRequest>;
 
 export type DeleteLocationsResponse = Empty;
-export const DeleteLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLocationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLocationsError =
   | DefaultErrors
@@ -1338,7 +1332,7 @@ export const deleteLocations: API.OperationMethod<
   DeleteLocationsResponse,
   DeleteLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationsRequest,
   output: DeleteLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1350,7 +1344,7 @@ export interface GetGoogleUpdatedLocationsAttributesRequest {
 }
 
 export const GetGoogleUpdatedLocationsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getGoogleUpdated" }),
@@ -1359,7 +1353,7 @@ export const GetGoogleUpdatedLocationsAttributesRequest =
 
 export type GetGoogleUpdatedLocationsAttributesResponse = Attributes;
 export const GetGoogleUpdatedLocationsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attributes;
+  /*@__PURE__*/ Attributes;
 
 export type GetGoogleUpdatedLocationsAttributesError =
   | DefaultErrors
@@ -1372,7 +1366,7 @@ export const getGoogleUpdatedLocationsAttributes: API.OperationMethod<
   GetGoogleUpdatedLocationsAttributesResponse,
   GetGoogleUpdatedLocationsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGoogleUpdatedLocationsAttributesRequest,
   output: GetGoogleUpdatedLocationsAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -1395,7 +1389,7 @@ export interface ListAttributesRequest {
   categoryName?: string;
 }
 
-export const ListAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAttributesRequest = /*@__PURE__*/ Schema.Struct({
   regionCode: Schema.optional(Schema.String).pipe(T.HttpQuery("regionCode")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   languageCode: Schema.optional(Schema.String).pipe(
@@ -1414,7 +1408,7 @@ export const ListAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListAttributesResponse = ListAttributeMetadataResponse;
 export const ListAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAttributeMetadataResponse;
+  /*@__PURE__*/ ListAttributeMetadataResponse;
 
 export type ListAttributesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1424,7 +1418,7 @@ export const listAttributes: API.PaginatedOperationMethod<
   ListAttributesResponse,
   ListAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
   output: ListAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -1449,7 +1443,7 @@ export interface ListCategoriesRequest {
   view?: "CATEGORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const ListCategoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCategoriesRequest = /*@__PURE__*/ Schema.Struct({
   regionCode: Schema.optional(Schema.String).pipe(T.HttpQuery("regionCode")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -1464,8 +1458,7 @@ export const ListCategoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListCategoriesRequest>;
 
 export type ListCategoriesResponse_Op = ListCategoriesResponse;
-export const ListCategoriesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListCategoriesResponse;
+export const ListCategoriesResponse_Op = /*@__PURE__*/ ListCategoriesResponse;
 
 export type ListCategoriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1475,7 +1468,7 @@ export const listCategories: API.PaginatedOperationMethod<
   ListCategoriesResponse_Op,
   ListCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCategoriesRequest,
   output: ListCategoriesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1497,7 +1490,7 @@ export interface BatchGetCategoriesRequest {
 }
 
 export const BatchGetCategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String).pipe(T.HttpQuery("regionCode")),
     names: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("names"),
@@ -1513,7 +1506,7 @@ export const BatchGetCategoriesRequest =
 
 export type BatchGetCategoriesResponse_Op = BatchGetCategoriesResponse;
 export const BatchGetCategoriesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetCategoriesResponse;
+  /*@__PURE__*/ BatchGetCategoriesResponse;
 
 export type BatchGetCategoriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1523,7 +1516,7 @@ export const batchGetCategories: API.OperationMethod<
   BatchGetCategoriesResponse_Op,
   BatchGetCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetCategoriesRequest,
   output: BatchGetCategoriesResponse_Op,
   errors: [NotFound, Forbidden],

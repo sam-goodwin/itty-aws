@@ -8,7 +8,7 @@ export interface ListEndUsersInput {
   pageToken?: string;
   sort?: string;
 }
-export const ListEndUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEndUsersInput = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
   sort: Schema.optional(Schema.String),
@@ -61,7 +61,7 @@ export interface ListEndUsersOutput {
   }[];
   nextPageToken?: string;
 }
-export const ListEndUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEndUsersOutput = /*@__PURE__*/ Schema.Struct({
   endUsers: Schema.Array(
     Schema.Struct({
       userId: Schema.String,
@@ -168,7 +168,7 @@ export const ListEndUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pageToken - The token for the desired page of end users. Will be empty if there are no more end users to fetch.
  * @param sort - Sort end users. Defaults to ascending order (oldest first).
  */
-export const listEndUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEndUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEndUsersInput,
   outputSchema: ListEndUsersOutput,
 }));

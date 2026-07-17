@@ -9,7 +9,7 @@ export interface ListInvoicesInput {
   page?: number;
   per_page?: number;
 }
-export const ListInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListInvoicesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
   per_page: Schema.optional(Schema.Number),
@@ -25,16 +25,16 @@ export interface ListInvoicesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     total: string;
     billing_period_start: string;
     billing_period_end: string;
     paid: boolean;
     overdue: boolean;
-  }[];
+  }>;
 }
-export const ListInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListInvoicesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -63,16 +63,14 @@ export const ListInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listInvoices = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListInvoicesInput,
-    outputSchema: ListInvoicesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listInvoices = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListInvoicesInput,
+  outputSchema: ListInvoicesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

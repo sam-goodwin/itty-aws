@@ -9,7 +9,7 @@ export interface GetFieldForDatasetInput {
   field_id: string;
 }
 export const GetFieldForDatasetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset_id: Schema.String.pipe(T.PathParam()),
     field_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -28,7 +28,7 @@ export interface GetFieldForDatasetOutput {
   unit?: string;
 }
 export const GetFieldForDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     hidden: Schema.optional(Schema.Boolean),
     name: Schema.String,
@@ -37,7 +37,7 @@ export const GetFieldForDatasetOutput =
   }) as unknown as Schema.Codec<GetFieldForDatasetOutput>;
 
 // The operation
-export const getFieldForDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getFieldForDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFieldForDatasetInput,
   outputSchema: GetFieldForDatasetOutput,
   errors: [NotFound] as const,

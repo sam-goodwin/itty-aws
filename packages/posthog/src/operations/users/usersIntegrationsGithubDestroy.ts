@@ -8,7 +8,7 @@ export interface UsersIntegrationsGithubDestroyInput {
   uuid: string;
 }
 export const UsersIntegrationsGithubDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const UsersIntegrationsGithubDestroyInput =
 // Output Schema
 export type UsersIntegrationsGithubDestroyOutput = void;
 export const UsersIntegrationsGithubDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsGithubDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsGithubDestroyOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const UsersIntegrationsGithubDestroyOutput =
  * Remove a specific GitHub installation by its installation_id.
  */
 export const usersIntegrationsGithubDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsGithubDestroyInput,
     outputSchema: UsersIntegrationsGithubDestroyOutput,
   }));

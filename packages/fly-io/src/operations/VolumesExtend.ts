@@ -9,7 +9,7 @@ export interface VolumesExtendInput {
   volume_id: string;
   size_gb?: number;
 }
-export const VolumesExtendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesExtendInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
   size_gb: Schema.optional(Schema.Number),
@@ -47,7 +47,7 @@ export interface VolumesExtendOutput {
     zone?: string;
   };
 }
-export const VolumesExtendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesExtendOutput = /*@__PURE__*/ Schema.Struct({
   needs_restart: Schema.optional(Schema.Boolean),
   volume: Schema.optional(
     Schema.Struct({
@@ -87,7 +87,7 @@ export const VolumesExtendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const VolumesExtend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesExtend = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesExtendInput,
   outputSchema: VolumesExtendOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

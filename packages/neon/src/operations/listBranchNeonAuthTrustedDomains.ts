@@ -8,7 +8,7 @@ export interface ListBranchNeonAuthTrustedDomainsInput {
   branch_id: string;
 }
 export const ListBranchNeonAuthTrustedDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -26,7 +26,7 @@ export interface ListBranchNeonAuthTrustedDomainsOutput {
   }[];
 }
 export const ListBranchNeonAuthTrustedDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.Array(
       Schema.Struct({
         domain: Schema.String,
@@ -46,7 +46,7 @@ export const ListBranchNeonAuthTrustedDomainsOutput =
  * @param branch_id - The Neon branch ID
  */
 export const listBranchNeonAuthTrustedDomains =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListBranchNeonAuthTrustedDomainsInput,
     outputSchema: ListBranchNeonAuthTrustedDomainsOutput,
   }));

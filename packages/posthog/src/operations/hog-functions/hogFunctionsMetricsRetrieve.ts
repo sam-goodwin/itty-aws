@@ -16,7 +16,7 @@ export interface HogFunctionsMetricsRetrieveInput {
   name?: string;
 }
 export const HogFunctionsMetricsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export interface HogFunctionsMetricsRetrieveOutput {
   series?: { name?: string; values?: number[] }[];
 }
 export const HogFunctionsMetricsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
     series: Schema.optional(
       Schema.Array(
@@ -71,10 +71,8 @@ export const HogFunctionsMetricsRetrieveOutput =
  * @param name - Comma-separated metric names to filter by.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFunctionsMetricsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFunctionsMetricsRetrieveInput,
-    outputSchema: HogFunctionsMetricsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFunctionsMetricsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFunctionsMetricsRetrieveInput,
+  outputSchema: HogFunctionsMetricsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

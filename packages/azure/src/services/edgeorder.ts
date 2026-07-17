@@ -40,7 +40,7 @@ export interface AddressesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const AddressesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
@@ -104,7 +104,7 @@ export interface AddressesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AddressesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export const AddressesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param addressName - The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
  */
-export const AddressesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddressesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddressesCreateInput,
   outputSchema: AddressesCreateOutput,
 }));
@@ -144,7 +144,7 @@ export interface AddressesDeleteInput {
   resourceGroupName: string;
   addressName: string;
 }
-export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
@@ -159,7 +159,7 @@ export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddressesDeleteOutput = void;
 export const AddressesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddressesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddressesDeleteOutput>;
 
 // The operation
 /**
@@ -170,7 +170,7 @@ export const AddressesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param addressName - The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
  */
-export const AddressesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddressesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddressesDeleteInput,
   outputSchema: AddressesDeleteOutput,
 }));
@@ -180,7 +180,7 @@ export interface AddressesGetInput {
   resourceGroupName: string;
   addressName: string;
 }
-export const AddressesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
@@ -206,7 +206,7 @@ export interface AddressesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AddressesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export const AddressesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param addressName - The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
  */
-export const AddressesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddressesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddressesGetInput,
   outputSchema: AddressesGetOutput,
 }));
@@ -248,7 +248,7 @@ export interface AddressesListByResourceGroupInput {
   $top?: number;
 }
 export const AddressesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export interface AddressesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AddressesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export const AddressesListByResourceGroupOutput =
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
 export const AddressesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddressesListByResourceGroupInput,
     outputSchema: AddressesListByResourceGroupOutput,
   }));
@@ -339,7 +339,7 @@ export interface AddressesListBySubscriptionInput {
   $top?: number;
 }
 export const AddressesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
@@ -370,7 +370,7 @@ export interface AddressesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AddressesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -415,12 +415,10 @@ export const AddressesListBySubscriptionOutput =
  * @param $skipToken - $skipToken is supported on Get list of addresses, which provides the next page in the list of addresses.
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
-export const AddressesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddressesListBySubscriptionInput,
-    outputSchema: AddressesListBySubscriptionOutput,
-  }),
-);
+export const AddressesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddressesListBySubscriptionInput,
+  outputSchema: AddressesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AddressesUpdateInput {
   subscriptionId: string;
@@ -449,7 +447,7 @@ export interface AddressesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const AddressesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   addressName: Schema.String.pipe(T.PathParam()),
@@ -505,7 +503,7 @@ export interface AddressesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AddressesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -535,15 +533,13 @@ export const AddressesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param addressName - The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
  * @param If-Match - Defines the If-Match condition. The patch will be performed only if the ETag of the job on the server matches this value.
  */
-export const AddressesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddressesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddressesUpdateInput,
   outputSchema: AddressesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EdgeOrder/operations",
@@ -567,7 +563,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -597,7 +593,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -608,7 +604,7 @@ export interface OrderItemsCancelInput {
   orderItemName: string;
   reason: string;
 }
-export const OrderItemsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsCancelInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -624,7 +620,7 @@ export const OrderItemsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OrderItemsCancelOutput = void;
 export const OrderItemsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsCancelOutput>;
 
 // The operation
 /**
@@ -635,7 +631,7 @@ export const OrderItemsCancelOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param orderItemName - The name of the order item.
  */
-export const OrderItemsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsCancelInput,
   outputSchema: OrderItemsCancelOutput,
 }));
@@ -945,7 +941,7 @@ export interface OrderItemsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const OrderItemsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -1464,27 +1460,25 @@ export interface OrderItemsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrderItemsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<OrderItemsCreateOutput>;
+export const OrderItemsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<OrderItemsCreateOutput>;
 
 // The operation
 /**
@@ -1496,7 +1490,7 @@ export const OrderItemsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param orderItemName - The name of the order item.
  */
-export const OrderItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsCreateInput,
   outputSchema: OrderItemsCreateOutput,
 }));
@@ -1506,7 +1500,7 @@ export interface OrderItemsDeleteInput {
   resourceGroupName: string;
   orderItemName: string;
 }
-export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -1521,7 +1515,7 @@ export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OrderItemsDeleteOutput = void;
 export const OrderItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsDeleteOutput>;
 
 // The operation
 /**
@@ -1532,7 +1526,7 @@ export const OrderItemsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param orderItemName - The name of the order item.
  */
-export const OrderItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsDeleteInput,
   outputSchema: OrderItemsDeleteOutput,
 }));
@@ -1543,7 +1537,7 @@ export interface OrderItemsGetInput {
   orderItemName: string;
   $expand?: string;
 }
-export const OrderItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -1570,7 +1564,7 @@ export interface OrderItemsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrderItemsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1600,7 +1594,7 @@ export const OrderItemsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param orderItemName - The name of the order item.
  * @param $expand - $expand is supported on parent device details, device details, forward shipping details and reverse shipping details parameters. Each of these can be provided as a comma separated list. Parent Device Details for order item provides details on the devices of the product, Device Details for order item provides details on the devices of the child configurations of the product, Forward and Reverse Shipping details provide forward and reverse shipping details respectively.
  */
-export const OrderItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsGetInput,
   outputSchema: OrderItemsGetOutput,
 }));
@@ -1614,7 +1608,7 @@ export interface OrderItemsListByResourceGroupInput {
   $top?: number;
 }
 export const OrderItemsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1647,7 +1641,7 @@ export interface OrderItemsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const OrderItemsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1695,7 +1689,7 @@ export const OrderItemsListByResourceGroupOutput =
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
 export const OrderItemsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrderItemsListByResourceGroupInput,
     outputSchema: OrderItemsListByResourceGroupOutput,
   }));
@@ -1708,7 +1702,7 @@ export interface OrderItemsListBySubscriptionInput {
   $top?: number;
 }
 export const OrderItemsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -1740,7 +1734,7 @@ export interface OrderItemsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const OrderItemsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1787,7 +1781,7 @@ export const OrderItemsListBySubscriptionOutput =
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
 export const OrderItemsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrderItemsListBySubscriptionInput,
     outputSchema: OrderItemsListBySubscriptionOutput,
   }));
@@ -1824,7 +1818,7 @@ export interface OrderItemsReturnInput {
   serviceTag?: string;
   shippingBoxRequired?: boolean;
 }
-export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsReturnInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -1880,7 +1874,7 @@ export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OrderItemsReturnOutput = void;
 export const OrderItemsReturnOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsReturnOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsReturnOutput>;
 
 // The operation
 /**
@@ -1891,7 +1885,7 @@ export const OrderItemsReturnOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param orderItemName - The name of the order item.
  */
-export const OrderItemsReturn = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsReturn = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsReturnInput,
   outputSchema: OrderItemsReturnOutput,
 }));
@@ -1977,7 +1971,7 @@ export interface OrderItemsUpdateInput {
     >;
   };
 }
-export const OrderItemsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrderItemsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   orderItemName: Schema.String.pipe(T.PathParam()),
@@ -2141,27 +2135,25 @@ export interface OrderItemsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrderItemsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<OrderItemsUpdateOutput>;
+export const OrderItemsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<OrderItemsUpdateOutput>;
 
 // The operation
 /**
@@ -2173,7 +2165,7 @@ export const OrderItemsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param orderItemName - The name of the order item.
  * @param If-Match - Defines the If-Match condition. The patch will be performed only if the ETag of the order on the server matches this value.
  */
-export const OrderItemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrderItemsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrderItemsUpdateInput,
   outputSchema: OrderItemsUpdateOutput,
 }));
@@ -2184,7 +2176,7 @@ export interface OrdersGetInput {
   location: string;
   orderName: string;
 }
-export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrdersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -2211,7 +2203,7 @@ export interface OrdersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrdersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2241,7 +2233,7 @@ export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of the Azure region.
  * @param orderName - The name of the order.
  */
-export const OrdersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrdersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrdersGetInput,
   outputSchema: OrdersGetOutput,
 }));
@@ -2253,7 +2245,7 @@ export interface OrdersListByResourceGroupInput {
   $top?: number;
 }
 export const OrdersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
@@ -2284,7 +2276,7 @@ export interface OrdersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const OrdersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2329,12 +2321,10 @@ export const OrdersListByResourceGroupOutput =
  * @param $skipToken - $skipToken is supported on Get list of orders, which provides the next page in the list of orders.
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
-export const OrdersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrdersListByResourceGroupInput,
-    outputSchema: OrdersListByResourceGroupOutput,
-  }),
-);
+export const OrdersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrdersListByResourceGroupInput,
+  outputSchema: OrdersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface OrdersListBySubscriptionInput {
   subscriptionId: string;
@@ -2342,7 +2332,7 @@ export interface OrdersListBySubscriptionInput {
   $top?: number;
 }
 export const OrdersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2372,7 +2362,7 @@ export interface OrdersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const OrdersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2416,12 +2406,10 @@ export const OrdersListBySubscriptionOutput =
  * @param $skipToken - $skipToken is supported on Get list of orders, which provides the next page in the list of orders.
  * @param $top - $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller.
  */
-export const OrdersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrdersListBySubscriptionInput,
-    outputSchema: OrdersListBySubscriptionOutput,
-  }),
-);
+export const OrdersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrdersListBySubscriptionInput,
+  outputSchema: OrdersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface ProductsAndConfigurationsListConfigurationsInput {
   subscriptionId: string;
@@ -2459,7 +2447,7 @@ export interface ProductsAndConfigurationsListConfigurationsInput {
   };
 }
 export const ProductsAndConfigurationsListConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     configurationFilter: Schema.optional(
@@ -2606,7 +2594,7 @@ export interface ProductsAndConfigurationsListConfigurationsOutput {
   nextLink?: string;
 }
 export const ProductsAndConfigurationsListConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -2740,7 +2728,7 @@ export const ProductsAndConfigurationsListConfigurationsOutput =
  * @param $skipToken - $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
  */
 export const ProductsAndConfigurationsListConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsAndConfigurationsListConfigurationsInput,
     outputSchema: ProductsAndConfigurationsListConfigurationsOutput,
   }));
@@ -2763,7 +2751,7 @@ export interface ProductsAndConfigurationsListProductFamiliesInput {
   };
 }
 export const ProductsAndConfigurationsListProductFamiliesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
     $skipToken: Schema.optional(Schema.String),
@@ -2875,7 +2863,7 @@ export interface ProductsAndConfigurationsListProductFamiliesOutput {
   nextLink?: string;
 }
 export const ProductsAndConfigurationsListProductFamiliesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -3010,7 +2998,7 @@ export const ProductsAndConfigurationsListProductFamiliesOutput =
  * @param $skipToken - $skipToken is supported on list of product families, which provides the next page in the list of product families.
  */
 export const ProductsAndConfigurationsListProductFamilies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsAndConfigurationsListProductFamiliesInput,
     outputSchema: ProductsAndConfigurationsListProductFamiliesOutput,
   }));
@@ -3020,7 +3008,7 @@ export interface ProductsAndConfigurationsListProductFamiliesMetadataInput {
   $skipToken?: string;
 }
 export const ProductsAndConfigurationsListProductFamiliesMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -3108,7 +3096,7 @@ export interface ProductsAndConfigurationsListProductFamiliesMetadataOutput {
   nextLink?: string;
 }
 export const ProductsAndConfigurationsListProductFamiliesMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -3242,7 +3230,7 @@ export const ProductsAndConfigurationsListProductFamiliesMetadataOutput =
  * @param $skipToken - $skipToken is supported on list of product families metadata, which provides the next page in the list of product families metadata.
  */
 export const ProductsAndConfigurationsListProductFamiliesMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsAndConfigurationsListProductFamiliesMetadataInput,
     outputSchema: ProductsAndConfigurationsListProductFamiliesMetadataOutput,
   }));

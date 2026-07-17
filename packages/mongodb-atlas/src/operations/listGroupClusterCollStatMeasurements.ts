@@ -17,7 +17,7 @@ export interface ListGroupClusterCollStatMeasurementsInput {
   period?: string;
 }
 export const ListGroupClusterCollStatMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     clusterView: Schema.Literals([
@@ -42,7 +42,7 @@ export const ListGroupClusterCollStatMeasurementsInput =
 // Output Schema
 export type ListGroupClusterCollStatMeasurementsOutput = void;
 export const ListGroupClusterCollStatMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterCollStatMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterCollStatMeasurementsOutput>;
 
 // The operation
 /**
@@ -64,7 +64,7 @@ export const ListGroupClusterCollStatMeasurementsOutput =
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
 export const listGroupClusterCollStatMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterCollStatMeasurementsInput,
     outputSchema: ListGroupClusterCollStatMeasurementsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

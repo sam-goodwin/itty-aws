@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetAliasesInput {}
-export const GetAliasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetAliasesInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/aliases" }),
 ) as unknown as Schema.Codec<GetAliasesInput>;
 
@@ -14,7 +12,7 @@ export const GetAliasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface GetAliasesOutput {
   aliases: { name: string; collection_name: string }[];
 }
-export const GetAliasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAliasesOutput = /*@__PURE__*/ Schema.Struct({
   aliases: Schema.Array(
     Schema.Struct({
       name: Schema.String,
@@ -29,7 +27,7 @@ export const GetAliasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * List all aliases and the corresponding collections that they map to.
  */
-export const getAliases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAliases = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAliasesInput,
   outputSchema: GetAliasesOutput,
 }));

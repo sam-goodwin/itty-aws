@@ -10,7 +10,7 @@ export interface RemoveLocationFromGroupInput {
   location: string;
 }
 export const RemoveLocationFromGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface RemoveLocationFromGroupOutput {
   };
 }
 export const RemoveLocationFromGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -56,10 +56,8 @@ export const RemoveLocationFromGroupOutput =
  * @param groupName - The name of the group.
  * @param location - The location code to remove from the group.
  */
-export const removeLocationFromGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemoveLocationFromGroupInput,
-    outputSchema: RemoveLocationFromGroupOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const removeLocationFromGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemoveLocationFromGroupInput,
+  outputSchema: RemoveLocationFromGroupOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

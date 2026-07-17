@@ -24,7 +24,7 @@ export interface PortalSessionsControllerCreateInput {
   it_contact_emails?: ReadonlyArray<string>;
 }
 export const PortalSessionsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     return_url: Schema.optional(Schema.String),
     success_url: Schema.optional(Schema.String),
     organization: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface PortalSessionsControllerCreateOutput {
   link?: string;
 }
 export const PortalSessionsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<PortalSessionsControllerCreateOutput>;
 
@@ -60,7 +60,7 @@ export const PortalSessionsControllerCreateOutput =
  * Generate a Portal Link scoped to an Organization.
  */
 export const PortalSessionsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PortalSessionsControllerCreateInput,
     outputSchema: PortalSessionsControllerCreateOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

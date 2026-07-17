@@ -35,15 +35,13 @@ export interface Tag {
   stringValue?: string;
 }
 
-export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    int64Value: Schema.optional(Schema.String),
-    timeValue: Schema.optional(Schema.String),
-    key: Schema.optional(Schema.String),
-    booleanValue: Schema.optional(Schema.Boolean),
-    stringValue: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Tag" });
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ Schema.Struct({
+  int64Value: Schema.optional(Schema.String),
+  timeValue: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  booleanValue: Schema.optional(Schema.Boolean),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
@@ -51,14 +49,14 @@ export interface CreateOrUpdateTagsRequest {
 }
 
 export const CreateOrUpdateTagsRequest: Schema.Codec<CreateOrUpdateTagsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsRequest" });
 
 export interface VerifyTokenResponse {}
 
 export const VerifyTokenResponse: Schema.Codec<VerifyTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyTokenResponse",
   });
 
@@ -68,7 +66,7 @@ export interface CreateOrUpdateTagsResponse {
 }
 
 export const CreateOrUpdateTagsResponse: Schema.Codec<CreateOrUpdateTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
 
@@ -78,7 +76,7 @@ export interface VerifyTokenRequest {
 }
 
 export const VerifyTokenRequest: Schema.Codec<VerifyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     persona: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerifyTokenRequest" });
 
@@ -146,7 +144,7 @@ export interface VerifyAppsTokensRequest {
 }
 
 export const VerifyAppsTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appPackage: Schema.String.pipe(T.HttpPath("appPackage")),
     token: Schema.String.pipe(T.HttpPath("token")),
     body: Schema.optional(VerifyTokenRequest).pipe(T.HttpBody()),
@@ -160,8 +158,7 @@ export const VerifyAppsTokensRequest =
   ) as unknown as Schema.Codec<VerifyAppsTokensRequest>;
 
 export type VerifyAppsTokensResponse = VerifyTokenResponse;
-export const VerifyAppsTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VerifyTokenResponse;
+export const VerifyAppsTokensResponse = /*@__PURE__*/ VerifyTokenResponse;
 
 export type VerifyAppsTokensError =
   | DefaultErrors
@@ -176,7 +173,7 @@ export const verifyAppsTokens: API.OperationMethod<
   VerifyAppsTokensResponse,
   VerifyAppsTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyAppsTokensRequest,
   output: VerifyAppsTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -192,7 +189,7 @@ export interface CreateOrUpdateAppsTokensTagsRequest {
 }
 
 export const CreateOrUpdateAppsTokensTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appPackage: Schema.String.pipe(T.HttpPath("appPackage")),
     token: Schema.String.pipe(T.HttpPath("token")),
     body: Schema.optional(CreateOrUpdateTagsRequest).pipe(T.HttpBody()),
@@ -207,7 +204,7 @@ export const CreateOrUpdateAppsTokensTagsRequest =
 
 export type CreateOrUpdateAppsTokensTagsResponse = CreateOrUpdateTagsResponse;
 export const CreateOrUpdateAppsTokensTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreateOrUpdateTagsResponse;
+  /*@__PURE__*/ CreateOrUpdateTagsResponse;
 
 export type CreateOrUpdateAppsTokensTagsError =
   | DefaultErrors
@@ -222,7 +219,7 @@ export const createOrUpdateAppsTokensTags: API.OperationMethod<
   CreateOrUpdateAppsTokensTagsResponse,
   CreateOrUpdateAppsTokensTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrUpdateAppsTokensTagsRequest,
   output: CreateOrUpdateAppsTokensTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

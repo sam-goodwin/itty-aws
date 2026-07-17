@@ -7,7 +7,7 @@ export interface DeleteTestHelpersTestClocksTestClockInput {
   test_clock: string;
 }
 export const DeleteTestHelpersTestClocksTestClockInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteTestHelpersTestClocksTestClockOutput {
   object: "test_helpers.test_clock";
 }
 export const DeleteTestHelpersTestClocksTestClockOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["test_helpers.test_clock"]),
@@ -37,7 +37,7 @@ export const DeleteTestHelpersTestClocksTestClockOutput =
  * <p>Deletes a test clock.</p>
  */
 export const DeleteTestHelpersTestClocksTestClock =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteTestHelpersTestClocksTestClockInput,
     outputSchema: DeleteTestHelpersTestClocksTestClockOutput,
   }));

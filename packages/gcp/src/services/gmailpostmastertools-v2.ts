@@ -28,7 +28,7 @@ export interface ComplianceStatus {
 }
 
 export const ComplianceStatus: Schema.Codec<ComplianceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComplianceStatus" });
 
@@ -53,7 +53,7 @@ export interface ComplianceRowData {
 }
 
 export const ComplianceRowData: Schema.Codec<ComplianceRowData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requirement: Schema.optional(Schema.String),
     status: Schema.optional(ComplianceStatus),
   }).annotate({ identifier: "ComplianceRowData" });
@@ -75,7 +75,7 @@ export interface DeliverabilityStatusVerdict {
 }
 
 export const DeliverabilityStatusVerdict: Schema.Codec<DeliverabilityStatusVerdict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeliverabilityStatusVerdict" });
@@ -93,7 +93,7 @@ export interface HonorUnsubscribeVerdict {
 }
 
 export const HonorUnsubscribeVerdict: Schema.Codec<HonorUnsubscribeVerdict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "HonorUnsubscribeVerdict" });
@@ -111,7 +111,7 @@ export interface OneClickUnsubscribeVerdict {
 }
 
 export const OneClickUnsubscribeVerdict: Schema.Codec<OneClickUnsubscribeVerdict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "OneClickUnsubscribeVerdict" });
@@ -130,7 +130,7 @@ export interface DomainComplianceData {
 }
 
 export const DomainComplianceData: Schema.Codec<DomainComplianceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowData: Schema.optional(Schema.Array(ComplianceRowData)),
     deliverabilityStatusVerdict: Schema.optional(DeliverabilityStatusVerdict),
     domainId: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export interface Domain {
 }
 
 export const Domain: Schema.Codec<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     lastVerifyTime: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface ListDomainsResponse {
 }
 
 export const ListDomainsResponse: Schema.Codec<ListDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDomainsResponse" });
@@ -193,7 +193,7 @@ export interface Gmailpostmastertools_Date {
 }
 
 export const Gmailpostmastertools_Date: Schema.Codec<Gmailpostmastertools_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -207,7 +207,7 @@ export interface DateRange {
 }
 
 export const DateRange: Schema.Codec<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(Gmailpostmastertools_Date),
     start: Schema.optional(Gmailpostmastertools_Date),
   }).annotate({ identifier: "DateRange" });
@@ -218,7 +218,7 @@ export interface DateRanges {
 }
 
 export const DateRanges: Schema.Codec<DateRanges> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRanges: Schema.optional(Schema.Array(DateRange)),
   }).annotate({ identifier: "DateRanges" });
 
@@ -228,7 +228,7 @@ export interface DateList {
 }
 
 export const DateList: Schema.Codec<DateList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dates: Schema.optional(Schema.Array(Gmailpostmastertools_Date)),
   }).annotate({ identifier: "DateList" });
 
@@ -240,7 +240,7 @@ export interface TimeQuery {
 }
 
 export const TimeQuery: Schema.Codec<TimeQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRanges: Schema.optional(DateRanges),
     dateList: Schema.optional(DateList),
   }).annotate({ identifier: "TimeQuery" });
@@ -251,7 +251,7 @@ export interface StringList {
 }
 
 export const StringList: Schema.Codec<StringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringList" });
 
@@ -269,7 +269,7 @@ export interface StatisticValue {
 }
 
 export const StatisticValue: Schema.Codec<StatisticValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     stringList: Schema.optional(StringList),
     stringValue: Schema.optional(Schema.String),
@@ -289,7 +289,7 @@ export interface DomainStat {
 }
 
 export const DomainStat: Schema.Codec<DomainStat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     date: Schema.optional(Gmailpostmastertools_Date),
     value: Schema.optional(StatisticValue),
@@ -304,7 +304,7 @@ export interface QueryDomainStatsResponse {
 }
 
 export const QueryDomainStatsResponse: Schema.Codec<QueryDomainStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     domainStats: Schema.optional(Schema.Array(DomainStat)),
   }).annotate({ identifier: "QueryDomainStatsResponse" });
@@ -319,7 +319,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -335,7 +335,7 @@ export interface BatchQueryDomainStatsResult {
 }
 
 export const BatchQueryDomainStatsResult: Schema.Codec<BatchQueryDomainStatsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(QueryDomainStatsResponse),
     error: Schema.optional(Status),
   }).annotate({ identifier: "BatchQueryDomainStatsResult" });
@@ -346,7 +346,7 @@ export interface BatchQueryDomainStatsResponse {
 }
 
 export const BatchQueryDomainStatsResponse: Schema.Codec<BatchQueryDomainStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(BatchQueryDomainStatsResult)),
   }).annotate({ identifier: "BatchQueryDomainStatsResponse" });
 
@@ -360,7 +360,7 @@ export interface DomainComplianceStatus {
 }
 
 export const DomainComplianceStatus: Schema.Codec<DomainComplianceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     complianceData: Schema.optional(DomainComplianceData),
     subdomainComplianceData: Schema.optional(DomainComplianceData),
@@ -369,7 +369,7 @@ export const DomainComplianceStatus: Schema.Codec<DomainComplianceStatus> =
 export interface VerifyDomainResponse {}
 
 export const VerifyDomainResponse: Schema.Codec<VerifyDomainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyDomainResponse",
   });
 
@@ -387,7 +387,7 @@ export interface CreateUserRequest {
 }
 
 export const CreateUserRequest: Schema.Codec<CreateUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateUserRequest" });
@@ -412,7 +412,7 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -428,7 +428,7 @@ export interface ListUsersResponse {
 }
 
 export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(User)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListUsersResponse" });
@@ -436,7 +436,7 @@ export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -456,7 +456,7 @@ export interface BaseMetric {
 }
 
 export const BaseMetric: Schema.Codec<BaseMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     standardMetric: Schema.optional(Schema.String),
   }).annotate({ identifier: "BaseMetric" });
 
@@ -470,7 +470,7 @@ export interface MetricDefinition {
 }
 
 export const MetricDefinition: Schema.Codec<MetricDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     baseMetric: Schema.optional(BaseMetric),
     filter: Schema.optional(Schema.String),
@@ -496,7 +496,7 @@ export interface QueryDomainStatsRequest {
 }
 
 export const QueryDomainStatsRequest: Schema.Codec<QueryDomainStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
@@ -511,7 +511,7 @@ export interface BatchQueryDomainStatsRequest {
 }
 
 export const BatchQueryDomainStatsRequest: Schema.Codec<BatchQueryDomainStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(QueryDomainStatsRequest)),
   }).annotate({ identifier: "BatchQueryDomainStatsRequest" });
 
@@ -525,7 +525,7 @@ export interface VerifyDomainRequest {
 }
 
 export const VerifyDomainRequest: Schema.Codec<VerifyDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationMethod: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerifyDomainRequest" });
 
@@ -535,7 +535,7 @@ export interface CreateDomainRequest {
 }
 
 export const CreateDomainRequest: Schema.Codec<CreateDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateDomainRequest" });
 
@@ -553,7 +553,7 @@ export interface DomainVerificationToken {
 }
 
 export const DomainVerificationToken: Schema.Codec<DomainVerificationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     verificationMethod: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -619,7 +619,7 @@ export interface BatchQueryDomainStatsRequest_Op {
 }
 
 export const BatchQueryDomainStatsRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(BatchQueryDomainStatsRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -632,7 +632,7 @@ export const BatchQueryDomainStatsRequest_Op =
 
 export type BatchQueryDomainStatsResponse_Op = BatchQueryDomainStatsResponse;
 export const BatchQueryDomainStatsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchQueryDomainStatsResponse;
+  /*@__PURE__*/ BatchQueryDomainStatsResponse;
 
 export type BatchQueryDomainStatsError =
   | DefaultErrors
@@ -647,7 +647,7 @@ export const batchQueryDomainStats: API.OperationMethod<
   BatchQueryDomainStatsResponse_Op,
   BatchQueryDomainStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchQueryDomainStatsRequest_Op,
   output: BatchQueryDomainStatsResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -658,7 +658,7 @@ export interface GetDomainsRequest {
   name: string;
 }
 
-export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDomainsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -666,7 +666,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDomainsRequest>;
 
 export type GetDomainsResponse = Domain;
-export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
+export const GetDomainsResponse = /*@__PURE__*/ Domain;
 
 export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -676,7 +676,7 @@ export const getDomains: API.OperationMethod<
   GetDomainsResponse,
   GetDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResponse,
   errors: [NotFound, Forbidden],
@@ -689,7 +689,7 @@ export interface ListDomainsRequest {
   pageToken?: string;
 }
 
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDomainsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
@@ -698,8 +698,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export type ListDomainsResponse_Op = ListDomainsResponse;
-export const ListDomainsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
+export const ListDomainsResponse_Op = /*@__PURE__*/ ListDomainsResponse;
 
 export type ListDomainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -709,7 +708,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse_Op,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -731,7 +730,7 @@ export interface GetVerificationTokenDomainsRequest {
 }
 
 export const GetVerificationTokenDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     verificationMethod: Schema.optional(Schema.String).pipe(
       T.HttpQuery("verificationMethod"),
@@ -743,7 +742,7 @@ export const GetVerificationTokenDomainsRequest =
 
 export type GetVerificationTokenDomainsResponse = DomainVerificationToken;
 export const GetVerificationTokenDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DomainVerificationToken;
+  /*@__PURE__*/ DomainVerificationToken;
 
 export type GetVerificationTokenDomainsError =
   | DefaultErrors
@@ -756,7 +755,7 @@ export const getVerificationTokenDomains: API.OperationMethod<
   GetVerificationTokenDomainsResponse,
   GetVerificationTokenDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVerificationTokenDomainsRequest,
   output: GetVerificationTokenDomainsResponse,
   errors: [NotFound, Forbidden],
@@ -768,7 +767,7 @@ export interface GetComplianceStatusDomainsRequest {
 }
 
 export const GetComplianceStatusDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -777,7 +776,7 @@ export const GetComplianceStatusDomainsRequest =
 
 export type GetComplianceStatusDomainsResponse = DomainComplianceStatus;
 export const GetComplianceStatusDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DomainComplianceStatus;
+  /*@__PURE__*/ DomainComplianceStatus;
 
 export type GetComplianceStatusDomainsError =
   | DefaultErrors
@@ -790,7 +789,7 @@ export const getComplianceStatusDomains: API.OperationMethod<
   GetComplianceStatusDomainsResponse,
   GetComplianceStatusDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComplianceStatusDomainsRequest,
   output: GetComplianceStatusDomainsResponse,
   errors: [NotFound, Forbidden],
@@ -801,7 +800,7 @@ export interface DeleteDomainsRequest {
   name: string;
 }
 
-export const DeleteDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDomainsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -809,7 +808,7 @@ export const DeleteDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteDomainsRequest>;
 
 export type DeleteDomainsResponse = Empty;
-export const DeleteDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteDomainsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteDomainsError =
   | DefaultErrors
@@ -824,7 +823,7 @@ export const deleteDomains: API.OperationMethod<
   DeleteDomainsResponse,
   DeleteDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainsRequest,
   output: DeleteDomainsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -835,7 +834,7 @@ export interface CreateDomainsRequest {
   body?: CreateDomainRequest;
 }
 
-export const CreateDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDomainsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(CreateDomainRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v2/domains", hasBody: true }),
@@ -843,7 +842,7 @@ export const CreateDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateDomainsRequest>;
 
 export type CreateDomainsResponse = Domain;
-export const CreateDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
+export const CreateDomainsResponse = /*@__PURE__*/ Domain;
 
 export type CreateDomainsError =
   | DefaultErrors
@@ -858,7 +857,7 @@ export const createDomains: API.OperationMethod<
   CreateDomainsResponse,
   CreateDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainsRequest,
   output: CreateDomainsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -871,7 +870,7 @@ export interface VerifyDomainsRequest {
   body?: VerifyDomainRequest;
 }
 
-export const VerifyDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VerifyDomainsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(VerifyDomainRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -880,8 +879,7 @@ export const VerifyDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<VerifyDomainsRequest>;
 
 export type VerifyDomainsResponse = VerifyDomainResponse;
-export const VerifyDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VerifyDomainResponse;
+export const VerifyDomainsResponse = /*@__PURE__*/ VerifyDomainResponse;
 
 export type VerifyDomainsError =
   | DefaultErrors
@@ -896,7 +894,7 @@ export const verifyDomains: API.OperationMethod<
   VerifyDomainsResponse,
   VerifyDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyDomainsRequest,
   output: VerifyDomainsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -910,7 +908,7 @@ export interface QueryDomainsDomainStatsRequest {
 }
 
 export const QueryDomainsDomainStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(QueryDomainStatsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -924,7 +922,7 @@ export const QueryDomainsDomainStatsRequest =
 
 export type QueryDomainsDomainStatsResponse = QueryDomainStatsResponse;
 export const QueryDomainsDomainStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryDomainStatsResponse;
+  /*@__PURE__*/ QueryDomainStatsResponse;
 
 export type QueryDomainsDomainStatsError =
   | DefaultErrors
@@ -939,7 +937,7 @@ export const queryDomainsDomainStats: API.OperationMethod<
   QueryDomainsDomainStatsResponse,
   QueryDomainsDomainStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryDomainsDomainStatsRequest,
   output: QueryDomainsDomainStatsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -951,7 +949,7 @@ export interface DeleteDomainsUsersRequest {
 }
 
 export const DeleteDomainsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -959,7 +957,7 @@ export const DeleteDomainsUsersRequest =
   ) as unknown as Schema.Codec<DeleteDomainsUsersRequest>;
 
 export type DeleteDomainsUsersResponse = Empty;
-export const DeleteDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteDomainsUsersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteDomainsUsersError =
   | DefaultErrors
@@ -974,7 +972,7 @@ export const deleteDomainsUsers: API.OperationMethod<
   DeleteDomainsUsersResponse,
   DeleteDomainsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainsUsersRequest,
   output: DeleteDomainsUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -988,7 +986,7 @@ export interface CreateDomainsUsersRequest {
 }
 
 export const CreateDomainsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateUserRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -997,7 +995,7 @@ export const CreateDomainsUsersRequest =
   ) as unknown as Schema.Codec<CreateDomainsUsersRequest>;
 
 export type CreateDomainsUsersResponse = User;
-export const CreateDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+export const CreateDomainsUsersResponse = /*@__PURE__*/ User;
 
 export type CreateDomainsUsersError =
   | DefaultErrors
@@ -1012,7 +1010,7 @@ export const createDomainsUsers: API.OperationMethod<
   CreateDomainsUsersResponse,
   CreateDomainsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainsUsersRequest,
   output: CreateDomainsUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1028,7 +1026,7 @@ export interface PatchDomainsUsersRequest {
 }
 
 export const PatchDomainsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(User).pipe(T.HttpBody()),
@@ -1038,7 +1036,7 @@ export const PatchDomainsUsersRequest =
   ) as unknown as Schema.Codec<PatchDomainsUsersRequest>;
 
 export type PatchDomainsUsersResponse = User;
-export const PatchDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+export const PatchDomainsUsersResponse = /*@__PURE__*/ User;
 
 export type PatchDomainsUsersError =
   | DefaultErrors
@@ -1053,7 +1051,7 @@ export const patchDomainsUsers: API.OperationMethod<
   PatchDomainsUsersResponse,
   PatchDomainsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDomainsUsersRequest,
   output: PatchDomainsUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1064,17 +1062,15 @@ export interface GetDomainsUsersRequest {
   name: string;
 }
 
-export const GetDomainsUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
+export const GetDomainsUsersRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Codec<GetDomainsUsersRequest>;
 
 export type GetDomainsUsersResponse = User;
-export const GetDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+export const GetDomainsUsersResponse = /*@__PURE__*/ User;
 
 export type GetDomainsUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1084,7 +1080,7 @@ export const getDomainsUsers: API.OperationMethod<
   GetDomainsUsersResponse,
   GetDomainsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainsUsersRequest,
   output: GetDomainsUsersResponse,
   errors: [NotFound, Forbidden],
@@ -1100,7 +1096,7 @@ export interface ListDomainsUsersRequest {
 }
 
 export const ListDomainsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1110,8 +1106,7 @@ export const ListDomainsUsersRequest =
   ) as unknown as Schema.Codec<ListDomainsUsersRequest>;
 
 export type ListDomainsUsersResponse = ListUsersResponse;
-export const ListDomainsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
+export const ListDomainsUsersResponse = /*@__PURE__*/ ListUsersResponse;
 
 export type ListDomainsUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1121,7 +1116,7 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
   ListDomainsUsersResponse,
   ListDomainsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsUsersRequest,
   output: ListDomainsUsersResponse,
   errors: [NotFound, Forbidden],

@@ -40,7 +40,7 @@ export interface ContentTypeInfo {
 }
 
 export const ContentTypeInfo: Schema.Codec<ContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
     fromHeader: Schema.optional(Schema.String),
     fromBytes: Schema.optional(Schema.String),
@@ -60,7 +60,7 @@ export interface ObjectId {
 }
 
 export const ObjectId: Schema.Codec<ObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     objectName: Schema.optional(Schema.String),
     generation: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface Blobstore2Info {
 }
 
 export const Blobstore2Info: Schema.Codec<Blobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadFragmentListCreationInfo: Schema.optional(Schema.String),
     readToken: Schema.optional(Schema.String),
     blobGeneration: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface CompositeMedia {
 }
 
 export const CompositeMedia: Schema.Codec<CompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     crc32cHash: Schema.optional(Schema.Number),
     inline: Schema.optional(Schema.String),
     referenceType: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export interface DiffChecksumsResponse {
 }
 
 export const DiffChecksumsResponse: Schema.Codec<DiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     chunkSizeBytes: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface DiffVersionResponse {
 }
 
 export const DiffVersionResponse: Schema.Codec<DiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiffVersionResponse" });
@@ -185,7 +185,7 @@ export interface DiffUploadRequest {
 }
 
 export const DiffUploadRequest: Schema.Codec<DiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectInfo: Schema.optional(CompositeMedia),
     objectVersion: Schema.optional(Schema.String),
     checksumsInfo: Schema.optional(CompositeMedia),
@@ -199,7 +199,7 @@ export interface DownloadParameters {
 }
 
 export const DownloadParameters: Schema.Codec<DownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DownloadParameters" });
@@ -210,7 +210,7 @@ export interface DiffDownloadResponse {
 }
 
 export const DiffDownloadResponse: Schema.Codec<DiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(CompositeMedia),
   }).annotate({ identifier: "DiffDownloadResponse" });
 
@@ -222,7 +222,7 @@ export interface DiffUploadResponse {
 }
 
 export const DiffUploadResponse: Schema.Codec<DiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     originalObject: Schema.optional(CompositeMedia),
   }).annotate({ identifier: "DiffUploadResponse" });
@@ -307,7 +307,7 @@ export interface Media {
 }
 
 export const Media: Schema.Codec<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
     contentTypeInfo: Schema.optional(ContentTypeInfo),
@@ -354,7 +354,7 @@ export interface Escalation {
 }
 
 export const Escalation: Schema.Codec<Escalation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     justification: Schema.optional(Schema.String),
   }).annotate({ identifier: "Escalation" });
@@ -371,7 +371,7 @@ export interface Actor {
 }
 
 export const Actor: Schema.Codec<Actor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleSupport: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -394,7 +394,7 @@ export interface Attachment {
 }
 
 export const Attachment: Schema.Codec<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface ListAttachmentsResponse {
 }
 
 export const ListAttachmentsResponse: Schema.Codec<ListAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attachments: Schema.optional(Schema.Array(Attachment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAttachmentsResponse" });
@@ -419,14 +419,14 @@ export const ListAttachmentsResponse: Schema.Codec<ListAttachmentsResponse> =
 export interface CloseCaseRequest {}
 
 export const CloseCaseRequest: Schema.Codec<CloseCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseCaseRequest",
   });
 
 export interface UndeleteSupportEventSubscriptionRequest {}
 
 export const UndeleteSupportEventSubscriptionRequest: Schema.Codec<UndeleteSupportEventSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteSupportEventSubscriptionRequest",
   });
 
@@ -436,7 +436,7 @@ export interface EscalateCaseRequest {
 }
 
 export const EscalateCaseRequest: Schema.Codec<EscalateCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     escalation: Schema.optional(Escalation),
   }).annotate({ identifier: "EscalateCaseRequest" });
 
@@ -470,7 +470,7 @@ export interface SupportEventSubscription {
 }
 
 export const SupportEventSubscription: Schema.Codec<SupportEventSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     pubSubTopic: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -489,7 +489,7 @@ export interface ListSupportEventSubscriptionsResponse {
 }
 
 export const ListSupportEventSubscriptionsResponse: Schema.Codec<ListSupportEventSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportEventSubscriptions: Schema.optional(
       Schema.Array(SupportEventSubscription),
     ),
@@ -504,7 +504,7 @@ export interface CaseClassification {
 }
 
 export const CaseClassification: Schema.Codec<CaseClassification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CaseClassification" });
@@ -557,7 +557,7 @@ export interface Case {
 }
 
 export const Case: Schema.Codec<Case> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     escalated: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     testCase: Schema.optional(Schema.Boolean),
@@ -583,7 +583,7 @@ export interface ListCasesResponse {
 }
 
 export const ListCasesResponse: Schema.Codec<ListCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cases: Schema.optional(Schema.Array(Case)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCasesResponse" });
@@ -602,7 +602,7 @@ export interface Comment {
 }
 
 export const Comment: Schema.Codec<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creator: Schema.optional(Actor),
     body: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -618,7 +618,7 @@ export interface ListCommentsResponse {
 }
 
 export const ListCommentsResponse: Schema.Codec<ListCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     comments: Schema.optional(Schema.Array(Comment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCommentsResponse" });
@@ -631,7 +631,7 @@ export interface SearchCaseClassificationsResponse {
 }
 
 export const SearchCaseClassificationsResponse: Schema.Codec<SearchCaseClassificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     caseClassifications: Schema.optional(Schema.Array(CaseClassification)),
   }).annotate({ identifier: "SearchCaseClassificationsResponse" });
@@ -644,7 +644,7 @@ export interface SearchCasesResponse {
 }
 
 export const SearchCasesResponse: Schema.Codec<SearchCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     cases: Schema.optional(Schema.Array(Case)),
   }).annotate({ identifier: "SearchCasesResponse" });
@@ -655,7 +655,7 @@ export interface CreateAttachmentRequest {
 }
 
 export const CreateAttachmentRequest: Schema.Codec<CreateAttachmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attachment: Schema.optional(Attachment),
   }).annotate({ identifier: "CreateAttachmentRequest" });
 
@@ -721,7 +721,7 @@ export interface CreateSupportEventSubscriptionsRequest {
 }
 
 export const CreateSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SupportEventSubscription).pipe(T.HttpBody()),
   }).pipe(
@@ -735,7 +735,7 @@ export const CreateSupportEventSubscriptionsRequest =
 
 export type CreateSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const CreateSupportEventSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportEventSubscription;
+  /*@__PURE__*/ SupportEventSubscription;
 
 export type CreateSupportEventSubscriptionsError =
   | DefaultErrors
@@ -750,7 +750,7 @@ export const createSupportEventSubscriptions: API.OperationMethod<
   CreateSupportEventSubscriptionsResponse,
   CreateSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSupportEventSubscriptionsRequest,
   output: CreateSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -762,7 +762,7 @@ export interface DeleteSupportEventSubscriptionsRequest {
 }
 
 export const DeleteSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
@@ -771,7 +771,7 @@ export const DeleteSupportEventSubscriptionsRequest =
 
 export type DeleteSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const DeleteSupportEventSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportEventSubscription;
+  /*@__PURE__*/ SupportEventSubscription;
 
 export type DeleteSupportEventSubscriptionsError =
   | DefaultErrors
@@ -786,7 +786,7 @@ export const deleteSupportEventSubscriptions: API.OperationMethod<
   DeleteSupportEventSubscriptionsResponse,
   DeleteSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSupportEventSubscriptionsRequest,
   output: DeleteSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -802,7 +802,7 @@ export interface PatchSupportEventSubscriptionsRequest {
 }
 
 export const PatchSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SupportEventSubscription).pipe(T.HttpBody()),
@@ -813,7 +813,7 @@ export const PatchSupportEventSubscriptionsRequest =
 
 export type PatchSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const PatchSupportEventSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportEventSubscription;
+  /*@__PURE__*/ SupportEventSubscription;
 
 export type PatchSupportEventSubscriptionsError =
   | DefaultErrors
@@ -828,7 +828,7 @@ export const patchSupportEventSubscriptions: API.OperationMethod<
   PatchSupportEventSubscriptionsResponse,
   PatchSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSupportEventSubscriptionsRequest,
   output: PatchSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -840,7 +840,7 @@ export interface GetSupportEventSubscriptionsRequest {
 }
 
 export const GetSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -849,7 +849,7 @@ export const GetSupportEventSubscriptionsRequest =
 
 export type GetSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const GetSupportEventSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportEventSubscription;
+  /*@__PURE__*/ SupportEventSubscription;
 
 export type GetSupportEventSubscriptionsError =
   | DefaultErrors
@@ -862,7 +862,7 @@ export const getSupportEventSubscriptions: API.OperationMethod<
   GetSupportEventSubscriptionsResponse,
   GetSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSupportEventSubscriptionsRequest,
   output: GetSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -882,7 +882,7 @@ export interface ListSupportEventSubscriptionsRequest {
 }
 
 export const ListSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -898,7 +898,7 @@ export const ListSupportEventSubscriptionsRequest =
 export type ListSupportEventSubscriptionsResponse_Op =
   ListSupportEventSubscriptionsResponse;
 export const ListSupportEventSubscriptionsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListSupportEventSubscriptionsResponse;
+  /*@__PURE__*/ ListSupportEventSubscriptionsResponse;
 
 export type ListSupportEventSubscriptionsError =
   | DefaultErrors
@@ -911,7 +911,7 @@ export const listSupportEventSubscriptions: API.PaginatedOperationMethod<
   ListSupportEventSubscriptionsResponse_Op,
   ListSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportEventSubscriptionsRequest,
   output: ListSupportEventSubscriptionsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -929,7 +929,7 @@ export interface UndeleteSupportEventSubscriptionsRequest {
 }
 
 export const UndeleteSupportEventSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteSupportEventSubscriptionRequest).pipe(
       T.HttpBody(),
@@ -942,7 +942,7 @@ export const UndeleteSupportEventSubscriptionsRequest =
 export type UndeleteSupportEventSubscriptionsResponse =
   SupportEventSubscription;
 export const UndeleteSupportEventSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportEventSubscription;
+  /*@__PURE__*/ SupportEventSubscription;
 
 export type UndeleteSupportEventSubscriptionsError =
   | DefaultErrors
@@ -957,7 +957,7 @@ export const undeleteSupportEventSubscriptions: API.OperationMethod<
   UndeleteSupportEventSubscriptionsResponse,
   UndeleteSupportEventSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteSupportEventSubscriptionsRequest,
   output: UndeleteSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -974,7 +974,7 @@ export interface ListCasesRequest {
   pageToken?: string;
 }
 
-export const ListCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCasesRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -985,8 +985,7 @@ export const ListCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListCasesRequest>;
 
 export type ListCasesResponse_Op = ListCasesResponse;
-export const ListCasesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListCasesResponse;
+export const ListCasesResponse_Op = /*@__PURE__*/ ListCasesResponse;
 
 export type ListCasesError = DefaultErrors | NotFound | Forbidden;
 
@@ -996,7 +995,7 @@ export const listCases: API.PaginatedOperationMethod<
   ListCasesResponse_Op,
   ListCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesRequest,
   output: ListCasesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1015,7 +1014,7 @@ export interface PatchCasesRequest {
   body?: Case;
 }
 
-export const PatchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCasesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Case).pipe(T.HttpBody()),
@@ -1025,7 +1024,7 @@ export const PatchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchCasesRequest>;
 
 export type PatchCasesResponse = Case;
-export const PatchCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
+export const PatchCasesResponse = /*@__PURE__*/ Case;
 
 export type PatchCasesError =
   | DefaultErrors
@@ -1040,7 +1039,7 @@ export const patchCases: API.OperationMethod<
   PatchCasesResponse,
   PatchCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCasesRequest,
   output: PatchCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1051,7 +1050,7 @@ export interface GetCasesRequest {
   name: string;
 }
 
-export const GetCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCasesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1059,7 +1058,7 @@ export const GetCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetCasesRequest>;
 
 export type GetCasesResponse = Case;
-export const GetCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
+export const GetCasesResponse = /*@__PURE__*/ Case;
 
 export type GetCasesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1069,7 +1068,7 @@ export const getCases: API.OperationMethod<
   GetCasesResponse,
   GetCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCasesRequest,
   output: GetCasesResponse,
   errors: [NotFound, Forbidden],
@@ -1086,7 +1085,7 @@ export interface SearchCasesRequest {
   query?: string;
 }
 
-export const SearchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchCasesRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1097,8 +1096,7 @@ export const SearchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SearchCasesRequest>;
 
 export type SearchCasesResponse_Op = SearchCasesResponse;
-export const SearchCasesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchCasesResponse;
+export const SearchCasesResponse_Op = /*@__PURE__*/ SearchCasesResponse;
 
 export type SearchCasesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1108,7 +1106,7 @@ export const searchCases: API.PaginatedOperationMethod<
   SearchCasesResponse_Op,
   SearchCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCasesRequest,
   output: SearchCasesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1125,7 +1123,7 @@ export interface CreateCasesRequest {
   body?: Case;
 }
 
-export const CreateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateCasesRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(Case).pipe(T.HttpBody()),
 }).pipe(
@@ -1134,7 +1132,7 @@ export const CreateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateCasesRequest>;
 
 export type CreateCasesResponse = Case;
-export const CreateCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
+export const CreateCasesResponse = /*@__PURE__*/ Case;
 
 export type CreateCasesError =
   | DefaultErrors
@@ -1149,7 +1147,7 @@ export const createCases: API.OperationMethod<
   CreateCasesResponse,
   CreateCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCasesRequest,
   output: CreateCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1162,7 +1160,7 @@ export interface EscalateCasesRequest {
   body?: EscalateCaseRequest;
 }
 
-export const EscalateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EscalateCasesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(EscalateCaseRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1171,7 +1169,7 @@ export const EscalateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<EscalateCasesRequest>;
 
 export type EscalateCasesResponse = Case;
-export const EscalateCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
+export const EscalateCasesResponse = /*@__PURE__*/ Case;
 
 export type EscalateCasesError =
   | DefaultErrors
@@ -1186,7 +1184,7 @@ export const escalateCases: API.OperationMethod<
   EscalateCasesResponse,
   EscalateCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EscalateCasesRequest,
   output: EscalateCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1199,7 +1197,7 @@ export interface CloseCasesRequest {
   body?: CloseCaseRequest;
 }
 
-export const CloseCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloseCasesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(CloseCaseRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1208,7 +1206,7 @@ export const CloseCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CloseCasesRequest>;
 
 export type CloseCasesResponse = Case;
-export const CloseCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
+export const CloseCasesResponse = /*@__PURE__*/ Case;
 
 export type CloseCasesError =
   | DefaultErrors
@@ -1223,7 +1221,7 @@ export const closeCases: API.OperationMethod<
   CloseCasesResponse,
   CloseCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloseCasesRequest,
   output: CloseCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1239,7 +1237,7 @@ export interface ListCasesAttachmentsRequest {
 }
 
 export const ListCasesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1250,7 +1248,7 @@ export const ListCasesAttachmentsRequest =
 
 export type ListCasesAttachmentsResponse = ListAttachmentsResponse;
 export const ListCasesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAttachmentsResponse;
+  /*@__PURE__*/ ListAttachmentsResponse;
 
 export type ListCasesAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1260,7 +1258,7 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
   ListCasesAttachmentsResponse,
   ListCasesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesAttachmentsRequest,
   output: ListCasesAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -1276,7 +1274,7 @@ export interface GetCasesAttachmentsRequest {
 }
 
 export const GetCasesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1284,8 +1282,7 @@ export const GetCasesAttachmentsRequest =
   ) as unknown as Schema.Codec<GetCasesAttachmentsRequest>;
 
 export type GetCasesAttachmentsResponse = Attachment;
-export const GetCasesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attachment;
+export const GetCasesAttachmentsResponse = /*@__PURE__*/ Attachment;
 
 export type GetCasesAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1295,7 +1292,7 @@ export const getCasesAttachments: API.OperationMethod<
   GetCasesAttachmentsResponse,
   GetCasesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCasesAttachmentsRequest,
   output: GetCasesAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -1309,7 +1306,7 @@ export interface CreateCasesCommentsRequest {
 }
 
 export const CreateCasesCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Comment).pipe(T.HttpBody()),
   }).pipe(
@@ -1318,7 +1315,7 @@ export const CreateCasesCommentsRequest =
   ) as unknown as Schema.Codec<CreateCasesCommentsRequest>;
 
 export type CreateCasesCommentsResponse = Comment;
-export const CreateCasesCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const CreateCasesCommentsResponse = /*@__PURE__*/ Comment;
 
 export type CreateCasesCommentsError =
   | DefaultErrors
@@ -1333,7 +1330,7 @@ export const createCasesComments: API.OperationMethod<
   CreateCasesCommentsResponse,
   CreateCasesCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCasesCommentsRequest,
   output: CreateCasesCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1345,7 +1342,7 @@ export interface GetCasesCommentsRequest {
 }
 
 export const GetCasesCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -1353,7 +1350,7 @@ export const GetCasesCommentsRequest =
   ) as unknown as Schema.Codec<GetCasesCommentsRequest>;
 
 export type GetCasesCommentsResponse = Comment;
-export const GetCasesCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const GetCasesCommentsResponse = /*@__PURE__*/ Comment;
 
 export type GetCasesCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1363,7 +1360,7 @@ export const getCasesComments: API.OperationMethod<
   GetCasesCommentsResponse,
   GetCasesCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCasesCommentsRequest,
   output: GetCasesCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -1379,7 +1376,7 @@ export interface ListCasesCommentsRequest {
 }
 
 export const ListCasesCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1389,8 +1386,7 @@ export const ListCasesCommentsRequest =
   ) as unknown as Schema.Codec<ListCasesCommentsRequest>;
 
 export type ListCasesCommentsResponse = ListCommentsResponse;
-export const ListCasesCommentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCommentsResponse;
+export const ListCasesCommentsResponse = /*@__PURE__*/ ListCommentsResponse;
 
 export type ListCasesCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1400,7 +1396,7 @@ export const listCasesComments: API.PaginatedOperationMethod<
   ListCasesCommentsResponse,
   ListCasesCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesCommentsRequest,
   output: ListCasesCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -1417,7 +1413,7 @@ export interface UploadMediaRequest {
   body?: CreateAttachmentRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(CreateAttachmentRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1426,7 +1422,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = Attachment;
-export const UploadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;
+export const UploadMediaResponse = /*@__PURE__*/ Attachment;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -1441,7 +1437,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1452,7 +1448,7 @@ export interface DownloadMediaRequest {
   name: string;
 }
 
-export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMediaRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}:download" }),
@@ -1460,7 +1456,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
-export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
+export const DownloadMediaResponse = /*@__PURE__*/ Media;
 
 export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
@@ -1470,7 +1466,7 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaResponse,
   DownloadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
   errors: [NotFound, Forbidden],
@@ -1486,7 +1482,7 @@ export interface SearchCaseClassificationsRequest {
 }
 
 export const SearchCaseClassificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1498,7 +1494,7 @@ export const SearchCaseClassificationsRequest =
 export type SearchCaseClassificationsResponse_Op =
   SearchCaseClassificationsResponse;
 export const SearchCaseClassificationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchCaseClassificationsResponse;
+  /*@__PURE__*/ SearchCaseClassificationsResponse;
 
 export type SearchCaseClassificationsError =
   | DefaultErrors
@@ -1511,7 +1507,7 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
   SearchCaseClassificationsResponse_Op,
   SearchCaseClassificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCaseClassificationsRequest,
   output: SearchCaseClassificationsResponse_Op,
   errors: [NotFound, Forbidden],

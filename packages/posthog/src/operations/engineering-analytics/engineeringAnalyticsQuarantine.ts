@@ -10,7 +10,7 @@ export interface EngineeringAnalyticsQuarantineInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsQuarantineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     repo: Schema.optional(Schema.String),
     source_id: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface EngineeringAnalyticsQuarantineOutput {
   generated_at: string;
 }
 export const EngineeringAnalyticsQuarantineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entries: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -95,7 +95,7 @@ export const EngineeringAnalyticsQuarantineOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsQuarantine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsQuarantineInput,
     outputSchema: EngineeringAnalyticsQuarantineOutput,
     errors: [BadRequest] as const,

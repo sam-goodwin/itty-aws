@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {}
 
 export const GoogleCloudBillingBudgetsV1beta1LastPeriodAmount: Schema.Codec<GoogleCloudBillingBudgetsV1beta1LastPeriodAmount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBillingBudgetsV1beta1LastPeriodAmount",
   });
 
@@ -43,7 +43,7 @@ export interface GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1AllUpdatesRule: Schema.Codec<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableProjectLevelRecipients: Schema.optional(Schema.Boolean),
     pubsubTopic: Schema.optional(Schema.String),
     monitoringNotificationChannels: Schema.optional(
@@ -63,7 +63,7 @@ export interface GoogleTypeMoney {
 }
 
 export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface GoogleCloudBillingBudgetsV1beta1BudgetAmount {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1BudgetAmount: Schema.Codec<GoogleCloudBillingBudgetsV1beta1BudgetAmount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     specifiedAmount: Schema.optional(GoogleTypeMoney),
     lastPeriodAmount: Schema.optional(
       GoogleCloudBillingBudgetsV1beta1LastPeriodAmount,
@@ -96,7 +96,7 @@ export interface GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1ThresholdRule: Schema.Codec<GoogleCloudBillingBudgetsV1beta1ThresholdRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thresholdPercent: Schema.optional(Schema.Number),
     spendBasis: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudBillingBudgetsV1beta1ThresholdRule" });
@@ -111,7 +111,7 @@ export interface GoogleTypeDate {
 }
 
 export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -125,7 +125,7 @@ export interface GoogleCloudBillingBudgetsV1beta1CustomPeriod {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1CustomPeriod: Schema.Codec<GoogleCloudBillingBudgetsV1beta1CustomPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(GoogleTypeDate),
     endDate: Schema.optional(GoogleTypeDate),
   }).annotate({ identifier: "GoogleCloudBillingBudgetsV1beta1CustomPeriod" });
@@ -162,7 +162,7 @@ export interface GoogleCloudBillingBudgetsV1beta1Filter {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1Filter: Schema.Codec<GoogleCloudBillingBudgetsV1beta1Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.optional(Schema.Array(Schema.String)),
     creditTypes: Schema.optional(Schema.Array(Schema.String)),
     customPeriod: Schema.optional(GoogleCloudBillingBudgetsV1beta1CustomPeriod),
@@ -199,7 +199,7 @@ export interface GoogleCloudBillingBudgetsV1beta1Budget {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1Budget: Schema.Codec<GoogleCloudBillingBudgetsV1beta1Budget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allUpdatesRule: Schema.optional(
       GoogleCloudBillingBudgetsV1beta1AllUpdatesRule,
     ),
@@ -222,7 +222,7 @@ export interface GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse: Schema.Codec<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     budgets: Schema.optional(
       Schema.Array(GoogleCloudBillingBudgetsV1beta1Budget),
     ),
@@ -234,7 +234,7 @@ export const GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse: Schema.Codec<G
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -244,7 +244,7 @@ export interface GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest: Schema.Codec<GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     budget: Schema.optional(GoogleCloudBillingBudgetsV1beta1Budget),
   }).annotate({
     identifier: "GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest",
@@ -258,7 +258,7 @@ export interface GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
 }
 
 export const GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest: Schema.Codec<GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     budget: Schema.optional(GoogleCloudBillingBudgetsV1beta1Budget),
     updateMask: Schema.optional(Schema.String),
   }).annotate({
@@ -325,7 +325,7 @@ export interface DeleteBillingAccountsBudgetsRequest {
 }
 
 export const DeleteBillingAccountsBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -334,7 +334,7 @@ export const DeleteBillingAccountsBudgetsRequest =
 
 export type DeleteBillingAccountsBudgetsResponse = GoogleProtobufEmpty;
 export const DeleteBillingAccountsBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteBillingAccountsBudgetsError =
   | DefaultErrors
@@ -349,7 +349,7 @@ export const deleteBillingAccountsBudgets: API.OperationMethod<
   DeleteBillingAccountsBudgetsResponse,
   DeleteBillingAccountsBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsBudgetsRequest,
   output: DeleteBillingAccountsBudgetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -363,7 +363,7 @@ export interface CreateBillingAccountsBudgetsRequest {
 }
 
 export const CreateBillingAccountsBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest,
@@ -380,7 +380,7 @@ export const CreateBillingAccountsBudgetsRequest =
 export type CreateBillingAccountsBudgetsResponse =
   GoogleCloudBillingBudgetsV1beta1Budget;
 export const CreateBillingAccountsBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
+  /*@__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
 export type CreateBillingAccountsBudgetsError =
   | DefaultErrors
@@ -395,7 +395,7 @@ export const createBillingAccountsBudgets: API.OperationMethod<
   CreateBillingAccountsBudgetsResponse,
   CreateBillingAccountsBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsBudgetsRequest,
   output: CreateBillingAccountsBudgetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -409,7 +409,7 @@ export interface PatchBillingAccountsBudgetsRequest {
 }
 
 export const PatchBillingAccountsBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest,
@@ -422,7 +422,7 @@ export const PatchBillingAccountsBudgetsRequest =
 export type PatchBillingAccountsBudgetsResponse =
   GoogleCloudBillingBudgetsV1beta1Budget;
 export const PatchBillingAccountsBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
+  /*@__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
 export type PatchBillingAccountsBudgetsError =
   | DefaultErrors
@@ -437,7 +437,7 @@ export const patchBillingAccountsBudgets: API.OperationMethod<
   PatchBillingAccountsBudgetsResponse,
   PatchBillingAccountsBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsBudgetsRequest,
   output: PatchBillingAccountsBudgetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -449,7 +449,7 @@ export interface GetBillingAccountsBudgetsRequest {
 }
 
 export const GetBillingAccountsBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -459,7 +459,7 @@ export const GetBillingAccountsBudgetsRequest =
 export type GetBillingAccountsBudgetsResponse =
   GoogleCloudBillingBudgetsV1beta1Budget;
 export const GetBillingAccountsBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
+  /*@__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
 export type GetBillingAccountsBudgetsError =
   | DefaultErrors
@@ -472,7 +472,7 @@ export const getBillingAccountsBudgets: API.OperationMethod<
   GetBillingAccountsBudgetsResponse,
   GetBillingAccountsBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingAccountsBudgetsRequest,
   output: GetBillingAccountsBudgetsResponse,
   errors: [NotFound, Forbidden],
@@ -490,7 +490,7 @@ export interface ListBillingAccountsBudgetsRequest {
 }
 
 export const ListBillingAccountsBudgetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -503,7 +503,7 @@ export const ListBillingAccountsBudgetsRequest =
 export type ListBillingAccountsBudgetsResponse =
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse;
 export const ListBillingAccountsBudgetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse;
+  /*@__PURE__*/ GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse;
 
 export type ListBillingAccountsBudgetsError =
   | DefaultErrors
@@ -516,7 +516,7 @@ export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
   ListBillingAccountsBudgetsResponse,
   ListBillingAccountsBudgetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsBudgetsRequest,
   output: ListBillingAccountsBudgetsResponse,
   errors: [NotFound, Forbidden],

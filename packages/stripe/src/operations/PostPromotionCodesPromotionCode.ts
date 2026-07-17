@@ -18,7 +18,7 @@ export interface PostPromotionCodesPromotionCodeInput {
   };
 }
 export const PostPromotionCodesPromotionCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     promotion_code: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -95,7 +95,7 @@ export interface PostPromotionCodesPromotionCodeOutput {
   times_redeemed: number;
 }
 export const PostPromotionCodesPromotionCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     code: Schema.String,
     created: Schema.Number,
@@ -170,7 +170,7 @@ export const PostPromotionCodesPromotionCodeOutput =
  * <p>Updates the specified promotion code by setting the values of the parameters passed. Most fields are, by design, not editable.</p>
  */
 export const PostPromotionCodesPromotionCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPromotionCodesPromotionCodeInput,
     outputSchema: PostPromotionCodesPromotionCodeOutput,
   }));

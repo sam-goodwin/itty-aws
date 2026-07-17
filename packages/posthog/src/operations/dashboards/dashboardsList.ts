@@ -12,7 +12,7 @@ export interface DashboardsListInput {
   offset?: number;
   search?: string;
 }
-export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   folder: Schema.optional(Schema.String),
   format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -72,7 +72,7 @@ export interface DashboardsListOutput {
     search_match_type?: "exact" | "similar" | null;
   }[];
 }
-export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -150,7 +150,7 @@ export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Optional. Match against dashboard `name`, `description`, and tag names. Returns case-insensitive substring matches and fuzzy trigram matches (typos, transpositions, prefix-as-you-type) together, ordered exact-first, then pinned status, then name; each result's `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error.
  */
-export const dashboardsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const dashboardsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsListInput,
   outputSchema: DashboardsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

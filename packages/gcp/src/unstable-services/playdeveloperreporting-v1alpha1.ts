@@ -30,7 +30,7 @@ export interface GoogleTypeTimeZone {
 }
 
 export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeTimeZone" });
@@ -57,7 +57,7 @@ export interface GoogleTypeDateTime {
 }
 
 export const GoogleTypeDateTime: Schema.Codec<GoogleTypeDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
     timeZone: Schema.optional(GoogleTypeTimeZone),
@@ -84,7 +84,7 @@ export interface GooglePlayDeveloperReportingV1alpha1TimelineSpec {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1TimelineSpec: Schema.Codec<GooglePlayDeveloperReportingV1alpha1TimelineSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregationPeriod: Schema.optional(Schema.String),
     endTime: Schema.optional(GoogleTypeDateTime),
     startTime: Schema.optional(GoogleTypeDateTime),
@@ -115,7 +115,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMet
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetReques
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -180,7 +180,7 @@ export interface GooglePlayDeveloperReportingV1alpha1DimensionValue {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1DimensionValue: Schema.Codec<GooglePlayDeveloperReportingV1alpha1DimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     valueLabel: Schema.optional(Schema.String),
     stringValue: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export interface GoogleTypeDecimal {
 }
 
 export const GoogleTypeDecimal: Schema.Codec<GoogleTypeDecimal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeDecimal" });
 
@@ -207,7 +207,7 @@ export interface GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval: Schema.Codec<GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lowerBound: Schema.optional(GoogleTypeDecimal),
     upperBound: Schema.optional(GoogleTypeDecimal),
   }).annotate({
@@ -224,7 +224,7 @@ export interface GooglePlayDeveloperReportingV1alpha1MetricValue {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1MetricValue: Schema.Codec<GooglePlayDeveloperReportingV1alpha1MetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     decimalValue: Schema.optional(GoogleTypeDecimal),
     decimalValueConfidenceInterval: Schema.optional(
@@ -251,7 +251,7 @@ export interface GooglePlayDeveloperReportingV1alpha1MetricsRow {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1MetricsRow: Schema.Codec<GooglePlayDeveloperReportingV1alpha1MetricsRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(GoogleTypeDateTime),
     dimensions: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1DimensionValue),
@@ -270,7 +270,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRespon
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
@@ -286,7 +286,7 @@ export interface GooglePlayDeveloperReportingV1alpha1OsVersion {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1OsVersion: Schema.Codec<GooglePlayDeveloperReportingV1alpha1OsVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1alpha1OsVersion" });
 
@@ -296,7 +296,7 @@ export interface GooglePlayDeveloperReportingV1alpha1AppVersion {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1AppVersion: Schema.Codec<GooglePlayDeveloperReportingV1alpha1AppVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1alpha1AppVersion" });
 
@@ -308,7 +308,7 @@ export interface GooglePlayDeveloperReportingV1alpha1DeviceId {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1DeviceId: Schema.Codec<GooglePlayDeveloperReportingV1alpha1DeviceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     buildDevice: Schema.optional(Schema.String),
     buildBrand: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1alpha1DeviceId" });
@@ -323,7 +323,7 @@ export interface GooglePlayDeveloperReportingV1alpha1DeviceModelSummary {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1DeviceModelSummary: Schema.Codec<GooglePlayDeveloperReportingV1alpha1DeviceModelSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceUri: Schema.optional(Schema.String),
     deviceId: Schema.optional(GooglePlayDeveloperReportingV1alpha1DeviceId),
     marketingName: Schema.optional(Schema.String),
@@ -358,7 +358,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ErrorReport {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ErrorReport: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ErrorReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportText: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     osVersion: Schema.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
@@ -382,7 +382,7 @@ export interface GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse 
 }
 
 export const GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     errorReports: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1ErrorReport),
@@ -400,7 +400,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResp
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
@@ -424,7 +424,7 @@ export interface GooglePlayDeveloperReportingV1alpha1Anomaly {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1Anomaly: Schema.Codec<GooglePlayDeveloperReportingV1alpha1Anomaly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metric: Schema.optional(GooglePlayDeveloperReportingV1alpha1MetricValue),
     dimensions: Schema.optional(
@@ -444,7 +444,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     anomalies: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1Anomaly),
     ),
@@ -466,7 +466,7 @@ export interface GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness: Schema.Codec<GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestEndTime: Schema.optional(GoogleTypeDateTime),
     aggregationPeriod: Schema.optional(Schema.String),
   }).annotate({
@@ -479,7 +479,7 @@ export interface GooglePlayDeveloperReportingV1alpha1FreshnessInfo {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1FreshnessInfo: Schema.Codec<GooglePlayDeveloperReportingV1alpha1FreshnessInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     freshnesses: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness),
     ),
@@ -510,7 +510,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSet
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -548,7 +548,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequ
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timelineSpec: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1TimelineSpec,
     ),
@@ -571,7 +571,7 @@ export interface GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -588,7 +588,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRespon
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
@@ -606,7 +606,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -623,7 +623,7 @@ export interface GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -640,7 +640,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSe
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -658,7 +658,7 @@ export interface GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -675,7 +675,7 @@ export interface GooglePlayDeveloperReportingV1alpha1Release {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1Release: Schema.Codec<GooglePlayDeveloperReportingV1alpha1Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     versionCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1alpha1Release" });
@@ -688,7 +688,7 @@ export interface GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet 
 }
 
 export const GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -721,7 +721,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetReques
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timelineSpec: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1TimelineSpec,
     ),
@@ -746,7 +746,7 @@ export interface GooglePlayDeveloperReportingV1alpha1Track {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1Track: Schema.Codec<GooglePlayDeveloperReportingV1alpha1Track> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     servingReleases: Schema.optional(
@@ -760,7 +760,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tracks: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1Track),
     ),
@@ -778,7 +778,7 @@ export interface GooglePlayDeveloperReportingV1alpha1App {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1App: Schema.Codec<GooglePlayDeveloperReportingV1alpha1App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -792,7 +792,7 @@ export interface GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsRespons
 }
 
 export const GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apps: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1App),
@@ -812,7 +812,7 @@ export interface GooglePlayDeveloperReportingV1alpha1IssueAnnotation {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1IssueAnnotation: Schema.Codec<GooglePlayDeveloperReportingV1alpha1IssueAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     body: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -859,7 +859,7 @@ export interface GooglePlayDeveloperReportingV1alpha1ErrorIssue {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1ErrorIssue: Schema.Codec<GooglePlayDeveloperReportingV1alpha1ErrorIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lastErrorReportTime: Schema.optional(Schema.String),
     distinctUsers: Schema.optional(Schema.String),
@@ -895,7 +895,7 @@ export interface GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRate
 }
 
 export const GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -913,7 +913,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakeloc
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
     ),
@@ -946,7 +946,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakeloc
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timelineSpec: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1TimelineSpec,
     ),
@@ -969,7 +969,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetri
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
     ),
@@ -987,7 +987,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSet
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
@@ -1005,7 +1005,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRes
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
     ),
@@ -1031,7 +1031,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetReq
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     pageToken: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -1068,7 +1068,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetri
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timelineSpec: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1TimelineSpec,
     ),
@@ -1091,7 +1091,7 @@ export interface GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1FreshnessInfo,
@@ -1108,7 +1108,7 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMet
 }
 
 export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1MetricsRow),
     ),
@@ -1126,7 +1126,7 @@ export interface GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse {
 }
 
 export const GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse: Schema.Codec<GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorIssues: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1alpha1ErrorIssue),
     ),
@@ -1196,7 +1196,7 @@ export interface SearchAppsRequest {
   pageToken?: string;
 }
 
-export const SearchAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchAppsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
@@ -1207,7 +1207,7 @@ export const SearchAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SearchAppsResponse =
   GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse;
 export const SearchAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse;
 
 export type SearchAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1217,7 +1217,7 @@ export const searchApps: API.PaginatedOperationMethod<
   SearchAppsResponse,
   SearchAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsRequest,
   output: SearchAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1233,7 +1233,7 @@ export interface FetchReleaseFilterOptionsAppsRequest {
 }
 
 export const FetchReleaseFilterOptionsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
@@ -1246,7 +1246,7 @@ export const FetchReleaseFilterOptionsAppsRequest =
 export type FetchReleaseFilterOptionsAppsResponse =
   GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions;
 export const FetchReleaseFilterOptionsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions;
 
 export type FetchReleaseFilterOptionsAppsError =
   | DefaultErrors
@@ -1259,7 +1259,7 @@ export const fetchReleaseFilterOptionsApps: API.OperationMethod<
   FetchReleaseFilterOptionsAppsResponse,
   FetchReleaseFilterOptionsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchReleaseFilterOptionsAppsRequest,
   output: FetchReleaseFilterOptionsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1276,7 +1276,7 @@ export interface ListAnomaliesRequest {
   parent: string;
 }
 
-export const ListAnomaliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAnomaliesRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1289,7 +1289,7 @@ export const ListAnomaliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAnomaliesResponse =
   GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse;
 export const ListAnomaliesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse;
 
 export type ListAnomaliesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1299,7 +1299,7 @@ export const listAnomalies: API.PaginatedOperationMethod<
   ListAnomaliesResponse,
   ListAnomaliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesRequest,
   output: ListAnomaliesResponse,
   errors: [NotFound, Forbidden],
@@ -1315,7 +1315,7 @@ export interface GetVitalsStuckbackgroundwakelockrateRequest {
 }
 
 export const GetVitalsStuckbackgroundwakelockrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1325,7 +1325,7 @@ export const GetVitalsStuckbackgroundwakelockrateRequest =
 export type GetVitalsStuckbackgroundwakelockrateResponse =
   GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet;
 export const GetVitalsStuckbackgroundwakelockrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet;
 
 export type GetVitalsStuckbackgroundwakelockrateError =
   | DefaultErrors
@@ -1338,7 +1338,7 @@ export const getVitalsStuckbackgroundwakelockrate: API.OperationMethod<
   GetVitalsStuckbackgroundwakelockrateResponse,
   GetVitalsStuckbackgroundwakelockrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsStuckbackgroundwakelockrateRequest,
   output: GetVitalsStuckbackgroundwakelockrateResponse,
   errors: [NotFound, Forbidden],
@@ -1352,7 +1352,7 @@ export interface QueryVitalsStuckbackgroundwakelockrateRequest {
 }
 
 export const QueryVitalsStuckbackgroundwakelockrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest,
@@ -1365,7 +1365,7 @@ export const QueryVitalsStuckbackgroundwakelockrateRequest =
 export type QueryVitalsStuckbackgroundwakelockrateResponse =
   GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse;
 export const QueryVitalsStuckbackgroundwakelockrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse;
 
 export type QueryVitalsStuckbackgroundwakelockrateError =
   | DefaultErrors
@@ -1380,7 +1380,7 @@ export const queryVitalsStuckbackgroundwakelockrate: API.OperationMethod<
   QueryVitalsStuckbackgroundwakelockrateResponse,
   QueryVitalsStuckbackgroundwakelockrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsStuckbackgroundwakelockrateRequest,
   output: QueryVitalsStuckbackgroundwakelockrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1392,7 +1392,7 @@ export interface GetVitalsSlowstartrateRequest {
 }
 
 export const GetVitalsSlowstartrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1402,7 +1402,7 @@ export const GetVitalsSlowstartrateRequest =
 export type GetVitalsSlowstartrateResponse =
   GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet;
 export const GetVitalsSlowstartrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet;
 
 export type GetVitalsSlowstartrateError = DefaultErrors | NotFound | Forbidden;
 
@@ -1412,7 +1412,7 @@ export const getVitalsSlowstartrate: API.OperationMethod<
   GetVitalsSlowstartrateResponse,
   GetVitalsSlowstartrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsSlowstartrateRequest,
   output: GetVitalsSlowstartrateResponse,
   errors: [NotFound, Forbidden],
@@ -1426,7 +1426,7 @@ export interface QueryVitalsSlowstartrateRequest {
 }
 
 export const QueryVitalsSlowstartrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest,
@@ -1439,7 +1439,7 @@ export const QueryVitalsSlowstartrateRequest =
 export type QueryVitalsSlowstartrateResponse =
   GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse;
 export const QueryVitalsSlowstartrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse;
 
 export type QueryVitalsSlowstartrateError =
   | DefaultErrors
@@ -1454,7 +1454,7 @@ export const queryVitalsSlowstartrate: API.OperationMethod<
   QueryVitalsSlowstartrateResponse,
   QueryVitalsSlowstartrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsSlowstartrateRequest,
   output: QueryVitalsSlowstartrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1468,7 +1468,7 @@ export interface QueryVitalsSlowrenderingrateRequest {
 }
 
 export const QueryVitalsSlowrenderingrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest,
@@ -1481,7 +1481,7 @@ export const QueryVitalsSlowrenderingrateRequest =
 export type QueryVitalsSlowrenderingrateResponse =
   GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse;
 export const QueryVitalsSlowrenderingrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse;
 
 export type QueryVitalsSlowrenderingrateError =
   | DefaultErrors
@@ -1496,7 +1496,7 @@ export const queryVitalsSlowrenderingrate: API.OperationMethod<
   QueryVitalsSlowrenderingrateResponse,
   QueryVitalsSlowrenderingrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsSlowrenderingrateRequest,
   output: QueryVitalsSlowrenderingrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1508,7 +1508,7 @@ export interface GetVitalsSlowrenderingrateRequest {
 }
 
 export const GetVitalsSlowrenderingrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1518,7 +1518,7 @@ export const GetVitalsSlowrenderingrateRequest =
 export type GetVitalsSlowrenderingrateResponse =
   GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet;
 export const GetVitalsSlowrenderingrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet;
 
 export type GetVitalsSlowrenderingrateError =
   | DefaultErrors
@@ -1531,7 +1531,7 @@ export const getVitalsSlowrenderingrate: API.OperationMethod<
   GetVitalsSlowrenderingrateResponse,
   GetVitalsSlowrenderingrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsSlowrenderingrateRequest,
   output: GetVitalsSlowrenderingrateResponse,
   errors: [NotFound, Forbidden],
@@ -1545,7 +1545,7 @@ export interface QueryVitalsCrashrateRequest {
 }
 
 export const QueryVitalsCrashrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest,
@@ -1558,7 +1558,7 @@ export const QueryVitalsCrashrateRequest =
 export type QueryVitalsCrashrateResponse =
   GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse;
 export const QueryVitalsCrashrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse;
 
 export type QueryVitalsCrashrateError =
   | DefaultErrors
@@ -1573,7 +1573,7 @@ export const queryVitalsCrashrate: API.OperationMethod<
   QueryVitalsCrashrateResponse,
   QueryVitalsCrashrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsCrashrateRequest,
   output: QueryVitalsCrashrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1585,7 +1585,7 @@ export interface GetVitalsCrashrateRequest {
 }
 
 export const GetVitalsCrashrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1595,7 +1595,7 @@ export const GetVitalsCrashrateRequest =
 export type GetVitalsCrashrateResponse =
   GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet;
 export const GetVitalsCrashrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet;
 
 export type GetVitalsCrashrateError = DefaultErrors | NotFound | Forbidden;
 
@@ -1605,7 +1605,7 @@ export const getVitalsCrashrate: API.OperationMethod<
   GetVitalsCrashrateResponse,
   GetVitalsCrashrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsCrashrateRequest,
   output: GetVitalsCrashrateResponse,
   errors: [NotFound, Forbidden],
@@ -1619,7 +1619,7 @@ export interface QueryVitalsExcessivewakeuprateRequest {
 }
 
 export const QueryVitalsExcessivewakeuprateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest,
@@ -1632,7 +1632,7 @@ export const QueryVitalsExcessivewakeuprateRequest =
 export type QueryVitalsExcessivewakeuprateResponse =
   GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse;
 export const QueryVitalsExcessivewakeuprateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse;
 
 export type QueryVitalsExcessivewakeuprateError =
   | DefaultErrors
@@ -1647,7 +1647,7 @@ export const queryVitalsExcessivewakeuprate: API.OperationMethod<
   QueryVitalsExcessivewakeuprateResponse,
   QueryVitalsExcessivewakeuprateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsExcessivewakeuprateRequest,
   output: QueryVitalsExcessivewakeuprateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1659,7 +1659,7 @@ export interface GetVitalsExcessivewakeuprateRequest {
 }
 
 export const GetVitalsExcessivewakeuprateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1669,7 +1669,7 @@ export const GetVitalsExcessivewakeuprateRequest =
 export type GetVitalsExcessivewakeuprateResponse =
   GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet;
 export const GetVitalsExcessivewakeuprateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet;
 
 export type GetVitalsExcessivewakeuprateError =
   | DefaultErrors
@@ -1682,7 +1682,7 @@ export const getVitalsExcessivewakeuprate: API.OperationMethod<
   GetVitalsExcessivewakeuprateResponse,
   GetVitalsExcessivewakeuprateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsExcessivewakeuprateRequest,
   output: GetVitalsExcessivewakeuprateResponse,
   errors: [NotFound, Forbidden],
@@ -1694,7 +1694,7 @@ export interface GetVitalsErrorsCountsRequest {
 }
 
 export const GetVitalsErrorsCountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1704,7 +1704,7 @@ export const GetVitalsErrorsCountsRequest =
 export type GetVitalsErrorsCountsResponse =
   GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet;
 export const GetVitalsErrorsCountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet;
 
 export type GetVitalsErrorsCountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1714,7 +1714,7 @@ export const getVitalsErrorsCounts: API.OperationMethod<
   GetVitalsErrorsCountsResponse,
   GetVitalsErrorsCountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsErrorsCountsRequest,
   output: GetVitalsErrorsCountsResponse,
   errors: [NotFound, Forbidden],
@@ -1728,7 +1728,7 @@ export interface QueryVitalsErrorsCountsRequest {
 }
 
 export const QueryVitalsErrorsCountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest,
@@ -1741,7 +1741,7 @@ export const QueryVitalsErrorsCountsRequest =
 export type QueryVitalsErrorsCountsResponse =
   GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse;
 export const QueryVitalsErrorsCountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse;
 
 export type QueryVitalsErrorsCountsError =
   | DefaultErrors
@@ -1756,7 +1756,7 @@ export const queryVitalsErrorsCounts: API.OperationMethod<
   QueryVitalsErrorsCountsResponse,
   QueryVitalsErrorsCountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsErrorsCountsRequest,
   output: QueryVitalsErrorsCountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1818,7 +1818,7 @@ export interface SearchVitalsErrorsIssuesRequest {
 }
 
 export const SearchVitalsErrorsIssuesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "interval.endTime.seconds": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("interval.endTime.seconds"),
     ),
@@ -1895,7 +1895,7 @@ export const SearchVitalsErrorsIssuesRequest =
 export type SearchVitalsErrorsIssuesResponse =
   GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse;
 export const SearchVitalsErrorsIssuesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse;
 
 export type SearchVitalsErrorsIssuesError =
   | DefaultErrors
@@ -1908,7 +1908,7 @@ export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
   SearchVitalsErrorsIssuesResponse,
   SearchVitalsErrorsIssuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsIssuesRequest,
   output: SearchVitalsErrorsIssuesResponse,
   errors: [NotFound, Forbidden],
@@ -1970,7 +1970,7 @@ export interface SearchVitalsErrorsReportsRequest {
 }
 
 export const SearchVitalsErrorsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "interval.endTime.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("interval.endTime.day"),
     ),
@@ -2043,7 +2043,7 @@ export const SearchVitalsErrorsReportsRequest =
 export type SearchVitalsErrorsReportsResponse =
   GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse;
 export const SearchVitalsErrorsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse;
 
 export type SearchVitalsErrorsReportsError =
   | DefaultErrors
@@ -2056,7 +2056,7 @@ export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
   SearchVitalsErrorsReportsResponse,
   SearchVitalsErrorsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsReportsRequest,
   output: SearchVitalsErrorsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -2072,7 +2072,7 @@ export interface GetVitalsAnrrateRequest {
 }
 
 export const GetVitalsAnrrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -2082,7 +2082,7 @@ export const GetVitalsAnrrateRequest =
 export type GetVitalsAnrrateResponse =
   GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet;
 export const GetVitalsAnrrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet;
 
 export type GetVitalsAnrrateError = DefaultErrors | NotFound | Forbidden;
 
@@ -2092,7 +2092,7 @@ export const getVitalsAnrrate: API.OperationMethod<
   GetVitalsAnrrateResponse,
   GetVitalsAnrrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsAnrrateRequest,
   output: GetVitalsAnrrateResponse,
   errors: [NotFound, Forbidden],
@@ -2106,7 +2106,7 @@ export interface QueryVitalsAnrrateRequest {
 }
 
 export const QueryVitalsAnrrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest,
@@ -2119,7 +2119,7 @@ export const QueryVitalsAnrrateRequest =
 export type QueryVitalsAnrrateResponse =
   GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse;
 export const QueryVitalsAnrrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse;
 
 export type QueryVitalsAnrrateError =
   | DefaultErrors
@@ -2134,7 +2134,7 @@ export const queryVitalsAnrrate: API.OperationMethod<
   QueryVitalsAnrrateResponse,
   QueryVitalsAnrrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsAnrrateRequest,
   output: QueryVitalsAnrrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2148,7 +2148,7 @@ export interface QueryVitalsLmkrateRequest {
 }
 
 export const QueryVitalsLmkrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequest,
@@ -2161,7 +2161,7 @@ export const QueryVitalsLmkrateRequest =
 export type QueryVitalsLmkrateResponse =
   GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse;
 export const QueryVitalsLmkrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse;
 
 export type QueryVitalsLmkrateError =
   | DefaultErrors
@@ -2176,7 +2176,7 @@ export const queryVitalsLmkrate: API.OperationMethod<
   QueryVitalsLmkrateResponse,
   QueryVitalsLmkrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryVitalsLmkrateRequest,
   output: QueryVitalsLmkrateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2188,7 +2188,7 @@ export interface GetVitalsLmkrateRequest {
 }
 
 export const GetVitalsLmkrateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -2198,7 +2198,7 @@ export const GetVitalsLmkrateRequest =
 export type GetVitalsLmkrateResponse =
   GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet;
 export const GetVitalsLmkrateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet;
+  /*@__PURE__*/ GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet;
 
 export type GetVitalsLmkrateError = DefaultErrors | NotFound | Forbidden;
 
@@ -2208,7 +2208,7 @@ export const getVitalsLmkrate: API.OperationMethod<
   GetVitalsLmkrateResponse,
   GetVitalsLmkrateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVitalsLmkrateRequest,
   output: GetVitalsLmkrateResponse,
   errors: [NotFound, Forbidden],

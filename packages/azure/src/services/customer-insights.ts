@@ -25,7 +25,7 @@ export interface AuthorizationPoliciesCreateOrUpdateInput {
   type?: string;
 }
 export const AuthorizationPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
@@ -56,7 +56,7 @@ export interface AuthorizationPoliciesCreateOrUpdateOutput {
   type?: string;
 }
 export const AuthorizationPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export const AuthorizationPoliciesCreateOrUpdateOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const AuthorizationPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPoliciesCreateOrUpdateInput,
     outputSchema: AuthorizationPoliciesCreateOrUpdateOutput,
   }));
@@ -85,7 +85,7 @@ export interface AuthorizationPoliciesGetInput {
   subscriptionId: string;
 }
 export const AuthorizationPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
@@ -105,7 +105,7 @@ export interface AuthorizationPoliciesGetOutput {
   type?: string;
 }
 export const AuthorizationPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -121,12 +121,10 @@ export const AuthorizationPoliciesGetOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const AuthorizationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationPoliciesGetInput,
-    outputSchema: AuthorizationPoliciesGetOutput,
-  }),
-);
+export const AuthorizationPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationPoliciesGetInput,
+  outputSchema: AuthorizationPoliciesGetOutput,
+}));
 // Input Schema
 export interface AuthorizationPoliciesListByHubInput {
   resourceGroupName: string;
@@ -134,7 +132,7 @@ export interface AuthorizationPoliciesListByHubInput {
   subscriptionId: string;
 }
 export const AuthorizationPoliciesListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -152,7 +150,7 @@ export interface AuthorizationPoliciesListByHubOutput {
   nextLink?: string;
 }
 export const AuthorizationPoliciesListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -175,7 +173,7 @@ export const AuthorizationPoliciesListByHubOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const AuthorizationPoliciesListByHub =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPoliciesListByHubInput,
     outputSchema: AuthorizationPoliciesListByHubOutput,
   }));
@@ -187,7 +185,7 @@ export interface AuthorizationPoliciesRegeneratePrimaryKeyInput {
   subscriptionId: string;
 }
 export const AuthorizationPoliciesRegeneratePrimaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
@@ -208,7 +206,7 @@ export interface AuthorizationPoliciesRegeneratePrimaryKeyOutput {
   secondaryKey?: string;
 }
 export const AuthorizationPoliciesRegeneratePrimaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
     permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
     primaryKey: Schema.optional(Schema.String),
@@ -226,7 +224,7 @@ export const AuthorizationPoliciesRegeneratePrimaryKeyOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const AuthorizationPoliciesRegeneratePrimaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPoliciesRegeneratePrimaryKeyInput,
     outputSchema: AuthorizationPoliciesRegeneratePrimaryKeyOutput,
   }));
@@ -238,7 +236,7 @@ export interface AuthorizationPoliciesRegenerateSecondaryKeyInput {
   subscriptionId: string;
 }
 export const AuthorizationPoliciesRegenerateSecondaryKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
@@ -259,7 +257,7 @@ export interface AuthorizationPoliciesRegenerateSecondaryKeyOutput {
   secondaryKey?: string;
 }
 export const AuthorizationPoliciesRegenerateSecondaryKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
     permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
     primaryKey: Schema.optional(Schema.String),
@@ -277,7 +275,7 @@ export const AuthorizationPoliciesRegenerateSecondaryKeyOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const AuthorizationPoliciesRegenerateSecondaryKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPoliciesRegenerateSecondaryKeyInput,
     outputSchema: AuthorizationPoliciesRegenerateSecondaryKeyOutput,
   }));
@@ -356,7 +354,7 @@ export interface ConnectorMappingsCreateOrUpdateInput {
   type?: string;
 }
 export const ConnectorMappingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
@@ -463,7 +461,7 @@ export interface ConnectorMappingsCreateOrUpdateOutput {
   type?: string;
 }
 export const ConnectorMappingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -481,7 +479,7 @@ export const ConnectorMappingsCreateOrUpdateOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ConnectorMappingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectorMappingsCreateOrUpdateInput,
     outputSchema: ConnectorMappingsCreateOrUpdateOutput,
   }));
@@ -494,7 +492,7 @@ export interface ConnectorMappingsDeleteInput {
   subscriptionId: string;
 }
 export const ConnectorMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
@@ -511,7 +509,7 @@ export const ConnectorMappingsDeleteInput =
 // Output Schema
 export type ConnectorMappingsDeleteOutput = void;
 export const ConnectorMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorMappingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -524,12 +522,10 @@ export const ConnectorMappingsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorMappingsDeleteInput,
-    outputSchema: ConnectorMappingsDeleteOutput,
-  }),
-);
+export const ConnectorMappingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorMappingsDeleteInput,
+  outputSchema: ConnectorMappingsDeleteOutput,
+}));
 // Input Schema
 export interface ConnectorMappingsGetInput {
   resourceGroupName: string;
@@ -539,7 +535,7 @@ export interface ConnectorMappingsGetInput {
   subscriptionId: string;
 }
 export const ConnectorMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
@@ -560,7 +556,7 @@ export interface ConnectorMappingsGetOutput {
   type?: string;
 }
 export const ConnectorMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -577,12 +573,10 @@ export const ConnectorMappingsGetOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorMappingsGetInput,
-    outputSchema: ConnectorMappingsGetOutput,
-  }),
-);
+export const ConnectorMappingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorMappingsGetInput,
+  outputSchema: ConnectorMappingsGetOutput,
+}));
 // Input Schema
 export interface ConnectorMappingsListByConnectorInput {
   resourceGroupName: string;
@@ -591,7 +585,7 @@ export interface ConnectorMappingsListByConnectorInput {
   subscriptionId: string;
 }
 export const ConnectorMappingsListByConnectorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
@@ -610,7 +604,7 @@ export interface ConnectorMappingsListByConnectorOutput {
   nextLink?: string;
 }
 export const ConnectorMappingsListByConnectorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -634,7 +628,7 @@ export const ConnectorMappingsListByConnectorOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ConnectorMappingsListByConnector =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectorMappingsListByConnectorInput,
     outputSchema: ConnectorMappingsListByConnectorOutput,
   }));
@@ -674,7 +668,7 @@ export interface ConnectorsCreateOrUpdateInput {
   type?: string;
 }
 export const ConnectorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
@@ -728,7 +722,7 @@ export interface ConnectorsCreateOrUpdateOutput {
   type?: string;
 }
 export const ConnectorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -744,12 +738,10 @@ export const ConnectorsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorsCreateOrUpdateInput,
-    outputSchema: ConnectorsCreateOrUpdateOutput,
-  }),
-);
+export const ConnectorsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorsCreateOrUpdateInput,
+  outputSchema: ConnectorsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ConnectorsDeleteInput {
   resourceGroupName: string;
@@ -757,7 +749,7 @@ export interface ConnectorsDeleteInput {
   connectorName: string;
   subscriptionId: string;
 }
-export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
@@ -773,7 +765,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConnectorsDeleteOutput = void;
 export const ConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -785,7 +777,7 @@ export const ConnectorsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsDeleteInput,
   outputSchema: ConnectorsDeleteOutput,
 }));
@@ -796,7 +788,7 @@ export interface ConnectorsGetInput {
   connectorName: string;
   subscriptionId: string;
 }
-export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   connectorName: Schema.String.pipe(T.PathParam()),
@@ -815,7 +807,7 @@ export interface ConnectorsGetOutput {
   name?: string;
   type?: string;
 }
-export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -831,7 +823,7 @@ export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsGetInput,
   outputSchema: ConnectorsGetOutput,
 }));
@@ -842,7 +834,7 @@ export interface ConnectorsListByHubInput {
   subscriptionId: string;
 }
 export const ConnectorsListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -860,7 +852,7 @@ export interface ConnectorsListByHubOutput {
   nextLink?: string;
 }
 export const ConnectorsListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -882,7 +874,7 @@ export const ConnectorsListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ConnectorsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsListByHubInput,
   outputSchema: ConnectorsListByHubOutput,
 }));
@@ -905,7 +897,7 @@ export interface HubsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const HubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -946,7 +938,7 @@ export interface HubsCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const HubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -963,7 +955,7 @@ export const HubsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: HubsCreateOrUpdateInput,
   outputSchema: HubsCreateOrUpdateOutput,
 }));
@@ -973,7 +965,7 @@ export interface HubsDeleteInput {
   hubName: string;
   subscriptionId: string;
 }
-export const HubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -988,7 +980,7 @@ export const HubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type HubsDeleteOutput = void;
 export const HubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HubsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HubsDeleteOutput>;
 
 // The operation
 /**
@@ -999,7 +991,7 @@ export const HubsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: HubsDeleteInput,
   outputSchema: HubsDeleteOutput,
 }));
@@ -1009,7 +1001,7 @@ export interface HubsGetInput {
   hubName: string;
   subscriptionId: string;
 }
-export const HubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1029,7 +1021,7 @@ export interface HubsGetOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const HubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1046,7 +1038,7 @@ export const HubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HubsGetInput,
   outputSchema: HubsGetOutput,
 }));
@@ -1054,7 +1046,7 @@ export const HubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface HubsListInput {
   subscriptionId: string;
 }
-export const HubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1075,7 +1067,7 @@ export interface HubsListOutput {
   }[];
   nextLink?: string;
 }
-export const HubsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1097,7 +1089,7 @@ export const HubsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HubsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HubsListInput,
   outputSchema: HubsListOutput,
 }));
@@ -1107,7 +1099,7 @@ export interface HubsListByResourceGroupInput {
   subscriptionId: string;
 }
 export const HubsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1130,7 +1122,7 @@ export interface HubsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const HubsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1153,12 +1145,10 @@ export const HubsListByResourceGroupOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HubsListByResourceGroupInput,
-    outputSchema: HubsListByResourceGroupOutput,
-  }),
-);
+export const HubsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HubsListByResourceGroupInput,
+  outputSchema: HubsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface HubsUpdateInput {
   resourceGroupName: string;
@@ -1177,7 +1167,7 @@ export interface HubsUpdateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const HubsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,7 +1207,7 @@ export interface HubsUpdateOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const HubsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HubsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1234,7 +1224,7 @@ export const HubsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const HubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HubsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: HubsUpdateInput,
   outputSchema: HubsUpdateOutput,
 }));
@@ -1248,7 +1238,7 @@ export interface ImagesGetUploadUrlForDataInput {
   relativePath?: string;
 }
 export const ImagesGetUploadUrlForDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1270,7 +1260,7 @@ export interface ImagesGetUploadUrlForDataOutput {
   relativePath?: string;
 }
 export const ImagesGetUploadUrlForDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageExists: Schema.optional(Schema.Boolean),
     contentUrl: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
@@ -1285,12 +1275,10 @@ export const ImagesGetUploadUrlForDataOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ImagesGetUploadUrlForData = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImagesGetUploadUrlForDataInput,
-    outputSchema: ImagesGetUploadUrlForDataOutput,
-  }),
-);
+export const ImagesGetUploadUrlForData = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImagesGetUploadUrlForDataInput,
+  outputSchema: ImagesGetUploadUrlForDataOutput,
+}));
 // Input Schema
 export interface ImagesGetUploadUrlForEntityTypeInput {
   resourceGroupName: string;
@@ -1301,7 +1289,7 @@ export interface ImagesGetUploadUrlForEntityTypeInput {
   relativePath?: string;
 }
 export const ImagesGetUploadUrlForEntityTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1323,7 +1311,7 @@ export interface ImagesGetUploadUrlForEntityTypeOutput {
   relativePath?: string;
 }
 export const ImagesGetUploadUrlForEntityTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageExists: Schema.optional(Schema.Boolean),
     contentUrl: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
@@ -1339,7 +1327,7 @@ export const ImagesGetUploadUrlForEntityTypeOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ImagesGetUploadUrlForEntityType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImagesGetUploadUrlForEntityTypeInput,
     outputSchema: ImagesGetUploadUrlForEntityTypeOutput,
   }));
@@ -1363,7 +1351,7 @@ export interface InteractionsCreateOrUpdateInput {
   type?: string;
 }
 export const InteractionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     interactionName: Schema.String.pipe(T.PathParam()),
@@ -1408,7 +1396,7 @@ export interface InteractionsCreateOrUpdateOutput {
   type?: string;
 }
 export const InteractionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1424,12 +1412,10 @@ export const InteractionsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const InteractionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InteractionsCreateOrUpdateInput,
-    outputSchema: InteractionsCreateOrUpdateOutput,
-  }),
-);
+export const InteractionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InteractionsCreateOrUpdateInput,
+  outputSchema: InteractionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface InteractionsGetInput {
   resourceGroupName: string;
@@ -1438,7 +1424,7 @@ export interface InteractionsGetInput {
   subscriptionId: string;
   "locale-code"?: string;
 }
-export const InteractionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InteractionsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   interactionName: Schema.String.pipe(T.PathParam()),
@@ -1458,7 +1444,7 @@ export interface InteractionsGetOutput {
   name?: string;
   type?: string;
 }
-export const InteractionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InteractionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1475,7 +1461,7 @@ export const InteractionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const InteractionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InteractionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InteractionsGetInput,
   outputSchema: InteractionsGetOutput,
 }));
@@ -1487,7 +1473,7 @@ export interface InteractionsListByHubInput {
   "locale-code"?: string;
 }
 export const InteractionsListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1506,7 +1492,7 @@ export interface InteractionsListByHubOutput {
   nextLink?: string;
 }
 export const InteractionsListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1529,12 +1515,10 @@ export const InteractionsListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const InteractionsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InteractionsListByHubInput,
-    outputSchema: InteractionsListByHubOutput,
-  }),
-);
+export const InteractionsListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InteractionsListByHubInput,
+  outputSchema: InteractionsListByHubOutput,
+}));
 // Input Schema
 export interface InteractionsSuggestRelationshipLinksInput {
   resourceGroupName: string;
@@ -1543,7 +1527,7 @@ export interface InteractionsSuggestRelationshipLinksInput {
   subscriptionId: string;
 }
 export const InteractionsSuggestRelationshipLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     interactionName: Schema.String.pipe(T.PathParam()),
@@ -1574,7 +1558,7 @@ export interface InteractionsSuggestRelationshipLinksOutput {
   }[];
 }
 export const InteractionsSuggestRelationshipLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interactionName: Schema.optional(Schema.String),
     suggestedRelationships: Schema.optional(
       Schema.Array(
@@ -1614,7 +1598,7 @@ export const InteractionsSuggestRelationshipLinksOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const InteractionsSuggestRelationshipLinks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InteractionsSuggestRelationshipLinksInput,
     outputSchema: InteractionsSuggestRelationshipLinksOutput,
   }));
@@ -1671,109 +1655,103 @@ export interface KpiCreateOrUpdateInput {
   name?: string;
   type?: string;
 }
-export const KpiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hubName: Schema.String.pipe(T.PathParam()),
-    kpiName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        entityType: Schema.Literals([
-          "None",
-          "Profile",
-          "Interaction",
-          "Relationship",
-        ]),
-        entityTypeName: Schema.String,
-        tenantId: Schema.optional(Schema.String),
-        kpiName: Schema.optional(Schema.String),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        calculationWindow: Schema.Literals([
-          "Lifetime",
-          "Hour",
-          "Day",
-          "Week",
-          "Month",
-        ]),
-        calculationWindowFieldName: Schema.optional(Schema.String),
-        function: Schema.Literals([
-          "Sum",
-          "Avg",
-          "Min",
-          "Max",
-          "Last",
-          "Count",
-          "None",
-          "CountDistinct",
-        ]),
-        expression: Schema.String,
-        unit: Schema.optional(Schema.String),
-        filter: Schema.optional(Schema.String),
-        groupBy: Schema.optional(Schema.Array(Schema.String)),
-        groupByMetadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              displayName: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              fieldName: Schema.optional(Schema.String),
-              fieldType: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        participantProfilesMetadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              typeName: Schema.String,
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        thresHolds: Schema.optional(
+export const KpiCreateOrUpdateInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hubName: Schema.String.pipe(T.PathParam()),
+  kpiName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      entityType: Schema.Literals([
+        "None",
+        "Profile",
+        "Interaction",
+        "Relationship",
+      ]),
+      entityTypeName: Schema.String,
+      tenantId: Schema.optional(Schema.String),
+      kpiName: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      calculationWindow: Schema.Literals([
+        "Lifetime",
+        "Hour",
+        "Day",
+        "Week",
+        "Month",
+      ]),
+      calculationWindowFieldName: Schema.optional(Schema.String),
+      function: Schema.Literals([
+        "Sum",
+        "Avg",
+        "Min",
+        "Max",
+        "Last",
+        "Count",
+        "None",
+        "CountDistinct",
+      ]),
+      expression: Schema.String,
+      unit: Schema.optional(Schema.String),
+      filter: Schema.optional(Schema.String),
+      groupBy: Schema.optional(Schema.Array(Schema.String)),
+      groupByMetadata: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            lowerLimit: Schema.Number,
-            upperLimit: Schema.Number,
-            increasingKpi: Schema.Boolean,
+            displayName: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            fieldName: Schema.optional(Schema.String),
+            fieldType: Schema.optional(Schema.String),
           }),
         ),
-        aliases: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              aliasName: Schema.String,
-              expression: Schema.String,
-            }),
-          ),
+      ),
+      participantProfilesMetadata: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            typeName: Schema.String,
+          }),
         ),
-        extracts: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              extractName: Schema.String,
-              expression: Schema.String,
-            }),
-          ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Provisioning",
+          "Succeeded",
+          "Expiring",
+          "Deleting",
+          "HumanIntervention",
+          "Failed",
+        ]),
+      ),
+      thresHolds: Schema.optional(
+        Schema.Struct({
+          lowerLimit: Schema.Number,
+          upperLimit: Schema.Number,
+          increasingKpi: Schema.Boolean,
+        }),
+      ),
+      aliases: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            aliasName: Schema.String,
+            expression: Schema.String,
+          }),
         ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-).pipe(
+      ),
+      extracts: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            extractName: Schema.String,
+            expression: Schema.String,
+          }),
+        ),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
@@ -1788,7 +1766,7 @@ export interface KpiCreateOrUpdateOutput {
   type?: string;
 }
 export const KpiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1804,7 +1782,7 @@ export const KpiCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const KpiCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KpiCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: KpiCreateOrUpdateInput,
   outputSchema: KpiCreateOrUpdateOutput,
 }));
@@ -1815,7 +1793,7 @@ export interface KpiDeleteInput {
   kpiName: string;
   subscriptionId: string;
 }
-export const KpiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   kpiName: Schema.String.pipe(T.PathParam()),
@@ -1831,7 +1809,7 @@ export const KpiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type KpiDeleteOutput = void;
 export const KpiDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KpiDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KpiDeleteOutput>;
 
 // The operation
 /**
@@ -1843,7 +1821,7 @@ export const KpiDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const KpiDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KpiDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: KpiDeleteInput,
   outputSchema: KpiDeleteOutput,
 }));
@@ -1854,7 +1832,7 @@ export interface KpiGetInput {
   kpiName: string;
   subscriptionId: string;
 }
-export const KpiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   kpiName: Schema.String.pipe(T.PathParam()),
@@ -1873,7 +1851,7 @@ export interface KpiGetOutput {
   name?: string;
   type?: string;
 }
-export const KpiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1889,7 +1867,7 @@ export const KpiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const KpiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KpiGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: KpiGetInput,
   outputSchema: KpiGetOutput,
 }));
@@ -1899,7 +1877,7 @@ export interface KpiListByHubInput {
   hubName: string;
   subscriptionId: string;
 }
-export const KpiListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiListByHubInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1916,7 +1894,7 @@ export interface KpiListByHubOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const KpiListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiListByHubOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1938,7 +1916,7 @@ export const KpiListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const KpiListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KpiListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: KpiListByHubInput,
   outputSchema: KpiListByHubOutput,
 }));
@@ -1949,7 +1927,7 @@ export interface KpiReprocessInput {
   kpiName: string;
   subscriptionId: string;
 }
-export const KpiReprocessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KpiReprocessInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   kpiName: Schema.String.pipe(T.PathParam()),
@@ -1965,7 +1943,7 @@ export const KpiReprocessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type KpiReprocessOutput = void;
 export const KpiReprocessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KpiReprocessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KpiReprocessOutput>;
 
 // The operation
 /**
@@ -1977,7 +1955,7 @@ export const KpiReprocessOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const KpiReprocess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KpiReprocess = /*@__PURE__*/ API.make(() => ({
   inputSchema: KpiReprocessInput,
   outputSchema: KpiReprocessOutput,
 }));
@@ -2020,7 +1998,7 @@ export interface LinksCreateOrUpdateInput {
   type?: string;
 }
 export const LinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     linkName: Schema.String.pipe(T.PathParam()),
@@ -2098,7 +2076,7 @@ export interface LinksCreateOrUpdateOutput {
   type?: string;
 }
 export const LinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2114,7 +2092,7 @@ export const LinksCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const LinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinksCreateOrUpdateInput,
   outputSchema: LinksCreateOrUpdateOutput,
 }));
@@ -2125,7 +2103,7 @@ export interface LinksDeleteInput {
   linkName: string;
   subscriptionId: string;
 }
-export const LinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinksDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   linkName: Schema.String.pipe(T.PathParam()),
@@ -2141,7 +2119,7 @@ export const LinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LinksDeleteOutput = void;
 export const LinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinksDeleteOutput>;
 
 // The operation
 /**
@@ -2153,7 +2131,7 @@ export const LinksDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const LinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinksDeleteInput,
   outputSchema: LinksDeleteOutput,
 }));
@@ -2164,7 +2142,7 @@ export interface LinksGetInput {
   linkName: string;
   subscriptionId: string;
 }
-export const LinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinksGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   linkName: Schema.String.pipe(T.PathParam()),
@@ -2183,7 +2161,7 @@ export interface LinksGetOutput {
   name?: string;
   type?: string;
 }
-export const LinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2199,7 +2177,7 @@ export const LinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const LinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinksGetInput,
   outputSchema: LinksGetOutput,
 }));
@@ -2209,7 +2187,7 @@ export interface LinksListByHubInput {
   hubName: string;
   subscriptionId: string;
 }
-export const LinksListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinksListByHubInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2226,7 +2204,7 @@ export interface LinksListByHubOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const LinksListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinksListByHubOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2248,15 +2226,13 @@ export const LinksListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const LinksListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinksListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinksListByHubInput,
   outputSchema: LinksListByHubOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CustomerInsights/operations",
@@ -2272,7 +2248,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2296,7 +2272,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client Api Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2344,7 +2320,7 @@ export interface PredictionsCreateOrUpdateInput {
   type?: string;
 }
 export const PredictionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
@@ -2423,7 +2399,7 @@ export interface PredictionsCreateOrUpdateOutput {
   type?: string;
 }
 export const PredictionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2439,12 +2415,10 @@ export const PredictionsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredictionsCreateOrUpdateInput,
-    outputSchema: PredictionsCreateOrUpdateOutput,
-  }),
-);
+export const PredictionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredictionsCreateOrUpdateInput,
+  outputSchema: PredictionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PredictionsDeleteInput {
   resourceGroupName: string;
@@ -2452,14 +2426,12 @@ export interface PredictionsDeleteInput {
   predictionName: string;
   subscriptionId: string;
 }
-export const PredictionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hubName: Schema.String.pipe(T.PathParam()),
-    predictionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const PredictionsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hubName: Schema.String.pipe(T.PathParam()),
+  predictionName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
@@ -2470,7 +2442,7 @@ export const PredictionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type PredictionsDeleteOutput = void;
 export const PredictionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PredictionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PredictionsDeleteOutput>;
 
 // The operation
 /**
@@ -2482,7 +2454,7 @@ export const PredictionsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PredictionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PredictionsDeleteInput,
   outputSchema: PredictionsDeleteOutput,
 }));
@@ -2493,7 +2465,7 @@ export interface PredictionsGetInput {
   predictionName: string;
   subscriptionId: string;
 }
-export const PredictionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PredictionsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   predictionName: Schema.String.pipe(T.PathParam()),
@@ -2512,7 +2484,7 @@ export interface PredictionsGetOutput {
   name?: string;
   type?: string;
 }
-export const PredictionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PredictionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2528,7 +2500,7 @@ export const PredictionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PredictionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PredictionsGetInput,
   outputSchema: PredictionsGetOutput,
 }));
@@ -2540,7 +2512,7 @@ export interface PredictionsGetModelStatusInput {
   subscriptionId: string;
 }
 export const PredictionsGetModelStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
@@ -2586,7 +2558,7 @@ export interface PredictionsGetModelStatusOutput {
   modelVersion?: string;
 }
 export const PredictionsGetModelStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     predictionName: Schema.optional(Schema.String),
     predictionGuidId: Schema.optional(Schema.String),
@@ -2629,12 +2601,10 @@ export const PredictionsGetModelStatusOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsGetModelStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredictionsGetModelStatusInput,
-    outputSchema: PredictionsGetModelStatusOutput,
-  }),
-);
+export const PredictionsGetModelStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredictionsGetModelStatusInput,
+  outputSchema: PredictionsGetModelStatusOutput,
+}));
 // Input Schema
 export interface PredictionsGetTrainingResultsInput {
   resourceGroupName: string;
@@ -2643,7 +2613,7 @@ export interface PredictionsGetTrainingResultsInput {
   subscriptionId: string;
 }
 export const PredictionsGetTrainingResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
@@ -2688,7 +2658,7 @@ export interface PredictionsGetTrainingResultsOutput {
   primaryProfileInstanceCount?: number;
 }
 export const PredictionsGetTrainingResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     scoreName: Schema.optional(Schema.String),
     predictionDistribution: Schema.optional(
@@ -2747,7 +2717,7 @@ export const PredictionsGetTrainingResultsOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const PredictionsGetTrainingResults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PredictionsGetTrainingResultsInput,
     outputSchema: PredictionsGetTrainingResultsOutput,
   }));
@@ -2758,7 +2728,7 @@ export interface PredictionsListByHubInput {
   subscriptionId: string;
 }
 export const PredictionsListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2776,7 +2746,7 @@ export interface PredictionsListByHubOutput {
   nextLink?: string;
 }
 export const PredictionsListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2798,12 +2768,10 @@ export const PredictionsListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredictionsListByHubInput,
-    outputSchema: PredictionsListByHubOutput,
-  }),
-);
+export const PredictionsListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredictionsListByHubInput,
+  outputSchema: PredictionsListByHubOutput,
+}));
 // Input Schema
 export interface PredictionsModelStatusInput {
   resourceGroupName: string;
@@ -2840,7 +2808,7 @@ export interface PredictionsModelStatusInput {
   modelVersion?: string;
 }
 export const PredictionsModelStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
@@ -2885,7 +2853,7 @@ export const PredictionsModelStatusInput =
 // Output Schema
 export type PredictionsModelStatusOutput = void;
 export const PredictionsModelStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PredictionsModelStatusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PredictionsModelStatusOutput>;
 
 // The operation
 /**
@@ -2897,12 +2865,10 @@ export const PredictionsModelStatusOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const PredictionsModelStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PredictionsModelStatusInput,
-    outputSchema: PredictionsModelStatusOutput,
-  }),
-);
+export const PredictionsModelStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PredictionsModelStatusInput,
+  outputSchema: PredictionsModelStatusOutput,
+}));
 // Input Schema
 export interface ProfilesCreateOrUpdateInput {
   resourceGroupName: string;
@@ -2923,7 +2889,7 @@ export interface ProfilesCreateOrUpdateInput {
   type?: string;
 }
 export const ProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2968,7 +2934,7 @@ export interface ProfilesCreateOrUpdateOutput {
   type?: string;
 }
 export const ProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2984,12 +2950,10 @@ export const ProfilesCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ProfilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesCreateOrUpdateInput,
-    outputSchema: ProfilesCreateOrUpdateOutput,
-  }),
-);
+export const ProfilesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesCreateOrUpdateInput,
+  outputSchema: ProfilesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ProfilesDeleteInput {
   resourceGroupName: string;
@@ -2998,7 +2962,7 @@ export interface ProfilesDeleteInput {
   subscriptionId: string;
   "locale-code"?: string;
 }
-export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3015,7 +2979,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ProfilesDeleteOutput = void;
 export const ProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -3028,7 +2992,7 @@ export const ProfilesDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesDeleteInput,
   outputSchema: ProfilesDeleteOutput,
 }));
@@ -3040,7 +3004,7 @@ export interface ProfilesGetInput {
   subscriptionId: string;
   "locale-code"?: string;
 }
-export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3060,7 +3024,7 @@ export interface ProfilesGetOutput {
   name?: string;
   type?: string;
 }
-export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3077,7 +3041,7 @@ export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesGetInput,
   outputSchema: ProfilesGetOutput,
 }));
@@ -3089,7 +3053,7 @@ export interface ProfilesGetEnrichingKpisInput {
   subscriptionId: string;
 }
 export const ProfilesGetEnrichingKpisInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3147,7 +3111,7 @@ export type ProfilesGetEnrichingKpisOutput = {
   extracts?: { extractName: string; expression: string }[];
 }[];
 export const ProfilesGetEnrichingKpisOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       entityType: Schema.Literals([
         "None",
@@ -3246,12 +3210,10 @@ export const ProfilesGetEnrichingKpisOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ProfilesGetEnrichingKpis = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesGetEnrichingKpisInput,
-    outputSchema: ProfilesGetEnrichingKpisOutput,
-  }),
-);
+export const ProfilesGetEnrichingKpis = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesGetEnrichingKpisInput,
+  outputSchema: ProfilesGetEnrichingKpisOutput,
+}));
 // Input Schema
 export interface ProfilesListByHubInput {
   resourceGroupName: string;
@@ -3259,14 +3221,12 @@ export interface ProfilesListByHubInput {
   subscriptionId: string;
   "locale-code"?: string;
 }
-export const ProfilesListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    hubName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "locale-code": Schema.optional(Schema.String),
-  },
-).pipe(
+export const ProfilesListByHubInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hubName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "locale-code": Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
@@ -3280,7 +3240,7 @@ export interface ProfilesListByHubOutput {
   nextLink?: string;
 }
 export const ProfilesListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3303,7 +3263,7 @@ export const ProfilesListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ProfilesListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesListByHubInput,
   outputSchema: ProfilesListByHubOutput,
 }));
@@ -3347,7 +3307,7 @@ export interface RelationshipLinksCreateOrUpdateInput {
   type?: string;
 }
 export const RelationshipLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipLinkName: Schema.String.pipe(T.PathParam()),
@@ -3418,7 +3378,7 @@ export interface RelationshipLinksCreateOrUpdateOutput {
   type?: string;
 }
 export const RelationshipLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3435,7 +3395,7 @@ export const RelationshipLinksCreateOrUpdateOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const RelationshipLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RelationshipLinksCreateOrUpdateInput,
     outputSchema: RelationshipLinksCreateOrUpdateOutput,
   }));
@@ -3447,7 +3407,7 @@ export interface RelationshipLinksDeleteInput {
   subscriptionId: string;
 }
 export const RelationshipLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipLinkName: Schema.String.pipe(T.PathParam()),
@@ -3463,7 +3423,7 @@ export const RelationshipLinksDeleteInput =
 // Output Schema
 export type RelationshipLinksDeleteOutput = void;
 export const RelationshipLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RelationshipLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RelationshipLinksDeleteOutput>;
 
 // The operation
 /**
@@ -3475,12 +3435,10 @@ export const RelationshipLinksDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RelationshipLinksDeleteInput,
-    outputSchema: RelationshipLinksDeleteOutput,
-  }),
-);
+export const RelationshipLinksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RelationshipLinksDeleteInput,
+  outputSchema: RelationshipLinksDeleteOutput,
+}));
 // Input Schema
 export interface RelationshipLinksGetInput {
   resourceGroupName: string;
@@ -3489,7 +3447,7 @@ export interface RelationshipLinksGetInput {
   subscriptionId: string;
 }
 export const RelationshipLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipLinkName: Schema.String.pipe(T.PathParam()),
@@ -3509,7 +3467,7 @@ export interface RelationshipLinksGetOutput {
   type?: string;
 }
 export const RelationshipLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3525,12 +3483,10 @@ export const RelationshipLinksGetOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RelationshipLinksGetInput,
-    outputSchema: RelationshipLinksGetOutput,
-  }),
-);
+export const RelationshipLinksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RelationshipLinksGetInput,
+  outputSchema: RelationshipLinksGetOutput,
+}));
 // Input Schema
 export interface RelationshipLinksListByHubInput {
   resourceGroupName: string;
@@ -3538,7 +3494,7 @@ export interface RelationshipLinksListByHubInput {
   subscriptionId: string;
 }
 export const RelationshipLinksListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3556,7 +3512,7 @@ export interface RelationshipLinksListByHubOutput {
   nextLink?: string;
 }
 export const RelationshipLinksListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3578,12 +3534,10 @@ export const RelationshipLinksListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipLinksListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RelationshipLinksListByHubInput,
-    outputSchema: RelationshipLinksListByHubOutput,
-  }),
-);
+export const RelationshipLinksListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RelationshipLinksListByHubInput,
+  outputSchema: RelationshipLinksListByHubOutput,
+}));
 // Input Schema
 export interface RelationshipsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -3649,7 +3603,7 @@ export interface RelationshipsCreateOrUpdateInput {
   type?: string;
 }
 export const RelationshipsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipName: Schema.String.pipe(T.PathParam()),
@@ -3767,7 +3721,7 @@ export interface RelationshipsCreateOrUpdateOutput {
   type?: string;
 }
 export const RelationshipsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3783,12 +3737,10 @@ export const RelationshipsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RelationshipsCreateOrUpdateInput,
-    outputSchema: RelationshipsCreateOrUpdateOutput,
-  }),
-);
+export const RelationshipsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RelationshipsCreateOrUpdateInput,
+  outputSchema: RelationshipsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RelationshipsDeleteInput {
   resourceGroupName: string;
@@ -3797,7 +3749,7 @@ export interface RelationshipsDeleteInput {
   subscriptionId: string;
 }
 export const RelationshipsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipName: Schema.String.pipe(T.PathParam()),
@@ -3813,7 +3765,7 @@ export const RelationshipsDeleteInput =
 // Output Schema
 export type RelationshipsDeleteOutput = void;
 export const RelationshipsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RelationshipsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RelationshipsDeleteOutput>;
 
 // The operation
 /**
@@ -3825,7 +3777,7 @@ export const RelationshipsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RelationshipsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RelationshipsDeleteInput,
   outputSchema: RelationshipsDeleteOutput,
 }));
@@ -3836,7 +3788,7 @@ export interface RelationshipsGetInput {
   relationshipName: string;
   subscriptionId: string;
 }
-export const RelationshipsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RelationshipsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   relationshipName: Schema.String.pipe(T.PathParam()),
@@ -3855,13 +3807,11 @@ export interface RelationshipsGetOutput {
   name?: string;
   type?: string;
 }
-export const RelationshipsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<RelationshipsGetOutput>;
+export const RelationshipsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<RelationshipsGetOutput>;
 
 // The operation
 /**
@@ -3873,7 +3823,7 @@ export const RelationshipsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RelationshipsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RelationshipsGetInput,
   outputSchema: RelationshipsGetOutput,
 }));
@@ -3884,7 +3834,7 @@ export interface RelationshipsListByHubInput {
   subscriptionId: string;
 }
 export const RelationshipsListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3902,7 +3852,7 @@ export interface RelationshipsListByHubOutput {
   nextLink?: string;
 }
 export const RelationshipsListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3924,12 +3874,10 @@ export const RelationshipsListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RelationshipsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RelationshipsListByHubInput,
-    outputSchema: RelationshipsListByHubOutput,
-  }),
-);
+export const RelationshipsListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RelationshipsListByHubInput,
+  outputSchema: RelationshipsListByHubOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -3979,7 +3927,7 @@ export interface RoleAssignmentsCreateOrUpdateInput {
   type?: string;
 }
 export const RoleAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     assignmentName: Schema.String.pipe(T.PathParam()),
@@ -4119,7 +4067,7 @@ export interface RoleAssignmentsCreateOrUpdateOutput {
   type?: string;
 }
 export const RoleAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4136,7 +4084,7 @@ export const RoleAssignmentsCreateOrUpdateOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const RoleAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleAssignmentsCreateOrUpdateInput,
     outputSchema: RoleAssignmentsCreateOrUpdateOutput,
   }));
@@ -4148,7 +4096,7 @@ export interface RoleAssignmentsDeleteInput {
   subscriptionId: string;
 }
 export const RoleAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     assignmentName: Schema.String.pipe(T.PathParam()),
@@ -4164,7 +4112,7 @@ export const RoleAssignmentsDeleteInput =
 // Output Schema
 export type RoleAssignmentsDeleteOutput = void;
 export const RoleAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RoleAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RoleAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -4176,12 +4124,10 @@ export const RoleAssignmentsDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsDeleteInput,
-    outputSchema: RoleAssignmentsDeleteOutput,
-  }),
-);
+export const RoleAssignmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsDeleteInput,
+  outputSchema: RoleAssignmentsDeleteOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsGetInput {
   resourceGroupName: string;
@@ -4190,7 +4136,7 @@ export interface RoleAssignmentsGetInput {
   subscriptionId: string;
 }
 export const RoleAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     assignmentName: Schema.String.pipe(T.PathParam()),
@@ -4210,7 +4156,7 @@ export interface RoleAssignmentsGetOutput {
   type?: string;
 }
 export const RoleAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4226,7 +4172,7 @@ export const RoleAssignmentsGetOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoleAssignmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoleAssignmentsGetInput,
   outputSchema: RoleAssignmentsGetOutput,
 }));
@@ -4237,7 +4183,7 @@ export interface RoleAssignmentsListByHubInput {
   subscriptionId: string;
 }
 export const RoleAssignmentsListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4255,7 +4201,7 @@ export interface RoleAssignmentsListByHubOutput {
   nextLink?: string;
 }
 export const RoleAssignmentsListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4277,19 +4223,17 @@ export const RoleAssignmentsListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RoleAssignmentsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsListByHubInput,
-    outputSchema: RoleAssignmentsListByHubOutput,
-  }),
-);
+export const RoleAssignmentsListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsListByHubInput,
+  outputSchema: RoleAssignmentsListByHubOutput,
+}));
 // Input Schema
 export interface RolesListByHubInput {
   resourceGroupName: string;
   hubName: string;
   subscriptionId: string;
 }
-export const RolesListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesListByHubInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4306,7 +4250,7 @@ export interface RolesListByHubOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const RolesListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesListByHubOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4328,7 +4272,7 @@ export const RolesListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const RolesListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesListByHubInput,
   outputSchema: RolesListByHubOutput,
 }));
@@ -4352,7 +4296,7 @@ export interface ViewsCreateOrUpdateInput {
   type?: string;
 }
 export const ViewsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
@@ -4388,7 +4332,7 @@ export interface ViewsCreateOrUpdateOutput {
   type?: string;
 }
 export const ViewsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4404,7 +4348,7 @@ export const ViewsCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ViewsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsCreateOrUpdateInput,
   outputSchema: ViewsCreateOrUpdateOutput,
 }));
@@ -4416,7 +4360,7 @@ export interface ViewsDeleteInput {
   subscriptionId: string;
   userId: string;
 }
-export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   viewName: Schema.String.pipe(T.PathParam()),
@@ -4433,7 +4377,7 @@ export const ViewsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ViewsDeleteOutput = void;
 export const ViewsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ViewsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ViewsDeleteOutput>;
 
 // The operation
 /**
@@ -4446,7 +4390,7 @@ export const ViewsDeleteOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param userId - The user ID. Use * to retrieve hub level view.
  */
-export const ViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsDeleteInput,
   outputSchema: ViewsDeleteOutput,
 }));
@@ -4458,7 +4402,7 @@ export interface ViewsGetInput {
   subscriptionId: string;
   userId: string;
 }
-export const ViewsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   viewName: Schema.String.pipe(T.PathParam()),
@@ -4478,7 +4422,7 @@ export interface ViewsGetOutput {
   name?: string;
   type?: string;
 }
-export const ViewsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4495,7 +4439,7 @@ export const ViewsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param userId - The user ID. Use * to retrieve hub level view.
  */
-export const ViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsGetInput,
   outputSchema: ViewsGetOutput,
 }));
@@ -4506,7 +4450,7 @@ export interface ViewsListByHubInput {
   subscriptionId: string;
   userId: string;
 }
-export const ViewsListByHubInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsListByHubInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4524,7 +4468,7 @@ export interface ViewsListByHubOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const ViewsListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ViewsListByHubOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4547,7 +4491,7 @@ export const ViewsListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param userId - The user ID. Use * to retrieve hub level views.
  */
-export const ViewsListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ViewsListByHub = /*@__PURE__*/ API.make(() => ({
   inputSchema: ViewsListByHubInput,
   outputSchema: ViewsListByHubOutput,
 }));
@@ -4558,7 +4502,7 @@ export interface WidgetTypesGetInput {
   widgetTypeName: string;
   subscriptionId: string;
 }
-export const WidgetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WidgetTypesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
   widgetTypeName: Schema.String.pipe(T.PathParam()),
@@ -4577,7 +4521,7 @@ export interface WidgetTypesGetOutput {
   name?: string;
   type?: string;
 }
-export const WidgetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WidgetTypesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4593,7 +4537,7 @@ export const WidgetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const WidgetTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WidgetTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WidgetTypesGetInput,
   outputSchema: WidgetTypesGetOutput,
 }));
@@ -4604,7 +4548,7 @@ export interface WidgetTypesListByHubInput {
   subscriptionId: string;
 }
 export const WidgetTypesListByHubInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4622,7 +4566,7 @@ export interface WidgetTypesListByHubOutput {
   nextLink?: string;
 }
 export const WidgetTypesListByHubOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4644,9 +4588,7 @@ export const WidgetTypesListByHubOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const WidgetTypesListByHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WidgetTypesListByHubInput,
-    outputSchema: WidgetTypesListByHubOutput,
-  }),
-);
+export const WidgetTypesListByHub = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WidgetTypesListByHubInput,
+  outputSchema: WidgetTypesListByHubOutput,
+}));

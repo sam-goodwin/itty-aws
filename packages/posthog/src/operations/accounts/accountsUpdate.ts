@@ -26,7 +26,7 @@ export interface AccountsUpdateInput {
   created_by: number | null;
   updated_at: string | null;
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
@@ -100,7 +100,7 @@ export interface AccountsUpdateOutput {
   created_by: number | null;
   updated_at: string | null;
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   external_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -154,7 +154,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this account.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const accountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const accountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));

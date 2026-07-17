@@ -155,7 +155,7 @@ export interface UpsertPresetInput {
         }[];
       };
 }
-export const UpsertPresetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertPresetInput = /*@__PURE__*/ Schema.Struct({
   presetId: Schema.String.pipe(T.PathParam()),
   value: Schema.Unknown,
 }).pipe(
@@ -314,7 +314,7 @@ export interface UpsertPresetOutput {
       };
   name: string;
 }
-export const UpsertPresetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertPresetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Unknown,
   name: Schema.String,
 }) as unknown as Schema.Codec<UpsertPresetOutput>;
@@ -327,7 +327,7 @@ export const UpsertPresetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param presetId - The name of the preset set to upsert.
  */
-export const upsertPreset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertPreset = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertPresetInput,
   outputSchema: UpsertPresetOutput,
   errors: [BadRequest] as const,

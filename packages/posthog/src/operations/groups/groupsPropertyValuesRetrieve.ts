@@ -8,7 +8,7 @@ export interface GroupsPropertyValuesRetrieveInput {
   project_id: string;
 }
 export const GroupsPropertyValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const GroupsPropertyValuesRetrieveInput =
 // Output Schema
 export type GroupsPropertyValuesRetrieveOutput = void;
 export const GroupsPropertyValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsPropertyValuesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsPropertyValuesRetrieveOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const GroupsPropertyValuesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const groupsPropertyValuesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupsPropertyValuesRetrieveInput,
     outputSchema: GroupsPropertyValuesRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

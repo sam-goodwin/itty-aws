@@ -30,7 +30,7 @@ export interface Dimension {
 }
 
 export const Dimension: Schema.Codec<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     magnitude: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "Dimension" });
@@ -45,7 +45,7 @@ export interface RgbColor {
 }
 
 export const RgbColor: Schema.Codec<RgbColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
@@ -57,7 +57,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rgbColor: Schema.optional(RgbColor),
   }).annotate({ identifier: "Color" });
 
@@ -67,7 +67,7 @@ export interface OptionalColor {
 }
 
 export const OptionalColor: Schema.Codec<OptionalColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
   }).annotate({ identifier: "OptionalColor" });
 
@@ -79,7 +79,7 @@ export interface BookmarkLink {
 }
 
 export const BookmarkLink: Schema.Codec<BookmarkLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "BookmarkLink" });
@@ -92,7 +92,7 @@ export interface HeadingLink {
 }
 
 export const HeadingLink: Schema.Codec<HeadingLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "HeadingLink" });
@@ -113,7 +113,7 @@ export interface Link {
 }
 
 export const Link: Schema.Codec<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bookmark: Schema.optional(BookmarkLink),
     bookmarkId: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface WeightedFontFamily {
 }
 
 export const WeightedFontFamily: Schema.Codec<WeightedFontFamily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     fontFamily: Schema.optional(Schema.String),
   }).annotate({ identifier: "WeightedFontFamily" });
@@ -166,7 +166,7 @@ export interface TextStyle {
 }
 
 export const TextStyle: Schema.Codec<TextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fontSize: Schema.optional(Dimension),
     backgroundColor: Schema.optional(OptionalColor),
     italic: Schema.optional(Schema.Boolean),
@@ -206,7 +206,7 @@ export interface TextStyleSuggestionState {
 }
 
 export const TextStyleSuggestionState: Schema.Codec<TextStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColorSuggested: Schema.optional(Schema.Boolean),
     italicSuggested: Schema.optional(Schema.Boolean),
     fontSizeSuggested: Schema.optional(Schema.Boolean),
@@ -228,7 +228,7 @@ export interface SuggestedTextStyle {
 }
 
 export const SuggestedTextStyle: Schema.Codec<SuggestedTextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyle: Schema.optional(TextStyle),
     textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
   }).annotate({ identifier: "SuggestedTextStyle" });
@@ -245,7 +245,7 @@ export interface PageBreak {
 }
 
 export const PageBreak: Schema.Codec<PageBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     textStyle: Schema.optional(TextStyle),
     suggestedTextStyleChanges: Schema.optional(
@@ -282,7 +282,7 @@ export interface DateElementProperties {
 }
 
 export const DateElementProperties: Schema.Codec<DateElementProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     timeFormat: Schema.optional(Schema.String),
     timeZoneId: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export interface DateElementPropertiesSuggestionState {
 }
 
 export const DateElementPropertiesSuggestionState: Schema.Codec<DateElementPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timestampSuggested: Schema.optional(Schema.Boolean),
     timeZoneIdSuggested: Schema.optional(Schema.Boolean),
     localeSuggested: Schema.optional(Schema.Boolean),
@@ -321,7 +321,7 @@ export interface SuggestedDateElementProperties {
 }
 
 export const SuggestedDateElementProperties: Schema.Codec<SuggestedDateElementProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateElementProperties: Schema.optional(DateElementProperties),
     dateElementPropertiesSuggestionState: Schema.optional(
       DateElementPropertiesSuggestionState,
@@ -349,7 +349,7 @@ export interface DateElement {
 }
 
 export const DateElement: Schema.Codec<DateElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedTextStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedTextStyle),
     ),
@@ -377,7 +377,7 @@ export interface InlineObjectElement {
 }
 
 export const InlineObjectElement: Schema.Codec<InlineObjectElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineObjectId: Schema.optional(Schema.String),
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     suggestedTextStyleChanges: Schema.optional(
@@ -399,7 +399,7 @@ export interface ColumnBreak {
 }
 
 export const ColumnBreak: Schema.Codec<ColumnBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedTextStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedTextStyle),
     ),
@@ -416,7 +416,7 @@ export interface Equation {
 }
 
 export const Equation: Schema.Codec<Equation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Equation" });
@@ -431,7 +431,7 @@ export interface RichLinkProperties {
 }
 
 export const RichLinkProperties: Schema.Codec<RichLinkProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -453,7 +453,7 @@ export interface RichLink {
 }
 
 export const RichLink: Schema.Codec<RichLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     richLinkProperties: Schema.optional(RichLinkProperties),
     suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
     richLinkId: Schema.optional(Schema.String),
@@ -480,7 +480,7 @@ export interface FootnoteReference {
 }
 
 export const FootnoteReference: Schema.Codec<FootnoteReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footnoteNumber: Schema.optional(Schema.String),
     suggestedTextStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedTextStyle),
@@ -505,7 +505,7 @@ export interface AutoText {
 }
 
 export const AutoText: Schema.Codec<AutoText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyle: Schema.optional(TextStyle),
     type: Schema.optional(Schema.String),
     suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -529,7 +529,7 @@ export interface TextRun {
 }
 
 export const TextRun: Schema.Codec<TextRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     suggestedTextStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedTextStyle),
@@ -547,7 +547,7 @@ export interface PersonProperties {
 }
 
 export const PersonProperties: Schema.Codec<PersonProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "PersonProperties" });
@@ -568,7 +568,7 @@ export interface Person {
 }
 
 export const Person: Schema.Codec<Person> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedTextStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedTextStyle),
     ),
@@ -591,7 +591,7 @@ export interface HorizontalRule {
 }
 
 export const HorizontalRule: Schema.Codec<HorizontalRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyle: Schema.optional(TextStyle),
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -630,7 +630,7 @@ export interface ParagraphElement {
 }
 
 export const ParagraphElement: Schema.Codec<ParagraphElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageBreak: Schema.optional(PageBreak),
     dateElement: Schema.optional(DateElement),
     inlineObjectElement: Schema.optional(InlineObjectElement),
@@ -663,7 +663,7 @@ export interface ParagraphBorder {
 }
 
 export const ParagraphBorder: Schema.Codec<ParagraphBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     padding: Schema.optional(Dimension),
     color: Schema.optional(OptionalColor),
@@ -683,7 +683,7 @@ export interface TabStop {
 }
 
 export const TabStop: Schema.Codec<TabStop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offset: Schema.optional(Dimension),
     alignment: Schema.optional(Schema.String),
   }).annotate({ identifier: "TabStop" });
@@ -694,7 +694,7 @@ export interface Shading {
 }
 
 export const Shading: Schema.Codec<Shading> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(OptionalColor),
   }).annotate({ identifier: "Shading" });
 
@@ -771,7 +771,7 @@ export interface ParagraphStyle {
 }
 
 export const ParagraphStyle: Schema.Codec<ParagraphStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaceAbove: Schema.optional(Dimension),
     alignment: Schema.optional(Schema.String),
     borderTop: Schema.optional(ParagraphBorder),
@@ -806,7 +806,7 @@ export interface Bullet {
 }
 
 export const Bullet: Schema.Codec<Bullet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nestingLevel: Schema.optional(Schema.Number),
     listId: Schema.optional(Schema.String),
     textStyle: Schema.optional(TextStyle),
@@ -818,7 +818,7 @@ export interface ObjectReferences {
 }
 
 export const ObjectReferences: Schema.Codec<ObjectReferences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ObjectReferences" });
 
@@ -832,7 +832,7 @@ export interface BulletSuggestionState {
 }
 
 export const BulletSuggestionState: Schema.Codec<BulletSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
     listIdSuggested: Schema.optional(Schema.Boolean),
     nestingLevelSuggested: Schema.optional(Schema.Boolean),
@@ -846,7 +846,7 @@ export interface SuggestedBullet {
 }
 
 export const SuggestedBullet: Schema.Codec<SuggestedBullet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bullet: Schema.optional(Bullet),
     bulletSuggestionState: Schema.optional(BulletSuggestionState),
   }).annotate({ identifier: "SuggestedBullet" });
@@ -857,7 +857,7 @@ export interface ShadingSuggestionState {
 }
 
 export const ShadingSuggestionState: Schema.Codec<ShadingSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColorSuggested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ShadingSuggestionState" });
 
@@ -907,7 +907,7 @@ export interface ParagraphStyleSuggestionState {
 }
 
 export const ParagraphStyleSuggestionState: Schema.Codec<ParagraphStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indentEndSuggested: Schema.optional(Schema.Boolean),
     alignmentSuggested: Schema.optional(Schema.Boolean),
     spacingModeSuggested: Schema.optional(Schema.Boolean),
@@ -939,7 +939,7 @@ export interface SuggestedParagraphStyle {
 }
 
 export const SuggestedParagraphStyle: Schema.Codec<SuggestedParagraphStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paragraphStyle: Schema.optional(ParagraphStyle),
     paragraphStyleSuggestionState: Schema.optional(
       ParagraphStyleSuggestionState,
@@ -964,7 +964,7 @@ export interface Paragraph {
 }
 
 export const Paragraph: Schema.Codec<Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(ParagraphElement)),
     paragraphStyle: Schema.optional(ParagraphStyle),
     bullet: Schema.optional(Bullet),
@@ -1000,7 +1000,7 @@ export interface NestingLevelSuggestionState {
 }
 
 export const NestingLevelSuggestionState: Schema.Codec<NestingLevelSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
     glyphTypeSuggested: Schema.optional(Schema.Boolean),
     indentStartSuggested: Schema.optional(Schema.Boolean),
@@ -1029,7 +1029,7 @@ export interface PositionedObjectPositioning {
 }
 
 export const PositionedObjectPositioning: Schema.Codec<PositionedObjectPositioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leftOffset: Schema.optional(Dimension),
     topOffset: Schema.optional(Dimension),
     layout: Schema.optional(Schema.String),
@@ -1049,7 +1049,7 @@ export interface CropProperties {
 }
 
 export const CropProperties: Schema.Codec<CropProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offsetRight: Schema.optional(Schema.Number),
     offsetBottom: Schema.optional(Schema.Number),
     angle: Schema.optional(Schema.Number),
@@ -1075,7 +1075,7 @@ export interface ImageProperties {
 }
 
 export const ImageProperties: Schema.Codec<ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transparency: Schema.optional(Schema.Number),
     brightness: Schema.optional(Schema.Number),
     cropProperties: Schema.optional(CropProperties),
@@ -1088,7 +1088,7 @@ export const ImageProperties: Schema.Codec<ImageProperties> =
 export interface EmbeddedDrawingProperties {}
 
 export const EmbeddedDrawingProperties: Schema.Codec<EmbeddedDrawingProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EmbeddedDrawingProperties",
   });
 
@@ -1109,7 +1109,7 @@ export interface EmbeddedObjectBorder {
 }
 
 export const EmbeddedObjectBorder: Schema.Codec<EmbeddedObjectBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     propertyState: Schema.optional(Schema.String),
     color: Schema.optional(OptionalColor),
@@ -1124,7 +1124,7 @@ export interface Size {
 }
 
 export const Size: Schema.Codec<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     height: Schema.optional(Dimension),
     width: Schema.optional(Dimension),
   }).annotate({ identifier: "Size" });
@@ -1137,7 +1137,7 @@ export interface SheetsChartReference {
 }
 
 export const SheetsChartReference: Schema.Codec<SheetsChartReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chartId: Schema.optional(Schema.Number),
     spreadsheetId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SheetsChartReference" });
@@ -1148,7 +1148,7 @@ export interface LinkedContentReference {
 }
 
 export const LinkedContentReference: Schema.Codec<LinkedContentReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sheetsChartReference: Schema.optional(SheetsChartReference),
   }).annotate({ identifier: "LinkedContentReference" });
 
@@ -1178,7 +1178,7 @@ export interface EmbeddedObject {
 }
 
 export const EmbeddedObject: Schema.Codec<EmbeddedObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageProperties: Schema.optional(ImageProperties),
     title: Schema.optional(Schema.String),
     marginLeft: Schema.optional(Dimension),
@@ -1200,7 +1200,7 @@ export interface PositionedObjectProperties {
 }
 
 export const PositionedObjectProperties: Schema.Codec<PositionedObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     positioning: Schema.optional(PositionedObjectPositioning),
     embeddedObject: Schema.optional(EmbeddedObject),
   }).annotate({ identifier: "PositionedObjectProperties" });
@@ -1213,7 +1213,7 @@ export interface SizeSuggestionState {
 }
 
 export const SizeSuggestionState: Schema.Codec<SizeSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heightSuggested: Schema.optional(Schema.Boolean),
     widthSuggested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SizeSuggestionState" });
@@ -1228,7 +1228,7 @@ export interface TableOfContents {
 }
 
 export const TableOfContents: Schema.Codec<TableOfContents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
       content: Schema.optional(Schema.Array(StructuralElement)),
@@ -1246,7 +1246,7 @@ export interface SectionColumnProperties {
 }
 
 export const SectionColumnProperties: Schema.Codec<SectionColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     paddingEnd: Schema.optional(Dimension),
   }).annotate({ identifier: "SectionColumnProperties" });
@@ -1305,7 +1305,7 @@ export interface SectionStyle {
 }
 
 export const SectionStyle: Schema.Codec<SectionStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flipPageOrientation: Schema.optional(Schema.Boolean),
     marginHeader: Schema.optional(Dimension),
     marginTop: Schema.optional(Dimension),
@@ -1337,7 +1337,7 @@ export interface SectionBreak {
 }
 
 export const SectionBreak: Schema.Codec<SectionBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
     sectionStyle: Schema.optional(SectionStyle),
@@ -1353,7 +1353,7 @@ export interface TableRowStyle {
 }
 
 export const TableRowStyle: Schema.Codec<TableRowStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableHeader: Schema.optional(Schema.Boolean),
     minRowHeight: Schema.optional(Dimension),
     preventOverflow: Schema.optional(Schema.Boolean),
@@ -1365,7 +1365,7 @@ export interface TableRowStyleSuggestionState {
 }
 
 export const TableRowStyleSuggestionState: Schema.Codec<TableRowStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minRowHeightSuggested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "TableRowStyleSuggestionState" });
 
@@ -1377,7 +1377,7 @@ export interface SuggestedTableRowStyle {
 }
 
 export const SuggestedTableRowStyle: Schema.Codec<SuggestedTableRowStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRowStyle: Schema.optional(TableRowStyle),
     tableRowStyleSuggestionState: Schema.optional(TableRowStyleSuggestionState),
   }).annotate({ identifier: "SuggestedTableRowStyle" });
@@ -1397,7 +1397,7 @@ export interface TableCellBorder {
 }
 
 export const TableCellBorder: Schema.Codec<TableCellBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     color: Schema.optional(OptionalColor),
     dashStyle: Schema.optional(Schema.String),
@@ -1437,7 +1437,7 @@ export interface TableCellStyle {
 }
 
 export const TableCellStyle: Schema.Codec<TableCellStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     borderRight: Schema.optional(TableCellBorder),
     borderTop: Schema.optional(TableCellBorder),
     rowSpan: Schema.optional(Schema.Number),
@@ -1480,7 +1480,7 @@ export interface TableCellStyleSuggestionState {
 }
 
 export const TableCellStyleSuggestionState: Schema.Codec<TableCellStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columnSpanSuggested: Schema.optional(Schema.Boolean),
     rowSpanSuggested: Schema.optional(Schema.Boolean),
     borderRightSuggested: Schema.optional(Schema.Boolean),
@@ -1503,7 +1503,7 @@ export interface SuggestedTableCellStyle {
 }
 
 export const SuggestedTableCellStyle: Schema.Codec<SuggestedTableCellStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellStyle: Schema.optional(TableCellStyle),
     tableCellStyleSuggestionState: Schema.optional(
       TableCellStyleSuggestionState,
@@ -1528,7 +1528,7 @@ export interface TableCell {
 }
 
 export const TableCell: Schema.Codec<TableCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endIndex: Schema.optional(Schema.Number),
       startIndex: Schema.optional(Schema.Number),
@@ -1560,7 +1560,7 @@ export interface TableRow {
 }
 
 export const TableRow: Schema.Codec<TableRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       startIndex: Schema.optional(Schema.Number),
       suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1586,7 +1586,7 @@ export interface TableColumnProperties {
 }
 
 export const TableColumnProperties: Schema.Codec<TableColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     widthType: Schema.optional(Schema.String),
   }).annotate({ identifier: "TableColumnProperties" });
@@ -1597,7 +1597,7 @@ export interface TableStyle {
 }
 
 export const TableStyle: Schema.Codec<TableStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableColumnProperties: Schema.optional(Schema.Array(TableColumnProperties)),
   }).annotate({ identifier: "TableStyle" });
 
@@ -1617,7 +1617,7 @@ export interface Table {
 }
 
 export const Table: Schema.Codec<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       columns: Schema.optional(Schema.Number),
       suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1644,7 +1644,7 @@ export interface StructuralElement {
 }
 
 export const StructuralElement: Schema.Codec<StructuralElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tableOfContents: Schema.optional(TableOfContents),
       startIndex: Schema.optional(Schema.Number),
@@ -1665,7 +1665,7 @@ export interface Footer {
 }
 
 export const Footer: Schema.Codec<Footer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footerId: Schema.optional(Schema.String),
     content: Schema.optional(Schema.Array(StructuralElement)),
   }).annotate({ identifier: "Footer" });
@@ -1680,7 +1680,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     tabId: Schema.optional(Schema.String),
     segmentId: Schema.optional(Schema.String),
@@ -1696,7 +1696,7 @@ export interface TableCellLocation {
 }
 
 export const TableCellLocation: Schema.Codec<TableCellLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableStartLocation: Schema.optional(Location),
     rowIndex: Schema.optional(Schema.Number),
     columnIndex: Schema.optional(Schema.Number),
@@ -1710,7 +1710,7 @@ export interface InsertTableColumnRequest {
 }
 
 export const InsertTableColumnRequest: Schema.Codec<InsertTableColumnRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellLocation: Schema.optional(TableCellLocation),
     insertRight: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "InsertTableColumnRequest" });
@@ -1725,7 +1725,7 @@ export interface DocumentFormat {
 }
 
 export const DocumentFormat: Schema.Codec<DocumentFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "DocumentFormat" });
 
@@ -1735,7 +1735,7 @@ export interface Background {
 }
 
 export const Background: Schema.Codec<Background> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(OptionalColor),
   }).annotate({ identifier: "Background" });
 
@@ -1783,7 +1783,7 @@ export interface DocumentStyle {
 }
 
 export const DocumentStyle: Schema.Codec<DocumentStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     evenPageHeaderId: Schema.optional(Schema.String),
     pageNumberStart: Schema.optional(Schema.Number),
     marginLeft: Schema.optional(Dimension),
@@ -1814,7 +1814,7 @@ export interface EndOfSegmentLocation {
 }
 
 export const EndOfSegmentLocation: Schema.Codec<EndOfSegmentLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segmentId: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EndOfSegmentLocation" });
@@ -1831,7 +1831,7 @@ export interface InsertTableRequest {
 }
 
 export const InsertTableRequest: Schema.Codec<InsertTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     rows: Schema.optional(Schema.Number),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
@@ -1844,7 +1844,7 @@ export interface CreateHeaderResponse {
 }
 
 export const CreateHeaderResponse: Schema.Codec<CreateHeaderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateHeaderResponse" });
 
@@ -1858,7 +1858,7 @@ export interface InsertRichLinkRequest {
 }
 
 export const InsertRichLinkRequest: Schema.Codec<InsertRichLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     richLinkProperties: Schema.optional(RichLinkProperties),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
     location: Schema.optional(Location),
@@ -1870,7 +1870,7 @@ export interface CreateFooterResponse {
 }
 
 export const CreateFooterResponse: Schema.Codec<CreateFooterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateFooterResponse" });
 
@@ -1880,7 +1880,7 @@ export interface InsertInlineSheetsChartResponse {
 }
 
 export const InsertInlineSheetsChartResponse: Schema.Codec<InsertInlineSheetsChartResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "InsertInlineSheetsChartResponse" });
 
@@ -1900,7 +1900,7 @@ export interface TabProperties {
 }
 
 export const TabProperties: Schema.Codec<TabProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nestingLevel: Schema.optional(Schema.Number),
     iconEmoji: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1915,7 +1915,7 @@ export interface AddDocumentTabResponse {
 }
 
 export const AddDocumentTabResponse: Schema.Codec<AddDocumentTabResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabProperties: Schema.optional(TabProperties),
   }).annotate({ identifier: "AddDocumentTabResponse" });
 
@@ -1925,7 +1925,7 @@ export interface InsertInlineImageResponse {
 }
 
 export const InsertInlineImageResponse: Schema.Codec<InsertInlineImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "InsertInlineImageResponse" });
 
@@ -1935,7 +1935,7 @@ export interface CreateFootnoteResponse {
 }
 
 export const CreateFootnoteResponse: Schema.Codec<CreateFootnoteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footnoteId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateFootnoteResponse" });
 
@@ -1945,7 +1945,7 @@ export interface ReplaceAllTextResponse {
 }
 
 export const ReplaceAllTextResponse: Schema.Codec<ReplaceAllTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllTextResponse" });
 
@@ -1955,7 +1955,7 @@ export interface CreateNamedRangeResponse {
 }
 
 export const CreateNamedRangeResponse: Schema.Codec<CreateNamedRangeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namedRangeId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateNamedRangeResponse" });
 
@@ -1979,7 +1979,7 @@ export interface Response {
 }
 
 export const Response: Schema.Codec<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createFooter: Schema.optional(CreateFooterResponse),
     insertInlineSheetsChart: Schema.optional(InsertInlineSheetsChartResponse),
     addDocumentTab: Schema.optional(AddDocumentTabResponse),
@@ -1998,7 +1998,7 @@ export interface WriteControl {
 }
 
 export const WriteControl: Schema.Codec<WriteControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredRevisionId: Schema.optional(Schema.String),
     targetRevisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "WriteControl" });
@@ -2013,7 +2013,7 @@ export interface BatchUpdateDocumentResponse {
 }
 
 export const BatchUpdateDocumentResponse: Schema.Codec<BatchUpdateDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentId: Schema.optional(Schema.String),
     replies: Schema.optional(Schema.Array(Response)),
     writeControl: Schema.optional(WriteControl),
@@ -2029,7 +2029,7 @@ export interface SubstringMatchCriteria {
 }
 
 export const SubstringMatchCriteria: Schema.Codec<SubstringMatchCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     searchByRegex: Schema.optional(Schema.Boolean),
     matchCase: Schema.optional(Schema.Boolean),
@@ -2041,7 +2041,7 @@ export interface TabsCriteria {
 }
 
 export const TabsCriteria: Schema.Codec<TabsCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TabsCriteria" });
 
@@ -2055,7 +2055,7 @@ export interface ReplaceAllTextRequest {
 }
 
 export const ReplaceAllTextRequest: Schema.Codec<ReplaceAllTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containsText: Schema.optional(SubstringMatchCriteria),
     tabsCriteria: Schema.optional(TabsCriteria),
     replaceText: Schema.optional(Schema.String),
@@ -2073,7 +2073,7 @@ export interface Range {
 }
 
 export const Range: Schema.Codec<Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabId: Schema.optional(Schema.String),
     segmentId: Schema.optional(Schema.String),
     endIndex: Schema.optional(Schema.Number),
@@ -2090,7 +2090,7 @@ export interface UpdateSectionStyleRequest {
 }
 
 export const UpdateSectionStyleRequest: Schema.Codec<UpdateSectionStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
     sectionStyle: Schema.optional(SectionStyle),
     fields: Schema.optional(Schema.String),
@@ -2106,7 +2106,7 @@ export interface InsertPersonRequest {
 }
 
 export const InsertPersonRequest: Schema.Codec<InsertPersonRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     personProperties: Schema.optional(PersonProperties),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
@@ -2146,7 +2146,7 @@ export interface NestingLevel {
 }
 
 export const NestingLevel: Schema.Codec<NestingLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bulletAlignment: Schema.optional(Schema.String),
     glyphFormat: Schema.optional(Schema.String),
     indentFirstLine: Schema.optional(Dimension),
@@ -2163,7 +2163,7 @@ export interface ListProperties {
 }
 
 export const ListProperties: Schema.Codec<ListProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nestingLevels: Schema.optional(Schema.Array(NestingLevel)),
   }).annotate({ identifier: "ListProperties" });
 
@@ -2173,7 +2173,7 @@ export interface ListPropertiesSuggestionState {
 }
 
 export const ListPropertiesSuggestionState: Schema.Codec<ListPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nestingLevelsSuggestionStates: Schema.optional(
       Schema.Array(NestingLevelSuggestionState),
     ),
@@ -2187,7 +2187,7 @@ export interface SuggestedListProperties {
 }
 
 export const SuggestedListProperties: Schema.Codec<SuggestedListProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listPropertiesSuggestionState: Schema.optional(
       ListPropertiesSuggestionState,
     ),
@@ -2206,7 +2206,7 @@ export interface List {
 }
 
 export const List: Schema.Codec<List> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedInsertionId: Schema.optional(Schema.String),
     listProperties: Schema.optional(ListProperties),
     suggestedListPropertiesChanges: Schema.optional(
@@ -2223,7 +2223,7 @@ export interface SheetsChartReferenceSuggestionState {
 }
 
 export const SheetsChartReferenceSuggestionState: Schema.Codec<SheetsChartReferenceSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spreadsheetIdSuggested: Schema.optional(Schema.Boolean),
     chartIdSuggested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SheetsChartReferenceSuggestionState" });
@@ -2234,7 +2234,7 @@ export interface LinkedContentReferenceSuggestionState {
 }
 
 export const LinkedContentReferenceSuggestionState: Schema.Codec<LinkedContentReferenceSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sheetsChartReferenceSuggestionState: Schema.optional(
       SheetsChartReferenceSuggestionState,
     ),
@@ -2254,7 +2254,7 @@ export interface CropPropertiesSuggestionState {
 }
 
 export const CropPropertiesSuggestionState: Schema.Codec<CropPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offsetBottomSuggested: Schema.optional(Schema.Boolean),
     offsetTopSuggested: Schema.optional(Schema.Boolean),
     angleSuggested: Schema.optional(Schema.Boolean),
@@ -2280,7 +2280,7 @@ export interface ImagePropertiesSuggestionState {
 }
 
 export const ImagePropertiesSuggestionState: Schema.Codec<ImagePropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropPropertiesSuggestionState: Schema.optional(
       CropPropertiesSuggestionState,
     ),
@@ -2295,7 +2295,7 @@ export const ImagePropertiesSuggestionState: Schema.Codec<ImagePropertiesSuggest
 export interface EmbeddedDrawingPropertiesSuggestionState {}
 
 export const EmbeddedDrawingPropertiesSuggestionState: Schema.Codec<EmbeddedDrawingPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EmbeddedDrawingPropertiesSuggestionState",
   });
 
@@ -2311,7 +2311,7 @@ export interface EmbeddedObjectBorderSuggestionState {
 }
 
 export const EmbeddedObjectBorderSuggestionState: Schema.Codec<EmbeddedObjectBorderSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colorSuggested: Schema.optional(Schema.Boolean),
     widthSuggested: Schema.optional(Schema.Boolean),
     propertyStateSuggested: Schema.optional(Schema.Boolean),
@@ -2344,7 +2344,7 @@ export interface EmbeddedObjectSuggestionState {
 }
 
 export const EmbeddedObjectSuggestionState: Schema.Codec<EmbeddedObjectSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     titleSuggested: Schema.optional(Schema.Boolean),
     descriptionSuggested: Schema.optional(Schema.Boolean),
     marginLeftSuggested: Schema.optional(Schema.Boolean),
@@ -2372,7 +2372,7 @@ export interface BackgroundSuggestionState {
 }
 
 export const BackgroundSuggestionState: Schema.Codec<BackgroundSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColorSuggested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BackgroundSuggestionState" });
 
@@ -2386,7 +2386,7 @@ export interface InsertTextRequest {
 }
 
 export const InsertTextRequest: Schema.Codec<InsertTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
     location: Schema.optional(Location),
     text: Schema.optional(Schema.String),
@@ -2404,7 +2404,7 @@ export interface UpdateTableColumnPropertiesRequest {
 }
 
 export const UpdateTableColumnPropertiesRequest: Schema.Codec<UpdateTableColumnPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableColumnProperties: Schema.optional(TableColumnProperties),
     fields: Schema.optional(Schema.String),
     tableStartLocation: Schema.optional(Location),
@@ -2421,7 +2421,7 @@ export interface TableRange {
 }
 
 export const TableRange: Schema.Codec<TableRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowSpan: Schema.optional(Schema.Number),
     columnSpan: Schema.optional(Schema.Number),
     tableCellLocation: Schema.optional(TableCellLocation),
@@ -2439,7 +2439,7 @@ export interface UpdateTableCellStyleRequest {
 }
 
 export const UpdateTableCellStyleRequest: Schema.Codec<UpdateTableCellStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellStyle: Schema.optional(TableCellStyle),
     tableStartLocation: Schema.optional(Location),
     tableRange: Schema.optional(TableRange),
@@ -2461,7 +2461,7 @@ export interface ReplaceImageRequest {
 }
 
 export const ReplaceImageRequest: Schema.Codec<ReplaceImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageReplaceMethod: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
     imageObjectId: Schema.optional(Schema.String),
@@ -2493,7 +2493,7 @@ export interface CreateParagraphBulletsRequest {
 }
 
 export const CreateParagraphBulletsRequest: Schema.Codec<CreateParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
     bulletPreset: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateParagraphBulletsRequest" });
@@ -2508,7 +2508,7 @@ export interface PositionedObjectPositioningSuggestionState {
 }
 
 export const PositionedObjectPositioningSuggestionState: Schema.Codec<PositionedObjectPositioningSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     layoutSuggested: Schema.optional(Schema.Boolean),
     topOffsetSuggested: Schema.optional(Schema.Boolean),
     leftOffsetSuggested: Schema.optional(Schema.Boolean),
@@ -2522,7 +2522,7 @@ export interface CreateNamedRangeRequest {
 }
 
 export const CreateNamedRangeRequest: Schema.Codec<CreateNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateNamedRangeRequest" });
@@ -2533,7 +2533,7 @@ export interface InlineObjectPropertiesSuggestionState {
 }
 
 export const InlineObjectPropertiesSuggestionState: Schema.Codec<InlineObjectPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     embeddedObjectSuggestionState: Schema.optional(
       EmbeddedObjectSuggestionState,
     ),
@@ -2545,7 +2545,7 @@ export interface InlineObjectProperties {
 }
 
 export const InlineObjectProperties: Schema.Codec<InlineObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     embeddedObject: Schema.optional(EmbeddedObject),
   }).annotate({ identifier: "InlineObjectProperties" });
 
@@ -2555,7 +2555,7 @@ export interface AddDocumentTabRequest {
 }
 
 export const AddDocumentTabRequest: Schema.Codec<AddDocumentTabRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabProperties: Schema.optional(TabProperties),
   }).annotate({ identifier: "AddDocumentTabRequest" });
 
@@ -2567,7 +2567,7 @@ export interface PositionedObjectPropertiesSuggestionState {
 }
 
 export const PositionedObjectPropertiesSuggestionState: Schema.Codec<PositionedObjectPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     embeddedObjectSuggestionState: Schema.optional(
       EmbeddedObjectSuggestionState,
     ),
@@ -2584,7 +2584,7 @@ export interface SuggestedPositionedObjectProperties {
 }
 
 export const SuggestedPositionedObjectProperties: Schema.Codec<SuggestedPositionedObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     positionedObjectProperties: Schema.optional(PositionedObjectProperties),
     positionedObjectPropertiesSuggestionState: Schema.optional(
       PositionedObjectPropertiesSuggestionState,
@@ -2608,7 +2608,7 @@ export interface PositionedObject {
 }
 
 export const PositionedObject: Schema.Codec<PositionedObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     suggestedInsertionId: Schema.optional(Schema.String),
     suggestedPositionedObjectPropertiesChanges: Schema.optional(
@@ -2628,7 +2628,7 @@ export interface DeleteNamedRangeRequest {
 }
 
 export const DeleteNamedRangeRequest: Schema.Codec<DeleteNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabsCriteria: Schema.optional(TabsCriteria),
     name: Schema.optional(Schema.String),
     namedRangeId: Schema.optional(Schema.String),
@@ -2642,7 +2642,7 @@ export interface Header {
 }
 
 export const Header: Schema.Codec<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerId: Schema.optional(Schema.String),
     content: Schema.optional(Schema.Array(StructuralElement)),
   }).annotate({ identifier: "Header" });
@@ -2655,7 +2655,7 @@ export interface InsertPageBreakRequest {
 }
 
 export const InsertPageBreakRequest: Schema.Codec<InsertPageBreakRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
   }).annotate({ identifier: "InsertPageBreakRequest" });
@@ -2666,7 +2666,7 @@ export interface MergeTableCellsRequest {
 }
 
 export const MergeTableCellsRequest: Schema.Codec<MergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
   }).annotate({ identifier: "MergeTableCellsRequest" });
 
@@ -2676,7 +2676,7 @@ export interface DeleteTableRowRequest {
 }
 
 export const DeleteTableRowRequest: Schema.Codec<DeleteTableRowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellLocation: Schema.optional(TableCellLocation),
   }).annotate({ identifier: "DeleteTableRowRequest" });
 
@@ -2688,7 +2688,7 @@ export interface SuggestedInlineObjectProperties {
 }
 
 export const SuggestedInlineObjectProperties: Schema.Codec<SuggestedInlineObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineObjectProperties: Schema.optional(InlineObjectProperties),
     inlineObjectPropertiesSuggestionState: Schema.optional(
       InlineObjectPropertiesSuggestionState,
@@ -2712,7 +2712,7 @@ export interface InlineObject {
 }
 
 export const InlineObject: Schema.Codec<InlineObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineObjectProperties: Schema.optional(InlineObjectProperties),
     suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
     objectId: Schema.optional(Schema.String),
@@ -2764,7 +2764,7 @@ export interface DocumentStyleSuggestionState {
 }
 
 export const DocumentStyleSuggestionState: Schema.Codec<DocumentStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marginFooterSuggested: Schema.optional(Schema.Boolean),
     marginTopSuggested: Schema.optional(Schema.Boolean),
     evenPageHeaderIdSuggested: Schema.optional(Schema.Boolean),
@@ -2794,7 +2794,7 @@ export interface SuggestedDocumentStyle {
 }
 
 export const SuggestedDocumentStyle: Schema.Codec<SuggestedDocumentStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentStyle: Schema.optional(DocumentStyle),
     documentStyleSuggestionState: Schema.optional(DocumentStyleSuggestionState),
   }).annotate({ identifier: "SuggestedDocumentStyle" });
@@ -2807,7 +2807,7 @@ export interface Footnote {
 }
 
 export const Footnote: Schema.Codec<Footnote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footnoteId: Schema.optional(Schema.String),
     content: Schema.optional(Schema.Array(StructuralElement)),
   }).annotate({ identifier: "Footnote" });
@@ -2833,7 +2833,7 @@ export interface NamedStyle {
 }
 
 export const NamedStyle: Schema.Codec<NamedStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namedStyleType: Schema.optional(Schema.String),
     paragraphStyle: Schema.optional(ParagraphStyle),
     textStyle: Schema.optional(TextStyle),
@@ -2845,7 +2845,7 @@ export interface NamedStyles {
 }
 
 export const NamedStyles: Schema.Codec<NamedStyles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     styles: Schema.optional(Schema.Array(NamedStyle)),
   }).annotate({ identifier: "NamedStyles" });
 
@@ -2870,7 +2870,7 @@ export interface NamedStyleSuggestionState {
 }
 
 export const NamedStyleSuggestionState: Schema.Codec<NamedStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
     paragraphStyleSuggestionState: Schema.optional(
       ParagraphStyleSuggestionState,
@@ -2884,7 +2884,7 @@ export interface NamedStylesSuggestionState {
 }
 
 export const NamedStylesSuggestionState: Schema.Codec<NamedStylesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stylesSuggestionStates: Schema.optional(
       Schema.Array(NamedStyleSuggestionState),
     ),
@@ -2898,7 +2898,7 @@ export interface SuggestedNamedStyles {
 }
 
 export const SuggestedNamedStyles: Schema.Codec<SuggestedNamedStyles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namedStyles: Schema.optional(NamedStyles),
     namedStylesSuggestionState: Schema.optional(NamedStylesSuggestionState),
   }).annotate({ identifier: "SuggestedNamedStyles" });
@@ -2913,7 +2913,7 @@ export interface NamedRange {
 }
 
 export const NamedRange: Schema.Codec<NamedRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namedRangeId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ranges: Schema.optional(Schema.Array(Range)),
@@ -2927,7 +2927,7 @@ export interface NamedRanges {
 }
 
 export const NamedRanges: Schema.Codec<NamedRanges> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     namedRanges: Schema.optional(Schema.Array(NamedRange)),
   }).annotate({ identifier: "NamedRanges" });
@@ -2938,7 +2938,7 @@ export interface Body {
 }
 
 export const Body: Schema.Codec<Body> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.Array(StructuralElement)),
   }).annotate({ identifier: "Body" });
 
@@ -2970,7 +2970,7 @@ export interface DocumentTab {
 }
 
 export const DocumentTab: Schema.Codec<DocumentTab> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineObjects: Schema.optional(Schema.Record(Schema.String, InlineObject)),
     suggestedDocumentStyleChanges: Schema.optional(
       Schema.Record(Schema.String, SuggestedDocumentStyle),
@@ -3001,7 +3001,7 @@ export interface Tab {
 }
 
 export const Tab: Schema.Codec<Tab> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tabProperties: Schema.optional(TabProperties),
       childTabs: Schema.optional(Schema.Array(Tab)),
@@ -3015,7 +3015,7 @@ export interface DeleteParagraphBulletsRequest {
 }
 
 export const DeleteParagraphBulletsRequest: Schema.Codec<DeleteParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
   }).annotate({ identifier: "DeleteParagraphBulletsRequest" });
 
@@ -3031,7 +3031,7 @@ export interface ReplaceNamedRangeContentRequest {
 }
 
 export const ReplaceNamedRangeContentRequest: Schema.Codec<ReplaceNamedRangeContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     namedRangeId: Schema.optional(Schema.String),
     namedRangeName: Schema.optional(Schema.String),
@@ -3044,7 +3044,7 @@ export interface DeleteTabRequest {
 }
 
 export const DeleteTabRequest: Schema.Codec<DeleteTabRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteTabRequest" });
 
@@ -3056,7 +3056,7 @@ export interface InsertTableRowRequest {
 }
 
 export const InsertTableRowRequest: Schema.Codec<InsertTableRowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellLocation: Schema.optional(TableCellLocation),
     insertBelow: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "InsertTableRowRequest" });
@@ -3067,7 +3067,7 @@ export interface DeleteTableColumnRequest {
 }
 
 export const DeleteTableColumnRequest: Schema.Codec<DeleteTableColumnRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableCellLocation: Schema.optional(TableCellLocation),
   }).annotate({ identifier: "DeleteTableColumnRequest" });
 
@@ -3079,7 +3079,7 @@ export interface DeleteHeaderRequest {
 }
 
 export const DeleteHeaderRequest: Schema.Codec<DeleteHeaderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerId: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteHeaderRequest" });
@@ -3092,7 +3092,7 @@ export interface CreateFooterRequest {
 }
 
 export const CreateFooterRequest: Schema.Codec<CreateFooterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     sectionBreakLocation: Schema.optional(Location),
   }).annotate({ identifier: "CreateFooterRequest" });
@@ -3111,7 +3111,7 @@ export interface InsertSectionBreakRequest {
 }
 
 export const InsertSectionBreakRequest: Schema.Codec<InsertSectionBreakRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     sectionType: Schema.optional(Schema.String),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
@@ -3125,7 +3125,7 @@ export interface UpdateDocumentTabPropertiesRequest {
 }
 
 export const UpdateDocumentTabPropertiesRequest: Schema.Codec<UpdateDocumentTabPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabProperties: Schema.optional(TabProperties),
     fields: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateDocumentTabPropertiesRequest" });
@@ -3140,7 +3140,7 @@ export interface UpdateNamedStyleRequest {
 }
 
 export const UpdateNamedStyleRequest: Schema.Codec<UpdateNamedStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namedStyle: Schema.optional(NamedStyle),
     tabId: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.String),
@@ -3154,7 +3154,7 @@ export interface CreateFootnoteRequest {
 }
 
 export const CreateFootnoteRequest: Schema.Codec<CreateFootnoteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
   }).annotate({ identifier: "CreateFootnoteRequest" });
@@ -3171,7 +3171,7 @@ export interface InsertInlineImageRequest {
 }
 
 export const InsertInlineImageRequest: Schema.Codec<InsertInlineImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectSize: Schema.optional(Size),
     location: Schema.optional(Location),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
@@ -3190,7 +3190,7 @@ export interface UpdateTableRowStyleRequest {
 }
 
 export const UpdateTableRowStyleRequest: Schema.Codec<UpdateTableRowStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rowIndices: Schema.optional(Schema.Array(Schema.Number)),
     fields: Schema.optional(Schema.String),
     tableStartLocation: Schema.optional(Location),
@@ -3205,7 +3205,7 @@ export interface DeleteFooterRequest {
 }
 
 export const DeleteFooterRequest: Schema.Codec<DeleteFooterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     footerId: Schema.optional(Schema.String),
     tabId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteFooterRequest" });
@@ -3218,7 +3218,7 @@ export interface PinTableHeaderRowsRequest {
 }
 
 export const PinTableHeaderRowsRequest: Schema.Codec<PinTableHeaderRowsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableStartLocation: Schema.optional(Location),
     pinnedHeaderRowsCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "PinTableHeaderRowsRequest" });
@@ -3233,7 +3233,7 @@ export interface UpdateTextStyleRequest {
 }
 
 export const UpdateTextStyleRequest: Schema.Codec<UpdateTextStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStyle: Schema.optional(TextStyle),
     range: Schema.optional(Range),
     fields: Schema.optional(Schema.String),
@@ -3245,7 +3245,7 @@ export interface DeleteContentRangeRequest {
 }
 
 export const DeleteContentRangeRequest: Schema.Codec<DeleteContentRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
   }).annotate({ identifier: "DeleteContentRangeRequest" });
 
@@ -3259,7 +3259,7 @@ export interface UpdateParagraphStyleRequest {
 }
 
 export const UpdateParagraphStyleRequest: Schema.Codec<UpdateParagraphStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     range: Schema.optional(Range),
     paragraphStyle: Schema.optional(ParagraphStyle),
     fields: Schema.optional(Schema.String),
@@ -3275,7 +3275,7 @@ export interface UpdateDocumentStyleRequest {
 }
 
 export const UpdateDocumentStyleRequest: Schema.Codec<UpdateDocumentStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabId: Schema.optional(Schema.String),
     documentStyle: Schema.optional(DocumentStyle),
     fields: Schema.optional(Schema.String),
@@ -3291,7 +3291,7 @@ export interface InsertDateRequest {
 }
 
 export const InsertDateRequest: Schema.Codec<InsertDateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateElementProperties: Schema.optional(DateElementProperties),
     endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
     location: Schema.optional(Location),
@@ -3305,7 +3305,7 @@ export interface CreateHeaderRequest {
 }
 
 export const CreateHeaderRequest: Schema.Codec<CreateHeaderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     sectionBreakLocation: Schema.optional(Location),
   }).annotate({ identifier: "CreateHeaderRequest" });
@@ -3316,7 +3316,7 @@ export interface UnmergeTableCellsRequest {
 }
 
 export const UnmergeTableCellsRequest: Schema.Codec<UnmergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
   }).annotate({ identifier: "UnmergeTableCellsRequest" });
 
@@ -3328,7 +3328,7 @@ export interface DeletePositionedObjectRequest {
 }
 
 export const DeletePositionedObjectRequest: Schema.Codec<DeletePositionedObjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tabId: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeletePositionedObjectRequest" });
@@ -3417,7 +3417,7 @@ export interface Request {
 }
 
 export const Request: Schema.Codec<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteParagraphBullets: Schema.optional(DeleteParagraphBulletsRequest),
     insertText: Schema.optional(InsertTextRequest),
     replaceNamedRangeContent: Schema.optional(ReplaceNamedRangeContentRequest),
@@ -3472,7 +3472,7 @@ export interface BatchUpdateDocumentRequest {
 }
 
 export const BatchUpdateDocumentRequest: Schema.Codec<BatchUpdateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(Request)),
     writeControl: Schema.optional(WriteControl),
   }).annotate({ identifier: "BatchUpdateDocumentRequest" });
@@ -3520,7 +3520,7 @@ export interface Document {
 }
 
 export const Document: Schema.Codec<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineObjects: Schema.optional(Schema.Record(Schema.String, InlineObject)),
     revisionId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -3614,7 +3614,7 @@ export interface GetDocumentsRequest {
   includeTabsContent?: boolean;
 }
 
-export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentsRequest = /*@__PURE__*/ Schema.Struct({
   suggestionsViewMode: Schema.optional(Schema.String).pipe(
     T.HttpQuery("suggestionsViewMode"),
   ),
@@ -3628,7 +3628,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
-export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
+export const GetDocumentsResponse = /*@__PURE__*/ Document;
 
 export type GetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3638,7 +3638,7 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsResponse,
   GetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentsRequest,
   output: GetDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -3649,17 +3649,15 @@ export interface CreateDocumentsRequest {
   body?: Document;
 }
 
-export const CreateDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(Document).pipe(T.HttpBody()),
-  },
-).pipe(
+export const CreateDocumentsRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(Document).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "v1/documents", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<CreateDocumentsRequest>;
 
 export type CreateDocumentsResponse = Document;
-export const CreateDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
+export const CreateDocumentsResponse = /*@__PURE__*/ Document;
 
 export type CreateDocumentsError =
   | DefaultErrors
@@ -3674,7 +3672,7 @@ export const createDocuments: API.OperationMethod<
   CreateDocumentsResponse,
   CreateDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDocumentsRequest,
   output: CreateDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3688,7 +3686,7 @@ export interface BatchUpdateDocumentsRequest {
 }
 
 export const BatchUpdateDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentId: Schema.String.pipe(T.HttpPath("documentId")),
     body: Schema.optional(BatchUpdateDocumentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3702,7 +3700,7 @@ export const BatchUpdateDocumentsRequest =
 
 export type BatchUpdateDocumentsResponse = BatchUpdateDocumentResponse;
 export const BatchUpdateDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateDocumentResponse;
+  /*@__PURE__*/ BatchUpdateDocumentResponse;
 
 export type BatchUpdateDocumentsError =
   | DefaultErrors
@@ -3717,7 +3715,7 @@ export const batchUpdateDocuments: API.OperationMethod<
   BatchUpdateDocumentsResponse,
   BatchUpdateDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateDocumentsRequest,
   output: BatchUpdateDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

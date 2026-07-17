@@ -22,7 +22,7 @@ export interface HeatmapsEventsRetrieveInput {
   viewport_width_min?: number;
 }
 export const HeatmapsEventsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     aggregation: Schema.optional(
       Schema.Literals(["unique_visitors", "total_count"]),
@@ -62,7 +62,7 @@ export interface HeatmapsEventsRetrieveOutput {
   has_more: boolean;
 }
 export const HeatmapsEventsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         session_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -101,10 +101,8 @@ export const HeatmapsEventsRetrieveOutput =
  * @param viewport_width_max - Only include interactions captured at a viewport at most this wide, in CSS pixels.
  * @param viewport_width_min - Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile).
  */
-export const heatmapsEventsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HeatmapsEventsRetrieveInput,
-    outputSchema: HeatmapsEventsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const heatmapsEventsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HeatmapsEventsRetrieveInput,
+  outputSchema: HeatmapsEventsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

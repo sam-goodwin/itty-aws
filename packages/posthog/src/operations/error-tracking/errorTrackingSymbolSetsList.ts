@@ -20,7 +20,7 @@ export interface ErrorTrackingSymbolSetsListInput {
   status?: "all" | "valid" | "invalid";
 }
 export const ErrorTrackingSymbolSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -69,7 +69,7 @@ export interface ErrorTrackingSymbolSetsListOutput {
   }[];
 }
 export const ErrorTrackingSymbolSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -125,10 +125,8 @@ export const ErrorTrackingSymbolSetsListOutput =
 * `valid` - valid
 * `invalid` - invalid
  */
-export const errorTrackingSymbolSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ErrorTrackingSymbolSetsListInput,
-    outputSchema: ErrorTrackingSymbolSetsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const errorTrackingSymbolSetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingSymbolSetsListInput,
+  outputSchema: ErrorTrackingSymbolSetsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

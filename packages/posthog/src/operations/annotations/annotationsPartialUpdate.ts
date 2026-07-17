@@ -50,7 +50,7 @@ export interface AnnotationsPartialUpdateInput {
   hidden_in_user_interface?: boolean | null;
 }
 export const AnnotationsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     content: Schema.optional(Schema.NullOr(Schema.String)),
@@ -162,7 +162,7 @@ export interface AnnotationsPartialUpdateOutput {
   hidden_in_user_interface?: boolean | null;
 }
 export const AnnotationsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
@@ -229,10 +229,8 @@ export const AnnotationsPartialUpdateOutput =
  * @param id - A unique integer value identifying this annotation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const annotationsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AnnotationsPartialUpdateInput,
-    outputSchema: AnnotationsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const annotationsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AnnotationsPartialUpdateInput,
+  outputSchema: AnnotationsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

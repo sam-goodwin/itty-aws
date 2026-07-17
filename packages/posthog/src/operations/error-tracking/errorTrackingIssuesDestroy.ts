@@ -8,7 +8,7 @@ export interface ErrorTrackingIssuesDestroyInput {
   project_id: string;
 }
 export const ErrorTrackingIssuesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const ErrorTrackingIssuesDestroyInput =
 // Output Schema
 export type ErrorTrackingIssuesDestroyOutput = void;
 export const ErrorTrackingIssuesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesDestroyOutput>;
 
 // The operation
 /**
@@ -29,9 +29,7 @@ export const ErrorTrackingIssuesDestroyOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingIssuesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ErrorTrackingIssuesDestroyInput,
-    outputSchema: ErrorTrackingIssuesDestroyOutput,
-  }),
-);
+export const errorTrackingIssuesDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingIssuesDestroyInput,
+  outputSchema: ErrorTrackingIssuesDestroyOutput,
+}));

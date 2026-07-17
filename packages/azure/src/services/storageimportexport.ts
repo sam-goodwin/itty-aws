@@ -14,13 +14,11 @@ export interface BitLockerKeysListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const BitLockerKeysListInput = /*@__PURE__*/ Schema.Struct({
+  jobName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}/listBitLockerKeys",
@@ -33,7 +31,7 @@ export interface BitLockerKeysListOutput {
   value?: { bitLockerKey?: string; driveId?: string }[];
 }
 export const BitLockerKeysListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -54,7 +52,7 @@ export const BitLockerKeysListOutput =
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const BitLockerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BitLockerKeysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BitLockerKeysListInput,
   outputSchema: BitLockerKeysListOutput,
 }));
@@ -143,7 +141,7 @@ export interface JobsCreateInput {
     };
   };
 }
-export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsCreateInput = /*@__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -365,7 +363,7 @@ export interface JobsCreateOutput {
     tenantId?: string;
   };
 }
-export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsCreateOutput = /*@__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -517,7 +515,7 @@ export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param Accept-Language - Specifies the preferred language for the response.
  * @param x-ms-client-tenant-id - The tenant ID of the client making the request.
  */
-export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateInput,
   outputSchema: JobsCreateOutput,
 }));
@@ -527,7 +525,7 @@ export interface JobsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsDeleteInput = /*@__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -542,7 +540,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobsDeleteOutput = void;
 export const JobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
 
 // The operation
 /**
@@ -554,7 +552,7 @@ export const JobsDeleteOutput =
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
   outputSchema: JobsDeleteOutput,
 }));
@@ -564,7 +562,7 @@ export interface JobsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetInput = /*@__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -674,7 +672,7 @@ export interface JobsGetOutput {
     tenantId?: string;
   };
 }
-export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetOutput = /*@__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -825,7 +823,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
   outputSchema: JobsGetOutput,
 }));
@@ -837,7 +835,7 @@ export interface JobsListByResourceGroupInput {
   $filter?: string;
 }
 export const JobsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -952,7 +950,7 @@ export interface JobsListByResourceGroupOutput {
   }[];
 }
 export const JobsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1123,12 +1121,10 @@ export const JobsListByResourceGroupOutput =
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobsListByResourceGroupInput,
-    outputSchema: JobsListByResourceGroupOutput,
-  }),
-);
+export const JobsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobsListByResourceGroupInput,
+  outputSchema: JobsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface JobsListBySubscriptionInput {
   subscriptionId: string;
@@ -1136,7 +1132,7 @@ export interface JobsListBySubscriptionInput {
   $filter?: string;
 }
 export const JobsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -1250,7 +1246,7 @@ export interface JobsListBySubscriptionOutput {
   }[];
 }
 export const JobsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1420,12 +1416,10 @@ export const JobsListBySubscriptionOutput =
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobsListBySubscriptionInput,
-    outputSchema: JobsListBySubscriptionOutput,
-  }),
-);
+export const JobsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobsListBySubscriptionInput,
+  outputSchema: JobsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface JobsUpdateInput {
   jobName: string;
@@ -1478,7 +1472,7 @@ export interface JobsUpdateInput {
     }[];
   };
 }
-export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsUpdateInput = /*@__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1652,7 +1646,7 @@ export interface JobsUpdateOutput {
     tenantId?: string;
   };
 }
-export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -1803,7 +1797,7 @@ export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsUpdateInput,
   outputSchema: JobsUpdateOutput,
 }));
@@ -1811,7 +1805,7 @@ export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface LocationsGetInput {
   locationName: string;
 }
-export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetInput = /*@__PURE__*/ Schema.Struct({
   locationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1840,7 +1834,7 @@ export interface LocationsGetOutput {
     alternateLocations?: string[];
   };
 }
-export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1869,15 +1863,13 @@ export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetInput,
   outputSchema: LocationsGetOutput,
 }));
 // Input Schema
 export interface LocationsListInput {}
-export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const LocationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ImportExport/locations",
@@ -1906,7 +1898,7 @@ export interface LocationsListOutput {
     };
   }[];
 }
-export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1940,15 +1932,13 @@ export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsListInput,
   outputSchema: LocationsListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ImportExport/operations",
@@ -1968,7 +1958,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1991,7 +1981,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Specifies the API version to use for this request.
  * @param Accept-Language - Specifies the preferred language for the response.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

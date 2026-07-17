@@ -15,7 +15,7 @@ export interface BatchExportsLogsRetrieveInput {
   search?: string;
 }
 export const BatchExportsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export const BatchExportsLogsRetrieveInput =
 // Output Schema
 export type BatchExportsLogsRetrieveOutput = void;
 export const BatchExportsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -48,10 +48,8 @@ export const BatchExportsLogsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Case-insensitive substring search across log messages.
  */
-export const batchExportsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsLogsRetrieveInput,
-    outputSchema: BatchExportsLogsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsLogsRetrieveInput,
+  outputSchema: BatchExportsLogsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

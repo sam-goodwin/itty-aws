@@ -8,7 +8,7 @@ export interface JumpWireWebDataVaultControllerdescribeInput {
   id: string;
 }
 export const JumpWireWebDataVaultControllerdescribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/vault/v1/kv/{id}/metadata" }),
@@ -29,7 +29,7 @@ export interface JumpWireWebDataVaultControllerdescribeOutput {
   name: string;
 }
 export const JumpWireWebDataVaultControllerdescribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     metadata: Schema.Struct({
       context: Schema.Record(Schema.String, Schema.String),
@@ -55,7 +55,7 @@ export const JumpWireWebDataVaultControllerdescribeOutput =
  * @param id - Unique identifier of the object.
  */
 export const JumpWireWebDataVaultControllerdescribe =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllerdescribeInput,
     outputSchema: JumpWireWebDataVaultControllerdescribeOutput,
     errors: [BadRequest, NotFound] as const,

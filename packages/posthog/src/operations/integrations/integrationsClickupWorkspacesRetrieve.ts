@@ -9,7 +9,7 @@ export interface IntegrationsClickupWorkspacesRetrieveInput {
   project_id: string;
 }
 export const IntegrationsClickupWorkspacesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const IntegrationsClickupWorkspacesRetrieveInput =
 // Output Schema
 export type IntegrationsClickupWorkspacesRetrieveOutput = void;
 export const IntegrationsClickupWorkspacesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsClickupWorkspacesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsClickupWorkspacesRetrieveOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const IntegrationsClickupWorkspacesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsClickupWorkspacesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsClickupWorkspacesRetrieveInput,
     outputSchema: IntegrationsClickupWorkspacesRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

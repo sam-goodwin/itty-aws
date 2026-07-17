@@ -23,7 +23,7 @@ export interface DeleteGroupLimitInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const DeleteGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupLimitInput = /*@__PURE__*/ Schema.Struct({
   limitName: Schema.Literals([
     "atlas.project.security.databaseAccess.users",
     "atlas.project.deployment.clusters",
@@ -52,7 +52,7 @@ export const DeleteGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteGroupLimitOutput = void;
 export const DeleteGroupLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupLimitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupLimitOutput>;
 
 // The operation
 /**
@@ -83,7 +83,7 @@ export const DeleteGroupLimitOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroupLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupLimit = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupLimitInput,
   outputSchema: DeleteGroupLimitOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

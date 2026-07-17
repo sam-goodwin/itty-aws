@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StandbyPool/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -78,7 +76,7 @@ export interface StandbyContainerGroupPoolRuntimeViewsGetInput {
   runtimeView: string;
 }
 export const StandbyContainerGroupPoolRuntimeViewsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -106,7 +104,7 @@ export interface StandbyContainerGroupPoolRuntimeViewsGetOutput {
   };
 }
 export const StandbyContainerGroupPoolRuntimeViewsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -137,7 +135,7 @@ export const StandbyContainerGroupPoolRuntimeViewsGetOutput =
  * @param runtimeView - The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
  */
 export const StandbyContainerGroupPoolRuntimeViewsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolRuntimeViewsGetInput,
     outputSchema: StandbyContainerGroupPoolRuntimeViewsGetOutput,
   }));
@@ -148,7 +146,7 @@ export interface StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput {
   standbyContainerGroupPoolName: string;
 }
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -178,7 +176,7 @@ export interface StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput {
   nextLink?: string;
 }
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -223,7 +221,7 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
  * @param standbyContainerGroupPoolName - Name of the standby container group pool
  */
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput,
     outputSchema: StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput,
   }));
@@ -249,7 +247,7 @@ export interface StandbyContainerGroupPoolsCreateOrUpdateInput {
   location: string;
 }
 export const StandbyContainerGroupPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -308,7 +306,7 @@ export interface StandbyContainerGroupPoolsCreateOrUpdateOutput {
   };
 }
 export const StandbyContainerGroupPoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -338,7 +336,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateOutput =
  * @param standbyContainerGroupPoolName - Name of the standby container group pool
  */
 export const StandbyContainerGroupPoolsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsCreateOrUpdateInput,
     outputSchema: StandbyContainerGroupPoolsCreateOrUpdateOutput,
   }));
@@ -349,7 +347,7 @@ export interface StandbyContainerGroupPoolsDeleteInput {
   standbyContainerGroupPoolName: string;
 }
 export const StandbyContainerGroupPoolsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -364,7 +362,7 @@ export const StandbyContainerGroupPoolsDeleteInput =
 // Output Schema
 export type StandbyContainerGroupPoolsDeleteOutput = void;
 export const StandbyContainerGroupPoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyContainerGroupPoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyContainerGroupPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -376,7 +374,7 @@ export const StandbyContainerGroupPoolsDeleteOutput =
  * @param standbyContainerGroupPoolName - Name of the standby container group pool
  */
 export const StandbyContainerGroupPoolsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsDeleteInput,
     outputSchema: StandbyContainerGroupPoolsDeleteOutput,
   }));
@@ -387,7 +385,7 @@ export interface StandbyContainerGroupPoolsGetInput {
   standbyContainerGroupPoolName: string;
 }
 export const StandbyContainerGroupPoolsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -414,7 +412,7 @@ export interface StandbyContainerGroupPoolsGetOutput {
   };
 }
 export const StandbyContainerGroupPoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -444,7 +442,7 @@ export const StandbyContainerGroupPoolsGetOutput =
  * @param standbyContainerGroupPoolName - Name of the standby container group pool
  */
 export const StandbyContainerGroupPoolsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsGetInput,
     outputSchema: StandbyContainerGroupPoolsGetOutput,
   }));
@@ -454,7 +452,7 @@ export interface StandbyContainerGroupPoolsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const StandbyContainerGroupPoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -483,7 +481,7 @@ export interface StandbyContainerGroupPoolsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StandbyContainerGroupPoolsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -527,7 +525,7 @@ export const StandbyContainerGroupPoolsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StandbyContainerGroupPoolsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsListByResourceGroupInput,
     outputSchema: StandbyContainerGroupPoolsListByResourceGroupOutput,
   }));
@@ -536,7 +534,7 @@ export interface StandbyContainerGroupPoolsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const StandbyContainerGroupPoolsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -564,7 +562,7 @@ export interface StandbyContainerGroupPoolsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const StandbyContainerGroupPoolsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -607,7 +605,7 @@ export const StandbyContainerGroupPoolsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StandbyContainerGroupPoolsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsListBySubscriptionInput,
     outputSchema: StandbyContainerGroupPoolsListBySubscriptionOutput,
   }));
@@ -631,7 +629,7 @@ export interface StandbyContainerGroupPoolsUpdateInput {
   };
 }
 export const StandbyContainerGroupPoolsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
@@ -690,7 +688,7 @@ export interface StandbyContainerGroupPoolsUpdateOutput {
   };
 }
 export const StandbyContainerGroupPoolsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -720,7 +718,7 @@ export const StandbyContainerGroupPoolsUpdateOutput =
  * @param standbyContainerGroupPoolName - Name of the standby container group pool
  */
 export const StandbyContainerGroupPoolsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyContainerGroupPoolsUpdateInput,
     outputSchema: StandbyContainerGroupPoolsUpdateOutput,
   }));
@@ -732,7 +730,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewsGetInput {
   runtimeView: string;
 }
 export const StandbyVirtualMachinePoolRuntimeViewsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -760,7 +758,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewsGetOutput {
   };
 }
 export const StandbyVirtualMachinePoolRuntimeViewsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -791,7 +789,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsGetOutput =
  * @param runtimeView - The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
  */
 export const StandbyVirtualMachinePoolRuntimeViewsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolRuntimeViewsGetInput,
     outputSchema: StandbyVirtualMachinePoolRuntimeViewsGetOutput,
   }));
@@ -802,7 +800,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput {
   standbyVirtualMachinePoolName: string;
 }
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -832,7 +830,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput {
   nextLink?: string;
 }
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -877,7 +875,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput,
     outputSchema: StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput,
   }));
@@ -906,7 +904,7 @@ export interface StandbyVirtualMachinePoolsCreateOrUpdateInput {
   location: string;
 }
 export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -968,7 +966,7 @@ export interface StandbyVirtualMachinePoolsCreateOrUpdateOutput {
   };
 }
 export const StandbyVirtualMachinePoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -998,7 +996,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinePoolsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsCreateOrUpdateInput,
     outputSchema: StandbyVirtualMachinePoolsCreateOrUpdateOutput,
   }));
@@ -1009,7 +1007,7 @@ export interface StandbyVirtualMachinePoolsDeleteInput {
   standbyVirtualMachinePoolName: string;
 }
 export const StandbyVirtualMachinePoolsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -1024,7 +1022,7 @@ export const StandbyVirtualMachinePoolsDeleteInput =
 // Output Schema
 export type StandbyVirtualMachinePoolsDeleteOutput = void;
 export const StandbyVirtualMachinePoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyVirtualMachinePoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyVirtualMachinePoolsDeleteOutput>;
 
 // The operation
 /**
@@ -1036,7 +1034,7 @@ export const StandbyVirtualMachinePoolsDeleteOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinePoolsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsDeleteInput,
     outputSchema: StandbyVirtualMachinePoolsDeleteOutput,
   }));
@@ -1047,7 +1045,7 @@ export interface StandbyVirtualMachinePoolsGetInput {
   standbyVirtualMachinePoolName: string;
 }
 export const StandbyVirtualMachinePoolsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -1074,7 +1072,7 @@ export interface StandbyVirtualMachinePoolsGetOutput {
   };
 }
 export const StandbyVirtualMachinePoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1104,7 +1102,7 @@ export const StandbyVirtualMachinePoolsGetOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinePoolsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsGetInput,
     outputSchema: StandbyVirtualMachinePoolsGetOutput,
   }));
@@ -1114,7 +1112,7 @@ export interface StandbyVirtualMachinePoolsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const StandbyVirtualMachinePoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1143,7 +1141,7 @@ export interface StandbyVirtualMachinePoolsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StandbyVirtualMachinePoolsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1187,7 +1185,7 @@ export const StandbyVirtualMachinePoolsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StandbyVirtualMachinePoolsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsListByResourceGroupInput,
     outputSchema: StandbyVirtualMachinePoolsListByResourceGroupOutput,
   }));
@@ -1196,7 +1194,7 @@ export interface StandbyVirtualMachinePoolsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const StandbyVirtualMachinePoolsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1224,7 +1222,7 @@ export interface StandbyVirtualMachinePoolsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const StandbyVirtualMachinePoolsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1267,7 +1265,7 @@ export const StandbyVirtualMachinePoolsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StandbyVirtualMachinePoolsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsListBySubscriptionInput,
     outputSchema: StandbyVirtualMachinePoolsListBySubscriptionOutput,
   }));
@@ -1294,7 +1292,7 @@ export interface StandbyVirtualMachinePoolsUpdateInput {
   };
 }
 export const StandbyVirtualMachinePoolsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -1349,7 +1347,7 @@ export interface StandbyVirtualMachinePoolsUpdateOutput {
   };
 }
 export const StandbyVirtualMachinePoolsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1379,7 +1377,7 @@ export const StandbyVirtualMachinePoolsUpdateOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinePoolsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StandbyVirtualMachinePoolsUpdateInput,
     outputSchema: StandbyVirtualMachinePoolsUpdateOutput,
   }));
@@ -1391,7 +1389,7 @@ export interface StandbyVirtualMachinesGetInput {
   standbyVirtualMachineName: string;
 }
 export const StandbyVirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -1419,7 +1417,7 @@ export interface StandbyVirtualMachinesGetOutput {
   };
 }
 export const StandbyVirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1449,12 +1447,10 @@ export const StandbyVirtualMachinesGetOutput =
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  * @param standbyVirtualMachineName - Name of the standby virtual machine
  */
-export const StandbyVirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StandbyVirtualMachinesGetInput,
-    outputSchema: StandbyVirtualMachinesGetOutput,
-  }),
-);
+export const StandbyVirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StandbyVirtualMachinesGetInput,
+  outputSchema: StandbyVirtualMachinesGetOutput,
+}));
 // Input Schema
 export interface StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput {
   subscriptionId: string;
@@ -1462,7 +1458,7 @@ export interface StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceIn
   standbyVirtualMachinePoolName: string;
 }
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
@@ -1492,7 +1488,7 @@ export interface StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOu
   nextLink?: string;
 }
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1537,7 +1533,7 @@ export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput
  * @param standbyVirtualMachinePoolName - Name of the standby virtual machine pool
  */
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput,
     outputSchema:

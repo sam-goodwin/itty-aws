@@ -50,7 +50,7 @@ interface Field {
   /** Field name in lowercase. */
   name: string;
 }
-const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Field = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     name: Schema.String,
@@ -74,7 +74,7 @@ interface ListLogExplorerDatasetsResponseResult {
   updatedAt: string;
 }
 const ListLogExplorerDatasetsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       dataset: Schema.String,
@@ -104,7 +104,7 @@ interface Schema2 {
   required?: string[] | null;
   type?: "object" | null;
 }
-const Schema2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schema2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     properties: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -133,7 +133,7 @@ interface ListLogExplorerDatasetAvailablesResponseResult {
   timestampField: string;
 }
 const ListLogExplorerDatasetAvailablesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataset: Schema.String,
       objectType: Schema.Union([
@@ -162,7 +162,7 @@ export interface GetControlCmbConfigRequest {
 }
 
 export const GetControlCmbConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -181,7 +181,7 @@ export interface GetControlCmbConfigResponse {
 }
 
 export const GetControlCmbConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowOutOfRegionAccess: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -208,7 +208,7 @@ export const getControlCmbConfig: API.OperationMethod<
   GetControlCmbConfigResponse,
   GetControlCmbConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlCmbConfigRequest,
   output: GetControlCmbConfigResponse,
   errors: [LogsControlNotAuthorized, CmbConfigNotFound, Forbidden],
@@ -224,7 +224,7 @@ export interface CreateControlCmbConfigRequest {
 }
 
 export const CreateControlCmbConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       allowOutOfRegionAccess: Schema.optional(Schema.Boolean),
@@ -249,7 +249,7 @@ export interface CreateControlCmbConfigResponse {
 }
 
 export const CreateControlCmbConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowOutOfRegionAccess: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -275,7 +275,7 @@ export const createControlCmbConfig: API.OperationMethod<
   CreateControlCmbConfigResponse,
   CreateControlCmbConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateControlCmbConfigRequest,
   output: CreateControlCmbConfigResponse,
   errors: [LogsControlNotAuthorized, Forbidden],
@@ -287,7 +287,7 @@ export interface DeleteControlCmbConfigRequest {
 }
 
 export const DeleteControlCmbConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -301,7 +301,7 @@ export const DeleteControlCmbConfigRequest =
 export type DeleteControlCmbConfigResponse = unknown;
 
 export const DeleteControlCmbConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteControlCmbConfigResponse>;
 
@@ -316,7 +316,7 @@ export const deleteControlCmbConfig: API.OperationMethod<
   DeleteControlCmbConfigResponse,
   DeleteControlCmbConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteControlCmbConfigRequest,
   output: DeleteControlCmbConfigResponse,
   errors: [LogsControlNotAuthorized, CmbConfigNotFound, Forbidden],
@@ -332,7 +332,7 @@ export interface GetControlRetentionRequest {
 }
 
 export const GetControlRetentionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -349,7 +349,7 @@ export interface GetControlRetentionResponse {
 }
 
 export const GetControlRetentionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       flag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -365,7 +365,7 @@ export const getControlRetention: API.OperationMethod<
   GetControlRetentionResponse,
   GetControlRetentionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlRetentionRequest,
   output: GetControlRetentionResponse,
   errors: [LogsControlNotAuthorized, Forbidden],
@@ -379,7 +379,7 @@ export interface CreateControlRetentionRequest {
 }
 
 export const CreateControlRetentionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       flag: Schema.optional(Schema.Boolean),
@@ -397,7 +397,7 @@ export interface CreateControlRetentionResponse {
 }
 
 export const CreateControlRetentionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       flag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -413,7 +413,7 @@ export const createControlRetention: API.OperationMethod<
   CreateControlRetentionResponse,
   CreateControlRetentionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateControlRetentionRequest,
   output: CreateControlRetentionResponse,
   errors: [LogsControlNotAuthorized, Forbidden],
@@ -442,7 +442,7 @@ export interface GetLogExplorerDatasetForZoneRequest extends GetLogExplorerDatas
 }
 
 export const GetLogExplorerDatasetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetLogExplorerDatasetBaseFields,
@@ -455,7 +455,7 @@ export const GetLogExplorerDatasetForAccountRequest =
   ) as unknown as Schema.Codec<GetLogExplorerDatasetForAccountRequest>;
 
 export const GetLogExplorerDatasetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetLogExplorerDatasetBaseFields,
@@ -487,7 +487,7 @@ export interface GetLogExplorerDatasetResponse {
 }
 
 export const GetLogExplorerDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       dataset: Schema.String,
@@ -523,7 +523,7 @@ export const getLogExplorerDatasetForAccount: API.OperationMethod<
   GetLogExplorerDatasetResponse,
   GetLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogExplorerDatasetForAccountRequest,
   output: GetLogExplorerDatasetResponse,
   errors: [],
@@ -534,7 +534,7 @@ export const getLogExplorerDatasetForZone: API.OperationMethod<
   GetLogExplorerDatasetResponse,
   GetLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogExplorerDatasetForZoneRequest,
   output: GetLogExplorerDatasetResponse,
   errors: [],
@@ -562,7 +562,7 @@ export interface ListLogExplorerDatasetsForZoneRequest extends ListLogExplorerDa
 }
 
 export const ListLogExplorerDatasetsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListLogExplorerDatasetsBaseFields,
@@ -575,7 +575,7 @@ export const ListLogExplorerDatasetsForAccountRequest =
   ) as unknown as Schema.Codec<ListLogExplorerDatasetsForAccountRequest>;
 
 export const ListLogExplorerDatasetsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListLogExplorerDatasetsBaseFields,
@@ -600,7 +600,7 @@ export interface ListLogExplorerDatasetsResponse {
 }
 
 export const ListLogExplorerDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListLogExplorerDatasetsResponseResult),
     }),
@@ -613,7 +613,7 @@ export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
   ListLogExplorerDatasetsResponse,
   ListLogExplorerDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogExplorerDatasetsForAccountRequest,
   output: ListLogExplorerDatasetsResponse,
   errors: [],
@@ -628,7 +628,7 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
   ListLogExplorerDatasetsResponse,
   ListLogExplorerDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogExplorerDatasetsForZoneRequest,
   output: ListLogExplorerDatasetsResponse,
   errors: [],
@@ -661,7 +661,7 @@ export interface CreateLogExplorerDatasetForZoneRequest extends CreateLogExplore
 }
 
 export const CreateLogExplorerDatasetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateLogExplorerDatasetBaseFields,
@@ -674,7 +674,7 @@ export const CreateLogExplorerDatasetForAccountRequest =
   ) as unknown as Schema.Codec<CreateLogExplorerDatasetForAccountRequest>;
 
 export const CreateLogExplorerDatasetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateLogExplorerDatasetBaseFields,
@@ -706,7 +706,7 @@ export interface CreateLogExplorerDatasetResponse {
 }
 
 export const CreateLogExplorerDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       dataset: Schema.String,
@@ -742,7 +742,7 @@ export const createLogExplorerDatasetForAccount: API.OperationMethod<
   CreateLogExplorerDatasetResponse,
   CreateLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLogExplorerDatasetForAccountRequest,
   output: CreateLogExplorerDatasetResponse,
   errors: [],
@@ -753,7 +753,7 @@ export const createLogExplorerDatasetForZone: API.OperationMethod<
   CreateLogExplorerDatasetResponse,
   CreateLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLogExplorerDatasetForZoneRequest,
   output: CreateLogExplorerDatasetResponse,
   errors: [],
@@ -784,7 +784,7 @@ export interface UpdateLogExplorerDatasetForZoneRequest extends UpdateLogExplore
 }
 
 export const UpdateLogExplorerDatasetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateLogExplorerDatasetBaseFields,
@@ -797,7 +797,7 @@ export const UpdateLogExplorerDatasetForAccountRequest =
   ) as unknown as Schema.Codec<UpdateLogExplorerDatasetForAccountRequest>;
 
 export const UpdateLogExplorerDatasetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateLogExplorerDatasetBaseFields,
@@ -829,7 +829,7 @@ export interface UpdateLogExplorerDatasetResponse {
 }
 
 export const UpdateLogExplorerDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       dataset: Schema.String,
@@ -865,7 +865,7 @@ export const updateLogExplorerDatasetForAccount: API.OperationMethod<
   UpdateLogExplorerDatasetResponse,
   UpdateLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLogExplorerDatasetForAccountRequest,
   output: UpdateLogExplorerDatasetResponse,
   errors: [],
@@ -876,7 +876,7 @@ export const updateLogExplorerDatasetForZone: API.OperationMethod<
   UpdateLogExplorerDatasetResponse,
   UpdateLogExplorerDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLogExplorerDatasetForZoneRequest,
   output: UpdateLogExplorerDatasetResponse,
   errors: [],
@@ -901,7 +901,7 @@ export interface ListLogExplorerDatasetAvailablesForZoneRequest extends ListLogE
 }
 
 export const ListLogExplorerDatasetAvailablesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListLogExplorerDatasetAvailablesBaseFields,
@@ -914,7 +914,7 @@ export const ListLogExplorerDatasetAvailablesForAccountRequest =
   ) as unknown as Schema.Codec<ListLogExplorerDatasetAvailablesForAccountRequest>;
 
 export const ListLogExplorerDatasetAvailablesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListLogExplorerDatasetAvailablesBaseFields,
@@ -940,7 +940,7 @@ export interface ListLogExplorerDatasetAvailablesResponse {
 }
 
 export const ListLogExplorerDatasetAvailablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListLogExplorerDatasetAvailablesResponseResult),
     }),
@@ -953,7 +953,7 @@ export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationM
   ListLogExplorerDatasetAvailablesResponse,
   ListLogExplorerDatasetAvailablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogExplorerDatasetAvailablesForAccountRequest,
   output: ListLogExplorerDatasetAvailablesResponse,
   errors: [],
@@ -968,7 +968,7 @@ export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMeth
   ListLogExplorerDatasetAvailablesResponse,
   ListLogExplorerDatasetAvailablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogExplorerDatasetAvailablesForZoneRequest,
   output: ListLogExplorerDatasetAvailablesResponse,
   errors: [],
@@ -997,7 +997,7 @@ export interface SqlLogExplorerQueryForZoneRequest extends SqlLogExplorerQueryBa
 }
 
 export const SqlLogExplorerQueryForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...SqlLogExplorerQueryBaseFields,
@@ -1010,7 +1010,7 @@ export const SqlLogExplorerQueryForAccountRequest =
   ) as unknown as Schema.Codec<SqlLogExplorerQueryForAccountRequest>;
 
 export const SqlLogExplorerQueryForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...SqlLogExplorerQueryBaseFields,
@@ -1027,7 +1027,7 @@ export interface SqlLogExplorerQueryResponse {
 }
 
 export const SqlLogExplorerQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     }),
@@ -1040,7 +1040,7 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
   SqlLogExplorerQueryResponse,
   SqlLogExplorerQueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SqlLogExplorerQueryForAccountRequest,
   output: SqlLogExplorerQueryResponse,
   errors: [],
@@ -1055,7 +1055,7 @@ export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
   SqlLogExplorerQueryResponse,
   SqlLogExplorerQueryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SqlLogExplorerQueryForZoneRequest,
   output: SqlLogExplorerQueryResponse,
   errors: [],
@@ -1079,7 +1079,7 @@ export interface GetRayidRequest {
   timestamps?: "unix" | "unixnano" | "rfc3339" | (string & {});
 }
 
-export const GetRayidRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRayidRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rayID: Schema.String.pipe(T.HttpPath("RayID")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1097,7 +1097,7 @@ export const GetRayidRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type GetRayidResponse = unknown;
 
-export const GetRayidResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetRayidResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<GetRayidResponse>;
 
@@ -1108,7 +1108,7 @@ export const getRayid: API.OperationMethod<
   GetRayidResponse,
   GetRayidError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRayidRequest,
   output: GetRayidResponse,
   errors: [],
@@ -1135,31 +1135,28 @@ export interface GetReceivedRequest {
   timestamps?: "unix" | "unixnano" | "rfc3339" | (string & {});
 }
 
-export const GetReceivedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      end: Schema.Union([Schema.String, Schema.Number]).pipe(
-        T.HttpQuery("end"),
-      ),
-      count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
-      fields: Schema.optional(Schema.String).pipe(T.HttpQuery("fields")),
-      sample: Schema.optional(Schema.Number).pipe(T.HttpQuery("sample")),
-      start: Schema.optional(Schema.Union([Schema.String, Schema.Number])).pipe(
-        T.HttpQuery("start"),
-      ),
-      timestamps: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["unix", "unixnano", "rfc3339"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("timestamps")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/logs/received" })),
+export const GetReceivedRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    end: Schema.Union([Schema.String, Schema.Number]).pipe(T.HttpQuery("end")),
+    count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
+    fields: Schema.optional(Schema.String).pipe(T.HttpQuery("fields")),
+    sample: Schema.optional(Schema.Number).pipe(T.HttpQuery("sample")),
+    start: Schema.optional(Schema.Union([Schema.String, Schema.Number])).pipe(
+      T.HttpQuery("start"),
+    ),
+    timestamps: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["unix", "unixnano", "rfc3339"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("timestamps")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/logs/received" })),
 ) as unknown as Schema.Codec<GetReceivedRequest>;
 
 export type GetReceivedResponse = unknown;
 
-export const GetReceivedResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetReceivedResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<GetReceivedResponse>;
 
@@ -1170,7 +1167,7 @@ export const getReceived: API.OperationMethod<
   GetReceivedResponse,
   GetReceivedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReceivedRequest,
   output: GetReceivedResponse,
   errors: [],
@@ -1186,7 +1183,7 @@ export interface GetReceivedFieldRequest {
 }
 
 export const GetReceivedFieldRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1199,7 +1196,7 @@ export interface GetReceivedFieldResponse {
 }
 
 export const GetReceivedFieldResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -1212,7 +1209,7 @@ export const getReceivedField: API.OperationMethod<
   GetReceivedFieldResponse,
   GetReceivedFieldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReceivedFieldRequest,
   output: GetReceivedFieldResponse,
   errors: [],

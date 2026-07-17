@@ -11,7 +11,7 @@ export interface StartGroupClusterOutageSimulationInput {
   pretty?: boolean;
 }
 export const StartGroupClusterOutageSimulationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const StartGroupClusterOutageSimulationInput =
 // Output Schema
 export type StartGroupClusterOutageSimulationOutput = void;
 export const StartGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StartGroupClusterOutageSimulationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StartGroupClusterOutageSimulationOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const StartGroupClusterOutageSimulationOutput =
  * @param clusterName - Human-readable label that identifies the cluster to undergo an outage simulation.
  */
 export const startGroupClusterOutageSimulation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StartGroupClusterOutageSimulationInput,
     outputSchema: StartGroupClusterOutageSimulationOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

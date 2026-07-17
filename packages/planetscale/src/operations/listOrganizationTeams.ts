@@ -16,7 +16,7 @@ export interface ListOrganizationTeamsInput {
   per_page?: number;
 }
 export const ListOrganizationTeamsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     q: Schema.optional(Schema.String),
     page: Schema.optional(Schema.Number),
@@ -33,11 +33,11 @@ export interface ListOrganizationTeamsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     display_name: string;
     creator: { id: string; display_name: string; avatar_url: string };
-    members: {
+    members: ReadonlyArray<{
       id: string;
       display_name: string;
       name: string;
@@ -57,29 +57,29 @@ export interface ListOrganizationTeamsOutput {
       managed?: boolean | null;
       directory_managed?: boolean | null;
       email_verified?: boolean | null;
-    }[];
-    databases: {
+    }>;
+    databases: ReadonlyArray<{
       id: string;
       name: string;
       url: string;
       branches_url: string;
-    }[];
-    analyst_databases: {
+    }>;
+    analyst_databases: ReadonlyArray<{
       id: string;
       name: string;
       url: string;
       branches_url: string;
-    }[];
+    }>;
     name: string;
     slug: string;
     created_at: string;
     updated_at: string;
     description: string | null;
     managed: boolean;
-  }[];
+  }>;
 }
 export const ListOrganizationTeamsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -158,7 +158,7 @@ export const ListOrganizationTeamsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOrganizationTeams =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOrganizationTeamsInput,
     outputSchema: ListOrganizationTeamsOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

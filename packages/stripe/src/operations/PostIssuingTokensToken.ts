@@ -9,7 +9,7 @@ export interface PostIssuingTokensTokenInput {
   status: "active" | "deleted" | "suspended";
 }
 export const PostIssuingTokensTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     status: Schema.Literals(["active", "deleted", "suspended"]),
@@ -100,7 +100,7 @@ export interface PostIssuingTokensTokenOutput {
   wallet_provider?: "apple_pay" | "google_pay" | "samsung_pay";
 }
 export const PostIssuingTokensTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.Unknown,
     created: Schema.Number,
     device_fingerprint: Schema.NullOr(Schema.String),
@@ -209,9 +209,7 @@ export const PostIssuingTokensTokenOutput =
  *
  * <p>Attempts to update the specified Issuing <code>Token</code> object to the status specified.</p>
  */
-export const PostIssuingTokensToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostIssuingTokensTokenInput,
-    outputSchema: PostIssuingTokensTokenOutput,
-  }),
-);
+export const PostIssuingTokensToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingTokensTokenInput,
+  outputSchema: PostIssuingTokensTokenOutput,
+}));

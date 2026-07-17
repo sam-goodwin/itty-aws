@@ -8,7 +8,7 @@ export interface GetTaxAssociationsFindInput {
   payment_intent: string;
 }
 export const GetTaxAssociationsFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
     payment_intent: Schema.String,
   }).pipe(
@@ -42,7 +42,7 @@ export interface GetTaxAssociationsFindOutput {
     | null;
 }
 export const GetTaxAssociationsFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calculation: Schema.String,
     id: Schema.String,
     object: Schema.Literals(["tax.association"]),
@@ -82,9 +82,7 @@ export const GetTaxAssociationsFindOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param payment_intent - Valid [PaymentIntent](https://docs.stripe.com/api/payment_intents/object) id
  */
-export const GetTaxAssociationsFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTaxAssociationsFindInput,
-    outputSchema: GetTaxAssociationsFindOutput,
-  }),
-);
+export const GetTaxAssociationsFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTaxAssociationsFindInput,
+  outputSchema: GetTaxAssociationsFindOutput,
+}));

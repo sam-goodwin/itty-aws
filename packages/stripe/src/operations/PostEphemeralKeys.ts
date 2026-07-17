@@ -12,15 +12,13 @@ export interface PostEphemeralKeysInput {
   nonce?: string;
   verification_session?: string;
 }
-export const PostEphemeralKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customer: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    issuing_card: Schema.optional(Schema.String),
-    nonce: Schema.optional(Schema.String),
-    verification_session: Schema.optional(Schema.String),
-  },
-).pipe(
+export const PostEphemeralKeysInput = /*@__PURE__*/ Schema.Struct({
+  customer: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  issuing_card: Schema.optional(Schema.String),
+  nonce: Schema.optional(Schema.String),
+  verification_session: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/ephemeral_keys",
@@ -38,7 +36,7 @@ export interface PostEphemeralKeysOutput {
   secret?: Redacted.Redacted<string>;
 }
 export const PostEphemeralKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expires: Schema.Number,
     id: Schema.String,
@@ -53,7 +51,7 @@ export const PostEphemeralKeysOutput =
  *
  * <p>Creates a short-lived API key for a given resource.</p>
  */
-export const PostEphemeralKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostEphemeralKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostEphemeralKeysInput,
   outputSchema: PostEphemeralKeysOutput,
 }));

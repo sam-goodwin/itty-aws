@@ -31,7 +31,7 @@ export interface TracingSpansAttributeBreakdownCreateInput {
   };
 }
 export const TracingSpansAttributeBreakdownCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       breakdownKey: Schema.String,
@@ -89,7 +89,7 @@ export const TracingSpansAttributeBreakdownCreateInput =
 // Output Schema
 export type TracingSpansAttributeBreakdownCreateOutput = void;
 export const TracingSpansAttributeBreakdownCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansAttributeBreakdownCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansAttributeBreakdownCreateOutput>;
 
 // The operation
 /**
@@ -97,7 +97,7 @@ export const TracingSpansAttributeBreakdownCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tracingSpansAttributeBreakdownCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TracingSpansAttributeBreakdownCreateInput,
     outputSchema: TracingSpansAttributeBreakdownCreateOutput,
   }));

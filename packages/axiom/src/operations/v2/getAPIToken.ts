@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetAPITokenInput {
   id: string;
 }
-export const GetAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPITokenInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/tokens/{id}" }),
@@ -58,7 +58,7 @@ export interface GetAPITokenOutput {
     }
   >;
 }
-export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
     Schema.Struct({
@@ -143,7 +143,7 @@ export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Get API token by ID
  */
-export const getAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAPITokenInput,
   outputSchema: GetAPITokenOutput,
   errors: [NotFound] as const,

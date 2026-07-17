@@ -13,7 +13,7 @@ export interface GetIssuingDisputesDisputeInput {
   expand?: string;
 }
 export const GetIssuingDisputesDisputeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dispute: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -767,7 +767,7 @@ export interface GetIssuingDisputesDisputeOutput {
   treasury?: { debit_reversal: string | null; received_debit: string } | null;
 }
 export const GetIssuingDisputesDisputeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.optional(
       Schema.NullOr(
@@ -1669,9 +1669,7 @@ export const GetIssuingDisputesDisputeOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingDisputesDispute = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingDisputesDisputeInput,
-    outputSchema: GetIssuingDisputesDisputeOutput,
-  }),
-);
+export const GetIssuingDisputesDispute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingDisputesDisputeInput,
+  outputSchema: GetIssuingDisputesDisputeOutput,
+}));

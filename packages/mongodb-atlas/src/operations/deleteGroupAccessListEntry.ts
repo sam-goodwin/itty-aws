@@ -11,7 +11,7 @@ export interface DeleteGroupAccessListEntryInput {
   pretty?: boolean;
 }
 export const DeleteGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     entryValue: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupAccessListEntryInput =
 // Output Schema
 export type DeleteGroupAccessListEntryOutput = void;
 export const DeleteGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAccessListEntryOutput>;
 
 // The operation
 /**
@@ -45,10 +45,8 @@ export const DeleteGroupAccessListEntryOutput =
 - how MongoDB Cloud or the driver using the address behaves, and
 - which protocol (like TCP or UDP) the connection uses.
  */
-export const deleteGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupAccessListEntryInput,
-    outputSchema: DeleteGroupAccessListEntryOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupAccessListEntry = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupAccessListEntryInput,
+  outputSchema: DeleteGroupAccessListEntryOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

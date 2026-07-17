@@ -10,7 +10,7 @@ export interface EndpointsOpenapiSpecRetrieveInput {
   version?: number;
 }
 export const EndpointsOpenapiSpecRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     version: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export const EndpointsOpenapiSpecRetrieveInput =
 // Output Schema
 export type EndpointsOpenapiSpecRetrieveOutput = void;
 export const EndpointsOpenapiSpecRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsOpenapiSpecRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsOpenapiSpecRetrieveOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const EndpointsOpenapiSpecRetrieveOutput =
  * @param version - Specific endpoint version to generate the spec for. Defaults to latest.
  */
 export const endpointsOpenapiSpecRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EndpointsOpenapiSpecRetrieveInput,
     outputSchema: EndpointsOpenapiSpecRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

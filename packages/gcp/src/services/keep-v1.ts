@@ -28,7 +28,7 @@ export interface Group {
 }
 
 export const Group: Schema.Codec<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "Group" });
 
@@ -38,7 +38,7 @@ export interface TextContent {
 }
 
 export const TextContent: Schema.Codec<TextContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextContent" });
 
@@ -48,14 +48,14 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "User" });
 
 export interface Family {}
 
 export const Family: Schema.Codec<Family> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Family",
   });
 
@@ -77,7 +77,7 @@ export interface Permission {
 }
 
 export const Permission: Schema.Codec<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(User),
     group: Schema.optional(Group),
     deleted: Schema.optional(Schema.Boolean),
@@ -95,7 +95,7 @@ export interface CreatePermissionRequest {
 }
 
 export const CreatePermissionRequest: Schema.Codec<CreatePermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     permission: Schema.optional(Permission),
   }).annotate({ identifier: "CreatePermissionRequest" });
@@ -110,7 +110,7 @@ export interface ListItem {
 }
 
 export const ListItem: Schema.Codec<ListItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       childListItems: Schema.optional(Schema.Array(ListItem)),
       text: Schema.optional(TextContent),
@@ -124,7 +124,7 @@ export interface ListContent {
 }
 
 export const ListContent: Schema.Codec<ListContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listItems: Schema.optional(Schema.Array(ListItem)),
   }).annotate({ identifier: "ListContent" });
 
@@ -136,7 +136,7 @@ export interface Attachment {
 }
 
 export const Attachment: Schema.Codec<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Attachment" });
@@ -149,7 +149,7 @@ export interface Section {
 }
 
 export const Section: Schema.Codec<Section> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(TextContent),
     list: Schema.optional(ListContent),
   }).annotate({ identifier: "Section" });
@@ -176,7 +176,7 @@ export interface Note {
 }
 
 export const Note: Schema.Codec<Note> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Permission)),
     trashed: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
@@ -194,7 +194,7 @@ export interface BatchCreatePermissionsRequest {
 }
 
 export const BatchCreatePermissionsRequest: Schema.Codec<BatchCreatePermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(CreatePermissionRequest)),
   }).annotate({ identifier: "BatchCreatePermissionsRequest" });
 
@@ -204,7 +204,7 @@ export interface BatchDeletePermissionsRequest {
 }
 
 export const BatchDeletePermissionsRequest: Schema.Codec<BatchDeletePermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeletePermissionsRequest" });
 
@@ -216,7 +216,7 @@ export interface ListNotesResponse {
 }
 
 export const ListNotesResponse: Schema.Codec<ListNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.Array(Note)),
   }).annotate({ identifier: "ListNotesResponse" });
@@ -224,7 +224,7 @@ export const ListNotesResponse: Schema.Codec<ListNotesResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -234,7 +234,7 @@ export interface BatchCreatePermissionsResponse {
 }
 
 export const BatchCreatePermissionsResponse: Schema.Codec<BatchCreatePermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Permission)),
   }).annotate({ identifier: "BatchCreatePermissionsResponse" });
 
@@ -297,7 +297,7 @@ export interface CreateNotesRequest {
   body?: Note;
 }
 
-export const CreateNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNotesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Note).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/notes", hasBody: true }),
@@ -305,7 +305,7 @@ export const CreateNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateNotesRequest>;
 
 export type CreateNotesResponse = Note;
-export const CreateNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
+export const CreateNotesResponse = /*@__PURE__*/ Note;
 
 export type CreateNotesError =
   | DefaultErrors
@@ -320,7 +320,7 @@ export const createNotes: API.OperationMethod<
   CreateNotesResponse,
   CreateNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNotesRequest,
   output: CreateNotesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -335,7 +335,7 @@ export interface ListNotesRequest {
   filter?: string;
 }
 
-export const ListNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListNotesRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -345,8 +345,7 @@ export const ListNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListNotesRequest>;
 
 export type ListNotesResponse_Op = ListNotesResponse;
-export const ListNotesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListNotesResponse;
+export const ListNotesResponse_Op = /*@__PURE__*/ ListNotesResponse;
 
 export type ListNotesError = DefaultErrors | NotFound | Forbidden;
 
@@ -356,7 +355,7 @@ export const listNotes: API.PaginatedOperationMethod<
   ListNotesResponse_Op,
   ListNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotesRequest,
   output: ListNotesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -371,7 +370,7 @@ export interface GetNotesRequest {
   name: string;
 }
 
-export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetNotesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -379,7 +378,7 @@ export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetNotesRequest>;
 
 export type GetNotesResponse = Note;
-export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
+export const GetNotesResponse = /*@__PURE__*/ Note;
 
 export type GetNotesError = DefaultErrors | NotFound | Forbidden;
 
@@ -389,7 +388,7 @@ export const getNotes: API.OperationMethod<
   GetNotesResponse,
   GetNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotesRequest,
   output: GetNotesResponse,
   errors: [NotFound, Forbidden],
@@ -400,7 +399,7 @@ export interface DeleteNotesRequest {
   name: string;
 }
 
-export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteNotesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -408,7 +407,7 @@ export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteNotesRequest>;
 
 export type DeleteNotesResponse = Empty;
-export const DeleteNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteNotesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteNotesError =
   | DefaultErrors
@@ -423,7 +422,7 @@ export const deleteNotes: API.OperationMethod<
   DeleteNotesResponse,
   DeleteNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotesRequest,
   output: DeleteNotesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -437,7 +436,7 @@ export interface BatchCreateNotesPermissionsRequest {
 }
 
 export const BatchCreateNotesPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchCreatePermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -452,7 +451,7 @@ export const BatchCreateNotesPermissionsRequest =
 export type BatchCreateNotesPermissionsResponse =
   BatchCreatePermissionsResponse;
 export const BatchCreateNotesPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchCreatePermissionsResponse;
+  /*@__PURE__*/ BatchCreatePermissionsResponse;
 
 export type BatchCreateNotesPermissionsError =
   | DefaultErrors
@@ -467,7 +466,7 @@ export const batchCreateNotesPermissions: API.OperationMethod<
   BatchCreateNotesPermissionsResponse,
   BatchCreateNotesPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateNotesPermissionsRequest,
   output: BatchCreateNotesPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -481,7 +480,7 @@ export interface BatchDeleteNotesPermissionsRequest {
 }
 
 export const BatchDeleteNotesPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchDeletePermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -494,8 +493,7 @@ export const BatchDeleteNotesPermissionsRequest =
   ) as unknown as Schema.Codec<BatchDeleteNotesPermissionsRequest>;
 
 export type BatchDeleteNotesPermissionsResponse = Empty;
-export const BatchDeleteNotesPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const BatchDeleteNotesPermissionsResponse = /*@__PURE__*/ Empty;
 
 export type BatchDeleteNotesPermissionsError =
   | DefaultErrors
@@ -510,7 +508,7 @@ export const batchDeleteNotesPermissions: API.OperationMethod<
   BatchDeleteNotesPermissionsResponse,
   BatchDeleteNotesPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteNotesPermissionsRequest,
   output: BatchDeleteNotesPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -523,7 +521,7 @@ export interface DownloadMediaRequest {
   mimeType?: string;
 }
 
-export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMediaRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   mimeType: Schema.optional(Schema.String).pipe(T.HttpQuery("mimeType")),
 }).pipe(
@@ -532,7 +530,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Attachment;
-export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;
+export const DownloadMediaResponse = /*@__PURE__*/ Attachment;
 
 export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
@@ -542,7 +540,7 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaResponse,
   DownloadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
   errors: [NotFound, Forbidden],

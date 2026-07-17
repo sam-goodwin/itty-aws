@@ -30,7 +30,7 @@ export interface RefinementEntry {
 }
 
 export const RefinementEntry: Schema.Codec<RefinementEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceText: Schema.optional(Schema.String),
     originalTranslation: Schema.optional(Schema.String),
   }).annotate({ identifier: "RefinementEntry" });
@@ -47,7 +47,7 @@ export interface SupportedLanguage {
 }
 
 export const SupportedLanguage: Schema.Codec<SupportedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     supportTarget: Schema.optional(Schema.Boolean),
     supportSource: Schema.optional(Schema.Boolean),
@@ -60,7 +60,7 @@ export interface LanguageCodesSet {
 }
 
 export const LanguageCodesSet: Schema.Codec<LanguageCodesSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "LanguageCodesSet" });
 
@@ -74,7 +74,7 @@ export interface TranslateTextGlossaryConfig {
 }
 
 export const TranslateTextGlossaryConfig: Schema.Codec<TranslateTextGlossaryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreCase: Schema.optional(Schema.Boolean),
     contextualTranslationEnabled: Schema.optional(Schema.Boolean),
     glossary: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface Translation {
 }
 
 export const Translation: Schema.Codec<Translation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     translatedText: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     detectedLanguageCode: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface TranslateTextResponse {
 }
 
 export const TranslateTextResponse: Schema.Codec<TranslateTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     translations: Schema.optional(Schema.Array(Translation)),
     glossaryTranslations: Schema.optional(Schema.Array(Translation)),
   }).annotate({ identifier: "TranslateTextResponse" });
@@ -122,7 +122,7 @@ export interface RefineTextRequest {
 }
 
 export const RefineTextRequest: Schema.Codec<RefineTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceLanguageCode: Schema.optional(Schema.String),
     refinementEntries: Schema.optional(Schema.Array(RefinementEntry)),
     targetLanguageCode: Schema.optional(Schema.String),
@@ -136,7 +136,7 @@ export interface LanguageCodePair {
 }
 
 export const LanguageCodePair: Schema.Codec<LanguageCodePair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceLanguageCode: Schema.optional(Schema.String),
     targetLanguageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguageCodePair" });
@@ -147,7 +147,7 @@ export interface GcsSource {
 }
 
 export const GcsSource: Schema.Codec<GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsSource" });
 
@@ -157,7 +157,7 @@ export interface GlossaryInputConfig {
 }
 
 export const GlossaryInputConfig: Schema.Codec<GlossaryInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "GlossaryInputConfig" });
 
@@ -179,7 +179,7 @@ export interface Glossary {
 }
 
 export const Glossary: Schema.Codec<Glossary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entryCount: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     languagePair: Schema.optional(LanguageCodePair),
@@ -197,7 +197,7 @@ export interface ListGlossariesResponse {
 }
 
 export const ListGlossariesResponse: Schema.Codec<ListGlossariesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     glossaries: Schema.optional(Schema.Array(Glossary)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListGlossariesResponse" });
@@ -208,7 +208,7 @@ export interface GcsDestination {
 }
 
 export const GcsDestination: Schema.Codec<GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsDestination" });
 
@@ -220,7 +220,7 @@ export interface DocumentOutputConfig {
 }
 
 export const DocumentOutputConfig: Schema.Codec<DocumentOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
     mimeType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DocumentOutputConfig" });
@@ -231,7 +231,7 @@ export interface OutputConfig {
 }
 
 export const OutputConfig: Schema.Codec<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
   }).annotate({ identifier: "OutputConfig" });
 
@@ -241,7 +241,7 @@ export interface WaitOperationRequest {
 }
 
 export const WaitOperationRequest: Schema.Codec<WaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String),
   }).annotate({ identifier: "WaitOperationRequest" });
 
@@ -255,7 +255,7 @@ export interface DocumentTranslation {
 }
 
 export const DocumentTranslation: Schema.Codec<DocumentTranslation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     detectedLanguageCode: Schema.optional(Schema.String),
     byteStreamOutputs: Schema.optional(Schema.Array(Schema.String)),
@@ -273,7 +273,7 @@ export interface TranslateDocumentResponse {
 }
 
 export const TranslateDocumentResponse: Schema.Codec<TranslateDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentTranslation: Schema.optional(DocumentTranslation),
     glossaryDocumentTranslation: Schema.optional(DocumentTranslation),
     model: Schema.optional(Schema.String),
@@ -290,7 +290,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -312,7 +312,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -330,7 +330,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -350,7 +350,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -366,7 +366,7 @@ export interface DetectedLanguage {
 }
 
 export const DetectedLanguage: Schema.Codec<DetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DetectedLanguage" });
@@ -381,7 +381,7 @@ export interface DocumentInputConfig {
 }
 
 export const DocumentInputConfig: Schema.Codec<DocumentInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -393,7 +393,7 @@ export interface SupportedLanguages {
 }
 
 export const SupportedLanguages: Schema.Codec<SupportedLanguages> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(SupportedLanguage)),
   }).annotate({ identifier: "SupportedLanguages" });
 
@@ -403,14 +403,14 @@ export interface BatchDocumentInputConfig {
 }
 
 export const BatchDocumentInputConfig: Schema.Codec<BatchDocumentInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "BatchDocumentInputConfig" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -420,7 +420,7 @@ export interface BatchDocumentOutputConfig {
 }
 
 export const BatchDocumentOutputConfig: Schema.Codec<BatchDocumentOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
   }).annotate({ identifier: "BatchDocumentOutputConfig" });
 
@@ -450,7 +450,7 @@ export interface BatchTranslateDocumentRequest {
 }
 
 export const BatchTranslateDocumentRequest: Schema.Codec<BatchTranslateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputConfigs: Schema.optional(Schema.Array(BatchDocumentInputConfig)),
     enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
     pdfNativeOnly: Schema.optional(Schema.Boolean),
@@ -494,7 +494,7 @@ export interface TranslateDocumentRequest {
 }
 
 export const TranslateDocumentRequest: Schema.Codec<TranslateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isTranslateNativePdfOnly: Schema.optional(Schema.Boolean),
     targetLanguageCode: Schema.optional(Schema.String),
     documentInputConfig: Schema.optional(DocumentInputConfig),
@@ -514,7 +514,7 @@ export interface DetectLanguageResponse {
 }
 
 export const DetectLanguageResponse: Schema.Codec<DetectLanguageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(DetectedLanguage)),
   }).annotate({ identifier: "DetectLanguageResponse" });
 
@@ -526,7 +526,7 @@ export interface InputConfig {
 }
 
 export const InputConfig: Schema.Codec<InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "InputConfig" });
@@ -549,7 +549,7 @@ export interface BatchTranslateTextRequest {
 }
 
 export const BatchTranslateTextRequest: Schema.Codec<BatchTranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     sourceLanguageCode: Schema.optional(Schema.String),
     targetLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -567,7 +567,7 @@ export interface RefineTextResponse {
 }
 
 export const RefineTextResponse: Schema.Codec<RefineTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refinedTranslations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RefineTextResponse" });
 
@@ -579,7 +579,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -602,7 +602,7 @@ export interface TranslateTextRequest {
 }
 
 export const TranslateTextRequest: Schema.Codec<TranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     targetLanguageCode: Schema.optional(Schema.String),
@@ -615,7 +615,7 @@ export const TranslateTextRequest: Schema.Codec<TranslateTextRequest> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -631,7 +631,7 @@ export interface DetectLanguageRequest {
 }
 
 export const DetectLanguageRequest: Schema.Codec<DetectLanguageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -702,7 +702,7 @@ export interface GetSupportedLanguagesProjectsRequest {
 }
 
 export const GetSupportedLanguagesProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     displayLanguageCode: Schema.optional(Schema.String).pipe(
@@ -715,7 +715,7 @@ export const GetSupportedLanguagesProjectsRequest =
 
 export type GetSupportedLanguagesProjectsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
+  /*@__PURE__*/ SupportedLanguages;
 
 export type GetSupportedLanguagesProjectsError =
   | DefaultErrors
@@ -728,7 +728,7 @@ export const getSupportedLanguagesProjects: API.OperationMethod<
   GetSupportedLanguagesProjectsResponse,
   GetSupportedLanguagesProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsRequest,
   output: GetSupportedLanguagesProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -742,7 +742,7 @@ export interface TranslateTextProjectsRequest {
 }
 
 export const TranslateTextProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TranslateTextRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -756,7 +756,7 @@ export const TranslateTextProjectsRequest =
 
 export type TranslateTextProjectsResponse = TranslateTextResponse;
 export const TranslateTextProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
+  /*@__PURE__*/ TranslateTextResponse;
 
 export type TranslateTextProjectsError =
   | DefaultErrors
@@ -771,7 +771,7 @@ export const translateTextProjects: API.OperationMethod<
   TranslateTextProjectsResponse,
   TranslateTextProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsRequest,
   output: TranslateTextProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -785,7 +785,7 @@ export interface DetectLanguageProjectsRequest {
 }
 
 export const DetectLanguageProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DetectLanguageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -799,7 +799,7 @@ export const DetectLanguageProjectsRequest =
 
 export type DetectLanguageProjectsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
+  /*@__PURE__*/ DetectLanguageResponse;
 
 export type DetectLanguageProjectsError =
   | DefaultErrors
@@ -814,7 +814,7 @@ export const detectLanguageProjects: API.OperationMethod<
   DetectLanguageProjectsResponse,
   DetectLanguageProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsRequest,
   output: DetectLanguageProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -828,7 +828,7 @@ export interface TranslateTextProjectsLocationsRequest {
 }
 
 export const TranslateTextProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TranslateTextRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -842,7 +842,7 @@ export const TranslateTextProjectsLocationsRequest =
 
 export type TranslateTextProjectsLocationsResponse = TranslateTextResponse;
 export const TranslateTextProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
+  /*@__PURE__*/ TranslateTextResponse;
 
 export type TranslateTextProjectsLocationsError =
   | DefaultErrors
@@ -857,7 +857,7 @@ export const translateTextProjectsLocations: API.OperationMethod<
   TranslateTextProjectsLocationsResponse,
   TranslateTextProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsLocationsRequest,
   output: TranslateTextProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -871,7 +871,7 @@ export interface BatchTranslateDocumentProjectsLocationsRequest {
 }
 
 export const BatchTranslateDocumentProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchTranslateDocumentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -885,7 +885,7 @@ export const BatchTranslateDocumentProjectsLocationsRequest =
 
 export type BatchTranslateDocumentProjectsLocationsResponse = Operation;
 export const BatchTranslateDocumentProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type BatchTranslateDocumentProjectsLocationsError =
   | DefaultErrors
@@ -900,7 +900,7 @@ export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
   BatchTranslateDocumentProjectsLocationsResponse,
   BatchTranslateDocumentProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchTranslateDocumentProjectsLocationsRequest,
   output: BatchTranslateDocumentProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -914,7 +914,7 @@ export interface TranslateDocumentProjectsLocationsRequest {
 }
 
 export const TranslateDocumentProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TranslateDocumentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -929,7 +929,7 @@ export const TranslateDocumentProjectsLocationsRequest =
 export type TranslateDocumentProjectsLocationsResponse =
   TranslateDocumentResponse;
 export const TranslateDocumentProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslateDocumentResponse;
+  /*@__PURE__*/ TranslateDocumentResponse;
 
 export type TranslateDocumentProjectsLocationsError =
   | DefaultErrors
@@ -944,7 +944,7 @@ export const translateDocumentProjectsLocations: API.OperationMethod<
   TranslateDocumentProjectsLocationsResponse,
   TranslateDocumentProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TranslateDocumentProjectsLocationsRequest,
   output: TranslateDocumentProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -958,7 +958,7 @@ export interface DetectLanguageProjectsLocationsRequest {
 }
 
 export const DetectLanguageProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DetectLanguageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -972,7 +972,7 @@ export const DetectLanguageProjectsLocationsRequest =
 
 export type DetectLanguageProjectsLocationsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
+  /*@__PURE__*/ DetectLanguageResponse;
 
 export type DetectLanguageProjectsLocationsError =
   | DefaultErrors
@@ -987,7 +987,7 @@ export const detectLanguageProjectsLocations: API.OperationMethod<
   DetectLanguageProjectsLocationsResponse,
   DetectLanguageProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsLocationsRequest,
   output: DetectLanguageProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1007,7 +1007,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -1022,7 +1022,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1032,7 +1032,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1050,7 +1050,7 @@ export interface BatchTranslateTextProjectsLocationsRequest {
 }
 
 export const BatchTranslateTextProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchTranslateTextRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1064,7 +1064,7 @@ export const BatchTranslateTextProjectsLocationsRequest =
 
 export type BatchTranslateTextProjectsLocationsResponse = Operation;
 export const BatchTranslateTextProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type BatchTranslateTextProjectsLocationsError =
   | DefaultErrors
@@ -1079,7 +1079,7 @@ export const batchTranslateTextProjectsLocations: API.OperationMethod<
   BatchTranslateTextProjectsLocationsResponse,
   BatchTranslateTextProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchTranslateTextProjectsLocationsRequest,
   output: BatchTranslateTextProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1091,7 +1091,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -1099,8 +1099,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1110,7 +1109,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1126,7 +1125,7 @@ export interface GetSupportedLanguagesProjectsLocationsRequest {
 }
 
 export const GetSupportedLanguagesProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     displayLanguageCode: Schema.optional(Schema.String).pipe(
@@ -1139,7 +1138,7 @@ export const GetSupportedLanguagesProjectsLocationsRequest =
 
 export type GetSupportedLanguagesProjectsLocationsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
+  /*@__PURE__*/ SupportedLanguages;
 
 export type GetSupportedLanguagesProjectsLocationsError =
   | DefaultErrors
@@ -1152,7 +1151,7 @@ export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
   GetSupportedLanguagesProjectsLocationsResponse,
   GetSupportedLanguagesProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsLocationsRequest,
   output: GetSupportedLanguagesProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1166,7 +1165,7 @@ export interface RefineTextProjectsLocationsRequest {
 }
 
 export const RefineTextProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RefineTextRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1180,7 +1179,7 @@ export const RefineTextProjectsLocationsRequest =
 
 export type RefineTextProjectsLocationsResponse = RefineTextResponse;
 export const RefineTextProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RefineTextResponse;
+  /*@__PURE__*/ RefineTextResponse;
 
 export type RefineTextProjectsLocationsError =
   | DefaultErrors
@@ -1195,7 +1194,7 @@ export const refineTextProjectsLocations: API.OperationMethod<
   RefineTextProjectsLocationsResponse,
   RefineTextProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefineTextProjectsLocationsRequest,
   output: RefineTextProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1207,7 +1206,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -1215,8 +1214,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1231,7 +1229,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1251,7 +1249,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -1266,7 +1264,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1279,7 +1277,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1297,7 +1295,7 @@ export interface WaitProjectsLocationsOperationsRequest {
 }
 
 export const WaitProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WaitOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1306,8 +1304,7 @@ export const WaitProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<WaitProjectsLocationsOperationsRequest>;
 
 export type WaitProjectsLocationsOperationsResponse = Operation;
-export const WaitProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const WaitProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type WaitProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1322,7 +1319,7 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsResponse,
   WaitProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WaitProjectsLocationsOperationsRequest,
   output: WaitProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1334,7 +1331,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -1342,8 +1339,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1356,7 +1352,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1370,7 +1366,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1379,8 +1375,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1395,7 +1390,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1413,7 +1408,7 @@ export interface ListProjectsLocationsGlossariesRequest {
 }
 
 export const ListProjectsLocationsGlossariesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1425,7 +1420,7 @@ export const ListProjectsLocationsGlossariesRequest =
 
 export type ListProjectsLocationsGlossariesResponse = ListGlossariesResponse;
 export const ListProjectsLocationsGlossariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGlossariesResponse;
+  /*@__PURE__*/ ListGlossariesResponse;
 
 export type ListProjectsLocationsGlossariesError =
   | DefaultErrors
@@ -1438,7 +1433,7 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
   ListProjectsLocationsGlossariesResponse,
   ListProjectsLocationsGlossariesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlossariesRequest,
   output: ListProjectsLocationsGlossariesResponse,
   errors: [NotFound, Forbidden],
@@ -1456,7 +1451,7 @@ export interface CreateProjectsLocationsGlossariesRequest {
 }
 
 export const CreateProjectsLocationsGlossariesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Glossary).pipe(T.HttpBody()),
   }).pipe(
@@ -1470,7 +1465,7 @@ export const CreateProjectsLocationsGlossariesRequest =
 
 export type CreateProjectsLocationsGlossariesResponse = Operation;
 export const CreateProjectsLocationsGlossariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsGlossariesError =
   | DefaultErrors
@@ -1485,7 +1480,7 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
   CreateProjectsLocationsGlossariesResponse,
   CreateProjectsLocationsGlossariesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlossariesRequest,
   output: CreateProjectsLocationsGlossariesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1497,7 +1492,7 @@ export interface DeleteProjectsLocationsGlossariesRequest {
 }
 
 export const DeleteProjectsLocationsGlossariesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -1506,7 +1501,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
 
 export type DeleteProjectsLocationsGlossariesResponse = Operation;
 export const DeleteProjectsLocationsGlossariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsGlossariesError =
   | DefaultErrors
@@ -1521,7 +1516,7 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
   DeleteProjectsLocationsGlossariesResponse,
   DeleteProjectsLocationsGlossariesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlossariesRequest,
   output: DeleteProjectsLocationsGlossariesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1533,7 +1528,7 @@ export interface GetProjectsLocationsGlossariesRequest {
 }
 
 export const GetProjectsLocationsGlossariesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -1541,8 +1536,7 @@ export const GetProjectsLocationsGlossariesRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsGlossariesRequest>;
 
 export type GetProjectsLocationsGlossariesResponse = Glossary;
-export const GetProjectsLocationsGlossariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Glossary;
+export const GetProjectsLocationsGlossariesResponse = /*@__PURE__*/ Glossary;
 
 export type GetProjectsLocationsGlossariesError =
   | DefaultErrors
@@ -1555,7 +1549,7 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
   GetProjectsLocationsGlossariesResponse,
   GetProjectsLocationsGlossariesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlossariesRequest,
   output: GetProjectsLocationsGlossariesResponse,
   errors: [NotFound, Forbidden],

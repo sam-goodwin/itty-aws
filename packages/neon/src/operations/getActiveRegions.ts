@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetActiveRegionsInput {
   org_id?: string;
 }
-export const GetActiveRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetActiveRegionsInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/regions" }),
@@ -22,19 +22,17 @@ export interface GetActiveRegionsOutput {
     geo_long: string;
   }[];
 }
-export const GetActiveRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    regions: Schema.Array(
-      Schema.Struct({
-        region_id: Schema.String,
-        name: Schema.String,
-        default: Schema.Boolean,
-        geo_lat: Schema.String,
-        geo_long: Schema.String,
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<GetActiveRegionsOutput>;
+export const GetActiveRegionsOutput = /*@__PURE__*/ Schema.Struct({
+  regions: Schema.Array(
+    Schema.Struct({
+      region_id: Schema.String,
+      name: Schema.String,
+      default: Schema.Boolean,
+      geo_lat: Schema.String,
+      geo_long: Schema.String,
+    }),
+  ),
+}) as unknown as Schema.Codec<GetActiveRegionsOutput>;
 
 // The operation
 /**
@@ -48,7 +46,7 @@ export const GetActiveRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 Recommended for accurate region availability.
 
  */
-export const getActiveRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getActiveRegions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetActiveRegionsInput,
   outputSchema: GetActiveRegionsOutput,
 }));

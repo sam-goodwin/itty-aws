@@ -9,7 +9,7 @@ export interface ToggleGroupMaintenanceWindowAutoDeferInput {
   envelope?: boolean;
 }
 export const ToggleGroupMaintenanceWindowAutoDeferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const ToggleGroupMaintenanceWindowAutoDeferInput =
 // Output Schema
 export type ToggleGroupMaintenanceWindowAutoDeferOutput = void;
 export const ToggleGroupMaintenanceWindowAutoDeferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupMaintenanceWindowAutoDeferOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupMaintenanceWindowAutoDeferOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const ToggleGroupMaintenanceWindowAutoDeferOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
 export const toggleGroupMaintenanceWindowAutoDefer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ToggleGroupMaintenanceWindowAutoDeferInput,
     outputSchema: ToggleGroupMaintenanceWindowAutoDeferOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

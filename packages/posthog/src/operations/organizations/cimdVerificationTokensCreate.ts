@@ -33,7 +33,7 @@ export interface CimdVerificationTokensCreateInput {
   last_used_at: string | null;
 }
 export const CimdVerificationTokensCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     label: Schema.String,
@@ -107,7 +107,7 @@ export interface CimdVerificationTokensCreateOutput {
   value: string;
 }
 export const CimdVerificationTokensCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     label: Schema.String,
     mask_value: Schema.NullOr(Schema.String),
@@ -158,7 +158,7 @@ export const CimdVerificationTokensCreateOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const cimdVerificationTokensCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CimdVerificationTokensCreateInput,
     outputSchema: CimdVerificationTokensCreateOutput,
   }));

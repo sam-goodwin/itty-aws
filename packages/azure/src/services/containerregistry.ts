@@ -30,7 +30,7 @@ export interface CacheRulesCreateInput {
       | "Canceled";
   };
 }
-export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -75,27 +75,25 @@ export interface CacheRulesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CacheRulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CacheRulesCreateOutput>;
+export const CacheRulesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CacheRulesCreateOutput>;
 
 // The operation
 /**
@@ -107,7 +105,7 @@ export const CacheRulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesCreateInput,
   outputSchema: CacheRulesCreateOutput,
 }));
@@ -118,7 +116,7 @@ export interface CacheRulesDeleteInput {
   registryName: string;
   cacheRuleName: string;
 }
-export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -134,7 +132,7 @@ export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CacheRulesDeleteOutput = void;
 export const CacheRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CacheRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CacheRulesDeleteOutput>;
 
 // The operation
 /**
@@ -146,7 +144,7 @@ export const CacheRulesDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesDeleteInput,
   outputSchema: CacheRulesDeleteOutput,
 }));
@@ -157,7 +155,7 @@ export interface CacheRulesGetInput {
   registryName: string;
   cacheRuleName: string;
 }
-export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -184,7 +182,7 @@ export interface CacheRulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CacheRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -214,7 +212,7 @@ export const CacheRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesGetInput,
   outputSchema: CacheRulesGetOutput,
 }));
@@ -224,7 +222,7 @@ export interface CacheRulesListInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -253,7 +251,7 @@ export interface CacheRulesListOutput {
   }[];
   nextLink?: string;
 }
-export const CacheRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -299,7 +297,7 @@ export const CacheRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const CacheRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesListInput,
   outputSchema: CacheRulesListOutput,
 }));
@@ -311,7 +309,7 @@ export interface CacheRulesUpdateInput {
   cacheRuleName: string;
   properties?: { credentialSetResourceId?: string };
 }
-export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CacheRulesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -343,27 +341,25 @@ export interface CacheRulesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CacheRulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CacheRulesUpdateOutput>;
+export const CacheRulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CacheRulesUpdateOutput>;
 
 // The operation
 /**
@@ -375,7 +371,7 @@ export const CacheRulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param registryName - The name of the container registry.
  * @param cacheRuleName - The name of the cache rule.
  */
-export const CacheRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CacheRulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CacheRulesUpdateInput,
   outputSchema: CacheRulesUpdateOutput,
 }));
@@ -433,7 +429,7 @@ export interface ConnectedRegistriesCreateInput {
   };
 }
 export const ConnectedRegistriesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -550,7 +546,7 @@ export interface ConnectedRegistriesCreateOutput {
   };
 }
 export const ConnectedRegistriesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -580,12 +576,10 @@ export const ConnectedRegistriesCreateOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesCreateInput,
-    outputSchema: ConnectedRegistriesCreateOutput,
-  }),
-);
+export const ConnectedRegistriesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesCreateInput,
+  outputSchema: ConnectedRegistriesCreateOutput,
+}));
 // Input Schema
 export interface ConnectedRegistriesDeactivateInput {
   subscriptionId: string;
@@ -594,7 +588,7 @@ export interface ConnectedRegistriesDeactivateInput {
   connectedRegistryName: string;
 }
 export const ConnectedRegistriesDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -610,7 +604,7 @@ export const ConnectedRegistriesDeactivateInput =
 // Output Schema
 export type ConnectedRegistriesDeactivateOutput = void;
 export const ConnectedRegistriesDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeactivateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeactivateOutput>;
 
 // The operation
 /**
@@ -623,7 +617,7 @@ export const ConnectedRegistriesDeactivateOutput =
  * @param connectedRegistryName - The name of the connected registry.
  */
 export const ConnectedRegistriesDeactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedRegistriesDeactivateInput,
     outputSchema: ConnectedRegistriesDeactivateOutput,
   }));
@@ -635,7 +629,7 @@ export interface ConnectedRegistriesDeleteInput {
   connectedRegistryName: string;
 }
 export const ConnectedRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -651,7 +645,7 @@ export const ConnectedRegistriesDeleteInput =
 // Output Schema
 export type ConnectedRegistriesDeleteOutput = void;
 export const ConnectedRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -663,12 +657,10 @@ export const ConnectedRegistriesDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesDeleteInput,
-    outputSchema: ConnectedRegistriesDeleteOutput,
-  }),
-);
+export const ConnectedRegistriesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesDeleteInput,
+  outputSchema: ConnectedRegistriesDeleteOutput,
+}));
 // Input Schema
 export interface ConnectedRegistriesGetInput {
   subscriptionId: string;
@@ -677,7 +669,7 @@ export interface ConnectedRegistriesGetInput {
   connectedRegistryName: string;
 }
 export const ConnectedRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -705,7 +697,7 @@ export interface ConnectedRegistriesGetOutput {
   };
 }
 export const ConnectedRegistriesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -735,12 +727,10 @@ export const ConnectedRegistriesGetOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesGetInput,
-    outputSchema: ConnectedRegistriesGetOutput,
-  }),
-);
+export const ConnectedRegistriesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesGetInput,
+  outputSchema: ConnectedRegistriesGetOutput,
+}));
 // Input Schema
 export interface ConnectedRegistriesListInput {
   subscriptionId: string;
@@ -749,7 +739,7 @@ export interface ConnectedRegistriesListInput {
   $filter?: string;
 }
 export const ConnectedRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -780,7 +770,7 @@ export interface ConnectedRegistriesListOutput {
   nextLink?: string;
 }
 export const ConnectedRegistriesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -827,12 +817,10 @@ export const ConnectedRegistriesListOutput =
  * @param registryName - The name of the container registry.
  * @param $filter - An OData filter expression that describes a subset of connectedRegistries to return. The parameters that can be filtered are parent.id (the resource id of the connectedRegistry parent), mode, and connectionState. The supported operator is eq.
  */
-export const ConnectedRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesListInput,
-    outputSchema: ConnectedRegistriesListOutput,
-  }),
-);
+export const ConnectedRegistriesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesListInput,
+  outputSchema: ConnectedRegistriesListOutput,
+}));
 // Input Schema
 export interface ConnectedRegistriesUpdateInput {
   subscriptionId: string;
@@ -855,7 +843,7 @@ export interface ConnectedRegistriesUpdateInput {
   };
 }
 export const ConnectedRegistriesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -918,7 +906,7 @@ export interface ConnectedRegistriesUpdateOutput {
   };
 }
 export const ConnectedRegistriesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -948,12 +936,10 @@ export const ConnectedRegistriesUpdateOutput =
  * @param registryName - The name of the container registry.
  * @param connectedRegistryName - The name of the connected registry.
  */
-export const ConnectedRegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedRegistriesUpdateInput,
-    outputSchema: ConnectedRegistriesUpdateOutput,
-  }),
-);
+export const ConnectedRegistriesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedRegistriesUpdateInput,
+  outputSchema: ConnectedRegistriesUpdateOutput,
+}));
 // Input Schema
 export interface CredentialSetsCreateInput {
   subscriptionId: string;
@@ -996,7 +982,7 @@ export interface CredentialSetsCreateInput {
   };
 }
 export const CredentialSetsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1081,7 +1067,7 @@ export interface CredentialSetsCreateOutput {
   };
 }
 export const CredentialSetsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1111,12 +1097,10 @@ export const CredentialSetsCreateOutput =
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsCreateInput,
-    outputSchema: CredentialSetsCreateOutput,
-  }),
-);
+export const CredentialSetsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsCreateInput,
+  outputSchema: CredentialSetsCreateOutput,
+}));
 // Input Schema
 export interface CredentialSetsDeleteInput {
   subscriptionId: string;
@@ -1125,7 +1109,7 @@ export interface CredentialSetsDeleteInput {
   credentialSetName: string;
 }
 export const CredentialSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1141,7 +1125,7 @@ export const CredentialSetsDeleteInput =
 // Output Schema
 export type CredentialSetsDeleteOutput = void;
 export const CredentialSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialSetsDeleteOutput>;
 
 // The operation
 /**
@@ -1153,12 +1137,10 @@ export const CredentialSetsDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsDeleteInput,
-    outputSchema: CredentialSetsDeleteOutput,
-  }),
-);
+export const CredentialSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsDeleteInput,
+  outputSchema: CredentialSetsDeleteOutput,
+}));
 // Input Schema
 export interface CredentialSetsGetInput {
   subscriptionId: string;
@@ -1166,14 +1148,12 @@ export interface CredentialSetsGetInput {
   registryName: string;
   credentialSetName: string;
 }
-export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    registryName: Schema.String.pipe(T.PathParam()),
-    credentialSetName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const CredentialSetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  registryName: Schema.String.pipe(T.PathParam()),
+  credentialSetName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
@@ -1196,7 +1176,7 @@ export interface CredentialSetsGetOutput {
   };
 }
 export const CredentialSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1226,7 +1206,7 @@ export const CredentialSetsGetOutput =
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialSetsGetInput,
   outputSchema: CredentialSetsGetOutput,
 }));
@@ -1237,7 +1217,7 @@ export interface CredentialSetsListInput {
   registryName: string;
 }
 export const CredentialSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1267,7 +1247,7 @@ export interface CredentialSetsListOutput {
   nextLink?: string;
 }
 export const CredentialSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1313,7 +1293,7 @@ export const CredentialSetsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const CredentialSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CredentialSetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CredentialSetsListInput,
   outputSchema: CredentialSetsListOutput,
 }));
@@ -1350,7 +1330,7 @@ export interface CredentialSetsUpdateInput {
   };
 }
 export const CredentialSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1423,7 +1403,7 @@ export interface CredentialSetsUpdateOutput {
   };
 }
 export const CredentialSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1453,17 +1433,13 @@ export const CredentialSetsUpdateOutput =
  * @param registryName - The name of the container registry.
  * @param credentialSetName - The name of the credential set.
  */
-export const CredentialSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CredentialSetsUpdateInput,
-    outputSchema: CredentialSetsUpdateOutput,
-  }),
-);
+export const CredentialSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CredentialSetsUpdateInput,
+  outputSchema: CredentialSetsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ContainerRegistry/operations",
@@ -1503,7 +1479,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1559,7 +1535,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1586,7 +1562,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1649,7 +1625,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1680,7 +1656,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -1692,7 +1668,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1708,7 +1684,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1721,7 +1697,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1733,7 +1709,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1761,7 +1737,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1792,7 +1768,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1803,7 +1779,7 @@ export interface PrivateEndpointConnectionsListInput {
   registryName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -1833,7 +1809,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1880,7 +1856,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param registryName - The name of the container registry.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -1891,7 +1867,7 @@ export interface RegistriesCheckNameAvailabilityInput {
   type: "Microsoft.ContainerRegistry/registries";
 }
 export const RegistriesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.ContainerRegistry/registries"]),
@@ -1910,7 +1886,7 @@ export interface RegistriesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const RegistriesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1924,7 +1900,7 @@ export const RegistriesCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RegistriesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesCheckNameAvailabilityInput,
     outputSchema: RegistriesCheckNameAvailabilityOutput,
   }));
@@ -2014,7 +1990,7 @@ export interface RegistriesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2204,27 +2180,25 @@ export interface RegistriesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RegistriesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RegistriesCreateOutput>;
+export const RegistriesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RegistriesCreateOutput>;
 
 // The operation
 /**
@@ -2235,7 +2209,7 @@ export const RegistriesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesCreateInput,
   outputSchema: RegistriesCreateOutput,
 }));
@@ -2245,7 +2219,7 @@ export interface RegistriesDeleteInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2260,7 +2234,7 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RegistriesDeleteOutput = void;
 export const RegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -2271,7 +2245,7 @@ export const RegistriesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesDeleteInput,
   outputSchema: RegistriesDeleteOutput,
 }));
@@ -2285,7 +2259,7 @@ export interface RegistriesGenerateCredentialsInput {
   name?: "password1" | "password2";
 }
 export const RegistriesGenerateCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2311,7 +2285,7 @@ export interface RegistriesGenerateCredentialsOutput {
   }[];
 }
 export const RegistriesGenerateCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     passwords: Schema.optional(
       Schema.Array(
@@ -2335,7 +2309,7 @@ export const RegistriesGenerateCredentialsOutput =
  * @param registryName - The name of the container registry.
  */
 export const RegistriesGenerateCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesGenerateCredentialsInput,
     outputSchema: RegistriesGenerateCredentialsOutput,
   }));
@@ -2345,7 +2319,7 @@ export interface RegistriesGetInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -2371,7 +2345,7 @@ export interface RegistriesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2400,7 +2374,7 @@ export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesGetInput,
   outputSchema: RegistriesGetOutput,
 }));
@@ -2411,7 +2385,7 @@ export interface RegistriesGetBuildSourceUploadUrlInput {
   registryName: string;
 }
 export const RegistriesGetBuildSourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2429,7 +2403,7 @@ export interface RegistriesGetBuildSourceUploadUrlOutput {
   relativePath?: string;
 }
 export const RegistriesGetBuildSourceUploadUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadUrl: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RegistriesGetBuildSourceUploadUrlOutput>;
@@ -2444,7 +2418,7 @@ export const RegistriesGetBuildSourceUploadUrlOutput =
  * @param api-version - The client API version.
  */
 export const RegistriesGetBuildSourceUploadUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesGetBuildSourceUploadUrlInput,
     outputSchema: RegistriesGetBuildSourceUploadUrlOutput,
   }));
@@ -2456,7 +2430,7 @@ export interface RegistriesGetPrivateLinkResourceInput {
   groupName: string;
 }
 export const RegistriesGetPrivateLinkResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2484,7 +2458,7 @@ export interface RegistriesGetPrivateLinkResourceOutput {
   };
 }
 export const RegistriesGetPrivateLinkResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2515,7 +2489,7 @@ export const RegistriesGetPrivateLinkResourceOutput =
  * @param groupName - The name of the private link associated with the Azure resource.
  */
 export const RegistriesGetPrivateLinkResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesGetPrivateLinkResourceInput,
     outputSchema: RegistriesGetPrivateLinkResourceOutput,
   }));
@@ -2538,7 +2512,7 @@ export interface RegistriesImportImageInput {
   mode?: "NoForce" | "Force";
 }
 export const RegistriesImportImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2567,7 +2541,7 @@ export const RegistriesImportImageInput =
 // Output Schema
 export type RegistriesImportImageOutput = void;
 export const RegistriesImportImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesImportImageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesImportImageOutput>;
 
 // The operation
 /**
@@ -2578,17 +2552,15 @@ export const RegistriesImportImageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesImportImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesImportImageInput,
-    outputSchema: RegistriesImportImageOutput,
-  }),
-);
+export const RegistriesImportImage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesImportImageInput,
+  outputSchema: RegistriesImportImageOutput,
+}));
 // Input Schema
 export interface RegistriesListInput {
   subscriptionId: string;
 }
-export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2615,7 +2587,7 @@ export interface RegistriesListOutput {
   }[];
   nextLink?: string;
 }
-export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2659,7 +2631,7 @@ export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesListInput,
   outputSchema: RegistriesListOutput,
 }));
@@ -2669,7 +2641,7 @@ export interface RegistriesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const RegistriesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2698,7 +2670,7 @@ export interface RegistriesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const RegistriesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2744,7 +2716,7 @@ export const RegistriesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const RegistriesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesListByResourceGroupInput,
     outputSchema: RegistriesListByResourceGroupOutput,
   }));
@@ -2755,7 +2727,7 @@ export interface RegistriesListCredentialsInput {
   registryName: string;
 }
 export const RegistriesListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2773,7 +2745,7 @@ export interface RegistriesListCredentialsOutput {
   passwords?: { name?: "password" | "password2"; value?: string }[];
 }
 export const RegistriesListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     passwords: Schema.optional(
       Schema.Array(
@@ -2794,12 +2766,10 @@ export const RegistriesListCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesListCredentialsInput,
-    outputSchema: RegistriesListCredentialsOutput,
-  }),
-);
+export const RegistriesListCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesListCredentialsInput,
+  outputSchema: RegistriesListCredentialsOutput,
+}));
 // Input Schema
 export interface RegistriesListPrivateLinkResourcesInput {
   subscriptionId: string;
@@ -2807,7 +2777,7 @@ export interface RegistriesListPrivateLinkResourcesInput {
   registryName: string;
 }
 export const RegistriesListPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2837,7 +2807,7 @@ export interface RegistriesListPrivateLinkResourcesOutput {
   nextLink?: string;
 }
 export const RegistriesListPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2884,7 +2854,7 @@ export const RegistriesListPrivateLinkResourcesOutput =
  * @param registryName - The name of the container registry.
  */
 export const RegistriesListPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesListPrivateLinkResourcesInput,
     outputSchema: RegistriesListPrivateLinkResourcesOutput,
   }));
@@ -2895,7 +2865,7 @@ export interface RegistriesListUsagesInput {
   registryName: string;
 }
 export const RegistriesListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2917,7 +2887,7 @@ export interface RegistriesListUsagesOutput {
   }[];
 }
 export const RegistriesListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2939,12 +2909,10 @@ export const RegistriesListUsagesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesListUsagesInput,
-    outputSchema: RegistriesListUsagesOutput,
-  }),
-);
+export const RegistriesListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesListUsagesInput,
+  outputSchema: RegistriesListUsagesOutput,
+}));
 // Input Schema
 export interface RegistriesRegenerateCredentialInput {
   subscriptionId: string;
@@ -2953,7 +2921,7 @@ export interface RegistriesRegenerateCredentialInput {
   name: "password" | "password2";
 }
 export const RegistriesRegenerateCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -2972,7 +2940,7 @@ export interface RegistriesRegenerateCredentialOutput {
   passwords?: { name?: "password" | "password2"; value?: string }[];
 }
 export const RegistriesRegenerateCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     passwords: Schema.optional(
       Schema.Array(
@@ -2994,7 +2962,7 @@ export const RegistriesRegenerateCredentialOutput =
  * @param registryName - The name of the container registry.
  */
 export const RegistriesRegenerateCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistriesRegenerateCredentialInput,
     outputSchema: RegistriesRegenerateCredentialOutput,
   }));
@@ -3007,7 +2975,7 @@ export interface RegistriesScheduleRunInput {
   isArchiveEnabled?: boolean;
 }
 export const RegistriesScheduleRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -3028,7 +2996,7 @@ export interface RegistriesScheduleRunOutput {
   type?: string;
 }
 export const RegistriesScheduleRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3043,12 +3011,10 @@ export const RegistriesScheduleRunOutput =
  * @param registryName - The name of the container registry.
  * @param api-version - The client API version.
  */
-export const RegistriesScheduleRun = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistriesScheduleRunInput,
-    outputSchema: RegistriesScheduleRunOutput,
-  }),
-);
+export const RegistriesScheduleRun = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistriesScheduleRunInput,
+  outputSchema: RegistriesScheduleRunOutput,
+}));
 // Input Schema
 export interface RegistriesUpdateInput {
   subscriptionId: string;
@@ -3109,7 +3075,7 @@ export interface RegistriesUpdateInput {
       | "LegacyRegistryPermissions";
   };
 }
-export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistriesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3246,27 +3212,25 @@ export interface RegistriesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RegistriesUpdateOutput>;
+export const RegistriesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RegistriesUpdateOutput>;
 
 // The operation
 /**
@@ -3277,7 +3241,7 @@ export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const RegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistriesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistriesUpdateInput,
   outputSchema: RegistriesUpdateOutput,
 }));
@@ -3303,7 +3267,7 @@ export interface ReplicationsCreateInput {
   location: string;
 }
 export const ReplicationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -3358,7 +3322,7 @@ export interface ReplicationsCreateOutput {
   };
 }
 export const ReplicationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3388,7 +3352,7 @@ export const ReplicationsCreateOutput =
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsCreateInput,
   outputSchema: ReplicationsCreateOutput,
 }));
@@ -3400,7 +3364,7 @@ export interface ReplicationsDeleteInput {
   replicationName: string;
 }
 export const ReplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -3416,7 +3380,7 @@ export const ReplicationsDeleteInput =
 // Output Schema
 export type ReplicationsDeleteOutput = void;
 export const ReplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -3428,7 +3392,7 @@ export const ReplicationsDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsDeleteInput,
   outputSchema: ReplicationsDeleteOutput,
 }));
@@ -3439,7 +3403,7 @@ export interface ReplicationsGetInput {
   registryName: string;
   replicationName: string;
 }
-export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3466,7 +3430,7 @@ export interface ReplicationsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3496,7 +3460,7 @@ export const ReplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsGetInput,
   outputSchema: ReplicationsGetOutput,
 }));
@@ -3506,7 +3470,7 @@ export interface ReplicationsListInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReplicationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3535,44 +3499,42 @@ export interface ReplicationsListOutput {
   }[];
   nextLink?: string;
 }
-export const ReplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ReplicationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ReplicationsListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ReplicationsListOutput>;
 
 // The operation
 /**
@@ -3583,7 +3545,7 @@ export const ReplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const ReplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsListInput,
   outputSchema: ReplicationsListOutput,
 }));
@@ -3597,7 +3559,7 @@ export interface ReplicationsUpdateInput {
   properties?: { regionEndpointEnabled?: boolean };
 }
 export const ReplicationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -3631,7 +3593,7 @@ export interface ReplicationsUpdateOutput {
   };
 }
 export const ReplicationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3661,7 +3623,7 @@ export const ReplicationsUpdateOutput =
  * @param registryName - The name of the container registry.
  * @param replicationName - The name of the replication.
  */
-export const ReplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationsUpdateInput,
   outputSchema: ReplicationsUpdateOutput,
 }));
@@ -3672,7 +3634,7 @@ export interface RunsCancelInput {
   registryName: string;
   runId: string;
 }
-export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsCancelInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3688,7 +3650,7 @@ export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RunsCancelOutput = void;
 export const RunsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RunsCancelOutput>;
 
 // The operation
 /**
@@ -3700,7 +3662,7 @@ export const RunsCancelOutput =
  * @param api-version - The client API version.
  * @param runId - The run ID.
  */
-export const RunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsCancelInput,
   outputSchema: RunsCancelOutput,
 }));
@@ -3711,7 +3673,7 @@ export interface RunsGetInput {
   registryName: string;
   runId: string;
 }
-export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3730,7 +3692,7 @@ export interface RunsGetOutput {
   name?: string;
   type?: string;
 }
-export const RunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3746,7 +3708,7 @@ export const RunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param runId - The run ID.
  */
-export const RunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsGetInput,
   outputSchema: RunsGetOutput,
 }));
@@ -3757,7 +3719,7 @@ export interface RunsGetLogSasUrlInput {
   registryName: string;
   runId: string;
 }
-export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsGetLogSasUrlInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3774,11 +3736,9 @@ export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RunsGetLogSasUrlOutput {
   logLink?: string;
 }
-export const RunsGetLogSasUrlOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    logLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<RunsGetLogSasUrlOutput>;
+export const RunsGetLogSasUrlOutput = /*@__PURE__*/ Schema.Struct({
+  logLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<RunsGetLogSasUrlOutput>;
 
 // The operation
 /**
@@ -3790,7 +3750,7 @@ export const RunsGetLogSasUrlOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The client API version.
  * @param runId - The run ID.
  */
-export const RunsGetLogSasUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsGetLogSasUrl = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsGetLogSasUrlInput,
   outputSchema: RunsGetLogSasUrlOutput,
 }));
@@ -3802,7 +3762,7 @@ export interface RunsListInput {
   $filter?: string;
   $top?: number;
 }
-export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3821,7 +3781,7 @@ export interface RunsListOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const RunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3845,7 +3805,7 @@ export const RunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - The runs filter to apply on the operation. Arithmetic operators are not supported. The allowed string function is 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
  * @param $top - $top is supported for get list of runs, which limits the maximum number of runs to return.
  */
-export const RunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsListInput,
   outputSchema: RunsListOutput,
 }));
@@ -3857,7 +3817,7 @@ export interface RunsUpdateInput {
   runId: string;
   isArchiveEnabled?: boolean;
 }
-export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3877,7 +3837,7 @@ export interface RunsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const RunsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3893,7 +3853,7 @@ export const RunsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param runId - The run ID.
  */
-export const RunsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RunsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RunsUpdateInput,
   outputSchema: RunsUpdateOutput,
 }));
@@ -3917,7 +3877,7 @@ export interface ScopeMapsCreateInput {
     actions: string[];
   };
 }
-export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -3962,7 +3922,7 @@ export interface ScopeMapsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScopeMapsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3992,7 +3952,7 @@ export const ScopeMapsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsCreateInput,
   outputSchema: ScopeMapsCreateOutput,
 }));
@@ -4003,7 +3963,7 @@ export interface ScopeMapsDeleteInput {
   registryName: string;
   scopeMapName: string;
 }
-export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4019,7 +3979,7 @@ export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ScopeMapsDeleteOutput = void;
 export const ScopeMapsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopeMapsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopeMapsDeleteOutput>;
 
 // The operation
 /**
@@ -4031,7 +3991,7 @@ export const ScopeMapsDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsDeleteInput,
   outputSchema: ScopeMapsDeleteOutput,
 }));
@@ -4042,7 +4002,7 @@ export interface ScopeMapsGetInput {
   registryName: string;
   scopeMapName: string;
 }
-export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4069,7 +4029,7 @@ export interface ScopeMapsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScopeMapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4099,7 +4059,7 @@ export const ScopeMapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsGetInput,
   outputSchema: ScopeMapsGetOutput,
 }));
@@ -4109,7 +4069,7 @@ export interface ScopeMapsListInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4138,7 +4098,7 @@ export interface ScopeMapsListOutput {
   }[];
   nextLink?: string;
 }
-export const ScopeMapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4184,7 +4144,7 @@ export const ScopeMapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const ScopeMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsListInput,
   outputSchema: ScopeMapsListOutput,
 }));
@@ -4196,7 +4156,7 @@ export interface ScopeMapsUpdateInput {
   scopeMapName: string;
   properties?: { description?: string; actions?: string[] };
 }
-export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4229,7 +4189,7 @@ export interface ScopeMapsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScopeMapsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScopeMapsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4259,7 +4219,7 @@ export const ScopeMapsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param scopeMapName - The name of the scope map.
  */
-export const ScopeMapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScopeMapsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScopeMapsUpdateInput,
   outputSchema: ScopeMapsUpdateOutput,
 }));
@@ -4358,7 +4318,7 @@ export interface TasksCreateInput {
   location: string;
   tags?: Record<string, string>;
 }
-export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4535,7 +4495,7 @@ export interface TasksCreateOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const TasksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4553,7 +4513,7 @@ export const TasksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param taskName - The name of the container registry task.
  */
-export const TasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCreateInput,
   outputSchema: TasksCreateOutput,
 }));
@@ -4564,7 +4524,7 @@ export interface TasksDeleteInput {
   registryName: string;
   taskName: string;
 }
-export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4580,7 +4540,7 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TasksDeleteOutput = void;
 export const TasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
 
 // The operation
 /**
@@ -4592,7 +4552,7 @@ export const TasksDeleteOutput =
  * @param api-version - The client API version.
  * @param taskName - The name of the container registry task.
  */
-export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksDeleteInput,
   outputSchema: TasksDeleteOutput,
 }));
@@ -4603,7 +4563,7 @@ export interface TasksGetInput {
   registryName: string;
   taskName: string;
 }
-export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4624,7 +4584,7 @@ export interface TasksGetOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4642,7 +4602,7 @@ export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param taskName - The name of the container registry task.
  */
-export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksGetInput,
   outputSchema: TasksGetOutput,
 }));
@@ -4653,7 +4613,7 @@ export interface TasksGetDetailsInput {
   registryName: string;
   taskName: string;
 }
-export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetDetailsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4674,7 +4634,7 @@ export interface TasksGetDetailsOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const TasksGetDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetDetailsOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4692,7 +4652,7 @@ export const TasksGetDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param taskName - The name of the container registry task.
  */
-export const TasksGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksGetDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksGetDetailsInput,
   outputSchema: TasksGetDetailsOutput,
 }));
@@ -4702,7 +4662,7 @@ export interface TasksListInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4725,7 +4685,7 @@ export interface TasksListOutput {
   }[];
   nextLink?: string;
 }
-export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4749,7 +4709,7 @@ export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param api-version - The client API version.
  */
-export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
   outputSchema: TasksListOutput,
 }));
@@ -4829,7 +4789,7 @@ export interface TasksUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -4991,7 +4951,7 @@ export interface TasksUpdateOutput {
   location: string;
   tags?: Record<string, string>;
 }
-export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5009,7 +4969,7 @@ export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The client API version.
  * @param taskName - The name of the container registry task.
  */
-export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksUpdateInput,
   outputSchema: TasksUpdateOutput,
 }));
@@ -5046,7 +5006,7 @@ export interface TokensCreateInput {
     status?: "enabled" | "disabled";
   };
 }
-export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5118,7 +5078,7 @@ export interface TokensCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TokensCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5148,7 +5108,7 @@ export const TokensCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensCreateInput,
   outputSchema: TokensCreateOutput,
 }));
@@ -5159,7 +5119,7 @@ export interface TokensDeleteInput {
   registryName: string;
   tokenName: string;
 }
-export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5175,7 +5135,7 @@ export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TokensDeleteOutput = void;
 export const TokensDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TokensDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TokensDeleteOutput>;
 
 // The operation
 /**
@@ -5187,7 +5147,7 @@ export const TokensDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensDeleteInput,
   outputSchema: TokensDeleteOutput,
 }));
@@ -5198,7 +5158,7 @@ export interface TokensGetInput {
   registryName: string;
   tokenName: string;
 }
-export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5225,7 +5185,7 @@ export interface TokensGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TokensGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5255,7 +5215,7 @@ export const TokensGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensGetInput,
   outputSchema: TokensGetOutput,
 }));
@@ -5265,7 +5225,7 @@ export interface TokensListInput {
   resourceGroupName: string;
   registryName: string;
 }
-export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5294,7 +5254,7 @@ export interface TokensListOutput {
   }[];
   nextLink?: string;
 }
-export const TokensListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5340,7 +5300,7 @@ export const TokensListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const TokensList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensListInput,
   outputSchema: TokensListOutput,
 }));
@@ -5369,7 +5329,7 @@ export interface TokensUpdateInput {
     };
   };
 }
-export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5430,7 +5390,7 @@ export interface TokensUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TokensUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5460,7 +5420,7 @@ export const TokensUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param tokenName - The name of the token.
  */
-export const TokensUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensUpdateInput,
   outputSchema: TokensUpdateOutput,
 }));
@@ -5486,7 +5446,7 @@ export interface WebhooksCreateInput {
     )[];
   };
 }
-export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5534,7 +5494,7 @@ export interface WebhooksCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5564,7 +5524,7 @@ export const WebhooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksCreateInput,
   outputSchema: WebhooksCreateOutput,
 }));
@@ -5575,7 +5535,7 @@ export interface WebhooksDeleteInput {
   registryName: string;
   webhookName: string;
 }
-export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5591,7 +5551,7 @@ export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WebhooksDeleteOutput = void;
 export const WebhooksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhooksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhooksDeleteOutput>;
 
 // The operation
 /**
@@ -5603,7 +5563,7 @@ export const WebhooksDeleteOutput =
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksDeleteInput,
   outputSchema: WebhooksDeleteOutput,
 }));
@@ -5614,7 +5574,7 @@ export interface WebhooksGetInput {
   registryName: string;
   webhookName: string;
 }
-export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5641,7 +5601,7 @@ export interface WebhooksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5671,7 +5631,7 @@ export const WebhooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksGetInput,
   outputSchema: WebhooksGetOutput,
 }));
@@ -5683,7 +5643,7 @@ export interface WebhooksGetCallbackConfigInput {
   webhookName: string;
 }
 export const WebhooksGetCallbackConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -5702,7 +5662,7 @@ export interface WebhooksGetCallbackConfigOutput {
   customHeaders?: Record<string, string>;
 }
 export const WebhooksGetCallbackConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceUri: Schema.String,
     customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }) as unknown as Schema.Codec<WebhooksGetCallbackConfigOutput>;
@@ -5717,19 +5677,17 @@ export const WebhooksGetCallbackConfigOutput =
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksGetCallbackConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhooksGetCallbackConfigInput,
-    outputSchema: WebhooksGetCallbackConfigOutput,
-  }),
-);
+export const WebhooksGetCallbackConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhooksGetCallbackConfigInput,
+  outputSchema: WebhooksGetCallbackConfigOutput,
+}));
 // Input Schema
 export interface WebhooksListInput {
   subscriptionId: string;
   resourceGroupName: string;
   registryName: string;
 }
-export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5758,7 +5716,7 @@ export interface WebhooksListOutput {
   }[];
   nextLink?: string;
 }
-export const WebhooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5804,7 +5762,7 @@ export const WebhooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param registryName - The name of the container registry.
  */
-export const WebhooksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksListInput,
   outputSchema: WebhooksListOutput,
 }));
@@ -5816,7 +5774,7 @@ export interface WebhooksListEventsInput {
   webhookName: string;
 }
 export const WebhooksListEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     registryName: Schema.String.pipe(T.PathParam()),
@@ -5835,7 +5793,7 @@ export interface WebhooksListEventsOutput {
   nextLink?: string;
 }
 export const WebhooksListEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5856,7 +5814,7 @@ export const WebhooksListEventsOutput =
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksListEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksListEventsInput,
   outputSchema: WebhooksListEventsOutput,
 }));
@@ -5867,7 +5825,7 @@ export interface WebhooksPingInput {
   registryName: string;
   webhookName: string;
 }
-export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksPingInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5884,7 +5842,7 @@ export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WebhooksPingOutput {
   id?: string;
 }
-export const WebhooksPingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksPingOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<WebhooksPingOutput>;
 
@@ -5898,7 +5856,7 @@ export const WebhooksPingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksPing = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksPing = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksPingInput,
   outputSchema: WebhooksPingOutput,
 }));
@@ -5923,7 +5881,7 @@ export interface WebhooksUpdateInput {
     )[];
   };
 }
-export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   registryName: Schema.String.pipe(T.PathParam()),
@@ -5972,7 +5930,7 @@ export interface WebhooksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhooksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6002,7 +5960,7 @@ export const WebhooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registryName - The name of the container registry.
  * @param webhookName - The name of the webhook.
  */
-export const WebhooksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhooksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhooksUpdateInput,
   outputSchema: WebhooksUpdateOutput,
 }));

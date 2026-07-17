@@ -11,7 +11,7 @@ export interface IntegrationsGithubTeamsRetrieveInput {
   search?: string;
 }
 export const IntegrationsGithubTeamsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -30,7 +30,7 @@ export interface IntegrationsGithubTeamsRetrieveOutput {
   has_more: boolean;
 }
 export const IntegrationsGithubTeamsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     teams: Schema.Array(
       Schema.Struct({
         id: Schema.Number,
@@ -51,7 +51,7 @@ export const IntegrationsGithubTeamsRetrieveOutput =
  * @param search - Optional case-insensitive team name or slug search query.
  */
 export const integrationsGithubTeamsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGithubTeamsRetrieveInput,
     outputSchema: IntegrationsGithubTeamsRetrieveOutput,
   }));

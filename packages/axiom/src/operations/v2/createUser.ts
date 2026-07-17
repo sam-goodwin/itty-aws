@@ -9,7 +9,7 @@ export interface CreateUserInput {
   name: string;
   role: string;
 }
-export const CreateUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateUserInput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   name: Schema.String,
   role: Schema.String,
@@ -24,7 +24,7 @@ export interface CreateUserOutput {
   name: string;
   role?: { id: string; name: string };
 }
-export const CreateUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateUserOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -40,7 +40,7 @@ export const CreateUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Create user
  */
-export const createUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateUserInput,
   outputSchema: CreateUserOutput,
   errors: [BadRequest, UnprocessableEntity] as const,

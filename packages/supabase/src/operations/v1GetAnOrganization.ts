@@ -8,7 +8,7 @@ export interface V1GetAnOrganizationInput {
   slug: string;
 }
 export const V1GetAnOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/organizations/{slug}" }),
@@ -34,7 +34,7 @@ export interface V1GetAnOrganizationOutput {
   )[];
 }
 export const V1GetAnOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     plan: Schema.optional(
@@ -65,7 +65,7 @@ export const V1GetAnOrganizationOutput =
  *
  * @param slug - Organization slug
  */
-export const v1GetAnOrganization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetAnOrganization = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetAnOrganizationInput,
   outputSchema: V1GetAnOrganizationOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -40,7 +40,7 @@ export interface ConversationsTicketsListInput {
   tags_exclude?: string;
 }
 export const ConversationsTicketsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     assignee: Schema.optional(Schema.String),
     channel_detail: Schema.optional(
@@ -154,7 +154,7 @@ export interface ConversationsTicketsListOutput {
   }[];
 }
 export const ConversationsTicketsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -271,10 +271,8 @@ export const ConversationsTicketsListOutput =
  * @param tags_all - JSON-encoded array of tag names; returns tickets that have ALL of them (AND), e.g. `["billing","urgent"]`.
  * @param tags_exclude - JSON-encoded array of tag names; returns tickets that have NONE of them (NOT), e.g. `["escalated"]`.
  */
-export const conversationsTicketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConversationsTicketsListInput,
-    outputSchema: ConversationsTicketsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const conversationsTicketsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConversationsTicketsListInput,
+  outputSchema: ConversationsTicketsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

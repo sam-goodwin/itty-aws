@@ -5,7 +5,7 @@ import { BadRequest } from "../errors.ts";
 
 // Input Schema
 export const InviteOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
     role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
@@ -20,7 +20,7 @@ export type InviteOrganizationMemberInput =
 
 // Output Schema
 export const InviteOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invited: Schema.optional(
       Schema.Struct({
         ID: Schema.optional(Schema.Number),
@@ -59,10 +59,8 @@ export type InviteOrganizationMemberOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const inviteOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InviteOrganizationMemberInput,
-    outputSchema: InviteOrganizationMemberOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const inviteOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InviteOrganizationMemberInput,
+  outputSchema: InviteOrganizationMemberOutput,
+  errors: [BadRequest] as const,
+}));

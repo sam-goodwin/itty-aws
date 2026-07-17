@@ -8,7 +8,7 @@ export interface CorsOriginsControllerCreateCorsOriginInput {
   origin?: string;
 }
 export const CorsOriginsControllerCreateCorsOriginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     origin: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/user_management/cors_origins" }),
@@ -23,7 +23,7 @@ export interface CorsOriginsControllerCreateCorsOriginOutput {
   updated_at?: string;
 }
 export const CorsOriginsControllerCreateCorsOriginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     origin: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export const CorsOriginsControllerCreateCorsOriginOutput =
  * Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.
  */
 export const CorsOriginsControllerCreateCorsOrigin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CorsOriginsControllerCreateCorsOriginInput,
     outputSchema: CorsOriginsControllerCreateCorsOriginOutput,
     errors: [Conflict, UnprocessableEntity] as const,

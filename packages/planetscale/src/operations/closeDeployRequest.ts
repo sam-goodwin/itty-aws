@@ -11,7 +11,7 @@ export interface CloseDeployRequestInput {
   state?: "closed";
 }
 export const CloseDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -104,8 +104,8 @@ export interface CloseDeployRequestOutput {
     into_branch: string;
     deploy_request_number: number;
     deployable: boolean;
-    preceding_deployments: Record<string, unknown>[];
-    deploy_operations: {
+    preceding_deployments: ReadonlyArray<Record<string, unknown>>;
+    deploy_operations: ReadonlyArray<{
       id: string;
       state:
         | "pending"
@@ -129,10 +129,10 @@ export interface CloseDeployRequestOutput {
       table_locked: boolean;
       table_recently_used: boolean;
       table_recently_used_at: string | null;
-      removed_foreign_key_names: string[] | null;
+      removed_foreign_key_names: ReadonlyArray<string> | null;
       deploy_errors: string | null;
-    }[];
-    deploy_operation_summaries: {
+    }>;
+    deploy_operation_summaries: ReadonlyArray<{
       id: string;
       created_at: string;
       deploy_errors: string;
@@ -146,13 +146,13 @@ export interface CloseDeployRequestOutput {
       table_name: string;
       table_recently_used_at: string | null;
       throttled_at: string | null;
-      removed_foreign_key_names: string[];
+      removed_foreign_key_names: ReadonlyArray<string>;
       shard_count: number;
-      shard_names: string[];
+      shard_names: ReadonlyArray<string>;
       can_drop_data: boolean;
       table_recently_used: boolean;
       sharded: boolean;
-      operations: {
+      operations: ReadonlyArray<{
         id: string;
         shard: string;
         state:
@@ -164,11 +164,11 @@ export interface CloseDeployRequestOutput {
           | "error";
         progress_percentage: number;
         eta_seconds: number;
-      }[];
-    }[];
-    lint_errors: Record<string, unknown>[];
-    sequential_diff_dependencies: Record<string, unknown>[];
-    lookup_vindex_operations: Record<string, unknown>[];
+      }>;
+    }>;
+    lint_errors: ReadonlyArray<Record<string, unknown>>;
+    sequential_diff_dependencies: ReadonlyArray<Record<string, unknown>>;
+    lookup_vindex_operations: ReadonlyArray<Record<string, unknown>>;
     throttler_configurations?: Record<string, unknown> | null;
     deployment_revert_request: Record<string, unknown> | null;
     actor?: { id: string; display_name: string; avatar_url: string } | null;
@@ -200,7 +200,7 @@ export interface CloseDeployRequestOutput {
   deployed_at: string | null;
 }
 export const CloseDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -443,7 +443,7 @@ export const CloseDeployRequestOutput =
  * @param number - The number of the deploy request
  * @param state - The deploy request will be updated to this state
  */
-export const closeDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const closeDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloseDeployRequestInput,
   outputSchema: CloseDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

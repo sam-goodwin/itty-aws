@@ -19,7 +19,7 @@ export interface PostInvoicesInvoicePayInput {
   source?: string;
 }
 export const PostInvoicesInvoicePayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     forgive: Schema.optional(Schema.Boolean),
@@ -2224,7 +2224,7 @@ export interface PostInvoicesInvoicePayOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoicePayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3933,9 +3933,7 @@ export const PostInvoicesInvoicePayOutput =
  *
  * <p>Stripe automatically creates and then attempts to collect payment on invoices for customers on subscriptions according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you’d like to attempt payment on an invoice out of the normal collection schedule or for some other reason, you can do so.</p>
  */
-export const PostInvoicesInvoicePay = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostInvoicesInvoicePayInput,
-    outputSchema: PostInvoicesInvoicePayOutput,
-  }),
-);
+export const PostInvoicesInvoicePay = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoicePayInput,
+  outputSchema: PostInvoicesInvoicePayOutput,
+}));

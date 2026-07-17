@@ -42,7 +42,7 @@ export interface AkriConnectorCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const AkriConnectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -123,7 +123,7 @@ export interface AkriConnectorCreateOrUpdateOutput {
   };
 }
 export const AkriConnectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -154,12 +154,10 @@ export const AkriConnectorCreateOrUpdateOutput =
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorCreateOrUpdateInput,
-    outputSchema: AkriConnectorCreateOrUpdateOutput,
-  }),
-);
+export const AkriConnectorCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorCreateOrUpdateInput,
+  outputSchema: AkriConnectorCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AkriConnectorDeleteInput {
   subscriptionId: string;
@@ -169,7 +167,7 @@ export interface AkriConnectorDeleteInput {
   connectorName: string;
 }
 export const AkriConnectorDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -186,7 +184,7 @@ export const AkriConnectorDeleteInput =
 // Output Schema
 export type AkriConnectorDeleteOutput = void;
 export const AkriConnectorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorDeleteOutput>;
 
 // The operation
 /**
@@ -199,7 +197,7 @@ export const AkriConnectorDeleteOutput =
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriConnectorDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriConnectorDeleteInput,
   outputSchema: AkriConnectorDeleteOutput,
 }));
@@ -211,7 +209,7 @@ export interface AkriConnectorGetInput {
   akriConnectorTemplateName: string;
   connectorName: string;
 }
-export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriConnectorGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -239,27 +237,25 @@ export interface AkriConnectorGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AkriConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AkriConnectorGetOutput>;
+export const AkriConnectorGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AkriConnectorGetOutput>;
 
 // The operation
 /**
@@ -272,7 +268,7 @@ export const AkriConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  * @param connectorName - Name of AkriConnector resource.
  */
-export const AkriConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriConnectorGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriConnectorGetInput,
   outputSchema: AkriConnectorGetOutput,
 }));
@@ -284,7 +280,7 @@ export interface AkriConnectorListByTemplateInput {
   akriConnectorTemplateName: string;
 }
 export const AkriConnectorListByTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -315,7 +311,7 @@ export interface AkriConnectorListByTemplateOutput {
   nextLink?: string;
 }
 export const AkriConnectorListByTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -360,12 +356,10 @@ export const AkriConnectorListByTemplateOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorListByTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorListByTemplateInput,
-    outputSchema: AkriConnectorListByTemplateOutput,
-  }),
-);
+export const AkriConnectorListByTemplate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorListByTemplateInput,
+  outputSchema: AkriConnectorListByTemplateOutput,
+}));
 // Input Schema
 export interface AkriConnectorTemplateCreateOrUpdateInput {
   subscriptionId: string;
@@ -407,7 +401,7 @@ export interface AkriConnectorTemplateCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const AkriConnectorTemplateCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -505,7 +499,7 @@ export interface AkriConnectorTemplateCreateOrUpdateOutput {
   };
 }
 export const AkriConnectorTemplateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -536,7 +530,7 @@ export const AkriConnectorTemplateCreateOrUpdateOutput =
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
 export const AkriConnectorTemplateCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AkriConnectorTemplateCreateOrUpdateInput,
     outputSchema: AkriConnectorTemplateCreateOrUpdateOutput,
   }));
@@ -548,7 +542,7 @@ export interface AkriConnectorTemplateDeleteInput {
   akriConnectorTemplateName: string;
 }
 export const AkriConnectorTemplateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -564,7 +558,7 @@ export const AkriConnectorTemplateDeleteInput =
 // Output Schema
 export type AkriConnectorTemplateDeleteOutput = void;
 export const AkriConnectorTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorTemplateDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorTemplateDeleteOutput>;
 
 // The operation
 /**
@@ -576,12 +570,10 @@ export const AkriConnectorTemplateDeleteOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorTemplateDeleteInput,
-    outputSchema: AkriConnectorTemplateDeleteOutput,
-  }),
-);
+export const AkriConnectorTemplateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorTemplateDeleteInput,
+  outputSchema: AkriConnectorTemplateDeleteOutput,
+}));
 // Input Schema
 export interface AkriConnectorTemplateGetInput {
   subscriptionId: string;
@@ -590,7 +582,7 @@ export interface AkriConnectorTemplateGetInput {
   akriConnectorTemplateName: string;
 }
 export const AkriConnectorTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -618,7 +610,7 @@ export interface AkriConnectorTemplateGetOutput {
   };
 }
 export const AkriConnectorTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -648,12 +640,10 @@ export const AkriConnectorTemplateGetOutput =
  * @param instanceName - Name of instance.
  * @param akriConnectorTemplateName - Name of AkriConnectorTemplate resource.
  */
-export const AkriConnectorTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriConnectorTemplateGetInput,
-    outputSchema: AkriConnectorTemplateGetOutput,
-  }),
-);
+export const AkriConnectorTemplateGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriConnectorTemplateGetInput,
+  outputSchema: AkriConnectorTemplateGetOutput,
+}));
 // Input Schema
 export interface AkriConnectorTemplateListByInstanceResourceInput {
   subscriptionId: string;
@@ -661,7 +651,7 @@ export interface AkriConnectorTemplateListByInstanceResourceInput {
   instanceName: string;
 }
 export const AkriConnectorTemplateListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -691,7 +681,7 @@ export interface AkriConnectorTemplateListByInstanceResourceOutput {
   nextLink?: string;
 }
 export const AkriConnectorTemplateListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -736,7 +726,7 @@ export const AkriConnectorTemplateListByInstanceResourceOutput =
  * @param instanceName - Name of instance.
  */
 export const AkriConnectorTemplateListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AkriConnectorTemplateListByInstanceResourceInput,
     outputSchema: AkriConnectorTemplateListByInstanceResourceOutput,
   }));
@@ -768,7 +758,7 @@ export interface AkriServiceCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const AkriServiceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -837,7 +827,7 @@ export interface AkriServiceCreateOrUpdateOutput {
   };
 }
 export const AkriServiceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -867,12 +857,10 @@ export const AkriServiceCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AkriServiceCreateOrUpdateInput,
-    outputSchema: AkriServiceCreateOrUpdateOutput,
-  }),
-);
+export const AkriServiceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AkriServiceCreateOrUpdateInput,
+  outputSchema: AkriServiceCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AkriServiceDeleteInput {
   subscriptionId: string;
@@ -880,14 +868,12 @@ export interface AkriServiceDeleteInput {
   instanceName: string;
   akriServiceName: string;
 }
-export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    akriServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AkriServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  akriServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
@@ -898,7 +884,7 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type AkriServiceDeleteOutput = void;
 export const AkriServiceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriServiceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriServiceDeleteOutput>;
 
 // The operation
 /**
@@ -910,7 +896,7 @@ export const AkriServiceDeleteOutput =
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriServiceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriServiceDeleteInput,
   outputSchema: AkriServiceDeleteOutput,
 }));
@@ -921,7 +907,7 @@ export interface AkriServiceGetInput {
   instanceName: string;
   akriServiceName: string;
 }
-export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriServiceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -948,7 +934,7 @@ export interface AkriServiceGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AkriServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AkriServiceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -978,7 +964,7 @@ export const AkriServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param instanceName - Name of instance.
  * @param akriServiceName - Name of AkriService resource.
  */
-export const AkriServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AkriServiceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AkriServiceGetInput,
   outputSchema: AkriServiceGetOutput,
 }));
@@ -989,7 +975,7 @@ export interface AkriServiceListByInstanceResourceInput {
   instanceName: string;
 }
 export const AkriServiceListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1019,7 +1005,7 @@ export interface AkriServiceListByInstanceResourceOutput {
   nextLink?: string;
 }
 export const AkriServiceListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1064,7 +1050,7 @@ export const AkriServiceListByInstanceResourceOutput =
  * @param instanceName - Name of instance.
  */
 export const AkriServiceListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AkriServiceListByInstanceResourceInput,
     outputSchema: AkriServiceListByInstanceResourceOutput,
   }));
@@ -1107,7 +1093,7 @@ export interface BrokerAuthenticationCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const BrokerAuthenticationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1203,7 +1189,7 @@ export interface BrokerAuthenticationCreateOrUpdateOutput {
   };
 }
 export const BrokerAuthenticationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1235,7 +1221,7 @@ export const BrokerAuthenticationCreateOrUpdateOutput =
  * @param authenticationName - Name of Instance broker authentication resource
  */
 export const BrokerAuthenticationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerAuthenticationCreateOrUpdateInput,
     outputSchema: BrokerAuthenticationCreateOrUpdateOutput,
   }));
@@ -1248,7 +1234,7 @@ export interface BrokerAuthenticationDeleteInput {
   authenticationName: string;
 }
 export const BrokerAuthenticationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1265,7 +1251,7 @@ export const BrokerAuthenticationDeleteInput =
 // Output Schema
 export type BrokerAuthenticationDeleteOutput = void;
 export const BrokerAuthenticationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthenticationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthenticationDeleteOutput>;
 
 // The operation
 /**
@@ -1278,12 +1264,10 @@ export const BrokerAuthenticationDeleteOutput =
  * @param brokerName - Name of broker.
  * @param authenticationName - Name of Instance broker authentication resource
  */
-export const BrokerAuthenticationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthenticationDeleteInput,
-    outputSchema: BrokerAuthenticationDeleteOutput,
-  }),
-);
+export const BrokerAuthenticationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthenticationDeleteInput,
+  outputSchema: BrokerAuthenticationDeleteOutput,
+}));
 // Input Schema
 export interface BrokerAuthenticationGetInput {
   subscriptionId: string;
@@ -1293,7 +1277,7 @@ export interface BrokerAuthenticationGetInput {
   authenticationName: string;
 }
 export const BrokerAuthenticationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1322,7 +1306,7 @@ export interface BrokerAuthenticationGetOutput {
   };
 }
 export const BrokerAuthenticationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1353,12 +1337,10 @@ export const BrokerAuthenticationGetOutput =
  * @param brokerName - Name of broker.
  * @param authenticationName - Name of Instance broker authentication resource
  */
-export const BrokerAuthenticationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthenticationGetInput,
-    outputSchema: BrokerAuthenticationGetOutput,
-  }),
-);
+export const BrokerAuthenticationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthenticationGetInput,
+  outputSchema: BrokerAuthenticationGetOutput,
+}));
 // Input Schema
 export interface BrokerAuthenticationListByResourceGroupInput {
   subscriptionId: string;
@@ -1367,7 +1349,7 @@ export interface BrokerAuthenticationListByResourceGroupInput {
   brokerName: string;
 }
 export const BrokerAuthenticationListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1398,7 +1380,7 @@ export interface BrokerAuthenticationListByResourceGroupOutput {
   nextLink?: string;
 }
 export const BrokerAuthenticationListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1444,7 +1426,7 @@ export const BrokerAuthenticationListByResourceGroupOutput =
  * @param brokerName - Name of broker.
  */
 export const BrokerAuthenticationListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerAuthenticationListByResourceGroupInput,
     outputSchema: BrokerAuthenticationListByResourceGroupOutput,
   }));
@@ -1489,7 +1471,7 @@ export interface BrokerAuthorizationCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const BrokerAuthorizationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1578,7 +1560,7 @@ export interface BrokerAuthorizationCreateOrUpdateOutput {
   };
 }
 export const BrokerAuthorizationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1610,7 +1592,7 @@ export const BrokerAuthorizationCreateOrUpdateOutput =
  * @param authorizationName - Name of Instance broker authorization resource
  */
 export const BrokerAuthorizationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerAuthorizationCreateOrUpdateInput,
     outputSchema: BrokerAuthorizationCreateOrUpdateOutput,
   }));
@@ -1623,7 +1605,7 @@ export interface BrokerAuthorizationDeleteInput {
   authorizationName: string;
 }
 export const BrokerAuthorizationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1640,7 +1622,7 @@ export const BrokerAuthorizationDeleteInput =
 // Output Schema
 export type BrokerAuthorizationDeleteOutput = void;
 export const BrokerAuthorizationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthorizationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthorizationDeleteOutput>;
 
 // The operation
 /**
@@ -1653,12 +1635,10 @@ export const BrokerAuthorizationDeleteOutput =
  * @param brokerName - Name of broker.
  * @param authorizationName - Name of Instance broker authorization resource
  */
-export const BrokerAuthorizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthorizationDeleteInput,
-    outputSchema: BrokerAuthorizationDeleteOutput,
-  }),
-);
+export const BrokerAuthorizationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthorizationDeleteInput,
+  outputSchema: BrokerAuthorizationDeleteOutput,
+}));
 // Input Schema
 export interface BrokerAuthorizationGetInput {
   subscriptionId: string;
@@ -1668,7 +1648,7 @@ export interface BrokerAuthorizationGetInput {
   authorizationName: string;
 }
 export const BrokerAuthorizationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1697,7 +1677,7 @@ export interface BrokerAuthorizationGetOutput {
   };
 }
 export const BrokerAuthorizationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1728,12 +1708,10 @@ export const BrokerAuthorizationGetOutput =
  * @param brokerName - Name of broker.
  * @param authorizationName - Name of Instance broker authorization resource
  */
-export const BrokerAuthorizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerAuthorizationGetInput,
-    outputSchema: BrokerAuthorizationGetOutput,
-  }),
-);
+export const BrokerAuthorizationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerAuthorizationGetInput,
+  outputSchema: BrokerAuthorizationGetOutput,
+}));
 // Input Schema
 export interface BrokerAuthorizationListByResourceGroupInput {
   subscriptionId: string;
@@ -1742,7 +1720,7 @@ export interface BrokerAuthorizationListByResourceGroupInput {
   brokerName: string;
 }
 export const BrokerAuthorizationListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -1773,7 +1751,7 @@ export interface BrokerAuthorizationListByResourceGroupOutput {
   nextLink?: string;
 }
 export const BrokerAuthorizationListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1819,7 +1797,7 @@ export const BrokerAuthorizationListByResourceGroupOutput =
  * @param brokerName - Name of broker.
  */
 export const BrokerAuthorizationListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerAuthorizationListByResourceGroupInput,
     outputSchema: BrokerAuthorizationListByResourceGroupOutput,
   }));
@@ -1998,7 +1976,7 @@ export interface BrokerCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const BrokerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2385,7 +2363,7 @@ export interface BrokerCreateOrUpdateOutput {
   };
 }
 export const BrokerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2415,12 +2393,10 @@ export const BrokerCreateOrUpdateOutput =
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerCreateOrUpdateInput,
-    outputSchema: BrokerCreateOrUpdateOutput,
-  }),
-);
+export const BrokerCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerCreateOrUpdateInput,
+  outputSchema: BrokerCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BrokerDeleteInput {
   subscriptionId: string;
@@ -2428,7 +2404,7 @@ export interface BrokerDeleteInput {
   instanceName: string;
   brokerName: string;
 }
-export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2444,7 +2420,7 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BrokerDeleteOutput = void;
 export const BrokerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerDeleteOutput>;
 
 // The operation
 /**
@@ -2456,7 +2432,7 @@ export const BrokerDeleteOutput =
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerDeleteInput,
   outputSchema: BrokerDeleteOutput,
 }));
@@ -2467,7 +2443,7 @@ export interface BrokerGetInput {
   instanceName: string;
   brokerName: string;
 }
-export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -2494,7 +2470,7 @@ export interface BrokerGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BrokerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BrokerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2524,7 +2500,7 @@ export const BrokerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param instanceName - Name of instance.
  * @param brokerName - Name of broker.
  */
-export const BrokerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerGetInput,
   outputSchema: BrokerGetOutput,
 }));
@@ -2535,7 +2511,7 @@ export interface BrokerListByResourceGroupInput {
   instanceName: string;
 }
 export const BrokerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2565,7 +2541,7 @@ export interface BrokerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const BrokerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2609,12 +2585,10 @@ export const BrokerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const BrokerListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerListByResourceGroupInput,
-    outputSchema: BrokerListByResourceGroupOutput,
-  }),
-);
+export const BrokerListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListByResourceGroupInput,
+  outputSchema: BrokerListByResourceGroupOutput,
+}));
 // Input Schema
 export interface BrokerListenerCreateOrUpdateInput {
   subscriptionId: string;
@@ -2671,7 +2645,7 @@ export interface BrokerListenerCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const BrokerListenerCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2779,7 +2753,7 @@ export interface BrokerListenerCreateOrUpdateOutput {
   };
 }
 export const BrokerListenerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2811,7 +2785,7 @@ export const BrokerListenerCreateOrUpdateOutput =
  * @param listenerName - Name of Instance broker listener resource
  */
 export const BrokerListenerCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerListenerCreateOrUpdateInput,
     outputSchema: BrokerListenerCreateOrUpdateOutput,
   }));
@@ -2824,7 +2798,7 @@ export interface BrokerListenerDeleteInput {
   listenerName: string;
 }
 export const BrokerListenerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2841,7 +2815,7 @@ export const BrokerListenerDeleteInput =
 // Output Schema
 export type BrokerListenerDeleteOutput = void;
 export const BrokerListenerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerListenerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerListenerDeleteOutput>;
 
 // The operation
 /**
@@ -2854,12 +2828,10 @@ export const BrokerListenerDeleteOutput =
  * @param brokerName - Name of broker.
  * @param listenerName - Name of Instance broker listener resource
  */
-export const BrokerListenerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BrokerListenerDeleteInput,
-    outputSchema: BrokerListenerDeleteOutput,
-  }),
-);
+export const BrokerListenerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BrokerListenerDeleteInput,
+  outputSchema: BrokerListenerDeleteOutput,
+}));
 // Input Schema
 export interface BrokerListenerGetInput {
   subscriptionId: string;
@@ -2868,15 +2840,13 @@ export interface BrokerListenerGetInput {
   brokerName: string;
   listenerName: string;
 }
-export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    instanceName: Schema.String.pipe(T.PathParam()),
-    brokerName: Schema.String.pipe(T.PathParam()),
-    listenerName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const BrokerListenerGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  instanceName: Schema.String.pipe(T.PathParam()),
+  brokerName: Schema.String.pipe(T.PathParam()),
+  listenerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
@@ -2899,7 +2869,7 @@ export interface BrokerListenerGetOutput {
   };
 }
 export const BrokerListenerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2930,7 +2900,7 @@ export const BrokerListenerGetOutput =
  * @param brokerName - Name of broker.
  * @param listenerName - Name of Instance broker listener resource
  */
-export const BrokerListenerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BrokerListenerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BrokerListenerGetInput,
   outputSchema: BrokerListenerGetOutput,
 }));
@@ -2942,7 +2912,7 @@ export interface BrokerListenerListByResourceGroupInput {
   brokerName: string;
 }
 export const BrokerListenerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -2973,7 +2943,7 @@ export interface BrokerListenerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const BrokerListenerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3019,7 +2989,7 @@ export const BrokerListenerListByResourceGroupOutput =
  * @param brokerName - Name of broker.
  */
 export const BrokerListenerListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BrokerListenerListByResourceGroupInput,
     outputSchema: BrokerListenerListByResourceGroupOutput,
   }));
@@ -3102,7 +3072,7 @@ export interface DataflowCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const DataflowCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -3263,7 +3233,7 @@ export interface DataflowCreateOrUpdateOutput {
   };
 }
 export const DataflowCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3294,12 +3264,10 @@ export const DataflowCreateOrUpdateOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowCreateOrUpdateInput,
-    outputSchema: DataflowCreateOrUpdateOutput,
-  }),
-);
+export const DataflowCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowCreateOrUpdateInput,
+  outputSchema: DataflowCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DataflowDeleteInput {
   subscriptionId: string;
@@ -3308,7 +3276,7 @@ export interface DataflowDeleteInput {
   dataflowProfileName: string;
   dataflowName: string;
 }
-export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -3325,7 +3293,7 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DataflowDeleteOutput = void;
 export const DataflowDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowDeleteOutput>;
 
 // The operation
 /**
@@ -3338,7 +3306,7 @@ export const DataflowDeleteOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowDeleteInput,
   outputSchema: DataflowDeleteOutput,
 }));
@@ -3504,7 +3472,7 @@ export interface DataflowEndpointCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const DataflowEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -3830,7 +3798,7 @@ export interface DataflowEndpointCreateOrUpdateOutput {
   };
 }
 export const DataflowEndpointCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3861,7 +3829,7 @@ export const DataflowEndpointCreateOrUpdateOutput =
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
 export const DataflowEndpointCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowEndpointCreateOrUpdateInput,
     outputSchema: DataflowEndpointCreateOrUpdateOutput,
   }));
@@ -3873,7 +3841,7 @@ export interface DataflowEndpointDeleteInput {
   dataflowEndpointName: string;
 }
 export const DataflowEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -3889,7 +3857,7 @@ export const DataflowEndpointDeleteInput =
 // Output Schema
 export type DataflowEndpointDeleteOutput = void;
 export const DataflowEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowEndpointDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowEndpointDeleteOutput>;
 
 // The operation
 /**
@@ -3901,12 +3869,10 @@ export const DataflowEndpointDeleteOutput =
  * @param instanceName - Name of instance.
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
-export const DataflowEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowEndpointDeleteInput,
-    outputSchema: DataflowEndpointDeleteOutput,
-  }),
-);
+export const DataflowEndpointDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowEndpointDeleteInput,
+  outputSchema: DataflowEndpointDeleteOutput,
+}));
 // Input Schema
 export interface DataflowEndpointGetInput {
   subscriptionId: string;
@@ -3915,7 +3881,7 @@ export interface DataflowEndpointGetInput {
   dataflowEndpointName: string;
 }
 export const DataflowEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -3943,7 +3909,7 @@ export interface DataflowEndpointGetOutput {
   };
 }
 export const DataflowEndpointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3973,7 +3939,7 @@ export const DataflowEndpointGetOutput =
  * @param instanceName - Name of instance.
  * @param dataflowEndpointName - Name of Instance dataflowEndpoint resource
  */
-export const DataflowEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowEndpointGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowEndpointGetInput,
   outputSchema: DataflowEndpointGetOutput,
 }));
@@ -3984,7 +3950,7 @@ export interface DataflowEndpointListByResourceGroupInput {
   instanceName: string;
 }
 export const DataflowEndpointListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4014,7 +3980,7 @@ export interface DataflowEndpointListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DataflowEndpointListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4059,7 +4025,7 @@ export const DataflowEndpointListByResourceGroupOutput =
  * @param instanceName - Name of instance.
  */
 export const DataflowEndpointListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowEndpointListByResourceGroupInput,
     outputSchema: DataflowEndpointListByResourceGroupOutput,
   }));
@@ -4071,7 +4037,7 @@ export interface DataflowGetInput {
   dataflowProfileName: string;
   dataflowName: string;
 }
-export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -4099,7 +4065,7 @@ export interface DataflowGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4130,7 +4096,7 @@ export const DataflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowName - Name of Instance dataflowProfile dataflow resource
  */
-export const DataflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGetInput,
   outputSchema: DataflowGetOutput,
 }));
@@ -4177,7 +4143,7 @@ export interface DataflowGraphCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const DataflowGraphCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4278,7 +4244,7 @@ export interface DataflowGraphCreateOrUpdateOutput {
   };
 }
 export const DataflowGraphCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4309,12 +4275,10 @@ export const DataflowGraphCreateOrUpdateOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowGraphCreateOrUpdateInput,
-    outputSchema: DataflowGraphCreateOrUpdateOutput,
-  }),
-);
+export const DataflowGraphCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowGraphCreateOrUpdateInput,
+  outputSchema: DataflowGraphCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DataflowGraphDeleteInput {
   subscriptionId: string;
@@ -4324,7 +4288,7 @@ export interface DataflowGraphDeleteInput {
   dataflowGraphName: string;
 }
 export const DataflowGraphDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4341,7 +4305,7 @@ export const DataflowGraphDeleteInput =
 // Output Schema
 export type DataflowGraphDeleteOutput = void;
 export const DataflowGraphDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowGraphDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowGraphDeleteOutput>;
 
 // The operation
 /**
@@ -4354,7 +4318,7 @@ export const DataflowGraphDeleteOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGraphDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGraphDeleteInput,
   outputSchema: DataflowGraphDeleteOutput,
 }));
@@ -4366,7 +4330,7 @@ export interface DataflowGraphGetInput {
   dataflowProfileName: string;
   dataflowGraphName: string;
 }
-export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataflowGraphGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -4394,27 +4358,25 @@ export interface DataflowGraphGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataflowGraphGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<DataflowGraphGetOutput>;
+export const DataflowGraphGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<DataflowGraphGetOutput>;
 
 // The operation
 /**
@@ -4427,7 +4389,7 @@ export const DataflowGraphGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  * @param dataflowGraphName - Name of Instance dataflowEndpoint resource.
  */
-export const DataflowGraphGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowGraphGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowGraphGetInput,
   outputSchema: DataflowGraphGetOutput,
 }));
@@ -4439,7 +4401,7 @@ export interface DataflowGraphListByDataflowProfileInput {
   dataflowProfileName: string;
 }
 export const DataflowGraphListByDataflowProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4470,7 +4432,7 @@ export interface DataflowGraphListByDataflowProfileOutput {
   nextLink?: string;
 }
 export const DataflowGraphListByDataflowProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4516,7 +4478,7 @@ export const DataflowGraphListByDataflowProfileOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
 export const DataflowGraphListByDataflowProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowGraphListByDataflowProfileInput,
     outputSchema: DataflowGraphListByDataflowProfileOutput,
   }));
@@ -4528,7 +4490,7 @@ export interface DataflowListByProfileResourceInput {
   dataflowProfileName: string;
 }
 export const DataflowListByProfileResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4559,7 +4521,7 @@ export interface DataflowListByProfileResourceOutput {
   nextLink?: string;
 }
 export const DataflowListByProfileResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4605,7 +4567,7 @@ export const DataflowListByProfileResourceOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
 export const DataflowListByProfileResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowListByProfileResourceInput,
     outputSchema: DataflowListByProfileResourceOutput,
   }));
@@ -4643,7 +4605,7 @@ export interface DataflowProfileCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const DataflowProfileCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4730,7 +4692,7 @@ export interface DataflowProfileCreateOrUpdateOutput {
   };
 }
 export const DataflowProfileCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4761,7 +4723,7 @@ export const DataflowProfileCreateOrUpdateOutput =
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
 export const DataflowProfileCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowProfileCreateOrUpdateInput,
     outputSchema: DataflowProfileCreateOrUpdateOutput,
   }));
@@ -4773,7 +4735,7 @@ export interface DataflowProfileDeleteInput {
   dataflowProfileName: string;
 }
 export const DataflowProfileDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4789,7 +4751,7 @@ export const DataflowProfileDeleteInput =
 // Output Schema
 export type DataflowProfileDeleteOutput = void;
 export const DataflowProfileDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowProfileDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowProfileDeleteOutput>;
 
 // The operation
 /**
@@ -4801,12 +4763,10 @@ export const DataflowProfileDeleteOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowProfileDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataflowProfileDeleteInput,
-    outputSchema: DataflowProfileDeleteOutput,
-  }),
-);
+export const DataflowProfileDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataflowProfileDeleteInput,
+  outputSchema: DataflowProfileDeleteOutput,
+}));
 // Input Schema
 export interface DataflowProfileGetInput {
   subscriptionId: string;
@@ -4815,7 +4775,7 @@ export interface DataflowProfileGetInput {
   dataflowProfileName: string;
 }
 export const DataflowProfileGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4843,7 +4803,7 @@ export interface DataflowProfileGetOutput {
   };
 }
 export const DataflowProfileGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4873,7 +4833,7 @@ export const DataflowProfileGetOutput =
  * @param instanceName - Name of instance.
  * @param dataflowProfileName - Name of Instance dataflowProfile resource
  */
-export const DataflowProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataflowProfileGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataflowProfileGetInput,
   outputSchema: DataflowProfileGetOutput,
 }));
@@ -4884,7 +4844,7 @@ export interface DataflowProfileListByResourceGroupInput {
   instanceName: string;
 }
 export const DataflowProfileListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -4914,7 +4874,7 @@ export interface DataflowProfileListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DataflowProfileListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4959,7 +4919,7 @@ export const DataflowProfileListByResourceGroupOutput =
  * @param instanceName - Name of instance.
  */
 export const DataflowProfileListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataflowProfileListByResourceGroupInput,
     outputSchema: DataflowProfileListByResourceGroupOutput,
   }));
@@ -5009,7 +4969,7 @@ export interface InstanceCreateOrUpdateInput {
   location: string;
 }
 export const InstanceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -5112,7 +5072,7 @@ export interface InstanceCreateOrUpdateOutput {
   };
 }
 export const InstanceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5141,19 +5101,17 @@ export const InstanceCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceCreateOrUpdateInput,
-    outputSchema: InstanceCreateOrUpdateOutput,
-  }),
-);
+export const InstanceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceCreateOrUpdateInput,
+  outputSchema: InstanceCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface InstanceDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   instanceName: string;
 }
-export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -5168,7 +5126,7 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InstanceDeleteOutput = void;
 export const InstanceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstanceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InstanceDeleteOutput>;
 
 // The operation
 /**
@@ -5179,7 +5137,7 @@ export const InstanceDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceDeleteInput,
   outputSchema: InstanceDeleteOutput,
 }));
@@ -5189,7 +5147,7 @@ export interface InstanceGetInput {
   resourceGroupName: string;
   instanceName: string;
 }
-export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -5215,7 +5173,7 @@ export interface InstanceGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstanceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5244,7 +5202,7 @@ export const InstanceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceGetInput,
   outputSchema: InstanceGetOutput,
 }));
@@ -5254,7 +5212,7 @@ export interface InstanceListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const InstanceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5283,7 +5241,7 @@ export interface InstanceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const InstanceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5326,18 +5284,16 @@ export const InstanceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const InstanceListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceListByResourceGroupInput,
-    outputSchema: InstanceListByResourceGroupOutput,
-  }),
-);
+export const InstanceListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceListByResourceGroupInput,
+  outputSchema: InstanceListByResourceGroupOutput,
+}));
 // Input Schema
 export interface InstanceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const InstanceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5365,7 +5321,7 @@ export interface InstanceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const InstanceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5407,12 +5363,10 @@ export const InstanceListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const InstanceListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstanceListBySubscriptionInput,
-    outputSchema: InstanceListBySubscriptionOutput,
-  }),
-);
+export const InstanceListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstanceListBySubscriptionInput,
+  outputSchema: InstanceListBySubscriptionOutput,
+}));
 // Input Schema
 export interface InstanceUpdateInput {
   subscriptionId: string;
@@ -5433,7 +5387,7 @@ export interface InstanceUpdateInput {
     >;
   };
 }
-export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instanceName: Schema.String.pipe(T.PathParam()),
@@ -5481,7 +5435,7 @@ export interface InstanceUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstanceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstanceUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5510,15 +5464,13 @@ export const InstanceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instanceName - Name of instance.
  */
-export const InstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstanceUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstanceUpdateInput,
   outputSchema: InstanceUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.IoTOperations/operations",
@@ -5542,7 +5494,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5572,7 +5524,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5605,7 +5557,7 @@ export interface RegistryEndpointCreateOrUpdateInput {
   extendedLocation?: { name: string; type: "CustomLocation" };
 }
 export const RegistryEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -5673,7 +5625,7 @@ export interface RegistryEndpointCreateOrUpdateOutput {
   };
 }
 export const RegistryEndpointCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5704,7 +5656,7 @@ export const RegistryEndpointCreateOrUpdateOutput =
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
 export const RegistryEndpointCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistryEndpointCreateOrUpdateInput,
     outputSchema: RegistryEndpointCreateOrUpdateOutput,
   }));
@@ -5716,7 +5668,7 @@ export interface RegistryEndpointDeleteInput {
   registryEndpointName: string;
 }
 export const RegistryEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -5732,7 +5684,7 @@ export const RegistryEndpointDeleteInput =
 // Output Schema
 export type RegistryEndpointDeleteOutput = void;
 export const RegistryEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryEndpointDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryEndpointDeleteOutput>;
 
 // The operation
 /**
@@ -5744,12 +5696,10 @@ export const RegistryEndpointDeleteOutput =
  * @param instanceName - Name of instance.
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
-export const RegistryEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistryEndpointDeleteInput,
-    outputSchema: RegistryEndpointDeleteOutput,
-  }),
-);
+export const RegistryEndpointDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistryEndpointDeleteInput,
+  outputSchema: RegistryEndpointDeleteOutput,
+}));
 // Input Schema
 export interface RegistryEndpointGetInput {
   subscriptionId: string;
@@ -5758,7 +5708,7 @@ export interface RegistryEndpointGetInput {
   registryEndpointName: string;
 }
 export const RegistryEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -5786,7 +5736,7 @@ export interface RegistryEndpointGetOutput {
   };
 }
 export const RegistryEndpointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5816,7 +5766,7 @@ export const RegistryEndpointGetOutput =
  * @param instanceName - Name of instance.
  * @param registryEndpointName - Name of RegistryEndpoint resource
  */
-export const RegistryEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistryEndpointGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistryEndpointGetInput,
   outputSchema: RegistryEndpointGetOutput,
 }));
@@ -5827,7 +5777,7 @@ export interface RegistryEndpointListByInstanceResourceInput {
   instanceName: string;
 }
 export const RegistryEndpointListByInstanceResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instanceName: Schema.String.pipe(T.PathParam()),
@@ -5857,7 +5807,7 @@ export interface RegistryEndpointListByInstanceResourceOutput {
   nextLink?: string;
 }
 export const RegistryEndpointListByInstanceResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5902,7 +5852,7 @@ export const RegistryEndpointListByInstanceResourceOutput =
  * @param instanceName - Name of instance.
  */
 export const RegistryEndpointListByInstanceResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistryEndpointListByInstanceResourceInput,
     outputSchema: RegistryEndpointListByInstanceResourceOutput,
   }));

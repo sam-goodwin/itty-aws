@@ -10,7 +10,7 @@ export interface GetBackupInput {
   database: string;
   branch: string;
 }
-export const GetBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBackupInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -39,13 +39,13 @@ export interface GetBackupOutput {
   uncompressed_size: number;
   protected: boolean;
   required: boolean;
-  restored_branches: {
+  restored_branches: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
-  }[];
+  }>;
   actor: { id: string; display_name: string; avatar_url: string } | null;
   backup_policy?: {
     id: string;
@@ -81,7 +81,7 @@ export interface GetBackupOutput {
     deleted_at: string | null;
   } | null;
 }
-export const GetBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBackupOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   state: Schema.Literals([
@@ -176,7 +176,7 @@ export const GetBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const getBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBackupInput,
   outputSchema: GetBackupOutput,
   errors: [Forbidden, NotFound] as const,

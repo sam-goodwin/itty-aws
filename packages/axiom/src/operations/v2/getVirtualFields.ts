@@ -6,7 +6,7 @@ import * as T from "../../traits.ts";
 export interface GetVirtualFieldsInput {
   dataset: string;
 }
-export const GetVirtualFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVirtualFieldsInput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.String,
 }).pipe(
   T.Http({ method: "GET", path: "/v2/vfields" }),
@@ -22,7 +22,7 @@ export type GetVirtualFieldsOutput = ReadonlyArray<{
   unit?: string;
   id: string;
 }>;
-export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetVirtualFieldsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.String,
     description: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 ) as unknown as Schema.Codec<GetVirtualFieldsOutput>;
 
 // The operation
-export const getVirtualFields = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getVirtualFields = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetVirtualFieldsInput,
   outputSchema: GetVirtualFieldsOutput,
 }));

@@ -12,7 +12,7 @@ export interface GetQuotesQuoteInput {
   quote: string;
   expand?: string;
 }
-export const GetQuotesQuoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesQuoteInput = /*@__PURE__*/ Schema.Struct({
   quote: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -959,7 +959,7 @@ export interface GetQuotesQuoteOutput {
     destination: unknown;
   } | null;
 }
-export const GetQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesQuoteOutput = /*@__PURE__*/ Schema.Struct({
   amount_subtotal: Schema.Number,
   amount_total: Schema.Number,
   application: Schema.NullOr(
@@ -2004,7 +2004,7 @@ export const GetQuotesQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetQuotesQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetQuotesQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetQuotesQuoteInput,
   outputSchema: GetQuotesQuoteOutput,
 }));

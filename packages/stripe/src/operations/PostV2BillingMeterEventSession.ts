@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface PostV2BillingMeterEventSessionInput {}
 export const PostV2BillingMeterEventSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/v2/billing/meter_event_session" }),
   ) as unknown as Schema.Codec<PostV2BillingMeterEventSessionInput>;
 
@@ -19,7 +19,7 @@ export interface PostV2BillingMeterEventSessionOutput {
   object: "v2.billing.meter_event_session";
 }
 export const PostV2BillingMeterEventSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authentication_token: Schema.String,
     created: Schema.String,
     expires_at: Schema.String,
@@ -35,7 +35,7 @@ export const PostV2BillingMeterEventSessionOutput =
  * Creates a meter event session to send usage on the high-throughput meter event stream. Authentication tokens are only valid for 15 minutes, so you need to create a new meter event session when your token expires.
  */
 export const PostV2BillingMeterEventSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2BillingMeterEventSessionInput,
     outputSchema: PostV2BillingMeterEventSessionOutput,
   }));

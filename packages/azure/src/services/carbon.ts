@@ -11,7 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput {}
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange",
@@ -25,7 +25,7 @@ export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput {
   endDate: string;
 }
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.String,
     endDate: Schema.String,
   }) as unknown as Schema.Codec<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput>;
@@ -37,7 +37,7 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput,
     outputSchema: CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput,
   }));
@@ -57,7 +57,7 @@ export interface CarbonServiceQueryCarbonEmissionReportsInput {
   carbonScopeList: ("Scope1" | "Scope2" | "Scope3")[];
 }
 export const CarbonServiceQueryCarbonEmissionReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportType: Schema.Literals([
       "OverallSummaryReport",
       "MonthlySummaryReport",
@@ -112,7 +112,7 @@ export interface CarbonServiceQueryCarbonEmissionReportsOutput {
   }[];
 }
 export const CarbonServiceQueryCarbonEmissionReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         dataType: Schema.Literals([
@@ -153,15 +153,13 @@ export const CarbonServiceQueryCarbonEmissionReportsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CarbonServiceQueryCarbonEmissionReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CarbonServiceQueryCarbonEmissionReportsInput,
     outputSchema: CarbonServiceQueryCarbonEmissionReportsOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Carbon/operations",
@@ -185,7 +183,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -215,7 +213,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

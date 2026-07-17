@@ -9,7 +9,7 @@ export interface FlagValueValuesRetrieveInput {
   key?: string;
 }
 export const FlagValueValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     key: Schema.optional(Schema.String),
   }).pipe(
@@ -25,7 +25,7 @@ export interface FlagValueValuesRetrieveOutput {
   refreshing?: boolean;
 }
 export const FlagValueValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -47,10 +47,8 @@ export const FlagValueValuesRetrieveOutput =
  * @param key - The flag ID
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const flagValueValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FlagValueValuesRetrieveInput,
-    outputSchema: FlagValueValuesRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const flagValueValuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FlagValueValuesRetrieveInput,
+  outputSchema: FlagValueValuesRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

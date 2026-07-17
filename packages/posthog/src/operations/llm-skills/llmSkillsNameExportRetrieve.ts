@@ -9,7 +9,7 @@ export interface LlmSkillsNameExportRetrieveInput {
   version?: number;
 }
 export const LlmSkillsNameExportRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String.pipe(T.PathParam()),
     version: Schema.optional(Schema.Number),
@@ -23,7 +23,7 @@ export const LlmSkillsNameExportRetrieveInput =
 // Output Schema
 export type LlmSkillsNameExportRetrieveOutput = void;
 export const LlmSkillsNameExportRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmSkillsNameExportRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmSkillsNameExportRetrieveOutput>;
 
 // The operation
 /**
@@ -31,9 +31,7 @@ export const LlmSkillsNameExportRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param version - Specific skill version to fetch. If omitted, the latest version is returned.
  */
-export const llmSkillsNameExportRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmSkillsNameExportRetrieveInput,
-    outputSchema: LlmSkillsNameExportRetrieveOutput,
-  }),
-);
+export const llmSkillsNameExportRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmSkillsNameExportRetrieveInput,
+  outputSchema: LlmSkillsNameExportRetrieveOutput,
+}));

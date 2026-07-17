@@ -9,7 +9,7 @@ export interface VolumesListSnapshotsInput {
   volume_id: string;
 }
 export const VolumesListSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     volume_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export type VolumesListSnapshotsOutput = {
   volume_size?: number;
 }[];
 export const VolumesListSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       created_at: Schema.optional(Schema.String),
       digest: Schema.optional(Schema.String),
@@ -51,10 +51,8 @@ export const VolumesListSnapshotsOutput =
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const VolumesListSnapshots = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListSnapshotsInput,
-    outputSchema: VolumesListSnapshotsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const VolumesListSnapshots = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListSnapshotsInput,
+  outputSchema: VolumesListSnapshotsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

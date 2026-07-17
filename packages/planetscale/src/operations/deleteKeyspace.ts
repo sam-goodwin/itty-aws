@@ -10,7 +10,7 @@ export interface DeleteKeyspaceInput {
   branch: string;
   keyspace: string;
 }
-export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteKeyspaceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteKeyspaceOutput = void;
 export const DeleteKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKeyspaceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKeyspaceOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteKeyspaceOutput =
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const deleteKeyspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteKeyspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteKeyspaceInput,
   outputSchema: DeleteKeyspaceOutput,
   errors: [Forbidden, NotFound] as const,

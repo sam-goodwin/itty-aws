@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 export interface DeleteDatasetInput {
   dataset_id: string;
 }
-export const DeleteDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/datasets/{dataset_id}" }),
@@ -16,13 +16,13 @@ export const DeleteDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteDatasetOutput = void;
 export const DeleteDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatasetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatasetOutput>;
 
 // The operation
 /**
  * Delete dataset
  */
-export const deleteDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDatasetInput,
   outputSchema: DeleteDatasetOutput,
   errors: [Forbidden, NotFound] as const,

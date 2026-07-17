@@ -28,7 +28,7 @@ export interface CreateNLSearchModelInput {
   id?: string;
 }
 export const CreateNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model_name: Schema.optional(Schema.String),
     api_key: Schema.optional(SensitiveString),
     api_url: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface CreateNLSearchModelOutput {
   id: string;
 }
 export const CreateNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<CreateNLSearchModelOutput>;
 
@@ -67,7 +67,7 @@ export const CreateNLSearchModelOutput =
  *
  * Create a new NL search model.
  */
-export const createNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNLSearchModel = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateNLSearchModelInput,
   outputSchema: CreateNLSearchModelOutput,
   errors: [BadRequest] as const,

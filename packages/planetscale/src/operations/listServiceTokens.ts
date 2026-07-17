@@ -11,13 +11,11 @@ export interface ListServiceTokensInput {
   page?: number;
   per_page?: number;
 }
-export const ListServiceTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    organization: Schema.String.pipe(T.PathParam()),
-    page: Schema.optional(Schema.Number),
-    per_page: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const ListServiceTokensInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  page: Schema.optional(Schema.Number),
+  per_page: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/organizations/{organization}/service-tokens",
@@ -32,7 +30,7 @@ export interface ListServiceTokensOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name?: string | null;
     display_name: string;
@@ -46,56 +44,54 @@ export interface ListServiceTokensOutput {
     actor_id: string | null;
     actor_display_name: string | null;
     actor_type: string | null;
-    service_token_accesses?:
-      | {
-          id: string;
-          access: string;
-          description: string;
-          resource_name: string;
-          resource_id: string;
-          resource_type: string;
-          resource: {
-            id: string;
-            name: string;
-            created_at: string;
-            updated_at: string;
-            deleted_at: string | null;
-          };
-        }[]
-      | null;
+    service_token_accesses?: ReadonlyArray<{
+      id: string;
+      access: string;
+      description: string;
+      resource_name: string;
+      resource_id: string;
+      resource_type: string;
+      resource: {
+        id: string;
+        name: string;
+        created_at: string;
+        updated_at: string;
+        deleted_at: string | null;
+      };
+    }> | null;
     oauth_accesses_by_resource?: {
       database: {
-        databases: {
+        databases: ReadonlyArray<{
           name: string;
           id: string;
           organization: string;
           url: string;
-        }[];
-        accesses: { name: string; description: string }[];
+        }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       organization: {
-        organizations: { name: string; id: string; url: string }[];
-        accesses: { name: string; description: string }[];
+        organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       branch: {
-        branches: {
+        branches: ReadonlyArray<{
           name: string;
           id: string;
           database: string;
           organization: string;
           url: string;
-        }[];
-        accesses: { name: string; description: string }[];
+        }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       user: {
-        users: { name: string; id: string }[];
-        accesses: { name: string; description: string }[];
+        users: ReadonlyArray<{ name: string; id: string }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
     } | null;
-  }[];
+  }>;
 }
 export const ListServiceTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -222,16 +218,14 @@ export const ListServiceTokensOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listServiceTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListServiceTokensInput,
-    outputSchema: ListServiceTokensOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listServiceTokens = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListServiceTokensInput,
+  outputSchema: ListServiceTokensOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

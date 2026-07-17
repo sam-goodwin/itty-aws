@@ -13,7 +13,7 @@ export interface HogFlowsInvocationResultsRetrieveInput {
   status?: string;
 }
 export const HogFlowsInvocationResultsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export type HogFlowsInvocationResultsRetrieveOutput = {
   is_retry: boolean;
 }[];
 export const HogFlowsInvocationResultsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       invocation_id: Schema.String,
       status: Schema.String,
@@ -73,7 +73,7 @@ export const HogFlowsInvocationResultsRetrieveOutput =
  * @param status - Comma-separated invocation statuses to include, e.g. 'failed' or 'success,failed'.
  */
 export const hogFlowsInvocationResultsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFlowsInvocationResultsRetrieveInput,
     outputSchema: HogFlowsInvocationResultsRetrieveOutput,
   }));

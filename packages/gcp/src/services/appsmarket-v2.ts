@@ -42,7 +42,7 @@ export interface UserLicense {
 }
 
 export const UserLicense: Schema.Codec<UserLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     editionId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface Editions {
 }
 
 export const Editions: Schema.Codec<Editions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     editionId: Schema.optional(Schema.String),
     assignedSeats: Schema.optional(Schema.Number),
     seatCount: Schema.optional(Schema.Number),
@@ -85,7 +85,7 @@ export interface CustomerLicense {
 }
 
 export const CustomerLicense: Schema.Codec<CustomerLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     applicationId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface GetUserLicenseRequest {
   userId: string;
 }
 
-export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserLicenseRequest = /*@__PURE__*/ Schema.Struct({
   applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
@@ -144,7 +144,7 @@ export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetUserLicenseRequest>;
 
 export type GetUserLicenseResponse = UserLicense;
-export const GetUserLicenseResponse = /*@__PURE__*/ /*#__PURE__*/ UserLicense;
+export const GetUserLicenseResponse = /*@__PURE__*/ UserLicense;
 
 export type GetUserLicenseError = DefaultErrors | NotFound | Forbidden;
 
@@ -154,7 +154,7 @@ export const getUserLicense: API.OperationMethod<
   GetUserLicenseResponse,
   GetUserLicenseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserLicenseRequest,
   output: GetUserLicenseResponse,
   errors: [NotFound, Forbidden],
@@ -168,7 +168,7 @@ export interface GetCustomerLicenseRequest {
 }
 
 export const GetCustomerLicenseRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
@@ -180,8 +180,7 @@ export const GetCustomerLicenseRequest =
   ) as unknown as Schema.Codec<GetCustomerLicenseRequest>;
 
 export type GetCustomerLicenseResponse = CustomerLicense;
-export const GetCustomerLicenseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerLicense;
+export const GetCustomerLicenseResponse = /*@__PURE__*/ CustomerLicense;
 
 export type GetCustomerLicenseError = DefaultErrors | NotFound | Forbidden;
 
@@ -191,7 +190,7 @@ export const getCustomerLicense: API.OperationMethod<
   GetCustomerLicenseResponse,
   GetCustomerLicenseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomerLicenseRequest,
   output: GetCustomerLicenseResponse,
   errors: [NotFound, Forbidden],

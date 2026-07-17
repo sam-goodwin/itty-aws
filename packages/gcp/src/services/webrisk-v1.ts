@@ -30,7 +30,7 @@ export interface GoogleCloudWebriskV1RawHashes {
 }
 
 export const GoogleCloudWebriskV1RawHashes: Schema.Codec<GoogleCloudWebriskV1RawHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prefixSize: Schema.optional(Schema.Number),
     rawHashes: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudWebriskV1RawHashes" });
@@ -45,7 +45,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -67,7 +67,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -85,7 +85,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -103,7 +103,7 @@ export interface GoogleCloudWebriskV1RiceDeltaEncoding {
 }
 
 export const GoogleCloudWebriskV1RiceDeltaEncoding: Schema.Codec<GoogleCloudWebriskV1RiceDeltaEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstValue: Schema.optional(Schema.String),
     riceParameter: Schema.optional(Schema.Number),
     entryCount: Schema.optional(Schema.Number),
@@ -113,7 +113,7 @@ export const GoogleCloudWebriskV1RiceDeltaEncoding: Schema.Codec<GoogleCloudWebr
 export interface GoogleLongrunningCancelOperationRequest {}
 
 export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
 
@@ -123,7 +123,7 @@ export interface GoogleCloudWebriskV1RawIndices {
 }
 
 export const GoogleCloudWebriskV1RawIndices: Schema.Codec<GoogleCloudWebriskV1RawIndices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indices: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleCloudWebriskV1RawIndices" });
 
@@ -135,7 +135,7 @@ export interface GoogleCloudWebriskV1ThreatEntryRemovals {
 }
 
 export const GoogleCloudWebriskV1ThreatEntryRemovals: Schema.Codec<GoogleCloudWebriskV1ThreatEntryRemovals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rawIndices: Schema.optional(GoogleCloudWebriskV1RawIndices),
     riceIndices: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
   }).annotate({ identifier: "GoogleCloudWebriskV1ThreatEntryRemovals" });
@@ -148,7 +148,7 @@ export interface GoogleCloudWebriskV1ThreatEntryAdditions {
 }
 
 export const GoogleCloudWebriskV1ThreatEntryAdditions: Schema.Codec<GoogleCloudWebriskV1ThreatEntryAdditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rawHashes: Schema.optional(Schema.Array(GoogleCloudWebriskV1RawHashes)),
     riceHashes: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
   }).annotate({ identifier: "GoogleCloudWebriskV1ThreatEntryAdditions" });
@@ -159,7 +159,7 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
 }
 
 export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum: Schema.Codec<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sha256: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
@@ -181,7 +181,7 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
 }
 
 export const GoogleCloudWebriskV1ComputeThreatListDiffResponse: Schema.Codec<GoogleCloudWebriskV1ComputeThreatListDiffResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additions: Schema.optional(GoogleCloudWebriskV1ThreatEntryAdditions),
     recommendedNextDiff: Schema.optional(Schema.String),
     removals: Schema.optional(GoogleCloudWebriskV1ThreatEntryRemovals),
@@ -209,7 +209,7 @@ export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
 }
 
 export const GoogleCloudWebriskV1SearchUrisResponseThreatUri: Schema.Codec<GoogleCloudWebriskV1SearchUrisResponseThreatUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threatTypes: Schema.optional(Schema.Array(Schema.String)),
     expireTime: Schema.optional(Schema.String),
   }).annotate({
@@ -219,7 +219,7 @@ export const GoogleCloudWebriskV1SearchUrisResponseThreatUri: Schema.Codec<Googl
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -229,7 +229,7 @@ export interface GoogleCloudWebriskV1SearchUrisResponse {
 }
 
 export const GoogleCloudWebriskV1SearchUrisResponse: Schema.Codec<GoogleCloudWebriskV1SearchUrisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threat: Schema.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUri),
   }).annotate({ identifier: "GoogleCloudWebriskV1SearchUrisResponse" });
 
@@ -250,7 +250,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
 }
 
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHash: Schema.Codec<GoogleCloudWebriskV1SearchHashesResponseThreatHash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threatTypes: Schema.optional(Schema.Array(Schema.String)),
     expireTime: Schema.optional(Schema.String),
     hash: Schema.optional(Schema.String),
@@ -266,7 +266,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponse {
 }
 
 export const GoogleCloudWebriskV1SearchHashesResponse: Schema.Codec<GoogleCloudWebriskV1SearchHashesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threats: Schema.optional(
       Schema.Array(GoogleCloudWebriskV1SearchHashesResponseThreatHash),
     ),
@@ -279,7 +279,7 @@ export interface GoogleCloudWebriskV1Submission {
 }
 
 export const GoogleCloudWebriskV1Submission: Schema.Codec<GoogleCloudWebriskV1Submission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudWebriskV1Submission" });
 
@@ -350,7 +350,7 @@ export interface SearchUrisRequest {
   uri?: string;
 }
 
-export const SearchUrisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchUrisRequest = /*@__PURE__*/ Schema.Struct({
   threatTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("threatTypes"),
   ),
@@ -362,7 +362,7 @@ export const SearchUrisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type SearchUrisResponse = GoogleCloudWebriskV1SearchUrisResponse;
 export const SearchUrisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1SearchUrisResponse;
+  /*@__PURE__*/ GoogleCloudWebriskV1SearchUrisResponse;
 
 export type SearchUrisError = DefaultErrors | NotFound | Forbidden;
 
@@ -372,7 +372,7 @@ export const searchUris: API.OperationMethod<
   SearchUrisResponse,
   SearchUrisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchUrisRequest,
   output: SearchUrisResponse,
   errors: [NotFound, Forbidden],
@@ -402,7 +402,7 @@ export interface ComputeDiffThreatListsRequest {
 }
 
 export const ComputeDiffThreatListsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "constraints.maxDiffEntries": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("constraints.maxDiffEntries"),
     ),
@@ -424,7 +424,7 @@ export const ComputeDiffThreatListsRequest =
 export type ComputeDiffThreatListsResponse =
   GoogleCloudWebriskV1ComputeThreatListDiffResponse;
 export const ComputeDiffThreatListsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1ComputeThreatListDiffResponse;
+  /*@__PURE__*/ GoogleCloudWebriskV1ComputeThreatListDiffResponse;
 
 export type ComputeDiffThreatListsError = DefaultErrors | NotFound | Forbidden;
 
@@ -434,7 +434,7 @@ export const computeDiffThreatLists: API.OperationMethod<
   ComputeDiffThreatListsResponse,
   ComputeDiffThreatListsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ComputeDiffThreatListsRequest,
   output: ComputeDiffThreatListsResponse,
   errors: [NotFound, Forbidden],
@@ -453,7 +453,7 @@ export interface SearchHashesRequest {
   hashPrefix?: string;
 }
 
-export const SearchHashesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchHashesRequest = /*@__PURE__*/ Schema.Struct({
   threatTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("threatTypes"),
   ),
@@ -465,7 +465,7 @@ export const SearchHashesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type SearchHashesResponse = GoogleCloudWebriskV1SearchHashesResponse;
 export const SearchHashesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1SearchHashesResponse;
+  /*@__PURE__*/ GoogleCloudWebriskV1SearchHashesResponse;
 
 export type SearchHashesError = DefaultErrors | NotFound | Forbidden;
 
@@ -475,7 +475,7 @@ export const searchHashes: API.OperationMethod<
   SearchHashesResponse,
   SearchHashesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchHashesRequest,
   output: SearchHashesResponse,
   errors: [NotFound, Forbidden],
@@ -487,7 +487,7 @@ export interface GetProjectsOperationsRequest {
 }
 
 export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -496,7 +496,7 @@ export const GetProjectsOperationsRequest =
 
 export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -506,7 +506,7 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsResponse,
   GetProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -518,7 +518,7 @@ export interface DeleteProjectsOperationsRequest {
 }
 
 export const DeleteProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -527,7 +527,7 @@ export const DeleteProjectsOperationsRequest =
 
 export type DeleteProjectsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsOperationsError =
   | DefaultErrors
@@ -542,7 +542,7 @@ export const deleteProjectsOperations: API.OperationMethod<
   DeleteProjectsOperationsResponse,
   DeleteProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsOperationsRequest,
   output: DeleteProjectsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -556,7 +556,7 @@ export interface CancelProjectsOperationsRequest {
 }
 
 export const CancelProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
       T.HttpBody(),
@@ -568,7 +568,7 @@ export const CancelProjectsOperationsRequest =
 
 export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsOperationsError =
   | DefaultErrors
@@ -583,7 +583,7 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsResponse,
   CancelProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -603,7 +603,7 @@ export interface ListProjectsOperationsRequest {
 }
 
 export const ListProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -619,7 +619,7 @@ export const ListProjectsOperationsRequest =
 export type ListProjectsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -629,7 +629,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsResponse,
   ListProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -647,7 +647,7 @@ export interface CreateProjectsSubmissionsRequest {
 }
 
 export const CreateProjectsSubmissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudWebriskV1Submission).pipe(T.HttpBody()),
   }).pipe(
@@ -657,7 +657,7 @@ export const CreateProjectsSubmissionsRequest =
 
 export type CreateProjectsSubmissionsResponse = GoogleCloudWebriskV1Submission;
 export const CreateProjectsSubmissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1Submission;
+  /*@__PURE__*/ GoogleCloudWebriskV1Submission;
 
 export type CreateProjectsSubmissionsError =
   | DefaultErrors
@@ -672,7 +672,7 @@ export const createProjectsSubmissions: API.OperationMethod<
   CreateProjectsSubmissionsResponse,
   CreateProjectsSubmissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsSubmissionsRequest,
   output: CreateProjectsSubmissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

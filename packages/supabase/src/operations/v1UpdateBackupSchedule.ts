@@ -9,7 +9,7 @@ export interface V1UpdateBackupScheduleInput {
   schedule_for: string;
 }
 export const V1UpdateBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     schedule_for: Schema.String,
   }).pipe(
@@ -25,7 +25,7 @@ export interface V1UpdateBackupScheduleOutput {
   updated_at: string;
 }
 export const V1UpdateBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule_for: Schema.String,
     updated_at: Schema.String,
   }) as unknown as Schema.Codec<V1UpdateBackupScheduleOutput>;
@@ -38,10 +38,8 @@ export const V1UpdateBackupScheduleOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateBackupSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateBackupScheduleInput,
-    outputSchema: V1UpdateBackupScheduleOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1UpdateBackupSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateBackupScheduleInput,
+  outputSchema: V1UpdateBackupScheduleOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

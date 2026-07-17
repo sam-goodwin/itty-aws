@@ -13,7 +13,7 @@ export interface GetFinancialConnectionsTransactionsInput {
   transaction_refresh?: string;
 }
 export const GetFinancialConnectionsTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface GetFinancialConnectionsTransactionsOutput {
   url: string;
 }
 export const GetFinancialConnectionsTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account: Schema.String,
@@ -90,7 +90,7 @@ export const GetFinancialConnectionsTransactionsOutput =
  * @param transaction_refresh - A filter on the list based on the object `transaction_refresh` field. The value can be a dictionary with the following options:
  */
 export const GetFinancialConnectionsTransactions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFinancialConnectionsTransactionsInput,
     outputSchema: GetFinancialConnectionsTransactionsOutput,
   }));

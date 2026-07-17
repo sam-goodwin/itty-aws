@@ -9,7 +9,7 @@ export interface ClientApiTokenControllerIssueClientApiTokenInput {
   user_id: string;
 }
 export const ClientApiTokenControllerIssueClientApiTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String,
     user_id: Schema.String,
   }).pipe(
@@ -21,7 +21,7 @@ export interface ClientApiTokenControllerIssueClientApiTokenOutput {
   token: string;
 }
 export const ClientApiTokenControllerIssueClientApiTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String,
   }) as unknown as Schema.Codec<ClientApiTokenControllerIssueClientApiTokenOutput>;
 
@@ -32,7 +32,7 @@ export const ClientApiTokenControllerIssueClientApiTokenOutput =
  * Generate a short-lived, session-bound token for the Client GraphQL API, scoped to an organization and user.
  */
 export const ClientApiTokenControllerIssueClientApiToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClientApiTokenControllerIssueClientApiTokenInput,
     outputSchema: ClientApiTokenControllerIssueClientApiTokenOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

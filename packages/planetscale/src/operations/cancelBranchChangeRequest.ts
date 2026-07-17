@@ -10,7 +10,7 @@ export interface CancelBranchChangeRequestInput {
   branch: string;
 }
 export const CancelBranchChangeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const CancelBranchChangeRequestInput =
 // Output Schema
 export type CancelBranchChangeRequestOutput = void;
 export const CancelBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBranchChangeRequestOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBranchChangeRequestOutput>;
 
 // The operation
 /**
@@ -34,10 +34,8 @@ export const CancelBranchChangeRequestOutput =
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const cancelBranchChangeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CancelBranchChangeRequestInput,
-    outputSchema: CancelBranchChangeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const cancelBranchChangeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CancelBranchChangeRequestInput,
+  outputSchema: CancelBranchChangeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -81,7 +81,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput {
   };
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     capture_amount: Schema.optional(Schema.Number),
     close_authorization: Schema.optional(Schema.Boolean),
@@ -2251,7 +2251,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput 
   wallet: string | null;
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4548,7 +4548,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput =
  * <p>Capture a test-mode authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingAuthorizationsAuthorizationCaptureInput,
     outputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationCaptureOutput,

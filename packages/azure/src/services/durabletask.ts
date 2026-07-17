@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DurableTask/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -91,7 +89,7 @@ export interface RetentionPoliciesCreateOrReplaceInput {
   };
 }
 export const RetentionPoliciesCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -148,7 +146,7 @@ export interface RetentionPoliciesCreateOrReplaceOutput {
   };
 }
 export const RetentionPoliciesCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -178,7 +176,7 @@ export const RetentionPoliciesCreateOrReplaceOutput =
  * @param schedulerName - The name of the Scheduler
  */
 export const RetentionPoliciesCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RetentionPoliciesCreateOrReplaceInput,
     outputSchema: RetentionPoliciesCreateOrReplaceOutput,
   }));
@@ -189,7 +187,7 @@ export interface RetentionPoliciesDeleteInput {
   schedulerName: string;
 }
 export const RetentionPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -204,7 +202,7 @@ export const RetentionPoliciesDeleteInput =
 // Output Schema
 export type RetentionPoliciesDeleteOutput = void;
 export const RetentionPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RetentionPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RetentionPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -215,12 +213,10 @@ export const RetentionPoliciesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesDeleteInput,
-    outputSchema: RetentionPoliciesDeleteOutput,
-  }),
-);
+export const RetentionPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesDeleteInput,
+  outputSchema: RetentionPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface RetentionPoliciesGetInput {
   subscriptionId: string;
@@ -228,7 +224,7 @@ export interface RetentionPoliciesGetInput {
   schedulerName: string;
 }
 export const RetentionPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -255,7 +251,7 @@ export interface RetentionPoliciesGetOutput {
   };
 }
 export const RetentionPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -284,12 +280,10 @@ export const RetentionPoliciesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesGetInput,
-    outputSchema: RetentionPoliciesGetOutput,
-  }),
-);
+export const RetentionPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesGetInput,
+  outputSchema: RetentionPoliciesGetOutput,
+}));
 // Input Schema
 export interface RetentionPoliciesListBySchedulerInput {
   subscriptionId: string;
@@ -297,7 +291,7 @@ export interface RetentionPoliciesListBySchedulerInput {
   schedulerName: string;
 }
 export const RetentionPoliciesListBySchedulerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -327,7 +321,7 @@ export interface RetentionPoliciesListBySchedulerOutput {
   nextLink?: string;
 }
 export const RetentionPoliciesListBySchedulerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -372,7 +366,7 @@ export const RetentionPoliciesListBySchedulerOutput =
  * @param schedulerName - The name of the Scheduler
  */
 export const RetentionPoliciesListByScheduler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RetentionPoliciesListBySchedulerInput,
     outputSchema: RetentionPoliciesListBySchedulerOutput,
   }));
@@ -397,7 +391,7 @@ export interface RetentionPoliciesUpdateInput {
   };
 }
 export const RetentionPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -454,7 +448,7 @@ export interface RetentionPoliciesUpdateOutput {
   };
 }
 export const RetentionPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -483,12 +477,10 @@ export const RetentionPoliciesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const RetentionPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetentionPoliciesUpdateInput,
-    outputSchema: RetentionPoliciesUpdateOutput,
-  }),
-);
+export const RetentionPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetentionPoliciesUpdateInput,
+  outputSchema: RetentionPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface SchedulersCreateOrUpdateInput {
   subscriptionId: string;
@@ -529,7 +521,7 @@ export interface SchedulersCreateOrUpdateInput {
   location: string;
 }
 export const SchedulersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -616,7 +608,7 @@ export interface SchedulersCreateOrUpdateOutput {
   };
 }
 export const SchedulersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -645,12 +637,10 @@ export const SchedulersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersCreateOrUpdateInput,
-    outputSchema: SchedulersCreateOrUpdateOutput,
-  }),
-);
+export const SchedulersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersCreateOrUpdateInput,
+  outputSchema: SchedulersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SchedulersCreateOrUpdatePrivateEndpointConnectionInput {
   subscriptionId: string;
@@ -680,7 +670,7 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionInput {
   };
 }
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -745,7 +735,7 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionOutput {
   };
 }
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -777,7 +767,7 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
  * @param properties - Resource properties.
  */
 export const SchedulersCreateOrUpdatePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersCreateOrUpdatePrivateEndpointConnectionInput,
     outputSchema: SchedulersCreateOrUpdatePrivateEndpointConnectionOutput,
   }));
@@ -787,7 +777,7 @@ export interface SchedulersDeleteInput {
   resourceGroupName: string;
   schedulerName: string;
 }
-export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -802,7 +792,7 @@ export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SchedulersDeleteOutput = void;
 export const SchedulersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeleteOutput>;
 
 // The operation
 /**
@@ -813,7 +803,7 @@ export const SchedulersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersDeleteInput,
   outputSchema: SchedulersDeleteOutput,
 }));
@@ -825,7 +815,7 @@ export interface SchedulersDeletePrivateEndpointConnectionInput {
   privateEndpointConnectionName: string;
 }
 export const SchedulersDeletePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -841,7 +831,7 @@ export const SchedulersDeletePrivateEndpointConnectionInput =
 // Output Schema
 export type SchedulersDeletePrivateEndpointConnectionOutput = void;
 export const SchedulersDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeletePrivateEndpointConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeletePrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -854,7 +844,7 @@ export const SchedulersDeletePrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const SchedulersDeletePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersDeletePrivateEndpointConnectionInput,
     outputSchema: SchedulersDeletePrivateEndpointConnectionOutput,
   }));
@@ -864,7 +854,7 @@ export interface SchedulersGetInput {
   resourceGroupName: string;
   schedulerName: string;
 }
-export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -890,7 +880,7 @@ export interface SchedulersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SchedulersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -919,7 +909,7 @@ export const SchedulersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersGetInput,
   outputSchema: SchedulersGetOutput,
 }));
@@ -931,7 +921,7 @@ export interface SchedulersGetPrivateEndpointConnectionInput {
   privateEndpointConnectionName: string;
 }
 export const SchedulersGetPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -959,7 +949,7 @@ export interface SchedulersGetPrivateEndpointConnectionOutput {
   };
 }
 export const SchedulersGetPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -990,7 +980,7 @@ export const SchedulersGetPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const SchedulersGetPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersGetPrivateEndpointConnectionInput,
     outputSchema: SchedulersGetPrivateEndpointConnectionOutput,
   }));
@@ -1002,7 +992,7 @@ export interface SchedulersGetPrivateLinkInput {
   privateLinkResourceName: string;
 }
 export const SchedulersGetPrivateLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1030,7 +1020,7 @@ export interface SchedulersGetPrivateLinkOutput {
   };
 }
 export const SchedulersGetPrivateLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1060,19 +1050,17 @@ export const SchedulersGetPrivateLinkOutput =
  * @param schedulerName - The name of the Scheduler
  * @param privateLinkResourceName - The name of the private link associated with the Azure resource.
  */
-export const SchedulersGetPrivateLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersGetPrivateLinkInput,
-    outputSchema: SchedulersGetPrivateLinkOutput,
-  }),
-);
+export const SchedulersGetPrivateLink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersGetPrivateLinkInput,
+  outputSchema: SchedulersGetPrivateLinkOutput,
+}));
 // Input Schema
 export interface SchedulersListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SchedulersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1101,7 +1089,7 @@ export interface SchedulersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SchedulersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1145,7 +1133,7 @@ export const SchedulersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SchedulersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersListByResourceGroupInput,
     outputSchema: SchedulersListByResourceGroupOutput,
   }));
@@ -1154,7 +1142,7 @@ export interface SchedulersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SchedulersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1182,7 +1170,7 @@ export interface SchedulersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SchedulersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1225,7 +1213,7 @@ export const SchedulersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SchedulersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersListBySubscriptionInput,
     outputSchema: SchedulersListBySubscriptionOutput,
   }));
@@ -1236,7 +1224,7 @@ export interface SchedulersListPrivateEndpointConnectionsInput {
   schedulerName: string;
 }
 export const SchedulersListPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1266,7 +1254,7 @@ export interface SchedulersListPrivateEndpointConnectionsOutput {
   nextLink?: string;
 }
 export const SchedulersListPrivateEndpointConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1311,7 +1299,7 @@ export const SchedulersListPrivateEndpointConnectionsOutput =
  * @param schedulerName - The name of the Scheduler
  */
 export const SchedulersListPrivateEndpointConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersListPrivateEndpointConnectionsInput,
     outputSchema: SchedulersListPrivateEndpointConnectionsOutput,
   }));
@@ -1322,7 +1310,7 @@ export interface SchedulersListPrivateLinksInput {
   schedulerName: string;
 }
 export const SchedulersListPrivateLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1352,7 +1340,7 @@ export interface SchedulersListPrivateLinksOutput {
   nextLink?: string;
 }
 export const SchedulersListPrivateLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1396,12 +1384,10 @@ export const SchedulersListPrivateLinksOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersListPrivateLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulersListPrivateLinksInput,
-    outputSchema: SchedulersListPrivateLinksOutput,
-  }),
-);
+export const SchedulersListPrivateLinks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulersListPrivateLinksInput,
+  outputSchema: SchedulersListPrivateLinksOutput,
+}));
 // Input Schema
 export interface SchedulersUpdateInput {
   subscriptionId: string;
@@ -1427,7 +1413,7 @@ export interface SchedulersUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1481,27 +1467,25 @@ export interface SchedulersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SchedulersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SchedulersUpdateOutput>;
+export const SchedulersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SchedulersUpdateOutput>;
 
 // The operation
 /**
@@ -1512,7 +1496,7 @@ export const SchedulersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const SchedulersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulersUpdateInput,
   outputSchema: SchedulersUpdateOutput,
 }));
@@ -1532,7 +1516,7 @@ export interface SchedulersUpdatePrivateEndpointConnectionInput {
   };
 }
 export const SchedulersUpdatePrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1578,7 +1562,7 @@ export interface SchedulersUpdatePrivateEndpointConnectionOutput {
   };
 }
 export const SchedulersUpdatePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1609,7 +1593,7 @@ export const SchedulersUpdatePrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const SchedulersUpdatePrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SchedulersUpdatePrivateEndpointConnectionInput,
     outputSchema: SchedulersUpdatePrivateEndpointConnectionOutput,
   }));
@@ -1632,7 +1616,7 @@ export interface TaskHubsCreateOrUpdateInput {
   };
 }
 export const TaskHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1676,7 +1660,7 @@ export interface TaskHubsCreateOrUpdateOutput {
   };
 }
 export const TaskHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1706,12 +1690,10 @@ export const TaskHubsCreateOrUpdateOutput =
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TaskHubsCreateOrUpdateInput,
-    outputSchema: TaskHubsCreateOrUpdateOutput,
-  }),
-);
+export const TaskHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TaskHubsCreateOrUpdateInput,
+  outputSchema: TaskHubsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TaskHubsDeleteInput {
   subscriptionId: string;
@@ -1719,7 +1701,7 @@ export interface TaskHubsDeleteInput {
   schedulerName: string;
   taskHubName: string;
 }
-export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1735,7 +1717,7 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TaskHubsDeleteOutput = void;
 export const TaskHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TaskHubsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TaskHubsDeleteOutput>;
 
 // The operation
 /**
@@ -1747,7 +1729,7 @@ export const TaskHubsDeleteOutput =
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TaskHubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaskHubsDeleteInput,
   outputSchema: TaskHubsDeleteOutput,
 }));
@@ -1758,7 +1740,7 @@ export interface TaskHubsGetInput {
   schedulerName: string;
   taskHubName: string;
 }
-export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1785,7 +1767,7 @@ export interface TaskHubsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TaskHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaskHubsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1815,7 +1797,7 @@ export const TaskHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param schedulerName - The name of the Scheduler
  * @param taskHubName - The name of the TaskHub
  */
-export const TaskHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TaskHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaskHubsGetInput,
   outputSchema: TaskHubsGetOutput,
 }));
@@ -1826,7 +1808,7 @@ export interface TaskHubsListBySchedulerInput {
   schedulerName: string;
 }
 export const TaskHubsListBySchedulerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     schedulerName: Schema.String.pipe(T.PathParam()),
@@ -1856,7 +1838,7 @@ export interface TaskHubsListBySchedulerOutput {
   nextLink?: string;
 }
 export const TaskHubsListBySchedulerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1900,9 +1882,7 @@ export const TaskHubsListBySchedulerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param schedulerName - The name of the Scheduler
  */
-export const TaskHubsListByScheduler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TaskHubsListBySchedulerInput,
-    outputSchema: TaskHubsListBySchedulerOutput,
-  }),
-);
+export const TaskHubsListByScheduler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TaskHubsListBySchedulerInput,
+  outputSchema: TaskHubsListBySchedulerOutput,
+}));

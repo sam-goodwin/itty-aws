@@ -15,7 +15,7 @@ export interface GetTreasuryTransactionsInput {
   status_transitions?: string;
 }
 export const GetTreasuryTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -122,7 +122,7 @@ export interface GetTreasuryTransactionsOutput {
   url: string;
 }
 export const GetTreasuryTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -240,9 +240,7 @@ export const GetTreasuryTransactionsOutput =
  * @param status - Only return Transactions that have the given status: `open`, `posted`, or `void`.
  * @param status_transitions - A filter for the `status_transitions.posted_at` timestamp. When using this filter, `status=posted` and `order_by=posted_at` must also be specified.
  */
-export const GetTreasuryTransactions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTreasuryTransactionsInput,
-    outputSchema: GetTreasuryTransactionsOutput,
-  }),
-);
+export const GetTreasuryTransactions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryTransactionsInput,
+  outputSchema: GetTreasuryTransactionsOutput,
+}));

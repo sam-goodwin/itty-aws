@@ -10,7 +10,7 @@ export interface NotebooksSharingListInput {
   project_id: string;
 }
 export const NotebooksSharingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notebook_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -36,7 +36,7 @@ export type NotebooksSharingListOutput = {
   }[];
 }[];
 export const NotebooksSharingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       created_at: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
@@ -62,9 +62,7 @@ export const NotebooksSharingListOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksSharingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebooksSharingListInput,
-    outputSchema: NotebooksSharingListOutput,
-  }),
-);
+export const notebooksSharingList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebooksSharingListInput,
+  outputSchema: NotebooksSharingListOutput,
+}));

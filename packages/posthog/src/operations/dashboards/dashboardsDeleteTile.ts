@@ -10,7 +10,7 @@ export interface DashboardsDeleteTileInput {
   tile_id: number;
 }
 export const DashboardsDeleteTileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -25,7 +25,7 @@ export const DashboardsDeleteTileInput =
 // Output Schema
 export type DashboardsDeleteTileOutput = void;
 export const DashboardsDeleteTileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteTileOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteTileOutput>;
 
 // The operation
 /**
@@ -37,9 +37,7 @@ export const DashboardsDeleteTileOutput =
  * @param id - A unique integer value identifying this dashboard.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardsDeleteTile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardsDeleteTileInput,
-    outputSchema: DashboardsDeleteTileOutput,
-  }),
-);
+export const dashboardsDeleteTile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardsDeleteTileInput,
+  outputSchema: DashboardsDeleteTileOutput,
+}));

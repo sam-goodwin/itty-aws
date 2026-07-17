@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const RecoverProjectBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -17,7 +17,7 @@ export type RecoverProjectBranchInput = typeof RecoverProjectBranchInput.Type;
 
 // Output Schema
 export const RecoverProjectBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -133,9 +133,7 @@ export type RecoverProjectBranchOutput = typeof RecoverProjectBranchOutput.Type;
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const recoverProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecoverProjectBranchInput,
-    outputSchema: RecoverProjectBranchOutput,
-  }),
-);
+export const recoverProjectBranch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecoverProjectBranchInput,
+  outputSchema: RecoverProjectBranchOutput,
+}));

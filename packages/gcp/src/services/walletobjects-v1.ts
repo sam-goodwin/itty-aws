@@ -28,7 +28,7 @@ export interface UpcomingNotification {
 }
 
 export const UpcomingNotification: Schema.Codec<UpcomingNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableNotification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "UpcomingNotification" });
 
@@ -42,7 +42,7 @@ export interface TranslatedString {
 }
 
 export const TranslatedString: Schema.Codec<TranslatedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface LocalizedString {
 }
 
 export const LocalizedString: Schema.Codec<LocalizedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     translatedValues: Schema.optional(Schema.Array(TranslatedString)),
     defaultValue: Schema.optional(TranslatedString),
@@ -76,7 +76,7 @@ export interface LabelValue {
 }
 
 export const LabelValue: Schema.Codec<LabelValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localizedLabel: Schema.optional(LocalizedString),
     localizedValue: Schema.optional(LocalizedString),
     value: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface LabelValueRow {
 }
 
 export const LabelValueRow: Schema.Codec<LabelValueRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(LabelValue)),
   }).annotate({ identifier: "LabelValueRow" });
 
@@ -100,7 +100,7 @@ export interface InfoModuleData {
 }
 
 export const InfoModuleData: Schema.Codec<InfoModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelValueRows: Schema.optional(Schema.Array(LabelValueRow)),
     showLastUpdateTime: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "InfoModuleData" });
@@ -113,7 +113,7 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
 }
 
 export const RotatingBarcodeTotpDetailsTotpParameters: Schema.Codec<RotatingBarcodeTotpDetailsTotpParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueLength: Schema.optional(Schema.Number),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "RotatingBarcodeTotpDetailsTotpParameters" });
@@ -128,7 +128,7 @@ export interface RotatingBarcodeTotpDetails {
 }
 
 export const RotatingBarcodeTotpDetails: Schema.Codec<RotatingBarcodeTotpDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     periodMillis: Schema.optional(Schema.String),
     parameters: Schema.optional(
@@ -146,7 +146,7 @@ export interface SetPassUpdateNoticeRequest {
 }
 
 export const SetPassUpdateNoticeRequest: Schema.Codec<SetPassUpdateNoticeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     externalPassId: Schema.optional(Schema.String),
     updatedPassJwtSignature: Schema.optional(Schema.String),
     updateUri: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export interface ModifyLinkedOfferObjects {
 }
 
 export const ModifyLinkedOfferObjects: Schema.Codec<ModifyLinkedOfferObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
     removeLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ModifyLinkedOfferObjects" });
@@ -171,7 +171,7 @@ export interface ModifyLinkedOfferObjectsRequest {
 }
 
 export const ModifyLinkedOfferObjectsRequest: Schema.Codec<ModifyLinkedOfferObjectsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     linkedOfferObjectIds: Schema.optional(ModifyLinkedOfferObjects),
   }).annotate({ identifier: "ModifyLinkedOfferObjectsRequest" });
 
@@ -181,7 +181,7 @@ export interface SignUpInfo {
 }
 
 export const SignUpInfo: Schema.Codec<SignUpInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignUpInfo" });
 
@@ -201,7 +201,7 @@ export interface IssuerToUserInfo {
 }
 
 export const IssuerToUserInfo: Schema.Codec<IssuerToUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signUpInfo: Schema.optional(SignUpInfo),
     action: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export interface SmartTap {
 }
 
 export const SmartTap: Schema.Codec<SmartTap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     infos: Schema.optional(Schema.Array(IssuerToUserInfo)),
     id: Schema.optional(Schema.String),
@@ -237,7 +237,7 @@ export interface ImageUri {
 }
 
 export const ImageUri: Schema.Codec<ImageUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localizedDescription: Schema.optional(LocalizedString),
     description: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateImageId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     sourceUri: Schema.optional(ImageUri),
@@ -270,7 +270,7 @@ export interface ImageModuleData {
 }
 
 export const ImageModuleData: Schema.Codec<ImageModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mainImage: Schema.optional(Image),
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImageModuleData" });
@@ -285,7 +285,7 @@ export interface RotatingBarcodeValues {
 }
 
 export const RotatingBarcodeValues: Schema.Codec<RotatingBarcodeValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     periodMillis: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -338,7 +338,7 @@ export interface RotatingBarcode {
 }
 
 export const RotatingBarcode: Schema.Codec<RotatingBarcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valuePattern: Schema.optional(Schema.String),
     showCodeText: Schema.optional(LocalizedString),
     renderEncoding: Schema.optional(Schema.String),
@@ -356,7 +356,7 @@ export interface MerchantLocation {
 }
 
 export const MerchantLocation: Schema.Codec<MerchantLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MerchantLocation" });
@@ -371,7 +371,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     micros: Schema.optional(Schema.String),
@@ -383,7 +383,7 @@ export interface DateTime {
 }
 
 export const DateTime: Schema.Codec<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
   }).annotate({ identifier: "DateTime" });
 
@@ -395,7 +395,7 @@ export interface CallbackOptions {
 }
 
 export const CallbackOptions: Schema.Codec<CallbackOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     updateRequestUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "CallbackOptions" });
@@ -405,7 +405,7 @@ export interface Review {
 }
 
 export const Review: Schema.Codec<Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     comments: Schema.optional(Schema.String),
   }).annotate({ identifier: "Review" });
 
@@ -431,7 +431,7 @@ export interface FieldReference {
 }
 
 export const FieldReference: Schema.Codec<FieldReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
     dateFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "FieldReference" });
@@ -442,7 +442,7 @@ export interface FieldSelector {
 }
 
 export const FieldSelector: Schema.Codec<FieldSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(FieldReference)),
   }).annotate({ identifier: "FieldSelector" });
 
@@ -462,7 +462,7 @@ export interface TemplateItem {
 }
 
 export const TemplateItem: Schema.Codec<TemplateItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstValue: Schema.optional(FieldSelector),
     secondValue: Schema.optional(FieldSelector),
     predefinedItem: Schema.optional(Schema.String),
@@ -476,7 +476,7 @@ export interface CardRowTwoItems {
 }
 
 export const CardRowTwoItems: Schema.Codec<CardRowTwoItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endItem: Schema.optional(TemplateItem),
     startItem: Schema.optional(TemplateItem),
   }).annotate({ identifier: "CardRowTwoItems" });
@@ -491,7 +491,7 @@ export interface CardRowThreeItems {
 }
 
 export const CardRowThreeItems: Schema.Codec<CardRowThreeItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     middleItem: Schema.optional(TemplateItem),
     startItem: Schema.optional(TemplateItem),
     endItem: Schema.optional(TemplateItem),
@@ -503,7 +503,7 @@ export interface CardRowOneItem {
 }
 
 export const CardRowOneItem: Schema.Codec<CardRowOneItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.optional(TemplateItem),
   }).annotate({ identifier: "CardRowOneItem" });
 
@@ -517,7 +517,7 @@ export interface CardRowTemplateInfo {
 }
 
 export const CardRowTemplateInfo: Schema.Codec<CardRowTemplateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     twoItems: Schema.optional(CardRowTwoItems),
     threeItems: Schema.optional(CardRowThreeItems),
     oneItem: Schema.optional(CardRowOneItem),
@@ -529,7 +529,7 @@ export interface CardTemplateOverride {
 }
 
 export const CardTemplateOverride: Schema.Codec<CardTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardRowTemplateInfos: Schema.optional(Schema.Array(CardRowTemplateInfo)),
   }).annotate({ identifier: "CardTemplateOverride" });
 
@@ -548,7 +548,7 @@ export interface FirstRowOption {
 }
 
 export const FirstRowOption: Schema.Codec<FirstRowOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transitOption: Schema.optional(Schema.String),
     fieldOption: Schema.optional(FieldSelector),
   }).annotate({ identifier: "FirstRowOption" });
@@ -563,7 +563,7 @@ export interface ListTemplateOverride {
 }
 
 export const ListTemplateOverride: Schema.Codec<ListTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thirdRowOption: Schema.optional(FieldSelector),
     secondRowOption: Schema.optional(FieldSelector),
     firstRowOption: Schema.optional(FirstRowOption),
@@ -575,7 +575,7 @@ export interface BarcodeSectionDetail {
 }
 
 export const BarcodeSectionDetail: Schema.Codec<BarcodeSectionDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldSelector: Schema.optional(FieldSelector),
   }).annotate({ identifier: "BarcodeSectionDetail" });
 
@@ -589,7 +589,7 @@ export interface CardBarcodeSectionDetails {
 }
 
 export const CardBarcodeSectionDetails: Schema.Codec<CardBarcodeSectionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secondTopDetail: Schema.optional(BarcodeSectionDetail),
     firstTopDetail: Schema.optional(BarcodeSectionDetail),
     firstBottomDetail: Schema.optional(BarcodeSectionDetail),
@@ -601,7 +601,7 @@ export interface DetailsItemInfo {
 }
 
 export const DetailsItemInfo: Schema.Codec<DetailsItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.optional(TemplateItem),
   }).annotate({ identifier: "DetailsItemInfo" });
 
@@ -611,7 +611,7 @@ export interface DetailsTemplateOverride {
 }
 
 export const DetailsTemplateOverride: Schema.Codec<DetailsTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detailsItemInfos: Schema.optional(Schema.Array(DetailsItemInfo)),
   }).annotate({ identifier: "DetailsTemplateOverride" });
 
@@ -627,7 +627,7 @@ export interface ClassTemplateInfo {
 }
 
 export const ClassTemplateInfo: Schema.Codec<ClassTemplateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardTemplateOverride: Schema.optional(CardTemplateOverride),
     listTemplateOverride: Schema.optional(ListTemplateOverride),
     cardBarcodeSectionDetails: Schema.optional(CardBarcodeSectionDetails),
@@ -647,15 +647,13 @@ export interface Uri {
   localizedDescription?: LocalizedString;
 }
 
-export const Uri: Schema.Codec<Uri> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    description: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    uri: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    localizedDescription: Schema.optional(LocalizedString),
-  },
-).annotate({ identifier: "Uri" });
+export const Uri: Schema.Codec<Uri> = /*@__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  localizedDescription: Schema.optional(LocalizedString),
+}).annotate({ identifier: "Uri" });
 
 export interface AppLinkDataAppLinkInfoAppTarget {
   /** Package name for AppTarget. For example: com.google.android.gm */
@@ -665,7 +663,7 @@ export interface AppLinkDataAppLinkInfoAppTarget {
 }
 
 export const AppLinkDataAppLinkInfoAppTarget: Schema.Codec<AppLinkDataAppLinkInfoAppTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     targetUri: Schema.optional(Uri),
   }).annotate({ identifier: "AppLinkDataAppLinkInfoAppTarget" });
@@ -682,7 +680,7 @@ export interface AppLinkDataAppLinkInfo {
 }
 
 export const AppLinkDataAppLinkInfo: Schema.Codec<AppLinkDataAppLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appTarget: Schema.optional(AppLinkDataAppLinkInfoAppTarget),
     appLogoImage: Schema.optional(Image),
     title: Schema.optional(LocalizedString),
@@ -701,7 +699,7 @@ export interface AppLinkData {
 }
 
 export const AppLinkData: Schema.Codec<AppLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayText: Schema.optional(LocalizedString),
     androidAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
     webAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
@@ -718,7 +716,7 @@ export interface TimeInterval {
 }
 
 export const TimeInterval: Schema.Codec<TimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(DateTime),
     kind: Schema.optional(Schema.String),
     start: Schema.optional(DateTime),
@@ -730,7 +728,7 @@ export interface ModuleViewConstraints {
 }
 
 export const ModuleViewConstraints: Schema.Codec<ModuleViewConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayInterval: Schema.optional(TimeInterval),
   }).annotate({ identifier: "ModuleViewConstraints" });
 
@@ -750,7 +748,7 @@ export interface ValueAddedModuleData {
 }
 
 export const ValueAddedModuleData: Schema.Codec<ValueAddedModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sortIndex: Schema.optional(Schema.Number),
     uri: Schema.optional(Schema.String),
     body: Schema.optional(LocalizedString),
@@ -769,7 +767,7 @@ export interface SecurityAnimation {
 }
 
 export const SecurityAnimation: Schema.Codec<SecurityAnimation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     animationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecurityAnimation" });
 
@@ -787,7 +785,7 @@ export interface TextModuleData {
 }
 
 export const TextModuleData: Schema.Codec<TextModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     localizedHeader: Schema.optional(LocalizedString),
     id: Schema.optional(Schema.String),
@@ -805,7 +803,7 @@ export interface LatLongPoint {
 }
 
 export const LatLongPoint: Schema.Codec<LatLongPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
@@ -838,7 +836,7 @@ export interface Message {
 }
 
 export const Message: Schema.Codec<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     displayInterval: Schema.optional(TimeInterval),
     messageType: Schema.optional(Schema.String),
@@ -855,7 +853,7 @@ export interface LinksModuleData {
 }
 
 export const LinksModuleData: Schema.Codec<LinksModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Uri)),
   }).annotate({ identifier: "LinksModuleData" });
 
@@ -970,7 +968,7 @@ export interface GiftCardClass {
 }
 
 export const GiftCardClass: Schema.Codec<GiftCardClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     localizedIssuerName: Schema.optional(LocalizedString),
     callbackOptions: Schema.optional(CallbackOptions),
@@ -1031,7 +1029,7 @@ export interface PassConstraints {
 }
 
 export const PassConstraints: Schema.Codec<PassConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nfcConstraint: Schema.optional(Schema.Array(Schema.String)),
     screenshotEligibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "PassConstraints" });
@@ -1042,7 +1040,7 @@ export interface SaveRestrictions {
 }
 
 export const SaveRestrictions: Schema.Codec<SaveRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     restrictToEmailSha256: Schema.optional(Schema.String),
   }).annotate({ identifier: "SaveRestrictions" });
 
@@ -1054,7 +1052,7 @@ export interface GroupingInfo {
 }
 
 export const GroupingInfo: Schema.Codec<GroupingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sortIndex: Schema.optional(Schema.Number),
     groupingId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupingInfo" });
@@ -1104,7 +1102,7 @@ export interface Barcode {
 }
 
 export const Barcode: Schema.Codec<Barcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1196,7 +1194,7 @@ export interface GiftCardObject {
 }
 
 export const GiftCardObject: Schema.Codec<GiftCardObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notifyPreference: Schema.optional(Schema.String),
     disableExpirationNotification: Schema.optional(Schema.Boolean),
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
@@ -1240,7 +1238,7 @@ export interface EventReservationInfo {
 }
 
 export const EventReservationInfo: Schema.Codec<EventReservationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     confirmationCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "EventReservationInfo" });
@@ -1253,7 +1251,7 @@ export interface AuthenticationKey {
 }
 
 export const AuthenticationKey: Schema.Codec<AuthenticationKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AuthenticationKey" });
@@ -1268,7 +1266,7 @@ export interface EventVenue {
 }
 
 export const EventVenue: Schema.Codec<EventVenue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedString),
     address: Schema.optional(LocalizedString),
@@ -1296,7 +1294,7 @@ export interface EventDateTime {
 }
 
 export const EventDateTime: Schema.Codec<EventDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doorsOpen: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
     doorsOpenLabel: Schema.optional(Schema.String),
@@ -1452,7 +1450,7 @@ export interface EventTicketClass {
 }
 
 export const EventTicketClass: Schema.Codec<EventTicketClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableSmartTap: Schema.optional(Schema.Boolean),
     countryCode: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1516,7 +1514,7 @@ export interface EventSeat {
 }
 
 export const EventSeat: Schema.Codec<EventSeat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gate: Schema.optional(LocalizedString),
     kind: Schema.optional(Schema.String),
     row: Schema.optional(LocalizedString),
@@ -1613,7 +1611,7 @@ export interface EventTicketObject {
 }
 
 export const EventTicketObject: Schema.Codec<EventTicketObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
     version: Schema.optional(Schema.String),
     hasLinkedDevice: Schema.optional(Schema.Boolean),
@@ -1658,7 +1656,7 @@ export interface EventTicketObjectAddMessageResponse {
 }
 
 export const EventTicketObjectAddMessageResponse: Schema.Codec<EventTicketObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(EventTicketObject),
   }).annotate({ identifier: "EventTicketObjectAddMessageResponse" });
 
@@ -1676,7 +1674,7 @@ export interface AirportInfo {
 }
 
 export const AirportInfo: Schema.Codec<AirportInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     terminal: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     airportNameOverride: Schema.optional(LocalizedString),
@@ -1702,7 +1700,7 @@ export interface FlightCarrier {
 }
 
 export const FlightCarrier: Schema.Codec<FlightCarrier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     airlineAllianceLogo: Schema.optional(Image),
     kind: Schema.optional(Schema.String),
     wideAirlineLogo: Schema.optional(Image),
@@ -1728,7 +1726,7 @@ export interface Permission {
 }
 
 export const Permission: Schema.Codec<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
   }).annotate({ identifier: "Permission" });
@@ -1739,7 +1737,7 @@ export interface GiftCardClassAddMessageResponse {
 }
 
 export const GiftCardClassAddMessageResponse: Schema.Codec<GiftCardClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(GiftCardClass),
   }).annotate({ identifier: "GiftCardClassAddMessageResponse" });
 
@@ -1771,7 +1769,7 @@ export interface BoardingAndSeatingPolicy {
 }
 
 export const BoardingAndSeatingPolicy: Schema.Codec<BoardingAndSeatingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boardingPolicy: Schema.optional(Schema.String),
     seatClassPolicy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1793,7 +1791,7 @@ export interface FlightHeader {
 }
 
 export const FlightHeader: Schema.Codec<FlightHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     flightNumber: Schema.optional(Schema.String),
     carrier: Schema.optional(FlightCarrier),
@@ -1929,7 +1927,7 @@ export interface FlightClass {
 }
 
 export const FlightClass: Schema.Codec<FlightClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     languageOverride: Schema.optional(Schema.String),
     multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
@@ -1984,7 +1982,7 @@ export interface Pagination {
 }
 
 export const Pagination: Schema.Codec<Pagination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resultsPerPage: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1998,7 +1996,7 @@ export interface FlightClassListResponse {
 }
 
 export const FlightClassListResponse: Schema.Codec<FlightClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(FlightClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "FlightClassListResponse" });
@@ -2011,7 +2009,7 @@ export interface SmartTapMerchantData {
 }
 
 export const SmartTapMerchantData: Schema.Codec<SmartTapMerchantData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     smartTapMerchantId: Schema.optional(Schema.String),
     authenticationKeys: Schema.optional(Schema.Array(AuthenticationKey)),
   }).annotate({ identifier: "SmartTapMerchantData" });
@@ -2039,7 +2037,7 @@ export interface DiscoverableProgramMerchantSignupInfo {
 }
 
 export const DiscoverableProgramMerchantSignupInfo: Schema.Codec<DiscoverableProgramMerchantSignupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signupWebsite: Schema.optional(Uri),
     signupSharedDatas: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DiscoverableProgramMerchantSignupInfo" });
@@ -2050,7 +2048,7 @@ export interface FlightClassAddMessageResponse {
 }
 
 export const FlightClassAddMessageResponse: Schema.Codec<FlightClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(FlightClass),
   }).annotate({ identifier: "FlightClassAddMessageResponse" });
 
@@ -2082,7 +2080,7 @@ export interface BoardingAndSeatingInfo {
 }
 
 export const BoardingAndSeatingInfo: Schema.Codec<BoardingAndSeatingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boardingPosition: Schema.optional(Schema.String),
     boardingGroup: Schema.optional(Schema.String),
     sequenceNumber: Schema.optional(Schema.String),
@@ -2104,7 +2102,7 @@ export interface FrequentFlyerInfo {
 }
 
 export const FrequentFlyerInfo: Schema.Codec<FrequentFlyerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     frequentFlyerProgramName: Schema.optional(LocalizedString),
     frequentFlyerNumber: Schema.optional(Schema.String),
@@ -2122,7 +2120,7 @@ export interface ReservationInfo {
 }
 
 export const ReservationInfo: Schema.Codec<ReservationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     frequentFlyerInfo: Schema.optional(FrequentFlyerInfo),
     confirmationCode: Schema.optional(Schema.String),
@@ -2212,7 +2210,7 @@ export interface FlightObject {
 }
 
 export const FlightObject: Schema.Codec<FlightObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
     classId: Schema.optional(Schema.String),
     barcode: Schema.optional(Barcode),
@@ -2256,7 +2254,7 @@ export interface FlightObjectListResponse {
 }
 
 export const FlightObjectListResponse: Schema.Codec<FlightObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(FlightObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "FlightObjectListResponse" });
@@ -2279,7 +2277,7 @@ export interface ContentTypeInfo {
 }
 
 export const ContentTypeInfo: Schema.Codec<ContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fromHeader: Schema.optional(Schema.String),
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
     bestGuess: Schema.optional(Schema.String),
@@ -2295,7 +2293,7 @@ export interface DiscoverableProgramMerchantSigninInfo {
 }
 
 export const DiscoverableProgramMerchantSigninInfo: Schema.Codec<DiscoverableProgramMerchantSigninInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signinWebsite: Schema.optional(Uri),
   }).annotate({ identifier: "DiscoverableProgramMerchantSigninInfo" });
 
@@ -2317,7 +2315,7 @@ export interface DiscoverableProgram {
 }
 
 export const DiscoverableProgram: Schema.Codec<DiscoverableProgram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantSignupInfo: Schema.optional(DiscoverableProgramMerchantSignupInfo),
     state: Schema.optional(Schema.String),
     merchantSigninInfo: Schema.optional(DiscoverableProgramMerchantSigninInfo),
@@ -2446,7 +2444,7 @@ export interface LoyaltyClass {
 }
 
 export const LoyaltyClass: Schema.Codec<LoyaltyClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
     redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
     localizedRewardsTierLabel: Schema.optional(LocalizedString),
@@ -2508,7 +2506,7 @@ export interface TicketRestrictions {
 }
 
 export const TicketRestrictions: Schema.Codec<TicketRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routeRestrictions: Schema.optional(LocalizedString),
     routeRestrictionsDetails: Schema.optional(LocalizedString),
     timeRestrictions: Schema.optional(LocalizedString),
@@ -2525,7 +2523,7 @@ export interface TicketCost {
 }
 
 export const TicketCost: Schema.Codec<TicketCost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     faceValue: Schema.optional(Money),
     purchasePrice: Schema.optional(Money),
     discountMessage: Schema.optional(LocalizedString),
@@ -2545,7 +2543,7 @@ export interface PurchaseDetails {
 }
 
 export const PurchaseDetails: Schema.Codec<PurchaseDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confirmationCode: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
     purchaseDateTime: Schema.optional(Schema.String),
@@ -2559,7 +2557,7 @@ export interface DeviceContext {
 }
 
 export const DeviceContext: Schema.Codec<DeviceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeviceContext" });
 
@@ -2571,7 +2569,7 @@ export interface ActivationOptions {
 }
 
 export const ActivationOptions: Schema.Codec<ActivationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationUrl: Schema.optional(Schema.String),
     allowReactivation: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ActivationOptions" });
@@ -2729,7 +2727,7 @@ export interface TransitClass {
 }
 
 export const TransitClass: Schema.Codec<TransitClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customTransitTerminusNameLabel: Schema.optional(LocalizedString),
     appLinkData: Schema.optional(AppLinkData),
     wordMark: Schema.optional(Image),
@@ -2799,7 +2797,7 @@ export interface ActivationStatus {
 }
 
 export const ActivationStatus: Schema.Codec<ActivationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActivationStatus" });
 
@@ -2825,7 +2823,7 @@ export interface TicketSeat {
 }
 
 export const TicketSeat: Schema.Codec<TicketSeat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     seat: Schema.optional(Schema.String),
     customFareClass: Schema.optional(LocalizedString),
     seatAssignment: Schema.optional(LocalizedString),
@@ -2865,7 +2863,7 @@ export interface TicketLeg {
 }
 
 export const TicketLeg: Schema.Codec<TicketLeg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     carriage: Schema.optional(Schema.String),
     ticketSeat: Schema.optional(TicketSeat),
     originName: Schema.optional(LocalizedString),
@@ -3013,7 +3011,7 @@ export interface TransitObject {
 }
 
 export const TransitObject: Schema.Codec<TransitObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customConcessionCategory: Schema.optional(LocalizedString),
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     disableExpirationNotification: Schema.optional(Schema.Boolean),
@@ -3065,7 +3063,7 @@ export interface TransitObjectAddMessageResponse {
 }
 
 export const TransitObjectAddMessageResponse: Schema.Codec<TransitObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(TransitObject),
   }).annotate({ identifier: "TransitObjectAddMessageResponse" });
 
@@ -3087,7 +3085,7 @@ export interface Blobstore2Info {
 }
 
 export const Blobstore2Info: Schema.Codec<Blobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blobGeneration: Schema.optional(Schema.String),
     readToken: Schema.optional(Schema.String),
     downloadReadHandle: Schema.optional(Schema.String),
@@ -3107,7 +3105,7 @@ export interface ObjectId {
 }
 
 export const ObjectId: Schema.Codec<ObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generation: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
     objectName: Schema.optional(Schema.String),
@@ -3145,7 +3143,7 @@ export interface CompositeMedia {
 }
 
 export const CompositeMedia: Schema.Codec<CompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cosmoBinaryReference: Schema.optional(Schema.String),
     length: Schema.optional(Schema.String),
     blobstore2Info: Schema.optional(Blobstore2Info),
@@ -3286,7 +3284,7 @@ export interface OfferClass {
 }
 
 export const OfferClass: Schema.Codec<OfferClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityAnimation: Schema.optional(SecurityAnimation),
     valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
     title: Schema.optional(Schema.String),
@@ -3339,7 +3337,7 @@ export interface ExpiryNotification {
 }
 
 export const ExpiryNotification: Schema.Codec<ExpiryNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableNotification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExpiryNotification" });
 
@@ -3351,7 +3349,7 @@ export interface Notifications {
 }
 
 export const Notifications: Schema.Codec<Notifications> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryNotification: Schema.optional(ExpiryNotification),
     upcomingNotification: Schema.optional(UpcomingNotification),
   }).annotate({ identifier: "Notifications" });
@@ -3447,7 +3445,7 @@ export interface GenericObject {
 }
 
 export const GenericObject: Schema.Codec<GenericObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupingInfo: Schema.optional(GroupingInfo),
     barcode: Schema.optional(Barcode),
     classId: Schema.optional(Schema.String),
@@ -3490,7 +3488,7 @@ export interface LoyaltyPointsBalance {
 }
 
 export const LoyaltyPointsBalance: Schema.Codec<LoyaltyPointsBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     double: Schema.optional(Schema.Number),
     string: Schema.optional(Schema.String),
     int: Schema.optional(Schema.Number),
@@ -3507,7 +3505,7 @@ export interface LoyaltyPoints {
 }
 
 export const LoyaltyPoints: Schema.Codec<LoyaltyPoints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     localizedLabel: Schema.optional(LocalizedString),
     balance: Schema.optional(LoyaltyPointsBalance),
@@ -3596,7 +3594,7 @@ export interface LoyaltyObject {
 }
 
 export const LoyaltyObject: Schema.Codec<LoyaltyObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rotatingBarcode: Schema.optional(RotatingBarcode),
     merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
     state: Schema.optional(Schema.String),
@@ -3705,7 +3703,7 @@ export interface OfferObject {
 }
 
 export const OfferObject: Schema.Codec<OfferObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     disableExpirationNotification: Schema.optional(Schema.Boolean),
     notifyPreference: Schema.optional(Schema.String),
@@ -3782,7 +3780,7 @@ export interface GenericClass {
 }
 
 export const GenericClass: Schema.Codec<GenericClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classTemplateInfo: Schema.optional(ClassTemplateInfo),
     linksModuleData: Schema.optional(LinksModuleData),
     appLinkData: Schema.optional(AppLinkData),
@@ -3832,7 +3830,7 @@ export interface Resources {
 }
 
 export const Resources: Schema.Codec<Resources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flightClasses: Schema.optional(Schema.Array(FlightClass)),
     offerClasses: Schema.optional(Schema.Array(OfferClass)),
     genericObjects: Schema.optional(Schema.Array(GenericObject)),
@@ -3852,7 +3850,7 @@ export const Resources: Schema.Codec<Resources> =
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
 
 export const TransitObjectUploadRotatingBarcodeValuesResponse: Schema.Codec<TransitObjectUploadRotatingBarcodeValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
   });
 
@@ -3861,7 +3859,7 @@ export interface AddMessageRequest {
 }
 
 export const AddMessageRequest: Schema.Codec<AddMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "AddMessageRequest" });
 
@@ -3873,7 +3871,7 @@ export interface OfferClassListResponse {
 }
 
 export const OfferClassListResponse: Schema.Codec<OfferClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(OfferClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "OfferClassListResponse" });
@@ -3884,7 +3882,7 @@ export interface EventTicketClassAddMessageResponse {
 }
 
 export const EventTicketClassAddMessageResponse: Schema.Codec<EventTicketClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(EventTicketClass),
   }).annotate({ identifier: "EventTicketClassAddMessageResponse" });
 
@@ -3896,7 +3894,7 @@ export interface DownloadParameters {
 }
 
 export const DownloadParameters: Schema.Codec<DownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DownloadParameters" });
@@ -3907,7 +3905,7 @@ export interface GenericObjectAddMessageResponse {
 }
 
 export const GenericObjectAddMessageResponse: Schema.Codec<GenericObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(GenericObject),
   }).annotate({ identifier: "GenericObjectAddMessageResponse" });
 
@@ -3917,7 +3915,7 @@ export interface OfferObjectAddMessageResponse {
 }
 
 export const OfferObjectAddMessageResponse: Schema.Codec<OfferObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(OfferObject),
   }).annotate({ identifier: "OfferObjectAddMessageResponse" });
 
@@ -3935,7 +3933,7 @@ export interface DiffChecksumsResponse {
 }
 
 export const DiffChecksumsResponse: Schema.Codec<DiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectSizeBytes: Schema.optional(Schema.String),
     checksumsLocation: Schema.optional(CompositeMedia),
     chunkSizeBytes: Schema.optional(Schema.String),
@@ -3951,7 +3949,7 @@ export interface EventTicketClassListResponse {
 }
 
 export const EventTicketClassListResponse: Schema.Codec<EventTicketClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(EventTicketClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "EventTicketClassListResponse" });
@@ -3966,7 +3964,7 @@ export interface DiffUploadRequest {
 }
 
 export const DiffUploadRequest: Schema.Codec<DiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectInfo: Schema.optional(CompositeMedia),
     checksumsInfo: Schema.optional(CompositeMedia),
@@ -3978,7 +3976,7 @@ export interface DiffDownloadResponse {
 }
 
 export const DiffDownloadResponse: Schema.Codec<DiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(CompositeMedia),
   }).annotate({ identifier: "DiffDownloadResponse" });
 
@@ -3990,7 +3988,7 @@ export interface DiffVersionResponse {
 }
 
 export const DiffVersionResponse: Schema.Codec<DiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiffVersionResponse" });
@@ -4003,7 +4001,7 @@ export interface DiffUploadResponse {
 }
 
 export const DiffUploadResponse: Schema.Codec<DiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalObject: Schema.optional(CompositeMedia),
     objectVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiffUploadResponse" });
@@ -4088,7 +4086,7 @@ export interface Media {
 }
 
 export const Media: Schema.Codec<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     blobRef: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
@@ -4130,7 +4128,7 @@ export interface OfferObjectListResponse {
 }
 
 export const OfferObjectListResponse: Schema.Codec<OfferObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(OfferObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "OfferObjectListResponse" });
@@ -4141,7 +4139,7 @@ export interface UploadPrivateImageResponse {
 }
 
 export const UploadPrivateImageResponse: Schema.Codec<UploadPrivateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateImageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadPrivateImageResponse" });
 
@@ -4153,7 +4151,7 @@ export interface JwtInsertResponse {
 }
 
 export const JwtInsertResponse: Schema.Codec<JwtInsertResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Resources),
     saveUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "JwtInsertResponse" });
@@ -4188,7 +4186,7 @@ export interface MediaRequestInfo {
 }
 
 export const MediaRequestInfo: Schema.Codec<MediaRequestInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationType: Schema.optional(Schema.String),
     totalBytesIsEstimated: Schema.optional(Schema.Boolean),
     diffObjectVersion: Schema.optional(Schema.String),
@@ -4209,7 +4207,7 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
 }
 
 export const TransitObjectUploadRotatingBarcodeValuesRequest: Schema.Codec<TransitObjectUploadRotatingBarcodeValuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediaRequestInfo: Schema.optional(MediaRequestInfo),
     blob: Schema.optional(Media),
   }).annotate({
@@ -4224,7 +4222,7 @@ export interface GiftCardObjectListResponse {
 }
 
 export const GiftCardObjectListResponse: Schema.Codec<GiftCardObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GiftCardObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "GiftCardObjectListResponse" });
@@ -4235,7 +4233,7 @@ export interface TransitClassAddMessageResponse {
 }
 
 export const TransitClassAddMessageResponse: Schema.Codec<TransitClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(TransitClass),
   }).annotate({ identifier: "TransitClassAddMessageResponse" });
 
@@ -4247,7 +4245,7 @@ export interface TransitObjectListResponse {
 }
 
 export const TransitObjectListResponse: Schema.Codec<TransitObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(TransitObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "TransitObjectListResponse" });
@@ -4258,7 +4256,7 @@ export interface OfferClassAddMessageResponse {
 }
 
 export const OfferClassAddMessageResponse: Schema.Codec<OfferClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(OfferClass),
   }).annotate({ identifier: "OfferClassAddMessageResponse" });
 
@@ -4270,7 +4268,7 @@ export interface Permissions {
 }
 
 export const Permissions: Schema.Codec<Permissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issuerId: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Permission)),
   }).annotate({ identifier: "Permissions" });
@@ -4283,7 +4281,7 @@ export interface LoyaltyObjectListResponse {
 }
 
 export const LoyaltyObjectListResponse: Schema.Codec<LoyaltyObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(LoyaltyObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "LoyaltyObjectListResponse" });
@@ -4300,7 +4298,7 @@ export interface IssuerContactInfo {
 }
 
 export const IssuerContactInfo: Schema.Codec<IssuerContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phone: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     alertsEmails: Schema.optional(Schema.Array(Schema.String)),
@@ -4323,7 +4321,7 @@ export interface Issuer {
 }
 
 export const Issuer: Schema.Codec<Issuer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     smartTapMerchantData: Schema.optional(SmartTapMerchantData),
     contactInfo: Schema.optional(IssuerContactInfo),
     name: Schema.optional(Schema.String),
@@ -4335,7 +4333,7 @@ export const Issuer: Schema.Codec<Issuer> =
 export interface UploadPrivateImageRequest {}
 
 export const UploadPrivateImageRequest: Schema.Codec<UploadPrivateImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadPrivateImageRequest",
   });
 
@@ -4345,7 +4343,7 @@ export interface JwtResource {
 }
 
 export const JwtResource: Schema.Codec<JwtResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jwt: Schema.optional(Schema.String),
   }).annotate({ identifier: "JwtResource" });
 
@@ -4355,7 +4353,7 @@ export interface GenericClassAddMessageResponse {
 }
 
 export const GenericClassAddMessageResponse: Schema.Codec<GenericClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(GenericClass),
   }).annotate({ identifier: "GenericClassAddMessageResponse" });
 
@@ -4365,7 +4363,7 @@ export interface LoyaltyObjectAddMessageResponse {
 }
 
 export const LoyaltyObjectAddMessageResponse: Schema.Codec<LoyaltyObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(LoyaltyObject),
   }).annotate({ identifier: "LoyaltyObjectAddMessageResponse" });
 
@@ -4377,7 +4375,7 @@ export interface LoyaltyClassListResponse {
 }
 
 export const LoyaltyClassListResponse: Schema.Codec<LoyaltyClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(LoyaltyClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "LoyaltyClassListResponse" });
@@ -4390,7 +4388,7 @@ export interface GenericClassListResponse {
 }
 
 export const GenericClassListResponse: Schema.Codec<GenericClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GenericClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "GenericClassListResponse" });
@@ -4401,7 +4399,7 @@ export interface LoyaltyClassAddMessageResponse {
 }
 
 export const LoyaltyClassAddMessageResponse: Schema.Codec<LoyaltyClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(LoyaltyClass),
   }).annotate({ identifier: "LoyaltyClassAddMessageResponse" });
 
@@ -4411,7 +4409,7 @@ export interface FlightObjectAddMessageResponse {
 }
 
 export const FlightObjectAddMessageResponse: Schema.Codec<FlightObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(FlightObject),
   }).annotate({ identifier: "FlightObjectAddMessageResponse" });
 
@@ -4423,7 +4421,7 @@ export interface TransitClassListResponse {
 }
 
 export const TransitClassListResponse: Schema.Codec<TransitClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(TransitClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "TransitClassListResponse" });
@@ -4436,7 +4434,7 @@ export interface GenericObjectListResponse {
 }
 
 export const GenericObjectListResponse: Schema.Codec<GenericObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GenericObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "GenericObjectListResponse" });
@@ -4447,7 +4445,7 @@ export interface IssuerListResponse {
 }
 
 export const IssuerListResponse: Schema.Codec<IssuerListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Issuer)),
   }).annotate({ identifier: "IssuerListResponse" });
 
@@ -4459,7 +4457,7 @@ export interface GiftCardClassListResponse {
 }
 
 export const GiftCardClassListResponse: Schema.Codec<GiftCardClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GiftCardClass)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "GiftCardClassListResponse" });
@@ -4467,7 +4465,7 @@ export const GiftCardClassListResponse: Schema.Codec<GiftCardClassListResponse> 
 export interface SetPassUpdateNoticeResponse {}
 
 export const SetPassUpdateNoticeResponse: Schema.Codec<SetPassUpdateNoticeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPassUpdateNoticeResponse",
   });
 
@@ -4477,7 +4475,7 @@ export interface GiftCardObjectAddMessageResponse {
 }
 
 export const GiftCardObjectAddMessageResponse: Schema.Codec<GiftCardObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(GiftCardObject),
   }).annotate({ identifier: "GiftCardObjectAddMessageResponse" });
 
@@ -4489,7 +4487,7 @@ export interface EventTicketObjectListResponse {
 }
 
 export const EventTicketObjectListResponse: Schema.Codec<EventTicketObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(EventTicketObject)),
     pagination: Schema.optional(Pagination),
   }).annotate({ identifier: "EventTicketObjectListResponse" });
@@ -4553,7 +4551,7 @@ export interface InsertJwtRequest {
   body?: JwtResource;
 }
 
-export const InsertJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertJwtRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(JwtResource).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/jwt", hasBody: true }),
@@ -4561,7 +4559,7 @@ export const InsertJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertJwtRequest>;
 
 export type InsertJwtResponse = JwtInsertResponse;
-export const InsertJwtResponse = /*@__PURE__*/ /*#__PURE__*/ JwtInsertResponse;
+export const InsertJwtResponse = /*@__PURE__*/ JwtInsertResponse;
 
 export type InsertJwtError =
   | DefaultErrors
@@ -4576,7 +4574,7 @@ export const insertJwt: API.OperationMethod<
   InsertJwtResponse,
   InsertJwtError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertJwtRequest,
   output: InsertJwtResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4588,7 +4586,7 @@ export interface InsertOfferclassRequest {
 }
 
 export const InsertOfferclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(OfferClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -4600,7 +4598,7 @@ export const InsertOfferclassRequest =
   ) as unknown as Schema.Codec<InsertOfferclassRequest>;
 
 export type InsertOfferclassResponse = OfferClass;
-export const InsertOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
+export const InsertOfferclassResponse = /*@__PURE__*/ OfferClass;
 
 export type InsertOfferclassError =
   | DefaultErrors
@@ -4615,7 +4613,7 @@ export const insertOfferclass: API.OperationMethod<
   InsertOfferclassResponse,
   InsertOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertOfferclassRequest,
   output: InsertOfferclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4630,7 +4628,7 @@ export interface ListOfferclassRequest {
   maxResults?: number;
 }
 
-export const ListOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOfferclassRequest = /*@__PURE__*/ Schema.Struct({
   token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
   issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -4640,8 +4638,7 @@ export const ListOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOfferclassRequest>;
 
 export type ListOfferclassResponse = OfferClassListResponse;
-export const ListOfferclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferClassListResponse;
+export const ListOfferclassResponse = /*@__PURE__*/ OfferClassListResponse;
 
 export type ListOfferclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -4651,7 +4648,7 @@ export const listOfferclass: API.OperationMethod<
   ListOfferclassResponse,
   ListOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOfferclassRequest,
   output: ListOfferclassResponse,
   errors: [NotFound, Forbidden],
@@ -4664,12 +4661,10 @@ export interface PatchOfferclassRequest {
   body?: OfferClass;
 }
 
-export const PatchOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-    body: Schema.optional(OfferClass).pipe(T.HttpBody()),
-  },
-).pipe(
+export const PatchOfferclassRequest = /*@__PURE__*/ Schema.Struct({
+  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+  body: Schema.optional(OfferClass).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "walletobjects/v1/offerClass/{resourceId}",
@@ -4679,7 +4674,7 @@ export const PatchOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<PatchOfferclassRequest>;
 
 export type PatchOfferclassResponse = OfferClass;
-export const PatchOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
+export const PatchOfferclassResponse = /*@__PURE__*/ OfferClass;
 
 export type PatchOfferclassError =
   | DefaultErrors
@@ -4694,7 +4689,7 @@ export const patchOfferclass: API.OperationMethod<
   PatchOfferclassResponse,
   PatchOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOfferclassRequest,
   output: PatchOfferclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4708,7 +4703,7 @@ export interface AddmessageOfferclassRequest {
 }
 
 export const AddmessageOfferclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4722,7 +4717,7 @@ export const AddmessageOfferclassRequest =
 
 export type AddmessageOfferclassResponse = OfferClassAddMessageResponse;
 export const AddmessageOfferclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferClassAddMessageResponse;
+  /*@__PURE__*/ OfferClassAddMessageResponse;
 
 export type AddmessageOfferclassError =
   | DefaultErrors
@@ -4737,7 +4732,7 @@ export const addmessageOfferclass: API.OperationMethod<
   AddmessageOfferclassResponse,
   AddmessageOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageOfferclassRequest,
   output: AddmessageOfferclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4751,7 +4746,7 @@ export interface UpdateOfferclassRequest {
 }
 
 export const UpdateOfferclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(OfferClass).pipe(T.HttpBody()),
   }).pipe(
@@ -4764,7 +4759,7 @@ export const UpdateOfferclassRequest =
   ) as unknown as Schema.Codec<UpdateOfferclassRequest>;
 
 export type UpdateOfferclassResponse = OfferClass;
-export const UpdateOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
+export const UpdateOfferclassResponse = /*@__PURE__*/ OfferClass;
 
 export type UpdateOfferclassError =
   | DefaultErrors
@@ -4779,7 +4774,7 @@ export const updateOfferclass: API.OperationMethod<
   UpdateOfferclassResponse,
   UpdateOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOfferclassRequest,
   output: UpdateOfferclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4790,7 +4785,7 @@ export interface GetOfferclassRequest {
   resourceId: string;
 }
 
-export const GetOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOfferclassRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerClass/{resourceId}" }),
@@ -4798,7 +4793,7 @@ export const GetOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOfferclassRequest>;
 
 export type GetOfferclassResponse = OfferClass;
-export const GetOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
+export const GetOfferclassResponse = /*@__PURE__*/ OfferClass;
 
 export type GetOfferclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -4808,7 +4803,7 @@ export const getOfferclass: API.OperationMethod<
   GetOfferclassResponse,
   GetOfferclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferclassRequest,
   output: GetOfferclassResponse,
   errors: [NotFound, Forbidden],
@@ -4820,7 +4815,7 @@ export interface GetEventticketobjectRequest {
 }
 
 export const GetEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -4831,8 +4826,7 @@ export const GetEventticketobjectRequest =
   ) as unknown as Schema.Codec<GetEventticketobjectRequest>;
 
 export type GetEventticketobjectResponse = EventTicketObject;
-export const GetEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
+export const GetEventticketobjectResponse = /*@__PURE__*/ EventTicketObject;
 
 export type GetEventticketobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -4842,7 +4836,7 @@ export const getEventticketobject: API.OperationMethod<
   GetEventticketobjectResponse,
   GetEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventticketobjectRequest,
   output: GetEventticketobjectResponse,
   errors: [NotFound, Forbidden],
@@ -4856,7 +4850,7 @@ export interface AddmessageEventticketobjectRequest {
 }
 
 export const AddmessageEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4871,7 +4865,7 @@ export const AddmessageEventticketobjectRequest =
 export type AddmessageEventticketobjectResponse =
   EventTicketObjectAddMessageResponse;
 export const AddmessageEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObjectAddMessageResponse;
+  /*@__PURE__*/ EventTicketObjectAddMessageResponse;
 
 export type AddmessageEventticketobjectError =
   | DefaultErrors
@@ -4886,7 +4880,7 @@ export const addmessageEventticketobject: API.OperationMethod<
   AddmessageEventticketobjectResponse,
   AddmessageEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageEventticketobjectRequest,
   output: AddmessageEventticketobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4900,7 +4894,7 @@ export interface UpdateEventticketobjectRequest {
 }
 
 export const UpdateEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(EventTicketObject).pipe(T.HttpBody()),
   }).pipe(
@@ -4913,8 +4907,7 @@ export const UpdateEventticketobjectRequest =
   ) as unknown as Schema.Codec<UpdateEventticketobjectRequest>;
 
 export type UpdateEventticketobjectResponse = EventTicketObject;
-export const UpdateEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
+export const UpdateEventticketobjectResponse = /*@__PURE__*/ EventTicketObject;
 
 export type UpdateEventticketobjectError =
   | DefaultErrors
@@ -4929,7 +4922,7 @@ export const updateEventticketobject: API.OperationMethod<
   UpdateEventticketobjectResponse,
   UpdateEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventticketobjectRequest,
   output: UpdateEventticketobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4945,7 +4938,7 @@ export interface ListEventticketobjectRequest {
 }
 
 export const ListEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
@@ -4956,7 +4949,7 @@ export const ListEventticketobjectRequest =
 
 export type ListEventticketobjectResponse = EventTicketObjectListResponse;
 export const ListEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObjectListResponse;
+  /*@__PURE__*/ EventTicketObjectListResponse;
 
 export type ListEventticketobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -4966,7 +4959,7 @@ export const listEventticketobject: API.OperationMethod<
   ListEventticketobjectResponse,
   ListEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEventticketobjectRequest,
   output: ListEventticketobjectResponse,
   errors: [NotFound, Forbidden],
@@ -4980,7 +4973,7 @@ export interface ModifylinkedofferobjectsEventticketobjectRequest {
 }
 
 export const ModifylinkedofferobjectsEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(ModifyLinkedOfferObjectsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4995,7 +4988,7 @@ export const ModifylinkedofferobjectsEventticketobjectRequest =
 export type ModifylinkedofferobjectsEventticketobjectResponse =
   EventTicketObject;
 export const ModifylinkedofferobjectsEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
+  /*@__PURE__*/ EventTicketObject;
 
 export type ModifylinkedofferobjectsEventticketobjectError =
   | DefaultErrors
@@ -5010,7 +5003,7 @@ export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
   ModifylinkedofferobjectsEventticketobjectResponse,
   ModifylinkedofferobjectsEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifylinkedofferobjectsEventticketobjectRequest,
   output: ModifylinkedofferobjectsEventticketobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5024,7 +5017,7 @@ export interface PatchEventticketobjectRequest {
 }
 
 export const PatchEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(EventTicketObject).pipe(T.HttpBody()),
   }).pipe(
@@ -5037,8 +5030,7 @@ export const PatchEventticketobjectRequest =
   ) as unknown as Schema.Codec<PatchEventticketobjectRequest>;
 
 export type PatchEventticketobjectResponse = EventTicketObject;
-export const PatchEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
+export const PatchEventticketobjectResponse = /*@__PURE__*/ EventTicketObject;
 
 export type PatchEventticketobjectError =
   | DefaultErrors
@@ -5053,7 +5045,7 @@ export const patchEventticketobject: API.OperationMethod<
   PatchEventticketobjectResponse,
   PatchEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEventticketobjectRequest,
   output: PatchEventticketobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5065,7 +5057,7 @@ export interface InsertEventticketobjectRequest {
 }
 
 export const InsertEventticketobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(EventTicketObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5077,8 +5069,7 @@ export const InsertEventticketobjectRequest =
   ) as unknown as Schema.Codec<InsertEventticketobjectRequest>;
 
 export type InsertEventticketobjectResponse = EventTicketObject;
-export const InsertEventticketobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
+export const InsertEventticketobjectResponse = /*@__PURE__*/ EventTicketObject;
 
 export type InsertEventticketobjectError =
   | DefaultErrors
@@ -5093,7 +5084,7 @@ export const insertEventticketobject: API.OperationMethod<
   InsertEventticketobjectResponse,
   InsertEventticketobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertEventticketobjectRequest,
   output: InsertEventticketobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5105,7 +5096,7 @@ export interface SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest {
 }
 
 export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(SetPassUpdateNoticeRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5119,7 +5110,7 @@ export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest =
 export type SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse =
   SetPassUpdateNoticeResponse;
 export const SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPassUpdateNoticeResponse;
+  /*@__PURE__*/ SetPassUpdateNoticeResponse;
 
 export type SetPassUpdateNoticeWalletobjectsV1PrivateContentError =
   | DefaultErrors
@@ -5134,7 +5125,7 @@ export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMeth
   SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse,
   SetPassUpdateNoticeWalletobjectsV1PrivateContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest,
   output: SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5150,7 +5141,7 @@ export interface ListLoyaltyobjectRequest {
 }
 
 export const ListLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -5161,7 +5152,7 @@ export const ListLoyaltyobjectRequest =
 
 export type ListLoyaltyobjectResponse = LoyaltyObjectListResponse;
 export const ListLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObjectListResponse;
+  /*@__PURE__*/ LoyaltyObjectListResponse;
 
 export type ListLoyaltyobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -5171,7 +5162,7 @@ export const listLoyaltyobject: API.OperationMethod<
   ListLoyaltyobjectResponse,
   ListLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLoyaltyobjectRequest,
   output: ListLoyaltyobjectResponse,
   errors: [NotFound, Forbidden],
@@ -5185,7 +5176,7 @@ export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
 }
 
 export const ModifylinkedofferobjectsLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(ModifyLinkedOfferObjectsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5199,7 +5190,7 @@ export const ModifylinkedofferobjectsLoyaltyobjectRequest =
 
 export type ModifylinkedofferobjectsLoyaltyobjectResponse = LoyaltyObject;
 export const ModifylinkedofferobjectsLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
+  /*@__PURE__*/ LoyaltyObject;
 
 export type ModifylinkedofferobjectsLoyaltyobjectError =
   | DefaultErrors
@@ -5214,7 +5205,7 @@ export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
   ModifylinkedofferobjectsLoyaltyobjectResponse,
   ModifylinkedofferobjectsLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifylinkedofferobjectsLoyaltyobjectRequest,
   output: ModifylinkedofferobjectsLoyaltyobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5228,7 +5219,7 @@ export interface PatchLoyaltyobjectRequest {
 }
 
 export const PatchLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(LoyaltyObject).pipe(T.HttpBody()),
   }).pipe(
@@ -5241,8 +5232,7 @@ export const PatchLoyaltyobjectRequest =
   ) as unknown as Schema.Codec<PatchLoyaltyobjectRequest>;
 
 export type PatchLoyaltyobjectResponse = LoyaltyObject;
-export const PatchLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
+export const PatchLoyaltyobjectResponse = /*@__PURE__*/ LoyaltyObject;
 
 export type PatchLoyaltyobjectError =
   | DefaultErrors
@@ -5257,7 +5247,7 @@ export const patchLoyaltyobject: API.OperationMethod<
   PatchLoyaltyobjectResponse,
   PatchLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLoyaltyobjectRequest,
   output: PatchLoyaltyobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5269,7 +5259,7 @@ export interface InsertLoyaltyobjectRequest {
 }
 
 export const InsertLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(LoyaltyObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5281,8 +5271,7 @@ export const InsertLoyaltyobjectRequest =
   ) as unknown as Schema.Codec<InsertLoyaltyobjectRequest>;
 
 export type InsertLoyaltyobjectResponse = LoyaltyObject;
-export const InsertLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
+export const InsertLoyaltyobjectResponse = /*@__PURE__*/ LoyaltyObject;
 
 export type InsertLoyaltyobjectError =
   | DefaultErrors
@@ -5297,7 +5286,7 @@ export const insertLoyaltyobject: API.OperationMethod<
   InsertLoyaltyobjectResponse,
   InsertLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertLoyaltyobjectRequest,
   output: InsertLoyaltyobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5309,7 +5298,7 @@ export interface GetLoyaltyobjectRequest {
 }
 
 export const GetLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -5320,8 +5309,7 @@ export const GetLoyaltyobjectRequest =
   ) as unknown as Schema.Codec<GetLoyaltyobjectRequest>;
 
 export type GetLoyaltyobjectResponse = LoyaltyObject;
-export const GetLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
+export const GetLoyaltyobjectResponse = /*@__PURE__*/ LoyaltyObject;
 
 export type GetLoyaltyobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -5331,7 +5319,7 @@ export const getLoyaltyobject: API.OperationMethod<
   GetLoyaltyobjectResponse,
   GetLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoyaltyobjectRequest,
   output: GetLoyaltyobjectResponse,
   errors: [NotFound, Forbidden],
@@ -5345,7 +5333,7 @@ export interface AddmessageLoyaltyobjectRequest {
 }
 
 export const AddmessageLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5359,7 +5347,7 @@ export const AddmessageLoyaltyobjectRequest =
 
 export type AddmessageLoyaltyobjectResponse = LoyaltyObjectAddMessageResponse;
 export const AddmessageLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObjectAddMessageResponse;
+  /*@__PURE__*/ LoyaltyObjectAddMessageResponse;
 
 export type AddmessageLoyaltyobjectError =
   | DefaultErrors
@@ -5374,7 +5362,7 @@ export const addmessageLoyaltyobject: API.OperationMethod<
   AddmessageLoyaltyobjectResponse,
   AddmessageLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageLoyaltyobjectRequest,
   output: AddmessageLoyaltyobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5388,7 +5376,7 @@ export interface UpdateLoyaltyobjectRequest {
 }
 
 export const UpdateLoyaltyobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(LoyaltyObject).pipe(T.HttpBody()),
   }).pipe(
@@ -5401,8 +5389,7 @@ export const UpdateLoyaltyobjectRequest =
   ) as unknown as Schema.Codec<UpdateLoyaltyobjectRequest>;
 
 export type UpdateLoyaltyobjectResponse = LoyaltyObject;
-export const UpdateLoyaltyobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
+export const UpdateLoyaltyobjectResponse = /*@__PURE__*/ LoyaltyObject;
 
 export type UpdateLoyaltyobjectError =
   | DefaultErrors
@@ -5417,7 +5404,7 @@ export const updateLoyaltyobject: API.OperationMethod<
   UpdateLoyaltyobjectResponse,
   UpdateLoyaltyobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoyaltyobjectRequest,
   output: UpdateLoyaltyobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5430,7 +5417,7 @@ export interface UploadMediaRequest {
   body?: TransitObjectUploadRotatingBarcodeValuesRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   body: Schema.optional(TransitObjectUploadRotatingBarcodeValuesRequest).pipe(
     T.HttpBody(),
@@ -5447,7 +5434,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UploadMediaResponse =
   TransitObjectUploadRotatingBarcodeValuesResponse;
 export const UploadMediaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObjectUploadRotatingBarcodeValuesResponse;
+  /*@__PURE__*/ TransitObjectUploadRotatingBarcodeValuesResponse;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -5462,7 +5449,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5473,7 +5460,7 @@ export interface DownloadMediaRequest {
   resourceId: string;
 }
 
-export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMediaRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({
@@ -5484,7 +5471,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
-export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
+export const DownloadMediaResponse = /*@__PURE__*/ Media;
 
 export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
@@ -5494,7 +5481,7 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaResponse,
   DownloadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
   errors: [NotFound, Forbidden],
@@ -5506,7 +5493,7 @@ export interface InsertGiftcardclassRequest {
 }
 
 export const InsertGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GiftCardClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5518,8 +5505,7 @@ export const InsertGiftcardclassRequest =
   ) as unknown as Schema.Codec<InsertGiftcardclassRequest>;
 
 export type InsertGiftcardclassResponse = GiftCardClass;
-export const InsertGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
+export const InsertGiftcardclassResponse = /*@__PURE__*/ GiftCardClass;
 
 export type InsertGiftcardclassError =
   | DefaultErrors
@@ -5534,7 +5520,7 @@ export const insertGiftcardclass: API.OperationMethod<
   InsertGiftcardclassResponse,
   InsertGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGiftcardclassRequest,
   output: InsertGiftcardclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5550,7 +5536,7 @@ export interface ListGiftcardclassRequest {
 }
 
 export const ListGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
@@ -5561,7 +5547,7 @@ export const ListGiftcardclassRequest =
 
 export type ListGiftcardclassResponse = GiftCardClassListResponse;
 export const ListGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClassListResponse;
+  /*@__PURE__*/ GiftCardClassListResponse;
 
 export type ListGiftcardclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -5571,7 +5557,7 @@ export const listGiftcardclass: API.OperationMethod<
   ListGiftcardclassResponse,
   ListGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGiftcardclassRequest,
   output: ListGiftcardclassResponse,
   errors: [NotFound, Forbidden],
@@ -5585,7 +5571,7 @@ export interface PatchGiftcardclassRequest {
 }
 
 export const PatchGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GiftCardClass).pipe(T.HttpBody()),
   }).pipe(
@@ -5598,8 +5584,7 @@ export const PatchGiftcardclassRequest =
   ) as unknown as Schema.Codec<PatchGiftcardclassRequest>;
 
 export type PatchGiftcardclassResponse = GiftCardClass;
-export const PatchGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
+export const PatchGiftcardclassResponse = /*@__PURE__*/ GiftCardClass;
 
 export type PatchGiftcardclassError =
   | DefaultErrors
@@ -5614,7 +5599,7 @@ export const patchGiftcardclass: API.OperationMethod<
   PatchGiftcardclassResponse,
   PatchGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGiftcardclassRequest,
   output: PatchGiftcardclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5628,7 +5613,7 @@ export interface UpdateGiftcardclassRequest {
 }
 
 export const UpdateGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GiftCardClass).pipe(T.HttpBody()),
   }).pipe(
@@ -5641,8 +5626,7 @@ export const UpdateGiftcardclassRequest =
   ) as unknown as Schema.Codec<UpdateGiftcardclassRequest>;
 
 export type UpdateGiftcardclassResponse = GiftCardClass;
-export const UpdateGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
+export const UpdateGiftcardclassResponse = /*@__PURE__*/ GiftCardClass;
 
 export type UpdateGiftcardclassError =
   | DefaultErrors
@@ -5657,7 +5641,7 @@ export const updateGiftcardclass: API.OperationMethod<
   UpdateGiftcardclassResponse,
   UpdateGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGiftcardclassRequest,
   output: UpdateGiftcardclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5671,7 +5655,7 @@ export interface AddmessageGiftcardclassRequest {
 }
 
 export const AddmessageGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5685,7 +5669,7 @@ export const AddmessageGiftcardclassRequest =
 
 export type AddmessageGiftcardclassResponse = GiftCardClassAddMessageResponse;
 export const AddmessageGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClassAddMessageResponse;
+  /*@__PURE__*/ GiftCardClassAddMessageResponse;
 
 export type AddmessageGiftcardclassError =
   | DefaultErrors
@@ -5700,7 +5684,7 @@ export const addmessageGiftcardclass: API.OperationMethod<
   AddmessageGiftcardclassResponse,
   AddmessageGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageGiftcardclassRequest,
   output: AddmessageGiftcardclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5712,7 +5696,7 @@ export interface GetGiftcardclassRequest {
 }
 
 export const GetGiftcardclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -5723,8 +5707,7 @@ export const GetGiftcardclassRequest =
   ) as unknown as Schema.Codec<GetGiftcardclassRequest>;
 
 export type GetGiftcardclassResponse = GiftCardClass;
-export const GetGiftcardclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
+export const GetGiftcardclassResponse = /*@__PURE__*/ GiftCardClass;
 
 export type GetGiftcardclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -5734,7 +5717,7 @@ export const getGiftcardclass: API.OperationMethod<
   GetGiftcardclassResponse,
   GetGiftcardclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGiftcardclassRequest,
   output: GetGiftcardclassResponse,
   errors: [NotFound, Forbidden],
@@ -5746,7 +5729,7 @@ export interface InsertFlightobjectRequest {
 }
 
 export const InsertFlightobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(FlightObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5758,8 +5741,7 @@ export const InsertFlightobjectRequest =
   ) as unknown as Schema.Codec<InsertFlightobjectRequest>;
 
 export type InsertFlightobjectResponse = FlightObject;
-export const InsertFlightobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightObject;
+export const InsertFlightobjectResponse = /*@__PURE__*/ FlightObject;
 
 export type InsertFlightobjectError =
   | DefaultErrors
@@ -5774,7 +5756,7 @@ export const insertFlightobject: API.OperationMethod<
   InsertFlightobjectResponse,
   InsertFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertFlightobjectRequest,
   output: InsertFlightobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5790,7 +5772,7 @@ export interface ListFlightobjectRequest {
 }
 
 export const ListFlightobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -5800,8 +5782,7 @@ export const ListFlightobjectRequest =
   ) as unknown as Schema.Codec<ListFlightobjectRequest>;
 
 export type ListFlightobjectResponse = FlightObjectListResponse;
-export const ListFlightobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightObjectListResponse;
+export const ListFlightobjectResponse = /*@__PURE__*/ FlightObjectListResponse;
 
 export type ListFlightobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -5811,7 +5792,7 @@ export const listFlightobject: API.OperationMethod<
   ListFlightobjectResponse,
   ListFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFlightobjectRequest,
   output: ListFlightobjectResponse,
   errors: [NotFound, Forbidden],
@@ -5825,7 +5806,7 @@ export interface PatchFlightobjectRequest {
 }
 
 export const PatchFlightobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(FlightObject).pipe(T.HttpBody()),
   }).pipe(
@@ -5838,8 +5819,7 @@ export const PatchFlightobjectRequest =
   ) as unknown as Schema.Codec<PatchFlightobjectRequest>;
 
 export type PatchFlightobjectResponse = FlightObject;
-export const PatchFlightobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightObject;
+export const PatchFlightobjectResponse = /*@__PURE__*/ FlightObject;
 
 export type PatchFlightobjectError =
   | DefaultErrors
@@ -5854,7 +5834,7 @@ export const patchFlightobject: API.OperationMethod<
   PatchFlightobjectResponse,
   PatchFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchFlightobjectRequest,
   output: PatchFlightobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5868,7 +5848,7 @@ export interface AddmessageFlightobjectRequest {
 }
 
 export const AddmessageFlightobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5882,7 +5862,7 @@ export const AddmessageFlightobjectRequest =
 
 export type AddmessageFlightobjectResponse = FlightObjectAddMessageResponse;
 export const AddmessageFlightobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightObjectAddMessageResponse;
+  /*@__PURE__*/ FlightObjectAddMessageResponse;
 
 export type AddmessageFlightobjectError =
   | DefaultErrors
@@ -5897,7 +5877,7 @@ export const addmessageFlightobject: API.OperationMethod<
   AddmessageFlightobjectResponse,
   AddmessageFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageFlightobjectRequest,
   output: AddmessageFlightobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5911,7 +5891,7 @@ export interface UpdateFlightobjectRequest {
 }
 
 export const UpdateFlightobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(FlightObject).pipe(T.HttpBody()),
   }).pipe(
@@ -5924,8 +5904,7 @@ export const UpdateFlightobjectRequest =
   ) as unknown as Schema.Codec<UpdateFlightobjectRequest>;
 
 export type UpdateFlightobjectResponse = FlightObject;
-export const UpdateFlightobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightObject;
+export const UpdateFlightobjectResponse = /*@__PURE__*/ FlightObject;
 
 export type UpdateFlightobjectError =
   | DefaultErrors
@@ -5940,7 +5919,7 @@ export const updateFlightobject: API.OperationMethod<
   UpdateFlightobjectResponse,
   UpdateFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlightobjectRequest,
   output: UpdateFlightobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5951,17 +5930,15 @@ export interface GetFlightobjectRequest {
   resourceId: string;
 }
 
-export const GetFlightobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-  },
-).pipe(
+export const GetFlightobjectRequest = /*@__PURE__*/ Schema.Struct({
+  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightObject/{resourceId}" }),
   svc,
 ) as unknown as Schema.Codec<GetFlightobjectRequest>;
 
 export type GetFlightobjectResponse = FlightObject;
-export const GetFlightobjectResponse = /*@__PURE__*/ /*#__PURE__*/ FlightObject;
+export const GetFlightobjectResponse = /*@__PURE__*/ FlightObject;
 
 export type GetFlightobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -5971,7 +5948,7 @@ export const getFlightobject: API.OperationMethod<
   GetFlightobjectResponse,
   GetFlightobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlightobjectRequest,
   output: GetFlightobjectResponse,
   errors: [NotFound, Forbidden],
@@ -5983,7 +5960,7 @@ export interface InsertLoyaltyclassRequest {
 }
 
 export const InsertLoyaltyclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(LoyaltyClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5995,8 +5972,7 @@ export const InsertLoyaltyclassRequest =
   ) as unknown as Schema.Codec<InsertLoyaltyclassRequest>;
 
 export type InsertLoyaltyclassResponse = LoyaltyClass;
-export const InsertLoyaltyclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
+export const InsertLoyaltyclassResponse = /*@__PURE__*/ LoyaltyClass;
 
 export type InsertLoyaltyclassError =
   | DefaultErrors
@@ -6011,7 +5987,7 @@ export const insertLoyaltyclass: API.OperationMethod<
   InsertLoyaltyclassResponse,
   InsertLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertLoyaltyclassRequest,
   output: InsertLoyaltyclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6027,7 +6003,7 @@ export interface ListLoyaltyclassRequest {
 }
 
 export const ListLoyaltyclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -6037,8 +6013,7 @@ export const ListLoyaltyclassRequest =
   ) as unknown as Schema.Codec<ListLoyaltyclassRequest>;
 
 export type ListLoyaltyclassResponse = LoyaltyClassListResponse;
-export const ListLoyaltyclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyClassListResponse;
+export const ListLoyaltyclassResponse = /*@__PURE__*/ LoyaltyClassListResponse;
 
 export type ListLoyaltyclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -6048,7 +6023,7 @@ export const listLoyaltyclass: API.OperationMethod<
   ListLoyaltyclassResponse,
   ListLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLoyaltyclassRequest,
   output: ListLoyaltyclassResponse,
   errors: [NotFound, Forbidden],
@@ -6062,7 +6037,7 @@ export interface PatchLoyaltyclassRequest {
 }
 
 export const PatchLoyaltyclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(LoyaltyClass).pipe(T.HttpBody()),
   }).pipe(
@@ -6075,8 +6050,7 @@ export const PatchLoyaltyclassRequest =
   ) as unknown as Schema.Codec<PatchLoyaltyclassRequest>;
 
 export type PatchLoyaltyclassResponse = LoyaltyClass;
-export const PatchLoyaltyclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
+export const PatchLoyaltyclassResponse = /*@__PURE__*/ LoyaltyClass;
 
 export type PatchLoyaltyclassError =
   | DefaultErrors
@@ -6091,7 +6065,7 @@ export const patchLoyaltyclass: API.OperationMethod<
   PatchLoyaltyclassResponse,
   PatchLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLoyaltyclassRequest,
   output: PatchLoyaltyclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6105,7 +6079,7 @@ export interface AddmessageLoyaltyclassRequest {
 }
 
 export const AddmessageLoyaltyclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6119,7 +6093,7 @@ export const AddmessageLoyaltyclassRequest =
 
 export type AddmessageLoyaltyclassResponse = LoyaltyClassAddMessageResponse;
 export const AddmessageLoyaltyclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyClassAddMessageResponse;
+  /*@__PURE__*/ LoyaltyClassAddMessageResponse;
 
 export type AddmessageLoyaltyclassError =
   | DefaultErrors
@@ -6134,7 +6108,7 @@ export const addmessageLoyaltyclass: API.OperationMethod<
   AddmessageLoyaltyclassResponse,
   AddmessageLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageLoyaltyclassRequest,
   output: AddmessageLoyaltyclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6148,7 +6122,7 @@ export interface UpdateLoyaltyclassRequest {
 }
 
 export const UpdateLoyaltyclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(LoyaltyClass).pipe(T.HttpBody()),
   }).pipe(
@@ -6161,8 +6135,7 @@ export const UpdateLoyaltyclassRequest =
   ) as unknown as Schema.Codec<UpdateLoyaltyclassRequest>;
 
 export type UpdateLoyaltyclassResponse = LoyaltyClass;
-export const UpdateLoyaltyclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
+export const UpdateLoyaltyclassResponse = /*@__PURE__*/ LoyaltyClass;
 
 export type UpdateLoyaltyclassError =
   | DefaultErrors
@@ -6177,7 +6150,7 @@ export const updateLoyaltyclass: API.OperationMethod<
   UpdateLoyaltyclassResponse,
   UpdateLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoyaltyclassRequest,
   output: UpdateLoyaltyclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6188,17 +6161,15 @@ export interface GetLoyaltyclassRequest {
   resourceId: string;
 }
 
-export const GetLoyaltyclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-  },
-).pipe(
+export const GetLoyaltyclassRequest = /*@__PURE__*/ Schema.Struct({
+  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/loyaltyClass/{resourceId}" }),
   svc,
 ) as unknown as Schema.Codec<GetLoyaltyclassRequest>;
 
 export type GetLoyaltyclassResponse = LoyaltyClass;
-export const GetLoyaltyclassResponse = /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
+export const GetLoyaltyclassResponse = /*@__PURE__*/ LoyaltyClass;
 
 export type GetLoyaltyclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -6208,7 +6179,7 @@ export const getLoyaltyclass: API.OperationMethod<
   GetLoyaltyclassResponse,
   GetLoyaltyclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoyaltyclassRequest,
   output: GetLoyaltyclassResponse,
   errors: [NotFound, Forbidden],
@@ -6223,20 +6194,17 @@ export interface ListOfferobjectRequest {
   token?: string;
 }
 
-export const ListOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
-  },
-).pipe(
+export const ListOfferobjectRequest = /*@__PURE__*/ Schema.Struct({
+  classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerObject" }),
   svc,
 ) as unknown as Schema.Codec<ListOfferobjectRequest>;
 
 export type ListOfferobjectResponse = OfferObjectListResponse;
-export const ListOfferobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferObjectListResponse;
+export const ListOfferobjectResponse = /*@__PURE__*/ OfferObjectListResponse;
 
 export type ListOfferobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -6246,7 +6214,7 @@ export const listOfferobject: API.OperationMethod<
   ListOfferobjectResponse,
   ListOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOfferobjectRequest,
   output: ListOfferobjectResponse,
   errors: [NotFound, Forbidden],
@@ -6260,7 +6228,7 @@ export interface PatchOfferobjectRequest {
 }
 
 export const PatchOfferobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(OfferObject).pipe(T.HttpBody()),
   }).pipe(
@@ -6273,7 +6241,7 @@ export const PatchOfferobjectRequest =
   ) as unknown as Schema.Codec<PatchOfferobjectRequest>;
 
 export type PatchOfferobjectResponse = OfferObject;
-export const PatchOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
+export const PatchOfferobjectResponse = /*@__PURE__*/ OfferObject;
 
 export type PatchOfferobjectError =
   | DefaultErrors
@@ -6288,7 +6256,7 @@ export const patchOfferobject: API.OperationMethod<
   PatchOfferobjectResponse,
   PatchOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOfferobjectRequest,
   output: PatchOfferobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6300,7 +6268,7 @@ export interface InsertOfferobjectRequest {
 }
 
 export const InsertOfferobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(OfferObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -6312,8 +6280,7 @@ export const InsertOfferobjectRequest =
   ) as unknown as Schema.Codec<InsertOfferobjectRequest>;
 
 export type InsertOfferobjectResponse = OfferObject;
-export const InsertOfferobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferObject;
+export const InsertOfferobjectResponse = /*@__PURE__*/ OfferObject;
 
 export type InsertOfferobjectError =
   | DefaultErrors
@@ -6328,7 +6295,7 @@ export const insertOfferobject: API.OperationMethod<
   InsertOfferobjectResponse,
   InsertOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertOfferobjectRequest,
   output: InsertOfferobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6339,7 +6306,7 @@ export interface GetOfferobjectRequest {
   resourceId: string;
 }
 
-export const GetOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOfferobjectRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerObject/{resourceId}" }),
@@ -6347,7 +6314,7 @@ export const GetOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOfferobjectRequest>;
 
 export type GetOfferobjectResponse = OfferObject;
-export const GetOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
+export const GetOfferobjectResponse = /*@__PURE__*/ OfferObject;
 
 export type GetOfferobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -6357,7 +6324,7 @@ export const getOfferobject: API.OperationMethod<
   GetOfferobjectResponse,
   GetOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferobjectRequest,
   output: GetOfferobjectResponse,
   errors: [NotFound, Forbidden],
@@ -6371,7 +6338,7 @@ export interface UpdateOfferobjectRequest {
 }
 
 export const UpdateOfferobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(OfferObject).pipe(T.HttpBody()),
   }).pipe(
@@ -6384,8 +6351,7 @@ export const UpdateOfferobjectRequest =
   ) as unknown as Schema.Codec<UpdateOfferobjectRequest>;
 
 export type UpdateOfferobjectResponse = OfferObject;
-export const UpdateOfferobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferObject;
+export const UpdateOfferobjectResponse = /*@__PURE__*/ OfferObject;
 
 export type UpdateOfferobjectError =
   | DefaultErrors
@@ -6400,7 +6366,7 @@ export const updateOfferobject: API.OperationMethod<
   UpdateOfferobjectResponse,
   UpdateOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOfferobjectRequest,
   output: UpdateOfferobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6414,7 +6380,7 @@ export interface AddmessageOfferobjectRequest {
 }
 
 export const AddmessageOfferobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6428,7 +6394,7 @@ export const AddmessageOfferobjectRequest =
 
 export type AddmessageOfferobjectResponse = OfferObjectAddMessageResponse;
 export const AddmessageOfferobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OfferObjectAddMessageResponse;
+  /*@__PURE__*/ OfferObjectAddMessageResponse;
 
 export type AddmessageOfferobjectError =
   | DefaultErrors
@@ -6443,7 +6409,7 @@ export const addmessageOfferobject: API.OperationMethod<
   AddmessageOfferobjectResponse,
   AddmessageOfferobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageOfferobjectRequest,
   output: AddmessageOfferobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6457,7 +6423,7 @@ export interface AddmessageTransitclassRequest {
 }
 
 export const AddmessageTransitclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6471,7 +6437,7 @@ export const AddmessageTransitclassRequest =
 
 export type AddmessageTransitclassResponse = TransitClassAddMessageResponse;
 export const AddmessageTransitclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitClassAddMessageResponse;
+  /*@__PURE__*/ TransitClassAddMessageResponse;
 
 export type AddmessageTransitclassError =
   | DefaultErrors
@@ -6486,7 +6452,7 @@ export const addmessageTransitclass: API.OperationMethod<
   AddmessageTransitclassResponse,
   AddmessageTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageTransitclassRequest,
   output: AddmessageTransitclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6500,7 +6466,7 @@ export interface UpdateTransitclassRequest {
 }
 
 export const UpdateTransitclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(TransitClass).pipe(T.HttpBody()),
   }).pipe(
@@ -6513,8 +6479,7 @@ export const UpdateTransitclassRequest =
   ) as unknown as Schema.Codec<UpdateTransitclassRequest>;
 
 export type UpdateTransitclassResponse = TransitClass;
-export const UpdateTransitclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitClass;
+export const UpdateTransitclassResponse = /*@__PURE__*/ TransitClass;
 
 export type UpdateTransitclassError =
   | DefaultErrors
@@ -6529,7 +6494,7 @@ export const updateTransitclass: API.OperationMethod<
   UpdateTransitclassResponse,
   UpdateTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTransitclassRequest,
   output: UpdateTransitclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6540,17 +6505,15 @@ export interface GetTransitclassRequest {
   resourceId: string;
 }
 
-export const GetTransitclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-  },
-).pipe(
+export const GetTransitclassRequest = /*@__PURE__*/ Schema.Struct({
+  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/transitClass/{resourceId}" }),
   svc,
 ) as unknown as Schema.Codec<GetTransitclassRequest>;
 
 export type GetTransitclassResponse = TransitClass;
-export const GetTransitclassResponse = /*@__PURE__*/ /*#__PURE__*/ TransitClass;
+export const GetTransitclassResponse = /*@__PURE__*/ TransitClass;
 
 export type GetTransitclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -6560,7 +6523,7 @@ export const getTransitclass: API.OperationMethod<
   GetTransitclassResponse,
   GetTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitclassRequest,
   output: GetTransitclassResponse,
   errors: [NotFound, Forbidden],
@@ -6572,7 +6535,7 @@ export interface InsertTransitclassRequest {
 }
 
 export const InsertTransitclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(TransitClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -6584,8 +6547,7 @@ export const InsertTransitclassRequest =
   ) as unknown as Schema.Codec<InsertTransitclassRequest>;
 
 export type InsertTransitclassResponse = TransitClass;
-export const InsertTransitclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitClass;
+export const InsertTransitclassResponse = /*@__PURE__*/ TransitClass;
 
 export type InsertTransitclassError =
   | DefaultErrors
@@ -6600,7 +6562,7 @@ export const insertTransitclass: API.OperationMethod<
   InsertTransitclassResponse,
   InsertTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTransitclassRequest,
   output: InsertTransitclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6616,7 +6578,7 @@ export interface ListTransitclassRequest {
 }
 
 export const ListTransitclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
@@ -6626,8 +6588,7 @@ export const ListTransitclassRequest =
   ) as unknown as Schema.Codec<ListTransitclassRequest>;
 
 export type ListTransitclassResponse = TransitClassListResponse;
-export const ListTransitclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitClassListResponse;
+export const ListTransitclassResponse = /*@__PURE__*/ TransitClassListResponse;
 
 export type ListTransitclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -6637,7 +6598,7 @@ export const listTransitclass: API.OperationMethod<
   ListTransitclassResponse,
   ListTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTransitclassRequest,
   output: ListTransitclassResponse,
   errors: [NotFound, Forbidden],
@@ -6651,7 +6612,7 @@ export interface PatchTransitclassRequest {
 }
 
 export const PatchTransitclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(TransitClass).pipe(T.HttpBody()),
   }).pipe(
@@ -6664,8 +6625,7 @@ export const PatchTransitclassRequest =
   ) as unknown as Schema.Codec<PatchTransitclassRequest>;
 
 export type PatchTransitclassResponse = TransitClass;
-export const PatchTransitclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitClass;
+export const PatchTransitclassResponse = /*@__PURE__*/ TransitClass;
 
 export type PatchTransitclassError =
   | DefaultErrors
@@ -6680,7 +6640,7 @@ export const patchTransitclass: API.OperationMethod<
   PatchTransitclassResponse,
   PatchTransitclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTransitclassRequest,
   output: PatchTransitclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6694,7 +6654,7 @@ export interface AddmessageGenericobjectRequest {
 }
 
 export const AddmessageGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6708,7 +6668,7 @@ export const AddmessageGenericobjectRequest =
 
 export type AddmessageGenericobjectResponse = GenericObjectAddMessageResponse;
 export const AddmessageGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObjectAddMessageResponse;
+  /*@__PURE__*/ GenericObjectAddMessageResponse;
 
 export type AddmessageGenericobjectError =
   | DefaultErrors
@@ -6723,7 +6683,7 @@ export const addmessageGenericobject: API.OperationMethod<
   AddmessageGenericobjectResponse,
   AddmessageGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageGenericobjectRequest,
   output: AddmessageGenericobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6737,7 +6697,7 @@ export interface UpdateGenericobjectRequest {
 }
 
 export const UpdateGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GenericObject).pipe(T.HttpBody()),
   }).pipe(
@@ -6750,8 +6710,7 @@ export const UpdateGenericobjectRequest =
   ) as unknown as Schema.Codec<UpdateGenericobjectRequest>;
 
 export type UpdateGenericobjectResponse = GenericObject;
-export const UpdateGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObject;
+export const UpdateGenericobjectResponse = /*@__PURE__*/ GenericObject;
 
 export type UpdateGenericobjectError =
   | DefaultErrors
@@ -6766,7 +6725,7 @@ export const updateGenericobject: API.OperationMethod<
   UpdateGenericobjectResponse,
   UpdateGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGenericobjectRequest,
   output: UpdateGenericobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6778,7 +6737,7 @@ export interface GetGenericobjectRequest {
 }
 
 export const GetGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -6789,8 +6748,7 @@ export const GetGenericobjectRequest =
   ) as unknown as Schema.Codec<GetGenericobjectRequest>;
 
 export type GetGenericobjectResponse = GenericObject;
-export const GetGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObject;
+export const GetGenericobjectResponse = /*@__PURE__*/ GenericObject;
 
 export type GetGenericobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -6800,7 +6758,7 @@ export const getGenericobject: API.OperationMethod<
   GetGenericobjectResponse,
   GetGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGenericobjectRequest,
   output: GetGenericobjectResponse,
   errors: [NotFound, Forbidden],
@@ -6812,7 +6770,7 @@ export interface InsertGenericobjectRequest {
 }
 
 export const InsertGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GenericObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -6824,8 +6782,7 @@ export const InsertGenericobjectRequest =
   ) as unknown as Schema.Codec<InsertGenericobjectRequest>;
 
 export type InsertGenericobjectResponse = GenericObject;
-export const InsertGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObject;
+export const InsertGenericobjectResponse = /*@__PURE__*/ GenericObject;
 
 export type InsertGenericobjectError =
   | DefaultErrors
@@ -6840,7 +6797,7 @@ export const insertGenericobject: API.OperationMethod<
   InsertGenericobjectResponse,
   InsertGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGenericobjectRequest,
   output: InsertGenericobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6856,7 +6813,7 @@ export interface ListGenericobjectRequest {
 }
 
 export const ListGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
@@ -6867,7 +6824,7 @@ export const ListGenericobjectRequest =
 
 export type ListGenericobjectResponse = GenericObjectListResponse;
 export const ListGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObjectListResponse;
+  /*@__PURE__*/ GenericObjectListResponse;
 
 export type ListGenericobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -6877,7 +6834,7 @@ export const listGenericobject: API.OperationMethod<
   ListGenericobjectResponse,
   ListGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGenericobjectRequest,
   output: ListGenericobjectResponse,
   errors: [NotFound, Forbidden],
@@ -6891,7 +6848,7 @@ export interface PatchGenericobjectRequest {
 }
 
 export const PatchGenericobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GenericObject).pipe(T.HttpBody()),
   }).pipe(
@@ -6904,8 +6861,7 @@ export const PatchGenericobjectRequest =
   ) as unknown as Schema.Codec<PatchGenericobjectRequest>;
 
 export type PatchGenericobjectResponse = GenericObject;
-export const PatchGenericobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericObject;
+export const PatchGenericobjectResponse = /*@__PURE__*/ GenericObject;
 
 export type PatchGenericobjectError =
   | DefaultErrors
@@ -6920,7 +6876,7 @@ export const patchGenericobject: API.OperationMethod<
   PatchGenericobjectResponse,
   PatchGenericobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGenericobjectRequest,
   output: PatchGenericobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6933,7 +6889,7 @@ export interface UpdateIssuerRequest {
   body?: Issuer;
 }
 
-export const UpdateIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateIssuerRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   body: Schema.optional(Issuer).pipe(T.HttpBody()),
 }).pipe(
@@ -6946,7 +6902,7 @@ export const UpdateIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateIssuerRequest>;
 
 export type UpdateIssuerResponse = Issuer;
-export const UpdateIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
+export const UpdateIssuerResponse = /*@__PURE__*/ Issuer;
 
 export type UpdateIssuerError =
   | DefaultErrors
@@ -6961,7 +6917,7 @@ export const updateIssuer: API.OperationMethod<
   UpdateIssuerResponse,
   UpdateIssuerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIssuerRequest,
   output: UpdateIssuerResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6972,7 +6928,7 @@ export interface GetIssuerRequest {
   resourceId: string;
 }
 
-export const GetIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetIssuerRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/issuer/{resourceId}" }),
@@ -6980,7 +6936,7 @@ export const GetIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetIssuerRequest>;
 
 export type GetIssuerResponse = Issuer;
-export const GetIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
+export const GetIssuerResponse = /*@__PURE__*/ Issuer;
 
 export type GetIssuerError = DefaultErrors | NotFound | Forbidden;
 
@@ -6990,7 +6946,7 @@ export const getIssuer: API.OperationMethod<
   GetIssuerResponse,
   GetIssuerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIssuerRequest,
   output: GetIssuerResponse,
   errors: [NotFound, Forbidden],
@@ -7001,7 +6957,7 @@ export interface InsertIssuerRequest {
   body?: Issuer;
 }
 
-export const InsertIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertIssuerRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Issuer).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/issuer", hasBody: true }),
@@ -7009,7 +6965,7 @@ export const InsertIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertIssuerRequest>;
 
 export type InsertIssuerResponse = Issuer;
-export const InsertIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
+export const InsertIssuerResponse = /*@__PURE__*/ Issuer;
 
 export type InsertIssuerError =
   | DefaultErrors
@@ -7024,7 +6980,7 @@ export const insertIssuer: API.OperationMethod<
   InsertIssuerResponse,
   InsertIssuerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertIssuerRequest,
   output: InsertIssuerResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7032,16 +6988,13 @@ export const insertIssuer: API.OperationMethod<
 
 export interface ListIssuerRequest {}
 
-export const ListIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListIssuerRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/issuer" }),
   svc,
 ) as unknown as Schema.Codec<ListIssuerRequest>;
 
 export type ListIssuerResponse = IssuerListResponse;
-export const ListIssuerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IssuerListResponse;
+export const ListIssuerResponse = /*@__PURE__*/ IssuerListResponse;
 
 export type ListIssuerError = DefaultErrors | NotFound | Forbidden;
 
@@ -7051,7 +7004,7 @@ export const listIssuer: API.OperationMethod<
   ListIssuerResponse,
   ListIssuerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIssuerRequest,
   output: ListIssuerResponse,
   errors: [NotFound, Forbidden],
@@ -7064,7 +7017,7 @@ export interface PatchIssuerRequest {
   body?: Issuer;
 }
 
-export const PatchIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchIssuerRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   body: Schema.optional(Issuer).pipe(T.HttpBody()),
 }).pipe(
@@ -7077,7 +7030,7 @@ export const PatchIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchIssuerRequest>;
 
 export type PatchIssuerResponse = Issuer;
-export const PatchIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
+export const PatchIssuerResponse = /*@__PURE__*/ Issuer;
 
 export type PatchIssuerError =
   | DefaultErrors
@@ -7092,7 +7045,7 @@ export const patchIssuer: API.OperationMethod<
   PatchIssuerResponse,
   PatchIssuerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchIssuerRequest,
   output: PatchIssuerResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7103,7 +7056,7 @@ export interface GetFlightclassRequest {
   resourceId: string;
 }
 
-export const GetFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFlightclassRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightClass/{resourceId}" }),
@@ -7111,7 +7064,7 @@ export const GetFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetFlightclassRequest>;
 
 export type GetFlightclassResponse = FlightClass;
-export const GetFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
+export const GetFlightclassResponse = /*@__PURE__*/ FlightClass;
 
 export type GetFlightclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -7121,7 +7074,7 @@ export const getFlightclass: API.OperationMethod<
   GetFlightclassResponse,
   GetFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlightclassRequest,
   output: GetFlightclassResponse,
   errors: [NotFound, Forbidden],
@@ -7135,7 +7088,7 @@ export interface UpdateFlightclassRequest {
 }
 
 export const UpdateFlightclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(FlightClass).pipe(T.HttpBody()),
   }).pipe(
@@ -7148,8 +7101,7 @@ export const UpdateFlightclassRequest =
   ) as unknown as Schema.Codec<UpdateFlightclassRequest>;
 
 export type UpdateFlightclassResponse = FlightClass;
-export const UpdateFlightclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightClass;
+export const UpdateFlightclassResponse = /*@__PURE__*/ FlightClass;
 
 export type UpdateFlightclassError =
   | DefaultErrors
@@ -7164,7 +7116,7 @@ export const updateFlightclass: API.OperationMethod<
   UpdateFlightclassResponse,
   UpdateFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFlightclassRequest,
   output: UpdateFlightclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7178,7 +7130,7 @@ export interface AddmessageFlightclassRequest {
 }
 
 export const AddmessageFlightclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7192,7 +7144,7 @@ export const AddmessageFlightclassRequest =
 
 export type AddmessageFlightclassResponse = FlightClassAddMessageResponse;
 export const AddmessageFlightclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightClassAddMessageResponse;
+  /*@__PURE__*/ FlightClassAddMessageResponse;
 
 export type AddmessageFlightclassError =
   | DefaultErrors
@@ -7207,7 +7159,7 @@ export const addmessageFlightclass: API.OperationMethod<
   AddmessageFlightclassResponse,
   AddmessageFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageFlightclassRequest,
   output: AddmessageFlightclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7222,20 +7174,17 @@ export interface ListFlightclassRequest {
   maxResults?: number;
 }
 
-export const ListFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
-    issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  },
-).pipe(
+export const ListFlightclassRequest = /*@__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
+  issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightClass" }),
   svc,
 ) as unknown as Schema.Codec<ListFlightclassRequest>;
 
 export type ListFlightclassResponse = FlightClassListResponse;
-export const ListFlightclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightClassListResponse;
+export const ListFlightclassResponse = /*@__PURE__*/ FlightClassListResponse;
 
 export type ListFlightclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -7245,7 +7194,7 @@ export const listFlightclass: API.OperationMethod<
   ListFlightclassResponse,
   ListFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFlightclassRequest,
   output: ListFlightclassResponse,
   errors: [NotFound, Forbidden],
@@ -7259,7 +7208,7 @@ export interface PatchFlightclassRequest {
 }
 
 export const PatchFlightclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(FlightClass).pipe(T.HttpBody()),
   }).pipe(
@@ -7272,7 +7221,7 @@ export const PatchFlightclassRequest =
   ) as unknown as Schema.Codec<PatchFlightclassRequest>;
 
 export type PatchFlightclassResponse = FlightClass;
-export const PatchFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
+export const PatchFlightclassResponse = /*@__PURE__*/ FlightClass;
 
 export type PatchFlightclassError =
   | DefaultErrors
@@ -7287,7 +7236,7 @@ export const patchFlightclass: API.OperationMethod<
   PatchFlightclassResponse,
   PatchFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchFlightclassRequest,
   output: PatchFlightclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7299,7 +7248,7 @@ export interface InsertFlightclassRequest {
 }
 
 export const InsertFlightclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(FlightClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -7311,8 +7260,7 @@ export const InsertFlightclassRequest =
   ) as unknown as Schema.Codec<InsertFlightclassRequest>;
 
 export type InsertFlightclassResponse = FlightClass;
-export const InsertFlightclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FlightClass;
+export const InsertFlightclassResponse = /*@__PURE__*/ FlightClass;
 
 export type InsertFlightclassError =
   | DefaultErrors
@@ -7327,7 +7275,7 @@ export const insertFlightclass: API.OperationMethod<
   InsertFlightclassResponse,
   InsertFlightclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertFlightclassRequest,
   output: InsertFlightclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7343,7 +7291,7 @@ export interface ListGenericclassRequest {
 }
 
 export const ListGenericclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -7353,8 +7301,7 @@ export const ListGenericclassRequest =
   ) as unknown as Schema.Codec<ListGenericclassRequest>;
 
 export type ListGenericclassResponse = GenericClassListResponse;
-export const ListGenericclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericClassListResponse;
+export const ListGenericclassResponse = /*@__PURE__*/ GenericClassListResponse;
 
 export type ListGenericclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -7364,7 +7311,7 @@ export const listGenericclass: API.OperationMethod<
   ListGenericclassResponse,
   ListGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGenericclassRequest,
   output: ListGenericclassResponse,
   errors: [NotFound, Forbidden],
@@ -7378,7 +7325,7 @@ export interface PatchGenericclassRequest {
 }
 
 export const PatchGenericclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GenericClass).pipe(T.HttpBody()),
   }).pipe(
@@ -7391,8 +7338,7 @@ export const PatchGenericclassRequest =
   ) as unknown as Schema.Codec<PatchGenericclassRequest>;
 
 export type PatchGenericclassResponse = GenericClass;
-export const PatchGenericclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericClass;
+export const PatchGenericclassResponse = /*@__PURE__*/ GenericClass;
 
 export type PatchGenericclassError =
   | DefaultErrors
@@ -7407,7 +7353,7 @@ export const patchGenericclass: API.OperationMethod<
   PatchGenericclassResponse,
   PatchGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGenericclassRequest,
   output: PatchGenericclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7419,7 +7365,7 @@ export interface InsertGenericclassRequest {
 }
 
 export const InsertGenericclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GenericClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -7431,8 +7377,7 @@ export const InsertGenericclassRequest =
   ) as unknown as Schema.Codec<InsertGenericclassRequest>;
 
 export type InsertGenericclassResponse = GenericClass;
-export const InsertGenericclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericClass;
+export const InsertGenericclassResponse = /*@__PURE__*/ GenericClass;
 
 export type InsertGenericclassError =
   | DefaultErrors
@@ -7447,7 +7392,7 @@ export const insertGenericclass: API.OperationMethod<
   InsertGenericclassResponse,
   InsertGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGenericclassRequest,
   output: InsertGenericclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7458,17 +7403,15 @@ export interface GetGenericclassRequest {
   resourceId: string;
 }
 
-export const GetGenericclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-  },
-).pipe(
+export const GetGenericclassRequest = /*@__PURE__*/ Schema.Struct({
+  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+}).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/genericClass/{resourceId}" }),
   svc,
 ) as unknown as Schema.Codec<GetGenericclassRequest>;
 
 export type GetGenericclassResponse = GenericClass;
-export const GetGenericclassResponse = /*@__PURE__*/ /*#__PURE__*/ GenericClass;
+export const GetGenericclassResponse = /*@__PURE__*/ GenericClass;
 
 export type GetGenericclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -7478,7 +7421,7 @@ export const getGenericclass: API.OperationMethod<
   GetGenericclassResponse,
   GetGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGenericclassRequest,
   output: GetGenericclassResponse,
   errors: [NotFound, Forbidden],
@@ -7492,7 +7435,7 @@ export interface AddmessageGenericclassRequest {
 }
 
 export const AddmessageGenericclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7506,7 +7449,7 @@ export const AddmessageGenericclassRequest =
 
 export type AddmessageGenericclassResponse = GenericClassAddMessageResponse;
 export const AddmessageGenericclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericClassAddMessageResponse;
+  /*@__PURE__*/ GenericClassAddMessageResponse;
 
 export type AddmessageGenericclassError =
   | DefaultErrors
@@ -7521,7 +7464,7 @@ export const addmessageGenericclass: API.OperationMethod<
   AddmessageGenericclassResponse,
   AddmessageGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageGenericclassRequest,
   output: AddmessageGenericclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7535,7 +7478,7 @@ export interface UpdateGenericclassRequest {
 }
 
 export const UpdateGenericclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GenericClass).pipe(T.HttpBody()),
   }).pipe(
@@ -7548,8 +7491,7 @@ export const UpdateGenericclassRequest =
   ) as unknown as Schema.Codec<UpdateGenericclassRequest>;
 
 export type UpdateGenericclassResponse = GenericClass;
-export const UpdateGenericclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenericClass;
+export const UpdateGenericclassResponse = /*@__PURE__*/ GenericClass;
 
 export type UpdateGenericclassError =
   | DefaultErrors
@@ -7564,7 +7506,7 @@ export const updateGenericclass: API.OperationMethod<
   UpdateGenericclassResponse,
   UpdateGenericclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGenericclassRequest,
   output: UpdateGenericclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7580,7 +7522,7 @@ export interface ListTransitobjectRequest {
 }
 
 export const ListTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -7591,7 +7533,7 @@ export const ListTransitobjectRequest =
 
 export type ListTransitobjectResponse = TransitObjectListResponse;
 export const ListTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObjectListResponse;
+  /*@__PURE__*/ TransitObjectListResponse;
 
 export type ListTransitobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -7601,7 +7543,7 @@ export const listTransitobject: API.OperationMethod<
   ListTransitobjectResponse,
   ListTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTransitobjectRequest,
   output: ListTransitobjectResponse,
   errors: [NotFound, Forbidden],
@@ -7615,7 +7557,7 @@ export interface PatchTransitobjectRequest {
 }
 
 export const PatchTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(TransitObject).pipe(T.HttpBody()),
   }).pipe(
@@ -7628,8 +7570,7 @@ export const PatchTransitobjectRequest =
   ) as unknown as Schema.Codec<PatchTransitobjectRequest>;
 
 export type PatchTransitobjectResponse = TransitObject;
-export const PatchTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObject;
+export const PatchTransitobjectResponse = /*@__PURE__*/ TransitObject;
 
 export type PatchTransitobjectError =
   | DefaultErrors
@@ -7644,7 +7585,7 @@ export const patchTransitobject: API.OperationMethod<
   PatchTransitobjectResponse,
   PatchTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTransitobjectRequest,
   output: PatchTransitobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7656,7 +7597,7 @@ export interface InsertTransitobjectRequest {
 }
 
 export const InsertTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(TransitObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -7668,8 +7609,7 @@ export const InsertTransitobjectRequest =
   ) as unknown as Schema.Codec<InsertTransitobjectRequest>;
 
 export type InsertTransitobjectResponse = TransitObject;
-export const InsertTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObject;
+export const InsertTransitobjectResponse = /*@__PURE__*/ TransitObject;
 
 export type InsertTransitobjectError =
   | DefaultErrors
@@ -7684,7 +7624,7 @@ export const insertTransitobject: API.OperationMethod<
   InsertTransitobjectResponse,
   InsertTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTransitobjectRequest,
   output: InsertTransitobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7696,7 +7636,7 @@ export interface GetTransitobjectRequest {
 }
 
 export const GetTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -7707,8 +7647,7 @@ export const GetTransitobjectRequest =
   ) as unknown as Schema.Codec<GetTransitobjectRequest>;
 
 export type GetTransitobjectResponse = TransitObject;
-export const GetTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObject;
+export const GetTransitobjectResponse = /*@__PURE__*/ TransitObject;
 
 export type GetTransitobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -7718,7 +7657,7 @@ export const getTransitobject: API.OperationMethod<
   GetTransitobjectResponse,
   GetTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransitobjectRequest,
   output: GetTransitobjectResponse,
   errors: [NotFound, Forbidden],
@@ -7732,7 +7671,7 @@ export interface UpdateTransitobjectRequest {
 }
 
 export const UpdateTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(TransitObject).pipe(T.HttpBody()),
   }).pipe(
@@ -7745,8 +7684,7 @@ export const UpdateTransitobjectRequest =
   ) as unknown as Schema.Codec<UpdateTransitobjectRequest>;
 
 export type UpdateTransitobjectResponse = TransitObject;
-export const UpdateTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObject;
+export const UpdateTransitobjectResponse = /*@__PURE__*/ TransitObject;
 
 export type UpdateTransitobjectError =
   | DefaultErrors
@@ -7761,7 +7699,7 @@ export const updateTransitobject: API.OperationMethod<
   UpdateTransitobjectResponse,
   UpdateTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTransitobjectRequest,
   output: UpdateTransitobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7775,7 +7713,7 @@ export interface AddmessageTransitobjectRequest {
 }
 
 export const AddmessageTransitobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7789,7 +7727,7 @@ export const AddmessageTransitobjectRequest =
 
 export type AddmessageTransitobjectResponse = TransitObjectAddMessageResponse;
 export const AddmessageTransitobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TransitObjectAddMessageResponse;
+  /*@__PURE__*/ TransitObjectAddMessageResponse;
 
 export type AddmessageTransitobjectError =
   | DefaultErrors
@@ -7804,7 +7742,7 @@ export const addmessageTransitobject: API.OperationMethod<
   AddmessageTransitobjectResponse,
   AddmessageTransitobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageTransitobjectRequest,
   output: AddmessageTransitobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7818,7 +7756,7 @@ export interface AddmessageGiftcardobjectRequest {
 }
 
 export const AddmessageGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7832,7 +7770,7 @@ export const AddmessageGiftcardobjectRequest =
 
 export type AddmessageGiftcardobjectResponse = GiftCardObjectAddMessageResponse;
 export const AddmessageGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObjectAddMessageResponse;
+  /*@__PURE__*/ GiftCardObjectAddMessageResponse;
 
 export type AddmessageGiftcardobjectError =
   | DefaultErrors
@@ -7847,7 +7785,7 @@ export const addmessageGiftcardobject: API.OperationMethod<
   AddmessageGiftcardobjectResponse,
   AddmessageGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageGiftcardobjectRequest,
   output: AddmessageGiftcardobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7861,7 +7799,7 @@ export interface UpdateGiftcardobjectRequest {
 }
 
 export const UpdateGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GiftCardObject).pipe(T.HttpBody()),
   }).pipe(
@@ -7874,8 +7812,7 @@ export const UpdateGiftcardobjectRequest =
   ) as unknown as Schema.Codec<UpdateGiftcardobjectRequest>;
 
 export type UpdateGiftcardobjectResponse = GiftCardObject;
-export const UpdateGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
+export const UpdateGiftcardobjectResponse = /*@__PURE__*/ GiftCardObject;
 
 export type UpdateGiftcardobjectError =
   | DefaultErrors
@@ -7890,7 +7827,7 @@ export const updateGiftcardobject: API.OperationMethod<
   UpdateGiftcardobjectResponse,
   UpdateGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGiftcardobjectRequest,
   output: UpdateGiftcardobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7902,7 +7839,7 @@ export interface GetGiftcardobjectRequest {
 }
 
 export const GetGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -7913,8 +7850,7 @@ export const GetGiftcardobjectRequest =
   ) as unknown as Schema.Codec<GetGiftcardobjectRequest>;
 
 export type GetGiftcardobjectResponse = GiftCardObject;
-export const GetGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
+export const GetGiftcardobjectResponse = /*@__PURE__*/ GiftCardObject;
 
 export type GetGiftcardobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -7924,7 +7860,7 @@ export const getGiftcardobject: API.OperationMethod<
   GetGiftcardobjectResponse,
   GetGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGiftcardobjectRequest,
   output: GetGiftcardobjectResponse,
   errors: [NotFound, Forbidden],
@@ -7936,7 +7872,7 @@ export interface InsertGiftcardobjectRequest {
 }
 
 export const InsertGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GiftCardObject).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -7948,8 +7884,7 @@ export const InsertGiftcardobjectRequest =
   ) as unknown as Schema.Codec<InsertGiftcardobjectRequest>;
 
 export type InsertGiftcardobjectResponse = GiftCardObject;
-export const InsertGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
+export const InsertGiftcardobjectResponse = /*@__PURE__*/ GiftCardObject;
 
 export type InsertGiftcardobjectError =
   | DefaultErrors
@@ -7964,7 +7899,7 @@ export const insertGiftcardobject: API.OperationMethod<
   InsertGiftcardobjectResponse,
   InsertGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGiftcardobjectRequest,
   output: InsertGiftcardobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7980,7 +7915,7 @@ export interface ListGiftcardobjectRequest {
 }
 
 export const ListGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     classId: Schema.optional(Schema.String).pipe(T.HttpQuery("classId")),
@@ -7991,7 +7926,7 @@ export const ListGiftcardobjectRequest =
 
 export type ListGiftcardobjectResponse = GiftCardObjectListResponse;
 export const ListGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObjectListResponse;
+  /*@__PURE__*/ GiftCardObjectListResponse;
 
 export type ListGiftcardobjectError = DefaultErrors | NotFound | Forbidden;
 
@@ -8001,7 +7936,7 @@ export const listGiftcardobject: API.OperationMethod<
   ListGiftcardobjectResponse,
   ListGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGiftcardobjectRequest,
   output: ListGiftcardobjectResponse,
   errors: [NotFound, Forbidden],
@@ -8015,7 +7950,7 @@ export interface PatchGiftcardobjectRequest {
 }
 
 export const PatchGiftcardobjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(GiftCardObject).pipe(T.HttpBody()),
   }).pipe(
@@ -8028,8 +7963,7 @@ export const PatchGiftcardobjectRequest =
   ) as unknown as Schema.Codec<PatchGiftcardobjectRequest>;
 
 export type PatchGiftcardobjectResponse = GiftCardObject;
-export const PatchGiftcardobjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
+export const PatchGiftcardobjectResponse = /*@__PURE__*/ GiftCardObject;
 
 export type PatchGiftcardobjectError =
   | DefaultErrors
@@ -8044,7 +7978,7 @@ export const patchGiftcardobject: API.OperationMethod<
   PatchGiftcardobjectResponse,
   PatchGiftcardobjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGiftcardobjectRequest,
   output: PatchGiftcardobjectResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8055,7 +7989,7 @@ export interface GetPermissionsRequest {
   resourceId: string;
 }
 
-export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPermissionsRequest = /*@__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/permissions/{resourceId}" }),
@@ -8063,7 +7997,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPermissionsRequest>;
 
 export type GetPermissionsResponse = Permissions;
-export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permissions;
+export const GetPermissionsResponse = /*@__PURE__*/ Permissions;
 
 export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -8073,7 +8007,7 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsResponse,
   GetPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -8087,7 +8021,7 @@ export interface UpdatePermissionsRequest {
 }
 
 export const UpdatePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(Permissions).pipe(T.HttpBody()),
   }).pipe(
@@ -8100,8 +8034,7 @@ export const UpdatePermissionsRequest =
   ) as unknown as Schema.Codec<UpdatePermissionsRequest>;
 
 export type UpdatePermissionsResponse = Permissions;
-export const UpdatePermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Permissions;
+export const UpdatePermissionsResponse = /*@__PURE__*/ Permissions;
 
 export type UpdatePermissionsError =
   | DefaultErrors
@@ -8116,7 +8049,7 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsResponse,
   UpdatePermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8128,7 +8061,7 @@ export interface InsertEventticketclassRequest {
 }
 
 export const InsertEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(EventTicketClass).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -8140,8 +8073,7 @@ export const InsertEventticketclassRequest =
   ) as unknown as Schema.Codec<InsertEventticketclassRequest>;
 
 export type InsertEventticketclassResponse = EventTicketClass;
-export const InsertEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
+export const InsertEventticketclassResponse = /*@__PURE__*/ EventTicketClass;
 
 export type InsertEventticketclassError =
   | DefaultErrors
@@ -8156,7 +8088,7 @@ export const insertEventticketclass: API.OperationMethod<
   InsertEventticketclassResponse,
   InsertEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertEventticketclassRequest,
   output: InsertEventticketclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8172,7 +8104,7 @@ export interface ListEventticketclassRequest {
 }
 
 export const ListEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     issuerId: Schema.optional(Schema.String).pipe(T.HttpQuery("issuerId")),
     token: Schema.optional(Schema.String).pipe(T.HttpQuery("token")),
@@ -8183,7 +8115,7 @@ export const ListEventticketclassRequest =
 
 export type ListEventticketclassResponse = EventTicketClassListResponse;
 export const ListEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClassListResponse;
+  /*@__PURE__*/ EventTicketClassListResponse;
 
 export type ListEventticketclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -8193,7 +8125,7 @@ export const listEventticketclass: API.OperationMethod<
   ListEventticketclassResponse,
   ListEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEventticketclassRequest,
   output: ListEventticketclassResponse,
   errors: [NotFound, Forbidden],
@@ -8207,7 +8139,7 @@ export interface PatchEventticketclassRequest {
 }
 
 export const PatchEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(EventTicketClass).pipe(T.HttpBody()),
   }).pipe(
@@ -8220,8 +8152,7 @@ export const PatchEventticketclassRequest =
   ) as unknown as Schema.Codec<PatchEventticketclassRequest>;
 
 export type PatchEventticketclassResponse = EventTicketClass;
-export const PatchEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
+export const PatchEventticketclassResponse = /*@__PURE__*/ EventTicketClass;
 
 export type PatchEventticketclassError =
   | DefaultErrors
@@ -8236,7 +8167,7 @@ export const patchEventticketclass: API.OperationMethod<
   PatchEventticketclassResponse,
   PatchEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEventticketclassRequest,
   output: PatchEventticketclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8250,7 +8181,7 @@ export interface UpdateEventticketclassRequest {
 }
 
 export const UpdateEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(EventTicketClass).pipe(T.HttpBody()),
   }).pipe(
@@ -8263,8 +8194,7 @@ export const UpdateEventticketclassRequest =
   ) as unknown as Schema.Codec<UpdateEventticketclassRequest>;
 
 export type UpdateEventticketclassResponse = EventTicketClass;
-export const UpdateEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
+export const UpdateEventticketclassResponse = /*@__PURE__*/ EventTicketClass;
 
 export type UpdateEventticketclassError =
   | DefaultErrors
@@ -8279,7 +8209,7 @@ export const updateEventticketclass: API.OperationMethod<
   UpdateEventticketclassResponse,
   UpdateEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventticketclassRequest,
   output: UpdateEventticketclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8293,7 +8223,7 @@ export interface AddmessageEventticketclassRequest {
 }
 
 export const AddmessageEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
     body: Schema.optional(AddMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -8308,7 +8238,7 @@ export const AddmessageEventticketclassRequest =
 export type AddmessageEventticketclassResponse =
   EventTicketClassAddMessageResponse;
 export const AddmessageEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClassAddMessageResponse;
+  /*@__PURE__*/ EventTicketClassAddMessageResponse;
 
 export type AddmessageEventticketclassError =
   | DefaultErrors
@@ -8323,7 +8253,7 @@ export const addmessageEventticketclass: API.OperationMethod<
   AddmessageEventticketclassResponse,
   AddmessageEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddmessageEventticketclassRequest,
   output: AddmessageEventticketclassResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8335,7 +8265,7 @@ export interface GetEventticketclassRequest {
 }
 
 export const GetEventticketclassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
   }).pipe(
     T.Http({
@@ -8346,8 +8276,7 @@ export const GetEventticketclassRequest =
   ) as unknown as Schema.Codec<GetEventticketclassRequest>;
 
 export type GetEventticketclassResponse = EventTicketClass;
-export const GetEventticketclassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
+export const GetEventticketclassResponse = /*@__PURE__*/ EventTicketClass;
 
 export type GetEventticketclassError = DefaultErrors | NotFound | Forbidden;
 
@@ -8357,7 +8286,7 @@ export const getEventticketclass: API.OperationMethod<
   GetEventticketclassResponse,
   GetEventticketclassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventticketclassRequest,
   output: GetEventticketclassResponse,
   errors: [NotFound, Forbidden],
@@ -8368,7 +8297,7 @@ export interface InsertSmarttapRequest {
   body?: SmartTap;
 }
 
-export const InsertSmarttapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertSmarttapRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(SmartTap).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/smartTap", hasBody: true }),
@@ -8376,7 +8305,7 @@ export const InsertSmarttapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertSmarttapRequest>;
 
 export type InsertSmarttapResponse = SmartTap;
-export const InsertSmarttapResponse = /*@__PURE__*/ /*#__PURE__*/ SmartTap;
+export const InsertSmarttapResponse = /*@__PURE__*/ SmartTap;
 
 export type InsertSmarttapError =
   | DefaultErrors
@@ -8391,7 +8320,7 @@ export const insertSmarttap: API.OperationMethod<
   InsertSmarttapResponse,
   InsertSmarttapError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertSmarttapRequest,
   output: InsertSmarttapResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

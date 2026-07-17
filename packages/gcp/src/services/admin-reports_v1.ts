@@ -32,7 +32,7 @@ export interface FieldValueSelectionValue {
 }
 
 export const FieldValueSelectionValue: Schema.Codec<FieldValueSelectionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     badged: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface FieldValueUserValue {
 }
 
 export const FieldValueUserValue: Schema.Codec<FieldValueUserValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "FieldValueUserValue" });
 
@@ -54,7 +54,7 @@ export interface CustomerIdentity {
 }
 
 export const CustomerIdentity: Schema.Codec<CustomerIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerIdentity" });
 
@@ -66,7 +66,7 @@ export interface UserIdentity {
 }
 
 export const UserIdentity: Schema.Codec<UserIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     userEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserIdentity" });
@@ -79,7 +79,7 @@ export interface GroupIdentity {
 }
 
 export const GroupIdentity: Schema.Codec<GroupIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupEmail: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupIdentity" });
@@ -94,7 +94,7 @@ export interface OwnerIdentity {
 }
 
 export const OwnerIdentity: Schema.Codec<OwnerIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerIdentity: Schema.optional(CustomerIdentity),
     userIdentity: Schema.optional(UserIdentity),
     groupIdentity: Schema.optional(GroupIdentity),
@@ -108,7 +108,7 @@ export interface OwnerDetails {
 }
 
 export const OwnerDetails: Schema.Codec<OwnerDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ownerType: Schema.optional(Schema.String),
     ownerIdentity: Schema.optional(Schema.Array(OwnerIdentity)),
   }).annotate({ identifier: "OwnerDetails" });
@@ -125,7 +125,7 @@ export interface ActivityEventsStatus {
 }
 
 export const ActivityEventsStatus: Schema.Codec<ActivityEventsStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     eventStatus: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface UsageReport {
 }
 
 export const UsageReport: Schema.Codec<UsageReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     entity: Schema.optional(
@@ -206,7 +206,7 @@ export interface NestedParameter {
 }
 
 export const NestedParameter: Schema.Codec<NestedParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     multiIntValue: Schema.optional(Schema.Array(Schema.String)),
     boolValue: Schema.optional(Schema.Boolean),
@@ -226,7 +226,7 @@ export interface ActivityNetworkInfo {
 }
 
 export const ActivityNetworkInfo: Schema.Codec<ActivityNetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     ipAsn: Schema.optional(Schema.Array(Schema.Number)),
     subdivisionCode: Schema.optional(Schema.String),
@@ -238,7 +238,7 @@ export interface FieldValueTextListValue {
 }
 
 export const FieldValueTextListValue: Schema.Codec<FieldValueTextListValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "FieldValueTextListValue" });
 
@@ -252,7 +252,7 @@ export interface Admin_Date {
 }
 
 export const Admin_Date: Schema.Codec<Admin_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -264,7 +264,7 @@ export interface Reason {
 }
 
 export const Reason: Schema.Codec<Reason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reasonType: Schema.optional(Schema.String),
   }).annotate({ identifier: "Reason" });
 
@@ -274,7 +274,7 @@ export interface FieldValueSelectionListValue {
 }
 
 export const FieldValueSelectionListValue: Schema.Codec<FieldValueSelectionListValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(FieldValueSelectionValue)),
   }).annotate({ identifier: "FieldValueSelectionListValue" });
 
@@ -284,7 +284,7 @@ export interface FieldValueUserListValue {
 }
 
 export const FieldValueUserListValue: Schema.Codec<FieldValueUserListValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(FieldValueUserValue)),
   }).annotate({ identifier: "FieldValueUserListValue" });
 
@@ -320,7 +320,7 @@ export interface FieldValue {
 }
 
 export const FieldValue: Schema.Codec<FieldValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     textListValue: Schema.optional(FieldValueTextListValue),
     integerValue: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface AppliedLabel {
 }
 
 export const AppliedLabel: Schema.Codec<AppliedLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     fieldValues: Schema.optional(Schema.Array(FieldValue)),
@@ -372,7 +372,7 @@ export interface ResourceDetails {
 }
 
 export const ResourceDetails: Schema.Codec<ResourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ownerDetails: Schema.optional(OwnerDetails),
     relation: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export interface Activity {
 }
 
 export const Activity: Schema.Codec<Activity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     events: Schema.optional(
       Schema.Array(
@@ -533,7 +533,7 @@ export interface Activities {
 }
 
 export const Activities: Schema.Codec<Activities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -564,7 +564,7 @@ export interface Channel {
 }
 
 export const Channel: Schema.Codec<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -595,7 +595,7 @@ export interface UsageReports {
 }
 
 export const UsageReports: Schema.Codec<UsageReports> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     warnings: Schema.optional(
       Schema.Array(
@@ -684,7 +684,7 @@ export interface GetCustomerUsageReportsRequest {
 }
 
 export const GetCustomerUsageReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parameters: Schema.optional(Schema.String).pipe(T.HttpQuery("parameters")),
@@ -695,8 +695,7 @@ export const GetCustomerUsageReportsRequest =
   ) as unknown as Schema.Codec<GetCustomerUsageReportsRequest>;
 
 export type GetCustomerUsageReportsResponse = UsageReports;
-export const GetCustomerUsageReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UsageReports;
+export const GetCustomerUsageReportsResponse = /*@__PURE__*/ UsageReports;
 
 export type GetCustomerUsageReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -706,7 +705,7 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
   GetCustomerUsageReportsResponse,
   GetCustomerUsageReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCustomerUsageReportsRequest,
   output: GetCustomerUsageReportsResponse,
   errors: [NotFound, Forbidden],
@@ -794,7 +793,7 @@ export interface ListActivitiesRequest {
   applicationInfoFilter?: string;
 }
 
-export const ListActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListActivitiesRequest = /*@__PURE__*/ Schema.Struct({
   startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
   customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
   applicationName: Schema.String.pipe(T.HttpPath("applicationName")),
@@ -835,7 +834,7 @@ export const ListActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListActivitiesRequest>;
 
 export type ListActivitiesResponse = Activities;
-export const ListActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Activities;
+export const ListActivitiesResponse = /*@__PURE__*/ Activities;
 
 export type ListActivitiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -845,7 +844,7 @@ export const listActivities: API.PaginatedOperationMethod<
   ListActivitiesResponse,
   ListActivitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesRequest,
   output: ListActivitiesResponse,
   errors: [NotFound, Forbidden],
@@ -908,27 +907,25 @@ export interface WatchActivitiesRequest {
   body?: Channel;
 }
 
-export const WatchActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-    groupIdFilter: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("groupIdFilter"),
-    ),
-    eventName: Schema.optional(Schema.String).pipe(T.HttpQuery("eventName")),
-    actorIpAddress: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("actorIpAddress"),
-    ),
-    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
-    applicationName: Schema.String.pipe(T.HttpPath("applicationName")),
-    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
-    filters: Schema.optional(Schema.String).pipe(T.HttpQuery("filters")),
-    userKey: Schema.String.pipe(T.HttpPath("userKey")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    orgUnitID: Schema.optional(Schema.String).pipe(T.HttpQuery("orgUnitID")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    body: Schema.optional(Channel).pipe(T.HttpBody()),
-  },
-).pipe(
+export const WatchActivitiesRequest = /*@__PURE__*/ Schema.Struct({
+  customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+  groupIdFilter: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("groupIdFilter"),
+  ),
+  eventName: Schema.optional(Schema.String).pipe(T.HttpQuery("eventName")),
+  actorIpAddress: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("actorIpAddress"),
+  ),
+  endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
+  applicationName: Schema.String.pipe(T.HttpPath("applicationName")),
+  startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
+  filters: Schema.optional(Schema.String).pipe(T.HttpQuery("filters")),
+  userKey: Schema.String.pipe(T.HttpPath("userKey")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  orgUnitID: Schema.optional(Schema.String).pipe(T.HttpQuery("orgUnitID")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  body: Schema.optional(Channel).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch",
@@ -938,7 +935,7 @@ export const WatchActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<WatchActivitiesRequest>;
 
 export type WatchActivitiesResponse = Channel;
-export const WatchActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchActivitiesResponse = /*@__PURE__*/ Channel;
 
 export type WatchActivitiesError =
   | DefaultErrors
@@ -953,7 +950,7 @@ export const watchActivities: API.OperationMethod<
   WatchActivitiesResponse,
   WatchActivitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchActivitiesRequest,
   output: WatchActivitiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -964,7 +961,7 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 
-export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StopChannelsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Channel).pipe(T.HttpBody()),
 }).pipe(
   T.Http({
@@ -977,9 +974,7 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<StopChannelsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -994,7 +989,7 @@ export const stopChannels: API.OperationMethod<
   StopChannelsResponse,
   StopChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1022,7 +1017,7 @@ export interface GetUserUsageReportRequest {
 }
 
 export const GetUserUsageReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filters: Schema.optional(Schema.String).pipe(T.HttpQuery("filters")),
     userKey: Schema.String.pipe(T.HttpPath("userKey")),
     customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
@@ -1043,8 +1038,7 @@ export const GetUserUsageReportRequest =
   ) as unknown as Schema.Codec<GetUserUsageReportRequest>;
 
 export type GetUserUsageReportResponse = UsageReports;
-export const GetUserUsageReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UsageReports;
+export const GetUserUsageReportResponse = /*@__PURE__*/ UsageReports;
 
 export type GetUserUsageReportError = DefaultErrors | NotFound | Forbidden;
 
@@ -1054,7 +1048,7 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
   GetUserUsageReportResponse,
   GetUserUsageReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUserUsageReportRequest,
   output: GetUserUsageReportResponse,
   errors: [NotFound, Forbidden],
@@ -1084,7 +1078,7 @@ export interface GetEntityUsageReportsRequest {
 }
 
 export const GetEntityUsageReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     entityType: Schema.String.pipe(T.HttpPath("entityType")),
@@ -1102,8 +1096,7 @@ export const GetEntityUsageReportsRequest =
   ) as unknown as Schema.Codec<GetEntityUsageReportsRequest>;
 
 export type GetEntityUsageReportsResponse = UsageReports;
-export const GetEntityUsageReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UsageReports;
+export const GetEntityUsageReportsResponse = /*@__PURE__*/ UsageReports;
 
 export type GetEntityUsageReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1113,7 +1106,7 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
   GetEntityUsageReportsResponse,
   GetEntityUsageReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntityUsageReportsRequest,
   output: GetEntityUsageReportsResponse,
   errors: [NotFound, Forbidden],

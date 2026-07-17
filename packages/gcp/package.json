@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/gcp",
-  "version": "0.29.0",
+  "version": "0.29.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -69,6 +69,7 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",
+    "rolldown": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

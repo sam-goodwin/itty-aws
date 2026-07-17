@@ -13,7 +13,7 @@ export interface GetInvoicePaymentsInvoicePaymentInput {
   expand?: string;
 }
 export const GetInvoicePaymentsInvoicePaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice_payment: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -88,7 +88,7 @@ export interface GetInvoicePaymentsInvoicePaymentOutput {
   status_transitions: { canceled_at: number | null; paid_at: number | null };
 }
 export const GetInvoicePaymentsInvoicePaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_paid: Schema.NullOr(Schema.Number),
     amount_requested: Schema.Number,
     created: Schema.Number,
@@ -197,7 +197,7 @@ export const GetInvoicePaymentsInvoicePaymentOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetInvoicePaymentsInvoicePayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetInvoicePaymentsInvoicePaymentInput,
     outputSchema: GetInvoicePaymentsInvoicePaymentOutput,
   }));

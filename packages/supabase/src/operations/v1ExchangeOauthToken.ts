@@ -22,7 +22,7 @@ export interface V1ExchangeOauthTokenInput {
   scope?: string;
 }
 export const V1ExchangeOauthTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     grant_type: Schema.optional(
       Schema.Literals([
         "authorization_code",
@@ -55,7 +55,7 @@ export interface V1ExchangeOauthTokenOutput {
   token_type: "Bearer";
 }
 export const V1ExchangeOauthTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     access_token: SensitiveOutputString,
     refresh_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.Number,
@@ -68,10 +68,8 @@ export const V1ExchangeOauthTokenOutput =
  *
  * Supports `authorization_code`, `refresh_token`, and `urn:ietf:params:oauth:grant-type:jwt-bearer` grant types. The `jwt-bearer` grant type (IDJAG — identity-directed JWT assertion) is in beta and available on Team and Enterprise plans only.
  */
-export const v1ExchangeOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ExchangeOauthTokenInput,
-    outputSchema: V1ExchangeOauthTokenOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ExchangeOauthToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ExchangeOauthTokenInput,
+  outputSchema: V1ExchangeOauthTokenOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

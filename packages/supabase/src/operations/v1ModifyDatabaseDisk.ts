@@ -11,7 +11,7 @@ export interface V1ModifyDatabaseDiskInput {
     | { iops: number; size_gb: number; type: "io2" };
 }
 export const V1ModifyDatabaseDiskInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     attributes: Schema.Union([
       Schema.Struct({
@@ -33,7 +33,7 @@ export const V1ModifyDatabaseDiskInput =
 // Output Schema
 export type V1ModifyDatabaseDiskOutput = void;
 export const V1ModifyDatabaseDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ModifyDatabaseDiskOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ModifyDatabaseDiskOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const V1ModifyDatabaseDiskOutput =
  *
  * @param ref - Project ref
  */
-export const v1ModifyDatabaseDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ModifyDatabaseDiskInput,
-    outputSchema: V1ModifyDatabaseDiskOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ModifyDatabaseDisk = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ModifyDatabaseDiskInput,
+  outputSchema: V1ModifyDatabaseDiskOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

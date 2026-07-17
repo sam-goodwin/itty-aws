@@ -10,7 +10,7 @@ export interface RoleExternalReferencesListInput {
   offset?: number;
 }
 export const RoleExternalReferencesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -59,7 +59,7 @@ export interface RoleExternalReferencesListOutput {
   }[];
 }
 export const RoleExternalReferencesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -121,10 +121,8 @@ export const RoleExternalReferencesListOutput =
  * @param offset - The initial index from which to return the results.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const roleExternalReferencesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleExternalReferencesListInput,
-    outputSchema: RoleExternalReferencesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const roleExternalReferencesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleExternalReferencesListInput,
+  outputSchema: RoleExternalReferencesListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -10,7 +10,7 @@ export interface CreateGroupBackupExportBucketInput {
   pretty?: boolean;
 }
 export const CreateGroupBackupExportBucketInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupBackupExportBucketInput =
 // Output Schema
 export type CreateGroupBackupExportBucketOutput = void;
 export const CreateGroupBackupExportBucketOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupBackupExportBucketOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupBackupExportBucketOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const CreateGroupBackupExportBucketOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const createGroupBackupExportBucket =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupBackupExportBucketInput,
     outputSchema: CreateGroupBackupExportBucketOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

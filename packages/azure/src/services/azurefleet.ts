@@ -644,7 +644,7 @@ export interface FleetsCreateOrUpdateInput {
   location: string;
 }
 export const FleetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
@@ -2256,7 +2256,7 @@ export interface FleetsCreateOrUpdateOutput {
   };
 }
 export const FleetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2285,19 +2285,17 @@ export const FleetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Compute Fleet
  */
-export const FleetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetsCreateOrUpdateInput,
-    outputSchema: FleetsCreateOrUpdateOutput,
-  }),
-);
+export const FleetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetsCreateOrUpdateInput,
+  outputSchema: FleetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FleetsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   fleetName: string;
 }
-export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -2312,7 +2310,7 @@ export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FleetsDeleteOutput = void;
 export const FleetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetsDeleteOutput>;
 
 // The operation
 /**
@@ -2323,7 +2321,7 @@ export const FleetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Compute Fleet
  */
-export const FleetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetsDeleteInput,
   outputSchema: FleetsDeleteOutput,
 }));
@@ -2333,7 +2331,7 @@ export interface FleetsGetInput {
   resourceGroupName: string;
   fleetName: string;
 }
-export const FleetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -2359,7 +2357,7 @@ export interface FleetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2388,7 +2386,7 @@ export const FleetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Compute Fleet
  */
-export const FleetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetsGetInput,
   outputSchema: FleetsGetOutput,
 }));
@@ -2398,7 +2396,7 @@ export interface FleetsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const FleetsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2427,7 +2425,7 @@ export interface FleetsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const FleetsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2470,18 +2468,16 @@ export const FleetsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FleetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetsListByResourceGroupInput,
-    outputSchema: FleetsListByResourceGroupOutput,
-  }),
-);
+export const FleetsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetsListByResourceGroupInput,
+  outputSchema: FleetsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface FleetsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const FleetsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2509,7 +2505,7 @@ export interface FleetsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const FleetsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2551,12 +2547,10 @@ export const FleetsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const FleetsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetsListBySubscriptionInput,
-    outputSchema: FleetsListBySubscriptionOutput,
-  }),
-);
+export const FleetsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetsListBySubscriptionInput,
+  outputSchema: FleetsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface FleetsListVirtualMachineScaleSetsInput {
   subscriptionId: string;
@@ -2564,7 +2558,7 @@ export interface FleetsListVirtualMachineScaleSetsInput {
   name: string;
 }
 export const FleetsListVirtualMachineScaleSetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2601,7 +2595,7 @@ export interface FleetsListVirtualMachineScaleSetsOutput {
   nextLink?: string;
 }
 export const FleetsListVirtualMachineScaleSetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.String,
@@ -2653,7 +2647,7 @@ export const FleetsListVirtualMachineScaleSetsOutput =
  * @param name - The name of the Fleet
  */
 export const FleetsListVirtualMachineScaleSets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FleetsListVirtualMachineScaleSetsInput,
     outputSchema: FleetsListVirtualMachineScaleSetsOutput,
   }));
@@ -3286,7 +3280,7 @@ export interface FleetsUpdateInput {
     uniqueId?: string;
   };
 }
-export const FleetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -4857,7 +4851,7 @@ export interface FleetsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4886,15 +4880,13 @@ export const FleetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - The name of the Compute Fleet
  */
-export const FleetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetsUpdateInput,
   outputSchema: FleetsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureFleet/operations",
@@ -4918,7 +4910,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4948,7 +4940,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

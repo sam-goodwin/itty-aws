@@ -35,7 +35,7 @@ export interface CreateProjectBranchInput {
   annotation_value?: Record<string, string>;
 }
 export const CreateProjectBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoints: Schema.optional(
       Schema.Array(
@@ -242,7 +242,7 @@ export interface CreateProjectBranchOutput {
   }[];
 }
 export const CreateProjectBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -447,7 +447,7 @@ export const CreateProjectBranchOutput =
  *
  * @param project_id - The Neon project ID
  */
-export const createProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createProjectBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateProjectBranchInput,
   outputSchema: CreateProjectBranchOutput,
 }));

@@ -18,7 +18,7 @@ export interface ElementsPartialUpdateInput {
   order?: number | null;
 }
 export const ElementsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     text: Schema.optional(Schema.NullOr(Schema.String)),
@@ -50,7 +50,7 @@ export interface ElementsPartialUpdateOutput {
   order?: number | null;
 }
 export const ElementsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.NullOr(Schema.String)),
     tag_name: Schema.optional(Schema.NullOr(Schema.String)),
     attr_class: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
@@ -68,10 +68,8 @@ export const ElementsPartialUpdateOutput =
  * @param id - A unique integer value identifying this element.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const elementsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ElementsPartialUpdateInput,
-    outputSchema: ElementsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const elementsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ElementsPartialUpdateInput,
+  outputSchema: ElementsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

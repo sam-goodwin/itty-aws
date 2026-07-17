@@ -27,7 +27,7 @@ export interface DomainsVerifyCreateInput {
   id_jag_allowed_clients?: string[];
 }
 export const DomainsVerifyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     domain: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const DomainsVerifyCreateInput =
 // Output Schema
 export type DomainsVerifyCreateOutput = void;
 export const DomainsVerifyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsVerifyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsVerifyCreateOutput>;
 
 // The operation
 /**
@@ -66,7 +66,7 @@ export const DomainsVerifyCreateOutput =
  * @param id - A UUID string identifying this domain.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsVerifyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsVerifyCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsVerifyCreateInput,
   outputSchema: DomainsVerifyCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

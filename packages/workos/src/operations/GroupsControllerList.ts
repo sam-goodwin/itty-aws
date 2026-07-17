@@ -12,7 +12,7 @@ export interface GroupsControllerListInput {
   order?: string;
 }
 export const GroupsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface GroupsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const GroupsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -72,10 +72,8 @@ export const GroupsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
-export const GroupsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsControllerListInput,
-    outputSchema: GroupsControllerListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const GroupsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsControllerListInput,
+  outputSchema: GroupsControllerListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

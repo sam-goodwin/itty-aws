@@ -8,7 +8,7 @@ export interface ConnectionsControllerDeleteInput {
   id: string;
 }
 export const ConnectionsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/connections/{id}" }),
@@ -17,7 +17,7 @@ export const ConnectionsControllerDeleteInput =
 // Output Schema
 export type ConnectionsControllerDeleteOutput = void;
 export const ConnectionsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -27,10 +27,8 @@ export const ConnectionsControllerDeleteOutput =
  *
  * @param id - Unique identifier for the Connection.
  */
-export const ConnectionsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionsControllerDeleteInput,
-    outputSchema: ConnectionsControllerDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const ConnectionsControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsControllerDeleteInput,
+  outputSchema: ConnectionsControllerDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

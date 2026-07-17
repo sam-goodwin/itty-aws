@@ -8,7 +8,7 @@ export interface UpdateOrgInput {
   id: string;
   name: string;
 }
-export const UpdateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
@@ -71,7 +71,7 @@ export interface UpdateOrgOutput {
   primaryEmail: string;
   role?: string;
 }
-export const UpdateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
   id: Schema.String,
@@ -130,7 +130,7 @@ export const UpdateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<UpdateOrgOutput>;
 
 // The operation
-export const updateOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgInput,
   outputSchema: UpdateOrgOutput,
   errors: [NotFound] as const,

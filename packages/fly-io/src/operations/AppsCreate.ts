@@ -10,7 +10,7 @@ export interface AppsCreateInput {
   network?: string;
   org_slug?: string;
 }
-export const AppsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsCreateInput = /*@__PURE__*/ Schema.Struct({
   enable_subdomains: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
   network: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export const AppsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AppsCreateOutput = void;
 export const AppsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsCreateOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const AppsCreateOutput =
  *
  * Create an app with the specified details in the request body.
  */
-export const AppsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateInput,
   outputSchema: AppsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

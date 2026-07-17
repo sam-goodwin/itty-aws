@@ -22,7 +22,7 @@ interface Action {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -39,7 +39,7 @@ interface Actor {
   /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
   type?: "user" | "admin" | "Cloudflare" | (string & {}) | null;
 }
-const Actor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Actor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -60,7 +60,7 @@ interface Owner {
   /** Identifier */
   id?: string | null;
 }
-const Owner = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Owner = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -72,7 +72,7 @@ interface Resource {
   /** A short string that describes the resource that was affected by the action. */
   type?: string | null;
 }
-const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Resource = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -102,7 +102,7 @@ interface AuditLog {
   /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
   when?: string | null;
 }
-const AuditLog = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AuditLog = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(Schema.Union([Action, Schema.Null])),
@@ -124,7 +124,7 @@ interface ListAuditLogsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAuditLogsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -169,41 +169,38 @@ export interface ListAuditLogsRequest {
   zone?: { name?: string };
 }
 
-export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-      action: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("action")),
-      actor: Schema.optional(
-        Schema.Struct({
-          email: Schema.optional(Schema.String),
-          ip: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("actor")),
-      before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
-      hideUserLogs: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("hide_user_logs"),
-      ),
-      since: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("since")),
-      zone: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("zone")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/audit_logs" }),
+export const ListAuditLogsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+    action: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("action")),
+    actor: Schema.optional(
+      Schema.Struct({
+        email: Schema.optional(Schema.String),
+        ip: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("actor")),
+    before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
+    hideUserLogs: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("hide_user_logs"),
     ),
+    since: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("since")),
+    zone: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("zone")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/audit_logs" })),
 ) as unknown as Schema.Codec<ListAuditLogsRequest>;
 
 export interface ListAuditLogsResponse {
@@ -232,14 +229,13 @@ export interface ListAuditLogsResponse {
   } | null;
 }
 
-export const ListAuditLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(AuditLog),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAuditLogsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListAuditLogsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(AuditLog),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAuditLogsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListAuditLogsResponse>;
 
 export type ListAuditLogsError = DefaultErrors;
@@ -249,7 +245,7 @@ export const listAuditLogs: API.PaginatedOperationMethod<
   ListAuditLogsResponse,
   ListAuditLogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditLogsRequest,
   output: ListAuditLogsResponse,
   errors: [],

@@ -15,7 +15,7 @@ export interface DiagnosticsCheckNameAvailabilityInput {
   type?: string;
 }
 export const DiagnosticsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export interface DiagnosticsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const DiagnosticsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export const DiagnosticsCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const DiagnosticsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticsCheckNameAvailabilityInput,
     outputSchema: DiagnosticsCheckNameAvailabilityOutput,
   }));
@@ -84,74 +84,67 @@ export interface DiagnosticsCreateInput {
     }[];
   };
 }
-export const DiagnosticsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    scope: Schema.String.pipe(T.PathParam()),
-    diagnosticsResourceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        globalParameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+export const DiagnosticsCreateInput = /*@__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  diagnosticsResourceName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      globalParameters: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+      insights: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            solutionId: Schema.optional(Schema.String),
+            additionalParameters: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
         ),
-        insights: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              solutionId: Schema.optional(Schema.String),
-              additionalParameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        ),
-        acceptedAt: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "PartialComplete",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        diagnostics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              solutionId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals([
-                  "Failed",
-                  "MissingInputs",
-                  "Running",
-                  "Succeeded",
-                  "Timeout",
-                ]),
-              ),
-              insights: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    title: Schema.optional(Schema.String),
-                    results: Schema.optional(Schema.String),
-                    importanceLevel: Schema.optional(
-                      Schema.Literals(["Critical", "Warning", "Information"]),
-                    ),
-                  }),
-                ),
-              ),
-              error: Schema.optional(
+      ),
+      acceptedAt: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "PartialComplete", "Failed", "Canceled"]),
+      ),
+      diagnostics: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            solutionId: Schema.optional(Schema.String),
+            status: Schema.optional(
+              Schema.Literals([
+                "Failed",
+                "MissingInputs",
+                "Running",
+                "Succeeded",
+                "Timeout",
+              ]),
+            ),
+            insights: Schema.optional(
+              Schema.Array(
                 Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  id: Schema.optional(Schema.String),
+                  title: Schema.optional(Schema.String),
+                  results: Schema.optional(Schema.String),
+                  importanceLevel: Schema.optional(
+                    Schema.Literals(["Critical", "Warning", "Information"]),
+                  ),
                 }),
               ),
-            }),
-          ),
+            ),
+            error: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                type: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                details: Schema.optional(Schema.Array(Schema.Unknown)),
+              }),
+            ),
+          }),
         ),
-      }),
-    ),
-  },
-).pipe(
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
@@ -174,7 +167,7 @@ export interface DiagnosticsCreateOutput {
   };
 }
 export const DiagnosticsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -202,7 +195,7 @@ export const DiagnosticsCreateOutput =
  * @param diagnosticsResourceName - Unique resource name for insight resources
  * @param api-version - Client Api Version.
  */
-export const DiagnosticsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiagnosticsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiagnosticsCreateInput,
   outputSchema: DiagnosticsCreateOutput,
 }));
@@ -211,7 +204,7 @@ export interface DiagnosticsGetInput {
   scope: string;
   diagnosticsResourceName: string;
 }
-export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   diagnosticsResourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -236,7 +229,7 @@ export interface DiagnosticsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiagnosticsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -264,7 +257,7 @@ export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param diagnosticsResourceName - Unique resource name for insight resources
  * @param api-version - Client Api Version.
  */
-export const DiagnosticsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiagnosticsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiagnosticsGetInput,
   outputSchema: DiagnosticsGetOutput,
 }));
@@ -275,7 +268,7 @@ export interface DiscoverySolutionListInput {
   $skiptoken?: string;
 }
 export const DiscoverySolutionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $skiptoken: Schema.optional(Schema.String),
@@ -305,7 +298,7 @@ export interface DiscoverySolutionListOutput {
   nextLink?: string;
 }
 export const DiscoverySolutionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -351,17 +344,13 @@ export const DiscoverySolutionListOutput =
  * @param $filter - Can be used to filter solutionIds by 'ProblemClassificationId'. The filter supports only 'and' and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e' and ProblemClassificationId eq '0a9673c2-7af6-4e19-90d3-4ee2461076d9'.
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const DiscoverySolutionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiscoverySolutionListInput,
-    outputSchema: DiscoverySolutionListOutput,
-  }),
-);
+export const DiscoverySolutionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiscoverySolutionListInput,
+  outputSchema: DiscoverySolutionListOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Help/operations",
@@ -385,7 +374,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -415,7 +404,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client Api Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

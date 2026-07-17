@@ -8,7 +8,7 @@ export interface ExportDocumentsInput {
   collectionName: string;
   exportDocumentsParameters?: string;
 }
-export const ExportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   exportDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -21,7 +21,7 @@ export const ExportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ExportDocumentsOutput = void;
 export const ExportDocumentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExportDocumentsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExportDocumentsOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const ExportDocumentsOutput =
  *
  * @param collectionName - The name of the collection
  */
-export const exportDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const exportDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportDocumentsInput,
   outputSchema: ExportDocumentsOutput,
   errors: [NotFound] as const,

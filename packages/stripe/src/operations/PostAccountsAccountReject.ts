@@ -14,7 +14,7 @@ export interface PostAccountsAccountRejectInput {
   reason: string;
 }
 export const PostAccountsAccountRejectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     reason: Schema.String,
@@ -1039,7 +1039,7 @@ export interface PostAccountsAccountRejectOutput {
   type?: "custom" | "express" | "none" | "standard";
 }
 export const PostAccountsAccountRejectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     business_profile: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -2448,9 +2448,7 @@ export const PostAccountsAccountRejectOutput =
  * <p>With <a href="/connect">Connect</a>, you can reject accounts that you have flagged as suspicious.</p>
  * <p>Only accounts where your platform is liable for negative account balances, which includes Custom and Express accounts, can be rejected. Test-mode accounts can be rejected at any time. Live-mode accounts can only be rejected after all balances are zero.</p>
  */
-export const PostAccountsAccountReject = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostAccountsAccountRejectInput,
-    outputSchema: PostAccountsAccountRejectOutput,
-  }),
-);
+export const PostAccountsAccountReject = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostAccountsAccountRejectInput,
+  outputSchema: PostAccountsAccountRejectOutput,
+}));

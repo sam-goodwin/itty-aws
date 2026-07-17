@@ -8,7 +8,7 @@ export interface DesktopFileSystemContextGenerationRetrieveInput {
   project_id: string;
 }
 export const DesktopFileSystemContextGenerationRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface DesktopFileSystemContextGenerationRetrieveOutput {
   task_id: string | null;
 }
 export const DesktopFileSystemContextGenerationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     task_id: Schema.NullOr(Schema.String),
   }) as unknown as Schema.Codec<DesktopFileSystemContextGenerationRetrieveOutput>;
 
@@ -35,7 +35,7 @@ export const DesktopFileSystemContextGenerationRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const desktopFileSystemContextGenerationRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DesktopFileSystemContextGenerationRetrieveInput,
     outputSchema: DesktopFileSystemContextGenerationRetrieveOutput,
   }));

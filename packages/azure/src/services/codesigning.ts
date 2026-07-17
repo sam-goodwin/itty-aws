@@ -55,7 +55,7 @@ export interface CertificateProfilesCreateInput {
   };
 }
 export const CertificateProfilesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -140,7 +140,7 @@ export interface CertificateProfilesCreateOutput {
   };
 }
 export const CertificateProfilesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -170,12 +170,10 @@ export const CertificateProfilesCreateOutput =
  * @param accountName - Artifact Signing account name.
  * @param profileName - Certificate profile name.
  */
-export const CertificateProfilesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateProfilesCreateInput,
-    outputSchema: CertificateProfilesCreateOutput,
-  }),
-);
+export const CertificateProfilesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateProfilesCreateInput,
+  outputSchema: CertificateProfilesCreateOutput,
+}));
 // Input Schema
 export interface CertificateProfilesDeleteInput {
   subscriptionId: string;
@@ -184,7 +182,7 @@ export interface CertificateProfilesDeleteInput {
   profileName: string;
 }
 export const CertificateProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -200,7 +198,7 @@ export const CertificateProfilesDeleteInput =
 // Output Schema
 export type CertificateProfilesDeleteOutput = void;
 export const CertificateProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -212,12 +210,10 @@ export const CertificateProfilesDeleteOutput =
  * @param accountName - Artifact Signing account name.
  * @param profileName - Certificate profile name.
  */
-export const CertificateProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateProfilesDeleteInput,
-    outputSchema: CertificateProfilesDeleteOutput,
-  }),
-);
+export const CertificateProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateProfilesDeleteInput,
+  outputSchema: CertificateProfilesDeleteOutput,
+}));
 // Input Schema
 export interface CertificateProfilesGetInput {
   subscriptionId: string;
@@ -226,7 +222,7 @@ export interface CertificateProfilesGetInput {
   profileName: string;
 }
 export const CertificateProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -254,7 +250,7 @@ export interface CertificateProfilesGetOutput {
   };
 }
 export const CertificateProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -284,12 +280,10 @@ export const CertificateProfilesGetOutput =
  * @param accountName - Artifact Signing account name.
  * @param profileName - Certificate profile name.
  */
-export const CertificateProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificateProfilesGetInput,
-    outputSchema: CertificateProfilesGetOutput,
-  }),
-);
+export const CertificateProfilesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificateProfilesGetInput,
+  outputSchema: CertificateProfilesGetOutput,
+}));
 // Input Schema
 export interface CertificateProfilesListByCodeSigningAccountInput {
   subscriptionId: string;
@@ -297,7 +291,7 @@ export interface CertificateProfilesListByCodeSigningAccountInput {
   accountName: string;
 }
 export const CertificateProfilesListByCodeSigningAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -327,7 +321,7 @@ export interface CertificateProfilesListByCodeSigningAccountOutput {
   nextLink?: string;
 }
 export const CertificateProfilesListByCodeSigningAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -372,7 +366,7 @@ export const CertificateProfilesListByCodeSigningAccountOutput =
  * @param accountName - Artifact Signing account name.
  */
 export const CertificateProfilesListByCodeSigningAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificateProfilesListByCodeSigningAccountInput,
     outputSchema: CertificateProfilesListByCodeSigningAccountOutput,
   }));
@@ -389,7 +383,7 @@ export interface CertificateProfilesRevokeCertificateInput {
   remarks?: string;
 }
 export const CertificateProfilesRevokeCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -410,7 +404,7 @@ export const CertificateProfilesRevokeCertificateInput =
 // Output Schema
 export type CertificateProfilesRevokeCertificateOutput = void;
 export const CertificateProfilesRevokeCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesRevokeCertificateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesRevokeCertificateOutput>;
 
 // The operation
 /**
@@ -423,7 +417,7 @@ export const CertificateProfilesRevokeCertificateOutput =
  * @param profileName - Certificate profile name.
  */
 export const CertificateProfilesRevokeCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificateProfilesRevokeCertificateInput,
     outputSchema: CertificateProfilesRevokeCertificateOutput,
   }));
@@ -434,7 +428,7 @@ export interface CodeSigningAccountsCheckNameAvailabilityInput {
   name: string;
 }
 export const CodeSigningAccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
     name: Schema.String,
@@ -453,7 +447,7 @@ export interface CodeSigningAccountsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const CodeSigningAccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
@@ -469,7 +463,7 @@ export const CodeSigningAccountsCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CodeSigningAccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CodeSigningAccountsCheckNameAvailabilityInput,
     outputSchema: CodeSigningAccountsCheckNameAvailabilityOutput,
   }));
@@ -493,7 +487,7 @@ export interface CodeSigningAccountsCreateInput {
   location: string;
 }
 export const CodeSigningAccountsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -542,7 +536,7 @@ export interface CodeSigningAccountsCreateOutput {
   };
 }
 export const CodeSigningAccountsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -571,12 +565,10 @@ export const CodeSigningAccountsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Artifact Signing account name.
  */
-export const CodeSigningAccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CodeSigningAccountsCreateInput,
-    outputSchema: CodeSigningAccountsCreateOutput,
-  }),
-);
+export const CodeSigningAccountsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CodeSigningAccountsCreateInput,
+  outputSchema: CodeSigningAccountsCreateOutput,
+}));
 // Input Schema
 export interface CodeSigningAccountsDeleteInput {
   subscriptionId: string;
@@ -584,7 +576,7 @@ export interface CodeSigningAccountsDeleteInput {
   accountName: string;
 }
 export const CodeSigningAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -599,7 +591,7 @@ export const CodeSigningAccountsDeleteInput =
 // Output Schema
 export type CodeSigningAccountsDeleteOutput = void;
 export const CodeSigningAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeSigningAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeSigningAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -610,12 +602,10 @@ export const CodeSigningAccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Artifact Signing account name.
  */
-export const CodeSigningAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CodeSigningAccountsDeleteInput,
-    outputSchema: CodeSigningAccountsDeleteOutput,
-  }),
-);
+export const CodeSigningAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CodeSigningAccountsDeleteInput,
+  outputSchema: CodeSigningAccountsDeleteOutput,
+}));
 // Input Schema
 export interface CodeSigningAccountsGetInput {
   subscriptionId: string;
@@ -623,7 +613,7 @@ export interface CodeSigningAccountsGetInput {
   accountName: string;
 }
 export const CodeSigningAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -650,7 +640,7 @@ export interface CodeSigningAccountsGetOutput {
   };
 }
 export const CodeSigningAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -679,19 +669,17 @@ export const CodeSigningAccountsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Artifact Signing account name.
  */
-export const CodeSigningAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CodeSigningAccountsGetInput,
-    outputSchema: CodeSigningAccountsGetOutput,
-  }),
-);
+export const CodeSigningAccountsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CodeSigningAccountsGetInput,
+  outputSchema: CodeSigningAccountsGetOutput,
+}));
 // Input Schema
 export interface CodeSigningAccountsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const CodeSigningAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -720,7 +708,7 @@ export interface CodeSigningAccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CodeSigningAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -764,7 +752,7 @@ export const CodeSigningAccountsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CodeSigningAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CodeSigningAccountsListByResourceGroupInput,
     outputSchema: CodeSigningAccountsListByResourceGroupOutput,
   }));
@@ -773,7 +761,7 @@ export interface CodeSigningAccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CodeSigningAccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -801,7 +789,7 @@ export interface CodeSigningAccountsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CodeSigningAccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -844,7 +832,7 @@ export const CodeSigningAccountsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CodeSigningAccountsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CodeSigningAccountsListBySubscriptionInput,
     outputSchema: CodeSigningAccountsListBySubscriptionOutput,
   }));
@@ -857,7 +845,7 @@ export interface CodeSigningAccountsUpdateInput {
   properties?: { sku?: { name?: "Basic" | "Premium" } };
 }
 export const CodeSigningAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -894,7 +882,7 @@ export interface CodeSigningAccountsUpdateOutput {
   };
 }
 export const CodeSigningAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -923,17 +911,13 @@ export const CodeSigningAccountsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Artifact Signing account name.
  */
-export const CodeSigningAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CodeSigningAccountsUpdateInput,
-    outputSchema: CodeSigningAccountsUpdateOutput,
-  }),
-);
+export const CodeSigningAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CodeSigningAccountsUpdateInput,
+  outputSchema: CodeSigningAccountsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CodeSigning/operations",
@@ -957,7 +941,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -987,7 +971,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

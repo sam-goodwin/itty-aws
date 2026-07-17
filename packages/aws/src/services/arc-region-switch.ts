@@ -170,7 +170,7 @@ export type TagValue = string;
 
 //# Schemas
 export type Approval = "approve" | "decline" | (string & {});
-export const Approval = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Approval = /*@__PURE__*/ S.String;
 export interface ApprovePlanExecutionStepRequest {
   planArn: string;
   executionId: string;
@@ -179,7 +179,7 @@ export interface ApprovePlanExecutionStepRequest {
   comment?: string;
 }
 export const ApprovePlanExecutionStepRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       planArn: S.String,
       executionId: S.String,
@@ -194,7 +194,7 @@ export const ApprovePlanExecutionStepRequest =
   }) as any as S.Schema<ApprovePlanExecutionStepRequest>;
 export interface ApprovePlanExecutionStepResponse {}
 export const ApprovePlanExecutionStepResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "ApprovePlanExecutionStepResponse",
   }) as any as S.Schema<ApprovePlanExecutionStepResponse>;
 export interface CancelPlanExecutionRequest {
@@ -202,21 +202,20 @@ export interface CancelPlanExecutionRequest {
   executionId: string;
   comment?: string;
 }
-export const CancelPlanExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      executionId: S.String,
-      comment: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CancelPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    executionId: S.String,
+    comment: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CancelPlanExecutionRequest",
 }) as any as S.Schema<CancelPlanExecutionRequest>;
 export interface CancelPlanExecutionResponse {}
 export const CancelPlanExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CancelPlanExecutionResponse",
   }) as any as S.Schema<CancelPlanExecutionResponse>;
 export interface GetPlanEvaluationStatusRequest {
@@ -225,7 +224,7 @@ export interface GetPlanEvaluationStatusRequest {
   nextToken?: string;
 }
 export const GetPlanEvaluationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       planArn: S.String,
       maxResults: S.optional(S.Number),
@@ -242,24 +241,24 @@ export type EvaluationStatus =
   | "pendingEvaluation"
   | "unknown"
   | (string & {});
-export const EvaluationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EvaluationStatus = /*@__PURE__*/ S.String;
 export type ExecutionAction =
   | "activate"
   | "deactivate"
   | "postRecovery"
   | (string & {});
-export const ExecutionAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionAction = /*@__PURE__*/ S.String;
 export interface MinimalWorkflow {
   action?: ExecutionAction;
   name?: string;
 }
-export const MinimalWorkflow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MinimalWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.optional(ExecutionAction), name: S.optional(S.String) }),
 ).annotate({
   identifier: "MinimalWorkflow",
 }) as any as S.Schema<MinimalWorkflow>;
 export type ResourceWarningStatus = "active" | "resolved" | (string & {});
-export const ResourceWarningStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceWarningStatus = /*@__PURE__*/ S.String;
 export interface ResourceWarning {
   workflow?: MinimalWorkflow;
   version: string;
@@ -269,7 +268,7 @@ export interface ResourceWarning {
   warningUpdatedTime: Date;
   warningMessage: string;
 }
-export const ResourceWarning = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflow: S.optional(MinimalWorkflow),
     version: S.String,
@@ -283,8 +282,7 @@ export const ResourceWarning = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResourceWarning",
 }) as any as S.Schema<ResourceWarning>;
 export type PlanWarnings = ResourceWarning[];
-export const PlanWarnings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceWarning);
+export const PlanWarnings = /*@__PURE__*/ S.Array(ResourceWarning);
 export interface GetPlanEvaluationStatusResponse {
   planArn: string;
   lastEvaluationTime?: Date;
@@ -295,7 +293,7 @@ export interface GetPlanEvaluationStatusResponse {
   nextToken?: string;
 }
 export const GetPlanEvaluationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       planArn: S.String,
       lastEvaluationTime: S.optional(
@@ -316,21 +314,20 @@ export interface GetPlanExecutionRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const GetPlanExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      executionId: S.String,
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    executionId: S.String,
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetPlanExecutionRequest",
 }) as any as S.Schema<GetPlanExecutionRequest>;
 export type ExecutionMode = "graceful" | "ungraceful" | (string & {});
-export const ExecutionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionMode = /*@__PURE__*/ S.String;
 export type ExecutionState =
   | "inProgress"
   | "pausedByFailedStep"
@@ -344,7 +341,7 @@ export type ExecutionState =
   | "pending"
   | "completedMonitoringApplicationHealth"
   | (string & {});
-export const ExecutionState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionState = /*@__PURE__*/ S.String;
 export type StepStatus =
   | "notStarted"
   | "running"
@@ -354,7 +351,7 @@ export type StepStatus =
   | "skipped"
   | "pendingApproval"
   | (string & {});
-export const StepStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StepStatus = /*@__PURE__*/ S.String;
 export interface StepState {
   name?: string;
   status?: StepStatus;
@@ -362,7 +359,7 @@ export interface StepState {
   endTime?: Date;
   stepMode?: ExecutionMode;
 }
-export const StepState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StepState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(StepStatus),
@@ -372,13 +369,13 @@ export const StepState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StepState" }) as any as S.Schema<StepState>;
 export type StepStates = StepState[];
-export const StepStates = /*@__PURE__*/ /*#__PURE__*/ S.Array(StepState);
+export const StepStates = /*@__PURE__*/ S.Array(StepState);
 export interface Lambdas {
   crossAccountRole?: string;
   externalId?: string;
   arn?: string;
 }
-export const Lambdas = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Lambdas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -386,20 +383,20 @@ export const Lambdas = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Lambdas" }) as any as S.Schema<Lambdas>;
 export type LambdaList = Lambdas[];
-export const LambdaList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Lambdas);
+export const LambdaList = /*@__PURE__*/ S.Array(Lambdas);
 export type RegionToRunIn =
   | "activatingRegion"
   | "deactivatingRegion"
   | "activeRegion"
   | "inactiveRegion"
   | (string & {});
-export const RegionToRunIn = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RegionToRunIn = /*@__PURE__*/ S.String;
 export type LambdaUngracefulBehavior = "skip" | (string & {});
-export const LambdaUngracefulBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LambdaUngracefulBehavior = /*@__PURE__*/ S.String;
 export interface LambdaUngraceful {
   behavior?: LambdaUngracefulBehavior;
 }
-export const LambdaUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LambdaUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ behavior: S.optional(LambdaUngracefulBehavior) }),
 ).annotate({
   identifier: "LambdaUngraceful",
@@ -412,7 +409,7 @@ export interface CustomActionLambdaConfiguration {
   ungraceful?: LambdaUngraceful;
 }
 export const CustomActionLambdaConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       lambdas: LambdaList,
@@ -428,7 +425,7 @@ export interface Asg {
   externalId?: string;
   arn?: string;
 }
-export const Asg = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Asg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -436,19 +433,18 @@ export const Asg = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Asg" }) as any as S.Schema<Asg>;
 export type AsgList = Asg[];
-export const AsgList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Asg);
+export const AsgList = /*@__PURE__*/ S.Array(Asg);
 export interface Ec2Ungraceful {
   minimumSuccessPercentage: number;
 }
-export const Ec2Ungraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Ec2Ungraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimumSuccessPercentage: S.Number }),
 ).annotate({ identifier: "Ec2Ungraceful" }) as any as S.Schema<Ec2Ungraceful>;
 export type Ec2AsgCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "autoscalingMaxInLast24Hours"
   | (string & {});
-export const Ec2AsgCapacityMonitoringApproach =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Ec2AsgCapacityMonitoringApproach = /*@__PURE__*/ S.String;
 export interface Ec2AsgCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   asgs: Asg[];
@@ -457,7 +453,7 @@ export interface Ec2AsgCapacityIncreaseConfiguration {
   capacityMonitoringApproach?: Ec2AsgCapacityMonitoringApproach;
 }
 export const Ec2AsgCapacityIncreaseConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       asgs: AsgList,
@@ -473,31 +469,30 @@ export interface ExecutionApprovalConfiguration {
   approvalRole: string;
 }
 export const ExecutionApprovalConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ timeoutMinutes: S.optional(S.Number), approvalRole: S.String }),
   ).annotate({
     identifier: "ExecutionApprovalConfiguration",
   }) as any as S.Schema<ExecutionApprovalConfiguration>;
 export type RoutingControlStateChange = "On" | "Off" | (string & {});
-export const RoutingControlStateChange = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RoutingControlStateChange = /*@__PURE__*/ S.String;
 export interface ArcRoutingControlState {
   routingControlArn: string;
   state: RoutingControlStateChange;
 }
-export const ArcRoutingControlState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ routingControlArn: S.String, state: RoutingControlStateChange }),
+export const ArcRoutingControlState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ routingControlArn: S.String, state: RoutingControlStateChange }),
 ).annotate({
   identifier: "ArcRoutingControlState",
 }) as any as S.Schema<ArcRoutingControlState>;
 export type ArcRoutingControlStates = ArcRoutingControlState[];
-export const ArcRoutingControlStates = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ArcRoutingControlStates = /*@__PURE__*/ S.Array(
   ArcRoutingControlState,
 );
 export type RegionAndRoutingControls = {
   [key: string]: ArcRoutingControlState[] | undefined;
 };
-export const RegionAndRoutingControls = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionAndRoutingControls = /*@__PURE__*/ S.Record(
   S.String,
   ArcRoutingControlStates.pipe(S.optional),
 );
@@ -510,7 +505,7 @@ export interface ArcRoutingControlConfiguration {
   };
 }
 export const ArcRoutingControlConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -524,20 +519,19 @@ export type GlobalAuroraDefaultBehavior =
   | "switchoverOnly"
   | "failover"
   | (string & {});
-export const GlobalAuroraDefaultBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GlobalAuroraDefaultBehavior = /*@__PURE__*/ S.String;
 export type GlobalAuroraUngracefulBehavior = "failover" | (string & {});
-export const GlobalAuroraUngracefulBehavior =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GlobalAuroraUngracefulBehavior = /*@__PURE__*/ S.String;
 export interface GlobalAuroraUngraceful {
   ungraceful?: GlobalAuroraUngracefulBehavior;
 }
-export const GlobalAuroraUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ungraceful: S.optional(GlobalAuroraUngracefulBehavior) }),
+export const GlobalAuroraUngraceful = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ungraceful: S.optional(GlobalAuroraUngracefulBehavior) }),
 ).annotate({
   identifier: "GlobalAuroraUngraceful",
 }) as any as S.Schema<GlobalAuroraUngraceful>;
 export type AuroraClusterArns = string[];
-export const AuroraClusterArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AuroraClusterArns = /*@__PURE__*/ S.Array(S.String);
 export interface GlobalAuroraConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -547,17 +541,16 @@ export interface GlobalAuroraConfiguration {
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
 }
-export const GlobalAuroraConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeoutMinutes: S.optional(S.Number),
-      crossAccountRole: S.optional(S.String),
-      externalId: S.optional(S.String),
-      behavior: GlobalAuroraDefaultBehavior,
-      ungraceful: S.optional(GlobalAuroraUngraceful),
-      globalClusterIdentifier: S.String,
-      databaseClusterArns: AuroraClusterArns,
-    }),
+export const GlobalAuroraConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeoutMinutes: S.optional(S.Number),
+    crossAccountRole: S.optional(S.String),
+    externalId: S.optional(S.String),
+    behavior: GlobalAuroraDefaultBehavior,
+    ungraceful: S.optional(GlobalAuroraUngraceful),
+    globalClusterIdentifier: S.String,
+    databaseClusterArns: AuroraClusterArns,
+  }),
 ).annotate({
   identifier: "GlobalAuroraConfiguration",
 }) as any as S.Schema<GlobalAuroraConfiguration>;
@@ -565,7 +558,7 @@ export interface ParallelExecutionBlockConfiguration {
   steps: Step[];
 }
 export const ParallelExecutionBlockConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       steps: S.suspend(() => Steps).annotate({ identifier: "Steps" }),
     }),
@@ -578,7 +571,7 @@ export interface RegionSwitchPlanConfiguration {
   arn: string;
 }
 export const RegionSwitchPlanConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       crossAccountRole: S.optional(S.String),
       externalId: S.optional(S.String),
@@ -593,7 +586,7 @@ export interface Service {
   clusterArn?: string;
   serviceArn?: string;
 }
-export const Service = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -602,19 +595,18 @@ export const Service = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 export type ServiceList = Service[];
-export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Service);
+export const ServiceList = /*@__PURE__*/ S.Array(Service);
 export interface EcsUngraceful {
   minimumSuccessPercentage: number;
 }
-export const EcsUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EcsUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimumSuccessPercentage: S.Number }),
 ).annotate({ identifier: "EcsUngraceful" }) as any as S.Schema<EcsUngraceful>;
 export type EcsCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "containerInsightsMaxInLast24Hours"
   | (string & {});
-export const EcsCapacityMonitoringApproach =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EcsCapacityMonitoringApproach = /*@__PURE__*/ S.String;
 export interface EcsCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   services: Service[];
@@ -623,7 +615,7 @@ export interface EcsCapacityIncreaseConfiguration {
   capacityMonitoringApproach?: EcsCapacityMonitoringApproach;
 }
 export const EcsCapacityIncreaseConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       services: ServiceList,
@@ -638,8 +630,8 @@ export interface KubernetesResourceType {
   apiVersion: string;
   kind: string;
 }
-export const KubernetesResourceType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ apiVersion: S.String, kind: S.String }),
+export const KubernetesResourceType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ apiVersion: S.String, kind: S.String }),
 ).annotate({
   identifier: "KubernetesResourceType",
 }) as any as S.Schema<KubernetesResourceType>;
@@ -648,20 +640,19 @@ export interface KubernetesScalingResource {
   name: string;
   hpaName?: string;
 }
-export const KubernetesScalingResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String,
-      name: S.String,
-      hpaName: S.optional(S.String),
-    }),
+export const KubernetesScalingResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String,
+    name: S.String,
+    hpaName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "KubernetesScalingResource",
 }) as any as S.Schema<KubernetesScalingResource>;
 export type RegionalScalingResource = {
   [key: string]: KubernetesScalingResource | undefined;
 };
-export const RegionalScalingResource = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionalScalingResource = /*@__PURE__*/ S.Record(
   S.String,
   KubernetesScalingResource.pipe(S.optional),
 );
@@ -671,16 +662,13 @@ export type KubernetesScalingApplication = {
     | undefined;
 };
 export const KubernetesScalingApplication =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    S.String,
-    RegionalScalingResource.pipe(S.optional),
-  );
+  /*@__PURE__*/ S.Record(S.String, RegionalScalingResource.pipe(S.optional));
 export type KubernetesScalingApps = {
   [key: string]:
     | { [key: string]: KubernetesScalingResource | undefined }
     | undefined;
 }[];
-export const KubernetesScalingApps = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const KubernetesScalingApps = /*@__PURE__*/ S.Array(
   KubernetesScalingApplication,
 );
 export interface EksCluster {
@@ -688,7 +676,7 @@ export interface EksCluster {
   externalId?: string;
   clusterArn: string;
 }
-export const EksCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EksCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -696,12 +684,12 @@ export const EksCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EksCluster" }) as any as S.Schema<EksCluster>;
 export type EksClusters = EksCluster[];
-export const EksClusters = /*@__PURE__*/ /*#__PURE__*/ S.Array(EksCluster);
+export const EksClusters = /*@__PURE__*/ S.Array(EksCluster);
 export interface EksResourceScalingUngraceful {
   minimumSuccessPercentage: number;
 }
 export const EksResourceScalingUngraceful =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ minimumSuccessPercentage: S.Number }),
   ).annotate({
     identifier: "EksResourceScalingUngraceful",
@@ -709,8 +697,7 @@ export const EksResourceScalingUngraceful =
 export type EksCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | (string & {});
-export const EksCapacityMonitoringApproach =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EksCapacityMonitoringApproach = /*@__PURE__*/ S.String;
 export interface EksResourceScalingConfiguration {
   timeoutMinutes?: number;
   kubernetesResourceType: KubernetesResourceType;
@@ -725,7 +712,7 @@ export interface EksResourceScalingConfiguration {
   capacityMonitoringApproach?: EksCapacityMonitoringApproach;
 }
 export const EksResourceScalingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       kubernetesResourceType: KubernetesResourceType,
@@ -742,17 +729,16 @@ export interface Route53ResourceRecordSet {
   recordSetIdentifier?: string;
   region?: string;
 }
-export const Route53ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recordSetIdentifier: S.optional(S.String),
-      region: S.optional(S.String),
-    }),
+export const Route53ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recordSetIdentifier: S.optional(S.String),
+    region: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "Route53ResourceRecordSet",
 }) as any as S.Schema<Route53ResourceRecordSet>;
 export type Route53ResourceRecordSetList = Route53ResourceRecordSet[];
-export const Route53ResourceRecordSetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const Route53ResourceRecordSetList = /*@__PURE__*/ S.Array(
   Route53ResourceRecordSet,
 );
 export interface Route53HealthCheckConfiguration {
@@ -764,7 +750,7 @@ export interface Route53HealthCheckConfiguration {
   recordSets?: Route53ResourceRecordSet[];
 }
 export const Route53HealthCheckConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -780,22 +766,19 @@ export type DocumentDbDefaultBehavior =
   | "switchoverOnly"
   | "failover"
   | (string & {});
-export const DocumentDbDefaultBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentDbDefaultBehavior = /*@__PURE__*/ S.String;
 export type DocumentDbUngracefulBehavior = "failover" | (string & {});
-export const DocumentDbUngracefulBehavior =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentDbUngracefulBehavior = /*@__PURE__*/ S.String;
 export interface DocumentDbUngraceful {
   ungraceful?: DocumentDbUngracefulBehavior;
 }
-export const DocumentDbUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DocumentDbUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ungraceful: S.optional(DocumentDbUngracefulBehavior) }),
 ).annotate({
   identifier: "DocumentDbUngraceful",
 }) as any as S.Schema<DocumentDbUngraceful>;
 export type DocumentDbClusterArns = string[];
-export const DocumentDbClusterArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const DocumentDbClusterArns = /*@__PURE__*/ S.Array(S.String);
 export interface DocumentDbConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -805,22 +788,21 @@ export interface DocumentDbConfiguration {
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
 }
-export const DocumentDbConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeoutMinutes: S.optional(S.Number),
-      crossAccountRole: S.optional(S.String),
-      externalId: S.optional(S.String),
-      behavior: DocumentDbDefaultBehavior,
-      ungraceful: S.optional(DocumentDbUngraceful),
-      globalClusterIdentifier: S.String,
-      databaseClusterArns: DocumentDbClusterArns,
-    }),
+export const DocumentDbConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeoutMinutes: S.optional(S.Number),
+    crossAccountRole: S.optional(S.String),
+    externalId: S.optional(S.String),
+    behavior: DocumentDbDefaultBehavior,
+    ungraceful: S.optional(DocumentDbUngraceful),
+    globalClusterIdentifier: S.String,
+    databaseClusterArns: DocumentDbClusterArns,
+  }),
 ).annotate({
   identifier: "DocumentDbConfiguration",
 }) as any as S.Schema<DocumentDbConfiguration>;
 export type RdsDbInstanceArnMap = { [key: string]: string | undefined };
-export const RdsDbInstanceArnMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RdsDbInstanceArnMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -831,7 +813,7 @@ export interface RdsPromoteReadReplicaConfiguration {
   dbInstanceArnMap: { [key: string]: string | undefined };
 }
 export const RdsPromoteReadReplicaConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -848,7 +830,7 @@ export interface RdsCreateCrossRegionReplicaConfiguration {
   dbInstanceArnMap: { [key: string]: string | undefined };
 }
 export const RdsCreateCrossRegionReplicaConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -859,13 +841,13 @@ export const RdsCreateCrossRegionReplicaConfiguration =
     identifier: "RdsCreateCrossRegionReplicaConfiguration",
   }) as any as S.Schema<RdsCreateCrossRegionReplicaConfiguration>;
 export type EventSourceMappingAction = "enable" | "disable" | (string & {});
-export const EventSourceMappingAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EventSourceMappingAction = /*@__PURE__*/ S.String;
 export interface EventSourceMapping {
   crossAccountRole?: string;
   externalId?: string;
   arn: string;
 }
-export const EventSourceMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventSourceMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -877,18 +859,18 @@ export const EventSourceMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type RegionEventSourceMappingMap = {
   [key: string]: EventSourceMapping | undefined;
 };
-export const RegionEventSourceMappingMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionEventSourceMappingMap = /*@__PURE__*/ S.Record(
   S.String,
   EventSourceMapping.pipe(S.optional),
 );
 export type LambdaEventSourceMappingUngracefulBehavior = "skip" | (string & {});
 export const LambdaEventSourceMappingUngracefulBehavior =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+  /*@__PURE__*/ S.String;
 export interface LambdaEventSourceMappingUngraceful {
   behavior?: LambdaEventSourceMappingUngracefulBehavior;
 }
 export const LambdaEventSourceMappingUngraceful =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       behavior: S.optional(LambdaEventSourceMappingUngracefulBehavior),
     }),
@@ -902,7 +884,7 @@ export interface LambdaEventSourceMappingConfiguration {
   ungraceful?: LambdaEventSourceMappingUngraceful;
 }
 export const LambdaEventSourceMappingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       action: EventSourceMappingAction,
@@ -913,7 +895,7 @@ export const LambdaEventSourceMappingConfiguration =
     identifier: "LambdaEventSourceMappingConfiguration",
   }) as any as S.Schema<LambdaEventSourceMappingConfiguration>;
 export type RegionAuroraClusterMap = { [key: string]: string | undefined };
-export const RegionAuroraClusterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionAuroraClusterMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -926,7 +908,7 @@ export interface AuroraServerlessScalingConfiguration {
   targetPercent?: number;
 }
 export const AuroraServerlessScalingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -939,7 +921,7 @@ export const AuroraServerlessScalingConfiguration =
     identifier: "AuroraServerlessScalingConfiguration",
   }) as any as S.Schema<AuroraServerlessScalingConfiguration>;
 export type RegionAuroraInstanceArnMap = { [key: string]: string | undefined };
-export const RegionAuroraInstanceArnMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionAuroraInstanceArnMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -952,7 +934,7 @@ export interface AuroraProvisionedScalingConfiguration {
   instanceArns: { [key: string]: string | undefined };
 }
 export const AuroraProvisionedScalingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -968,19 +950,19 @@ export type NeptuneDefaultBehavior =
   | "switchoverOnly"
   | "failover"
   | (string & {});
-export const NeptuneDefaultBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NeptuneDefaultBehavior = /*@__PURE__*/ S.String;
 export type NeptuneUngracefulBehavior = "failover" | (string & {});
-export const NeptuneUngracefulBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NeptuneUngracefulBehavior = /*@__PURE__*/ S.String;
 export interface NeptuneUngraceful {
   ungraceful?: NeptuneUngracefulBehavior;
 }
-export const NeptuneUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NeptuneUngraceful = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ungraceful: S.optional(NeptuneUngracefulBehavior) }),
 ).annotate({
   identifier: "NeptuneUngraceful",
 }) as any as S.Schema<NeptuneUngraceful>;
 export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
-export const RegionNeptuneClusterArnMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RegionNeptuneClusterArnMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -994,7 +976,7 @@ export interface NeptuneGlobalDatabaseConfiguration {
   regionDatabaseClusterArns: { [key: string]: string | undefined };
 }
 export const NeptuneGlobalDatabaseConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeoutMinutes: S.optional(S.Number),
       crossAccountRole: S.optional(S.String),
@@ -1331,7 +1313,7 @@ export type ExecutionBlockConfiguration =
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration;
     };
-export const ExecutionBlockConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ExecutionBlockConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
   S.Struct({
     ec2AsgCapacityIncreaseConfig: Ec2AsgCapacityIncreaseConfiguration,
@@ -1385,14 +1367,14 @@ export type ExecutionBlockType =
   | "AuroraProvisionedScaling"
   | "NeptuneGlobalDatabase"
   | (string & {});
-export const ExecutionBlockType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionBlockType = /*@__PURE__*/ S.String;
 export interface Step {
   name: string;
   description?: string;
   executionBlockConfiguration: ExecutionBlockConfiguration;
   executionBlockType: ExecutionBlockType;
 }
-export const Step = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -1403,7 +1385,7 @@ export const Step = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 export type Steps = Step[];
-export const Steps = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const Steps = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Step> => Step).annotate({ identifier: "Step" }),
 ) as any as S.Schema<Steps>;
 export type WorkflowTargetAction =
@@ -1411,14 +1393,14 @@ export type WorkflowTargetAction =
   | "deactivate"
   | "postRecovery"
   | (string & {});
-export const WorkflowTargetAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WorkflowTargetAction = /*@__PURE__*/ S.String;
 export interface Workflow {
   steps?: Step[];
   workflowTargetAction: WorkflowTargetAction;
   workflowTargetRegion?: string;
   workflowDescription?: string;
 }
-export const Workflow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Workflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(Steps),
     workflowTargetAction: WorkflowTargetAction,
@@ -1427,16 +1409,16 @@ export const Workflow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 export type WorkflowList = Workflow[];
-export const WorkflowList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Workflow);
+export const WorkflowList = /*@__PURE__*/ S.Array(Workflow);
 export type AlarmType = "applicationHealth" | "trigger" | (string & {});
-export const AlarmType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AlarmType = /*@__PURE__*/ S.String;
 export interface AssociatedAlarm {
   crossAccountRole?: string;
   externalId?: string;
   resourceIdentifier: string;
   alarmType: AlarmType;
 }
-export const AssociatedAlarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociatedAlarm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossAccountRole: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -1447,24 +1429,23 @@ export const AssociatedAlarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AssociatedAlarm",
 }) as any as S.Schema<AssociatedAlarm>;
 export type AssociatedAlarmMap = { [key: string]: AssociatedAlarm | undefined };
-export const AssociatedAlarmMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const AssociatedAlarmMap = /*@__PURE__*/ S.Record(
   S.String,
   AssociatedAlarm.pipe(S.optional),
 );
 export type AlarmCondition = "red" | "green" | (string & {});
-export const AlarmCondition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AlarmCondition = /*@__PURE__*/ S.String;
 export interface TriggerCondition {
   associatedAlarmName: string;
   condition: AlarmCondition;
 }
-export const TriggerCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TriggerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ associatedAlarmName: S.String, condition: AlarmCondition }),
 ).annotate({
   identifier: "TriggerCondition",
 }) as any as S.Schema<TriggerCondition>;
 export type TriggerConditionList = TriggerCondition[];
-export const TriggerConditionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TriggerCondition);
+export const TriggerConditionList = /*@__PURE__*/ S.Array(TriggerCondition);
 export interface Trigger {
   description?: string;
   targetRegion: string;
@@ -1472,7 +1453,7 @@ export interface Trigger {
   conditions: TriggerCondition[];
   minDelayMinutesBetweenExecutions: number;
 }
-export const Trigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     targetRegion: S.String,
@@ -1482,13 +1463,13 @@ export const Trigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 export type TriggerList = Trigger[];
-export const TriggerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Trigger);
+export const TriggerList = /*@__PURE__*/ S.Array(Trigger);
 export interface S3ReportOutputConfiguration {
   bucketPath?: string;
   bucketOwner?: string;
 }
 export const S3ReportOutputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketPath: S.optional(S.String),
       bucketOwner: S.optional(S.String),
@@ -1499,25 +1480,25 @@ export const S3ReportOutputConfiguration =
 export type ReportOutputConfiguration = {
   s3Configuration: S3ReportOutputConfiguration;
 };
-export const ReportOutputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ s3Configuration: S3ReportOutputConfiguration }),
 ]);
 export type ReportOutputList = ReportOutputConfiguration[];
-export const ReportOutputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ReportOutputList = /*@__PURE__*/ S.Array(
   ReportOutputConfiguration,
 );
 export interface ReportConfiguration {
   reportOutput?: ReportOutputConfiguration[];
 }
-export const ReportConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportOutput: S.optional(ReportOutputList) }),
 ).annotate({
   identifier: "ReportConfiguration",
 }) as any as S.Schema<ReportConfiguration>;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export type RecoveryApproach = "activeActive" | "activePassive" | (string & {});
-export const RecoveryApproach = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RecoveryApproach = /*@__PURE__*/ S.String;
 export interface Plan {
   arn: string;
   description?: string;
@@ -1535,7 +1516,7 @@ export interface Plan {
   version?: string;
   updatedAt?: Date;
 }
-export const Plan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     description: S.optional(S.String),
@@ -1557,7 +1538,7 @@ export const Plan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface S3ReportOutput {
   s3ObjectKey?: string;
 }
-export const S3ReportOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3ReportOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3ObjectKey: S.optional(S.String) }),
 ).annotate({ identifier: "S3ReportOutput" }) as any as S.Schema<S3ReportOutput>;
 export type FailedReportErrorCode =
@@ -1565,12 +1546,12 @@ export type FailedReportErrorCode =
   | "invalidResource"
   | "configurationError"
   | (string & {});
-export const FailedReportErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FailedReportErrorCode = /*@__PURE__*/ S.String;
 export interface FailedReportOutput {
   errorCode?: FailedReportErrorCode;
   errorMessage?: string;
 }
-export const FailedReportOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailedReportOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(FailedReportErrorCode),
     errorMessage: S.optional(S.String),
@@ -1581,7 +1562,7 @@ export const FailedReportOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ReportOutput =
   | { s3ReportOutput: S3ReportOutput; failedReportOutput?: never }
   | { s3ReportOutput?: never; failedReportOutput: FailedReportOutput };
-export const ReportOutput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ReportOutput = /*@__PURE__*/ S.Union([
   S.Struct({ s3ReportOutput: S3ReportOutput }),
   S.Struct({ failedReportOutput: FailedReportOutput }),
 ]);
@@ -1589,7 +1570,7 @@ export interface GeneratedReport {
   reportGenerationTime?: Date;
   reportOutput?: ReportOutput;
 }
-export const GeneratedReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeneratedReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportGenerationTime: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1600,8 +1581,7 @@ export const GeneratedReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GeneratedReport",
 }) as any as S.Schema<GeneratedReport>;
 export type GeneratedReportDetails = GeneratedReport[];
-export const GeneratedReportDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GeneratedReport);
+export const GeneratedReportDetails = /*@__PURE__*/ S.Array(GeneratedReport);
 export interface GetPlanExecutionResponse {
   planArn: string;
   executionId: string;
@@ -1621,46 +1601,44 @@ export interface GetPlanExecutionResponse {
   generatedReportDetails?: GeneratedReport[];
   nextToken?: string;
 }
-export const GetPlanExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      executionId: S.String,
-      version: S.optional(S.String),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      comment: S.optional(S.String),
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      mode: ExecutionMode,
-      executionState: ExecutionState,
-      executionAction: ExecutionAction,
-      executionRegion: S.String,
-      recoveryExecutionId: S.optional(S.String),
-      stepStates: S.optional(StepStates),
-      plan: S.optional(Plan),
-      actualRecoveryTime: S.optional(S.String),
-      generatedReportDetails: S.optional(GeneratedReportDetails),
-      nextToken: S.optional(S.String),
-    }),
+export const GetPlanExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    executionId: S.String,
+    version: S.optional(S.String),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    comment: S.optional(S.String),
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    mode: ExecutionMode,
+    executionState: ExecutionState,
+    executionAction: ExecutionAction,
+    executionRegion: S.String,
+    recoveryExecutionId: S.optional(S.String),
+    stepStates: S.optional(StepStates),
+    plan: S.optional(Plan),
+    actualRecoveryTime: S.optional(S.String),
+    generatedReportDetails: S.optional(GeneratedReportDetails),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetPlanExecutionResponse",
 }) as any as S.Schema<GetPlanExecutionResponse>;
 export interface GetPlanInRegionRequest {
   arn: string;
 }
-export const GetPlanInRegionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetPlanInRegionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetPlanInRegionRequest",
 }) as any as S.Schema<GetPlanInRegionRequest>;
 export interface GetPlanInRegionResponse {
   plan?: Plan;
 }
-export const GetPlanInRegionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ plan: S.optional(Plan) }),
+export const GetPlanInRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ plan: S.optional(Plan) }),
 ).annotate({
   identifier: "GetPlanInRegionResponse",
 }) as any as S.Schema<GetPlanInRegionResponse>;
@@ -1672,7 +1650,7 @@ export interface ListPlanExecutionEventsRequest {
   name?: string;
 }
 export const ListPlanExecutionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       planArn: S.String,
       executionId: S.String,
@@ -1713,9 +1691,9 @@ export type ExecutionEventType =
   | "stepPendingApplicationHealthMonitor"
   | "planEvaluationWarning"
   | (string & {});
-export const ExecutionEventType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionEventType = /*@__PURE__*/ S.String;
 export type Resources = string[];
-export const Resources = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Resources = /*@__PURE__*/ S.Array(S.String);
 export interface ExecutionEvent {
   timestamp?: Date;
   type?: ExecutionEventType;
@@ -1727,7 +1705,7 @@ export interface ExecutionEvent {
   eventId: string;
   previousEventId?: string;
 }
-export const ExecutionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     type: S.optional(ExecutionEventType),
@@ -1741,14 +1719,13 @@ export const ExecutionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExecutionEvent" }) as any as S.Schema<ExecutionEvent>;
 export type ExecutionEventList = ExecutionEvent[];
-export const ExecutionEventList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExecutionEvent);
+export const ExecutionEventList = /*@__PURE__*/ S.Array(ExecutionEvent);
 export interface ListPlanExecutionEventsResponse {
   items?: ExecutionEvent[];
   nextToken?: string;
 }
 export const ListPlanExecutionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: S.optional(ExecutionEventList),
       nextToken: S.optional(S.String),
@@ -1762,16 +1739,15 @@ export interface ListPlanExecutionsRequest {
   nextToken?: string;
   state?: ExecutionState;
 }
-export const ListPlanExecutionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-      state: S.optional(ExecutionState),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListPlanExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+    state: S.optional(ExecutionState),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListPlanExecutionsRequest",
 }) as any as S.Schema<ListPlanExecutionsRequest>;
@@ -1790,7 +1766,7 @@ export interface AbbreviatedExecution {
   recoveryExecutionId?: string;
   actualRecoveryTime?: string;
 }
-export const AbbreviatedExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AbbreviatedExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planArn: S.String,
     executionId: S.String,
@@ -1811,17 +1787,16 @@ export const AbbreviatedExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AbbreviatedExecution>;
 export type AbbreviatedExecutionsList = AbbreviatedExecution[];
 export const AbbreviatedExecutionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AbbreviatedExecution);
+  /*@__PURE__*/ S.Array(AbbreviatedExecution);
 export interface ListPlanExecutionsResponse {
   items?: AbbreviatedExecution[];
   nextToken?: string;
 }
-export const ListPlanExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      items: S.optional(AbbreviatedExecutionsList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListPlanExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(AbbreviatedExecutionsList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPlanExecutionsResponse",
 }) as any as S.Schema<ListPlanExecutionsResponse>;
@@ -1829,14 +1804,13 @@ export interface ListPlansInRegionRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPlansInRegionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListPlansInRegionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListPlansInRegionRequest",
 }) as any as S.Schema<ListPlansInRegionRequest>;
@@ -1854,7 +1828,7 @@ export interface AbbreviatedPlan {
   activePlanExecution?: string;
   recoveryTimeObjectiveMinutes?: number;
 }
-export const AbbreviatedPlan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AbbreviatedPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     owner: S.String,
@@ -1873,14 +1847,13 @@ export const AbbreviatedPlan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AbbreviatedPlan",
 }) as any as S.Schema<AbbreviatedPlan>;
 export type PlanList = AbbreviatedPlan[];
-export const PlanList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AbbreviatedPlan);
+export const PlanList = /*@__PURE__*/ S.Array(AbbreviatedPlan);
 export interface ListPlansInRegionResponse {
   plans?: AbbreviatedPlan[];
   nextToken?: string;
 }
-export const ListPlansInRegionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ plans: S.optional(PlanList), nextToken: S.optional(S.String) }),
+export const ListPlansInRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ plans: S.optional(PlanList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListPlansInRegionResponse",
 }) as any as S.Schema<ListPlansInRegionResponse>;
@@ -1892,7 +1865,7 @@ export interface ListRoute53HealthChecksRequest {
   nextToken?: string;
 }
 export const ListRoute53HealthChecksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       hostedZoneId: S.optional(S.String),
@@ -1918,7 +1891,7 @@ export type Route53HealthCheckStatus =
   | "unhealthy"
   | "unknown"
   | (string & {});
-export const Route53HealthCheckStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Route53HealthCheckStatus = /*@__PURE__*/ S.String;
 export interface Route53HealthCheck {
   hostedZoneId: string;
   recordName: string;
@@ -1926,7 +1899,7 @@ export interface Route53HealthCheck {
   status?: Route53HealthCheckStatus;
   region: string;
 }
-export const Route53HealthCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Route53HealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostedZoneId: S.String,
     recordName: S.String,
@@ -1938,14 +1911,13 @@ export const Route53HealthCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "Route53HealthCheck",
 }) as any as S.Schema<Route53HealthCheck>;
 export type Route53HealthCheckList = Route53HealthCheck[];
-export const Route53HealthCheckList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(Route53HealthCheck);
+export const Route53HealthCheckList = /*@__PURE__*/ S.Array(Route53HealthCheck);
 export interface ListRoute53HealthChecksResponse {
   healthChecks?: Route53HealthCheck[];
   nextToken?: string;
 }
 export const ListRoute53HealthChecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       healthChecks: S.optional(Route53HealthCheckList),
       nextToken: S.optional(S.String),
@@ -1961,7 +1933,7 @@ export interface ListRoute53HealthChecksInRegionRequest {
   nextToken?: string;
 }
 export const ListRoute53HealthChecksInRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       hostedZoneId: S.optional(S.String),
@@ -1979,7 +1951,7 @@ export interface ListRoute53HealthChecksInRegionResponse {
   nextToken?: string;
 }
 export const ListRoute53HealthChecksInRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       healthChecks: S.optional(Route53HealthCheckList),
       nextToken: S.optional(S.String),
@@ -1996,19 +1968,18 @@ export interface StartPlanExecutionRequest {
   latestVersion?: string;
   recoveryExecutionId?: string;
 }
-export const StartPlanExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      targetRegion: S.String,
-      action: ExecutionAction,
-      mode: S.optional(ExecutionMode),
-      comment: S.optional(S.String),
-      latestVersion: S.optional(S.String),
-      recoveryExecutionId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    targetRegion: S.String,
+    action: ExecutionAction,
+    mode: S.optional(ExecutionMode),
+    comment: S.optional(S.String),
+    latestVersion: S.optional(S.String),
+    recoveryExecutionId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartPlanExecutionRequest",
 }) as any as S.Schema<StartPlanExecutionRequest>;
@@ -2019,15 +1990,14 @@ export interface StartPlanExecutionResponse {
   activateRegion?: string;
   deactivateRegion?: string;
 }
-export const StartPlanExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionId: S.optional(S.String),
-      plan: S.optional(S.String),
-      planVersion: S.optional(S.String),
-      activateRegion: S.optional(S.String),
-      deactivateRegion: S.optional(S.String),
-    }),
+export const StartPlanExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionId: S.optional(S.String),
+    plan: S.optional(S.String),
+    planVersion: S.optional(S.String),
+    activateRegion: S.optional(S.String),
+    deactivateRegion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "StartPlanExecutionResponse",
 }) as any as S.Schema<StartPlanExecutionResponse>;
@@ -2037,37 +2007,35 @@ export type UpdatePlanExecutionAction =
   | "pause"
   | "resume"
   | (string & {});
-export const UpdatePlanExecutionAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdatePlanExecutionAction = /*@__PURE__*/ S.String;
 export interface UpdatePlanExecutionRequest {
   planArn: string;
   executionId: string;
   action: UpdatePlanExecutionAction;
   comment?: string;
 }
-export const UpdatePlanExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      planArn: S.String,
-      executionId: S.String,
-      action: UpdatePlanExecutionAction,
-      comment: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdatePlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planArn: S.String,
+    executionId: S.String,
+    action: UpdatePlanExecutionAction,
+    comment: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdatePlanExecutionRequest",
 }) as any as S.Schema<UpdatePlanExecutionRequest>;
 export interface UpdatePlanExecutionResponse {}
 export const UpdatePlanExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdatePlanExecutionResponse",
   }) as any as S.Schema<UpdatePlanExecutionResponse>;
 export type UpdatePlanExecutionStepAction =
   | "switchToUngraceful"
   | "skip"
   | (string & {});
-export const UpdatePlanExecutionStepAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdatePlanExecutionStepAction = /*@__PURE__*/ S.String;
 export interface UpdatePlanExecutionStepRequest {
   planArn: string;
   executionId: string;
@@ -2076,7 +2044,7 @@ export interface UpdatePlanExecutionStepRequest {
   actionToTake: UpdatePlanExecutionStepAction;
 }
 export const UpdatePlanExecutionStepRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       planArn: S.String,
       executionId: S.String,
@@ -2091,14 +2059,11 @@ export const UpdatePlanExecutionStepRequest =
   }) as any as S.Schema<UpdatePlanExecutionStepRequest>;
 export interface UpdatePlanExecutionStepResponse {}
 export const UpdatePlanExecutionStepResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdatePlanExecutionStepResponse",
   }) as any as S.Schema<UpdatePlanExecutionStepResponse>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreatePlanRequest {
   description?: string;
   workflows: Workflow[];
@@ -2113,7 +2078,7 @@ export interface CreatePlanRequest {
   primaryRegion?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreatePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     workflows: WorkflowList,
@@ -2144,7 +2109,7 @@ export const CreatePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreatePlanResponse {
   plan?: Plan;
 }
-export const CreatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ plan: S.optional(Plan) }),
 ).annotate({
   identifier: "CreatePlanResponse",
@@ -2152,7 +2117,7 @@ export const CreatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPlanRequest {
   arn: string;
 }
-export const GetPlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2168,7 +2133,7 @@ export const GetPlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPlanResponse {
   plan?: Plan;
 }
-export const GetPlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ plan: S.optional(Plan) }),
 ).annotate({
   identifier: "GetPlanResponse",
@@ -2183,7 +2148,7 @@ export interface UpdatePlanRequest {
   triggers?: Trigger[];
   reportConfiguration?: ReportConfiguration;
 }
-export const UpdatePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     description: S.optional(S.String),
@@ -2210,7 +2175,7 @@ export const UpdatePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdatePlanResponse {
   plan?: Plan;
 }
-export const UpdatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ plan: S.optional(Plan) }),
 ).annotate({
   identifier: "UpdatePlanResponse",
@@ -2218,7 +2183,7 @@ export const UpdatePlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeletePlanRequest {
   arn: string;
 }
-export const DeletePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2234,7 +2199,7 @@ export const DeletePlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeletePlanRequest",
 }) as any as S.Schema<DeletePlanRequest>;
 export interface DeletePlanResponse {}
-export const DeletePlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePlanResponse",
@@ -2243,7 +2208,7 @@ export interface ListPlansRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPlansRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -2265,7 +2230,7 @@ export interface ListPlansResponse {
   plans?: AbbreviatedPlan[];
   nextToken?: string;
 }
-export const ListPlansResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ plans: S.optional(PlanList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListPlansResponse",
@@ -2273,19 +2238,18 @@ export const ListPlansResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ UseControlPlaneEndpoint: { value: true } }),
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -2293,7 +2257,7 @@ export interface ListTagsForResourceResponse {
   resourceTags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ resourceTags: S.optional(Tags) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -2302,7 +2266,7 @@ export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, tags: Tags }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2318,18 +2282,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   arn: string;
   resourceTagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, resourceTagKeys: TagKeys }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2345,7 +2309,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -2388,7 +2352,7 @@ export const approvePlanExecutionStep: API.OperationMethod<
   ApprovePlanExecutionStepResponse,
   ApprovePlanExecutionStepError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApprovePlanExecutionStepRequest,
   output: ApprovePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2408,7 +2372,7 @@ export const cancelPlanExecution: API.OperationMethod<
   CancelPlanExecutionResponse,
   CancelPlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPlanExecutionRequest,
   output: CancelPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2441,7 +2405,7 @@ export const getPlanEvaluationStatus: API.OperationMethod<
     GetPlanEvaluationStatusError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanEvaluationStatusRequest,
   output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2480,7 +2444,7 @@ export const getPlanExecution: API.OperationMethod<
     GetPlanExecutionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPlanExecutionRequest,
   output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2504,7 +2468,7 @@ export const getPlanInRegion: API.OperationMethod<
   GetPlanInRegionResponse,
   GetPlanInRegionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlanInRegionRequest,
   output: GetPlanInRegionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2537,7 +2501,7 @@ export const listPlanExecutionEvents: API.OperationMethod<
     ListPlanExecutionEventsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionEventsRequest,
   output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2576,7 +2540,7 @@ export const listPlanExecutions: API.OperationMethod<
     ListPlanExecutionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlanExecutionsRequest,
   output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2612,7 +2576,7 @@ export const listPlansInRegion: API.OperationMethod<
     ListPlansInRegionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansInRegionRequest,
   output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
@@ -2653,7 +2617,7 @@ export const listRoute53HealthChecks: API.OperationMethod<
     ListRoute53HealthChecksError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksRequest,
   output: ListRoute53HealthChecksResponse,
   errors: [
@@ -2699,7 +2663,7 @@ export const listRoute53HealthChecksInRegion: API.OperationMethod<
     ListRoute53HealthChecksInRegionError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoute53HealthChecksInRegionRequest,
   output: ListRoute53HealthChecksInRegionResponse,
   errors: [
@@ -2732,7 +2696,7 @@ export const startPlanExecution: API.OperationMethod<
   StartPlanExecutionResponse,
   StartPlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPlanExecutionRequest,
   output: StartPlanExecutionResponse,
   errors: [
@@ -2756,7 +2720,7 @@ export const updatePlanExecution: API.OperationMethod<
   UpdatePlanExecutionResponse,
   UpdatePlanExecutionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionRequest,
   output: UpdatePlanExecutionResponse,
   errors: [
@@ -2778,7 +2742,7 @@ export const updatePlanExecutionStep: API.OperationMethod<
   UpdatePlanExecutionStepResponse,
   UpdatePlanExecutionStepError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanExecutionStepRequest,
   output: UpdatePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
@@ -2795,7 +2759,7 @@ export const createPlan: API.OperationMethod<
   CreatePlanResponse,
   CreatePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlanRequest,
   output: CreatePlanResponse,
   errors: [],
@@ -2810,7 +2774,7 @@ export const getPlan: API.OperationMethod<
   GetPlanResponse,
   GetPlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlanRequest,
   output: GetPlanResponse,
   errors: [ResourceNotFoundException],
@@ -2825,7 +2789,7 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanResponse,
   UpdatePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlanRequest,
   output: UpdatePlanResponse,
   errors: [ResourceNotFoundException],
@@ -2845,7 +2809,7 @@ export const deletePlan: API.OperationMethod<
   DeletePlanResponse,
   DeletePlanError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlanRequest,
   output: DeletePlanResponse,
   errors: [IllegalStateException, ResourceNotFoundException],
@@ -2875,7 +2839,7 @@ export const listPlans: API.OperationMethod<
     ListPlansError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
@@ -2899,7 +2863,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -2917,7 +2881,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
@@ -2935,7 +2899,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],

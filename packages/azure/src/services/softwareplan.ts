@@ -24,7 +24,7 @@ export interface HybridUseBenefitCreateInput {
   type?: string;
 }
 export const HybridUseBenefitCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     planId: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
@@ -58,7 +58,7 @@ export interface HybridUseBenefitCreateOutput {
   type?: string;
 }
 export const HybridUseBenefitCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -72,19 +72,17 @@ export const HybridUseBenefitCreateOutput =
  * @param planId - This is a unique identifier for a plan. Should be a guid.
  * @param api-version - The api-version to be used by the service
  */
-export const HybridUseBenefitCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridUseBenefitCreateInput,
-    outputSchema: HybridUseBenefitCreateOutput,
-  }),
-);
+export const HybridUseBenefitCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridUseBenefitCreateInput,
+  outputSchema: HybridUseBenefitCreateOutput,
+}));
 // Input Schema
 export interface HybridUseBenefitDeleteInput {
   scope: string;
   planId: string;
 }
 export const HybridUseBenefitDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     planId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -98,7 +96,7 @@ export const HybridUseBenefitDeleteInput =
 // Output Schema
 export type HybridUseBenefitDeleteOutput = void;
 export const HybridUseBenefitDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridUseBenefitDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridUseBenefitDeleteOutput>;
 
 // The operation
 /**
@@ -108,19 +106,17 @@ export const HybridUseBenefitDeleteOutput =
  * @param planId - This is a unique identifier for a plan. Should be a guid.
  * @param api-version - The api-version to be used by the service
  */
-export const HybridUseBenefitDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridUseBenefitDeleteInput,
-    outputSchema: HybridUseBenefitDeleteOutput,
-  }),
-);
+export const HybridUseBenefitDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridUseBenefitDeleteInput,
+  outputSchema: HybridUseBenefitDeleteOutput,
+}));
 // Input Schema
 export interface HybridUseBenefitGetInput {
   scope: string;
   planId: string;
 }
 export const HybridUseBenefitGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     planId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -138,7 +134,7 @@ export interface HybridUseBenefitGetOutput {
   type?: string;
 }
 export const HybridUseBenefitGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -152,7 +148,7 @@ export const HybridUseBenefitGetOutput =
  * @param planId - This is a unique identifier for a plan. Should be a guid.
  * @param api-version - The api-version to be used by the service
  */
-export const HybridUseBenefitGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HybridUseBenefitGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HybridUseBenefitGetInput,
   outputSchema: HybridUseBenefitGetOutput,
 }));
@@ -162,7 +158,7 @@ export interface HybridUseBenefitListInput {
   $filter?: string;
 }
 export const HybridUseBenefitListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -179,7 +175,7 @@ export interface HybridUseBenefitListOutput {
   nextLink?: string;
 }
 export const HybridUseBenefitListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -200,19 +196,17 @@ export const HybridUseBenefitListOutput =
  * @param api-version - The api-version to be used by the service
  * @param $filter - Supports applying filter on the type of SKU
  */
-export const HybridUseBenefitList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridUseBenefitListInput,
-    outputSchema: HybridUseBenefitListOutput,
-  }),
-);
+export const HybridUseBenefitList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridUseBenefitListInput,
+  outputSchema: HybridUseBenefitListOutput,
+}));
 // Input Schema
 export interface HybridUseBenefitRevisionListInput {
   scope: string;
   planId: string;
 }
 export const HybridUseBenefitRevisionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     planId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -229,7 +223,7 @@ export interface HybridUseBenefitRevisionListOutput {
   nextLink?: string;
 }
 export const HybridUseBenefitRevisionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -251,7 +245,7 @@ export const HybridUseBenefitRevisionListOutput =
  * @param api-version - The api-version to be used by the service
  */
 export const HybridUseBenefitRevisionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridUseBenefitRevisionListInput,
     outputSchema: HybridUseBenefitRevisionListOutput,
   }));
@@ -271,7 +265,7 @@ export interface HybridUseBenefitUpdateInput {
   type?: string;
 }
 export const HybridUseBenefitUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     planId: Schema.String.pipe(T.PathParam()),
     sku: Schema.Struct({
@@ -305,7 +299,7 @@ export interface HybridUseBenefitUpdateOutput {
   type?: string;
 }
 export const HybridUseBenefitUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -319,17 +313,15 @@ export const HybridUseBenefitUpdateOutput =
  * @param planId - This is a unique identifier for a plan. Should be a guid.
  * @param api-version - The api-version to be used by the service
  */
-export const HybridUseBenefitUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridUseBenefitUpdateInput,
-    outputSchema: HybridUseBenefitUpdateOutput,
-  }),
-);
+export const HybridUseBenefitUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridUseBenefitUpdateInput,
+  outputSchema: HybridUseBenefitUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {
   scope: string;
 }
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -353,7 +345,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -382,7 +374,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param scope - The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
  * @param api-version - The api-version to be used by the service
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -391,7 +383,7 @@ export interface SoftwarePlanRegisterInput {
   subscriptionId: string;
 }
 export const SoftwarePlanRegisterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -404,7 +396,7 @@ export const SoftwarePlanRegisterInput =
 // Output Schema
 export type SoftwarePlanRegisterOutput = void;
 export const SoftwarePlanRegisterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SoftwarePlanRegisterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SoftwarePlanRegisterOutput>;
 
 // The operation
 /**
@@ -413,9 +405,7 @@ export const SoftwarePlanRegisterOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The api-version to be used by the service
  */
-export const SoftwarePlanRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SoftwarePlanRegisterInput,
-    outputSchema: SoftwarePlanRegisterOutput,
-  }),
-);
+export const SoftwarePlanRegister = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SoftwarePlanRegisterInput,
+  outputSchema: SoftwarePlanRegisterOutput,
+}));

@@ -9,7 +9,7 @@ export interface GetV1DatabasesByDatabaseIdBackupsInput {
   limit?: number;
 }
 export const GetV1DatabasesByDatabaseIdBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
   }).pipe(
@@ -30,7 +30,7 @@ export interface GetV1DatabasesByDatabaseIdBackupsOutput {
   pagination: { hasMore: boolean; limit: number | null };
 }
 export const GetV1DatabasesByDatabaseIdBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -57,7 +57,7 @@ export const GetV1DatabasesByDatabaseIdBackupsOutput =
  * Returns backups for the specified database.
  */
 export const getV1DatabasesByDatabaseIdBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1DatabasesByDatabaseIdBackupsInput,
     outputSchema: GetV1DatabasesByDatabaseIdBackupsOutput,
     errors: [NotFound, UnprocessableEntity] as const,

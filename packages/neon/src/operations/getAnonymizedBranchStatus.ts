@@ -8,7 +8,7 @@ export interface GetAnonymizedBranchStatusInput {
   branch_id: string;
 }
 export const GetAnonymizedBranchStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -36,7 +36,7 @@ export interface GetAnonymizedBranchStatusOutput {
   };
 }
 export const GetAnonymizedBranchStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String,
     branch_id: Schema.String,
     state: Schema.String,
@@ -67,9 +67,7 @@ export const GetAnonymizedBranchStatusOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const getAnonymizedBranchStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAnonymizedBranchStatusInput,
-    outputSchema: GetAnonymizedBranchStatusOutput,
-  }),
-);
+export const getAnonymizedBranchStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAnonymizedBranchStatusInput,
+  outputSchema: GetAnonymizedBranchStatusOutput,
+}));

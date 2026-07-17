@@ -4,9 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface ListRolesInput {}
-export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListRolesInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/rbac/roles" }),
 ) as unknown as Schema.Codec<ListRolesInput>;
 
@@ -54,7 +52,7 @@ export type ListRolesOutput = ReadonlyArray<{
   >;
   id: string;
 }>;
-export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListRolesOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     datasetCapabilities: Schema.optional(
       Schema.Record(
@@ -152,7 +150,7 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Retrieves all roles in the organization with their associated permissions and members.
  */
-export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listRoles = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListRolesInput,
   outputSchema: ListRolesOutput,
 }));

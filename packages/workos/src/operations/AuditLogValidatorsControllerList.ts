@@ -11,7 +11,7 @@ export interface AuditLogValidatorsControllerListInput {
   order?: string;
 }
 export const AuditLogValidatorsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -43,7 +43,7 @@ export interface AuditLogValidatorsControllerListOutput {
   }>;
 }
 export const AuditLogValidatorsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -100,7 +100,7 @@ export const AuditLogValidatorsControllerListOutput =
  * @param order - Order the results by the creation time.
  */
 export const AuditLogValidatorsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogValidatorsControllerListInput,
     outputSchema: AuditLogValidatorsControllerListOutput,
     errors: [NotFound, UnprocessableEntity] as const,

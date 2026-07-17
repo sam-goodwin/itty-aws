@@ -33,7 +33,7 @@ export interface PostV1ProjectsByProjectIdDatabasesInput {
     | { type: string; databaseId: string };
 }
 export const PostV1ProjectsByProjectIdDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     region: Schema.optional(
       Schema.Literals([
@@ -140,7 +140,7 @@ export interface PostV1ProjectsByProjectIdDatabasesOutput {
   };
 }
 export const PostV1ProjectsByProjectIdDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -281,7 +281,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
  * Creates a new database for the given project.
  */
 export const postV1ProjectsByProjectIdDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ProjectsByProjectIdDatabasesInput,
     outputSchema: PostV1ProjectsByProjectIdDatabasesOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

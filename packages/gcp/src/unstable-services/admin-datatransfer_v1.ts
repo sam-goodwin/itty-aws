@@ -30,7 +30,7 @@ export interface ApplicationTransferParam {
 }
 
 export const ApplicationTransferParam: Schema.Codec<ApplicationTransferParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ApplicationTransferParam" });
@@ -45,7 +45,7 @@ export interface ApplicationDataTransfer {
 }
 
 export const ApplicationDataTransfer: Schema.Codec<ApplicationDataTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.optional(Schema.String),
     applicationTransferStatus: Schema.optional(Schema.String),
     applicationTransferParams: Schema.optional(
@@ -73,7 +73,7 @@ export interface DataTransfer {
 }
 
 export const DataTransfer: Schema.Codec<DataTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     oldOwnerUserId: Schema.optional(Schema.String),
     applicationDataTransfers: Schema.optional(
@@ -98,7 +98,7 @@ export interface DataTransfersListResponse {
 }
 
 export const DataTransfersListResponse: Schema.Codec<DataTransfersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface ApplicationsListResponse {
 }
 
 export const ApplicationsListResponse: Schema.Codec<ApplicationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     applications: Schema.optional(Schema.Array(Application)),
@@ -205,11 +205,9 @@ export interface GetApplicationsRequest {
   applicationId: string;
 }
 
-export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
-  },
-).pipe(
+export const GetApplicationsRequest = /*@__PURE__*/ Schema.Struct({
+  applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "admin/datatransfer/v1/applications/{applicationId}",
@@ -218,7 +216,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetApplicationsRequest>;
 
 export type GetApplicationsResponse = Application;
-export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
+export const GetApplicationsResponse = /*@__PURE__*/ Application;
 
 export type GetApplicationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -228,7 +226,7 @@ export const getApplications: API.OperationMethod<
   GetApplicationsResponse,
   GetApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationsRequest,
   output: GetApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -244,7 +242,7 @@ export interface ListApplicationsRequest {
 }
 
 export const ListApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -254,8 +252,7 @@ export const ListApplicationsRequest =
   ) as unknown as Schema.Codec<ListApplicationsRequest>;
 
 export type ListApplicationsResponse = ApplicationsListResponse;
-export const ListApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
+export const ListApplicationsResponse = /*@__PURE__*/ ApplicationsListResponse;
 
 export type ListApplicationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -265,7 +262,7 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsResponse,
   ListApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -280,7 +277,7 @@ export interface GetTransfersRequest {
   dataTransferId: string;
 }
 
-export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTransfersRequest = /*@__PURE__*/ Schema.Struct({
   dataTransferId: Schema.String.pipe(T.HttpPath("dataTransferId")),
 }).pipe(
   T.Http({
@@ -291,7 +288,7 @@ export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTransfersRequest>;
 
 export type GetTransfersResponse = DataTransfer;
-export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
+export const GetTransfersResponse = /*@__PURE__*/ DataTransfer;
 
 export type GetTransfersError = DefaultErrors | NotFound | Forbidden;
 
@@ -301,7 +298,7 @@ export const getTransfers: API.OperationMethod<
   GetTransfersResponse,
   GetTransfersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTransfersRequest,
   output: GetTransfersResponse,
   errors: [NotFound, Forbidden],
@@ -312,11 +309,9 @@ export interface InsertTransfersRequest {
   body?: DataTransfer;
 }
 
-export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(DataTransfer).pipe(T.HttpBody()),
-  },
-).pipe(
+export const InsertTransfersRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(DataTransfer).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "admin/datatransfer/v1/transfers",
@@ -326,7 +321,7 @@ export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<InsertTransfersRequest>;
 
 export type InsertTransfersResponse = DataTransfer;
-export const InsertTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
+export const InsertTransfersResponse = /*@__PURE__*/ DataTransfer;
 
 export type InsertTransfersError =
   | DefaultErrors
@@ -341,7 +336,7 @@ export const insertTransfers: API.OperationMethod<
   InsertTransfersResponse,
   InsertTransfersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTransfersRequest,
   output: InsertTransfersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -362,7 +357,7 @@ export interface ListTransfersRequest {
   status?: string;
 }
 
-export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTransfersRequest = /*@__PURE__*/ Schema.Struct({
   newOwnerUserId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("newOwnerUserId"),
   ),
@@ -379,8 +374,7 @@ export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListTransfersRequest>;
 
 export type ListTransfersResponse = DataTransfersListResponse;
-export const ListTransfersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataTransfersListResponse;
+export const ListTransfersResponse = /*@__PURE__*/ DataTransfersListResponse;
 
 export type ListTransfersError = DefaultErrors | NotFound | Forbidden;
 
@@ -390,7 +384,7 @@ export const listTransfers: API.PaginatedOperationMethod<
   ListTransfersResponse,
   ListTransfersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransfersRequest,
   output: ListTransfersResponse,
   errors: [NotFound, Forbidden],

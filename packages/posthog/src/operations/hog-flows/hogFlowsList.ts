@@ -14,7 +14,7 @@ export interface HogFlowsListInput {
   status?: "active" | "archived" | "draft";
   updated_at?: string;
 }
-export const HogFlowsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HogFlowsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface HogFlowsListOutput {
     billable_action_types?: unknown;
   }[];
 }
-export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HogFlowsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -156,7 +156,7 @@ export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * `active` - Active
  * `archived` - Archived
  */
-export const hogFlowsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const hogFlowsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HogFlowsListInput,
   outputSchema: HogFlowsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -8,7 +8,7 @@ export interface GetTreasuryDebitReversalsDebitReversalInput {
   expand?: string;
 }
 export const GetTreasuryDebitReversalsDebitReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     debit_reversal: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -125,7 +125,7 @@ export interface GetTreasuryDebitReversalsDebitReversalOutput {
     | null;
 }
 export const GetTreasuryDebitReversalsDebitReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -256,7 +256,7 @@ export const GetTreasuryDebitReversalsDebitReversalOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryDebitReversalsDebitReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryDebitReversalsDebitReversalInput,
     outputSchema: GetTreasuryDebitReversalsDebitReversalOutput,
   }));

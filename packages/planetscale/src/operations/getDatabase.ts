@@ -8,7 +8,7 @@ export interface GetDatabaseInput {
   organization: string;
   database: string;
 }
-export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -43,7 +43,7 @@ export interface GetDatabaseOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -86,7 +86,7 @@ export interface GetDatabaseOutput {
   schema_last_updated_at?: string | null;
   kind: "mysql" | "postgresql";
 }
-export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   branches_url: Schema.String,
@@ -170,7 +170,7 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const getDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInput,
   outputSchema: GetDatabaseOutput,
   errors: [Forbidden, NotFound] as const,

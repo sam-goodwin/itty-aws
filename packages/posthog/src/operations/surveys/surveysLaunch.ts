@@ -7,7 +7,7 @@ export interface SurveysLaunchInput {
   id: string;
   project_id: string;
 }
-export const SurveysLaunchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysLaunchInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -116,7 +116,7 @@ export interface SurveysLaunchOutput {
   form_content?: unknown;
   search_match_type?: "exact" | "similar" | null;
 }
-export const SurveysLaunchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SurveysLaunchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export const SurveysLaunchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this survey.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysLaunch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const surveysLaunch = /*@__PURE__*/ API.make(() => ({
   inputSchema: SurveysLaunchInput,
   outputSchema: SurveysLaunchOutput,
 }));

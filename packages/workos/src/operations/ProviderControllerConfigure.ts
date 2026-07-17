@@ -15,7 +15,7 @@ export interface ProviderControllerConfigureInput {
   client_secret?: string | Redacted.Redacted<string>;
 }
 export const ProviderControllerConfigureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -49,7 +49,7 @@ export interface ProviderControllerConfigureOutput {
   };
 }
 export const ProviderControllerConfigureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     organization_id: Schema.String,
@@ -79,10 +79,8 @@ export const ProviderControllerConfigureOutput =
  * @param organizationId - An [Organization](/reference/organization) identifier to configure the provider for.
  * @param slug - The slug identifier of the provider to configure (e.g., `github`, `slack`, `notion`).
  */
-export const ProviderControllerConfigure = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderControllerConfigureInput,
-    outputSchema: ProviderControllerConfigureOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const ProviderControllerConfigure = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderControllerConfigureInput,
+  outputSchema: ProviderControllerConfigureOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

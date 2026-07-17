@@ -12,7 +12,7 @@ export interface LlmSkillsNameFilesCreateInput {
   base_version?: number;
 }
 export const LlmSkillsNameFilesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface LlmSkillsNameFilesCreateOutput {
   first_version_created_at?: string;
 }
 export const LlmSkillsNameFilesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -144,9 +144,7 @@ export const LlmSkillsNameFilesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmSkillsNameFilesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmSkillsNameFilesCreateInput,
-    outputSchema: LlmSkillsNameFilesCreateOutput,
-  }),
-);
+export const llmSkillsNameFilesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmSkillsNameFilesCreateInput,
+  outputSchema: LlmSkillsNameFilesCreateOutput,
+}));

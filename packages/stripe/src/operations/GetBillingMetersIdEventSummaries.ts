@@ -15,7 +15,7 @@ export interface GetBillingMetersIdEventSummariesInput {
   value_grouping_window?: "day" | "hour";
 }
 export const GetBillingMetersIdEventSummariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     customer: Schema.String,
     end_time: Schema.Number,
@@ -49,7 +49,7 @@ export interface GetBillingMetersIdEventSummariesOutput {
   url: string;
 }
 export const GetBillingMetersIdEventSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         aggregated_value: Schema.Number,
@@ -83,7 +83,7 @@ export const GetBillingMetersIdEventSummariesOutput =
  * @param value_grouping_window - Specifies what granularity to use when generating event summaries. If not specified, a single event summary would be returned for the specified time range. For hourly granularity, start and end times must align with hour boundaries (e.g., 00:00, 01:00, ..., 23:00). For daily granularity, start and end times must align with UTC day boundaries (00:00 UTC).
  */
 export const GetBillingMetersIdEventSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetBillingMetersIdEventSummariesInput,
     outputSchema: GetBillingMetersIdEventSummariesOutput,
   }));

@@ -11,7 +11,7 @@ export interface GetGroupAccessListStatusInput {
   pretty?: boolean;
 }
 export const GetGroupAccessListStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     entryValue: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupAccessListStatusInput =
 // Output Schema
 export type GetGroupAccessListStatusOutput = void;
 export const GetGroupAccessListStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAccessListStatusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAccessListStatusOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupAccessListStatusOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param entryValue - Network address or cloud provider security construct that identifies which project access list entry to be verified.
  */
-export const getGroupAccessListStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAccessListStatusInput,
-    outputSchema: GetGroupAccessListStatusOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupAccessListStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAccessListStatusInput,
+  outputSchema: GetGroupAccessListStatusOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

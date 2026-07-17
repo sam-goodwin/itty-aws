@@ -8,12 +8,10 @@ export interface ListPublicRegionsInput {
   page?: number;
   per_page?: number;
 }
-export const ListPublicRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    page: Schema.optional(Schema.Number),
-    per_page: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const ListPublicRegionsInput = /*@__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number),
+  per_page: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({ method: "GET", path: "/regions" }),
 ) as unknown as Schema.Codec<ListPublicRegionsInput>;
 
@@ -25,18 +23,18 @@ export interface ListPublicRegionsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
-  }[];
+  }>;
 }
 export const ListPublicRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -65,16 +63,14 @@ export const ListPublicRegionsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listPublicRegions = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListPublicRegionsInput,
-    outputSchema: ListPublicRegionsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listPublicRegions = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListPublicRegionsInput,
+  outputSchema: ListPublicRegionsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

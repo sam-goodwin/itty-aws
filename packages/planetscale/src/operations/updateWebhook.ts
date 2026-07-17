@@ -12,9 +12,9 @@ export interface UpdateWebhookInput {
   id: string;
   url?: string;
   enabled?: boolean;
-  events?: string[];
+  events?: ReadonlyArray<string>;
 }
-export const UpdateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -39,7 +39,7 @@ export interface UpdateWebhookOutput {
   last_sent_at: string | null;
   created_at: string;
   updated_at: string;
-  events: (
+  events: ReadonlyArray<
     | "branch.ready"
     | "branch.anomaly"
     | "branch.out_of_memory"
@@ -59,9 +59,9 @@ export interface UpdateWebhookOutput {
     | "deploy_request.schema_applied"
     | "keyspace.storage"
     | "webhook.test"
-  )[];
+  >;
 }
-export const UpdateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -107,7 +107,7 @@ export const UpdateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param enabled - Whether the webhook should be enabled
  * @param events - The events this webhook should subscribe to
  */
-export const updateWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateWebhookInput,
   outputSchema: UpdateWebhookOutput,
   errors: [Forbidden, NotFound] as const,

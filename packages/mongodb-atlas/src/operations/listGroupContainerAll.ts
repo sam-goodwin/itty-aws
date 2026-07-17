@@ -13,7 +13,7 @@ export interface ListGroupContainerAllInput {
   pretty?: boolean;
 }
 export const ListGroupContainerAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupContainerAllInput =
 // Output Schema
 export type ListGroupContainerAllOutput = void;
 export const ListGroupContainerAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupContainerAllOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupContainerAllOutput>;
 
 // The operation
 /**
@@ -47,10 +47,8 @@ export const ListGroupContainerAllOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupContainerAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupContainerAllInput,
-    outputSchema: ListGroupContainerAllOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupContainerAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupContainerAllInput,
+  outputSchema: ListGroupContainerAllOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

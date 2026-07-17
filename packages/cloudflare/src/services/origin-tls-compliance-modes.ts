@@ -22,7 +22,7 @@ export interface GetOriginTlsComplianceModeRequest {
 }
 
 export const GetOriginTlsComplianceModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -45,7 +45,7 @@ export interface GetOriginTlsComplianceModeResponse {
 }
 
 export const GetOriginTlsComplianceModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_tls_compliance_modes"),
       editable: Schema.Boolean,
@@ -70,7 +70,7 @@ export const getOriginTlsComplianceMode: API.OperationMethod<
   GetOriginTlsComplianceModeResponse,
   GetOriginTlsComplianceModeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginTlsComplianceModeRequest,
   output: GetOriginTlsComplianceModeResponse,
   errors: [],
@@ -84,7 +84,7 @@ export interface PutOriginTlsComplianceModeRequest {
 }
 
 export const PutOriginTlsComplianceModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Array(Schema.String),
@@ -108,7 +108,7 @@ export interface PutOriginTlsComplianceModeResponse {
 }
 
 export const PutOriginTlsComplianceModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_tls_compliance_modes"),
       editable: Schema.Boolean,
@@ -133,7 +133,7 @@ export const putOriginTlsComplianceMode: API.OperationMethod<
   PutOriginTlsComplianceModeResponse,
   PutOriginTlsComplianceModeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOriginTlsComplianceModeRequest,
   output: PutOriginTlsComplianceModeResponse,
   errors: [],
@@ -147,7 +147,7 @@ export interface PatchOriginTlsComplianceModeRequest {
 }
 
 export const PatchOriginTlsComplianceModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Array(Schema.String),
@@ -171,7 +171,7 @@ export interface PatchOriginTlsComplianceModeResponse {
 }
 
 export const PatchOriginTlsComplianceModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_tls_compliance_modes"),
       editable: Schema.Boolean,
@@ -196,7 +196,7 @@ export const patchOriginTlsComplianceMode: API.OperationMethod<
   PatchOriginTlsComplianceModeResponse,
   PatchOriginTlsComplianceModeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOriginTlsComplianceModeRequest,
   output: PatchOriginTlsComplianceModeResponse,
   errors: [],
@@ -208,7 +208,7 @@ export interface DeleteOriginTlsComplianceModeRequest {
 }
 
 export const DeleteOriginTlsComplianceModeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -229,7 +229,7 @@ export interface DeleteOriginTlsComplianceModeResponse {
 }
 
 export const DeleteOriginTlsComplianceModeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("origin_tls_compliance_modes"),
       editable: Schema.Boolean,
@@ -252,7 +252,7 @@ export const deleteOriginTlsComplianceMode: API.OperationMethod<
   DeleteOriginTlsComplianceModeResponse,
   DeleteOriginTlsComplianceModeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginTlsComplianceModeRequest,
   output: DeleteOriginTlsComplianceModeResponse,
   errors: [],

@@ -11,7 +11,7 @@ export interface GetGroupEventInput {
   pretty?: boolean;
   includeRaw?: boolean;
 }
-export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupEventInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupEventOutput = void;
 export const GetGroupEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupEventOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupEventOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const GetGroupEventOutput =
  * @param eventId - Unique 24-hexadecimal digit string that identifies the event that you want to return.
  * @param includeRaw - Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event.
  */
-export const getGroupEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupEvent = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupEventInput,
   outputSchema: GetGroupEventOutput,
   errors: [Forbidden, NotFound] as const,

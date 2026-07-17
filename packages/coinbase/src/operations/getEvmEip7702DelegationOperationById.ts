@@ -7,7 +7,7 @@ export interface GetEvmEip7702DelegationOperationByIdInput {
   delegationOperationId: string;
 }
 export const GetEvmEip7702DelegationOperationByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -32,7 +32,7 @@ export interface GetEvmEip7702DelegationOperationByIdOutput {
   delegateAddress?: string;
 }
 export const GetEvmEip7702DelegationOperationByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
     status: Schema.Literals([
       "UNSPECIFIED",
@@ -63,7 +63,7 @@ export const GetEvmEip7702DelegationOperationByIdOutput =
  * @param delegationOperationId - The unique identifier for the delegation operation.
  */
 export const getEvmEip7702DelegationOperationById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetEvmEip7702DelegationOperationByIdInput,
     outputSchema: GetEvmEip7702DelegationOperationByIdOutput,
   }));

@@ -42,7 +42,7 @@ export interface UpdateProjectInput {
     history_retention_seconds?: number;
   };
 }
-export const UpdateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   project: Schema.Struct({
     settings: Schema.optional(
@@ -247,7 +247,7 @@ export interface UpdateProjectOutput {
     total_duration_ms: number;
   }[];
 }
-export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -425,7 +425,7 @@ export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const updateProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateProjectInput,
   outputSchema: UpdateProjectOutput,
   errors: [BadRequest, NotFound] as const,

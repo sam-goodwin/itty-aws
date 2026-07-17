@@ -1,7 +1,15 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare VECTORIZE API
+  title: Cloudflare Vectorize API (patch overrides)
   version: 0.0.0
+  description: |
+    Operation overrides for endpoints whose upstream SDK shape is wrong.
+    Currently:
+      - insertIndex / upsertIndex: the Cloudflare TypeScript SDK sends the
+        ndjson vector payload as a RAW request body (`body`, Content-Type
+        application/x-ndjson), but the distilled generator conflates any
+        `Core.Uploadable` body into a multipart form file. Model it as a raw
+        binary body here so it matches the SDK/API (not multipart).
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: vectorize
@@ -388,30 +396,27 @@ paths:
                     type: number
                     description: Specifies the number of vectors present in the index
       x-distilled-response-path: result
-  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/insert:
+  /accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert:
     post:
       operationId: insertIndex
-      description: "Inserts vectors into the specified index and returns a mutation id
-        corresponding to the vectors enqueued for insertion.  @example ```ts
-        const response = await client.vectorize.indexes.insert( 'example-index',
-        { account_id: '023e105f4ecef8ad9ca31a8372d0c353', body:
-        fs.createReadStream('path/to/file'), }, ); ```"
+      summary: Insert vectors into an index
       parameters:
-        - name: indexName
-          in: path
-          required: true
-          schema:
-            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Identifier"
+          description: Identifier
+          schema:
+            type: string
+        - name: index_name
+          in: path
+          required: true
+          description: The name of the index.
           schema:
             type: string
         - name: unparsable-behavior
           in: query
           required: false
-          description: "Query param: Behavior for ndjson parse failures."
+          description: Behavior for ndjson parse failures.
           schema:
             type: string
             enum:
@@ -420,7 +425,7 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/octet-stream:
             schema:
               type: string
               format: binary
@@ -524,31 +529,27 @@ paths:
                           nullable: true
                     description: Array of vectors matched by the search
       x-distilled-response-path: result
-  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/upsert:
+  /accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert:
     post:
       operationId: upsertIndex
-      description: "Upserts vectors into the specified index, creating them if they do
-        not exist and returns a mutation id corresponding to the vectors
-        enqueued for upsertion.  @example ```ts const response = await
-        client.vectorize.indexes.upsert( 'example-index', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353', body:
-        fs.createReadStream('path/to/file'), }, ); ```"
+      summary: Upsert vectors into an index
       parameters:
-        - name: indexName
-          in: path
-          required: true
-          schema:
-            type: string
         - name: account_id
           in: path
           required: true
-          description: "Path param: Identifier"
+          description: Identifier
+          schema:
+            type: string
+        - name: index_name
+          in: path
+          required: true
+          description: The name of the index.
           schema:
             type: string
         - name: unparsable-behavior
           in: query
           required: false
-          description: "Query param: Behavior for ndjson parse failures."
+          description: Behavior for ndjson parse failures.
           schema:
             type: string
             enum:
@@ -557,7 +558,7 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/octet-stream:
             schema:
               type: string
               format: binary

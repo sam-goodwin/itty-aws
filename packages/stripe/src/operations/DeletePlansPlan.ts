@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface DeletePlansPlanInput {
   plan: string;
 }
-export const DeletePlansPlanInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePlansPlanInput = /*@__PURE__*/ Schema.Struct({
   plan: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -22,7 +22,7 @@ export interface DeletePlansPlanOutput {
   id: string;
   object: "plan";
 }
-export const DeletePlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePlansPlanOutput = /*@__PURE__*/ Schema.Struct({
   deleted: Schema.Literals([true]),
   id: Schema.String,
   object: Schema.Literals(["plan"]),
@@ -34,7 +34,7 @@ export const DeletePlansPlanOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Deleting plans means new subscribers can’t be added. Existing subscribers aren’t affected.</p>
  */
-export const DeletePlansPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletePlansPlan = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletePlansPlanInput,
   outputSchema: DeletePlansPlanOutput,
 }));

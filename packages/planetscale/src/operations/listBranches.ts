@@ -14,7 +14,7 @@ export interface ListBranchesInput {
   page?: number;
   per_page?: number;
 }
-export const ListBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBranchesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export interface ListBranchesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
@@ -81,7 +81,7 @@ export interface ListBranchesOutput {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -92,9 +92,9 @@ export interface ListBranchesOutput {
     parent_branch: string | null;
     vtgate_options?: Record<string, unknown>;
     cluster_architecture?: string;
-  }[];
+  }>;
 }
-export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBranchesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -189,16 +189,14 @@ export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBranches = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBranchesInput,
-    outputSchema: ListBranchesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBranches = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBranchesInput,
+  outputSchema: ListBranchesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

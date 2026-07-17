@@ -10,7 +10,7 @@ export interface InsightsThresholdsRetrieveInput {
   project_id: string;
 }
 export const InsightsThresholdsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     insight_id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -322,7 +322,7 @@ export interface InsightsThresholdsRetrieveOutput {
   }[];
 }
 export const InsightsThresholdsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -555,10 +555,8 @@ export const InsightsThresholdsRetrieveOutput =
  * @param id - A UUID string identifying this threshold.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsThresholdsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightsThresholdsRetrieveInput,
-    outputSchema: InsightsThresholdsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const insightsThresholdsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsThresholdsRetrieveInput,
+  outputSchema: InsightsThresholdsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

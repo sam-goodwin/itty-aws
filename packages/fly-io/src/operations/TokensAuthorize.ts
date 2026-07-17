@@ -21,7 +21,7 @@ export interface TokensAuthorizeInput {
   };
   header?: string;
 }
-export const TokensAuthorizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensAuthorizeInput = /*@__PURE__*/ Schema.Struct({
   access: Schema.optional(
     Schema.Struct({
       action: Schema.optional(Schema.Literals([1, 2, 4, 8, 16, 31, 0])),
@@ -69,7 +69,7 @@ export interface TokensAuthorizeOutput {
     permission_token?: number[];
   };
 }
-export const TokensAuthorizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokensAuthorizeOutput = /*@__PURE__*/ Schema.Struct({
   access: Schema.optional(
     Schema.Struct({
       action: Schema.optional(Schema.Literals([1, 2, 4, 8, 16, 31, 0])),
@@ -115,7 +115,7 @@ export const TokensAuthorizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Verify a token header and validate it against a requested access scope.
  */
-export const TokensAuthorize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TokensAuthorize = /*@__PURE__*/ API.make(() => ({
   inputSchema: TokensAuthorizeInput,
   outputSchema: TokensAuthorizeOutput,
   errors: [BadRequest] as const,

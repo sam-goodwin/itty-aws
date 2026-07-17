@@ -53,7 +53,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmount
   };
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     final_amount: Schema.Number,
@@ -2181,7 +2181,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmount
   wallet: string | null;
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4478,7 +4478,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountOutp
  * <p>Finalize the amount on an Authorization prior to capture, when the initial authorization was for an estimated amount.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmountInput,
     outputSchema:

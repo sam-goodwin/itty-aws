@@ -8,7 +8,7 @@ export interface UsersPushTokensUnregisterCreateInput {
   token: string;
 }
 export const UsersPushTokensUnregisterCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     token: Schema.String,
   }).pipe(
@@ -21,7 +21,7 @@ export const UsersPushTokensUnregisterCreateInput =
 // Output Schema
 export type UsersPushTokensUnregisterCreateOutput = void;
 export const UsersPushTokensUnregisterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersPushTokensUnregisterCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersPushTokensUnregisterCreateOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const UsersPushTokensUnregisterCreateOutput =
  * Delete the row matching `(user, token)`. Returns 204 even if no row matches so the mobile client can call this unconditionally when the user opts out.
  */
 export const usersPushTokensUnregisterCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersPushTokensUnregisterCreateInput,
     outputSchema: UsersPushTokensUnregisterCreateOutput,
   }));

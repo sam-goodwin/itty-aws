@@ -8,7 +8,7 @@ export interface V1GetVanitySubdomainConfigInput {
   ref: string;
 }
 export const V1GetVanitySubdomainConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/vanity-subdomain" }),
@@ -20,7 +20,7 @@ export interface V1GetVanitySubdomainConfigOutput {
   custom_domain?: string;
 }
 export const V1GetVanitySubdomainConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals(["not-used", "custom-domain-used", "active"]),
     custom_domain: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<V1GetVanitySubdomainConfigOutput>;
@@ -31,10 +31,8 @@ export const V1GetVanitySubdomainConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetVanitySubdomainConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetVanitySubdomainConfigInput,
-    outputSchema: V1GetVanitySubdomainConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetVanitySubdomainConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetVanitySubdomainConfigInput,
+  outputSchema: V1GetVanitySubdomainConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

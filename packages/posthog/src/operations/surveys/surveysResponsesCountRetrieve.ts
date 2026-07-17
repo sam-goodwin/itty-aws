@@ -8,7 +8,7 @@ export interface SurveysResponsesCountRetrieveInput {
   project_id: string;
 }
 export const SurveysResponsesCountRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const SurveysResponsesCountRetrieveInput =
 // Output Schema
 export type SurveysResponsesCountRetrieveOutput = void;
 export const SurveysResponsesCountRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysResponsesCountRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysResponsesCountRetrieveOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const SurveysResponsesCountRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const surveysResponsesCountRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SurveysResponsesCountRetrieveInput,
     outputSchema: SurveysResponsesCountRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

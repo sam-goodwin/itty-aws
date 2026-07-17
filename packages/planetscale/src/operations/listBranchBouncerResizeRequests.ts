@@ -12,7 +12,7 @@ export interface ListBranchBouncerResizeRequestsInput {
   per_page?: number;
 }
 export const ListBranchBouncerResizeRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface ListBranchBouncerResizeRequestsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     state: "pending" | "resizing" | "canceled" | "completed";
     replicas_per_cell: number;
@@ -66,10 +66,10 @@ export interface ListBranchBouncerResizeRequestsOutput {
       ram: number;
       sort_order: number;
     };
-  }[];
+  }>;
 }
 export const ListBranchBouncerResizeRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -134,7 +134,7 @@ export const ListBranchBouncerResizeRequestsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listBranchBouncerResizeRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListBranchBouncerResizeRequestsInput,
     outputSchema: ListBranchBouncerResizeRequestsOutput,
     errors: [Forbidden, NotFound] as const,

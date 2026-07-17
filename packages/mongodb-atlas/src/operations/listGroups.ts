@@ -11,7 +11,7 @@ export interface ListGroupsInput {
   pageNum?: number;
   pretty?: boolean;
 }
-export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupsOutput = void;
 export const ListGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupsOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const ListGroupsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupsInput,
   outputSchema: ListGroupsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

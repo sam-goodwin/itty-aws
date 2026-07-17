@@ -8,7 +8,7 @@ export interface GetClimateSuppliersSupplierInput {
   expand?: string;
 }
 export const GetClimateSuppliersSupplierInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supplier: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -40,7 +40,7 @@ export interface GetClimateSuppliersSupplierOutput {
     | "marine_carbon_removal";
 }
 export const GetClimateSuppliersSupplierOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     info_url: Schema.String,
     livemode: Schema.Boolean,
@@ -71,9 +71,7 @@ export const GetClimateSuppliersSupplierOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetClimateSuppliersSupplier = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetClimateSuppliersSupplierInput,
-    outputSchema: GetClimateSuppliersSupplierOutput,
-  }),
-);
+export const GetClimateSuppliersSupplier = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetClimateSuppliersSupplierInput,
+  outputSchema: GetClimateSuppliersSupplierOutput,
+}));

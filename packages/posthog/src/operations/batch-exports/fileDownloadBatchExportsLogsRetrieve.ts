@@ -14,7 +14,7 @@ export interface FileDownloadBatchExportsLogsRetrieveInput {
   search?: string;
 }
 export const FileDownloadBatchExportsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -33,7 +33,7 @@ export const FileDownloadBatchExportsLogsRetrieveInput =
 // Output Schema
 export type FileDownloadBatchExportsLogsRetrieveOutput = void;
 export const FileDownloadBatchExportsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileDownloadBatchExportsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileDownloadBatchExportsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const FileDownloadBatchExportsLogsRetrieveOutput =
  * @param search - Case-insensitive substring search across log messages.
  */
 export const fileDownloadBatchExportsLogsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileDownloadBatchExportsLogsRetrieveInput,
     outputSchema: FileDownloadBatchExportsLogsRetrieveOutput,
   }));

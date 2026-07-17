@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 export interface ProxyRecordsListInput {
   organization_id: string;
 }
-export const ProxyRecordsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProxyRecordsListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -37,7 +37,7 @@ export type ProxyRecordsListOutput = {
   }[];
   max_proxy_records?: number;
 }[];
-export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ProxyRecordsListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.optional(
       Schema.Array(
@@ -73,7 +73,7 @@ export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const proxyRecordsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const proxyRecordsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsListInput,
   outputSchema: ProxyRecordsListOutput,
   errors: [Forbidden, NotFound] as const,

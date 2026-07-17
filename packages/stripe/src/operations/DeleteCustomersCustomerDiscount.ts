@@ -12,7 +12,7 @@ export interface DeleteCustomersCustomerDiscountInput {
   customer: string;
 }
 export const DeleteCustomersCustomerDiscountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -110,7 +110,7 @@ export interface DeleteCustomersCustomerDiscountOutput {
   subscription_item: string | null;
 }
 export const DeleteCustomersCustomerDiscountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checkout_session: Schema.NullOr(Schema.String),
     customer: Schema.Unknown,
     customer_account: Schema.NullOr(Schema.String),
@@ -243,7 +243,7 @@ export const DeleteCustomersCustomerDiscountOutput =
  * <p>Removes the currently applied discount on a customer.</p>
  */
 export const DeleteCustomersCustomerDiscount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCustomersCustomerDiscountInput,
     outputSchema: DeleteCustomersCustomerDiscountOutput,
   }));

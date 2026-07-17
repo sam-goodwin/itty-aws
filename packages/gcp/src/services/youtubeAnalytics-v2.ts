@@ -39,7 +39,7 @@ export interface ErrorProto {
 }
 
 export const ErrorProto: Schema.Codec<ErrorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.Array(Schema.String)),
@@ -57,7 +57,7 @@ export interface GroupContentDetails {
 }
 
 export const GroupContentDetails: Schema.Codec<GroupContentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itemType: Schema.optional(Schema.String),
     itemCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupContentDetails" });
@@ -81,7 +81,7 @@ export interface Errors {
 }
 
 export const Errors: Schema.Codec<Errors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Schema.Array(ErrorProto)),
     requestId: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface GroupSnippet {
 }
 
 export const GroupSnippet: Schema.Codec<GroupSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     publishedAt: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupSnippet" });
@@ -116,7 +116,7 @@ export interface Group {
 }
 
 export const Group: Schema.Codec<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentDetails: Schema.optional(GroupContentDetails),
     etag: Schema.optional(Schema.String),
     errors: Schema.optional(Errors),
@@ -133,7 +133,7 @@ export interface GroupItemResource {
 }
 
 export const GroupItemResource: Schema.Codec<GroupItemResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupItemResource" });
@@ -154,7 +154,7 @@ export interface GroupItem {
 }
 
 export const GroupItem: Schema.Codec<GroupItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     groupId: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface ResultTableColumnHeader {
 }
 
 export const ResultTableColumnHeader: Schema.Codec<ResultTableColumnHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     columnType: Schema.optional(Schema.String),
@@ -185,7 +185,7 @@ export interface EmptyResponse {
 }
 
 export const EmptyResponse: Schema.Codec<EmptyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Errors),
   }).annotate({ identifier: "EmptyResponse" });
 
@@ -203,7 +203,7 @@ export interface ListGroupsResponse {
 }
 
 export const ListGroupsResponse: Schema.Codec<ListGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     errors: Schema.optional(Errors),
     kind: Schema.optional(Schema.String),
@@ -223,7 +223,7 @@ export interface QueryResponse {
 }
 
 export const QueryResponse: Schema.Codec<QueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     errors: Schema.optional(Errors),
     rows: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
@@ -242,7 +242,7 @@ export interface ListGroupItemsResponse {
 }
 
 export const ListGroupItemsResponse: Schema.Codec<ListGroupItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(GroupItem)),
@@ -314,7 +314,7 @@ export interface ListGroupsRequest {
   pageToken?: string;
 }
 
-export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsRequest = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   mine: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("mine")),
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
@@ -327,8 +327,7 @@ export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListGroupsRequest>;
 
 export type ListGroupsResponse_Op = ListGroupsResponse;
-export const ListGroupsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListGroupsResponse;
+export const ListGroupsResponse_Op = /*@__PURE__*/ ListGroupsResponse;
 
 export type ListGroupsError = DefaultErrors | NotFound | Forbidden;
 
@@ -338,7 +337,7 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsResponse_Op,
   ListGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -356,7 +355,7 @@ export interface UpdateGroupsRequest {
   body?: Group;
 }
 
-export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -367,7 +366,7 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateGroupsRequest>;
 
 export type UpdateGroupsResponse = Group;
-export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
+export const UpdateGroupsResponse = /*@__PURE__*/ Group;
 
 export type UpdateGroupsError =
   | DefaultErrors
@@ -382,7 +381,7 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsResponse,
   UpdateGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupsRequest,
   output: UpdateGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -395,7 +394,7 @@ export interface InsertGroupsRequest {
   body?: Group;
 }
 
-export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertGroupsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -406,7 +405,7 @@ export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertGroupsRequest>;
 
 export type InsertGroupsResponse = Group;
-export const InsertGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
+export const InsertGroupsResponse = /*@__PURE__*/ Group;
 
 export type InsertGroupsError =
   | DefaultErrors
@@ -421,7 +420,7 @@ export const insertGroups: API.OperationMethod<
   InsertGroupsResponse,
   InsertGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGroupsRequest,
   output: InsertGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -434,7 +433,7 @@ export interface DeleteGroupsRequest {
   id?: string;
 }
 
-export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -445,7 +444,7 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteGroupsRequest>;
 
 export type DeleteGroupsResponse = EmptyResponse;
-export const DeleteGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ EmptyResponse;
+export const DeleteGroupsResponse = /*@__PURE__*/ EmptyResponse;
 
 export type DeleteGroupsError =
   | DefaultErrors
@@ -460,7 +459,7 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsResponse,
   DeleteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupsRequest,
   output: DeleteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -473,7 +472,7 @@ export interface ListGroupItemsRequest {
   onBehalfOfContentOwner?: string;
 }
 
-export const ListGroupItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupItemsRequest = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.optional(Schema.String).pipe(T.HttpQuery("groupId")),
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
@@ -484,8 +483,7 @@ export const ListGroupItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListGroupItemsRequest>;
 
 export type ListGroupItemsResponse_Op = ListGroupItemsResponse;
-export const ListGroupItemsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListGroupItemsResponse;
+export const ListGroupItemsResponse_Op = /*@__PURE__*/ ListGroupItemsResponse;
 
 export type ListGroupItemsError = DefaultErrors | NotFound | Forbidden;
 
@@ -495,7 +493,7 @@ export const listGroupItems: API.OperationMethod<
   ListGroupItemsResponse_Op,
   ListGroupItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupItemsRequest,
   output: ListGroupItemsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -509,7 +507,7 @@ export interface InsertGroupItemsRequest {
 }
 
 export const InsertGroupItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
       T.HttpQuery("onBehalfOfContentOwner"),
     ),
@@ -520,7 +518,7 @@ export const InsertGroupItemsRequest =
   ) as unknown as Schema.Codec<InsertGroupItemsRequest>;
 
 export type InsertGroupItemsResponse = GroupItem;
-export const InsertGroupItemsResponse = /*@__PURE__*/ /*#__PURE__*/ GroupItem;
+export const InsertGroupItemsResponse = /*@__PURE__*/ GroupItem;
 
 export type InsertGroupItemsError =
   | DefaultErrors
@@ -535,7 +533,7 @@ export const insertGroupItems: API.OperationMethod<
   InsertGroupItemsResponse,
   InsertGroupItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertGroupItemsRequest,
   output: InsertGroupItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -549,7 +547,7 @@ export interface DeleteGroupItemsRequest {
 }
 
 export const DeleteGroupItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
       T.HttpQuery("onBehalfOfContentOwner"),
     ),
@@ -560,8 +558,7 @@ export const DeleteGroupItemsRequest =
   ) as unknown as Schema.Codec<DeleteGroupItemsRequest>;
 
 export type DeleteGroupItemsResponse = EmptyResponse;
-export const DeleteGroupItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EmptyResponse;
+export const DeleteGroupItemsResponse = /*@__PURE__*/ EmptyResponse;
 
 export type DeleteGroupItemsError =
   | DefaultErrors
@@ -576,7 +573,7 @@ export const deleteGroupItems: API.OperationMethod<
   DeleteGroupItemsResponse,
   DeleteGroupItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupItemsRequest,
   output: DeleteGroupItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -607,7 +604,7 @@ export interface QueryReportsRequest {
   dimensions?: string;
 }
 
-export const QueryReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryReportsRequest = /*@__PURE__*/ Schema.Struct({
   metrics: Schema.optional(Schema.String).pipe(T.HttpQuery("metrics")),
   currency: Schema.optional(Schema.String).pipe(T.HttpQuery("currency")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -627,7 +624,7 @@ export const QueryReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<QueryReportsRequest>;
 
 export type QueryReportsResponse = QueryResponse;
-export const QueryReportsResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
+export const QueryReportsResponse = /*@__PURE__*/ QueryResponse;
 
 export type QueryReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -637,7 +634,7 @@ export const queryReports: API.OperationMethod<
   QueryReportsResponse,
   QueryReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryReportsRequest,
   output: QueryReportsResponse,
   errors: [NotFound, Forbidden],

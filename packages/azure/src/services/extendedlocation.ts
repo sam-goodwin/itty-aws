@@ -39,7 +39,7 @@ export interface CustomLocationsCreateOrUpdateInput {
   location: string;
 }
 export const CustomLocationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -97,7 +97,7 @@ export interface CustomLocationsCreateOrUpdateOutput {
   type?: string;
 }
 export const CustomLocationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -115,7 +115,7 @@ export const CustomLocationsCreateOrUpdateOutput =
  * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomLocationsCreateOrUpdateInput,
     outputSchema: CustomLocationsCreateOrUpdateOutput,
   }));
@@ -126,7 +126,7 @@ export interface CustomLocationsDeleteInput {
   resourceName: string;
 }
 export const CustomLocationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -141,7 +141,7 @@ export const CustomLocationsDeleteInput =
 // Output Schema
 export type CustomLocationsDeleteOutput = void;
 export const CustomLocationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomLocationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomLocationsDeleteOutput>;
 
 // The operation
 /**
@@ -154,12 +154,10 @@ export const CustomLocationsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Custom Locations name.
  */
-export const CustomLocationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomLocationsDeleteInput,
-    outputSchema: CustomLocationsDeleteOutput,
-  }),
-);
+export const CustomLocationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomLocationsDeleteInput,
+  outputSchema: CustomLocationsDeleteOutput,
+}));
 // Input Schema
 export interface CustomLocationsGetInput {
   subscriptionId: string;
@@ -167,7 +165,7 @@ export interface CustomLocationsGetInput {
   resourceName: string;
 }
 export const CustomLocationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -186,7 +184,7 @@ export interface CustomLocationsGetOutput {
   type?: string;
 }
 export const CustomLocationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -203,7 +201,7 @@ export const CustomLocationsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Custom Locations name.
  */
-export const CustomLocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomLocationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomLocationsGetInput,
   outputSchema: CustomLocationsGetOutput,
 }));
@@ -213,7 +211,7 @@ export interface CustomLocationsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CustomLocationsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -230,7 +228,7 @@ export interface CustomLocationsListByResourceGroupOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const CustomLocationsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -254,7 +252,7 @@ export const CustomLocationsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CustomLocationsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomLocationsListByResourceGroupInput,
     outputSchema: CustomLocationsListByResourceGroupOutput,
   }));
@@ -263,7 +261,7 @@ export interface CustomLocationsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CustomLocationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -279,7 +277,7 @@ export interface CustomLocationsListBySubscriptionOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const CustomLocationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -302,7 +300,7 @@ export const CustomLocationsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const CustomLocationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomLocationsListBySubscriptionInput,
     outputSchema: CustomLocationsListBySubscriptionOutput,
   }));
@@ -313,7 +311,7 @@ export interface CustomLocationsListEnabledResourceTypesInput {
   resourceName: string;
 }
 export const CustomLocationsListEnabledResourceTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -331,7 +329,7 @@ export interface CustomLocationsListEnabledResourceTypesOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const CustomLocationsListEnabledResourceTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -356,14 +354,14 @@ export const CustomLocationsListEnabledResourceTypesOutput =
  * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsListEnabledResourceTypes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomLocationsListEnabledResourceTypesInput,
     outputSchema: CustomLocationsListEnabledResourceTypesOutput,
   }));
 // Input Schema
 export interface CustomLocationsListOperationsInput {}
 export const CustomLocationsListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ExtendedLocation/operations",
@@ -387,7 +385,7 @@ export interface CustomLocationsListOperationsOutput {
   }[];
 }
 export const CustomLocationsListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -413,7 +411,7 @@ export const CustomLocationsListOperationsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const CustomLocationsListOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomLocationsListOperationsInput,
     outputSchema: CustomLocationsListOperationsOutput,
   }));
@@ -439,7 +437,7 @@ export interface CustomLocationsUpdateInput {
   tags?: Record<string, string>;
 }
 export const CustomLocationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -482,7 +480,7 @@ export interface CustomLocationsUpdateOutput {
   type?: string;
 }
 export const CustomLocationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -499,9 +497,7 @@ export const CustomLocationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Custom Locations name.
  */
-export const CustomLocationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomLocationsUpdateInput,
-    outputSchema: CustomLocationsUpdateOutput,
-  }),
-);
+export const CustomLocationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomLocationsUpdateInput,
+  outputSchema: CustomLocationsUpdateOutput,
+}));

@@ -9,7 +9,7 @@ export interface V1AcceptInviteExternalJitAccessInput {
   token: string;
 }
 export const V1AcceptInviteExternalJitAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
     token: Schema.String,
@@ -34,7 +34,7 @@ export interface V1AcceptInviteExternalJitAccessOutput {
   }[];
 }
 export const V1AcceptInviteExternalJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.optional(Schema.String),
     user_roles: Schema.Array(
       Schema.Struct({
@@ -72,7 +72,7 @@ export const V1AcceptInviteExternalJitAccessOutput =
  * @param ref - Project ref
  */
 export const v1AcceptInviteExternalJitAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1AcceptInviteExternalJitAccessInput,
     outputSchema: V1AcceptInviteExternalJitAccessOutput,
   }));

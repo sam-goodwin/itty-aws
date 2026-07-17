@@ -7,7 +7,7 @@ export interface DocsSearchInput {
   project_id: string;
   query: string;
 }
-export const DocsSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DocsSearchInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
 }).pipe(
@@ -21,7 +21,7 @@ export const DocsSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DocsSearchOutput {
   content: string;
 }
-export const DocsSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DocsSearchOutput = /*@__PURE__*/ Schema.Struct({
   content: Schema.String,
 }) as unknown as Schema.Codec<DocsSearchOutput>;
 
@@ -33,7 +33,7 @@ export const DocsSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const docsSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const docsSearch = /*@__PURE__*/ API.make(() => ({
   inputSchema: DocsSearchInput,
   outputSchema: DocsSearchOutput,
 }));

@@ -23,7 +23,7 @@ export interface PostIdentityVerificationSessionsSessionInput {
   type?: "document" | "id_number";
 }
 export const PostIdentityVerificationSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -262,7 +262,7 @@ export interface PostIdentityVerificationSessionsSessionOutput {
   } | null;
 }
 export const PostIdentityVerificationSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
@@ -415,7 +415,7 @@ export const PostIdentityVerificationSessionsSessionOutput =
  * verification check and options.</p>
  */
 export const PostIdentityVerificationSessionsSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIdentityVerificationSessionsSessionInput,
     outputSchema: PostIdentityVerificationSessionsSessionOutput,
   }));

@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetAnalyticsStatusInput {}
 export const GetAnalyticsStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/analytics/status" }),
   ) as unknown as Schema.Codec<GetAnalyticsStatusInput>;
 
@@ -20,7 +20,7 @@ export interface GetAnalyticsStatusOutput {
   doc_counter_events?: number;
 }
 export const GetAnalyticsStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     popular_prefix_queries: Schema.optional(Schema.Number),
     nohits_prefix_queries: Schema.optional(Schema.Number),
     log_prefix_queries: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export const GetAnalyticsStatusOutput =
  *
  * Returns sizes of internal analytics buffers and queues.
  */
-export const getAnalyticsStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAnalyticsStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAnalyticsStatusInput,
   outputSchema: GetAnalyticsStatusOutput,
 }));

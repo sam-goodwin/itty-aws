@@ -55,7 +55,7 @@ export interface DeidServicesCreateInput {
   location: string;
 }
 export const DeidServicesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -157,7 +157,7 @@ export interface DeidServicesCreateOutput {
   };
 }
 export const DeidServicesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export const DeidServicesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deidServiceName - The name of the deid service
  */
-export const DeidServicesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeidServicesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeidServicesCreateInput,
   outputSchema: DeidServicesCreateOutput,
 }));
@@ -197,7 +197,7 @@ export interface DeidServicesDeleteInput {
   deidServiceName: string;
 }
 export const DeidServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -212,7 +212,7 @@ export const DeidServicesDeleteInput =
 // Output Schema
 export type DeidServicesDeleteOutput = void;
 export const DeidServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeidServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeidServicesDeleteOutput>;
 
 // The operation
 /**
@@ -223,7 +223,7 @@ export const DeidServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deidServiceName - The name of the deid service
  */
-export const DeidServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeidServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeidServicesDeleteInput,
   outputSchema: DeidServicesDeleteOutput,
 }));
@@ -233,7 +233,7 @@ export interface DeidServicesGetInput {
   resourceGroupName: string;
   deidServiceName: string;
 }
-export const DeidServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeidServicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -259,7 +259,7 @@ export interface DeidServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DeidServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeidServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export const DeidServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deidServiceName - The name of the deid service
  */
-export const DeidServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeidServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeidServicesGetInput,
   outputSchema: DeidServicesGetOutput,
 }));
@@ -298,7 +298,7 @@ export interface DeidServicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DeidServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -327,7 +327,7 @@ export interface DeidServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DeidServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -371,7 +371,7 @@ export const DeidServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DeidServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeidServicesListByResourceGroupInput,
     outputSchema: DeidServicesListByResourceGroupOutput,
   }));
@@ -380,7 +380,7 @@ export interface DeidServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DeidServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -408,7 +408,7 @@ export interface DeidServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DeidServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -451,7 +451,7 @@ export const DeidServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DeidServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeidServicesListBySubscriptionInput,
     outputSchema: DeidServicesListBySubscriptionOutput,
   }));
@@ -475,7 +475,7 @@ export interface DeidServicesUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const DeidServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -531,7 +531,7 @@ export interface DeidServicesUpdateOutput {
   };
 }
 export const DeidServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -560,15 +560,13 @@ export const DeidServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deidServiceName - The name of the deid service
  */
-export const DeidServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeidServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeidServicesUpdateInput,
   outputSchema: DeidServicesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HealthDataAIServices/operations",
@@ -592,7 +590,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -622,7 +620,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -644,7 +642,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -692,7 +690,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -723,7 +721,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -735,7 +733,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -751,7 +749,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -764,7 +762,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -776,7 +774,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -804,7 +802,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -835,7 +833,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -846,7 +844,7 @@ export interface PrivateEndpointConnectionsListByDeidServiceInput {
   deidServiceName: string;
 }
 export const PrivateEndpointConnectionsListByDeidServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -876,7 +874,7 @@ export interface PrivateEndpointConnectionsListByDeidServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByDeidServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -921,7 +919,7 @@ export const PrivateEndpointConnectionsListByDeidServiceOutput =
  * @param deidServiceName - The name of the deid service
  */
 export const PrivateEndpointConnectionsListByDeidService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByDeidServiceInput,
     outputSchema: PrivateEndpointConnectionsListByDeidServiceOutput,
   }));
@@ -932,7 +930,7 @@ export interface PrivateLinksListByDeidServiceInput {
   deidServiceName: string;
 }
 export const PrivateLinksListByDeidServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deidServiceName: Schema.String.pipe(T.PathParam()),
@@ -962,7 +960,7 @@ export interface PrivateLinksListByDeidServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinksListByDeidServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1007,7 +1005,7 @@ export const PrivateLinksListByDeidServiceOutput =
  * @param deidServiceName - The name of the deid service
  */
 export const PrivateLinksListByDeidService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinksListByDeidServiceInput,
     outputSchema: PrivateLinksListByDeidServiceOutput,
   }));

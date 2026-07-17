@@ -11,7 +11,7 @@ export interface ListReadOnlyRegionsInput {
   per_page?: number;
 }
 export const ListReadOnlyRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -31,7 +31,7 @@ export interface ListReadOnlyRegionsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     display_name: string;
     created_at: string;
@@ -43,7 +43,7 @@ export interface ListReadOnlyRegionsOutput {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -51,10 +51,10 @@ export interface ListReadOnlyRegionsOutput {
       mysql_supported: boolean;
       postgresql_supported: boolean;
     };
-  }[];
+  }>;
 }
 export const ListReadOnlyRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -102,7 +102,7 @@ export const ListReadOnlyRegionsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listReadOnlyRegions =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListReadOnlyRegionsInput,
     outputSchema: ListReadOnlyRegionsOutput,
     errors: [Forbidden, NotFound] as const,

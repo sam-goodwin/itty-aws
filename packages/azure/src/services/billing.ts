@@ -26,7 +26,7 @@ export interface AddressValidateInput {
   region?: string;
   isValidAddress?: boolean;
 }
-export const AddressValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressValidateInput = /*@__PURE__*/ Schema.Struct({
   addressLine1: Schema.String,
   addressLine2: Schema.optional(Schema.String),
   addressLine3: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export interface AddressValidateOutput {
   }[];
   validationMessage?: string;
 }
-export const AddressValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddressValidateOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.Literals(["Other", "Valid", "Invalid"])),
   suggestedAddresses: Schema.optional(
     Schema.Array(
@@ -104,7 +104,7 @@ export const AddressValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const AddressValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddressValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddressValidateInput,
   outputSchema: AddressValidateOutput,
 }));
@@ -113,7 +113,7 @@ export interface AgreementsGetInput {
   billingAccountName: string;
   agreementName: string;
 }
-export const AgreementsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgreementsGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   agreementName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -138,7 +138,7 @@ export interface AgreementsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AgreementsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgreementsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export const AgreementsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param agreementName - The ID that uniquely identifies an agreement.
  */
-export const AgreementsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgreementsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgreementsGetInput,
   outputSchema: AgreementsGetOutput,
 }));
@@ -176,7 +176,7 @@ export interface AgreementsListByBillingAccountInput {
   expand?: string;
 }
 export const AgreementsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -205,7 +205,7 @@ export interface AgreementsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const AgreementsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -249,7 +249,7 @@ export const AgreementsListByBillingAccountOutput =
  * @param expand - May be used to expand the participants.
  */
 export const AgreementsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgreementsListByBillingAccountInput,
     outputSchema: AgreementsListByBillingAccountOutput,
   }));
@@ -286,7 +286,7 @@ export interface AssociatedTenantsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const AssociatedTenantsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -349,7 +349,7 @@ export interface AssociatedTenantsCreateOrUpdateOutput {
   };
 }
 export const AssociatedTenantsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -378,7 +378,7 @@ export const AssociatedTenantsCreateOrUpdateOutput =
  * @param associatedTenantName - The ID that uniquely identifies a tenant.
  */
 export const AssociatedTenantsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssociatedTenantsCreateOrUpdateInput,
     outputSchema: AssociatedTenantsCreateOrUpdateOutput,
   }));
@@ -388,7 +388,7 @@ export interface AssociatedTenantsDeleteInput {
   associatedTenantName: string;
 }
 export const AssociatedTenantsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -402,7 +402,7 @@ export const AssociatedTenantsDeleteInput =
 // Output Schema
 export type AssociatedTenantsDeleteOutput = void;
 export const AssociatedTenantsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociatedTenantsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociatedTenantsDeleteOutput>;
 
 // The operation
 /**
@@ -412,19 +412,17 @@ export const AssociatedTenantsDeleteOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param associatedTenantName - The ID that uniquely identifies a tenant.
  */
-export const AssociatedTenantsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssociatedTenantsDeleteInput,
-    outputSchema: AssociatedTenantsDeleteOutput,
-  }),
-);
+export const AssociatedTenantsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssociatedTenantsDeleteInput,
+  outputSchema: AssociatedTenantsDeleteOutput,
+}));
 // Input Schema
 export interface AssociatedTenantsGetInput {
   billingAccountName: string;
   associatedTenantName: string;
 }
 export const AssociatedTenantsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     associatedTenantName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -450,7 +448,7 @@ export interface AssociatedTenantsGetOutput {
   };
 }
 export const AssociatedTenantsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -478,12 +476,10 @@ export const AssociatedTenantsGetOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param associatedTenantName - The ID that uniquely identifies a tenant.
  */
-export const AssociatedTenantsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssociatedTenantsGetInput,
-    outputSchema: AssociatedTenantsGetOutput,
-  }),
-);
+export const AssociatedTenantsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssociatedTenantsGetInput,
+  outputSchema: AssociatedTenantsGetOutput,
+}));
 // Input Schema
 export interface AssociatedTenantsListByBillingAccountInput {
   billingAccountName: string;
@@ -496,7 +492,7 @@ export interface AssociatedTenantsListByBillingAccountInput {
   search?: string;
 }
 export const AssociatedTenantsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     includeRevoked: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -531,7 +527,7 @@ export interface AssociatedTenantsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const AssociatedTenantsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -581,7 +577,7 @@ export const AssociatedTenantsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const AssociatedTenantsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssociatedTenantsListByBillingAccountInput,
     outputSchema: AssociatedTenantsListByBillingAccountOutput,
   }));
@@ -590,7 +586,7 @@ export interface AvailableBalancesGetByBillingAccountInput {
   billingAccountName: string;
 }
 export const AvailableBalancesGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -615,7 +611,7 @@ export interface AvailableBalancesGetByBillingAccountOutput {
   };
 }
 export const AvailableBalancesGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -643,7 +639,7 @@ export const AvailableBalancesGetByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const AvailableBalancesGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailableBalancesGetByBillingAccountInput,
     outputSchema: AvailableBalancesGetByBillingAccountOutput,
   }));
@@ -653,7 +649,7 @@ export interface AvailableBalancesGetByBillingProfileInput {
   billingProfileName: string;
 }
 export const AvailableBalancesGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -679,7 +675,7 @@ export interface AvailableBalancesGetByBillingProfileOutput {
   };
 }
 export const AvailableBalancesGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -708,7 +704,7 @@ export const AvailableBalancesGetByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const AvailableBalancesGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailableBalancesGetByBillingProfileInput,
     outputSchema: AvailableBalancesGetByBillingProfileOutput,
   }));
@@ -717,7 +713,7 @@ export interface BillingAccountsAddPaymentTermsInput {
   billingAccountName: string;
 }
 export const BillingAccountsAddPaymentTermsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -742,7 +738,7 @@ export interface BillingAccountsAddPaymentTermsOutput {
   };
 }
 export const BillingAccountsAddPaymentTermsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -770,7 +766,7 @@ export const BillingAccountsAddPaymentTermsOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingAccountsAddPaymentTerms =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingAccountsAddPaymentTermsInput,
     outputSchema: BillingAccountsAddPaymentTermsOutput,
   }));
@@ -779,7 +775,7 @@ export interface BillingAccountsCancelPaymentTermsInput {
   billingAccountName: string;
 }
 export const BillingAccountsCancelPaymentTermsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -804,7 +800,7 @@ export interface BillingAccountsCancelPaymentTermsOutput {
   };
 }
 export const BillingAccountsCancelPaymentTermsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -832,7 +828,7 @@ export const BillingAccountsCancelPaymentTermsOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingAccountsCancelPaymentTerms =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingAccountsCancelPaymentTermsInput,
     outputSchema: BillingAccountsCancelPaymentTermsOutput,
   }));
@@ -841,7 +837,7 @@ export interface BillingAccountsConfirmTransitionInput {
   billingAccountName: string;
 }
 export const BillingAccountsConfirmTransitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -857,7 +853,7 @@ export interface BillingAccountsConfirmTransitionOutput {
   anniversaryDay?: number;
 }
 export const BillingAccountsConfirmTransitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transitionDate: Schema.optional(Schema.String),
     anniversaryDay: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<BillingAccountsConfirmTransitionOutput>;
@@ -870,7 +866,7 @@ export const BillingAccountsConfirmTransitionOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingAccountsConfirmTransition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingAccountsConfirmTransitionInput,
     outputSchema: BillingAccountsConfirmTransitionOutput,
   }));
@@ -879,7 +875,7 @@ export interface BillingAccountsGetInput {
   billingAccountName: string;
 }
 export const BillingAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -904,7 +900,7 @@ export interface BillingAccountsGetOutput {
   };
 }
 export const BillingAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -931,7 +927,7 @@ export const BillingAccountsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
-export const BillingAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingAccountsGetInput,
   outputSchema: BillingAccountsGetOutput,
 }));
@@ -951,7 +947,7 @@ export interface BillingAccountsListInput {
   search?: string;
 }
 export const BillingAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeAll: Schema.optional(Schema.Boolean),
     includeAllWithoutBillingProfiles: Schema.optional(Schema.Boolean),
     includeDeleted: Schema.optional(Schema.Boolean),
@@ -990,7 +986,7 @@ export interface BillingAccountsListOutput {
   nextLink?: string;
 }
 export const BillingAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1043,7 +1039,7 @@ export const BillingAccountsListOutput =
  * @param skip - The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result.
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
-export const BillingAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingAccountsListInput,
   outputSchema: BillingAccountsListOutput,
 }));
@@ -1053,7 +1049,7 @@ export interface BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissio
   filter?: string;
 }
 export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
   }).pipe(
@@ -1096,7 +1092,7 @@ export interface BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissio
   nextLink?: string;
 }
 export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         billingProfileDisplayName: Schema.optional(Schema.String),
@@ -1150,7 +1146,7 @@ export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionOut
  * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
  */
 export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionInput,
     outputSchema:
@@ -1297,7 +1293,7 @@ export interface BillingAccountsUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1515,7 +1511,7 @@ export interface BillingAccountsUpdateOutput {
   };
 }
 export const BillingAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1542,18 +1538,16 @@ export const BillingAccountsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
-export const BillingAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingAccountsUpdateInput,
-    outputSchema: BillingAccountsUpdateOutput,
-  }),
-);
+export const BillingAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingAccountsUpdateInput,
+  outputSchema: BillingAccountsUpdateOutput,
+}));
 // Input Schema
 export interface BillingAccountsValidatePaymentTermsInput {
   billingAccountName: string;
 }
 export const BillingAccountsValidatePaymentTermsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1582,7 +1576,7 @@ export interface BillingAccountsValidatePaymentTermsOutput {
   }[];
 }
 export const BillingAccountsValidatePaymentTermsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligibilityStatus: Schema.optional(
       Schema.Literals(["Other", "Valid", "Invalid"]),
     ),
@@ -1617,7 +1611,7 @@ export const BillingAccountsValidatePaymentTermsOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingAccountsValidatePaymentTerms =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingAccountsValidatePaymentTermsInput,
     outputSchema: BillingAccountsValidatePaymentTermsOutput,
   }));
@@ -1627,7 +1621,7 @@ export interface BillingPermissionsCheckAccessByBillingAccountInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     actions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -1644,7 +1638,7 @@ export type BillingPermissionsCheckAccessByBillingAccountOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1661,7 +1655,7 @@ export const BillingPermissionsCheckAccessByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingPermissionsCheckAccessByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByBillingAccountInput,
     outputSchema: BillingPermissionsCheckAccessByBillingAccountOutput,
   }));
@@ -1672,7 +1666,7 @@ export interface BillingPermissionsCheckAccessByBillingProfileInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1690,7 +1684,7 @@ export type BillingPermissionsCheckAccessByBillingProfileOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1708,7 +1702,7 @@ export const BillingPermissionsCheckAccessByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingPermissionsCheckAccessByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByBillingProfileInput,
     outputSchema: BillingPermissionsCheckAccessByBillingProfileOutput,
   }));
@@ -1720,7 +1714,7 @@ export interface BillingPermissionsCheckAccessByCustomerInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -1739,7 +1733,7 @@ export type BillingPermissionsCheckAccessByCustomerOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1758,7 +1752,7 @@ export const BillingPermissionsCheckAccessByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const BillingPermissionsCheckAccessByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByCustomerInput,
     outputSchema: BillingPermissionsCheckAccessByCustomerOutput,
   }));
@@ -1769,7 +1763,7 @@ export interface BillingPermissionsCheckAccessByDepartmentInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1787,7 +1781,7 @@ export type BillingPermissionsCheckAccessByDepartmentOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1805,7 +1799,7 @@ export const BillingPermissionsCheckAccessByDepartmentOutput =
  * @param departmentName - The name of the department.
  */
 export const BillingPermissionsCheckAccessByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByDepartmentInput,
     outputSchema: BillingPermissionsCheckAccessByDepartmentOutput,
   }));
@@ -1816,7 +1810,7 @@ export interface BillingPermissionsCheckAccessByEnrollmentAccountInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1834,7 +1828,7 @@ export type BillingPermissionsCheckAccessByEnrollmentAccountOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1852,7 +1846,7 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountOutput =
  * @param enrollmentAccountName - The name of the enrollment account.
  */
 export const BillingPermissionsCheckAccessByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByEnrollmentAccountInput,
     outputSchema: BillingPermissionsCheckAccessByEnrollmentAccountOutput,
   }));
@@ -1864,7 +1858,7 @@ export interface BillingPermissionsCheckAccessByInvoiceSectionInput {
   actions?: string[];
 }
 export const BillingPermissionsCheckAccessByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -1883,7 +1877,7 @@ export type BillingPermissionsCheckAccessByInvoiceSectionOutput = {
   action?: string;
 }[];
 export const BillingPermissionsCheckAccessByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       accessDecision: Schema.optional(
         Schema.Literals(["Other", "Allowed", "NotAllowed"]),
@@ -1902,7 +1896,7 @@ export const BillingPermissionsCheckAccessByInvoiceSectionOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const BillingPermissionsCheckAccessByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsCheckAccessByInvoiceSectionInput,
     outputSchema: BillingPermissionsCheckAccessByInvoiceSectionOutput,
   }));
@@ -1911,7 +1905,7 @@ export interface BillingPermissionsListByBillingAccountInput {
   billingAccountName: string;
 }
 export const BillingPermissionsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1927,7 +1921,7 @@ export interface BillingPermissionsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1945,7 +1939,7 @@ export const BillingPermissionsListByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingPermissionsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByBillingAccountInput,
     outputSchema: BillingPermissionsListByBillingAccountOutput,
   }));
@@ -1955,7 +1949,7 @@ export interface BillingPermissionsListByBillingProfileInput {
   billingProfileName: string;
 }
 export const BillingPermissionsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1972,7 +1966,7 @@ export interface BillingPermissionsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1991,7 +1985,7 @@ export const BillingPermissionsListByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingPermissionsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByBillingProfileInput,
     outputSchema: BillingPermissionsListByBillingProfileOutput,
   }));
@@ -2002,7 +1996,7 @@ export interface BillingPermissionsListByCustomerInput {
   customerName: string;
 }
 export const BillingPermissionsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -2020,7 +2014,7 @@ export interface BillingPermissionsListByCustomerOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -2040,7 +2034,7 @@ export const BillingPermissionsListByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const BillingPermissionsListByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByCustomerInput,
     outputSchema: BillingPermissionsListByCustomerOutput,
   }));
@@ -2050,7 +2044,7 @@ export interface BillingPermissionsListByCustomerAtBillingAccountInput {
   customerName: string;
 }
 export const BillingPermissionsListByCustomerAtBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2067,7 +2061,7 @@ export interface BillingPermissionsListByCustomerAtBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByCustomerAtBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -2086,7 +2080,7 @@ export const BillingPermissionsListByCustomerAtBillingAccountOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const BillingPermissionsListByCustomerAtBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByCustomerAtBillingAccountInput,
     outputSchema: BillingPermissionsListByCustomerAtBillingAccountOutput,
   }));
@@ -2096,7 +2090,7 @@ export interface BillingPermissionsListByDepartmentInput {
   departmentName: string;
 }
 export const BillingPermissionsListByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2113,7 +2107,7 @@ export interface BillingPermissionsListByDepartmentOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -2132,7 +2126,7 @@ export const BillingPermissionsListByDepartmentOutput =
  * @param departmentName - The name of the department.
  */
 export const BillingPermissionsListByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByDepartmentInput,
     outputSchema: BillingPermissionsListByDepartmentOutput,
   }));
@@ -2142,7 +2136,7 @@ export interface BillingPermissionsListByEnrollmentAccountInput {
   enrollmentAccountName: string;
 }
 export const BillingPermissionsListByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2159,7 +2153,7 @@ export interface BillingPermissionsListByEnrollmentAccountOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -2178,7 +2172,7 @@ export const BillingPermissionsListByEnrollmentAccountOutput =
  * @param enrollmentAccountName - The name of the enrollment account.
  */
 export const BillingPermissionsListByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByEnrollmentAccountInput,
     outputSchema: BillingPermissionsListByEnrollmentAccountOutput,
   }));
@@ -2189,7 +2183,7 @@ export interface BillingPermissionsListByInvoiceSectionInput {
   invoiceSectionName: string;
 }
 export const BillingPermissionsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -2207,7 +2201,7 @@ export interface BillingPermissionsListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const BillingPermissionsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         actions: Schema.optional(Schema.Array(Schema.String)),
@@ -2227,7 +2221,7 @@ export const BillingPermissionsListByInvoiceSectionOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const BillingPermissionsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingPermissionsListByInvoiceSectionInput,
     outputSchema: BillingPermissionsListByInvoiceSectionOutput,
   }));
@@ -2385,7 +2379,7 @@ export interface BillingProfilesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2601,7 +2595,7 @@ export interface BillingProfilesCreateOrUpdateOutput {
   };
 }
 export const BillingProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2630,7 +2624,7 @@ export const BillingProfilesCreateOrUpdateOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingProfilesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingProfilesCreateOrUpdateInput,
     outputSchema: BillingProfilesCreateOrUpdateOutput,
   }));
@@ -2640,7 +2634,7 @@ export interface BillingProfilesDeleteInput {
   billingProfileName: string;
 }
 export const BillingProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2654,7 +2648,7 @@ export const BillingProfilesDeleteInput =
 // Output Schema
 export type BillingProfilesDeleteOutput = void;
 export const BillingProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -2664,19 +2658,17 @@ export const BillingProfilesDeleteOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
-export const BillingProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingProfilesDeleteInput,
-    outputSchema: BillingProfilesDeleteOutput,
-  }),
-);
+export const BillingProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingProfilesDeleteInput,
+  outputSchema: BillingProfilesDeleteOutput,
+}));
 // Input Schema
 export interface BillingProfilesGetInput {
   billingAccountName: string;
   billingProfileName: string;
 }
 export const BillingProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2702,7 +2694,7 @@ export interface BillingProfilesGetOutput {
   };
 }
 export const BillingProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2730,7 +2722,7 @@ export const BillingProfilesGetOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
-export const BillingProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingProfilesGetInput,
   outputSchema: BillingProfilesGetOutput,
 }));
@@ -2746,7 +2738,7 @@ export interface BillingProfilesListByBillingAccountInput {
   search?: string;
 }
 export const BillingProfilesListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -2781,7 +2773,7 @@ export interface BillingProfilesListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingProfilesListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2831,7 +2823,7 @@ export const BillingProfilesListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingProfilesListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingProfilesListByBillingAccountInput,
     outputSchema: BillingProfilesListByBillingAccountOutput,
   }));
@@ -2841,7 +2833,7 @@ export interface BillingProfilesValidateDeleteEligibilityInput {
   billingProfileName: string;
 }
 export const BillingProfilesValidateDeleteEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2870,7 +2862,7 @@ export interface BillingProfilesValidateDeleteEligibilityOutput {
   }[];
 }
 export const BillingProfilesValidateDeleteEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligibilityStatus: Schema.optional(
       Schema.Literals(["Allowed", "NotAllowed"]),
     ),
@@ -2905,7 +2897,7 @@ export const BillingProfilesValidateDeleteEligibilityOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingProfilesValidateDeleteEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingProfilesValidateDeleteEligibilityInput,
     outputSchema: BillingProfilesValidateDeleteEligibilityOutput,
   }));
@@ -2916,7 +2908,7 @@ export interface BillingPropertyGetInput {
   includeTransitionStatus?: boolean;
 }
 export const BillingPropertyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     includeBillingCountry: Schema.optional(Schema.Boolean),
     includeTransitionStatus: Schema.optional(Schema.Boolean),
@@ -2943,7 +2935,7 @@ export interface BillingPropertyGetOutput {
   };
 }
 export const BillingPropertyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2972,7 +2964,7 @@ export const BillingPropertyGetOutput =
  * @param includeBillingCountry - A flag that specifies whether or not to include billing country.
  * @param includeTransitionStatus - A flag that specifies whether or not to include transition status for billing accounts with agreement type Microsoft Customer Agreement.
  */
-export const BillingPropertyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingPropertyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingPropertyGetInput,
   outputSchema: BillingPropertyGetOutput,
 }));
@@ -3171,7 +3163,7 @@ export interface BillingPropertyUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingPropertyUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -3451,7 +3443,7 @@ export interface BillingPropertyUpdateOutput {
   };
 }
 export const BillingPropertyUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3478,12 +3470,10 @@ export const BillingPropertyUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const BillingPropertyUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingPropertyUpdateInput,
-    outputSchema: BillingPropertyUpdateOutput,
-  }),
-);
+export const BillingPropertyUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingPropertyUpdateInput,
+  outputSchema: BillingPropertyUpdateOutput,
+}));
 // Input Schema
 export interface BillingRequestsCreateOrUpdateInput {
   billingRequestName: string;
@@ -3547,7 +3537,7 @@ export interface BillingRequestsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingRequestsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingRequestName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -3669,7 +3659,7 @@ export interface BillingRequestsCreateOrUpdateOutput {
   };
 }
 export const BillingRequestsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3697,7 +3687,7 @@ export const BillingRequestsCreateOrUpdateOutput =
  * @param billingRequestName - The ID that uniquely identifies a billing request.
  */
 export const BillingRequestsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRequestsCreateOrUpdateInput,
     outputSchema: BillingRequestsCreateOrUpdateOutput,
   }));
@@ -3706,7 +3696,7 @@ export interface BillingRequestsGetInput {
   billingRequestName: string;
 }
 export const BillingRequestsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingRequestName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3731,7 +3721,7 @@ export interface BillingRequestsGetOutput {
   };
 }
 export const BillingRequestsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3758,7 +3748,7 @@ export const BillingRequestsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingRequestName - The ID that uniquely identifies a billing request.
  */
-export const BillingRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingRequestsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingRequestsGetInput,
   outputSchema: BillingRequestsGetOutput,
 }));
@@ -3773,7 +3763,7 @@ export interface BillingRequestsListByBillingAccountInput {
   search?: string;
 }
 export const BillingRequestsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -3807,7 +3797,7 @@ export interface BillingRequestsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingRequestsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3856,7 +3846,7 @@ export const BillingRequestsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingRequestsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRequestsListByBillingAccountInput,
     outputSchema: BillingRequestsListByBillingAccountOutput,
   }));
@@ -3872,7 +3862,7 @@ export interface BillingRequestsListByBillingProfileInput {
   search?: string;
 }
 export const BillingRequestsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -3907,7 +3897,7 @@ export interface BillingRequestsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const BillingRequestsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3957,7 +3947,7 @@ export const BillingRequestsListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingRequestsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRequestsListByBillingProfileInput,
     outputSchema: BillingRequestsListByBillingProfileOutput,
   }));
@@ -3974,7 +3964,7 @@ export interface BillingRequestsListByCustomerInput {
   search?: string;
 }
 export const BillingRequestsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -4010,7 +4000,7 @@ export interface BillingRequestsListByCustomerOutput {
   nextLink?: string;
 }
 export const BillingRequestsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4061,7 +4051,7 @@ export const BillingRequestsListByCustomerOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingRequestsListByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRequestsListByCustomerInput,
     outputSchema: BillingRequestsListByCustomerOutput,
   }));
@@ -4078,7 +4068,7 @@ export interface BillingRequestsListByInvoiceSectionInput {
   search?: string;
 }
 export const BillingRequestsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -4114,7 +4104,7 @@ export interface BillingRequestsListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const BillingRequestsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4165,7 +4155,7 @@ export const BillingRequestsListByInvoiceSectionOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingRequestsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRequestsListByInvoiceSectionInput,
     outputSchema: BillingRequestsListByInvoiceSectionOutput,
   }));
@@ -4179,7 +4169,7 @@ export interface BillingRequestsListByUserInput {
   search?: string;
 }
 export const BillingRequestsListByUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -4212,7 +4202,7 @@ export interface BillingRequestsListByUserOutput {
   nextLink?: string;
 }
 export const BillingRequestsListByUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4259,12 +4249,10 @@ export const BillingRequestsListByUserOutput =
  * @param count - The count query option allows clients to request a count of the matching resources included with the resources in the response.
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
-export const BillingRequestsListByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingRequestsListByUserInput,
-    outputSchema: BillingRequestsListByUserOutput,
-  }),
-);
+export const BillingRequestsListByUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingRequestsListByUserInput,
+  outputSchema: BillingRequestsListByUserOutput,
+}));
 // Input Schema
 export interface BillingRoleAssignmentsCreateByBillingAccountInput {
   billingAccountName: string;
@@ -4318,7 +4306,7 @@ export interface BillingRoleAssignmentsCreateByBillingAccountInput {
   customerDisplayName?: string;
 }
 export const BillingRoleAssignmentsCreateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     provisioningState: Schema.optional(
       Schema.Literals([
@@ -4397,7 +4385,7 @@ export interface BillingRoleAssignmentsCreateByBillingAccountOutput {
   };
 }
 export const BillingRoleAssignmentsCreateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4425,7 +4413,7 @@ export const BillingRoleAssignmentsCreateByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingRoleAssignmentsCreateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsCreateByBillingAccountOutput,
   }));
@@ -4483,7 +4471,7 @@ export interface BillingRoleAssignmentsCreateByBillingProfileInput {
   customerDisplayName?: string;
 }
 export const BillingRoleAssignmentsCreateByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     provisioningState: Schema.optional(
@@ -4563,7 +4551,7 @@ export interface BillingRoleAssignmentsCreateByBillingProfileOutput {
   };
 }
 export const BillingRoleAssignmentsCreateByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4592,7 +4580,7 @@ export const BillingRoleAssignmentsCreateByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingRoleAssignmentsCreateByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateByBillingProfileInput,
     outputSchema: BillingRoleAssignmentsCreateByBillingProfileOutput,
   }));
@@ -4651,7 +4639,7 @@ export interface BillingRoleAssignmentsCreateByCustomerInput {
   customerDisplayName?: string;
 }
 export const BillingRoleAssignmentsCreateByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -4732,7 +4720,7 @@ export interface BillingRoleAssignmentsCreateByCustomerOutput {
   };
 }
 export const BillingRoleAssignmentsCreateByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4762,7 +4750,7 @@ export const BillingRoleAssignmentsCreateByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const BillingRoleAssignmentsCreateByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateByCustomerInput,
     outputSchema: BillingRoleAssignmentsCreateByCustomerOutput,
   }));
@@ -4821,7 +4809,7 @@ export interface BillingRoleAssignmentsCreateByInvoiceSectionInput {
   customerDisplayName?: string;
 }
 export const BillingRoleAssignmentsCreateByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -4902,7 +4890,7 @@ export interface BillingRoleAssignmentsCreateByInvoiceSectionOutput {
   };
 }
 export const BillingRoleAssignmentsCreateByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4932,7 +4920,7 @@ export const BillingRoleAssignmentsCreateByInvoiceSectionOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const BillingRoleAssignmentsCreateByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateByInvoiceSectionInput,
     outputSchema: BillingRoleAssignmentsCreateByInvoiceSectionOutput,
   }));
@@ -4993,7 +4981,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput {
   tags?: Record<string, string>;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -5078,7 +5066,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByBillingAccountOutput {
   };
 }
 export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5107,7 +5095,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsCreateOrUpdateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsCreateOrUpdateByBillingAccountOutput,
   }));
@@ -5169,7 +5157,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentInput {
   tags?: Record<string, string>;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5255,7 +5243,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentOutput {
   };
 }
 export const BillingRoleAssignmentsCreateOrUpdateByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5285,7 +5273,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartmentOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsCreateOrUpdateByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateOrUpdateByDepartmentInput,
     outputSchema: BillingRoleAssignmentsCreateOrUpdateByDepartmentOutput,
   }));
@@ -5347,7 +5335,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput {
   tags?: Record<string, string>;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5433,7 +5421,7 @@ export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountOutput {
   };
 }
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5463,7 +5451,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput,
     outputSchema: BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountOutput,
   }));
@@ -5473,7 +5461,7 @@ export interface BillingRoleAssignmentsDeleteByBillingAccountInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5487,7 +5475,7 @@ export const BillingRoleAssignmentsDeleteByBillingAccountInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByBillingAccountOutput = void;
 export const BillingRoleAssignmentsDeleteByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByBillingAccountOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByBillingAccountOutput>;
 
 // The operation
 /**
@@ -5498,7 +5486,7 @@ export const BillingRoleAssignmentsDeleteByBillingAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsDeleteByBillingAccountOutput,
   }));
@@ -5509,7 +5497,7 @@ export interface BillingRoleAssignmentsDeleteByBillingProfileInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5524,7 +5512,7 @@ export const BillingRoleAssignmentsDeleteByBillingProfileInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByBillingProfileOutput = void;
 export const BillingRoleAssignmentsDeleteByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByBillingProfileOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByBillingProfileOutput>;
 
 // The operation
 /**
@@ -5536,7 +5524,7 @@ export const BillingRoleAssignmentsDeleteByBillingProfileOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByBillingProfileInput,
     outputSchema: BillingRoleAssignmentsDeleteByBillingProfileOutput,
   }));
@@ -5548,7 +5536,7 @@ export interface BillingRoleAssignmentsDeleteByCustomerInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -5564,7 +5552,7 @@ export const BillingRoleAssignmentsDeleteByCustomerInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByCustomerOutput = void;
 export const BillingRoleAssignmentsDeleteByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByCustomerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByCustomerOutput>;
 
 // The operation
 /**
@@ -5577,7 +5565,7 @@ export const BillingRoleAssignmentsDeleteByCustomerOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByCustomerInput,
     outputSchema: BillingRoleAssignmentsDeleteByCustomerOutput,
   }));
@@ -5588,7 +5576,7 @@ export interface BillingRoleAssignmentsDeleteByDepartmentInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5603,7 +5591,7 @@ export const BillingRoleAssignmentsDeleteByDepartmentInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByDepartmentOutput = void;
 export const BillingRoleAssignmentsDeleteByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByDepartmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByDepartmentOutput>;
 
 // The operation
 /**
@@ -5615,7 +5603,7 @@ export const BillingRoleAssignmentsDeleteByDepartmentOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByDepartmentInput,
     outputSchema: BillingRoleAssignmentsDeleteByDepartmentOutput,
   }));
@@ -5626,7 +5614,7 @@ export interface BillingRoleAssignmentsDeleteByEnrollmentAccountInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5641,7 +5629,7 @@ export const BillingRoleAssignmentsDeleteByEnrollmentAccountInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByEnrollmentAccountOutput = void;
 export const BillingRoleAssignmentsDeleteByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByEnrollmentAccountOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByEnrollmentAccountOutput>;
 
 // The operation
 /**
@@ -5653,7 +5641,7 @@ export const BillingRoleAssignmentsDeleteByEnrollmentAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByEnrollmentAccountInput,
     outputSchema: BillingRoleAssignmentsDeleteByEnrollmentAccountOutput,
   }));
@@ -5665,7 +5653,7 @@ export interface BillingRoleAssignmentsDeleteByInvoiceSectionInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsDeleteByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -5681,7 +5669,7 @@ export const BillingRoleAssignmentsDeleteByInvoiceSectionInput =
 // Output Schema
 export type BillingRoleAssignmentsDeleteByInvoiceSectionOutput = void;
 export const BillingRoleAssignmentsDeleteByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByInvoiceSectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingRoleAssignmentsDeleteByInvoiceSectionOutput>;
 
 // The operation
 /**
@@ -5694,7 +5682,7 @@ export const BillingRoleAssignmentsDeleteByInvoiceSectionOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsDeleteByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsDeleteByInvoiceSectionInput,
     outputSchema: BillingRoleAssignmentsDeleteByInvoiceSectionOutput,
   }));
@@ -5704,7 +5692,7 @@ export interface BillingRoleAssignmentsGetByBillingAccountInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5730,7 +5718,7 @@ export interface BillingRoleAssignmentsGetByBillingAccountOutput {
   };
 }
 export const BillingRoleAssignmentsGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5759,7 +5747,7 @@ export const BillingRoleAssignmentsGetByBillingAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsGetByBillingAccountOutput,
   }));
@@ -5770,7 +5758,7 @@ export interface BillingRoleAssignmentsGetByBillingProfileInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5797,7 +5785,7 @@ export interface BillingRoleAssignmentsGetByBillingProfileOutput {
   };
 }
 export const BillingRoleAssignmentsGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5827,7 +5815,7 @@ export const BillingRoleAssignmentsGetByBillingProfileOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByBillingProfileInput,
     outputSchema: BillingRoleAssignmentsGetByBillingProfileOutput,
   }));
@@ -5839,7 +5827,7 @@ export interface BillingRoleAssignmentsGetByCustomerInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -5867,7 +5855,7 @@ export interface BillingRoleAssignmentsGetByCustomerOutput {
   };
 }
 export const BillingRoleAssignmentsGetByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5898,7 +5886,7 @@ export const BillingRoleAssignmentsGetByCustomerOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByCustomerInput,
     outputSchema: BillingRoleAssignmentsGetByCustomerOutput,
   }));
@@ -5909,7 +5897,7 @@ export interface BillingRoleAssignmentsGetByDepartmentInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -5936,7 +5924,7 @@ export interface BillingRoleAssignmentsGetByDepartmentOutput {
   };
 }
 export const BillingRoleAssignmentsGetByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5966,7 +5954,7 @@ export const BillingRoleAssignmentsGetByDepartmentOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByDepartmentInput,
     outputSchema: BillingRoleAssignmentsGetByDepartmentOutput,
   }));
@@ -5977,7 +5965,7 @@ export interface BillingRoleAssignmentsGetByEnrollmentAccountInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     billingRoleAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -6004,7 +5992,7 @@ export interface BillingRoleAssignmentsGetByEnrollmentAccountOutput {
   };
 }
 export const BillingRoleAssignmentsGetByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6034,7 +6022,7 @@ export const BillingRoleAssignmentsGetByEnrollmentAccountOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByEnrollmentAccountInput,
     outputSchema: BillingRoleAssignmentsGetByEnrollmentAccountOutput,
   }));
@@ -6046,7 +6034,7 @@ export interface BillingRoleAssignmentsGetByInvoiceSectionInput {
   billingRoleAssignmentName: string;
 }
 export const BillingRoleAssignmentsGetByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -6074,7 +6062,7 @@ export interface BillingRoleAssignmentsGetByInvoiceSectionOutput {
   };
 }
 export const BillingRoleAssignmentsGetByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6105,7 +6093,7 @@ export const BillingRoleAssignmentsGetByInvoiceSectionOutput =
  * @param billingRoleAssignmentName - The ID that uniquely identifies a role assignment.
  */
 export const BillingRoleAssignmentsGetByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsGetByInvoiceSectionInput,
     outputSchema: BillingRoleAssignmentsGetByInvoiceSectionOutput,
   }));
@@ -6117,7 +6105,7 @@ export interface BillingRoleAssignmentsListByBillingAccountInput {
   skip?: number;
 }
 export const BillingRoleAssignmentsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     top: Schema.optional(Schema.Number),
@@ -6148,7 +6136,7 @@ export interface BillingRoleAssignmentsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6194,7 +6182,7 @@ export const BillingRoleAssignmentsListByBillingAccountOutput =
  * @param skip - The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result.
  */
 export const BillingRoleAssignmentsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsListByBillingAccountOutput,
   }));
@@ -6207,7 +6195,7 @@ export interface BillingRoleAssignmentsListByBillingProfileInput {
   skip?: number;
 }
 export const BillingRoleAssignmentsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -6239,7 +6227,7 @@ export interface BillingRoleAssignmentsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6286,7 +6274,7 @@ export const BillingRoleAssignmentsListByBillingProfileOutput =
  * @param skip - The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result.
  */
 export const BillingRoleAssignmentsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByBillingProfileInput,
     outputSchema: BillingRoleAssignmentsListByBillingProfileOutput,
   }));
@@ -6300,7 +6288,7 @@ export interface BillingRoleAssignmentsListByCustomerInput {
   skip?: number;
 }
 export const BillingRoleAssignmentsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -6333,7 +6321,7 @@ export interface BillingRoleAssignmentsListByCustomerOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6381,7 +6369,7 @@ export const BillingRoleAssignmentsListByCustomerOutput =
  * @param skip - The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result.
  */
 export const BillingRoleAssignmentsListByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByCustomerInput,
     outputSchema: BillingRoleAssignmentsListByCustomerOutput,
   }));
@@ -6391,7 +6379,7 @@ export interface BillingRoleAssignmentsListByDepartmentInput {
   departmentName: string;
 }
 export const BillingRoleAssignmentsListByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6420,7 +6408,7 @@ export interface BillingRoleAssignmentsListByDepartmentOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6464,7 +6452,7 @@ export const BillingRoleAssignmentsListByDepartmentOutput =
  * @param departmentName - The name of the department.
  */
 export const BillingRoleAssignmentsListByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByDepartmentInput,
     outputSchema: BillingRoleAssignmentsListByDepartmentOutput,
   }));
@@ -6474,7 +6462,7 @@ export interface BillingRoleAssignmentsListByEnrollmentAccountInput {
   enrollmentAccountName: string;
 }
 export const BillingRoleAssignmentsListByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6503,7 +6491,7 @@ export interface BillingRoleAssignmentsListByEnrollmentAccountOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6547,7 +6535,7 @@ export const BillingRoleAssignmentsListByEnrollmentAccountOutput =
  * @param enrollmentAccountName - The name of the enrollment account.
  */
 export const BillingRoleAssignmentsListByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByEnrollmentAccountInput,
     outputSchema: BillingRoleAssignmentsListByEnrollmentAccountOutput,
   }));
@@ -6561,7 +6549,7 @@ export interface BillingRoleAssignmentsListByInvoiceSectionInput {
   skip?: number;
 }
 export const BillingRoleAssignmentsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -6594,7 +6582,7 @@ export interface BillingRoleAssignmentsListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6642,7 +6630,7 @@ export const BillingRoleAssignmentsListByInvoiceSectionOutput =
  * @param skip - The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result.
  */
 export const BillingRoleAssignmentsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsListByInvoiceSectionInput,
     outputSchema: BillingRoleAssignmentsListByInvoiceSectionOutput,
   }));
@@ -6653,7 +6641,7 @@ export interface BillingRoleAssignmentsResolveByBillingAccountInput {
   filter?: string;
 }
 export const BillingRoleAssignmentsResolveByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -6683,7 +6671,7 @@ export interface BillingRoleAssignmentsResolveByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsResolveByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6728,7 +6716,7 @@ export const BillingRoleAssignmentsResolveByBillingAccountOutput =
  * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
  */
 export const BillingRoleAssignmentsResolveByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsResolveByBillingAccountInput,
     outputSchema: BillingRoleAssignmentsResolveByBillingAccountOutput,
   }));
@@ -6740,7 +6728,7 @@ export interface BillingRoleAssignmentsResolveByBillingProfileInput {
   filter?: string;
 }
 export const BillingRoleAssignmentsResolveByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     resolveScopeDisplayNames: Schema.optional(Schema.Boolean),
@@ -6771,7 +6759,7 @@ export interface BillingRoleAssignmentsResolveByBillingProfileOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsResolveByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6817,7 +6805,7 @@ export const BillingRoleAssignmentsResolveByBillingProfileOutput =
  * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
  */
 export const BillingRoleAssignmentsResolveByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsResolveByBillingProfileInput,
     outputSchema: BillingRoleAssignmentsResolveByBillingProfileOutput,
   }));
@@ -6830,7 +6818,7 @@ export interface BillingRoleAssignmentsResolveByCustomerInput {
   filter?: string;
 }
 export const BillingRoleAssignmentsResolveByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -6862,7 +6850,7 @@ export interface BillingRoleAssignmentsResolveByCustomerOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsResolveByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6909,7 +6897,7 @@ export const BillingRoleAssignmentsResolveByCustomerOutput =
  * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
  */
 export const BillingRoleAssignmentsResolveByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsResolveByCustomerInput,
     outputSchema: BillingRoleAssignmentsResolveByCustomerOutput,
   }));
@@ -6922,7 +6910,7 @@ export interface BillingRoleAssignmentsResolveByInvoiceSectionInput {
   filter?: string;
 }
 export const BillingRoleAssignmentsResolveByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -6954,7 +6942,7 @@ export interface BillingRoleAssignmentsResolveByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const BillingRoleAssignmentsResolveByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7001,7 +6989,7 @@ export const BillingRoleAssignmentsResolveByInvoiceSectionOutput =
  * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
  */
 export const BillingRoleAssignmentsResolveByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleAssignmentsResolveByInvoiceSectionInput,
     outputSchema: BillingRoleAssignmentsResolveByInvoiceSectionOutput,
   }));
@@ -7011,7 +6999,7 @@ export interface BillingRoleDefinitionGetByBillingAccountInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7037,7 +7025,7 @@ export interface BillingRoleDefinitionGetByBillingAccountOutput {
   };
 }
 export const BillingRoleDefinitionGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7066,7 +7054,7 @@ export const BillingRoleDefinitionGetByBillingAccountOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByBillingAccountInput,
     outputSchema: BillingRoleDefinitionGetByBillingAccountOutput,
   }));
@@ -7077,7 +7065,7 @@ export interface BillingRoleDefinitionGetByBillingProfileInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -7104,7 +7092,7 @@ export interface BillingRoleDefinitionGetByBillingProfileOutput {
   };
 }
 export const BillingRoleDefinitionGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7134,7 +7122,7 @@ export const BillingRoleDefinitionGetByBillingProfileOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByBillingProfileInput,
     outputSchema: BillingRoleDefinitionGetByBillingProfileOutput,
   }));
@@ -7146,7 +7134,7 @@ export interface BillingRoleDefinitionGetByCustomerInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -7174,7 +7162,7 @@ export interface BillingRoleDefinitionGetByCustomerOutput {
   };
 }
 export const BillingRoleDefinitionGetByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7205,7 +7193,7 @@ export const BillingRoleDefinitionGetByCustomerOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByCustomerInput,
     outputSchema: BillingRoleDefinitionGetByCustomerOutput,
   }));
@@ -7216,7 +7204,7 @@ export interface BillingRoleDefinitionGetByDepartmentInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -7243,7 +7231,7 @@ export interface BillingRoleDefinitionGetByDepartmentOutput {
   };
 }
 export const BillingRoleDefinitionGetByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7273,7 +7261,7 @@ export const BillingRoleDefinitionGetByDepartmentOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByDepartmentInput,
     outputSchema: BillingRoleDefinitionGetByDepartmentOutput,
   }));
@@ -7284,7 +7272,7 @@ export interface BillingRoleDefinitionGetByEnrollmentAccountInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     roleDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -7311,7 +7299,7 @@ export interface BillingRoleDefinitionGetByEnrollmentAccountOutput {
   };
 }
 export const BillingRoleDefinitionGetByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7341,7 +7329,7 @@ export const BillingRoleDefinitionGetByEnrollmentAccountOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByEnrollmentAccountInput,
     outputSchema: BillingRoleDefinitionGetByEnrollmentAccountOutput,
   }));
@@ -7353,7 +7341,7 @@ export interface BillingRoleDefinitionGetByInvoiceSectionInput {
   roleDefinitionName: string;
 }
 export const BillingRoleDefinitionGetByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -7381,7 +7369,7 @@ export interface BillingRoleDefinitionGetByInvoiceSectionOutput {
   };
 }
 export const BillingRoleDefinitionGetByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7412,7 +7400,7 @@ export const BillingRoleDefinitionGetByInvoiceSectionOutput =
  * @param roleDefinitionName - The ID that uniquely identifies a role definition.
  */
 export const BillingRoleDefinitionGetByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionGetByInvoiceSectionInput,
     outputSchema: BillingRoleDefinitionGetByInvoiceSectionOutput,
   }));
@@ -7421,7 +7409,7 @@ export interface BillingRoleDefinitionListByBillingAccountInput {
   billingAccountName: string;
 }
 export const BillingRoleDefinitionListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7449,7 +7437,7 @@ export interface BillingRoleDefinitionListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7492,7 +7480,7 @@ export const BillingRoleDefinitionListByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const BillingRoleDefinitionListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByBillingAccountInput,
     outputSchema: BillingRoleDefinitionListByBillingAccountOutput,
   }));
@@ -7502,7 +7490,7 @@ export interface BillingRoleDefinitionListByBillingProfileInput {
   billingProfileName: string;
 }
 export const BillingRoleDefinitionListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7531,7 +7519,7 @@ export interface BillingRoleDefinitionListByBillingProfileOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7575,7 +7563,7 @@ export const BillingRoleDefinitionListByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const BillingRoleDefinitionListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByBillingProfileInput,
     outputSchema: BillingRoleDefinitionListByBillingProfileOutput,
   }));
@@ -7586,7 +7574,7 @@ export interface BillingRoleDefinitionListByCustomerInput {
   customerName: string;
 }
 export const BillingRoleDefinitionListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -7616,7 +7604,7 @@ export interface BillingRoleDefinitionListByCustomerOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7661,7 +7649,7 @@ export const BillingRoleDefinitionListByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const BillingRoleDefinitionListByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByCustomerInput,
     outputSchema: BillingRoleDefinitionListByCustomerOutput,
   }));
@@ -7671,7 +7659,7 @@ export interface BillingRoleDefinitionListByDepartmentInput {
   departmentName: string;
 }
 export const BillingRoleDefinitionListByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7700,7 +7688,7 @@ export interface BillingRoleDefinitionListByDepartmentOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7744,7 +7732,7 @@ export const BillingRoleDefinitionListByDepartmentOutput =
  * @param departmentName - The name of the department.
  */
 export const BillingRoleDefinitionListByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByDepartmentInput,
     outputSchema: BillingRoleDefinitionListByDepartmentOutput,
   }));
@@ -7754,7 +7742,7 @@ export interface BillingRoleDefinitionListByEnrollmentAccountInput {
   enrollmentAccountName: string;
 }
 export const BillingRoleDefinitionListByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7783,7 +7771,7 @@ export interface BillingRoleDefinitionListByEnrollmentAccountOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7827,7 +7815,7 @@ export const BillingRoleDefinitionListByEnrollmentAccountOutput =
  * @param enrollmentAccountName - The name of the enrollment account.
  */
 export const BillingRoleDefinitionListByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByEnrollmentAccountInput,
     outputSchema: BillingRoleDefinitionListByEnrollmentAccountOutput,
   }));
@@ -7838,7 +7826,7 @@ export interface BillingRoleDefinitionListByInvoiceSectionInput {
   invoiceSectionName: string;
 }
 export const BillingRoleDefinitionListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -7868,7 +7856,7 @@ export interface BillingRoleDefinitionListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const BillingRoleDefinitionListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7913,7 +7901,7 @@ export const BillingRoleDefinitionListByInvoiceSectionOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const BillingRoleDefinitionListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingRoleDefinitionListByInvoiceSectionInput,
     outputSchema: BillingRoleDefinitionListByInvoiceSectionOutput,
   }));
@@ -8026,7 +8014,7 @@ export interface BillingSubscriptionsAliasesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingSubscriptionsAliasesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     aliasName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -8209,7 +8197,7 @@ export interface BillingSubscriptionsAliasesCreateOrUpdateOutput {
   };
 }
 export const BillingSubscriptionsAliasesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8238,7 +8226,7 @@ export const BillingSubscriptionsAliasesCreateOrUpdateOutput =
  * @param aliasName - The ID that uniquely identifies a subscription alias.
  */
 export const BillingSubscriptionsAliasesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsAliasesCreateOrUpdateInput,
     outputSchema: BillingSubscriptionsAliasesCreateOrUpdateOutput,
   }));
@@ -8248,7 +8236,7 @@ export interface BillingSubscriptionsAliasesGetInput {
   aliasName: string;
 }
 export const BillingSubscriptionsAliasesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     aliasName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8274,7 +8262,7 @@ export interface BillingSubscriptionsAliasesGetOutput {
   };
 }
 export const BillingSubscriptionsAliasesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8303,7 +8291,7 @@ export const BillingSubscriptionsAliasesGetOutput =
  * @param aliasName - The ID that uniquely identifies a subscription alias.
  */
 export const BillingSubscriptionsAliasesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsAliasesGetInput,
     outputSchema: BillingSubscriptionsAliasesGetOutput,
   }));
@@ -8319,7 +8307,7 @@ export interface BillingSubscriptionsAliasesListByBillingAccountInput {
   search?: string;
 }
 export const BillingSubscriptionsAliasesListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -8354,7 +8342,7 @@ export interface BillingSubscriptionsAliasesListByBillingAccountOutput {
   nextLink?: string;
 }
 export const BillingSubscriptionsAliasesListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8404,7 +8392,7 @@ export const BillingSubscriptionsAliasesListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsAliasesListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsAliasesListByBillingAccountInput,
     outputSchema: BillingSubscriptionsAliasesListByBillingAccountOutput,
   }));
@@ -8416,7 +8404,7 @@ export interface BillingSubscriptionsCancelInput {
   customerId?: string;
 }
 export const BillingSubscriptionsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     cancellationReason: Schema.Literals(["Other", "Compromise", "Dispute"]),
@@ -8432,7 +8420,7 @@ export const BillingSubscriptionsCancelInput =
 // Output Schema
 export type BillingSubscriptionsCancelOutput = void;
 export const BillingSubscriptionsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingSubscriptionsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingSubscriptionsCancelOutput>;
 
 // The operation
 /**
@@ -8442,19 +8430,17 @@ export const BillingSubscriptionsCancelOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsCancelInput,
-    outputSchema: BillingSubscriptionsCancelOutput,
-  }),
-);
+export const BillingSubscriptionsCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsCancelInput,
+  outputSchema: BillingSubscriptionsCancelOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsDeleteInput {
   billingAccountName: string;
   billingSubscriptionName: string;
 }
 export const BillingSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8468,7 +8454,7 @@ export const BillingSubscriptionsDeleteInput =
 // Output Schema
 export type BillingSubscriptionsDeleteOutput = void;
 export const BillingSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BillingSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -8478,12 +8464,10 @@ export const BillingSubscriptionsDeleteOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsDeleteInput,
-    outputSchema: BillingSubscriptionsDeleteOutput,
-  }),
-);
+export const BillingSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsDeleteInput,
+  outputSchema: BillingSubscriptionsDeleteOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsGetInput {
   billingAccountName: string;
@@ -8491,7 +8475,7 @@ export interface BillingSubscriptionsGetInput {
   expand?: string;
 }
 export const BillingSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -8518,7 +8502,7 @@ export interface BillingSubscriptionsGetOutput {
   };
 }
 export const BillingSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8547,12 +8531,10 @@ export const BillingSubscriptionsGetOutput =
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  * @param expand - Can be used to expand `Reseller`, `ConsumptionCostCenter`, `LastMonthCharges` and `MonthToDateCharges`
  */
-export const BillingSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsGetInput,
-    outputSchema: BillingSubscriptionsGetOutput,
-  }),
-);
+export const BillingSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsGetInput,
+  outputSchema: BillingSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsGetByBillingProfileInput {
   billingAccountName: string;
@@ -8561,7 +8543,7 @@ export interface BillingSubscriptionsGetByBillingProfileInput {
   expand?: string;
 }
 export const BillingSubscriptionsGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
@@ -8589,7 +8571,7 @@ export interface BillingSubscriptionsGetByBillingProfileOutput {
   };
 }
 export const BillingSubscriptionsGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8620,7 +8602,7 @@ export const BillingSubscriptionsGetByBillingProfileOutput =
  * @param expand - Can be used to expand `Reseller`, `ConsumptionCostCenter`, `LastMonthCharges` and `MonthToDateCharges`
  */
 export const BillingSubscriptionsGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsGetByBillingProfileInput,
     outputSchema: BillingSubscriptionsGetByBillingProfileOutput,
   }));
@@ -8639,7 +8621,7 @@ export interface BillingSubscriptionsListByBillingAccountInput {
   search?: string;
 }
 export const BillingSubscriptionsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
     includeTenantSubscriptions: Schema.optional(Schema.Boolean),
@@ -8678,7 +8660,7 @@ export interface BillingSubscriptionsListByBillingAccountOutput {
   }[];
 }
 export const BillingSubscriptionsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -8734,7 +8716,7 @@ export const BillingSubscriptionsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByBillingAccountInput,
     outputSchema: BillingSubscriptionsListByBillingAccountOutput,
   }));
@@ -8752,7 +8734,7 @@ export interface BillingSubscriptionsListByBillingProfileInput {
   search?: string;
 }
 export const BillingSubscriptionsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
@@ -8790,7 +8772,7 @@ export interface BillingSubscriptionsListByBillingProfileOutput {
   }[];
 }
 export const BillingSubscriptionsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -8845,7 +8827,7 @@ export const BillingSubscriptionsListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByBillingProfileInput,
     outputSchema: BillingSubscriptionsListByBillingProfileOutput,
   }));
@@ -8864,7 +8846,7 @@ export interface BillingSubscriptionsListByCustomerInput {
   search?: string;
 }
 export const BillingSubscriptionsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -8903,7 +8885,7 @@ export interface BillingSubscriptionsListByCustomerOutput {
   }[];
 }
 export const BillingSubscriptionsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -8959,7 +8941,7 @@ export const BillingSubscriptionsListByCustomerOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByCustomerInput,
     outputSchema: BillingSubscriptionsListByCustomerOutput,
   }));
@@ -8977,7 +8959,7 @@ export interface BillingSubscriptionsListByCustomerAtBillingAccountInput {
   search?: string;
 }
 export const BillingSubscriptionsListByCustomerAtBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
@@ -9015,7 +8997,7 @@ export interface BillingSubscriptionsListByCustomerAtBillingAccountOutput {
   }[];
 }
 export const BillingSubscriptionsListByCustomerAtBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -9070,7 +9052,7 @@ export const BillingSubscriptionsListByCustomerAtBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByCustomerAtBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByCustomerAtBillingAccountInput,
     outputSchema: BillingSubscriptionsListByCustomerAtBillingAccountOutput,
   }));
@@ -9086,7 +9068,7 @@ export interface BillingSubscriptionsListByEnrollmentAccountInput {
   search?: string;
 }
 export const BillingSubscriptionsListByEnrollmentAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -9122,7 +9104,7 @@ export interface BillingSubscriptionsListByEnrollmentAccountOutput {
   }[];
 }
 export const BillingSubscriptionsListByEnrollmentAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -9175,7 +9157,7 @@ export const BillingSubscriptionsListByEnrollmentAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByEnrollmentAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByEnrollmentAccountInput,
     outputSchema: BillingSubscriptionsListByEnrollmentAccountOutput,
   }));
@@ -9194,7 +9176,7 @@ export interface BillingSubscriptionsListByInvoiceSectionInput {
   search?: string;
 }
 export const BillingSubscriptionsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -9233,7 +9215,7 @@ export interface BillingSubscriptionsListByInvoiceSectionOutput {
   }[];
 }
 export const BillingSubscriptionsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     value: Schema.optional(
@@ -9289,7 +9271,7 @@ export const BillingSubscriptionsListByInvoiceSectionOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const BillingSubscriptionsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsListByInvoiceSectionInput,
     outputSchema: BillingSubscriptionsListByInvoiceSectionOutput,
   }));
@@ -9301,7 +9283,7 @@ export interface BillingSubscriptionsMergeInput {
   quantity?: number;
 }
 export const BillingSubscriptionsMergeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     targetBillingSubscriptionName: Schema.optional(Schema.String),
@@ -9329,7 +9311,7 @@ export interface BillingSubscriptionsMergeOutput {
   };
 }
 export const BillingSubscriptionsMergeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9357,12 +9339,10 @@ export const BillingSubscriptionsMergeOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsMergeInput,
-    outputSchema: BillingSubscriptionsMergeOutput,
-  }),
-);
+export const BillingSubscriptionsMerge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsMergeInput,
+  outputSchema: BillingSubscriptionsMergeOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsMoveInput {
   billingAccountName: string;
@@ -9371,7 +9351,7 @@ export interface BillingSubscriptionsMoveInput {
   destinationEnrollmentAccountId?: string;
 }
 export const BillingSubscriptionsMoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     destinationInvoiceSectionId: Schema.optional(Schema.String),
@@ -9399,7 +9379,7 @@ export interface BillingSubscriptionsMoveOutput {
   };
 }
 export const BillingSubscriptionsMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9427,12 +9407,10 @@ export const BillingSubscriptionsMoveOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsMoveInput,
-    outputSchema: BillingSubscriptionsMoveOutput,
-  }),
-);
+export const BillingSubscriptionsMove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsMoveInput,
+  outputSchema: BillingSubscriptionsMoveOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsSplitInput {
   billingAccountName: string;
@@ -9444,7 +9422,7 @@ export interface BillingSubscriptionsSplitInput {
   billingFrequency?: string;
 }
 export const BillingSubscriptionsSplitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     targetProductTypeId: Schema.optional(Schema.String),
@@ -9475,7 +9453,7 @@ export interface BillingSubscriptionsSplitOutput {
   };
 }
 export const BillingSubscriptionsSplitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9503,12 +9481,10 @@ export const BillingSubscriptionsSplitOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsSplitInput,
-    outputSchema: BillingSubscriptionsSplitOutput,
-  }),
-);
+export const BillingSubscriptionsSplit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsSplitInput,
+  outputSchema: BillingSubscriptionsSplitOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsUpdateInput {
   billingAccountName: string;
@@ -9618,7 +9594,7 @@ export interface BillingSubscriptionsUpdateInput {
   tags?: Record<string, string>;
 }
 export const BillingSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -9801,7 +9777,7 @@ export interface BillingSubscriptionsUpdateOutput {
   };
 }
 export const BillingSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9829,12 +9805,10 @@ export const BillingSubscriptionsUpdateOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
-export const BillingSubscriptionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BillingSubscriptionsUpdateInput,
-    outputSchema: BillingSubscriptionsUpdateOutput,
-  }),
-);
+export const BillingSubscriptionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BillingSubscriptionsUpdateInput,
+  outputSchema: BillingSubscriptionsUpdateOutput,
+}));
 // Input Schema
 export interface BillingSubscriptionsValidateMoveEligibilityInput {
   billingAccountName: string;
@@ -9843,7 +9817,7 @@ export interface BillingSubscriptionsValidateMoveEligibilityInput {
   destinationEnrollmentAccountId?: string;
 }
 export const BillingSubscriptionsValidateMoveEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingSubscriptionName: Schema.String.pipe(T.PathParam()),
     destinationInvoiceSectionId: Schema.optional(Schema.String),
@@ -9894,7 +9868,7 @@ export interface BillingSubscriptionsValidateMoveEligibilityOutput {
   };
 }
 export const BillingSubscriptionsValidateMoveEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isMoveEligible: Schema.optional(Schema.Boolean),
     errorDetails: Schema.optional(
       Schema.Struct({
@@ -9945,7 +9919,7 @@ export const BillingSubscriptionsValidateMoveEligibilityOutput =
  * @param billingSubscriptionName - The ID that uniquely identifies a subscription.
  */
 export const BillingSubscriptionsValidateMoveEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BillingSubscriptionsValidateMoveEligibilityInput,
     outputSchema: BillingSubscriptionsValidateMoveEligibilityOutput,
   }));
@@ -9955,7 +9929,7 @@ export interface CustomersGetInput {
   billingProfileName: string;
   customerName: string;
 }
-export const CustomersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomersGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   customerName: Schema.String.pipe(T.PathParam()),
@@ -9981,7 +9955,7 @@ export interface CustomersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CustomersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10010,7 +9984,7 @@ export const CustomersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  * @param customerName - The ID that uniquely identifies a customer.
  */
-export const CustomersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomersGetInput,
   outputSchema: CustomersGetOutput,
 }));
@@ -10020,7 +9994,7 @@ export interface CustomersGetByBillingAccountInput {
   customerName: string;
 }
 export const CustomersGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -10046,7 +10020,7 @@ export interface CustomersGetByBillingAccountOutput {
   };
 }
 export const CustomersGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10075,7 +10049,7 @@ export const CustomersGetByBillingAccountOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const CustomersGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomersGetByBillingAccountInput,
     outputSchema: CustomersGetByBillingAccountOutput,
   }));
@@ -10091,7 +10065,7 @@ export interface CustomersListByBillingAccountInput {
   search?: string;
 }
 export const CustomersListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -10126,7 +10100,7 @@ export interface CustomersListByBillingAccountOutput {
   nextLink?: string;
 }
 export const CustomersListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10176,7 +10150,7 @@ export const CustomersListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const CustomersListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomersListByBillingAccountInput,
     outputSchema: CustomersListByBillingAccountOutput,
   }));
@@ -10193,7 +10167,7 @@ export interface CustomersListByBillingProfileInput {
   search?: string;
 }
 export const CustomersListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -10229,7 +10203,7 @@ export interface CustomersListByBillingProfileOutput {
   nextLink?: string;
 }
 export const CustomersListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10280,7 +10254,7 @@ export const CustomersListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const CustomersListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomersListByBillingProfileInput,
     outputSchema: CustomersListByBillingProfileOutput,
   }));
@@ -10289,7 +10263,7 @@ export interface DepartmentsGetInput {
   billingAccountName: string;
   departmentName: string;
 }
-export const DepartmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DepartmentsGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   departmentName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -10314,7 +10288,7 @@ export interface DepartmentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DepartmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DepartmentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10342,7 +10316,7 @@ export const DepartmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param departmentName - The name of the department.
  */
-export const DepartmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DepartmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DepartmentsGetInput,
   outputSchema: DepartmentsGetOutput,
 }));
@@ -10356,7 +10330,7 @@ export interface DepartmentsListByBillingAccountInput {
   search?: string;
 }
 export const DepartmentsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -10389,7 +10363,7 @@ export interface DepartmentsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const DepartmentsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10437,7 +10411,7 @@ export const DepartmentsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const DepartmentsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DepartmentsListByBillingAccountInput,
     outputSchema: DepartmentsListByBillingAccountOutput,
   }));
@@ -10447,7 +10421,7 @@ export interface EnrollmentAccountsGetInput {
   enrollmentAccountName: string;
 }
 export const EnrollmentAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -10473,7 +10447,7 @@ export interface EnrollmentAccountsGetOutput {
   };
 }
 export const EnrollmentAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10501,12 +10475,10 @@ export const EnrollmentAccountsGetOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param enrollmentAccountName - The name of the enrollment account.
  */
-export const EnrollmentAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnrollmentAccountsGetInput,
-    outputSchema: EnrollmentAccountsGetOutput,
-  }),
-);
+export const EnrollmentAccountsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnrollmentAccountsGetInput,
+  outputSchema: EnrollmentAccountsGetOutput,
+}));
 // Input Schema
 export interface EnrollmentAccountsGetByDepartmentInput {
   billingAccountName: string;
@@ -10514,7 +10486,7 @@ export interface EnrollmentAccountsGetByDepartmentInput {
   enrollmentAccountName: string;
 }
 export const EnrollmentAccountsGetByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     enrollmentAccountName: Schema.String.pipe(T.PathParam()),
@@ -10541,7 +10513,7 @@ export interface EnrollmentAccountsGetByDepartmentOutput {
   };
 }
 export const EnrollmentAccountsGetByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10571,7 +10543,7 @@ export const EnrollmentAccountsGetByDepartmentOutput =
  * @param enrollmentAccountName - The name of the enrollment account.
  */
 export const EnrollmentAccountsGetByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnrollmentAccountsGetByDepartmentInput,
     outputSchema: EnrollmentAccountsGetByDepartmentOutput,
   }));
@@ -10586,7 +10558,7 @@ export interface EnrollmentAccountsListByBillingAccountInput {
   search?: string;
 }
 export const EnrollmentAccountsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -10620,7 +10592,7 @@ export interface EnrollmentAccountsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const EnrollmentAccountsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10669,7 +10641,7 @@ export const EnrollmentAccountsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const EnrollmentAccountsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnrollmentAccountsListByBillingAccountInput,
     outputSchema: EnrollmentAccountsListByBillingAccountOutput,
   }));
@@ -10685,7 +10657,7 @@ export interface EnrollmentAccountsListByDepartmentInput {
   search?: string;
 }
 export const EnrollmentAccountsListByDepartmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     departmentName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -10720,7 +10692,7 @@ export interface EnrollmentAccountsListByDepartmentOutput {
   nextLink?: string;
 }
 export const EnrollmentAccountsListByDepartmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10770,7 +10742,7 @@ export const EnrollmentAccountsListByDepartmentOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const EnrollmentAccountsListByDepartment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnrollmentAccountsListByDepartmentInput,
     outputSchema: EnrollmentAccountsListByDepartmentOutput,
   }));
@@ -10779,7 +10751,7 @@ export interface InvoicesAmendInput {
   billingAccountName: string;
   invoiceName: string;
 }
-export const InvoicesAmendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvoicesAmendInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   invoiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -10793,7 +10765,7 @@ export const InvoicesAmendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InvoicesAmendOutput = void;
 export const InvoicesAmendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvoicesAmendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InvoicesAmendOutput>;
 
 // The operation
 /**
@@ -10803,7 +10775,7 @@ export const InvoicesAmendOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
-export const InvoicesAmend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvoicesAmend = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvoicesAmendInput,
   outputSchema: InvoicesAmendOutput,
 }));
@@ -10814,7 +10786,7 @@ export interface InvoicesDownloadByBillingAccountInput {
   documentName?: string;
 }
 export const InvoicesDownloadByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
     documentName: Schema.optional(Schema.String),
@@ -10832,7 +10804,7 @@ export interface InvoicesDownloadByBillingAccountOutput {
   url?: string;
 }
 export const InvoicesDownloadByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<InvoicesDownloadByBillingAccountOutput>;
@@ -10847,7 +10819,7 @@ export const InvoicesDownloadByBillingAccountOutput =
  * @param documentName - The ID that uniquely identifies an invoice document. This ID may be an identifier for an invoice PDF, a credit note, or a tax receipt.
  */
 export const InvoicesDownloadByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesDownloadByBillingAccountInput,
     outputSchema: InvoicesDownloadByBillingAccountOutput,
   }));
@@ -10858,7 +10830,7 @@ export interface InvoicesDownloadByBillingSubscriptionInput {
   documentName?: string;
 }
 export const InvoicesDownloadByBillingSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
     documentName: Schema.optional(Schema.String),
@@ -10876,7 +10848,7 @@ export interface InvoicesDownloadByBillingSubscriptionOutput {
   url?: string;
 }
 export const InvoicesDownloadByBillingSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<InvoicesDownloadByBillingSubscriptionOutput>;
@@ -10891,7 +10863,7 @@ export const InvoicesDownloadByBillingSubscriptionOutput =
  * @param documentName - The ID that uniquely identifies an invoice document. This ID may be an identifier for an invoice PDF, a credit note, or a tax receipt.
  */
 export const InvoicesDownloadByBillingSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesDownloadByBillingSubscriptionInput,
     outputSchema: InvoicesDownloadByBillingSubscriptionOutput,
   }));
@@ -10900,7 +10872,7 @@ export interface InvoicesDownloadDocumentsByBillingAccountInput {
   billingAccountName: string;
 }
 export const InvoicesDownloadDocumentsByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10916,7 +10888,7 @@ export interface InvoicesDownloadDocumentsByBillingAccountOutput {
   url?: string;
 }
 export const InvoicesDownloadDocumentsByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<InvoicesDownloadDocumentsByBillingAccountOutput>;
@@ -10929,7 +10901,7 @@ export const InvoicesDownloadDocumentsByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const InvoicesDownloadDocumentsByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesDownloadDocumentsByBillingAccountInput,
     outputSchema: InvoicesDownloadDocumentsByBillingAccountOutput,
   }));
@@ -10938,7 +10910,7 @@ export interface InvoicesDownloadDocumentsByBillingSubscriptionInput {
   subscriptionId: string;
 }
 export const InvoicesDownloadDocumentsByBillingSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10954,7 +10926,7 @@ export interface InvoicesDownloadDocumentsByBillingSubscriptionOutput {
   url?: string;
 }
 export const InvoicesDownloadDocumentsByBillingSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<InvoicesDownloadDocumentsByBillingSubscriptionOutput>;
@@ -10967,7 +10939,7 @@ export const InvoicesDownloadDocumentsByBillingSubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const InvoicesDownloadDocumentsByBillingSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesDownloadDocumentsByBillingSubscriptionInput,
     outputSchema: InvoicesDownloadDocumentsByBillingSubscriptionOutput,
   }));
@@ -10977,7 +10949,7 @@ export interface InvoicesDownloadSummaryByBillingAccountInput {
   invoiceName: string;
 }
 export const InvoicesDownloadSummaryByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -10994,7 +10966,7 @@ export interface InvoicesDownloadSummaryByBillingAccountOutput {
   url?: string;
 }
 export const InvoicesDownloadSummaryByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<InvoicesDownloadSummaryByBillingAccountOutput>;
@@ -11008,7 +10980,7 @@ export const InvoicesDownloadSummaryByBillingAccountOutput =
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
 export const InvoicesDownloadSummaryByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesDownloadSummaryByBillingAccountInput,
     outputSchema: InvoicesDownloadSummaryByBillingAccountOutput,
   }));
@@ -11052,7 +11024,7 @@ export interface InvoiceSectionsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const InvoiceSectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -11123,7 +11095,7 @@ export interface InvoiceSectionsCreateOrUpdateOutput {
   };
 }
 export const InvoiceSectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11153,7 +11125,7 @@ export const InvoiceSectionsCreateOrUpdateOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const InvoiceSectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoiceSectionsCreateOrUpdateInput,
     outputSchema: InvoiceSectionsCreateOrUpdateOutput,
   }));
@@ -11164,7 +11136,7 @@ export interface InvoiceSectionsDeleteInput {
   invoiceSectionName: string;
 }
 export const InvoiceSectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -11179,7 +11151,7 @@ export const InvoiceSectionsDeleteInput =
 // Output Schema
 export type InvoiceSectionsDeleteOutput = void;
 export const InvoiceSectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvoiceSectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InvoiceSectionsDeleteOutput>;
 
 // The operation
 /**
@@ -11190,12 +11162,10 @@ export const InvoiceSectionsDeleteOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
-export const InvoiceSectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvoiceSectionsDeleteInput,
-    outputSchema: InvoiceSectionsDeleteOutput,
-  }),
-);
+export const InvoiceSectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvoiceSectionsDeleteInput,
+  outputSchema: InvoiceSectionsDeleteOutput,
+}));
 // Input Schema
 export interface InvoiceSectionsGetInput {
   billingAccountName: string;
@@ -11203,7 +11173,7 @@ export interface InvoiceSectionsGetInput {
   invoiceSectionName: string;
 }
 export const InvoiceSectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -11230,7 +11200,7 @@ export interface InvoiceSectionsGetOutput {
   };
 }
 export const InvoiceSectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11259,7 +11229,7 @@ export const InvoiceSectionsGetOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
-export const InvoiceSectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvoiceSectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvoiceSectionsGetInput,
   outputSchema: InvoiceSectionsGetOutput,
 }));
@@ -11276,7 +11246,7 @@ export interface InvoiceSectionsListByBillingProfileInput {
   search?: string;
 }
 export const InvoiceSectionsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     includeDeleted: Schema.optional(Schema.Boolean),
@@ -11312,7 +11282,7 @@ export interface InvoiceSectionsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const InvoiceSectionsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11363,7 +11333,7 @@ export const InvoiceSectionsListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const InvoiceSectionsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoiceSectionsListByBillingProfileInput,
     outputSchema: InvoiceSectionsListByBillingProfileOutput,
   }));
@@ -11374,7 +11344,7 @@ export interface InvoiceSectionsValidateDeleteEligibilityInput {
   invoiceSectionName: string;
 }
 export const InvoiceSectionsValidateDeleteEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -11400,7 +11370,7 @@ export interface InvoiceSectionsValidateDeleteEligibilityOutput {
   }[];
 }
 export const InvoiceSectionsValidateDeleteEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligibilityStatus: Schema.optional(
       Schema.Literals(["Allowed", "NotAllowed"]),
     ),
@@ -11432,7 +11402,7 @@ export const InvoiceSectionsValidateDeleteEligibilityOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
 export const InvoiceSectionsValidateDeleteEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoiceSectionsValidateDeleteEligibilityInput,
     outputSchema: InvoiceSectionsValidateDeleteEligibilityOutput,
   }));
@@ -11440,7 +11410,7 @@ export const InvoiceSectionsValidateDeleteEligibility =
 export interface InvoicesGetInput {
   invoiceName: string;
 }
-export const InvoicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvoicesGetInput = /*@__PURE__*/ Schema.Struct({
   invoiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -11464,7 +11434,7 @@ export interface InvoicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const InvoicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvoicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11491,7 +11461,7 @@ export const InvoicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
-export const InvoicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvoicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvoicesGetInput,
   outputSchema: InvoicesGetOutput,
 }));
@@ -11501,7 +11471,7 @@ export interface InvoicesGetByBillingAccountInput {
   invoiceName: string;
 }
 export const InvoicesGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -11527,7 +11497,7 @@ export interface InvoicesGetByBillingAccountOutput {
   };
 }
 export const InvoicesGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11555,19 +11525,17 @@ export const InvoicesGetByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
-export const InvoicesGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvoicesGetByBillingAccountInput,
-    outputSchema: InvoicesGetByBillingAccountOutput,
-  }),
-);
+export const InvoicesGetByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvoicesGetByBillingAccountInput,
+  outputSchema: InvoicesGetByBillingAccountOutput,
+}));
 // Input Schema
 export interface InvoicesGetByBillingSubscriptionInput {
   subscriptionId: string;
   invoiceName: string;
 }
 export const InvoicesGetByBillingSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -11593,7 +11561,7 @@ export interface InvoicesGetByBillingSubscriptionOutput {
   };
 }
 export const InvoicesGetByBillingSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11622,7 +11590,7 @@ export const InvoicesGetByBillingSubscriptionOutput =
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
 export const InvoicesGetByBillingSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesGetByBillingSubscriptionInput,
     outputSchema: InvoicesGetByBillingSubscriptionOutput,
   }));
@@ -11639,7 +11607,7 @@ export interface InvoicesListByBillingAccountInput {
   search?: string;
 }
 export const InvoicesListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     periodStartDate: Schema.optional(Schema.String),
     periodEndDate: Schema.optional(Schema.String),
@@ -11675,7 +11643,7 @@ export interface InvoicesListByBillingAccountOutput {
   nextLink?: string;
 }
 export const InvoicesListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11726,7 +11694,7 @@ export const InvoicesListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const InvoicesListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesListByBillingAccountInput,
     outputSchema: InvoicesListByBillingAccountOutput,
   }));
@@ -11744,7 +11712,7 @@ export interface InvoicesListByBillingProfileInput {
   search?: string;
 }
 export const InvoicesListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     periodStartDate: Schema.optional(Schema.String),
@@ -11781,7 +11749,7 @@ export interface InvoicesListByBillingProfileOutput {
   nextLink?: string;
 }
 export const InvoicesListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11833,7 +11801,7 @@ export const InvoicesListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const InvoicesListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesListByBillingProfileInput,
     outputSchema: InvoicesListByBillingProfileOutput,
   }));
@@ -11850,7 +11818,7 @@ export interface InvoicesListByBillingSubscriptionInput {
   search?: string;
 }
 export const InvoicesListByBillingSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     periodStartDate: Schema.optional(Schema.String),
     periodEndDate: Schema.optional(Schema.String),
@@ -11886,7 +11854,7 @@ export interface InvoicesListByBillingSubscriptionOutput {
   nextLink?: string;
 }
 export const InvoicesListByBillingSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11937,15 +11905,13 @@ export const InvoicesListByBillingSubscriptionOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const InvoicesListByBillingSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InvoicesListByBillingSubscriptionInput,
     outputSchema: InvoicesListByBillingSubscriptionOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Billing/operations",
@@ -11967,7 +11933,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -11993,7 +11959,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -12005,7 +11971,7 @@ export interface PartnerTransfersCancelInput {
   transferName: string;
 }
 export const PartnerTransfersCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -12033,7 +11999,7 @@ export interface PartnerTransfersCancelOutput {
   };
 }
 export const PartnerTransfersCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12063,12 +12029,10 @@ export const PartnerTransfersCancelOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const PartnerTransfersCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTransfersCancelInput,
-    outputSchema: PartnerTransfersCancelOutput,
-  }),
-);
+export const PartnerTransfersCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTransfersCancelInput,
+  outputSchema: PartnerTransfersCancelOutput,
+}));
 // Input Schema
 export interface PartnerTransfersGetInput {
   billingAccountName: string;
@@ -12077,7 +12041,7 @@ export interface PartnerTransfersGetInput {
   transferName: string;
 }
 export const PartnerTransfersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -12105,7 +12069,7 @@ export interface PartnerTransfersGetOutput {
   };
 }
 export const PartnerTransfersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12135,7 +12099,7 @@ export const PartnerTransfersGetOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const PartnerTransfersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PartnerTransfersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartnerTransfersGetInput,
   outputSchema: PartnerTransfersGetOutput,
 }));
@@ -12148,7 +12112,7 @@ export interface PartnerTransfersInitiateInput {
   properties?: { recipientEmailId?: string; resellerId?: string };
 }
 export const PartnerTransfersInitiateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -12182,7 +12146,7 @@ export interface PartnerTransfersInitiateOutput {
   };
 }
 export const PartnerTransfersInitiateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12212,12 +12176,10 @@ export const PartnerTransfersInitiateOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const PartnerTransfersInitiate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTransfersInitiateInput,
-    outputSchema: PartnerTransfersInitiateOutput,
-  }),
-);
+export const PartnerTransfersInitiate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTransfersInitiateInput,
+  outputSchema: PartnerTransfersInitiateOutput,
+}));
 // Input Schema
 export interface PartnerTransfersListInput {
   billingAccountName: string;
@@ -12225,7 +12187,7 @@ export interface PartnerTransfersListInput {
   customerName: string;
 }
 export const PartnerTransfersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -12255,7 +12217,7 @@ export interface PartnerTransfersListOutput {
   nextLink?: string;
 }
 export const PartnerTransfersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12299,18 +12261,16 @@ export const PartnerTransfersListOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  * @param customerName - The ID that uniquely identifies a customer.
  */
-export const PartnerTransfersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTransfersListInput,
-    outputSchema: PartnerTransfersListOutput,
-  }),
-);
+export const PartnerTransfersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTransfersListInput,
+  outputSchema: PartnerTransfersListOutput,
+}));
 // Input Schema
 export interface PaymentMethodsDeleteByUserInput {
   paymentMethodName: string;
 }
 export const PaymentMethodsDeleteByUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentMethodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12323,7 +12283,7 @@ export const PaymentMethodsDeleteByUserInput =
 // Output Schema
 export type PaymentMethodsDeleteByUserOutput = void;
 export const PaymentMethodsDeleteByUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PaymentMethodsDeleteByUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PaymentMethodsDeleteByUserOutput>;
 
 // The operation
 /**
@@ -12332,19 +12292,17 @@ export const PaymentMethodsDeleteByUserOutput =
  * @param api-version - The API version to use for this operation.
  * @param paymentMethodName - The ID that uniquely identifies a payment method.
  */
-export const PaymentMethodsDeleteByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PaymentMethodsDeleteByUserInput,
-    outputSchema: PaymentMethodsDeleteByUserOutput,
-  }),
-);
+export const PaymentMethodsDeleteByUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PaymentMethodsDeleteByUserInput,
+  outputSchema: PaymentMethodsDeleteByUserOutput,
+}));
 // Input Schema
 export interface PaymentMethodsGetByBillingAccountInput {
   billingAccountName: string;
   paymentMethodName: string;
 }
 export const PaymentMethodsGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     paymentMethodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12370,7 +12328,7 @@ export interface PaymentMethodsGetByBillingAccountOutput {
   };
 }
 export const PaymentMethodsGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12399,7 +12357,7 @@ export const PaymentMethodsGetByBillingAccountOutput =
  * @param paymentMethodName - The ID that uniquely identifies a payment method.
  */
 export const PaymentMethodsGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PaymentMethodsGetByBillingAccountInput,
     outputSchema: PaymentMethodsGetByBillingAccountOutput,
   }));
@@ -12410,7 +12368,7 @@ export interface PaymentMethodsGetByBillingProfileInput {
   paymentMethodName: string;
 }
 export const PaymentMethodsGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     paymentMethodName: Schema.String.pipe(T.PathParam()),
@@ -12437,7 +12395,7 @@ export interface PaymentMethodsGetByBillingProfileOutput {
   };
 }
 export const PaymentMethodsGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12467,7 +12425,7 @@ export const PaymentMethodsGetByBillingProfileOutput =
  * @param paymentMethodName - The ID that uniquely identifies a payment method.
  */
 export const PaymentMethodsGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PaymentMethodsGetByBillingProfileInput,
     outputSchema: PaymentMethodsGetByBillingProfileOutput,
   }));
@@ -12476,7 +12434,7 @@ export interface PaymentMethodsGetByUserInput {
   paymentMethodName: string;
 }
 export const PaymentMethodsGetByUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentMethodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12501,7 +12459,7 @@ export interface PaymentMethodsGetByUserOutput {
   };
 }
 export const PaymentMethodsGetByUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12528,18 +12486,16 @@ export const PaymentMethodsGetByUserOutput =
  * @param api-version - The API version to use for this operation.
  * @param paymentMethodName - The ID that uniquely identifies a payment method.
  */
-export const PaymentMethodsGetByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PaymentMethodsGetByUserInput,
-    outputSchema: PaymentMethodsGetByUserOutput,
-  }),
-);
+export const PaymentMethodsGetByUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PaymentMethodsGetByUserInput,
+  outputSchema: PaymentMethodsGetByUserOutput,
+}));
 // Input Schema
 export interface PaymentMethodsListByBillingAccountInput {
   billingAccountName: string;
 }
 export const PaymentMethodsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12567,7 +12523,7 @@ export interface PaymentMethodsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const PaymentMethodsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12610,7 +12566,7 @@ export const PaymentMethodsListByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const PaymentMethodsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PaymentMethodsListByBillingAccountInput,
     outputSchema: PaymentMethodsListByBillingAccountOutput,
   }));
@@ -12620,7 +12576,7 @@ export interface PaymentMethodsListByBillingProfileInput {
   billingProfileName: string;
 }
 export const PaymentMethodsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12649,7 +12605,7 @@ export interface PaymentMethodsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const PaymentMethodsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12693,14 +12649,14 @@ export const PaymentMethodsListByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const PaymentMethodsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PaymentMethodsListByBillingProfileInput,
     outputSchema: PaymentMethodsListByBillingProfileOutput,
   }));
 // Input Schema
 export interface PaymentMethodsListByUserInput {}
 export const PaymentMethodsListByUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/paymentMethods",
@@ -12726,7 +12682,7 @@ export interface PaymentMethodsListByUserOutput {
   nextLink?: string;
 }
 export const PaymentMethodsListByUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12767,12 +12723,10 @@ export const PaymentMethodsListByUserOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const PaymentMethodsListByUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PaymentMethodsListByUserInput,
-    outputSchema: PaymentMethodsListByUserOutput,
-  }),
-);
+export const PaymentMethodsListByUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PaymentMethodsListByUserInput,
+  outputSchema: PaymentMethodsListByUserOutput,
+}));
 // Input Schema
 export interface PoliciesCreateOrUpdateByBillingAccountInput {
   billingAccountName: string;
@@ -12821,7 +12775,7 @@ export interface PoliciesCreateOrUpdateByBillingAccountInput {
   tags?: Record<string, string>;
 }
 export const PoliciesCreateOrUpdateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -12916,7 +12870,7 @@ export interface PoliciesCreateOrUpdateByBillingAccountOutput {
   };
 }
 export const PoliciesCreateOrUpdateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12944,7 +12898,7 @@ export const PoliciesCreateOrUpdateByBillingAccountOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
 export const PoliciesCreateOrUpdateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PoliciesCreateOrUpdateByBillingAccountInput,
     outputSchema: PoliciesCreateOrUpdateByBillingAccountOutput,
   }));
@@ -12999,7 +12953,7 @@ export interface PoliciesCreateOrUpdateByBillingProfileInput {
   tags?: Record<string, string>;
 }
 export const PoliciesCreateOrUpdateByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -13101,7 +13055,7 @@ export interface PoliciesCreateOrUpdateByBillingProfileOutput {
   };
 }
 export const PoliciesCreateOrUpdateByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13130,7 +13084,7 @@ export const PoliciesCreateOrUpdateByBillingProfileOutput =
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
 export const PoliciesCreateOrUpdateByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PoliciesCreateOrUpdateByBillingProfileInput,
     outputSchema: PoliciesCreateOrUpdateByBillingProfileOutput,
   }));
@@ -13163,7 +13117,7 @@ export interface PoliciesCreateOrUpdateByCustomerInput {
   tags?: Record<string, string>;
 }
 export const PoliciesCreateOrUpdateByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -13227,7 +13181,7 @@ export interface PoliciesCreateOrUpdateByCustomerOutput {
   };
 }
 export const PoliciesCreateOrUpdateByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13257,7 +13211,7 @@ export const PoliciesCreateOrUpdateByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const PoliciesCreateOrUpdateByCustomer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PoliciesCreateOrUpdateByCustomerInput,
     outputSchema: PoliciesCreateOrUpdateByCustomerOutput,
   }));
@@ -13289,7 +13243,7 @@ export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountInput {
   tags?: Record<string, string>;
 }
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -13352,7 +13306,7 @@ export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountOutput {
   };
 }
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13381,7 +13335,7 @@ export const PoliciesCreateOrUpdateByCustomerAtBillingAccountOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PoliciesCreateOrUpdateByCustomerAtBillingAccountInput,
     outputSchema: PoliciesCreateOrUpdateByCustomerAtBillingAccountOutput,
   }));
@@ -13390,7 +13344,7 @@ export interface PoliciesGetByBillingAccountInput {
   billingAccountName: string;
 }
 export const PoliciesGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -13415,7 +13369,7 @@ export interface PoliciesGetByBillingAccountOutput {
   };
 }
 export const PoliciesGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13442,19 +13396,17 @@ export const PoliciesGetByBillingAccountOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  */
-export const PoliciesGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesGetByBillingAccountInput,
-    outputSchema: PoliciesGetByBillingAccountOutput,
-  }),
-);
+export const PoliciesGetByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesGetByBillingAccountInput,
+  outputSchema: PoliciesGetByBillingAccountOutput,
+}));
 // Input Schema
 export interface PoliciesGetByBillingProfileInput {
   billingAccountName: string;
   billingProfileName: string;
 }
 export const PoliciesGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -13480,7 +13432,7 @@ export interface PoliciesGetByBillingProfileOutput {
   };
 }
 export const PoliciesGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13508,12 +13460,10 @@ export const PoliciesGetByBillingProfileOutput =
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  */
-export const PoliciesGetByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesGetByBillingProfileInput,
-    outputSchema: PoliciesGetByBillingProfileOutput,
-  }),
-);
+export const PoliciesGetByBillingProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesGetByBillingProfileInput,
+  outputSchema: PoliciesGetByBillingProfileOutput,
+}));
 // Input Schema
 export interface PoliciesGetByCustomerInput {
   billingAccountName: string;
@@ -13522,7 +13472,7 @@ export interface PoliciesGetByCustomerInput {
   policyName: "default";
 }
 export const PoliciesGetByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -13550,7 +13500,7 @@ export interface PoliciesGetByCustomerOutput {
   };
 }
 export const PoliciesGetByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13580,19 +13530,17 @@ export const PoliciesGetByCustomerOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  * @param policyName - Service-defined resource names such as 'default' which are reserved resource names.
  */
-export const PoliciesGetByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesGetByCustomerInput,
-    outputSchema: PoliciesGetByCustomerOutput,
-  }),
-);
+export const PoliciesGetByCustomer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesGetByCustomerInput,
+  outputSchema: PoliciesGetByCustomerOutput,
+}));
 // Input Schema
 export interface PoliciesGetByCustomerAtBillingAccountInput {
   billingAccountName: string;
   customerName: string;
 }
 export const PoliciesGetByCustomerAtBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -13618,7 +13566,7 @@ export interface PoliciesGetByCustomerAtBillingAccountOutput {
   };
 }
 export const PoliciesGetByCustomerAtBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13647,7 +13595,7 @@ export const PoliciesGetByCustomerAtBillingAccountOutput =
  * @param customerName - The ID that uniquely identifies a customer.
  */
 export const PoliciesGetByCustomerAtBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PoliciesGetByCustomerAtBillingAccountInput,
     outputSchema: PoliciesGetByCustomerAtBillingAccountOutput,
   }));
@@ -13656,7 +13604,7 @@ export interface PoliciesGetBySubscriptionInput {
   subscriptionId: string;
 }
 export const PoliciesGetBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -13681,7 +13629,7 @@ export interface PoliciesGetBySubscriptionOutput {
   };
 }
 export const PoliciesGetBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13708,18 +13656,16 @@ export const PoliciesGetBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const PoliciesGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesGetBySubscriptionInput,
-    outputSchema: PoliciesGetBySubscriptionOutput,
-  }),
-);
+export const PoliciesGetBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesGetBySubscriptionInput,
+  outputSchema: PoliciesGetBySubscriptionOutput,
+}));
 // Input Schema
 export interface ProductsGetInput {
   billingAccountName: string;
   productName: string;
 }
-export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -13744,7 +13690,7 @@ export interface ProductsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13772,7 +13718,7 @@ export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param productName - The ID that uniquely identifies a product.
  */
-export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetInput,
   outputSchema: ProductsGetOutput,
 }));
@@ -13787,7 +13733,7 @@ export interface ProductsListByBillingAccountInput {
   search?: string;
 }
 export const ProductsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -13821,7 +13767,7 @@ export interface ProductsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const ProductsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13870,7 +13816,7 @@ export const ProductsListByBillingAccountOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const ProductsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsListByBillingAccountInput,
     outputSchema: ProductsListByBillingAccountOutput,
   }));
@@ -13886,7 +13832,7 @@ export interface ProductsListByBillingProfileInput {
   search?: string;
 }
 export const ProductsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -13921,7 +13867,7 @@ export interface ProductsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const ProductsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13971,7 +13917,7 @@ export const ProductsListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const ProductsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsListByBillingProfileInput,
     outputSchema: ProductsListByBillingProfileOutput,
   }));
@@ -13987,7 +13933,7 @@ export interface ProductsListByCustomerInput {
   search?: string;
 }
 export const ProductsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -14022,7 +13968,7 @@ export interface ProductsListByCustomerOutput {
   nextLink?: string;
 }
 export const ProductsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14071,12 +14017,10 @@ export const ProductsListByCustomerOutput =
  * @param count - The count query option allows clients to request a count of the matching resources included with the resources in the response.
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
-export const ProductsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsListByCustomerInput,
-    outputSchema: ProductsListByCustomerOutput,
-  }),
-);
+export const ProductsListByCustomer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsListByCustomerInput,
+  outputSchema: ProductsListByCustomerOutput,
+}));
 // Input Schema
 export interface ProductsListByInvoiceSectionInput {
   billingAccountName: string;
@@ -14090,7 +14034,7 @@ export interface ProductsListByInvoiceSectionInput {
   search?: string;
 }
 export const ProductsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -14126,7 +14070,7 @@ export interface ProductsListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const ProductsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14177,7 +14121,7 @@ export const ProductsListByInvoiceSectionOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const ProductsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsListByInvoiceSectionInput,
     outputSchema: ProductsListByInvoiceSectionOutput,
   }));
@@ -14187,7 +14131,7 @@ export interface ProductsMoveInput {
   productName: string;
   destinationInvoiceSectionId: string;
 }
-export const ProductsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsMoveInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
   destinationInvoiceSectionId: Schema.String,
@@ -14213,7 +14157,7 @@ export interface ProductsMoveOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProductsMoveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsMoveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14241,7 +14185,7 @@ export const ProductsMoveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param productName - The ID that uniquely identifies a product.
  */
-export const ProductsMove = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsMove = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsMoveInput,
   outputSchema: ProductsMoveOutput,
 }));
@@ -14285,7 +14229,7 @@ export interface ProductsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsUpdateInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -14360,7 +14304,7 @@ export interface ProductsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14388,7 +14332,7 @@ export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountName - The ID that uniquely identifies a billing account.
  * @param productName - The ID that uniquely identifies a product.
  */
-export const ProductsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsUpdateInput,
   outputSchema: ProductsUpdateOutput,
 }));
@@ -14399,7 +14343,7 @@ export interface ProductsValidateMoveEligibilityInput {
   destinationInvoiceSectionId: string;
 }
 export const ProductsValidateMoveEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     destinationInvoiceSectionId: Schema.String,
@@ -14438,7 +14382,7 @@ export interface ProductsValidateMoveEligibilityOutput {
   };
 }
 export const ProductsValidateMoveEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isMoveEligible: Schema.optional(Schema.Boolean),
     errorDetails: Schema.optional(
       Schema.Struct({
@@ -14478,7 +14422,7 @@ export const ProductsValidateMoveEligibilityOutput =
  * @param productName - The ID that uniquely identifies a product.
  */
 export const ProductsValidateMoveEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsValidateMoveEligibilityInput,
     outputSchema: ProductsValidateMoveEligibilityOutput,
   }));
@@ -14498,7 +14442,7 @@ export interface RecipientTransfersAcceptInput {
   };
 }
 export const RecipientTransfersAcceptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -14543,7 +14487,7 @@ export interface RecipientTransfersAcceptOutput {
   };
 }
 export const RecipientTransfersAcceptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14570,18 +14514,16 @@ export const RecipientTransfersAcceptOutput =
  * @param api-version - The API version to use for this operation.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const RecipientTransfersAccept = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecipientTransfersAcceptInput,
-    outputSchema: RecipientTransfersAcceptOutput,
-  }),
-);
+export const RecipientTransfersAccept = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecipientTransfersAcceptInput,
+  outputSchema: RecipientTransfersAcceptOutput,
+}));
 // Input Schema
 export interface RecipientTransfersDeclineInput {
   transferName: string;
 }
 export const RecipientTransfersDeclineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -14606,7 +14548,7 @@ export interface RecipientTransfersDeclineOutput {
   };
 }
 export const RecipientTransfersDeclineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14633,18 +14575,16 @@ export const RecipientTransfersDeclineOutput =
  * @param api-version - The API version to use for this operation.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const RecipientTransfersDecline = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecipientTransfersDeclineInput,
-    outputSchema: RecipientTransfersDeclineOutput,
-  }),
-);
+export const RecipientTransfersDecline = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecipientTransfersDeclineInput,
+  outputSchema: RecipientTransfersDeclineOutput,
+}));
 // Input Schema
 export interface RecipientTransfersGetInput {
   transferName: string;
 }
 export const RecipientTransfersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -14669,7 +14609,7 @@ export interface RecipientTransfersGetOutput {
   };
 }
 export const RecipientTransfersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14696,16 +14636,14 @@ export const RecipientTransfersGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const RecipientTransfersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecipientTransfersGetInput,
-    outputSchema: RecipientTransfersGetOutput,
-  }),
-);
+export const RecipientTransfersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecipientTransfersGetInput,
+  outputSchema: RecipientTransfersGetOutput,
+}));
 // Input Schema
 export interface RecipientTransfersListInput {}
 export const RecipientTransfersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/transfers",
@@ -14731,7 +14669,7 @@ export interface RecipientTransfersListOutput {
   nextLink?: string;
 }
 export const RecipientTransfersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14772,12 +14710,10 @@ export const RecipientTransfersListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const RecipientTransfersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecipientTransfersListInput,
-    outputSchema: RecipientTransfersListOutput,
-  }),
-);
+export const RecipientTransfersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecipientTransfersListInput,
+  outputSchema: RecipientTransfersListOutput,
+}));
 // Input Schema
 export interface RecipientTransfersValidateInput {
   transferName: string;
@@ -14794,7 +14730,7 @@ export interface RecipientTransfersValidateInput {
   };
 }
 export const RecipientTransfersValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -14835,7 +14771,7 @@ export interface RecipientTransfersValidateOutput {
   }[];
 }
 export const RecipientTransfersValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14866,12 +14802,10 @@ export const RecipientTransfersValidateOutput =
  * @param api-version - The API version to use for this operation.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const RecipientTransfersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecipientTransfersValidateInput,
-    outputSchema: RecipientTransfersValidateOutput,
-  }),
-);
+export const RecipientTransfersValidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecipientTransfersValidateInput,
+  outputSchema: RecipientTransfersValidateOutput,
+}));
 // Input Schema
 export interface ReservationOrdersGetByBillingAccountInput {
   billingAccountName: string;
@@ -14879,7 +14813,7 @@ export interface ReservationOrdersGetByBillingAccountInput {
   expand?: string;
 }
 export const ReservationOrdersGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -14906,7 +14840,7 @@ export interface ReservationOrdersGetByBillingAccountOutput {
   };
 }
 export const ReservationOrdersGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14938,7 +14872,7 @@ export const ReservationOrdersGetByBillingAccountOutput =
  * @param expand - May be used to expand the detail information of some properties.
  */
 export const ReservationOrdersGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationOrdersGetByBillingAccountInput,
     outputSchema: ReservationOrdersGetByBillingAccountOutput,
   }));
@@ -14950,7 +14884,7 @@ export interface ReservationOrdersListByBillingAccountInput {
   skiptoken?: number;
 }
 export const ReservationOrdersListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -14981,7 +14915,7 @@ export interface ReservationOrdersListByBillingAccountOutput {
   nextLink?: string;
 }
 export const ReservationOrdersListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -15029,7 +14963,7 @@ export const ReservationOrdersListByBillingAccountOutput =
  * @param skiptoken - The number of reservations to skip from the list before returning results
  */
 export const ReservationOrdersListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationOrdersListByBillingAccountInput,
     outputSchema: ReservationOrdersListByBillingAccountOutput,
   }));
@@ -15041,7 +14975,7 @@ export interface ReservationsGetByReservationOrderInput {
   expand?: string;
 }
 export const ReservationsGetByReservationOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
@@ -15069,7 +15003,7 @@ export interface ReservationsGetByReservationOrderOutput {
   };
 }
 export const ReservationsGetByReservationOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15102,7 +15036,7 @@ export const ReservationsGetByReservationOrderOutput =
  * @param expand - May be used to expand the detail information of some properties.
  */
 export const ReservationsGetByReservationOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsGetByReservationOrderInput,
     outputSchema: ReservationsGetByReservationOrderOutput,
   }));
@@ -15117,7 +15051,7 @@ export interface ReservationsListByBillingAccountInput {
   take?: number;
 }
 export const ReservationsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -15162,7 +15096,7 @@ export interface ReservationsListByBillingAccountOutput {
   }[];
 }
 export const ReservationsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     summary: Schema.optional(
       Schema.Struct({
@@ -15226,7 +15160,7 @@ export const ReservationsListByBillingAccountOutput =
  * @param take - The number of reservations to return in API response.
  */
 export const ReservationsListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsListByBillingAccountInput,
     outputSchema: ReservationsListByBillingAccountOutput,
   }));
@@ -15242,7 +15176,7 @@ export interface ReservationsListByBillingProfileInput {
   take?: number;
 }
 export const ReservationsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -15288,7 +15222,7 @@ export interface ReservationsListByBillingProfileOutput {
   }[];
 }
 export const ReservationsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     summary: Schema.optional(
       Schema.Struct({
@@ -15353,7 +15287,7 @@ export const ReservationsListByBillingProfileOutput =
  * @param take - The number of reservations to return in API response.
  */
 export const ReservationsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsListByBillingProfileInput,
     outputSchema: ReservationsListByBillingProfileOutput,
   }));
@@ -15363,7 +15297,7 @@ export interface ReservationsListByReservationOrderInput {
   reservationOrderId: string;
 }
 export const ReservationsListByReservationOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -15392,7 +15326,7 @@ export interface ReservationsListByReservationOrderOutput {
   nextLink?: string;
 }
 export const ReservationsListByReservationOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -15438,7 +15372,7 @@ export const ReservationsListByReservationOrderOutput =
  * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationsListByReservationOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsListByReservationOrderInput,
     outputSchema: ReservationsListByReservationOrderOutput,
   }));
@@ -15492,7 +15426,7 @@ export interface ReservationsUpdateByBillingAccountInput {
   tags?: Record<string, string>;
 }
 export const ReservationsUpdateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
@@ -15596,7 +15530,7 @@ export interface ReservationsUpdateByBillingAccountOutput {
   };
 }
 export const ReservationsUpdateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15626,7 +15560,7 @@ export const ReservationsUpdateByBillingAccountOutput =
  * @param reservationId - Id of the reservation item
  */
 export const ReservationsUpdateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsUpdateByBillingAccountInput,
     outputSchema: ReservationsUpdateByBillingAccountOutput,
   }));
@@ -15637,7 +15571,7 @@ export interface SavingsPlanOrdersGetByBillingAccountInput {
   expand?: string;
 }
 export const SavingsPlanOrdersGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -15664,7 +15598,7 @@ export interface SavingsPlanOrdersGetByBillingAccountOutput {
   };
 }
 export const SavingsPlanOrdersGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15694,7 +15628,7 @@ export const SavingsPlanOrdersGetByBillingAccountOutput =
  * @param expand - May be used to expand the planInformation.
  */
 export const SavingsPlanOrdersGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlanOrdersGetByBillingAccountInput,
     outputSchema: SavingsPlanOrdersGetByBillingAccountOutput,
   }));
@@ -15706,7 +15640,7 @@ export interface SavingsPlanOrdersListByBillingAccountInput {
   skiptoken?: number;
 }
 export const SavingsPlanOrdersListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -15737,7 +15671,7 @@ export interface SavingsPlanOrdersListByBillingAccountOutput {
   nextLink?: string;
 }
 export const SavingsPlanOrdersListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -15783,7 +15717,7 @@ export const SavingsPlanOrdersListByBillingAccountOutput =
  * @param skiptoken - The number of savings plans to skip from the list before returning results
  */
 export const SavingsPlanOrdersListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlanOrdersListByBillingAccountInput,
     outputSchema: SavingsPlanOrdersListByBillingAccountOutput,
   }));
@@ -15795,7 +15729,7 @@ export interface SavingsPlansGetByBillingAccountInput {
   expand?: string;
 }
 export const SavingsPlansGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
@@ -15823,7 +15757,7 @@ export interface SavingsPlansGetByBillingAccountOutput {
   };
 }
 export const SavingsPlansGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15854,7 +15788,7 @@ export const SavingsPlansGetByBillingAccountOutput =
  * @param expand - May be used to expand the planInformation.
  */
 export const SavingsPlansGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlansGetByBillingAccountInput,
     outputSchema: SavingsPlansGetByBillingAccountOutput,
   }));
@@ -15869,7 +15803,7 @@ export interface SavingsPlansListByBillingAccountInput {
   refreshSummary?: string;
 }
 export const SavingsPlansListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -15903,7 +15837,7 @@ export interface SavingsPlansListByBillingAccountOutput {
   nextLink?: string;
 }
 export const SavingsPlansListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -15952,7 +15886,7 @@ export const SavingsPlansListByBillingAccountOutput =
  * @param refreshSummary - To indicate whether to refresh the roll up counts of the savings plans group by provisioning states
  */
 export const SavingsPlansListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlansListByBillingAccountInput,
     outputSchema: SavingsPlansListByBillingAccountOutput,
   }));
@@ -15962,7 +15896,7 @@ export interface SavingsPlansListBySavingsPlanOrderInput {
   savingsPlanOrderId: string;
 }
 export const SavingsPlansListBySavingsPlanOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -15991,7 +15925,7 @@ export interface SavingsPlansListBySavingsPlanOrderOutput {
   nextLink?: string;
 }
 export const SavingsPlansListBySavingsPlanOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16035,7 +15969,7 @@ export const SavingsPlansListBySavingsPlanOrderOutput =
  * @param savingsPlanOrderId - Order ID of the savings plan
  */
 export const SavingsPlansListBySavingsPlanOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlansListBySavingsPlanOrderInput,
     outputSchema: SavingsPlansListBySavingsPlanOrderOutput,
   }));
@@ -16081,7 +16015,7 @@ export interface SavingsPlansUpdateByBillingAccountInput {
   tags?: Record<string, string>;
 }
 export const SavingsPlansUpdateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
@@ -16174,7 +16108,7 @@ export interface SavingsPlansUpdateByBillingAccountOutput {
   };
 }
 export const SavingsPlansUpdateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16204,7 +16138,7 @@ export const SavingsPlansUpdateByBillingAccountOutput =
  * @param savingsPlanId - ID of the savings plan
  */
 export const SavingsPlansUpdateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlansUpdateByBillingAccountInput,
     outputSchema: SavingsPlansUpdateByBillingAccountOutput,
   }));
@@ -16248,7 +16182,7 @@ export interface SavingsPlansValidateUpdateByBillingAccountInput {
   }[];
 }
 export const SavingsPlansValidateUpdateByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
     savingsPlanId: Schema.String.pipe(T.PathParam()),
@@ -16332,7 +16266,7 @@ export interface SavingsPlansValidateUpdateByBillingAccountOutput {
   nextLink?: string;
 }
 export const SavingsPlansValidateUpdateByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     benefits: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -16355,7 +16289,7 @@ export const SavingsPlansValidateUpdateByBillingAccountOutput =
  * @param savingsPlanId - ID of the savings plan
  */
 export const SavingsPlansValidateUpdateByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SavingsPlansValidateUpdateByBillingAccountInput,
     outputSchema: SavingsPlansValidateUpdateByBillingAccountOutput,
   }));
@@ -16367,7 +16301,7 @@ export interface TransactionsGetTransactionSummaryByInvoiceInput {
   search?: string;
 }
 export const TransactionsGetTransactionSummaryByInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -16390,7 +16324,7 @@ export interface TransactionsGetTransactionSummaryByInvoiceOutput {
   total?: number;
 }
 export const TransactionsGetTransactionSummaryByInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     azureCreditApplied: Schema.optional(Schema.Number),
     billingCurrency: Schema.optional(Schema.String),
     consumptionCommitmentDecremented: Schema.optional(Schema.Number),
@@ -16410,7 +16344,7 @@ export const TransactionsGetTransactionSummaryByInvoiceOutput =
  * @param search - The search query option allows clients to filter the line items that are aggregated to create the line item summary.
  */
 export const TransactionsGetTransactionSummaryByInvoice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransactionsGetTransactionSummaryByInvoiceInput,
     outputSchema: TransactionsGetTransactionSummaryByInvoiceOutput,
   }));
@@ -16429,7 +16363,7 @@ export interface TransactionsListByBillingProfileInput {
   search?: string;
 }
 export const TransactionsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     periodStartDate: Schema.String,
@@ -16467,7 +16401,7 @@ export interface TransactionsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const TransactionsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16520,7 +16454,7 @@ export const TransactionsListByBillingProfileOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const TransactionsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransactionsListByBillingProfileInput,
     outputSchema: TransactionsListByBillingProfileOutput,
   }));
@@ -16540,7 +16474,7 @@ export interface TransactionsListByCustomerInput {
   search?: string;
 }
 export const TransactionsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     customerName: Schema.String.pipe(T.PathParam()),
@@ -16579,7 +16513,7 @@ export interface TransactionsListByCustomerOutput {
   nextLink?: string;
 }
 export const TransactionsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16632,12 +16566,10 @@ export const TransactionsListByCustomerOutput =
  * @param count - The count query option allows clients to request a count of the matching resources included with the resources in the response.
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
-export const TransactionsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TransactionsListByCustomerInput,
-    outputSchema: TransactionsListByCustomerOutput,
-  }),
-);
+export const TransactionsListByCustomer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransactionsListByCustomerInput,
+  outputSchema: TransactionsListByCustomerOutput,
+}));
 // Input Schema
 export interface TransactionsListByInvoiceInput {
   billingAccountName: string;
@@ -16650,7 +16582,7 @@ export interface TransactionsListByInvoiceInput {
   search?: string;
 }
 export const TransactionsListByInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
@@ -16685,7 +16617,7 @@ export interface TransactionsListByInvoiceOutput {
   nextLink?: string;
 }
 export const TransactionsListByInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16734,12 +16666,10 @@ export const TransactionsListByInvoiceOutput =
  * @param count - The count query option allows clients to request a count of the matching resources included with the resources in the response.
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
-export const TransactionsListByInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TransactionsListByInvoiceInput,
-    outputSchema: TransactionsListByInvoiceOutput,
-  }),
-);
+export const TransactionsListByInvoice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TransactionsListByInvoiceInput,
+  outputSchema: TransactionsListByInvoiceOutput,
+}));
 // Input Schema
 export interface TransactionsListByInvoiceSectionInput {
   billingAccountName: string;
@@ -16756,7 +16686,7 @@ export interface TransactionsListByInvoiceSectionInput {
   search?: string;
 }
 export const TransactionsListByInvoiceSectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     billingProfileName: Schema.String.pipe(T.PathParam()),
     invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -16795,7 +16725,7 @@ export interface TransactionsListByInvoiceSectionOutput {
   nextLink?: string;
 }
 export const TransactionsListByInvoiceSectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16849,7 +16779,7 @@ export const TransactionsListByInvoiceSectionOutput =
  * @param search - The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields.
  */
 export const TransactionsListByInvoiceSection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransactionsListByInvoiceSectionInput,
     outputSchema: TransactionsListByInvoiceSectionOutput,
   }));
@@ -16859,7 +16789,7 @@ export interface TransactionsTransactionsDownloadByInvoiceInput {
   invoiceName: string;
 }
 export const TransactionsTransactionsDownloadByInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),
     invoiceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -16876,7 +16806,7 @@ export interface TransactionsTransactionsDownloadByInvoiceOutput {
   url?: string;
 }
 export const TransactionsTransactionsDownloadByInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<TransactionsTransactionsDownloadByInvoiceOutput>;
@@ -16890,7 +16820,7 @@ export const TransactionsTransactionsDownloadByInvoiceOutput =
  * @param invoiceName - The ID that uniquely identifies an invoice.
  */
 export const TransactionsTransactionsDownloadByInvoice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransactionsTransactionsDownloadByInvoiceInput,
     outputSchema: TransactionsTransactionsDownloadByInvoiceOutput,
   }));
@@ -16901,7 +16831,7 @@ export interface TransfersCancelInput {
   invoiceSectionName: string;
   transferName: string;
 }
-export const TransfersCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersCancelInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -16928,7 +16858,7 @@ export interface TransfersCancelOutput {
     lastModifiedAt?: string;
   };
 }
-export const TransfersCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersCancelOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -16958,7 +16888,7 @@ export const TransfersCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const TransfersCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransfersCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransfersCancelInput,
   outputSchema: TransfersCancelOutput,
 }));
@@ -16969,7 +16899,7 @@ export interface TransfersGetInput {
   invoiceSectionName: string;
   transferName: string;
 }
-export const TransfersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -16996,7 +16926,7 @@ export interface TransfersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TransfersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17026,7 +16956,7 @@ export const TransfersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const TransfersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransfersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransfersGetInput,
   outputSchema: TransfersGetOutput,
 }));
@@ -17038,19 +16968,17 @@ export interface TransfersInitiateInput {
   transferName: string;
   properties?: { recipientEmailId?: string };
 }
-export const TransfersInitiateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    billingAccountName: Schema.String.pipe(T.PathParam()),
-    billingProfileName: Schema.String.pipe(T.PathParam()),
-    invoiceSectionName: Schema.String.pipe(T.PathParam()),
-    transferName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        recipientEmailId: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+export const TransfersInitiateInput = /*@__PURE__*/ Schema.Struct({
+  billingAccountName: Schema.String.pipe(T.PathParam()),
+  billingProfileName: Schema.String.pipe(T.PathParam()),
+  invoiceSectionName: Schema.String.pipe(T.PathParam()),
+  transferName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      recipientEmailId: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers/{transferName}",
@@ -17073,7 +17001,7 @@ export interface TransfersInitiateOutput {
   };
 }
 export const TransfersInitiateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17103,7 +17031,7 @@ export const TransfersInitiateOutput =
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  * @param transferName - The ID that uniquely identifies a transfer request.
  */
-export const TransfersInitiate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransfersInitiate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransfersInitiateInput,
   outputSchema: TransfersInitiateOutput,
 }));
@@ -17113,7 +17041,7 @@ export interface TransfersListInput {
   billingProfileName: string;
   invoiceSectionName: string;
 }
-export const TransfersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersListInput = /*@__PURE__*/ Schema.Struct({
   billingAccountName: Schema.String.pipe(T.PathParam()),
   billingProfileName: Schema.String.pipe(T.PathParam()),
   invoiceSectionName: Schema.String.pipe(T.PathParam()),
@@ -17142,7 +17070,7 @@ export interface TransfersListOutput {
   }[];
   nextLink?: string;
 }
-export const TransfersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TransfersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -17176,7 +17104,7 @@ export const TransfersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingProfileName - The ID that uniquely identifies a billing profile.
  * @param invoiceSectionName - The ID that uniquely identifies an invoice section.
  */
-export const TransfersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TransfersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TransfersListInput,
   outputSchema: TransfersListOutput,
 }));

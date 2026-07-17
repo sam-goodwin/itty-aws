@@ -32,7 +32,7 @@ export interface LocalizedString {
 }
 
 export const LocalizedString: Schema.Codec<LocalizedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface LocalizedStringBundle {
 }
 
 export const LocalizedStringBundle: Schema.Codec<LocalizedStringBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     translations: Schema.optional(Schema.Array(LocalizedString)),
   }).annotate({ identifier: "LocalizedStringBundle" });
@@ -67,7 +67,7 @@ export interface AchievementConfigurationDetail {
 }
 
 export const AchievementConfigurationDetail: Schema.Codec<AchievementConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedStringBundle),
     description: Schema.optional(LocalizedStringBundle),
@@ -104,7 +104,7 @@ export interface AchievementConfiguration {
 }
 
 export const AchievementConfiguration: Schema.Codec<AchievementConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface AchievementConfigurationListResponse {
 }
 
 export const AchievementConfigurationListResponse: Schema.Codec<AchievementConfigurationListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(AchievementConfiguration)),
     nextPageToken: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface GamesNumberAffixConfiguration {
 }
 
 export const GamesNumberAffixConfiguration: Schema.Codec<GamesNumberAffixConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zero: Schema.optional(LocalizedStringBundle),
     one: Schema.optional(LocalizedStringBundle),
     two: Schema.optional(LocalizedStringBundle),
@@ -173,7 +173,7 @@ export interface GamesNumberFormatConfiguration {
 }
 
 export const GamesNumberFormatConfiguration: Schema.Codec<GamesNumberFormatConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numberFormatType: Schema.optional(Schema.String),
     suffix: Schema.optional(GamesNumberAffixConfiguration),
     numDecimalPlaces: Schema.optional(Schema.Number),
@@ -194,7 +194,7 @@ export interface LeaderboardConfigurationDetail {
 }
 
 export const LeaderboardConfigurationDetail: Schema.Codec<LeaderboardConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedStringBundle),
     iconUrl: Schema.optional(Schema.String),
@@ -225,7 +225,7 @@ export interface LeaderboardConfiguration {
 }
 
 export const LeaderboardConfiguration: Schema.Codec<LeaderboardConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export interface LeaderboardConfigurationListResponse {
 }
 
 export const LeaderboardConfigurationListResponse: Schema.Codec<LeaderboardConfigurationListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(LeaderboardConfiguration)),
     nextPageToken: Schema.optional(Schema.String),
@@ -312,7 +312,7 @@ export interface DeleteAchievementConfigurationsRequest {
 }
 
 export const DeleteAchievementConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     achievementId: Schema.String.pipe(T.HttpPath("achievementId")),
   }).pipe(
     T.Http({
@@ -324,7 +324,7 @@ export const DeleteAchievementConfigurationsRequest =
 
 export interface DeleteAchievementConfigurationsResponse {}
 export const DeleteAchievementConfigurationsResponse: Schema.Codec<DeleteAchievementConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAchievementConfigurationsResponse>;
 
@@ -341,7 +341,7 @@ export const deleteAchievementConfigurations: API.OperationMethod<
   DeleteAchievementConfigurationsResponse,
   DeleteAchievementConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAchievementConfigurationsRequest,
   output: DeleteAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -353,7 +353,7 @@ export interface GetAchievementConfigurationsRequest {
 }
 
 export const GetAchievementConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     achievementId: Schema.String.pipe(T.HttpPath("achievementId")),
   }).pipe(
     T.Http({
@@ -365,7 +365,7 @@ export const GetAchievementConfigurationsRequest =
 
 export type GetAchievementConfigurationsResponse = AchievementConfiguration;
 export const GetAchievementConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
+  /*@__PURE__*/ AchievementConfiguration;
 
 export type GetAchievementConfigurationsError =
   | DefaultErrors
@@ -378,7 +378,7 @@ export const getAchievementConfigurations: API.OperationMethod<
   GetAchievementConfigurationsResponse,
   GetAchievementConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAchievementConfigurationsRequest,
   output: GetAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -392,7 +392,7 @@ export interface InsertAchievementConfigurationsRequest {
 }
 
 export const InsertAchievementConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     body: Schema.optional(AchievementConfiguration).pipe(T.HttpBody()),
   }).pipe(
@@ -406,7 +406,7 @@ export const InsertAchievementConfigurationsRequest =
 
 export type InsertAchievementConfigurationsResponse = AchievementConfiguration;
 export const InsertAchievementConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
+  /*@__PURE__*/ AchievementConfiguration;
 
 export type InsertAchievementConfigurationsError =
   | DefaultErrors
@@ -421,7 +421,7 @@ export const insertAchievementConfigurations: API.OperationMethod<
   InsertAchievementConfigurationsResponse,
   InsertAchievementConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAchievementConfigurationsRequest,
   output: InsertAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -437,7 +437,7 @@ export interface ListAchievementConfigurationsRequest {
 }
 
 export const ListAchievementConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -452,7 +452,7 @@ export const ListAchievementConfigurationsRequest =
 export type ListAchievementConfigurationsResponse =
   AchievementConfigurationListResponse;
 export const ListAchievementConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementConfigurationListResponse;
+  /*@__PURE__*/ AchievementConfigurationListResponse;
 
 export type ListAchievementConfigurationsError =
   | DefaultErrors
@@ -465,7 +465,7 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
   ListAchievementConfigurationsResponse,
   ListAchievementConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementConfigurationsRequest,
   output: ListAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -484,7 +484,7 @@ export interface UpdateAchievementConfigurationsRequest {
 }
 
 export const UpdateAchievementConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     achievementId: Schema.String.pipe(T.HttpPath("achievementId")),
     body: Schema.optional(AchievementConfiguration).pipe(T.HttpBody()),
   }).pipe(
@@ -498,7 +498,7 @@ export const UpdateAchievementConfigurationsRequest =
 
 export type UpdateAchievementConfigurationsResponse = AchievementConfiguration;
 export const UpdateAchievementConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
+  /*@__PURE__*/ AchievementConfiguration;
 
 export type UpdateAchievementConfigurationsError =
   | DefaultErrors
@@ -513,7 +513,7 @@ export const updateAchievementConfigurations: API.OperationMethod<
   UpdateAchievementConfigurationsResponse,
   UpdateAchievementConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAchievementConfigurationsRequest,
   output: UpdateAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -525,7 +525,7 @@ export interface DeleteLeaderboardConfigurationsRequest {
 }
 
 export const DeleteLeaderboardConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leaderboardId: Schema.String.pipe(T.HttpPath("leaderboardId")),
   }).pipe(
     T.Http({
@@ -537,7 +537,7 @@ export const DeleteLeaderboardConfigurationsRequest =
 
 export interface DeleteLeaderboardConfigurationsResponse {}
 export const DeleteLeaderboardConfigurationsResponse: Schema.Codec<DeleteLeaderboardConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteLeaderboardConfigurationsResponse>;
 
@@ -554,7 +554,7 @@ export const deleteLeaderboardConfigurations: API.OperationMethod<
   DeleteLeaderboardConfigurationsResponse,
   DeleteLeaderboardConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLeaderboardConfigurationsRequest,
   output: DeleteLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -566,7 +566,7 @@ export interface GetLeaderboardConfigurationsRequest {
 }
 
 export const GetLeaderboardConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leaderboardId: Schema.String.pipe(T.HttpPath("leaderboardId")),
   }).pipe(
     T.Http({
@@ -578,7 +578,7 @@ export const GetLeaderboardConfigurationsRequest =
 
 export type GetLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const GetLeaderboardConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
+  /*@__PURE__*/ LeaderboardConfiguration;
 
 export type GetLeaderboardConfigurationsError =
   | DefaultErrors
@@ -591,7 +591,7 @@ export const getLeaderboardConfigurations: API.OperationMethod<
   GetLeaderboardConfigurationsResponse,
   GetLeaderboardConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLeaderboardConfigurationsRequest,
   output: GetLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -605,7 +605,7 @@ export interface InsertLeaderboardConfigurationsRequest {
 }
 
 export const InsertLeaderboardConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     body: Schema.optional(LeaderboardConfiguration).pipe(T.HttpBody()),
   }).pipe(
@@ -619,7 +619,7 @@ export const InsertLeaderboardConfigurationsRequest =
 
 export type InsertLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const InsertLeaderboardConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
+  /*@__PURE__*/ LeaderboardConfiguration;
 
 export type InsertLeaderboardConfigurationsError =
   | DefaultErrors
@@ -634,7 +634,7 @@ export const insertLeaderboardConfigurations: API.OperationMethod<
   InsertLeaderboardConfigurationsResponse,
   InsertLeaderboardConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertLeaderboardConfigurationsRequest,
   output: InsertLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -650,7 +650,7 @@ export interface ListLeaderboardConfigurationsRequest {
 }
 
 export const ListLeaderboardConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -665,7 +665,7 @@ export const ListLeaderboardConfigurationsRequest =
 export type ListLeaderboardConfigurationsResponse =
   LeaderboardConfigurationListResponse;
 export const ListLeaderboardConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfigurationListResponse;
+  /*@__PURE__*/ LeaderboardConfigurationListResponse;
 
 export type ListLeaderboardConfigurationsError =
   | DefaultErrors
@@ -678,7 +678,7 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   ListLeaderboardConfigurationsResponse,
   ListLeaderboardConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLeaderboardConfigurationsRequest,
   output: ListLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -697,7 +697,7 @@ export interface UpdateLeaderboardConfigurationsRequest {
 }
 
 export const UpdateLeaderboardConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leaderboardId: Schema.String.pipe(T.HttpPath("leaderboardId")),
     body: Schema.optional(LeaderboardConfiguration).pipe(T.HttpBody()),
   }).pipe(
@@ -711,7 +711,7 @@ export const UpdateLeaderboardConfigurationsRequest =
 
 export type UpdateLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const UpdateLeaderboardConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
+  /*@__PURE__*/ LeaderboardConfiguration;
 
 export type UpdateLeaderboardConfigurationsError =
   | DefaultErrors
@@ -726,7 +726,7 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
   UpdateLeaderboardConfigurationsResponse,
   UpdateLeaderboardConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLeaderboardConfigurationsRequest,
   output: UpdateLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

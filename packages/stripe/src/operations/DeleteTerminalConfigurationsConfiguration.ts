@@ -7,7 +7,7 @@ export interface DeleteTerminalConfigurationsConfigurationInput {
   configuration: string;
 }
 export const DeleteTerminalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteTerminalConfigurationsConfigurationOutput {
   object: "terminal.configuration";
 }
 export const DeleteTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["terminal.configuration"]),
@@ -37,7 +37,7 @@ export const DeleteTerminalConfigurationsConfigurationOutput =
  * <p>Deletes a <code>Configuration</code> object.</p>
  */
 export const DeleteTerminalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteTerminalConfigurationsConfigurationInput,
     outputSchema: DeleteTerminalConfigurationsConfigurationOutput,
   }));

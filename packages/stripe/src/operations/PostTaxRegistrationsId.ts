@@ -10,7 +10,7 @@ export interface PostTaxRegistrationsIdInput {
   expires_at?: "now" | number | "";
 }
 export const PostTaxRegistrationsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     active_from: Schema.optional(
       Schema.Union([Schema.Literals(["now"]), Schema.Number]),
@@ -327,7 +327,7 @@ export interface PostTaxRegistrationsIdOutput {
   status: "active" | "expired" | "scheduled";
 }
 export const PostTaxRegistrationsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_from: Schema.Number,
     country: Schema.String,
     country_options: Schema.Struct({
@@ -1336,9 +1336,7 @@ export const PostTaxRegistrationsIdOutput =
  * <p>Updates an existing Tax <code>Registration</code> object.</p>
  * <p>A registration cannot be deleted after it has been created. If you wish to end a registration you may do so by setting <code>expires_at</code>.</p>
  */
-export const PostTaxRegistrationsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTaxRegistrationsIdInput,
-    outputSchema: PostTaxRegistrationsIdOutput,
-  }),
-);
+export const PostTaxRegistrationsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTaxRegistrationsIdInput,
+  outputSchema: PostTaxRegistrationsIdOutput,
+}));

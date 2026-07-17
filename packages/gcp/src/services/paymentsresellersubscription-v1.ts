@@ -30,7 +30,7 @@ export interface Amount {
 }
 
 export const Amount: Schema.Codec<Amount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "Amount" });
@@ -43,7 +43,7 @@ export interface Duration {
 }
 
 export const Duration: Schema.Codec<Duration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unit: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Duration" });
@@ -60,7 +60,7 @@ export interface PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
 }
 
 export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec: Schema.Codec<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recurrenceCount: Schema.optional(Schema.Number),
     discountRatioMicros: Schema.optional(Schema.String),
     discountAmount: Schema.optional(Amount),
@@ -75,7 +75,7 @@ export interface PromotionIntroductoryPricingDetails {
 }
 
 export const PromotionIntroductoryPricingDetails: Schema.Codec<PromotionIntroductoryPricingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     introductoryPricingSpecs: Schema.optional(
       Schema.Array(PromotionIntroductoryPricingDetailsIntroductoryPricingSpec),
     ),
@@ -97,7 +97,7 @@ export interface SubscriptionPromotionSpec {
 }
 
 export const SubscriptionPromotionSpec: Schema.Codec<SubscriptionPromotionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     freeTrialDuration: Schema.optional(Duration),
     promotion: Schema.optional(Schema.String),
     introductoryPricingDetails: Schema.optional(
@@ -112,7 +112,7 @@ export interface FiniteBillingCycleDetails {
 }
 
 export const FiniteBillingCycleDetails: Schema.Codec<FiniteBillingCycleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingCycleCountLimit: Schema.optional(Schema.String),
   }).annotate({ identifier: "FiniteBillingCycleDetails" });
 
@@ -140,7 +140,7 @@ export interface GoogleOnePayload {
 }
 
 export const GoogleOnePayload: Schema.Codec<GoogleOnePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     salesChannel: Schema.optional(Schema.String),
     offering: Schema.optional(Schema.String),
     storeId: Schema.optional(Schema.String),
@@ -157,7 +157,7 @@ export interface GoogleHomePayload {
 }
 
 export const GoogleHomePayload: Schema.Codec<GoogleHomePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleStructureId: Schema.optional(Schema.String),
     attachedToGoogleStructure: Schema.optional(Schema.Boolean),
     partnerStructureId: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface YoutubePayload {
 }
 
 export const YoutubePayload: Schema.Codec<YoutubePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessEndTime: Schema.optional(Schema.String),
     partnerPlanType: Schema.optional(Schema.String),
     partnerEligibilityIds: Schema.optional(Schema.Array(Schema.String)),
@@ -194,7 +194,7 @@ export interface ProductPayload {
 }
 
 export const ProductPayload: Schema.Codec<ProductPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleOnePayload: Schema.optional(GoogleOnePayload),
     googleHomePayload: Schema.optional(GoogleHomePayload),
     youtubePayload: Schema.optional(YoutubePayload),
@@ -208,7 +208,7 @@ export interface ServicePeriod {
 }
 
 export const ServicePeriod: Schema.Codec<ServicePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServicePeriod" });
@@ -219,7 +219,7 @@ export interface SubscriptionLineItemOneTimeRecurrenceDetails {
 }
 
 export const SubscriptionLineItemOneTimeRecurrenceDetails: Schema.Codec<SubscriptionLineItemOneTimeRecurrenceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servicePeriod: Schema.optional(ServicePeriod),
   }).annotate({ identifier: "SubscriptionLineItemOneTimeRecurrenceDetails" });
 
@@ -231,7 +231,7 @@ export interface SubscriptionLineItemBundleDetailsBundleElementDetails {
 }
 
 export const SubscriptionLineItemBundleDetailsBundleElementDetails: Schema.Codec<SubscriptionLineItemBundleDetailsBundleElementDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAccountLinkedTime: Schema.optional(Schema.String),
     product: Schema.optional(Schema.String),
   }).annotate({
@@ -244,7 +244,7 @@ export interface SubscriptionLineItemBundleDetails {
 }
 
 export const SubscriptionLineItemBundleDetails: Schema.Codec<SubscriptionLineItemBundleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bundleElementDetails: Schema.optional(
       Schema.Array(SubscriptionLineItemBundleDetailsBundleElementDetails),
     ),
@@ -293,7 +293,7 @@ export interface SubscriptionLineItem {
 }
 
 export const SubscriptionLineItem: Schema.Codec<SubscriptionLineItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     amount: Schema.optional(Amount),
     description: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export interface SubscriptionCancellationDetails {
 }
 
 export const SubscriptionCancellationDetails: Schema.Codec<SubscriptionCancellationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubscriptionCancellationDetails" });
 
@@ -344,7 +344,7 @@ export interface UserSession {
 }
 
 export const UserSession: Schema.Codec<UserSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserSession" });
@@ -357,7 +357,7 @@ export interface ProductPriceConfig {
 }
 
 export const ProductPriceConfig: Schema.Codec<ProductPriceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     amount: Schema.optional(Amount),
   }).annotate({ identifier: "ProductPriceConfig" });
@@ -375,7 +375,7 @@ export interface SubscriptionUpgradeDowngradeDetails {
 }
 
 export const SubscriptionUpgradeDowngradeDetails: Schema.Codec<SubscriptionUpgradeDowngradeDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previousSubscriptionId: Schema.optional(Schema.String),
     billingCycleSpec: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubscriptionUpgradeDowngradeDetails" });
@@ -388,7 +388,7 @@ export interface GoogleTypeLocalizedText {
 }
 
 export const GoogleTypeLocalizedText: Schema.Codec<GoogleTypeLocalizedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeLocalizedText" });
@@ -401,7 +401,7 @@ export interface Extension {
 }
 
 export const Extension: Schema.Codec<Extension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Duration),
     partnerUserToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "Extension" });
@@ -412,7 +412,7 @@ export interface ProductBundleDetailsBundleElement {
 }
 
 export const ProductBundleDetailsBundleElement: Schema.Codec<ProductBundleDetailsBundleElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductBundleDetailsBundleElement" });
 
@@ -428,7 +428,7 @@ export interface ProductBundleDetails {
 }
 
 export const ProductBundleDetails: Schema.Codec<ProductBundleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bundleElements: Schema.optional(
       Schema.Array(ProductBundleDetailsBundleElement),
     ),
@@ -459,7 +459,7 @@ export interface Product {
 }
 
 export const Product: Schema.Codec<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priceConfigs: Schema.optional(Schema.Array(ProductPriceConfig)),
     titles: Schema.optional(Schema.Array(GoogleTypeLocalizedText)),
     name: Schema.optional(Schema.String),
@@ -478,7 +478,7 @@ export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
 }
 
 export const EntitleSubscriptionRequestLineItemEntitlementDetails: Schema.Codec<EntitleSubscriptionRequestLineItemEntitlementDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineItemIndex: Schema.optional(Schema.Number),
     products: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -491,7 +491,7 @@ export interface EntitleSubscriptionRequest {
 }
 
 export const EntitleSubscriptionRequest: Schema.Codec<EntitleSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineItemEntitlementDetails: Schema.optional(
       Schema.Array(EntitleSubscriptionRequestLineItemEntitlementDetails),
     ),
@@ -503,7 +503,7 @@ export interface IntentPayloadIntentOptions {
 }
 
 export const IntentPayloadIntentOptions: Schema.Codec<IntentPayloadIntentOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableOfferOverride: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "IntentPayloadIntentOptions" });
 
@@ -513,7 +513,7 @@ export interface SubscriptionMigrationDetails {
 }
 
 export const SubscriptionMigrationDetails: Schema.Codec<SubscriptionMigrationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     migratedSubscriptionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubscriptionMigrationDetails" });
 
@@ -525,7 +525,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postalCode: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Location" });
@@ -588,7 +588,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     freeTrialEndTime: Schema.optional(Schema.String),
     upgradeDowngradeDetails: Schema.optional(
       SubscriptionUpgradeDowngradeDetails,
@@ -619,7 +619,7 @@ export interface ResumeSubscriptionResponse {
 }
 
 export const ResumeSubscriptionResponse: Schema.Codec<ResumeSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "ResumeSubscriptionResponse" });
 
@@ -644,7 +644,7 @@ export interface CancelSubscriptionRequest {
 }
 
 export const CancelSubscriptionRequest: Schema.Codec<CancelSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancelImmediately: Schema.optional(Schema.Boolean),
     cancellationReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancelSubscriptionRequest" });
@@ -655,7 +655,7 @@ export interface EntitleSubscriptionIntent {
 }
 
 export const EntitleSubscriptionIntent: Schema.Codec<EntitleSubscriptionIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "EntitleSubscriptionIntent" });
 
@@ -665,7 +665,7 @@ export interface CycleOptions {
 }
 
 export const CycleOptions: Schema.Codec<CycleOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     initialCycleDuration: Schema.optional(Duration),
   }).annotate({ identifier: "CycleOptions" });
 
@@ -681,7 +681,7 @@ export interface CreateSubscriptionIntent {
 }
 
 export const CreateSubscriptionIntent: Schema.Codec<CreateSubscriptionIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     subscriptionId: Schema.optional(Schema.String),
     cycleOptions: Schema.optional(CycleOptions),
@@ -698,7 +698,7 @@ export interface IntentPayload {
 }
 
 export const IntentPayload: Schema.Codec<IntentPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitleIntent: Schema.optional(EntitleSubscriptionIntent),
     createIntent: Schema.optional(CreateSubscriptionIntent),
     intentOptions: Schema.optional(IntentPayloadIntentOptions),
@@ -710,7 +710,7 @@ export interface EntitleSubscriptionResponse {
 }
 
 export const EntitleSubscriptionResponse: Schema.Codec<EntitleSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "EntitleSubscriptionResponse" });
 
@@ -740,7 +740,7 @@ export interface Promotion {
 }
 
 export const Promotion: Schema.Codec<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     applicableProducts: Schema.optional(Schema.Array(Schema.String)),
     introductoryPricingDetails: Schema.optional(
@@ -760,7 +760,7 @@ export interface UndoCancelSubscriptionResponse {
 }
 
 export const UndoCancelSubscriptionResponse: Schema.Codec<UndoCancelSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "UndoCancelSubscriptionResponse" });
 
@@ -772,7 +772,7 @@ export interface ListPromotionsResponse {
 }
 
 export const ListPromotionsResponse: Schema.Codec<ListPromotionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     promotions: Schema.optional(Schema.Array(Promotion)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPromotionsResponse" });
@@ -783,14 +783,14 @@ export interface CancelSubscriptionResponse {
 }
 
 export const CancelSubscriptionResponse: Schema.Codec<CancelSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "CancelSubscriptionResponse" });
 
 export interface UndoCancelSubscriptionRequest {}
 
 export const UndoCancelSubscriptionRequest: Schema.Codec<UndoCancelSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndoCancelSubscriptionRequest",
   });
 
@@ -800,7 +800,7 @@ export interface GenerateUserSessionResponse {
 }
 
 export const GenerateUserSessionResponse: Schema.Codec<GenerateUserSessionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSession: Schema.optional(UserSession),
   }).annotate({ identifier: "GenerateUserSessionResponse" });
 
@@ -810,7 +810,7 @@ export interface SuspendSubscriptionResponse {
 }
 
 export const SuspendSubscriptionResponse: Schema.Codec<SuspendSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "SuspendSubscriptionResponse" });
 
@@ -822,7 +822,7 @@ export interface FindEligiblePromotionsResponse {
 }
 
 export const FindEligiblePromotionsResponse: Schema.Codec<FindEligiblePromotionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     promotions: Schema.optional(Schema.Array(Promotion)),
   }).annotate({ identifier: "FindEligiblePromotionsResponse" });
@@ -835,7 +835,7 @@ export interface ExtendSubscriptionRequest {
 }
 
 export const ExtendSubscriptionRequest: Schema.Codec<ExtendSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     extension: Schema.optional(Extension),
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExtendSubscriptionRequest" });
@@ -850,7 +850,7 @@ export interface SuspendSubscriptionRequest {
 }
 
 export const SuspendSubscriptionRequest: Schema.Codec<SuspendSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suspendMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "SuspendSubscriptionRequest" });
 
@@ -864,7 +864,7 @@ export interface FindEligiblePromotionsRequest {
 }
 
 export const FindEligiblePromotionsRequest: Schema.Codec<FindEligiblePromotionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -876,7 +876,7 @@ export interface GenerateUserSessionRequest {
 }
 
 export const GenerateUserSessionRequest: Schema.Codec<GenerateUserSessionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentPayload: Schema.optional(IntentPayload),
   }).annotate({ identifier: "GenerateUserSessionRequest" });
 
@@ -893,7 +893,7 @@ export interface ResumeSubscriptionRequest {
 }
 
 export const ResumeSubscriptionRequest: Schema.Codec<ResumeSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cycleOptions: Schema.optional(CycleOptions),
     resumeMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResumeSubscriptionRequest" });
@@ -906,7 +906,7 @@ export interface ListProductsResponse {
 }
 
 export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductsResponse" });
@@ -921,7 +921,7 @@ export interface ExtendSubscriptionResponse {
 }
 
 export const ExtendSubscriptionResponse: Schema.Codec<ExtendSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     freeTrialEndTime: Schema.optional(Schema.String),
     cycleEndTime: Schema.optional(Schema.String),
     renewalTime: Schema.optional(Schema.String),
@@ -993,7 +993,7 @@ export interface ListPartnersPromotionsRequest {
 }
 
 export const ListPartnersPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1005,7 +1005,7 @@ export const ListPartnersPromotionsRequest =
 
 export type ListPartnersPromotionsResponse = ListPromotionsResponse;
 export const ListPartnersPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
+  /*@__PURE__*/ ListPromotionsResponse;
 
 export type ListPartnersPromotionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1015,7 +1015,7 @@ export const listPartnersPromotions: API.PaginatedOperationMethod<
   ListPartnersPromotionsResponse,
   ListPartnersPromotionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersPromotionsRequest,
   output: ListPartnersPromotionsResponse,
   errors: [NotFound, Forbidden],
@@ -1033,7 +1033,7 @@ export interface FindEligiblePartnersPromotionsRequest {
 }
 
 export const FindEligiblePartnersPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(FindEligiblePromotionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1048,7 +1048,7 @@ export const FindEligiblePartnersPromotionsRequest =
 export type FindEligiblePartnersPromotionsResponse =
   FindEligiblePromotionsResponse;
 export const FindEligiblePartnersPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindEligiblePromotionsResponse;
+  /*@__PURE__*/ FindEligiblePromotionsResponse;
 
 export type FindEligiblePartnersPromotionsError =
   | DefaultErrors
@@ -1063,7 +1063,7 @@ export const findEligiblePartnersPromotions: API.OperationMethod<
   FindEligiblePartnersPromotionsResponse,
   FindEligiblePartnersPromotionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindEligiblePartnersPromotionsRequest,
   output: FindEligiblePartnersPromotionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1077,7 +1077,7 @@ export interface GeneratePartnersUserSessionsRequest {
 }
 
 export const GeneratePartnersUserSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GenerateUserSessionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1091,7 +1091,7 @@ export const GeneratePartnersUserSessionsRequest =
 
 export type GeneratePartnersUserSessionsResponse = GenerateUserSessionResponse;
 export const GeneratePartnersUserSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateUserSessionResponse;
+  /*@__PURE__*/ GenerateUserSessionResponse;
 
 export type GeneratePartnersUserSessionsError =
   | DefaultErrors
@@ -1106,7 +1106,7 @@ export const generatePartnersUserSessions: API.OperationMethod<
   GeneratePartnersUserSessionsResponse,
   GeneratePartnersUserSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GeneratePartnersUserSessionsRequest,
   output: GeneratePartnersUserSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1120,7 +1120,7 @@ export interface SuspendPartnersSubscriptionsRequest {
 }
 
 export const SuspendPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1130,7 +1130,7 @@ export const SuspendPartnersSubscriptionsRequest =
 
 export type SuspendPartnersSubscriptionsResponse = SuspendSubscriptionResponse;
 export const SuspendPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SuspendSubscriptionResponse;
+  /*@__PURE__*/ SuspendSubscriptionResponse;
 
 export type SuspendPartnersSubscriptionsError =
   | DefaultErrors
@@ -1145,7 +1145,7 @@ export const suspendPartnersSubscriptions: API.OperationMethod<
   SuspendPartnersSubscriptionsResponse,
   SuspendPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuspendPartnersSubscriptionsRequest,
   output: SuspendPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1161,7 +1161,7 @@ export interface CreatePartnersSubscriptionsRequest {
 }
 
 export const CreatePartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     subscriptionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subscriptionId"),
@@ -1177,8 +1177,7 @@ export const CreatePartnersSubscriptionsRequest =
   ) as unknown as Schema.Codec<CreatePartnersSubscriptionsRequest>;
 
 export type CreatePartnersSubscriptionsResponse = Subscription;
-export const CreatePartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const CreatePartnersSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type CreatePartnersSubscriptionsError =
   | DefaultErrors
@@ -1193,7 +1192,7 @@ export const createPartnersSubscriptions: API.OperationMethod<
   CreatePartnersSubscriptionsResponse,
   CreatePartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnersSubscriptionsRequest,
   output: CreatePartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1205,7 +1204,7 @@ export interface GetPartnersSubscriptionsRequest {
 }
 
 export const GetPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1213,8 +1212,7 @@ export const GetPartnersSubscriptionsRequest =
   ) as unknown as Schema.Codec<GetPartnersSubscriptionsRequest>;
 
 export type GetPartnersSubscriptionsResponse = Subscription;
-export const GetPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const GetPartnersSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type GetPartnersSubscriptionsError =
   | DefaultErrors
@@ -1227,7 +1225,7 @@ export const getPartnersSubscriptions: API.OperationMethod<
   GetPartnersSubscriptionsResponse,
   GetPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPartnersSubscriptionsRequest,
   output: GetPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -1241,7 +1239,7 @@ export interface CancelPartnersSubscriptionsRequest {
 }
 
 export const CancelPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1251,7 +1249,7 @@ export const CancelPartnersSubscriptionsRequest =
 
 export type CancelPartnersSubscriptionsResponse = CancelSubscriptionResponse;
 export const CancelPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CancelSubscriptionResponse;
+  /*@__PURE__*/ CancelSubscriptionResponse;
 
 export type CancelPartnersSubscriptionsError =
   | DefaultErrors
@@ -1266,7 +1264,7 @@ export const cancelPartnersSubscriptions: API.OperationMethod<
   CancelPartnersSubscriptionsResponse,
   CancelPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelPartnersSubscriptionsRequest,
   output: CancelPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1280,7 +1278,7 @@ export interface EntitlePartnersSubscriptionsRequest {
 }
 
 export const EntitlePartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EntitleSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1290,7 +1288,7 @@ export const EntitlePartnersSubscriptionsRequest =
 
 export type EntitlePartnersSubscriptionsResponse = EntitleSubscriptionResponse;
 export const EntitlePartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EntitleSubscriptionResponse;
+  /*@__PURE__*/ EntitleSubscriptionResponse;
 
 export type EntitlePartnersSubscriptionsError =
   | DefaultErrors
@@ -1305,7 +1303,7 @@ export const entitlePartnersSubscriptions: API.OperationMethod<
   EntitlePartnersSubscriptionsResponse,
   EntitlePartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EntitlePartnersSubscriptionsRequest,
   output: EntitlePartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1319,7 +1317,7 @@ export interface ExtendPartnersSubscriptionsRequest {
 }
 
 export const ExtendPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExtendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1329,7 +1327,7 @@ export const ExtendPartnersSubscriptionsRequest =
 
 export type ExtendPartnersSubscriptionsResponse = ExtendSubscriptionResponse;
 export const ExtendPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExtendSubscriptionResponse;
+  /*@__PURE__*/ ExtendSubscriptionResponse;
 
 export type ExtendPartnersSubscriptionsError =
   | DefaultErrors
@@ -1344,7 +1342,7 @@ export const extendPartnersSubscriptions: API.OperationMethod<
   ExtendPartnersSubscriptionsResponse,
   ExtendPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExtendPartnersSubscriptionsRequest,
   output: ExtendPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1358,7 +1356,7 @@ export interface ResumePartnersSubscriptionsRequest {
 }
 
 export const ResumePartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1368,7 +1366,7 @@ export const ResumePartnersSubscriptionsRequest =
 
 export type ResumePartnersSubscriptionsResponse = ResumeSubscriptionResponse;
 export const ResumePartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResumeSubscriptionResponse;
+  /*@__PURE__*/ ResumeSubscriptionResponse;
 
 export type ResumePartnersSubscriptionsError =
   | DefaultErrors
@@ -1383,7 +1381,7 @@ export const resumePartnersSubscriptions: API.OperationMethod<
   ResumePartnersSubscriptionsResponse,
   ResumePartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumePartnersSubscriptionsRequest,
   output: ResumePartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1408,7 +1406,7 @@ export interface ProvisionPartnersSubscriptionsRequest {
 }
 
 export const ProvisionPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     subscriptionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subscriptionId"),
@@ -1431,7 +1429,7 @@ export const ProvisionPartnersSubscriptionsRequest =
 
 export type ProvisionPartnersSubscriptionsResponse = Subscription;
 export const ProvisionPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+  /*@__PURE__*/ Subscription;
 
 export type ProvisionPartnersSubscriptionsError =
   | DefaultErrors
@@ -1446,7 +1444,7 @@ export const provisionPartnersSubscriptions: API.OperationMethod<
   ProvisionPartnersSubscriptionsResponse,
   ProvisionPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionPartnersSubscriptionsRequest,
   output: ProvisionPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1460,7 +1458,7 @@ export interface UndoCancelPartnersSubscriptionsRequest {
 }
 
 export const UndoCancelPartnersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndoCancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1471,7 +1469,7 @@ export const UndoCancelPartnersSubscriptionsRequest =
 export type UndoCancelPartnersSubscriptionsResponse =
   UndoCancelSubscriptionResponse;
 export const UndoCancelPartnersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UndoCancelSubscriptionResponse;
+  /*@__PURE__*/ UndoCancelSubscriptionResponse;
 
 export type UndoCancelPartnersSubscriptionsError =
   | DefaultErrors
@@ -1486,7 +1484,7 @@ export const undoCancelPartnersSubscriptions: API.OperationMethod<
   UndoCancelPartnersSubscriptionsResponse,
   UndoCancelPartnersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndoCancelPartnersSubscriptionsRequest,
   output: UndoCancelPartnersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1502,7 +1500,7 @@ export interface PatchPartnersSubscriptionsLineItemsRequest {
 }
 
 export const PatchPartnersSubscriptionsLineItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SubscriptionLineItem).pipe(T.HttpBody()),
@@ -1513,7 +1511,7 @@ export const PatchPartnersSubscriptionsLineItemsRequest =
 
 export type PatchPartnersSubscriptionsLineItemsResponse = SubscriptionLineItem;
 export const PatchPartnersSubscriptionsLineItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SubscriptionLineItem;
+  /*@__PURE__*/ SubscriptionLineItem;
 
 export type PatchPartnersSubscriptionsLineItemsError =
   | DefaultErrors
@@ -1528,7 +1526,7 @@ export const patchPartnersSubscriptionsLineItems: API.OperationMethod<
   PatchPartnersSubscriptionsLineItemsResponse,
   PatchPartnersSubscriptionsLineItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPartnersSubscriptionsLineItemsRequest,
   output: PatchPartnersSubscriptionsLineItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1546,7 +1544,7 @@ export interface ListPartnersProductsRequest {
 }
 
 export const ListPartnersProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1557,8 +1555,7 @@ export const ListPartnersProductsRequest =
   ) as unknown as Schema.Codec<ListPartnersProductsRequest>;
 
 export type ListPartnersProductsResponse = ListProductsResponse;
-export const ListPartnersProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
+export const ListPartnersProductsResponse = /*@__PURE__*/ ListProductsResponse;
 
 export type ListPartnersProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1568,7 +1565,7 @@ export const listPartnersProducts: API.PaginatedOperationMethod<
   ListPartnersProductsResponse,
   ListPartnersProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersProductsRequest,
   output: ListPartnersProductsResponse,
   errors: [NotFound, Forbidden],

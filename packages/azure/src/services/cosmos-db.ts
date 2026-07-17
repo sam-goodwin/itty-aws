@@ -66,7 +66,7 @@ export interface CassandraClustersCreateUpdateInput {
   };
 }
 export const CassandraClustersCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -197,7 +197,7 @@ export interface CassandraClustersCreateUpdateOutput {
   };
 }
 export const CassandraClustersCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -227,7 +227,7 @@ export const CassandraClustersCreateUpdateOutput =
  * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraClustersCreateUpdateInput,
     outputSchema: CassandraClustersCreateUpdateOutput,
   }));
@@ -238,7 +238,7 @@ export interface CassandraClustersDeallocateInput {
   clusterName: string;
 }
 export const CassandraClustersDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -253,7 +253,7 @@ export const CassandraClustersDeallocateInput =
 // Output Schema
 export type CassandraClustersDeallocateOutput = void;
 export const CassandraClustersDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeallocateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeallocateOutput>;
 
 // The operation
 /**
@@ -265,12 +265,10 @@ export const CassandraClustersDeallocateOutput =
  * @param clusterName - Managed Cassandra cluster name.
  * @param x-ms-force-deallocate - Force to deallocate a cluster of Cluster Type Production. Force to deallocate a cluster of Cluster Type Production might cause data loss
  */
-export const CassandraClustersDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersDeallocateInput,
-    outputSchema: CassandraClustersDeallocateOutput,
-  }),
-);
+export const CassandraClustersDeallocate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersDeallocateInput,
+  outputSchema: CassandraClustersDeallocateOutput,
+}));
 // Input Schema
 export interface CassandraClustersDeleteInput {
   subscriptionId: string;
@@ -278,7 +276,7 @@ export interface CassandraClustersDeleteInput {
   clusterName: string;
 }
 export const CassandraClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -293,7 +291,7 @@ export const CassandraClustersDeleteInput =
 // Output Schema
 export type CassandraClustersDeleteOutput = void;
 export const CassandraClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeleteOutput>;
 
 // The operation
 /**
@@ -304,12 +302,10 @@ export const CassandraClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersDeleteInput,
-    outputSchema: CassandraClustersDeleteOutput,
-  }),
-);
+export const CassandraClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersDeleteInput,
+  outputSchema: CassandraClustersDeleteOutput,
+}));
 // Input Schema
 export interface CassandraClustersGetInput {
   subscriptionId: string;
@@ -317,7 +313,7 @@ export interface CassandraClustersGetInput {
   clusterName: string;
 }
 export const CassandraClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -344,7 +340,7 @@ export interface CassandraClustersGetOutput {
   };
 }
 export const CassandraClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -373,12 +369,10 @@ export const CassandraClustersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersGetInput,
-    outputSchema: CassandraClustersGetOutput,
-  }),
-);
+export const CassandraClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersGetInput,
+  outputSchema: CassandraClustersGetOutput,
+}));
 // Input Schema
 export interface CassandraClustersInvokeCommandInput {
   subscriptionId: string;
@@ -391,7 +385,7 @@ export interface CassandraClustersInvokeCommandInput {
   readwrite?: boolean;
 }
 export const CassandraClustersInvokeCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -411,7 +405,7 @@ export const CassandraClustersInvokeCommandInput =
 // Output Schema
 export type CassandraClustersInvokeCommandOutput = void;
 export const CassandraClustersInvokeCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersInvokeCommandOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersInvokeCommandOutput>;
 
 // The operation
 /**
@@ -423,7 +417,7 @@ export const CassandraClustersInvokeCommandOutput =
  * @param clusterName - Managed Cassandra cluster name.
  */
 export const CassandraClustersInvokeCommand =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraClustersInvokeCommandInput,
     outputSchema: CassandraClustersInvokeCommandOutput,
   }));
@@ -433,7 +427,7 @@ export interface CassandraClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CassandraClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -462,7 +456,7 @@ export interface CassandraClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CassandraClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -508,7 +502,7 @@ export const CassandraClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CassandraClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraClustersListByResourceGroupInput,
     outputSchema: CassandraClustersListByResourceGroupOutput,
   }));
@@ -517,7 +511,7 @@ export interface CassandraClustersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CassandraClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -545,7 +539,7 @@ export interface CassandraClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CassandraClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -590,7 +584,7 @@ export const CassandraClustersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CassandraClustersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraClustersListBySubscriptionInput,
     outputSchema: CassandraClustersListBySubscriptionOutput,
   }));
@@ -601,7 +595,7 @@ export interface CassandraClustersStartInput {
   clusterName: string;
 }
 export const CassandraClustersStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -616,7 +610,7 @@ export const CassandraClustersStartInput =
 // Output Schema
 export type CassandraClustersStartOutput = void;
 export const CassandraClustersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersStartOutput>;
 
 // The operation
 /**
@@ -627,12 +621,10 @@ export const CassandraClustersStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersStartInput,
-    outputSchema: CassandraClustersStartOutput,
-  }),
-);
+export const CassandraClustersStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersStartInput,
+  outputSchema: CassandraClustersStartOutput,
+}));
 // Input Schema
 export interface CassandraClustersStatusInput {
   subscriptionId: string;
@@ -640,7 +632,7 @@ export interface CassandraClustersStatusInput {
   clusterName: string;
 }
 export const CassandraClustersStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -705,7 +697,7 @@ export interface CassandraClustersStatusOutput {
   }[];
 }
 export const CassandraClustersStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eTag: Schema.optional(Schema.String),
     reaperStatus: Schema.optional(
       Schema.Struct({
@@ -799,12 +791,10 @@ export const CassandraClustersStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraClustersStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersStatusInput,
-    outputSchema: CassandraClustersStatusOutput,
-  }),
-);
+export const CassandraClustersStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersStatusInput,
+  outputSchema: CassandraClustersStatusOutput,
+}));
 // Input Schema
 export interface CassandraClustersUpdateInput {
   subscriptionId: string;
@@ -861,7 +851,7 @@ export interface CassandraClustersUpdateInput {
   };
 }
 export const CassandraClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -992,7 +982,7 @@ export interface CassandraClustersUpdateOutput {
   };
 }
 export const CassandraClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1021,12 +1011,10 @@ export const CassandraClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraClustersUpdateInput,
-    outputSchema: CassandraClustersUpdateOutput,
-  }),
-);
+export const CassandraClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraClustersUpdateInput,
+  outputSchema: CassandraClustersUpdateOutput,
+}));
 // Input Schema
 export interface CassandraDataCentersCreateUpdateInput {
   subscriptionId: string;
@@ -1073,7 +1061,7 @@ export interface CassandraDataCentersCreateUpdateInput {
   };
 }
 export const CassandraDataCentersCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1160,7 +1148,7 @@ export interface CassandraDataCentersCreateUpdateOutput {
   };
 }
 export const CassandraDataCentersCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1191,7 +1179,7 @@ export const CassandraDataCentersCreateUpdateOutput =
  * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
 export const CassandraDataCentersCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraDataCentersCreateUpdateInput,
     outputSchema: CassandraDataCentersCreateUpdateOutput,
   }));
@@ -1203,7 +1191,7 @@ export interface CassandraDataCentersDeleteInput {
   dataCenterName: string;
 }
 export const CassandraDataCentersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1219,7 +1207,7 @@ export const CassandraDataCentersDeleteInput =
 // Output Schema
 export type CassandraDataCentersDeleteOutput = void;
 export const CassandraDataCentersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraDataCentersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraDataCentersDeleteOutput>;
 
 // The operation
 /**
@@ -1231,12 +1219,10 @@ export const CassandraDataCentersDeleteOutput =
  * @param clusterName - Managed Cassandra cluster name.
  * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
-export const CassandraDataCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersDeleteInput,
-    outputSchema: CassandraDataCentersDeleteOutput,
-  }),
-);
+export const CassandraDataCentersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersDeleteInput,
+  outputSchema: CassandraDataCentersDeleteOutput,
+}));
 // Input Schema
 export interface CassandraDataCentersGetInput {
   subscriptionId: string;
@@ -1245,7 +1231,7 @@ export interface CassandraDataCentersGetInput {
   dataCenterName: string;
 }
 export const CassandraDataCentersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1273,7 +1259,7 @@ export interface CassandraDataCentersGetOutput {
   };
 }
 export const CassandraDataCentersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1303,12 +1289,10 @@ export const CassandraDataCentersGetOutput =
  * @param clusterName - Managed Cassandra cluster name.
  * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
-export const CassandraDataCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersGetInput,
-    outputSchema: CassandraDataCentersGetOutput,
-  }),
-);
+export const CassandraDataCentersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersGetInput,
+  outputSchema: CassandraDataCentersGetOutput,
+}));
 // Input Schema
 export interface CassandraDataCentersListInput {
   subscriptionId: string;
@@ -1316,7 +1300,7 @@ export interface CassandraDataCentersListInput {
   clusterName: string;
 }
 export const CassandraDataCentersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1346,7 +1330,7 @@ export interface CassandraDataCentersListOutput {
   nextLink?: string;
 }
 export const CassandraDataCentersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1392,12 +1376,10 @@ export const CassandraDataCentersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - Managed Cassandra cluster name.
  */
-export const CassandraDataCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersListInput,
-    outputSchema: CassandraDataCentersListOutput,
-  }),
-);
+export const CassandraDataCentersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersListInput,
+  outputSchema: CassandraDataCentersListOutput,
+}));
 // Input Schema
 export interface CassandraDataCentersUpdateInput {
   subscriptionId: string;
@@ -1444,7 +1426,7 @@ export interface CassandraDataCentersUpdateInput {
   };
 }
 export const CassandraDataCentersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1531,7 +1513,7 @@ export interface CassandraDataCentersUpdateOutput {
   };
 }
 export const CassandraDataCentersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1561,12 +1543,10 @@ export const CassandraDataCentersUpdateOutput =
  * @param clusterName - Managed Cassandra cluster name.
  * @param dataCenterName - Data center name in a managed Cassandra cluster.
  */
-export const CassandraDataCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CassandraDataCentersUpdateInput,
-    outputSchema: CassandraDataCentersUpdateOutput,
-  }),
-);
+export const CassandraDataCentersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CassandraDataCentersUpdateInput,
+  outputSchema: CassandraDataCentersUpdateOutput,
+}));
 // Input Schema
 export interface CassandraResourcesCreateUpdateCassandraKeyspaceInput {
   subscriptionId: string;
@@ -1600,7 +1580,7 @@ export interface CassandraResourcesCreateUpdateCassandraKeyspaceInput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1671,7 +1651,7 @@ export interface CassandraResourcesCreateUpdateCassandraKeyspaceOutput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1702,7 +1682,7 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesCreateUpdateCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceOutput,
   }));
@@ -1720,7 +1700,7 @@ export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentInput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1756,7 +1736,7 @@ export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1787,7 +1767,7 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const CassandraResourcesCreateUpdateCassandraRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraRoleAssignmentInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput,
   }));
@@ -1810,7 +1790,7 @@ export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionInput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1855,7 +1835,7 @@ export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1886,7 +1866,7 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const CassandraResourcesCreateUpdateCassandraRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraRoleDefinitionInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput,
   }));
@@ -1933,7 +1913,7 @@ export interface CassandraResourcesCreateUpdateCassandraTableInput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2034,7 +2014,7 @@ export interface CassandraResourcesCreateUpdateCassandraTableOutput {
   };
 }
 export const CassandraResourcesCreateUpdateCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2066,7 +2046,7 @@ export const CassandraResourcesCreateUpdateCassandraTableOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesCreateUpdateCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesCreateUpdateCassandraTableInput,
     outputSchema: CassandraResourcesCreateUpdateCassandraTableOutput,
   }));
@@ -2078,7 +2058,7 @@ export interface CassandraResourcesDeleteCassandraKeyspaceInput {
   keyspaceName: string;
 }
 export const CassandraResourcesDeleteCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2094,7 +2074,7 @@ export const CassandraResourcesDeleteCassandraKeyspaceInput =
 // Output Schema
 export type CassandraResourcesDeleteCassandraKeyspaceOutput = void;
 export const CassandraResourcesDeleteCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraKeyspaceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraKeyspaceOutput>;
 
 // The operation
 /**
@@ -2107,7 +2087,7 @@ export const CassandraResourcesDeleteCassandraKeyspaceOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesDeleteCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesDeleteCassandraKeyspaceInput,
     outputSchema: CassandraResourcesDeleteCassandraKeyspaceOutput,
   }));
@@ -2119,7 +2099,7 @@ export interface CassandraResourcesDeleteCassandraRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const CassandraResourcesDeleteCassandraRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2135,7 +2115,7 @@ export const CassandraResourcesDeleteCassandraRoleAssignmentInput =
 // Output Schema
 export type CassandraResourcesDeleteCassandraRoleAssignmentOutput = void;
 export const CassandraResourcesDeleteCassandraRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -2148,7 +2128,7 @@ export const CassandraResourcesDeleteCassandraRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const CassandraResourcesDeleteCassandraRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesDeleteCassandraRoleAssignmentInput,
     outputSchema: CassandraResourcesDeleteCassandraRoleAssignmentOutput,
   }));
@@ -2160,7 +2140,7 @@ export interface CassandraResourcesDeleteCassandraRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const CassandraResourcesDeleteCassandraRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2176,7 +2156,7 @@ export const CassandraResourcesDeleteCassandraRoleDefinitionInput =
 // Output Schema
 export type CassandraResourcesDeleteCassandraRoleDefinitionOutput = void;
 export const CassandraResourcesDeleteCassandraRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -2189,7 +2169,7 @@ export const CassandraResourcesDeleteCassandraRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const CassandraResourcesDeleteCassandraRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesDeleteCassandraRoleDefinitionInput,
     outputSchema: CassandraResourcesDeleteCassandraRoleDefinitionOutput,
   }));
@@ -2202,7 +2182,7 @@ export interface CassandraResourcesDeleteCassandraTableInput {
   tableName: string;
 }
 export const CassandraResourcesDeleteCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2219,7 +2199,7 @@ export const CassandraResourcesDeleteCassandraTableInput =
 // Output Schema
 export type CassandraResourcesDeleteCassandraTableOutput = void;
 export const CassandraResourcesDeleteCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraTableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraTableOutput>;
 
 // The operation
 /**
@@ -2233,7 +2213,7 @@ export const CassandraResourcesDeleteCassandraTableOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesDeleteCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesDeleteCassandraTableInput,
     outputSchema: CassandraResourcesDeleteCassandraTableOutput,
   }));
@@ -2245,7 +2225,7 @@ export interface CassandraResourcesGetCassandraKeyspaceInput {
   keyspaceName: string;
 }
 export const CassandraResourcesGetCassandraKeyspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2273,7 +2253,7 @@ export interface CassandraResourcesGetCassandraKeyspaceOutput {
   };
 }
 export const CassandraResourcesGetCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2304,7 +2284,7 @@ export const CassandraResourcesGetCassandraKeyspaceOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesGetCassandraKeyspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraKeyspaceInput,
     outputSchema: CassandraResourcesGetCassandraKeyspaceOutput,
   }));
@@ -2316,7 +2296,7 @@ export interface CassandraResourcesGetCassandraKeyspaceThroughputInput {
   keyspaceName: string;
 }
 export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2344,7 +2324,7 @@ export interface CassandraResourcesGetCassandraKeyspaceThroughputOutput {
   };
 }
 export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2375,7 +2355,7 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesGetCassandraKeyspaceThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraKeyspaceThroughputInput,
     outputSchema: CassandraResourcesGetCassandraKeyspaceThroughputOutput,
   }));
@@ -2387,7 +2367,7 @@ export interface CassandraResourcesGetCassandraRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const CassandraResourcesGetCassandraRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2415,7 +2395,7 @@ export interface CassandraResourcesGetCassandraRoleAssignmentOutput {
   };
 }
 export const CassandraResourcesGetCassandraRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2446,7 +2426,7 @@ export const CassandraResourcesGetCassandraRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const CassandraResourcesGetCassandraRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraRoleAssignmentInput,
     outputSchema: CassandraResourcesGetCassandraRoleAssignmentOutput,
   }));
@@ -2458,7 +2438,7 @@ export interface CassandraResourcesGetCassandraRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const CassandraResourcesGetCassandraRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2486,7 +2466,7 @@ export interface CassandraResourcesGetCassandraRoleDefinitionOutput {
   };
 }
 export const CassandraResourcesGetCassandraRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2517,7 +2497,7 @@ export const CassandraResourcesGetCassandraRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const CassandraResourcesGetCassandraRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraRoleDefinitionInput,
     outputSchema: CassandraResourcesGetCassandraRoleDefinitionOutput,
   }));
@@ -2530,7 +2510,7 @@ export interface CassandraResourcesGetCassandraTableInput {
   tableName: string;
 }
 export const CassandraResourcesGetCassandraTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2559,7 +2539,7 @@ export interface CassandraResourcesGetCassandraTableOutput {
   };
 }
 export const CassandraResourcesGetCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2591,7 +2571,7 @@ export const CassandraResourcesGetCassandraTableOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesGetCassandraTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraTableInput,
     outputSchema: CassandraResourcesGetCassandraTableOutput,
   }));
@@ -2604,7 +2584,7 @@ export interface CassandraResourcesGetCassandraTableThroughputInput {
   tableName: string;
 }
 export const CassandraResourcesGetCassandraTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2633,7 +2613,7 @@ export interface CassandraResourcesGetCassandraTableThroughputOutput {
   };
 }
 export const CassandraResourcesGetCassandraTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2665,7 +2645,7 @@ export const CassandraResourcesGetCassandraTableThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesGetCassandraTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesGetCassandraTableThroughputInput,
     outputSchema: CassandraResourcesGetCassandraTableThroughputOutput,
   }));
@@ -2676,7 +2656,7 @@ export interface CassandraResourcesListCassandraKeyspacesInput {
   accountName: string;
 }
 export const CassandraResourcesListCassandraKeyspacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2706,7 +2686,7 @@ export interface CassandraResourcesListCassandraKeyspacesOutput {
   nextLink?: string;
 }
 export const CassandraResourcesListCassandraKeyspacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2753,7 +2733,7 @@ export const CassandraResourcesListCassandraKeyspacesOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const CassandraResourcesListCassandraKeyspaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesListCassandraKeyspacesInput,
     outputSchema: CassandraResourcesListCassandraKeyspacesOutput,
   }));
@@ -2764,7 +2744,7 @@ export interface CassandraResourcesListCassandraRoleAssignmentsInput {
   accountName: string;
 }
 export const CassandraResourcesListCassandraRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2794,7 +2774,7 @@ export interface CassandraResourcesListCassandraRoleAssignmentsOutput {
   nextLink?: string;
 }
 export const CassandraResourcesListCassandraRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2839,7 +2819,7 @@ export const CassandraResourcesListCassandraRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const CassandraResourcesListCassandraRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesListCassandraRoleAssignmentsInput,
     outputSchema: CassandraResourcesListCassandraRoleAssignmentsOutput,
   }));
@@ -2850,7 +2830,7 @@ export interface CassandraResourcesListCassandraRoleDefinitionsInput {
   accountName: string;
 }
 export const CassandraResourcesListCassandraRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2880,7 +2860,7 @@ export interface CassandraResourcesListCassandraRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const CassandraResourcesListCassandraRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2925,7 +2905,7 @@ export const CassandraResourcesListCassandraRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const CassandraResourcesListCassandraRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesListCassandraRoleDefinitionsInput,
     outputSchema: CassandraResourcesListCassandraRoleDefinitionsOutput,
   }));
@@ -2937,7 +2917,7 @@ export interface CassandraResourcesListCassandraTablesInput {
   keyspaceName: string;
 }
 export const CassandraResourcesListCassandraTablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2968,7 +2948,7 @@ export interface CassandraResourcesListCassandraTablesOutput {
   nextLink?: string;
 }
 export const CassandraResourcesListCassandraTablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3016,7 +2996,7 @@ export const CassandraResourcesListCassandraTablesOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesListCassandraTables =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesListCassandraTablesInput,
     outputSchema: CassandraResourcesListCassandraTablesOutput,
   }));
@@ -3028,7 +3008,7 @@ export interface CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput {
   keyspaceName: string;
 }
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3056,7 +3036,7 @@ export interface CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput {
   };
 }
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3087,7 +3067,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput,
     outputSchema: CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput,
   }));
@@ -3099,7 +3079,7 @@ export interface CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInp
   keyspaceName: string;
 }
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3127,7 +3107,7 @@ export interface CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOut
   };
 }
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3158,7 +3138,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput 
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput,
     outputSchema:
@@ -3173,7 +3153,7 @@ export interface CassandraResourcesMigrateCassandraTableToAutoscaleInput {
   tableName: string;
 }
 export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3202,7 +3182,7 @@ export interface CassandraResourcesMigrateCassandraTableToAutoscaleOutput {
   };
 }
 export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3234,7 +3214,7 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesMigrateCassandraTableToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraTableToAutoscaleInput,
     outputSchema: CassandraResourcesMigrateCassandraTableToAutoscaleOutput,
   }));
@@ -3247,7 +3227,7 @@ export interface CassandraResourcesMigrateCassandraTableToManualThroughputInput 
   tableName: string;
 }
 export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3276,7 +3256,7 @@ export interface CassandraResourcesMigrateCassandraTableToManualThroughputOutput
   };
 }
 export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3308,7 +3288,7 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesMigrateCassandraTableToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesMigrateCassandraTableToManualThroughputInput,
     outputSchema:
       CassandraResourcesMigrateCassandraTableToManualThroughputOutput,
@@ -3355,7 +3335,7 @@ export interface CassandraResourcesUpdateCassandraKeyspaceThroughputInput {
   };
 }
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3436,7 +3416,7 @@ export interface CassandraResourcesUpdateCassandraKeyspaceThroughputOutput {
   };
 }
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3467,7 +3447,7 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
  * @param keyspaceName - Cosmos DB keyspace name.
  */
 export const CassandraResourcesUpdateCassandraKeyspaceThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesUpdateCassandraKeyspaceThroughputInput,
     outputSchema: CassandraResourcesUpdateCassandraKeyspaceThroughputOutput,
   }));
@@ -3514,7 +3494,7 @@ export interface CassandraResourcesUpdateCassandraTableThroughputInput {
   };
 }
 export const CassandraResourcesUpdateCassandraTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3596,7 +3576,7 @@ export interface CassandraResourcesUpdateCassandraTableThroughputOutput {
   };
 }
 export const CassandraResourcesUpdateCassandraTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3628,7 +3608,7 @@ export const CassandraResourcesUpdateCassandraTableThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const CassandraResourcesUpdateCassandraTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CassandraResourcesUpdateCassandraTableThroughputInput,
     outputSchema: CassandraResourcesUpdateCassandraTableThroughputOutput,
   }));
@@ -3641,7 +3621,7 @@ export interface CollectionListMetricDefinitionsInput {
   collectionRid: string;
 }
 export const CollectionListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3680,7 +3660,7 @@ export interface CollectionListMetricDefinitionsOutput {
   nextLink?: string;
 }
 export const CollectionListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3738,7 +3718,7 @@ export const CollectionListMetricDefinitionsOutput =
  * @param collectionRid - Cosmos DB collection rid.
  */
 export const CollectionListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CollectionListMetricDefinitionsInput,
     outputSchema: CollectionListMetricDefinitionsOutput,
   }));
@@ -3752,7 +3732,7 @@ export interface CollectionListMetricsInput {
   $filter: string;
 }
 export const CollectionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3794,7 +3774,7 @@ export interface CollectionListMetricsOutput {
   nextLink?: string;
 }
 export const CollectionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3848,12 +3828,10 @@ export const CollectionListMetricsOutput =
  * @param collectionRid - Cosmos DB collection rid.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const CollectionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionListMetricsInput,
-    outputSchema: CollectionListMetricsOutput,
-  }),
-);
+export const CollectionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionListMetricsInput,
+  outputSchema: CollectionListMetricsOutput,
+}));
 // Input Schema
 export interface CollectionListUsagesInput {
   subscriptionId: string;
@@ -3864,7 +3842,7 @@ export interface CollectionListUsagesInput {
   $filter?: string;
 }
 export const CollectionListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3898,7 +3876,7 @@ export interface CollectionListUsagesOutput {
   nextLink?: string;
 }
 export const CollectionListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3940,12 +3918,10 @@ export const CollectionListUsagesOutput =
  * @param collectionRid - Cosmos DB collection rid.
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
-export const CollectionListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionListUsagesInput,
-    outputSchema: CollectionListUsagesOutput,
-  }),
-);
+export const CollectionListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionListUsagesInput,
+  outputSchema: CollectionListUsagesOutput,
+}));
 // Input Schema
 export interface CollectionPartitionListMetricsInput {
   subscriptionId: string;
@@ -3956,7 +3932,7 @@ export interface CollectionPartitionListMetricsInput {
   $filter: string;
 }
 export const CollectionPartitionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3998,7 +3974,7 @@ export interface CollectionPartitionListMetricsOutput {
   nextLink?: string;
 }
 export const CollectionPartitionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4053,7 +4029,7 @@ export const CollectionPartitionListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionPartitionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CollectionPartitionListMetricsInput,
     outputSchema: CollectionPartitionListMetricsOutput,
   }));
@@ -4067,7 +4043,7 @@ export interface CollectionPartitionListUsagesInput {
   $filter?: string;
 }
 export const CollectionPartitionListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4101,7 +4077,7 @@ export interface CollectionPartitionListUsagesOutput {
   nextLink?: string;
 }
 export const CollectionPartitionListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4144,7 +4120,7 @@ export const CollectionPartitionListUsagesOutput =
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const CollectionPartitionListUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CollectionPartitionListUsagesInput,
     outputSchema: CollectionPartitionListUsagesOutput,
   }));
@@ -4159,7 +4135,7 @@ export interface CollectionPartitionRegionListMetricsInput {
   $filter: string;
 }
 export const CollectionPartitionRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4202,7 +4178,7 @@ export interface CollectionPartitionRegionListMetricsOutput {
   nextLink?: string;
 }
 export const CollectionPartitionRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4258,7 +4234,7 @@ export const CollectionPartitionRegionListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const CollectionPartitionRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CollectionPartitionRegionListMetricsInput,
     outputSchema: CollectionPartitionRegionListMetricsOutput,
   }));
@@ -4273,7 +4249,7 @@ export interface CollectionRegionListMetricsInput {
   $filter: string;
 }
 export const CollectionRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4316,7 +4292,7 @@ export interface CollectionRegionListMetricsOutput {
   nextLink?: string;
 }
 export const CollectionRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4371,12 +4347,10 @@ export const CollectionRegionListMetricsOutput =
  * @param collectionRid - Cosmos DB collection rid.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const CollectionRegionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CollectionRegionListMetricsInput,
-    outputSchema: CollectionRegionListMetricsOutput,
-  }),
-);
+export const CollectionRegionListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CollectionRegionListMetricsInput,
+  outputSchema: CollectionRegionListMetricsOutput,
+}));
 // Input Schema
 export interface DatabaseAccountRegionListMetricsInput {
   subscriptionId: string;
@@ -4386,7 +4360,7 @@ export interface DatabaseAccountRegionListMetricsInput {
   $filter: string;
 }
 export const DatabaseAccountRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4427,7 +4401,7 @@ export interface DatabaseAccountRegionListMetricsOutput {
   nextLink?: string;
 }
 export const DatabaseAccountRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4481,7 +4455,7 @@ export const DatabaseAccountRegionListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const DatabaseAccountRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountRegionListMetricsInput,
     outputSchema: DatabaseAccountRegionListMetricsOutput,
   }));
@@ -4594,7 +4568,7 @@ export interface DatabaseAccountsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DatabaseAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4813,7 +4787,7 @@ export interface DatabaseAccountsCreateOrUpdateOutput {
   };
 }
 export const DatabaseAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4843,7 +4817,7 @@ export const DatabaseAccountsCreateOrUpdateOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsCreateOrUpdateInput,
     outputSchema: DatabaseAccountsCreateOrUpdateOutput,
   }));
@@ -4854,7 +4828,7 @@ export interface DatabaseAccountsDeleteInput {
   accountName: string;
 }
 export const DatabaseAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4869,7 +4843,7 @@ export const DatabaseAccountsDeleteInput =
 // Output Schema
 export type DatabaseAccountsDeleteOutput = void;
 export const DatabaseAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -4880,12 +4854,10 @@ export const DatabaseAccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const DatabaseAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsDeleteInput,
-    outputSchema: DatabaseAccountsDeleteOutput,
-  }),
-);
+export const DatabaseAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsDeleteInput,
+  outputSchema: DatabaseAccountsDeleteOutput,
+}));
 // Input Schema
 export interface DatabaseAccountsFailoverPriorityChangeInput {
   subscriptionId: string;
@@ -4898,7 +4870,7 @@ export interface DatabaseAccountsFailoverPriorityChangeInput {
   }[];
 }
 export const DatabaseAccountsFailoverPriorityChangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4920,7 +4892,7 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
 // Output Schema
 export type DatabaseAccountsFailoverPriorityChangeOutput = void;
 export const DatabaseAccountsFailoverPriorityChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsFailoverPriorityChangeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsFailoverPriorityChangeOutput>;
 
 // The operation
 /**
@@ -4932,7 +4904,7 @@ export const DatabaseAccountsFailoverPriorityChangeOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsFailoverPriorityChange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsFailoverPriorityChangeInput,
     outputSchema: DatabaseAccountsFailoverPriorityChangeOutput,
   }));
@@ -4943,7 +4915,7 @@ export interface DatabaseAccountsGetInput {
   accountName: string;
 }
 export const DatabaseAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4970,7 +4942,7 @@ export interface DatabaseAccountsGetOutput {
   };
 }
 export const DatabaseAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4999,7 +4971,7 @@ export const DatabaseAccountsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const DatabaseAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseAccountsGetInput,
   outputSchema: DatabaseAccountsGetOutput,
 }));
@@ -5010,7 +4982,7 @@ export interface DatabaseAccountsGetReadOnlyKeysInput {
   accountName: string;
 }
 export const DatabaseAccountsGetReadOnlyKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5028,7 +5000,7 @@ export interface DatabaseAccountsGetReadOnlyKeysOutput {
   secondaryReadonlyMasterKey?: string;
 }
 export const DatabaseAccountsGetReadOnlyKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabaseAccountsGetReadOnlyKeysOutput>;
@@ -5043,7 +5015,7 @@ export const DatabaseAccountsGetReadOnlyKeysOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsGetReadOnlyKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsGetReadOnlyKeysInput,
     outputSchema: DatabaseAccountsGetReadOnlyKeysOutput,
   }));
@@ -5052,7 +5024,7 @@ export interface DatabaseAccountsListInput {
   subscriptionId: string;
 }
 export const DatabaseAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5080,7 +5052,7 @@ export interface DatabaseAccountsListOutput {
   nextLink?: string;
 }
 export const DatabaseAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5124,19 +5096,17 @@ export const DatabaseAccountsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DatabaseAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListInput,
-    outputSchema: DatabaseAccountsListOutput,
-  }),
-);
+export const DatabaseAccountsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListInput,
+  outputSchema: DatabaseAccountsListOutput,
+}));
 // Input Schema
 export interface DatabaseAccountsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const DatabaseAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5165,7 +5135,7 @@ export interface DatabaseAccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DatabaseAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5211,7 +5181,7 @@ export const DatabaseAccountsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DatabaseAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsListByResourceGroupInput,
     outputSchema: DatabaseAccountsListByResourceGroupOutput,
   }));
@@ -5222,7 +5192,7 @@ export interface DatabaseAccountsListConnectionStringsInput {
   accountName: string;
 }
 export const DatabaseAccountsListConnectionStringsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5253,7 +5223,7 @@ export interface DatabaseAccountsListConnectionStringsOutput {
   }[];
 }
 export const DatabaseAccountsListConnectionStringsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5295,7 +5265,7 @@ export const DatabaseAccountsListConnectionStringsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListConnectionStrings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsListConnectionStringsInput,
     outputSchema: DatabaseAccountsListConnectionStringsOutput,
   }));
@@ -5306,7 +5276,7 @@ export interface DatabaseAccountsListKeysInput {
   accountName: string;
 }
 export const DatabaseAccountsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5324,7 +5294,7 @@ export interface DatabaseAccountsListKeysOutput {
   secondaryReadonlyMasterKey?: string;
 }
 export const DatabaseAccountsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabaseAccountsListKeysOutput>;
@@ -5338,12 +5308,10 @@ export const DatabaseAccountsListKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const DatabaseAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListKeysInput,
-    outputSchema: DatabaseAccountsListKeysOutput,
-  }),
-);
+export const DatabaseAccountsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListKeysInput,
+  outputSchema: DatabaseAccountsListKeysOutput,
+}));
 // Input Schema
 export interface DatabaseAccountsListMetricDefinitionsInput {
   subscriptionId: string;
@@ -5351,7 +5319,7 @@ export interface DatabaseAccountsListMetricDefinitionsInput {
   accountName: string;
 }
 export const DatabaseAccountsListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5388,7 +5356,7 @@ export interface DatabaseAccountsListMetricDefinitionsOutput {
   nextLink?: string;
 }
 export const DatabaseAccountsListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5444,7 +5412,7 @@ export const DatabaseAccountsListMetricDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsListMetricDefinitionsInput,
     outputSchema: DatabaseAccountsListMetricDefinitionsOutput,
   }));
@@ -5456,7 +5424,7 @@ export interface DatabaseAccountsListMetricsInput {
   $filter: string;
 }
 export const DatabaseAccountsListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5496,7 +5464,7 @@ export interface DatabaseAccountsListMetricsOutput {
   nextLink?: string;
 }
 export const DatabaseAccountsListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5548,12 +5516,10 @@ export const DatabaseAccountsListMetricsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const DatabaseAccountsListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListMetricsInput,
-    outputSchema: DatabaseAccountsListMetricsOutput,
-  }),
-);
+export const DatabaseAccountsListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListMetricsInput,
+  outputSchema: DatabaseAccountsListMetricsOutput,
+}));
 // Input Schema
 export interface DatabaseAccountsListReadOnlyKeysInput {
   subscriptionId: string;
@@ -5561,7 +5527,7 @@ export interface DatabaseAccountsListReadOnlyKeysInput {
   accountName: string;
 }
 export const DatabaseAccountsListReadOnlyKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5579,7 +5545,7 @@ export interface DatabaseAccountsListReadOnlyKeysOutput {
   secondaryReadonlyMasterKey?: string;
 }
 export const DatabaseAccountsListReadOnlyKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabaseAccountsListReadOnlyKeysOutput>;
@@ -5594,7 +5560,7 @@ export const DatabaseAccountsListReadOnlyKeysOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsListReadOnlyKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsListReadOnlyKeysInput,
     outputSchema: DatabaseAccountsListReadOnlyKeysOutput,
   }));
@@ -5606,7 +5572,7 @@ export interface DatabaseAccountsListUsagesInput {
   $filter?: string;
 }
 export const DatabaseAccountsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5638,7 +5604,7 @@ export interface DatabaseAccountsListUsagesOutput {
   nextLink?: string;
 }
 export const DatabaseAccountsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5678,12 +5644,10 @@ export const DatabaseAccountsListUsagesOutput =
  * @param accountName - Cosmos DB database account name.
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
-export const DatabaseAccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsListUsagesInput,
-    outputSchema: DatabaseAccountsListUsagesOutput,
-  }),
-);
+export const DatabaseAccountsListUsages = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsListUsagesInput,
+  outputSchema: DatabaseAccountsListUsagesOutput,
+}));
 // Input Schema
 export interface DatabaseAccountsOfflineRegionInput {
   subscriptionId: string;
@@ -5692,7 +5656,7 @@ export interface DatabaseAccountsOfflineRegionInput {
   region: string;
 }
 export const DatabaseAccountsOfflineRegionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5708,7 +5672,7 @@ export const DatabaseAccountsOfflineRegionInput =
 // Output Schema
 export type DatabaseAccountsOfflineRegionOutput = void;
 export const DatabaseAccountsOfflineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOfflineRegionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOfflineRegionOutput>;
 
 // The operation
 /**
@@ -5720,7 +5684,7 @@ export const DatabaseAccountsOfflineRegionOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsOfflineRegion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsOfflineRegionInput,
     outputSchema: DatabaseAccountsOfflineRegionOutput,
   }));
@@ -5732,7 +5696,7 @@ export interface DatabaseAccountsOnlineRegionInput {
   region: string;
 }
 export const DatabaseAccountsOnlineRegionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5748,7 +5712,7 @@ export const DatabaseAccountsOnlineRegionInput =
 // Output Schema
 export type DatabaseAccountsOnlineRegionOutput = void;
 export const DatabaseAccountsOnlineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOnlineRegionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOnlineRegionOutput>;
 
 // The operation
 /**
@@ -5760,7 +5724,7 @@ export const DatabaseAccountsOnlineRegionOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsOnlineRegion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsOnlineRegionInput,
     outputSchema: DatabaseAccountsOnlineRegionOutput,
   }));
@@ -5772,7 +5736,7 @@ export interface DatabaseAccountsRegenerateKeyInput {
   keyKind: "primary" | "secondary" | "primaryReadonly" | "secondaryReadonly";
 }
 export const DatabaseAccountsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5793,7 +5757,7 @@ export const DatabaseAccountsRegenerateKeyInput =
 // Output Schema
 export type DatabaseAccountsRegenerateKeyOutput = void;
 export const DatabaseAccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsRegenerateKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -5805,7 +5769,7 @@ export const DatabaseAccountsRegenerateKeyOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const DatabaseAccountsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseAccountsRegenerateKeyInput,
     outputSchema: DatabaseAccountsRegenerateKeyOutput,
   }));
@@ -5907,7 +5871,7 @@ export interface DatabaseAccountsUpdateInput {
   };
 }
 export const DatabaseAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6125,7 +6089,7 @@ export interface DatabaseAccountsUpdateOutput {
   };
 }
 export const DatabaseAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6154,12 +6118,10 @@ export const DatabaseAccountsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const DatabaseAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseAccountsUpdateInput,
-    outputSchema: DatabaseAccountsUpdateOutput,
-  }),
-);
+export const DatabaseAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseAccountsUpdateInput,
+  outputSchema: DatabaseAccountsUpdateOutput,
+}));
 // Input Schema
 export interface DatabaseListMetricDefinitionsInput {
   subscriptionId: string;
@@ -6168,7 +6130,7 @@ export interface DatabaseListMetricDefinitionsInput {
   databaseRid: string;
 }
 export const DatabaseListMetricDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6206,7 +6168,7 @@ export interface DatabaseListMetricDefinitionsOutput {
   nextLink?: string;
 }
 export const DatabaseListMetricDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6263,7 +6225,7 @@ export const DatabaseListMetricDefinitionsOutput =
  * @param databaseRid - Cosmos DB database rid.
  */
 export const DatabaseListMetricDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseListMetricDefinitionsInput,
     outputSchema: DatabaseListMetricDefinitionsOutput,
   }));
@@ -6276,7 +6238,7 @@ export interface DatabaseListMetricsInput {
   $filter: string;
 }
 export const DatabaseListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6317,7 +6279,7 @@ export interface DatabaseListMetricsOutput {
   nextLink?: string;
 }
 export const DatabaseListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6370,7 +6332,7 @@ export const DatabaseListMetricsOutput =
  * @param databaseRid - Cosmos DB database rid.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const DatabaseListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseListMetrics = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListMetricsInput,
   outputSchema: DatabaseListMetricsOutput,
 }));
@@ -6383,7 +6345,7 @@ export interface DatabaseListUsagesInput {
   $filter?: string;
 }
 export const DatabaseListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6416,7 +6378,7 @@ export interface DatabaseListUsagesOutput {
   nextLink?: string;
 }
 export const DatabaseListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6457,7 +6419,7 @@ export const DatabaseListUsagesOutput =
  * @param databaseRid - Cosmos DB database rid.
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
-export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabaseListUsages = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabaseListUsagesInput,
   outputSchema: DatabaseListUsagesOutput,
 }));
@@ -6482,7 +6444,7 @@ export interface FleetCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -6528,7 +6490,7 @@ export interface FleetCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6557,7 +6519,7 @@ export const FleetCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
-export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetCreateInput,
   outputSchema: FleetCreateOutput,
 }));
@@ -6567,7 +6529,7 @@ export interface FleetDeleteInput {
   resourceGroupName: string;
   fleetName: string;
 }
-export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -6582,7 +6544,7 @@ export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FleetDeleteOutput = void;
 export const FleetDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetDeleteOutput>;
 
 // The operation
 /**
@@ -6593,7 +6555,7 @@ export const FleetDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
-export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetDeleteInput,
   outputSchema: FleetDeleteOutput,
 }));
@@ -6603,7 +6565,7 @@ export interface FleetGetInput {
   resourceGroupName: string;
   fleetName: string;
 }
-export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -6629,7 +6591,7 @@ export interface FleetGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6658,7 +6620,7 @@ export const FleetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
-export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetGetInput,
   outputSchema: FleetGetOutput,
 }));
@@ -6666,7 +6628,7 @@ export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface FleetListInput {
   subscriptionId: string;
 }
-export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -6693,7 +6655,7 @@ export interface FleetListOutput {
   }[];
   nextLink?: string;
 }
-export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -6725,7 +6687,7 @@ export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const FleetList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetListInput,
   outputSchema: FleetListOutput,
 }));
@@ -6735,7 +6697,7 @@ export interface FleetListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const FleetListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6764,7 +6726,7 @@ export interface FleetListByResourceGroupOutput {
   nextLink?: string;
 }
 export const FleetListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6807,12 +6769,10 @@ export const FleetListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const FleetListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetListByResourceGroupInput,
-    outputSchema: FleetListByResourceGroupOutput,
-  }),
-);
+export const FleetListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetListByResourceGroupInput,
+  outputSchema: FleetListByResourceGroupOutput,
+}));
 // Input Schema
 export interface FleetspaceAccountCreateInput {
   subscriptionId: string;
@@ -6839,7 +6799,7 @@ export interface FleetspaceAccountCreateInput {
   };
 }
 export const FleetspaceAccountCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
@@ -6892,7 +6852,7 @@ export interface FleetspaceAccountCreateOutput {
   };
 }
 export const FleetspaceAccountCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6923,12 +6883,10 @@ export const FleetspaceAccountCreateOutput =
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
-export const FleetspaceAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountCreateInput,
-    outputSchema: FleetspaceAccountCreateOutput,
-  }),
-);
+export const FleetspaceAccountCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountCreateInput,
+  outputSchema: FleetspaceAccountCreateOutput,
+}));
 // Input Schema
 export interface FleetspaceAccountDeleteInput {
   subscriptionId: string;
@@ -6938,7 +6896,7 @@ export interface FleetspaceAccountDeleteInput {
   fleetspaceAccountName: string;
 }
 export const FleetspaceAccountDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
@@ -6955,7 +6913,7 @@ export const FleetspaceAccountDeleteInput =
 // Output Schema
 export type FleetspaceAccountDeleteOutput = void;
 export const FleetspaceAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceAccountDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceAccountDeleteOutput>;
 
 // The operation
 /**
@@ -6968,12 +6926,10 @@ export const FleetspaceAccountDeleteOutput =
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
-export const FleetspaceAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountDeleteInput,
-    outputSchema: FleetspaceAccountDeleteOutput,
-  }),
-);
+export const FleetspaceAccountDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountDeleteInput,
+  outputSchema: FleetspaceAccountDeleteOutput,
+}));
 // Input Schema
 export interface FleetspaceAccountGetInput {
   subscriptionId: string;
@@ -6983,7 +6939,7 @@ export interface FleetspaceAccountGetInput {
   fleetspaceAccountName: string;
 }
 export const FleetspaceAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
@@ -7012,7 +6968,7 @@ export interface FleetspaceAccountGetOutput {
   };
 }
 export const FleetspaceAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7043,12 +6999,10 @@ export const FleetspaceAccountGetOutput =
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  * @param fleetspaceAccountName - Cosmos DB fleetspace account name.
  */
-export const FleetspaceAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountGetInput,
-    outputSchema: FleetspaceAccountGetOutput,
-  }),
-);
+export const FleetspaceAccountGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountGetInput,
+  outputSchema: FleetspaceAccountGetOutput,
+}));
 // Input Schema
 export interface FleetspaceAccountListInput {
   subscriptionId: string;
@@ -7057,7 +7011,7 @@ export interface FleetspaceAccountListInput {
   fleetspaceName: string;
 }
 export const FleetspaceAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     fleetName: Schema.String.pipe(T.PathParam()),
@@ -7088,7 +7042,7 @@ export interface FleetspaceAccountListOutput {
   nextLink?: string;
 }
 export const FleetspaceAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7133,12 +7087,10 @@ export const FleetspaceAccountListOutput =
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
-export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FleetspaceAccountListInput,
-    outputSchema: FleetspaceAccountListOutput,
-  }),
-);
+export const FleetspaceAccountList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FleetspaceAccountListInput,
+  outputSchema: FleetspaceAccountListOutput,
+}));
 // Input Schema
 export interface FleetspaceCreateInput {
   subscriptionId: string;
@@ -7168,7 +7120,7 @@ export interface FleetspaceCreateInput {
     };
   };
 }
-export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7226,27 +7178,25 @@ export interface FleetspaceCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetspaceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FleetspaceCreateOutput>;
+export const FleetspaceCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FleetspaceCreateOutput>;
 
 // The operation
 /**
@@ -7258,7 +7208,7 @@ export const FleetspaceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
-export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceCreateInput,
   outputSchema: FleetspaceCreateOutput,
 }));
@@ -7269,7 +7219,7 @@ export interface FleetspaceDeleteInput {
   fleetName: string;
   fleetspaceName: string;
 }
-export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7285,7 +7235,7 @@ export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FleetspaceDeleteOutput = void;
 export const FleetspaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceDeleteOutput>;
 
 // The operation
 /**
@@ -7297,7 +7247,7 @@ export const FleetspaceDeleteOutput =
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
-export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceDeleteInput,
   outputSchema: FleetspaceDeleteOutput,
 }));
@@ -7308,7 +7258,7 @@ export interface FleetspaceGetInput {
   fleetName: string;
   fleetspaceName: string;
 }
-export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7335,7 +7285,7 @@ export interface FleetspaceGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7365,7 +7315,7 @@ export const FleetspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
-export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceGetInput,
   outputSchema: FleetspaceGetOutput,
 }));
@@ -7375,7 +7325,7 @@ export interface FleetspaceListInput {
   resourceGroupName: string;
   fleetName: string;
 }
-export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7404,7 +7354,7 @@ export interface FleetspaceListOutput {
   }[];
   nextLink?: string;
 }
-export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7438,7 +7388,7 @@ export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
-export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceListInput,
   outputSchema: FleetspaceListOutput,
 }));
@@ -7471,7 +7421,7 @@ export interface FleetspaceUpdateInput {
     };
   };
 }
-export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetspaceUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7529,27 +7479,25 @@ export interface FleetspaceUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FleetspaceUpdateOutput>;
+export const FleetspaceUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FleetspaceUpdateOutput>;
 
 // The operation
 /**
@@ -7561,7 +7509,7 @@ export const FleetspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  * @param fleetspaceName - Cosmos DB fleetspace name. Needs to be unique under a fleet.
  */
-export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetspaceUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetspaceUpdateInput,
   outputSchema: FleetspaceUpdateOutput,
 }));
@@ -7584,7 +7532,7 @@ export interface FleetUpdateInput {
       | "Creating";
   };
 }
-export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   fleetName: Schema.String.pipe(T.PathParam()),
@@ -7628,7 +7576,7 @@ export interface FleetUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FleetUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FleetUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7657,7 +7605,7 @@ export const FleetUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param fleetName - Cosmos DB fleet name. Needs to be unique under a subscription.
  */
-export const FleetUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FleetUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FleetUpdateInput,
   outputSchema: FleetUpdateOutput,
 }));
@@ -7702,7 +7650,7 @@ export interface GremlinResourcesCreateUpdateGremlinDatabaseInput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7781,7 +7729,7 @@ export interface GremlinResourcesCreateUpdateGremlinDatabaseOutput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7812,7 +7760,7 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesCreateUpdateGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinDatabaseInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinDatabaseOutput,
   }));
@@ -7907,7 +7855,7 @@ export interface GremlinResourcesCreateUpdateGremlinGraphInput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8110,7 +8058,7 @@ export interface GremlinResourcesCreateUpdateGremlinGraphOutput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8142,7 +8090,7 @@ export const GremlinResourcesCreateUpdateGremlinGraphOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesCreateUpdateGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinGraphInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinGraphOutput,
   }));
@@ -8160,7 +8108,7 @@ export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentInput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8196,7 +8144,7 @@ export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8227,7 +8175,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const GremlinResourcesCreateUpdateGremlinRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinRoleAssignmentInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput,
   }));
@@ -8250,7 +8198,7 @@ export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionInput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8295,7 +8243,7 @@ export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput {
   };
 }
 export const GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8326,7 +8274,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const GremlinResourcesCreateUpdateGremlinRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesCreateUpdateGremlinRoleDefinitionInput,
     outputSchema: GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput,
   }));
@@ -8338,7 +8286,7 @@ export interface GremlinResourcesDeleteGremlinDatabaseInput {
   databaseName: string;
 }
 export const GremlinResourcesDeleteGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8354,7 +8302,7 @@ export const GremlinResourcesDeleteGremlinDatabaseInput =
 // Output Schema
 export type GremlinResourcesDeleteGremlinDatabaseOutput = void;
 export const GremlinResourcesDeleteGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinDatabaseOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinDatabaseOutput>;
 
 // The operation
 /**
@@ -8367,7 +8315,7 @@ export const GremlinResourcesDeleteGremlinDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesDeleteGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesDeleteGremlinDatabaseInput,
     outputSchema: GremlinResourcesDeleteGremlinDatabaseOutput,
   }));
@@ -8380,7 +8328,7 @@ export interface GremlinResourcesDeleteGremlinGraphInput {
   graphName: string;
 }
 export const GremlinResourcesDeleteGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8397,7 +8345,7 @@ export const GremlinResourcesDeleteGremlinGraphInput =
 // Output Schema
 export type GremlinResourcesDeleteGremlinGraphOutput = void;
 export const GremlinResourcesDeleteGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinGraphOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinGraphOutput>;
 
 // The operation
 /**
@@ -8411,7 +8359,7 @@ export const GremlinResourcesDeleteGremlinGraphOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesDeleteGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesDeleteGremlinGraphInput,
     outputSchema: GremlinResourcesDeleteGremlinGraphOutput,
   }));
@@ -8423,7 +8371,7 @@ export interface GremlinResourcesDeleteGremlinRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const GremlinResourcesDeleteGremlinRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8439,7 +8387,7 @@ export const GremlinResourcesDeleteGremlinRoleAssignmentInput =
 // Output Schema
 export type GremlinResourcesDeleteGremlinRoleAssignmentOutput = void;
 export const GremlinResourcesDeleteGremlinRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -8452,7 +8400,7 @@ export const GremlinResourcesDeleteGremlinRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const GremlinResourcesDeleteGremlinRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesDeleteGremlinRoleAssignmentInput,
     outputSchema: GremlinResourcesDeleteGremlinRoleAssignmentOutput,
   }));
@@ -8464,7 +8412,7 @@ export interface GremlinResourcesDeleteGremlinRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const GremlinResourcesDeleteGremlinRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8480,7 +8428,7 @@ export const GremlinResourcesDeleteGremlinRoleDefinitionInput =
 // Output Schema
 export type GremlinResourcesDeleteGremlinRoleDefinitionOutput = void;
 export const GremlinResourcesDeleteGremlinRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -8493,7 +8441,7 @@ export const GremlinResourcesDeleteGremlinRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const GremlinResourcesDeleteGremlinRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesDeleteGremlinRoleDefinitionInput,
     outputSchema: GremlinResourcesDeleteGremlinRoleDefinitionOutput,
   }));
@@ -8505,7 +8453,7 @@ export interface GremlinResourcesGetGremlinDatabaseInput {
   databaseName: string;
 }
 export const GremlinResourcesGetGremlinDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8533,7 +8481,7 @@ export interface GremlinResourcesGetGremlinDatabaseOutput {
   };
 }
 export const GremlinResourcesGetGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8564,7 +8512,7 @@ export const GremlinResourcesGetGremlinDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesGetGremlinDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinDatabaseInput,
     outputSchema: GremlinResourcesGetGremlinDatabaseOutput,
   }));
@@ -8576,7 +8524,7 @@ export interface GremlinResourcesGetGremlinDatabaseThroughputInput {
   databaseName: string;
 }
 export const GremlinResourcesGetGremlinDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8604,7 +8552,7 @@ export interface GremlinResourcesGetGremlinDatabaseThroughputOutput {
   };
 }
 export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8635,7 +8583,7 @@ export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesGetGremlinDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinDatabaseThroughputInput,
     outputSchema: GremlinResourcesGetGremlinDatabaseThroughputOutput,
   }));
@@ -8648,7 +8596,7 @@ export interface GremlinResourcesGetGremlinGraphInput {
   graphName: string;
 }
 export const GremlinResourcesGetGremlinGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8677,7 +8625,7 @@ export interface GremlinResourcesGetGremlinGraphOutput {
   };
 }
 export const GremlinResourcesGetGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8709,7 +8657,7 @@ export const GremlinResourcesGetGremlinGraphOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesGetGremlinGraph =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinGraphInput,
     outputSchema: GremlinResourcesGetGremlinGraphOutput,
   }));
@@ -8722,7 +8670,7 @@ export interface GremlinResourcesGetGremlinGraphThroughputInput {
   graphName: string;
 }
 export const GremlinResourcesGetGremlinGraphThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8751,7 +8699,7 @@ export interface GremlinResourcesGetGremlinGraphThroughputOutput {
   };
 }
 export const GremlinResourcesGetGremlinGraphThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8783,7 +8731,7 @@ export const GremlinResourcesGetGremlinGraphThroughputOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesGetGremlinGraphThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinGraphThroughputInput,
     outputSchema: GremlinResourcesGetGremlinGraphThroughputOutput,
   }));
@@ -8795,7 +8743,7 @@ export interface GremlinResourcesGetGremlinRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const GremlinResourcesGetGremlinRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8823,7 +8771,7 @@ export interface GremlinResourcesGetGremlinRoleAssignmentOutput {
   };
 }
 export const GremlinResourcesGetGremlinRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8854,7 +8802,7 @@ export const GremlinResourcesGetGremlinRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const GremlinResourcesGetGremlinRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinRoleAssignmentInput,
     outputSchema: GremlinResourcesGetGremlinRoleAssignmentOutput,
   }));
@@ -8866,7 +8814,7 @@ export interface GremlinResourcesGetGremlinRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const GremlinResourcesGetGremlinRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8894,7 +8842,7 @@ export interface GremlinResourcesGetGremlinRoleDefinitionOutput {
   };
 }
 export const GremlinResourcesGetGremlinRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8925,7 +8873,7 @@ export const GremlinResourcesGetGremlinRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const GremlinResourcesGetGremlinRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesGetGremlinRoleDefinitionInput,
     outputSchema: GremlinResourcesGetGremlinRoleDefinitionOutput,
   }));
@@ -8936,7 +8884,7 @@ export interface GremlinResourcesListGremlinDatabasesInput {
   accountName: string;
 }
 export const GremlinResourcesListGremlinDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8966,7 +8914,7 @@ export interface GremlinResourcesListGremlinDatabasesOutput {
   nextLink?: string;
 }
 export const GremlinResourcesListGremlinDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9013,7 +8961,7 @@ export const GremlinResourcesListGremlinDatabasesOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const GremlinResourcesListGremlinDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesListGremlinDatabasesInput,
     outputSchema: GremlinResourcesListGremlinDatabasesOutput,
   }));
@@ -9025,7 +8973,7 @@ export interface GremlinResourcesListGremlinGraphsInput {
   databaseName: string;
 }
 export const GremlinResourcesListGremlinGraphsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9056,7 +9004,7 @@ export interface GremlinResourcesListGremlinGraphsOutput {
   nextLink?: string;
 }
 export const GremlinResourcesListGremlinGraphsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9104,7 +9052,7 @@ export const GremlinResourcesListGremlinGraphsOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesListGremlinGraphs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesListGremlinGraphsInput,
     outputSchema: GremlinResourcesListGremlinGraphsOutput,
   }));
@@ -9115,7 +9063,7 @@ export interface GremlinResourcesListGremlinRoleAssignmentsInput {
   accountName: string;
 }
 export const GremlinResourcesListGremlinRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9145,7 +9093,7 @@ export interface GremlinResourcesListGremlinRoleAssignmentsOutput {
   nextLink?: string;
 }
 export const GremlinResourcesListGremlinRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9190,7 +9138,7 @@ export const GremlinResourcesListGremlinRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const GremlinResourcesListGremlinRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesListGremlinRoleAssignmentsInput,
     outputSchema: GremlinResourcesListGremlinRoleAssignmentsOutput,
   }));
@@ -9201,7 +9149,7 @@ export interface GremlinResourcesListGremlinRoleDefinitionsInput {
   accountName: string;
 }
 export const GremlinResourcesListGremlinRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9231,7 +9179,7 @@ export interface GremlinResourcesListGremlinRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const GremlinResourcesListGremlinRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9276,7 +9224,7 @@ export const GremlinResourcesListGremlinRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const GremlinResourcesListGremlinRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesListGremlinRoleDefinitionsInput,
     outputSchema: GremlinResourcesListGremlinRoleDefinitionsOutput,
   }));
@@ -9288,7 +9236,7 @@ export interface GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput {
   databaseName: string;
 }
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9316,7 +9264,7 @@ export interface GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput {
   };
 }
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9347,7 +9295,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput,
     outputSchema: GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput,
   }));
@@ -9359,7 +9307,7 @@ export interface GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput {
   databaseName: string;
 }
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9387,7 +9335,7 @@ export interface GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput 
   };
 }
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9418,7 +9366,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput,
     outputSchema:
       GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput,
@@ -9432,7 +9380,7 @@ export interface GremlinResourcesMigrateGremlinGraphToAutoscaleInput {
   graphName: string;
 }
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9461,7 +9409,7 @@ export interface GremlinResourcesMigrateGremlinGraphToAutoscaleOutput {
   };
 }
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9493,7 +9441,7 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesMigrateGremlinGraphToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinGraphToAutoscaleInput,
     outputSchema: GremlinResourcesMigrateGremlinGraphToAutoscaleOutput,
   }));
@@ -9506,7 +9454,7 @@ export interface GremlinResourcesMigrateGremlinGraphToManualThroughputInput {
   graphName: string;
 }
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9535,7 +9483,7 @@ export interface GremlinResourcesMigrateGremlinGraphToManualThroughputOutput {
   };
 }
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9567,7 +9515,7 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesMigrateGremlinGraphToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesMigrateGremlinGraphToManualThroughputInput,
     outputSchema: GremlinResourcesMigrateGremlinGraphToManualThroughputOutput,
   }));
@@ -9581,7 +9529,7 @@ export interface GremlinResourcesRetrieveContinuousBackupInformationInput {
   location?: string;
 }
 export const GremlinResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9601,7 +9549,7 @@ export interface GremlinResourcesRetrieveContinuousBackupInformationOutput {
   continuousBackupInformation?: { latestRestorableTimestamp?: string };
 }
 export const GremlinResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -9621,7 +9569,7 @@ export const GremlinResourcesRetrieveContinuousBackupInformationOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: GremlinResourcesRetrieveContinuousBackupInformationOutput,
   }));
@@ -9667,7 +9615,7 @@ export interface GremlinResourcesUpdateGremlinDatabaseThroughputInput {
   };
 }
 export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9748,7 +9696,7 @@ export interface GremlinResourcesUpdateGremlinDatabaseThroughputOutput {
   };
 }
 export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9779,7 +9727,7 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const GremlinResourcesUpdateGremlinDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesUpdateGremlinDatabaseThroughputInput,
     outputSchema: GremlinResourcesUpdateGremlinDatabaseThroughputOutput,
   }));
@@ -9826,7 +9774,7 @@ export interface GremlinResourcesUpdateGremlinGraphThroughputInput {
   };
 }
 export const GremlinResourcesUpdateGremlinGraphThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9908,7 +9856,7 @@ export interface GremlinResourcesUpdateGremlinGraphThroughputOutput {
   };
 }
 export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9940,7 +9888,7 @@ export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
  * @param graphName - Cosmos DB graph name.
  */
 export const GremlinResourcesUpdateGremlinGraphThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GremlinResourcesUpdateGremlinGraphThroughputInput,
     outputSchema: GremlinResourcesUpdateGremlinGraphThroughputOutput,
   }));
@@ -9949,7 +9897,7 @@ export interface LocationsGetInput {
   subscriptionId: string;
   location: string;
 }
-export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -9974,7 +9922,7 @@ export interface LocationsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10002,7 +9950,7 @@ export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - Cosmos DB region, with spaces between words and each word capitalized.
  */
-export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetInput,
   outputSchema: LocationsGetOutput,
 }));
@@ -10010,7 +9958,7 @@ export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface LocationsListInput {
   subscriptionId: string;
 }
-export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -10037,7 +9985,7 @@ export interface LocationsListOutput {
   }[];
   nextLink?: string;
 }
-export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -10081,7 +10029,7 @@ export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsListInput,
   outputSchema: LocationsListOutput,
 }));
@@ -10133,7 +10081,7 @@ export interface MongoDBResourcesCreateUpdateMongoDBCollectionInput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10232,7 +10180,7 @@ export interface MongoDBResourcesCreateUpdateMongoDBCollectionOutput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10264,7 +10212,7 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesCreateUpdateMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoDBCollectionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoDBCollectionOutput,
   }));
@@ -10309,7 +10257,7 @@ export interface MongoDBResourcesCreateUpdateMongoDBDatabaseInput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10388,7 +10336,7 @@ export interface MongoDBResourcesCreateUpdateMongoDBDatabaseOutput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10419,7 +10367,7 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesCreateUpdateMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoDBDatabaseOutput,
   }));
@@ -10441,7 +10389,7 @@ export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionInput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10497,7 +10445,7 @@ export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10528,7 +10476,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
  * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesCreateUpdateMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput,
   }));
@@ -10548,7 +10496,7 @@ export interface MongoDBResourcesCreateUpdateMongoUserDefinitionInput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10593,7 +10541,7 @@ export interface MongoDBResourcesCreateUpdateMongoUserDefinitionOutput {
   };
 }
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10624,7 +10572,7 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
  * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesCreateUpdateMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesCreateUpdateMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesCreateUpdateMongoUserDefinitionOutput,
   }));
@@ -10637,7 +10585,7 @@ export interface MongoDBResourcesDeleteMongoDBCollectionInput {
   collectionName: string;
 }
 export const MongoDBResourcesDeleteMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10654,7 +10602,7 @@ export const MongoDBResourcesDeleteMongoDBCollectionInput =
 // Output Schema
 export type MongoDBResourcesDeleteMongoDBCollectionOutput = void;
 export const MongoDBResourcesDeleteMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBCollectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBCollectionOutput>;
 
 // The operation
 /**
@@ -10668,7 +10616,7 @@ export const MongoDBResourcesDeleteMongoDBCollectionOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesDeleteMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesDeleteMongoDBCollectionInput,
     outputSchema: MongoDBResourcesDeleteMongoDBCollectionOutput,
   }));
@@ -10680,7 +10628,7 @@ export interface MongoDBResourcesDeleteMongoDBDatabaseInput {
   databaseName: string;
 }
 export const MongoDBResourcesDeleteMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10696,7 +10644,7 @@ export const MongoDBResourcesDeleteMongoDBDatabaseInput =
 // Output Schema
 export type MongoDBResourcesDeleteMongoDBDatabaseOutput = void;
 export const MongoDBResourcesDeleteMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBDatabaseOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBDatabaseOutput>;
 
 // The operation
 /**
@@ -10709,7 +10657,7 @@ export const MongoDBResourcesDeleteMongoDBDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesDeleteMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesDeleteMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesDeleteMongoDBDatabaseOutput,
   }));
@@ -10721,7 +10669,7 @@ export interface MongoDBResourcesDeleteMongoRoleDefinitionInput {
   mongoRoleDefinitionId: string;
 }
 export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10737,7 +10685,7 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
 // Output Schema
 export type MongoDBResourcesDeleteMongoRoleDefinitionOutput = void;
 export const MongoDBResourcesDeleteMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -10750,7 +10698,7 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionOutput =
  * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesDeleteMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesDeleteMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesDeleteMongoRoleDefinitionOutput,
   }));
@@ -10762,7 +10710,7 @@ export interface MongoDBResourcesDeleteMongoUserDefinitionInput {
   mongoUserDefinitionId: string;
 }
 export const MongoDBResourcesDeleteMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10778,7 +10726,7 @@ export const MongoDBResourcesDeleteMongoUserDefinitionInput =
 // Output Schema
 export type MongoDBResourcesDeleteMongoUserDefinitionOutput = void;
 export const MongoDBResourcesDeleteMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoUserDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoUserDefinitionOutput>;
 
 // The operation
 /**
@@ -10791,7 +10739,7 @@ export const MongoDBResourcesDeleteMongoUserDefinitionOutput =
  * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesDeleteMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesDeleteMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesDeleteMongoUserDefinitionOutput,
   }));
@@ -10804,7 +10752,7 @@ export interface MongoDBResourcesGetMongoDBCollectionInput {
   collectionName: string;
 }
 export const MongoDBResourcesGetMongoDBCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10833,7 +10781,7 @@ export interface MongoDBResourcesGetMongoDBCollectionOutput {
   };
 }
 export const MongoDBResourcesGetMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10865,7 +10813,7 @@ export const MongoDBResourcesGetMongoDBCollectionOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesGetMongoDBCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBCollectionInput,
     outputSchema: MongoDBResourcesGetMongoDBCollectionOutput,
   }));
@@ -10878,7 +10826,7 @@ export interface MongoDBResourcesGetMongoDBCollectionThroughputInput {
   collectionName: string;
 }
 export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10907,7 +10855,7 @@ export interface MongoDBResourcesGetMongoDBCollectionThroughputOutput {
   };
 }
 export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10939,7 +10887,7 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesGetMongoDBCollectionThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBCollectionThroughputInput,
     outputSchema: MongoDBResourcesGetMongoDBCollectionThroughputOutput,
   }));
@@ -10951,7 +10899,7 @@ export interface MongoDBResourcesGetMongoDBDatabaseInput {
   databaseName: string;
 }
 export const MongoDBResourcesGetMongoDBDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10979,7 +10927,7 @@ export interface MongoDBResourcesGetMongoDBDatabaseOutput {
   };
 }
 export const MongoDBResourcesGetMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11010,7 +10958,7 @@ export const MongoDBResourcesGetMongoDBDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesGetMongoDBDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBDatabaseInput,
     outputSchema: MongoDBResourcesGetMongoDBDatabaseOutput,
   }));
@@ -11022,7 +10970,7 @@ export interface MongoDBResourcesGetMongoDBDatabaseThroughputInput {
   databaseName: string;
 }
 export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11050,7 +10998,7 @@ export interface MongoDBResourcesGetMongoDBDatabaseThroughputOutput {
   };
 }
 export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11081,7 +11029,7 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesGetMongoDBDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoDBDatabaseThroughputInput,
     outputSchema: MongoDBResourcesGetMongoDBDatabaseThroughputOutput,
   }));
@@ -11093,7 +11041,7 @@ export interface MongoDBResourcesGetMongoRoleDefinitionInput {
   mongoRoleDefinitionId: string;
 }
 export const MongoDBResourcesGetMongoRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11121,7 +11069,7 @@ export interface MongoDBResourcesGetMongoRoleDefinitionOutput {
   };
 }
 export const MongoDBResourcesGetMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11152,7 +11100,7 @@ export const MongoDBResourcesGetMongoRoleDefinitionOutput =
  * @param mongoRoleDefinitionId - The ID for the Role Definition {dbName.roleName}.
  */
 export const MongoDBResourcesGetMongoRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoRoleDefinitionInput,
     outputSchema: MongoDBResourcesGetMongoRoleDefinitionOutput,
   }));
@@ -11164,7 +11112,7 @@ export interface MongoDBResourcesGetMongoUserDefinitionInput {
   mongoUserDefinitionId: string;
 }
 export const MongoDBResourcesGetMongoUserDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11192,7 +11140,7 @@ export interface MongoDBResourcesGetMongoUserDefinitionOutput {
   };
 }
 export const MongoDBResourcesGetMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11223,7 +11171,7 @@ export const MongoDBResourcesGetMongoUserDefinitionOutput =
  * @param mongoUserDefinitionId - The ID for the User Definition {dbName.userName}.
  */
 export const MongoDBResourcesGetMongoUserDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesGetMongoUserDefinitionInput,
     outputSchema: MongoDBResourcesGetMongoUserDefinitionOutput,
   }));
@@ -11235,7 +11183,7 @@ export interface MongoDBResourcesListMongoDBCollectionsInput {
   databaseName: string;
 }
 export const MongoDBResourcesListMongoDBCollectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11266,7 +11214,7 @@ export interface MongoDBResourcesListMongoDBCollectionsOutput {
   nextLink?: string;
 }
 export const MongoDBResourcesListMongoDBCollectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11314,7 +11262,7 @@ export const MongoDBResourcesListMongoDBCollectionsOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesListMongoDBCollections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesListMongoDBCollectionsInput,
     outputSchema: MongoDBResourcesListMongoDBCollectionsOutput,
   }));
@@ -11325,7 +11273,7 @@ export interface MongoDBResourcesListMongoDBDatabasesInput {
   accountName: string;
 }
 export const MongoDBResourcesListMongoDBDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11355,7 +11303,7 @@ export interface MongoDBResourcesListMongoDBDatabasesOutput {
   nextLink?: string;
 }
 export const MongoDBResourcesListMongoDBDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11402,7 +11350,7 @@ export const MongoDBResourcesListMongoDBDatabasesOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const MongoDBResourcesListMongoDBDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesListMongoDBDatabasesInput,
     outputSchema: MongoDBResourcesListMongoDBDatabasesOutput,
   }));
@@ -11413,7 +11361,7 @@ export interface MongoDBResourcesListMongoRoleDefinitionsInput {
   accountName: string;
 }
 export const MongoDBResourcesListMongoRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11443,7 +11391,7 @@ export interface MongoDBResourcesListMongoRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const MongoDBResourcesListMongoRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11490,7 +11438,7 @@ export const MongoDBResourcesListMongoRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const MongoDBResourcesListMongoRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesListMongoRoleDefinitionsInput,
     outputSchema: MongoDBResourcesListMongoRoleDefinitionsOutput,
   }));
@@ -11501,7 +11449,7 @@ export interface MongoDBResourcesListMongoUserDefinitionsInput {
   accountName: string;
 }
 export const MongoDBResourcesListMongoUserDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11531,7 +11479,7 @@ export interface MongoDBResourcesListMongoUserDefinitionsOutput {
   nextLink?: string;
 }
 export const MongoDBResourcesListMongoUserDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11578,7 +11526,7 @@ export const MongoDBResourcesListMongoUserDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const MongoDBResourcesListMongoUserDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesListMongoUserDefinitionsInput,
     outputSchema: MongoDBResourcesListMongoUserDefinitionsOutput,
   }));
@@ -11591,7 +11539,7 @@ export interface MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput {
   collectionName: string;
 }
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11620,7 +11568,7 @@ export interface MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput {
   };
 }
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11652,7 +11600,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput,
     outputSchema: MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput,
   }));
@@ -11665,7 +11613,7 @@ export interface MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput
   collectionName: string;
 }
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11694,7 +11642,7 @@ export interface MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutpu
   };
 }
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11726,7 +11674,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput,
     outputSchema:
@@ -11740,7 +11688,7 @@ export interface MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput {
   databaseName: string;
 }
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11768,7 +11716,7 @@ export interface MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput {
   };
 }
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11799,7 +11747,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput,
     outputSchema: MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput,
   }));
@@ -11811,7 +11759,7 @@ export interface MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput {
   databaseName: string;
 }
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11839,7 +11787,7 @@ export interface MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput 
   };
 }
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11870,7 +11818,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput,
     outputSchema:
       MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput,
@@ -11885,7 +11833,7 @@ export interface MongoDBResourcesRetrieveContinuousBackupInformationInput {
   location?: string;
 }
 export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11905,7 +11853,7 @@ export interface MongoDBResourcesRetrieveContinuousBackupInformationOutput {
   continuousBackupInformation?: { latestRestorableTimestamp?: string };
 }
 export const MongoDBResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -11925,7 +11873,7 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: MongoDBResourcesRetrieveContinuousBackupInformationOutput,
   }));
@@ -11972,7 +11920,7 @@ export interface MongoDBResourcesUpdateMongoDBCollectionThroughputInput {
   };
 }
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12054,7 +12002,7 @@ export interface MongoDBResourcesUpdateMongoDBCollectionThroughputOutput {
   };
 }
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12086,7 +12034,7 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
  * @param collectionName - Cosmos DB collection name.
  */
 export const MongoDBResourcesUpdateMongoDBCollectionThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesUpdateMongoDBCollectionThroughputInput,
     outputSchema: MongoDBResourcesUpdateMongoDBCollectionThroughputOutput,
   }));
@@ -12132,7 +12080,7 @@ export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputInput {
   };
 }
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12213,7 +12161,7 @@ export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput {
   };
 }
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12244,7 +12192,7 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputInput,
     outputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput,
   }));
@@ -12262,7 +12210,7 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput {
   };
 }
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12298,7 +12246,7 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput {
   };
 }
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12329,7 +12277,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput,
     outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput,
   }));
@@ -12352,7 +12300,7 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput {
   };
 }
 export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12397,7 +12345,7 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput {
   };
 }
 export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12428,7 +12376,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const MongoMIResourcesCreateUpdateMongoMIRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput,
     outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput,
   }));
@@ -12440,7 +12388,7 @@ export interface MongoMIResourcesDeleteMongoMIRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12456,7 +12404,7 @@ export const MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
 // Output Schema
 export type MongoMIResourcesDeleteMongoMIRoleAssignmentOutput = void;
 export const MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -12469,7 +12417,7 @@ export const MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const MongoMIResourcesDeleteMongoMIRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesDeleteMongoMIRoleAssignmentInput,
     outputSchema: MongoMIResourcesDeleteMongoMIRoleAssignmentOutput,
   }));
@@ -12481,7 +12429,7 @@ export interface MongoMIResourcesDeleteMongoMIRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12497,7 +12445,7 @@ export const MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
 // Output Schema
 export type MongoMIResourcesDeleteMongoMIRoleDefinitionOutput = void;
 export const MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -12510,7 +12458,7 @@ export const MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const MongoMIResourcesDeleteMongoMIRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesDeleteMongoMIRoleDefinitionInput,
     outputSchema: MongoMIResourcesDeleteMongoMIRoleDefinitionOutput,
   }));
@@ -12522,7 +12470,7 @@ export interface MongoMIResourcesGetMongoMIRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const MongoMIResourcesGetMongoMIRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12550,7 +12498,7 @@ export interface MongoMIResourcesGetMongoMIRoleAssignmentOutput {
   };
 }
 export const MongoMIResourcesGetMongoMIRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12581,7 +12529,7 @@ export const MongoMIResourcesGetMongoMIRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const MongoMIResourcesGetMongoMIRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesGetMongoMIRoleAssignmentInput,
     outputSchema: MongoMIResourcesGetMongoMIRoleAssignmentOutput,
   }));
@@ -12593,7 +12541,7 @@ export interface MongoMIResourcesGetMongoMIRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const MongoMIResourcesGetMongoMIRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12621,7 +12569,7 @@ export interface MongoMIResourcesGetMongoMIRoleDefinitionOutput {
   };
 }
 export const MongoMIResourcesGetMongoMIRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12652,7 +12600,7 @@ export const MongoMIResourcesGetMongoMIRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const MongoMIResourcesGetMongoMIRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesGetMongoMIRoleDefinitionInput,
     outputSchema: MongoMIResourcesGetMongoMIRoleDefinitionOutput,
   }));
@@ -12663,7 +12611,7 @@ export interface MongoMIResourcesListMongoMIRoleAssignmentsInput {
   accountName: string;
 }
 export const MongoMIResourcesListMongoMIRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12693,7 +12641,7 @@ export interface MongoMIResourcesListMongoMIRoleAssignmentsOutput {
   nextLink?: string;
 }
 export const MongoMIResourcesListMongoMIRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12738,7 +12686,7 @@ export const MongoMIResourcesListMongoMIRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const MongoMIResourcesListMongoMIRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesListMongoMIRoleAssignmentsInput,
     outputSchema: MongoMIResourcesListMongoMIRoleAssignmentsOutput,
   }));
@@ -12749,7 +12697,7 @@ export interface MongoMIResourcesListMongoMIRoleDefinitionsInput {
   accountName: string;
 }
 export const MongoMIResourcesListMongoMIRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12779,7 +12727,7 @@ export interface MongoMIResourcesListMongoMIRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const MongoMIResourcesListMongoMIRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12824,7 +12772,7 @@ export const MongoMIResourcesListMongoMIRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const MongoMIResourcesListMongoMIRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoMIResourcesListMongoMIRoleDefinitionsInput,
     outputSchema: MongoMIResourcesListMongoMIRoleDefinitionsOutput,
   }));
@@ -12839,7 +12787,7 @@ export interface NotebookWorkspacesCreateOrUpdateInput {
   type?: string;
 }
 export const NotebookWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12870,7 +12818,7 @@ export interface NotebookWorkspacesCreateOrUpdateOutput {
   };
 }
 export const NotebookWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12901,7 +12849,7 @@ export const NotebookWorkspacesCreateOrUpdateOutput =
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebookWorkspacesCreateOrUpdateInput,
     outputSchema: NotebookWorkspacesCreateOrUpdateOutput,
   }));
@@ -12913,7 +12861,7 @@ export interface NotebookWorkspacesDeleteInput {
   notebookWorkspaceName: "default";
 }
 export const NotebookWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12929,7 +12877,7 @@ export const NotebookWorkspacesDeleteInput =
 // Output Schema
 export type NotebookWorkspacesDeleteOutput = void;
 export const NotebookWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -12941,12 +12889,10 @@ export const NotebookWorkspacesDeleteOutput =
  * @param accountName - Cosmos DB database account name.
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
-export const NotebookWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesDeleteInput,
-    outputSchema: NotebookWorkspacesDeleteOutput,
-  }),
-);
+export const NotebookWorkspacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesDeleteInput,
+  outputSchema: NotebookWorkspacesDeleteOutput,
+}));
 // Input Schema
 export interface NotebookWorkspacesGetInput {
   subscriptionId: string;
@@ -12955,7 +12901,7 @@ export interface NotebookWorkspacesGetInput {
   notebookWorkspaceName: "default";
 }
 export const NotebookWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12983,7 +12929,7 @@ export interface NotebookWorkspacesGetOutput {
   };
 }
 export const NotebookWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13013,12 +12959,10 @@ export const NotebookWorkspacesGetOutput =
  * @param accountName - Cosmos DB database account name.
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
-export const NotebookWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesGetInput,
-    outputSchema: NotebookWorkspacesGetOutput,
-  }),
-);
+export const NotebookWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesGetInput,
+  outputSchema: NotebookWorkspacesGetOutput,
+}));
 // Input Schema
 export interface NotebookWorkspacesListByDatabaseAccountInput {
   subscriptionId: string;
@@ -13026,7 +12970,7 @@ export interface NotebookWorkspacesListByDatabaseAccountInput {
   accountName: string;
 }
 export const NotebookWorkspacesListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13056,7 +13000,7 @@ export interface NotebookWorkspacesListByDatabaseAccountOutput {
   nextLink?: string;
 }
 export const NotebookWorkspacesListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13103,7 +13047,7 @@ export const NotebookWorkspacesListByDatabaseAccountOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const NotebookWorkspacesListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebookWorkspacesListByDatabaseAccountInput,
     outputSchema: NotebookWorkspacesListByDatabaseAccountOutput,
   }));
@@ -13115,7 +13059,7 @@ export interface NotebookWorkspacesListConnectionInfoInput {
   notebookWorkspaceName: "default";
 }
 export const NotebookWorkspacesListConnectionInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13134,7 +13078,7 @@ export interface NotebookWorkspacesListConnectionInfoOutput {
   notebookServerEndpoint?: string;
 }
 export const NotebookWorkspacesListConnectionInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authToken: Schema.optional(Schema.String),
     notebookServerEndpoint: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NotebookWorkspacesListConnectionInfoOutput>;
@@ -13150,7 +13094,7 @@ export const NotebookWorkspacesListConnectionInfoOutput =
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesListConnectionInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebookWorkspacesListConnectionInfoInput,
     outputSchema: NotebookWorkspacesListConnectionInfoOutput,
   }));
@@ -13162,7 +13106,7 @@ export interface NotebookWorkspacesRegenerateAuthTokenInput {
   notebookWorkspaceName: "default";
 }
 export const NotebookWorkspacesRegenerateAuthTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13178,7 +13122,7 @@ export const NotebookWorkspacesRegenerateAuthTokenInput =
 // Output Schema
 export type NotebookWorkspacesRegenerateAuthTokenOutput = void;
 export const NotebookWorkspacesRegenerateAuthTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesRegenerateAuthTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesRegenerateAuthTokenOutput>;
 
 // The operation
 /**
@@ -13191,7 +13135,7 @@ export const NotebookWorkspacesRegenerateAuthTokenOutput =
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
 export const NotebookWorkspacesRegenerateAuthToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebookWorkspacesRegenerateAuthTokenInput,
     outputSchema: NotebookWorkspacesRegenerateAuthTokenOutput,
   }));
@@ -13203,7 +13147,7 @@ export interface NotebookWorkspacesStartInput {
   notebookWorkspaceName: "default";
 }
 export const NotebookWorkspacesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13219,7 +13163,7 @@ export const NotebookWorkspacesStartInput =
 // Output Schema
 export type NotebookWorkspacesStartOutput = void;
 export const NotebookWorkspacesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesStartOutput>;
 
 // The operation
 /**
@@ -13231,17 +13175,13 @@ export const NotebookWorkspacesStartOutput =
  * @param accountName - Cosmos DB database account name.
  * @param notebookWorkspaceName - The name of the notebook workspace resource.
  */
-export const NotebookWorkspacesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebookWorkspacesStartInput,
-    outputSchema: NotebookWorkspacesStartOutput,
-  }),
-);
+export const NotebookWorkspacesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebookWorkspacesStartInput,
+  outputSchema: NotebookWorkspacesStartOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DocumentDB/operations",
@@ -13262,7 +13202,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -13285,7 +13225,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -13300,7 +13240,7 @@ export interface PartitionKeyRangeIdListMetricsInput {
   $filter: string;
 }
 export const PartitionKeyRangeIdListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13343,7 +13283,7 @@ export interface PartitionKeyRangeIdListMetricsOutput {
   nextLink?: string;
 }
 export const PartitionKeyRangeIdListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13399,7 +13339,7 @@ export const PartitionKeyRangeIdListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PartitionKeyRangeIdListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartitionKeyRangeIdListMetricsInput,
     outputSchema: PartitionKeyRangeIdListMetricsOutput,
   }));
@@ -13415,7 +13355,7 @@ export interface PartitionKeyRangeIdRegionListMetricsInput {
   $filter: string;
 }
 export const PartitionKeyRangeIdRegionListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13459,7 +13399,7 @@ export interface PartitionKeyRangeIdRegionListMetricsOutput {
   nextLink?: string;
 }
 export const PartitionKeyRangeIdRegionListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13516,7 +13456,7 @@ export const PartitionKeyRangeIdRegionListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PartitionKeyRangeIdRegionListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartitionKeyRangeIdRegionListMetricsInput,
     outputSchema: PartitionKeyRangeIdRegionListMetricsOutput,
   }));
@@ -13528,7 +13468,7 @@ export interface PercentileListMetricsInput {
   $filter: string;
 }
 export const PercentileListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13568,7 +13508,7 @@ export interface PercentileListMetricsOutput {
   nextLink?: string;
 }
 export const PercentileListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13620,12 +13560,10 @@ export const PercentileListMetricsOutput =
  * @param accountName - Cosmos DB database account name.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const PercentileListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PercentileListMetricsInput,
-    outputSchema: PercentileListMetricsOutput,
-  }),
-);
+export const PercentileListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PercentileListMetricsInput,
+  outputSchema: PercentileListMetricsOutput,
+}));
 // Input Schema
 export interface PercentileSourceTargetListMetricsInput {
   subscriptionId: string;
@@ -13636,7 +13574,7 @@ export interface PercentileSourceTargetListMetricsInput {
   $filter: string;
 }
 export const PercentileSourceTargetListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13678,7 +13616,7 @@ export interface PercentileSourceTargetListMetricsOutput {
   nextLink?: string;
 }
 export const PercentileSourceTargetListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13733,7 +13671,7 @@ export const PercentileSourceTargetListMetricsOutput =
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
 export const PercentileSourceTargetListMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PercentileSourceTargetListMetricsInput,
     outputSchema: PercentileSourceTargetListMetricsOutput,
   }));
@@ -13746,7 +13684,7 @@ export interface PercentileTargetListMetricsInput {
   $filter: string;
 }
 export const PercentileTargetListMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13787,7 +13725,7 @@ export interface PercentileTargetListMetricsOutput {
   nextLink?: string;
 }
 export const PercentileTargetListMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13840,12 +13778,10 @@ export const PercentileTargetListMetricsOutput =
  * @param targetRegion - Target region to which data is written. Cosmos DB region, with spaces between words and each word capitalized.
  * @param $filter - An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
  */
-export const PercentileTargetListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PercentileTargetListMetricsInput,
-    outputSchema: PercentileTargetListMetricsOutput,
-  }),
-);
+export const PercentileTargetListMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PercentileTargetListMetricsInput,
+  outputSchema: PercentileTargetListMetricsOutput,
+}));
 // Input Schema
 export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -13864,7 +13800,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13910,7 +13846,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13941,7 +13877,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -13953,7 +13889,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13969,7 +13905,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -13982,7 +13918,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -13994,7 +13930,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -14022,7 +13958,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14053,7 +13989,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -14064,7 +14000,7 @@ export interface PrivateEndpointConnectionsListByDatabaseAccountInput {
   accountName: string;
 }
 export const PrivateEndpointConnectionsListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -14094,7 +14030,7 @@ export interface PrivateEndpointConnectionsListByDatabaseAccountOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14141,7 +14077,7 @@ export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const PrivateEndpointConnectionsListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByDatabaseAccountInput,
     outputSchema: PrivateEndpointConnectionsListByDatabaseAccountOutput,
   }));
@@ -14153,7 +14089,7 @@ export interface PrivateLinkResourcesGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -14181,7 +14117,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14211,12 +14147,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param accountName - Cosmos DB database account name.
  * @param groupName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByDatabaseAccountInput {
   subscriptionId: string;
@@ -14224,7 +14158,7 @@ export interface PrivateLinkResourcesListByDatabaseAccountInput {
   accountName: string;
 }
 export const PrivateLinkResourcesListByDatabaseAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -14254,7 +14188,7 @@ export interface PrivateLinkResourcesListByDatabaseAccountOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByDatabaseAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14301,7 +14235,7 @@ export const PrivateLinkResourcesListByDatabaseAccountOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const PrivateLinkResourcesListByDatabaseAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByDatabaseAccountInput,
     outputSchema: PrivateLinkResourcesListByDatabaseAccountOutput,
   }));
@@ -14312,7 +14246,7 @@ export interface RestorableDatabaseAccountsGetByLocationInput {
   instanceId: string;
 }
 export const RestorableDatabaseAccountsGetByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14339,7 +14273,7 @@ export interface RestorableDatabaseAccountsGetByLocationOutput {
   };
 }
 export const RestorableDatabaseAccountsGetByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14369,7 +14303,7 @@ export const RestorableDatabaseAccountsGetByLocationOutput =
  * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableDatabaseAccountsGetByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableDatabaseAccountsGetByLocationInput,
     outputSchema: RestorableDatabaseAccountsGetByLocationOutput,
   }));
@@ -14378,7 +14312,7 @@ export interface RestorableDatabaseAccountsListInput {
   subscriptionId: string;
 }
 export const RestorableDatabaseAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -14406,7 +14340,7 @@ export interface RestorableDatabaseAccountsListOutput {
   nextLink?: string;
 }
 export const RestorableDatabaseAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14451,7 +14385,7 @@ export const RestorableDatabaseAccountsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RestorableDatabaseAccountsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableDatabaseAccountsListInput,
     outputSchema: RestorableDatabaseAccountsListOutput,
   }));
@@ -14461,7 +14395,7 @@ export interface RestorableDatabaseAccountsListByLocationInput {
   location: string;
 }
 export const RestorableDatabaseAccountsListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -14490,7 +14424,7 @@ export interface RestorableDatabaseAccountsListByLocationOutput {
   nextLink?: string;
 }
 export const RestorableDatabaseAccountsListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14536,7 +14470,7 @@ export const RestorableDatabaseAccountsListByLocationOutput =
  * @param location - Cosmos DB region, with spaces between words and each word capitalized.
  */
 export const RestorableDatabaseAccountsListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableDatabaseAccountsListByLocationInput,
     outputSchema: RestorableDatabaseAccountsListByLocationOutput,
   }));
@@ -14547,7 +14481,7 @@ export interface RestorableGremlinDatabasesListInput {
   instanceId: string;
 }
 export const RestorableGremlinDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14585,7 +14519,7 @@ export interface RestorableGremlinDatabasesListOutput {
   nextLink?: string;
 }
 export const RestorableGremlinDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14631,7 +14565,7 @@ export const RestorableGremlinDatabasesListOutput =
  * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableGremlinDatabasesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableGremlinDatabasesListInput,
     outputSchema: RestorableGremlinDatabasesListOutput,
   }));
@@ -14645,7 +14579,7 @@ export interface RestorableGremlinGraphsListInput {
   endTime?: string;
 }
 export const RestorableGremlinGraphsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14686,7 +14620,7 @@ export interface RestorableGremlinGraphsListOutput {
   nextLink?: string;
 }
 export const RestorableGremlinGraphsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14734,12 +14668,10 @@ export const RestorableGremlinGraphsListOutput =
  * @param startTime - Restorable Gremlin graphs event feed start time.
  * @param endTime - Restorable Gremlin graphs event feed end time.
  */
-export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableGremlinGraphsListInput,
-    outputSchema: RestorableGremlinGraphsListOutput,
-  }),
-);
+export const RestorableGremlinGraphsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableGremlinGraphsListInput,
+  outputSchema: RestorableGremlinGraphsListOutput,
+}));
 // Input Schema
 export interface RestorableGremlinResourcesListInput {
   subscriptionId: string;
@@ -14749,7 +14681,7 @@ export interface RestorableGremlinResourcesListInput {
   restoreTimestampInUtc?: string;
 }
 export const RestorableGremlinResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14775,7 +14707,7 @@ export interface RestorableGremlinResourcesListOutput {
   nextLink?: string;
 }
 export const RestorableGremlinResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14802,7 +14734,7 @@ export const RestorableGremlinResourcesListOutput =
  * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableGremlinResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableGremlinResourcesListInput,
     outputSchema: RestorableGremlinResourcesListOutput,
   }));
@@ -14816,7 +14748,7 @@ export interface RestorableMongodbCollectionsListInput {
   endTime?: string;
 }
 export const RestorableMongodbCollectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14857,7 +14789,7 @@ export interface RestorableMongodbCollectionsListOutput {
   nextLink?: string;
 }
 export const RestorableMongodbCollectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -14906,7 +14838,7 @@ export const RestorableMongodbCollectionsListOutput =
  * @param endTime - Restorable MongoDB collections event feed end time.
  */
 export const RestorableMongodbCollectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableMongodbCollectionsListInput,
     outputSchema: RestorableMongodbCollectionsListOutput,
   }));
@@ -14917,7 +14849,7 @@ export interface RestorableMongodbDatabasesListInput {
   instanceId: string;
 }
 export const RestorableMongodbDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -14955,7 +14887,7 @@ export interface RestorableMongodbDatabasesListOutput {
   nextLink?: string;
 }
 export const RestorableMongodbDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15001,7 +14933,7 @@ export const RestorableMongodbDatabasesListOutput =
  * @param instanceId - The instanceId GUID of a restorable database account.
  */
 export const RestorableMongodbDatabasesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableMongodbDatabasesListInput,
     outputSchema: RestorableMongodbDatabasesListOutput,
   }));
@@ -15014,7 +14946,7 @@ export interface RestorableMongodbResourcesListInput {
   restoreTimestampInUtc?: string;
 }
 export const RestorableMongodbResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15040,7 +14972,7 @@ export interface RestorableMongodbResourcesListOutput {
   nextLink?: string;
 }
 export const RestorableMongodbResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15067,7 +14999,7 @@ export const RestorableMongodbResourcesListOutput =
  * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableMongodbResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableMongodbResourcesListInput,
     outputSchema: RestorableMongodbResourcesListOutput,
   }));
@@ -15081,7 +15013,7 @@ export interface RestorableSqlContainersListInput {
   endTime?: string;
 }
 export const RestorableSqlContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15202,7 +15134,7 @@ export interface RestorableSqlContainersListOutput {
   nextLink?: string;
 }
 export const RestorableSqlContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15468,12 +15400,10 @@ export const RestorableSqlContainersListOutput =
  * @param startTime - Restorable Sql containers event feed start time.
  * @param endTime - Restorable Sql containers event feed end time.
  */
-export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlContainersListInput,
-    outputSchema: RestorableSqlContainersListOutput,
-  }),
-);
+export const RestorableSqlContainersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlContainersListInput,
+  outputSchema: RestorableSqlContainersListOutput,
+}));
 // Input Schema
 export interface RestorableSqlDatabasesListInput {
   subscriptionId: string;
@@ -15481,7 +15411,7 @@ export interface RestorableSqlDatabasesListInput {
   instanceId: string;
 }
 export const RestorableSqlDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15528,7 +15458,7 @@ export interface RestorableSqlDatabasesListOutput {
   nextLink?: string;
 }
 export const RestorableSqlDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15590,12 +15520,10 @@ export const RestorableSqlDatabasesListOutput =
  * @param location - Cosmos DB region, with spaces between words and each word capitalized.
  * @param instanceId - The instanceId GUID of a restorable database account.
  */
-export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlDatabasesListInput,
-    outputSchema: RestorableSqlDatabasesListOutput,
-  }),
-);
+export const RestorableSqlDatabasesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlDatabasesListInput,
+  outputSchema: RestorableSqlDatabasesListOutput,
+}));
 // Input Schema
 export interface RestorableSqlResourcesListInput {
   subscriptionId: string;
@@ -15605,7 +15533,7 @@ export interface RestorableSqlResourcesListInput {
   restoreTimestampInUtc?: string;
 }
 export const RestorableSqlResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15631,7 +15559,7 @@ export interface RestorableSqlResourcesListOutput {
   nextLink?: string;
 }
 export const RestorableSqlResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15657,12 +15585,10 @@ export const RestorableSqlResourcesListOutput =
  * @param restoreLocation - The location where the restorable resources are located.
  * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
-export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableSqlResourcesListInput,
-    outputSchema: RestorableSqlResourcesListOutput,
-  }),
-);
+export const RestorableSqlResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableSqlResourcesListInput,
+  outputSchema: RestorableSqlResourcesListOutput,
+}));
 // Input Schema
 export interface RestorableTableResourcesListInput {
   subscriptionId: string;
@@ -15672,7 +15598,7 @@ export interface RestorableTableResourcesListInput {
   restoreTimestampInUtc?: string;
 }
 export const RestorableTableResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15692,7 +15618,7 @@ export interface RestorableTableResourcesListOutput {
   nextLink?: string;
 }
 export const RestorableTableResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15717,7 +15643,7 @@ export const RestorableTableResourcesListOutput =
  * @param restoreTimestampInUtc - The timestamp when the restorable resources existed.
  */
 export const RestorableTableResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RestorableTableResourcesListInput,
     outputSchema: RestorableTableResourcesListOutput,
   }));
@@ -15730,7 +15656,7 @@ export interface RestorableTablesListInput {
   endTime?: string;
 }
 export const RestorableTablesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
@@ -15770,7 +15696,7 @@ export interface RestorableTablesListOutput {
   nextLink?: string;
 }
 export const RestorableTablesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -15817,12 +15743,10 @@ export const RestorableTablesListOutput =
  * @param startTime - Restorable Tables event feed start time.
  * @param endTime - Restorable Tables event feed end time.
  */
-export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableTablesListInput,
-    outputSchema: RestorableTablesListOutput,
-  }),
-);
+export const RestorableTablesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableTablesListInput,
+  outputSchema: RestorableTablesListOutput,
+}));
 // Input Schema
 export interface ServiceCreateInput {
   subscriptionId: string;
@@ -15839,7 +15763,7 @@ export interface ServiceCreateInput {
       | "MaterializedViewsBuilder";
   };
 }
-export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -15880,7 +15804,7 @@ export interface ServiceCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -15910,7 +15834,7 @@ export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - Cosmos DB database account name.
  * @param serviceName - Cosmos DB service name.
  */
-export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceCreateInput,
   outputSchema: ServiceCreateOutput,
 }));
@@ -15921,7 +15845,7 @@ export interface ServiceDeleteInput {
   accountName: string;
   serviceName: string;
 }
-export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -15937,7 +15861,7 @@ export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServiceDeleteOutput = void;
 export const ServiceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceDeleteOutput>;
 
 // The operation
 /**
@@ -15949,7 +15873,7 @@ export const ServiceDeleteOutput =
  * @param accountName - Cosmos DB database account name.
  * @param serviceName - Cosmos DB service name.
  */
-export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceDeleteInput,
   outputSchema: ServiceDeleteOutput,
 }));
@@ -15960,7 +15884,7 @@ export interface ServiceGetInput {
   accountName: string;
   serviceName: string;
 }
-export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -15987,7 +15911,7 @@ export interface ServiceGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -16017,7 +15941,7 @@ export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - Cosmos DB database account name.
  * @param serviceName - Cosmos DB service name.
  */
-export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceGetInput,
   outputSchema: ServiceGetOutput,
 }));
@@ -16027,7 +15951,7 @@ export interface ServiceListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -16056,7 +15980,7 @@ export interface ServiceListOutput {
   }[];
   nextLink?: string;
 }
-export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -16102,7 +16026,7 @@ export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceListInput,
   outputSchema: ServiceListOutput,
 }));
@@ -16128,7 +16052,7 @@ export interface SqlResourcesCreateUpdateClientEncryptionKeyInput {
   };
 }
 export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -16172,7 +16096,7 @@ export interface SqlResourcesCreateUpdateClientEncryptionKeyOutput {
   };
 }
 export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16204,7 +16128,7 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
  * @param clientEncryptionKeyName - Cosmos DB ClientEncryptionKey name.
  */
 export const SqlResourcesCreateUpdateClientEncryptionKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateClientEncryptionKeyInput,
     outputSchema: SqlResourcesCreateUpdateClientEncryptionKeyOutput,
   }));
@@ -16321,7 +16245,7 @@ export interface SqlResourcesCreateUpdateSqlContainerInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -16581,7 +16505,7 @@ export interface SqlResourcesCreateUpdateSqlContainerOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16613,7 +16537,7 @@ export const SqlResourcesCreateUpdateSqlContainerOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesCreateUpdateSqlContainer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlContainerInput,
     outputSchema: SqlResourcesCreateUpdateSqlContainerOutput,
   }));
@@ -16658,7 +16582,7 @@ export interface SqlResourcesCreateUpdateSqlDatabaseInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -16737,7 +16661,7 @@ export interface SqlResourcesCreateUpdateSqlDatabaseOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16768,7 +16692,7 @@ export const SqlResourcesCreateUpdateSqlDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesCreateUpdateSqlDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlDatabaseInput,
     outputSchema: SqlResourcesCreateUpdateSqlDatabaseOutput,
   }));
@@ -16785,7 +16709,7 @@ export interface SqlResourcesCreateUpdateSqlRoleAssignmentInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -16820,7 +16744,7 @@ export interface SqlResourcesCreateUpdateSqlRoleAssignmentOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16851,7 +16775,7 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesCreateUpdateSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlRoleAssignmentInput,
     outputSchema: SqlResourcesCreateUpdateSqlRoleAssignmentOutput,
   }));
@@ -16873,7 +16797,7 @@ export interface SqlResourcesCreateUpdateSqlRoleDefinitionInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -16917,7 +16841,7 @@ export interface SqlResourcesCreateUpdateSqlRoleDefinitionOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16948,7 +16872,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesCreateUpdateSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlRoleDefinitionInput,
     outputSchema: SqlResourcesCreateUpdateSqlRoleDefinitionOutput,
   }));
@@ -16987,7 +16911,7 @@ export interface SqlResourcesCreateUpdateSqlStoredProcedureInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17061,7 +16985,7 @@ export interface SqlResourcesCreateUpdateSqlStoredProcedureOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17094,7 +17018,7 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
  * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesCreateUpdateSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlStoredProcedureInput,
     outputSchema: SqlResourcesCreateUpdateSqlStoredProcedureOutput,
   }));
@@ -17138,7 +17062,7 @@ export interface SqlResourcesCreateUpdateSqlTriggerInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17216,7 +17140,7 @@ export interface SqlResourcesCreateUpdateSqlTriggerOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17249,7 +17173,7 @@ export const SqlResourcesCreateUpdateSqlTriggerOutput =
  * @param triggerName - Cosmos DB trigger name.
  */
 export const SqlResourcesCreateUpdateSqlTrigger =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlTriggerInput,
     outputSchema: SqlResourcesCreateUpdateSqlTriggerOutput,
   }));
@@ -17288,7 +17212,7 @@ export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionInput {
   };
 }
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17362,7 +17286,7 @@ export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput {
   };
 }
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17395,7 +17319,7 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
  * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesCreateUpdateSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesCreateUpdateSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput,
   }));
@@ -17408,7 +17332,7 @@ export interface SqlResourcesDeleteSqlContainerInput {
   containerName: string;
 }
 export const SqlResourcesDeleteSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17425,7 +17349,7 @@ export const SqlResourcesDeleteSqlContainerInput =
 // Output Schema
 export type SqlResourcesDeleteSqlContainerOutput = void;
 export const SqlResourcesDeleteSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlContainerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlContainerOutput>;
 
 // The operation
 /**
@@ -17439,7 +17363,7 @@ export const SqlResourcesDeleteSqlContainerOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesDeleteSqlContainer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlContainerInput,
     outputSchema: SqlResourcesDeleteSqlContainerOutput,
   }));
@@ -17451,7 +17375,7 @@ export interface SqlResourcesDeleteSqlDatabaseInput {
   databaseName: string;
 }
 export const SqlResourcesDeleteSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17467,7 +17391,7 @@ export const SqlResourcesDeleteSqlDatabaseInput =
 // Output Schema
 export type SqlResourcesDeleteSqlDatabaseOutput = void;
 export const SqlResourcesDeleteSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlDatabaseOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlDatabaseOutput>;
 
 // The operation
 /**
@@ -17480,7 +17404,7 @@ export const SqlResourcesDeleteSqlDatabaseOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesDeleteSqlDatabase =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlDatabaseInput,
     outputSchema: SqlResourcesDeleteSqlDatabaseOutput,
   }));
@@ -17492,7 +17416,7 @@ export interface SqlResourcesDeleteSqlRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const SqlResourcesDeleteSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17508,7 +17432,7 @@ export const SqlResourcesDeleteSqlRoleAssignmentInput =
 // Output Schema
 export type SqlResourcesDeleteSqlRoleAssignmentOutput = void;
 export const SqlResourcesDeleteSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -17521,7 +17445,7 @@ export const SqlResourcesDeleteSqlRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesDeleteSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlRoleAssignmentInput,
     outputSchema: SqlResourcesDeleteSqlRoleAssignmentOutput,
   }));
@@ -17533,7 +17457,7 @@ export interface SqlResourcesDeleteSqlRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const SqlResourcesDeleteSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17549,7 +17473,7 @@ export const SqlResourcesDeleteSqlRoleDefinitionInput =
 // Output Schema
 export type SqlResourcesDeleteSqlRoleDefinitionOutput = void;
 export const SqlResourcesDeleteSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -17562,7 +17486,7 @@ export const SqlResourcesDeleteSqlRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesDeleteSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlRoleDefinitionInput,
     outputSchema: SqlResourcesDeleteSqlRoleDefinitionOutput,
   }));
@@ -17576,7 +17500,7 @@ export interface SqlResourcesDeleteSqlStoredProcedureInput {
   storedProcedureName: string;
 }
 export const SqlResourcesDeleteSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17594,7 +17518,7 @@ export const SqlResourcesDeleteSqlStoredProcedureInput =
 // Output Schema
 export type SqlResourcesDeleteSqlStoredProcedureOutput = void;
 export const SqlResourcesDeleteSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlStoredProcedureOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlStoredProcedureOutput>;
 
 // The operation
 /**
@@ -17609,7 +17533,7 @@ export const SqlResourcesDeleteSqlStoredProcedureOutput =
  * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesDeleteSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlStoredProcedureInput,
     outputSchema: SqlResourcesDeleteSqlStoredProcedureOutput,
   }));
@@ -17623,7 +17547,7 @@ export interface SqlResourcesDeleteSqlTriggerInput {
   triggerName: string;
 }
 export const SqlResourcesDeleteSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17641,7 +17565,7 @@ export const SqlResourcesDeleteSqlTriggerInput =
 // Output Schema
 export type SqlResourcesDeleteSqlTriggerOutput = void;
 export const SqlResourcesDeleteSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlTriggerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlTriggerOutput>;
 
 // The operation
 /**
@@ -17656,7 +17580,7 @@ export const SqlResourcesDeleteSqlTriggerOutput =
  * @param triggerName - Cosmos DB trigger name.
  */
 export const SqlResourcesDeleteSqlTrigger =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlTriggerInput,
     outputSchema: SqlResourcesDeleteSqlTriggerOutput,
   }));
@@ -17670,7 +17594,7 @@ export interface SqlResourcesDeleteSqlUserDefinedFunctionInput {
   userDefinedFunctionName: string;
 }
 export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17688,7 +17612,7 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
 // Output Schema
 export type SqlResourcesDeleteSqlUserDefinedFunctionOutput = void;
 export const SqlResourcesDeleteSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlUserDefinedFunctionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlUserDefinedFunctionOutput>;
 
 // The operation
 /**
@@ -17703,7 +17627,7 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionOutput =
  * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesDeleteSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesDeleteSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesDeleteSqlUserDefinedFunctionOutput,
   }));
@@ -17716,7 +17640,7 @@ export interface SqlResourcesGetClientEncryptionKeyInput {
   clientEncryptionKeyName: string;
 }
 export const SqlResourcesGetClientEncryptionKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17745,7 +17669,7 @@ export interface SqlResourcesGetClientEncryptionKeyOutput {
   };
 }
 export const SqlResourcesGetClientEncryptionKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17777,7 +17701,7 @@ export const SqlResourcesGetClientEncryptionKeyOutput =
  * @param clientEncryptionKeyName - Cosmos DB ClientEncryptionKey name.
  */
 export const SqlResourcesGetClientEncryptionKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetClientEncryptionKeyInput,
     outputSchema: SqlResourcesGetClientEncryptionKeyOutput,
   }));
@@ -17790,7 +17714,7 @@ export interface SqlResourcesGetSqlContainerInput {
   containerName: string;
 }
 export const SqlResourcesGetSqlContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17819,7 +17743,7 @@ export interface SqlResourcesGetSqlContainerOutput {
   };
 }
 export const SqlResourcesGetSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17850,12 +17774,10 @@ export const SqlResourcesGetSqlContainerOutput =
  * @param databaseName - Cosmos DB database name.
  * @param containerName - Cosmos DB container name.
  */
-export const SqlResourcesGetSqlContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlContainerInput,
-    outputSchema: SqlResourcesGetSqlContainerOutput,
-  }),
-);
+export const SqlResourcesGetSqlContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlContainerInput,
+  outputSchema: SqlResourcesGetSqlContainerOutput,
+}));
 // Input Schema
 export interface SqlResourcesGetSqlContainerThroughputInput {
   subscriptionId: string;
@@ -17865,7 +17787,7 @@ export interface SqlResourcesGetSqlContainerThroughputInput {
   containerName: string;
 }
 export const SqlResourcesGetSqlContainerThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17894,7 +17816,7 @@ export interface SqlResourcesGetSqlContainerThroughputOutput {
   };
 }
 export const SqlResourcesGetSqlContainerThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17926,7 +17848,7 @@ export const SqlResourcesGetSqlContainerThroughputOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesGetSqlContainerThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlContainerThroughputInput,
     outputSchema: SqlResourcesGetSqlContainerThroughputOutput,
   }));
@@ -17938,7 +17860,7 @@ export interface SqlResourcesGetSqlDatabaseInput {
   databaseName: string;
 }
 export const SqlResourcesGetSqlDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -17966,7 +17888,7 @@ export interface SqlResourcesGetSqlDatabaseOutput {
   };
 }
 export const SqlResourcesGetSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17996,12 +17918,10 @@ export const SqlResourcesGetSqlDatabaseOutput =
  * @param accountName - Cosmos DB database account name.
  * @param databaseName - Cosmos DB database name.
  */
-export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlDatabaseInput,
-    outputSchema: SqlResourcesGetSqlDatabaseOutput,
-  }),
-);
+export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlDatabaseInput,
+  outputSchema: SqlResourcesGetSqlDatabaseOutput,
+}));
 // Input Schema
 export interface SqlResourcesGetSqlDatabaseThroughputInput {
   subscriptionId: string;
@@ -18010,7 +17930,7 @@ export interface SqlResourcesGetSqlDatabaseThroughputInput {
   databaseName: string;
 }
 export const SqlResourcesGetSqlDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18038,7 +17958,7 @@ export interface SqlResourcesGetSqlDatabaseThroughputOutput {
   };
 }
 export const SqlResourcesGetSqlDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18069,7 +17989,7 @@ export const SqlResourcesGetSqlDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesGetSqlDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlDatabaseThroughputInput,
     outputSchema: SqlResourcesGetSqlDatabaseThroughputOutput,
   }));
@@ -18081,7 +18001,7 @@ export interface SqlResourcesGetSqlRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const SqlResourcesGetSqlRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18109,7 +18029,7 @@ export interface SqlResourcesGetSqlRoleAssignmentOutput {
   };
 }
 export const SqlResourcesGetSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18140,7 +18060,7 @@ export const SqlResourcesGetSqlRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const SqlResourcesGetSqlRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlRoleAssignmentInput,
     outputSchema: SqlResourcesGetSqlRoleAssignmentOutput,
   }));
@@ -18152,7 +18072,7 @@ export interface SqlResourcesGetSqlRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const SqlResourcesGetSqlRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18180,7 +18100,7 @@ export interface SqlResourcesGetSqlRoleDefinitionOutput {
   };
 }
 export const SqlResourcesGetSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18211,7 +18131,7 @@ export const SqlResourcesGetSqlRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const SqlResourcesGetSqlRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlRoleDefinitionInput,
     outputSchema: SqlResourcesGetSqlRoleDefinitionOutput,
   }));
@@ -18225,7 +18145,7 @@ export interface SqlResourcesGetSqlStoredProcedureInput {
   storedProcedureName: string;
 }
 export const SqlResourcesGetSqlStoredProcedureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18255,7 +18175,7 @@ export interface SqlResourcesGetSqlStoredProcedureOutput {
   };
 }
 export const SqlResourcesGetSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18288,7 +18208,7 @@ export const SqlResourcesGetSqlStoredProcedureOutput =
  * @param storedProcedureName - Cosmos DB storedProcedure name.
  */
 export const SqlResourcesGetSqlStoredProcedure =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlStoredProcedureInput,
     outputSchema: SqlResourcesGetSqlStoredProcedureOutput,
   }));
@@ -18302,7 +18222,7 @@ export interface SqlResourcesGetSqlTriggerInput {
   triggerName: string;
 }
 export const SqlResourcesGetSqlTriggerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18332,7 +18252,7 @@ export interface SqlResourcesGetSqlTriggerOutput {
   };
 }
 export const SqlResourcesGetSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18364,12 +18284,10 @@ export const SqlResourcesGetSqlTriggerOutput =
  * @param containerName - Cosmos DB container name.
  * @param triggerName - Cosmos DB trigger name.
  */
-export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesGetSqlTriggerInput,
-    outputSchema: SqlResourcesGetSqlTriggerOutput,
-  }),
-);
+export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesGetSqlTriggerInput,
+  outputSchema: SqlResourcesGetSqlTriggerOutput,
+}));
 // Input Schema
 export interface SqlResourcesGetSqlUserDefinedFunctionInput {
   subscriptionId: string;
@@ -18380,7 +18298,7 @@ export interface SqlResourcesGetSqlUserDefinedFunctionInput {
   userDefinedFunctionName: string;
 }
 export const SqlResourcesGetSqlUserDefinedFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18410,7 +18328,7 @@ export interface SqlResourcesGetSqlUserDefinedFunctionOutput {
   };
 }
 export const SqlResourcesGetSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18443,7 +18361,7 @@ export const SqlResourcesGetSqlUserDefinedFunctionOutput =
  * @param userDefinedFunctionName - Cosmos DB userDefinedFunction name.
  */
 export const SqlResourcesGetSqlUserDefinedFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesGetSqlUserDefinedFunctionInput,
     outputSchema: SqlResourcesGetSqlUserDefinedFunctionOutput,
   }));
@@ -18455,7 +18373,7 @@ export interface SqlResourcesListClientEncryptionKeysInput {
   databaseName: string;
 }
 export const SqlResourcesListClientEncryptionKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18486,7 +18404,7 @@ export interface SqlResourcesListClientEncryptionKeysOutput {
   nextLink?: string;
 }
 export const SqlResourcesListClientEncryptionKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18534,7 +18452,7 @@ export const SqlResourcesListClientEncryptionKeysOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesListClientEncryptionKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListClientEncryptionKeysInput,
     outputSchema: SqlResourcesListClientEncryptionKeysOutput,
   }));
@@ -18546,7 +18464,7 @@ export interface SqlResourcesListSqlContainersInput {
   databaseName: string;
 }
 export const SqlResourcesListSqlContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18577,7 +18495,7 @@ export interface SqlResourcesListSqlContainersOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18625,7 +18543,7 @@ export const SqlResourcesListSqlContainersOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesListSqlContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlContainersInput,
     outputSchema: SqlResourcesListSqlContainersOutput,
   }));
@@ -18636,7 +18554,7 @@ export interface SqlResourcesListSqlDatabasesInput {
   accountName: string;
 }
 export const SqlResourcesListSqlDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18666,7 +18584,7 @@ export interface SqlResourcesListSqlDatabasesOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18713,7 +18631,7 @@ export const SqlResourcesListSqlDatabasesOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const SqlResourcesListSqlDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlDatabasesInput,
     outputSchema: SqlResourcesListSqlDatabasesOutput,
   }));
@@ -18724,7 +18642,7 @@ export interface SqlResourcesListSqlRoleAssignmentsInput {
   accountName: string;
 }
 export const SqlResourcesListSqlRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18754,7 +18672,7 @@ export interface SqlResourcesListSqlRoleAssignmentsOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18801,7 +18719,7 @@ export const SqlResourcesListSqlRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const SqlResourcesListSqlRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlRoleAssignmentsInput,
     outputSchema: SqlResourcesListSqlRoleAssignmentsOutput,
   }));
@@ -18812,7 +18730,7 @@ export interface SqlResourcesListSqlRoleDefinitionsInput {
   accountName: string;
 }
 export const SqlResourcesListSqlRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18842,7 +18760,7 @@ export interface SqlResourcesListSqlRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18889,7 +18807,7 @@ export const SqlResourcesListSqlRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const SqlResourcesListSqlRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlRoleDefinitionsInput,
     outputSchema: SqlResourcesListSqlRoleDefinitionsOutput,
   }));
@@ -18902,7 +18820,7 @@ export interface SqlResourcesListSqlStoredProceduresInput {
   containerName: string;
 }
 export const SqlResourcesListSqlStoredProceduresInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -18934,7 +18852,7 @@ export interface SqlResourcesListSqlStoredProceduresOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlStoredProceduresOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -18983,7 +18901,7 @@ export const SqlResourcesListSqlStoredProceduresOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesListSqlStoredProcedures =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlStoredProceduresInput,
     outputSchema: SqlResourcesListSqlStoredProceduresOutput,
   }));
@@ -18996,7 +18914,7 @@ export interface SqlResourcesListSqlTriggersInput {
   containerName: string;
 }
 export const SqlResourcesListSqlTriggersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19028,7 +18946,7 @@ export interface SqlResourcesListSqlTriggersOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlTriggersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -19076,12 +18994,10 @@ export const SqlResourcesListSqlTriggersOutput =
  * @param databaseName - Cosmos DB database name.
  * @param containerName - Cosmos DB container name.
  */
-export const SqlResourcesListSqlTriggers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlResourcesListSqlTriggersInput,
-    outputSchema: SqlResourcesListSqlTriggersOutput,
-  }),
-);
+export const SqlResourcesListSqlTriggers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlResourcesListSqlTriggersInput,
+  outputSchema: SqlResourcesListSqlTriggersOutput,
+}));
 // Input Schema
 export interface SqlResourcesListSqlUserDefinedFunctionsInput {
   subscriptionId: string;
@@ -19091,7 +19007,7 @@ export interface SqlResourcesListSqlUserDefinedFunctionsInput {
   containerName: string;
 }
 export const SqlResourcesListSqlUserDefinedFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19123,7 +19039,7 @@ export interface SqlResourcesListSqlUserDefinedFunctionsOutput {
   nextLink?: string;
 }
 export const SqlResourcesListSqlUserDefinedFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -19172,7 +19088,7 @@ export const SqlResourcesListSqlUserDefinedFunctionsOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesListSqlUserDefinedFunctions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesListSqlUserDefinedFunctionsInput,
     outputSchema: SqlResourcesListSqlUserDefinedFunctionsOutput,
   }));
@@ -19185,7 +19101,7 @@ export interface SqlResourcesMigrateSqlContainerToAutoscaleInput {
   containerName: string;
 }
 export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19214,7 +19130,7 @@ export interface SqlResourcesMigrateSqlContainerToAutoscaleOutput {
   };
 }
 export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19246,7 +19162,7 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesMigrateSqlContainerToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlContainerToAutoscaleInput,
     outputSchema: SqlResourcesMigrateSqlContainerToAutoscaleOutput,
   }));
@@ -19259,7 +19175,7 @@ export interface SqlResourcesMigrateSqlContainerToManualThroughputInput {
   containerName: string;
 }
 export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19288,7 +19204,7 @@ export interface SqlResourcesMigrateSqlContainerToManualThroughputOutput {
   };
 }
 export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19320,7 +19236,7 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesMigrateSqlContainerToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlContainerToManualThroughputInput,
     outputSchema: SqlResourcesMigrateSqlContainerToManualThroughputOutput,
   }));
@@ -19332,7 +19248,7 @@ export interface SqlResourcesMigrateSqlDatabaseToAutoscaleInput {
   databaseName: string;
 }
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19360,7 +19276,7 @@ export interface SqlResourcesMigrateSqlDatabaseToAutoscaleOutput {
   };
 }
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19391,7 +19307,7 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesMigrateSqlDatabaseToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlDatabaseToAutoscaleInput,
     outputSchema: SqlResourcesMigrateSqlDatabaseToAutoscaleOutput,
   }));
@@ -19403,7 +19319,7 @@ export interface SqlResourcesMigrateSqlDatabaseToManualThroughputInput {
   databaseName: string;
 }
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19431,7 +19347,7 @@ export interface SqlResourcesMigrateSqlDatabaseToManualThroughputOutput {
   };
 }
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19462,7 +19378,7 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesMigrateSqlDatabaseToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesMigrateSqlDatabaseToManualThroughputInput,
     outputSchema: SqlResourcesMigrateSqlDatabaseToManualThroughputOutput,
   }));
@@ -19476,7 +19392,7 @@ export interface SqlResourcesRetrieveContinuousBackupInformationInput {
   location?: string;
 }
 export const SqlResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19496,7 +19412,7 @@ export interface SqlResourcesRetrieveContinuousBackupInformationOutput {
   continuousBackupInformation?: { latestRestorableTimestamp?: string };
 }
 export const SqlResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -19516,7 +19432,7 @@ export const SqlResourcesRetrieveContinuousBackupInformationOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: SqlResourcesRetrieveContinuousBackupInformationOutput,
   }));
@@ -19563,7 +19479,7 @@ export interface SqlResourcesUpdateSqlContainerThroughputInput {
   };
 }
 export const SqlResourcesUpdateSqlContainerThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19645,7 +19561,7 @@ export interface SqlResourcesUpdateSqlContainerThroughputOutput {
   };
 }
 export const SqlResourcesUpdateSqlContainerThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19677,7 +19593,7 @@ export const SqlResourcesUpdateSqlContainerThroughputOutput =
  * @param containerName - Cosmos DB container name.
  */
 export const SqlResourcesUpdateSqlContainerThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesUpdateSqlContainerThroughputInput,
     outputSchema: SqlResourcesUpdateSqlContainerThroughputOutput,
   }));
@@ -19723,7 +19639,7 @@ export interface SqlResourcesUpdateSqlDatabaseThroughputInput {
   };
 }
 export const SqlResourcesUpdateSqlDatabaseThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19804,7 +19720,7 @@ export interface SqlResourcesUpdateSqlDatabaseThroughputOutput {
   };
 }
 export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19835,7 +19751,7 @@ export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
  * @param databaseName - Cosmos DB database name.
  */
 export const SqlResourcesUpdateSqlDatabaseThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlResourcesUpdateSqlDatabaseThroughputInput,
     outputSchema: SqlResourcesUpdateSqlDatabaseThroughputOutput,
   }));
@@ -19880,7 +19796,7 @@ export interface TableResourcesCreateUpdateTableInput {
   };
 }
 export const TableResourcesCreateUpdateTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -19959,7 +19875,7 @@ export interface TableResourcesCreateUpdateTableOutput {
   };
 }
 export const TableResourcesCreateUpdateTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19990,7 +19906,7 @@ export const TableResourcesCreateUpdateTableOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesCreateUpdateTable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesCreateUpdateTableInput,
     outputSchema: TableResourcesCreateUpdateTableOutput,
   }));
@@ -20008,7 +19924,7 @@ export interface TableResourcesCreateUpdateTableRoleAssignmentInput {
   };
 }
 export const TableResourcesCreateUpdateTableRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20044,7 +19960,7 @@ export interface TableResourcesCreateUpdateTableRoleAssignmentOutput {
   };
 }
 export const TableResourcesCreateUpdateTableRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20075,7 +19991,7 @@ export const TableResourcesCreateUpdateTableRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const TableResourcesCreateUpdateTableRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesCreateUpdateTableRoleAssignmentInput,
     outputSchema: TableResourcesCreateUpdateTableRoleAssignmentOutput,
   }));
@@ -20098,7 +20014,7 @@ export interface TableResourcesCreateUpdateTableRoleDefinitionInput {
   };
 }
 export const TableResourcesCreateUpdateTableRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20143,7 +20059,7 @@ export interface TableResourcesCreateUpdateTableRoleDefinitionOutput {
   };
 }
 export const TableResourcesCreateUpdateTableRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20174,7 +20090,7 @@ export const TableResourcesCreateUpdateTableRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const TableResourcesCreateUpdateTableRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesCreateUpdateTableRoleDefinitionInput,
     outputSchema: TableResourcesCreateUpdateTableRoleDefinitionOutput,
   }));
@@ -20186,7 +20102,7 @@ export interface TableResourcesDeleteTableInput {
   tableName: string;
 }
 export const TableResourcesDeleteTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20202,7 +20118,7 @@ export const TableResourcesDeleteTableInput =
 // Output Schema
 export type TableResourcesDeleteTableOutput = void;
 export const TableResourcesDeleteTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableOutput>;
 
 // The operation
 /**
@@ -20214,12 +20130,10 @@ export const TableResourcesDeleteTableOutput =
  * @param accountName - Cosmos DB database account name.
  * @param tableName - Cosmos DB table name.
  */
-export const TableResourcesDeleteTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesDeleteTableInput,
-    outputSchema: TableResourcesDeleteTableOutput,
-  }),
-);
+export const TableResourcesDeleteTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesDeleteTableInput,
+  outputSchema: TableResourcesDeleteTableOutput,
+}));
 // Input Schema
 export interface TableResourcesDeleteTableRoleAssignmentInput {
   subscriptionId: string;
@@ -20228,7 +20142,7 @@ export interface TableResourcesDeleteTableRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const TableResourcesDeleteTableRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20244,7 +20158,7 @@ export const TableResourcesDeleteTableRoleAssignmentInput =
 // Output Schema
 export type TableResourcesDeleteTableRoleAssignmentOutput = void;
 export const TableResourcesDeleteTableRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -20257,7 +20171,7 @@ export const TableResourcesDeleteTableRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const TableResourcesDeleteTableRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesDeleteTableRoleAssignmentInput,
     outputSchema: TableResourcesDeleteTableRoleAssignmentOutput,
   }));
@@ -20269,7 +20183,7 @@ export interface TableResourcesDeleteTableRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const TableResourcesDeleteTableRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20285,7 +20199,7 @@ export const TableResourcesDeleteTableRoleDefinitionInput =
 // Output Schema
 export type TableResourcesDeleteTableRoleDefinitionOutput = void;
 export const TableResourcesDeleteTableRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleDefinitionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -20298,7 +20212,7 @@ export const TableResourcesDeleteTableRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const TableResourcesDeleteTableRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesDeleteTableRoleDefinitionInput,
     outputSchema: TableResourcesDeleteTableRoleDefinitionOutput,
   }));
@@ -20310,7 +20224,7 @@ export interface TableResourcesGetTableInput {
   tableName: string;
 }
 export const TableResourcesGetTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20338,7 +20252,7 @@ export interface TableResourcesGetTableOutput {
   };
 }
 export const TableResourcesGetTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20368,12 +20282,10 @@ export const TableResourcesGetTableOutput =
  * @param accountName - Cosmos DB database account name.
  * @param tableName - Cosmos DB table name.
  */
-export const TableResourcesGetTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesGetTableInput,
-    outputSchema: TableResourcesGetTableOutput,
-  }),
-);
+export const TableResourcesGetTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesGetTableInput,
+  outputSchema: TableResourcesGetTableOutput,
+}));
 // Input Schema
 export interface TableResourcesGetTableRoleAssignmentInput {
   subscriptionId: string;
@@ -20382,7 +20294,7 @@ export interface TableResourcesGetTableRoleAssignmentInput {
   roleAssignmentId: string;
 }
 export const TableResourcesGetTableRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20410,7 +20322,7 @@ export interface TableResourcesGetTableRoleAssignmentOutput {
   };
 }
 export const TableResourcesGetTableRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20441,7 +20353,7 @@ export const TableResourcesGetTableRoleAssignmentOutput =
  * @param roleAssignmentId - The GUID for the Role Assignment.
  */
 export const TableResourcesGetTableRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesGetTableRoleAssignmentInput,
     outputSchema: TableResourcesGetTableRoleAssignmentOutput,
   }));
@@ -20453,7 +20365,7 @@ export interface TableResourcesGetTableRoleDefinitionInput {
   roleDefinitionId: string;
 }
 export const TableResourcesGetTableRoleDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20481,7 +20393,7 @@ export interface TableResourcesGetTableRoleDefinitionOutput {
   };
 }
 export const TableResourcesGetTableRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20512,7 +20424,7 @@ export const TableResourcesGetTableRoleDefinitionOutput =
  * @param roleDefinitionId - The GUID for the Role Definition.
  */
 export const TableResourcesGetTableRoleDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesGetTableRoleDefinitionInput,
     outputSchema: TableResourcesGetTableRoleDefinitionOutput,
   }));
@@ -20524,7 +20436,7 @@ export interface TableResourcesGetTableThroughputInput {
   tableName: string;
 }
 export const TableResourcesGetTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20552,7 +20464,7 @@ export interface TableResourcesGetTableThroughputOutput {
   };
 }
 export const TableResourcesGetTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20583,7 +20495,7 @@ export const TableResourcesGetTableThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesGetTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesGetTableThroughputInput,
     outputSchema: TableResourcesGetTableThroughputOutput,
   }));
@@ -20594,7 +20506,7 @@ export interface TableResourcesListTableRoleAssignmentsInput {
   accountName: string;
 }
 export const TableResourcesListTableRoleAssignmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20624,7 +20536,7 @@ export interface TableResourcesListTableRoleAssignmentsOutput {
   nextLink?: string;
 }
 export const TableResourcesListTableRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20669,7 +20581,7 @@ export const TableResourcesListTableRoleAssignmentsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const TableResourcesListTableRoleAssignments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesListTableRoleAssignmentsInput,
     outputSchema: TableResourcesListTableRoleAssignmentsOutput,
   }));
@@ -20680,7 +20592,7 @@ export interface TableResourcesListTableRoleDefinitionsInput {
   accountName: string;
 }
 export const TableResourcesListTableRoleDefinitionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20710,7 +20622,7 @@ export interface TableResourcesListTableRoleDefinitionsOutput {
   nextLink?: string;
 }
 export const TableResourcesListTableRoleDefinitionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20755,7 +20667,7 @@ export const TableResourcesListTableRoleDefinitionsOutput =
  * @param accountName - Cosmos DB database account name.
  */
 export const TableResourcesListTableRoleDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesListTableRoleDefinitionsInput,
     outputSchema: TableResourcesListTableRoleDefinitionsOutput,
   }));
@@ -20766,7 +20678,7 @@ export interface TableResourcesListTablesInput {
   accountName: string;
 }
 export const TableResourcesListTablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20796,7 +20708,7 @@ export interface TableResourcesListTablesOutput {
   nextLink?: string;
 }
 export const TableResourcesListTablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -20842,12 +20754,10 @@ export const TableResourcesListTablesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Cosmos DB database account name.
  */
-export const TableResourcesListTables = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TableResourcesListTablesInput,
-    outputSchema: TableResourcesListTablesOutput,
-  }),
-);
+export const TableResourcesListTables = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TableResourcesListTablesInput,
+  outputSchema: TableResourcesListTablesOutput,
+}));
 // Input Schema
 export interface TableResourcesMigrateTableToAutoscaleInput {
   subscriptionId: string;
@@ -20856,7 +20766,7 @@ export interface TableResourcesMigrateTableToAutoscaleInput {
   tableName: string;
 }
 export const TableResourcesMigrateTableToAutoscaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20884,7 +20794,7 @@ export interface TableResourcesMigrateTableToAutoscaleOutput {
   };
 }
 export const TableResourcesMigrateTableToAutoscaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20915,7 +20825,7 @@ export const TableResourcesMigrateTableToAutoscaleOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesMigrateTableToAutoscale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesMigrateTableToAutoscaleInput,
     outputSchema: TableResourcesMigrateTableToAutoscaleOutput,
   }));
@@ -20927,7 +20837,7 @@ export interface TableResourcesMigrateTableToManualThroughputInput {
   tableName: string;
 }
 export const TableResourcesMigrateTableToManualThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -20955,7 +20865,7 @@ export interface TableResourcesMigrateTableToManualThroughputOutput {
   };
 }
 export const TableResourcesMigrateTableToManualThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20986,7 +20896,7 @@ export const TableResourcesMigrateTableToManualThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesMigrateTableToManualThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesMigrateTableToManualThroughputInput,
     outputSchema: TableResourcesMigrateTableToManualThroughputOutput,
   }));
@@ -20999,7 +20909,7 @@ export interface TableResourcesRetrieveContinuousBackupInformationInput {
   location?: string;
 }
 export const TableResourcesRetrieveContinuousBackupInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -21018,7 +20928,7 @@ export interface TableResourcesRetrieveContinuousBackupInformationOutput {
   continuousBackupInformation?: { latestRestorableTimestamp?: string };
 }
 export const TableResourcesRetrieveContinuousBackupInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
       Schema.Struct({
         latestRestorableTimestamp: Schema.optional(Schema.String),
@@ -21037,7 +20947,7 @@ export const TableResourcesRetrieveContinuousBackupInformationOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesRetrieveContinuousBackupInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesRetrieveContinuousBackupInformationInput,
     outputSchema: TableResourcesRetrieveContinuousBackupInformationOutput,
   }));
@@ -21083,7 +20993,7 @@ export interface TableResourcesUpdateTableThroughputInput {
   };
 }
 export const TableResourcesUpdateTableThroughputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -21164,7 +21074,7 @@ export interface TableResourcesUpdateTableThroughputOutput {
   };
 }
 export const TableResourcesUpdateTableThroughputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21195,7 +21105,7 @@ export const TableResourcesUpdateTableThroughputOutput =
  * @param tableName - Cosmos DB table name.
  */
 export const TableResourcesUpdateTableThroughput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableResourcesUpdateTableThroughputInput,
     outputSchema: TableResourcesUpdateTableThroughputOutput,
   }));

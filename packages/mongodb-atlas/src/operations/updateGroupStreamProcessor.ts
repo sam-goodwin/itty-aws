@@ -12,7 +12,7 @@ export interface UpdateGroupStreamProcessorInput {
   pretty?: boolean;
 }
 export const UpdateGroupStreamProcessorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     processorName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupStreamProcessorInput =
 // Output Schema
 export type UpdateGroupStreamProcessorOutput = void;
 export const UpdateGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupStreamProcessorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupStreamProcessorOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const UpdateGroupStreamProcessorOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const updateGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupStreamProcessorInput,
-    outputSchema: UpdateGroupStreamProcessorOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupStreamProcessor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupStreamProcessorInput,
+  outputSchema: UpdateGroupStreamProcessorOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -10,7 +10,7 @@ export interface HogFlowsSchedulesDestroyInput {
   schedule_id: string;
 }
 export const HogFlowsSchedulesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     schedule_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const HogFlowsSchedulesDestroyInput =
 // Output Schema
 export type HogFlowsSchedulesDestroyOutput = void;
 export const HogFlowsSchedulesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsSchedulesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsSchedulesDestroyOutput>;
 
 // The operation
 /**
@@ -32,10 +32,8 @@ export const HogFlowsSchedulesDestroyOutput =
  * @param id - A UUID string identifying this hog flow.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsSchedulesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFlowsSchedulesDestroyInput,
-    outputSchema: HogFlowsSchedulesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const hogFlowsSchedulesDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsSchedulesDestroyInput,
+  outputSchema: HogFlowsSchedulesDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

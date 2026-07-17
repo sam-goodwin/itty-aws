@@ -90,7 +90,7 @@ export interface ConnectedClusterCreateOrReplaceInput {
   location: string;
 }
 export const ConnectedClusterCreateOrReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -240,7 +240,7 @@ export interface ConnectedClusterCreateOrReplaceOutput {
   };
 }
 export const ConnectedClusterCreateOrReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export const ConnectedClusterCreateOrReplaceOutput =
  * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterCreateOrReplace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterCreateOrReplaceInput,
     outputSchema: ConnectedClusterCreateOrReplaceOutput,
   }));
@@ -283,7 +283,7 @@ export interface ConnectedClusterDeleteInput {
   clusterName: string;
 }
 export const ConnectedClusterDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -298,7 +298,7 @@ export const ConnectedClusterDeleteInput =
 // Output Schema
 export type ConnectedClusterDeleteOutput = void;
 export const ConnectedClusterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedClusterDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedClusterDeleteOutput>;
 
 // The operation
 /**
@@ -311,12 +311,10 @@ export const ConnectedClusterDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
-export const ConnectedClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterDeleteInput,
-    outputSchema: ConnectedClusterDeleteOutput,
-  }),
-);
+export const ConnectedClusterDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedClusterDeleteInput,
+  outputSchema: ConnectedClusterDeleteOutput,
+}));
 // Input Schema
 export interface ConnectedClusterGetInput {
   subscriptionId: string;
@@ -324,7 +322,7 @@ export interface ConnectedClusterGetInput {
   clusterName: string;
 }
 export const ConnectedClusterGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -351,7 +349,7 @@ export interface ConnectedClusterGetOutput {
   };
 }
 export const ConnectedClusterGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -382,7 +380,7 @@ export const ConnectedClusterGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
-export const ConnectedClusterGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectedClusterGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectedClusterGetInput,
   outputSchema: ConnectedClusterGetOutput,
 }));
@@ -392,7 +390,7 @@ export interface ConnectedClusterListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ConnectedClusterListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -421,7 +419,7 @@ export interface ConnectedClusterListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ConnectedClusterListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -467,7 +465,7 @@ export const ConnectedClusterListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ConnectedClusterListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListByResourceGroupInput,
     outputSchema: ConnectedClusterListByResourceGroupOutput,
   }));
@@ -476,7 +474,7 @@ export interface ConnectedClusterListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ConnectedClusterListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -504,7 +502,7 @@ export interface ConnectedClusterListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ConnectedClusterListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -549,7 +547,7 @@ export const ConnectedClusterListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ConnectedClusterListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListBySubscriptionInput,
     outputSchema: ConnectedClusterListBySubscriptionOutput,
   }));
@@ -562,7 +560,7 @@ export interface ConnectedClusterListClusterUserCredentialInput {
   clientProxy: boolean;
 }
 export const ConnectedClusterListClusterUserCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -589,7 +587,7 @@ export interface ConnectedClusterListClusterUserCredentialOutput {
   kubeconfigs?: { name?: string; value?: string }[];
 }
 export const ConnectedClusterListClusterUserCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
       Schema.Struct({
         expirationTime: Schema.optional(Schema.Number),
@@ -622,7 +620,7 @@ export const ConnectedClusterListClusterUserCredentialOutput =
  * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
 export const ConnectedClusterListClusterUserCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedClusterListClusterUserCredentialInput,
     outputSchema: ConnectedClusterListClusterUserCredentialOutput,
   }));
@@ -640,7 +638,7 @@ export interface ConnectedClusterUpdateInput {
   };
 }
 export const ConnectedClusterUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -682,7 +680,7 @@ export interface ConnectedClusterUpdateOutput {
   };
 }
 export const ConnectedClusterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -713,17 +711,13 @@ export const ConnectedClusterUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Kubernetes cluster on which get is called.
  */
-export const ConnectedClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectedClusterUpdateInput,
-    outputSchema: ConnectedClusterUpdateOutput,
-  }),
-);
+export const ConnectedClusterUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectedClusterUpdateInput,
+  outputSchema: ConnectedClusterUpdateOutput,
+}));
 // Input Schema
 export interface OperationsGetInput {}
-export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Kubernetes/operations",
@@ -747,7 +741,7 @@ export interface OperationsGetOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsGetOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -775,7 +769,7 @@ export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsGetInput,
   outputSchema: OperationsGetOutput,
 }));

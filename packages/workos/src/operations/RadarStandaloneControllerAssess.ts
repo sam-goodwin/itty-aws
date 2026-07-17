@@ -21,7 +21,7 @@ export interface RadarStandaloneControllerAssessInput {
   signals_id?: string;
 }
 export const RadarStandaloneControllerAssessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ip_address: Schema.String,
     user_agent: Schema.String,
     email: Schema.String,
@@ -64,7 +64,7 @@ export interface RadarStandaloneControllerAssessOutput {
     | "country";
 }
 export const RadarStandaloneControllerAssessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.Literals(["allow", "block", "challenge"])),
     reason: Schema.optional(Schema.String),
     attempt_id: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export const RadarStandaloneControllerAssessOutput =
  * Assess a request for risk using the Radar engine and receive a verdict.
  */
 export const RadarStandaloneControllerAssess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RadarStandaloneControllerAssessInput,
     outputSchema: RadarStandaloneControllerAssessOutput,
     errors: [BadRequest] as const,

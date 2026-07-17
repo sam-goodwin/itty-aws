@@ -10,7 +10,7 @@ export interface AddGroupUserRoleInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const AddGroupUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddGroupUserRoleInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const AddGroupUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddGroupUserRoleOutput = void;
 export const AddGroupUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupUserRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupUserRoleOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const AddGroupUserRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
  */
-export const addGroupUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addGroupUserRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddGroupUserRoleInput,
   outputSchema: AddGroupUserRoleOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

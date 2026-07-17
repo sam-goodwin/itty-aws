@@ -8,7 +8,7 @@ export interface UserInterviewsDestroyInput {
   project_id: string;
 }
 export const UserInterviewsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const UserInterviewsDestroyInput =
 // Output Schema
 export type UserInterviewsDestroyOutput = void;
 export const UserInterviewsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserInterviewsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UserInterviewsDestroyOutput>;
 
 // The operation
 /**
@@ -29,9 +29,7 @@ export const UserInterviewsDestroyOutput =
  * @param id - A UUID string identifying this user interview.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const userInterviewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserInterviewsDestroyInput,
-    outputSchema: UserInterviewsDestroyOutput,
-  }),
-);
+export const userInterviewsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserInterviewsDestroyInput,
+  outputSchema: UserInterviewsDestroyOutput,
+}));

@@ -21,7 +21,7 @@ export interface AccessPoliciesCreateOrUpdateInput {
   };
 }
 export const AccessPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -48,7 +48,7 @@ export interface AccessPoliciesCreateOrUpdateOutput {
   type?: string;
 }
 export const AccessPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export const AccessPoliciesCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPoliciesCreateOrUpdateInput,
     outputSchema: AccessPoliciesCreateOrUpdateOutput,
   }));
@@ -77,7 +77,7 @@ export interface AccessPoliciesDeleteInput {
   accessPolicyName: string;
 }
 export const AccessPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -93,7 +93,7 @@ export const AccessPoliciesDeleteInput =
 // Output Schema
 export type AccessPoliciesDeleteOutput = void;
 export const AccessPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -105,12 +105,10 @@ export const AccessPoliciesDeleteOutput =
  * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const AccessPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPoliciesDeleteInput,
-    outputSchema: AccessPoliciesDeleteOutput,
-  }),
-);
+export const AccessPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesDeleteInput,
+  outputSchema: AccessPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface AccessPoliciesGetInput {
   subscriptionId: string;
@@ -118,14 +116,12 @@ export interface AccessPoliciesGetInput {
   environmentName: string;
   accessPolicyName: string;
 }
-export const AccessPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    environmentName: Schema.String.pipe(T.PathParam()),
-    accessPolicyName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AccessPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  environmentName: Schema.String.pipe(T.PathParam()),
+  accessPolicyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
@@ -140,7 +136,7 @@ export interface AccessPoliciesGetOutput {
   type?: string;
 }
 export const AccessPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -156,7 +152,7 @@ export const AccessPoliciesGetOutput =
  * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const AccessPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPoliciesGetInput,
   outputSchema: AccessPoliciesGetOutput,
 }));
@@ -167,7 +163,7 @@ export interface AccessPoliciesListByEnvironmentInput {
   environmentName: string;
 }
 export const AccessPoliciesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -184,7 +180,7 @@ export interface AccessPoliciesListByEnvironmentOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const AccessPoliciesListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -206,7 +202,7 @@ export const AccessPoliciesListByEnvironmentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const AccessPoliciesListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPoliciesListByEnvironmentInput,
     outputSchema: AccessPoliciesListByEnvironmentOutput,
   }));
@@ -219,7 +215,7 @@ export interface AccessPoliciesUpdateInput {
   properties?: { description?: string; roles?: ("Reader" | "Contributor")[] };
 }
 export const AccessPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -247,7 +243,7 @@ export interface AccessPoliciesUpdateOutput {
   type?: string;
 }
 export const AccessPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -263,12 +259,10 @@ export const AccessPoliciesUpdateOutput =
  * @param accessPolicyName - The name of the Time Series Insights access policy associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const AccessPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPoliciesUpdateInput,
-    outputSchema: AccessPoliciesUpdateOutput,
-  }),
-);
+export const AccessPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPoliciesUpdateInput,
+  outputSchema: AccessPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface EnvironmentsCreateOrUpdateInput {
   subscriptionId: string;
@@ -280,7 +274,7 @@ export interface EnvironmentsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const EnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -306,7 +300,7 @@ export interface EnvironmentsCreateOrUpdateOutput {
   type?: string;
 }
 export const EnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -321,12 +315,10 @@ export const EnvironmentsCreateOrUpdateOutput =
  * @param environmentName - Name of the environment
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnvironmentsCreateOrUpdateInput,
-    outputSchema: EnvironmentsCreateOrUpdateOutput,
-  }),
-);
+export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsCreateOrUpdateInput,
+  outputSchema: EnvironmentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EnvironmentsDeleteInput {
   subscriptionId: string;
@@ -334,7 +326,7 @@ export interface EnvironmentsDeleteInput {
   environmentName: string;
 }
 export const EnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -349,7 +341,7 @@ export const EnvironmentsDeleteInput =
 // Output Schema
 export type EnvironmentsDeleteOutput = void;
 export const EnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -360,7 +352,7 @@ export const EnvironmentsDeleteOutput =
  * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsDeleteInput,
   outputSchema: EnvironmentsDeleteOutput,
 }));
@@ -371,7 +363,7 @@ export interface EnvironmentsGetInput {
   environmentName: string;
   $expand?: string;
 }
-export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   environmentName: Schema.String.pipe(T.PathParam()),
@@ -390,7 +382,7 @@ export interface EnvironmentsGetOutput {
   name?: string;
   type?: string;
 }
-export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -406,7 +398,7 @@ export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $expand - Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsGetInput,
   outputSchema: EnvironmentsGetOutput,
 }));
@@ -416,7 +408,7 @@ export interface EnvironmentsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const EnvironmentsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -432,7 +424,7 @@ export interface EnvironmentsListByResourceGroupOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const EnvironmentsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -453,7 +445,7 @@ export const EnvironmentsListByResourceGroupOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsListByResourceGroupInput,
     outputSchema: EnvironmentsListByResourceGroupOutput,
   }));
@@ -462,7 +454,7 @@ export interface EnvironmentsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const EnvironmentsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -477,7 +469,7 @@ export interface EnvironmentsListBySubscriptionOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const EnvironmentsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -497,7 +489,7 @@ export const EnvironmentsListBySubscriptionOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EnvironmentsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsListBySubscriptionInput,
     outputSchema: EnvironmentsListBySubscriptionOutput,
   }));
@@ -510,7 +502,7 @@ export interface EnvironmentsUpdateInput {
   tags?: Record<string, string>;
 }
 export const EnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -531,7 +523,7 @@ export interface EnvironmentsUpdateOutput {
   type?: string;
 }
 export const EnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -546,7 +538,7 @@ export const EnvironmentsUpdateOutput =
  * @param environmentName - The name of the Time Series Insights environment associated with the specified resource group.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsUpdateInput,
   outputSchema: EnvironmentsUpdateOutput,
 }));
@@ -565,7 +557,7 @@ export interface EventSourcesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const EventSourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -598,7 +590,7 @@ export interface EventSourcesCreateOrUpdateOutput {
   type?: string;
 }
 export const EventSourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -614,12 +606,10 @@ export const EventSourcesCreateOrUpdateOutput =
  * @param eventSourceName - Name of the event source.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSourcesCreateOrUpdateInput,
-    outputSchema: EventSourcesCreateOrUpdateOutput,
-  }),
-);
+export const EventSourcesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSourcesCreateOrUpdateInput,
+  outputSchema: EventSourcesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EventSourcesDeleteInput {
   subscriptionId: string;
@@ -628,7 +618,7 @@ export interface EventSourcesDeleteInput {
   eventSourceName: string;
 }
 export const EventSourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -644,7 +634,7 @@ export const EventSourcesDeleteInput =
 // Output Schema
 export type EventSourcesDeleteOutput = void;
 export const EventSourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSourcesDeleteOutput>;
 
 // The operation
 /**
@@ -656,7 +646,7 @@ export const EventSourcesDeleteOutput =
  * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesDeleteInput,
   outputSchema: EventSourcesDeleteOutput,
 }));
@@ -667,7 +657,7 @@ export interface EventSourcesGetInput {
   environmentName: string;
   eventSourceName: string;
 }
-export const EventSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventSourcesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   environmentName: Schema.String.pipe(T.PathParam()),
@@ -686,7 +676,7 @@ export interface EventSourcesGetOutput {
   name?: string;
   type?: string;
 }
-export const EventSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EventSourcesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -702,7 +692,7 @@ export const EventSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesGetInput,
   outputSchema: EventSourcesGetOutput,
 }));
@@ -713,7 +703,7 @@ export interface EventSourcesListByEnvironmentInput {
   environmentName: string;
 }
 export const EventSourcesListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -730,7 +720,7 @@ export interface EventSourcesListByEnvironmentOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const EventSourcesListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -752,7 +742,7 @@ export const EventSourcesListByEnvironmentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSourcesListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSourcesListByEnvironmentInput,
     outputSchema: EventSourcesListByEnvironmentOutput,
   }));
@@ -766,7 +756,7 @@ export interface EventSourcesUpdateInput {
   tags?: Record<string, string>;
 }
 export const EventSourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -788,7 +778,7 @@ export interface EventSourcesUpdateOutput {
   type?: string;
 }
 export const EventSourcesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -804,15 +794,13 @@ export const EventSourcesUpdateOutput =
  * @param eventSourceName - The name of the Time Series Insights event source associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EventSourcesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSourcesUpdateInput,
   outputSchema: EventSourcesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.TimeSeriesInsights/operations",
@@ -850,7 +838,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -923,7 +911,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -944,7 +932,7 @@ export interface ReferenceDataSetsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const ReferenceDataSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -979,7 +967,7 @@ export interface ReferenceDataSetsCreateOrUpdateOutput {
   type?: string;
 }
 export const ReferenceDataSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -996,7 +984,7 @@ export const ReferenceDataSetsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReferenceDataSetsCreateOrUpdateInput,
     outputSchema: ReferenceDataSetsCreateOrUpdateOutput,
   }));
@@ -1008,7 +996,7 @@ export interface ReferenceDataSetsDeleteInput {
   referenceDataSetName: string;
 }
 export const ReferenceDataSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -1024,7 +1012,7 @@ export const ReferenceDataSetsDeleteInput =
 // Output Schema
 export type ReferenceDataSetsDeleteOutput = void;
 export const ReferenceDataSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReferenceDataSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReferenceDataSetsDeleteOutput>;
 
 // The operation
 /**
@@ -1036,12 +1024,10 @@ export const ReferenceDataSetsDeleteOutput =
  * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ReferenceDataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsDeleteInput,
-    outputSchema: ReferenceDataSetsDeleteOutput,
-  }),
-);
+export const ReferenceDataSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsDeleteInput,
+  outputSchema: ReferenceDataSetsDeleteOutput,
+}));
 // Input Schema
 export interface ReferenceDataSetsGetInput {
   subscriptionId: string;
@@ -1050,7 +1036,7 @@ export interface ReferenceDataSetsGetInput {
   referenceDataSetName: string;
 }
 export const ReferenceDataSetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -1070,7 +1056,7 @@ export interface ReferenceDataSetsGetOutput {
   type?: string;
 }
 export const ReferenceDataSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1086,12 +1072,10 @@ export const ReferenceDataSetsGetOutput =
  * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ReferenceDataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsGetInput,
-    outputSchema: ReferenceDataSetsGetOutput,
-  }),
-);
+export const ReferenceDataSetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsGetInput,
+  outputSchema: ReferenceDataSetsGetOutput,
+}));
 // Input Schema
 export interface ReferenceDataSetsListByEnvironmentInput {
   subscriptionId: string;
@@ -1099,7 +1083,7 @@ export interface ReferenceDataSetsListByEnvironmentInput {
   environmentName: string;
 }
 export const ReferenceDataSetsListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -1116,7 +1100,7 @@ export interface ReferenceDataSetsListByEnvironmentOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const ReferenceDataSetsListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1138,7 +1122,7 @@ export const ReferenceDataSetsListByEnvironmentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ReferenceDataSetsListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReferenceDataSetsListByEnvironmentInput,
     outputSchema: ReferenceDataSetsListByEnvironmentOutput,
   }));
@@ -1151,7 +1135,7 @@ export interface ReferenceDataSetsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ReferenceDataSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     environmentName: Schema.String.pipe(T.PathParam()),
@@ -1172,7 +1156,7 @@ export interface ReferenceDataSetsUpdateOutput {
   type?: string;
 }
 export const ReferenceDataSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1188,9 +1172,7 @@ export const ReferenceDataSetsUpdateOutput =
  * @param referenceDataSetName - The name of the Time Series Insights reference data set associated with the specified environment.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ReferenceDataSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReferenceDataSetsUpdateInput,
-    outputSchema: ReferenceDataSetsUpdateOutput,
-  }),
-);
+export const ReferenceDataSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReferenceDataSetsUpdateInput,
+  outputSchema: ReferenceDataSetsUpdateOutput,
+}));

@@ -12,7 +12,7 @@ export interface LlmAnalyticsReviewQueuesListInput {
   search?: string;
 }
 export const LlmAnalyticsReviewQueuesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface LlmAnalyticsReviewQueuesListOutput {
   }[];
 }
 export const LlmAnalyticsReviewQueuesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -125,7 +125,7 @@ export const LlmAnalyticsReviewQueuesListOutput =
  * @param search - Search review queue names.
  */
 export const llmAnalyticsReviewQueuesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueuesListInput,
     outputSchema: LlmAnalyticsReviewQueuesListOutput,
   }));

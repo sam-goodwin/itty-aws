@@ -9,7 +9,7 @@ export interface ProxyRecordsRetryCreateInput {
   organization_id: string;
 }
 export const ProxyRecordsRetryCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -38,7 +38,7 @@ export interface ProxyRecordsRetryCreateOutput {
   created_by?: number;
 }
 export const ProxyRecordsRetryCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     target_cname: Schema.optional(Schema.String),
@@ -66,10 +66,8 @@ export const ProxyRecordsRetryCreateOutput =
  * @param id - A UUID string identifying this proxy record.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const proxyRecordsRetryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProxyRecordsRetryCreateInput,
-    outputSchema: ProxyRecordsRetryCreateOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const proxyRecordsRetryCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProxyRecordsRetryCreateInput,
+  outputSchema: ProxyRecordsRetryCreateOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

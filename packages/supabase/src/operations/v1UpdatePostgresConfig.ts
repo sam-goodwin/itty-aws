@@ -45,7 +45,7 @@ export interface V1UpdatePostgresConfigInput {
   restart_database?: boolean;
 }
 export const V1UpdatePostgresConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     effective_cache_size: Schema.optional(Schema.String),
     logical_decoding_work_mem: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface V1UpdatePostgresConfigOutput {
   hot_standby_feedback?: boolean;
 }
 export const V1UpdatePostgresConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     effective_cache_size: Schema.optional(Schema.String),
     logical_decoding_work_mem: Schema.optional(Schema.String),
     "cron.log_statement": Schema.optional(Schema.Boolean),
@@ -180,10 +180,8 @@ export const V1UpdatePostgresConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdatePostgresConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdatePostgresConfigInput,
-    outputSchema: V1UpdatePostgresConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdatePostgresConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdatePostgresConfigInput,
+  outputSchema: V1UpdatePostgresConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

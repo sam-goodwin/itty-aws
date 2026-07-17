@@ -12,7 +12,7 @@ export interface ListOrgsInput {
   pretty?: boolean;
   name?: string;
 }
-export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgsInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -26,7 +26,7 @@ export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListOrgsOutput = void;
 export const ListOrgsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgsOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const ListOrgsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label of the organization to use to filter the returned list. Performs a case-insensitive search for an organization that starts with the specified name.
  */
-export const listOrgs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgs = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgsInput,
   outputSchema: ListOrgsOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -9,7 +9,7 @@ export interface GetWebhookSubscriptionInput {
   subscriptionId: string;
 }
 export const GetWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -56,7 +56,7 @@ export interface GetWebhookSubscriptionOutput {
   labels?: Record<string, string>;
 }
 export const GetWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
     updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -116,9 +116,7 @@ export const GetWebhookSubscriptionOutput =
  *
  * @param subscriptionId - Unique identifier for the webhook subscription.
  */
-export const getWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetWebhookSubscriptionInput,
-    outputSchema: GetWebhookSubscriptionOutput,
-  }),
-);
+export const getWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetWebhookSubscriptionInput,
+  outputSchema: GetWebhookSubscriptionOutput,
+}));

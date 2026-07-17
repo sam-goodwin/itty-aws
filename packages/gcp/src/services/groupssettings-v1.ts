@@ -152,7 +152,7 @@ export interface Groups {
 }
 
 export const Groups: Schema.Codec<Groups> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     whoCanPostAnnouncements: Schema.optional(Schema.String),
     allowWebPosting: Schema.optional(Schema.String),
     whoCanMarkDuplicate: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface GetGroupsRequest {
   groupUniqueId: string;
 }
 
-export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupsRequest = /*@__PURE__*/ Schema.Struct({
   groupUniqueId: Schema.String.pipe(T.HttpPath("groupUniqueId")),
 }).pipe(
   T.Http({ method: "GET", path: "{groupUniqueId}" }),
@@ -285,7 +285,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetGroupsRequest>;
 
 export type GetGroupsResponse = Groups;
-export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
+export const GetGroupsResponse = /*@__PURE__*/ Groups;
 
 export type GetGroupsError = DefaultErrors | NotFound | Forbidden;
 
@@ -295,7 +295,7 @@ export const getGroups: API.OperationMethod<
   GetGroupsResponse,
   GetGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGroupsRequest,
   output: GetGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -308,7 +308,7 @@ export interface UpdateGroupsRequest {
   body?: Groups;
 }
 
-export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupsRequest = /*@__PURE__*/ Schema.Struct({
   groupUniqueId: Schema.String.pipe(T.HttpPath("groupUniqueId")),
   body: Schema.optional(Groups).pipe(T.HttpBody()),
 }).pipe(
@@ -317,7 +317,7 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateGroupsRequest>;
 
 export type UpdateGroupsResponse = Groups;
-export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
+export const UpdateGroupsResponse = /*@__PURE__*/ Groups;
 
 export type UpdateGroupsError =
   | DefaultErrors
@@ -332,7 +332,7 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsResponse,
   UpdateGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupsRequest,
   output: UpdateGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -345,7 +345,7 @@ export interface PatchGroupsRequest {
   body?: Groups;
 }
 
-export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchGroupsRequest = /*@__PURE__*/ Schema.Struct({
   groupUniqueId: Schema.String.pipe(T.HttpPath("groupUniqueId")),
   body: Schema.optional(Groups).pipe(T.HttpBody()),
 }).pipe(
@@ -354,7 +354,7 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchGroupsRequest>;
 
 export type PatchGroupsResponse = Groups;
-export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
+export const PatchGroupsResponse = /*@__PURE__*/ Groups;
 
 export type PatchGroupsError =
   | DefaultErrors
@@ -369,7 +369,7 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsResponse,
   PatchGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGroupsRequest,
   output: PatchGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

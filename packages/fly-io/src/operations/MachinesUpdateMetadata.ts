@@ -12,7 +12,7 @@ export interface MachinesUpdateMetadataInput {
   updated_at?: string;
 }
 export const MachinesUpdateMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     machine_version: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export const MachinesUpdateMetadataInput =
 // Output Schema
 export type MachinesUpdateMetadataOutput = void;
 export const MachinesUpdateMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpdateMetadataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpdateMetadataOutput>;
 
 // The operation
 /**
@@ -40,10 +40,8 @@ export const MachinesUpdateMetadataOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesUpdateMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesUpdateMetadataInput,
-    outputSchema: MachinesUpdateMetadataOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const MachinesUpdateMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesUpdateMetadataInput,
+  outputSchema: MachinesUpdateMetadataOutput,
+  errors: [BadRequest] as const,
+}));

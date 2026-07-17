@@ -40,7 +40,7 @@ export interface PostSubscriptionItemsInput {
   tax_rates?: string[] | "";
 }
 export const PostSubscriptionItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing_thresholds: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -481,7 +481,7 @@ export interface PostSubscriptionItemsOutput {
     | null;
 }
 export const PostSubscriptionItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billed_until: Schema.optional(Schema.Number),
     billing_thresholds: Schema.NullOr(
       Schema.Struct({
@@ -870,9 +870,7 @@ export const PostSubscriptionItemsOutput =
  *
  * <p>Adds a new item to an existing subscription. No existing items will be changed or replaced.</p>
  */
-export const PostSubscriptionItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSubscriptionItemsInput,
-    outputSchema: PostSubscriptionItemsOutput,
-  }),
-);
+export const PostSubscriptionItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSubscriptionItemsInput,
+  outputSchema: PostSubscriptionItemsOutput,
+}));

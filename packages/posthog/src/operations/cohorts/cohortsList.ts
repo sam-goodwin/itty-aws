@@ -11,7 +11,7 @@ export interface CohortsListInput {
   limit?: number;
   offset?: number;
 }
-export const CohortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CohortsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   basic: Schema.optional(Schema.Boolean),
   hide_behavioral_cohorts: Schema.optional(Schema.Boolean),
@@ -137,7 +137,7 @@ export interface CohortsListOutput {
     _create_static_person_ids?: string[];
   }[];
 }
-export const CohortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CohortsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -354,7 +354,7 @@ export const CohortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const cohortsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const cohortsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CohortsListInput,
   outputSchema: CohortsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

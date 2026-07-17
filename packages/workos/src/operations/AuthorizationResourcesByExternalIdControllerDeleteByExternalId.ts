@@ -11,7 +11,7 @@ export interface AuthorizationResourcesByExternalIdControllerDeleteByExternalIdI
   cascade_delete?: boolean;
 }
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput
 export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
   void;
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutpu
  * @param cascade_delete - If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail.
  */
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput,
     outputSchema:

@@ -11,7 +11,7 @@ export interface SecretkeyEncryptInput {
   associated_data?: number[];
   plaintext?: number[];
 }
-export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeyEncryptInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -28,11 +28,9 @@ export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SecretkeyEncryptOutput {
   ciphertext?: number[];
 }
-export const SecretkeyEncryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ciphertext: Schema.optional(Schema.Array(Schema.Number)),
-  },
-) as unknown as Schema.Codec<SecretkeyEncryptOutput>;
+export const SecretkeyEncryptOutput = /*@__PURE__*/ Schema.Struct({
+  ciphertext: Schema.optional(Schema.Array(Schema.Number)),
+}) as unknown as Schema.Codec<SecretkeyEncryptOutput>;
 
 // The operation
 /**
@@ -42,7 +40,7 @@ export const SecretkeyEncryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeyEncrypt = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeyEncrypt = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyEncryptInput,
   outputSchema: SecretkeyEncryptOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -20,7 +20,7 @@ export interface AccessCreateRoleBindingInput {
   crn_pattern?: string;
 }
 export const AccessCreateRoleBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -51,7 +51,7 @@ export interface AccessCreateRoleBindingOutput {
   crn_pattern?: string;
 }
 export const AccessCreateRoleBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -77,12 +77,10 @@ export const AccessCreateRoleBindingOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessCreateRoleBinding = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessCreateRoleBindingInput,
-    outputSchema: AccessCreateRoleBindingOutput,
-  }),
-);
+export const AccessCreateRoleBinding = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessCreateRoleBindingInput,
+  outputSchema: AccessCreateRoleBindingOutput,
+}));
 // Input Schema
 export interface AccessDeleteRoleBindingInput {
   subscriptionId: string;
@@ -91,7 +89,7 @@ export interface AccessDeleteRoleBindingInput {
   roleBindingId: string;
 }
 export const AccessDeleteRoleBindingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -107,7 +105,7 @@ export const AccessDeleteRoleBindingInput =
 // Output Schema
 export type AccessDeleteRoleBindingOutput = void;
 export const AccessDeleteRoleBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessDeleteRoleBindingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessDeleteRoleBindingOutput>;
 
 // The operation
 /**
@@ -119,12 +117,10 @@ export const AccessDeleteRoleBindingOutput =
  * @param organizationName - Organization resource name
  * @param roleBindingId - Confluent Role binding id
  */
-export const AccessDeleteRoleBinding = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessDeleteRoleBindingInput,
-    outputSchema: AccessDeleteRoleBindingOutput,
-  }),
-);
+export const AccessDeleteRoleBinding = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessDeleteRoleBindingInput,
+  outputSchema: AccessDeleteRoleBindingOutput,
+}));
 // Input Schema
 export interface AccessInviteUserInput {
   subscriptionId: string;
@@ -135,7 +131,7 @@ export interface AccessInviteUserInput {
   upn?: string;
   invitedUserDetails?: { invitedEmail?: string; auth_type?: string };
 }
-export const AccessInviteUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessInviteUserInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -173,26 +169,24 @@ export interface AccessInviteUserOutput {
   accepted_at?: string;
   expires_at?: string;
 }
-export const AccessInviteUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    kind: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        self: Schema.optional(Schema.String),
-        resource_name: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        deleted_at: Schema.optional(Schema.String),
-      }),
-    ),
-    email: Schema.optional(Schema.String),
-    auth_type: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    accepted_at: Schema.optional(Schema.String),
-    expires_at: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AccessInviteUserOutput>;
+export const AccessInviteUserOutput = /*@__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Struct({
+      self: Schema.optional(Schema.String),
+      resource_name: Schema.optional(Schema.String),
+      created_at: Schema.optional(Schema.String),
+      updated_at: Schema.optional(Schema.String),
+      deleted_at: Schema.optional(Schema.String),
+    }),
+  ),
+  email: Schema.optional(Schema.String),
+  auth_type: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  accepted_at: Schema.optional(Schema.String),
+  expires_at: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AccessInviteUserOutput>;
 
 // The operation
 /**
@@ -203,7 +197,7 @@ export const AccessInviteUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessInviteUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessInviteUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessInviteUserInput,
   outputSchema: AccessInviteUserOutput,
 }));
@@ -215,7 +209,7 @@ export interface AccessListClustersInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -277,7 +271,7 @@ export interface AccessListClustersOutput {
   }[];
 }
 export const AccessListClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -363,7 +357,7 @@ export const AccessListClustersOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessListClusters = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessListClustersInput,
   outputSchema: AccessListClustersOutput,
 }));
@@ -375,7 +369,7 @@ export interface AccessListEnvironmentsInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListEnvironmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -412,7 +406,7 @@ export interface AccessListEnvironmentsOutput {
   }[];
 }
 export const AccessListEnvironmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -452,12 +446,10 @@ export const AccessListEnvironmentsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListEnvironments = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessListEnvironmentsInput,
-    outputSchema: AccessListEnvironmentsOutput,
-  }),
-);
+export const AccessListEnvironments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessListEnvironmentsInput,
+  outputSchema: AccessListEnvironmentsOutput,
+}));
 // Input Schema
 export interface AccessListInvitationsInput {
   subscriptionId: string;
@@ -466,7 +458,7 @@ export interface AccessListInvitationsInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListInvitationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -507,7 +499,7 @@ export interface AccessListInvitationsOutput {
   }[];
 }
 export const AccessListInvitationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -551,12 +543,10 @@ export const AccessListInvitationsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListInvitations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessListInvitationsInput,
-    outputSchema: AccessListInvitationsOutput,
-  }),
-);
+export const AccessListInvitations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessListInvitationsInput,
+  outputSchema: AccessListInvitationsOutput,
+}));
 // Input Schema
 export interface AccessListRoleBindingNameListInput {
   subscriptionId: string;
@@ -565,7 +555,7 @@ export interface AccessListRoleBindingNameListInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListRoleBindingNameListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -591,7 +581,7 @@ export interface AccessListRoleBindingNameListOutput {
   data?: string[];
 }
 export const AccessListRoleBindingNameListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -615,7 +605,7 @@ export const AccessListRoleBindingNameListOutput =
  * @param organizationName - Organization resource name
  */
 export const AccessListRoleBindingNameList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessListRoleBindingNameListInput,
     outputSchema: AccessListRoleBindingNameListOutput,
   }));
@@ -627,7 +617,7 @@ export interface AccessListRoleBindingsInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListRoleBindingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -666,7 +656,7 @@ export interface AccessListRoleBindingsOutput {
   }[];
 }
 export const AccessListRoleBindingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -708,12 +698,10 @@ export const AccessListRoleBindingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListRoleBindings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessListRoleBindingsInput,
-    outputSchema: AccessListRoleBindingsOutput,
-  }),
-);
+export const AccessListRoleBindings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessListRoleBindingsInput,
+  outputSchema: AccessListRoleBindingsOutput,
+}));
 // Input Schema
 export interface AccessListServiceAccountsInput {
   subscriptionId: string;
@@ -722,7 +710,7 @@ export interface AccessListServiceAccountsInput {
   searchFilters?: Record<string, string>;
 }
 export const AccessListServiceAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -760,7 +748,7 @@ export interface AccessListServiceAccountsOutput {
   }[];
 }
 export const AccessListServiceAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
       Schema.Struct({
@@ -801,12 +789,10 @@ export const AccessListServiceAccountsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListServiceAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessListServiceAccountsInput,
-    outputSchema: AccessListServiceAccountsOutput,
-  }),
-);
+export const AccessListServiceAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessListServiceAccountsInput,
+  outputSchema: AccessListServiceAccountsOutput,
+}));
 // Input Schema
 export interface AccessListUsersInput {
   subscriptionId: string;
@@ -814,7 +800,7 @@ export interface AccessListUsersInput {
   organizationName: string;
   searchFilters?: Record<string, string>;
 }
-export const AccessListUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessListUsersInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -852,7 +838,7 @@ export interface AccessListUsersOutput {
     auth_type?: string;
   }[];
 }
-export const AccessListUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessListUsersOutput = /*@__PURE__*/ Schema.Struct({
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
     Schema.Struct({
@@ -894,7 +880,7 @@ export const AccessListUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const AccessListUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessListUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessListUsersInput,
   outputSchema: AccessListUsersOutput,
 }));
@@ -943,7 +929,7 @@ export interface ClusterCreateOrUpdateInput {
   };
 }
 export const ClusterCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -1035,7 +1021,7 @@ export interface ClusterCreateOrUpdateOutput {
   };
 }
 export const ClusterCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1066,12 +1052,10 @@ export const ClusterCreateOrUpdateOutput =
  * @param environmentId - Confluent environment id
  * @param clusterId - Confluent kafka or schema registry cluster id
  */
-export const ClusterCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClusterCreateOrUpdateInput,
-    outputSchema: ClusterCreateOrUpdateOutput,
-  }),
-);
+export const ClusterCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClusterCreateOrUpdateInput,
+  outputSchema: ClusterCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClusterDeleteInput {
   subscriptionId: string;
@@ -1080,7 +1064,7 @@ export interface ClusterDeleteInput {
   environmentId: string;
   clusterId: string;
 }
-export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClusterDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -1097,7 +1081,7 @@ export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClusterDeleteOutput = void;
 export const ClusterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterDeleteOutput>;
 
 // The operation
 /**
@@ -1110,7 +1094,7 @@ export const ClusterDeleteOutput =
  * @param environmentId - Confluent environment id
  * @param clusterId - Confluent kafka or schema registry cluster id
  */
-export const ClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClusterDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClusterDeleteInput,
   outputSchema: ClusterDeleteOutput,
 }));
@@ -1149,7 +1133,7 @@ export interface ConnectorCreateOrUpdateInput {
   };
 }
 export const ConnectorCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -1216,7 +1200,7 @@ export interface ConnectorCreateOrUpdateOutput {
   };
 }
 export const ConnectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1248,12 +1232,10 @@ export const ConnectorCreateOrUpdateOutput =
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param connectorName - Confluent connector name
  */
-export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectorCreateOrUpdateInput,
-    outputSchema: ConnectorCreateOrUpdateOutput,
-  }),
-);
+export const ConnectorCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectorCreateOrUpdateInput,
+  outputSchema: ConnectorCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ConnectorDeleteInput {
   subscriptionId: string;
@@ -1263,7 +1245,7 @@ export interface ConnectorDeleteInput {
   clusterId: string;
   connectorName: string;
 }
-export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -1281,7 +1263,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConnectorDeleteOutput = void;
 export const ConnectorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteOutput>;
 
 // The operation
 /**
@@ -1295,7 +1277,7 @@ export const ConnectorDeleteOutput =
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param connectorName - Confluent connector name
  */
-export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorDeleteInput,
   outputSchema: ConnectorDeleteOutput,
 }));
@@ -1308,7 +1290,7 @@ export interface ConnectorGetInput {
   clusterId: string;
   connectorName: string;
 }
-export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -1337,7 +1319,7 @@ export interface ConnectorGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1369,7 +1351,7 @@ export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param connectorName - Confluent connector name
  */
-export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorGetInput,
   outputSchema: ConnectorGetOutput,
 }));
@@ -1383,7 +1365,7 @@ export interface ConnectorListInput {
   pageSize?: number;
   pageToken?: string;
 }
-export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -1416,7 +1398,7 @@ export interface ConnectorListOutput {
   }[];
   nextLink?: string;
 }
-export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1454,7 +1436,7 @@ export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pageSize - Pagination size
  * @param pageToken - An opaque pagination token to fetch the next set of records
  */
-export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorListInput,
   outputSchema: ConnectorListOutput,
 }));
@@ -1477,7 +1459,7 @@ export interface EnvironmentCreateOrUpdateInput {
   };
 }
 export const EnvironmentCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -1526,7 +1508,7 @@ export interface EnvironmentCreateOrUpdateOutput {
   };
 }
 export const EnvironmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1556,12 +1538,10 @@ export const EnvironmentCreateOrUpdateOutput =
  * @param organizationName - Organization resource name
  * @param environmentId - Confluent environment id
  */
-export const EnvironmentCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnvironmentCreateOrUpdateInput,
-    outputSchema: EnvironmentCreateOrUpdateOutput,
-  }),
-);
+export const EnvironmentCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentCreateOrUpdateInput,
+  outputSchema: EnvironmentCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EnvironmentDeleteInput {
   subscriptionId: string;
@@ -1569,14 +1549,12 @@ export interface EnvironmentDeleteInput {
   organizationName: string;
   environmentId: string;
 }
-export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    organizationName: Schema.String.pipe(T.PathParam()),
-    environmentId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const EnvironmentDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  organizationName: Schema.String.pipe(T.PathParam()),
+  environmentId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
@@ -1587,7 +1565,7 @@ export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type EnvironmentDeleteOutput = void;
 export const EnvironmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentDeleteOutput>;
 
 // The operation
 /**
@@ -1599,7 +1577,7 @@ export const EnvironmentDeleteOutput =
  * @param organizationName - Organization resource name
  * @param environmentId - Confluent environment id
  */
-export const EnvironmentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentDeleteInput,
   outputSchema: EnvironmentDeleteOutput,
 }));
@@ -1629,7 +1607,7 @@ export interface MarketplaceAgreementsCreateInput {
   };
 }
 export const MarketplaceAgreementsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1693,7 +1671,7 @@ export interface MarketplaceAgreementsCreateOutput {
   };
 }
 export const MarketplaceAgreementsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1732,18 +1710,16 @@ export const MarketplaceAgreementsCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsCreateInput,
-    outputSchema: MarketplaceAgreementsCreateOutput,
-  }),
-);
+export const MarketplaceAgreementsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsCreateInput,
+  outputSchema: MarketplaceAgreementsCreateOutput,
+}));
 // Input Schema
 export interface MarketplaceAgreementsListInput {
   subscriptionId: string;
 }
 export const MarketplaceAgreementsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1781,7 +1757,7 @@ export interface MarketplaceAgreementsListOutput {
   nextLink?: string;
 }
 export const MarketplaceAgreementsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1835,12 +1811,10 @@ export const MarketplaceAgreementsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceAgreementsListInput,
-    outputSchema: MarketplaceAgreementsListOutput,
-  }),
-);
+export const MarketplaceAgreementsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceAgreementsListInput,
+  outputSchema: MarketplaceAgreementsListOutput,
+}));
 // Input Schema
 export interface OrganizationCreateInput {
   subscriptionId: string;
@@ -1894,7 +1868,7 @@ export interface OrganizationCreateInput {
   location: string;
 }
 export const OrganizationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -1977,7 +1951,7 @@ export interface OrganizationCreateOutput {
   };
 }
 export const OrganizationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2006,7 +1980,7 @@ export const OrganizationCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const OrganizationCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrganizationCreateInput,
   outputSchema: OrganizationCreateOutput,
 }));
@@ -2021,7 +1995,7 @@ export interface OrganizationCreateAPIKeyInput {
   description?: string;
 }
 export const OrganizationCreateAPIKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2070,7 +2044,7 @@ export interface OrganizationCreateAPIKeyOutput {
   };
 }
 export const OrganizationCreateAPIKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2123,12 +2097,10 @@ export const OrganizationCreateAPIKeyOutput =
  * @param environmentId - Confluent environment id
  * @param clusterId - Confluent kafka or schema registry cluster id
  */
-export const OrganizationCreateAPIKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationCreateAPIKeyInput,
-    outputSchema: OrganizationCreateAPIKeyOutput,
-  }),
-);
+export const OrganizationCreateAPIKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationCreateAPIKeyInput,
+  outputSchema: OrganizationCreateAPIKeyOutput,
+}));
 // Input Schema
 export interface OrganizationDeleteInput {
   subscriptionId: string;
@@ -2136,7 +2108,7 @@ export interface OrganizationDeleteInput {
   organizationName: string;
 }
 export const OrganizationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2151,7 +2123,7 @@ export const OrganizationDeleteInput =
 // Output Schema
 export type OrganizationDeleteOutput = void;
 export const OrganizationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteOutput>;
 
 // The operation
 /**
@@ -2162,7 +2134,7 @@ export const OrganizationDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const OrganizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrganizationDeleteInput,
   outputSchema: OrganizationDeleteOutput,
 }));
@@ -2174,7 +2146,7 @@ export interface OrganizationDeleteClusterAPIKeyInput {
   apiKeyId: string;
 }
 export const OrganizationDeleteClusterAPIKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2190,7 +2162,7 @@ export const OrganizationDeleteClusterAPIKeyInput =
 // Output Schema
 export type OrganizationDeleteClusterAPIKeyOutput = void;
 export const OrganizationDeleteClusterAPIKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteClusterAPIKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteClusterAPIKeyOutput>;
 
 // The operation
 /**
@@ -2203,7 +2175,7 @@ export const OrganizationDeleteClusterAPIKeyOutput =
  * @param apiKeyId - Confluent API Key id
  */
 export const OrganizationDeleteClusterAPIKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationDeleteClusterAPIKeyInput,
     outputSchema: OrganizationDeleteClusterAPIKeyOutput,
   }));
@@ -2213,7 +2185,7 @@ export interface OrganizationGetInput {
   resourceGroupName: string;
   organizationName: string;
 }
-export const OrganizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrganizationGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -2239,7 +2211,7 @@ export interface OrganizationGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrganizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrganizationGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2268,7 +2240,7 @@ export const OrganizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const OrganizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrganizationGetInput,
   outputSchema: OrganizationGetOutput,
 }));
@@ -2280,7 +2252,7 @@ export interface OrganizationGetClusterAPIKeyInput {
   apiKeyId: string;
 }
 export const OrganizationGetClusterAPIKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2326,7 +2298,7 @@ export interface OrganizationGetClusterAPIKeyOutput {
   };
 }
 export const OrganizationGetClusterAPIKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2379,7 +2351,7 @@ export const OrganizationGetClusterAPIKeyOutput =
  * @param apiKeyId - Confluent API Key id
  */
 export const OrganizationGetClusterAPIKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationGetClusterAPIKeyInput,
     outputSchema: OrganizationGetClusterAPIKeyOutput,
   }));
@@ -2392,7 +2364,7 @@ export interface OrganizationGetClusterByIdInput {
   clusterId: string;
 }
 export const OrganizationGetClusterByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2421,7 +2393,7 @@ export interface OrganizationGetClusterByIdOutput {
   };
 }
 export const OrganizationGetClusterByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2452,12 +2424,10 @@ export const OrganizationGetClusterByIdOutput =
  * @param environmentId - Confluent environment id
  * @param clusterId - Confluent kafka or schema registry cluster id
  */
-export const OrganizationGetClusterById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationGetClusterByIdInput,
-    outputSchema: OrganizationGetClusterByIdOutput,
-  }),
-);
+export const OrganizationGetClusterById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationGetClusterByIdInput,
+  outputSchema: OrganizationGetClusterByIdOutput,
+}));
 // Input Schema
 export interface OrganizationGetEnvironmentByIdInput {
   subscriptionId: string;
@@ -2466,7 +2436,7 @@ export interface OrganizationGetEnvironmentByIdInput {
   environmentId: string;
 }
 export const OrganizationGetEnvironmentByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2494,7 +2464,7 @@ export interface OrganizationGetEnvironmentByIdOutput {
   };
 }
 export const OrganizationGetEnvironmentByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2525,7 +2495,7 @@ export const OrganizationGetEnvironmentByIdOutput =
  * @param environmentId - Confluent environment id
  */
 export const OrganizationGetEnvironmentById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationGetEnvironmentByIdInput,
     outputSchema: OrganizationGetEnvironmentByIdOutput,
   }));
@@ -2538,7 +2508,7 @@ export interface OrganizationGetSchemaRegistryClusterByIdInput {
   clusterId: string;
 }
 export const OrganizationGetSchemaRegistryClusterByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2576,7 +2546,7 @@ export interface OrganizationGetSchemaRegistryClusterByIdOutput {
   };
 }
 export const OrganizationGetSchemaRegistryClusterByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2633,7 +2603,7 @@ export const OrganizationGetSchemaRegistryClusterByIdOutput =
  * @param clusterId - Confluent connector name
  */
 export const OrganizationGetSchemaRegistryClusterById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationGetSchemaRegistryClusterByIdInput,
     outputSchema: OrganizationGetSchemaRegistryClusterByIdOutput,
   }));
@@ -2643,7 +2613,7 @@ export interface OrganizationListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const OrganizationListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2672,7 +2642,7 @@ export interface OrganizationListByResourceGroupOutput {
   nextLink?: string;
 }
 export const OrganizationListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2716,7 +2686,7 @@ export const OrganizationListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const OrganizationListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationListByResourceGroupInput,
     outputSchema: OrganizationListByResourceGroupOutput,
   }));
@@ -2725,7 +2695,7 @@ export interface OrganizationListBySubscriptionInput {
   subscriptionId: string;
 }
 export const OrganizationListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2753,7 +2723,7 @@ export interface OrganizationListBySubscriptionOutput {
   nextLink?: string;
 }
 export const OrganizationListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2796,7 +2766,7 @@ export const OrganizationListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OrganizationListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationListBySubscriptionInput,
     outputSchema: OrganizationListBySubscriptionOutput,
   }));
@@ -2810,7 +2780,7 @@ export interface OrganizationListClustersInput {
   pageToken?: string;
 }
 export const OrganizationListClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2843,7 +2813,7 @@ export interface OrganizationListClustersOutput {
   nextLink?: string;
 }
 export const OrganizationListClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2890,12 +2860,10 @@ export const OrganizationListClustersOutput =
  * @param pageSize - Pagination size
  * @param pageToken - An opaque pagination token to fetch the next set of records
  */
-export const OrganizationListClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationListClustersInput,
-    outputSchema: OrganizationListClustersOutput,
-  }),
-);
+export const OrganizationListClusters = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationListClustersInput,
+  outputSchema: OrganizationListClustersOutput,
+}));
 // Input Schema
 export interface OrganizationListEnvironmentsInput {
   subscriptionId: string;
@@ -2905,7 +2873,7 @@ export interface OrganizationListEnvironmentsInput {
   pageToken?: string;
 }
 export const OrganizationListEnvironmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -2937,7 +2905,7 @@ export interface OrganizationListEnvironmentsOutput {
   nextLink?: string;
 }
 export const OrganizationListEnvironmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2984,7 +2952,7 @@ export const OrganizationListEnvironmentsOutput =
  * @param pageToken - An opaque pagination token to fetch the next set of records
  */
 export const OrganizationListEnvironments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationListEnvironmentsInput,
     outputSchema: OrganizationListEnvironmentsOutput,
   }));
@@ -2996,7 +2964,7 @@ export interface OrganizationListRegionsInput {
   searchFilters?: Record<string, string>;
 }
 export const OrganizationListRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -3032,7 +3000,7 @@ export interface OrganizationListRegionsOutput {
   }[];
 }
 export const OrganizationListRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3073,12 +3041,10 @@ export const OrganizationListRegionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const OrganizationListRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationListRegionsInput,
-    outputSchema: OrganizationListRegionsOutput,
-  }),
-);
+export const OrganizationListRegions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationListRegionsInput,
+  outputSchema: OrganizationListRegionsOutput,
+}));
 // Input Schema
 export interface OrganizationListSchemaRegistryClustersInput {
   subscriptionId: string;
@@ -3089,7 +3055,7 @@ export interface OrganizationListSchemaRegistryClustersInput {
   pageToken?: string;
 }
 export const OrganizationListSchemaRegistryClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -3131,7 +3097,7 @@ export interface OrganizationListSchemaRegistryClustersOutput {
   nextLink?: string;
 }
 export const OrganizationListSchemaRegistryClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         kind: Schema.optional(Schema.String),
@@ -3194,14 +3160,14 @@ export const OrganizationListSchemaRegistryClustersOutput =
  * @param pageToken - An opaque pagination token to fetch the next set of records
  */
 export const OrganizationListSchemaRegistryClusters =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationListSchemaRegistryClustersInput,
     outputSchema: OrganizationListSchemaRegistryClustersOutput,
   }));
 // Input Schema
 export interface OrganizationOperationsListInput {}
 export const OrganizationOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Confluent/operations",
@@ -3224,7 +3190,7 @@ export interface OrganizationOperationsListOutput {
   nextLink?: string;
 }
 export const OrganizationOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -3248,12 +3214,10 @@ export const OrganizationOperationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OrganizationOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationOperationsListInput,
-    outputSchema: OrganizationOperationsListOutput,
-  }),
-);
+export const OrganizationOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationOperationsListInput,
+  outputSchema: OrganizationOperationsListOutput,
+}));
 // Input Schema
 export interface OrganizationUpdateInput {
   subscriptionId: string;
@@ -3262,7 +3226,7 @@ export interface OrganizationUpdateInput {
   tags?: Record<string, string>;
 }
 export const OrganizationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -3290,7 +3254,7 @@ export interface OrganizationUpdateOutput {
   };
 }
 export const OrganizationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3319,7 +3283,7 @@ export const OrganizationUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param organizationName - Organization resource name
  */
-export const OrganizationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrganizationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrganizationUpdateInput,
   outputSchema: OrganizationUpdateOutput,
 }));
@@ -3343,7 +3307,7 @@ export interface TopicsCreateInput {
     replicationFactor?: string;
   };
 }
-export const TopicsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -3409,7 +3373,7 @@ export interface TopicsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TopicsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3441,7 +3405,7 @@ export const TopicsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param topicName - Confluent kafka or schema registry topic name
  */
-export const TopicsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsCreateInput,
   outputSchema: TopicsCreateOutput,
 }));
@@ -3454,7 +3418,7 @@ export interface TopicsDeleteInput {
   clusterId: string;
   topicName: string;
 }
-export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -3472,7 +3436,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TopicsDeleteOutput = void;
 export const TopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
 
 // The operation
 /**
@@ -3486,7 +3450,7 @@ export const TopicsDeleteOutput =
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param topicName - Confluent kafka or schema registry topic name
  */
-export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsDeleteInput,
   outputSchema: TopicsDeleteOutput,
 }));
@@ -3499,7 +3463,7 @@ export interface TopicsGetInput {
   clusterId: string;
   topicName: string;
 }
-export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -3528,7 +3492,7 @@ export interface TopicsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3560,7 +3524,7 @@ export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterId - Confluent kafka or schema registry cluster id
  * @param topicName - Confluent kafka or schema registry topic name
  */
-export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsGetInput,
   outputSchema: TopicsGetOutput,
 }));
@@ -3574,7 +3538,7 @@ export interface TopicsListInput {
   pageSize?: number;
   pageToken?: string;
 }
-export const TopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   organizationName: Schema.String.pipe(T.PathParam()),
@@ -3607,7 +3571,7 @@ export interface TopicsListOutput {
   }[];
   nextLink?: string;
 }
-export const TopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3645,7 +3609,7 @@ export const TopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pageSize - Pagination size
  * @param pageToken - An opaque pagination token to fetch the next set of records
  */
-export const TopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsListInput,
   outputSchema: TopicsListOutput,
 }));
@@ -3702,7 +3666,7 @@ export interface ValidationsValidateOrganizationInput {
   location: string;
 }
 export const ValidationsValidateOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -3785,7 +3749,7 @@ export interface ValidationsValidateOrganizationOutput {
   };
 }
 export const ValidationsValidateOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3815,7 +3779,7 @@ export const ValidationsValidateOrganizationOutput =
  * @param organizationName - Organization resource name
  */
 export const ValidationsValidateOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ValidationsValidateOrganizationInput,
     outputSchema: ValidationsValidateOrganizationOutput,
   }));
@@ -3872,7 +3836,7 @@ export interface ValidationsValidateOrganizationV2Input {
   location: string;
 }
 export const ValidationsValidateOrganizationV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
@@ -3945,7 +3909,7 @@ export interface ValidationsValidateOrganizationV2Output {
   info?: Record<string, string>;
 }
 export const ValidationsValidateOrganizationV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }) as unknown as Schema.Codec<ValidationsValidateOrganizationV2Output>;
 
@@ -3959,7 +3923,7 @@ export const ValidationsValidateOrganizationV2Output =
  * @param organizationName - Organization resource name
  */
 export const ValidationsValidateOrganizationV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ValidationsValidateOrganizationV2Input,
     outputSchema: ValidationsValidateOrganizationV2Output,
   }));

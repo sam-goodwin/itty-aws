@@ -16,7 +16,7 @@ export interface ListRateLimitsInput {
   name?: string;
   endpointPath?: string;
 }
-export const ListRateLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRateLimitsInput = /*@__PURE__*/ Schema.Struct({
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
@@ -34,7 +34,7 @@ export const ListRateLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListRateLimitsOutput = void;
 export const ListRateLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListRateLimitsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListRateLimitsOutput>;
 
 // The operation
 /**
@@ -53,7 +53,7 @@ export const ListRateLimitsOutput =
  * @param name - Filters the returned endpoint sets by the provided endpoint set name. Multiple names may be provided, for example `/rateLimits?name=Name1&name=Name2`. For names that use spaces, replace the space with its URL-encoded value (`%20`).
  * @param endpointPath - Filters the returned endpoint sets by the provided endpoint path. Multiple paths may be provided, for example `/rateLimits?endpointPath=%2Fapi%2Fatlas%2Fv2%2Fclusters&endpointPath=%2Fapi%2Fatlas%2Fv2%2Fgroups%2F%7BgroupId%7D%2F`. Replace `/`, `{` and `}` with their URL-encoded values (`%2F`, `%7B` and `%7D` respectively).
  */
-export const listRateLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listRateLimits = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListRateLimitsInput,
   outputSchema: ListRateLimitsOutput,
   errors: [BadRequest, Forbidden] as const,

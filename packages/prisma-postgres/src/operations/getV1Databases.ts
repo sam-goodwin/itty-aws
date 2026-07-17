@@ -11,7 +11,7 @@ export interface GetV1DatabasesInput {
   branchId?: string;
   branchGitName?: string;
 }
-export const GetV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1DatabasesInput = /*@__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   projectId: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface GetV1DatabasesOutput {
   }[];
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
-export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1DatabasesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -160,7 +160,7 @@ export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns all databases the token has access to. Optionally filter by project ID.
  */
-export const getV1Databases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Databases = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1DatabasesInput,
   outputSchema: GetV1DatabasesOutput,
   errors: [Forbidden] as const,

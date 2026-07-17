@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 export interface RetrieveInput {
   id: string;
 }
-export const RetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrieveInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/organizations/{id}/" }),
@@ -47,7 +47,7 @@ export interface RetrieveOutput {
   is_not_active_reason?: string | null;
   is_pending_deletion?: boolean | null;
 }
-export const RetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RetrieveOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   slug: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export const RetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - A UUID string identifying this organization.
  */
-export const retrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrieveInput,
   outputSchema: RetrieveOutput,
   errors: [Forbidden, NotFound] as const,

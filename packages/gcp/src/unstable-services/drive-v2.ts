@@ -36,7 +36,7 @@ export interface ParentReference {
 }
 
 export const ParentReference: Schema.Codec<ParentReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isRoot: Schema.optional(Schema.Boolean),
     parentLink: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export interface Drive {
 }
 
 export const Drive: Schema.Codec<Drive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundImageLink: Schema.optional(Schema.String),
     backgroundImageFile: Schema.optional(
       Schema.Struct({
@@ -178,7 +178,7 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isAuthenticatedUser: Schema.optional(Schema.Boolean),
     emailAddress: Schema.optional(Schema.String),
     permissionId: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface LabelField {
 }
 
 export const LabelField: Schema.Codec<LabelField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     valueType: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -257,7 +257,7 @@ export interface ContentRestriction {
 }
 
 export const ContentRestriction: Schema.Codec<ContentRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     ownerRestricted: Schema.optional(Schema.Boolean),
@@ -325,7 +325,7 @@ export interface Permission {
 }
 
 export const Permission: Schema.Codec<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -385,7 +385,7 @@ export interface Property {
 }
 
 export const Property: Schema.Codec<Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -412,7 +412,7 @@ export interface DecryptionMetadata {
 }
 
 export const DecryptionMetadata: Schema.Codec<DecryptionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyFormat: Schema.optional(Schema.String),
     encryptionResourceKeyHash: Schema.optional(Schema.String),
     kaclsId: Schema.optional(Schema.String),
@@ -430,7 +430,7 @@ export interface ClientEncryptionDetails {
 }
 
 export const ClientEncryptionDetails: Schema.Codec<ClientEncryptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptionState: Schema.optional(Schema.String),
     decryptionMetadata: Schema.optional(DecryptionMetadata),
   }).annotate({ identifier: "ClientEncryptionDetails" });
@@ -677,7 +677,7 @@ export interface File {
 }
 
 export const File: Schema.Codec<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     md5Checksum: Schema.optional(Schema.String),
     labelInfo: Schema.optional(
       Schema.Struct({ labels: Schema.optional(Schema.Array(Label)) }),
@@ -927,7 +927,7 @@ export interface TeamDrive {
 }
 
 export const TeamDrive: Schema.Codec<TeamDrive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundImageLink: Schema.optional(Schema.String),
     backgroundImageFile: Schema.optional(
       Schema.Struct({
@@ -1015,7 +1015,7 @@ export interface Change {
 }
 
 export const Change: Schema.Codec<Change> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     file: Schema.optional(File),
     drive: Schema.optional(Drive),
@@ -1051,7 +1051,7 @@ export interface ChangeList {
 }
 
 export const ChangeList: Schema.Codec<ChangeList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newStartPageToken: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1074,7 +1074,7 @@ export interface ParentList {
 }
 
 export const ParentList: Schema.Codec<ParentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1103,7 +1103,7 @@ export interface CommentReply {
 }
 
 export const CommentReply: Schema.Codec<CommentReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     htmlContent: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1149,7 +1149,7 @@ export interface Comment {
 }
 
 export const Comment: Schema.Codec<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     anchor: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1223,42 +1223,40 @@ export interface App {
   icons?: ReadonlyArray<{ category?: string; iconUrl?: string; size?: number }>;
 }
 
-export const App: Schema.Codec<App> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    createUrl: Schema.optional(Schema.String),
-    supportsImport: Schema.optional(Schema.Boolean),
-    supportsCreate: Schema.optional(Schema.Boolean),
-    installed: Schema.optional(Schema.Boolean),
-    longDescription: Schema.optional(Schema.String),
-    authorized: Schema.optional(Schema.Boolean),
-    secondaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
-    useByDefault: Schema.optional(Schema.Boolean),
-    shortDescription: Schema.optional(Schema.String),
-    productId: Schema.optional(Schema.String),
-    hasDriveWideScope: Schema.optional(Schema.Boolean),
-    supportsMultiOpen: Schema.optional(Schema.Boolean),
-    kind: Schema.optional(Schema.String),
-    supportsOfflineCreate: Schema.optional(Schema.Boolean),
-    objectType: Schema.optional(Schema.String),
-    secondaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
-    openUrlTemplate: Schema.optional(Schema.String),
-    productUrl: Schema.optional(Schema.String),
-    primaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-    createInFolderTemplate: Schema.optional(Schema.String),
-    primaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.optional(Schema.String),
-    icons: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          category: Schema.optional(Schema.String),
-          iconUrl: Schema.optional(Schema.String),
-          size: Schema.optional(Schema.Number),
-        }),
-      ),
+export const App: Schema.Codec<App> = /*@__PURE__*/ Schema.Struct({
+  createUrl: Schema.optional(Schema.String),
+  supportsImport: Schema.optional(Schema.Boolean),
+  supportsCreate: Schema.optional(Schema.Boolean),
+  installed: Schema.optional(Schema.Boolean),
+  longDescription: Schema.optional(Schema.String),
+  authorized: Schema.optional(Schema.Boolean),
+  secondaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
+  useByDefault: Schema.optional(Schema.Boolean),
+  shortDescription: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  hasDriveWideScope: Schema.optional(Schema.Boolean),
+  supportsMultiOpen: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  supportsOfflineCreate: Schema.optional(Schema.Boolean),
+  objectType: Schema.optional(Schema.String),
+  secondaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
+  openUrlTemplate: Schema.optional(Schema.String),
+  productUrl: Schema.optional(Schema.String),
+  primaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  createInFolderTemplate: Schema.optional(Schema.String),
+  primaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  icons: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        iconUrl: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.Number),
+      }),
     ),
-  },
-).annotate({ identifier: "App" });
+  ),
+}).annotate({ identifier: "App" });
 
 export interface Revision {
   /** Whether this revision is published. This is only populated and can only be modified for Docs Editors files. */
@@ -1300,7 +1298,7 @@ export interface Revision {
 }
 
 export const Revision: Schema.Codec<Revision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     published: Schema.optional(Schema.Boolean),
     publishAuto: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -1329,7 +1327,7 @@ export interface StartPageToken {
 }
 
 export const StartPageToken: Schema.Codec<StartPageToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "StartPageToken" });
@@ -1344,7 +1342,7 @@ export interface TeamDriveList {
 }
 
 export const TeamDriveList: Schema.Codec<TeamDriveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(TeamDrive)),
     kind: Schema.optional(Schema.String),
@@ -1370,7 +1368,7 @@ export interface LabelFieldModification {
 }
 
 export const LabelFieldModification: Schema.Codec<LabelFieldModification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     setDateValues: Schema.optional(Schema.Array(Schema.String)),
     kind: Schema.optional(Schema.String),
@@ -1393,7 +1391,7 @@ export interface LabelModification {
 }
 
 export const LabelModification: Schema.Codec<LabelModification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldModifications: Schema.optional(Schema.Array(LabelFieldModification)),
     removeLabel: Schema.optional(Schema.Boolean),
     labelId: Schema.optional(Schema.String),
@@ -1408,7 +1406,7 @@ export interface ModifyLabelsRequest {
 }
 
 export const ModifyLabelsRequest: Schema.Codec<ModifyLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     labelModifications: Schema.optional(Schema.Array(LabelModification)),
   }).annotate({ identifier: "ModifyLabelsRequest" });
@@ -1421,7 +1419,7 @@ export interface ModifyLabelsResponse {
 }
 
 export const ModifyLabelsResponse: Schema.Codec<ModifyLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     modifiedLabels: Schema.optional(Schema.Array(Label)),
   }).annotate({ identifier: "ModifyLabelsResponse" });
@@ -1440,7 +1438,7 @@ export interface RevisionList {
 }
 
 export const RevisionList: Schema.Codec<RevisionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Revision)),
@@ -1462,7 +1460,7 @@ export interface AppList {
 }
 
 export const AppList: Schema.Codec<AppList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(App)),
     defaultAppIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1482,7 +1480,7 @@ export interface ChildReference {
 }
 
 export const ChildReference: Schema.Codec<ChildReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1505,7 +1503,7 @@ export interface ChildList {
 }
 
 export const ChildList: Schema.Codec<ChildList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(ChildReference)),
     selfLink: Schema.optional(Schema.String),
@@ -1524,7 +1522,7 @@ export interface LabelList {
 }
 
 export const LabelList: Schema.Codec<LabelList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Label)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1544,7 +1542,7 @@ export interface GenerateCseTokenResponse {
 }
 
 export const GenerateCseTokenResponse: Schema.Codec<GenerateCseTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     currentKaclsName: Schema.optional(Schema.String),
@@ -1566,7 +1564,7 @@ export interface CommentReplyList {
 }
 
 export const CommentReplyList: Schema.Codec<CommentReplyList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(CommentReply)),
     nextPageToken: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -1588,7 +1586,7 @@ export interface PermissionList {
 }
 
 export const PermissionList: Schema.Codec<PermissionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1608,7 +1606,7 @@ export interface PropertyList {
 }
 
 export const PropertyList: Schema.Codec<PropertyList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1639,7 +1637,7 @@ export interface Channel {
 }
 
 export const Channel: Schema.Codec<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Boolean),
     resourceId: Schema.optional(Schema.String),
@@ -1662,7 +1660,7 @@ export interface DriveList {
 }
 
 export const DriveList: Schema.Codec<DriveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Drive)),
@@ -1676,7 +1674,7 @@ export interface PermissionId {
 }
 
 export const PermissionId: Schema.Codec<PermissionId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "PermissionId" });
@@ -1699,7 +1697,7 @@ export interface FileList {
 }
 
 export const FileList: Schema.Codec<FileList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(File)),
@@ -1723,7 +1721,7 @@ export interface CommentList {
 }
 
 export const CommentList: Schema.Codec<CommentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Comment)),
@@ -1741,7 +1739,7 @@ export interface GeneratedIds {
 }
 
 export const GeneratedIds: Schema.Codec<GeneratedIds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
     space: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1830,7 +1828,7 @@ export interface About {
 }
 
 export const About: Schema.Codec<About> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaBytesByService: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2015,7 +2013,7 @@ export interface WatchChangesRequest {
   body?: Channel;
 }
 
-export const WatchChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchChangesRequest = /*@__PURE__*/ Schema.Struct({
   includeItemsFromAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeItemsFromAllDrives"),
   ),
@@ -2058,7 +2056,7 @@ export const WatchChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchChangesRequest>;
 
 export type WatchChangesResponse = Channel;
-export const WatchChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchChangesResponse = /*@__PURE__*/ Channel;
 
 export type WatchChangesError =
   | DefaultErrors
@@ -2073,7 +2071,7 @@ export const watchChanges: API.OperationMethod<
   WatchChangesResponse,
   WatchChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchChangesRequest,
   output: WatchChangesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2091,7 +2089,7 @@ export interface GetStartPageTokenChangesRequest {
 }
 
 export const GetStartPageTokenChangesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveId: Schema.optional(Schema.String).pipe(T.HttpQuery("driveId")),
     supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("supportsAllDrives"),
@@ -2108,8 +2106,7 @@ export const GetStartPageTokenChangesRequest =
   ) as unknown as Schema.Codec<GetStartPageTokenChangesRequest>;
 
 export type GetStartPageTokenChangesResponse = StartPageToken;
-export const GetStartPageTokenChangesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StartPageToken;
+export const GetStartPageTokenChangesResponse = /*@__PURE__*/ StartPageToken;
 
 export type GetStartPageTokenChangesError =
   | DefaultErrors
@@ -2122,7 +2119,7 @@ export const getStartPageTokenChanges: API.OperationMethod<
   GetStartPageTokenChangesResponse,
   GetStartPageTokenChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStartPageTokenChangesRequest,
   output: GetStartPageTokenChangesResponse,
   errors: [NotFound, Forbidden],
@@ -2141,7 +2138,7 @@ export interface GetChangesRequest {
   changeId: string;
 }
 
-export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChangesRequest = /*@__PURE__*/ Schema.Struct({
   supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsAllDrives"),
   ),
@@ -2157,7 +2154,7 @@ export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetChangesRequest>;
 
 export type GetChangesResponse = Change;
-export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
+export const GetChangesResponse = /*@__PURE__*/ Change;
 
 export type GetChangesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2167,7 +2164,7 @@ export const getChanges: API.OperationMethod<
   GetChangesResponse,
   GetChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangesRequest,
   output: GetChangesResponse,
   errors: [NotFound, Forbidden],
@@ -2206,7 +2203,7 @@ export interface ListChangesRequest {
   includeTeamDriveItems?: boolean;
 }
 
-export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListChangesRequest = /*@__PURE__*/ Schema.Struct({
   includeItemsFromAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeItemsFromAllDrives"),
   ),
@@ -2248,7 +2245,7 @@ export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListChangesRequest>;
 
 export type ListChangesResponse = ChangeList;
-export const ListChangesResponse = /*@__PURE__*/ /*#__PURE__*/ ChangeList;
+export const ListChangesResponse = /*@__PURE__*/ ChangeList;
 
 export type ListChangesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2258,7 +2255,7 @@ export const listChanges: API.PaginatedOperationMethod<
   ListChangesResponse,
   ListChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ListChangesResponse,
   errors: [NotFound, Forbidden],
@@ -2279,7 +2276,7 @@ export interface DeletePropertiesRequest {
 }
 
 export const DeletePropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.String.pipe(T.HttpPath("fileId")),
     propertyKey: Schema.String.pipe(T.HttpPath("propertyKey")),
     visibility: Schema.optional(Schema.String).pipe(T.HttpQuery("visibility")),
@@ -2293,7 +2290,7 @@ export const DeletePropertiesRequest =
 
 export interface DeletePropertiesResponse {}
 export const DeletePropertiesResponse: Schema.Codec<DeletePropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeletePropertiesResponse>;
 
@@ -2310,7 +2307,7 @@ export const deleteProperties: API.OperationMethod<
   DeletePropertiesResponse,
   DeletePropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesRequest,
   output: DeletePropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2327,14 +2324,12 @@ export interface PatchPropertiesRequest {
   body?: Property;
 }
 
-export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    fileId: Schema.String.pipe(T.HttpPath("fileId")),
-    propertyKey: Schema.String.pipe(T.HttpPath("propertyKey")),
-    visibility: Schema.optional(Schema.String).pipe(T.HttpQuery("visibility")),
-    body: Schema.optional(Property).pipe(T.HttpBody()),
-  },
-).pipe(
+export const PatchPropertiesRequest = /*@__PURE__*/ Schema.Struct({
+  fileId: Schema.String.pipe(T.HttpPath("fileId")),
+  propertyKey: Schema.String.pipe(T.HttpPath("propertyKey")),
+  visibility: Schema.optional(Schema.String).pipe(T.HttpQuery("visibility")),
+  body: Schema.optional(Property).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "files/{fileId}/properties/{propertyKey}",
@@ -2344,7 +2339,7 @@ export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<PatchPropertiesRequest>;
 
 export type PatchPropertiesResponse = Property;
-export const PatchPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
+export const PatchPropertiesResponse = /*@__PURE__*/ Property;
 
 export type PatchPropertiesError =
   | DefaultErrors
@@ -2359,7 +2354,7 @@ export const patchProperties: API.OperationMethod<
   PatchPropertiesResponse,
   PatchPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesRequest,
   output: PatchPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2373,7 +2368,7 @@ export interface InsertPropertiesRequest {
 }
 
 export const InsertPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.String.pipe(T.HttpPath("fileId")),
     body: Schema.optional(Property).pipe(T.HttpBody()),
   }).pipe(
@@ -2386,7 +2381,7 @@ export const InsertPropertiesRequest =
   ) as unknown as Schema.Codec<InsertPropertiesRequest>;
 
 export type InsertPropertiesResponse = Property;
-export const InsertPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
+export const InsertPropertiesResponse = /*@__PURE__*/ Property;
 
 export type InsertPropertiesError =
   | DefaultErrors
@@ -2401,7 +2396,7 @@ export const insertProperties: API.OperationMethod<
   InsertPropertiesResponse,
   InsertPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertPropertiesRequest,
   output: InsertPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2412,7 +2407,7 @@ export interface ListPropertiesRequest {
   fileId: string;
 }
 
-export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPropertiesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
 }).pipe(
   T.Http({ method: "GET", path: "files/{fileId}/properties" }),
@@ -2420,7 +2415,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListPropertiesRequest>;
 
 export type ListPropertiesResponse = PropertyList;
-export const ListPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ PropertyList;
+export const ListPropertiesResponse = /*@__PURE__*/ PropertyList;
 
 export type ListPropertiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2430,7 +2425,7 @@ export const listProperties: API.OperationMethod<
   ListPropertiesResponse,
   ListPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPropertiesRequest,
   output: ListPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -2448,7 +2443,7 @@ export interface UpdatePropertiesRequest {
 }
 
 export const UpdatePropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.String.pipe(T.HttpPath("fileId")),
     propertyKey: Schema.String.pipe(T.HttpPath("propertyKey")),
     visibility: Schema.optional(Schema.String).pipe(T.HttpQuery("visibility")),
@@ -2463,7 +2458,7 @@ export const UpdatePropertiesRequest =
   ) as unknown as Schema.Codec<UpdatePropertiesRequest>;
 
 export type UpdatePropertiesResponse = Property;
-export const UpdatePropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
+export const UpdatePropertiesResponse = /*@__PURE__*/ Property;
 
 export type UpdatePropertiesError =
   | DefaultErrors
@@ -2478,7 +2473,7 @@ export const updateProperties: API.OperationMethod<
   UpdatePropertiesResponse,
   UpdatePropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePropertiesRequest,
   output: UpdatePropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2493,7 +2488,7 @@ export interface GetPropertiesRequest {
   propertyKey: string;
 }
 
-export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPropertiesRequest = /*@__PURE__*/ Schema.Struct({
   visibility: Schema.optional(Schema.String).pipe(T.HttpQuery("visibility")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   propertyKey: Schema.String.pipe(T.HttpPath("propertyKey")),
@@ -2503,7 +2498,7 @@ export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPropertiesRequest>;
 
 export type GetPropertiesResponse = Property;
-export const GetPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
+export const GetPropertiesResponse = /*@__PURE__*/ Property;
 
 export type GetPropertiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2513,7 +2508,7 @@ export const getProperties: API.OperationMethod<
   GetPropertiesResponse,
   GetPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesRequest,
   output: GetPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -2524,7 +2519,7 @@ export interface GetAppsRequest {
   appId: string;
 }
 
-export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsRequest = /*@__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.HttpPath("appId")),
 }).pipe(
   T.Http({ method: "GET", path: "apps/{appId}" }),
@@ -2532,7 +2527,7 @@ export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAppsRequest>;
 
 export type GetAppsResponse = App;
-export const GetAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
+export const GetAppsResponse = /*@__PURE__*/ App;
 
 export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2542,7 +2537,7 @@ export const getApps: API.OperationMethod<
   GetAppsResponse,
   GetAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
   errors: [NotFound, Forbidden],
@@ -2557,7 +2552,7 @@ export interface ListAppsRequest {
   appFilterExtensions?: string;
 }
 
-export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAppsRequest = /*@__PURE__*/ Schema.Struct({
   appFilterMimeTypes: Schema.optional(Schema.String).pipe(
     T.HttpQuery("appFilterMimeTypes"),
   ),
@@ -2573,7 +2568,7 @@ export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListAppsRequest>;
 
 export type ListAppsResponse = AppList;
-export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ AppList;
+export const ListAppsResponse = /*@__PURE__*/ AppList;
 
 export type ListAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2583,7 +2578,7 @@ export const listApps: API.OperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [NotFound, Forbidden],
@@ -2596,7 +2591,7 @@ export interface DeleteCommentsRequest {
   commentId: string;
 }
 
-export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCommentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
 }).pipe(
@@ -2606,7 +2601,7 @@ export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteCommentsResponse {}
 export const DeleteCommentsResponse: Schema.Codec<DeleteCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteCommentsResponse>;
 
@@ -2623,7 +2618,7 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsResponse,
   DeleteCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCommentsRequest,
   output: DeleteCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2638,7 +2633,7 @@ export interface PatchCommentsRequest {
   body?: Comment;
 }
 
-export const PatchCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCommentsRequest = /*@__PURE__*/ Schema.Struct({
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   body: Schema.optional(Comment).pipe(T.HttpBody()),
@@ -2652,7 +2647,7 @@ export const PatchCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchCommentsRequest>;
 
 export type PatchCommentsResponse = Comment;
-export const PatchCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const PatchCommentsResponse = /*@__PURE__*/ Comment;
 
 export type PatchCommentsError =
   | DefaultErrors
@@ -2667,7 +2662,7 @@ export const patchComments: API.OperationMethod<
   PatchCommentsResponse,
   PatchCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCommentsRequest,
   output: PatchCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2680,7 +2675,7 @@ export interface InsertCommentsRequest {
   body?: Comment;
 }
 
-export const InsertCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertCommentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   body: Schema.optional(Comment).pipe(T.HttpBody()),
 }).pipe(
@@ -2689,7 +2684,7 @@ export const InsertCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertCommentsRequest>;
 
 export type InsertCommentsResponse = Comment;
-export const InsertCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const InsertCommentsResponse = /*@__PURE__*/ Comment;
 
 export type InsertCommentsError =
   | DefaultErrors
@@ -2704,7 +2699,7 @@ export const insertComments: API.OperationMethod<
   InsertCommentsResponse,
   InsertCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertCommentsRequest,
   output: InsertCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2723,7 +2718,7 @@ export interface ListCommentsRequest {
   updatedMin?: string;
 }
 
-export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCommentsRequest = /*@__PURE__*/ Schema.Struct({
   includeDeleted: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeDeleted"),
   ),
@@ -2737,7 +2732,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListCommentsRequest>;
 
 export type ListCommentsResponse = CommentList;
-export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ CommentList;
+export const ListCommentsResponse = /*@__PURE__*/ CommentList;
 
 export type ListCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2747,7 +2742,7 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsResponse,
   ListCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -2767,7 +2762,7 @@ export interface UpdateCommentsRequest {
   body?: Comment;
 }
 
-export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateCommentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   body: Schema.optional(Comment).pipe(T.HttpBody()),
@@ -2781,7 +2776,7 @@ export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateCommentsRequest>;
 
 export type UpdateCommentsResponse = Comment;
-export const UpdateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const UpdateCommentsResponse = /*@__PURE__*/ Comment;
 
 export type UpdateCommentsError =
   | DefaultErrors
@@ -2796,7 +2791,7 @@ export const updateComments: API.OperationMethod<
   UpdateCommentsResponse,
   UpdateCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCommentsRequest,
   output: UpdateCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2811,7 +2806,7 @@ export interface GetCommentsRequest {
   commentId: string;
 }
 
-export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCommentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   includeDeleted: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeDeleted"),
@@ -2823,7 +2818,7 @@ export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetCommentsRequest>;
 
 export type GetCommentsResponse = Comment;
-export const GetCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const GetCommentsResponse = /*@__PURE__*/ Comment;
 
 export type GetCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2833,7 +2828,7 @@ export const getComments: API.OperationMethod<
   GetCommentsResponse,
   GetCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCommentsRequest,
   output: GetCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -2846,7 +2841,7 @@ export interface InsertDrivesRequest {
   body?: Drive;
 }
 
-export const InsertDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertDrivesRequest = /*@__PURE__*/ Schema.Struct({
   requestId: Schema.String.pipe(T.HttpQuery("requestId")),
   body: Schema.optional(Drive).pipe(T.HttpBody()),
 }).pipe(
@@ -2855,7 +2850,7 @@ export const InsertDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertDrivesRequest>;
 
 export type InsertDrivesResponse = Drive;
-export const InsertDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
+export const InsertDrivesResponse = /*@__PURE__*/ Drive;
 
 export type InsertDrivesError =
   | DefaultErrors
@@ -2870,7 +2865,7 @@ export const insertDrives: API.OperationMethod<
   InsertDrivesResponse,
   InsertDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertDrivesRequest,
   output: InsertDrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2885,7 +2880,7 @@ export interface DeleteDrivesRequest {
   allowItemDeletion?: boolean;
 }
 
-export const DeleteDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDrivesRequest = /*@__PURE__*/ Schema.Struct({
   driveId: Schema.String.pipe(T.HttpPath("driveId")),
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
@@ -2900,9 +2895,7 @@ export const DeleteDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteDrivesResponse {}
 export const DeleteDrivesResponse: Schema.Codec<DeleteDrivesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteDrivesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteDrivesResponse>;
 
 export type DeleteDrivesError =
   | DefaultErrors
@@ -2917,7 +2910,7 @@ export const deleteDrives: API.OperationMethod<
   DeleteDrivesResponse,
   DeleteDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDrivesRequest,
   output: DeleteDrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2934,7 +2927,7 @@ export interface ListDrivesRequest {
   q?: string;
 }
 
-export const ListDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDrivesRequest = /*@__PURE__*/ Schema.Struct({
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
   ),
@@ -2947,7 +2940,7 @@ export const ListDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListDrivesRequest>;
 
 export type ListDrivesResponse = DriveList;
-export const ListDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ DriveList;
+export const ListDrivesResponse = /*@__PURE__*/ DriveList;
 
 export type ListDrivesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2957,7 +2950,7 @@ export const listDrives: API.PaginatedOperationMethod<
   ListDrivesResponse,
   ListDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDrivesRequest,
   output: ListDrivesResponse,
   errors: [NotFound, Forbidden],
@@ -2973,7 +2966,7 @@ export interface UnhideDrivesRequest {
   driveId: string;
 }
 
-export const UnhideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnhideDrivesRequest = /*@__PURE__*/ Schema.Struct({
   driveId: Schema.String.pipe(T.HttpPath("driveId")),
 }).pipe(
   T.Http({ method: "POST", path: "drives/{driveId}/unhide", hasBody: true }),
@@ -2981,7 +2974,7 @@ export const UnhideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UnhideDrivesRequest>;
 
 export type UnhideDrivesResponse = Drive;
-export const UnhideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
+export const UnhideDrivesResponse = /*@__PURE__*/ Drive;
 
 export type UnhideDrivesError =
   | DefaultErrors
@@ -2996,7 +2989,7 @@ export const unhideDrives: API.OperationMethod<
   UnhideDrivesResponse,
   UnhideDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnhideDrivesRequest,
   output: UnhideDrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3011,7 +3004,7 @@ export interface UpdateDrivesRequest {
   body?: Drive;
 }
 
-export const UpdateDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDrivesRequest = /*@__PURE__*/ Schema.Struct({
   driveId: Schema.String.pipe(T.HttpPath("driveId")),
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
@@ -3023,7 +3016,7 @@ export const UpdateDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateDrivesRequest>;
 
 export type UpdateDrivesResponse = Drive;
-export const UpdateDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
+export const UpdateDrivesResponse = /*@__PURE__*/ Drive;
 
 export type UpdateDrivesError =
   | DefaultErrors
@@ -3038,7 +3031,7 @@ export const updateDrives: API.OperationMethod<
   UpdateDrivesResponse,
   UpdateDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDrivesRequest,
   output: UpdateDrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3051,7 +3044,7 @@ export interface GetDrivesRequest {
   useDomainAdminAccess?: boolean;
 }
 
-export const GetDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDrivesRequest = /*@__PURE__*/ Schema.Struct({
   driveId: Schema.String.pipe(T.HttpPath("driveId")),
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
@@ -3062,7 +3055,7 @@ export const GetDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDrivesRequest>;
 
 export type GetDrivesResponse = Drive;
-export const GetDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
+export const GetDrivesResponse = /*@__PURE__*/ Drive;
 
 export type GetDrivesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3072,7 +3065,7 @@ export const getDrives: API.OperationMethod<
   GetDrivesResponse,
   GetDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDrivesRequest,
   output: GetDrivesResponse,
   errors: [NotFound, Forbidden],
@@ -3083,7 +3076,7 @@ export interface HideDrivesRequest {
   driveId: string;
 }
 
-export const HideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HideDrivesRequest = /*@__PURE__*/ Schema.Struct({
   driveId: Schema.String.pipe(T.HttpPath("driveId")),
 }).pipe(
   T.Http({ method: "POST", path: "drives/{driveId}/hide", hasBody: true }),
@@ -3091,7 +3084,7 @@ export const HideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<HideDrivesRequest>;
 
 export type HideDrivesResponse = Drive;
-export const HideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
+export const HideDrivesResponse = /*@__PURE__*/ Drive;
 
 export type HideDrivesError =
   | DefaultErrors
@@ -3106,7 +3099,7 @@ export const hideDrives: API.OperationMethod<
   HideDrivesResponse,
   HideDrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HideDrivesRequest,
   output: HideDrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3119,7 +3112,7 @@ export interface GetRevisionsRequest {
   fileId: string;
 }
 
-export const GetRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRevisionsRequest = /*@__PURE__*/ Schema.Struct({
   revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
 }).pipe(
@@ -3128,7 +3121,7 @@ export const GetRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetRevisionsRequest>;
 
 export type GetRevisionsResponse = Revision;
-export const GetRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
+export const GetRevisionsResponse = /*@__PURE__*/ Revision;
 
 export type GetRevisionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3138,7 +3131,7 @@ export const getRevisions: API.OperationMethod<
   GetRevisionsResponse,
   GetRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRevisionsRequest,
   output: GetRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -3153,13 +3146,11 @@ export interface UpdateRevisionsRequest {
   body?: Revision;
 }
 
-export const UpdateRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
-    fileId: Schema.String.pipe(T.HttpPath("fileId")),
-    body: Schema.optional(Revision).pipe(T.HttpBody()),
-  },
-).pipe(
+export const UpdateRevisionsRequest = /*@__PURE__*/ Schema.Struct({
+  revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
+  fileId: Schema.String.pipe(T.HttpPath("fileId")),
+  body: Schema.optional(Revision).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "files/{fileId}/revisions/{revisionId}",
@@ -3169,7 +3160,7 @@ export const UpdateRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<UpdateRevisionsRequest>;
 
 export type UpdateRevisionsResponse = Revision;
-export const UpdateRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
+export const UpdateRevisionsResponse = /*@__PURE__*/ Revision;
 
 export type UpdateRevisionsError =
   | DefaultErrors
@@ -3184,7 +3175,7 @@ export const updateRevisions: API.OperationMethod<
   UpdateRevisionsResponse,
   UpdateRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRevisionsRequest,
   output: UpdateRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3199,7 +3190,7 @@ export interface ListRevisionsRequest {
   maxResults?: number;
 }
 
-export const ListRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRevisionsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -3209,7 +3200,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListRevisionsRequest>;
 
 export type ListRevisionsResponse = RevisionList;
-export const ListRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ RevisionList;
+export const ListRevisionsResponse = /*@__PURE__*/ RevisionList;
 
 export type ListRevisionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3219,7 +3210,7 @@ export const listRevisions: API.PaginatedOperationMethod<
   ListRevisionsResponse,
   ListRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsRequest,
   output: ListRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -3237,19 +3228,17 @@ export interface DeleteRevisionsRequest {
   revisionId: string;
 }
 
-export const DeleteRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    fileId: Schema.String.pipe(T.HttpPath("fileId")),
-    revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
-  },
-).pipe(
+export const DeleteRevisionsRequest = /*@__PURE__*/ Schema.Struct({
+  fileId: Schema.String.pipe(T.HttpPath("fileId")),
+  revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
+}).pipe(
   T.Http({ method: "DELETE", path: "files/{fileId}/revisions/{revisionId}" }),
   svc,
 ) as unknown as Schema.Codec<DeleteRevisionsRequest>;
 
 export interface DeleteRevisionsResponse {}
 export const DeleteRevisionsResponse: Schema.Codec<DeleteRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteRevisionsResponse>;
 
@@ -3266,7 +3255,7 @@ export const deleteRevisions: API.OperationMethod<
   DeleteRevisionsResponse,
   DeleteRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRevisionsRequest,
   output: DeleteRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3281,7 +3270,7 @@ export interface PatchRevisionsRequest {
   body?: Revision;
 }
 
-export const PatchRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRevisionsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   revisionId: Schema.String.pipe(T.HttpPath("revisionId")),
   body: Schema.optional(Revision).pipe(T.HttpBody()),
@@ -3295,7 +3284,7 @@ export const PatchRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchRevisionsRequest>;
 
 export type PatchRevisionsResponse = Revision;
-export const PatchRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
+export const PatchRevisionsResponse = /*@__PURE__*/ Revision;
 
 export type PatchRevisionsError =
   | DefaultErrors
@@ -3310,7 +3299,7 @@ export const patchRevisions: API.OperationMethod<
   PatchRevisionsResponse,
   PatchRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRevisionsRequest,
   output: PatchRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3325,7 +3314,7 @@ export interface InsertRepliesRequest {
   body?: CommentReply;
 }
 
-export const InsertRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertRepliesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   body: Schema.optional(CommentReply).pipe(T.HttpBody()),
@@ -3339,7 +3328,7 @@ export const InsertRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertRepliesRequest>;
 
 export type InsertRepliesResponse = CommentReply;
-export const InsertRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
+export const InsertRepliesResponse = /*@__PURE__*/ CommentReply;
 
 export type InsertRepliesError =
   | DefaultErrors
@@ -3354,7 +3343,7 @@ export const insertReplies: API.OperationMethod<
   InsertRepliesResponse,
   InsertRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertRepliesRequest,
   output: InsertRepliesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3369,7 +3358,7 @@ export interface DeleteRepliesRequest {
   fileId: string;
 }
 
-export const DeleteRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteRepliesRequest = /*@__PURE__*/ Schema.Struct({
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   replyId: Schema.String.pipe(T.HttpPath("replyId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
@@ -3383,9 +3372,7 @@ export const DeleteRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteRepliesResponse {}
 export const DeleteRepliesResponse: Schema.Codec<DeleteRepliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteRepliesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteRepliesResponse>;
 
 export type DeleteRepliesError =
   | DefaultErrors
@@ -3400,7 +3387,7 @@ export const deleteReplies: API.OperationMethod<
   DeleteRepliesResponse,
   DeleteRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRepliesRequest,
   output: DeleteRepliesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3417,7 +3404,7 @@ export interface PatchRepliesRequest {
   body?: CommentReply;
 }
 
-export const PatchRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchRepliesRequest = /*@__PURE__*/ Schema.Struct({
   replyId: Schema.String.pipe(T.HttpPath("replyId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
@@ -3432,7 +3419,7 @@ export const PatchRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchRepliesRequest>;
 
 export type PatchRepliesResponse = CommentReply;
-export const PatchRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
+export const PatchRepliesResponse = /*@__PURE__*/ CommentReply;
 
 export type PatchRepliesError =
   | DefaultErrors
@@ -3447,7 +3434,7 @@ export const patchReplies: API.OperationMethod<
   PatchRepliesResponse,
   PatchRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRepliesRequest,
   output: PatchRepliesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3466,7 +3453,7 @@ export interface ListRepliesRequest {
   pageToken?: string;
 }
 
-export const ListRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRepliesRequest = /*@__PURE__*/ Schema.Struct({
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   includeDeleted: Schema.optional(Schema.Boolean).pipe(
@@ -3483,7 +3470,7 @@ export const ListRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListRepliesRequest>;
 
 export type ListRepliesResponse = CommentReplyList;
-export const ListRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReplyList;
+export const ListRepliesResponse = /*@__PURE__*/ CommentReplyList;
 
 export type ListRepliesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3493,7 +3480,7 @@ export const listReplies: API.PaginatedOperationMethod<
   ListRepliesResponse,
   ListRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepliesRequest,
   output: ListRepliesResponse,
   errors: [NotFound, Forbidden],
@@ -3515,7 +3502,7 @@ export interface UpdateRepliesRequest {
   body?: CommentReply;
 }
 
-export const UpdateRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRepliesRequest = /*@__PURE__*/ Schema.Struct({
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   replyId: Schema.String.pipe(T.HttpPath("replyId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
@@ -3530,7 +3517,7 @@ export const UpdateRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateRepliesRequest>;
 
 export type UpdateRepliesResponse = CommentReply;
-export const UpdateRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
+export const UpdateRepliesResponse = /*@__PURE__*/ CommentReply;
 
 export type UpdateRepliesError =
   | DefaultErrors
@@ -3545,7 +3532,7 @@ export const updateReplies: API.OperationMethod<
   UpdateRepliesResponse,
   UpdateRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRepliesRequest,
   output: UpdateRepliesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3562,7 +3549,7 @@ export interface GetRepliesRequest {
   includeDeleted?: boolean;
 }
 
-export const GetRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRepliesRequest = /*@__PURE__*/ Schema.Struct({
   replyId: Schema.String.pipe(T.HttpPath("replyId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
@@ -3578,7 +3565,7 @@ export const GetRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetRepliesRequest>;
 
 export type GetRepliesResponse = CommentReply;
-export const GetRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
+export const GetRepliesResponse = /*@__PURE__*/ CommentReply;
 
 export type GetRepliesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3588,7 +3575,7 @@ export const getReplies: API.OperationMethod<
   GetRepliesResponse,
   GetRepliesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRepliesRequest,
   output: GetRepliesResponse,
   errors: [NotFound, Forbidden],
@@ -3601,7 +3588,7 @@ export interface GetChildrenRequest {
   childId: string;
 }
 
-export const GetChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChildrenRequest = /*@__PURE__*/ Schema.Struct({
   folderId: Schema.String.pipe(T.HttpPath("folderId")),
   childId: Schema.String.pipe(T.HttpPath("childId")),
 }).pipe(
@@ -3610,7 +3597,7 @@ export const GetChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetChildrenRequest>;
 
 export type GetChildrenResponse = ChildReference;
-export const GetChildrenResponse = /*@__PURE__*/ /*#__PURE__*/ ChildReference;
+export const GetChildrenResponse = /*@__PURE__*/ ChildReference;
 
 export type GetChildrenError = DefaultErrors | NotFound | Forbidden;
 
@@ -3620,7 +3607,7 @@ export const getChildren: API.OperationMethod<
   GetChildrenResponse,
   GetChildrenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChildrenRequest,
   output: GetChildrenResponse,
   errors: [NotFound, Forbidden],
@@ -3639,7 +3626,7 @@ export interface ListChildrenRequest {
   q?: string;
 }
 
-export const ListChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListChildrenRequest = /*@__PURE__*/ Schema.Struct({
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   folderId: Schema.String.pipe(T.HttpPath("folderId")),
@@ -3651,7 +3638,7 @@ export const ListChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListChildrenRequest>;
 
 export type ListChildrenResponse = ChildList;
-export const ListChildrenResponse = /*@__PURE__*/ /*#__PURE__*/ ChildList;
+export const ListChildrenResponse = /*@__PURE__*/ ChildList;
 
 export type ListChildrenError = DefaultErrors | NotFound | Forbidden;
 
@@ -3661,7 +3648,7 @@ export const listChildren: API.PaginatedOperationMethod<
   ListChildrenResponse,
   ListChildrenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
   output: ListChildrenResponse,
   errors: [NotFound, Forbidden],
@@ -3685,7 +3672,7 @@ export interface InsertChildrenRequest {
   body?: ChildReference;
 }
 
-export const InsertChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertChildrenRequest = /*@__PURE__*/ Schema.Struct({
   folderId: Schema.String.pipe(T.HttpPath("folderId")),
   enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("enforceSingleParent"),
@@ -3703,8 +3690,7 @@ export const InsertChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertChildrenRequest>;
 
 export type InsertChildrenResponse = ChildReference;
-export const InsertChildrenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ChildReference;
+export const InsertChildrenResponse = /*@__PURE__*/ ChildReference;
 
 export type InsertChildrenError =
   | DefaultErrors
@@ -3719,7 +3705,7 @@ export const insertChildren: API.OperationMethod<
   InsertChildrenResponse,
   InsertChildrenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertChildrenRequest,
   output: InsertChildrenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3734,7 +3720,7 @@ export interface DeleteChildrenRequest {
   folderId: string;
 }
 
-export const DeleteChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteChildrenRequest = /*@__PURE__*/ Schema.Struct({
   childId: Schema.String.pipe(T.HttpPath("childId")),
   enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("enforceSingleParent"),
@@ -3747,7 +3733,7 @@ export const DeleteChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteChildrenResponse {}
 export const DeleteChildrenResponse: Schema.Codec<DeleteChildrenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteChildrenResponse>;
 
@@ -3764,7 +3750,7 @@ export const deleteChildren: API.OperationMethod<
   DeleteChildrenResponse,
   DeleteChildrenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChildrenRequest,
   output: DeleteChildrenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3777,7 +3763,7 @@ export interface GetTeamdrivesRequest {
   useDomainAdminAccess?: boolean;
 }
 
-export const GetTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTeamdrivesRequest = /*@__PURE__*/ Schema.Struct({
   teamDriveId: Schema.String.pipe(T.HttpPath("teamDriveId")),
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
@@ -3788,7 +3774,7 @@ export const GetTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTeamdrivesRequest>;
 
 export type GetTeamdrivesResponse = TeamDrive;
-export const GetTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
+export const GetTeamdrivesResponse = /*@__PURE__*/ TeamDrive;
 
 export type GetTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3798,7 +3784,7 @@ export const getTeamdrives: API.OperationMethod<
   GetTeamdrivesResponse,
   GetTeamdrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTeamdrivesRequest,
   output: GetTeamdrivesResponse,
   errors: [NotFound, Forbidden],
@@ -3814,7 +3800,7 @@ export interface UpdateTeamdrivesRequest {
 }
 
 export const UpdateTeamdrivesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     teamDriveId: Schema.String.pipe(T.HttpPath("teamDriveId")),
     useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useDomainAdminAccess"),
@@ -3826,7 +3812,7 @@ export const UpdateTeamdrivesRequest =
   ) as unknown as Schema.Codec<UpdateTeamdrivesRequest>;
 
 export type UpdateTeamdrivesResponse = TeamDrive;
-export const UpdateTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
+export const UpdateTeamdrivesResponse = /*@__PURE__*/ TeamDrive;
 
 export type UpdateTeamdrivesError =
   | DefaultErrors
@@ -3841,7 +3827,7 @@ export const updateTeamdrives: API.OperationMethod<
   UpdateTeamdrivesResponse,
   UpdateTeamdrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTeamdrivesRequest,
   output: UpdateTeamdrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3858,7 +3844,7 @@ export interface ListTeamdrivesRequest {
   q?: string;
 }
 
-export const ListTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTeamdrivesRequest = /*@__PURE__*/ Schema.Struct({
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useDomainAdminAccess"),
@@ -3871,7 +3857,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListTeamdrivesRequest>;
 
 export type ListTeamdrivesResponse = TeamDriveList;
-export const ListTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDriveList;
+export const ListTeamdrivesResponse = /*@__PURE__*/ TeamDriveList;
 
 export type ListTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3881,7 +3867,7 @@ export const listTeamdrives: API.PaginatedOperationMethod<
   ListTeamdrivesResponse,
   ListTeamdrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTeamdrivesRequest,
   output: ListTeamdrivesResponse,
   errors: [NotFound, Forbidden],
@@ -3898,7 +3884,7 @@ export interface DeleteTeamdrivesRequest {
 }
 
 export const DeleteTeamdrivesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     teamDriveId: Schema.String.pipe(T.HttpPath("teamDriveId")),
   }).pipe(
     T.Http({ method: "DELETE", path: "teamdrives/{teamDriveId}" }),
@@ -3907,7 +3893,7 @@ export const DeleteTeamdrivesRequest =
 
 export interface DeleteTeamdrivesResponse {}
 export const DeleteTeamdrivesResponse: Schema.Codec<DeleteTeamdrivesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteTeamdrivesResponse>;
 
@@ -3924,7 +3910,7 @@ export const deleteTeamdrives: API.OperationMethod<
   DeleteTeamdrivesResponse,
   DeleteTeamdrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTeamdrivesRequest,
   output: DeleteTeamdrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3938,7 +3924,7 @@ export interface InsertTeamdrivesRequest {
 }
 
 export const InsertTeamdrivesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.String.pipe(T.HttpQuery("requestId")),
     body: Schema.optional(TeamDrive).pipe(T.HttpBody()),
   }).pipe(
@@ -3947,7 +3933,7 @@ export const InsertTeamdrivesRequest =
   ) as unknown as Schema.Codec<InsertTeamdrivesRequest>;
 
 export type InsertTeamdrivesResponse = TeamDrive;
-export const InsertTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
+export const InsertTeamdrivesResponse = /*@__PURE__*/ TeamDrive;
 
 export type InsertTeamdrivesError =
   | DefaultErrors
@@ -3962,7 +3948,7 @@ export const insertTeamdrives: API.OperationMethod<
   InsertTeamdrivesResponse,
   InsertTeamdrivesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTeamdrivesRequest,
   output: InsertTeamdrivesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3975,7 +3961,7 @@ export interface GetParentsRequest {
   parentId: string;
 }
 
-export const GetParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetParentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   parentId: Schema.String.pipe(T.HttpPath("parentId")),
 }).pipe(
@@ -3984,7 +3970,7 @@ export const GetParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetParentsRequest>;
 
 export type GetParentsResponse = ParentReference;
-export const GetParentsResponse = /*@__PURE__*/ /*#__PURE__*/ ParentReference;
+export const GetParentsResponse = /*@__PURE__*/ ParentReference;
 
 export type GetParentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3994,7 +3980,7 @@ export const getParents: API.OperationMethod<
   GetParentsResponse,
   GetParentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParentsRequest,
   output: GetParentsResponse,
   errors: [NotFound, Forbidden],
@@ -4005,7 +3991,7 @@ export interface ListParentsRequest {
   fileId: string;
 }
 
-export const ListParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListParentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
 }).pipe(
   T.Http({ method: "GET", path: "files/{fileId}/parents" }),
@@ -4013,7 +3999,7 @@ export const ListParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListParentsRequest>;
 
 export type ListParentsResponse = ParentList;
-export const ListParentsResponse = /*@__PURE__*/ /*#__PURE__*/ ParentList;
+export const ListParentsResponse = /*@__PURE__*/ ParentList;
 
 export type ListParentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4023,7 +4009,7 @@ export const listParents: API.OperationMethod<
   ListParentsResponse,
   ListParentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListParentsRequest,
   output: ListParentsResponse,
   errors: [NotFound, Forbidden],
@@ -4038,7 +4024,7 @@ export interface DeleteParentsRequest {
   enforceSingleParent?: boolean;
 }
 
-export const DeleteParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteParentsRequest = /*@__PURE__*/ Schema.Struct({
   parentId: Schema.String.pipe(T.HttpPath("parentId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
@@ -4051,9 +4037,7 @@ export const DeleteParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteParentsResponse {}
 export const DeleteParentsResponse: Schema.Codec<DeleteParentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteParentsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteParentsResponse>;
 
 export type DeleteParentsError =
   | DefaultErrors
@@ -4068,7 +4052,7 @@ export const deleteParents: API.OperationMethod<
   DeleteParentsResponse,
   DeleteParentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteParentsRequest,
   output: DeleteParentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4087,7 +4071,7 @@ export interface InsertParentsRequest {
   body?: ParentReference;
 }
 
-export const InsertParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertParentsRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("enforceSingleParent"),
@@ -4105,8 +4089,7 @@ export const InsertParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertParentsRequest>;
 
 export type InsertParentsResponse = ParentReference;
-export const InsertParentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ParentReference;
+export const InsertParentsResponse = /*@__PURE__*/ ParentReference;
 
 export type InsertParentsError =
   | DefaultErrors
@@ -4121,7 +4104,7 @@ export const insertParents: API.OperationMethod<
   InsertParentsResponse,
   InsertParentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertParentsRequest,
   output: InsertParentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4177,7 +4160,7 @@ export interface UpdateFilesRequest {
   body?: File;
 }
 
-export const UpdateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateFilesRequest = /*@__PURE__*/ Schema.Struct({
   newRevision: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("newRevision")),
   timedTextLanguage: Schema.optional(Schema.String).pipe(
     T.HttpQuery("timedTextLanguage"),
@@ -4228,7 +4211,7 @@ export const UpdateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateFilesRequest>;
 
 export type UpdateFilesResponse = File;
-export const UpdateFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const UpdateFilesResponse = /*@__PURE__*/ File;
 
 export type UpdateFilesError =
   | DefaultErrors
@@ -4243,7 +4226,7 @@ export const updateFiles: API.OperationMethod<
   UpdateFilesResponse,
   UpdateFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFilesRequest,
   output: UpdateFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4280,7 +4263,7 @@ export interface CopyFilesRequest {
   body?: File;
 }
 
-export const CopyFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CopyFilesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   includeLabels: Schema.optional(Schema.String).pipe(
     T.HttpQuery("includeLabels"),
@@ -4315,7 +4298,7 @@ export const CopyFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CopyFilesRequest>;
 
 export type CopyFilesResponse = File;
-export const CopyFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const CopyFilesResponse = /*@__PURE__*/ File;
 
 export type CopyFilesError =
   | DefaultErrors
@@ -4330,7 +4313,7 @@ export const copyFiles: API.OperationMethod<
   CopyFilesResponse,
   CopyFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyFilesRequest,
   output: CopyFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4367,7 +4350,7 @@ export interface InsertFilesRequest {
   body?: File;
 }
 
-export const InsertFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertFilesRequest = /*@__PURE__*/ Schema.Struct({
   useContentAsIndexableText: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useContentAsIndexableText"),
   ),
@@ -4404,7 +4387,7 @@ export const InsertFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertFilesRequest>;
 
 export type InsertFilesResponse = File;
-export const InsertFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const InsertFilesResponse = /*@__PURE__*/ File;
 
 export type InsertFilesError =
   | DefaultErrors
@@ -4419,7 +4402,7 @@ export const insertFiles: API.OperationMethod<
   InsertFilesResponse,
   InsertFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertFilesRequest,
   output: InsertFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4438,7 +4421,7 @@ export interface UntrashFilesRequest {
   supportsAllDrives?: boolean;
 }
 
-export const UntrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UntrashFilesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   supportsTeamDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsTeamDrives"),
@@ -4458,7 +4441,7 @@ export const UntrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UntrashFilesRequest>;
 
 export type UntrashFilesResponse = File;
-export const UntrashFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const UntrashFilesResponse = /*@__PURE__*/ File;
 
 export type UntrashFilesError =
   | DefaultErrors
@@ -4473,7 +4456,7 @@ export const untrashFiles: API.OperationMethod<
   UntrashFilesResponse,
   UntrashFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntrashFilesRequest,
   output: UntrashFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4487,7 +4470,7 @@ export interface ModifyLabelsFilesRequest {
 }
 
 export const ModifyLabelsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.String.pipe(T.HttpPath("fileId")),
     body: Schema.optional(ModifyLabelsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4500,8 +4483,7 @@ export const ModifyLabelsFilesRequest =
   ) as unknown as Schema.Codec<ModifyLabelsFilesRequest>;
 
 export type ModifyLabelsFilesResponse = ModifyLabelsResponse;
-export const ModifyLabelsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ModifyLabelsResponse;
+export const ModifyLabelsFilesResponse = /*@__PURE__*/ ModifyLabelsResponse;
 
 export type ModifyLabelsFilesError =
   | DefaultErrors
@@ -4516,7 +4498,7 @@ export const modifyLabelsFiles: API.OperationMethod<
   ModifyLabelsFilesResponse,
   ModifyLabelsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyLabelsFilesRequest,
   output: ModifyLabelsFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4545,7 +4527,7 @@ export interface WatchFilesRequest {
   body?: Channel;
 }
 
-export const WatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchFilesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   includeLabels: Schema.optional(Schema.String).pipe(
     T.HttpQuery("includeLabels"),
@@ -4574,7 +4556,7 @@ export const WatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchFilesRequest>;
 
 export type WatchFilesResponse = Channel;
-export const WatchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchFilesResponse = /*@__PURE__*/ Channel;
 
 export type WatchFilesError =
   | DefaultErrors
@@ -4589,7 +4571,7 @@ export const watchFiles: API.OperationMethod<
   WatchFilesResponse,
   WatchFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchFilesRequest,
   output: WatchFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4608,7 +4590,7 @@ export interface TouchFilesRequest {
   includeLabels?: string;
 }
 
-export const TouchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TouchFilesRequest = /*@__PURE__*/ Schema.Struct({
   supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsAllDrives"),
   ),
@@ -4628,7 +4610,7 @@ export const TouchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<TouchFilesRequest>;
 
 export type TouchFilesResponse = File;
-export const TouchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const TouchFilesResponse = /*@__PURE__*/ File;
 
 export type TouchFilesError =
   | DefaultErrors
@@ -4643,7 +4625,7 @@ export const touchFiles: API.OperationMethod<
   TouchFilesResponse,
   TouchFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TouchFilesRequest,
   output: TouchFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4684,7 +4666,7 @@ export interface ListFilesRequest {
   includeLabels?: string;
 }
 
-export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListFilesRequest = /*@__PURE__*/ Schema.Struct({
   includeItemsFromAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeItemsFromAllDrives"),
   ),
@@ -4719,7 +4701,7 @@ export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListFilesRequest>;
 
 export type ListFilesResponse = FileList;
-export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
+export const ListFilesResponse = /*@__PURE__*/ FileList;
 
 export type ListFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4729,7 +4711,7 @@ export const listFiles: API.PaginatedOperationMethod<
   ListFilesResponse,
   ListFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: ListFilesResponse,
   errors: [NotFound, Forbidden],
@@ -4753,7 +4735,7 @@ export interface TrashFilesRequest {
   supportsAllDrives?: boolean;
 }
 
-export const TrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TrashFilesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   supportsTeamDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsTeamDrives"),
@@ -4773,7 +4755,7 @@ export const TrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<TrashFilesRequest>;
 
 export type TrashFilesResponse = File;
-export const TrashFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const TrashFilesResponse = /*@__PURE__*/ File;
 
 export type TrashFilesError =
   | DefaultErrors
@@ -4788,7 +4770,7 @@ export const trashFiles: API.OperationMethod<
   TrashFilesResponse,
   TrashFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrashFilesRequest,
   output: TrashFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4802,7 +4784,7 @@ export interface GenerateCseTokenFilesRequest {
 }
 
 export const GenerateCseTokenFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.optional(Schema.String).pipe(T.HttpQuery("fileId")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
@@ -4812,7 +4794,7 @@ export const GenerateCseTokenFilesRequest =
 
 export type GenerateCseTokenFilesResponse = GenerateCseTokenResponse;
 export const GenerateCseTokenFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateCseTokenResponse;
+  /*@__PURE__*/ GenerateCseTokenResponse;
 
 export type GenerateCseTokenFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4822,7 +4804,7 @@ export const generateCseTokenFiles: API.OperationMethod<
   GenerateCseTokenFilesResponse,
   GenerateCseTokenFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateCseTokenFilesRequest,
   output: GenerateCseTokenFilesResponse,
   errors: [NotFound, Forbidden],
@@ -4878,7 +4860,7 @@ export interface PatchFilesRequest {
   body?: File;
 }
 
-export const PatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchFilesRequest = /*@__PURE__*/ Schema.Struct({
   newRevision: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("newRevision")),
   timedTextLanguage: Schema.optional(Schema.String).pipe(
     T.HttpQuery("timedTextLanguage"),
@@ -4929,7 +4911,7 @@ export const PatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchFilesRequest>;
 
 export type PatchFilesResponse = File;
-export const PatchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const PatchFilesResponse = /*@__PURE__*/ File;
 
 export type PatchFilesError =
   | DefaultErrors
@@ -4944,7 +4926,7 @@ export const patchFiles: API.OperationMethod<
   PatchFilesResponse,
   PatchFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchFilesRequest,
   output: PatchFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4957,21 +4939,19 @@ export interface EmptyTrashFilesRequest {
   enforceSingleParent?: boolean;
 }
 
-export const EmptyTrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    driveId: Schema.optional(Schema.String).pipe(T.HttpQuery("driveId")),
-    enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("enforceSingleParent"),
-    ),
-  },
-).pipe(
+export const EmptyTrashFilesRequest = /*@__PURE__*/ Schema.Struct({
+  driveId: Schema.optional(Schema.String).pipe(T.HttpQuery("driveId")),
+  enforceSingleParent: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("enforceSingleParent"),
+  ),
+}).pipe(
   T.Http({ method: "DELETE", path: "files/trash" }),
   svc,
 ) as unknown as Schema.Codec<EmptyTrashFilesRequest>;
 
 export interface EmptyTrashFilesResponse {}
 export const EmptyTrashFilesResponse: Schema.Codec<EmptyTrashFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<EmptyTrashFilesResponse>;
 
@@ -4988,7 +4968,7 @@ export const emptyTrashFiles: API.OperationMethod<
   EmptyTrashFilesResponse,
   EmptyTrashFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EmptyTrashFilesRequest,
   output: EmptyTrashFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5001,7 +4981,7 @@ export interface ExportFilesRequest {
   fileId: string;
 }
 
-export const ExportFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExportFilesRequest = /*@__PURE__*/ Schema.Struct({
   mimeType: Schema.String.pipe(T.HttpQuery("mimeType")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
 }).pipe(
@@ -5011,9 +4991,7 @@ export const ExportFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExportFilesResponse {}
 export const ExportFilesResponse: Schema.Codec<ExportFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<ExportFilesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<ExportFilesResponse>;
 
 export type ExportFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5023,7 +5001,7 @@ export const exportFiles: API.OperationMethod<
   ExportFilesResponse,
   ExportFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportFilesRequest,
   output: ExportFilesResponse,
   errors: [NotFound, Forbidden],
@@ -5050,7 +5028,7 @@ export interface GetFilesRequest {
   includePermissionsForView?: string;
 }
 
-export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesRequest = /*@__PURE__*/ Schema.Struct({
   revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
   supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsAllDrives"),
@@ -5078,7 +5056,7 @@ export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetFilesRequest>;
 
 export type GetFilesResponse = File;
-export const GetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
+export const GetFilesResponse = /*@__PURE__*/ File;
 
 export type GetFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5088,7 +5066,7 @@ export const getFiles: API.OperationMethod<
   GetFilesResponse,
   GetFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFilesRequest,
   output: GetFilesResponse,
   errors: [NotFound, Forbidden],
@@ -5104,7 +5082,7 @@ export interface GenerateIdsFilesRequest {
 }
 
 export const GenerateIdsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     space: Schema.optional(Schema.String).pipe(T.HttpQuery("space")),
@@ -5114,8 +5092,7 @@ export const GenerateIdsFilesRequest =
   ) as unknown as Schema.Codec<GenerateIdsFilesRequest>;
 
 export type GenerateIdsFilesResponse = GeneratedIds;
-export const GenerateIdsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GeneratedIds;
+export const GenerateIdsFilesResponse = /*@__PURE__*/ GeneratedIds;
 
 export type GenerateIdsFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5125,7 +5102,7 @@ export const generateIdsFiles: API.OperationMethod<
   GenerateIdsFilesResponse,
   GenerateIdsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateIdsFilesRequest,
   output: GenerateIdsFilesResponse,
   errors: [NotFound, Forbidden],
@@ -5140,19 +5117,17 @@ export interface ListLabelsFilesRequest {
   maxResults?: number;
 }
 
-export const ListLabelsFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    fileId: Schema.String.pipe(T.HttpPath("fileId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  },
-).pipe(
+export const ListLabelsFilesRequest = /*@__PURE__*/ Schema.Struct({
+  fileId: Schema.String.pipe(T.HttpPath("fileId")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+}).pipe(
   T.Http({ method: "GET", path: "files/{fileId}/listLabels" }),
   svc,
 ) as unknown as Schema.Codec<ListLabelsFilesRequest>;
 
 export type ListLabelsFilesResponse = LabelList;
-export const ListLabelsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ LabelList;
+export const ListLabelsFilesResponse = /*@__PURE__*/ LabelList;
 
 export type ListLabelsFilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5162,7 +5137,7 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
   ListLabelsFilesResponse,
   ListLabelsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsFilesRequest,
   output: ListLabelsFilesResponse,
   errors: [NotFound, Forbidden],
@@ -5184,7 +5159,7 @@ export interface DeleteFilesRequest {
   enforceSingleParent?: boolean;
 }
 
-export const DeleteFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteFilesRequest = /*@__PURE__*/ Schema.Struct({
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("supportsAllDrives"),
@@ -5202,9 +5177,7 @@ export const DeleteFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteFilesResponse {}
 export const DeleteFilesResponse: Schema.Codec<DeleteFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteFilesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteFilesResponse>;
 
 export type DeleteFilesError =
   | DefaultErrors
@@ -5219,7 +5192,7 @@ export const deleteFiles: API.OperationMethod<
   DeleteFilesResponse,
   DeleteFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFilesRequest,
   output: DeleteFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5234,7 +5207,7 @@ export interface GetAboutRequest {
   maxChangeIdCount?: string;
 }
 
-export const GetAboutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAboutRequest = /*@__PURE__*/ Schema.Struct({
   includeSubscribed: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("includeSubscribed"),
   ),
@@ -5250,7 +5223,7 @@ export const GetAboutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAboutRequest>;
 
 export type GetAboutResponse = About;
-export const GetAboutResponse = /*@__PURE__*/ /*#__PURE__*/ About;
+export const GetAboutResponse = /*@__PURE__*/ About;
 
 export type GetAboutError = DefaultErrors | NotFound | Forbidden;
 
@@ -5260,7 +5233,7 @@ export const getAbout: API.OperationMethod<
   GetAboutResponse,
   GetAboutError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAboutRequest,
   output: GetAboutResponse,
   errors: [NotFound, Forbidden],
@@ -5271,7 +5244,7 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 
-export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StopChannelsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Channel).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "channels/stop", hasBody: true }),
@@ -5280,9 +5253,7 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<StopChannelsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -5297,7 +5268,7 @@ export const stopChannels: API.OperationMethod<
   StopChannelsResponse,
   StopChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5320,32 +5291,29 @@ export interface ListPermissionsRequest {
   supportsTeamDrives?: boolean;
 }
 
-export const ListPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("useDomainAdminAccess"),
-    ),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("supportsAllDrives"),
-    ),
-    includePermissionsForView: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("includePermissionsForView"),
-    ),
-    fileId: Schema.String.pipe(T.HttpPath("fileId")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    supportsTeamDrives: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("supportsTeamDrives"),
-    ),
-  },
-).pipe(
+export const ListPermissionsRequest = /*@__PURE__*/ Schema.Struct({
+  useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("useDomainAdminAccess"),
+  ),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("supportsAllDrives"),
+  ),
+  includePermissionsForView: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("includePermissionsForView"),
+  ),
+  fileId: Schema.String.pipe(T.HttpPath("fileId")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  supportsTeamDrives: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("supportsTeamDrives"),
+  ),
+}).pipe(
   T.Http({ method: "GET", path: "files/{fileId}/permissions" }),
   svc,
 ) as unknown as Schema.Codec<ListPermissionsRequest>;
 
 export type ListPermissionsResponse = PermissionList;
-export const ListPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PermissionList;
+export const ListPermissionsResponse = /*@__PURE__*/ PermissionList;
 
 export type ListPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5355,7 +5323,7 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsResponse,
   ListPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -5372,7 +5340,7 @@ export interface GetIdForEmailPermissionsRequest {
 }
 
 export const GetIdForEmailPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String.pipe(T.HttpPath("email")),
   }).pipe(
     T.Http({ method: "GET", path: "permissionIds/{email}" }),
@@ -5380,8 +5348,7 @@ export const GetIdForEmailPermissionsRequest =
   ) as unknown as Schema.Codec<GetIdForEmailPermissionsRequest>;
 
 export type GetIdForEmailPermissionsResponse = PermissionId;
-export const GetIdForEmailPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PermissionId;
+export const GetIdForEmailPermissionsResponse = /*@__PURE__*/ PermissionId;
 
 export type GetIdForEmailPermissionsError =
   | DefaultErrors
@@ -5394,7 +5361,7 @@ export const getIdForEmailPermissions: API.OperationMethod<
   GetIdForEmailPermissionsResponse,
   GetIdForEmailPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdForEmailPermissionsRequest,
   output: GetIdForEmailPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -5424,7 +5391,7 @@ export interface InsertPermissionsRequest {
 }
 
 export const InsertPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sendNotificationEmails: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("sendNotificationEmails"),
     ),
@@ -5461,7 +5428,7 @@ export const InsertPermissionsRequest =
   ) as unknown as Schema.Codec<InsertPermissionsRequest>;
 
 export type InsertPermissionsResponse = Permission;
-export const InsertPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
+export const InsertPermissionsResponse = /*@__PURE__*/ Permission;
 
 export type InsertPermissionsError =
   | DefaultErrors
@@ -5476,7 +5443,7 @@ export const insertPermissions: API.OperationMethod<
   InsertPermissionsResponse,
   InsertPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertPermissionsRequest,
   output: InsertPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5498,7 +5465,7 @@ export interface DeletePermissionsRequest {
 }
 
 export const DeletePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useDomainAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useDomainAdminAccess"),
     ),
@@ -5523,7 +5490,7 @@ export const DeletePermissionsRequest =
 
 export interface DeletePermissionsResponse {}
 export const DeletePermissionsResponse: Schema.Codec<DeletePermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeletePermissionsResponse>;
 
@@ -5540,7 +5507,7 @@ export const deletePermissions: API.OperationMethod<
   DeletePermissionsResponse,
   DeletePermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePermissionsRequest,
   output: DeletePermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5568,7 +5535,7 @@ export interface PatchPermissionsRequest {
 }
 
 export const PatchPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferOwnership: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("transferOwnership"),
     ),
@@ -5600,7 +5567,7 @@ export const PatchPermissionsRequest =
   ) as unknown as Schema.Codec<PatchPermissionsRequest>;
 
 export type PatchPermissionsResponse = Permission;
-export const PatchPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
+export const PatchPermissionsResponse = /*@__PURE__*/ Permission;
 
 export type PatchPermissionsError =
   | DefaultErrors
@@ -5615,7 +5582,7 @@ export const patchPermissions: API.OperationMethod<
   PatchPermissionsResponse,
   PatchPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPermissionsRequest,
   output: PatchPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5634,7 +5601,7 @@ export interface GetPermissionsRequest {
   supportsAllDrives?: boolean;
 }
 
-export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPermissionsRequest = /*@__PURE__*/ Schema.Struct({
   permissionId: Schema.String.pipe(T.HttpPath("permissionId")),
   fileId: Schema.String.pipe(T.HttpPath("fileId")),
   supportsTeamDrives: Schema.optional(Schema.Boolean).pipe(
@@ -5652,7 +5619,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPermissionsRequest>;
 
 export type GetPermissionsResponse = Permission;
-export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
+export const GetPermissionsResponse = /*@__PURE__*/ Permission;
 
 export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5662,7 +5629,7 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsResponse,
   GetPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -5690,7 +5657,7 @@ export interface UpdatePermissionsRequest {
 }
 
 export const UpdatePermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportsAllDrives: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("supportsAllDrives"),
     ),
@@ -5722,7 +5689,7 @@ export const UpdatePermissionsRequest =
   ) as unknown as Schema.Codec<UpdatePermissionsRequest>;
 
 export type UpdatePermissionsResponse = Permission;
-export const UpdatePermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
+export const UpdatePermissionsResponse = /*@__PURE__*/ Permission;
 
 export type UpdatePermissionsError =
   | DefaultErrors
@@ -5737,7 +5704,7 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsResponse,
   UpdatePermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -13,7 +13,7 @@ export interface PostBillingCreditGrantsIdVoidInput {
   expand?: string[];
 }
 export const PostBillingCreditGrantsIdVoidInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -63,7 +63,7 @@ export interface PostBillingCreditGrantsIdVoidOutput {
   voided_at: number | null;
 }
 export const PostBillingCreditGrantsIdVoidOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.NullOr(
         Schema.Struct({
@@ -132,7 +132,7 @@ export const PostBillingCreditGrantsIdVoidOutput =
  * @param id - Unique identifier for the object.
  */
 export const PostBillingCreditGrantsIdVoid =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingCreditGrantsIdVoidInput,
     outputSchema: PostBillingCreditGrantsIdVoidOutput,
   }));

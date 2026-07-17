@@ -18,7 +18,7 @@ export interface ArcSettingsConsentAndInstallDefaultExtensionsInput {
   arcSettingName: string;
 }
 export const ArcSettingsConsentAndInstallDefaultExtensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -46,7 +46,7 @@ export interface ArcSettingsConsentAndInstallDefaultExtensionsOutput {
   };
 }
 export const ArcSettingsConsentAndInstallDefaultExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export const ArcSettingsConsentAndInstallDefaultExtensionsOutput =
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
 export const ArcSettingsConsentAndInstallDefaultExtensions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArcSettingsConsentAndInstallDefaultExtensionsInput,
     outputSchema: ArcSettingsConsentAndInstallDefaultExtensionsOutput,
   }));
@@ -162,119 +162,117 @@ export interface ArcSettingsCreateInput {
     defaultExtensions?: { category?: string; consentTime?: string }[];
   };
 }
-export const ArcSettingsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    arcSettingName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Error",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Connected",
-            "Disconnected",
-            "Deleted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-            "PartiallySucceeded",
-            "PartiallyConnected",
-            "InProgress",
-            "Accepted",
-            "Provisioning",
-            "DisableInProgress",
-          ]),
-        ),
-        arcInstanceResourceGroup: Schema.optional(Schema.String),
-        arcApplicationClientId: Schema.optional(Schema.String),
-        arcApplicationTenantId: Schema.optional(Schema.String),
-        arcServicePrincipalObjectId: Schema.optional(Schema.String),
-        arcApplicationObjectId: Schema.optional(Schema.String),
-        aggregateState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Error",
-            "Succeeded",
-            "Canceled",
-            "Failed",
-            "Connected",
-            "Disconnected",
-            "Deleted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-            "PartiallySucceeded",
-            "PartiallyConnected",
-            "InProgress",
-            "Accepted",
-            "Provisioning",
-            "DisableInProgress",
-          ]),
-        ),
-        perNodeDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              arcInstance: Schema.optional(Schema.String),
-              arcNodeServicePrincipalObjectId: Schema.optional(Schema.String),
-              state: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "Error",
-                  "Succeeded",
-                  "Canceled",
-                  "Failed",
-                  "Connected",
-                  "Disconnected",
-                  "Deleted",
-                  "Creating",
-                  "Updating",
-                  "Deleting",
-                  "Moving",
-                  "PartiallySucceeded",
-                  "PartiallyConnected",
-                  "InProgress",
-                  "Accepted",
-                  "Provisioning",
-                  "DisableInProgress",
-                ]),
-              ),
-            }),
-          ),
-        ),
-        connectivityProperties: Schema.optional(
+export const ArcSettingsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  arcSettingName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Error",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Connected",
+          "Disconnected",
+          "Deleted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Moving",
+          "PartiallySucceeded",
+          "PartiallyConnected",
+          "InProgress",
+          "Accepted",
+          "Provisioning",
+          "DisableInProgress",
+        ]),
+      ),
+      arcInstanceResourceGroup: Schema.optional(Schema.String),
+      arcApplicationClientId: Schema.optional(Schema.String),
+      arcApplicationTenantId: Schema.optional(Schema.String),
+      arcServicePrincipalObjectId: Schema.optional(Schema.String),
+      arcApplicationObjectId: Schema.optional(Schema.String),
+      aggregateState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Error",
+          "Succeeded",
+          "Canceled",
+          "Failed",
+          "Connected",
+          "Disconnected",
+          "Deleted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Moving",
+          "PartiallySucceeded",
+          "PartiallyConnected",
+          "InProgress",
+          "Accepted",
+          "Provisioning",
+          "DisableInProgress",
+        ]),
+      ),
+      perNodeDetails: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            serviceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  serviceName: Schema.Literals(["WAC"]),
-                  port: Schema.Number,
-                }),
-              ),
+            name: Schema.optional(Schema.String),
+            arcInstance: Schema.optional(Schema.String),
+            arcNodeServicePrincipalObjectId: Schema.optional(Schema.String),
+            state: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "Error",
+                "Succeeded",
+                "Canceled",
+                "Failed",
+                "Connected",
+                "Disconnected",
+                "Deleted",
+                "Creating",
+                "Updating",
+                "Deleting",
+                "Moving",
+                "PartiallySucceeded",
+                "PartiallyConnected",
+                "InProgress",
+                "Accepted",
+                "Provisioning",
+                "DisableInProgress",
+              ]),
             ),
           }),
         ),
-        defaultExtensions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              category: Schema.optional(Schema.String),
-              consentTime: Schema.optional(Schema.String),
-            }),
+      ),
+      connectivityProperties: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+          serviceConfigurations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                serviceName: Schema.Literals(["WAC"]),
+                port: Schema.Number,
+              }),
+            ),
           ),
+        }),
+      ),
+      defaultExtensions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            category: Schema.optional(Schema.String),
+            consentTime: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-  },
-).pipe(
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
@@ -297,7 +295,7 @@ export interface ArcSettingsCreateOutput {
   };
 }
 export const ArcSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -327,7 +325,7 @@ export const ArcSettingsCreateOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArcSettingsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArcSettingsCreateInput,
   outputSchema: ArcSettingsCreateOutput,
 }));
@@ -339,7 +337,7 @@ export interface ArcSettingsCreateIdentityInput {
   arcSettingName: string;
 }
 export const ArcSettingsCreateIdentityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -362,7 +360,7 @@ export interface ArcSettingsCreateIdentityOutput {
   };
 }
 export const ArcSettingsCreateIdentityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         arcApplicationClientId: Schema.optional(Schema.String),
@@ -383,12 +381,10 @@ export const ArcSettingsCreateIdentityOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsCreateIdentity = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArcSettingsCreateIdentityInput,
-    outputSchema: ArcSettingsCreateIdentityOutput,
-  }),
-);
+export const ArcSettingsCreateIdentity = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArcSettingsCreateIdentityInput,
+  outputSchema: ArcSettingsCreateIdentityOutput,
+}));
 // Input Schema
 export interface ArcSettingsDeleteInput {
   subscriptionId: string;
@@ -396,14 +392,12 @@ export interface ArcSettingsDeleteInput {
   clusterName: string;
   arcSettingName: string;
 }
-export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    arcSettingName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ArcSettingsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  arcSettingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
@@ -414,7 +408,7 @@ export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ArcSettingsDeleteOutput = void;
 export const ArcSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -426,7 +420,7 @@ export const ArcSettingsDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArcSettingsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArcSettingsDeleteInput,
   outputSchema: ArcSettingsDeleteOutput,
 }));
@@ -438,7 +432,7 @@ export interface ArcSettingsGeneratePasswordInput {
   arcSettingName: string;
 }
 export const ArcSettingsGeneratePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -459,7 +453,7 @@ export interface ArcSettingsGeneratePasswordOutput {
   endDateTime?: string;
 }
 export const ArcSettingsGeneratePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secretText: Schema.optional(Schema.String),
     keyId: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
@@ -476,12 +470,10 @@ export const ArcSettingsGeneratePasswordOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsGeneratePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArcSettingsGeneratePasswordInput,
-    outputSchema: ArcSettingsGeneratePasswordOutput,
-  }),
-);
+export const ArcSettingsGeneratePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArcSettingsGeneratePasswordInput,
+  outputSchema: ArcSettingsGeneratePasswordOutput,
+}));
 // Input Schema
 export interface ArcSettingsGetInput {
   subscriptionId: string;
@@ -489,7 +481,7 @@ export interface ArcSettingsGetInput {
   clusterName: string;
   arcSettingName: string;
 }
-export const ArcSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArcSettingsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -516,7 +508,7 @@ export interface ArcSettingsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ArcSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArcSettingsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -546,7 +538,7 @@ export const ArcSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArcSettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArcSettingsGetInput,
   outputSchema: ArcSettingsGetOutput,
 }));
@@ -558,7 +550,7 @@ export interface ArcSettingsInitializeDisableProcessInput {
   arcSettingName: string;
 }
 export const ArcSettingsInitializeDisableProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +566,7 @@ export const ArcSettingsInitializeDisableProcessInput =
 // Output Schema
 export type ArcSettingsInitializeDisableProcessOutput = void;
 export const ArcSettingsInitializeDisableProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsInitializeDisableProcessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsInitializeDisableProcessOutput>;
 
 // The operation
 /**
@@ -587,7 +579,7 @@ export const ArcSettingsInitializeDisableProcessOutput =
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
 export const ArcSettingsInitializeDisableProcess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArcSettingsInitializeDisableProcessInput,
     outputSchema: ArcSettingsInitializeDisableProcessOutput,
   }));
@@ -598,7 +590,7 @@ export interface ArcSettingsListByClusterInput {
   clusterName: string;
 }
 export const ArcSettingsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -628,7 +620,7 @@ export interface ArcSettingsListByClusterOutput {
   nextLink?: string;
 }
 export const ArcSettingsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -672,12 +664,10 @@ export const ArcSettingsListByClusterOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ArcSettingsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArcSettingsListByClusterInput,
-    outputSchema: ArcSettingsListByClusterOutput,
-  }),
-);
+export const ArcSettingsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArcSettingsListByClusterInput,
+  outputSchema: ArcSettingsListByClusterOutput,
+}));
 // Input Schema
 export interface ArcSettingsReconcileInput {
   subscriptionId: string;
@@ -687,7 +677,7 @@ export interface ArcSettingsReconcileInput {
   properties?: { clusterNodes?: string[] };
 }
 export const ArcSettingsReconcileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -720,7 +710,7 @@ export interface ArcSettingsReconcileOutput {
   };
 }
 export const ArcSettingsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -750,12 +740,10 @@ export const ArcSettingsReconcileOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsReconcile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArcSettingsReconcileInput,
-    outputSchema: ArcSettingsReconcileOutput,
-  }),
-);
+export const ArcSettingsReconcile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArcSettingsReconcileInput,
+  outputSchema: ArcSettingsReconcileOutput,
+}));
 // Input Schema
 export interface ArcSettingsUpdateInput {
   subscriptionId: string;
@@ -770,32 +758,30 @@ export interface ArcSettingsUpdateInput {
     };
   };
 }
-export const ArcSettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    arcSettingName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    properties: Schema.optional(
-      Schema.Struct({
-        connectivityProperties: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            serviceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  serviceName: Schema.Literals(["WAC"]),
-                  port: Schema.Number,
-                }),
-              ),
+export const ArcSettingsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  arcSettingName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      connectivityProperties: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Boolean),
+          serviceConfigurations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                serviceName: Schema.Literals(["WAC"]),
+                port: Schema.Number,
+              }),
             ),
-          }),
-        ),
-      }),
-    ),
-  },
-).pipe(
+          ),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
@@ -818,7 +804,7 @@ export interface ArcSettingsUpdateOutput {
   };
 }
 export const ArcSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -848,7 +834,7 @@ export const ArcSettingsUpdateOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ArcSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArcSettingsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArcSettingsUpdateInput,
   outputSchema: ArcSettingsUpdateOutput,
 }));
@@ -864,7 +850,7 @@ export interface ClustersConfigureRemoteSupportInput {
   };
 }
 export const ClustersConfigureRemoteSupportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -902,7 +888,7 @@ export interface ClustersConfigureRemoteSupportOutput {
   };
 }
 export const ClustersConfigureRemoteSupportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -932,7 +918,7 @@ export const ClustersConfigureRemoteSupportOutput =
  * @param clusterName - The name of the cluster.
  */
 export const ClustersConfigureRemoteSupport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersConfigureRemoteSupportInput,
     outputSchema: ClustersConfigureRemoteSupportOutput,
   }));
@@ -1120,7 +1106,7 @@ export interface ClustersCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1434,7 +1420,7 @@ export interface ClustersCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1463,7 +1449,7 @@ export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersCreateInput,
   outputSchema: ClustersCreateOutput,
 }));
@@ -1474,7 +1460,7 @@ export interface ClustersCreateIdentityInput {
   clusterName: string;
 }
 export const ClustersCreateIdentityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1496,7 +1482,7 @@ export interface ClustersCreateIdentityOutput {
   };
 }
 export const ClustersCreateIdentityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         aadClientId: Schema.optional(Schema.String),
@@ -1516,19 +1502,17 @@ export const ClustersCreateIdentityOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersCreateIdentity = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateIdentityInput,
-    outputSchema: ClustersCreateIdentityOutput,
-  }),
-);
+export const ClustersCreateIdentity = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateIdentityInput,
+  outputSchema: ClustersCreateIdentityOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1543,7 +1527,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1554,7 +1538,7 @@ export const ClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -1566,7 +1550,7 @@ export interface ClustersExtendSoftwareAssuranceBenefitInput {
   properties?: { softwareAssuranceIntent?: "Enable" | "Disable" };
 }
 export const ClustersExtendSoftwareAssuranceBenefitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1600,7 +1584,7 @@ export interface ClustersExtendSoftwareAssuranceBenefitOutput {
   };
 }
 export const ClustersExtendSoftwareAssuranceBenefitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1630,7 +1614,7 @@ export const ClustersExtendSoftwareAssuranceBenefitOutput =
  * @param clusterName - The name of the cluster.
  */
 export const ClustersExtendSoftwareAssuranceBenefit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersExtendSoftwareAssuranceBenefitInput,
     outputSchema: ClustersExtendSoftwareAssuranceBenefitOutput,
   }));
@@ -1640,7 +1624,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1666,7 +1650,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1695,7 +1679,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -1705,7 +1689,7 @@ export interface ClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1734,7 +1718,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1777,18 +1761,16 @@ export const ClustersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1816,7 +1798,7 @@ export interface ClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1858,12 +1840,10 @@ export const ClustersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListBySubscriptionInput,
-    outputSchema: ClustersListBySubscriptionOutput,
-  }),
-);
+export const ClustersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListBySubscriptionInput,
+  outputSchema: ClustersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface ClustersTriggerLogCollectionInput {
   subscriptionId: string;
@@ -1872,7 +1852,7 @@ export interface ClustersTriggerLogCollectionInput {
   properties?: { fromDate: string; toDate: string };
 }
 export const ClustersTriggerLogCollectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1905,7 +1885,7 @@ export interface ClustersTriggerLogCollectionOutput {
   };
 }
 export const ClustersTriggerLogCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1935,7 +1915,7 @@ export const ClustersTriggerLogCollectionOutput =
  * @param clusterName - The name of the cluster.
  */
 export const ClustersTriggerLogCollection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersTriggerLogCollectionInput,
     outputSchema: ClustersTriggerLogCollectionOutput,
   }));
@@ -1968,7 +1948,7 @@ export interface ClustersUpdateInput {
     };
   };
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2033,7 +2013,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2062,7 +2042,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -2074,7 +2054,7 @@ export interface ClustersUpdateSecretsLocationsInput {
   properties?: { secretsType: "BackupSecrets"; secretsLocation: string }[];
 }
 export const ClustersUpdateSecretsLocationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2109,7 +2089,7 @@ export interface ClustersUpdateSecretsLocationsOutput {
   };
 }
 export const ClustersUpdateSecretsLocationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2139,7 +2119,7 @@ export const ClustersUpdateSecretsLocationsOutput =
  * @param clusterName - The name of the cluster.
  */
 export const ClustersUpdateSecretsLocations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersUpdateSecretsLocationsInput,
     outputSchema: ClustersUpdateSecretsLocationsOutput,
   }));
@@ -2151,7 +2131,7 @@ export interface ClustersUploadCertificateInput {
   properties?: { certificates?: string[] };
 }
 export const ClustersUploadCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2171,7 +2151,7 @@ export const ClustersUploadCertificateInput =
 // Output Schema
 export type ClustersUploadCertificateOutput = void;
 export const ClustersUploadCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUploadCertificateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUploadCertificateOutput>;
 
 // The operation
 /**
@@ -2182,12 +2162,10 @@ export const ClustersUploadCertificateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersUploadCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersUploadCertificateInput,
-    outputSchema: ClustersUploadCertificateOutput,
-  }),
-);
+export const ClustersUploadCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersUploadCertificateInput,
+  outputSchema: ClustersUploadCertificateOutput,
+}));
 // Input Schema
 export interface DeploymentSettingsCreateOrUpdateInput {
   subscriptionId: string;
@@ -2403,7 +2381,7 @@ export interface DeploymentSettingsCreateOrUpdateInput {
   };
 }
 export const DeploymentSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2817,7 +2795,7 @@ export interface DeploymentSettingsCreateOrUpdateOutput {
   };
 }
 export const DeploymentSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2848,7 +2826,7 @@ export const DeploymentSettingsCreateOrUpdateOutput =
  * @param deploymentSettingsName - Name of Deployment Setting
  */
 export const DeploymentSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentSettingsCreateOrUpdateInput,
     outputSchema: DeploymentSettingsCreateOrUpdateOutput,
   }));
@@ -2860,7 +2838,7 @@ export interface DeploymentSettingsDeleteInput {
   deploymentSettingsName: string;
 }
 export const DeploymentSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2876,7 +2854,7 @@ export const DeploymentSettingsDeleteInput =
 // Output Schema
 export type DeploymentSettingsDeleteOutput = void;
 export const DeploymentSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentSettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -2888,12 +2866,10 @@ export const DeploymentSettingsDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param deploymentSettingsName - Name of Deployment Setting
  */
-export const DeploymentSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentSettingsDeleteInput,
-    outputSchema: DeploymentSettingsDeleteOutput,
-  }),
-);
+export const DeploymentSettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentSettingsDeleteInput,
+  outputSchema: DeploymentSettingsDeleteOutput,
+}));
 // Input Schema
 export interface DeploymentSettingsGetInput {
   subscriptionId: string;
@@ -2902,7 +2878,7 @@ export interface DeploymentSettingsGetInput {
   deploymentSettingsName: string;
 }
 export const DeploymentSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2930,7 +2906,7 @@ export interface DeploymentSettingsGetOutput {
   };
 }
 export const DeploymentSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2960,12 +2936,10 @@ export const DeploymentSettingsGetOutput =
  * @param clusterName - The name of the cluster.
  * @param deploymentSettingsName - Name of Deployment Setting
  */
-export const DeploymentSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentSettingsGetInput,
-    outputSchema: DeploymentSettingsGetOutput,
-  }),
-);
+export const DeploymentSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentSettingsGetInput,
+  outputSchema: DeploymentSettingsGetOutput,
+}));
 // Input Schema
 export interface DeploymentSettingsListByClustersInput {
   subscriptionId: string;
@@ -2973,7 +2947,7 @@ export interface DeploymentSettingsListByClustersInput {
   clusterName: string;
 }
 export const DeploymentSettingsListByClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3003,7 +2977,7 @@ export interface DeploymentSettingsListByClustersOutput {
   nextLink?: string;
 }
 export const DeploymentSettingsListByClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3048,7 +3022,7 @@ export const DeploymentSettingsListByClustersOutput =
  * @param clusterName - The name of the cluster.
  */
 export const DeploymentSettingsListByClusters =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentSettingsListByClustersInput,
     outputSchema: DeploymentSettingsListByClustersOutput,
   }));
@@ -3060,7 +3034,7 @@ export interface EdgeDeviceJobsCreateOrUpdateInput {
   kind: "HCI";
 }
 export const EdgeDeviceJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     edgeDeviceName: Schema.String.pipe(T.PathParam()),
     jobsName: Schema.String.pipe(T.PathParam()),
@@ -3088,7 +3062,7 @@ export interface EdgeDeviceJobsCreateOrUpdateOutput {
   };
 }
 export const EdgeDeviceJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3118,7 +3092,7 @@ export const EdgeDeviceJobsCreateOrUpdateOutput =
  * @param jobsName - Name of EdgeDevice Job
  */
 export const EdgeDeviceJobsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EdgeDeviceJobsCreateOrUpdateInput,
     outputSchema: EdgeDeviceJobsCreateOrUpdateOutput,
   }));
@@ -3129,7 +3103,7 @@ export interface EdgeDeviceJobsDeleteInput {
   jobsName: string;
 }
 export const EdgeDeviceJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     edgeDeviceName: Schema.String.pipe(T.PathParam()),
     jobsName: Schema.String.pipe(T.PathParam()),
@@ -3144,7 +3118,7 @@ export const EdgeDeviceJobsDeleteInput =
 // Output Schema
 export type EdgeDeviceJobsDeleteOutput = void;
 export const EdgeDeviceJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDeviceJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDeviceJobsDeleteOutput>;
 
 // The operation
 /**
@@ -3155,25 +3129,21 @@ export const EdgeDeviceJobsDeleteOutput =
  * @param edgeDeviceName - Name of Device
  * @param jobsName - Name of EdgeDevice Job
  */
-export const EdgeDeviceJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeDeviceJobsDeleteInput,
-    outputSchema: EdgeDeviceJobsDeleteOutput,
-  }),
-);
+export const EdgeDeviceJobsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeDeviceJobsDeleteInput,
+  outputSchema: EdgeDeviceJobsDeleteOutput,
+}));
 // Input Schema
 export interface EdgeDeviceJobsGetInput {
   resourceUri: string;
   edgeDeviceName: string;
   jobsName: string;
 }
-export const EdgeDeviceJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    edgeDeviceName: Schema.String.pipe(T.PathParam()),
-    jobsName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const EdgeDeviceJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  edgeDeviceName: Schema.String.pipe(T.PathParam()),
+  jobsName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
@@ -3196,7 +3166,7 @@ export interface EdgeDeviceJobsGetOutput {
   };
 }
 export const EdgeDeviceJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3225,7 +3195,7 @@ export const EdgeDeviceJobsGetOutput =
  * @param edgeDeviceName - Name of Device
  * @param jobsName - Name of EdgeDevice Job
  */
-export const EdgeDeviceJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeDeviceJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeDeviceJobsGetInput,
   outputSchema: EdgeDeviceJobsGetOutput,
 }));
@@ -3235,7 +3205,7 @@ export interface EdgeDeviceJobsListByEdgeDeviceInput {
   edgeDeviceName: string;
 }
 export const EdgeDeviceJobsListByEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     edgeDeviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3264,7 +3234,7 @@ export interface EdgeDeviceJobsListByEdgeDeviceOutput {
   nextLink?: string;
 }
 export const EdgeDeviceJobsListByEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3308,7 +3278,7 @@ export const EdgeDeviceJobsListByEdgeDeviceOutput =
  * @param edgeDeviceName - Name of Device
  */
 export const EdgeDeviceJobsListByEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EdgeDeviceJobsListByEdgeDeviceInput,
     outputSchema: EdgeDeviceJobsListByEdgeDeviceOutput,
   }));
@@ -3319,7 +3289,7 @@ export interface EdgeDevicesCreateOrUpdateInput {
   kind: "HCI";
 }
 export const EdgeDevicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     edgeDeviceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["HCI"]),
@@ -3346,7 +3316,7 @@ export interface EdgeDevicesCreateOrUpdateOutput {
   };
 }
 export const EdgeDevicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3374,23 +3344,19 @@ export const EdgeDevicesCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param edgeDeviceName - Name of Device
  */
-export const EdgeDevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeDevicesCreateOrUpdateInput,
-    outputSchema: EdgeDevicesCreateOrUpdateOutput,
-  }),
-);
+export const EdgeDevicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeDevicesCreateOrUpdateInput,
+  outputSchema: EdgeDevicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EdgeDevicesDeleteInput {
   resourceUri: string;
   edgeDeviceName: string;
 }
-export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceUri: Schema.String.pipe(T.PathParam()),
-    edgeDeviceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const EdgeDevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  edgeDeviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
@@ -3401,7 +3367,7 @@ export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type EdgeDevicesDeleteOutput = void;
 export const EdgeDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDevicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -3411,7 +3377,7 @@ export const EdgeDevicesDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param edgeDeviceName - Name of Device
  */
-export const EdgeDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeDevicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeDevicesDeleteInput,
   outputSchema: EdgeDevicesDeleteOutput,
 }));
@@ -3420,7 +3386,7 @@ export interface EdgeDevicesGetInput {
   resourceUri: string;
   edgeDeviceName: string;
 }
-export const EdgeDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeDevicesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   edgeDeviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3445,7 +3411,7 @@ export interface EdgeDevicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EdgeDevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeDevicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3473,7 +3439,7 @@ export const EdgeDevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param edgeDeviceName - Name of Device
  */
-export const EdgeDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeDevicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeDevicesGetInput,
   outputSchema: EdgeDevicesGetOutput,
 }));
@@ -3481,7 +3447,7 @@ export const EdgeDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface EdgeDevicesListInput {
   resourceUri: string;
 }
-export const EdgeDevicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeDevicesListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -3508,7 +3474,7 @@ export interface EdgeDevicesListOutput {
   }[];
   nextLink?: string;
 }
-export const EdgeDevicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeDevicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3540,7 +3506,7 @@ export const EdgeDevicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const EdgeDevicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeDevicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeDevicesListInput,
   outputSchema: EdgeDevicesListOutput,
 }));
@@ -3552,7 +3518,7 @@ export interface EdgeDevicesValidateInput {
   additionalInfo?: string;
 }
 export const EdgeDevicesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     edgeDeviceName: Schema.String.pipe(T.PathParam()),
     edgeDeviceIds: Schema.Array(Schema.String),
@@ -3570,7 +3536,7 @@ export interface EdgeDevicesValidateOutput {
   status?: string;
 }
 export const EdgeDevicesValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<EdgeDevicesValidateOutput>;
 
@@ -3582,7 +3548,7 @@ export const EdgeDevicesValidateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param edgeDeviceName - Name of Device
  */
-export const EdgeDevicesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeDevicesValidate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeDevicesValidateInput,
   outputSchema: EdgeDevicesValidateOutput,
 }));
@@ -3680,7 +3646,7 @@ export interface ExtensionsCreateInput {
     managedBy?: "User" | "Azure";
   };
 }
-export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3817,27 +3783,25 @@ export interface ExtensionsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ExtensionsCreateOutput>;
+export const ExtensionsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ExtensionsCreateOutput>;
 
 // The operation
 /**
@@ -3850,7 +3814,7 @@ export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  * @param extensionName - The name of the machine extension.
  */
-export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsCreateInput,
   outputSchema: ExtensionsCreateOutput,
 }));
@@ -3862,7 +3826,7 @@ export interface ExtensionsDeleteInput {
   arcSettingName: string;
   extensionName: string;
 }
-export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3879,7 +3843,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ExtensionsDeleteOutput = void;
 export const ExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -3892,7 +3856,7 @@ export const ExtensionsDeleteOutput =
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  * @param extensionName - The name of the machine extension.
  */
-export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsDeleteInput,
   outputSchema: ExtensionsDeleteOutput,
 }));
@@ -3904,7 +3868,7 @@ export interface ExtensionsGetInput {
   arcSettingName: string;
   extensionName: string;
 }
-export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3932,7 +3896,7 @@ export interface ExtensionsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3963,7 +3927,7 @@ export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  * @param extensionName - The name of the machine extension.
  */
-export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsGetInput,
   outputSchema: ExtensionsGetOutput,
 }));
@@ -3975,7 +3939,7 @@ export interface ExtensionsListByArcSettingInput {
   arcSettingName: string;
 }
 export const ExtensionsListByArcSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4006,7 +3970,7 @@ export interface ExtensionsListByArcSettingOutput {
   nextLink?: string;
 }
 export const ExtensionsListByArcSettingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4051,12 +4015,10 @@ export const ExtensionsListByArcSettingOutput =
  * @param clusterName - The name of the cluster.
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  */
-export const ExtensionsListByArcSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionsListByArcSettingInput,
-    outputSchema: ExtensionsListByArcSettingOutput,
-  }),
-);
+export const ExtensionsListByArcSetting = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionsListByArcSettingInput,
+  outputSchema: ExtensionsListByArcSettingOutput,
+}));
 // Input Schema
 export interface ExtensionsUpdateInput {
   subscriptionId: string;
@@ -4073,7 +4035,7 @@ export interface ExtensionsUpdateInput {
     };
   };
 }
-export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExtensionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -4113,27 +4075,25 @@ export interface ExtensionsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ExtensionsUpdateOutput>;
+export const ExtensionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ExtensionsUpdateOutput>;
 
 // The operation
 /**
@@ -4146,7 +4106,7 @@ export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  * @param extensionName - The name of the machine extension.
  */
-export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsUpdateInput,
   outputSchema: ExtensionsUpdateOutput,
 }));
@@ -4159,16 +4119,14 @@ export interface ExtensionsUpgradeInput {
   extensionName: string;
   targetVersion?: string;
 }
-export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    arcSettingName: Schema.String.pipe(T.PathParam()),
-    extensionName: Schema.String.pipe(T.PathParam()),
-    targetVersion: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ExtensionsUpgradeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  arcSettingName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
+  targetVersion: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}/upgrade",
@@ -4179,7 +4137,7 @@ export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ExtensionsUpgradeOutput = void;
 export const ExtensionsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsUpgradeOutput>;
 
 // The operation
 /**
@@ -4192,7 +4150,7 @@ export const ExtensionsUpgradeOutput =
  * @param arcSettingName - The name of the proxy resource holding details of HCI ArcSetting information.
  * @param extensionName - The name of the machine extension.
  */
-export const ExtensionsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionsUpgrade = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionsUpgradeInput,
   outputSchema: ExtensionsUpgradeOutput,
 }));
@@ -4235,7 +4193,7 @@ export interface GalleryImagesCreateOrUpdateInput {
   location: string;
 }
 export const GalleryImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     galleryImageName: Schema.String.pipe(T.PathParam()),
@@ -4334,7 +4292,7 @@ export interface GalleryImagesCreateOrUpdateOutput {
   };
 }
 export const GalleryImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4363,12 +4321,10 @@ export const GalleryImagesCreateOrUpdateOutput =
  * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GalleryImagesCreateOrUpdateInput,
-    outputSchema: GalleryImagesCreateOrUpdateOutput,
-  }),
-);
+export const GalleryImagesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GalleryImagesCreateOrUpdateInput,
+  outputSchema: GalleryImagesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface GalleryImagesDeleteInput {
   subscriptionId: string;
@@ -4376,7 +4332,7 @@ export interface GalleryImagesDeleteInput {
   galleryImageName: string;
 }
 export const GalleryImagesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     galleryImageName: Schema.String.pipe(T.PathParam()),
@@ -4391,7 +4347,7 @@ export const GalleryImagesDeleteInput =
 // Output Schema
 export type GalleryImagesDeleteOutput = void;
 export const GalleryImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GalleryImagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GalleryImagesDeleteOutput>;
 
 // The operation
 /**
@@ -4402,7 +4358,7 @@ export const GalleryImagesDeleteOutput =
  * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GalleryImagesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GalleryImagesDeleteInput,
   outputSchema: GalleryImagesDeleteOutput,
 }));
@@ -4412,7 +4368,7 @@ export interface GalleryImagesGetInput {
   resourceGroupName: string;
   galleryImageName: string;
 }
-export const GalleryImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GalleryImagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   galleryImageName: Schema.String.pipe(T.PathParam()),
@@ -4438,27 +4394,25 @@ export interface GalleryImagesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GalleryImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<GalleryImagesGetOutput>;
+export const GalleryImagesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<GalleryImagesGetOutput>;
 
 // The operation
 /**
@@ -4469,7 +4423,7 @@ export const GalleryImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GalleryImagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GalleryImagesGetInput,
   outputSchema: GalleryImagesGetOutput,
 }));
@@ -4478,12 +4432,10 @@ export interface GalleryImagesListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GalleryImagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages",
@@ -4509,7 +4461,7 @@ export interface GalleryImagesListOutput {
   nextLink?: string;
 }
 export const GalleryImagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4554,7 +4506,7 @@ export const GalleryImagesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GalleryImagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GalleryImagesListInput,
   outputSchema: GalleryImagesListOutput,
 }));
@@ -4563,7 +4515,7 @@ export interface GalleryImagesListAllInput {
   subscriptionId: string;
 }
 export const GalleryImagesListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4591,7 +4543,7 @@ export interface GalleryImagesListAllOutput {
   nextLink?: string;
 }
 export const GalleryImagesListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4635,12 +4587,10 @@ export const GalleryImagesListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GalleryImagesListAllInput,
-    outputSchema: GalleryImagesListAllOutput,
-  }),
-);
+export const GalleryImagesListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GalleryImagesListAllInput,
+  outputSchema: GalleryImagesListAllOutput,
+}));
 // Input Schema
 export interface GalleryImagesUpdateInput {
   subscriptionId: string;
@@ -4649,7 +4599,7 @@ export interface GalleryImagesUpdateInput {
   tags?: Record<string, string>;
 }
 export const GalleryImagesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     galleryImageName: Schema.String.pipe(T.PathParam()),
@@ -4677,7 +4627,7 @@ export interface GalleryImagesUpdateOutput {
   };
 }
 export const GalleryImagesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4706,7 +4656,7 @@ export const GalleryImagesUpdateOutput =
  * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
-export const GalleryImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GalleryImagesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GalleryImagesUpdateInput,
   outputSchema: GalleryImagesUpdateOutput,
 }));
@@ -4731,7 +4681,7 @@ export interface GuestAgentCreateInput {
     lastModifiedAt?: string;
   };
 }
-export const GuestAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     credentials: Schema.optional(
@@ -4782,27 +4732,25 @@ export interface GuestAgentCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const GuestAgentCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<GuestAgentCreateOutput>;
+export const GuestAgentCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<GuestAgentCreateOutput>;
 
 // The operation
 /**
@@ -4813,7 +4761,7 @@ export const GuestAgentCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentCreateInput,
   outputSchema: GuestAgentCreateOutput,
 }));
@@ -4821,7 +4769,7 @@ export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface GuestAgentDeleteInput {
   resourceUri: string;
 }
-export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -4834,7 +4782,7 @@ export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GuestAgentDeleteOutput = void;
 export const GuestAgentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestAgentDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestAgentDeleteOutput>;
 
 // The operation
 /**
@@ -4845,7 +4793,7 @@ export const GuestAgentDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentDeleteInput,
   outputSchema: GuestAgentDeleteOutput,
 }));
@@ -4853,7 +4801,7 @@ export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface GuestAgentGetInput {
   resourceUri: string;
 }
-export const GuestAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -4877,7 +4825,7 @@ export interface GuestAgentGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GuestAgentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4906,7 +4854,7 @@ export const GuestAgentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentGetInput,
   outputSchema: GuestAgentGetOutput,
 }));
@@ -4914,7 +4862,7 @@ export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface GuestAgentsListInput {
   resourceUri: string;
 }
-export const GuestAgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentsListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -4941,7 +4889,7 @@ export interface GuestAgentsListOutput {
     };
   }[];
 }
-export const GuestAgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestAgentsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -4975,7 +4923,7 @@ export const GuestAgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const GuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestAgentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsListInput,
   outputSchema: GuestAgentsListOutput,
 }));
@@ -4984,7 +4932,7 @@ export interface HybridIdentityMetadataGetInput {
   resourceUri: string;
 }
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5009,7 +4957,7 @@ export interface HybridIdentityMetadataGetOutput {
   };
 }
 export const HybridIdentityMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5038,18 +4986,16 @@ export const HybridIdentityMetadataGetOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataGetInput,
-    outputSchema: HybridIdentityMetadataGetOutput,
-  }),
-);
+export const HybridIdentityMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataGetInput,
+  outputSchema: HybridIdentityMetadataGetOutput,
+}));
 // Input Schema
 export interface HybridIdentityMetadataListInput {
   resourceUri: string;
 }
 export const HybridIdentityMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5077,7 +5023,7 @@ export interface HybridIdentityMetadataListOutput {
   }[];
 }
 export const HybridIdentityMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -5121,12 +5067,10 @@ export const HybridIdentityMetadataListOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataListInput,
-    outputSchema: HybridIdentityMetadataListOutput,
-  }),
-);
+export const HybridIdentityMetadataList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataListInput,
+  outputSchema: HybridIdentityMetadataListOutput,
+}));
 // Input Schema
 export interface LogicalNetworksCreateOrUpdateInput {
   subscriptionId: string;
@@ -5187,7 +5131,7 @@ export interface LogicalNetworksCreateOrUpdateInput {
   location: string;
 }
 export const LogicalNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     logicalNetworkName: Schema.String.pipe(T.PathParam()),
@@ -5326,7 +5270,7 @@ export interface LogicalNetworksCreateOrUpdateOutput {
   };
 }
 export const LogicalNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5356,7 +5300,7 @@ export const LogicalNetworksCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogicalNetworksCreateOrUpdateInput,
     outputSchema: LogicalNetworksCreateOrUpdateOutput,
   }));
@@ -5367,7 +5311,7 @@ export interface LogicalNetworksDeleteInput {
   logicalNetworkName: string;
 }
 export const LogicalNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     logicalNetworkName: Schema.String.pipe(T.PathParam()),
@@ -5382,7 +5326,7 @@ export const LogicalNetworksDeleteInput =
 // Output Schema
 export type LogicalNetworksDeleteOutput = void;
 export const LogicalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogicalNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LogicalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -5393,12 +5337,10 @@ export const LogicalNetworksDeleteOutput =
  * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
-export const LogicalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogicalNetworksDeleteInput,
-    outputSchema: LogicalNetworksDeleteOutput,
-  }),
-);
+export const LogicalNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogicalNetworksDeleteInput,
+  outputSchema: LogicalNetworksDeleteOutput,
+}));
 // Input Schema
 export interface LogicalNetworksGetInput {
   subscriptionId: string;
@@ -5406,7 +5348,7 @@ export interface LogicalNetworksGetInput {
   logicalNetworkName: string;
 }
 export const LogicalNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     logicalNetworkName: Schema.String.pipe(T.PathParam()),
@@ -5433,7 +5375,7 @@ export interface LogicalNetworksGetOutput {
   };
 }
 export const LogicalNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5461,7 +5403,7 @@ export const LogicalNetworksGetOutput =
  * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
-export const LogicalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LogicalNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogicalNetworksGetInput,
   outputSchema: LogicalNetworksGetOutput,
 }));
@@ -5471,7 +5413,7 @@ export interface LogicalNetworksListInput {
   resourceGroupName: string;
 }
 export const LogicalNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5500,7 +5442,7 @@ export interface LogicalNetworksListOutput {
   nextLink?: string;
 }
 export const LogicalNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5545,7 +5487,7 @@ export const LogicalNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const LogicalNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LogicalNetworksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LogicalNetworksListInput,
   outputSchema: LogicalNetworksListOutput,
 }));
@@ -5554,7 +5496,7 @@ export interface LogicalNetworksListAllInput {
   subscriptionId: string;
 }
 export const LogicalNetworksListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5582,7 +5524,7 @@ export interface LogicalNetworksListAllOutput {
   nextLink?: string;
 }
 export const LogicalNetworksListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5626,12 +5568,10 @@ export const LogicalNetworksListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const LogicalNetworksListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogicalNetworksListAllInput,
-    outputSchema: LogicalNetworksListAllOutput,
-  }),
-);
+export const LogicalNetworksListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogicalNetworksListAllInput,
+  outputSchema: LogicalNetworksListAllOutput,
+}));
 // Input Schema
 export interface LogicalNetworksUpdateInput {
   subscriptionId: string;
@@ -5640,7 +5580,7 @@ export interface LogicalNetworksUpdateInput {
   tags?: Record<string, string>;
 }
 export const LogicalNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     logicalNetworkName: Schema.String.pipe(T.PathParam()),
@@ -5668,7 +5608,7 @@ export interface LogicalNetworksUpdateOutput {
   };
 }
 export const LogicalNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5697,12 +5637,10 @@ export const LogicalNetworksUpdateOutput =
  * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
-export const LogicalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogicalNetworksUpdateInput,
-    outputSchema: LogicalNetworksUpdateOutput,
-  }),
-);
+export const LogicalNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogicalNetworksUpdateInput,
+  outputSchema: LogicalNetworksUpdateOutput,
+}));
 // Input Schema
 export interface MarketplaceGalleryImagesCreateOrUpdateInput {
   subscriptionId: string;
@@ -5741,7 +5679,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateInput {
   location: string;
 }
 export const MarketplaceGalleryImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
@@ -5839,7 +5777,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateOutput {
   };
 }
 export const MarketplaceGalleryImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5869,7 +5807,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceGalleryImagesCreateOrUpdateInput,
     outputSchema: MarketplaceGalleryImagesCreateOrUpdateOutput,
   }));
@@ -5880,7 +5818,7 @@ export interface MarketplaceGalleryImagesDeleteInput {
   marketplaceGalleryImageName: string;
 }
 export const MarketplaceGalleryImagesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
@@ -5895,7 +5833,7 @@ export const MarketplaceGalleryImagesDeleteInput =
 // Output Schema
 export type MarketplaceGalleryImagesDeleteOutput = void;
 export const MarketplaceGalleryImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MarketplaceGalleryImagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MarketplaceGalleryImagesDeleteOutput>;
 
 // The operation
 /**
@@ -5907,7 +5845,7 @@ export const MarketplaceGalleryImagesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceGalleryImagesDeleteInput,
     outputSchema: MarketplaceGalleryImagesDeleteOutput,
   }));
@@ -5918,7 +5856,7 @@ export interface MarketplaceGalleryImagesGetInput {
   marketplaceGalleryImageName: string;
 }
 export const MarketplaceGalleryImagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
@@ -5945,7 +5883,7 @@ export interface MarketplaceGalleryImagesGetOutput {
   };
 }
 export const MarketplaceGalleryImagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5974,19 +5912,17 @@ export const MarketplaceGalleryImagesGetOutput =
  * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
-export const MarketplaceGalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MarketplaceGalleryImagesGetInput,
-    outputSchema: MarketplaceGalleryImagesGetOutput,
-  }),
-);
+export const MarketplaceGalleryImagesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MarketplaceGalleryImagesGetInput,
+  outputSchema: MarketplaceGalleryImagesGetOutput,
+}));
 // Input Schema
 export interface MarketplaceGalleryImagesListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const MarketplaceGalleryImagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6015,7 +5951,7 @@ export interface MarketplaceGalleryImagesListOutput {
   nextLink?: string;
 }
 export const MarketplaceGalleryImagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6061,7 +5997,7 @@ export const MarketplaceGalleryImagesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceGalleryImagesListInput,
     outputSchema: MarketplaceGalleryImagesListOutput,
   }));
@@ -6070,7 +6006,7 @@ export interface MarketplaceGalleryImagesListAllInput {
   subscriptionId: string;
 }
 export const MarketplaceGalleryImagesListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6098,7 +6034,7 @@ export interface MarketplaceGalleryImagesListAllOutput {
   nextLink?: string;
 }
 export const MarketplaceGalleryImagesListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6143,7 +6079,7 @@ export const MarketplaceGalleryImagesListAllOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesListAll =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceGalleryImagesListAllInput,
     outputSchema: MarketplaceGalleryImagesListAllOutput,
   }));
@@ -6155,7 +6091,7 @@ export interface MarketplaceGalleryImagesUpdateInput {
   tags?: Record<string, string>;
 }
 export const MarketplaceGalleryImagesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
@@ -6183,7 +6119,7 @@ export interface MarketplaceGalleryImagesUpdateOutput {
   };
 }
 export const MarketplaceGalleryImagesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6213,7 +6149,7 @@ export const MarketplaceGalleryImagesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceGalleryImagesUpdateInput,
     outputSchema: MarketplaceGalleryImagesUpdateOutput,
   }));
@@ -6255,7 +6191,7 @@ export interface NetworkInterfacesCreateOrUpdateInput {
   location: string;
 }
 export const NetworkInterfacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
@@ -6343,7 +6279,7 @@ export interface NetworkInterfacesCreateOrUpdateOutput {
   };
 }
 export const NetworkInterfacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6373,7 +6309,7 @@ export const NetworkInterfacesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkInterfacesCreateOrUpdateInput,
     outputSchema: NetworkInterfacesCreateOrUpdateOutput,
   }));
@@ -6384,7 +6320,7 @@ export interface NetworkInterfacesDeleteInput {
   networkInterfaceName: string;
 }
 export const NetworkInterfacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
@@ -6399,7 +6335,7 @@ export const NetworkInterfacesDeleteInput =
 // Output Schema
 export type NetworkInterfacesDeleteOutput = void;
 export const NetworkInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -6410,12 +6346,10 @@ export const NetworkInterfacesDeleteOutput =
  * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesDeleteInput,
-    outputSchema: NetworkInterfacesDeleteOutput,
-  }),
-);
+export const NetworkInterfacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesDeleteInput,
+  outputSchema: NetworkInterfacesDeleteOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesGetInput {
   subscriptionId: string;
@@ -6423,7 +6357,7 @@ export interface NetworkInterfacesGetInput {
   networkInterfaceName: string;
 }
 export const NetworkInterfacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
@@ -6450,7 +6384,7 @@ export interface NetworkInterfacesGetOutput {
   };
 }
 export const NetworkInterfacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6479,19 +6413,17 @@ export const NetworkInterfacesGetOutput =
  * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesGetInput,
-    outputSchema: NetworkInterfacesGetOutput,
-  }),
-);
+export const NetworkInterfacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesGetInput,
+  outputSchema: NetworkInterfacesGetOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const NetworkInterfacesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6520,7 +6452,7 @@ export interface NetworkInterfacesListOutput {
   nextLink?: string;
 }
 export const NetworkInterfacesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6565,18 +6497,16 @@ export const NetworkInterfacesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkInterfacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesListInput,
-    outputSchema: NetworkInterfacesListOutput,
-  }),
-);
+export const NetworkInterfacesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesListInput,
+  outputSchema: NetworkInterfacesListOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesListAllInput {
   subscriptionId: string;
 }
 export const NetworkInterfacesListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6604,7 +6534,7 @@ export interface NetworkInterfacesListAllOutput {
   nextLink?: string;
 }
 export const NetworkInterfacesListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6648,12 +6578,10 @@ export const NetworkInterfacesListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkInterfacesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesListAllInput,
-    outputSchema: NetworkInterfacesListAllOutput,
-  }),
-);
+export const NetworkInterfacesListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesListAllInput,
+  outputSchema: NetworkInterfacesListAllOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesUpdateInput {
   subscriptionId: string;
@@ -6662,7 +6590,7 @@ export interface NetworkInterfacesUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkInterfacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
@@ -6690,7 +6618,7 @@ export interface NetworkInterfacesUpdateOutput {
   };
 }
 export const NetworkInterfacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6719,12 +6647,10 @@ export const NetworkInterfacesUpdateOutput =
  * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
-export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesUpdateInput,
-    outputSchema: NetworkInterfacesUpdateOutput,
-  }),
-);
+export const NetworkInterfacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesUpdateInput,
+  outputSchema: NetworkInterfacesUpdateOutput,
+}));
 // Input Schema
 export interface OffersGetInput {
   subscriptionId: string;
@@ -6734,7 +6660,7 @@ export interface OffersGetInput {
   offerName: string;
   $expand?: string;
 }
-export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -6763,7 +6689,7 @@ export interface OffersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6795,7 +6721,7 @@ export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param offerName - The name of the offer available within HCI cluster.
  * @param $expand - Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer.
  */
-export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersGetInput,
   outputSchema: OffersGetOutput,
 }));
@@ -6807,7 +6733,7 @@ export interface OffersListByClusterInput {
   $expand?: string;
 }
 export const OffersListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6838,7 +6764,7 @@ export interface OffersListByClusterOutput {
   nextLink?: string;
 }
 export const OffersListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6883,7 +6809,7 @@ export const OffersListByClusterOutput =
  * @param clusterName - The name of the cluster.
  * @param $expand - Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer.
  */
-export const OffersListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersListByCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersListByClusterInput,
   outputSchema: OffersListByClusterOutput,
 }));
@@ -6896,7 +6822,7 @@ export interface OffersListByPublisherInput {
   $expand?: string;
 }
 export const OffersListByPublisherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6928,7 +6854,7 @@ export interface OffersListByPublisherOutput {
   nextLink?: string;
 }
 export const OffersListByPublisherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6974,17 +6900,13 @@ export const OffersListByPublisherOutput =
  * @param publisherName - The name of the publisher available within HCI cluster.
  * @param $expand - Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer.
  */
-export const OffersListByPublisher = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersListByPublisherInput,
-    outputSchema: OffersListByPublisherOutput,
-  }),
-);
+export const OffersListByPublisher = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersListByPublisherInput,
+  outputSchema: OffersListByPublisherOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureStackHCI/operations",
@@ -7008,7 +6930,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7038,7 +6960,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -7083,7 +7005,7 @@ export interface SecuritySettingsCreateOrUpdateInput {
   };
 }
 export const SecuritySettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -7162,7 +7084,7 @@ export interface SecuritySettingsCreateOrUpdateOutput {
   };
 }
 export const SecuritySettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7193,7 +7115,7 @@ export const SecuritySettingsCreateOrUpdateOutput =
  * @param securitySettingsName - Name of security setting
  */
 export const SecuritySettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecuritySettingsCreateOrUpdateInput,
     outputSchema: SecuritySettingsCreateOrUpdateOutput,
   }));
@@ -7205,7 +7127,7 @@ export interface SecuritySettingsDeleteInput {
   securitySettingsName: string;
 }
 export const SecuritySettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -7221,7 +7143,7 @@ export const SecuritySettingsDeleteInput =
 // Output Schema
 export type SecuritySettingsDeleteOutput = void;
 export const SecuritySettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecuritySettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecuritySettingsDeleteOutput>;
 
 // The operation
 /**
@@ -7233,12 +7155,10 @@ export const SecuritySettingsDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param securitySettingsName - Name of security setting
  */
-export const SecuritySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecuritySettingsDeleteInput,
-    outputSchema: SecuritySettingsDeleteOutput,
-  }),
-);
+export const SecuritySettingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecuritySettingsDeleteInput,
+  outputSchema: SecuritySettingsDeleteOutput,
+}));
 // Input Schema
 export interface SecuritySettingsGetInput {
   subscriptionId: string;
@@ -7247,7 +7167,7 @@ export interface SecuritySettingsGetInput {
   securitySettingsName: string;
 }
 export const SecuritySettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -7275,7 +7195,7 @@ export interface SecuritySettingsGetOutput {
   };
 }
 export const SecuritySettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7305,7 +7225,7 @@ export const SecuritySettingsGetOutput =
  * @param clusterName - The name of the cluster.
  * @param securitySettingsName - Name of security setting
  */
-export const SecuritySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecuritySettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecuritySettingsGetInput,
   outputSchema: SecuritySettingsGetOutput,
 }));
@@ -7316,7 +7236,7 @@ export interface SecuritySettingsListByClustersInput {
   clusterName: string;
 }
 export const SecuritySettingsListByClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -7346,7 +7266,7 @@ export interface SecuritySettingsListByClustersOutput {
   nextLink?: string;
 }
 export const SecuritySettingsListByClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7391,7 +7311,7 @@ export const SecuritySettingsListByClustersOutput =
  * @param clusterName - The name of the cluster.
  */
 export const SecuritySettingsListByClusters =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecuritySettingsListByClustersInput,
     outputSchema: SecuritySettingsListByClustersOutput,
   }));
@@ -7405,7 +7325,7 @@ export interface SkusGetInput {
   skuName: string;
   $expand?: string;
 }
-export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -7435,7 +7355,7 @@ export interface SkusGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7468,7 +7388,7 @@ export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param skuName - The name of the SKU available within HCI cluster.
  * @param $expand - Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer.
  */
-export const SkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusGetInput,
   outputSchema: SkusGetOutput,
 }));
@@ -7481,7 +7401,7 @@ export interface SkusListByOfferInput {
   offerName: string;
   $expand?: string;
 }
-export const SkusListByOfferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListByOfferInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -7513,7 +7433,7 @@ export interface SkusListByOfferOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListByOfferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListByOfferOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7550,7 +7470,7 @@ export const SkusListByOfferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param offerName - The name of the offer available within HCI cluster.
  * @param $expand - Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer.
  */
-export const SkusListByOffer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusListByOffer = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListByOfferInput,
   outputSchema: SkusListByOfferOutput,
 }));
@@ -7584,7 +7504,7 @@ export interface StorageContainersCreateOrUpdateInput {
   location: string;
 }
 export const StorageContainersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageContainerName: Schema.String.pipe(T.PathParam()),
@@ -7650,7 +7570,7 @@ export interface StorageContainersCreateOrUpdateOutput {
   };
 }
 export const StorageContainersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7680,7 +7600,7 @@ export const StorageContainersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageContainersCreateOrUpdateInput,
     outputSchema: StorageContainersCreateOrUpdateOutput,
   }));
@@ -7691,7 +7611,7 @@ export interface StorageContainersDeleteInput {
   storageContainerName: string;
 }
 export const StorageContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageContainerName: Schema.String.pipe(T.PathParam()),
@@ -7706,7 +7626,7 @@ export const StorageContainersDeleteInput =
 // Output Schema
 export type StorageContainersDeleteOutput = void;
 export const StorageContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageContainersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageContainersDeleteOutput>;
 
 // The operation
 /**
@@ -7717,12 +7637,10 @@ export const StorageContainersDeleteOutput =
  * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
-export const StorageContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageContainersDeleteInput,
-    outputSchema: StorageContainersDeleteOutput,
-  }),
-);
+export const StorageContainersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageContainersDeleteInput,
+  outputSchema: StorageContainersDeleteOutput,
+}));
 // Input Schema
 export interface StorageContainersGetInput {
   subscriptionId: string;
@@ -7730,7 +7648,7 @@ export interface StorageContainersGetInput {
   storageContainerName: string;
 }
 export const StorageContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageContainerName: Schema.String.pipe(T.PathParam()),
@@ -7757,7 +7675,7 @@ export interface StorageContainersGetOutput {
   };
 }
 export const StorageContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7786,19 +7704,17 @@ export const StorageContainersGetOutput =
  * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
-export const StorageContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageContainersGetInput,
-    outputSchema: StorageContainersGetOutput,
-  }),
-);
+export const StorageContainersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageContainersGetInput,
+  outputSchema: StorageContainersGetOutput,
+}));
 // Input Schema
 export interface StorageContainersListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const StorageContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7827,7 +7743,7 @@ export interface StorageContainersListOutput {
   nextLink?: string;
 }
 export const StorageContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7872,18 +7788,16 @@ export const StorageContainersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const StorageContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageContainersListInput,
-    outputSchema: StorageContainersListOutput,
-  }),
-);
+export const StorageContainersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageContainersListInput,
+  outputSchema: StorageContainersListOutput,
+}));
 // Input Schema
 export interface StorageContainersListAllInput {
   subscriptionId: string;
 }
 export const StorageContainersListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7911,7 +7825,7 @@ export interface StorageContainersListAllOutput {
   nextLink?: string;
 }
 export const StorageContainersListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7955,12 +7869,10 @@ export const StorageContainersListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const StorageContainersListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageContainersListAllInput,
-    outputSchema: StorageContainersListAllOutput,
-  }),
-);
+export const StorageContainersListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageContainersListAllInput,
+  outputSchema: StorageContainersListAllOutput,
+}));
 // Input Schema
 export interface StorageContainersUpdateInput {
   subscriptionId: string;
@@ -7969,7 +7881,7 @@ export interface StorageContainersUpdateInput {
   tags?: Record<string, string>;
 }
 export const StorageContainersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageContainerName: Schema.String.pipe(T.PathParam()),
@@ -7997,7 +7909,7 @@ export interface StorageContainersUpdateOutput {
   };
 }
 export const StorageContainersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8026,12 +7938,10 @@ export const StorageContainersUpdateOutput =
  * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
-export const StorageContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageContainersUpdateInput,
-    outputSchema: StorageContainersUpdateOutput,
-  }),
-);
+export const StorageContainersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageContainersUpdateInput,
+  outputSchema: StorageContainersUpdateOutput,
+}));
 // Input Schema
 export interface UpdateRunsDeleteInput {
   subscriptionId: string;
@@ -8040,7 +7950,7 @@ export interface UpdateRunsDeleteInput {
   updateName: string;
   updateRunName: string;
 }
-export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8057,7 +7967,7 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdateRunsDeleteOutput = void;
 export const UpdateRunsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateRunsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateRunsDeleteOutput>;
 
 // The operation
 /**
@@ -8070,7 +7980,7 @@ export const UpdateRunsDeleteOutput =
  * @param updateName - The name of the Update
  * @param updateRunName - The name of the Update Run
  */
-export const UpdateRunsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateRunsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRunsDeleteInput,
   outputSchema: UpdateRunsDeleteOutput,
 }));
@@ -8082,7 +7992,7 @@ export interface UpdateRunsGetInput {
   updateName: string;
   updateRunName: string;
 }
-export const UpdateRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8110,7 +8020,7 @@ export interface UpdateRunsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UpdateRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8141,7 +8051,7 @@ export const UpdateRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param updateName - The name of the Update
  * @param updateRunName - The name of the Update Run
  */
-export const UpdateRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateRunsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRunsGetInput,
   outputSchema: UpdateRunsGetOutput,
 }));
@@ -8152,7 +8062,7 @@ export interface UpdateRunsListInput {
   clusterName: string;
   updateName: string;
 }
-export const UpdateRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8182,7 +8092,7 @@ export interface UpdateRunsListOutput {
   }[];
   nextLink?: string;
 }
-export const UpdateRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -8217,7 +8127,7 @@ export const UpdateRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdateRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateRunsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRunsListInput,
   outputSchema: UpdateRunsListOutput,
 }));
@@ -8266,7 +8176,7 @@ export interface UpdateRunsPutInput {
   };
   location?: string;
 }
-export const UpdateRunsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsPutInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8340,7 +8250,7 @@ export interface UpdateRunsPutOutput {
     lastModifiedAt?: string;
   };
 }
-export const UpdateRunsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRunsPutOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8371,7 +8281,7 @@ export const UpdateRunsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param updateName - The name of the Update
  * @param updateRunName - The name of the Update Run
  */
-export const UpdateRunsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateRunsPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRunsPutInput,
   outputSchema: UpdateRunsPutOutput,
 }));
@@ -8382,7 +8292,7 @@ export interface UpdatesDeleteInput {
   clusterName: string;
   updateName: string;
 }
-export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8398,7 +8308,7 @@ export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdatesDeleteOutput = void;
 export const UpdatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesDeleteOutput>;
 
 // The operation
 /**
@@ -8410,7 +8320,7 @@ export const UpdatesDeleteOutput =
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesDeleteInput,
   outputSchema: UpdatesDeleteOutput,
 }));
@@ -8421,7 +8331,7 @@ export interface UpdatesGetInput {
   clusterName: string;
   updateName: string;
 }
-export const UpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8448,7 +8358,7 @@ export interface UpdatesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8478,7 +8388,7 @@ export const UpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesGetInput,
   outputSchema: UpdatesGetOutput,
 }));
@@ -8488,7 +8398,7 @@ export interface UpdatesListInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8517,7 +8427,7 @@ export interface UpdatesListOutput {
   }[];
   nextLink?: string;
 }
-export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -8551,7 +8461,7 @@ export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListInput,
   outputSchema: UpdatesListOutput,
 }));
@@ -8562,7 +8472,7 @@ export interface UpdatesPostInput {
   clusterName: string;
   updateName: string;
 }
-export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesPostInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8578,7 +8488,7 @@ export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdatesPostOutput = void;
 export const UpdatesPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPostOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPostOutput>;
 
 // The operation
 /**
@@ -8590,7 +8500,7 @@ export const UpdatesPostOutput =
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdatesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesPostInput,
   outputSchema: UpdatesPostOutput,
 }));
@@ -8601,7 +8511,7 @@ export interface UpdatesPrepareInput {
   clusterName: string;
   updateName: string;
 }
-export const UpdatesPrepareInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesPrepareInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8617,7 +8527,7 @@ export const UpdatesPrepareInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdatesPrepareOutput = void;
 export const UpdatesPrepareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPrepareOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPrepareOutput>;
 
 // The operation
 /**
@@ -8629,7 +8539,7 @@ export const UpdatesPrepareOutput =
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdatesPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesPrepare = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesPrepareInput,
   outputSchema: UpdatesPrepareOutput,
 }));
@@ -8748,7 +8658,7 @@ export interface UpdatesPutInput {
   };
   location?: string;
 }
-export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesPutInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -8927,7 +8837,7 @@ export interface UpdatesPutOutput {
     lastModifiedAt?: string;
   };
 }
-export const UpdatesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesPutOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8957,7 +8867,7 @@ export const UpdatesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param updateName - The name of the Update
  */
-export const UpdatesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesPutInput,
   outputSchema: UpdatesPutOutput,
 }));
@@ -8968,7 +8878,7 @@ export interface UpdateSummariesDeleteInput {
   clusterName: string;
 }
 export const UpdateSummariesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -8983,7 +8893,7 @@ export const UpdateSummariesDeleteInput =
 // Output Schema
 export type UpdateSummariesDeleteOutput = void;
 export const UpdateSummariesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesDeleteOutput>;
 
 // The operation
 /**
@@ -8994,12 +8904,10 @@ export const UpdateSummariesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const UpdateSummariesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateSummariesDeleteInput,
-    outputSchema: UpdateSummariesDeleteOutput,
-  }),
-);
+export const UpdateSummariesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateSummariesDeleteInput,
+  outputSchema: UpdateSummariesDeleteOutput,
+}));
 // Input Schema
 export interface UpdateSummariesGetInput {
   subscriptionId: string;
@@ -9007,7 +8915,7 @@ export interface UpdateSummariesGetInput {
   clusterName: string;
 }
 export const UpdateSummariesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9034,7 +8942,7 @@ export interface UpdateSummariesGetOutput {
   };
 }
 export const UpdateSummariesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9063,7 +8971,7 @@ export const UpdateSummariesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const UpdateSummariesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateSummariesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSummariesGetInput,
   outputSchema: UpdateSummariesGetOutput,
 }));
@@ -9074,7 +8982,7 @@ export interface UpdateSummariesListInput {
   clusterName: string;
 }
 export const UpdateSummariesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9104,7 +9012,7 @@ export interface UpdateSummariesListOutput {
   nextLink?: string;
 }
 export const UpdateSummariesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9148,7 +9056,7 @@ export const UpdateSummariesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const UpdateSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateSummariesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSummariesListInput,
   outputSchema: UpdateSummariesListOutput,
 }));
@@ -9159,7 +9067,7 @@ export interface UpdateSummariesOperationGroupCheckHealthInput {
   clusterName: string;
 }
 export const UpdateSummariesOperationGroupCheckHealthInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9174,7 +9082,7 @@ export const UpdateSummariesOperationGroupCheckHealthInput =
 // Output Schema
 export type UpdateSummariesOperationGroupCheckHealthOutput = void;
 export const UpdateSummariesOperationGroupCheckHealthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckHealthOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckHealthOutput>;
 
 // The operation
 /**
@@ -9186,7 +9094,7 @@ export const UpdateSummariesOperationGroupCheckHealthOutput =
  * @param clusterName - The name of the cluster.
  */
 export const UpdateSummariesOperationGroupCheckHealth =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateSummariesOperationGroupCheckHealthInput,
     outputSchema: UpdateSummariesOperationGroupCheckHealthOutput,
   }));
@@ -9198,7 +9106,7 @@ export interface UpdateSummariesOperationGroupCheckUpdatesInput {
   updateName?: string;
 }
 export const UpdateSummariesOperationGroupCheckUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9214,7 +9122,7 @@ export const UpdateSummariesOperationGroupCheckUpdatesInput =
 // Output Schema
 export type UpdateSummariesOperationGroupCheckUpdatesOutput = void;
 export const UpdateSummariesOperationGroupCheckUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckUpdatesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckUpdatesOutput>;
 
 // The operation
 /**
@@ -9226,7 +9134,7 @@ export const UpdateSummariesOperationGroupCheckUpdatesOutput =
  * @param clusterName - The name of the cluster.
  */
 export const UpdateSummariesOperationGroupCheckUpdates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateSummariesOperationGroupCheckUpdatesInput,
     outputSchema: UpdateSummariesOperationGroupCheckUpdatesOutput,
   }));
@@ -9317,7 +9225,7 @@ export interface UpdateSummariesPutInput {
   location?: string;
 }
 export const UpdateSummariesPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9458,7 +9366,7 @@ export interface UpdateSummariesPutOutput {
   };
 }
 export const UpdateSummariesPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9487,7 +9395,7 @@ export const UpdateSummariesPutOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const UpdateSummariesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdateSummariesPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateSummariesPutInput,
   outputSchema: UpdateSummariesPutOutput,
 }));
@@ -9498,7 +9406,7 @@ export interface ValidatedSolutionRecipesGetInput {
   validatedSolutionRecipeName: string;
 }
 export const ValidatedSolutionRecipesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     validatedSolutionRecipeName: Schema.String.pipe(T.PathParam()),
@@ -9525,7 +9433,7 @@ export interface ValidatedSolutionRecipesGetOutput {
   };
 }
 export const ValidatedSolutionRecipesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9554,19 +9462,17 @@ export const ValidatedSolutionRecipesGetOutput =
  * @param location - The name of the Azure region.
  * @param validatedSolutionRecipeName - The name of the ValidatedSolutionRecipe
  */
-export const ValidatedSolutionRecipesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ValidatedSolutionRecipesGetInput,
-    outputSchema: ValidatedSolutionRecipesGetOutput,
-  }),
-);
+export const ValidatedSolutionRecipesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ValidatedSolutionRecipesGetInput,
+  outputSchema: ValidatedSolutionRecipesGetOutput,
+}));
 // Input Schema
 export interface ValidatedSolutionRecipesListBySubscriptionLocationResourceInput {
   subscriptionId: string;
   location: string;
 }
 export const ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9595,7 +9501,7 @@ export interface ValidatedSolutionRecipesListBySubscriptionLocationResourceOutpu
   nextLink?: string;
 }
 export const ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9639,7 +9545,7 @@ export const ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput =
  * @param location - The name of the Azure region.
  */
 export const ValidatedSolutionRecipesListBySubscriptionLocationResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ValidatedSolutionRecipesListBySubscriptionLocationResourceInput,
     outputSchema:
@@ -9680,7 +9586,7 @@ export interface VirtualHardDisksCreateOrUpdateInput {
   location: string;
 }
 export const VirtualHardDisksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualHardDiskName: Schema.String.pipe(T.PathParam()),
@@ -9751,7 +9657,7 @@ export interface VirtualHardDisksCreateOrUpdateOutput {
   };
 }
 export const VirtualHardDisksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9781,7 +9687,7 @@ export const VirtualHardDisksCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualHardDisksCreateOrUpdateInput,
     outputSchema: VirtualHardDisksCreateOrUpdateOutput,
   }));
@@ -9792,7 +9698,7 @@ export interface VirtualHardDisksDeleteInput {
   virtualHardDiskName: string;
 }
 export const VirtualHardDisksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualHardDiskName: Schema.String.pipe(T.PathParam()),
@@ -9807,7 +9713,7 @@ export const VirtualHardDisksDeleteInput =
 // Output Schema
 export type VirtualHardDisksDeleteOutput = void;
 export const VirtualHardDisksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualHardDisksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualHardDisksDeleteOutput>;
 
 // The operation
 /**
@@ -9818,12 +9724,10 @@ export const VirtualHardDisksDeleteOutput =
  * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualHardDisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualHardDisksDeleteInput,
-    outputSchema: VirtualHardDisksDeleteOutput,
-  }),
-);
+export const VirtualHardDisksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualHardDisksDeleteInput,
+  outputSchema: VirtualHardDisksDeleteOutput,
+}));
 // Input Schema
 export interface VirtualHardDisksGetInput {
   subscriptionId: string;
@@ -9831,7 +9735,7 @@ export interface VirtualHardDisksGetInput {
   virtualHardDiskName: string;
 }
 export const VirtualHardDisksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualHardDiskName: Schema.String.pipe(T.PathParam()),
@@ -9858,7 +9762,7 @@ export interface VirtualHardDisksGetOutput {
   };
 }
 export const VirtualHardDisksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9887,7 +9791,7 @@ export const VirtualHardDisksGetOutput =
  * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualHardDisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualHardDisksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualHardDisksGetInput,
   outputSchema: VirtualHardDisksGetOutput,
 }));
@@ -9897,7 +9801,7 @@ export interface VirtualHardDisksListInput {
   resourceGroupName: string;
 }
 export const VirtualHardDisksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9926,7 +9830,7 @@ export interface VirtualHardDisksListOutput {
   nextLink?: string;
 }
 export const VirtualHardDisksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9971,18 +9875,16 @@ export const VirtualHardDisksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualHardDisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualHardDisksListInput,
-    outputSchema: VirtualHardDisksListOutput,
-  }),
-);
+export const VirtualHardDisksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualHardDisksListInput,
+  outputSchema: VirtualHardDisksListOutput,
+}));
 // Input Schema
 export interface VirtualHardDisksListAllInput {
   subscriptionId: string;
 }
 export const VirtualHardDisksListAllInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10010,7 +9912,7 @@ export interface VirtualHardDisksListAllOutput {
   nextLink?: string;
 }
 export const VirtualHardDisksListAllOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10054,12 +9956,10 @@ export const VirtualHardDisksListAllOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualHardDisksListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualHardDisksListAllInput,
-    outputSchema: VirtualHardDisksListAllOutput,
-  }),
-);
+export const VirtualHardDisksListAll = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualHardDisksListAllInput,
+  outputSchema: VirtualHardDisksListAllOutput,
+}));
 // Input Schema
 export interface VirtualHardDisksUpdateInput {
   subscriptionId: string;
@@ -10068,7 +9968,7 @@ export interface VirtualHardDisksUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualHardDisksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualHardDiskName: Schema.String.pipe(T.PathParam()),
@@ -10096,7 +9996,7 @@ export interface VirtualHardDisksUpdateOutput {
   };
 }
 export const VirtualHardDisksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10125,12 +10025,10 @@ export const VirtualHardDisksUpdateOutput =
  * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualHardDisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualHardDisksUpdateInput,
-    outputSchema: VirtualHardDisksUpdateOutput,
-  }),
-);
+export const VirtualHardDisksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualHardDisksUpdateInput,
+  outputSchema: VirtualHardDisksUpdateOutput,
+}));
 // Input Schema
 export interface VirtualMachineInstancesCreateOrUpdateInput {
   resourceUri: string;
@@ -10269,7 +10167,7 @@ export interface VirtualMachineInstancesCreateOrUpdateInput {
   };
 }
 export const VirtualMachineInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -10556,7 +10454,7 @@ export interface VirtualMachineInstancesCreateOrUpdateOutput {
   };
 }
 export const VirtualMachineInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10584,7 +10482,7 @@ export const VirtualMachineInstancesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineInstancesCreateOrUpdateInput,
     outputSchema: VirtualMachineInstancesCreateOrUpdateOutput,
   }));
@@ -10593,7 +10491,7 @@ export interface VirtualMachineInstancesDeleteInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10606,7 +10504,7 @@ export const VirtualMachineInstancesDeleteInput =
 // Output Schema
 export type VirtualMachineInstancesDeleteOutput = void;
 export const VirtualMachineInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -10616,7 +10514,7 @@ export const VirtualMachineInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineInstancesDeleteInput,
     outputSchema: VirtualMachineInstancesDeleteOutput,
   }));
@@ -10625,7 +10523,7 @@ export interface VirtualMachineInstancesGetInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10650,7 +10548,7 @@ export interface VirtualMachineInstancesGetOutput {
   };
 }
 export const VirtualMachineInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10677,18 +10575,16 @@ export const VirtualMachineInstancesGetOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesGetInput,
-    outputSchema: VirtualMachineInstancesGetOutput,
-  }),
-);
+export const VirtualMachineInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesGetInput,
+  outputSchema: VirtualMachineInstancesGetOutput,
+}));
 // Input Schema
 export interface VirtualMachineInstancesListInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10716,7 +10612,7 @@ export interface VirtualMachineInstancesListOutput {
   nextLink?: string;
 }
 export const VirtualMachineInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10760,18 +10656,16 @@ export const VirtualMachineInstancesListOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesListInput,
-    outputSchema: VirtualMachineInstancesListOutput,
-  }),
-);
+export const VirtualMachineInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesListInput,
+  outputSchema: VirtualMachineInstancesListOutput,
+}));
 // Input Schema
 export interface VirtualMachineInstancesRestartInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10796,7 +10690,7 @@ export interface VirtualMachineInstancesRestartOutput {
   };
 }
 export const VirtualMachineInstancesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10824,7 +10718,7 @@ export const VirtualMachineInstancesRestartOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesRestart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineInstancesRestartInput,
     outputSchema: VirtualMachineInstancesRestartOutput,
   }));
@@ -10833,7 +10727,7 @@ export interface VirtualMachineInstancesStartInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10858,7 +10752,7 @@ export interface VirtualMachineInstancesStartOutput {
   };
 }
 export const VirtualMachineInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10886,7 +10780,7 @@ export const VirtualMachineInstancesStartOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineInstancesStartInput,
     outputSchema: VirtualMachineInstancesStartOutput,
   }));
@@ -10895,7 +10789,7 @@ export interface VirtualMachineInstancesStopInput {
   resourceUri: string;
 }
 export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10920,7 +10814,7 @@ export interface VirtualMachineInstancesStopOutput {
   };
 }
 export const VirtualMachineInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10947,12 +10841,10 @@ export const VirtualMachineInstancesStopOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
-export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineInstancesStopInput,
-    outputSchema: VirtualMachineInstancesStopOutput,
-  }),
-);
+export const VirtualMachineInstancesStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineInstancesStopInput,
+  outputSchema: VirtualMachineInstancesStopOutput,
+}));
 // Input Schema
 export interface VirtualMachineInstancesUpdateInput {
   resourceUri: string;
@@ -11006,7 +10898,7 @@ export interface VirtualMachineInstancesUpdateInput {
   };
 }
 export const VirtualMachineInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -11114,7 +11006,7 @@ export interface VirtualMachineInstancesUpdateOutput {
   };
 }
 export const VirtualMachineInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11142,7 +11034,7 @@ export const VirtualMachineInstancesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineInstancesUpdateInput,
     outputSchema: VirtualMachineInstancesUpdateOutput,
   }));

@@ -12,7 +12,7 @@ export interface UpdateGroupDatabaseUserInput {
   pretty?: boolean;
 }
 export const UpdateGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupDatabaseUserInput =
 // Output Schema
 export type UpdateGroupDatabaseUserOutput = void;
 export const UpdateGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabaseUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabaseUserOutput>;
 
 // The operation
 /**
@@ -57,10 +57,8 @@ export const UpdateGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const updateGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupDatabaseUserInput,
-    outputSchema: UpdateGroupDatabaseUserOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const updateGroupDatabaseUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupDatabaseUserInput,
+  outputSchema: UpdateGroupDatabaseUserOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

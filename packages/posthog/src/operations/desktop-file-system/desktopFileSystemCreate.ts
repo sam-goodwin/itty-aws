@@ -17,7 +17,7 @@ export interface DesktopFileSystemCreateInput {
   last_viewed_at?: string | null;
 }
 export const DesktopFileSystemCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface DesktopFileSystemCreateOutput {
   last_viewed_at?: string | null;
 }
 export const DesktopFileSystemCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     depth: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -71,9 +71,7 @@ export const DesktopFileSystemCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const desktopFileSystemCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DesktopFileSystemCreateInput,
-    outputSchema: DesktopFileSystemCreateOutput,
-  }),
-);
+export const desktopFileSystemCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DesktopFileSystemCreateInput,
+  outputSchema: DesktopFileSystemCreateOutput,
+}));

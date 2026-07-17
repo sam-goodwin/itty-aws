@@ -112,42 +112,41 @@ export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: SensitiveString, Value: SensitiveString }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateAppInstanceRequest {
   Name: string | redacted.Redacted<string>;
   Metadata?: string | redacted.Redacted<string>;
   ClientRequestToken: string;
   Tags?: Tag[];
 }
-export const CreateAppInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: SensitiveString,
-      Metadata: S.optional(SensitiveString),
-      ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/app-instances" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: SensitiveString,
+    Metadata: S.optional(SensitiveString),
+    ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/app-instances" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateAppInstanceRequest",
 }) as any as S.Schema<CreateAppInstanceRequest>;
 export interface CreateAppInstanceResponse {
   AppInstanceArn?: string;
 }
-export const CreateAppInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AppInstanceArn: S.optional(S.String) }),
+export const CreateAppInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AppInstanceArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateAppInstanceResponse",
 }) as any as S.Schema<CreateAppInstanceResponse>;
@@ -168,13 +167,13 @@ export type ErrorCode =
   | "VoiceConnectorGroupAssociationsExist"
   | "PhoneNumberAssociationsExist"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCode = /*@__PURE__*/ S.String;
 export interface CreateAppInstanceAdminRequest {
   AppInstanceAdminArn: string;
   AppInstanceArn: string;
 }
 export const CreateAppInstanceAdminRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceAdminArn: S.String,
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
@@ -198,7 +197,7 @@ export interface Identity {
   Arn?: string;
   Name?: string | redacted.Redacted<string>;
 }
-export const Identity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String), Name: S.optional(SensitiveString) }),
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 export interface CreateAppInstanceAdminResponse {
@@ -206,7 +205,7 @@ export interface CreateAppInstanceAdminResponse {
   AppInstanceArn?: string;
 }
 export const CreateAppInstanceAdminResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceAdmin: S.optional(Identity),
       AppInstanceArn: S.optional(S.String),
@@ -215,21 +214,21 @@ export const CreateAppInstanceAdminResponse =
     identifier: "CreateAppInstanceAdminResponse",
   }) as any as S.Schema<CreateAppInstanceAdminResponse>;
 export type RespondsTo = "STANDARD_MESSAGES" | (string & {});
-export const RespondsTo = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RespondsTo = /*@__PURE__*/ S.String;
 export type StandardMessages =
   | "AUTO"
   | "ALL"
   | "MENTIONS"
   | "NONE"
   | (string & {});
-export const StandardMessages = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StandardMessages = /*@__PURE__*/ S.String;
 export type TargetedMessages = "ALL" | "NONE" | (string & {});
-export const TargetedMessages = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetedMessages = /*@__PURE__*/ S.String;
 export interface InvokedBy {
   StandardMessages: StandardMessages;
   TargetedMessages: TargetedMessages;
 }
-export const InvokedBy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StandardMessages: StandardMessages,
     TargetedMessages: TargetedMessages,
@@ -242,7 +241,7 @@ export interface LexConfiguration {
   LocaleId: string;
   WelcomeIntent?: string;
 }
-export const LexConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LexConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RespondsTo: S.optional(RespondsTo),
     InvokedBy: S.optional(InvokedBy),
@@ -256,7 +255,7 @@ export const LexConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface Configuration {
   Lex: LexConfiguration;
 }
-export const Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Lex: LexConfiguration }),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 export interface CreateAppInstanceBotRequest {
@@ -268,7 +267,7 @@ export interface CreateAppInstanceBotRequest {
   Configuration: Configuration;
 }
 export const CreateAppInstanceBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String,
       Name: S.optional(SensitiveString),
@@ -293,18 +292,18 @@ export interface CreateAppInstanceBotResponse {
   AppInstanceBotArn?: string;
 }
 export const CreateAppInstanceBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceBotArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateAppInstanceBotResponse",
   }) as any as S.Schema<CreateAppInstanceBotResponse>;
 export type ExpirationCriterion = "CREATED_TIMESTAMP" | (string & {});
-export const ExpirationCriterion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExpirationCriterion = /*@__PURE__*/ S.String;
 export interface ExpirationSettings {
   ExpirationDays: number;
   ExpirationCriterion: ExpirationCriterion;
 }
-export const ExpirationSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExpirationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExpirationDays: S.Number,
     ExpirationCriterion: ExpirationCriterion,
@@ -322,7 +321,7 @@ export interface CreateAppInstanceUserRequest {
   ExpirationSettings?: ExpirationSettings;
 }
 export const CreateAppInstanceUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String,
       AppInstanceUserId: SensitiveString,
@@ -348,7 +347,7 @@ export interface CreateAppInstanceUserResponse {
   AppInstanceUserArn?: string;
 }
 export const CreateAppInstanceUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceUserArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateAppInstanceUserResponse",
@@ -356,26 +355,25 @@ export const CreateAppInstanceUserResponse =
 export interface DeleteAppInstanceRequest {
   AppInstanceArn: string;
 }
-export const DeleteAppInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/app-instances/{AppInstanceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/app-instances/{AppInstanceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteAppInstanceRequest",
 }) as any as S.Schema<DeleteAppInstanceRequest>;
 export interface DeleteAppInstanceResponse {}
-export const DeleteAppInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteAppInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteAppInstanceResponse",
 }) as any as S.Schema<DeleteAppInstanceResponse>;
@@ -384,7 +382,7 @@ export interface DeleteAppInstanceAdminRequest {
   AppInstanceArn: string;
 }
 export const DeleteAppInstanceAdminRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceAdminArn: S.String.pipe(T.HttpLabel("AppInstanceAdminArn")),
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
@@ -406,14 +404,14 @@ export const DeleteAppInstanceAdminRequest =
   }) as any as S.Schema<DeleteAppInstanceAdminRequest>;
 export interface DeleteAppInstanceAdminResponse {}
 export const DeleteAppInstanceAdminResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAppInstanceAdminResponse",
   }) as any as S.Schema<DeleteAppInstanceAdminResponse>;
 export interface DeleteAppInstanceBotRequest {
   AppInstanceBotArn: string;
 }
 export const DeleteAppInstanceBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")),
     }).pipe(
@@ -434,14 +432,14 @@ export const DeleteAppInstanceBotRequest =
   }) as any as S.Schema<DeleteAppInstanceBotRequest>;
 export interface DeleteAppInstanceBotResponse {}
 export const DeleteAppInstanceBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAppInstanceBotResponse",
   }) as any as S.Schema<DeleteAppInstanceBotResponse>;
 export interface DeleteAppInstanceUserRequest {
   AppInstanceUserArn: string;
 }
 export const DeleteAppInstanceUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
     }).pipe(
@@ -462,7 +460,7 @@ export const DeleteAppInstanceUserRequest =
   }) as any as S.Schema<DeleteAppInstanceUserRequest>;
 export interface DeleteAppInstanceUserResponse {}
 export const DeleteAppInstanceUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAppInstanceUserResponse",
   }) as any as S.Schema<DeleteAppInstanceUserResponse>;
 export interface DeregisterAppInstanceUserEndpointRequest {
@@ -470,7 +468,7 @@ export interface DeregisterAppInstanceUserEndpointRequest {
   EndpointId: string;
 }
 export const DeregisterAppInstanceUserEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
       EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
@@ -492,26 +490,25 @@ export const DeregisterAppInstanceUserEndpointRequest =
   }) as any as S.Schema<DeregisterAppInstanceUserEndpointRequest>;
 export interface DeregisterAppInstanceUserEndpointResponse {}
 export const DeregisterAppInstanceUserEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeregisterAppInstanceUserEndpointResponse",
   }) as any as S.Schema<DeregisterAppInstanceUserEndpointResponse>;
 export interface DescribeAppInstanceRequest {
   AppInstanceArn: string;
 }
-export const DescribeAppInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/app-instances/{AppInstanceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/app-instances/{AppInstanceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeAppInstanceRequest",
 }) as any as S.Schema<DescribeAppInstanceRequest>;
@@ -522,7 +519,7 @@ export interface AppInstance {
   LastUpdatedTimestamp?: Date;
   Metadata?: string | redacted.Redacted<string>;
 }
-export const AppInstance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppInstanceArn: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -539,7 +536,7 @@ export interface DescribeAppInstanceResponse {
   AppInstance?: AppInstance;
 }
 export const DescribeAppInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstance: S.optional(AppInstance) }),
   ).annotate({
     identifier: "DescribeAppInstanceResponse",
@@ -549,7 +546,7 @@ export interface DescribeAppInstanceAdminRequest {
   AppInstanceArn: string;
 }
 export const DescribeAppInstanceAdminRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceAdminArn: S.String.pipe(T.HttpLabel("AppInstanceAdminArn")),
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
@@ -574,7 +571,7 @@ export interface AppInstanceAdmin {
   AppInstanceArn?: string;
   CreatedTimestamp?: Date;
 }
-export const AppInstanceAdmin = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstanceAdmin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Admin: S.optional(Identity),
     AppInstanceArn: S.optional(S.String),
@@ -589,7 +586,7 @@ export interface DescribeAppInstanceAdminResponse {
   AppInstanceAdmin?: AppInstanceAdmin;
 }
 export const DescribeAppInstanceAdminResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceAdmin: S.optional(AppInstanceAdmin) }),
   ).annotate({
     identifier: "DescribeAppInstanceAdminResponse",
@@ -598,7 +595,7 @@ export interface DescribeAppInstanceBotRequest {
   AppInstanceBotArn: string;
 }
 export const DescribeAppInstanceBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")),
     }).pipe(
@@ -625,7 +622,7 @@ export interface AppInstanceBot {
   LastUpdatedTimestamp?: Date;
   Metadata?: string | redacted.Redacted<string>;
 }
-export const AppInstanceBot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstanceBot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppInstanceBotArn: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -643,7 +640,7 @@ export interface DescribeAppInstanceBotResponse {
   AppInstanceBot?: AppInstanceBot;
 }
 export const DescribeAppInstanceBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceBot: S.optional(AppInstanceBot) }),
   ).annotate({
     identifier: "DescribeAppInstanceBotResponse",
@@ -652,7 +649,7 @@ export interface DescribeAppInstanceUserRequest {
   AppInstanceUserArn: string;
 }
 export const DescribeAppInstanceUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
     }).pipe(
@@ -679,7 +676,7 @@ export interface AppInstanceUser {
   LastUpdatedTimestamp?: Date;
   ExpirationSettings?: ExpirationSettings;
 }
-export const AppInstanceUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstanceUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppInstanceUserArn: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -699,7 +696,7 @@ export interface DescribeAppInstanceUserResponse {
   AppInstanceUser?: AppInstanceUser;
 }
 export const DescribeAppInstanceUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceUser: S.optional(AppInstanceUser) }),
   ).annotate({
     identifier: "DescribeAppInstanceUserResponse",
@@ -709,7 +706,7 @@ export interface DescribeAppInstanceUserEndpointRequest {
   EndpointId: string;
 }
 export const DescribeAppInstanceUserEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
       EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
@@ -734,12 +731,12 @@ export type AppInstanceUserEndpointType =
   | "APNS_SANDBOX"
   | "GCM"
   | (string & {});
-export const AppInstanceUserEndpointType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AppInstanceUserEndpointType = /*@__PURE__*/ S.String;
 export interface EndpointAttributes {
   DeviceToken: string | redacted.Redacted<string>;
   VoipDeviceToken?: string | redacted.Redacted<string>;
 }
-export const EndpointAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EndpointAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeviceToken: SensitiveString,
     VoipDeviceToken: S.optional(SensitiveString),
@@ -748,19 +745,19 @@ export const EndpointAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EndpointAttributes",
 }) as any as S.Schema<EndpointAttributes>;
 export type AllowMessages = "ALL" | "NONE" | (string & {});
-export const AllowMessages = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AllowMessages = /*@__PURE__*/ S.String;
 export type EndpointStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const EndpointStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EndpointStatus = /*@__PURE__*/ S.String;
 export type EndpointStatusReason =
   | "INVALID_DEVICE_TOKEN"
   | "INVALID_PINPOINT_ARN"
   | (string & {});
-export const EndpointStatusReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EndpointStatusReason = /*@__PURE__*/ S.String;
 export interface EndpointState {
   Status: EndpointStatus;
   StatusReason?: EndpointStatusReason;
 }
-export const EndpointState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EndpointState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: EndpointStatus,
     StatusReason: S.optional(EndpointStatusReason),
@@ -778,24 +775,23 @@ export interface AppInstanceUserEndpoint {
   AllowMessages?: AllowMessages;
   EndpointState?: EndpointState;
 }
-export const AppInstanceUserEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceUserArn: S.optional(S.String),
-      EndpointId: S.optional(S.String),
-      Name: S.optional(SensitiveString),
-      Type: S.optional(AppInstanceUserEndpointType),
-      ResourceArn: S.optional(S.String),
-      EndpointAttributes: S.optional(EndpointAttributes),
-      CreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LastUpdatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      AllowMessages: S.optional(AllowMessages),
-      EndpointState: S.optional(EndpointState),
-    }),
+export const AppInstanceUserEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceUserArn: S.optional(S.String),
+    EndpointId: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    Type: S.optional(AppInstanceUserEndpointType),
+    ResourceArn: S.optional(S.String),
+    EndpointAttributes: S.optional(EndpointAttributes),
+    CreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LastUpdatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    AllowMessages: S.optional(AllowMessages),
+    EndpointState: S.optional(EndpointState),
+  }),
 ).annotate({
   identifier: "AppInstanceUserEndpoint",
 }) as any as S.Schema<AppInstanceUserEndpoint>;
@@ -803,7 +799,7 @@ export interface DescribeAppInstanceUserEndpointResponse {
   AppInstanceUserEndpoint?: AppInstanceUserEndpoint;
 }
 export const DescribeAppInstanceUserEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceUserEndpoint: S.optional(AppInstanceUserEndpoint) }),
   ).annotate({
     identifier: "DescribeAppInstanceUserEndpointResponse",
@@ -812,7 +808,7 @@ export interface GetAppInstanceRetentionSettingsRequest {
   AppInstanceArn: string;
 }
 export const GetAppInstanceRetentionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
     }).pipe(
@@ -834,8 +830,8 @@ export const GetAppInstanceRetentionSettingsRequest =
 export interface ChannelRetentionSettings {
   RetentionDays?: number;
 }
-export const ChannelRetentionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ RetentionDays: S.optional(S.Number) }),
+export const ChannelRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RetentionDays: S.optional(S.Number) }),
 ).annotate({
   identifier: "ChannelRetentionSettings",
 }) as any as S.Schema<ChannelRetentionSettings>;
@@ -843,7 +839,7 @@ export interface AppInstanceRetentionSettings {
   ChannelRetentionSettings?: ChannelRetentionSettings;
 }
 export const AppInstanceRetentionSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ChannelRetentionSettings: S.optional(ChannelRetentionSettings),
     }),
@@ -855,7 +851,7 @@ export interface GetAppInstanceRetentionSettingsResponse {
   InitiateDeletionTimestamp?: Date;
 }
 export const GetAppInstanceRetentionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceRetentionSettings: S.optional(AppInstanceRetentionSettings),
       InitiateDeletionTimestamp: S.optional(
@@ -871,7 +867,7 @@ export interface ListAppInstanceAdminsRequest {
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
@@ -895,13 +891,13 @@ export const ListAppInstanceAdminsRequest =
 export interface AppInstanceAdminSummary {
   Admin?: Identity;
 }
-export const AppInstanceAdminSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Admin: S.optional(Identity) }),
+export const AppInstanceAdminSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Admin: S.optional(Identity) }),
 ).annotate({
   identifier: "AppInstanceAdminSummary",
 }) as any as S.Schema<AppInstanceAdminSummary>;
 export type AppInstanceAdminList = AppInstanceAdminSummary[];
-export const AppInstanceAdminList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AppInstanceAdminList = /*@__PURE__*/ S.Array(
   AppInstanceAdminSummary,
 );
 export interface ListAppInstanceAdminsResponse {
@@ -910,7 +906,7 @@ export interface ListAppInstanceAdminsResponse {
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceAdminsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.optional(S.String),
       AppInstanceAdmins: S.optional(AppInstanceAdminList),
@@ -924,22 +920,21 @@ export interface ListAppInstanceBotsRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListAppInstanceBotsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/app-instance-bots" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAppInstanceBotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/app-instance-bots" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListAppInstanceBotsRequest",
 }) as any as S.Schema<ListAppInstanceBotsRequest>;
@@ -948,7 +943,7 @@ export interface AppInstanceBotSummary {
   Name?: string | redacted.Redacted<string>;
   Metadata?: string | redacted.Redacted<string>;
 }
-export const AppInstanceBotSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstanceBotSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppInstanceBotArn: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -958,16 +953,14 @@ export const AppInstanceBotSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AppInstanceBotSummary",
 }) as any as S.Schema<AppInstanceBotSummary>;
 export type AppInstanceBotList = AppInstanceBotSummary[];
-export const AppInstanceBotList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  AppInstanceBotSummary,
-);
+export const AppInstanceBotList = /*@__PURE__*/ S.Array(AppInstanceBotSummary);
 export interface ListAppInstanceBotsResponse {
   AppInstanceArn?: string;
   AppInstanceBots?: AppInstanceBotSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceBotsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.optional(S.String),
       AppInstanceBots: S.optional(AppInstanceBotList),
@@ -980,21 +973,20 @@ export interface ListAppInstancesRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListAppInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/app-instances" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAppInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/app-instances" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListAppInstancesRequest",
 }) as any as S.Schema<ListAppInstancesRequest>;
@@ -1003,7 +995,7 @@ export interface AppInstanceSummary {
   Name?: string | redacted.Redacted<string>;
   Metadata?: string | redacted.Redacted<string>;
 }
-export const AppInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppInstanceArn: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -1013,18 +1005,16 @@ export const AppInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AppInstanceSummary",
 }) as any as S.Schema<AppInstanceSummary>;
 export type AppInstanceList = AppInstanceSummary[];
-export const AppInstanceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AppInstanceSummary);
+export const AppInstanceList = /*@__PURE__*/ S.Array(AppInstanceSummary);
 export interface ListAppInstancesResponse {
   AppInstances?: AppInstanceSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListAppInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstances: S.optional(AppInstanceList),
-      NextToken: S.optional(SensitiveString),
-    }),
+export const ListAppInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstances: S.optional(AppInstanceList),
+    NextToken: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "ListAppInstancesResponse",
 }) as any as S.Schema<ListAppInstancesResponse>;
@@ -1034,7 +1024,7 @@ export interface ListAppInstanceUserEndpointsRequest {
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceUserEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: SensitiveString.pipe(
         T.HttpLabel("AppInstanceUserArn"),
@@ -1066,7 +1056,7 @@ export interface AppInstanceUserEndpointSummary {
   EndpointState?: EndpointState;
 }
 export const AppInstanceUserEndpointSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.optional(S.String),
       EndpointId: S.optional(S.String),
@@ -1081,13 +1071,13 @@ export const AppInstanceUserEndpointSummary =
 export type AppInstanceUserEndpointSummaryList =
   AppInstanceUserEndpointSummary[];
 export const AppInstanceUserEndpointSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AppInstanceUserEndpointSummary);
+  /*@__PURE__*/ S.Array(AppInstanceUserEndpointSummary);
 export interface ListAppInstanceUserEndpointsResponse {
   AppInstanceUserEndpoints?: AppInstanceUserEndpointSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceUserEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserEndpoints: S.optional(AppInstanceUserEndpointSummaryList),
       NextToken: S.optional(SensitiveString),
@@ -1101,7 +1091,7 @@ export interface ListAppInstanceUsersRequest {
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
@@ -1124,18 +1114,17 @@ export interface AppInstanceUserSummary {
   Name?: string | redacted.Redacted<string>;
   Metadata?: string | redacted.Redacted<string>;
 }
-export const AppInstanceUserSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceUserArn: S.optional(S.String),
-      Name: S.optional(SensitiveString),
-      Metadata: S.optional(SensitiveString),
-    }),
+export const AppInstanceUserSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceUserArn: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    Metadata: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "AppInstanceUserSummary",
 }) as any as S.Schema<AppInstanceUserSummary>;
 export type AppInstanceUserList = AppInstanceUserSummary[];
-export const AppInstanceUserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AppInstanceUserList = /*@__PURE__*/ S.Array(
   AppInstanceUserSummary,
 );
 export interface ListAppInstanceUsersResponse {
@@ -1144,7 +1133,7 @@ export interface ListAppInstanceUsersResponse {
   NextToken?: string | redacted.Redacted<string>;
 }
 export const ListAppInstanceUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.optional(S.String),
       AppInstanceUsers: S.optional(AppInstanceUserList),
@@ -1156,18 +1145,17 @@ export const ListAppInstanceUsersResponse =
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -1175,7 +1163,7 @@ export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -1185,7 +1173,7 @@ export interface PutAppInstanceRetentionSettingsRequest {
   AppInstanceRetentionSettings: AppInstanceRetentionSettings;
 }
 export const PutAppInstanceRetentionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
       AppInstanceRetentionSettings: AppInstanceRetentionSettings,
@@ -1210,7 +1198,7 @@ export interface PutAppInstanceRetentionSettingsResponse {
   InitiateDeletionTimestamp?: Date;
 }
 export const PutAppInstanceRetentionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceRetentionSettings: S.optional(AppInstanceRetentionSettings),
       InitiateDeletionTimestamp: S.optional(
@@ -1225,7 +1213,7 @@ export interface PutAppInstanceUserExpirationSettingsRequest {
   ExpirationSettings?: ExpirationSettings;
 }
 export const PutAppInstanceUserExpirationSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
       ExpirationSettings: S.optional(ExpirationSettings),
@@ -1250,7 +1238,7 @@ export interface PutAppInstanceUserExpirationSettingsResponse {
   ExpirationSettings?: ExpirationSettings;
 }
 export const PutAppInstanceUserExpirationSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.optional(S.String),
       ExpirationSettings: S.optional(ExpirationSettings),
@@ -1268,7 +1256,7 @@ export interface RegisterAppInstanceUserEndpointRequest {
   AllowMessages?: AllowMessages;
 }
 export const RegisterAppInstanceUserEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: SensitiveString.pipe(
         T.HttpLabel("AppInstanceUserArn"),
@@ -1300,7 +1288,7 @@ export interface RegisterAppInstanceUserEndpointResponse {
   EndpointId?: string;
 }
 export const RegisterAppInstanceUserEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.optional(S.String),
       EndpointId: S.optional(S.String),
@@ -1312,7 +1300,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
@@ -1327,18 +1315,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string | redacted.Redacted<string>[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string | redacted.Redacted<string>[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
@@ -1353,7 +1341,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1363,30 +1351,29 @@ export interface UpdateAppInstanceRequest {
   Name: string | redacted.Redacted<string>;
   Metadata: string | redacted.Redacted<string>;
 }
-export const UpdateAppInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-      Name: SensitiveString,
-      Metadata: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/app-instances/{AppInstanceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
+    Name: SensitiveString,
+    Metadata: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/app-instances/{AppInstanceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateAppInstanceRequest",
 }) as any as S.Schema<UpdateAppInstanceRequest>;
 export interface UpdateAppInstanceResponse {
   AppInstanceArn?: string;
 }
-export const UpdateAppInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AppInstanceArn: S.optional(S.String) }),
+export const UpdateAppInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AppInstanceArn: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateAppInstanceResponse",
 }) as any as S.Schema<UpdateAppInstanceResponse>;
@@ -1397,7 +1384,7 @@ export interface UpdateAppInstanceBotRequest {
   Configuration?: Configuration;
 }
 export const UpdateAppInstanceBotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceBotArn: S.String.pipe(T.HttpLabel("AppInstanceBotArn")),
       Name: SensitiveString,
@@ -1423,7 +1410,7 @@ export interface UpdateAppInstanceBotResponse {
   AppInstanceBotArn?: string;
 }
 export const UpdateAppInstanceBotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceBotArn: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateAppInstanceBotResponse",
@@ -1434,7 +1421,7 @@ export interface UpdateAppInstanceUserRequest {
   Metadata: string | redacted.Redacted<string>;
 }
 export const UpdateAppInstanceUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
       Name: SensitiveString,
@@ -1459,7 +1446,7 @@ export interface UpdateAppInstanceUserResponse {
   AppInstanceUserArn?: string;
 }
 export const UpdateAppInstanceUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AppInstanceUserArn: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateAppInstanceUserResponse",
@@ -1471,7 +1458,7 @@ export interface UpdateAppInstanceUserEndpointRequest {
   AllowMessages?: AllowMessages;
 }
 export const UpdateAppInstanceUserEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.String.pipe(T.HttpLabel("AppInstanceUserArn")),
       EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
@@ -1498,7 +1485,7 @@ export interface UpdateAppInstanceUserEndpointResponse {
   EndpointId?: string;
 }
 export const UpdateAppInstanceUserEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AppInstanceUserArn: S.optional(S.String),
       EndpointId: S.optional(S.String),
@@ -1568,7 +1555,7 @@ export const createAppInstance: API.OperationMethod<
   CreateAppInstanceResponse,
   CreateAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceRequest,
   output: CreateAppInstanceResponse,
   errors: [
@@ -1611,7 +1598,7 @@ export const createAppInstanceAdmin: API.OperationMethod<
   CreateAppInstanceAdminResponse,
   CreateAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceAdminRequest,
   output: CreateAppInstanceAdminResponse,
   errors: [
@@ -1645,7 +1632,7 @@ export const createAppInstanceBot: API.OperationMethod<
   CreateAppInstanceBotResponse,
   CreateAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceBotRequest,
   output: CreateAppInstanceBotResponse,
   errors: [
@@ -1679,7 +1666,7 @@ export const createAppInstanceUser: API.OperationMethod<
   CreateAppInstanceUserResponse,
   CreateAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppInstanceUserRequest,
   output: CreateAppInstanceUserResponse,
   errors: [
@@ -1711,7 +1698,7 @@ export const deleteAppInstance: API.OperationMethod<
   DeleteAppInstanceResponse,
   DeleteAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceRequest,
   output: DeleteAppInstanceResponse,
   errors: [
@@ -1745,7 +1732,7 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
   DeleteAppInstanceAdminResponse,
   DeleteAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceAdminRequest,
   output: DeleteAppInstanceAdminResponse,
   errors: [
@@ -1778,7 +1765,7 @@ export const deleteAppInstanceBot: API.OperationMethod<
   DeleteAppInstanceBotResponse,
   DeleteAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceBotRequest,
   output: DeleteAppInstanceBotResponse,
   errors: [
@@ -1811,7 +1798,7 @@ export const deleteAppInstanceUser: API.OperationMethod<
   DeleteAppInstanceUserResponse,
   DeleteAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppInstanceUserRequest,
   output: DeleteAppInstanceUserResponse,
   errors: [
@@ -1842,7 +1829,7 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
   DeregisterAppInstanceUserEndpointResponse,
   DeregisterAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterAppInstanceUserEndpointRequest,
   output: DeregisterAppInstanceUserEndpointResponse,
   errors: [
@@ -1871,7 +1858,7 @@ export const describeAppInstance: API.OperationMethod<
   DescribeAppInstanceResponse,
   DescribeAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceRequest,
   output: DescribeAppInstanceResponse,
   errors: [
@@ -1900,7 +1887,7 @@ export const describeAppInstanceAdmin: API.OperationMethod<
   DescribeAppInstanceAdminResponse,
   DescribeAppInstanceAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceAdminRequest,
   output: DescribeAppInstanceAdminResponse,
   errors: [
@@ -1930,7 +1917,7 @@ export const describeAppInstanceBot: API.OperationMethod<
   DescribeAppInstanceBotResponse,
   DescribeAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceBotRequest,
   output: DescribeAppInstanceBotResponse,
   errors: [
@@ -1960,7 +1947,7 @@ export const describeAppInstanceUser: API.OperationMethod<
   DescribeAppInstanceUserResponse,
   DescribeAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceUserRequest,
   output: DescribeAppInstanceUserResponse,
   errors: [
@@ -1989,7 +1976,7 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
   DescribeAppInstanceUserEndpointResponse,
   DescribeAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAppInstanceUserEndpointRequest,
   output: DescribeAppInstanceUserEndpointResponse,
   errors: [
@@ -2018,7 +2005,7 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
   GetAppInstanceRetentionSettingsResponse,
   GetAppInstanceRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppInstanceRetentionSettingsRequest,
   output: GetAppInstanceRetentionSettingsResponse,
   errors: [
@@ -2063,7 +2050,7 @@ export const listAppInstanceAdmins: API.OperationMethod<
     ListAppInstanceAdminsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceAdminsRequest,
   output: ListAppInstanceAdminsResponse,
   errors: [
@@ -2114,7 +2101,7 @@ export const listAppInstanceBots: API.OperationMethod<
     ListAppInstanceBotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceBotsRequest,
   output: ListAppInstanceBotsResponse,
   errors: [
@@ -2165,7 +2152,7 @@ export const listAppInstances: API.OperationMethod<
     ListAppInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstancesRequest,
   output: ListAppInstancesResponse,
   errors: [
@@ -2214,7 +2201,7 @@ export const listAppInstanceUserEndpoints: API.OperationMethod<
     ListAppInstanceUserEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUserEndpointsRequest,
   output: ListAppInstanceUserEndpointsResponse,
   errors: [
@@ -2264,7 +2251,7 @@ export const listAppInstanceUsers: API.OperationMethod<
     ListAppInstanceUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppInstanceUsersRequest,
   output: ListAppInstanceUsersResponse,
   errors: [
@@ -2298,7 +2285,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2328,7 +2315,7 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
   PutAppInstanceRetentionSettingsResponse,
   PutAppInstanceRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppInstanceRetentionSettingsRequest,
   output: PutAppInstanceRetentionSettingsResponse,
   errors: [
@@ -2364,7 +2351,7 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
   PutAppInstanceUserExpirationSettingsResponse,
   PutAppInstanceUserExpirationSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppInstanceUserExpirationSettingsRequest,
   output: PutAppInstanceUserExpirationSettingsResponse,
   errors: [
@@ -2396,7 +2383,7 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
   RegisterAppInstanceUserEndpointResponse,
   RegisterAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAppInstanceUserEndpointRequest,
   output: RegisterAppInstanceUserEndpointResponse,
   errors: [
@@ -2428,7 +2415,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2458,7 +2445,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2488,7 +2475,7 @@ export const updateAppInstance: API.OperationMethod<
   UpdateAppInstanceResponse,
   UpdateAppInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceRequest,
   output: UpdateAppInstanceResponse,
   errors: [
@@ -2520,7 +2507,7 @@ export const updateAppInstanceBot: API.OperationMethod<
   UpdateAppInstanceBotResponse,
   UpdateAppInstanceBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceBotRequest,
   output: UpdateAppInstanceBotResponse,
   errors: [
@@ -2554,7 +2541,7 @@ export const updateAppInstanceUser: API.OperationMethod<
   UpdateAppInstanceUserResponse,
   UpdateAppInstanceUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceUserRequest,
   output: UpdateAppInstanceUserResponse,
   errors: [
@@ -2586,7 +2573,7 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
   UpdateAppInstanceUserEndpointResponse,
   UpdateAppInstanceUserEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppInstanceUserEndpointRequest,
   output: UpdateAppInstanceUserEndpointResponse,
   errors: [

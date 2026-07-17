@@ -13,7 +13,7 @@ export interface ListGroupFlexClustersInput {
   pretty?: boolean;
 }
 export const ListGroupFlexClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupFlexClustersInput =
 // Output Schema
 export type ListGroupFlexClustersOutput = void;
 export const ListGroupFlexClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClustersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClustersOutput>;
 
 // The operation
 /**
@@ -47,10 +47,8 @@ export const ListGroupFlexClustersOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupFlexClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupFlexClustersInput,
-    outputSchema: ListGroupFlexClustersOutput,
-    errors: [Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const listGroupFlexClusters = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupFlexClustersInput,
+  outputSchema: ListGroupFlexClustersOutput,
+  errors: [Forbidden, NotFound, Conflict] as const,
+}));

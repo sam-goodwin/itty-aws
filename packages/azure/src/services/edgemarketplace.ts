@@ -24,7 +24,7 @@ export interface OffersGenerateAccessTokenInput {
   deviceVersion?: string;
 }
 export const OffersGenerateAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface OffersGenerateAccessTokenOutput {
   accessToken: Redacted.Redacted<string>;
 }
 export const OffersGenerateAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveOutputString,
@@ -64,18 +64,16 @@ export const OffersGenerateAccessTokenOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
-export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersGenerateAccessTokenInput,
-    outputSchema: OffersGenerateAccessTokenOutput,
-  }),
-);
+export const OffersGenerateAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersGenerateAccessTokenInput,
+  outputSchema: OffersGenerateAccessTokenOutput,
+}));
 // Input Schema
 export interface OffersGetInput {
   resourceUri: string;
   offerId: string;
 }
-export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   offerId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -100,7 +98,7 @@ export interface OffersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -128,7 +126,7 @@ export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
-export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersGetInput,
   outputSchema: OffersGetOutput,
 }));
@@ -139,7 +137,7 @@ export interface OffersGetAccessTokenInput {
   requestId: string;
 }
 export const OffersGetAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String,
@@ -158,7 +156,7 @@ export interface OffersGetAccessTokenOutput {
   accessToken: Redacted.Redacted<string>;
 }
 export const OffersGetAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveOutputString,
@@ -172,12 +170,10 @@ export const OffersGetAccessTokenOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param offerId - Id of the offer
  */
-export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersGetAccessTokenInput,
-    outputSchema: OffersGetAccessTokenOutput,
-  }),
-);
+export const OffersGetAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersGetAccessTokenInput,
+  outputSchema: OffersGetAccessTokenOutput,
+}));
 // Input Schema
 export interface OffersListInput {
   resourceUri: string;
@@ -187,7 +183,7 @@ export interface OffersListInput {
   $filter?: string;
   $skipToken?: string;
 }
-export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
@@ -219,7 +215,7 @@ export interface OffersListOutput {
   }[];
   nextLink?: string;
 }
-export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OffersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -256,7 +252,7 @@ export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - Filter the result list using the given expression.
  * @param $skipToken - Skip over when retrieving results.
  */
-export const OffersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OffersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OffersListInput,
   outputSchema: OffersListOutput,
 }));
@@ -265,7 +261,7 @@ export interface OffersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const OffersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -293,7 +289,7 @@ export interface OffersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const OffersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -335,17 +331,13 @@ export const OffersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OffersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OffersListBySubscriptionInput,
-    outputSchema: OffersListBySubscriptionOutput,
-  }),
-);
+export const OffersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OffersListBySubscriptionInput,
+  outputSchema: OffersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EdgeMarketplace/operations",
@@ -369,7 +361,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -399,7 +391,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -408,7 +400,7 @@ export interface PublishersGetInput {
   resourceUri: string;
   publisherName: string;
 }
-export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -433,7 +425,7 @@ export interface PublishersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -461,7 +453,7 @@ export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param publisherName - Name of the publisher
  */
-export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersGetInput,
   outputSchema: PublishersGetOutput,
 }));
@@ -474,7 +466,7 @@ export interface PublishersListInput {
   $filter?: string;
   $skipToken?: string;
 }
-export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   skip: Schema.optional(Schema.Number),
@@ -506,7 +498,7 @@ export interface PublishersListOutput {
   }[];
   nextLink?: string;
 }
-export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -543,7 +535,7 @@ export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - Filter the result list using the given expression.
  * @param $skipToken - Skip over when retrieving results.
  */
-export const PublishersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersListInput,
   outputSchema: PublishersListOutput,
 }));
@@ -552,7 +544,7 @@ export interface PublishersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PublishersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -580,7 +572,7 @@ export interface PublishersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PublishersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -623,7 +615,7 @@ export const PublishersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PublishersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublishersListBySubscriptionInput,
     outputSchema: PublishersListBySubscriptionOutput,
   }));

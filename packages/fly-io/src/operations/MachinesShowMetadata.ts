@@ -9,7 +9,7 @@ export interface MachinesShowMetadataInput {
   machine_id: string;
 }
 export const MachinesShowMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const MachinesShowMetadataInput =
 // Output Schema
 export type MachinesShowMetadataOutput = Record<string, string>;
 export const MachinesShowMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.String,
   ) as unknown as Schema.Codec<MachinesShowMetadataOutput>;
@@ -36,10 +36,8 @@ export const MachinesShowMetadataOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesShowMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesShowMetadataInput,
-    outputSchema: MachinesShowMetadataOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesShowMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesShowMetadataInput,
+  outputSchema: MachinesShowMetadataOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -51,7 +51,7 @@ interface CertificateAuthority {
   id?: string | null;
   name?: string | null;
 }
-const CertificateAuthority = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateAuthority = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -103,7 +103,7 @@ interface ListClientCertificatesResponseResult {
   validityDays?: number | null;
 }
 const ListClientCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -173,7 +173,7 @@ interface ListClientCertificatesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListClientCertificatesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -200,7 +200,7 @@ export interface GetClientCertificateRequest {
 }
 
 export const GetClientCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientCertificateId: Schema.String.pipe(
         T.HttpPath("clientCertificateId"),
@@ -260,7 +260,7 @@ export interface GetClientCertificateResponse {
 }
 
 export const GetClientCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -335,7 +335,7 @@ export const getClientCertificate: API.OperationMethod<
   GetClientCertificateResponse,
   GetClientCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClientCertificateRequest,
   output: GetClientCertificateResponse,
   errors: [ClientCertificateNotFound, Forbidden],
@@ -361,7 +361,7 @@ export interface ListClientCertificatesRequest {
 }
 
 export const ListClientCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -421,7 +421,7 @@ export interface ListClientCertificatesResponse {
 }
 
 export const ListClientCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListClientCertificatesResponseResult),
       resultInfo: Schema.optional(
@@ -437,7 +437,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesResponse,
   ListClientCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClientCertificatesRequest,
   output: ListClientCertificatesResponse,
   errors: [Forbidden],
@@ -460,7 +460,7 @@ export interface CreateClientCertificateRequest {
 }
 
 export const CreateClientCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       csr: Schema.String,
@@ -517,7 +517,7 @@ export interface CreateClientCertificateResponse {
 }
 
 export const CreateClientCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -589,7 +589,7 @@ export const createClientCertificate: API.OperationMethod<
   CreateClientCertificateResponse,
   CreateClientCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClientCertificateRequest,
   output: CreateClientCertificateResponse,
   errors: [Forbidden],
@@ -604,7 +604,7 @@ export interface PatchClientCertificateRequest {
 }
 
 export const PatchClientCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientCertificateId: Schema.String.pipe(
         T.HttpPath("clientCertificateId"),
@@ -665,7 +665,7 @@ export interface PatchClientCertificateResponse {
 }
 
 export const PatchClientCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -740,7 +740,7 @@ export const patchClientCertificate: API.OperationMethod<
   PatchClientCertificateResponse,
   PatchClientCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchClientCertificateRequest,
   output: PatchClientCertificateResponse,
   errors: [ClientCertificateNotFound, Forbidden],
@@ -753,7 +753,7 @@ export interface DeleteClientCertificateRequest {
 }
 
 export const DeleteClientCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientCertificateId: Schema.String.pipe(
         T.HttpPath("clientCertificateId"),
@@ -813,7 +813,7 @@ export interface DeleteClientCertificateResponse {
 }
 
 export const DeleteClientCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -889,7 +889,7 @@ export const deleteClientCertificate: API.OperationMethod<
   DeleteClientCertificateResponse,
   DeleteClientCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientCertificateRequest,
   output: DeleteClientCertificateResponse,
   errors: [

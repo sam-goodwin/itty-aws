@@ -74,7 +74,7 @@ export interface IntegrationsEmailVerifyCreateInput {
   display_name?: string;
 }
 export const IntegrationsEmailVerifyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(
@@ -167,7 +167,7 @@ export const IntegrationsEmailVerifyCreateInput =
 // Output Schema
 export type IntegrationsEmailVerifyCreateOutput = void;
 export const IntegrationsEmailVerifyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsEmailVerifyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsEmailVerifyCreateOutput>;
 
 // The operation
 /**
@@ -176,7 +176,7 @@ export const IntegrationsEmailVerifyCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsEmailVerifyCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsEmailVerifyCreateInput,
     outputSchema: IntegrationsEmailVerifyCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

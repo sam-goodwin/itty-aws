@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface DeleteStarredInput {
   id: string;
 }
-export const DeleteStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteStarredInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/apl-starred-queries/{id}" }),
@@ -16,10 +16,10 @@ export const DeleteStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteStarredOutput = void;
 export const DeleteStarredOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteStarredOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteStarredOutput>;
 
 // The operation
-export const deleteStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteStarred = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteStarredInput,
   outputSchema: DeleteStarredOutput,
   errors: [NotFound] as const,

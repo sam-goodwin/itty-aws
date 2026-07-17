@@ -8,7 +8,7 @@ export interface AuthenticationFactorsControllerGetInput {
   id: string;
 }
 export const AuthenticationFactorsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/auth/factors/{id}" }),
@@ -26,7 +26,7 @@ export interface AuthenticationFactorsControllerGetOutput {
   updated_at?: string;
 }
 export const AuthenticationFactorsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     type: Schema.optional(
@@ -57,7 +57,7 @@ export const AuthenticationFactorsControllerGetOutput =
  * @param id - The unique ID of the Factor.
  */
 export const AuthenticationFactorsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthenticationFactorsControllerGetInput,
     outputSchema: AuthenticationFactorsControllerGetOutput,
     errors: [NotFound] as const,

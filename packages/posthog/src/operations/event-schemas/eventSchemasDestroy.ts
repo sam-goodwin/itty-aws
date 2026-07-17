@@ -9,7 +9,7 @@ export interface EventSchemasDestroyInput {
   project_id: string;
 }
 export const EventSchemasDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const EventSchemasDestroyInput =
 // Output Schema
 export type EventSchemasDestroyOutput = void;
 export const EventSchemasDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSchemasDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSchemasDestroyOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const EventSchemasDestroyOutput =
  * @param id - A UUID string identifying this event schema.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventSchemasDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventSchemasDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSchemasDestroyInput,
   outputSchema: EventSchemasDestroyOutput,
   errors: [Forbidden, NotFound] as const,

@@ -8,7 +8,7 @@ export interface V1ListProjectTpaIntegrationsInput {
   ref: string;
 }
 export const V1ListProjectTpaIntegrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -30,7 +30,7 @@ export type V1ListProjectTpaIntegrationsOutput = {
   resolved_at?: string | null;
 }[];
 export const V1ListProjectTpaIntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -51,7 +51,7 @@ export const V1ListProjectTpaIntegrationsOutput =
  * @param ref - Project ref
  */
 export const v1ListProjectTpaIntegrations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1ListProjectTpaIntegrationsInput,
     outputSchema: V1ListProjectTpaIntegrationsOutput,
     errors: [BadRequest, Forbidden] as const,

@@ -29,7 +29,7 @@ export interface VisionScannersListInput {
   search?: string;
 }
 export const VisionScannersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     created_by: Schema.optional(Schema.String),
     emits_signals: Schema.optional(Schema.Boolean),
@@ -109,7 +109,7 @@ export interface VisionScannersListOutput {
   }[];
 }
 export const VisionScannersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -188,7 +188,7 @@ export const VisionScannersListOutput =
  * @param scanner_type - Filter by scanner type (monitor, classifier, scorer, summarizer). Accepts a comma-separated list.
  * @param search - Case-insensitive substring match across name, description, and the prompt in scanner_config.
  */
-export const visionScannersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const visionScannersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VisionScannersListInput,
   outputSchema: VisionScannersListOutput,
 }));

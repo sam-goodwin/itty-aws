@@ -9,7 +9,7 @@ export interface AppCertificatesDeleteInput {
   hostname: string;
 }
 export const AppCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const AppCertificatesDeleteInput =
 // Output Schema
 export type AppCertificatesDeleteOutput = void;
 export const AppCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppCertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AppCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -31,10 +31,8 @@ export const AppCertificatesDeleteOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesDeleteInput,
-    outputSchema: AppCertificatesDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesDeleteInput,
+  outputSchema: AppCertificatesDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

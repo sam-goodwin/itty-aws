@@ -11,7 +11,7 @@ export interface V1UpdateDatabasePasswordInput {
   password: string | Redacted.Redacted<string>;
 }
 export const V1UpdateDatabasePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     password: SensitiveString,
   }).pipe(
@@ -23,7 +23,7 @@ export interface V1UpdateDatabasePasswordOutput {
   message: string;
 }
 export const V1UpdateDatabasePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.String,
   }) as unknown as Schema.Codec<V1UpdateDatabasePasswordOutput>;
 
@@ -33,10 +33,8 @@ export const V1UpdateDatabasePasswordOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateDatabasePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateDatabasePasswordInput,
-    outputSchema: V1UpdateDatabasePasswordOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateDatabasePassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateDatabasePasswordInput,
+  outputSchema: V1UpdateDatabasePasswordOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

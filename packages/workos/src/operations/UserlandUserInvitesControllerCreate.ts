@@ -103,7 +103,7 @@ export interface UserlandUserInvitesControllerCreateInput {
     | "zu";
 }
 export const UserlandUserInvitesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     role_slug: Schema.optional(Schema.String),
@@ -226,7 +226,7 @@ export interface UserlandUserInvitesControllerCreateOutput {
   accept_invitation_url?: string;
 }
 export const UserlandUserInvitesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -253,7 +253,7 @@ export const UserlandUserInvitesControllerCreateOutput =
  * Sends an invitation email to the recipient.
  */
 export const UserlandUserInvitesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerCreateInput,
     outputSchema: UserlandUserInvitesControllerCreateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

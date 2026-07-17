@@ -9,7 +9,7 @@ export interface V1RestorePitrBackupInput {
   recovery_time_target_unix: number;
 }
 export const V1RestorePitrBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     recovery_time_target_unix: Schema.Number,
   }).pipe(
@@ -22,7 +22,7 @@ export const V1RestorePitrBackupInput =
 // Output Schema
 export type V1RestorePitrBackupOutput = void;
 export const V1RestorePitrBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePitrBackupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePitrBackupOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const V1RestorePitrBackupOutput =
  *
  * @param ref - Project ref
  */
-export const v1RestorePitrBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RestorePitrBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RestorePitrBackupInput,
   outputSchema: V1RestorePitrBackupOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -7,7 +7,7 @@ export interface RequestAiAccessCreateInput {
   id: string;
 }
 export const RequestAiAccessCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21,7 +21,7 @@ export interface RequestAiAccessCreateOutput {
   success: boolean;
 }
 export const RequestAiAccessCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
   }) as unknown as Schema.Codec<RequestAiAccessCreateOutput>;
 
@@ -31,9 +31,7 @@ export const RequestAiAccessCreateOutput =
  *
  * @param id - A UUID string identifying this organization.
  */
-export const requestAiAccessCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RequestAiAccessCreateInput,
-    outputSchema: RequestAiAccessCreateOutput,
-  }),
-);
+export const requestAiAccessCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RequestAiAccessCreateInput,
+  outputSchema: RequestAiAccessCreateOutput,
+}));

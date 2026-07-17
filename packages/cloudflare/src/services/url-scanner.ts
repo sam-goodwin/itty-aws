@@ -22,7 +22,7 @@ interface Message {
   text: string;
   url: string;
 }
-const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Message = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     level: Schema.String,
     source: Schema.String,
@@ -34,7 +34,7 @@ const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Console {
   message: { level: string; source: string; text: string; url: string };
 }
-const Console = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Console = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Message,
   }),
@@ -55,7 +55,7 @@ interface Cookie {
   sourceScheme: string;
   value: string;
 }
-const Cookie = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cookie = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domain: Schema.String,
     expires: Schema.Number,
@@ -77,7 +77,7 @@ interface Global {
   prop: string;
   type: string;
 }
-const Global = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Global = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     prop: Schema.String,
     type: Schema.String,
@@ -88,7 +88,7 @@ interface Link {
   href: string;
   text: string;
 }
-const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Link = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     href: Schema.String,
     text: Schema.String,
@@ -101,7 +101,7 @@ interface Performance {
   name: string;
   startTime: number;
 }
-const Performance = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Performance = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     duration: Schema.Number,
     entryType: Schema.String,
@@ -115,7 +115,7 @@ interface Initiator {
   type: string;
   url: string;
 }
-const Initiator = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Initiator = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.String,
     type: Schema.String,
@@ -132,7 +132,7 @@ interface Request {
   url: string;
   headers?: unknown | null;
 }
-const Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     initialPriority: Schema.String,
     isSameSite: Schema.Boolean,
@@ -148,7 +148,7 @@ interface SecurityHeader {
   name: string;
   value: string;
 }
-const SecurityHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SecurityHeader = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     value: Schema.String,
@@ -168,7 +168,7 @@ interface RedirectResponse {
   url: string;
   headers?: unknown | null;
 }
-const RedirectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RedirectResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     charset: Schema.String,
     mimeType: Schema.String,
@@ -218,7 +218,7 @@ interface Request2 {
     headers?: unknown | null;
   } | null;
 }
-const Request2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     documentURL: Schema.String,
     hasUserGesture: Schema.Boolean,
@@ -247,7 +247,7 @@ interface Asn {
   name: string;
   org: string;
 }
-const Asn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.String,
     country: Schema.String,
@@ -266,7 +266,7 @@ interface Geoip {
   ll: number[];
   region: string;
 }
-const Geoip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geoip = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.String,
     country: Schema.String,
@@ -301,7 +301,7 @@ interface SecurityDetails {
   validFrom: number;
   validTo: number;
 }
-const SecurityDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SecurityDetails = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateId: Schema.Number,
     certificateTransparencyCompliance: Schema.String,
@@ -347,7 +347,7 @@ interface Response {
   url: string;
   headers?: unknown | null;
 }
-const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     charset: Schema.String,
     mimeType: Schema.String,
@@ -418,7 +418,7 @@ interface Response2 {
   contentAvailable?: boolean | null;
   hash?: string | null;
 }
-const Response2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Asn,
     dataLength: Schema.Number,
@@ -439,7 +439,7 @@ const Response2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Initiator2 {
   type: string;
 }
-const Initiator2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Initiator2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.String,
   }),
@@ -448,7 +448,7 @@ const Initiator2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Headers {
   name: string;
 }
-const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Headers = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
   }),
@@ -463,7 +463,7 @@ interface Request3 {
   referrerPolicy: string;
   url: string;
 }
-const Request3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Headers,
     initialPriority: Schema.String,
@@ -495,7 +495,7 @@ interface RequestItem {
   type: string;
   wallTime: number;
 }
-const RequestItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RequestItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     documentURL: Schema.String,
     frameId: Schema.String,
@@ -622,7 +622,7 @@ interface Request4 {
       }[]
     | null;
 }
-const Request4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     request: Request2,
     response: Response2,
@@ -772,7 +772,7 @@ interface Data {
       | null;
   }[];
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     console: Schema.Array(Console),
     cookies: Schema.Array(Cookie),
@@ -789,7 +789,7 @@ interface Certificate {
   validFrom: number;
   validTo: number;
 }
-const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Certificate = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     issuer: Schema.String,
     subjectName: Schema.String,
@@ -815,7 +815,7 @@ interface Lists {
   servers: string[];
   urls: string[];
 }
-const Lists = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Lists = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asns: Schema.Array(Schema.String),
     certificates: Schema.Array(Certificate),
@@ -837,7 +837,7 @@ interface Data2 {
   ip: string;
   name: string;
 }
-const Data2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.String,
     country: Schema.String,
@@ -856,7 +856,7 @@ interface Asn2 {
     name: string;
   }[];
 }
-const Asn2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asn2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data2),
   }),
@@ -868,7 +868,7 @@ interface Data3 {
   name: string;
   type: string;
 }
-const Data3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.String,
     dnssecValid: Schema.Boolean,
@@ -887,7 +887,7 @@ const Data3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Dns {
   data: { address: string; dnssecValid: boolean; name: string; type: string }[];
 }
-const Dns = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dns = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data3),
   }),
@@ -898,7 +898,7 @@ interface Data4 {
   isPrimary: boolean;
   name: string;
 }
-const Data4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     inherited: Schema.Unknown,
     isPrimary: Schema.Boolean,
@@ -909,7 +909,7 @@ const Data4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface DomainCategories {
   data: { inherited: unknown; isPrimary: boolean; name: string }[];
 }
-const DomainCategories = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainCategories = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data4),
   }),
@@ -922,7 +922,7 @@ interface Geoip2 {
   ll: number[];
   region: string;
 }
-const Geoip2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geoip2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.String,
     country: Schema.String,
@@ -950,7 +950,7 @@ interface Data5 {
   };
   ip: string;
 }
-const Data5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     geoip: Geoip2,
     ip: Schema.String,
@@ -969,7 +969,7 @@ interface Geoip3 {
     ip: string;
   }[];
 }
-const Geoip3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geoip3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data5),
   }),
@@ -978,7 +978,7 @@ const Geoip3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Phishing {
   data: string[];
 }
-const Phishing = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Phishing = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Schema.String),
   }),
@@ -989,7 +989,7 @@ interface Data6 {
   hostname: string;
   rank?: number | null;
 }
-const Data6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bucket: Schema.String,
     hostname: Schema.String,
@@ -1000,7 +1000,7 @@ const Data6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface RadarRank {
   data: { bucket: string; hostname: string; rank?: number | null }[];
 }
-const RadarRank = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RadarRank = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data6),
   }),
@@ -1010,7 +1010,7 @@ interface Category {
   name: string;
   priority: number;
 }
-const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Category = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     priority: Schema.Number,
@@ -1023,7 +1023,7 @@ interface Confidence {
   pattern: string;
   patternType: string;
 }
-const Confidence = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Confidence = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     confidence: Schema.Number,
     name: Schema.String,
@@ -1045,7 +1045,7 @@ interface Data7 {
   icon: string;
   website: string;
 }
-const Data7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     app: Schema.String,
     categories: Schema.Array(Category),
@@ -1071,7 +1071,7 @@ interface Wappa {
     website: string;
   }[];
 }
-const Wappa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Wappa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data7),
   }),
@@ -1081,7 +1081,7 @@ interface Finding {
   outcome: string;
   summary: string;
 }
-const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Finding = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     outcome: Schema.String,
     summary: Schema.String,
@@ -1093,7 +1093,7 @@ interface Request5 {
   url: string;
   headers?: unknown | null;
 }
-const Request5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     method: Schema.String,
     url: Schema.String,
@@ -1109,7 +1109,7 @@ interface Response3 {
   headers?: unknown | null;
   redirectedTo?: string | null;
 }
-const Response3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     status: Schema.Number,
     statusText: Schema.String,
@@ -1134,7 +1134,7 @@ interface Evidence {
     redirectedTo?: string | null;
   } | null;
 }
-const Evidence = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Evidence = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.String,
     label: Schema.String,
@@ -1170,7 +1170,7 @@ interface ContentSignals {
     | null;
   message?: string | null;
 }
-const ContentSignals = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContentSignals = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     status: Schema.String,
     details: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -1262,7 +1262,7 @@ interface BotAccessControl {
     message?: string | null;
   };
 }
-const BotAccessControl = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BotAccessControl = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     contentSignals: ContentSignals,
     robotsTxtAiRules: ContentSignals,
@@ -1402,7 +1402,7 @@ interface Commerce {
     message?: string | null;
   };
 }
-const Commerce = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Commerce = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acp: ContentSignals,
     ap2: ContentSignals,
@@ -1440,7 +1440,7 @@ interface ContentAccessibility {
     message?: string | null;
   };
 }
-const ContentAccessibility = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContentAccessibility = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     markdownNegotiation: ContentSignals,
   }),
@@ -1526,7 +1526,7 @@ interface Discoverability {
     message?: string | null;
   };
 }
-const Discoverability = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Discoverability = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     linkHeaders: ContentSignals,
     robotsTxt: ContentSignals,
@@ -1718,7 +1718,7 @@ interface Discovery {
     message?: string | null;
   };
 }
-const Discovery = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Discovery = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     a2aAgentCard: ContentSignals,
     agentSkills: ContentSignals,
@@ -2236,7 +2236,7 @@ interface Checks {
     };
   };
 }
-const Checks = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Checks = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     botAccessControl: BotAccessControl,
     commerce: Commerce,
@@ -2253,7 +2253,7 @@ interface Requirement {
   skillUrl: string;
   specUrls: string[];
 }
-const Requirement = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Requirement = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     check: Schema.String,
     description: Schema.String,
@@ -2274,7 +2274,7 @@ interface NextLevel {
   }[];
   target: number;
 }
-const NextLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NextLevel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     requirements: Schema.Array(Requirement),
@@ -2805,7 +2805,7 @@ interface AgentReadiness {
     target: number;
   } | null;
 }
-const AgentReadiness = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AgentReadiness = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checks: Checks,
     level: Schema.Number,
@@ -2823,7 +2823,7 @@ interface ContentSignal {
   aiTrain?: string | null;
   search?: string | null;
 }
-const ContentSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContentSignal = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aiInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiTrain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2847,7 +2847,7 @@ interface Anon {
   } | null;
   crawlDelay?: number | null;
 }
-const Anon = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Anon = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allow: Schema.Array(Schema.String),
     disallow: Schema.Array(Schema.String),
@@ -2868,7 +2868,7 @@ interface Rules {
     crawlDelay?: number | null;
   };
 }
-const Rules = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rules = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "*": Anon,
   }),
@@ -2890,7 +2890,7 @@ interface Data8 {
   sitemaps: string[];
   hash?: string | null;
 }
-const Data8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rules: Rules,
     sitemaps: Schema.Array(Schema.String),
@@ -2916,7 +2916,7 @@ interface RobotsTXT {
     hash?: string | null;
   }[];
 }
-const RobotsTXT = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RobotsTXT = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data8),
   }),
@@ -2927,7 +2927,7 @@ interface Content {
   name: string;
   superCategoryId: number;
 }
-const Content = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Content = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.Number,
     name: Schema.String,
@@ -2946,7 +2946,7 @@ interface Inherited {
   from: string;
   risks: { id: number; name: string; superCategoryId: number }[];
 }
-const Inherited = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Inherited = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.Array(Content),
     from: Schema.String,
@@ -2964,7 +2964,7 @@ interface Data9 {
   name: string;
   risks: { id: number; name: string; superCategoryId: number }[];
 }
-const Data9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.Array(Content),
     inherited: Inherited,
@@ -2985,7 +2985,7 @@ interface Urlcategories {
     risks: { id: number; name: string; superCategoryId: number }[];
   }[];
 }
-const Urlcategories = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Urlcategories = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.Array(Data9),
   }),
@@ -3598,7 +3598,7 @@ interface Processors {
     }[];
   } | null;
 }
-const Processors = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Processors = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Asn2,
     dns: Dns,
@@ -4239,7 +4239,7 @@ interface Meta {
     } | null;
   };
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     processors: Processors,
   }),
@@ -4251,7 +4251,7 @@ interface Screenshot {
   name: string;
   phash: string;
 }
-const Screenshot = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Screenshot = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dhash: Schema.String,
     mm3Hash: Schema.Number,
@@ -4284,7 +4284,7 @@ interface Page {
     phash: string;
   } | null;
 }
-const Page = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Page = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     apexDomain: Schema.String,
     asn: Schema.String,
@@ -4310,7 +4310,7 @@ interface Scanner {
   colo: string;
   country: string;
 }
-const Scanner = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Scanner = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     colo: Schema.String,
     country: Schema.String,
@@ -4328,7 +4328,7 @@ interface DomainStat {
   redirects: number;
   size: number;
 }
-const DomainStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     countries: Schema.Array(Schema.String),
@@ -4369,7 +4369,7 @@ interface Ipstat {
   size: number;
   count?: number | null;
 }
-const Ipstat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipstat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Asn,
     countries: Schema.Array(Schema.String),
@@ -4394,7 +4394,7 @@ interface ProtocolStat {
   protocol: string;
   size: number;
 }
-const ProtocolStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ProtocolStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     countries: Schema.Array(Schema.String),
@@ -4415,7 +4415,7 @@ interface ResourceStat {
   size: number;
   type: string;
 }
-const ResourceStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResourceStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     compression: Schema.Number,
     count: Schema.Number,
@@ -4436,7 +4436,7 @@ interface ServerStat {
   server: string;
   size: number;
 }
-const ServerStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServerStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     countries: Schema.Array(Schema.String),
@@ -4450,7 +4450,7 @@ const ServerStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Protocols {
   "tls 1.3 / AES_128GCM": number;
 }
-const Protocols = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Protocols = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "tls 1.3 / AES_128GCM": Schema.Number,
   }).pipe(
@@ -4467,7 +4467,7 @@ interface Tlsstat {
   securityState: string;
   size: number;
 }
-const Tlsstat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tlsstat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     countries: Schema.Array(Schema.String),
@@ -4561,7 +4561,7 @@ interface Stats {
   uniqASNs: number;
   uniqCountries: number;
 }
-const Stats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Stats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domainStats: Schema.Array(DomainStat),
     ipStats: Schema.Array(Ipstat),
@@ -4600,7 +4600,7 @@ interface Options {
   customHeaders?: unknown | null;
   screenshotsResolutions?: string[] | null;
 }
-const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Options = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customHeaders: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
     screenshotsResolutions: Schema.optional(
@@ -4627,7 +4627,7 @@ interface Task {
   uuid: string;
   visibility: string;
 }
-const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Task = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     apexDomain: Schema.String,
     domain: Schema.String,
@@ -4651,7 +4651,7 @@ interface Overall {
   malicious: boolean;
   tags: string[];
 }
-const Overall = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Overall = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     categories: Schema.Array(Schema.String),
     hasVerdicts: Schema.Boolean,
@@ -4668,7 +4668,7 @@ interface Verdicts {
     tags: string[];
   };
 }
-const Verdicts = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Verdicts = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     overall: Overall,
   }),
@@ -4680,7 +4680,7 @@ interface Page2 {
   ip: string;
   url: string;
 }
-const Page2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Page2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asn: Schema.String,
     country: Schema.String,
@@ -4695,7 +4695,7 @@ interface Stats2 {
   uniqCountries: number;
   uniqIPs: number;
 }
-const Stats2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Stats2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dataLength: Schema.Number,
     requests: Schema.Number,
@@ -4710,7 +4710,7 @@ interface Task2 {
   uuid: string;
   visibility: string;
 }
-const Task2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Task2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     time: Schema.String,
     url: Schema.String,
@@ -4722,7 +4722,7 @@ const Task2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Verdicts2 {
   malicious: boolean;
 }
-const Verdicts2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Verdicts2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     malicious: Schema.Boolean,
   }),
@@ -4741,7 +4741,7 @@ interface Result {
   task: { time: string; url: string; uuid: string; visibility: string };
   verdicts: { malicious: boolean };
 }
-const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Result = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     page: Page2,
@@ -4764,7 +4764,7 @@ const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Options2 {
   useragent?: string | null;
 }
-const Options2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Options2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     useragent: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -4785,7 +4785,7 @@ interface Body {
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the sca */
   visibility?: "Public" | "Unlisted" | (string & {}) | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.String,
     agentReadiness: Schema.optional(
@@ -4829,19 +4829,18 @@ interface ScanBulkCreateResponseItem {
   visibility: "public" | "unlisted" | (string & {});
   options?: { useragent?: string | null } | null;
 }
-const ScanBulkCreateResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      api: Schema.String,
-      result: Schema.String,
-      url: Schema.String,
-      uuid: Schema.String,
-      visibility: Schema.Union([
-        Schema.Literals(["public", "unlisted"]),
-        Schema.String,
-      ]),
-      options: Schema.optional(Schema.Union([Options2, Schema.Null])),
-    }),
+const ScanBulkCreateResponseItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    api: Schema.String,
+    result: Schema.String,
+    url: Schema.String,
+    uuid: Schema.String,
+    visibility: Schema.Union([
+      Schema.Literals(["public", "unlisted"]),
+      Schema.String,
+    ]),
+    options: Schema.optional(Schema.Union([Options2, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ScanBulkCreateResponseItem>;
 
 interface Creator {
@@ -4849,7 +4848,7 @@ interface Creator {
   name: string;
   version: string;
 }
-const Creator = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Creator = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     comment: Schema.String,
     name: Schema.String,
@@ -4865,7 +4864,7 @@ interface Request6 {
   method: string;
   url: string;
 }
-const Request6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bodySize: Schema.Number,
     headers: Schema.Array(SecurityHeader),
@@ -4881,7 +4880,7 @@ interface Content2 {
   size: number;
   compression?: number | null;
 }
-const Content2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Content2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mimeType: Schema.String,
     size: Schema.Number,
@@ -4900,7 +4899,7 @@ interface Response4 {
   status: number;
   statusText: string;
 }
-const Response4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     transferSize: Schema.Number,
     bodySize: Schema.Number,
@@ -4959,7 +4958,7 @@ interface Entry {
   startedDateTime: string;
   time: number;
 }
-const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Entry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     initialPriority: Schema.String,
     initiatorType: Schema.String,
@@ -4999,7 +4998,7 @@ interface PageTimings {
   onContentLoad: number;
   onLoad: number;
 }
-const PageTimings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PageTimings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     onContentLoad: Schema.Number,
     onLoad: Schema.Number,
@@ -5012,7 +5011,7 @@ interface Page3 {
   startedDateTime: string;
   title: string;
 }
-const Page3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Page3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     pageTimings: PageTimings,
@@ -5064,7 +5063,7 @@ interface Log {
   }[];
   version: string;
 }
-const Log = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Log = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     creator: Creator,
     entries: Schema.Array(Entry),
@@ -5083,22 +5082,21 @@ export interface GetResponsRequest {
   accountId: string;
 }
 
-export const GetResponsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      responseId: Schema.String.pipe(T.HttpPath("responseId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/urlscanner/v2/responses/{responseId}",
-      }),
-    ),
+export const GetResponsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    responseId: Schema.String.pipe(T.HttpPath("responseId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/responses/{responseId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetResponsRequest>;
 
 export type GetResponsResponse = string;
 
-export const GetResponsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetResponsResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.String,
 ) as unknown as Schema.Codec<GetResponsResponse>;
 
@@ -5109,7 +5107,7 @@ export const getRespons: API.OperationMethod<
   GetResponsResponse,
   GetResponsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponsRequest,
   output: GetResponsResponse,
   errors: [],
@@ -5125,7 +5123,7 @@ export interface GetScanRequest {
   accountId: string;
 }
 
-export const GetScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetScanRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     scanId: Schema.String.pipe(T.HttpPath("scanId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6039,7 +6037,7 @@ export interface GetScanResponse {
   };
 }
 
-export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetScanResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Data,
     lists: Lists,
@@ -6059,7 +6057,7 @@ export const getScan: API.OperationMethod<
   GetScanResponse,
   GetScanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScanRequest,
   output: GetScanResponse,
   errors: [],
@@ -6074,7 +6072,7 @@ export interface ListScansRequest {
   size?: number;
 }
 
-export const ListScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListScansRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
@@ -6103,11 +6101,10 @@ export interface ListScansResponse {
   }[];
 }
 
-export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      results: Schema.Array(Result),
-    }),
+export const ListScansResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    results: Schema.Array(Result),
+  }),
 ) as unknown as Schema.Codec<ListScansResponse>;
 
 export type ListScansError = DefaultErrors;
@@ -6117,7 +6114,7 @@ export const listScans: API.OperationMethod<
   ListScansResponse,
   ListScansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListScansRequest,
   output: ListScansResponse,
   errors: [],
@@ -6340,236 +6337,235 @@ export interface CreateScanRequest {
   visibility?: "Public" | "Unlisted" | (string & {});
 }
 
-export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      url: Schema.String,
-      agentReadiness: Schema.optional(Schema.Boolean),
-      country: Schema.optional(
+export const CreateScanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    url: Schema.String,
+    agentReadiness: Schema.optional(Schema.Boolean),
+    country: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "AF",
+          "AL",
+          "DZ",
+          "AD",
+          "AO",
+          "AG",
+          "AR",
+          "AM",
+          "AU",
+          "AT",
+          "AZ",
+          "BH",
+          "BD",
+          "BB",
+          "BY",
+          "BE",
+          "BZ",
+          "BJ",
+          "BM",
+          "BT",
+          "BO",
+          "BA",
+          "BW",
+          "BR",
+          "BN",
+          "BG",
+          "BF",
+          "BI",
+          "KH",
+          "CM",
+          "CA",
+          "CV",
+          "KY",
+          "CF",
+          "TD",
+          "CL",
+          "CN",
+          "CO",
+          "KM",
+          "CG",
+          "CR",
+          "CI",
+          "HR",
+          "CU",
+          "CY",
+          "CZ",
+          "CD",
+          "DK",
+          "DJ",
+          "DM",
+          "DO",
+          "EC",
+          "EG",
+          "SV",
+          "GQ",
+          "ER",
+          "EE",
+          "SZ",
+          "ET",
+          "FJ",
+          "FI",
+          "FR",
+          "GA",
+          "GE",
+          "DE",
+          "GH",
+          "GR",
+          "GL",
+          "GD",
+          "GT",
+          "GN",
+          "GW",
+          "GY",
+          "HT",
+          "HN",
+          "HU",
+          "IS",
+          "IN",
+          "ID",
+          "IR",
+          "IQ",
+          "IE",
+          "IL",
+          "IT",
+          "JM",
+          "JP",
+          "JO",
+          "KZ",
+          "KE",
+          "KI",
+          "KW",
+          "KG",
+          "LA",
+          "LV",
+          "LB",
+          "LS",
+          "LR",
+          "LY",
+          "LI",
+          "LT",
+          "LU",
+          "MO",
+          "MG",
+          "MW",
+          "MY",
+          "MV",
+          "ML",
+          "MR",
+          "MU",
+          "MX",
+          "FM",
+          "MD",
+          "MC",
+          "MN",
+          "MS",
+          "MA",
+          "MZ",
+          "MM",
+          "NA",
+          "NR",
+          "NP",
+          "NL",
+          "NZ",
+          "NI",
+          "NE",
+          "NG",
+          "KP",
+          "MK",
+          "NO",
+          "OM",
+          "PK",
+          "PS",
+          "PA",
+          "PG",
+          "PY",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "QA",
+          "RO",
+          "RU",
+          "RW",
+          "SH",
+          "KN",
+          "LC",
+          "VC",
+          "WS",
+          "SM",
+          "ST",
+          "SA",
+          "SN",
+          "RS",
+          "SC",
+          "SL",
+          "SK",
+          "SI",
+          "SB",
+          "SO",
+          "ZA",
+          "KR",
+          "SS",
+          "ES",
+          "LK",
+          "SD",
+          "SR",
+          "SE",
+          "CH",
+          "SY",
+          "TW",
+          "TJ",
+          "TZ",
+          "TH",
+          "BS",
+          "GM",
+          "TL",
+          "TG",
+          "TO",
+          "TT",
+          "TN",
+          "TR",
+          "TM",
+          "UG",
+          "UA",
+          "AE",
+          "GB",
+          "US",
+          "UY",
+          "UZ",
+          "VU",
+          "VE",
+          "VN",
+          "YE",
+          "ZM",
+          "ZW",
+        ]),
+        Schema.String,
+      ]),
+    ),
+    customagent: Schema.optional(Schema.String),
+    customHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    referer: Schema.optional(Schema.String),
+    screenshotsResolutions: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals([
-            "AF",
-            "AL",
-            "DZ",
-            "AD",
-            "AO",
-            "AG",
-            "AR",
-            "AM",
-            "AU",
-            "AT",
-            "AZ",
-            "BH",
-            "BD",
-            "BB",
-            "BY",
-            "BE",
-            "BZ",
-            "BJ",
-            "BM",
-            "BT",
-            "BO",
-            "BA",
-            "BW",
-            "BR",
-            "BN",
-            "BG",
-            "BF",
-            "BI",
-            "KH",
-            "CM",
-            "CA",
-            "CV",
-            "KY",
-            "CF",
-            "TD",
-            "CL",
-            "CN",
-            "CO",
-            "KM",
-            "CG",
-            "CR",
-            "CI",
-            "HR",
-            "CU",
-            "CY",
-            "CZ",
-            "CD",
-            "DK",
-            "DJ",
-            "DM",
-            "DO",
-            "EC",
-            "EG",
-            "SV",
-            "GQ",
-            "ER",
-            "EE",
-            "SZ",
-            "ET",
-            "FJ",
-            "FI",
-            "FR",
-            "GA",
-            "GE",
-            "DE",
-            "GH",
-            "GR",
-            "GL",
-            "GD",
-            "GT",
-            "GN",
-            "GW",
-            "GY",
-            "HT",
-            "HN",
-            "HU",
-            "IS",
-            "IN",
-            "ID",
-            "IR",
-            "IQ",
-            "IE",
-            "IL",
-            "IT",
-            "JM",
-            "JP",
-            "JO",
-            "KZ",
-            "KE",
-            "KI",
-            "KW",
-            "KG",
-            "LA",
-            "LV",
-            "LB",
-            "LS",
-            "LR",
-            "LY",
-            "LI",
-            "LT",
-            "LU",
-            "MO",
-            "MG",
-            "MW",
-            "MY",
-            "MV",
-            "ML",
-            "MR",
-            "MU",
-            "MX",
-            "FM",
-            "MD",
-            "MC",
-            "MN",
-            "MS",
-            "MA",
-            "MZ",
-            "MM",
-            "NA",
-            "NR",
-            "NP",
-            "NL",
-            "NZ",
-            "NI",
-            "NE",
-            "NG",
-            "KP",
-            "MK",
-            "NO",
-            "OM",
-            "PK",
-            "PS",
-            "PA",
-            "PG",
-            "PY",
-            "PE",
-            "PH",
-            "PL",
-            "PT",
-            "QA",
-            "RO",
-            "RU",
-            "RW",
-            "SH",
-            "KN",
-            "LC",
-            "VC",
-            "WS",
-            "SM",
-            "ST",
-            "SA",
-            "SN",
-            "RS",
-            "SC",
-            "SL",
-            "SK",
-            "SI",
-            "SB",
-            "SO",
-            "ZA",
-            "KR",
-            "SS",
-            "ES",
-            "LK",
-            "SD",
-            "SR",
-            "SE",
-            "CH",
-            "SY",
-            "TW",
-            "TJ",
-            "TZ",
-            "TH",
-            "BS",
-            "GM",
-            "TL",
-            "TG",
-            "TO",
-            "TT",
-            "TN",
-            "TR",
-            "TM",
-            "UG",
-            "UA",
-            "AE",
-            "GB",
-            "US",
-            "UY",
-            "UZ",
-            "VU",
-            "VE",
-            "VN",
-            "YE",
-            "ZM",
-            "ZW",
-          ]),
+          Schema.Literals(["desktop", "mobile", "tablet"]),
           Schema.String,
         ]),
       ),
-      customagent: Schema.optional(Schema.String),
-      customHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      referer: Schema.optional(Schema.String),
-      screenshotsResolutions: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["desktop", "mobile", "tablet"]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      visibility: Schema.optional(
-        Schema.Union([Schema.Literals(["Public", "Unlisted"]), Schema.String]),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/urlscanner/v2/scan",
-      }),
     ),
+    visibility: Schema.optional(
+      Schema.Union([Schema.Literals(["Public", "Unlisted"]), Schema.String]),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/urlscanner/v2/scan",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateScanRequest>;
 
 export interface CreateScanResponse {
@@ -6587,20 +6583,19 @@ export interface CreateScanResponse {
   options?: { useragent?: string | null } | null;
 }
 
-export const CreateScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      api: Schema.String,
-      message: Schema.String,
-      result: Schema.String,
-      url: Schema.String,
-      uuid: Schema.String,
-      visibility: Schema.Union([
-        Schema.Literals(["public", "unlisted"]),
-        Schema.String,
-      ]),
-      options: Schema.optional(Schema.Union([Options2, Schema.Null])),
-    }),
+export const CreateScanResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    api: Schema.String,
+    message: Schema.String,
+    result: Schema.String,
+    url: Schema.String,
+    uuid: Schema.String,
+    visibility: Schema.Union([
+      Schema.Literals(["public", "unlisted"]),
+      Schema.String,
+    ]),
+    options: Schema.optional(Schema.Union([Options2, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<CreateScanResponse>;
 
 export type CreateScanError = DefaultErrors;
@@ -6610,7 +6605,7 @@ export const createScan: API.OperationMethod<
   CreateScanResponse,
   CreateScanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScanRequest,
   output: CreateScanResponse,
   errors: [],
@@ -6637,7 +6632,7 @@ export interface BulkCreateScansRequest {
 }
 
 export const BulkCreateScansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.optional(Schema.Array(Body)).pipe(T.HttpBody()),
@@ -6659,7 +6654,7 @@ export type BulkCreateScansResponse = {
 }[];
 
 export const BulkCreateScansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ScanBulkCreateResponseItem),
   ) as unknown as Schema.Codec<BulkCreateScansResponse>;
 
@@ -6670,7 +6665,7 @@ export const bulkCreateScans: API.OperationMethod<
   BulkCreateScansResponse,
   BulkCreateScansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkCreateScansRequest,
   output: BulkCreateScansResponse,
   errors: [],
@@ -6682,7 +6677,7 @@ export interface DomScanRequest {
   accountId: string;
 }
 
-export const DomScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DomScanRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     scanId: Schema.String.pipe(T.HttpPath("scanId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6696,7 +6691,7 @@ export const DomScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type DomScanResponse = string;
 
-export const DomScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const DomScanResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.String,
 ) as unknown as Schema.Codec<DomScanResponse>;
 
@@ -6707,7 +6702,7 @@ export const domScan: API.OperationMethod<
   DomScanResponse,
   DomScanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DomScanRequest,
   output: DomScanResponse,
   errors: [],
@@ -6719,7 +6714,7 @@ export interface HarScanRequest {
   accountId: string;
 }
 
-export const HarScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const HarScanRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     scanId: Schema.String.pipe(T.HttpPath("scanId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6781,7 +6776,7 @@ export interface HarScanResponse {
   };
 }
 
-export const HarScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const HarScanResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     log: Log,
   }),
@@ -6794,7 +6789,7 @@ export const harScan: API.OperationMethod<
   HarScanResponse,
   HarScanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HarScanRequest,
   output: HarScanResponse,
   errors: [],
@@ -6808,29 +6803,28 @@ export interface ScreenshotScanRequest {
   resolution?: "desktop" | "mobile" | "tablet" | (string & {});
 }
 
-export const ScreenshotScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      scanId: Schema.String.pipe(T.HttpPath("scanId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      resolution: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["desktop", "mobile", "tablet"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("resolution")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/urlscanner/v2/screenshots/{scanId}.png",
-      }),
-    ),
+export const ScreenshotScanRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scanId: Schema.String.pipe(T.HttpPath("scanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    resolution: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["desktop", "mobile", "tablet"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("resolution")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/screenshots/{scanId}.png",
+    }),
+  ),
 ) as unknown as Schema.Codec<ScreenshotScanRequest>;
 
 export type ScreenshotScanResponse = unknown;
 
 export const ScreenshotScanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<ScreenshotScanResponse>;
 
@@ -6841,7 +6835,7 @@ export const screenshotScan: API.OperationMethod<
   ScreenshotScanResponse,
   ScreenshotScanError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScreenshotScanRequest,
   output: ScreenshotScanResponse,
   errors: [],

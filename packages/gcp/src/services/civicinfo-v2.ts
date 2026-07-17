@@ -39,7 +39,7 @@ export interface CivicinfoSchemaV2Election {
 }
 
 export const CivicinfoSchemaV2Election: Schema.Codec<CivicinfoSchemaV2Election> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     ocdDivisionId: Schema.optional(Schema.String),
     electionDay: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface CivicinfoSchemaV2Precinct {
 }
 
 export const CivicinfoSchemaV2Precinct: Schema.Codec<CivicinfoSchemaV2Precinct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     administrationRegionId: Schema.optional(Schema.String),
     mailOnly: Schema.optional(Schema.Boolean),
     contestId: Schema.optional(Schema.Array(Schema.String)),
@@ -115,7 +115,7 @@ export interface CivicinfoSchemaV2SimpleAddressType {
 }
 
 export const CivicinfoSchemaV2SimpleAddressType: Schema.Codec<CivicinfoSchemaV2SimpleAddressType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     line1: Schema.optional(Schema.String),
     line2: Schema.optional(Schema.String),
     line3: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface CivicinfoSchemaV2Source {
 }
 
 export const CivicinfoSchemaV2Source: Schema.Codec<CivicinfoSchemaV2Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     official: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CivicinfoSchemaV2Source" });
@@ -163,7 +163,7 @@ export interface CivicinfoSchemaV2PollingLocation {
 }
 
 export const CivicinfoSchemaV2PollingLocation: Schema.Codec<CivicinfoSchemaV2PollingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface CivicinfoSchemaV2ElectoralDistrict {
 }
 
 export const CivicinfoSchemaV2ElectoralDistrict: Schema.Codec<CivicinfoSchemaV2ElectoralDistrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface CivicinfoSchemaV2Channel {
 }
 
 export const CivicinfoSchemaV2Channel: Schema.Codec<CivicinfoSchemaV2Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "CivicinfoSchemaV2Channel" });
@@ -240,7 +240,7 @@ export interface CivicinfoSchemaV2Candidate {
 }
 
 export const CivicinfoSchemaV2Candidate: Schema.Codec<CivicinfoSchemaV2Candidate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     party: Schema.optional(Schema.String),
     channels: Schema.optional(Schema.Array(CivicinfoSchemaV2Channel)),
     name: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export interface CivicinfoSchemaV2Contest {
 }
 
 export const CivicinfoSchemaV2Contest: Schema.Codec<CivicinfoSchemaV2Contest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     special: Schema.optional(Schema.String),
     referendumTitle: Schema.optional(Schema.String),
     district: Schema.optional(CivicinfoSchemaV2ElectoralDistrict),
@@ -369,7 +369,7 @@ export interface CivicinfoSchemaV2ElectionOfficial {
 }
 
 export const CivicinfoSchemaV2ElectionOfficial: Schema.Codec<CivicinfoSchemaV2ElectionOfficial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     officePhoneNumber: Schema.optional(Schema.String),
     faxNumber: Schema.optional(Schema.String),
     emailAddress: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface CivicinfoSchemaV2AdministrativeBody {
 }
 
 export const CivicinfoSchemaV2AdministrativeBody: Schema.Codec<CivicinfoSchemaV2AdministrativeBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     electionOfficials: Schema.optional(
       Schema.Array(CivicinfoSchemaV2ElectionOfficial),
     ),
@@ -443,7 +443,7 @@ export interface CivicinfoSchemaV2AdministrationRegion {
 }
 
 export const CivicinfoSchemaV2AdministrationRegion: Schema.Codec<CivicinfoSchemaV2AdministrationRegion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       local_jurisdiction: Schema.optional(
         CivicinfoSchemaV2AdministrationRegion,
@@ -485,7 +485,7 @@ export interface CivicinfoApiprotosV2VoterInfoResponse {
 }
 
 export const CivicinfoApiprotosV2VoterInfoResponse: Schema.Codec<CivicinfoApiprotosV2VoterInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     precinctId: Schema.optional(Schema.String),
     otherElections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
     precincts: Schema.optional(Schema.Array(CivicinfoSchemaV2Precinct)),
@@ -516,7 +516,7 @@ export interface CivicinfoSchemaV2GeographicDivision {
 }
 
 export const CivicinfoSchemaV2GeographicDivision: Schema.Codec<CivicinfoSchemaV2GeographicDivision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     officeIndices: Schema.optional(Schema.Array(Schema.Number)),
     name: Schema.optional(Schema.String),
     alsoKnownAs: Schema.optional(Schema.Array(Schema.String)),
@@ -532,7 +532,7 @@ export interface CivicinfoApiprotosV2DivisionSearchResult {
 }
 
 export const CivicinfoApiprotosV2DivisionSearchResult: Schema.Codec<CivicinfoApiprotosV2DivisionSearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     aliases: Schema.optional(Schema.Array(Schema.String)),
     ocdId: Schema.optional(Schema.String),
@@ -545,7 +545,7 @@ export interface CivicinfoApiprotosV2DivisionSearchResponse {
 }
 
 export const CivicinfoApiprotosV2DivisionSearchResponse: Schema.Codec<CivicinfoApiprotosV2DivisionSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     results: Schema.optional(
       Schema.Array(CivicinfoApiprotosV2DivisionSearchResult),
@@ -559,7 +559,7 @@ export interface CivicinfoApiprotosV2DivisionByAddressResponse {
 }
 
 export const CivicinfoApiprotosV2DivisionByAddressResponse: Schema.Codec<CivicinfoApiprotosV2DivisionByAddressResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     normalizedInput: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
     divisions: Schema.optional(
       Schema.Record(Schema.String, CivicinfoSchemaV2GeographicDivision),
@@ -574,7 +574,7 @@ export interface CivicinfoApiprotosV2ElectionsQueryResponse {
 }
 
 export const CivicinfoApiprotosV2ElectionsQueryResponse: Schema.Codec<CivicinfoApiprotosV2ElectionsQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "CivicinfoApiprotosV2ElectionsQueryResponse" });
@@ -616,7 +616,7 @@ export interface ElectionQueryElectionsRequest {
 }
 
 export const ElectionQueryElectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productionDataOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("productionDataOnly"),
     ),
@@ -628,7 +628,7 @@ export const ElectionQueryElectionsRequest =
 export type ElectionQueryElectionsResponse =
   CivicinfoApiprotosV2ElectionsQueryResponse;
 export const ElectionQueryElectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2ElectionsQueryResponse;
+  /*@__PURE__*/ CivicinfoApiprotosV2ElectionsQueryResponse;
 
 export type ElectionQueryElectionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -638,7 +638,7 @@ export const electionQueryElections: API.OperationMethod<
   ElectionQueryElectionsResponse,
   ElectionQueryElectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ElectionQueryElectionsRequest,
   output: ElectionQueryElectionsResponse,
   errors: [NotFound, Forbidden],
@@ -658,7 +658,7 @@ export interface VoterInfoQueryElectionsRequest {
 }
 
 export const VoterInfoQueryElectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productionDataOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("productionDataOnly"),
     ),
@@ -678,7 +678,7 @@ export const VoterInfoQueryElectionsRequest =
 export type VoterInfoQueryElectionsResponse =
   CivicinfoApiprotosV2VoterInfoResponse;
 export const VoterInfoQueryElectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2VoterInfoResponse;
+  /*@__PURE__*/ CivicinfoApiprotosV2VoterInfoResponse;
 
 export type VoterInfoQueryElectionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -688,7 +688,7 @@ export const voterInfoQueryElections: API.OperationMethod<
   VoterInfoQueryElectionsResponse,
   VoterInfoQueryElectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VoterInfoQueryElectionsRequest,
   output: VoterInfoQueryElectionsResponse,
   errors: [NotFound, Forbidden],
@@ -699,11 +699,9 @@ export interface SearchDivisionsRequest {
   query?: string;
 }
 
-export const SearchDivisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
-  },
-).pipe(
+export const SearchDivisionsRequest = /*@__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
+}).pipe(
   T.Http({ method: "GET", path: "civicinfo/v2/divisions" }),
   svc,
 ) as unknown as Schema.Codec<SearchDivisionsRequest>;
@@ -711,7 +709,7 @@ export const SearchDivisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SearchDivisionsResponse =
   CivicinfoApiprotosV2DivisionSearchResponse;
 export const SearchDivisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2DivisionSearchResponse;
+  /*@__PURE__*/ CivicinfoApiprotosV2DivisionSearchResponse;
 
 export type SearchDivisionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -721,7 +719,7 @@ export const searchDivisions: API.OperationMethod<
   SearchDivisionsResponse,
   SearchDivisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchDivisionsRequest,
   output: SearchDivisionsResponse,
   errors: [NotFound, Forbidden],
@@ -732,7 +730,7 @@ export interface QueryDivisionByAddressDivisionsRequest {
 }
 
 export const QueryDivisionByAddressDivisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String).pipe(T.HttpQuery("address")),
   }).pipe(
     T.Http({ method: "GET", path: "civicinfo/v2/divisionsByAddress" }),
@@ -742,7 +740,7 @@ export const QueryDivisionByAddressDivisionsRequest =
 export type QueryDivisionByAddressDivisionsResponse =
   CivicinfoApiprotosV2DivisionByAddressResponse;
 export const QueryDivisionByAddressDivisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2DivisionByAddressResponse;
+  /*@__PURE__*/ CivicinfoApiprotosV2DivisionByAddressResponse;
 
 export type QueryDivisionByAddressDivisionsError =
   | DefaultErrors
@@ -755,7 +753,7 @@ export const queryDivisionByAddressDivisions: API.OperationMethod<
   QueryDivisionByAddressDivisionsResponse,
   QueryDivisionByAddressDivisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryDivisionByAddressDivisionsRequest,
   output: QueryDivisionByAddressDivisionsResponse,
   errors: [NotFound, Forbidden],

@@ -65,7 +65,7 @@ export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   };
 }
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -194,7 +194,7 @@ export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -273,7 +273,7 @@ export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -509,7 +509,7 @@ export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   };
 }
 export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1110,7 +1110,7 @@ export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1486,7 +1486,7 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1514,7 +1514,7 @@ export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1573,7 +1573,7 @@ export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerO
   status?: string;
 }
 export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1676,7 +1676,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput,
     outputSchema:
@@ -1697,7 +1697,7 @@ export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1748,7 +1748,7 @@ export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   status?: string;
 }
 export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1802,7 +1802,7 @@ export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict] as const,
@@ -1830,7 +1830,7 @@ export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerI
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1889,7 +1889,7 @@ export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerO
   status?: string;
 }
 export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1992,7 +1992,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput,
     outputSchema:
@@ -2013,7 +2013,7 @@ export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2064,7 +2064,7 @@ export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   status?: string;
 }
 export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2118,7 +2118,7 @@ export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict] as const,
@@ -2126,7 +2126,7 @@ export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler =
 // Input Schema
 export interface GetAutoscalingAPIGroupInput {}
 export const GetAutoscalingAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/" }),
   ) as unknown as Schema.Codec<GetAutoscalingAPIGroupInput>;
 
@@ -2140,7 +2140,7 @@ export interface GetAutoscalingAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetAutoscalingAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -2170,16 +2170,14 @@ export const GetAutoscalingAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAutoscalingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAutoscalingAPIGroupInput,
-    outputSchema: GetAutoscalingAPIGroupOutput,
-  }),
-);
+export const getAutoscalingAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAutoscalingAPIGroupInput,
+  outputSchema: GetAutoscalingAPIGroupOutput,
+}));
 // Input Schema
 export interface GetAutoscalingV1APIResourcesInput {}
 export const GetAutoscalingV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/v1/" }),
   ) as unknown as Schema.Codec<GetAutoscalingV1APIResourcesInput>;
 
@@ -2202,7 +2200,7 @@ export interface GetAutoscalingV1APIResourcesOutput {
   }[];
 }
 export const GetAutoscalingV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -2227,14 +2225,14 @@ export const GetAutoscalingV1APIResourcesOutput =
  * get available resources
  */
 export const getAutoscalingV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAutoscalingV1APIResourcesInput,
     outputSchema: GetAutoscalingV1APIResourcesOutput,
   }));
 // Input Schema
 export interface GetAutoscalingV2APIResourcesInput {}
 export const GetAutoscalingV2APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/v2/" }),
   ) as unknown as Schema.Codec<GetAutoscalingV2APIResourcesInput>;
 
@@ -2257,7 +2255,7 @@ export interface GetAutoscalingV2APIResourcesOutput {
   }[];
 }
 export const GetAutoscalingV2APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -2282,7 +2280,7 @@ export const GetAutoscalingV2APIResourcesOutput =
  * get available resources
  */
 export const getAutoscalingV2APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAutoscalingV2APIResourcesInput,
     outputSchema: GetAutoscalingV2APIResourcesOutput,
   }));
@@ -2302,7 +2300,7 @@ export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2384,7 +2382,7 @@ export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput 
   };
 }
 export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2532,7 +2530,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput,
     outputSchema:
       ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput,
@@ -2554,7 +2552,7 @@ export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   watch?: boolean;
 }
 export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2637,7 +2635,7 @@ export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2786,7 +2784,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
   }));
@@ -2806,7 +2804,7 @@ export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -3063,7 +3061,7 @@ export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput 
   };
 }
 export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3508,7 +3506,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAutoscalingV2HorizontalPodAutoscalerForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput,
     outputSchema:
       ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput,
@@ -3530,7 +3528,7 @@ export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   watch?: boolean;
 }
 export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3788,7 +3786,7 @@ export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4234,7 +4232,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
   }));
@@ -4249,7 +4247,7 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   force?: boolean;
 }
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4315,7 +4313,7 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4396,7 +4394,7 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4412,7 +4410,7 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput 
   force?: boolean;
 }
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4478,7 +4476,7 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput
   };
 }
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4559,7 +4557,7 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput,
@@ -4576,7 +4574,7 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   force?: boolean;
 }
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4817,7 +4815,7 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5195,7 +5193,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -5211,7 +5209,7 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput 
   force?: boolean;
 }
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -5452,7 +5450,7 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput
   };
 }
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5830,7 +5828,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput,
@@ -5843,7 +5841,7 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   pretty?: string;
 }
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -5905,7 +5903,7 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5982,7 +5980,7 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound] as const,
@@ -5994,7 +5992,7 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput {
   pretty?: string;
 }
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6056,7 +6054,7 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput 
   };
 }
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6133,7 +6131,7 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput,
@@ -6146,7 +6144,7 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   pretty?: string;
 }
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6383,7 +6381,7 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6757,7 +6755,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound] as const,
@@ -6769,7 +6767,7 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput {
   pretty?: string;
 }
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7006,7 +7004,7 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput 
   };
 }
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7380,7 +7378,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput,
@@ -7443,7 +7441,7 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   };
 }
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7573,7 +7571,7 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7653,7 +7651,7 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -7715,7 +7713,7 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInpu
   };
 }
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7845,7 +7843,7 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutp
   };
 }
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7925,7 +7923,7 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
@@ -8164,7 +8162,7 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   };
 }
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -8766,7 +8764,7 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   };
 }
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9143,7 +9141,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -9380,7 +9378,7 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInpu
   };
 }
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -9982,7 +9980,7 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutp
   };
 }
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10359,7 +10357,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
@@ -10382,7 +10380,7 @@ export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesIn
   watch?: boolean;
 }
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -10408,7 +10406,7 @@ export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOu
   type: string;
 }
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput>;
@@ -10472,7 +10470,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput,
     outputSchema:
@@ -10496,7 +10494,7 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
   watch?: boolean;
 }
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -10524,7 +10522,7 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
   type: string;
 }
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
@@ -10590,7 +10588,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV1NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
   }));
@@ -10611,7 +10609,7 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput {
   watch?: boolean;
 }
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -10638,7 +10636,7 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput {
   type: string;
 }
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput>;
@@ -10703,7 +10701,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV1NamespacedHorizontalPodAutoscalerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput,
     outputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput,
   }));
@@ -10723,7 +10721,7 @@ export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesIn
   watch?: boolean;
 }
 export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -10749,7 +10747,7 @@ export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOu
   type: string;
 }
 export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput>;
@@ -10813,7 +10811,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV2HorizontalPodAutoscalerListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput,
     outputSchema:
@@ -10837,7 +10835,7 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
   watch?: boolean;
 }
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -10865,7 +10863,7 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
   type: string;
 }
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
@@ -10931,7 +10929,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV2NamespacedHorizontalPodAutoscaler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
   }));
@@ -10952,7 +10950,7 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput {
   watch?: boolean;
 }
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -10979,7 +10977,7 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput {
   type: string;
 }
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput>;
@@ -11044,7 +11042,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAutoscalingV2NamespacedHorizontalPodAutoscalerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput,
     outputSchema: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput,
   }));

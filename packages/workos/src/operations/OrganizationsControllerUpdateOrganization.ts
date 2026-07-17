@@ -24,7 +24,7 @@ export interface OrganizationsControllerUpdateOrganizationInput {
   external_id?: string | null;
 }
 export const OrganizationsControllerUpdateOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
@@ -76,7 +76,7 @@ export interface OrganizationsControllerUpdateOrganizationOutput {
   allow_profiles_outside_organization?: boolean;
 }
 export const OrganizationsControllerUpdateOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export const OrganizationsControllerUpdateOrganizationOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const OrganizationsControllerUpdateOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsControllerUpdateOrganizationInput,
     outputSchema: OrganizationsControllerUpdateOrganizationOutput,
     errors: [

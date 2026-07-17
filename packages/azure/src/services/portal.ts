@@ -35,7 +35,7 @@ export interface DashboardsCreateOrUpdateInput {
   location: string;
 }
 export const DashboardsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dashboardName: Schema.String.pipe(T.PathParam()),
@@ -98,7 +98,7 @@ export interface DashboardsCreateOrUpdateOutput {
   };
 }
 export const DashboardsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -127,19 +127,17 @@ export const DashboardsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the dashboard.
  */
-export const DashboardsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardsCreateOrUpdateInput,
-    outputSchema: DashboardsCreateOrUpdateOutput,
-  }),
-);
+export const DashboardsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardsCreateOrUpdateInput,
+  outputSchema: DashboardsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DashboardsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   dashboardName: string;
 }
-export const DashboardsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dashboardName: Schema.String.pipe(T.PathParam()),
@@ -154,7 +152,7 @@ export const DashboardsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DashboardsDeleteOutput = void;
 export const DashboardsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteOutput>;
 
 // The operation
 /**
@@ -165,7 +163,7 @@ export const DashboardsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the dashboard.
  */
-export const DashboardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DashboardsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsDeleteInput,
   outputSchema: DashboardsDeleteOutput,
 }));
@@ -175,7 +173,7 @@ export interface DashboardsGetInput {
   resourceGroupName: string;
   dashboardName: string;
 }
-export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dashboardName: Schema.String.pipe(T.PathParam()),
@@ -201,7 +199,7 @@ export interface DashboardsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -230,7 +228,7 @@ export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the dashboard.
  */
-export const DashboardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DashboardsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsGetInput,
   outputSchema: DashboardsGetOutput,
 }));
@@ -240,7 +238,7 @@ export interface DashboardsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DashboardsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -269,7 +267,7 @@ export interface DashboardsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DashboardsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -313,7 +311,7 @@ export const DashboardsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DashboardsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsListByResourceGroupInput,
     outputSchema: DashboardsListByResourceGroupOutput,
   }));
@@ -322,7 +320,7 @@ export interface DashboardsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DashboardsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -350,7 +348,7 @@ export interface DashboardsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DashboardsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -393,7 +391,7 @@ export const DashboardsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DashboardsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsListBySubscriptionInput,
     outputSchema: DashboardsListBySubscriptionOutput,
   }));
@@ -421,7 +419,7 @@ export interface DashboardsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const DashboardsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DashboardsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dashboardName: Schema.String.pipe(T.PathParam()),
@@ -479,27 +477,25 @@ export interface DashboardsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DashboardsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<DashboardsUpdateOutput>;
+export const DashboardsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<DashboardsUpdateOutput>;
 
 // The operation
 /**
@@ -510,14 +506,14 @@ export const DashboardsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dashboardName - The name of the dashboard.
  */
-export const DashboardsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DashboardsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsUpdateInput,
   outputSchema: DashboardsUpdateOutput,
 }));
 // Input Schema
 export interface ListTenantConfigurationViolationsListInput {}
 export const ListTenantConfigurationViolationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Portal/listTenantConfigurationViolations",
@@ -531,7 +527,7 @@ export interface ListTenantConfigurationViolationsListOutput {
   nextLink?: string;
 }
 export const ListTenantConfigurationViolationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -549,15 +545,13 @@ export const ListTenantConfigurationViolationsListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ListTenantConfigurationViolationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListTenantConfigurationViolationsListInput,
     outputSchema: ListTenantConfigurationViolationsListOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Portal/operations",
@@ -581,7 +575,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -611,7 +605,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -624,7 +618,7 @@ export interface TenantConfigurationsCreateInput {
   };
 }
 export const TenantConfigurationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -657,7 +651,7 @@ export interface TenantConfigurationsCreateOutput {
   };
 }
 export const TenantConfigurationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -684,18 +678,16 @@ export const TenantConfigurationsCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param configurationName - The name of the Configuration
  */
-export const TenantConfigurationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationsCreateInput,
-    outputSchema: TenantConfigurationsCreateOutput,
-  }),
-);
+export const TenantConfigurationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationsCreateInput,
+  outputSchema: TenantConfigurationsCreateOutput,
+}));
 // Input Schema
 export interface TenantConfigurationsDeleteInput {
   configurationName: string;
 }
 export const TenantConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -708,7 +700,7 @@ export const TenantConfigurationsDeleteInput =
 // Output Schema
 export type TenantConfigurationsDeleteOutput = void;
 export const TenantConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -717,18 +709,16 @@ export const TenantConfigurationsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param configurationName - The name of the Configuration
  */
-export const TenantConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationsDeleteInput,
-    outputSchema: TenantConfigurationsDeleteOutput,
-  }),
-);
+export const TenantConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationsDeleteInput,
+  outputSchema: TenantConfigurationsDeleteOutput,
+}));
 // Input Schema
 export interface TenantConfigurationsGetInput {
   configurationName: string;
 }
 export const TenantConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -753,7 +743,7 @@ export interface TenantConfigurationsGetOutput {
   };
 }
 export const TenantConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -780,16 +770,14 @@ export const TenantConfigurationsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param configurationName - The name of the Configuration
  */
-export const TenantConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationsGetInput,
-    outputSchema: TenantConfigurationsGetOutput,
-  }),
-);
+export const TenantConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationsGetInput,
+  outputSchema: TenantConfigurationsGetOutput,
+}));
 // Input Schema
 export interface TenantConfigurationsListInput {}
 export const TenantConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Portal/tenantConfigurations",
@@ -815,7 +803,7 @@ export interface TenantConfigurationsListOutput {
   nextLink?: string;
 }
 export const TenantConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -856,9 +844,7 @@ export const TenantConfigurationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const TenantConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TenantConfigurationsListInput,
-    outputSchema: TenantConfigurationsListOutput,
-  }),
-);
+export const TenantConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TenantConfigurationsListInput,
+  outputSchema: TenantConfigurationsListOutput,
+}));

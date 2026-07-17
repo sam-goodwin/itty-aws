@@ -12,7 +12,7 @@ export interface DeleteOrgApiKeyAccessListEntryInput {
   pretty?: boolean;
 }
 export const DeleteOrgApiKeyAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     apiUserId: Schema.String.pipe(T.PathParam()),
     ipAddress: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteOrgApiKeyAccessListEntryInput =
 // Output Schema
 export type DeleteOrgApiKeyAccessListEntryOutput = void;
 export const DeleteOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgApiKeyAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const DeleteOrgApiKeyAccessListEntryOutput =
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block to limit requests to API resources in the specified organization. When adding a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  */
 export const deleteOrgApiKeyAccessListEntry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrgApiKeyAccessListEntryInput,
     outputSchema: DeleteOrgApiKeyAccessListEntryOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

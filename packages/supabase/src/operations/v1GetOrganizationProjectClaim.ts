@@ -9,7 +9,7 @@ export interface V1GetOrganizationProjectClaimInput {
   token: string;
 }
 export const V1GetOrganizationProjectClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     token: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -47,7 +47,7 @@ export interface V1GetOrganizationProjectClaimOutput {
   created_by: string;
 }
 export const V1GetOrganizationProjectClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.Struct({
       ref: Schema.String,
       name: Schema.String,
@@ -101,7 +101,7 @@ export const V1GetOrganizationProjectClaimOutput =
  * @param slug - Organization slug
  */
 export const v1GetOrganizationProjectClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetOrganizationProjectClaimInput,
     outputSchema: V1GetOrganizationProjectClaimOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

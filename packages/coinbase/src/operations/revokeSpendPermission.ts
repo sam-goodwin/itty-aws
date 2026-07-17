@@ -18,7 +18,7 @@ export interface RevokeSpendPermissionInput {
   paymasterUrl?: string;
 }
 export const RevokeSpendPermissionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base",
@@ -77,7 +77,7 @@ export interface RevokeSpendPermissionOutput {
   expiresAt?: string;
 }
 export const RevokeSpendPermissionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -143,9 +143,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The address of the Smart account this spend permission is valid for.
  */
-export const revokeSpendPermission = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RevokeSpendPermissionInput,
-    outputSchema: RevokeSpendPermissionOutput,
-  }),
-);
+export const revokeSpendPermission = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RevokeSpendPermissionInput,
+  outputSchema: RevokeSpendPermissionOutput,
+}));

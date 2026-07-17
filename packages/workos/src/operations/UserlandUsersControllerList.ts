@@ -5,7 +5,7 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -19,7 +19,7 @@ export type UserlandUsersControllerListInput =
 
 // Output Schema
 export const UserlandUsersControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -66,10 +66,8 @@ export type UserlandUsersControllerListOutput =
  * @param organization_id - Filter users by the organization they are a member of.
  * @param email - Filter users by their email address.
  */
-export const UserlandUsersControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserlandUsersControllerListInput,
-    outputSchema: UserlandUsersControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const UserlandUsersControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUsersControllerListInput,
+  outputSchema: UserlandUsersControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

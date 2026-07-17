@@ -47,7 +47,7 @@ export interface ArtifactManifestsCreateOrUpdateInput {
   location: string;
 }
 export const ArtifactManifestsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -121,7 +121,7 @@ export interface ArtifactManifestsCreateOrUpdateOutput {
   };
 }
 export const ArtifactManifestsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export const ArtifactManifestsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactManifestsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactManifestsCreateOrUpdateInput,
     outputSchema: ArtifactManifestsCreateOrUpdateOutput,
   }));
@@ -166,7 +166,7 @@ export interface ArtifactManifestsDeleteInput {
   subscriptionId: string;
 }
 export const ArtifactManifestsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -183,7 +183,7 @@ export const ArtifactManifestsDeleteInput =
 // Output Schema
 export type ArtifactManifestsDeleteOutput = void;
 export const ArtifactManifestsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactManifestsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactManifestsDeleteOutput>;
 
 // The operation
 /**
@@ -196,12 +196,10 @@ export const ArtifactManifestsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ArtifactManifestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactManifestsDeleteInput,
-    outputSchema: ArtifactManifestsDeleteOutput,
-  }),
-);
+export const ArtifactManifestsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactManifestsDeleteInput,
+  outputSchema: ArtifactManifestsDeleteOutput,
+}));
 // Input Schema
 export interface ArtifactManifestsGetInput {
   resourceGroupName: string;
@@ -211,7 +209,7 @@ export interface ArtifactManifestsGetInput {
   subscriptionId: string;
 }
 export const ArtifactManifestsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -240,7 +238,7 @@ export interface ArtifactManifestsGetOutput {
   };
 }
 export const ArtifactManifestsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -271,12 +269,10 @@ export const ArtifactManifestsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ArtifactManifestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactManifestsGetInput,
-    outputSchema: ArtifactManifestsGetOutput,
-  }),
-);
+export const ArtifactManifestsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactManifestsGetInput,
+  outputSchema: ArtifactManifestsGetOutput,
+}));
 // Input Schema
 export interface ArtifactManifestsListByArtifactStoreInput {
   resourceGroupName: string;
@@ -285,7 +281,7 @@ export interface ArtifactManifestsListByArtifactStoreInput {
   subscriptionId: string;
 }
 export const ArtifactManifestsListByArtifactStoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -316,7 +312,7 @@ export interface ArtifactManifestsListByArtifactStoreOutput {
   nextLink?: string;
 }
 export const ArtifactManifestsListByArtifactStoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -364,7 +360,7 @@ export const ArtifactManifestsListByArtifactStoreOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactManifestsListByArtifactStore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactManifestsListByArtifactStoreInput,
     outputSchema: ArtifactManifestsListByArtifactStoreOutput,
   }));
@@ -377,7 +373,7 @@ export interface ArtifactManifestsListCredentialInput {
   subscriptionId: string;
 }
 export const ArtifactManifestsListCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -399,7 +395,7 @@ export interface ArtifactManifestsListCredentialOutput {
     | "AzureStorageAccountToken";
 }
 export const ArtifactManifestsListCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     credentialType: Schema.Literals([
       "Unknown",
       "AzureContainerRegistryScopedToken",
@@ -419,7 +415,7 @@ export const ArtifactManifestsListCredentialOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactManifestsListCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactManifestsListCredentialInput,
     outputSchema: ArtifactManifestsListCredentialOutput,
   }));
@@ -433,7 +429,7 @@ export interface ArtifactManifestsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ArtifactManifestsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -463,7 +459,7 @@ export interface ArtifactManifestsUpdateOutput {
   };
 }
 export const ArtifactManifestsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -495,12 +491,10 @@ export const ArtifactManifestsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param tags - Resource tags.
  */
-export const ArtifactManifestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactManifestsUpdateInput,
-    outputSchema: ArtifactManifestsUpdateOutput,
-  }),
-);
+export const ArtifactManifestsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactManifestsUpdateInput,
+  outputSchema: ArtifactManifestsUpdateOutput,
+}));
 // Input Schema
 export interface ArtifactManifestsUpdateStateInput {
   resourceGroupName: string;
@@ -517,7 +511,7 @@ export interface ArtifactManifestsUpdateStateInput {
     | "Succeeded";
 }
 export const ArtifactManifestsUpdateStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -552,7 +546,7 @@ export interface ArtifactManifestsUpdateStateOutput {
     | "Succeeded";
 }
 export const ArtifactManifestsUpdateStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifactManifestState: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -577,7 +571,7 @@ export const ArtifactManifestsUpdateStateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactManifestsUpdateState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactManifestsUpdateStateInput,
     outputSchema: ArtifactManifestsUpdateStateOutput,
   }));
@@ -590,7 +584,7 @@ export interface ArtifactStoresAddNetworkFabricControllerEndPointsInput {
   networkFabricControllerIds?: { id?: string }[];
 }
 export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -613,7 +607,7 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
 // Output Schema
 export type ArtifactStoresAddNetworkFabricControllerEndPointsOutput = void;
 export const ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresAddNetworkFabricControllerEndPointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresAddNetworkFabricControllerEndPointsOutput>;
 
 // The operation
 /**
@@ -626,7 +620,7 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresAddNetworkFabricControllerEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresAddNetworkFabricControllerEndPointsInput,
     outputSchema: ArtifactStoresAddNetworkFabricControllerEndPointsOutput,
   }));
@@ -639,7 +633,7 @@ export interface ArtifactStoresApprovePrivateEndPointsInput {
   manualPrivateEndPointConnections?: { id?: string }[];
 }
 export const ArtifactStoresApprovePrivateEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -662,7 +656,7 @@ export const ArtifactStoresApprovePrivateEndPointsInput =
 // Output Schema
 export type ArtifactStoresApprovePrivateEndPointsOutput = void;
 export const ArtifactStoresApprovePrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresApprovePrivateEndPointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresApprovePrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -675,7 +669,7 @@ export const ArtifactStoresApprovePrivateEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresApprovePrivateEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresApprovePrivateEndPointsInput,
     outputSchema: ArtifactStoresApprovePrivateEndPointsOutput,
   }));
@@ -705,7 +699,7 @@ export interface ArtifactStoresCreateOrUpdateInput {
   location: string;
 }
 export const ArtifactStoresCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -771,7 +765,7 @@ export interface ArtifactStoresCreateOrUpdateOutput {
   };
 }
 export const ArtifactStoresCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -802,7 +796,7 @@ export const ArtifactStoresCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresCreateOrUpdateInput,
     outputSchema: ArtifactStoresCreateOrUpdateOutput,
   }));
@@ -814,7 +808,7 @@ export interface ArtifactStoresDeleteInput {
   subscriptionId: string;
 }
 export const ArtifactStoresDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -830,7 +824,7 @@ export const ArtifactStoresDeleteInput =
 // Output Schema
 export type ArtifactStoresDeleteOutput = void;
 export const ArtifactStoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteOutput>;
 
 // The operation
 /**
@@ -842,12 +836,10 @@ export const ArtifactStoresDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ArtifactStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactStoresDeleteInput,
-    outputSchema: ArtifactStoresDeleteOutput,
-  }),
-);
+export const ArtifactStoresDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactStoresDeleteInput,
+  outputSchema: ArtifactStoresDeleteOutput,
+}));
 // Input Schema
 export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsInput {
   resourceGroupName: string;
@@ -857,7 +849,7 @@ export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsInput {
   networkFabricControllerIds?: { id?: string }[];
 }
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -880,7 +872,7 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
 // Output Schema
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput = void;
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput>;
 
 // The operation
 /**
@@ -893,7 +885,7 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresDeleteNetworkFabricControllerEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresDeleteNetworkFabricControllerEndPointsInput,
     outputSchema: ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput,
   }));
@@ -904,14 +896,12 @@ export interface ArtifactStoresGetInput {
   artifactStoreName: string;
   subscriptionId: string;
 }
-export const ArtifactStoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    artifactStoreName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ArtifactStoresGetInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  artifactStoreName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
@@ -934,7 +924,7 @@ export interface ArtifactStoresGetOutput {
   };
 }
 export const ArtifactStoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -964,7 +954,7 @@ export const ArtifactStoresGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ArtifactStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArtifactStoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArtifactStoresGetInput,
   outputSchema: ArtifactStoresGetOutput,
 }));
@@ -975,7 +965,7 @@ export interface ArtifactStoresListByPublisherInput {
   subscriptionId: string;
 }
 export const ArtifactStoresListByPublisherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1005,7 +995,7 @@ export interface ArtifactStoresListByPublisherOutput {
   nextLink?: string;
 }
 export const ArtifactStoresListByPublisherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1052,7 +1042,7 @@ export const ArtifactStoresListByPublisherOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresListByPublisher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresListByPublisherInput,
     outputSchema: ArtifactStoresListByPublisherOutput,
   }));
@@ -1064,7 +1054,7 @@ export interface ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput 
   subscriptionId: string;
 }
 export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -1083,7 +1073,7 @@ export interface ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput
   nextLink?: string;
 }
 export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1111,7 +1101,7 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresListNetworkFabricControllerPrivateEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput,
     outputSchema:
       ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput,
@@ -1124,7 +1114,7 @@ export interface ArtifactStoresListPrivateEndPointsInput {
   subscriptionId: string;
 }
 export const ArtifactStoresListPrivateEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -1143,7 +1133,7 @@ export interface ArtifactStoresListPrivateEndPointsOutput {
   nextLink?: string;
 }
 export const ArtifactStoresListPrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1171,7 +1161,7 @@ export const ArtifactStoresListPrivateEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresListPrivateEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresListPrivateEndPointsInput,
     outputSchema: ArtifactStoresListPrivateEndPointsOutput,
   }));
@@ -1184,7 +1174,7 @@ export interface ArtifactStoresRemovePrivateEndPointsInput {
   manualPrivateEndPointConnections?: { id?: string }[];
 }
 export const ArtifactStoresRemovePrivateEndPointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -1207,7 +1197,7 @@ export const ArtifactStoresRemovePrivateEndPointsInput =
 // Output Schema
 export type ArtifactStoresRemovePrivateEndPointsOutput = void;
 export const ArtifactStoresRemovePrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresRemovePrivateEndPointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresRemovePrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -1220,7 +1210,7 @@ export const ArtifactStoresRemovePrivateEndPointsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ArtifactStoresRemovePrivateEndPoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactStoresRemovePrivateEndPointsInput,
     outputSchema: ArtifactStoresRemovePrivateEndPointsOutput,
   }));
@@ -1233,7 +1223,7 @@ export interface ArtifactStoresUpdateInput {
   tags?: Record<string, string>;
 }
 export const ArtifactStoresUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -1262,7 +1252,7 @@ export interface ArtifactStoresUpdateOutput {
   };
 }
 export const ArtifactStoresUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1293,12 +1283,10 @@ export const ArtifactStoresUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param tags - Resource tags.
  */
-export const ArtifactStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactStoresUpdateInput,
-    outputSchema: ArtifactStoresUpdateOutput,
-  }),
-);
+export const ArtifactStoresUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactStoresUpdateInput,
+  outputSchema: ArtifactStoresUpdateOutput,
+}));
 // Input Schema
 export interface ComponentsGetInput {
   resourceGroupName: string;
@@ -1306,7 +1294,7 @@ export interface ComponentsGetInput {
   componentName: string;
   subscriptionId: string;
 }
-export const ComponentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ComponentsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   networkFunctionName: Schema.String.pipe(T.PathParam()),
   componentName: Schema.String.pipe(T.PathParam()),
@@ -1333,7 +1321,7 @@ export interface ComponentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ComponentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ComponentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1363,7 +1351,7 @@ export const ComponentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ComponentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ComponentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ComponentsGetInput,
   outputSchema: ComponentsGetOutput,
 }));
@@ -1374,7 +1362,7 @@ export interface ComponentsListByNetworkFunctionInput {
   networkFunctionName: string;
 }
 export const ComponentsListByNetworkFunctionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
@@ -1404,7 +1392,7 @@ export interface ComponentsListByNetworkFunctionOutput {
   nextLink?: string;
 }
 export const ComponentsListByNetworkFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1451,7 +1439,7 @@ export const ComponentsListByNetworkFunctionOutput =
  * @param networkFunctionName - The name of the network function.
  */
 export const ComponentsListByNetworkFunction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ComponentsListByNetworkFunctionInput,
     outputSchema: ComponentsListByNetworkFunctionOutput,
   }));
@@ -1479,7 +1467,7 @@ export interface ConfigurationGroupSchemasCreateOrUpdateInput {
   location: string;
 }
 export const ConfigurationGroupSchemasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
@@ -1530,7 +1518,7 @@ export interface ConfigurationGroupSchemasCreateOrUpdateOutput {
   };
 }
 export const ConfigurationGroupSchemasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1561,7 +1549,7 @@ export const ConfigurationGroupSchemasCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ConfigurationGroupSchemasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasCreateOrUpdateInput,
     outputSchema: ConfigurationGroupSchemasCreateOrUpdateOutput,
   }));
@@ -1573,7 +1561,7 @@ export interface ConfigurationGroupSchemasDeleteInput {
   subscriptionId: string;
 }
 export const ConfigurationGroupSchemasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
@@ -1589,7 +1577,7 @@ export const ConfigurationGroupSchemasDeleteInput =
 // Output Schema
 export type ConfigurationGroupSchemasDeleteOutput = void;
 export const ConfigurationGroupSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupSchemasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupSchemasDeleteOutput>;
 
 // The operation
 /**
@@ -1602,7 +1590,7 @@ export const ConfigurationGroupSchemasDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ConfigurationGroupSchemasDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasDeleteInput,
     outputSchema: ConfigurationGroupSchemasDeleteOutput,
   }));
@@ -1614,7 +1602,7 @@ export interface ConfigurationGroupSchemasGetInput {
   subscriptionId: string;
 }
 export const ConfigurationGroupSchemasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
@@ -1642,7 +1630,7 @@ export interface ConfigurationGroupSchemasGetOutput {
   };
 }
 export const ConfigurationGroupSchemasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1673,7 +1661,7 @@ export const ConfigurationGroupSchemasGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ConfigurationGroupSchemasGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasGetInput,
     outputSchema: ConfigurationGroupSchemasGetOutput,
   }));
@@ -1684,7 +1672,7 @@ export interface ConfigurationGroupSchemasListByPublisherInput {
   subscriptionId: string;
 }
 export const ConfigurationGroupSchemasListByPublisherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1714,7 +1702,7 @@ export interface ConfigurationGroupSchemasListByPublisherOutput {
   nextLink?: string;
 }
 export const ConfigurationGroupSchemasListByPublisherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1761,7 +1749,7 @@ export const ConfigurationGroupSchemasListByPublisherOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ConfigurationGroupSchemasListByPublisher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasListByPublisherInput,
     outputSchema: ConfigurationGroupSchemasListByPublisherOutput,
   }));
@@ -1774,7 +1762,7 @@ export interface ConfigurationGroupSchemasUpdateInput {
   tags?: Record<string, string>;
 }
 export const ConfigurationGroupSchemasUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     configurationGroupSchemaName: Schema.String.pipe(T.PathParam()),
@@ -1803,7 +1791,7 @@ export interface ConfigurationGroupSchemasUpdateOutput {
   };
 }
 export const ConfigurationGroupSchemasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1835,7 +1823,7 @@ export const ConfigurationGroupSchemasUpdateOutput =
  * @param tags - Resource tags.
  */
 export const ConfigurationGroupSchemasUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasUpdateInput,
     outputSchema: ConfigurationGroupSchemasUpdateOutput,
   }));
@@ -1848,7 +1836,7 @@ export interface ConfigurationGroupSchemasUpdateStateInput {
   versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
 }
 export const ConfigurationGroupSchemasUpdateStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -1869,7 +1857,7 @@ export interface ConfigurationGroupSchemasUpdateStateOutput {
   versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
 }
 export const ConfigurationGroupSchemasUpdateStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
       Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
     ),
@@ -1886,7 +1874,7 @@ export const ConfigurationGroupSchemasUpdateStateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationGroupSchemasUpdateState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupSchemasUpdateStateInput,
     outputSchema: ConfigurationGroupSchemasUpdateStateOutput,
   }));
@@ -1918,7 +1906,7 @@ export interface ConfigurationGroupValuesCreateOrUpdateInput {
   location: string;
 }
 export const ConfigurationGroupValuesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
@@ -1977,7 +1965,7 @@ export interface ConfigurationGroupValuesCreateOrUpdateOutput {
   };
 }
 export const ConfigurationGroupValuesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2007,7 +1995,7 @@ export const ConfigurationGroupValuesCreateOrUpdateOutput =
  * @param configurationGroupValueName - The name of the configuration group value.
  */
 export const ConfigurationGroupValuesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupValuesCreateOrUpdateInput,
     outputSchema: ConfigurationGroupValuesCreateOrUpdateOutput,
   }));
@@ -2018,7 +2006,7 @@ export interface ConfigurationGroupValuesDeleteInput {
   configurationGroupValueName: string;
 }
 export const ConfigurationGroupValuesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
@@ -2033,7 +2021,7 @@ export const ConfigurationGroupValuesDeleteInput =
 // Output Schema
 export type ConfigurationGroupValuesDeleteOutput = void;
 export const ConfigurationGroupValuesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupValuesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupValuesDeleteOutput>;
 
 // The operation
 /**
@@ -2045,7 +2033,7 @@ export const ConfigurationGroupValuesDeleteOutput =
  * @param configurationGroupValueName - The name of the configuration group value.
  */
 export const ConfigurationGroupValuesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupValuesDeleteInput,
     outputSchema: ConfigurationGroupValuesDeleteOutput,
   }));
@@ -2056,7 +2044,7 @@ export interface ConfigurationGroupValuesGetInput {
   configurationGroupValueName: string;
 }
 export const ConfigurationGroupValuesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
@@ -2083,7 +2071,7 @@ export interface ConfigurationGroupValuesGetOutput {
   };
 }
 export const ConfigurationGroupValuesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2112,19 +2100,17 @@ export const ConfigurationGroupValuesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param configurationGroupValueName - The name of the configuration group value.
  */
-export const ConfigurationGroupValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationGroupValuesGetInput,
-    outputSchema: ConfigurationGroupValuesGetOutput,
-  }),
-);
+export const ConfigurationGroupValuesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationGroupValuesGetInput,
+  outputSchema: ConfigurationGroupValuesGetOutput,
+}));
 // Input Schema
 export interface ConfigurationGroupValuesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const ConfigurationGroupValuesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2153,7 +2139,7 @@ export interface ConfigurationGroupValuesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ConfigurationGroupValuesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2199,7 +2185,7 @@ export const ConfigurationGroupValuesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationGroupValuesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupValuesListByResourceGroupInput,
     outputSchema: ConfigurationGroupValuesListByResourceGroupOutput,
   }));
@@ -2208,7 +2194,7 @@ export interface ConfigurationGroupValuesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ConfigurationGroupValuesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2236,7 +2222,7 @@ export interface ConfigurationGroupValuesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ConfigurationGroupValuesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2281,7 +2267,7 @@ export const ConfigurationGroupValuesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationGroupValuesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupValuesListBySubscriptionInput,
     outputSchema: ConfigurationGroupValuesListBySubscriptionOutput,
   }));
@@ -2293,7 +2279,7 @@ export interface ConfigurationGroupValuesUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const ConfigurationGroupValuesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationGroupValueName: Schema.String.pipe(T.PathParam()),
@@ -2321,7 +2307,7 @@ export interface ConfigurationGroupValuesUpdateTagsOutput {
   };
 }
 export const ConfigurationGroupValuesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2352,7 +2338,7 @@ export const ConfigurationGroupValuesUpdateTagsOutput =
  * @param tags - Resource tags.
  */
 export const ConfigurationGroupValuesUpdateTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationGroupValuesUpdateTagsInput,
     outputSchema: ConfigurationGroupValuesUpdateTagsOutput,
   }));
@@ -2378,7 +2364,7 @@ export interface NetworkFunctionDefinitionGroupsCreateOrUpdateInput {
   location: string;
 }
 export const NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2425,7 +2411,7 @@ export interface NetworkFunctionDefinitionGroupsCreateOrUpdateOutput {
   };
 }
 export const NetworkFunctionDefinitionGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2456,7 +2442,7 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionGroupsCreateOrUpdateInput,
     outputSchema: NetworkFunctionDefinitionGroupsCreateOrUpdateOutput,
   }));
@@ -2468,7 +2454,7 @@ export interface NetworkFunctionDefinitionGroupsDeleteInput {
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2484,7 +2470,7 @@ export const NetworkFunctionDefinitionGroupsDeleteInput =
 // Output Schema
 export type NetworkFunctionDefinitionGroupsDeleteOutput = void;
 export const NetworkFunctionDefinitionGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -2497,7 +2483,7 @@ export const NetworkFunctionDefinitionGroupsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionGroupsDeleteInput,
     outputSchema: NetworkFunctionDefinitionGroupsDeleteOutput,
   }));
@@ -2509,7 +2495,7 @@ export interface NetworkFunctionDefinitionGroupsGetInput {
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2537,7 +2523,7 @@ export interface NetworkFunctionDefinitionGroupsGetOutput {
   };
 }
 export const NetworkFunctionDefinitionGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2568,7 +2554,7 @@ export const NetworkFunctionDefinitionGroupsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionGroupsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionGroupsGetInput,
     outputSchema: NetworkFunctionDefinitionGroupsGetOutput,
   }));
@@ -2579,7 +2565,7 @@ export interface NetworkFunctionDefinitionGroupsListByPublisherInput {
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionGroupsListByPublisherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2609,7 +2595,7 @@ export interface NetworkFunctionDefinitionGroupsListByPublisherOutput {
   nextLink?: string;
 }
 export const NetworkFunctionDefinitionGroupsListByPublisherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2656,7 +2642,7 @@ export const NetworkFunctionDefinitionGroupsListByPublisherOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionGroupsListByPublisher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionGroupsListByPublisherInput,
     outputSchema: NetworkFunctionDefinitionGroupsListByPublisherOutput,
   }));
@@ -2669,7 +2655,7 @@ export interface NetworkFunctionDefinitionGroupsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkFunctionDefinitionGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2698,7 +2684,7 @@ export interface NetworkFunctionDefinitionGroupsUpdateOutput {
   };
 }
 export const NetworkFunctionDefinitionGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2730,7 +2716,7 @@ export const NetworkFunctionDefinitionGroupsUpdateOutput =
  * @param tags - Resource tags.
  */
 export const NetworkFunctionDefinitionGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionGroupsUpdateInput,
     outputSchema: NetworkFunctionDefinitionGroupsUpdateOutput,
   }));
@@ -2769,7 +2755,7 @@ export interface NetworkFunctionDefinitionVersionsCreateOrUpdateInput {
   location: string;
 }
 export const NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2833,7 +2819,7 @@ export interface NetworkFunctionDefinitionVersionsCreateOrUpdateOutput {
   };
 }
 export const NetworkFunctionDefinitionVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2865,7 +2851,7 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionVersionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionVersionsCreateOrUpdateInput,
     outputSchema: NetworkFunctionDefinitionVersionsCreateOrUpdateOutput,
   }));
@@ -2878,7 +2864,7 @@ export interface NetworkFunctionDefinitionVersionsDeleteInput {
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2895,7 +2881,7 @@ export const NetworkFunctionDefinitionVersionsDeleteInput =
 // Output Schema
 export type NetworkFunctionDefinitionVersionsDeleteOutput = void;
 export const NetworkFunctionDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -2909,7 +2895,7 @@ export const NetworkFunctionDefinitionVersionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionVersionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionVersionsDeleteInput,
     outputSchema: NetworkFunctionDefinitionVersionsDeleteOutput,
   }));
@@ -2922,7 +2908,7 @@ export interface NetworkFunctionDefinitionVersionsGetInput {
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -2951,7 +2937,7 @@ export interface NetworkFunctionDefinitionVersionsGetOutput {
   };
 }
 export const NetworkFunctionDefinitionVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2983,7 +2969,7 @@ export const NetworkFunctionDefinitionVersionsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionVersionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionVersionsGetInput,
     outputSchema: NetworkFunctionDefinitionVersionsGetOutput,
   }));
@@ -2995,7 +2981,7 @@ export interface NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitio
   subscriptionId: string;
 }
 export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -3026,7 +3012,7 @@ export interface NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitio
   nextLink?: string;
 }
 export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3074,7 +3060,7 @@ export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGro
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput,
     outputSchema:
@@ -3090,7 +3076,7 @@ export interface NetworkFunctionDefinitionVersionsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkFunctionDefinitionVersionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -3120,7 +3106,7 @@ export interface NetworkFunctionDefinitionVersionsUpdateOutput {
   };
 }
 export const NetworkFunctionDefinitionVersionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3153,7 +3139,7 @@ export const NetworkFunctionDefinitionVersionsUpdateOutput =
  * @param tags - Resource tags.
  */
 export const NetworkFunctionDefinitionVersionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionVersionsUpdateInput,
     outputSchema: NetworkFunctionDefinitionVersionsUpdateOutput,
   }));
@@ -3173,7 +3159,7 @@ export interface NetworkFunctionDefinitionVersionsUpdateStateInput {
     | "Deprecated";
 }
 export const NetworkFunctionDefinitionVersionsUpdateStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     networkFunctionDefinitionGroupName: Schema.String.pipe(T.PathParam()),
@@ -3208,7 +3194,7 @@ export interface NetworkFunctionDefinitionVersionsUpdateStateOutput {
     | "Deprecated";
 }
 export const NetworkFunctionDefinitionVersionsUpdateStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -3233,7 +3219,7 @@ export const NetworkFunctionDefinitionVersionsUpdateStateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionDefinitionVersionsUpdateState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionDefinitionVersionsUpdateStateInput,
     outputSchema: NetworkFunctionDefinitionVersionsUpdateStateOutput,
   }));
@@ -3288,7 +3274,7 @@ export interface NetworkFunctionsCreateOrUpdateInput {
   location: string;
 }
 export const NetworkFunctionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3383,7 +3369,7 @@ export interface NetworkFunctionsCreateOrUpdateOutput {
   };
 }
 export const NetworkFunctionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3413,7 +3399,7 @@ export const NetworkFunctionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionsCreateOrUpdateInput,
     outputSchema: NetworkFunctionsCreateOrUpdateOutput,
   }));
@@ -3424,7 +3410,7 @@ export interface NetworkFunctionsDeleteInput {
   subscriptionId: string;
 }
 export const NetworkFunctionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3439,7 +3425,7 @@ export const NetworkFunctionsDeleteInput =
 // Output Schema
 export type NetworkFunctionsDeleteOutput = void;
 export const NetworkFunctionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsDeleteOutput>;
 
 // The operation
 /**
@@ -3450,12 +3436,10 @@ export const NetworkFunctionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const NetworkFunctionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFunctionsDeleteInput,
-    outputSchema: NetworkFunctionsDeleteOutput,
-  }),
-);
+export const NetworkFunctionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFunctionsDeleteInput,
+  outputSchema: NetworkFunctionsDeleteOutput,
+}));
 // Input Schema
 export interface NetworkFunctionsExecuteRequestInput {
   resourceGroupName: string;
@@ -3470,7 +3454,7 @@ export interface NetworkFunctionsExecuteRequestInput {
   };
 }
 export const NetworkFunctionsExecuteRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3499,7 +3483,7 @@ export const NetworkFunctionsExecuteRequestInput =
 // Output Schema
 export type NetworkFunctionsExecuteRequestOutput = void;
 export const NetworkFunctionsExecuteRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsExecuteRequestOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsExecuteRequestOutput>;
 
 // The operation
 /**
@@ -3511,7 +3495,7 @@ export const NetworkFunctionsExecuteRequestOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkFunctionsExecuteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionsExecuteRequestInput,
     outputSchema: NetworkFunctionsExecuteRequestOutput,
   }));
@@ -3522,7 +3506,7 @@ export interface NetworkFunctionsGetInput {
   subscriptionId: string;
 }
 export const NetworkFunctionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3549,7 +3533,7 @@ export interface NetworkFunctionsGetOutput {
   };
 }
 export const NetworkFunctionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3578,7 +3562,7 @@ export const NetworkFunctionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const NetworkFunctionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkFunctionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkFunctionsGetInput,
   outputSchema: NetworkFunctionsGetOutput,
 }));
@@ -3588,7 +3572,7 @@ export interface NetworkFunctionsListByResourceGroupInput {
   subscriptionId: string;
 }
 export const NetworkFunctionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3617,7 +3601,7 @@ export interface NetworkFunctionsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkFunctionsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3663,7 +3647,7 @@ export const NetworkFunctionsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionsListByResourceGroupInput,
     outputSchema: NetworkFunctionsListByResourceGroupOutput,
   }));
@@ -3672,7 +3656,7 @@ export interface NetworkFunctionsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkFunctionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3700,7 +3684,7 @@ export interface NetworkFunctionsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkFunctionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3745,7 +3729,7 @@ export const NetworkFunctionsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const NetworkFunctionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFunctionsListBySubscriptionInput,
     outputSchema: NetworkFunctionsListBySubscriptionOutput,
   }));
@@ -3757,7 +3741,7 @@ export interface NetworkFunctionsUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const NetworkFunctionsUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFunctionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3785,7 +3769,7 @@ export interface NetworkFunctionsUpdateTagsOutput {
   };
 }
 export const NetworkFunctionsUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3815,12 +3799,10 @@ export const NetworkFunctionsUpdateTagsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param tags - Resource tags.
  */
-export const NetworkFunctionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFunctionsUpdateTagsInput,
-    outputSchema: NetworkFunctionsUpdateTagsOutput,
-  }),
-);
+export const NetworkFunctionsUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFunctionsUpdateTagsInput,
+  outputSchema: NetworkFunctionsUpdateTagsOutput,
+}));
 // Input Schema
 export interface NetworkServiceDesignGroupsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3843,7 +3825,7 @@ export interface NetworkServiceDesignGroupsCreateOrUpdateInput {
   location: string;
 }
 export const NetworkServiceDesignGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -3890,7 +3872,7 @@ export interface NetworkServiceDesignGroupsCreateOrUpdateOutput {
   };
 }
 export const NetworkServiceDesignGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3921,7 +3903,7 @@ export const NetworkServiceDesignGroupsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignGroupsCreateOrUpdateInput,
     outputSchema: NetworkServiceDesignGroupsCreateOrUpdateOutput,
   }));
@@ -3933,7 +3915,7 @@ export interface NetworkServiceDesignGroupsDeleteInput {
   networkServiceDesignGroupName: string;
 }
 export const NetworkServiceDesignGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -3949,7 +3931,7 @@ export const NetworkServiceDesignGroupsDeleteInput =
 // Output Schema
 export type NetworkServiceDesignGroupsDeleteOutput = void;
 export const NetworkServiceDesignGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -3962,7 +3944,7 @@ export const NetworkServiceDesignGroupsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignGroupsDeleteInput,
     outputSchema: NetworkServiceDesignGroupsDeleteOutput,
   }));
@@ -3974,7 +3956,7 @@ export interface NetworkServiceDesignGroupsGetInput {
   networkServiceDesignGroupName: string;
 }
 export const NetworkServiceDesignGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4002,7 +3984,7 @@ export interface NetworkServiceDesignGroupsGetOutput {
   };
 }
 export const NetworkServiceDesignGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4033,7 +4015,7 @@ export const NetworkServiceDesignGroupsGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignGroupsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignGroupsGetInput,
     outputSchema: NetworkServiceDesignGroupsGetOutput,
   }));
@@ -4044,7 +4026,7 @@ export interface NetworkServiceDesignGroupsListByPublisherInput {
   publisherName: string;
 }
 export const NetworkServiceDesignGroupsListByPublisherInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4074,7 +4056,7 @@ export interface NetworkServiceDesignGroupsListByPublisherOutput {
   nextLink?: string;
 }
 export const NetworkServiceDesignGroupsListByPublisherOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4121,7 +4103,7 @@ export const NetworkServiceDesignGroupsListByPublisherOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignGroupsListByPublisher =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignGroupsListByPublisherInput,
     outputSchema: NetworkServiceDesignGroupsListByPublisherOutput,
   }));
@@ -4134,7 +4116,7 @@ export interface NetworkServiceDesignGroupsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkServiceDesignGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4163,7 +4145,7 @@ export interface NetworkServiceDesignGroupsUpdateOutput {
   };
 }
 export const NetworkServiceDesignGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4195,7 +4177,7 @@ export const NetworkServiceDesignGroupsUpdateOutput =
  * @param tags - Resource tags.
  */
 export const NetworkServiceDesignGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignGroupsUpdateInput,
     outputSchema: NetworkServiceDesignGroupsUpdateOutput,
   }));
@@ -4234,7 +4216,7 @@ export interface NetworkServiceDesignVersionsCreateOrUpdateInput {
   location: string;
 }
 export const NetworkServiceDesignVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4325,7 +4307,7 @@ export interface NetworkServiceDesignVersionsCreateOrUpdateOutput {
   };
 }
 export const NetworkServiceDesignVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4357,7 +4339,7 @@ export const NetworkServiceDesignVersionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignVersionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignVersionsCreateOrUpdateInput,
     outputSchema: NetworkServiceDesignVersionsCreateOrUpdateOutput,
   }));
@@ -4370,7 +4352,7 @@ export interface NetworkServiceDesignVersionsDeleteInput {
   networkServiceDesignVersionName: string;
 }
 export const NetworkServiceDesignVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4387,7 +4369,7 @@ export const NetworkServiceDesignVersionsDeleteInput =
 // Output Schema
 export type NetworkServiceDesignVersionsDeleteOutput = void;
 export const NetworkServiceDesignVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignVersionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -4401,7 +4383,7 @@ export const NetworkServiceDesignVersionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignVersionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignVersionsDeleteInput,
     outputSchema: NetworkServiceDesignVersionsDeleteOutput,
   }));
@@ -4414,7 +4396,7 @@ export interface NetworkServiceDesignVersionsGetInput {
   networkServiceDesignVersionName: string;
 }
 export const NetworkServiceDesignVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4443,7 +4425,7 @@ export interface NetworkServiceDesignVersionsGetOutput {
   };
 }
 export const NetworkServiceDesignVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4475,7 +4457,7 @@ export const NetworkServiceDesignVersionsGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignVersionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignVersionsGetInput,
     outputSchema: NetworkServiceDesignVersionsGetOutput,
   }));
@@ -4487,7 +4469,7 @@ export interface NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInpu
   networkServiceDesignGroupName: string;
 }
 export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4518,7 +4500,7 @@ export interface NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutp
   nextLink?: string;
 }
 export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4566,7 +4548,7 @@ export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput,
     outputSchema:
@@ -4582,7 +4564,7 @@ export interface NetworkServiceDesignVersionsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkServiceDesignVersionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4612,7 +4594,7 @@ export interface NetworkServiceDesignVersionsUpdateOutput {
   };
 }
 export const NetworkServiceDesignVersionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4645,7 +4627,7 @@ export const NetworkServiceDesignVersionsUpdateOutput =
  * @param tags - Resource tags.
  */
 export const NetworkServiceDesignVersionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignVersionsUpdateInput,
     outputSchema: NetworkServiceDesignVersionsUpdateOutput,
   }));
@@ -4659,7 +4641,7 @@ export interface NetworkServiceDesignVersionsUpdateStateInput {
   versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
 }
 export const NetworkServiceDesignVersionsUpdateStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
@@ -4681,7 +4663,7 @@ export interface NetworkServiceDesignVersionsUpdateStateOutput {
   versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
 }
 export const NetworkServiceDesignVersionsUpdateStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
       Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
     ),
@@ -4699,15 +4681,13 @@ export const NetworkServiceDesignVersionsUpdateStateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkServiceDesignVersionsUpdateState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkServiceDesignVersionsUpdateStateInput,
     outputSchema: NetworkServiceDesignVersionsUpdateStateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridNetwork/operations",
@@ -4731,7 +4711,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4761,7 +4741,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -4773,7 +4753,7 @@ export interface ProxyArtifactGetInput {
   subscriptionId: string;
   artifactName: string;
 }
-export const ProxyArtifactGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProxyArtifactGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -4804,44 +4784,42 @@ export interface ProxyArtifactGetOutput {
   }[];
   nextLink?: string;
 }
-export const ProxyArtifactGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ProxyArtifactGetOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ProxyArtifactGetOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ProxyArtifactGetOutput>;
 
 // The operation
 /**
@@ -4854,7 +4832,7 @@ export const ProxyArtifactGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ProxyArtifactGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProxyArtifactGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyArtifactGetInput,
   outputSchema: ProxyArtifactGetOutput,
 }));
@@ -4865,14 +4843,12 @@ export interface ProxyArtifactListInput {
   artifactStoreName: string;
   subscriptionId: string;
 }
-export const ProxyArtifactListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    publisherName: Schema.String.pipe(T.PathParam()),
-    artifactStoreName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ProxyArtifactListInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  publisherName: Schema.String.pipe(T.PathParam()),
+  artifactStoreName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifacts",
@@ -4898,7 +4874,7 @@ export interface ProxyArtifactListOutput {
   nextLink?: string;
 }
 export const ProxyArtifactListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4945,7 +4921,7 @@ export const ProxyArtifactListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ProxyArtifactList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProxyArtifactList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyArtifactListInput,
   outputSchema: ProxyArtifactListOutput,
 }));
@@ -4962,7 +4938,7 @@ export interface ProxyArtifactUpdateStateInput {
   };
 }
 export const ProxyArtifactUpdateStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     artifactStoreName: Schema.String.pipe(T.PathParam()),
@@ -4999,7 +4975,7 @@ export interface ProxyArtifactUpdateStateOutput {
   };
 }
 export const ProxyArtifactUpdateStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5031,12 +5007,10 @@ export const ProxyArtifactUpdateStateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ProxyArtifactUpdateState = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProxyArtifactUpdateStateInput,
-    outputSchema: ProxyArtifactUpdateStateOutput,
-  }),
-);
+export const ProxyArtifactUpdateState = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProxyArtifactUpdateStateInput,
+  outputSchema: ProxyArtifactUpdateStateOutput,
+}));
 // Input Schema
 export interface PublishersCreateOrUpdateInput {
   resourceGroupName: string;
@@ -5071,7 +5045,7 @@ export interface PublishersCreateOrUpdateInput {
   location: string;
 }
 export const PublishersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publisherName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5140,7 +5114,7 @@ export interface PublishersCreateOrUpdateOutput {
   };
 }
 export const PublishersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5169,19 +5143,17 @@ export const PublishersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PublishersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PublishersCreateOrUpdateInput,
-    outputSchema: PublishersCreateOrUpdateOutput,
-  }),
-);
+export const PublishersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublishersCreateOrUpdateInput,
+  outputSchema: PublishersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PublishersDeleteInput {
   resourceGroupName: string;
   publisherName: string;
   subscriptionId: string;
 }
-export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5196,7 +5168,7 @@ export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PublishersDeleteOutput = void;
 export const PublishersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PublishersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PublishersDeleteOutput>;
 
 // The operation
 /**
@@ -5207,7 +5179,7 @@ export const PublishersDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PublishersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersDeleteInput,
   outputSchema: PublishersDeleteOutput,
 }));
@@ -5217,7 +5189,7 @@ export interface PublishersGetInput {
   publisherName: string;
   subscriptionId: string;
 }
-export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5243,7 +5215,7 @@ export interface PublishersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5272,7 +5244,7 @@ export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersGetInput,
   outputSchema: PublishersGetOutput,
 }));
@@ -5282,7 +5254,7 @@ export interface PublishersListByResourceGroupInput {
   subscriptionId: string;
 }
 export const PublishersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5311,7 +5283,7 @@ export interface PublishersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PublishersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5357,7 +5329,7 @@ export const PublishersListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PublishersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublishersListByResourceGroupInput,
     outputSchema: PublishersListByResourceGroupOutput,
   }));
@@ -5366,7 +5338,7 @@ export interface PublishersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PublishersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5394,7 +5366,7 @@ export interface PublishersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PublishersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5439,7 +5411,7 @@ export const PublishersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PublishersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublishersListBySubscriptionInput,
     outputSchema: PublishersListBySubscriptionOutput,
   }));
@@ -5450,7 +5422,7 @@ export interface PublishersUpdateInput {
   subscriptionId: string;
   tags?: Record<string, string>;
 }
-export const PublishersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishersUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5477,27 +5449,25 @@ export interface PublishersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PublishersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<PublishersUpdateOutput>;
+export const PublishersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<PublishersUpdateOutput>;
 
 // The operation
 /**
@@ -5509,7 +5479,7 @@ export const PublishersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription.
  * @param tags - Resource tags.
  */
-export const PublishersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PublishersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PublishersUpdateInput,
   outputSchema: PublishersUpdateOutput,
 }));
@@ -5566,7 +5536,7 @@ export interface SiteNetworkServicesCreateOrUpdateInput {
   location: string;
 }
 export const SiteNetworkServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
@@ -5684,7 +5654,7 @@ export interface SiteNetworkServicesCreateOrUpdateOutput {
   };
 }
 export const SiteNetworkServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5714,7 +5684,7 @@ export const SiteNetworkServicesCreateOrUpdateOutput =
  * @param siteNetworkServiceName - The name of the site network service.
  */
 export const SiteNetworkServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteNetworkServicesCreateOrUpdateInput,
     outputSchema: SiteNetworkServicesCreateOrUpdateOutput,
   }));
@@ -5725,7 +5695,7 @@ export interface SiteNetworkServicesDeleteInput {
   siteNetworkServiceName: string;
 }
 export const SiteNetworkServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
@@ -5740,7 +5710,7 @@ export const SiteNetworkServicesDeleteInput =
 // Output Schema
 export type SiteNetworkServicesDeleteOutput = void;
 export const SiteNetworkServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SiteNetworkServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SiteNetworkServicesDeleteOutput>;
 
 // The operation
 /**
@@ -5751,12 +5721,10 @@ export const SiteNetworkServicesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param siteNetworkServiceName - The name of the site network service.
  */
-export const SiteNetworkServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteNetworkServicesDeleteInput,
-    outputSchema: SiteNetworkServicesDeleteOutput,
-  }),
-);
+export const SiteNetworkServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteNetworkServicesDeleteInput,
+  outputSchema: SiteNetworkServicesDeleteOutput,
+}));
 // Input Schema
 export interface SiteNetworkServicesGetInput {
   subscriptionId: string;
@@ -5764,7 +5732,7 @@ export interface SiteNetworkServicesGetInput {
   siteNetworkServiceName: string;
 }
 export const SiteNetworkServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
@@ -5791,7 +5759,7 @@ export interface SiteNetworkServicesGetOutput {
   };
 }
 export const SiteNetworkServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5820,19 +5788,17 @@ export const SiteNetworkServicesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param siteNetworkServiceName - The name of the site network service.
  */
-export const SiteNetworkServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SiteNetworkServicesGetInput,
-    outputSchema: SiteNetworkServicesGetOutput,
-  }),
-);
+export const SiteNetworkServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SiteNetworkServicesGetInput,
+  outputSchema: SiteNetworkServicesGetOutput,
+}));
 // Input Schema
 export interface SiteNetworkServicesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SiteNetworkServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5861,7 +5827,7 @@ export interface SiteNetworkServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SiteNetworkServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5907,7 +5873,7 @@ export const SiteNetworkServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SiteNetworkServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteNetworkServicesListByResourceGroupInput,
     outputSchema: SiteNetworkServicesListByResourceGroupOutput,
   }));
@@ -5916,7 +5882,7 @@ export interface SiteNetworkServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SiteNetworkServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5944,7 +5910,7 @@ export interface SiteNetworkServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SiteNetworkServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5989,7 +5955,7 @@ export const SiteNetworkServicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const SiteNetworkServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteNetworkServicesListBySubscriptionInput,
     outputSchema: SiteNetworkServicesListBySubscriptionOutput,
   }));
@@ -6001,7 +5967,7 @@ export interface SiteNetworkServicesUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const SiteNetworkServicesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteNetworkServiceName: Schema.String.pipe(T.PathParam()),
@@ -6029,7 +5995,7 @@ export interface SiteNetworkServicesUpdateTagsOutput {
   };
 }
 export const SiteNetworkServicesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6060,7 +6026,7 @@ export const SiteNetworkServicesUpdateTagsOutput =
  * @param tags - Resource tags.
  */
 export const SiteNetworkServicesUpdateTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SiteNetworkServicesUpdateTagsInput,
     outputSchema: SiteNetworkServicesUpdateTagsOutput,
   }));
@@ -6093,7 +6059,7 @@ export interface SitesCreateOrUpdateInput {
   location: string;
 }
 export const SitesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     siteName: Schema.String.pipe(T.PathParam()),
@@ -6158,7 +6124,7 @@ export interface SitesCreateOrUpdateOutput {
   };
 }
 export const SitesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6187,7 +6153,7 @@ export const SitesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param siteName - The name of the network service site.
  */
-export const SitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SitesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SitesCreateOrUpdateInput,
   outputSchema: SitesCreateOrUpdateOutput,
 }));
@@ -6197,7 +6163,7 @@ export interface SitesDeleteInput {
   resourceGroupName: string;
   siteName: string;
 }
-export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SitesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
@@ -6212,7 +6178,7 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SitesDeleteOutput = void;
 export const SitesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesDeleteOutput>;
 
 // The operation
 /**
@@ -6223,7 +6189,7 @@ export const SitesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param siteName - The name of the network service site.
  */
-export const SitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SitesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SitesDeleteInput,
   outputSchema: SitesDeleteOutput,
 }));
@@ -6233,7 +6199,7 @@ export interface SitesGetInput {
   resourceGroupName: string;
   siteName: string;
 }
-export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SitesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
@@ -6259,7 +6225,7 @@ export interface SitesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SitesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6288,7 +6254,7 @@ export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param siteName - The name of the network service site.
  */
-export const SitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SitesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SitesGetInput,
   outputSchema: SitesGetOutput,
 }));
@@ -6298,7 +6264,7 @@ export interface SitesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SitesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6327,7 +6293,7 @@ export interface SitesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SitesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6372,18 +6338,16 @@ export const SitesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const SitesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesListByResourceGroupInput,
-    outputSchema: SitesListByResourceGroupOutput,
-  }),
-);
+export const SitesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesListByResourceGroupInput,
+  outputSchema: SitesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface SitesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SitesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6411,7 +6375,7 @@ export interface SitesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SitesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6455,12 +6419,10 @@ export const SitesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SitesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SitesListBySubscriptionInput,
-    outputSchema: SitesListBySubscriptionOutput,
-  }),
-);
+export const SitesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SitesListBySubscriptionInput,
+  outputSchema: SitesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface SitesUpdateTagsInput {
   subscriptionId: string;
@@ -6468,7 +6430,7 @@ export interface SitesUpdateTagsInput {
   siteName: string;
   tags?: Record<string, string>;
 }
-export const SitesUpdateTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SitesUpdateTagsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   siteName: Schema.String.pipe(T.PathParam()),
@@ -6495,7 +6457,7 @@ export interface SitesUpdateTagsOutput {
     lastModifiedAt?: string;
   };
 }
-export const SitesUpdateTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SitesUpdateTagsOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6525,7 +6487,7 @@ export const SitesUpdateTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param siteName - The name of the network service site.
  * @param tags - Resource tags.
  */
-export const SitesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SitesUpdateTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: SitesUpdateTagsInput,
   outputSchema: SitesUpdateTagsOutput,
 }));

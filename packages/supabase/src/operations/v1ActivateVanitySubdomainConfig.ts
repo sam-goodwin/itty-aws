@@ -9,7 +9,7 @@ export interface V1ActivateVanitySubdomainConfigInput {
   vanity_subdomain: string;
 }
 export const V1ActivateVanitySubdomainConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     vanity_subdomain: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export interface V1ActivateVanitySubdomainConfigOutput {
   custom_domain: string;
 }
 export const V1ActivateVanitySubdomainConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     custom_domain: Schema.String,
   }) as unknown as Schema.Codec<V1ActivateVanitySubdomainConfigOutput>;
 
@@ -35,7 +35,7 @@ export const V1ActivateVanitySubdomainConfigOutput =
  * @param ref - Project ref
  */
 export const v1ActivateVanitySubdomainConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1ActivateVanitySubdomainConfigInput,
     outputSchema: V1ActivateVanitySubdomainConfigOutput,
     errors: [BadRequest, Forbidden] as const,

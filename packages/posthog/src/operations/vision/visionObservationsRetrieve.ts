@@ -8,7 +8,7 @@ export interface VisionObservationsRetrieveInput {
   project_id: string;
 }
 export const VisionObservationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -67,7 +67,7 @@ export interface VisionObservationsRetrieveOutput {
   created_at: string;
 }
 export const VisionObservationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     scanner_id: Schema.String,
     session_id: Schema.String,
@@ -153,9 +153,7 @@ export const VisionObservationsRetrieveOutput =
  * @param id - A UUID string identifying this replay observation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visionObservationsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisionObservationsRetrieveInput,
-    outputSchema: VisionObservationsRetrieveOutput,
-  }),
-);
+export const visionObservationsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisionObservationsRetrieveInput,
+  outputSchema: VisionObservationsRetrieveOutput,
+}));

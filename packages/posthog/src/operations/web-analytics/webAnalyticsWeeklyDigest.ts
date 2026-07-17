@@ -9,7 +9,7 @@ export interface WebAnalyticsWeeklyDigestInput {
   days?: number;
 }
 export const WebAnalyticsWeeklyDigestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     compare: Schema.optional(Schema.Boolean),
     days: Schema.optional(Schema.Number),
@@ -114,7 +114,7 @@ export interface WebAnalyticsWeeklyDigestOutput {
   dashboard_url?: string;
 }
 export const WebAnalyticsWeeklyDigestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     visitors: Schema.optional(
       Schema.Struct({
         current: Schema.optional(Schema.Number),
@@ -271,9 +271,7 @@ export const WebAnalyticsWeeklyDigestOutput =
  * @param days - Lookback window in days (1–90). Defaults to 7.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const webAnalyticsWeeklyDigest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebAnalyticsWeeklyDigestInput,
-    outputSchema: WebAnalyticsWeeklyDigestOutput,
-  }),
-);
+export const webAnalyticsWeeklyDigest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebAnalyticsWeeklyDigestInput,
+  outputSchema: WebAnalyticsWeeklyDigestOutput,
+}));

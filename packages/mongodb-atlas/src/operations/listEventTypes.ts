@@ -11,7 +11,7 @@ export interface ListEventTypesInput {
   pageNum?: number;
   pretty?: boolean;
 }
-export const ListEventTypesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEventTypesInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export const ListEventTypesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListEventTypesOutput = void;
 export const ListEventTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListEventTypesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListEventTypesOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const ListEventTypesOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEventTypes = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEventTypesInput,
   outputSchema: ListEventTypesOutput,
   errors: [Forbidden] as const,

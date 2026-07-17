@@ -12,7 +12,7 @@ export interface GetV1ProjectsByProjectIdBranchesInput {
   gitNameContains?: string;
 }
 export const GetV1ProjectsByProjectIdBranchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -38,7 +38,7 @@ export interface GetV1ProjectsByProjectIdBranchesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1ProjectsByProjectIdBranchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -70,7 +70,7 @@ export const GetV1ProjectsByProjectIdBranchesOutput =
  * Returns the live Branches of a Project. Supports two mutually exclusive filters: ?gitName= (exact match — at most one row), ?gitNameContains= (case-sensitive substring). Soft-deleted Branches are not returned. Ordered by createdAt ascending.
  */
 export const getV1ProjectsByProjectIdBranches =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ProjectsByProjectIdBranchesInput,
     outputSchema: GetV1ProjectsByProjectIdBranchesOutput,
     errors: [NotFound, UnprocessableEntity] as const,

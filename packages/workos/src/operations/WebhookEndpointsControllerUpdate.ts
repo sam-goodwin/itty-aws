@@ -102,7 +102,7 @@ export interface WebhookEndpointsControllerUpdateInput {
   >;
 }
 export const WebhookEndpointsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     endpoint_url: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
@@ -216,7 +216,7 @@ export interface WebhookEndpointsControllerUpdateOutput {
   updated_at?: string;
 }
 export const WebhookEndpointsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     endpoint_url: Schema.optional(Schema.String),
@@ -236,7 +236,7 @@ export const WebhookEndpointsControllerUpdateOutput =
  * @param id - Unique identifier of the Webhook Endpoint.
  */
 export const WebhookEndpointsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebhookEndpointsControllerUpdateInput,
     outputSchema: WebhookEndpointsControllerUpdateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,

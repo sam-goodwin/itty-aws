@@ -7,7 +7,7 @@ export interface AgentMemoryTreeInput {
   application_id: string;
   project_id: string;
 }
-export const AgentMemoryTreeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentMemoryTreeInput = /*@__PURE__*/ Schema.Struct({
   application_id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const AgentMemoryTreeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface AgentMemoryTreeOutput {
   root: Record<string, unknown>;
 }
-export const AgentMemoryTreeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentMemoryTreeOutput = /*@__PURE__*/ Schema.Struct({
   root: Schema.Record(Schema.String, Schema.Unknown),
 }) as unknown as Schema.Codec<AgentMemoryTreeOutput>;
 
@@ -31,7 +31,7 @@ export const AgentMemoryTreeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryTree = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentMemoryTree = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentMemoryTreeInput,
   outputSchema: AgentMemoryTreeOutput,
 }));

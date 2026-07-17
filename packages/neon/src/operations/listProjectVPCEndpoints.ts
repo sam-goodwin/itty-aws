@@ -7,7 +7,7 @@ export interface ListProjectVPCEndpointsInput {
   project_id: string;
 }
 export const ListProjectVPCEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/projects/{project_id}/vpc_endpoints" }),
@@ -18,7 +18,7 @@ export interface ListProjectVPCEndpointsOutput {
   endpoints: { vpc_endpoint_id: string; label: string }[];
 }
 export const ListProjectVPCEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
       Schema.Struct({
         vpc_endpoint_id: Schema.String,
@@ -35,9 +35,7 @@ export const ListProjectVPCEndpointsOutput =
  *
  * @param project_id - The Neon project ID
  */
-export const listProjectVPCEndpoints = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListProjectVPCEndpointsInput,
-    outputSchema: ListProjectVPCEndpointsOutput,
-  }),
-);
+export const listProjectVPCEndpoints = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListProjectVPCEndpointsInput,
+  outputSchema: ListProjectVPCEndpointsOutput,
+}));

@@ -17,7 +17,7 @@ export interface V1AuthorizeUserInput {
   target_flow?: string;
   resource?: string;
 }
-export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1AuthorizeUserInput = /*@__PURE__*/ Schema.Struct({
   client_id: Schema.String,
   response_type: Schema.Literals(["code", "token", "id_token token"]),
   redirect_uri: Schema.String,
@@ -38,7 +38,7 @@ export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type V1AuthorizeUserOutput = void;
 export const V1AuthorizeUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1AuthorizeUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1AuthorizeUserOutput>;
 
 // The operation
 /**
@@ -47,7 +47,7 @@ export const V1AuthorizeUserOutput =
  * @param organization_slug - Organization slug
  * @param resource - Resource indicator for MCP (Model Context Protocol) clients
  */
-export const v1AuthorizeUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1AuthorizeUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1AuthorizeUserInput,
   outputSchema: V1AuthorizeUserOutput,
   errors: [Forbidden] as const,

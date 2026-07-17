@@ -9,7 +9,7 @@ export interface ErrorTrackingSymbolSetsDownloadRetrieveInput {
   project_id: string;
 }
 export const ErrorTrackingSymbolSetsDownloadRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface ErrorTrackingSymbolSetsDownloadRetrieveOutput {
   url?: string;
 }
 export const ErrorTrackingSymbolSetsDownloadRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ErrorTrackingSymbolSetsDownloadRetrieveOutput>;
 
@@ -35,7 +35,7 @@ export const ErrorTrackingSymbolSetsDownloadRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsDownloadRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSymbolSetsDownloadRetrieveInput,
     outputSchema: ErrorTrackingSymbolSetsDownloadRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

@@ -18,7 +18,7 @@ export interface CreateBackupPolicyInput {
   schedule_week?: number;
 }
 export const CreateBackupPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -61,7 +61,7 @@ export interface CreateBackupPolicyOutput {
   required: boolean;
 }
 export const CreateBackupPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
     name: Schema.String,
@@ -96,7 +96,7 @@ export const CreateBackupPolicyOutput =
  * @param schedule_day - Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday
  * @param schedule_week - Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week
  */
-export const createBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBackupPolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBackupPolicyInput,
   outputSchema: CreateBackupPolicyOutput,
   errors: [Forbidden, NotFound] as const,

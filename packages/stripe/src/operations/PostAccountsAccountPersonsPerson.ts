@@ -128,7 +128,7 @@ export interface PostAccountsAccountPersonsPersonInput {
   };
 }
 export const PostAccountsAccountPersonsPersonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     person: Schema.String.pipe(T.PathParam()),
     additional_tos_acceptances: Schema.optional(
@@ -697,7 +697,7 @@ export interface PostAccountsAccountPersonsPersonOutput {
   };
 }
 export const PostAccountsAccountPersonsPersonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -1149,7 +1149,7 @@ export const PostAccountsAccountPersonsPersonOutput =
  * <p>Updates an existing person.</p>
  */
 export const PostAccountsAccountPersonsPerson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostAccountsAccountPersonsPersonInput,
     outputSchema: PostAccountsAccountPersonsPersonOutput,
   }));

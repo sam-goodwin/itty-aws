@@ -8,7 +8,7 @@ export interface DeleteMapFieldInput {
   dataset_id: string;
   map_field_name: string;
 }
-export const DeleteMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMapFieldInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   map_field_name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,10 +21,10 @@ export const DeleteMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteMapFieldOutput = void;
 export const DeleteMapFieldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteMapFieldOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteMapFieldOutput>;
 
 // The operation
-export const deleteMapField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteMapField = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteMapFieldInput,
   outputSchema: DeleteMapFieldOutput,
   errors: [NotFound] as const,

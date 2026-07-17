@@ -30,7 +30,7 @@ export interface FloatUnit {
 }
 
 export const FloatUnit: Schema.Codec<FloatUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "FloatUnit" });
@@ -43,7 +43,7 @@ export interface Capacity {
 }
 
 export const Capacity: Schema.Codec<Capacity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "Capacity" });
@@ -72,7 +72,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currency: Schema.optional(Schema.String),
     amount: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -109,7 +109,7 @@ export interface GoogleShoppingManufacturersV1ProductCertification {
 }
 
 export const GoogleShoppingManufacturersV1ProductCertification: Schema.Codec<GoogleShoppingManufacturersV1ProductCertification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authority: Schema.optional(Schema.String),
     link: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export interface Grocery {
 }
 
 export const Grocery: Schema.Codec<Grocery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageInstructions: Schema.optional(Schema.String),
     activeIngredients: Schema.optional(Schema.String),
     indications: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface VoluntaryNutritionFact {
 }
 
 export const VoluntaryNutritionFact: Schema.Codec<VoluntaryNutritionFact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(FloatUnit),
     dailyPercentage: Schema.optional(Schema.Number),
@@ -261,7 +261,7 @@ export interface Nutrition {
 }
 
 export const Nutrition: Schema.Codec<Nutrition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalFat: Schema.optional(FloatUnit),
     saturatedFatDailyPercentage: Schema.optional(Schema.Number),
     sodiumDailyPercentage: Schema.optional(Schema.Number),
@@ -319,7 +319,7 @@ export interface FeatureDescription {
 }
 
 export const FeatureDescription: Schema.Codec<FeatureDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
     image: Schema.optional(Image),
@@ -335,7 +335,7 @@ export interface ProductDetail {
 }
 
 export const ProductDetail: Schema.Codec<ProductDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sectionName: Schema.optional(Schema.String),
     attributeName: Schema.optional(Schema.String),
     attributeValue: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface Count {
 }
 
 export const Count: Schema.Codec<Count> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "Count" });
@@ -442,7 +442,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gtin: Schema.optional(Schema.Array(Schema.String)),
     capacity: Schema.optional(Capacity),
     includedDestination: Schema.optional(Schema.Array(Schema.String)),
@@ -520,7 +520,7 @@ export interface Issue {
 }
 
 export const Issue: Schema.Codec<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     resolution: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -546,7 +546,7 @@ export interface DestinationStatus {
 }
 
 export const DestinationStatus: Schema.Codec<DestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     approvedCountries: Schema.optional(Schema.Array(Schema.String)),
     disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -576,7 +576,7 @@ export interface Product {
 }
 
 export const Product: Schema.Codec<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     attributes: Schema.optional(Attributes),
     targetCountry: Schema.optional(Schema.String),
@@ -606,7 +606,7 @@ export interface Certification {
 }
 
 export const Certification: Schema.Codec<Certification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     validUntil: Schema.optional(Schema.String),
     authority: Schema.optional(Schema.String),
@@ -640,7 +640,7 @@ export interface ProductCertification {
 }
 
 export const ProductCertification: Schema.Codec<ProductCertification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.Array(Schema.String)),
     issues: Schema.optional(Schema.Array(Issue)),
@@ -661,7 +661,7 @@ export interface ListProductCertificationsResponse {
 }
 
 export const ListProductCertificationsResponse: Schema.Codec<ListProductCertificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productCertifications: Schema.optional(Schema.Array(ProductCertification)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductCertificationsResponse" });
@@ -674,7 +674,7 @@ export interface ListProductsResponse {
 }
 
 export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductsResponse" });
@@ -682,7 +682,7 @@ export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -757,7 +757,7 @@ export interface ListAccountsProductsRequest {
 }
 
 export const ListAccountsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -770,8 +770,7 @@ export const ListAccountsProductsRequest =
   ) as unknown as Schema.Codec<ListAccountsProductsRequest>;
 
 export type ListAccountsProductsResponse = ListProductsResponse;
-export const ListAccountsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
+export const ListAccountsProductsResponse = /*@__PURE__*/ ListProductsResponse;
 
 export type ListAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -781,7 +780,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   ListAccountsProductsResponse,
   ListAccountsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRequest,
   output: ListAccountsProductsResponse,
   errors: [NotFound, Forbidden],
@@ -799,7 +798,7 @@ export interface DeleteAccountsProductsRequest {
 }
 
 export const DeleteAccountsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -808,7 +807,7 @@ export const DeleteAccountsProductsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsProductsRequest>;
 
 export type DeleteAccountsProductsResponse = Empty;
-export const DeleteAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsProductsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsProductsError =
   | DefaultErrors
@@ -823,7 +822,7 @@ export const deleteAccountsProducts: API.OperationMethod<
   DeleteAccountsProductsResponse,
   DeleteAccountsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsRequest,
   output: DeleteAccountsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -844,7 +843,7 @@ export interface GetAccountsProductsRequest {
 }
 
 export const GetAccountsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     include: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("include"),
@@ -856,7 +855,7 @@ export const GetAccountsProductsRequest =
   ) as unknown as Schema.Codec<GetAccountsProductsRequest>;
 
 export type GetAccountsProductsResponse = Product;
-export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
+export const GetAccountsProductsResponse = /*@__PURE__*/ Product;
 
 export type GetAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -866,7 +865,7 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsResponse,
   GetAccountsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsProductsRequest,
   output: GetAccountsProductsResponse,
   errors: [NotFound, Forbidden],
@@ -882,7 +881,7 @@ export interface UpdateAccountsProductsRequest {
 }
 
 export const UpdateAccountsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Attributes).pipe(T.HttpBody()),
@@ -896,7 +895,7 @@ export const UpdateAccountsProductsRequest =
   ) as unknown as Schema.Codec<UpdateAccountsProductsRequest>;
 
 export type UpdateAccountsProductsResponse = Empty;
-export const UpdateAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const UpdateAccountsProductsResponse = /*@__PURE__*/ Empty;
 
 export type UpdateAccountsProductsError =
   | DefaultErrors
@@ -911,7 +910,7 @@ export const updateAccountsProducts: API.OperationMethod<
   UpdateAccountsProductsResponse,
   UpdateAccountsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsProductsRequest,
   output: UpdateAccountsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -927,7 +926,7 @@ export interface PatchAccountsLanguagesProductCertificationsRequest {
 }
 
 export const PatchAccountsLanguagesProductCertificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ProductCertification).pipe(T.HttpBody()),
@@ -939,7 +938,7 @@ export const PatchAccountsLanguagesProductCertificationsRequest =
 export type PatchAccountsLanguagesProductCertificationsResponse =
   ProductCertification;
 export const PatchAccountsLanguagesProductCertificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductCertification;
+  /*@__PURE__*/ ProductCertification;
 
 export type PatchAccountsLanguagesProductCertificationsError =
   | DefaultErrors
@@ -954,7 +953,7 @@ export const patchAccountsLanguagesProductCertifications: API.OperationMethod<
   PatchAccountsLanguagesProductCertificationsResponse,
   PatchAccountsLanguagesProductCertificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsLanguagesProductCertificationsRequest,
   output: PatchAccountsLanguagesProductCertificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -970,7 +969,7 @@ export interface ListAccountsLanguagesProductCertificationsRequest {
 }
 
 export const ListAccountsLanguagesProductCertificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -982,7 +981,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
 export type ListAccountsLanguagesProductCertificationsResponse =
   ListProductCertificationsResponse;
 export const ListAccountsLanguagesProductCertificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductCertificationsResponse;
+  /*@__PURE__*/ ListProductCertificationsResponse;
 
 export type ListAccountsLanguagesProductCertificationsError =
   | DefaultErrors
@@ -995,7 +994,7 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
   ListAccountsLanguagesProductCertificationsResponse,
   ListAccountsLanguagesProductCertificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLanguagesProductCertificationsRequest,
   output: ListAccountsLanguagesProductCertificationsResponse,
   errors: [NotFound, Forbidden],
@@ -1011,7 +1010,7 @@ export interface DeleteAccountsLanguagesProductCertificationsRequest {
 }
 
 export const DeleteAccountsLanguagesProductCertificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1020,7 +1019,7 @@ export const DeleteAccountsLanguagesProductCertificationsRequest =
 
 export type DeleteAccountsLanguagesProductCertificationsResponse = Empty;
 export const DeleteAccountsLanguagesProductCertificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteAccountsLanguagesProductCertificationsError =
   | DefaultErrors
@@ -1035,7 +1034,7 @@ export const deleteAccountsLanguagesProductCertifications: API.OperationMethod<
   DeleteAccountsLanguagesProductCertificationsResponse,
   DeleteAccountsLanguagesProductCertificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsLanguagesProductCertificationsRequest,
   output: DeleteAccountsLanguagesProductCertificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1047,7 +1046,7 @@ export interface GetAccountsLanguagesProductCertificationsRequest {
 }
 
 export const GetAccountsLanguagesProductCertificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1057,7 +1056,7 @@ export const GetAccountsLanguagesProductCertificationsRequest =
 export type GetAccountsLanguagesProductCertificationsResponse =
   ProductCertification;
 export const GetAccountsLanguagesProductCertificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductCertification;
+  /*@__PURE__*/ ProductCertification;
 
 export type GetAccountsLanguagesProductCertificationsError =
   | DefaultErrors
@@ -1070,7 +1069,7 @@ export const getAccountsLanguagesProductCertifications: API.OperationMethod<
   GetAccountsLanguagesProductCertificationsResponse,
   GetAccountsLanguagesProductCertificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsLanguagesProductCertificationsRequest,
   output: GetAccountsLanguagesProductCertificationsResponse,
   errors: [NotFound, Forbidden],

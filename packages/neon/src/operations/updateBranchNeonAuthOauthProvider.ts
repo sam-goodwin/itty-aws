@@ -14,7 +14,7 @@ export interface UpdateBranchNeonAuthOauthProviderInput {
   microsoft_tenant_id?: string;
 }
 export const UpdateBranchNeonAuthOauthProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     oauth_provider_id: Schema.String.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export interface UpdateBranchNeonAuthOauthProviderOutput {
   client_secret?: Redacted.Redacted<string>;
 }
 export const UpdateBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const UpdateBranchNeonAuthOauthProviderOutput =
  * @param oauth_provider_id - The OAuth provider ID
  */
 export const updateBranchNeonAuthOauthProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateBranchNeonAuthOauthProviderInput,
     outputSchema: UpdateBranchNeonAuthOauthProviderOutput,
   }));

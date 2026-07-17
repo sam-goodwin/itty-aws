@@ -16,7 +16,7 @@ export interface BatchExportsRunsLogsRetrieveInput {
   search?: string;
 }
 export const BatchExportsRunsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export const BatchExportsRunsLogsRetrieveInput =
 // Output Schema
 export type BatchExportsRunsLogsRetrieveOutput = void;
 export const BatchExportsRunsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const BatchExportsRunsLogsRetrieveOutput =
  * @param search - Case-insensitive substring search across log messages.
  */
 export const batchExportsRunsLogsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BatchExportsRunsLogsRetrieveInput,
     outputSchema: BatchExportsRunsLogsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

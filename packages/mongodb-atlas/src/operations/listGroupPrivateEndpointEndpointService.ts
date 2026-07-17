@@ -11,7 +11,7 @@ export interface ListGroupPrivateEndpointEndpointServiceInput {
   pretty?: boolean;
 }
 export const ListGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupPrivateEndpointEndpointServiceInput =
 // Output Schema
 export type ListGroupPrivateEndpointEndpointServiceOutput = void;
 export const ListGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupPrivateEndpointEndpointServiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupPrivateEndpointEndpointServiceOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const ListGroupPrivateEndpointEndpointServiceOutput =
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  */
 export const listGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupPrivateEndpointEndpointServiceInput,
     outputSchema: ListGroupPrivateEndpointEndpointServiceOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

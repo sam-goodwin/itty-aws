@@ -17,7 +17,7 @@ export interface DataCollectionRuleConfigurationMetadataFetchInput {
   withStreamMetadata?: boolean;
 }
 export const DataCollectionRuleConfigurationMetadataFetchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dcrKind: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface DataCollectionRuleConfigurationMetadataFetchOutput {
   };
 }
 export const DataCollectionRuleConfigurationMetadataFetchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationMetadata: Schema.optional(
       Schema.Struct({
         platformTelemetry: Schema.optional(
@@ -187,15 +187,13 @@ export const DataCollectionRuleConfigurationMetadataFetchOutput =
  * @param location - The Azure region for the metadata request.
  */
 export const DataCollectionRuleConfigurationMetadataFetch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataCollectionRuleConfigurationMetadataFetchInput,
     outputSchema: DataCollectionRuleConfigurationMetadataFetchOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Insights/operations",
@@ -219,7 +217,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -249,7 +247,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -340,7 +338,7 @@ export interface ScheduledQueryRulesCreateOrUpdateInput {
   };
 }
 export const ScheduledQueryRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
@@ -568,7 +566,7 @@ export interface ScheduledQueryRulesCreateOrUpdateOutput {
   };
 }
 export const ScheduledQueryRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -713,7 +711,7 @@ export const ScheduledQueryRulesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ScheduledQueryRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledQueryRulesCreateOrUpdateInput,
     outputSchema: ScheduledQueryRulesCreateOrUpdateOutput,
   }));
@@ -724,7 +722,7 @@ export interface ScheduledQueryRulesDeleteInput {
   ruleName: string;
 }
 export const ScheduledQueryRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
@@ -739,7 +737,7 @@ export const ScheduledQueryRulesDeleteInput =
 // Output Schema
 export type ScheduledQueryRulesDeleteOutput = void;
 export const ScheduledQueryRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduledQueryRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduledQueryRulesDeleteOutput>;
 
 // The operation
 /**
@@ -750,12 +748,10 @@ export const ScheduledQueryRulesDeleteOutput =
  * @param ruleName - The name of the rule.
  * @param api-version - The API version to use for this operation.
  */
-export const ScheduledQueryRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledQueryRulesDeleteInput,
-    outputSchema: ScheduledQueryRulesDeleteOutput,
-  }),
-);
+export const ScheduledQueryRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledQueryRulesDeleteInput,
+  outputSchema: ScheduledQueryRulesDeleteOutput,
+}));
 // Input Schema
 export interface ScheduledQueryRulesGetInput {
   subscriptionId: string;
@@ -763,7 +759,7 @@ export interface ScheduledQueryRulesGetInput {
   ruleName: string;
 }
 export const ScheduledQueryRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
@@ -859,7 +855,7 @@ export interface ScheduledQueryRulesGetOutput {
   };
 }
 export const ScheduledQueryRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1003,19 +999,17 @@ export const ScheduledQueryRulesGetOutput =
  * @param ruleName - The name of the rule.
  * @param api-version - The API version to use for this operation.
  */
-export const ScheduledQueryRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledQueryRulesGetInput,
-    outputSchema: ScheduledQueryRulesGetOutput,
-  }),
-);
+export const ScheduledQueryRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledQueryRulesGetInput,
+  outputSchema: ScheduledQueryRulesGetOutput,
+}));
 // Input Schema
 export interface ScheduledQueryRulesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const ScheduledQueryRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1118,7 +1112,7 @@ export interface ScheduledQueryRulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ScheduledQueryRulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1285,7 +1279,7 @@ export const ScheduledQueryRulesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ScheduledQueryRulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledQueryRulesListByResourceGroupInput,
     outputSchema: ScheduledQueryRulesListByResourceGroupOutput,
   }));
@@ -1294,7 +1288,7 @@ export interface ScheduledQueryRulesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ScheduledQueryRulesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1396,7 +1390,7 @@ export interface ScheduledQueryRulesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ScheduledQueryRulesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1562,7 +1556,7 @@ export const ScheduledQueryRulesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ScheduledQueryRulesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScheduledQueryRulesListBySubscriptionInput,
     outputSchema: ScheduledQueryRulesListBySubscriptionOutput,
   }));
@@ -1639,7 +1633,7 @@ export interface ScheduledQueryRulesUpdateInput {
   };
 }
 export const ScheduledQueryRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
@@ -1847,7 +1841,7 @@ export interface ScheduledQueryRulesUpdateOutput {
   };
 }
 export const ScheduledQueryRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1991,9 +1985,7 @@ export const ScheduledQueryRulesUpdateOutput =
  * @param ruleName - The name of the rule.
  * @param api-version - The API version to use for this operation.
  */
-export const ScheduledQueryRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScheduledQueryRulesUpdateInput,
-    outputSchema: ScheduledQueryRulesUpdateOutput,
-  }),
-);
+export const ScheduledQueryRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScheduledQueryRulesUpdateInput,
+  outputSchema: ScheduledQueryRulesUpdateOutput,
+}));

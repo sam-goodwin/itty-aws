@@ -723,7 +723,7 @@ export interface UsersTwoFactorBackupCodesCreateInput {
   requires_credential_review?: boolean;
 }
 export const UsersTwoFactorBackupCodesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1527,14 +1527,14 @@ export const UsersTwoFactorBackupCodesCreateInput =
 // Output Schema
 export type UsersTwoFactorBackupCodesCreateOutput = void;
 export const UsersTwoFactorBackupCodesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorBackupCodesCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorBackupCodesCreateOutput>;
 
 // The operation
 /**
  * Generate new backup codes, invalidating any existing ones
  */
 export const usersTwoFactorBackupCodesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersTwoFactorBackupCodesCreateInput,
     outputSchema: UsersTwoFactorBackupCodesCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -29,7 +29,7 @@ export interface DiskPoolsCreateOrUpdateInput {
   managedByExtended?: string[];
 }
 export const DiskPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -71,7 +71,7 @@ export interface DiskPoolsCreateOrUpdateOutput {
   type?: string;
 }
 export const DiskPoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -86,12 +86,10 @@ export const DiskPoolsCreateOrUpdateOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskPoolsCreateOrUpdateInput,
-    outputSchema: DiskPoolsCreateOrUpdateOutput,
-  }),
-);
+export const DiskPoolsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskPoolsCreateOrUpdateInput,
+  outputSchema: DiskPoolsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DiskPoolsDeallocateInput {
   subscriptionId: string;
@@ -99,7 +97,7 @@ export interface DiskPoolsDeallocateInput {
   diskPoolName: string;
 }
 export const DiskPoolsDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -114,7 +112,7 @@ export const DiskPoolsDeallocateInput =
 // Output Schema
 export type DiskPoolsDeallocateOutput = void;
 export const DiskPoolsDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeallocateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeallocateOutput>;
 
 // The operation
 /**
@@ -125,7 +123,7 @@ export const DiskPoolsDeallocateOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsDeallocate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsDeallocateInput,
   outputSchema: DiskPoolsDeallocateOutput,
 }));
@@ -135,7 +133,7 @@ export interface DiskPoolsDeleteInput {
   resourceGroupName: string;
   diskPoolName: string;
 }
-export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -150,7 +148,7 @@ export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DiskPoolsDeleteOutput = void;
 export const DiskPoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -161,7 +159,7 @@ export const DiskPoolsDeleteOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsDeleteInput,
   outputSchema: DiskPoolsDeleteOutput,
 }));
@@ -171,7 +169,7 @@ export interface DiskPoolsGetInput {
   resourceGroupName: string;
   diskPoolName: string;
 }
-export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -189,7 +187,7 @@ export interface DiskPoolsGetOutput {
   name?: string;
   type?: string;
 }
-export const DiskPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -204,7 +202,7 @@ export const DiskPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsGetInput,
   outputSchema: DiskPoolsGetOutput,
 }));
@@ -214,7 +212,7 @@ export interface DiskPoolsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DiskPoolsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -231,7 +229,7 @@ export interface DiskPoolsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DiskPoolsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -251,7 +249,7 @@ export const DiskPoolsListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskPoolsListByResourceGroupInput,
     outputSchema: DiskPoolsListByResourceGroupOutput,
   }));
@@ -260,7 +258,7 @@ export interface DiskPoolsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DiskPoolsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -276,7 +274,7 @@ export interface DiskPoolsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DiskPoolsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -294,12 +292,10 @@ export const DiskPoolsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskPoolsListBySubscriptionInput,
-    outputSchema: DiskPoolsListBySubscriptionOutput,
-  }),
-);
+export const DiskPoolsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskPoolsListBySubscriptionInput,
+  outputSchema: DiskPoolsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface DiskPoolsListOutboundNetworkDependenciesEndpointsInput {
   subscriptionId: string;
@@ -307,7 +303,7 @@ export interface DiskPoolsListOutboundNetworkDependenciesEndpointsInput {
   diskPoolName: string;
 }
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -336,7 +332,7 @@ export interface DiskPoolsListOutboundNetworkDependenciesEndpointsOutput {
   nextLink?: string;
 }
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         category: Schema.optional(Schema.String),
@@ -372,7 +368,7 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DiskPoolsListOutboundNetworkDependenciesEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskPoolsListOutboundNetworkDependenciesEndpointsInput,
     outputSchema: DiskPoolsListOutboundNetworkDependenciesEndpointsOutput,
   }));
@@ -382,7 +378,7 @@ export interface DiskPoolsStartInput {
   resourceGroupName: string;
   diskPoolName: string;
 }
-export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -397,7 +393,7 @@ export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DiskPoolsStartOutput = void;
 export const DiskPoolsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsStartOutput>;
 
 // The operation
 /**
@@ -408,7 +404,7 @@ export const DiskPoolsStartOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsStartInput,
   outputSchema: DiskPoolsStartOutput,
 }));
@@ -423,7 +419,7 @@ export interface DiskPoolsUpdateInput {
   sku?: { name: string; tier?: string };
   tags?: Record<string, string>;
 }
-export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -459,7 +455,7 @@ export interface DiskPoolsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const DiskPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -474,7 +470,7 @@ export const DiskPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsUpdateInput,
   outputSchema: DiskPoolsUpdateOutput,
 }));
@@ -484,7 +480,7 @@ export interface DiskPoolsUpgradeInput {
   resourceGroupName: string;
   diskPoolName: string;
 }
-export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskPoolsUpgradeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -499,7 +495,7 @@ export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DiskPoolsUpgradeOutput = void;
 export const DiskPoolsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsUpgradeOutput>;
 
 // The operation
 /**
@@ -510,7 +506,7 @@ export const DiskPoolsUpgradeOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const DiskPoolsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolsUpgrade = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolsUpgradeInput,
   outputSchema: DiskPoolsUpgradeOutput,
 }));
@@ -519,12 +515,10 @@ export interface DiskPoolZonesListInput {
   subscriptionId: string;
   location: string;
 }
-export const DiskPoolZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DiskPoolZonesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones",
@@ -542,7 +536,7 @@ export interface DiskPoolZonesListOutput {
   nextLink?: string;
 }
 export const DiskPoolZonesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -568,7 +562,7 @@ export const DiskPoolZonesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The location of the resource.
  */
-export const DiskPoolZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskPoolZonesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskPoolZonesListInput,
   outputSchema: DiskPoolZonesListOutput,
 }));
@@ -588,7 +582,7 @@ export interface IscsiTargetsCreateOrUpdateInput {
   managedByExtended?: string[];
 }
 export const IscsiTargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -631,7 +625,7 @@ export interface IscsiTargetsCreateOrUpdateOutput {
   type?: string;
 }
 export const IscsiTargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -647,12 +641,10 @@ export const IscsiTargetsCreateOrUpdateOutput =
  * @param iscsiTargetName - The name of the iSCSI Target.
  * @param api-version - The API version to use for this operation.
  */
-export const IscsiTargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IscsiTargetsCreateOrUpdateInput,
-    outputSchema: IscsiTargetsCreateOrUpdateOutput,
-  }),
-);
+export const IscsiTargetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IscsiTargetsCreateOrUpdateInput,
+  outputSchema: IscsiTargetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface IscsiTargetsDeleteInput {
   subscriptionId: string;
@@ -661,7 +653,7 @@ export interface IscsiTargetsDeleteInput {
   iscsiTargetName: string;
 }
 export const IscsiTargetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -677,7 +669,7 @@ export const IscsiTargetsDeleteInput =
 // Output Schema
 export type IscsiTargetsDeleteOutput = void;
 export const IscsiTargetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IscsiTargetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IscsiTargetsDeleteOutput>;
 
 // The operation
 /**
@@ -689,7 +681,7 @@ export const IscsiTargetsDeleteOutput =
  * @param iscsiTargetName - The name of the iSCSI Target.
  * @param api-version - The API version to use for this operation.
  */
-export const IscsiTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiTargetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsDeleteInput,
   outputSchema: IscsiTargetsDeleteOutput,
 }));
@@ -700,7 +692,7 @@ export interface IscsiTargetsGetInput {
   diskPoolName: string;
   iscsiTargetName: string;
 }
-export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiTargetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -719,7 +711,7 @@ export interface IscsiTargetsGetOutput {
   name?: string;
   type?: string;
 }
-export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiTargetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -735,7 +727,7 @@ export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param iscsiTargetName - The name of the iSCSI Target.
  * @param api-version - The API version to use for this operation.
  */
-export const IscsiTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiTargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsGetInput,
   outputSchema: IscsiTargetsGetOutput,
 }));
@@ -746,7 +738,7 @@ export interface IscsiTargetsListByDiskPoolInput {
   diskPoolName: string;
 }
 export const IscsiTargetsListByDiskPoolInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -764,7 +756,7 @@ export interface IscsiTargetsListByDiskPoolOutput {
   nextLink?: string;
 }
 export const IscsiTargetsListByDiskPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -784,12 +776,10 @@ export const IscsiTargetsListByDiskPoolOutput =
  * @param diskPoolName - The name of the Disk Pool.
  * @param api-version - The API version to use for this operation.
  */
-export const IscsiTargetsListByDiskPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IscsiTargetsListByDiskPoolInput,
-    outputSchema: IscsiTargetsListByDiskPoolOutput,
-  }),
-);
+export const IscsiTargetsListByDiskPool = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IscsiTargetsListByDiskPoolInput,
+  outputSchema: IscsiTargetsListByDiskPoolOutput,
+}));
 // Input Schema
 export interface IscsiTargetsUpdateInput {
   subscriptionId: string;
@@ -804,7 +794,7 @@ export interface IscsiTargetsUpdateInput {
   managedByExtended?: string[];
 }
 export const IscsiTargetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskPoolName: Schema.String.pipe(T.PathParam()),
@@ -845,7 +835,7 @@ export interface IscsiTargetsUpdateOutput {
   type?: string;
 }
 export const IscsiTargetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -861,15 +851,13 @@ export const IscsiTargetsUpdateOutput =
  * @param iscsiTargetName - The name of the iSCSI Target.
  * @param api-version - The API version to use for this operation.
  */
-export const IscsiTargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiTargetsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiTargetsUpdateInput,
   outputSchema: IscsiTargetsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StoragePool/operations",
@@ -893,7 +881,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.String,
@@ -917,7 +905,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -926,7 +914,7 @@ export interface ResourceSkusListInput {
   subscriptionId: string;
   location: string;
 }
-export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResourceSkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -962,67 +950,65 @@ export interface ResourceSkusListOutput {
   }[];
   nextLink?: string;
 }
-export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apiVersion: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          capabilities: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          locationInfo: Schema.optional(
+export const ResourceSkusListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        apiVersion: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        capabilities: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              location: Schema.optional(Schema.String),
-              zones: Schema.optional(Schema.Array(Schema.String)),
-              zoneDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.Array(Schema.String)),
-                    capabilities: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        locationInfo: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            zones: Schema.optional(Schema.Array(Schema.String)),
+            zoneDetails: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.Array(Schema.String)),
+                  capabilities: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
                     ),
-                  }),
-                ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        restrictions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["Location", "Zone"])),
+              values: Schema.optional(Schema.Array(Schema.String)),
+              restrictionInfo: Schema.optional(
+                Schema.Struct({
+                  locations: Schema.optional(Schema.Array(Schema.String)),
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              reasonCode: Schema.optional(
+                Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
               ),
             }),
           ),
-          name: Schema.optional(Schema.String),
-          tier: Schema.optional(Schema.String),
-          restrictions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.Literals(["Location", "Zone"])),
-                values: Schema.optional(Schema.Array(Schema.String)),
-                restrictionInfo: Schema.optional(
-                  Schema.Struct({
-                    locations: Schema.optional(Schema.Array(Schema.String)),
-                    zones: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                reasonCode: Schema.optional(
-                  Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ResourceSkusListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ResourceSkusListOutput>;
 
 // The operation
 /**
@@ -1032,7 +1018,7 @@ export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The location of the resource.
  */
-export const ResourceSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceSkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceSkusListInput,
   outputSchema: ResourceSkusListOutput,
 }));

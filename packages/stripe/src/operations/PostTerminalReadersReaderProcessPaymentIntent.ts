@@ -21,7 +21,7 @@ export interface PostTerminalReadersReaderProcessPaymentIntentInput {
   };
 }
 export const PostTerminalReadersReaderProcessPaymentIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     payment_intent: Schema.String,
@@ -123,7 +123,7 @@ export interface PostTerminalReadersReaderProcessPaymentIntentOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersReaderProcessPaymentIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -211,7 +211,7 @@ export const PostTerminalReadersReaderProcessPaymentIntentOutput =
  * <p>Initiates a payment flow on a Reader. See <a href="/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=immediately#process-payment">process the payment</a> for more details.</p>
  */
 export const PostTerminalReadersReaderProcessPaymentIntent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderProcessPaymentIntentInput,
     outputSchema: PostTerminalReadersReaderProcessPaymentIntentOutput,
   }));

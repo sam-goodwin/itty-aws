@@ -8,7 +8,7 @@ export interface ApplicationCredentialsControllerDeleteInput {
   id: string;
 }
 export const ApplicationCredentialsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/connect/client_secrets/{id}" }),
@@ -17,7 +17,7 @@ export const ApplicationCredentialsControllerDeleteInput =
 // Output Schema
 export type ApplicationCredentialsControllerDeleteOutput = void;
 export const ApplicationCredentialsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationCredentialsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationCredentialsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const ApplicationCredentialsControllerDeleteOutput =
  * @param id - The unique ID of the client secret.
  */
 export const ApplicationCredentialsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationCredentialsControllerDeleteInput,
     outputSchema: ApplicationCredentialsControllerDeleteOutput,
     errors: [NotFound] as const,

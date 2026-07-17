@@ -14,7 +14,7 @@ export interface UserlandUserAuthenticationFactorsControllerCreate0Input {
   totp_secret?: string | Redacted.Redacted<string>;
 }
 export const UserlandUserAuthenticationFactorsControllerCreate0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
     type: Schema.optional(Schema.String),
     totp_issuer: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface UserlandUserAuthenticationFactorsControllerCreate0Output {
   };
 }
 export const UserlandUserAuthenticationFactorsControllerCreate0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authentication_factor: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export const UserlandUserAuthenticationFactorsControllerCreate0Output =
  * @param userlandUserId - The ID of the [user](/reference/authkit/user).
  */
 export const UserlandUserAuthenticationFactorsControllerCreate0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserAuthenticationFactorsControllerCreate0Input,
     outputSchema: UserlandUserAuthenticationFactorsControllerCreate0Output,
     errors: [UnprocessableEntity] as const,

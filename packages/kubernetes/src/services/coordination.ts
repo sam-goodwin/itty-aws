@@ -61,7 +61,7 @@ export interface CreateCoordinationV1NamespacedLeaseInput {
   };
 }
 export const CreateCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface CreateCoordinationV1NamespacedLeaseOutput {
   };
 }
 export const CreateCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -249,7 +249,7 @@ export const CreateCoordinationV1NamespacedLeaseOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1NamespacedLeaseInput,
     outputSchema: CreateCoordinationV1NamespacedLeaseOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -305,7 +305,7 @@ export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateInput {
   };
 }
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -418,7 +418,7 @@ export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   };
 }
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -486,7 +486,7 @@ export const CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -542,7 +542,7 @@ export interface CreateCoordinationV1beta1NamespacedLeaseCandidateInput {
   };
 }
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -655,7 +655,7 @@ export interface CreateCoordinationV1beta1NamespacedLeaseCandidateOutput {
   };
 }
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -723,7 +723,7 @@ export const CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -751,7 +751,7 @@ export interface DeleteCoordinationV1CollectionNamespacedLeaseInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1CollectionNamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -810,7 +810,7 @@ export interface DeleteCoordinationV1CollectionNamespacedLeaseOutput {
   status?: string;
 }
 export const DeleteCoordinationV1CollectionNamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -913,7 +913,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoordinationV1CollectionNamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1CollectionNamespacedLeaseInput,
     outputSchema: DeleteCoordinationV1CollectionNamespacedLeaseOutput,
   }));
@@ -932,7 +932,7 @@ export interface DeleteCoordinationV1NamespacedLeaseInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -983,7 +983,7 @@ export interface DeleteCoordinationV1NamespacedLeaseOutput {
   status?: string;
 }
 export const DeleteCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1037,7 +1037,7 @@ export const DeleteCoordinationV1NamespacedLeaseOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1NamespacedLeaseInput,
     outputSchema: DeleteCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict] as const,
@@ -1065,7 +1065,7 @@ export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInp
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1124,7 +1124,7 @@ export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOut
   status?: string;
 }
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1227,7 +1227,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput,
     outputSchema:
@@ -1248,7 +1248,7 @@ export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1299,7 +1299,7 @@ export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   status?: string;
 }
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1353,7 +1353,7 @@ export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict] as const,
@@ -1381,7 +1381,7 @@ export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInpu
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -1440,7 +1440,7 @@ export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutp
   status?: string;
 }
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1543,7 +1543,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput,
     outputSchema:
@@ -1564,7 +1564,7 @@ export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1615,7 +1615,7 @@ export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput {
   status?: string;
 }
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1669,7 +1669,7 @@ export const DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict] as const,
@@ -1677,7 +1677,7 @@ export const deleteCoordinationV1beta1NamespacedLeaseCandidate =
 // Input Schema
 export interface GetCoordinationAPIGroupInput {}
 export const GetCoordinationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/" }),
   ) as unknown as Schema.Codec<GetCoordinationAPIGroupInput>;
 
@@ -1691,7 +1691,7 @@ export interface GetCoordinationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetCoordinationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -1721,16 +1721,14 @@ export const GetCoordinationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getCoordinationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCoordinationAPIGroupInput,
-    outputSchema: GetCoordinationAPIGroupOutput,
-  }),
-);
+export const getCoordinationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCoordinationAPIGroupInput,
+  outputSchema: GetCoordinationAPIGroupOutput,
+}));
 // Input Schema
 export interface GetCoordinationV1APIResourcesInput {}
 export const GetCoordinationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetCoordinationV1APIResourcesInput>;
 
@@ -1753,7 +1751,7 @@ export interface GetCoordinationV1APIResourcesOutput {
   }[];
 }
 export const GetCoordinationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1778,14 +1776,14 @@ export const GetCoordinationV1APIResourcesOutput =
  * get available resources
  */
 export const getCoordinationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCoordinationV1APIResourcesInput,
     outputSchema: GetCoordinationV1APIResourcesOutput,
   }));
 // Input Schema
 export interface GetCoordinationV1alpha2APIResourcesInput {}
 export const GetCoordinationV1alpha2APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1alpha2/" }),
   ) as unknown as Schema.Codec<GetCoordinationV1alpha2APIResourcesInput>;
 
@@ -1808,7 +1806,7 @@ export interface GetCoordinationV1alpha2APIResourcesOutput {
   }[];
 }
 export const GetCoordinationV1alpha2APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1833,14 +1831,14 @@ export const GetCoordinationV1alpha2APIResourcesOutput =
  * get available resources
  */
 export const getCoordinationV1alpha2APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCoordinationV1alpha2APIResourcesInput,
     outputSchema: GetCoordinationV1alpha2APIResourcesOutput,
   }));
 // Input Schema
 export interface GetCoordinationV1beta1APIResourcesInput {}
 export const GetCoordinationV1beta1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1beta1/" }),
   ) as unknown as Schema.Codec<GetCoordinationV1beta1APIResourcesInput>;
 
@@ -1863,7 +1861,7 @@ export interface GetCoordinationV1beta1APIResourcesOutput {
   }[];
 }
 export const GetCoordinationV1beta1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1888,7 +1886,7 @@ export const GetCoordinationV1beta1APIResourcesOutput =
  * get available resources
  */
 export const getCoordinationV1beta1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCoordinationV1beta1APIResourcesInput,
     outputSchema: GetCoordinationV1beta1APIResourcesOutput,
   }));
@@ -1908,7 +1906,7 @@ export interface ListCoordinationV1LeaseForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoordinationV1LeaseForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -1983,7 +1981,7 @@ export interface ListCoordinationV1LeaseForAllNamespacesOutput {
   };
 }
 export const ListCoordinationV1LeaseForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2123,7 +2121,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1LeaseForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1LeaseForAllNamespacesInput,
     outputSchema: ListCoordinationV1LeaseForAllNamespacesOutput,
   }));
@@ -2144,7 +2142,7 @@ export interface ListCoordinationV1NamespacedLeaseInput {
   watch?: boolean;
 }
 export const ListCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2223,7 +2221,7 @@ export interface ListCoordinationV1NamespacedLeaseOutput {
   };
 }
 export const ListCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2364,7 +2362,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1NamespacedLeaseInput,
     outputSchema: ListCoordinationV1NamespacedLeaseOutput,
   }));
@@ -2384,7 +2382,7 @@ export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2461,7 +2459,7 @@ export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput {
   };
 }
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2598,7 +2596,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1alpha2LeaseCandidateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput,
     outputSchema: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput,
   }));
@@ -2619,7 +2617,7 @@ export interface ListCoordinationV1alpha2NamespacedLeaseCandidateInput {
   watch?: boolean;
 }
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2697,7 +2695,7 @@ export interface ListCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   };
 }
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -2835,7 +2833,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ListCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
@@ -2855,7 +2853,7 @@ export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2932,7 +2930,7 @@ export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput {
   };
 }
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3069,7 +3067,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1beta1LeaseCandidateForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput,
     outputSchema: ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput,
   }));
@@ -3090,7 +3088,7 @@ export interface ListCoordinationV1beta1NamespacedLeaseCandidateInput {
   watch?: boolean;
 }
 export const ListCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3168,7 +3166,7 @@ export interface ListCoordinationV1beta1NamespacedLeaseCandidateOutput {
   };
 }
 export const ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3306,7 +3304,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ListCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
@@ -3321,7 +3319,7 @@ export interface PatchCoordinationV1NamespacedLeaseInput {
   force?: boolean;
 }
 export const PatchCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3383,7 +3381,7 @@ export interface PatchCoordinationV1NamespacedLeaseOutput {
   };
 }
 export const PatchCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3456,7 +3454,7 @@ export const PatchCoordinationV1NamespacedLeaseOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1NamespacedLeaseInput,
     outputSchema: PatchCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -3472,7 +3470,7 @@ export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateInput {
   force?: boolean;
 }
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3533,7 +3531,7 @@ export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   };
 }
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3603,7 +3601,7 @@ export const PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -3619,7 +3617,7 @@ export interface PatchCoordinationV1beta1NamespacedLeaseCandidateInput {
   force?: boolean;
 }
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3680,7 +3678,7 @@ export interface PatchCoordinationV1beta1NamespacedLeaseCandidateOutput {
   };
 }
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3750,7 +3748,7 @@ export const PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -3762,7 +3760,7 @@ export interface ReadCoordinationV1NamespacedLeaseInput {
   pretty?: string;
 }
 export const ReadCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3820,7 +3818,7 @@ export interface ReadCoordinationV1NamespacedLeaseOutput {
   };
 }
 export const ReadCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3889,7 +3887,7 @@ export const ReadCoordinationV1NamespacedLeaseOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1NamespacedLeaseInput,
     outputSchema: ReadCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound] as const,
@@ -3901,7 +3899,7 @@ export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateInput {
   pretty?: string;
 }
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3958,7 +3956,7 @@ export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   };
 }
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4024,7 +4022,7 @@ export const ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound] as const,
@@ -4036,7 +4034,7 @@ export interface ReadCoordinationV1beta1NamespacedLeaseCandidateInput {
   pretty?: string;
 }
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4093,7 +4091,7 @@ export interface ReadCoordinationV1beta1NamespacedLeaseCandidateOutput {
   };
 }
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4159,7 +4157,7 @@ export const ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound] as const,
@@ -4217,7 +4215,7 @@ export interface ReplaceCoordinationV1NamespacedLeaseInput {
   };
 }
 export const ReplaceCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4335,7 +4333,7 @@ export interface ReplaceCoordinationV1NamespacedLeaseOutput {
   };
 }
 export const ReplaceCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4407,7 +4405,7 @@ export const ReplaceCoordinationV1NamespacedLeaseOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1NamespacedLeaseInput,
     outputSchema: ReplaceCoordinationV1NamespacedLeaseOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4464,7 +4462,7 @@ export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput {
   };
 }
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4578,7 +4576,7 @@ export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   };
 }
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4647,7 +4645,7 @@ export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4704,7 +4702,7 @@ export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput {
   };
 }
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -4818,7 +4816,7 @@ export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput {
   };
 }
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4887,7 +4885,7 @@ export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4908,7 +4906,7 @@ export interface WatchCoordinationV1LeaseListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1LeaseListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -4934,7 +4932,7 @@ export interface WatchCoordinationV1LeaseListForAllNamespacesOutput {
   type: string;
 }
 export const WatchCoordinationV1LeaseListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1LeaseListForAllNamespacesOutput>;
@@ -4998,7 +4996,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1LeaseListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1LeaseListForAllNamespacesInput,
     outputSchema: WatchCoordinationV1LeaseListForAllNamespacesOutput,
   }));
@@ -5020,7 +5018,7 @@ export interface WatchCoordinationV1NamespacedLeaseInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1NamespacedLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5048,7 +5046,7 @@ export interface WatchCoordinationV1NamespacedLeaseOutput {
   type: string;
 }
 export const WatchCoordinationV1NamespacedLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseOutput>;
@@ -5114,7 +5112,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1NamespacedLease =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1NamespacedLeaseInput,
     outputSchema: WatchCoordinationV1NamespacedLeaseOutput,
   }));
@@ -5135,7 +5133,7 @@ export interface WatchCoordinationV1NamespacedLeaseListInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1NamespacedLeaseListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5162,7 +5160,7 @@ export interface WatchCoordinationV1NamespacedLeaseListOutput {
   type: string;
 }
 export const WatchCoordinationV1NamespacedLeaseListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseListOutput>;
@@ -5227,7 +5225,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1NamespacedLeaseList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1NamespacedLeaseListInput,
     outputSchema: WatchCoordinationV1NamespacedLeaseListOutput,
   }));
@@ -5247,7 +5245,7 @@ export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInpu
   watch?: boolean;
 }
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5273,7 +5271,7 @@ export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutp
   type: string;
 }
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput>;
@@ -5337,7 +5335,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput,
     outputSchema:
@@ -5361,7 +5359,7 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5389,7 +5387,7 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput {
   type: string;
 }
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
@@ -5455,7 +5453,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1alpha2NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
@@ -5476,7 +5474,7 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5503,7 +5501,7 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput {
   type: string;
 }
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput>;
@@ -5568,7 +5566,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1alpha2NamespacedLeaseCandidateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput,
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput,
   }));
@@ -5588,7 +5586,7 @@ export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput
   watch?: boolean;
 }
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5614,7 +5612,7 @@ export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutpu
   type: string;
 }
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput>;
@@ -5678,7 +5676,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput,
     outputSchema:
@@ -5702,7 +5700,7 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5730,7 +5728,7 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateOutput {
   type: string;
 }
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateOutput>;
@@ -5796,7 +5794,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1beta1NamespacedLeaseCandidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
@@ -5817,7 +5815,7 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListInput {
   watch?: boolean;
 }
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5844,7 +5842,7 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput {
   type: string;
 }
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput>;
@@ -5909,7 +5907,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchCoordinationV1beta1NamespacedLeaseCandidateList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateListInput,
     outputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput,
   }));

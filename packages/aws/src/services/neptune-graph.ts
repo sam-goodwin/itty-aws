@@ -152,7 +152,7 @@ export interface CancelQueryInput {
   graphIdentifier: string;
   queryId: string;
 }
-export const CancelQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelQueryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(
       T.HttpHeader("graphIdentifier"),
@@ -174,7 +174,7 @@ export const CancelQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CancelQueryInput",
 }) as any as S.Schema<CancelQueryInput>;
 export interface CancelQueryResponse {}
-export const CancelQueryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CancelQueryResponse",
@@ -188,18 +188,18 @@ export type ValidationExceptionReason =
   | "UNSUPPORTED_OPERATION"
   | "BAD_REQUEST"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export type QueryLanguage = "OPEN_CYPHER" | (string & {});
-export const QueryLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryLanguage = /*@__PURE__*/ S.String;
 export type DocumentValuedMap = { [key: string]: any | undefined };
-export const DocumentValuedMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const DocumentValuedMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
 export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
-export const PlanCacheType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PlanCacheType = /*@__PURE__*/ S.String;
 export type ExplainMode = "STATIC" | "DETAILS" | (string & {});
-export const ExplainMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExplainMode = /*@__PURE__*/ S.String;
 export interface ExecuteQueryInput {
   graphIdentifier: string;
   queryString: string;
@@ -209,7 +209,7 @@ export interface ExecuteQueryInput {
   explainMode?: ExplainMode;
   queryTimeoutMilliseconds?: number;
 }
-export const ExecuteQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecuteQueryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(
       T.HttpHeader("graphIdentifier"),
@@ -240,13 +240,13 @@ export const ExecuteQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ExecuteQueryOutput {
   payload: T.StreamingOutputBody;
 }
-export const ExecuteQueryOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecuteQueryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ payload: T.StreamingOutput.pipe(T.HttpPayload()) }),
 ).annotate({
   identifier: "ExecuteQueryOutput",
 }) as any as S.Schema<ExecuteQueryOutput>;
 export type ConflictExceptionReason = "CONCURRENT_MODIFICATION" | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 export type UnprocessableExceptionReason =
   | "QUERY_TIMEOUT"
   | "INTERNAL_LIMIT_EXCEEDED"
@@ -254,15 +254,14 @@ export type UnprocessableExceptionReason =
   | "STORAGE_LIMIT_EXCEEDED"
   | "PARTITION_FULL"
   | (string & {});
-export const UnprocessableExceptionReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnprocessableExceptionReason = /*@__PURE__*/ S.String;
 export type GraphSummaryMode = "BASIC" | "DETAILED" | (string & {});
-export const GraphSummaryMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GraphSummaryMode = /*@__PURE__*/ S.String;
 export interface GetGraphSummaryInput {
   graphIdentifier: string;
   mode?: GraphSummaryMode;
 }
-export const GetGraphSummaryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(
       T.HttpHeader("graphIdentifier"),
@@ -284,27 +283,26 @@ export const GetGraphSummaryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetGraphSummaryInput",
 }) as any as S.Schema<GetGraphSummaryInput>;
 export type NodeLabels = string[];
-export const NodeLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NodeLabels = /*@__PURE__*/ S.Array(S.String);
 export type EdgeLabels = string[];
-export const EdgeLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EdgeLabels = /*@__PURE__*/ S.Array(S.String);
 export type LongValuedMap = { [key: string]: number | undefined };
-export const LongValuedMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const LongValuedMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number.pipe(S.optional),
 );
 export type LongValuedMapList = { [key: string]: number | undefined }[];
-export const LongValuedMapList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LongValuedMap);
+export const LongValuedMapList = /*@__PURE__*/ S.Array(LongValuedMap);
 export type NodeProperties = string[];
-export const NodeProperties = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NodeProperties = /*@__PURE__*/ S.Array(S.String);
 export type OutgoingEdgeLabels = string[];
-export const OutgoingEdgeLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const OutgoingEdgeLabels = /*@__PURE__*/ S.Array(S.String);
 export interface NodeStructure {
   count?: number;
   nodeProperties?: string[];
   distinctOutgoingEdgeLabels?: string[];
 }
-export const NodeStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     nodeProperties: S.optional(NodeProperties),
@@ -312,23 +310,21 @@ export const NodeStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeStructure" }) as any as S.Schema<NodeStructure>;
 export type NodeStructures = NodeStructure[];
-export const NodeStructures =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NodeStructure);
+export const NodeStructures = /*@__PURE__*/ S.Array(NodeStructure);
 export type EdgeProperties = string[];
-export const EdgeProperties = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EdgeProperties = /*@__PURE__*/ S.Array(S.String);
 export interface EdgeStructure {
   count?: number;
   edgeProperties?: string[];
 }
-export const EdgeStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EdgeStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     edgeProperties: S.optional(EdgeProperties),
   }),
 ).annotate({ identifier: "EdgeStructure" }) as any as S.Schema<EdgeStructure>;
 export type EdgeStructures = EdgeStructure[];
-export const EdgeStructures =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EdgeStructure);
+export const EdgeStructures = /*@__PURE__*/ S.Array(EdgeStructure);
 export interface GraphDataSummary {
   numNodes?: number;
   numEdges?: number;
@@ -345,7 +341,7 @@ export interface GraphDataSummary {
   nodeStructures?: NodeStructure[];
   edgeStructures?: EdgeStructure[];
 }
-export const GraphDataSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GraphDataSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numNodes: S.optional(S.Number),
     numEdges: S.optional(S.Number),
@@ -370,7 +366,7 @@ export interface GetGraphSummaryOutput {
   lastStatisticsComputationTime?: Date;
   graphSummary?: GraphDataSummary;
 }
-export const GetGraphSummaryOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGraphSummaryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     lastStatisticsComputationTime: S.optional(
@@ -385,7 +381,7 @@ export interface GetQueryInput {
   graphIdentifier: string;
   queryId: string;
 }
-export const GetQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetQueryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(
       T.HttpHeader("graphIdentifier"),
@@ -405,7 +401,7 @@ export const GetQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetQueryInput" }) as any as S.Schema<GetQueryInput>;
 export type QueryState = "RUNNING" | "WAITING" | "CANCELLING" | (string & {});
-export const QueryState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryState = /*@__PURE__*/ S.String;
 export interface GetQueryOutput {
   id?: string;
   queryString?: string;
@@ -413,7 +409,7 @@ export interface GetQueryOutput {
   elapsed?: number;
   state?: QueryState;
 }
-export const GetQueryOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetQueryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     queryString: S.optional(S.String),
@@ -428,13 +424,13 @@ export type QueryStateInput =
   | "WAITING"
   | "CANCELLING"
   | (string & {});
-export const QueryStateInput = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryStateInput = /*@__PURE__*/ S.String;
 export interface ListQueriesInput {
   graphIdentifier: string;
   maxResults: number;
   state?: QueryStateInput;
 }
-export const ListQueriesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListQueriesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(
       T.HttpHeader("graphIdentifier"),
@@ -463,7 +459,7 @@ export interface QuerySummary {
   elapsed?: number;
   state?: QueryState;
 }
-export const QuerySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QuerySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     queryString: S.optional(S.String),
@@ -473,12 +469,11 @@ export const QuerySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuerySummary" }) as any as S.Schema<QuerySummary>;
 export type QuerySummaryList = QuerySummary[];
-export const QuerySummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuerySummary);
+export const QuerySummaryList = /*@__PURE__*/ S.Array(QuerySummary);
 export interface ListQueriesOutput {
   queries: QuerySummary[];
 }
-export const ListQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListQueriesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queries: QuerySummaryList }),
 ).annotate({
   identifier: "ListQueriesOutput",
@@ -486,32 +481,31 @@ export const ListQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tags: S.optional(TagMap) }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -519,7 +513,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -538,18 +532,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -568,7 +562,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -576,8 +570,8 @@ export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface VectorSearchConfiguration {
   dimension: number;
 }
-export const VectorSearchConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ dimension: S.Number }),
+export const VectorSearchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dimension: S.Number }),
 ).annotate({
   identifier: "VectorSearchConfiguration",
 }) as any as S.Schema<VectorSearchConfiguration>;
@@ -591,7 +585,7 @@ export interface CreateGraphInput {
   deletionProtection?: boolean;
   provisionedMemory: number;
 }
-export const CreateGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphName: S.String,
     tags: S.optional(TagMap),
@@ -628,7 +622,7 @@ export type GraphStatus =
   | "STOPPING"
   | "STOPPED"
   | (string & {});
-export const GraphStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GraphStatus = /*@__PURE__*/ S.String;
 export interface CreateGraphOutput {
   id: string;
   name: string;
@@ -646,7 +640,7 @@ export interface CreateGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const CreateGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -671,7 +665,7 @@ export interface DeleteGraphInput {
   graphIdentifier: string;
   skipSnapshot: boolean;
 }
-export const DeleteGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
     skipSnapshot: S.Boolean.pipe(T.HttpQuery("skipSnapshot")),
@@ -706,7 +700,7 @@ export interface DeleteGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const DeleteGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -730,7 +724,7 @@ export const DeleteGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetGraphInput {
   graphIdentifier: string;
 }
-export const GetGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
   }).pipe(
@@ -762,7 +756,7 @@ export interface GetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const GetGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -785,7 +779,7 @@ export interface ListGraphsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListGraphsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGraphsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -815,7 +809,7 @@ export interface GraphSummary {
   kmsKeyIdentifier?: string;
   deletionProtection?: boolean;
 }
-export const GraphSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GraphSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -830,13 +824,12 @@ export const GraphSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GraphSummary" }) as any as S.Schema<GraphSummary>;
 export type GraphSummaryList = GraphSummary[];
-export const GraphSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GraphSummary);
+export const GraphSummaryList = /*@__PURE__*/ S.Array(GraphSummary);
 export interface ListGraphsOutput {
   graphs: GraphSummary[];
   nextToken?: string;
 }
-export const ListGraphsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGraphsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ graphs: GraphSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGraphsOutput",
@@ -845,7 +838,7 @@ export interface ResetGraphInput {
   graphIdentifier: string;
   skipSnapshot: boolean;
 }
-export const ResetGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResetGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
     skipSnapshot: S.Boolean,
@@ -880,7 +873,7 @@ export interface ResetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const ResetGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResetGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -911,7 +904,7 @@ export interface RestoreGraphFromSnapshotInput {
   publicConnectivity?: boolean;
 }
 export const RestoreGraphFromSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       snapshotIdentifier: S.String.pipe(T.HttpLabel("snapshotIdentifier")),
       graphName: S.String,
@@ -955,7 +948,7 @@ export interface RestoreGraphFromSnapshotOutput {
   buildNumber?: string;
 }
 export const RestoreGraphFromSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       name: S.String,
@@ -979,7 +972,7 @@ export const RestoreGraphFromSnapshotOutput =
 export interface StartGraphInput {
   graphIdentifier: string;
 }
-export const StartGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
   }).pipe(
@@ -1013,7 +1006,7 @@ export interface StartGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const StartGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1037,7 +1030,7 @@ export const StartGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StopGraphInput {
   graphIdentifier: string;
 }
-export const StopGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
   }).pipe(
@@ -1069,7 +1062,7 @@ export interface StopGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const StopGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1096,7 +1089,7 @@ export interface UpdateGraphInput {
   provisionedMemory?: number;
   deletionProtection?: boolean;
 }
-export const UpdateGraphInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGraphInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
     publicConnectivity: S.optional(S.Boolean),
@@ -1133,7 +1126,7 @@ export interface UpdateGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const UpdateGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGraphOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1155,9 +1148,9 @@ export const UpdateGraphOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateGraphOutput",
 }) as any as S.Schema<UpdateGraphOutput>;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface CreatePrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId?: string;
@@ -1165,7 +1158,7 @@ export interface CreatePrivateGraphEndpointInput {
   vpcSecurityGroupIds?: string[];
 }
 export const CreatePrivateGraphEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
       vpcId: S.optional(S.String),
@@ -1191,7 +1184,7 @@ export type PrivateGraphEndpointStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const PrivateGraphEndpointStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PrivateGraphEndpointStatus = /*@__PURE__*/ S.String;
 export interface CreatePrivateGraphEndpointOutput {
   vpcId: string;
   subnetIds: string[];
@@ -1199,7 +1192,7 @@ export interface CreatePrivateGraphEndpointOutput {
   vpcEndpointId?: string;
 }
 export const CreatePrivateGraphEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vpcId: S.String,
       subnetIds: SubnetIds,
@@ -1214,7 +1207,7 @@ export interface DeletePrivateGraphEndpointInput {
   vpcId: string;
 }
 export const DeletePrivateGraphEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
       vpcId: S.String.pipe(T.HttpLabel("vpcId")),
@@ -1242,7 +1235,7 @@ export interface DeletePrivateGraphEndpointOutput {
   vpcEndpointId?: string;
 }
 export const DeletePrivateGraphEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vpcId: S.String,
       subnetIds: SubnetIds,
@@ -1257,7 +1250,7 @@ export interface GetPrivateGraphEndpointInput {
   vpcId: string;
 }
 export const GetPrivateGraphEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
       vpcId: S.String.pipe(T.HttpLabel("vpcId")),
@@ -1285,7 +1278,7 @@ export interface GetPrivateGraphEndpointOutput {
   vpcEndpointId?: string;
 }
 export const GetPrivateGraphEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vpcId: S.String,
       subnetIds: SubnetIds,
@@ -1301,7 +1294,7 @@ export interface ListPrivateGraphEndpointsInput {
   maxResults?: number;
 }
 export const ListPrivateGraphEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1327,7 +1320,7 @@ export interface PrivateGraphEndpointSummary {
   vpcEndpointId?: string;
 }
 export const PrivateGraphEndpointSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vpcId: S.String,
       subnetIds: SubnetIds,
@@ -1339,13 +1332,13 @@ export const PrivateGraphEndpointSummary =
   }) as any as S.Schema<PrivateGraphEndpointSummary>;
 export type PrivateGraphEndpointSummaryList = PrivateGraphEndpointSummary[];
 export const PrivateGraphEndpointSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PrivateGraphEndpointSummary);
+  /*@__PURE__*/ S.Array(PrivateGraphEndpointSummary);
 export interface ListPrivateGraphEndpointsOutput {
   privateGraphEndpoints: PrivateGraphEndpointSummary[];
   nextToken?: string;
 }
 export const ListPrivateGraphEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateGraphEndpoints: PrivateGraphEndpointSummaryList,
       nextToken: S.optional(S.String),
@@ -1358,23 +1351,22 @@ export interface CreateGraphSnapshotInput {
   snapshotName: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateGraphSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      graphIdentifier: S.String,
-      snapshotName: S.String,
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/snapshots" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
-      ),
+export const CreateGraphSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graphIdentifier: S.String,
+    snapshotName: S.String,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/snapshots" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
     ),
+  ),
 ).annotate({
   identifier: "CreateGraphSnapshotInput",
 }) as any as S.Schema<CreateGraphSnapshotInput>;
@@ -1384,7 +1376,7 @@ export type SnapshotStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const SnapshotStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SnapshotStatus = /*@__PURE__*/ S.String;
 export interface CreateGraphSnapshotOutput {
   id: string;
   name: string;
@@ -1394,40 +1386,38 @@ export interface CreateGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const CreateGraphSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      sourceGraphId: S.optional(S.String),
-      snapshotCreateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      status: S.optional(SnapshotStatus),
-      kmsKeyIdentifier: S.optional(S.String),
-    }),
+export const CreateGraphSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    sourceGraphId: S.optional(S.String),
+    snapshotCreateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    status: S.optional(SnapshotStatus),
+    kmsKeyIdentifier: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateGraphSnapshotOutput",
 }) as any as S.Schema<CreateGraphSnapshotOutput>;
 export interface DeleteGraphSnapshotInput {
   snapshotIdentifier: string;
 }
-export const DeleteGraphSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      snapshotIdentifier: S.String.pipe(T.HttpLabel("snapshotIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/snapshots/{snapshotIdentifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
-      ),
+export const DeleteGraphSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotIdentifier: S.String.pipe(T.HttpLabel("snapshotIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/snapshots/{snapshotIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
     ),
+  ),
 ).annotate({
   identifier: "DeleteGraphSnapshotInput",
 }) as any as S.Schema<DeleteGraphSnapshotInput>;
@@ -1440,26 +1430,25 @@ export interface DeleteGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const DeleteGraphSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      sourceGraphId: S.optional(S.String),
-      snapshotCreateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      status: S.optional(SnapshotStatus),
-      kmsKeyIdentifier: S.optional(S.String),
-    }),
+export const DeleteGraphSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    sourceGraphId: S.optional(S.String),
+    snapshotCreateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    status: S.optional(SnapshotStatus),
+    kmsKeyIdentifier: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeleteGraphSnapshotOutput",
 }) as any as S.Schema<DeleteGraphSnapshotOutput>;
 export interface GetGraphSnapshotInput {
   snapshotIdentifier: string;
 }
-export const GetGraphSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGraphSnapshotInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotIdentifier: S.String.pipe(T.HttpLabel("snapshotIdentifier")),
   }).pipe(
@@ -1485,19 +1474,18 @@ export interface GetGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const GetGraphSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      sourceGraphId: S.optional(S.String),
-      snapshotCreateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      status: S.optional(SnapshotStatus),
-      kmsKeyIdentifier: S.optional(S.String),
-    }),
+export const GetGraphSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    sourceGraphId: S.optional(S.String),
+    snapshotCreateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    status: S.optional(SnapshotStatus),
+    kmsKeyIdentifier: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetGraphSnapshotOutput",
 }) as any as S.Schema<GetGraphSnapshotOutput>;
@@ -1506,25 +1494,22 @@ export interface ListGraphSnapshotsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListGraphSnapshotsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      graphIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("graphIdentifier"),
-      ),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/snapshots" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
-      ),
+export const ListGraphSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graphIdentifier: S.optional(S.String).pipe(T.HttpQuery("graphIdentifier")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/snapshots" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
     ),
+  ),
 ).annotate({
   identifier: "ListGraphSnapshotsInput",
 }) as any as S.Schema<ListGraphSnapshotsInput>;
@@ -1537,7 +1522,7 @@ export interface GraphSnapshotSummary {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const GraphSnapshotSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GraphSnapshotSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1554,24 +1539,23 @@ export const GraphSnapshotSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GraphSnapshotSummary>;
 export type GraphSnapshotSummaryList = GraphSnapshotSummary[];
 export const GraphSnapshotSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GraphSnapshotSummary);
+  /*@__PURE__*/ S.Array(GraphSnapshotSummary);
 export interface ListGraphSnapshotsOutput {
   graphSnapshots: GraphSnapshotSummary[];
   nextToken?: string;
 }
-export const ListGraphSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      graphSnapshots: GraphSnapshotSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListGraphSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graphSnapshots: GraphSnapshotSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListGraphSnapshotsOutput",
 }) as any as S.Schema<ListGraphSnapshotsOutput>;
 export interface CancelExportTaskInput {
   taskIdentifier: string;
 }
-export const CancelExportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelExportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskIdentifier: S.String.pipe(T.HttpLabel("taskIdentifier")),
   }).pipe(
@@ -1597,11 +1581,11 @@ export type ExportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-export const ExportTaskStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExportTaskStatus = /*@__PURE__*/ S.String;
 export type ExportFormat = "PARQUET" | "CSV" | (string & {});
-export const ExportFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExportFormat = /*@__PURE__*/ S.String;
 export type ParquetType = "COLUMNAR" | (string & {});
-export const ParquetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ParquetType = /*@__PURE__*/ S.String;
 export interface CancelExportTaskOutput {
   graphId: string;
   roleArn: string;
@@ -1613,26 +1597,25 @@ export interface CancelExportTaskOutput {
   parquetType?: ParquetType;
   statusReason?: string;
 }
-export const CancelExportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      graphId: S.String,
-      roleArn: S.String,
-      taskId: S.String,
-      status: ExportTaskStatus,
-      format: ExportFormat,
-      destination: S.String,
-      kmsKeyIdentifier: S.String,
-      parquetType: S.optional(ParquetType),
-      statusReason: S.optional(S.String),
-    }),
+export const CancelExportTaskOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graphId: S.String,
+    roleArn: S.String,
+    taskId: S.String,
+    status: ExportTaskStatus,
+    format: ExportFormat,
+    destination: S.String,
+    kmsKeyIdentifier: S.String,
+    parquetType: S.optional(ParquetType),
+    statusReason: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CancelExportTaskOutput",
 }) as any as S.Schema<CancelExportTaskOutput>;
 export interface CancelImportTaskInput {
   taskIdentifier: string;
 }
-export const CancelImportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelImportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskIdentifier: S.String.pipe(T.HttpLabel("taskIdentifier")),
   }).pipe(
@@ -1655,7 +1638,7 @@ export type Format =
   | "PARQUET"
   | "NTRIPLES"
   | (string & {});
-export const Format = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Format = /*@__PURE__*/ S.String;
 export type ImportTaskStatus =
   | "INITIALIZING"
   | "EXPORTING"
@@ -1669,7 +1652,7 @@ export type ImportTaskStatus =
   | "CANCELLED"
   | "DELETED"
   | (string & {});
-export const ImportTaskStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImportTaskStatus = /*@__PURE__*/ S.String;
 export interface CancelImportTaskOutput {
   graphId?: string;
   taskId: string;
@@ -1679,17 +1662,16 @@ export interface CancelImportTaskOutput {
   roleArn: string;
   status: ImportTaskStatus;
 }
-export const CancelImportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      graphId: S.optional(S.String),
-      taskId: S.String,
-      source: S.String,
-      format: S.optional(Format),
-      parquetType: S.optional(ParquetType),
-      roleArn: S.String,
-      status: ImportTaskStatus,
-    }),
+export const CancelImportTaskOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    graphId: S.optional(S.String),
+    taskId: S.String,
+    source: S.String,
+    format: S.optional(Format),
+    parquetType: S.optional(ParquetType),
+    roleArn: S.String,
+    status: ImportTaskStatus,
+  }),
 ).annotate({
   identifier: "CancelImportTaskOutput",
 }) as any as S.Schema<CancelImportTaskOutput>;
@@ -1699,7 +1681,7 @@ export interface NeptuneImportOptions {
   preserveDefaultVertexLabels?: boolean;
   preserveEdgeIds?: boolean;
 }
-export const NeptuneImportOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NeptuneImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3ExportPath: S.String,
     s3ExportKmsKeyId: S.String,
@@ -1710,11 +1692,11 @@ export const NeptuneImportOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NeptuneImportOptions",
 }) as any as S.Schema<NeptuneImportOptions>;
 export type ImportOptions = { neptune: NeptuneImportOptions };
-export const ImportOptions = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ImportOptions = /*@__PURE__*/ S.Union([
   S.Struct({ neptune: NeptuneImportOptions }),
 ]);
 export type BlankNodeHandling = "convertToIri" | (string & {});
-export const BlankNodeHandling = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BlankNodeHandling = /*@__PURE__*/ S.String;
 export interface CreateGraphUsingImportTaskInput {
   graphName: string;
   tags?: { [key: string]: string | undefined };
@@ -1734,7 +1716,7 @@ export interface CreateGraphUsingImportTaskInput {
   roleArn: string;
 }
 export const CreateGraphUsingImportTaskInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphName: S.String,
       tags: S.optional(TagMap),
@@ -1777,7 +1759,7 @@ export interface CreateGraphUsingImportTaskOutput {
   importOptions?: ImportOptions;
 }
 export const CreateGraphUsingImportTaskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       graphId: S.optional(S.String),
       taskId: S.String,
@@ -1794,7 +1776,7 @@ export const CreateGraphUsingImportTaskOutput =
 export interface GetExportTaskInput {
   taskIdentifier: string;
 }
-export const GetExportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetExportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskIdentifier: S.String.pipe(T.HttpLabel("taskIdentifier")),
   }).pipe(
@@ -1818,7 +1800,7 @@ export interface ExportTaskDetails {
   numVerticesWritten?: number;
   numEdgesWritten?: number;
 }
-export const ExportTaskDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportTaskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     timeElapsedSeconds: S.Number,
@@ -1830,14 +1812,14 @@ export const ExportTaskDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExportTaskDetails",
 }) as any as S.Schema<ExportTaskDetails>;
 export type MultiValueHandlingType = "TO_LIST" | "PICK_FIRST" | (string & {});
-export const MultiValueHandlingType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MultiValueHandlingType = /*@__PURE__*/ S.String;
 export interface ExportFilterPropertyAttributes {
   outputType?: string;
   sourcePropertyName?: string;
   multiValueHandling?: MultiValueHandlingType;
 }
 export const ExportFilterPropertyAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outputType: S.optional(S.String),
       sourcePropertyName: S.optional(S.String),
@@ -1849,14 +1831,14 @@ export const ExportFilterPropertyAttributes =
 export type ExportFilterPropertyMap = {
   [key: string]: ExportFilterPropertyAttributes | undefined;
 };
-export const ExportFilterPropertyMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExportFilterPropertyMap = /*@__PURE__*/ S.Record(
   S.String,
   ExportFilterPropertyAttributes.pipe(S.optional),
 );
 export interface ExportFilterElement {
   properties?: { [key: string]: ExportFilterPropertyAttributes | undefined };
 }
-export const ExportFilterElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportFilterElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ properties: S.optional(ExportFilterPropertyMap) }),
 ).annotate({
   identifier: "ExportFilterElement",
@@ -1864,7 +1846,7 @@ export const ExportFilterElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ExportFilterPerLabelMap = {
   [key: string]: ExportFilterElement | undefined;
 };
-export const ExportFilterPerLabelMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExportFilterPerLabelMap = /*@__PURE__*/ S.Record(
   S.String,
   ExportFilterElement.pipe(S.optional),
 );
@@ -1872,7 +1854,7 @@ export interface ExportFilter {
   vertexFilter?: { [key: string]: ExportFilterElement | undefined };
   edgeFilter?: { [key: string]: ExportFilterElement | undefined };
 }
-export const ExportFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vertexFilter: S.optional(ExportFilterPerLabelMap),
     edgeFilter: S.optional(ExportFilterPerLabelMap),
@@ -1891,7 +1873,7 @@ export interface GetExportTaskOutput {
   exportTaskDetails?: ExportTaskDetails;
   exportFilter?: ExportFilter;
 }
-export const GetExportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetExportTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.String,
     roleArn: S.String,
@@ -1911,7 +1893,7 @@ export const GetExportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetImportTaskInput {
   taskIdentifier: string;
 }
-export const GetImportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetImportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskIdentifier: S.String.pipe(T.HttpLabel("taskIdentifier")),
   }).pipe(
@@ -1938,7 +1920,7 @@ export interface ImportTaskDetails {
   statementCount: number;
   dictionaryEntryCount: number;
 }
-export const ImportTaskDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImportTaskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1965,7 +1947,7 @@ export interface GetImportTaskOutput {
   attemptNumber?: number;
   statusReason?: string;
 }
-export const GetImportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetImportTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.optional(S.String),
     taskId: S.String,
@@ -1987,7 +1969,7 @@ export interface ListExportTasksInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListExportTasksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListExportTasksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.optional(S.String).pipe(T.HttpQuery("graphIdentifier")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2017,7 +1999,7 @@ export interface ExportTaskSummary {
   parquetType?: ParquetType;
   statusReason?: string;
 }
-export const ExportTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.String,
     roleArn: S.String,
@@ -2033,13 +2015,12 @@ export const ExportTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExportTaskSummary",
 }) as any as S.Schema<ExportTaskSummary>;
 export type ExportTaskSummaryList = ExportTaskSummary[];
-export const ExportTaskSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExportTaskSummary);
+export const ExportTaskSummaryList = /*@__PURE__*/ S.Array(ExportTaskSummary);
 export interface ListExportTasksOutput {
   tasks: ExportTaskSummary[];
   nextToken?: string;
 }
-export const ListExportTasksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListExportTasksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tasks: ExportTaskSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListExportTasksOutput",
@@ -2048,7 +2029,7 @@ export interface ListImportTasksInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListImportTasksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListImportTasksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2075,7 +2056,7 @@ export interface ImportTaskSummary {
   roleArn: string;
   status: ImportTaskStatus;
 }
-export const ImportTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImportTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.optional(S.String),
     taskId: S.String,
@@ -2089,13 +2070,12 @@ export const ImportTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ImportTaskSummary",
 }) as any as S.Schema<ImportTaskSummary>;
 export type ImportTaskSummaryList = ImportTaskSummary[];
-export const ImportTaskSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ImportTaskSummary);
+export const ImportTaskSummaryList = /*@__PURE__*/ S.Array(ImportTaskSummary);
 export interface ListImportTasksOutput {
   tasks: ImportTaskSummary[];
   nextToken?: string;
 }
-export const ListImportTasksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListImportTasksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tasks: ImportTaskSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListImportTasksOutput",
@@ -2110,7 +2090,7 @@ export interface StartExportTaskInput {
   exportFilter?: ExportFilter;
   tags?: { [key: string]: string | undefined };
 }
-export const StartExportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartExportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphIdentifier: S.String,
     roleArn: S.String,
@@ -2146,7 +2126,7 @@ export interface StartExportTaskOutput {
   statusReason?: string;
   exportFilter?: ExportFilter;
 }
-export const StartExportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartExportTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.String,
     roleArn: S.String,
@@ -2172,7 +2152,7 @@ export interface StartImportTaskInput {
   graphIdentifier: string;
   roleArn: string;
 }
-export const StartImportTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartImportTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importOptions: S.optional(ImportOptions),
     failOnError: S.optional(S.Boolean),
@@ -2206,7 +2186,7 @@ export interface StartImportTaskOutput {
   status: ImportTaskStatus;
   importOptions?: ImportOptions;
 }
-export const StartImportTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartImportTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graphId: S.optional(S.String),
     taskId: S.String,
@@ -2279,7 +2259,7 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryResponse,
   CancelQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelQueryInput,
   output: CancelQueryResponse,
   errors: [
@@ -2315,7 +2295,7 @@ export const executeQuery: API.OperationMethod<
   ExecuteQueryOutput,
   ExecuteQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteQueryInput,
   output: ExecuteQueryOutput,
   errors: [
@@ -2343,7 +2323,7 @@ export const getGraphSummary: API.OperationMethod<
   GetGraphSummaryOutput,
   GetGraphSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphSummaryInput,
   output: GetGraphSummaryOutput,
   errors: [
@@ -2372,7 +2352,7 @@ export const getQuery: API.OperationMethod<
   GetQueryOutput,
   GetQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryInput,
   output: GetQueryOutput,
   errors: [
@@ -2398,7 +2378,7 @@ export const listQueries: API.OperationMethod<
   ListQueriesOutput,
   ListQueriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListQueriesInput,
   output: ListQueriesOutput,
   errors: [
@@ -2423,7 +2403,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2448,7 +2428,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2473,7 +2453,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2499,7 +2479,7 @@ export const createGraph: API.OperationMethod<
   CreateGraphOutput,
   CreateGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphInput,
   output: CreateGraphOutput,
   errors: [
@@ -2526,7 +2506,7 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphOutput,
   DeleteGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGraphInput,
   output: DeleteGraphOutput,
   errors: [
@@ -2552,7 +2532,7 @@ export const getGraph: API.OperationMethod<
   GetGraphOutput,
   GetGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphInput,
   output: GetGraphOutput,
   errors: [
@@ -2591,7 +2571,7 @@ export const listGraphs: API.OperationMethod<
     ListGraphsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphsInput,
   output: ListGraphsOutput,
   errors: [
@@ -2622,7 +2602,7 @@ export const resetGraph: API.OperationMethod<
   ResetGraphOutput,
   ResetGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetGraphInput,
   output: ResetGraphOutput,
   errors: [
@@ -2650,7 +2630,7 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
   RestoreGraphFromSnapshotOutput,
   RestoreGraphFromSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreGraphFromSnapshotInput,
   output: RestoreGraphFromSnapshotOutput,
   errors: [
@@ -2678,7 +2658,7 @@ export const startGraph: API.OperationMethod<
   StartGraphOutput,
   StartGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartGraphInput,
   output: StartGraphOutput,
   errors: [
@@ -2705,7 +2685,7 @@ export const stopGraph: API.OperationMethod<
   StopGraphOutput,
   StopGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopGraphInput,
   output: StopGraphOutput,
   errors: [
@@ -2732,7 +2712,7 @@ export const updateGraph: API.OperationMethod<
   UpdateGraphOutput,
   UpdateGraphError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGraphInput,
   output: UpdateGraphOutput,
   errors: [
@@ -2762,7 +2742,7 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
   CreatePrivateGraphEndpointOutput,
   CreatePrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePrivateGraphEndpointInput,
   output: CreatePrivateGraphEndpointOutput,
   errors: [
@@ -2790,7 +2770,7 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
   DeletePrivateGraphEndpointOutput,
   DeletePrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePrivateGraphEndpointInput,
   output: DeletePrivateGraphEndpointOutput,
   errors: [
@@ -2816,7 +2796,7 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
   GetPrivateGraphEndpointOutput,
   GetPrivateGraphEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPrivateGraphEndpointInput,
   output: GetPrivateGraphEndpointOutput,
   errors: [
@@ -2856,7 +2836,7 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
     ListPrivateGraphEndpointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivateGraphEndpointsInput,
   output: ListPrivateGraphEndpointsOutput,
   errors: [
@@ -2889,7 +2869,7 @@ export const createGraphSnapshot: API.OperationMethod<
   CreateGraphSnapshotOutput,
   CreateGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphSnapshotInput,
   output: CreateGraphSnapshotOutput,
   errors: [
@@ -2917,7 +2897,7 @@ export const deleteGraphSnapshot: API.OperationMethod<
   DeleteGraphSnapshotOutput,
   DeleteGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGraphSnapshotInput,
   output: DeleteGraphSnapshotOutput,
   errors: [
@@ -2943,7 +2923,7 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotOutput,
   GetGraphSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGraphSnapshotInput,
   output: GetGraphSnapshotOutput,
   errors: [
@@ -2983,7 +2963,7 @@ export const listGraphSnapshots: API.OperationMethod<
     ListGraphSnapshotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphSnapshotsInput,
   output: ListGraphSnapshotsOutput,
   errors: [
@@ -3015,7 +2995,7 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskOutput,
   CancelExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskInput,
   output: CancelExportTaskOutput,
   errors: [
@@ -3042,7 +3022,7 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskOutput,
   CancelImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelImportTaskInput,
   output: CancelImportTaskOutput,
   errors: [
@@ -3071,7 +3051,7 @@ export const createGraphUsingImportTask: API.OperationMethod<
   CreateGraphUsingImportTaskOutput,
   CreateGraphUsingImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGraphUsingImportTaskInput,
   output: CreateGraphUsingImportTaskOutput,
   errors: [
@@ -3097,7 +3077,7 @@ export const getExportTask: API.OperationMethod<
   GetExportTaskOutput,
   GetExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportTaskInput,
   output: GetExportTaskOutput,
   errors: [
@@ -3122,7 +3102,7 @@ export const getImportTask: API.OperationMethod<
   GetImportTaskOutput,
   GetImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImportTaskInput,
   output: GetImportTaskOutput,
   errors: [
@@ -3162,7 +3142,7 @@ export const listExportTasks: API.OperationMethod<
     ListExportTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportTasksInput,
   output: ListExportTasksOutput,
   errors: [
@@ -3208,7 +3188,7 @@ export const listImportTasks: API.OperationMethod<
     ListImportTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportTasksInput,
   output: ListImportTasksOutput,
   errors: [
@@ -3240,7 +3220,7 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskOutput,
   StartExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExportTaskInput,
   output: StartExportTaskOutput,
   errors: [
@@ -3267,7 +3247,7 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskOutput,
   StartImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartImportTaskInput,
   output: StartImportTaskOutput,
   errors: [

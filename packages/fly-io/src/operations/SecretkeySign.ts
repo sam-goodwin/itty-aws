@@ -10,7 +10,7 @@ export interface SecretkeySignInput {
   min_version?: string;
   plaintext?: number[];
 }
-export const SecretkeySignInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySignInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export const SecretkeySignInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SecretkeySignOutput {
   signature?: number[];
 }
-export const SecretkeySignOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeySignOutput = /*@__PURE__*/ Schema.Struct({
   signature: Schema.optional(Schema.Array(Schema.Number)),
 }) as unknown as Schema.Codec<SecretkeySignOutput>;
 
@@ -38,7 +38,7 @@ export const SecretkeySignOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeySign = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeySign = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeySignInput,
   outputSchema: SecretkeySignOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

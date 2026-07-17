@@ -41,7 +41,7 @@ export interface DatasetItemsPartialUpdateInput {
   team?: number;
 }
 export const DatasetItemsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     dataset: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface DatasetItemsPartialUpdateOutput {
   team?: number;
 }
 export const DatasetItemsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
     input: Schema.optional(Schema.Unknown),
@@ -186,10 +186,8 @@ export const DatasetItemsPartialUpdateOutput =
  * @param id - A UUID string identifying this dataset item.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const datasetItemsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatasetItemsPartialUpdateInput,
-    outputSchema: DatasetItemsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const datasetItemsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatasetItemsPartialUpdateInput,
+  outputSchema: DatasetItemsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

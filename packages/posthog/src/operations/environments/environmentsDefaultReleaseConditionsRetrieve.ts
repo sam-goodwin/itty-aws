@@ -9,7 +9,7 @@ export interface EnvironmentsDefaultReleaseConditionsRetrieveInput {
   project_id: string;
 }
 export const EnvironmentsDefaultReleaseConditionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const EnvironmentsDefaultReleaseConditionsRetrieveInput =
 // Output Schema
 export type EnvironmentsDefaultReleaseConditionsRetrieveOutput = void;
 export const EnvironmentsDefaultReleaseConditionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const EnvironmentsDefaultReleaseConditionsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDefaultReleaseConditionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDefaultReleaseConditionsRetrieveInput,
     outputSchema: EnvironmentsDefaultReleaseConditionsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

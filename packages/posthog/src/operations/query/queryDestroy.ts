@@ -8,7 +8,7 @@ export interface QueryDestroyInput {
   id: string;
   project_id: string;
 }
-export const QueryDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -18,7 +18,7 @@ export const QueryDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type QueryDestroyOutput = void;
 export const QueryDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryDestroyOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const QueryDestroyOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const queryDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryDestroyInput,
   outputSchema: QueryDestroyOutput,
   errors: [Forbidden, NotFound] as const,

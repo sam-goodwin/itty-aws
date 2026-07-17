@@ -934,7 +934,7 @@ export interface PostCheckoutSessionsInput {
   wallet_options?: { link?: { display?: "auto" | "never" } };
 }
 export const PostCheckoutSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.optional(
       Schema.Struct({
         enabled: Schema.optional(Schema.Boolean),
@@ -3844,7 +3844,7 @@ export interface PostCheckoutSessionsOutput {
   wallet_options: { link?: { display?: "auto" | "never" } } | null;
 }
 export const PostCheckoutSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.NullOr(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -5530,9 +5530,7 @@ export const PostCheckoutSessionsOutput =
  *
  * <p>Creates a Checkout Session object.</p>
  */
-export const PostCheckoutSessions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostCheckoutSessionsInput,
-    outputSchema: PostCheckoutSessionsOutput,
-  }),
-);
+export const PostCheckoutSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCheckoutSessionsInput,
+  outputSchema: PostCheckoutSessionsOutput,
+}));

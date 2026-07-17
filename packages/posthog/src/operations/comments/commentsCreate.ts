@@ -63,7 +63,7 @@ export interface CommentsCreateInput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
@@ -208,7 +208,7 @@ export interface CommentsCreateOutput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -296,7 +296,7 @@ export const CommentsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const commentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const commentsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommentsCreateInput,
   outputSchema: CommentsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

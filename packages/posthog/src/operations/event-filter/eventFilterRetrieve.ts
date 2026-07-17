@@ -7,7 +7,7 @@ export interface EventFilterRetrieveInput {
   project_id: string;
 }
 export const EventFilterRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/projects/{project_id}/event_filter/" }),
@@ -23,7 +23,7 @@ export interface EventFilterRetrieveOutput {
   updated_at?: string;
 }
 export const EventFilterRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.Literals(["disabled", "dry_run", "live"])),
     filter_tree: Schema.optional(Schema.Unknown),
@@ -38,7 +38,7 @@ export const EventFilterRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventFilterRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventFilterRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventFilterRetrieveInput,
   outputSchema: EventFilterRetrieveOutput,
 }));

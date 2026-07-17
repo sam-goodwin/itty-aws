@@ -8,7 +8,7 @@ export interface ListTokensForAccountInput {
   address: string;
 }
 export const ListTokensForAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals(["base", "base-sepolia"]).pipe(T.PathParam()),
     address: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -25,7 +25,7 @@ export interface ListTokensForAccountOutput {
   totalCount?: number;
 }
 export const ListTokensForAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountAddress: Schema.optional(Schema.String),
     tokenAddresses: Schema.optional(Schema.Array(Schema.String)),
     totalCount: Schema.optional(Schema.Number),
@@ -41,9 +41,7 @@ export const ListTokensForAccountOutput =
  * @param network - The blockchain network to query.
  * @param address - The account address to analyze for token interactions.
  */
-export const listTokensForAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListTokensForAccountInput,
-    outputSchema: ListTokensForAccountOutput,
-  }),
-);
+export const listTokensForAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListTokensForAccountInput,
+  outputSchema: ListTokensForAccountOutput,
+}));

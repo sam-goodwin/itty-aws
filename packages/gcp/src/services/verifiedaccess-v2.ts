@@ -30,7 +30,7 @@ export interface VerifyChallengeResponseRequest {
 }
 
 export const VerifyChallengeResponseRequest: Schema.Codec<VerifyChallengeResponseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     challengeResponse: Schema.optional(Schema.String),
     expectedIdentity: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerifyChallengeResponseRequest" });
@@ -43,7 +43,7 @@ export interface CrowdStrikeAgent {
 }
 
 export const CrowdStrikeAgent: Schema.Codec<CrowdStrikeAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CrowdStrikeAgent" });
@@ -59,7 +59,7 @@ export interface Antivirus {
 }
 
 export const Antivirus: Schema.Codec<Antivirus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "Antivirus" });
 
@@ -179,7 +179,7 @@ export interface DeviceSignals {
 }
 
 export const DeviceSignals: Schema.Codec<DeviceSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operatingSystem: Schema.optional(Schema.String),
     screenLockSecured: Schema.optional(Schema.String),
     windowsMachineDomain: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export interface VerifyChallengeResponseResult {
 }
 
 export const VerifyChallengeResponseResult: Schema.Codec<VerifyChallengeResponseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceSignals: Schema.optional(DeviceSignals),
     signedPublicKeyAndChallenge: Schema.optional(Schema.String),
     virtualProfileId: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export const VerifyChallengeResponseResult: Schema.Codec<VerifyChallengeResponse
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -290,7 +290,7 @@ export interface Challenge {
 }
 
 export const Challenge: Schema.Codec<Challenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     challenge: Schema.optional(Schema.String),
   }).annotate({ identifier: "Challenge" });
 
@@ -353,18 +353,16 @@ export interface VerifyChallengeRequest {
   body?: VerifyChallengeResponseRequest;
 }
 
-export const VerifyChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(VerifyChallengeResponseRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const VerifyChallengeRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(VerifyChallengeResponseRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "v2/challenge:verify", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<VerifyChallengeRequest>;
 
 export type VerifyChallengeResponse = VerifyChallengeResponseResult;
 export const VerifyChallengeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VerifyChallengeResponseResult;
+  /*@__PURE__*/ VerifyChallengeResponseResult;
 
 export type VerifyChallengeError =
   | DefaultErrors
@@ -379,7 +377,7 @@ export const verifyChallenge: API.OperationMethod<
   VerifyChallengeResponse,
   VerifyChallengeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyChallengeRequest,
   output: VerifyChallengeResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -391,7 +389,7 @@ export interface GenerateChallengeRequest {
 }
 
 export const GenerateChallengeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(Empty).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v2/challenge:generate", hasBody: true }),
@@ -399,7 +397,7 @@ export const GenerateChallengeRequest =
   ) as unknown as Schema.Codec<GenerateChallengeRequest>;
 
 export type GenerateChallengeResponse = Challenge;
-export const GenerateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;
+export const GenerateChallengeResponse = /*@__PURE__*/ Challenge;
 
 export type GenerateChallengeError =
   | DefaultErrors
@@ -414,7 +412,7 @@ export const generateChallenge: API.OperationMethod<
   GenerateChallengeResponse,
   GenerateChallengeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateChallengeRequest,
   output: GenerateChallengeResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

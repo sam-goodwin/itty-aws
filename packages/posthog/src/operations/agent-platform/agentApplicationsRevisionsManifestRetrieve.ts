@@ -9,7 +9,7 @@ export interface AgentApplicationsRevisionsManifestRetrieveInput {
   project_id: string;
 }
 export const AgentApplicationsRevisionsManifestRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -215,7 +215,7 @@ export interface AgentApplicationsRevisionsManifestRetrieveOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsManifestRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -553,7 +553,7 @@ export const AgentApplicationsRevisionsManifestRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsManifestRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsManifestRetrieveInput,
     outputSchema: AgentApplicationsRevisionsManifestRetrieveOutput,
   }));

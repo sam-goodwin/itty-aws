@@ -45,7 +45,7 @@ export interface SchemaPropertyGroupsCreateInput {
   } | null;
 }
 export const SchemaPropertyGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -163,7 +163,7 @@ export interface SchemaPropertyGroupsCreateOutput {
   } | null;
 }
 export const SchemaPropertyGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -239,10 +239,8 @@ export const SchemaPropertyGroupsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const schemaPropertyGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchemaPropertyGroupsCreateInput,
-    outputSchema: SchemaPropertyGroupsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const schemaPropertyGroupsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchemaPropertyGroupsCreateInput,
+  outputSchema: SchemaPropertyGroupsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

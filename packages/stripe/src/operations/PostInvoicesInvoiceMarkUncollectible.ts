@@ -13,7 +13,7 @@ export interface PostInvoicesInvoiceMarkUncollectibleInput {
   expand?: string[];
 }
 export const PostInvoicesInvoiceMarkUncollectibleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -2210,7 +2210,7 @@ export interface PostInvoicesInvoiceMarkUncollectibleOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceMarkUncollectibleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3920,7 +3920,7 @@ export const PostInvoicesInvoiceMarkUncollectibleOutput =
  * <p>Marking an invoice as uncollectible is useful for keeping track of bad debts that can be written off for accounting purposes.</p>
  */
 export const PostInvoicesInvoiceMarkUncollectible =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostInvoicesInvoiceMarkUncollectibleInput,
     outputSchema: PostInvoicesInvoiceMarkUncollectibleOutput,
   }));

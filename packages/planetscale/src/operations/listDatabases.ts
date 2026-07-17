@@ -10,7 +10,7 @@ export interface ListDatabasesInput {
   page?: number;
   per_page?: number;
 }
-export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
   page: Schema.optional(Schema.Number),
@@ -27,7 +27,7 @@ export interface ListDatabasesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     url: string;
     branches_url: string;
@@ -51,7 +51,7 @@ export interface ListDatabasesOutput {
       id: string;
       provider: string;
       enabled: boolean;
-      public_ip_addresses: string[];
+      public_ip_addresses: ReadonlyArray<string>;
       display_name: string;
       location: string;
       slug: string;
@@ -93,9 +93,9 @@ export interface ListDatabasesOutput {
     updated_at: string;
     schema_last_updated_at?: string | null;
     kind: "mysql" | "postgresql";
-  }[];
+  }>;
 }
-export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDatabasesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -191,16 +191,14 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListDatabasesInput,
-    outputSchema: ListDatabasesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listDatabases = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListDatabasesInput,
+  outputSchema: ListDatabasesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

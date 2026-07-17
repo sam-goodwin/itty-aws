@@ -69,7 +69,7 @@ export interface PostPricesInput {
   unit_amount?: number;
   unit_amount_decimal?: string;
 }
-export const PostPricesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   billing_scheme: Schema.optional(Schema.Literals(["per_unit", "tiered"])),
   currency: Schema.String,
@@ -334,7 +334,7 @@ export interface PostPricesOutput {
   unit_amount: number | null;
   unit_amount_decimal: string | null;
 }
-export const PostPricesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   billing_scheme: Schema.Literals(["per_unit", "tiered"]),
   created: Schema.Number,
@@ -424,7 +424,7 @@ export const PostPricesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Creates a new <a href="https://docs.stripe.com/api/prices">Price</a> for an existing <a href="https://docs.stripe.com/api/products">Product</a>. The Price can be recurring or one-time.</p>
  */
-export const PostPrices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPrices = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPricesInput,
   outputSchema: PostPricesOutput,
 }));

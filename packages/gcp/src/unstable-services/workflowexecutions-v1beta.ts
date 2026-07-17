@@ -32,7 +32,7 @@ export interface Position {
 }
 
 export const Position: Schema.Codec<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
     length: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface StackTraceElement {
 }
 
 export const StackTraceElement: Schema.Codec<StackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     routine: Schema.optional(Schema.String),
     position: Schema.optional(Position),
@@ -60,7 +60,7 @@ export interface StackTrace {
 }
 
 export const StackTrace: Schema.Codec<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(StackTraceElement)),
   }).annotate({ identifier: "StackTrace" });
 
@@ -72,7 +72,7 @@ export interface Step {
 }
 
 export const Step: Schema.Codec<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routine: Schema.optional(Schema.String),
     step: Schema.optional(Schema.String),
   }).annotate({ identifier: "Step" });
@@ -83,7 +83,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentSteps: Schema.optional(Schema.Array(Step)),
   }).annotate({ identifier: "Status" });
 
@@ -97,7 +97,7 @@ export interface Workflowexecutions_Error {
 }
 
 export const Workflowexecutions_Error: Schema.Codec<Workflowexecutions_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.String),
     stackTrace: Schema.optional(StackTrace),
     context: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface Execution {
 }
 
 export const Execution: Schema.Codec<Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export interface ListExecutionsResponse {
 }
 
 export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     executions: Schema.optional(Schema.Array(Execution)),
   }).annotate({ identifier: "ListExecutionsResponse" });
@@ -168,7 +168,7 @@ export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
 export interface CancelExecutionRequest {}
 
 export const CancelExecutionRequest: Schema.Codec<CancelExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelExecutionRequest",
   });
 
@@ -234,7 +234,7 @@ export interface GetProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const GetProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -244,7 +244,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
 
 export type GetProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const GetProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type GetProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -257,7 +257,7 @@ export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   GetProjectsLocationsWorkflowsExecutionsResponse,
   GetProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowsExecutionsRequest,
   output: GetProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden],
@@ -275,7 +275,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const ListProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -288,7 +288,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
 export type ListProjectsLocationsWorkflowsExecutionsResponse =
   ListExecutionsResponse;
 export const ListProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListExecutionsResponse;
+  /*@__PURE__*/ ListExecutionsResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -301,7 +301,7 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
   ListProjectsLocationsWorkflowsExecutionsResponse,
   ListProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsRequest,
   output: ListProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden],
@@ -319,7 +319,7 @@ export interface CreateProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const CreateProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Execution).pipe(T.HttpBody()),
   }).pipe(
@@ -333,7 +333,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
 
 export type CreateProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CreateProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type CreateProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -348,7 +348,7 @@ export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CreateProjectsLocationsWorkflowsExecutionsResponse,
   CreateProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkflowsExecutionsRequest,
   output: CreateProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -362,7 +362,7 @@ export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
 }
 
 export const CancelProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -372,7 +372,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
 
 export type CancelProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CancelProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
+  /*@__PURE__*/ Execution;
 
 export type CancelProjectsLocationsWorkflowsExecutionsError =
   | DefaultErrors
@@ -387,7 +387,7 @@ export const cancelProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CancelProjectsLocationsWorkflowsExecutionsResponse,
   CancelProjectsLocationsWorkflowsExecutionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsWorkflowsExecutionsRequest,
   output: CancelProjectsLocationsWorkflowsExecutionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

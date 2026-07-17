@@ -7,7 +7,7 @@ export interface GetReportingReportTypesInput {
   expand?: string;
 }
 export const GetReportingReportTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -35,7 +35,7 @@ export interface GetReportingReportTypesOutput {
   url: string;
 }
 export const GetReportingReportTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         data_available_end: Schema.Number,
@@ -62,9 +62,7 @@ export const GetReportingReportTypesOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetReportingReportTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetReportingReportTypesInput,
-    outputSchema: GetReportingReportTypesOutput,
-  }),
-);
+export const GetReportingReportTypes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetReportingReportTypesInput,
+  outputSchema: GetReportingReportTypesOutput,
+}));

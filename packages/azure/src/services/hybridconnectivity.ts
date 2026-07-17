@@ -19,7 +19,7 @@ export interface EndpointsCreateOrUpdateInput {
   };
 }
 export const EndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -52,7 +52,7 @@ export interface EndpointsCreateOrUpdateOutput {
   };
 }
 export const EndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -80,18 +80,16 @@ export const EndpointsCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
-export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsCreateOrUpdateInput,
-    outputSchema: EndpointsCreateOrUpdateOutput,
-  }),
-);
+export const EndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsCreateOrUpdateInput,
+  outputSchema: EndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EndpointsDeleteInput {
   resourceUri: string;
   endpointName: string;
 }
-export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -105,7 +103,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type EndpointsDeleteOutput = void;
 export const EndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -115,7 +113,7 @@ export const EndpointsDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
-export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsDeleteInput,
   outputSchema: EndpointsDeleteOutput,
 }));
@@ -124,7 +122,7 @@ export interface EndpointsGetInput {
   resourceUri: string;
   endpointName: string;
 }
-export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -149,7 +147,7 @@ export interface EndpointsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -177,7 +175,7 @@ export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
-export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsGetInput,
   outputSchema: EndpointsGetOutput,
 }));
@@ -185,7 +183,7 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface EndpointsListInput {
   resourceUri: string;
 }
-export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -212,7 +210,7 @@ export interface EndpointsListOutput {
   }[];
   nextLink?: string;
 }
-export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -244,7 +242,7 @@ export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsListInput,
   outputSchema: EndpointsListOutput,
 }));
@@ -256,7 +254,7 @@ export interface EndpointsListCredentialsInput {
   serviceName?: "SSH" | "WAC";
 }
 export const EndpointsListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
@@ -281,7 +279,7 @@ export interface EndpointsListCredentialsOutput {
   };
 }
 export const EndpointsListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relay: Schema.optional(
       Schema.Struct({
         namespaceName: Schema.String,
@@ -303,12 +301,10 @@ export const EndpointsListCredentialsOutput =
  * @param endpointName - The endpoint name.
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
-export const EndpointsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsListCredentialsInput,
-    outputSchema: EndpointsListCredentialsOutput,
-  }),
-);
+export const EndpointsListCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsListCredentialsInput,
+  outputSchema: EndpointsListCredentialsOutput,
+}));
 // Input Schema
 export interface EndpointsListIngressGatewayCredentialsInput {
   resourceUri: string;
@@ -317,7 +313,7 @@ export interface EndpointsListIngressGatewayCredentialsInput {
   serviceName?: "SSH" | "WAC";
 }
 export const EndpointsListIngressGatewayCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
@@ -346,7 +342,7 @@ export interface EndpointsListIngressGatewayCredentialsOutput {
   };
 }
 export const EndpointsListIngressGatewayCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relay: Schema.optional(
       Schema.Struct({
         namespaceName: Schema.String,
@@ -378,7 +374,7 @@ export const EndpointsListIngressGatewayCredentialsOutput =
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
 export const EndpointsListIngressGatewayCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EndpointsListIngressGatewayCredentialsInput,
     outputSchema: EndpointsListIngressGatewayCredentialsOutput,
   }));
@@ -391,7 +387,7 @@ export interface EndpointsListManagedProxyDetailsInput {
   serviceName?: "SSH" | "WAC";
 }
 export const EndpointsListManagedProxyDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     service: Schema.String,
@@ -411,7 +407,7 @@ export interface EndpointsListManagedProxyDetailsOutput {
   expiresOn: number;
 }
 export const EndpointsListManagedProxyDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     proxy: Schema.String,
     expiresOn: Schema.Number,
   }) as unknown as Schema.Codec<EndpointsListManagedProxyDetailsOutput>;
@@ -425,7 +421,7 @@ export const EndpointsListManagedProxyDetailsOutput =
  * @param endpointName - The endpoint name.
  */
 export const EndpointsListManagedProxyDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EndpointsListManagedProxyDetailsInput,
     outputSchema: EndpointsListManagedProxyDetailsOutput,
   }));
@@ -439,7 +435,7 @@ export interface EndpointsUpdateInput {
     provisioningState?: string;
   };
 }
-export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -471,7 +467,7 @@ export interface EndpointsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -499,7 +495,7 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
-export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsUpdateInput,
   outputSchema: EndpointsUpdateOutput,
 }));
@@ -513,7 +509,7 @@ export interface GenerateAwsTemplatePostInput {
   }[];
 }
 export const GenerateAwsTemplatePostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     connectorId: Schema.String,
     solutionTypes: Schema.optional(
@@ -537,7 +533,7 @@ export const GenerateAwsTemplatePostInput =
 // Output Schema
 export type GenerateAwsTemplatePostOutput = unknown;
 export const GenerateAwsTemplatePostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GenerateAwsTemplatePostOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GenerateAwsTemplatePostOutput>;
 
 // The operation
 /**
@@ -546,19 +542,17 @@ export const GenerateAwsTemplatePostOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GenerateAwsTemplatePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GenerateAwsTemplatePostInput,
-    outputSchema: GenerateAwsTemplatePostOutput,
-  }),
-);
+export const GenerateAwsTemplatePost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GenerateAwsTemplatePostInput,
+  outputSchema: GenerateAwsTemplatePostOutput,
+}));
 // Input Schema
 export interface InventoryGetInput {
   resourceUri: string;
   solutionConfiguration: string;
   inventoryId: string;
 }
-export const InventoryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InventoryGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   solutionConfiguration: Schema.String.pipe(T.PathParam()),
   inventoryId: Schema.String.pipe(T.PathParam()),
@@ -584,7 +578,7 @@ export interface InventoryGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const InventoryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InventoryGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -613,7 +607,7 @@ export const InventoryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  * @param inventoryId - Inventory resource
  */
-export const InventoryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InventoryGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InventoryGetInput,
   outputSchema: InventoryGetOutput,
 }));
@@ -623,7 +617,7 @@ export interface InventoryListBySolutionConfigurationInput {
   solutionConfiguration: string;
 }
 export const InventoryListBySolutionConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -652,7 +646,7 @@ export interface InventoryListBySolutionConfigurationOutput {
   nextLink?: string;
 }
 export const InventoryListBySolutionConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -696,15 +690,13 @@ export const InventoryListBySolutionConfigurationOutput =
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const InventoryListBySolutionConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InventoryListBySolutionConfigurationInput,
     outputSchema: InventoryListBySolutionConfigurationOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridConnectivity/operations",
@@ -728,7 +720,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -758,7 +750,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -781,7 +773,7 @@ export interface PublicCloudConnectorsCreateOrUpdateInput {
   location: string;
 }
 export const PublicCloudConnectorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
@@ -824,7 +816,7 @@ export interface PublicCloudConnectorsCreateOrUpdateOutput {
   };
 }
 export const PublicCloudConnectorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -854,7 +846,7 @@ export const PublicCloudConnectorsCreateOrUpdateOutput =
  * @param publicCloudConnector - Represent public cloud connectors resource.
  */
 export const PublicCloudConnectorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicCloudConnectorsCreateOrUpdateInput,
     outputSchema: PublicCloudConnectorsCreateOrUpdateOutput,
   }));
@@ -865,7 +857,7 @@ export interface PublicCloudConnectorsDeleteInput {
   publicCloudConnector: string;
 }
 export const PublicCloudConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
@@ -880,7 +872,7 @@ export const PublicCloudConnectorsDeleteInput =
 // Output Schema
 export type PublicCloudConnectorsDeleteOutput = void;
 export const PublicCloudConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PublicCloudConnectorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PublicCloudConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -891,12 +883,10 @@ export const PublicCloudConnectorsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param publicCloudConnector - Represent public cloud connectors resource.
  */
-export const PublicCloudConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PublicCloudConnectorsDeleteInput,
-    outputSchema: PublicCloudConnectorsDeleteOutput,
-  }),
-);
+export const PublicCloudConnectorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublicCloudConnectorsDeleteInput,
+  outputSchema: PublicCloudConnectorsDeleteOutput,
+}));
 // Input Schema
 export interface PublicCloudConnectorsGetInput {
   subscriptionId: string;
@@ -904,7 +894,7 @@ export interface PublicCloudConnectorsGetInput {
   publicCloudConnector: string;
 }
 export const PublicCloudConnectorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
@@ -931,7 +921,7 @@ export interface PublicCloudConnectorsGetOutput {
   };
 }
 export const PublicCloudConnectorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -960,19 +950,17 @@ export const PublicCloudConnectorsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param publicCloudConnector - Represent public cloud connectors resource.
  */
-export const PublicCloudConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PublicCloudConnectorsGetInput,
-    outputSchema: PublicCloudConnectorsGetOutput,
-  }),
-);
+export const PublicCloudConnectorsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublicCloudConnectorsGetInput,
+  outputSchema: PublicCloudConnectorsGetOutput,
+}));
 // Input Schema
 export interface PublicCloudConnectorsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PublicCloudConnectorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1001,7 +989,7 @@ export interface PublicCloudConnectorsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PublicCloudConnectorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1045,7 +1033,7 @@ export const PublicCloudConnectorsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PublicCloudConnectorsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicCloudConnectorsListByResourceGroupInput,
     outputSchema: PublicCloudConnectorsListByResourceGroupOutput,
   }));
@@ -1054,7 +1042,7 @@ export interface PublicCloudConnectorsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PublicCloudConnectorsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1082,7 +1070,7 @@ export interface PublicCloudConnectorsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PublicCloudConnectorsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1125,7 +1113,7 @@ export const PublicCloudConnectorsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PublicCloudConnectorsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicCloudConnectorsListBySubscriptionInput,
     outputSchema: PublicCloudConnectorsListBySubscriptionOutput,
   }));
@@ -1136,7 +1124,7 @@ export interface PublicCloudConnectorsTestPermissionsInput {
   publicCloudConnector: string;
 }
 export const PublicCloudConnectorsTestPermissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
@@ -1183,7 +1171,7 @@ export interface PublicCloudConnectorsTestPermissionsOutput {
   };
 }
 export const PublicCloudConnectorsTestPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1249,7 +1237,7 @@ export const PublicCloudConnectorsTestPermissionsOutput =
  * @param publicCloudConnector - Represent public cloud connectors resource.
  */
 export const PublicCloudConnectorsTestPermissions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicCloudConnectorsTestPermissionsInput,
     outputSchema: PublicCloudConnectorsTestPermissionsOutput,
   }));
@@ -1262,7 +1250,7 @@ export interface PublicCloudConnectorsUpdateInput {
   tags?: Record<string, string>;
 }
 export const PublicCloudConnectorsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicCloudConnector: Schema.String.pipe(T.PathParam()),
@@ -1299,7 +1287,7 @@ export interface PublicCloudConnectorsUpdateOutput {
   };
 }
 export const PublicCloudConnectorsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1328,12 +1316,10 @@ export const PublicCloudConnectorsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param publicCloudConnector - Represent public cloud connectors resource.
  */
-export const PublicCloudConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PublicCloudConnectorsUpdateInput,
-    outputSchema: PublicCloudConnectorsUpdateOutput,
-  }),
-);
+export const PublicCloudConnectorsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PublicCloudConnectorsUpdateInput,
+  outputSchema: PublicCloudConnectorsUpdateOutput,
+}));
 // Input Schema
 export interface ServiceConfigurationsCreateOrupdateInput {
   resourceUri: string;
@@ -1352,7 +1338,7 @@ export interface ServiceConfigurationsCreateOrupdateInput {
   };
 }
 export const ServiceConfigurationsCreateOrupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1395,7 +1381,7 @@ export interface ServiceConfigurationsCreateOrupdateOutput {
   };
 }
 export const ServiceConfigurationsCreateOrupdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1425,7 +1411,7 @@ export const ServiceConfigurationsCreateOrupdateOutput =
  * @param serviceConfigurationName - The service name.
  */
 export const ServiceConfigurationsCreateOrupdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceConfigurationsCreateOrupdateInput,
     outputSchema: ServiceConfigurationsCreateOrupdateOutput,
   }));
@@ -1436,7 +1422,7 @@ export interface ServiceConfigurationsDeleteInput {
   serviceConfigurationName: string;
 }
 export const ServiceConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1451,7 +1437,7 @@ export const ServiceConfigurationsDeleteInput =
 // Output Schema
 export type ServiceConfigurationsDeleteOutput = void;
 export const ServiceConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1462,12 +1448,10 @@ export const ServiceConfigurationsDeleteOutput =
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
-export const ServiceConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceConfigurationsDeleteInput,
-    outputSchema: ServiceConfigurationsDeleteOutput,
-  }),
-);
+export const ServiceConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceConfigurationsDeleteInput,
+  outputSchema: ServiceConfigurationsDeleteOutput,
+}));
 // Input Schema
 export interface ServiceConfigurationsGetInput {
   resourceUri: string;
@@ -1475,7 +1459,7 @@ export interface ServiceConfigurationsGetInput {
   serviceConfigurationName: string;
 }
 export const ServiceConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1502,7 +1486,7 @@ export interface ServiceConfigurationsGetOutput {
   };
 }
 export const ServiceConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1531,19 +1515,17 @@ export const ServiceConfigurationsGetOutput =
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
-export const ServiceConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceConfigurationsGetInput,
-    outputSchema: ServiceConfigurationsGetOutput,
-  }),
-);
+export const ServiceConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceConfigurationsGetInput,
+  outputSchema: ServiceConfigurationsGetOutput,
+}));
 // Input Schema
 export interface ServiceConfigurationsListByEndpointResourceInput {
   resourceUri: string;
   endpointName: string;
 }
 export const ServiceConfigurationsListByEndpointResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1572,7 +1554,7 @@ export interface ServiceConfigurationsListByEndpointResourceOutput {
   nextLink?: string;
 }
 export const ServiceConfigurationsListByEndpointResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1618,7 +1600,7 @@ export const ServiceConfigurationsListByEndpointResourceOutput =
  * @param endpointName - The endpoint name.
  */
 export const ServiceConfigurationsListByEndpointResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceConfigurationsListByEndpointResourceInput,
     outputSchema: ServiceConfigurationsListByEndpointResourceOutput,
   }));
@@ -1630,7 +1612,7 @@ export interface ServiceConfigurationsUpdateInput {
   properties?: { port?: number };
 }
 export const ServiceConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
@@ -1662,7 +1644,7 @@ export interface ServiceConfigurationsUpdateOutput {
   };
 }
 export const ServiceConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1691,12 +1673,10 @@ export const ServiceConfigurationsUpdateOutput =
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
-export const ServiceConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceConfigurationsUpdateInput,
-    outputSchema: ServiceConfigurationsUpdateOutput,
-  }),
-);
+export const ServiceConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceConfigurationsUpdateInput,
+  outputSchema: ServiceConfigurationsUpdateOutput,
+}));
 // Input Schema
 export interface SolutionConfigurationsCreateOrUpdateInput {
   resourceUri: string;
@@ -1711,7 +1691,7 @@ export interface SolutionConfigurationsCreateOrUpdateInput {
   };
 }
 export const SolutionConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1753,7 +1733,7 @@ export interface SolutionConfigurationsCreateOrUpdateOutput {
   };
 }
 export const SolutionConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1782,7 +1762,7 @@ export const SolutionConfigurationsCreateOrUpdateOutput =
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionConfigurationsCreateOrUpdateInput,
     outputSchema: SolutionConfigurationsCreateOrUpdateOutput,
   }));
@@ -1792,7 +1772,7 @@ export interface SolutionConfigurationsDeleteInput {
   solutionConfiguration: string;
 }
 export const SolutionConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1806,7 +1786,7 @@ export const SolutionConfigurationsDeleteInput =
 // Output Schema
 export type SolutionConfigurationsDeleteOutput = void;
 export const SolutionConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1817,7 +1797,7 @@ export const SolutionConfigurationsDeleteOutput =
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionConfigurationsDeleteInput,
     outputSchema: SolutionConfigurationsDeleteOutput,
   }));
@@ -1827,7 +1807,7 @@ export interface SolutionConfigurationsGetInput {
   solutionConfiguration: string;
 }
 export const SolutionConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1853,7 +1833,7 @@ export interface SolutionConfigurationsGetOutput {
   };
 }
 export const SolutionConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1881,18 +1861,16 @@ export const SolutionConfigurationsGetOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
-export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SolutionConfigurationsGetInput,
-    outputSchema: SolutionConfigurationsGetOutput,
-  }),
-);
+export const SolutionConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SolutionConfigurationsGetInput,
+  outputSchema: SolutionConfigurationsGetOutput,
+}));
 // Input Schema
 export interface SolutionConfigurationsListInput {
   resourceUri: string;
 }
 export const SolutionConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1920,7 +1898,7 @@ export interface SolutionConfigurationsListOutput {
   nextLink?: string;
 }
 export const SolutionConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1962,19 +1940,17 @@ export const SolutionConfigurationsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SolutionConfigurationsListInput,
-    outputSchema: SolutionConfigurationsListOutput,
-  }),
-);
+export const SolutionConfigurationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SolutionConfigurationsListInput,
+  outputSchema: SolutionConfigurationsListOutput,
+}));
 // Input Schema
 export interface SolutionConfigurationsSyncNowInput {
   resourceUri: string;
   solutionConfiguration: string;
 }
 export const SolutionConfigurationsSyncNowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2020,7 +1996,7 @@ export interface SolutionConfigurationsSyncNowOutput {
   };
 }
 export const SolutionConfigurationsSyncNowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2085,7 +2061,7 @@ export const SolutionConfigurationsSyncNowOutput =
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsSyncNow =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionConfigurationsSyncNowInput,
     outputSchema: SolutionConfigurationsSyncNowOutput,
   }));
@@ -2099,7 +2075,7 @@ export interface SolutionConfigurationsUpdateInput {
   };
 }
 export const SolutionConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2133,7 +2109,7 @@ export interface SolutionConfigurationsUpdateOutput {
   };
 }
 export const SolutionConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2162,7 +2138,7 @@ export const SolutionConfigurationsUpdateOutput =
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionConfigurationsUpdateInput,
     outputSchema: SolutionConfigurationsUpdateOutput,
   }));
@@ -2172,7 +2148,7 @@ export interface SolutionTypesGetInput {
   resourceGroupName: string;
   solutionType: string;
 }
-export const SolutionTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SolutionTypesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   solutionType: Schema.String.pipe(T.PathParam()),
@@ -2198,27 +2174,25 @@ export interface SolutionTypesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SolutionTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SolutionTypesGetOutput>;
+export const SolutionTypesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SolutionTypesGetOutput>;
 
 // The operation
 /**
@@ -2229,7 +2203,7 @@ export const SolutionTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param solutionType - Solution Type resource
  */
-export const SolutionTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SolutionTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SolutionTypesGetInput,
   outputSchema: SolutionTypesGetOutput,
 }));
@@ -2239,7 +2213,7 @@ export interface SolutionTypesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SolutionTypesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2268,7 +2242,7 @@ export interface SolutionTypesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SolutionTypesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2312,7 +2286,7 @@ export const SolutionTypesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SolutionTypesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionTypesListByResourceGroupInput,
     outputSchema: SolutionTypesListByResourceGroupOutput,
   }));
@@ -2321,7 +2295,7 @@ export interface SolutionTypesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SolutionTypesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2349,7 +2323,7 @@ export interface SolutionTypesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SolutionTypesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2392,7 +2366,7 @@ export const SolutionTypesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SolutionTypesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SolutionTypesListBySubscriptionInput,
     outputSchema: SolutionTypesListBySubscriptionOutput,
   }));

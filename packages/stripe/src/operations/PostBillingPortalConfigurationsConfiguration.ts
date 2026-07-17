@@ -76,7 +76,7 @@ export interface PostBillingPortalConfigurationsConfigurationInput {
   name?: string | "";
 }
 export const PostBillingPortalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     business_profile: Schema.optional(
@@ -327,7 +327,7 @@ export interface PostBillingPortalConfigurationsConfigurationOutput {
   updated: number;
 }
 export const PostBillingPortalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.NullOr(
       Schema.Union([
@@ -458,7 +458,7 @@ export const PostBillingPortalConfigurationsConfigurationOutput =
  * <p>Updates a configuration that describes the functionality of the customer portal.</p>
  */
 export const PostBillingPortalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingPortalConfigurationsConfigurationInput,
     outputSchema: PostBillingPortalConfigurationsConfigurationOutput,
   }));

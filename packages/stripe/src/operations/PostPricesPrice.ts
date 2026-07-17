@@ -36,7 +36,7 @@ export interface PostPricesPriceInput {
   tax_behavior?: "exclusive" | "inclusive" | "unspecified";
   transfer_lookup_key?: boolean;
 }
-export const PostPricesPriceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesPriceInput = /*@__PURE__*/ Schema.Struct({
   price: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Boolean),
   currency_options: Schema.optional(
@@ -259,7 +259,7 @@ export interface PostPricesPriceOutput {
   unit_amount: number | null;
   unit_amount_decimal: string | null;
 }
-export const PostPricesPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPricesPriceOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   billing_scheme: Schema.Literals(["per_unit", "tiered"]),
   created: Schema.Number,
@@ -349,7 +349,7 @@ export const PostPricesPriceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.</p>
  */
-export const PostPricesPrice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPricesPrice = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPricesPriceInput,
   outputSchema: PostPricesPriceOutput,
 }));

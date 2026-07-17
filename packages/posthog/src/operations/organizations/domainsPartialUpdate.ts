@@ -27,7 +27,7 @@ export interface DomainsPartialUpdateInput {
   id_jag_allowed_clients?: string[];
 }
 export const DomainsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     domain: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface DomainsPartialUpdateOutput {
   id_jag_allowed_clients?: string[];
 }
 export const DomainsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     is_verified: Schema.optional(Schema.Boolean),
@@ -106,10 +106,8 @@ export const DomainsPartialUpdateOutput =
  * @param id - A UUID string identifying this domain.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsPartialUpdateInput,
-    outputSchema: DomainsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const domainsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsPartialUpdateInput,
+  outputSchema: DomainsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

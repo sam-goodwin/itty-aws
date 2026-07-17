@@ -28,7 +28,7 @@ export interface SlashCommand {
 }
 
 export const SlashCommand: Schema.Codec<SlashCommand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commandId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SlashCommand" });
 
@@ -40,7 +40,7 @@ export interface AttachmentDataRef {
 }
 
 export const AttachmentDataRef: Schema.Codec<AttachmentDataRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attachmentUploadToken: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AttachmentDataRef" });
@@ -53,7 +53,7 @@ export interface GoogleAppsCardV1ActionParameter {
 }
 
 export const GoogleAppsCardV1ActionParameter: Schema.Codec<GoogleAppsCardV1ActionParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1ActionParameter" });
@@ -68,7 +68,7 @@ export interface PermissionSetting {
 }
 
 export const PermissionSetting: Schema.Codec<PermissionSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assistantManagersAllowed: Schema.optional(Schema.Boolean),
     managersAllowed: Schema.optional(Schema.Boolean),
     membersAllowed: Schema.optional(Schema.Boolean),
@@ -94,7 +94,7 @@ export interface PermissionSettings {
 }
 
 export const PermissionSettings: Schema.Codec<PermissionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manageMembersAndGroups: Schema.optional(PermissionSetting),
     postMessages: Schema.optional(PermissionSetting),
     toggleHistory: Schema.optional(PermissionSetting),
@@ -123,7 +123,7 @@ export interface GoogleChatV1Section {
 }
 
 export const GoogleChatV1Section: Schema.Codec<GoogleChatV1Section> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface ListSectionsResponse {
 }
 
 export const ListSectionsResponse: Schema.Codec<ListSectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sections: Schema.optional(Schema.Array(GoogleChatV1Section)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSectionsResponse" });
@@ -157,7 +157,7 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     isAnonymous: Schema.optional(Schema.Boolean),
@@ -173,7 +173,7 @@ export interface CustomEmojiPayload {
 }
 
 export const CustomEmojiPayload: Schema.Codec<CustomEmojiPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileContent: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomEmojiPayload" });
@@ -192,7 +192,7 @@ export interface CustomEmoji {
 }
 
 export const CustomEmoji: Schema.Codec<CustomEmoji> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     temporaryImageUri: Schema.optional(Schema.String),
     payload: Schema.optional(CustomEmojiPayload),
@@ -208,7 +208,7 @@ export interface Emoji {
 }
 
 export const Emoji: Schema.Codec<Emoji> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unicode: Schema.optional(Schema.String),
     customEmoji: Schema.optional(CustomEmoji),
   }).annotate({ identifier: "Emoji" });
@@ -223,7 +223,7 @@ export interface Reaction {
 }
 
 export const Reaction: Schema.Codec<Reaction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     user: Schema.optional(User),
     emoji: Schema.optional(Emoji),
@@ -237,7 +237,7 @@ export interface ListReactionsResponse {
 }
 
 export const ListReactionsResponse: Schema.Codec<ListReactionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(Reaction)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReactionsResponse" });
@@ -248,7 +248,7 @@ export interface SpaceDataSource {
 }
 
 export const SpaceDataSource: Schema.Codec<SpaceDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultToCurrentSpace: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SpaceDataSource" });
 
@@ -258,7 +258,7 @@ export interface ChatClientDataSourceMarkup {
 }
 
 export const ChatClientDataSourceMarkup: Schema.Codec<ChatClientDataSourceMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaceDataSource: Schema.optional(SpaceDataSource),
   }).annotate({ identifier: "ChatClientDataSourceMarkup" });
 
@@ -270,7 +270,7 @@ export interface WorkflowDataSourceMarkup {
 }
 
 export const WorkflowDataSourceMarkup: Schema.Codec<WorkflowDataSourceMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeVariables: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkflowDataSourceMarkup" });
@@ -283,7 +283,7 @@ export interface HostAppDataSourceMarkup {
 }
 
 export const HostAppDataSourceMarkup: Schema.Codec<HostAppDataSourceMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chatDataSource: Schema.optional(ChatClientDataSourceMarkup),
     workflowDataSource: Schema.optional(WorkflowDataSourceMarkup),
   }).annotate({ identifier: "HostAppDataSourceMarkup" });
@@ -294,7 +294,7 @@ export interface OpenLink {
 }
 
 export const OpenLink: Schema.Codec<OpenLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "OpenLink" });
 
@@ -306,7 +306,7 @@ export interface ActionParameter {
 }
 
 export const ActionParameter: Schema.Codec<ActionParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActionParameter" });
@@ -319,7 +319,7 @@ export interface FormAction {
 }
 
 export const FormAction: Schema.Codec<FormAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionMethodName: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(ActionParameter)),
   }).annotate({ identifier: "FormAction" });
@@ -332,7 +332,7 @@ export interface OnClick {
 }
 
 export const OnClick: Schema.Codec<OnClick> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     openLink: Schema.optional(OpenLink),
     action: Schema.optional(FormAction),
   }).annotate({ identifier: "OnClick" });
@@ -381,7 +381,7 @@ export interface ImageButton {
 }
 
 export const ImageButton: Schema.Codec<ImageButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     icon: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
     iconUrl: Schema.optional(Schema.String),
@@ -396,7 +396,7 @@ export interface TextButton {
 }
 
 export const TextButton: Schema.Codec<TextButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
   }).annotate({ identifier: "TextButton" });
@@ -409,7 +409,7 @@ export interface Button {
 }
 
 export const Button: Schema.Codec<Button> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageButton: Schema.optional(ImageButton),
     textButton: Schema.optional(TextButton),
   }).annotate({ identifier: "Button" });
@@ -466,7 +466,7 @@ export interface KeyValue {
 }
 
 export const KeyValue: Schema.Codec<KeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentMultiline: Schema.optional(Schema.Boolean),
     bottomLabel: Schema.optional(Schema.String),
     icon: Schema.optional(Schema.String),
@@ -487,7 +487,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageUrl: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
     aspectRatio: Schema.optional(Schema.Number),
@@ -498,7 +498,7 @@ export interface TextParagraph {
 }
 
 export const TextParagraph: Schema.Codec<TextParagraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextParagraph" });
 
@@ -514,7 +514,7 @@ export interface WidgetMarkup {
 }
 
 export const WidgetMarkup: Schema.Codec<WidgetMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyValue: Schema.optional(KeyValue),
     buttons: Schema.optional(Schema.Array(Button)),
     image: Schema.optional(Image),
@@ -529,7 +529,7 @@ export interface Section {
 }
 
 export const Section: Schema.Codec<Section> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     widgets: Schema.optional(Schema.Array(WidgetMarkup)),
     header: Schema.optional(Schema.String),
   }).annotate({ identifier: "Section" });
@@ -546,7 +546,7 @@ export interface GoogleAppsCardV1MaterialIcon {
 }
 
 export const GoogleAppsCardV1MaterialIcon: Schema.Codec<GoogleAppsCardV1MaterialIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     fill: Schema.optional(Schema.Boolean),
@@ -567,7 +567,7 @@ export interface GoogleAppsCardV1Icon {
 }
 
 export const GoogleAppsCardV1Icon: Schema.Codec<GoogleAppsCardV1Icon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iconUrl: Schema.optional(Schema.String),
     knownIcon: Schema.optional(Schema.String),
     materialIcon: Schema.optional(GoogleAppsCardV1MaterialIcon),
@@ -587,7 +587,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blue: Schema.optional(Schema.Number),
     green: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
@@ -618,7 +618,7 @@ export interface GoogleAppsCardV1Button {
 }
 
 export const GoogleAppsCardV1Button: Schema.Codec<GoogleAppsCardV1Button> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       icon: Schema.optional(GoogleAppsCardV1Icon),
       color: Schema.optional(Color),
@@ -640,7 +640,7 @@ export interface GoogleAppsCardV1CardFixedFooter {
 }
 
 export const GoogleAppsCardV1CardFixedFooter: Schema.Codec<GoogleAppsCardV1CardFixedFooter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       primaryButton: Schema.optional(GoogleAppsCardV1Button),
       secondaryButton: Schema.optional(GoogleAppsCardV1Button),
@@ -663,7 +663,7 @@ export interface GoogleAppsCardV1CardHeader {
 }
 
 export const GoogleAppsCardV1CardHeader: Schema.Codec<GoogleAppsCardV1CardHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageType: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
@@ -681,7 +681,7 @@ export interface GoogleAppsCardV1BorderStyle {
 }
 
 export const GoogleAppsCardV1BorderStyle: Schema.Codec<GoogleAppsCardV1BorderStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cornerRadius: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
     strokeColor: Schema.optional(Color),
@@ -701,7 +701,7 @@ export interface GoogleAppsCardV1ImageCropStyle {
 }
 
 export const GoogleAppsCardV1ImageCropStyle: Schema.Codec<GoogleAppsCardV1ImageCropStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aspectRatio: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1ImageCropStyle" });
@@ -718,7 +718,7 @@ export interface GoogleAppsCardV1ImageComponent {
 }
 
 export const GoogleAppsCardV1ImageComponent: Schema.Codec<GoogleAppsCardV1ImageComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     altText: Schema.optional(Schema.String),
     imageUri: Schema.optional(Schema.String),
     cropStyle: Schema.optional(GoogleAppsCardV1ImageCropStyle),
@@ -743,7 +743,7 @@ export interface GoogleAppsCardV1GridItem {
 }
 
 export const GoogleAppsCardV1GridItem: Schema.Codec<GoogleAppsCardV1GridItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     layout: Schema.optional(Schema.String),
@@ -765,7 +765,7 @@ export interface GoogleAppsCardV1Grid {
 }
 
 export const GoogleAppsCardV1Grid: Schema.Codec<GoogleAppsCardV1Grid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       borderStyle: Schema.optional(GoogleAppsCardV1BorderStyle),
       title: Schema.optional(Schema.String),
@@ -792,7 +792,7 @@ export interface GoogleAppsCardV1Validation {
 }
 
 export const GoogleAppsCardV1Validation: Schema.Codec<GoogleAppsCardV1Validation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     characterLimit: Schema.optional(Schema.Number),
     inputType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1Validation" });
@@ -815,7 +815,7 @@ export interface GoogleAppsCardV1Action {
 }
 
 export const GoogleAppsCardV1Action: Schema.Codec<GoogleAppsCardV1Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loadIndicator: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(GoogleAppsCardV1ActionParameter)),
@@ -831,7 +831,7 @@ export interface GoogleAppsCardV1SuggestionItem {
 }
 
 export const GoogleAppsCardV1SuggestionItem: Schema.Codec<GoogleAppsCardV1SuggestionItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1SuggestionItem" });
 
@@ -841,7 +841,7 @@ export interface GoogleAppsCardV1Suggestions {
 }
 
 export const GoogleAppsCardV1Suggestions: Schema.Codec<GoogleAppsCardV1Suggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SuggestionItem)),
   }).annotate({ identifier: "GoogleAppsCardV1Suggestions" });
 
@@ -871,7 +871,7 @@ export interface GoogleAppsCardV1TextInput {
 }
 
 export const GoogleAppsCardV1TextInput: Schema.Codec<GoogleAppsCardV1TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     hostAppDataSource: Schema.optional(HostAppDataSourceMarkup),
     hintText: Schema.optional(Schema.String),
@@ -897,7 +897,7 @@ export interface GoogleAppsCardV1ChipList {
 }
 
 export const GoogleAppsCardV1ChipList: Schema.Codec<GoogleAppsCardV1ChipList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       layout: Schema.optional(Schema.String),
       chips: Schema.optional(Schema.Array(GoogleAppsCardV1Chip)),
@@ -916,7 +916,7 @@ export interface GoogleAppsCardV1TextParagraph {
 }
 
 export const GoogleAppsCardV1TextParagraph: Schema.Codec<GoogleAppsCardV1TextParagraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     maxLines: Schema.optional(Schema.Number),
     textSyntax: Schema.optional(Schema.String),
@@ -936,7 +936,7 @@ export interface GoogleAppsCardV1SwitchControl {
 }
 
 export const GoogleAppsCardV1SwitchControl: Schema.Codec<GoogleAppsCardV1SwitchControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     controlType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -981,7 +981,7 @@ export interface GoogleAppsCardV1DecoratedText {
 }
 
 export const GoogleAppsCardV1DecoratedText: Schema.Codec<GoogleAppsCardV1DecoratedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       topLabel: Schema.optional(Schema.String),
       bottomLabelText: Schema.optional(GoogleAppsCardV1TextParagraph),
@@ -1008,7 +1008,7 @@ export interface GoogleAppsCardV1ButtonList {
 }
 
 export const GoogleAppsCardV1ButtonList: Schema.Codec<GoogleAppsCardV1ButtonList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       buttons: Schema.optional(Schema.Array(GoogleAppsCardV1Button)),
     }),
@@ -1026,7 +1026,7 @@ export interface GoogleAppsCardV1Image {
 }
 
 export const GoogleAppsCardV1Image: Schema.Codec<GoogleAppsCardV1Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       altText: Schema.optional(Schema.String),
       imageUrl: Schema.optional(Schema.String),
@@ -1046,7 +1046,7 @@ export interface GoogleAppsCardV1NestedWidget {
 }
 
 export const GoogleAppsCardV1NestedWidget: Schema.Codec<GoogleAppsCardV1NestedWidget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       textParagraph: Schema.optional(GoogleAppsCardV1TextParagraph),
       buttonList: Schema.optional(GoogleAppsCardV1ButtonList),
@@ -1064,7 +1064,7 @@ export interface GoogleAppsCardV1CarouselCard {
 }
 
 export const GoogleAppsCardV1CarouselCard: Schema.Codec<GoogleAppsCardV1CarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       widgets: Schema.optional(Schema.Array(GoogleAppsCardV1NestedWidget)),
       footerWidgets: Schema.optional(
@@ -1081,7 +1081,7 @@ export interface GoogleAppsCardV1Carousel {
 }
 
 export const GoogleAppsCardV1Carousel: Schema.Codec<GoogleAppsCardV1Carousel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       carouselCards: Schema.optional(
         Schema.Array(GoogleAppsCardV1CarouselCard),
@@ -1104,7 +1104,7 @@ export interface GoogleAppsCardV1SelectionItem {
 }
 
 export const GoogleAppsCardV1SelectionItem: Schema.Codec<GoogleAppsCardV1SelectionItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bottomText: Schema.optional(Schema.String),
     selected: Schema.optional(Schema.Boolean),
     text: Schema.optional(Schema.String),
@@ -1120,7 +1120,7 @@ export interface GoogleAppsCardV1PlatformDataSource {
 }
 
 export const GoogleAppsCardV1PlatformDataSource: Schema.Codec<GoogleAppsCardV1PlatformDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commonDataSource: Schema.optional(Schema.String),
     hostAppDataSource: Schema.optional(HostAppDataSourceMarkup),
   }).annotate({ identifier: "GoogleAppsCardV1PlatformDataSource" });
@@ -1135,7 +1135,7 @@ export interface GoogleAppsCardV1DataSourceConfig {
 }
 
 export const GoogleAppsCardV1DataSourceConfig: Schema.Codec<GoogleAppsCardV1DataSourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remoteDataSource: Schema.optional(GoogleAppsCardV1Action),
     platformDataSource: Schema.optional(GoogleAppsCardV1PlatformDataSource),
     minCharactersTrigger: Schema.optional(Schema.Number),
@@ -1173,7 +1173,7 @@ export interface GoogleAppsCardV1SelectionInput {
 }
 
 export const GoogleAppsCardV1SelectionInput: Schema.Codec<GoogleAppsCardV1SelectionInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SelectionItem)),
     externalDataSource: Schema.optional(GoogleAppsCardV1Action),
     multiSelectMaxSelectedItems: Schema.optional(Schema.Number),
@@ -1192,7 +1192,7 @@ export const GoogleAppsCardV1SelectionInput: Schema.Codec<GoogleAppsCardV1Select
 export interface GoogleAppsCardV1Divider {}
 
 export const GoogleAppsCardV1Divider: Schema.Codec<GoogleAppsCardV1Divider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCardV1Divider",
   });
 
@@ -1214,7 +1214,7 @@ export interface GoogleAppsCardV1DateTimePicker {
 }
 
 export const GoogleAppsCardV1DateTimePicker: Schema.Codec<GoogleAppsCardV1DateTimePicker> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     valueMsEpoch: Schema.optional(Schema.String),
     hostAppDataSource: Schema.optional(HostAppDataSourceMarkup),
@@ -1244,7 +1244,7 @@ export interface GoogleAppsCardV1Widgets {
 }
 
 export const GoogleAppsCardV1Widgets: Schema.Codec<GoogleAppsCardV1Widgets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       textInput: Schema.optional(GoogleAppsCardV1TextInput),
       image: Schema.optional(GoogleAppsCardV1Image),
@@ -1285,7 +1285,7 @@ export interface GoogleAppsCardV1Column {
 }
 
 export const GoogleAppsCardV1Column: Schema.Codec<GoogleAppsCardV1Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       horizontalSizeStyle: Schema.optional(Schema.String),
       verticalAlignment: Schema.optional(Schema.String),
@@ -1302,7 +1302,7 @@ export interface GoogleAppsCardV1Columns {
 }
 
 export const GoogleAppsCardV1Columns: Schema.Codec<GoogleAppsCardV1Columns> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       columnItems: Schema.optional(Schema.Array(GoogleAppsCardV1Column)),
     }),
@@ -1316,7 +1316,7 @@ export interface GoogleAppsCardV1Trigger {
 }
 
 export const GoogleAppsCardV1Trigger: Schema.Codec<GoogleAppsCardV1Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionRuleId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1Trigger" });
 
@@ -1326,7 +1326,7 @@ export interface GoogleAppsCardV1UpdateVisibilityAction {
 }
 
 export const GoogleAppsCardV1UpdateVisibilityAction: Schema.Codec<GoogleAppsCardV1UpdateVisibilityAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     visibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1UpdateVisibilityAction" });
 
@@ -1336,7 +1336,7 @@ export interface GoogleAppsCardV1CommonWidgetAction {
 }
 
 export const GoogleAppsCardV1CommonWidgetAction: Schema.Codec<GoogleAppsCardV1CommonWidgetAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateVisibilityAction: Schema.optional(
       GoogleAppsCardV1UpdateVisibilityAction,
     ),
@@ -1352,7 +1352,7 @@ export interface GoogleAppsCardV1EventAction {
 }
 
 export const GoogleAppsCardV1EventAction: Schema.Codec<GoogleAppsCardV1EventAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postEventTriggers: Schema.optional(Schema.Array(GoogleAppsCardV1Trigger)),
     actionRuleId: Schema.optional(Schema.String),
     commonWidgetAction: Schema.optional(GoogleAppsCardV1CommonWidgetAction),
@@ -1399,7 +1399,7 @@ export interface GoogleAppsCardV1Widget {
 }
 
 export const GoogleAppsCardV1Widget: Schema.Codec<GoogleAppsCardV1Widget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.String),
       grid: Schema.optional(GoogleAppsCardV1Grid),
@@ -1437,7 +1437,7 @@ export interface GoogleAppsCardV1CollapseControl {
 }
 
 export const GoogleAppsCardV1CollapseControl: Schema.Codec<GoogleAppsCardV1CollapseControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       horizontalAlignment: Schema.optional(Schema.String),
       collapseButton: Schema.optional(GoogleAppsCardV1Button),
@@ -1463,7 +1463,7 @@ export interface GoogleAppsCardV1Section {
 }
 
 export const GoogleAppsCardV1Section: Schema.Codec<GoogleAppsCardV1Section> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       widgets: Schema.optional(Schema.Array(GoogleAppsCardV1Widget)),
       collapseControl: Schema.optional(GoogleAppsCardV1CollapseControl),
@@ -1486,7 +1486,7 @@ export interface GoogleAppsCardV1ExpressionDataCondition {
 }
 
 export const GoogleAppsCardV1ExpressionDataCondition: Schema.Codec<GoogleAppsCardV1ExpressionDataCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1ExpressionDataCondition" });
 
@@ -1498,7 +1498,7 @@ export interface GoogleAppsCardV1Condition {
 }
 
 export const GoogleAppsCardV1Condition: Schema.Codec<GoogleAppsCardV1Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionRuleId: Schema.optional(Schema.String),
     expressionDataCondition: Schema.optional(
       GoogleAppsCardV1ExpressionDataCondition,
@@ -1517,7 +1517,7 @@ export interface GoogleAppsCardV1ExpressionData {
 }
 
 export const GoogleAppsCardV1ExpressionData: Schema.Codec<GoogleAppsCardV1ExpressionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     eventActions: Schema.optional(Schema.Array(GoogleAppsCardV1EventAction)),
     id: Schema.optional(Schema.String),
@@ -1532,7 +1532,7 @@ export interface GoogleAppsCardV1CardAction {
 }
 
 export const GoogleAppsCardV1CardAction: Schema.Codec<GoogleAppsCardV1CardAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       onClick: Schema.optional(GoogleAppsCardV1OnClick),
       actionLabel: Schema.optional(Schema.String),
@@ -1571,7 +1571,7 @@ export interface GoogleAppsCardV1Card {
 }
 
 export const GoogleAppsCardV1Card: Schema.Codec<GoogleAppsCardV1Card> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fixedFooter: Schema.optional(GoogleAppsCardV1CardFixedFooter),
       displayStyle: Schema.optional(Schema.String),
@@ -1601,7 +1601,7 @@ export interface GoogleAppsCardV1OverflowMenuItem {
 }
 
 export const GoogleAppsCardV1OverflowMenuItem: Schema.Codec<GoogleAppsCardV1OverflowMenuItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
       startIcon: Schema.optional(GoogleAppsCardV1Icon),
@@ -1618,7 +1618,7 @@ export interface GoogleAppsCardV1OverflowMenu {
 }
 
 export const GoogleAppsCardV1OverflowMenu: Schema.Codec<GoogleAppsCardV1OverflowMenu> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(Schema.Array(GoogleAppsCardV1OverflowMenuItem)),
     }),
@@ -1636,7 +1636,7 @@ export interface GoogleAppsCardV1OpenLink {
 }
 
 export const GoogleAppsCardV1OpenLink: Schema.Codec<GoogleAppsCardV1OpenLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     onClose: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
     openAs: Schema.optional(Schema.String),
@@ -1656,7 +1656,7 @@ export interface GoogleAppsCardV1OnClick {
 }
 
 export const GoogleAppsCardV1OnClick: Schema.Codec<GoogleAppsCardV1OnClick> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       card: Schema.optional(GoogleAppsCardV1Card),
       action: Schema.optional(GoogleAppsCardV1Action),
@@ -1684,7 +1684,7 @@ export interface GoogleAppsCardV1Chip {
 }
 
 export const GoogleAppsCardV1Chip: Schema.Codec<GoogleAppsCardV1Chip> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       label: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
@@ -1703,7 +1703,7 @@ export interface Dialog {
 }
 
 export const Dialog: Schema.Codec<Dialog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GoogleAppsCardV1Card),
   }).annotate({ identifier: "Dialog" });
 
@@ -1733,7 +1733,7 @@ export interface ActionStatus {
 }
 
 export const ActionStatus: Schema.Codec<ActionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     userFacingMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActionStatus" });
@@ -1746,7 +1746,7 @@ export interface DialogAction {
 }
 
 export const DialogAction: Schema.Codec<DialogAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dialog: Schema.optional(Dialog),
     actionStatus: Schema.optional(ActionStatus),
   }).annotate({ identifier: "DialogAction" });
@@ -1757,7 +1757,7 @@ export interface SelectionItems {
 }
 
 export const SelectionItems: Schema.Codec<SelectionItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SelectionItem)),
   }).annotate({ identifier: "SelectionItems" });
 
@@ -1769,7 +1769,7 @@ export interface UpdatedWidget {
 }
 
 export const UpdatedWidget: Schema.Codec<UpdatedWidget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(SelectionItems),
     widget: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdatedWidget" });
@@ -1794,7 +1794,7 @@ export interface ActionResponse {
 }
 
 export const ActionResponse: Schema.Codec<ActionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dialogAction: Schema.optional(DialogAction),
     type: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -1809,7 +1809,7 @@ export interface Thread {
 }
 
 export const Thread: Schema.Codec<Thread> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     threadKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "Thread" });
@@ -1822,7 +1822,7 @@ export interface UserMentionMetadata {
 }
 
 export const UserMentionMetadata: Schema.Codec<UserMentionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     user: Schema.optional(User),
   }).annotate({ identifier: "UserMentionMetadata" });
@@ -1833,7 +1833,7 @@ export interface CustomEmojiMetadata {
 }
 
 export const CustomEmojiMetadata: Schema.Codec<CustomEmojiMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customEmoji: Schema.optional(CustomEmoji),
   }).annotate({ identifier: "CustomEmojiMetadata" });
 
@@ -1851,7 +1851,7 @@ export interface SlashCommandMetadata {
 }
 
 export const SlashCommandMetadata: Schema.Codec<SlashCommandMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commandName: Schema.optional(Schema.String),
     triggersDialog: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -1865,7 +1865,7 @@ export interface DriveDataRef {
 }
 
 export const DriveDataRef: Schema.Codec<DriveDataRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveFileId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveDataRef" });
 
@@ -1877,7 +1877,7 @@ export interface DriveLinkData {
 }
 
 export const DriveLinkData: Schema.Codec<DriveLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveDataRef: Schema.optional(DriveDataRef),
     mimeType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveLinkData" });
@@ -1892,7 +1892,7 @@ export interface ChatSpaceLinkData {
 }
 
 export const ChatSpaceLinkData: Schema.Codec<ChatSpaceLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
     thread: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1906,7 +1906,7 @@ export interface CalendarEventLinkData {
 }
 
 export const CalendarEventLinkData: Schema.Codec<CalendarEventLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendarId: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CalendarEventLinkData" });
@@ -1926,7 +1926,7 @@ export interface MeetSpaceLinkData {
 }
 
 export const MeetSpaceLinkData: Schema.Codec<MeetSpaceLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     meetingCode: Schema.optional(Schema.String),
     huddleStatus: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1955,7 +1955,7 @@ export interface RichLinkMetadata {
 }
 
 export const RichLinkMetadata: Schema.Codec<RichLinkMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     driveLinkData: Schema.optional(DriveLinkData),
     chatSpaceLinkData: Schema.optional(ChatSpaceLinkData),
@@ -1988,7 +1988,7 @@ export interface Annotation {
 }
 
 export const Annotation: Schema.Codec<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userMention: Schema.optional(UserMentionMetadata),
     customEmojiMetadata: Schema.optional(CustomEmojiMetadata),
     startIndex: Schema.optional(Schema.Number),
@@ -2022,7 +2022,7 @@ export interface Attachment {
 }
 
 export const Attachment: Schema.Codec<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveDataRef: Schema.optional(DriveDataRef),
     contentType: Schema.optional(Schema.String),
     downloadUri: Schema.optional(Schema.String),
@@ -2047,7 +2047,7 @@ export interface QuotedMessageSnapshot {
 }
 
 export const QuotedMessageSnapshot: Schema.Codec<QuotedMessageSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sender: Schema.optional(Schema.String),
     formattedText: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Array(Annotation)),
@@ -2063,7 +2063,7 @@ export interface ForwardedMetadata {
 }
 
 export const ForwardedMetadata: Schema.Codec<ForwardedMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
     spaceDisplayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ForwardedMetadata" });
@@ -2082,7 +2082,7 @@ export interface QuotedMessageMetadata {
 }
 
 export const QuotedMessageMetadata: Schema.Codec<QuotedMessageMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     quotedMessageSnapshot: Schema.optional(QuotedMessageSnapshot),
     forwardedMetadata: Schema.optional(ForwardedMetadata),
@@ -2096,7 +2096,7 @@ export interface AttachedGif {
 }
 
 export const AttachedGif: Schema.Codec<AttachedGif> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "AttachedGif" });
 
@@ -2115,7 +2115,7 @@ export interface DeletionMetadata {
 }
 
 export const DeletionMetadata: Schema.Codec<DeletionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deletionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeletionMetadata" });
 
@@ -2131,7 +2131,7 @@ export interface CardHeader {
 }
 
 export const CardHeader: Schema.Codec<CardHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subtitle: Schema.optional(Schema.String),
     imageStyle: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2146,7 +2146,7 @@ export interface CardAction {
 }
 
 export const CardAction: Schema.Codec<CardAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionLabel: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
   }).annotate({ identifier: "CardAction" });
@@ -2163,7 +2163,7 @@ export interface Card {
 }
 
 export const Card: Schema.Codec<Card> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sections: Schema.optional(Schema.Array(Section)),
     header: Schema.optional(CardHeader),
     cardActions: Schema.optional(Schema.Array(CardAction)),
@@ -2176,7 +2176,7 @@ export interface MatchedUrl {
 }
 
 export const MatchedUrl: Schema.Codec<MatchedUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "MatchedUrl" });
 
@@ -2188,7 +2188,7 @@ export interface EmojiReactionSummary {
 }
 
 export const EmojiReactionSummary: Schema.Codec<EmojiReactionSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactionCount: Schema.optional(Schema.Number),
     emoji: Schema.optional(Emoji),
   }).annotate({ identifier: "EmojiReactionSummary" });
@@ -2201,7 +2201,7 @@ export interface SpaceDetails {
 }
 
 export const SpaceDetails: Schema.Codec<SpaceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     guidelines: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpaceDetails" });
@@ -2214,7 +2214,7 @@ export interface MembershipCount {
 }
 
 export const MembershipCount: Schema.Codec<MembershipCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     joinedDirectHumanUserCount: Schema.optional(Schema.Number),
     joinedGroupCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MembershipCount" });
@@ -2231,7 +2231,7 @@ export interface AccessSettings {
 }
 
 export const AccessSettings: Schema.Codec<AccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessState: Schema.optional(Schema.String),
     audience: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccessSettings" });
@@ -2300,7 +2300,7 @@ export interface Space {
 }
 
 export const Space: Schema.Codec<Space> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminInstalled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     spaceUri: Schema.optional(Schema.String),
@@ -2332,7 +2332,7 @@ export interface CardWithId {
 }
 
 export const CardWithId: Schema.Codec<CardWithId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardId: Schema.optional(Schema.String),
     card: Schema.optional(GoogleAppsCardV1Card),
   }).annotate({ identifier: "CardWithId" });
@@ -2343,7 +2343,7 @@ export interface AccessoryWidget {
 }
 
 export const AccessoryWidget: Schema.Codec<AccessoryWidget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     buttonList: Schema.optional(GoogleAppsCardV1ButtonList),
   }).annotate({ identifier: "AccessoryWidget" });
 
@@ -2405,7 +2405,7 @@ export interface Message {
 }
 
 export const Message: Schema.Codec<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     actionResponse: Schema.optional(ActionResponse),
     thread: Schema.optional(Thread),
@@ -2441,7 +2441,7 @@ export interface MessageCreatedEventData {
 }
 
 export const MessageCreatedEventData: Schema.Codec<MessageCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageCreatedEventData" });
 
@@ -2451,7 +2451,7 @@ export interface MessageBatchCreatedEventData {
 }
 
 export const MessageBatchCreatedEventData: Schema.Codec<MessageBatchCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageCreatedEventData)),
   }).annotate({ identifier: "MessageBatchCreatedEventData" });
 
@@ -2461,7 +2461,7 @@ export interface ReactionDeletedEventData {
 }
 
 export const ReactionDeletedEventData: Schema.Codec<ReactionDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reaction: Schema.optional(Reaction),
   }).annotate({ identifier: "ReactionDeletedEventData" });
 
@@ -2471,7 +2471,7 @@ export interface DateInput {
 }
 
 export const DateInput: Schema.Codec<DateInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     msSinceEpoch: Schema.optional(Schema.String),
   }).annotate({ identifier: "DateInput" });
 
@@ -2481,7 +2481,7 @@ export interface ReactionCreatedEventData {
 }
 
 export const ReactionCreatedEventData: Schema.Codec<ReactionCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reaction: Schema.optional(Reaction),
   }).annotate({ identifier: "ReactionCreatedEventData" });
 
@@ -2491,7 +2491,7 @@ export interface ReactionBatchCreatedEventData {
 }
 
 export const ReactionBatchCreatedEventData: Schema.Codec<ReactionBatchCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(ReactionCreatedEventData)),
   }).annotate({ identifier: "ReactionBatchCreatedEventData" });
 
@@ -2505,7 +2505,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2523,7 +2523,7 @@ export interface ChatAppLogEntry {
 }
 
 export const ChatAppLogEntry: Schema.Codec<ChatAppLogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployment: Schema.optional(Schema.String),
     error: Schema.optional(Status),
     deploymentFunction: Schema.optional(Schema.String),
@@ -2537,7 +2537,7 @@ export interface ListSpacesResponse {
 }
 
 export const ListSpacesResponse: Schema.Codec<ListSpacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSpacesResponse" });
@@ -2548,7 +2548,7 @@ export interface Group {
 }
 
 export const Group: Schema.Codec<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Group" });
 
@@ -2587,7 +2587,7 @@ export interface Membership {
 }
 
 export const Membership: Schema.Codec<Membership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     member: Schema.optional(User),
     state: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -2604,7 +2604,7 @@ export interface MembershipDeletedEventData {
 }
 
 export const MembershipDeletedEventData: Schema.Codec<MembershipDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipDeletedEventData" });
 
@@ -2614,7 +2614,7 @@ export interface MembershipBatchDeletedEventData {
 }
 
 export const MembershipBatchDeletedEventData: Schema.Codec<MembershipBatchDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipDeletedEventData)),
   }).annotate({ identifier: "MembershipBatchDeletedEventData" });
 
@@ -2624,7 +2624,7 @@ export interface StringInputs {
 }
 
 export const StringInputs: Schema.Codec<StringInputs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringInputs" });
 
@@ -2636,7 +2636,7 @@ export interface TimeInput {
 }
 
 export const TimeInput: Schema.Codec<TimeInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TimeInput" });
@@ -2651,7 +2651,7 @@ export interface DateTimeInput {
 }
 
 export const DateTimeInput: Schema.Codec<DateTimeInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hasDate: Schema.optional(Schema.Boolean),
     msSinceEpoch: Schema.optional(Schema.String),
     hasTime: Schema.optional(Schema.Boolean),
@@ -2669,7 +2669,7 @@ export interface Inputs {
 }
 
 export const Inputs: Schema.Codec<Inputs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stringInputs: Schema.optional(StringInputs),
     dateInput: Schema.optional(DateInput),
     timeInput: Schema.optional(TimeInput),
@@ -2684,7 +2684,7 @@ export interface TimeZone {
 }
 
 export const TimeZone: Schema.Codec<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     offset: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TimeZone" });
@@ -2719,7 +2719,7 @@ export interface CommonEventObject {
 }
 
 export const CommonEventObject: Schema.Codec<CommonEventObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostApp: Schema.optional(Schema.String),
     formInputs: Schema.optional(Schema.Record(Schema.String, Inputs)),
     platform: Schema.optional(Schema.String),
@@ -2737,7 +2737,7 @@ export interface MarkAsDoNotDisturbRequest {
 }
 
 export const MarkAsDoNotDisturbRequest: Schema.Codec<MarkAsDoNotDisturbRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "MarkAsDoNotDisturbRequest" });
@@ -2748,7 +2748,7 @@ export interface SpaceUpdatedEventData {
 }
 
 export const SpaceUpdatedEventData: Schema.Codec<SpaceUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Space),
   }).annotate({ identifier: "SpaceUpdatedEventData" });
 
@@ -2762,7 +2762,7 @@ export interface SearchSpacesResponse {
 }
 
 export const SearchSpacesResponse: Schema.Codec<SearchSpacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -2774,7 +2774,7 @@ export interface DoNotDisturbMetadata {
 }
 
 export const DoNotDisturbMetadata: Schema.Codec<DoNotDisturbMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expirationTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DoNotDisturbMetadata" });
 
@@ -2786,7 +2786,7 @@ export interface FindGroupChatsResponse {
 }
 
 export const FindGroupChatsResponse: Schema.Codec<FindGroupChatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "FindGroupChatsResponse" });
@@ -2797,7 +2797,7 @@ export interface ReactionBatchDeletedEventData {
 }
 
 export const ReactionBatchDeletedEventData: Schema.Codec<ReactionBatchDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(ReactionDeletedEventData)),
   }).annotate({ identifier: "ReactionBatchDeletedEventData" });
 
@@ -2807,7 +2807,7 @@ export interface MembershipUpdatedEventData {
 }
 
 export const MembershipUpdatedEventData: Schema.Codec<MembershipUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipUpdatedEventData" });
 
@@ -2817,7 +2817,7 @@ export interface MessageDeletedEventData {
 }
 
 export const MessageDeletedEventData: Schema.Codec<MessageDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageDeletedEventData" });
 
@@ -2827,7 +2827,7 @@ export interface MessageBatchDeletedEventData {
 }
 
 export const MessageBatchDeletedEventData: Schema.Codec<MessageBatchDeletedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageDeletedEventData)),
   }).annotate({ identifier: "MessageBatchDeletedEventData" });
 
@@ -2837,7 +2837,7 @@ export interface MembershipBatchUpdatedEventData {
 }
 
 export const MembershipBatchUpdatedEventData: Schema.Codec<MembershipBatchUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipUpdatedEventData)),
   }).annotate({ identifier: "MembershipBatchUpdatedEventData" });
 
@@ -2847,7 +2847,7 @@ export interface MessageUpdatedEventData {
 }
 
 export const MessageUpdatedEventData: Schema.Codec<MessageUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageUpdatedEventData" });
 
@@ -2857,7 +2857,7 @@ export interface MessageBatchUpdatedEventData {
 }
 
 export const MessageBatchUpdatedEventData: Schema.Codec<MessageBatchUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageUpdatedEventData)),
   }).annotate({ identifier: "MessageBatchUpdatedEventData" });
 
@@ -2867,7 +2867,7 @@ export interface MembershipCreatedEventData {
 }
 
 export const MembershipCreatedEventData: Schema.Codec<MembershipCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipCreatedEventData" });
 
@@ -2877,7 +2877,7 @@ export interface MembershipBatchCreatedEventData {
 }
 
 export const MembershipBatchCreatedEventData: Schema.Codec<MembershipBatchCreatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipCreatedEventData)),
   }).annotate({ identifier: "MembershipBatchCreatedEventData" });
 
@@ -2887,7 +2887,7 @@ export interface SpaceBatchUpdatedEventData {
 }
 
 export const SpaceBatchUpdatedEventData: Schema.Codec<SpaceBatchUpdatedEventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(SpaceUpdatedEventData)),
   }).annotate({ identifier: "SpaceBatchUpdatedEventData" });
 
@@ -2937,7 +2937,7 @@ export interface SpaceEvent {
 }
 
 export const SpaceEvent: Schema.Codec<SpaceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reactionBatchDeletedEventData: Schema.optional(
       ReactionBatchDeletedEventData,
     ),
@@ -2991,7 +2991,7 @@ export interface SpaceNotificationSetting {
 }
 
 export const SpaceNotificationSetting: Schema.Codec<SpaceNotificationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     muteSetting: Schema.optional(Schema.String),
     notificationSetting: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3000,7 +3000,7 @@ export const SpaceNotificationSetting: Schema.Codec<SpaceNotificationSetting> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -3016,7 +3016,7 @@ export interface AppCommandMetadata {
 }
 
 export const AppCommandMetadata: Schema.Codec<AppCommandMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appCommandType: Schema.optional(Schema.String),
     appCommandId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AppCommandMetadata" });
@@ -3066,7 +3066,7 @@ export interface DeprecatedEvent {
 }
 
 export const DeprecatedEvent: Schema.Codec<DeprecatedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appCommandMetadata: Schema.optional(AppCommandMetadata),
     common: Schema.optional(CommonEventObject),
     type: Schema.optional(Schema.String),
@@ -3089,7 +3089,7 @@ export interface UploadAttachmentResponse {
 }
 
 export const UploadAttachmentResponse: Schema.Codec<UploadAttachmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attachmentDataRef: Schema.optional(AttachmentDataRef),
   }).annotate({ identifier: "UploadAttachmentResponse" });
 
@@ -3099,14 +3099,14 @@ export interface CompleteImportSpaceResponse {
 }
 
 export const CompleteImportSpaceResponse: Schema.Codec<CompleteImportSpaceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Space),
   }).annotate({ identifier: "CompleteImportSpaceResponse" });
 
 export interface MarkAsAwayRequest {}
 
 export const MarkAsAwayRequest: Schema.Codec<MarkAsAwayRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAsAwayRequest",
   });
 
@@ -3118,7 +3118,7 @@ export interface SectionItem {
 }
 
 export const SectionItem: Schema.Codec<SectionItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "SectionItem" });
@@ -3131,7 +3131,7 @@ export interface ListSpaceEventsResponse {
 }
 
 export const ListSpaceEventsResponse: Schema.Codec<ListSpaceEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaceEvents: Schema.optional(Schema.Array(SpaceEvent)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSpaceEventsResponse" });
@@ -3142,14 +3142,14 @@ export interface MoveSectionItemRequest {
 }
 
 export const MoveSectionItemRequest: Schema.Codec<MoveSectionItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSection: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveSectionItemRequest" });
 
 export interface CompleteImportSpaceRequest {}
 
 export const CompleteImportSpaceRequest: Schema.Codec<CompleteImportSpaceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CompleteImportSpaceRequest",
   });
 
@@ -3159,7 +3159,7 @@ export interface MoveSectionItemResponse {
 }
 
 export const MoveSectionItemResponse: Schema.Codec<MoveSectionItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sectionItem: Schema.optional(SectionItem),
   }).annotate({ identifier: "MoveSectionItemResponse" });
 
@@ -3171,7 +3171,7 @@ export interface MarkAsActiveRequest {
 }
 
 export const MarkAsActiveRequest: Schema.Codec<MarkAsActiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
   }).annotate({ identifier: "MarkAsActiveRequest" });
@@ -3184,7 +3184,7 @@ export interface ListMembershipsResponse {
 }
 
 export const ListMembershipsResponse: Schema.Codec<ListMembershipsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(Membership)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMembershipsResponse" });
@@ -3199,7 +3199,7 @@ export interface SetUpSpaceRequest {
 }
 
 export const SetUpSpaceRequest: Schema.Codec<SetUpSpaceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     space: Schema.optional(Space),
     memberships: Schema.optional(Schema.Array(Membership)),
@@ -3217,7 +3217,7 @@ export interface CustomStatus {
 }
 
 export const CustomStatus: Schema.Codec<CustomStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
@@ -3232,7 +3232,7 @@ export interface ListSectionItemsResponse {
 }
 
 export const ListSectionItemsResponse: Schema.Codec<ListSectionItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sectionItems: Schema.optional(Schema.Array(SectionItem)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSectionItemsResponse" });
@@ -3245,7 +3245,7 @@ export interface ThreadReadState {
 }
 
 export const ThreadReadState: Schema.Codec<ThreadReadState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lastReadTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ThreadReadState" });
@@ -3258,7 +3258,7 @@ export interface ListCustomEmojisResponse {
 }
 
 export const ListCustomEmojisResponse: Schema.Codec<ListCustomEmojisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customEmojis: Schema.optional(Schema.Array(CustomEmoji)),
   }).annotate({ identifier: "ListCustomEmojisResponse" });
@@ -3269,7 +3269,7 @@ export interface Media {
 }
 
 export const Media: Schema.Codec<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Media" });
 
@@ -3279,7 +3279,7 @@ export interface UploadAttachmentRequest {
 }
 
 export const UploadAttachmentRequest: Schema.Codec<UploadAttachmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadAttachmentRequest" });
 
@@ -3291,7 +3291,7 @@ export interface ListMessagesResponse {
 }
 
 export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(Message)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMessagesResponse" });
@@ -3302,7 +3302,7 @@ export interface PositionSectionResponse {
 }
 
 export const PositionSectionResponse: Schema.Codec<PositionSectionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     section: Schema.optional(GoogleChatV1Section),
   }).annotate({ identifier: "PositionSectionResponse" });
 
@@ -3314,7 +3314,7 @@ export interface SpaceReadState {
 }
 
 export const SpaceReadState: Schema.Codec<SpaceReadState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lastReadTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpaceReadState" });
@@ -3337,7 +3337,7 @@ export interface Availability {
 }
 
 export const Availability: Schema.Codec<Availability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     doNotDisturbMetadata: Schema.optional(DoNotDisturbMetadata),
@@ -3352,7 +3352,7 @@ export interface PositionSectionRequest {
 }
 
 export const PositionSectionRequest: Schema.Codec<PositionSectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sortOrder: Schema.optional(Schema.Number),
     relativePosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "PositionSectionRequest" });
@@ -3416,7 +3416,7 @@ export interface DownloadMediaRequest {
   resourceName: string;
 }
 
-export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMediaRequest = /*@__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/media/{+resourceName}" }),
@@ -3424,7 +3424,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
-export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
+export const DownloadMediaResponse = /*@__PURE__*/ Media;
 
 export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
@@ -3434,7 +3434,7 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaResponse,
   DownloadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
   errors: [NotFound, Forbidden],
@@ -3447,7 +3447,7 @@ export interface UploadMediaRequest {
   body?: UploadAttachmentRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(UploadAttachmentRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -3460,8 +3460,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = UploadAttachmentResponse;
-export const UploadMediaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UploadAttachmentResponse;
+export const UploadMediaResponse = /*@__PURE__*/ UploadAttachmentResponse;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -3476,7 +3475,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3489,7 +3488,7 @@ export interface DeleteSpacesRequest {
   name: string;
 }
 
-export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSpacesRequest = /*@__PURE__*/ Schema.Struct({
   useAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useAdminAccess"),
   ),
@@ -3500,7 +3499,7 @@ export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteSpacesRequest>;
 
 export type DeleteSpacesResponse = Empty;
-export const DeleteSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteSpacesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteSpacesError =
   | DefaultErrors
@@ -3515,7 +3514,7 @@ export const deleteSpaces: API.OperationMethod<
   DeleteSpacesResponse,
   DeleteSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpacesRequest,
   output: DeleteSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3526,7 +3525,7 @@ export interface SetupSpacesRequest {
   body?: SetUpSpaceRequest;
 }
 
-export const SetupSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SetupSpacesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(SetUpSpaceRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/spaces:setup", hasBody: true }),
@@ -3534,7 +3533,7 @@ export const SetupSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SetupSpacesRequest>;
 
 export type SetupSpacesResponse = Space;
-export const SetupSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const SetupSpacesResponse = /*@__PURE__*/ Space;
 
 export type SetupSpacesError =
   | DefaultErrors
@@ -3549,7 +3548,7 @@ export const setupSpaces: API.OperationMethod<
   SetupSpacesResponse,
   SetupSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetupSpacesRequest,
   output: SetupSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3562,7 +3561,7 @@ export interface GetSpacesRequest {
   name: string;
 }
 
-export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSpacesRequest = /*@__PURE__*/ Schema.Struct({
   useAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useAdminAccess"),
   ),
@@ -3573,7 +3572,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetSpacesRequest>;
 
 export type GetSpacesResponse = Space;
-export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const GetSpacesResponse = /*@__PURE__*/ Space;
 
 export type GetSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3583,7 +3582,7 @@ export const getSpaces: API.OperationMethod<
   GetSpacesResponse,
   GetSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesRequest,
   output: GetSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -3600,7 +3599,7 @@ export interface PatchSpacesRequest {
   body?: Space;
 }
 
-export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchSpacesRequest = /*@__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   useAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useAdminAccess"),
@@ -3613,7 +3612,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchSpacesRequest>;
 
 export type PatchSpacesResponse = Space;
-export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const PatchSpacesResponse = /*@__PURE__*/ Space;
 
 export type PatchSpacesError =
   | DefaultErrors
@@ -3628,7 +3627,7 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesResponse,
   PatchSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSpacesRequest,
   output: PatchSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3642,7 +3641,7 @@ export interface CompleteImportSpacesRequest {
 }
 
 export const CompleteImportSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteImportSpaceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3656,7 +3655,7 @@ export const CompleteImportSpacesRequest =
 
 export type CompleteImportSpacesResponse = CompleteImportSpaceResponse;
 export const CompleteImportSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CompleteImportSpaceResponse;
+  /*@__PURE__*/ CompleteImportSpaceResponse;
 
 export type CompleteImportSpacesError =
   | DefaultErrors
@@ -3671,7 +3670,7 @@ export const completeImportSpaces: API.OperationMethod<
   CompleteImportSpacesResponse,
   CompleteImportSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteImportSpacesRequest,
   output: CompleteImportSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3686,7 +3685,7 @@ export interface ListSpacesRequest {
   filter?: string;
 }
 
-export const ListSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSpacesRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -3696,8 +3695,7 @@ export const ListSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListSpacesRequest>;
 
 export type ListSpacesResponse_Op = ListSpacesResponse;
-export const ListSpacesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListSpacesResponse;
+export const ListSpacesResponse_Op = /*@__PURE__*/ ListSpacesResponse;
 
 export type ListSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3707,7 +3705,7 @@ export const listSpaces: API.PaginatedOperationMethod<
   ListSpacesResponse_Op,
   ListSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -3730,7 +3728,7 @@ export interface SearchSpacesRequest {
   pageSize?: number;
 }
 
-export const SearchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchSpacesRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
@@ -3744,8 +3742,7 @@ export const SearchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SearchSpacesRequest>;
 
 export type SearchSpacesResponse_Op = SearchSpacesResponse;
-export const SearchSpacesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ SearchSpacesResponse;
+export const SearchSpacesResponse_Op = /*@__PURE__*/ SearchSpacesResponse;
 
 export type SearchSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3755,7 +3752,7 @@ export const searchSpaces: API.PaginatedOperationMethod<
   SearchSpacesResponse_Op,
   SearchSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSpacesRequest,
   output: SearchSpacesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -3781,7 +3778,7 @@ export interface FindGroupChatsSpacesRequest {
 }
 
 export const FindGroupChatsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("users"),
     ),
@@ -3795,7 +3792,7 @@ export const FindGroupChatsSpacesRequest =
 
 export type FindGroupChatsSpacesResponse = FindGroupChatsResponse;
 export const FindGroupChatsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindGroupChatsResponse;
+  /*@__PURE__*/ FindGroupChatsResponse;
 
 export type FindGroupChatsSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3805,7 +3802,7 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
   FindGroupChatsSpacesResponse,
   FindGroupChatsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: FindGroupChatsSpacesRequest,
   output: FindGroupChatsSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -3821,7 +3818,7 @@ export interface FindDirectMessageSpacesRequest {
 }
 
 export const FindDirectMessageSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/spaces:findDirectMessage" }),
@@ -3829,8 +3826,7 @@ export const FindDirectMessageSpacesRequest =
   ) as unknown as Schema.Codec<FindDirectMessageSpacesRequest>;
 
 export type FindDirectMessageSpacesResponse = Space;
-export const FindDirectMessageSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Space;
+export const FindDirectMessageSpacesResponse = /*@__PURE__*/ Space;
 
 export type FindDirectMessageSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3840,7 +3836,7 @@ export const findDirectMessageSpaces: API.OperationMethod<
   FindDirectMessageSpacesResponse,
   FindDirectMessageSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindDirectMessageSpacesRequest,
   output: FindDirectMessageSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -3853,7 +3849,7 @@ export interface CreateSpacesRequest {
   body?: Space;
 }
 
-export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSpacesRequest = /*@__PURE__*/ Schema.Struct({
   requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
@@ -3862,7 +3858,7 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateSpacesRequest>;
 
 export type CreateSpacesResponse = Space;
-export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
+export const CreateSpacesResponse = /*@__PURE__*/ Space;
 
 export type CreateSpacesError =
   | DefaultErrors
@@ -3877,7 +3873,7 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesResponse,
   CreateSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpacesRequest,
   output: CreateSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3891,7 +3887,7 @@ export interface GetSpacesMembersRequest {
 }
 
 export const GetSpacesMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -3902,7 +3898,7 @@ export const GetSpacesMembersRequest =
   ) as unknown as Schema.Codec<GetSpacesMembersRequest>;
 
 export type GetSpacesMembersResponse = Membership;
-export const GetSpacesMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Membership;
+export const GetSpacesMembersResponse = /*@__PURE__*/ Membership;
 
 export type GetSpacesMembersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3912,7 +3908,7 @@ export const getSpacesMembers: API.OperationMethod<
   GetSpacesMembersResponse,
   GetSpacesMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesMembersRequest,
   output: GetSpacesMembersResponse,
   errors: [NotFound, Forbidden],
@@ -3928,7 +3924,7 @@ export interface CreateSpacesMembersRequest {
 }
 
 export const CreateSpacesMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -3940,8 +3936,7 @@ export const CreateSpacesMembersRequest =
   ) as unknown as Schema.Codec<CreateSpacesMembersRequest>;
 
 export type CreateSpacesMembersResponse = Membership;
-export const CreateSpacesMembersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Membership;
+export const CreateSpacesMembersResponse = /*@__PURE__*/ Membership;
 
 export type CreateSpacesMembersError =
   | DefaultErrors
@@ -3956,7 +3951,7 @@ export const createSpacesMembers: API.OperationMethod<
   CreateSpacesMembersResponse,
   CreateSpacesMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpacesMembersRequest,
   output: CreateSpacesMembersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3974,7 +3969,7 @@ export interface PatchSpacesMembersRequest {
 }
 
 export const PatchSpacesMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -3987,8 +3982,7 @@ export const PatchSpacesMembersRequest =
   ) as unknown as Schema.Codec<PatchSpacesMembersRequest>;
 
 export type PatchSpacesMembersResponse = Membership;
-export const PatchSpacesMembersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Membership;
+export const PatchSpacesMembersResponse = /*@__PURE__*/ Membership;
 
 export type PatchSpacesMembersError =
   | DefaultErrors
@@ -4003,7 +3997,7 @@ export const patchSpacesMembers: API.OperationMethod<
   PatchSpacesMembersResponse,
   PatchSpacesMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSpacesMembersRequest,
   output: PatchSpacesMembersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4017,7 +4011,7 @@ export interface DeleteSpacesMembersRequest {
 }
 
 export const DeleteSpacesMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
     ),
@@ -4028,8 +4022,7 @@ export const DeleteSpacesMembersRequest =
   ) as unknown as Schema.Codec<DeleteSpacesMembersRequest>;
 
 export type DeleteSpacesMembersResponse = Membership;
-export const DeleteSpacesMembersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Membership;
+export const DeleteSpacesMembersResponse = /*@__PURE__*/ Membership;
 
 export type DeleteSpacesMembersError =
   | DefaultErrors
@@ -4044,7 +4037,7 @@ export const deleteSpacesMembers: API.OperationMethod<
   DeleteSpacesMembersResponse,
   DeleteSpacesMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpacesMembersRequest,
   output: DeleteSpacesMembersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4068,7 +4061,7 @@ export interface ListSpacesMembersRequest {
 }
 
 export const ListSpacesMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -4086,8 +4079,7 @@ export const ListSpacesMembersRequest =
   ) as unknown as Schema.Codec<ListSpacesMembersRequest>;
 
 export type ListSpacesMembersResponse = ListMembershipsResponse;
-export const ListSpacesMembersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMembershipsResponse;
+export const ListSpacesMembersResponse = /*@__PURE__*/ ListMembershipsResponse;
 
 export type ListSpacesMembersError = DefaultErrors | NotFound | Forbidden;
 
@@ -4097,7 +4089,7 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   ListSpacesMembersResponse,
   ListSpacesMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMembersRequest,
   output: ListSpacesMembersResponse,
   errors: [NotFound, Forbidden],
@@ -4113,7 +4105,7 @@ export interface GetSpacesSpaceEventsRequest {
 }
 
 export const GetSpacesSpaceEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4121,8 +4113,7 @@ export const GetSpacesSpaceEventsRequest =
   ) as unknown as Schema.Codec<GetSpacesSpaceEventsRequest>;
 
 export type GetSpacesSpaceEventsResponse = SpaceEvent;
-export const GetSpacesSpaceEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SpaceEvent;
+export const GetSpacesSpaceEventsResponse = /*@__PURE__*/ SpaceEvent;
 
 export type GetSpacesSpaceEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4132,7 +4123,7 @@ export const getSpacesSpaceEvents: API.OperationMethod<
   GetSpacesSpaceEventsResponse,
   GetSpacesSpaceEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesSpaceEventsRequest,
   output: GetSpacesSpaceEventsResponse,
   errors: [NotFound, Forbidden],
@@ -4150,7 +4141,7 @@ export interface ListSpacesSpaceEventsRequest {
 }
 
 export const ListSpacesSpaceEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -4162,7 +4153,7 @@ export const ListSpacesSpaceEventsRequest =
 
 export type ListSpacesSpaceEventsResponse = ListSpaceEventsResponse;
 export const ListSpacesSpaceEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSpaceEventsResponse;
+  /*@__PURE__*/ ListSpaceEventsResponse;
 
 export type ListSpacesSpaceEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -4172,7 +4163,7 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
   ListSpacesSpaceEventsResponse,
   ListSpacesSpaceEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesSpaceEventsRequest,
   output: ListSpacesSpaceEventsResponse,
   errors: [NotFound, Forbidden],
@@ -4194,7 +4185,7 @@ export interface UpdateSpacesMessagesRequest {
 }
 
 export const UpdateSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
@@ -4207,7 +4198,7 @@ export const UpdateSpacesMessagesRequest =
   ) as unknown as Schema.Codec<UpdateSpacesMessagesRequest>;
 
 export type UpdateSpacesMessagesResponse = Message;
-export const UpdateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const UpdateSpacesMessagesResponse = /*@__PURE__*/ Message;
 
 export type UpdateSpacesMessagesError =
   | DefaultErrors
@@ -4222,7 +4213,7 @@ export const updateSpacesMessages: API.OperationMethod<
   UpdateSpacesMessagesResponse,
   UpdateSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpacesMessagesRequest,
   output: UpdateSpacesMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4236,7 +4227,7 @@ export interface DeleteSpacesMessagesRequest {
 }
 
 export const DeleteSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -4245,7 +4236,7 @@ export const DeleteSpacesMessagesRequest =
   ) as unknown as Schema.Codec<DeleteSpacesMessagesRequest>;
 
 export type DeleteSpacesMessagesResponse = Empty;
-export const DeleteSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteSpacesMessagesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteSpacesMessagesError =
   | DefaultErrors
@@ -4260,7 +4251,7 @@ export const deleteSpacesMessages: API.OperationMethod<
   DeleteSpacesMessagesResponse,
   DeleteSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpacesMessagesRequest,
   output: DeleteSpacesMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4282,7 +4273,7 @@ export interface ListSpacesMessagesRequest {
 }
 
 export const ListSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -4297,8 +4288,7 @@ export const ListSpacesMessagesRequest =
   ) as unknown as Schema.Codec<ListSpacesMessagesRequest>;
 
 export type ListSpacesMessagesResponse = ListMessagesResponse;
-export const ListSpacesMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMessagesResponse;
+export const ListSpacesMessagesResponse = /*@__PURE__*/ ListMessagesResponse;
 
 export type ListSpacesMessagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4308,7 +4298,7 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
   ListSpacesMessagesResponse,
   ListSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesRequest,
   output: ListSpacesMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -4344,7 +4334,7 @@ export interface CreateSpacesMessagesRequest {
 }
 
 export const CreateSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     threadKey: Schema.optional(Schema.String).pipe(T.HttpQuery("threadKey")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     messageReplyOption: Schema.optional(Schema.String).pipe(
@@ -4362,7 +4352,7 @@ export const CreateSpacesMessagesRequest =
   ) as unknown as Schema.Codec<CreateSpacesMessagesRequest>;
 
 export type CreateSpacesMessagesResponse = Message;
-export const CreateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const CreateSpacesMessagesResponse = /*@__PURE__*/ Message;
 
 export type CreateSpacesMessagesError =
   | DefaultErrors
@@ -4377,7 +4367,7 @@ export const createSpacesMessages: API.OperationMethod<
   CreateSpacesMessagesResponse,
   CreateSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpacesMessagesRequest,
   output: CreateSpacesMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4389,7 +4379,7 @@ export interface GetSpacesMessagesRequest {
 }
 
 export const GetSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4397,7 +4387,7 @@ export const GetSpacesMessagesRequest =
   ) as unknown as Schema.Codec<GetSpacesMessagesRequest>;
 
 export type GetSpacesMessagesResponse = Message;
-export const GetSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const GetSpacesMessagesResponse = /*@__PURE__*/ Message;
 
 export type GetSpacesMessagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4407,7 +4397,7 @@ export const getSpacesMessages: API.OperationMethod<
   GetSpacesMessagesResponse,
   GetSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesMessagesRequest,
   output: GetSpacesMessagesResponse,
   errors: [NotFound, Forbidden],
@@ -4425,7 +4415,7 @@ export interface PatchSpacesMessagesRequest {
 }
 
 export const PatchSpacesMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -4438,7 +4428,7 @@ export const PatchSpacesMessagesRequest =
   ) as unknown as Schema.Codec<PatchSpacesMessagesRequest>;
 
 export type PatchSpacesMessagesResponse = Message;
-export const PatchSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const PatchSpacesMessagesResponse = /*@__PURE__*/ Message;
 
 export type PatchSpacesMessagesError =
   | DefaultErrors
@@ -4453,7 +4443,7 @@ export const patchSpacesMessages: API.OperationMethod<
   PatchSpacesMessagesResponse,
   PatchSpacesMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSpacesMessagesRequest,
   output: PatchSpacesMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4465,7 +4455,7 @@ export interface GetSpacesMessagesAttachmentsRequest {
 }
 
 export const GetSpacesMessagesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4473,8 +4463,7 @@ export const GetSpacesMessagesAttachmentsRequest =
   ) as unknown as Schema.Codec<GetSpacesMessagesAttachmentsRequest>;
 
 export type GetSpacesMessagesAttachmentsResponse = Attachment;
-export const GetSpacesMessagesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attachment;
+export const GetSpacesMessagesAttachmentsResponse = /*@__PURE__*/ Attachment;
 
 export type GetSpacesMessagesAttachmentsError =
   | DefaultErrors
@@ -4487,7 +4476,7 @@ export const getSpacesMessagesAttachments: API.OperationMethod<
   GetSpacesMessagesAttachmentsResponse,
   GetSpacesMessagesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpacesMessagesAttachmentsRequest,
   output: GetSpacesMessagesAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -4505,7 +4494,7 @@ export interface ListSpacesMessagesReactionsRequest {
 }
 
 export const ListSpacesMessagesReactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4517,7 +4506,7 @@ export const ListSpacesMessagesReactionsRequest =
 
 export type ListSpacesMessagesReactionsResponse = ListReactionsResponse;
 export const ListSpacesMessagesReactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReactionsResponse;
+  /*@__PURE__*/ ListReactionsResponse;
 
 export type ListSpacesMessagesReactionsError =
   | DefaultErrors
@@ -4530,7 +4519,7 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
   ListSpacesMessagesReactionsResponse,
   ListSpacesMessagesReactionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesReactionsRequest,
   output: ListSpacesMessagesReactionsResponse,
   errors: [NotFound, Forbidden],
@@ -4548,7 +4537,7 @@ export interface CreateSpacesMessagesReactionsRequest {
 }
 
 export const CreateSpacesMessagesReactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Reaction).pipe(T.HttpBody()),
   }).pipe(
@@ -4557,8 +4546,7 @@ export const CreateSpacesMessagesReactionsRequest =
   ) as unknown as Schema.Codec<CreateSpacesMessagesReactionsRequest>;
 
 export type CreateSpacesMessagesReactionsResponse = Reaction;
-export const CreateSpacesMessagesReactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Reaction;
+export const CreateSpacesMessagesReactionsResponse = /*@__PURE__*/ Reaction;
 
 export type CreateSpacesMessagesReactionsError =
   | DefaultErrors
@@ -4573,7 +4561,7 @@ export const createSpacesMessagesReactions: API.OperationMethod<
   CreateSpacesMessagesReactionsResponse,
   CreateSpacesMessagesReactionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpacesMessagesReactionsRequest,
   output: CreateSpacesMessagesReactionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4585,7 +4573,7 @@ export interface DeleteSpacesMessagesReactionsRequest {
 }
 
 export const DeleteSpacesMessagesReactionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4593,8 +4581,7 @@ export const DeleteSpacesMessagesReactionsRequest =
   ) as unknown as Schema.Codec<DeleteSpacesMessagesReactionsRequest>;
 
 export type DeleteSpacesMessagesReactionsResponse = Empty;
-export const DeleteSpacesMessagesReactionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteSpacesMessagesReactionsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteSpacesMessagesReactionsError =
   | DefaultErrors
@@ -4609,7 +4596,7 @@ export const deleteSpacesMessagesReactions: API.OperationMethod<
   DeleteSpacesMessagesReactionsResponse,
   DeleteSpacesMessagesReactionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpacesMessagesReactionsRequest,
   output: DeleteSpacesMessagesReactionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4621,7 +4608,7 @@ export interface CreateCustomEmojisRequest {
 }
 
 export const CreateCustomEmojisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(CustomEmoji).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/customEmojis", hasBody: true }),
@@ -4629,8 +4616,7 @@ export const CreateCustomEmojisRequest =
   ) as unknown as Schema.Codec<CreateCustomEmojisRequest>;
 
 export type CreateCustomEmojisResponse = CustomEmoji;
-export const CreateCustomEmojisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomEmoji;
+export const CreateCustomEmojisResponse = /*@__PURE__*/ CustomEmoji;
 
 export type CreateCustomEmojisError =
   | DefaultErrors
@@ -4645,7 +4631,7 @@ export const createCustomEmojis: API.OperationMethod<
   CreateCustomEmojisResponse,
   CreateCustomEmojisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomEmojisRequest,
   output: CreateCustomEmojisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4656,17 +4642,15 @@ export interface GetCustomEmojisRequest {
   name: string;
 }
 
-export const GetCustomEmojisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
+export const GetCustomEmojisRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Codec<GetCustomEmojisRequest>;
 
 export type GetCustomEmojisResponse = CustomEmoji;
-export const GetCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ CustomEmoji;
+export const GetCustomEmojisResponse = /*@__PURE__*/ CustomEmoji;
 
 export type GetCustomEmojisError = DefaultErrors | NotFound | Forbidden;
 
@@ -4676,7 +4660,7 @@ export const getCustomEmojis: API.OperationMethod<
   GetCustomEmojisResponse,
   GetCustomEmojisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomEmojisRequest,
   output: GetCustomEmojisResponse,
   errors: [NotFound, Forbidden],
@@ -4688,7 +4672,7 @@ export interface DeleteCustomEmojisRequest {
 }
 
 export const DeleteCustomEmojisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4696,7 +4680,7 @@ export const DeleteCustomEmojisRequest =
   ) as unknown as Schema.Codec<DeleteCustomEmojisRequest>;
 
 export type DeleteCustomEmojisResponse = Empty;
-export const DeleteCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteCustomEmojisResponse = /*@__PURE__*/ Empty;
 
 export type DeleteCustomEmojisError =
   | DefaultErrors
@@ -4711,7 +4695,7 @@ export const deleteCustomEmojis: API.OperationMethod<
   DeleteCustomEmojisResponse,
   DeleteCustomEmojisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomEmojisRequest,
   output: DeleteCustomEmojisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4727,7 +4711,7 @@ export interface ListCustomEmojisRequest {
 }
 
 export const ListCustomEmojisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -4738,7 +4722,7 @@ export const ListCustomEmojisRequest =
 
 export type ListCustomEmojisResponse_Op = ListCustomEmojisResponse;
 export const ListCustomEmojisResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomEmojisResponse;
+  /*@__PURE__*/ ListCustomEmojisResponse;
 
 export type ListCustomEmojisError = DefaultErrors | NotFound | Forbidden;
 
@@ -4748,7 +4732,7 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
   ListCustomEmojisResponse_Op,
   ListCustomEmojisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomEmojisRequest,
   output: ListCustomEmojisResponse_Op,
   errors: [NotFound, Forbidden],
@@ -4764,7 +4748,7 @@ export interface GetSpaceReadStateUsersSpacesRequest {
 }
 
 export const GetSpaceReadStateUsersSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4773,7 +4757,7 @@ export const GetSpaceReadStateUsersSpacesRequest =
 
 export type GetSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const GetSpaceReadStateUsersSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SpaceReadState;
+  /*@__PURE__*/ SpaceReadState;
 
 export type GetSpaceReadStateUsersSpacesError =
   | DefaultErrors
@@ -4786,7 +4770,7 @@ export const getSpaceReadStateUsersSpaces: API.OperationMethod<
   GetSpaceReadStateUsersSpacesResponse,
   GetSpaceReadStateUsersSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpaceReadStateUsersSpacesRequest,
   output: GetSpaceReadStateUsersSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -4802,7 +4786,7 @@ export interface UpdateSpaceReadStateUsersSpacesRequest {
 }
 
 export const UpdateSpaceReadStateUsersSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SpaceReadState).pipe(T.HttpBody()),
@@ -4813,7 +4797,7 @@ export const UpdateSpaceReadStateUsersSpacesRequest =
 
 export type UpdateSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const UpdateSpaceReadStateUsersSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SpaceReadState;
+  /*@__PURE__*/ SpaceReadState;
 
 export type UpdateSpaceReadStateUsersSpacesError =
   | DefaultErrors
@@ -4828,7 +4812,7 @@ export const updateSpaceReadStateUsersSpaces: API.OperationMethod<
   UpdateSpaceReadStateUsersSpacesResponse,
   UpdateSpaceReadStateUsersSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceReadStateUsersSpacesRequest,
   output: UpdateSpaceReadStateUsersSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4840,7 +4824,7 @@ export interface GetThreadReadStateUsersSpacesThreadsRequest {
 }
 
 export const GetThreadReadStateUsersSpacesThreadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4849,7 +4833,7 @@ export const GetThreadReadStateUsersSpacesThreadsRequest =
 
 export type GetThreadReadStateUsersSpacesThreadsResponse = ThreadReadState;
 export const GetThreadReadStateUsersSpacesThreadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ThreadReadState;
+  /*@__PURE__*/ ThreadReadState;
 
 export type GetThreadReadStateUsersSpacesThreadsError =
   | DefaultErrors
@@ -4862,7 +4846,7 @@ export const getThreadReadStateUsersSpacesThreads: API.OperationMethod<
   GetThreadReadStateUsersSpacesThreadsResponse,
   GetThreadReadStateUsersSpacesThreadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThreadReadStateUsersSpacesThreadsRequest,
   output: GetThreadReadStateUsersSpacesThreadsResponse,
   errors: [NotFound, Forbidden],
@@ -4874,7 +4858,7 @@ export interface GetUsersSpacesSpaceNotificationSettingRequest {
 }
 
 export const GetUsersSpacesSpaceNotificationSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4884,7 +4868,7 @@ export const GetUsersSpacesSpaceNotificationSettingRequest =
 export type GetUsersSpacesSpaceNotificationSettingResponse =
   SpaceNotificationSetting;
 export const GetUsersSpacesSpaceNotificationSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SpaceNotificationSetting;
+  /*@__PURE__*/ SpaceNotificationSetting;
 
 export type GetUsersSpacesSpaceNotificationSettingError =
   | DefaultErrors
@@ -4897,7 +4881,7 @@ export const getUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   GetUsersSpacesSpaceNotificationSettingResponse,
   GetUsersSpacesSpaceNotificationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersSpacesSpaceNotificationSettingRequest,
   output: GetUsersSpacesSpaceNotificationSettingResponse,
   errors: [NotFound, Forbidden],
@@ -4913,7 +4897,7 @@ export interface PatchUsersSpacesSpaceNotificationSettingRequest {
 }
 
 export const PatchUsersSpacesSpaceNotificationSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SpaceNotificationSetting).pipe(T.HttpBody()),
@@ -4925,7 +4909,7 @@ export const PatchUsersSpacesSpaceNotificationSettingRequest =
 export type PatchUsersSpacesSpaceNotificationSettingResponse =
   SpaceNotificationSetting;
 export const PatchUsersSpacesSpaceNotificationSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SpaceNotificationSetting;
+  /*@__PURE__*/ SpaceNotificationSetting;
 
 export type PatchUsersSpacesSpaceNotificationSettingError =
   | DefaultErrors
@@ -4940,7 +4924,7 @@ export const patchUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   PatchUsersSpacesSpaceNotificationSettingResponse,
   PatchUsersSpacesSpaceNotificationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersSpacesSpaceNotificationSettingRequest,
   output: PatchUsersSpacesSpaceNotificationSettingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4954,7 +4938,7 @@ export interface MarkAsActiveUsersAvailabilityRequest {
 }
 
 export const MarkAsActiveUsersAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAsActiveRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4963,8 +4947,7 @@ export const MarkAsActiveUsersAvailabilityRequest =
   ) as unknown as Schema.Codec<MarkAsActiveUsersAvailabilityRequest>;
 
 export type MarkAsActiveUsersAvailabilityResponse = Availability;
-export const MarkAsActiveUsersAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Availability;
+export const MarkAsActiveUsersAvailabilityResponse = /*@__PURE__*/ Availability;
 
 export type MarkAsActiveUsersAvailabilityError =
   | DefaultErrors
@@ -4979,7 +4962,7 @@ export const markAsActiveUsersAvailability: API.OperationMethod<
   MarkAsActiveUsersAvailabilityResponse,
   MarkAsActiveUsersAvailabilityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAsActiveUsersAvailabilityRequest,
   output: MarkAsActiveUsersAvailabilityResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4993,7 +4976,7 @@ export interface MarkAsDoNotDisturbUsersAvailabilityRequest {
 }
 
 export const MarkAsDoNotDisturbUsersAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAsDoNotDisturbRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5007,7 +4990,7 @@ export const MarkAsDoNotDisturbUsersAvailabilityRequest =
 
 export type MarkAsDoNotDisturbUsersAvailabilityResponse = Availability;
 export const MarkAsDoNotDisturbUsersAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Availability;
+  /*@__PURE__*/ Availability;
 
 export type MarkAsDoNotDisturbUsersAvailabilityError =
   | DefaultErrors
@@ -5022,7 +5005,7 @@ export const markAsDoNotDisturbUsersAvailability: API.OperationMethod<
   MarkAsDoNotDisturbUsersAvailabilityResponse,
   MarkAsDoNotDisturbUsersAvailabilityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAsDoNotDisturbUsersAvailabilityRequest,
   output: MarkAsDoNotDisturbUsersAvailabilityResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5036,7 +5019,7 @@ export interface MarkAsAwayUsersAvailabilityRequest {
 }
 
 export const MarkAsAwayUsersAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAsAwayRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5045,8 +5028,7 @@ export const MarkAsAwayUsersAvailabilityRequest =
   ) as unknown as Schema.Codec<MarkAsAwayUsersAvailabilityRequest>;
 
 export type MarkAsAwayUsersAvailabilityResponse = Availability;
-export const MarkAsAwayUsersAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Availability;
+export const MarkAsAwayUsersAvailabilityResponse = /*@__PURE__*/ Availability;
 
 export type MarkAsAwayUsersAvailabilityError =
   | DefaultErrors
@@ -5061,7 +5043,7 @@ export const markAsAwayUsersAvailability: API.OperationMethod<
   MarkAsAwayUsersAvailabilityResponse,
   MarkAsAwayUsersAvailabilityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAsAwayUsersAvailabilityRequest,
   output: MarkAsAwayUsersAvailabilityResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5077,7 +5059,7 @@ export interface UpdateAvailabilityUsersAvailabilityRequest {
 }
 
 export const UpdateAvailabilityUsersAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Availability).pipe(T.HttpBody()),
@@ -5088,7 +5070,7 @@ export const UpdateAvailabilityUsersAvailabilityRequest =
 
 export type UpdateAvailabilityUsersAvailabilityResponse = Availability;
 export const UpdateAvailabilityUsersAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Availability;
+  /*@__PURE__*/ Availability;
 
 export type UpdateAvailabilityUsersAvailabilityError =
   | DefaultErrors
@@ -5103,7 +5085,7 @@ export const updateAvailabilityUsersAvailability: API.OperationMethod<
   UpdateAvailabilityUsersAvailabilityResponse,
   UpdateAvailabilityUsersAvailabilityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityUsersAvailabilityRequest,
   output: UpdateAvailabilityUsersAvailabilityResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5115,7 +5097,7 @@ export interface GetAvailabilityUsersAvailabilityRequest {
 }
 
 export const GetAvailabilityUsersAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5124,7 +5106,7 @@ export const GetAvailabilityUsersAvailabilityRequest =
 
 export type GetAvailabilityUsersAvailabilityResponse = Availability;
 export const GetAvailabilityUsersAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Availability;
+  /*@__PURE__*/ Availability;
 
 export type GetAvailabilityUsersAvailabilityError =
   | DefaultErrors
@@ -5137,7 +5119,7 @@ export const getAvailabilityUsersAvailability: API.OperationMethod<
   GetAvailabilityUsersAvailabilityResponse,
   GetAvailabilityUsersAvailabilityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAvailabilityUsersAvailabilityRequest,
   output: GetAvailabilityUsersAvailabilityResponse,
   errors: [NotFound, Forbidden],
@@ -5151,7 +5133,7 @@ export interface CreateUsersSectionsRequest {
 }
 
 export const CreateUsersSectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
   }).pipe(
@@ -5160,8 +5142,7 @@ export const CreateUsersSectionsRequest =
   ) as unknown as Schema.Codec<CreateUsersSectionsRequest>;
 
 export type CreateUsersSectionsResponse = GoogleChatV1Section;
-export const CreateUsersSectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChatV1Section;
+export const CreateUsersSectionsResponse = /*@__PURE__*/ GoogleChatV1Section;
 
 export type CreateUsersSectionsError =
   | DefaultErrors
@@ -5176,7 +5157,7 @@ export const createUsersSections: API.OperationMethod<
   CreateUsersSectionsResponse,
   CreateUsersSectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersSectionsRequest,
   output: CreateUsersSectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5192,7 +5173,7 @@ export interface PatchUsersSectionsRequest {
 }
 
 export const PatchUsersSectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
@@ -5202,8 +5183,7 @@ export const PatchUsersSectionsRequest =
   ) as unknown as Schema.Codec<PatchUsersSectionsRequest>;
 
 export type PatchUsersSectionsResponse = GoogleChatV1Section;
-export const PatchUsersSectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChatV1Section;
+export const PatchUsersSectionsResponse = /*@__PURE__*/ GoogleChatV1Section;
 
 export type PatchUsersSectionsError =
   | DefaultErrors
@@ -5218,7 +5198,7 @@ export const patchUsersSections: API.OperationMethod<
   PatchUsersSectionsResponse,
   PatchUsersSectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersSectionsRequest,
   output: PatchUsersSectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5232,7 +5212,7 @@ export interface PositionUsersSectionsRequest {
 }
 
 export const PositionUsersSectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PositionSectionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5242,7 +5222,7 @@ export const PositionUsersSectionsRequest =
 
 export type PositionUsersSectionsResponse = PositionSectionResponse;
 export const PositionUsersSectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PositionSectionResponse;
+  /*@__PURE__*/ PositionSectionResponse;
 
 export type PositionUsersSectionsError =
   | DefaultErrors
@@ -5257,7 +5237,7 @@ export const positionUsersSections: API.OperationMethod<
   PositionUsersSectionsResponse,
   PositionUsersSectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PositionUsersSectionsRequest,
   output: PositionUsersSectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5273,7 +5253,7 @@ export interface ListUsersSectionsRequest {
 }
 
 export const ListUsersSectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5283,8 +5263,7 @@ export const ListUsersSectionsRequest =
   ) as unknown as Schema.Codec<ListUsersSectionsRequest>;
 
 export type ListUsersSectionsResponse = ListSectionsResponse;
-export const ListUsersSectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSectionsResponse;
+export const ListUsersSectionsResponse = /*@__PURE__*/ ListSectionsResponse;
 
 export type ListUsersSectionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5294,7 +5273,7 @@ export const listUsersSections: API.PaginatedOperationMethod<
   ListUsersSectionsResponse,
   ListUsersSectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsRequest,
   output: ListUsersSectionsResponse,
   errors: [NotFound, Forbidden],
@@ -5310,7 +5289,7 @@ export interface DeleteUsersSectionsRequest {
 }
 
 export const DeleteUsersSectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -5318,7 +5297,7 @@ export const DeleteUsersSectionsRequest =
   ) as unknown as Schema.Codec<DeleteUsersSectionsRequest>;
 
 export type DeleteUsersSectionsResponse = Empty;
-export const DeleteUsersSectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteUsersSectionsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteUsersSectionsError =
   | DefaultErrors
@@ -5333,7 +5312,7 @@ export const deleteUsersSections: API.OperationMethod<
   DeleteUsersSectionsResponse,
   DeleteUsersSectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSectionsRequest,
   output: DeleteUsersSectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5351,7 +5330,7 @@ export interface ListUsersSectionsItemsRequest {
 }
 
 export const ListUsersSectionsItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5363,7 +5342,7 @@ export const ListUsersSectionsItemsRequest =
 
 export type ListUsersSectionsItemsResponse = ListSectionItemsResponse;
 export const ListUsersSectionsItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSectionItemsResponse;
+  /*@__PURE__*/ ListSectionItemsResponse;
 
 export type ListUsersSectionsItemsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5373,7 +5352,7 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
   ListUsersSectionsItemsResponse,
   ListUsersSectionsItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsItemsRequest,
   output: ListUsersSectionsItemsResponse,
   errors: [NotFound, Forbidden],
@@ -5391,7 +5370,7 @@ export interface MoveUsersSectionsItemsRequest {
 }
 
 export const MoveUsersSectionsItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveSectionItemRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5401,7 +5380,7 @@ export const MoveUsersSectionsItemsRequest =
 
 export type MoveUsersSectionsItemsResponse = MoveSectionItemResponse;
 export const MoveUsersSectionsItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MoveSectionItemResponse;
+  /*@__PURE__*/ MoveSectionItemResponse;
 
 export type MoveUsersSectionsItemsError =
   | DefaultErrors
@@ -5416,7 +5395,7 @@ export const moveUsersSectionsItems: API.OperationMethod<
   MoveUsersSectionsItemsResponse,
   MoveUsersSectionsItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveUsersSectionsItemsRequest,
   output: MoveUsersSectionsItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

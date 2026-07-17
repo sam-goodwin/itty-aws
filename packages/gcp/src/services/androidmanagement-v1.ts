@@ -46,7 +46,7 @@ export interface Display {
 }
 
 export const Display: Schema.Codec<Display> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refreshRate: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.String),
     height: Schema.optional(Schema.Number),
@@ -72,7 +72,7 @@ export interface KeyedAppState {
 }
 
 export const KeyedAppState: Schema.Codec<KeyedAppState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     lastUpdateTime: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface EuiccChipInfo {
 }
 
 export const EuiccChipInfo: Schema.Codec<EuiccChipInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eid: Schema.optional(Schema.String),
   }).annotate({ identifier: "EuiccChipInfo" });
 
@@ -127,7 +127,7 @@ export interface HardwareInfo {
 }
 
 export const HardwareInfo: Schema.Codec<HardwareInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.optional(Schema.String),
     skinThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
     manufacturer: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export interface SystemUpdateInfo {
 }
 
 export const SystemUpdateInfo: Schema.Codec<SystemUpdateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateReceivedTime: Schema.optional(Schema.String),
     updateStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "SystemUpdateInfo" });
@@ -191,7 +191,7 @@ export interface SoftwareInfo {
 }
 
 export const SoftwareInfo: Schema.Codec<SoftwareInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidBuildNumber: Schema.optional(Schema.String),
     androidDevicePolicyVersionName: Schema.optional(Schema.String),
     deviceBuildSignature: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface DeviceSettings {
 }
 
 export const DeviceSettings: Schema.Codec<DeviceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unknownSourcesEnabled: Schema.optional(Schema.Boolean),
     isEncrypted: Schema.optional(Schema.Boolean),
     verifyAppsEnabled: Schema.optional(Schema.Boolean),
@@ -249,7 +249,7 @@ export interface UserFacingMessage {
 }
 
 export const UserFacingMessage: Schema.Codec<UserFacingMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultMessage: Schema.optional(Schema.String),
     localizedMessages: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -269,7 +269,7 @@ export interface PostureDetail {
 }
 
 export const PostureDetail: Schema.Codec<PostureDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advice: Schema.optional(Schema.Array(UserFacingMessage)),
     securityRisk: Schema.optional(Schema.String),
   }).annotate({ identifier: "PostureDetail" });
@@ -287,7 +287,7 @@ export interface SecurityPosture {
 }
 
 export const SecurityPosture: Schema.Codec<SecurityPosture> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devicePosture: Schema.optional(Schema.String),
     postureDetails: Schema.optional(Schema.Array(PostureDetail)),
   }).annotate({ identifier: "SecurityPosture" });
@@ -306,7 +306,7 @@ export interface DefaultApplicationSettingAttempt {
 }
 
 export const DefaultApplicationSettingAttempt: Schema.Codec<DefaultApplicationSettingAttempt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attemptOutcome: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DefaultApplicationSettingAttempt" });
@@ -331,7 +331,7 @@ export interface DefaultApplicationInfo {
 }
 
 export const DefaultApplicationInfo: Schema.Codec<DefaultApplicationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultApplicationType: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
     defaultApplicationSettingAttempts: Schema.optional(
@@ -358,7 +358,7 @@ export interface PowerManagementEvent {
 }
 
 export const PowerManagementEvent: Schema.Codec<PowerManagementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     batteryLevel: Schema.optional(Schema.Number),
@@ -370,7 +370,7 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountIdentifier: Schema.optional(Schema.String),
   }).annotate({ identifier: "User" });
 
@@ -382,7 +382,7 @@ export interface DpcMigrationInfo {
 }
 
 export const DpcMigrationInfo: Schema.Codec<DpcMigrationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previousDpc: Schema.optional(Schema.String),
     additionalData: Schema.optional(Schema.String),
   }).annotate({ identifier: "DpcMigrationInfo" });
@@ -443,7 +443,7 @@ export interface PasswordRequirements {
 }
 
 export const PasswordRequirements: Schema.Codec<PasswordRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     passwordExpirationTimeout: Schema.optional(Schema.String),
     passwordMinimumLetters: Schema.optional(Schema.Number),
     passwordMinimumLowerCase: Schema.optional(Schema.Number),
@@ -477,7 +477,7 @@ export interface MemoryEvent {
 }
 
 export const MemoryEvent: Schema.Codec<MemoryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     byteCount: Schema.optional(Schema.String),
@@ -501,7 +501,7 @@ export interface HardwareStatus {
 }
 
 export const HardwareStatus: Schema.Codec<HardwareStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fanSpeeds: Schema.optional(Schema.Array(Schema.Number)),
     batteryTemperatures: Schema.optional(Schema.Array(Schema.Number)),
     cpuTemperatures: Schema.optional(Schema.Array(Schema.Number)),
@@ -529,7 +529,7 @@ export interface CommonCriteriaModeInfo {
 }
 
 export const CommonCriteriaModeInfo: Schema.Codec<CommonCriteriaModeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policySignatureVerificationStatus: Schema.optional(Schema.String),
     commonCriteriaModeStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommonCriteriaModeInfo" });
@@ -540,7 +540,7 @@ export interface OncWifiContext {
 }
 
 export const OncWifiContext: Schema.Codec<OncWifiContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiGuid: Schema.optional(Schema.String),
   }).annotate({ identifier: "OncWifiContext" });
 
@@ -555,7 +555,7 @@ export interface DefaultApplicationContext {
 }
 
 export const DefaultApplicationContext: Schema.Codec<DefaultApplicationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultApplicationScope: Schema.optional(Schema.String),
   }).annotate({ identifier: "DefaultApplicationContext" });
 
@@ -569,7 +569,7 @@ export interface PasswordPoliciesContext {
 }
 
 export const PasswordPoliciesContext: Schema.Codec<PasswordPoliciesContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     passwordPolicyScope: Schema.optional(Schema.String),
   }).annotate({ identifier: "PasswordPoliciesContext" });
 
@@ -583,7 +583,7 @@ export interface SpecificNonComplianceContext {
 }
 
 export const SpecificNonComplianceContext: Schema.Codec<SpecificNonComplianceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oncWifiContext: Schema.optional(OncWifiContext),
     defaultApplicationContext: Schema.optional(DefaultApplicationContext),
     passwordPoliciesContext: Schema.optional(PasswordPoliciesContext),
@@ -654,7 +654,7 @@ export interface NonComplianceDetail {
 }
 
 export const NonComplianceDetail: Schema.Codec<NonComplianceDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     installationFailureReason: Schema.optional(Schema.String),
     settingName: Schema.optional(Schema.String),
@@ -671,7 +671,7 @@ export interface ApplicationSigningKeyCert {
 }
 
 export const ApplicationSigningKeyCert: Schema.Codec<ApplicationSigningKeyCert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signingKeyCertFingerprintSha256: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplicationSigningKeyCert" });
 
@@ -693,7 +693,7 @@ export interface ApplicationEvent {
 }
 
 export const ApplicationEvent: Schema.Codec<ApplicationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplicationEvent" });
@@ -742,7 +742,7 @@ export interface ApplicationReport {
 }
 
 export const ApplicationReport: Schema.Codec<ApplicationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageSha256Hash: Schema.optional(Schema.String),
     versionName: Schema.optional(Schema.String),
     keyedAppStates: Schema.optional(Schema.Array(KeyedAppState)),
@@ -766,7 +766,7 @@ export interface MemoryInfo {
 }
 
 export const MemoryInfo: Schema.Codec<MemoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalRam: Schema.optional(Schema.String),
     totalInternalStorage: Schema.optional(Schema.String),
   }).annotate({ identifier: "MemoryInfo" });
@@ -793,7 +793,7 @@ export interface TelephonyInfo {
 }
 
 export const TelephonyInfo: Schema.Codec<TelephonyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configMode: Schema.optional(Schema.String),
     carrierName: Schema.optional(Schema.String),
     iccId: Schema.optional(Schema.String),
@@ -815,7 +815,7 @@ export interface NetworkInfo {
 }
 
 export const NetworkInfo: Schema.Codec<NetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imei: Schema.optional(Schema.String),
     networkOperatorName: Schema.optional(Schema.String),
     meid: Schema.optional(Schema.String),
@@ -927,7 +927,7 @@ export interface Device {
 }
 
 export const Device: Schema.Codec<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hardwareInfo: Schema.optional(HardwareInfo),
     apiLevel: Schema.optional(Schema.Number),
     softwareInfo: Schema.optional(SoftwareInfo),
@@ -1018,7 +1018,7 @@ export interface AdvancedSecurityOverrides {
 }
 
 export const AdvancedSecurityOverrides: Schema.Codec<AdvancedSecurityOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mtePolicy: Schema.optional(Schema.String),
     googlePlayProtectVerifyApps: Schema.optional(Schema.String),
     commonCriteriaMode: Schema.optional(Schema.String),
@@ -1044,7 +1044,7 @@ export interface StartLostModeParams {
 }
 
 export const StartLostModeParams: Schema.Codec<StartLostModeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lostOrganization: Schema.optional(UserFacingMessage),
     lostPhoneNumber: Schema.optional(UserFacingMessage),
     lostEmailAddress: Schema.optional(Schema.String),
@@ -1062,7 +1062,7 @@ export interface StopLostModeStatus {
 }
 
 export const StopLostModeStatus: Schema.Codec<StopLostModeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "StopLostModeStatus" });
 
@@ -1078,14 +1078,14 @@ export interface StartLostModeStatus {
 }
 
 export const StartLostModeStatus: Schema.Codec<StartLostModeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "StartLostModeStatus" });
 
 export interface StopLostModeParams {}
 
 export const StopLostModeParams: Schema.Codec<StopLostModeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopLostModeParams",
   });
 
@@ -1101,7 +1101,7 @@ export interface AddEsimParams {
 }
 
 export const AddEsimParams: Schema.Codec<AddEsimParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
     activationState: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddEsimParams" });
@@ -1118,7 +1118,7 @@ export interface PerAppResult {
 }
 
 export const PerAppResult: Schema.Codec<PerAppResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clearingResult: Schema.optional(Schema.String),
   }).annotate({ identifier: "PerAppResult" });
 
@@ -1128,7 +1128,7 @@ export interface ClearAppsDataStatus {
 }
 
 export const ClearAppsDataStatus: Schema.Codec<ClearAppsDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Record(Schema.String, PerAppResult)),
   }).annotate({ identifier: "ClearAppsDataStatus" });
 
@@ -1146,7 +1146,7 @@ export interface WipeParams {
 }
 
 export const WipeParams: Schema.Codec<WipeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wipeDataFlags: Schema.optional(Schema.Array(Schema.String)),
     wipeReason: Schema.optional(UserFacingMessage),
   }).annotate({ identifier: "WipeParams" });
@@ -1157,7 +1157,7 @@ export interface ClearAppsDataParams {
 }
 
 export const ClearAppsDataParams: Schema.Codec<ClearAppsDataParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ClearAppsDataParams" });
 
@@ -1166,11 +1166,9 @@ export interface Eid {
   eid?: string;
 }
 
-export const Eid: Schema.Codec<Eid> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    eid: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Eid" });
+export const Eid: Schema.Codec<Eid> = /*@__PURE__*/ Schema.Struct({
+  eid: Schema.optional(Schema.String),
+}).annotate({ identifier: "Eid" });
 
 export interface EidInfo {
   /** Output only. EID information for each eUICC chip. */
@@ -1178,7 +1176,7 @@ export interface EidInfo {
 }
 
 export const EidInfo: Schema.Codec<EidInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eids: Schema.optional(Schema.Array(Eid)),
   }).annotate({ identifier: "EidInfo" });
 
@@ -1196,7 +1194,7 @@ export interface RequestDeviceInfoStatus {
 }
 
 export const RequestDeviceInfoStatus: Schema.Codec<RequestDeviceInfoStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eidInfo: Schema.optional(EidInfo),
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "RequestDeviceInfoStatus" });
@@ -1246,7 +1244,7 @@ export interface InternalErrorDetails {
 }
 
 export const InternalErrorDetails: Schema.Codec<InternalErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationCode: Schema.optional(Schema.String),
     operationCodeDetail: Schema.optional(Schema.String),
     errorCodeDetail: Schema.optional(Schema.String),
@@ -1259,7 +1257,7 @@ export interface EsimInfo {
 }
 
 export const EsimInfo: Schema.Codec<EsimInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iccId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EsimInfo" });
 
@@ -1283,7 +1281,7 @@ export interface EsimCommandStatus {
 }
 
 export const EsimCommandStatus: Schema.Codec<EsimCommandStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     internalErrorDetails: Schema.optional(InternalErrorDetails),
     esimInfo: Schema.optional(EsimInfo),
@@ -1295,7 +1293,7 @@ export interface RemoveEsimParams {
 }
 
 export const RemoveEsimParams: Schema.Codec<RemoveEsimParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iccId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveEsimParams" });
 
@@ -1305,7 +1303,7 @@ export interface RequestDeviceInfoParams {
 }
 
 export const RequestDeviceInfoParams: Schema.Codec<RequestDeviceInfoParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceInfo: Schema.optional(Schema.String),
   }).annotate({ identifier: "RequestDeviceInfoParams" });
 
@@ -1377,7 +1375,7 @@ export interface Command {
 }
 
 export const Command: Schema.Codec<Command> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
@@ -1407,7 +1405,7 @@ export interface ExternalData {
 }
 
 export const ExternalData: Schema.Codec<ExternalData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     sha256Hash: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExternalData" });
@@ -1422,7 +1420,7 @@ export interface GoogleAuthenticationSettings {
 }
 
 export const GoogleAuthenticationSettings: Schema.Codec<GoogleAuthenticationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleAuthenticationRequired: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAuthenticationSettings" });
 
@@ -1434,7 +1432,7 @@ export interface TermsAndConditions {
 }
 
 export const TermsAndConditions: Schema.Codec<TermsAndConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(UserFacingMessage),
     content: Schema.optional(UserFacingMessage),
   }).annotate({ identifier: "TermsAndConditions" });
@@ -1449,7 +1447,7 @@ export interface SigninDetailGoogleAuthenticationOptions {
 }
 
 export const SigninDetailGoogleAuthenticationOptions: Schema.Codec<SigninDetailGoogleAuthenticationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authenticationRequirement: Schema.optional(Schema.String),
   }).annotate({ identifier: "SigninDetailGoogleAuthenticationOptions" });
 
@@ -1480,7 +1478,7 @@ export interface SigninDetail {
 }
 
 export const SigninDetail: Schema.Codec<SigninDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     qrCode: Schema.optional(Schema.String),
     defaultStatus: Schema.optional(Schema.String),
     signinEnrollmentToken: Schema.optional(Schema.String),
@@ -1510,7 +1508,7 @@ export interface ContactInfo {
 }
 
 export const ContactInfo: Schema.Codec<ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     euRepresentativeEmail: Schema.optional(Schema.String),
     dataProtectionOfficerEmail: Schema.optional(Schema.String),
     dataProtectionOfficerPhone: Schema.optional(Schema.String),
@@ -1573,7 +1571,7 @@ export interface Enterprise {
 }
 
 export const Enterprise: Schema.Codec<Enterprise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logo: Schema.optional(ExternalData),
     enterpriseType: Schema.optional(Schema.String),
     managedGooglePlayAccountsEnterpriseType: Schema.optional(Schema.String),
@@ -1598,7 +1596,7 @@ export interface ListEnterprisesResponse {
 }
 
 export const ListEnterprisesResponse: Schema.Codec<ListEnterprisesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enterprises: Schema.optional(Schema.Array(Enterprise)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListEnterprisesResponse" });
@@ -1606,7 +1604,7 @@ export const ListEnterprisesResponse: Schema.Codec<ListEnterprisesResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1628,7 +1626,7 @@ export interface AppProcessInfo {
 }
 
 export const AppProcessInfo: Schema.Codec<AppProcessInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processName: Schema.optional(Schema.String),
     seinfo: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -1648,7 +1646,7 @@ export interface CertAuthorityRemovedEvent {
 }
 
 export const CertAuthorityRemovedEvent: Schema.Codec<CertAuthorityRemovedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     certificate: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.Number),
@@ -1664,7 +1662,7 @@ export interface RemoteLockEvent {
 }
 
 export const RemoteLockEvent: Schema.Codec<RemoteLockEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetUserId: Schema.optional(Schema.Number),
     adminUserId: Schema.optional(Schema.Number),
     adminPackageName: Schema.optional(Schema.String),
@@ -1673,7 +1671,7 @@ export const RemoteLockEvent: Schema.Codec<RemoteLockEvent> =
 export interface LostModeOutgoingPhoneCallEvent {}
 
 export const LostModeOutgoingPhoneCallEvent: Schema.Codec<LostModeOutgoingPhoneCallEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LostModeOutgoingPhoneCallEvent",
   });
 
@@ -1687,7 +1685,7 @@ export interface CertAuthorityInstalledEvent {
 }
 
 export const CertAuthorityInstalledEvent: Schema.Codec<CertAuthorityInstalledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.Number),
     certificate: Schema.optional(Schema.String),
     success: Schema.optional(Schema.Boolean),
@@ -1703,7 +1701,7 @@ export interface KeyDestructionEvent {
 }
 
 export const KeyDestructionEvent: Schema.Codec<KeyDestructionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyAlias: Schema.optional(Schema.String),
     applicationUid: Schema.optional(Schema.Number),
     success: Schema.optional(Schema.Boolean),
@@ -1719,21 +1717,21 @@ export interface StopLostModeUserAttemptEvent {
 }
 
 export const StopLostModeUserAttemptEvent: Schema.Codec<StopLostModeUserAttemptEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "StopLostModeUserAttemptEvent" });
 
 export interface AdbShellInteractiveEvent {}
 
 export const AdbShellInteractiveEvent: Schema.Codec<AdbShellInteractiveEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AdbShellInteractiveEvent",
   });
 
 export interface WipeFailureEvent {}
 
 export const WipeFailureEvent: Schema.Codec<WipeFailureEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WipeFailureEvent",
   });
 
@@ -1747,7 +1745,7 @@ export interface KeyGeneratedEvent {
 }
 
 export const KeyGeneratedEvent: Schema.Codec<KeyGeneratedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyAlias: Schema.optional(Schema.String),
     applicationUid: Schema.optional(Schema.Number),
     success: Schema.optional(Schema.Boolean),
@@ -1756,14 +1754,14 @@ export const KeyGeneratedEvent: Schema.Codec<KeyGeneratedEvent> =
 export interface OsShutdownEvent {}
 
 export const OsShutdownEvent: Schema.Codec<OsShutdownEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OsShutdownEvent",
   });
 
 export interface KeyguardDismissedEvent {}
 
 export const KeyguardDismissedEvent: Schema.Codec<KeyguardDismissedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "KeyguardDismissedEvent",
   });
 
@@ -1775,7 +1773,7 @@ export interface KeyguardDismissAuthAttemptEvent {
 }
 
 export const KeyguardDismissAuthAttemptEvent: Schema.Codec<KeyguardDismissAuthAttemptEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     strongAuthMethodUsed: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "KeyguardDismissAuthAttemptEvent" });
@@ -1790,7 +1788,7 @@ export interface ConnectEvent {
 }
 
 export const ConnectEvent: Schema.Codec<ConnectEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     destinationPort: Schema.optional(Schema.Number),
     destinationIpAddress: Schema.optional(Schema.String),
@@ -1802,7 +1800,7 @@ export interface FilePushedEvent {
 }
 
 export const FilePushedEvent: Schema.Codec<FilePushedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filePath: Schema.optional(Schema.String),
   }).annotate({ identifier: "FilePushedEvent" });
 
@@ -1820,7 +1818,7 @@ export interface BackupServiceToggledEvent {
 }
 
 export const BackupServiceToggledEvent: Schema.Codec<BackupServiceToggledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminUserId: Schema.optional(Schema.Number),
     backupServiceState: Schema.optional(Schema.String),
     adminPackageName: Schema.optional(Schema.String),
@@ -1829,7 +1827,7 @@ export const BackupServiceToggledEvent: Schema.Codec<BackupServiceToggledEvent> 
 export interface LoggingStartedEvent {}
 
 export const LoggingStartedEvent: Schema.Codec<LoggingStartedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LoggingStartedEvent",
   });
 
@@ -1839,7 +1837,7 @@ export interface AdbShellCommandEvent {
 }
 
 export const AdbShellCommandEvent: Schema.Codec<AdbShellCommandEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shellCmd: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdbShellCommandEvent" });
 
@@ -1849,7 +1847,7 @@ export interface FilePulledEvent {
 }
 
 export const FilePulledEvent: Schema.Codec<FilePulledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filePath: Schema.optional(Schema.String),
   }).annotate({ identifier: "FilePulledEvent" });
 
@@ -1863,7 +1861,7 @@ export interface KeyImportEvent {
 }
 
 export const KeyImportEvent: Schema.Codec<KeyImportEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyAlias: Schema.optional(Schema.String),
     applicationUid: Schema.optional(Schema.Number),
     success: Schema.optional(Schema.Boolean),
@@ -1875,7 +1873,7 @@ export interface CryptoSelfTestCompletedEvent {
 }
 
 export const CryptoSelfTestCompletedEvent: Schema.Codec<CryptoSelfTestCompletedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CryptoSelfTestCompletedEvent" });
 
@@ -1887,7 +1885,7 @@ export interface KeyIntegrityViolationEvent {
 }
 
 export const KeyIntegrityViolationEvent: Schema.Codec<KeyIntegrityViolationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyAlias: Schema.optional(Schema.String),
     applicationUid: Schema.optional(Schema.Number),
   }).annotate({ identifier: "KeyIntegrityViolationEvent" });
@@ -1900,7 +1898,7 @@ export interface MediaUnmountEvent {
 }
 
 export const MediaUnmountEvent: Schema.Codec<MediaUnmountEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mountPoint: Schema.optional(Schema.String),
     volumeLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "MediaUnmountEvent" });
@@ -1908,7 +1906,7 @@ export const MediaUnmountEvent: Schema.Codec<MediaUnmountEvent> =
 export interface LogBufferSizeCriticalEvent {}
 
 export const LogBufferSizeCriticalEvent: Schema.Codec<LogBufferSizeCriticalEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LogBufferSizeCriticalEvent",
   });
 
@@ -1920,7 +1918,7 @@ export interface MediaMountEvent {
 }
 
 export const MediaMountEvent: Schema.Codec<MediaMountEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mountPoint: Schema.optional(Schema.String),
     volumeLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "MediaMountEvent" });
@@ -1937,7 +1935,7 @@ export interface DnsEvent {
 }
 
 export const DnsEvent: Schema.Codec<DnsEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostname: Schema.optional(Schema.String),
     totalIpAddressesReturned: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -1962,7 +1960,7 @@ export interface OsStartupEvent {
 }
 
 export const OsStartupEvent: Schema.Codec<OsStartupEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verityMode: Schema.optional(Schema.String),
     verifiedBootState: Schema.optional(Schema.String),
   }).annotate({ identifier: "OsStartupEvent" });
@@ -1970,7 +1968,7 @@ export const OsStartupEvent: Schema.Codec<OsStartupEvent> =
 export interface KeyguardSecuredEvent {}
 
 export const KeyguardSecuredEvent: Schema.Codec<KeyguardSecuredEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "KeyguardSecuredEvent",
   });
 
@@ -1980,14 +1978,14 @@ export interface CertValidationFailureEvent {
 }
 
 export const CertValidationFailureEvent: Schema.Codec<CertValidationFailureEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failureReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "CertValidationFailureEvent" });
 
 export interface LoggingStoppedEvent {}
 
 export const LoggingStoppedEvent: Schema.Codec<LoggingStoppedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LoggingStoppedEvent",
   });
 
@@ -1999,7 +1997,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Location" });
@@ -2012,7 +2010,7 @@ export interface LostModeLocationEvent {
 }
 
 export const LostModeLocationEvent: Schema.Codec<LostModeLocationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
     batteryLevel: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LostModeLocationEvent" });
@@ -2020,7 +2018,7 @@ export const LostModeLocationEvent: Schema.Codec<LostModeLocationEvent> =
 export interface EnrollmentCompleteEvent {}
 
 export const EnrollmentCompleteEvent: Schema.Codec<EnrollmentCompleteEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnrollmentCompleteEvent",
   });
 
@@ -2030,7 +2028,7 @@ export interface AppProcessStartEvent {
 }
 
 export const AppProcessStartEvent: Schema.Codec<AppProcessStartEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processInfo: Schema.optional(AppProcessInfo),
   }).annotate({ identifier: "AppProcessStartEvent" });
 
@@ -2142,7 +2140,7 @@ export interface UsageLogEvent {
 }
 
 export const UsageLogEvent: Schema.Codec<UsageLogEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certAuthorityRemovedEvent: Schema.optional(CertAuthorityRemovedEvent),
     remoteLockEvent: Schema.optional(RemoteLockEvent),
     lostModeOutgoingPhoneCallEvent: Schema.optional(
@@ -2190,7 +2188,7 @@ export interface DefaultApplication {
 }
 
 export const DefaultApplication: Schema.Codec<DefaultApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DefaultApplication" });
 
@@ -2220,7 +2218,7 @@ export interface DefaultApplicationSetting {
 }
 
 export const DefaultApplicationSetting: Schema.Codec<DefaultApplicationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultApplicationType: Schema.optional(Schema.String),
     defaultApplications: Schema.optional(Schema.Array(DefaultApplication)),
     defaultApplicationScopes: Schema.optional(Schema.Array(Schema.String)),
@@ -2239,7 +2237,7 @@ export interface WifiRoamingSetting {
 }
 
 export const WifiRoamingSetting: Schema.Codec<WifiRoamingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiSsid: Schema.optional(Schema.String),
     wifiRoamingMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "WifiRoamingSetting" });
@@ -2269,7 +2267,7 @@ export interface NonComplianceDetailCondition {
 }
 
 export const NonComplianceDetailCondition: Schema.Codec<NonComplianceDetailCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     nonComplianceReason: Schema.optional(Schema.String),
     settingName: Schema.optional(Schema.String),
@@ -2287,7 +2285,7 @@ export interface ScreenTimeoutSettings {
 }
 
 export const ScreenTimeoutSettings: Schema.Codec<ScreenTimeoutSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenTimeoutMode: Schema.optional(Schema.String),
     screenTimeout: Schema.optional(Schema.String),
   }).annotate({ identifier: "ScreenTimeoutSettings" });
@@ -2304,7 +2302,7 @@ export interface AppVersion {
 }
 
 export const AppVersion: Schema.Codec<AppVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionString: Schema.optional(Schema.String),
     trackIds: Schema.optional(Schema.Array(Schema.String)),
     versionCode: Schema.optional(Schema.Number),
@@ -2323,7 +2321,7 @@ export interface WorkAccountSetupConfig {
 }
 
 export const WorkAccountSetupConfig: Schema.Codec<WorkAccountSetupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authenticationType: Schema.optional(Schema.String),
     requiredAccountEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkAccountSetupConfig" });
@@ -2341,7 +2339,7 @@ export interface ScreenBrightnessSettings {
 }
 
 export const ScreenBrightnessSettings: Schema.Codec<ScreenBrightnessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenBrightnessMode: Schema.optional(Schema.String),
     screenBrightness: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ScreenBrightnessSettings" });
@@ -2356,7 +2354,7 @@ export interface ChoosePrivateKeyRule {
 }
 
 export const ChoosePrivateKeyRule: Schema.Codec<ChoosePrivateKeyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageNames: Schema.optional(Schema.Array(Schema.String)),
     privateKeyAlias: Schema.optional(Schema.String),
     urlPattern: Schema.optional(Schema.String),
@@ -2396,7 +2394,7 @@ export interface ProvisioningInfo {
 }
 
 export const ProvisioningInfo: Schema.Codec<ProvisioningInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serialNumber: Schema.optional(Schema.String),
     enterprise: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2418,7 +2416,7 @@ export interface SignupUrl {
 }
 
 export const SignupUrl: Schema.Codec<SignupUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignupUrl" });
@@ -2426,7 +2424,7 @@ export const SignupUrl: Schema.Codec<SignupUrl> =
 export interface IssueCommandResponse {}
 
 export const IssueCommandResponse: Schema.Codec<IssueCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IssueCommandResponse",
   });
 
@@ -2436,7 +2434,7 @@ export interface WifiSsid {
 }
 
 export const WifiSsid: Schema.Codec<WifiSsid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiSsid: Schema.optional(Schema.String),
   }).annotate({ identifier: "WifiSsid" });
 
@@ -2452,7 +2450,7 @@ export interface WifiSsidPolicy {
 }
 
 export const WifiSsidPolicy: Schema.Codec<WifiSsidPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiSsidPolicyType: Schema.optional(Schema.String),
     wifiSsids: Schema.optional(Schema.Array(WifiSsid)),
   }).annotate({ identifier: "WifiSsidPolicy" });
@@ -2469,7 +2467,7 @@ export interface BlockAction {
 }
 
 export const BlockAction: Schema.Codec<BlockAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blockAfterDays: Schema.optional(Schema.Number),
     blockScope: Schema.optional(Schema.String),
   }).annotate({ identifier: "BlockAction" });
@@ -2482,7 +2480,7 @@ export interface WipeAction {
 }
 
 export const WipeAction: Schema.Codec<WipeAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     preserveFrp: Schema.optional(Schema.Boolean),
     wipeAfterDays: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WipeAction" });
@@ -2497,7 +2495,7 @@ export interface PolicyEnforcementRule {
 }
 
 export const PolicyEnforcementRule: Schema.Codec<PolicyEnforcementRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blockAction: Schema.optional(BlockAction),
     wipeAction: Schema.optional(WipeAction),
     settingName: Schema.optional(Schema.String),
@@ -2521,7 +2519,7 @@ export interface UsageLog {
 }
 
 export const UsageLog: Schema.Codec<UsageLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabledLogTypes: Schema.optional(Schema.Array(Schema.String)),
     uploadOnCellularAllowed: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UsageLog" });
@@ -2538,7 +2536,7 @@ export interface Role {
 }
 
 export const Role: Schema.Codec<Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roleType: Schema.optional(Schema.String),
   }).annotate({ identifier: "Role" });
 
@@ -2564,7 +2562,7 @@ export interface InstallConstraint {
 }
 
 export const InstallConstraint: Schema.Codec<InstallConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkTypeConstraint: Schema.optional(Schema.String),
     chargingConstraint: Schema.optional(Schema.String),
     deviceIdleConstraint: Schema.optional(Schema.String),
@@ -2578,7 +2576,7 @@ export interface ManagedConfigurationTemplate {
 }
 
 export const ManagedConfigurationTemplate: Schema.Codec<ManagedConfigurationTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurationVariables: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -2598,7 +2596,7 @@ export interface PermissionGrant {
 }
 
 export const PermissionGrant: Schema.Codec<PermissionGrant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
     policy: Schema.optional(Schema.String),
   }).annotate({ identifier: "PermissionGrant" });
@@ -2613,7 +2611,7 @@ export interface CustomAppConfig {
 }
 
 export const CustomAppConfig: Schema.Codec<CustomAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userUninstallSettings: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomAppConfig" });
 
@@ -2625,7 +2623,7 @@ export interface ExtensionConfig {
 }
 
 export const ExtensionConfig: Schema.Codec<ExtensionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signingKeyFingerprintsSha256: Schema.optional(Schema.Array(Schema.String)),
     notificationReceiver: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExtensionConfig" });
@@ -2740,7 +2738,7 @@ export interface ApplicationPolicy {
 }
 
 export const ApplicationPolicy: Schema.Codec<ApplicationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
     roles: Schema.optional(Schema.Array(Role)),
     connectedWorkAndPersonalApp: Schema.optional(Schema.String),
@@ -2777,7 +2775,7 @@ export interface ApplicationPolicyChange {
 }
 
 export const ApplicationPolicyChange: Schema.Codec<ApplicationPolicyChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.optional(ApplicationPolicy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplicationPolicyChange" });
@@ -2788,7 +2786,7 @@ export interface WifiRoamingPolicy {
 }
 
 export const WifiRoamingPolicy: Schema.Codec<WifiRoamingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiRoamingSettings: Schema.optional(Schema.Array(WifiRoamingSetting)),
   }).annotate({ identifier: "WifiRoamingPolicy" });
 
@@ -2823,7 +2821,7 @@ export interface MigrationToken {
 }
 
 export const MigrationToken: Schema.Codec<MigrationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -2845,7 +2843,7 @@ export interface ListMigrationTokensResponse {
 }
 
 export const ListMigrationTokensResponse: Schema.Codec<ListMigrationTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     migrationTokens: Schema.optional(Schema.Array(MigrationToken)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMigrationTokensResponse" });
@@ -2856,7 +2854,7 @@ export interface LaunchAppAction {
 }
 
 export const LaunchAppAction: Schema.Codec<LaunchAppAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
   }).annotate({ identifier: "LaunchAppAction" });
 
@@ -2870,7 +2868,7 @@ export interface SetupAction {
 }
 
 export const SetupAction: Schema.Codec<SetupAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     launchApp: Schema.optional(LaunchAppAction),
     title: Schema.optional(UserFacingMessage),
     description: Schema.optional(UserFacingMessage),
@@ -2888,7 +2886,7 @@ export interface ProxyInfo {
 }
 
 export const ProxyInfo: Schema.Codec<ProxyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
     excludedHosts: Schema.optional(Schema.Array(Schema.String)),
@@ -2901,7 +2899,7 @@ export interface ApiLevelCondition {
 }
 
 export const ApiLevelCondition: Schema.Codec<ApiLevelCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minApiLevel: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ApiLevelCondition" });
 
@@ -2917,7 +2915,7 @@ export interface ComplianceRule {
 }
 
 export const ComplianceRule: Schema.Codec<ComplianceRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiLevelCondition: Schema.optional(ApiLevelCondition),
     disableApps: Schema.optional(Schema.Boolean),
     packageNamesToDisable: Schema.optional(Schema.Array(Schema.String)),
@@ -2937,7 +2935,7 @@ export interface PrivateDnsSettings {
 }
 
 export const PrivateDnsSettings: Schema.Codec<PrivateDnsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateDnsMode: Schema.optional(Schema.String),
     privateDnsHost: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrivateDnsSettings" });
@@ -2968,7 +2966,7 @@ export interface PreferentialNetworkServiceConfig {
 }
 
 export const PreferentialNetworkServiceConfig: Schema.Codec<PreferentialNetworkServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fallbackToDefaultConnection: Schema.optional(Schema.String),
     preferentialNetworkId: Schema.optional(Schema.String),
     nonMatchingNetworks: Schema.optional(Schema.String),
@@ -2990,7 +2988,7 @@ export interface PreferentialNetworkServiceSettings {
 }
 
 export const PreferentialNetworkServiceSettings: Schema.Codec<PreferentialNetworkServiceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     preferentialNetworkServiceConfigs: Schema.optional(
       Schema.Array(PreferentialNetworkServiceConfig),
     ),
@@ -3107,7 +3105,7 @@ export interface ApnSetting {
 }
 
 export const ApnSetting: Schema.Codec<ApnSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     proxyAddress: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     mmsProxyAddress: Schema.optional(Schema.String),
@@ -3142,7 +3140,7 @@ export interface ApnPolicy {
 }
 
 export const ApnPolicy: Schema.Codec<ApnPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrideApns: Schema.optional(Schema.String),
     apnSettings: Schema.optional(Schema.Array(ApnSetting)),
   }).annotate({ identifier: "ApnPolicy" });
@@ -3194,7 +3192,7 @@ export interface DeviceConnectivityManagement {
 }
 
 export const DeviceConnectivityManagement: Schema.Codec<DeviceConnectivityManagement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wifiRoamingPolicy: Schema.optional(WifiRoamingPolicy),
     privateDnsSettings: Schema.optional(PrivateDnsSettings),
     configureWifi: Schema.optional(Schema.String),
@@ -3215,7 +3213,7 @@ export interface PackageNameList {
 }
 
 export const PackageNameList: Schema.Codec<PackageNameList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PackageNameList" });
 
@@ -3227,7 +3225,7 @@ export interface DisplaySettings {
 }
 
 export const DisplaySettings: Schema.Codec<DisplaySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenTimeoutSettings: Schema.optional(ScreenTimeoutSettings),
     screenBrightnessSettings: Schema.optional(ScreenBrightnessSettings),
   }).annotate({ identifier: "DisplaySettings" });
@@ -3244,7 +3242,7 @@ export interface PersonalApplicationPolicy {
 }
 
 export const PersonalApplicationPolicy: Schema.Codec<PersonalApplicationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     installType: Schema.optional(Schema.String),
   }).annotate({ identifier: "PersonalApplicationPolicy" });
@@ -3282,7 +3280,7 @@ export interface PersonalUsagePolicies {
 }
 
 export const PersonalUsagePolicies: Schema.Codec<PersonalUsagePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateSpacePolicy: Schema.optional(Schema.String),
     bluetoothSharing: Schema.optional(Schema.String),
     cameraDisabled: Schema.optional(Schema.Boolean),
@@ -3335,7 +3333,7 @@ export interface CrossProfilePolicies {
 }
 
 export const CrossProfilePolicies: Schema.Codec<CrossProfilePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptionsToShowWorkContactsInPersonalProfile:
       Schema.optional(PackageNameList),
     crossProfileCopyPaste: Schema.optional(Schema.String),
@@ -3388,7 +3386,7 @@ export interface DeviceRadioState {
 }
 
 export const DeviceRadioState: Schema.Codec<DeviceRadioState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     airplaneModeState: Schema.optional(Schema.String),
     minimumWifiSecurityLevel: Schema.optional(Schema.String),
     wifiState: Schema.optional(Schema.String),
@@ -3403,7 +3401,7 @@ export interface ApplicationReportingSettings {
 }
 
 export const ApplicationReportingSettings: Schema.Codec<ApplicationReportingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeRemovedApps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ApplicationReportingSettings" });
 
@@ -3435,7 +3433,7 @@ export interface StatusReportingSettings {
 }
 
 export const StatusReportingSettings: Schema.Codec<StatusReportingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     softwareInfoEnabled: Schema.optional(Schema.Boolean),
     displayInfoEnabled: Schema.optional(Schema.Boolean),
     commonCriteriaModeEnabled: Schema.optional(Schema.Boolean),
@@ -3460,7 +3458,7 @@ export interface Androidmanagement_Date {
 }
 
 export const Androidmanagement_Date: Schema.Codec<Androidmanagement_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -3474,7 +3472,7 @@ export interface FreezePeriod {
 }
 
 export const FreezePeriod: Schema.Codec<FreezePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Androidmanagement_Date),
     endDate: Schema.optional(Androidmanagement_Date),
   }).annotate({ identifier: "FreezePeriod" });
@@ -3496,7 +3494,7 @@ export interface SystemUpdate {
 }
 
 export const SystemUpdate: Schema.Codec<SystemUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     freezePeriods: Schema.optional(Schema.Array(FreezePeriod)),
     startMinutes: Schema.optional(Schema.Number),
@@ -3511,7 +3509,7 @@ export interface AlwaysOnVpnPackage {
 }
 
 export const AlwaysOnVpnPackage: Schema.Codec<AlwaysOnVpnPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     lockdownEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AlwaysOnVpnPackage" });
@@ -3526,7 +3524,7 @@ export interface PersistentPreferredActivity {
 }
 
 export const PersistentPreferredActivity: Schema.Codec<PersistentPreferredActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(Schema.String)),
     receiverActivity: Schema.optional(Schema.String),
     actions: Schema.optional(Schema.Array(Schema.String)),
@@ -3568,7 +3566,7 @@ export interface KioskCustomization {
 }
 
 export const KioskCustomization: Schema.Codec<KioskCustomization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusBar: Schema.optional(Schema.String),
     powerButtonActions: Schema.optional(Schema.String),
     deviceSettings: Schema.optional(Schema.String),
@@ -3586,7 +3584,7 @@ export interface ContentProviderEndpoint {
 }
 
 export const ContentProviderEndpoint: Schema.Codec<ContentProviderEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signingCertsSha256: Schema.optional(Schema.Array(Schema.String)),
     packageName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -3600,7 +3598,7 @@ export interface OncCertificateProvider {
 }
 
 export const OncCertificateProvider: Schema.Codec<OncCertificateProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentProviderEndpoint: Schema.optional(ContentProviderEndpoint),
     certificateReferences: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "OncCertificateProvider" });
@@ -3903,7 +3901,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusBarDisabled: Schema.optional(Schema.Boolean),
     cameraDisabled: Schema.optional(Schema.Boolean),
     wifiConfigsLockdownEnabled: Schema.optional(Schema.Boolean),
@@ -4026,7 +4024,7 @@ export interface ListPoliciesResponse {
 }
 
 export const ListPoliciesResponse: Schema.Codec<ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(Policy)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPoliciesResponse" });
@@ -4041,7 +4039,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -4063,7 +4061,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4083,7 +4081,7 @@ export interface GoogleAuthenticationOptions {
 }
 
 export const GoogleAuthenticationOptions: Schema.Codec<GoogleAuthenticationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredAccountEmail: Schema.optional(Schema.String),
     authenticationRequirement: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAuthenticationOptions" });
@@ -4119,7 +4117,7 @@ export interface EnrollmentToken {
 }
 
 export const EnrollmentToken: Schema.Codec<EnrollmentToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
     qrCode: Schema.optional(Schema.String),
     allowPersonalUsage: Schema.optional(Schema.String),
@@ -4139,7 +4137,7 @@ export interface ModifyPolicyApplicationsResponse {
 }
 
 export const ModifyPolicyApplicationsResponse: Schema.Codec<ModifyPolicyApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "ModifyPolicyApplicationsResponse" });
 
@@ -4149,7 +4147,7 @@ export interface WebAppIcon {
 }
 
 export const WebAppIcon: Schema.Codec<WebAppIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageData: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAppIcon" });
 
@@ -4161,7 +4159,7 @@ export interface ManagedPropertyEntry {
 }
 
 export const ManagedPropertyEntry: Schema.Codec<ManagedPropertyEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedPropertyEntry" });
@@ -4194,7 +4192,7 @@ export interface ManagedProperty {
 }
 
 export const ManagedProperty: Schema.Codec<ManagedProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       title: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
@@ -4214,7 +4212,7 @@ export interface GenerateEnterpriseUpgradeUrlResponse {
 }
 
 export const GenerateEnterpriseUpgradeUrlResponse: Schema.Codec<GenerateEnterpriseUpgradeUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlResponse" });
 
@@ -4224,7 +4222,7 @@ export interface RemovePolicyApplicationsRequest {
 }
 
 export const RemovePolicyApplicationsRequest: Schema.Codec<RemovePolicyApplicationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     packageNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RemovePolicyApplicationsRequest" });
 
@@ -4234,7 +4232,7 @@ export interface ModifyPolicyApplicationsRequest {
 }
 
 export const ModifyPolicyApplicationsRequest: Schema.Codec<ModifyPolicyApplicationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(ApplicationPolicyChange)),
   }).annotate({ identifier: "ModifyPolicyApplicationsRequest" });
 
@@ -4259,7 +4257,7 @@ export interface WebApp {
 }
 
 export const WebApp: Schema.Codec<WebApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     icons: Schema.optional(Schema.Array(WebAppIcon)),
@@ -4276,7 +4274,7 @@ export interface ListWebAppsResponse {
 }
 
 export const ListWebAppsResponse: Schema.Codec<ListWebAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webApps: Schema.optional(Schema.Array(WebApp)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListWebAppsResponse" });
@@ -4289,7 +4287,7 @@ export interface AppTrackInfo {
 }
 
 export const AppTrackInfo: Schema.Codec<AppTrackInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackId: Schema.optional(Schema.String),
     trackAlias: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppTrackInfo" });
@@ -4304,7 +4302,7 @@ export interface ApplicationPermission {
 }
 
 export const ApplicationPermission: Schema.Codec<ApplicationPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     permissionId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4377,7 +4375,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distributionChannel: Schema.optional(Schema.String),
     appTracks: Schema.optional(Schema.Array(AppTrackInfo)),
     name: Schema.optional(Schema.String),
@@ -4412,7 +4410,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -4426,7 +4424,7 @@ export interface ListDevicesResponse {
 }
 
 export const ListDevicesResponse: Schema.Codec<ListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(Device)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDevicesResponse" });
@@ -4439,7 +4437,7 @@ export interface GenerateEnterpriseUpgradeUrlRequest {
 }
 
 export const GenerateEnterpriseUpgradeUrlRequest: Schema.Codec<GenerateEnterpriseUpgradeUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedDomains: Schema.optional(Schema.Array(Schema.String)),
     adminEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlRequest" });
@@ -4452,7 +4450,7 @@ export interface ListEnrollmentTokensResponse {
 }
 
 export const ListEnrollmentTokensResponse: Schema.Codec<ListEnrollmentTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     enrollmentTokens: Schema.optional(Schema.Array(EnrollmentToken)),
   }).annotate({ identifier: "ListEnrollmentTokensResponse" });
@@ -4482,7 +4480,7 @@ export interface WebToken {
 }
 
 export const WebToken: Schema.Codec<WebToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     parentFrameUrl: Schema.optional(Schema.String),
@@ -4502,7 +4500,7 @@ export interface BatchUsageLogEvents {
 }
 
 export const BatchUsageLogEvents: Schema.Codec<BatchUsageLogEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.String),
     usageLogEvents: Schema.optional(Schema.Array(UsageLogEvent)),
     device: Schema.optional(Schema.String),
@@ -4515,7 +4513,7 @@ export interface RemovePolicyApplicationsResponse {
 }
 
 export const RemovePolicyApplicationsResponse: Schema.Codec<RemovePolicyApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "RemovePolicyApplicationsResponse" });
 
@@ -4530,7 +4528,7 @@ export interface EnterpriseUpgradeEvent {
 }
 
 export const EnterpriseUpgradeEvent: Schema.Codec<EnterpriseUpgradeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enterprise: Schema.optional(Schema.String),
     upgradeState: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseUpgradeEvent" });
@@ -4595,7 +4593,7 @@ export interface GetProvisioningInfoRequest {
 }
 
 export const GetProvisioningInfoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4603,8 +4601,7 @@ export const GetProvisioningInfoRequest =
   ) as unknown as Schema.Codec<GetProvisioningInfoRequest>;
 
 export type GetProvisioningInfoResponse = ProvisioningInfo;
-export const GetProvisioningInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProvisioningInfo;
+export const GetProvisioningInfoResponse = /*@__PURE__*/ ProvisioningInfo;
 
 export type GetProvisioningInfoError = DefaultErrors | NotFound | Forbidden;
 
@@ -4614,7 +4611,7 @@ export const getProvisioningInfo: API.OperationMethod<
   GetProvisioningInfoResponse,
   GetProvisioningInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProvisioningInfoRequest,
   output: GetProvisioningInfoResponse,
   errors: [NotFound, Forbidden],
@@ -4632,7 +4629,7 @@ export interface CreateSignupUrlsRequest {
 }
 
 export const CreateSignupUrlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callbackUrl: Schema.optional(Schema.String).pipe(
       T.HttpQuery("callbackUrl"),
     ),
@@ -4647,7 +4644,7 @@ export const CreateSignupUrlsRequest =
   ) as unknown as Schema.Codec<CreateSignupUrlsRequest>;
 
 export type CreateSignupUrlsResponse = SignupUrl;
-export const CreateSignupUrlsResponse = /*@__PURE__*/ /*#__PURE__*/ SignupUrl;
+export const CreateSignupUrlsResponse = /*@__PURE__*/ SignupUrl;
 
 export type CreateSignupUrlsError =
   | DefaultErrors
@@ -4662,7 +4659,7 @@ export const createSignupUrls: API.OperationMethod<
   CreateSignupUrlsResponse,
   CreateSignupUrlsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSignupUrlsRequest,
   output: CreateSignupUrlsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4679,21 +4676,18 @@ export interface ListEnterprisesRequest {
   view?: "ENTERPRISE_VIEW_UNSPECIFIED" | "BASIC" | (string & {});
 }
 
-export const ListEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  },
-).pipe(
+export const ListEnterprisesRequest = /*@__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+}).pipe(
   T.Http({ method: "GET", path: "v1/enterprises" }),
   svc,
 ) as unknown as Schema.Codec<ListEnterprisesRequest>;
 
 export type ListEnterprisesResponse_Op = ListEnterprisesResponse;
-export const ListEnterprisesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListEnterprisesResponse;
+export const ListEnterprisesResponse_Op = /*@__PURE__*/ ListEnterprisesResponse;
 
 export type ListEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4703,7 +4697,7 @@ export const listEnterprises: API.PaginatedOperationMethod<
   ListEnterprisesResponse_Op,
   ListEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesRequest,
   output: ListEnterprisesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -4719,7 +4713,7 @@ export interface DeleteEnterprisesRequest {
 }
 
 export const DeleteEnterprisesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4727,7 +4721,7 @@ export const DeleteEnterprisesRequest =
   ) as unknown as Schema.Codec<DeleteEnterprisesRequest>;
 
 export type DeleteEnterprisesResponse = Empty;
-export const DeleteEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteEnterprisesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteEnterprisesError =
   | DefaultErrors
@@ -4742,7 +4736,7 @@ export const deleteEnterprises: API.OperationMethod<
   DeleteEnterprisesResponse,
   DeleteEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesRequest,
   output: DeleteEnterprisesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4756,7 +4750,7 @@ export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
 }
 
 export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GenerateEnterpriseUpgradeUrlRequest).pipe(
       T.HttpBody(),
@@ -4773,7 +4767,7 @@ export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
 export type GenerateEnterpriseUpgradeUrlEnterprisesResponse =
   GenerateEnterpriseUpgradeUrlResponse;
 export const GenerateEnterpriseUpgradeUrlEnterprisesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateEnterpriseUpgradeUrlResponse;
+  /*@__PURE__*/ GenerateEnterpriseUpgradeUrlResponse;
 
 export type GenerateEnterpriseUpgradeUrlEnterprisesError =
   | DefaultErrors
@@ -4788,7 +4782,7 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
   GenerateEnterpriseUpgradeUrlEnterprisesResponse,
   GenerateEnterpriseUpgradeUrlEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateEnterpriseUpgradeUrlEnterprisesRequest,
   output: GenerateEnterpriseUpgradeUrlEnterprisesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4808,7 +4802,7 @@ export interface CreateEnterprisesRequest {
 }
 
 export const CreateEnterprisesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     signupUrlName: Schema.optional(Schema.String).pipe(
       T.HttpQuery("signupUrlName"),
@@ -4826,7 +4820,7 @@ export const CreateEnterprisesRequest =
   ) as unknown as Schema.Codec<CreateEnterprisesRequest>;
 
 export type CreateEnterprisesResponse = Enterprise;
-export const CreateEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
+export const CreateEnterprisesResponse = /*@__PURE__*/ Enterprise;
 
 export type CreateEnterprisesError =
   | DefaultErrors
@@ -4841,7 +4835,7 @@ export const createEnterprises: API.OperationMethod<
   CreateEnterprisesResponse,
   CreateEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnterprisesRequest,
   output: CreateEnterprisesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4857,7 +4851,7 @@ export interface PatchEnterprisesRequest {
 }
 
 export const PatchEnterprisesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Enterprise).pipe(T.HttpBody()),
@@ -4867,7 +4861,7 @@ export const PatchEnterprisesRequest =
   ) as unknown as Schema.Codec<PatchEnterprisesRequest>;
 
 export type PatchEnterprisesResponse = Enterprise;
-export const PatchEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
+export const PatchEnterprisesResponse = /*@__PURE__*/ Enterprise;
 
 export type PatchEnterprisesError =
   | DefaultErrors
@@ -4882,7 +4876,7 @@ export const patchEnterprises: API.OperationMethod<
   PatchEnterprisesResponse,
   PatchEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEnterprisesRequest,
   output: PatchEnterprisesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4893,7 +4887,7 @@ export interface GetEnterprisesRequest {
   name: string;
 }
 
-export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEnterprisesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4901,7 +4895,7 @@ export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetEnterprisesRequest>;
 
 export type GetEnterprisesResponse = Enterprise;
-export const GetEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
+export const GetEnterprisesResponse = /*@__PURE__*/ Enterprise;
 
 export type GetEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4911,7 +4905,7 @@ export const getEnterprises: API.OperationMethod<
   GetEnterprisesResponse,
   GetEnterprisesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesRequest,
   output: GetEnterprisesResponse,
   errors: [NotFound, Forbidden],
@@ -4923,7 +4917,7 @@ export interface GetEnterprisesDevicesRequest {
 }
 
 export const GetEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4931,7 +4925,7 @@ export const GetEnterprisesDevicesRequest =
   ) as unknown as Schema.Codec<GetEnterprisesDevicesRequest>;
 
 export type GetEnterprisesDevicesResponse = Device;
-export const GetEnterprisesDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
+export const GetEnterprisesDevicesResponse = /*@__PURE__*/ Device;
 
 export type GetEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4941,7 +4935,7 @@ export const getEnterprisesDevices: API.OperationMethod<
   GetEnterprisesDevicesResponse,
   GetEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesRequest,
   output: GetEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -4957,7 +4951,7 @@ export interface PatchEnterprisesDevicesRequest {
 }
 
 export const PatchEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Device).pipe(T.HttpBody()),
@@ -4967,8 +4961,7 @@ export const PatchEnterprisesDevicesRequest =
   ) as unknown as Schema.Codec<PatchEnterprisesDevicesRequest>;
 
 export type PatchEnterprisesDevicesResponse = Device;
-export const PatchEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Device;
+export const PatchEnterprisesDevicesResponse = /*@__PURE__*/ Device;
 
 export type PatchEnterprisesDevicesError =
   | DefaultErrors
@@ -4983,7 +4976,7 @@ export const patchEnterprisesDevices: API.OperationMethod<
   PatchEnterprisesDevicesResponse,
   PatchEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEnterprisesDevicesRequest,
   output: PatchEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4997,7 +4990,7 @@ export interface IssueCommandEnterprisesDevicesRequest {
 }
 
 export const IssueCommandEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Command).pipe(T.HttpBody()),
   }).pipe(
@@ -5006,8 +4999,7 @@ export const IssueCommandEnterprisesDevicesRequest =
   ) as unknown as Schema.Codec<IssueCommandEnterprisesDevicesRequest>;
 
 export type IssueCommandEnterprisesDevicesResponse = Operation;
-export const IssueCommandEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const IssueCommandEnterprisesDevicesResponse = /*@__PURE__*/ Operation;
 
 export type IssueCommandEnterprisesDevicesError =
   | DefaultErrors
@@ -5022,7 +5014,7 @@ export const issueCommandEnterprisesDevices: API.OperationMethod<
   IssueCommandEnterprisesDevicesResponse,
   IssueCommandEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IssueCommandEnterprisesDevicesRequest,
   output: IssueCommandEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5043,7 +5035,7 @@ export interface DeleteEnterprisesDevicesRequest {
 }
 
 export const DeleteEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     wipeDataFlags: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("wipeDataFlags"),
@@ -5057,8 +5049,7 @@ export const DeleteEnterprisesDevicesRequest =
   ) as unknown as Schema.Codec<DeleteEnterprisesDevicesRequest>;
 
 export type DeleteEnterprisesDevicesResponse = Empty;
-export const DeleteEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteEnterprisesDevicesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteEnterprisesDevicesError =
   | DefaultErrors
@@ -5073,7 +5064,7 @@ export const deleteEnterprisesDevices: API.OperationMethod<
   DeleteEnterprisesDevicesResponse,
   DeleteEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesDevicesRequest,
   output: DeleteEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5089,7 +5080,7 @@ export interface ListEnterprisesDevicesRequest {
 }
 
 export const ListEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5099,8 +5090,7 @@ export const ListEnterprisesDevicesRequest =
   ) as unknown as Schema.Codec<ListEnterprisesDevicesRequest>;
 
 export type ListEnterprisesDevicesResponse = ListDevicesResponse;
-export const ListEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDevicesResponse;
+export const ListEnterprisesDevicesResponse = /*@__PURE__*/ ListDevicesResponse;
 
 export type ListEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5110,7 +5100,7 @@ export const listEnterprisesDevices: API.PaginatedOperationMethod<
   ListEnterprisesDevicesResponse,
   ListEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesRequest,
   output: ListEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -5134,7 +5124,7 @@ export interface ListEnterprisesDevicesOperationsRequest {
 }
 
 export const ListEnterprisesDevicesOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -5149,7 +5139,7 @@ export const ListEnterprisesDevicesOperationsRequest =
 
 export type ListEnterprisesDevicesOperationsResponse = ListOperationsResponse;
 export const ListEnterprisesDevicesOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListEnterprisesDevicesOperationsError =
   | DefaultErrors
@@ -5162,7 +5152,7 @@ export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
   ListEnterprisesDevicesOperationsResponse,
   ListEnterprisesDevicesOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesOperationsRequest,
   output: ListEnterprisesDevicesOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5178,7 +5168,7 @@ export interface GetEnterprisesDevicesOperationsRequest {
 }
 
 export const GetEnterprisesDevicesOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5186,8 +5176,7 @@ export const GetEnterprisesDevicesOperationsRequest =
   ) as unknown as Schema.Codec<GetEnterprisesDevicesOperationsRequest>;
 
 export type GetEnterprisesDevicesOperationsResponse = Operation;
-export const GetEnterprisesDevicesOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetEnterprisesDevicesOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetEnterprisesDevicesOperationsError =
   | DefaultErrors
@@ -5200,7 +5189,7 @@ export const getEnterprisesDevicesOperations: API.OperationMethod<
   GetEnterprisesDevicesOperationsResponse,
   GetEnterprisesDevicesOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesOperationsRequest,
   output: GetEnterprisesDevicesOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -5212,7 +5201,7 @@ export interface CancelEnterprisesDevicesOperationsRequest {
 }
 
 export const CancelEnterprisesDevicesOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
@@ -5220,8 +5209,7 @@ export const CancelEnterprisesDevicesOperationsRequest =
   ) as unknown as Schema.Codec<CancelEnterprisesDevicesOperationsRequest>;
 
 export type CancelEnterprisesDevicesOperationsResponse = Empty;
-export const CancelEnterprisesDevicesOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelEnterprisesDevicesOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelEnterprisesDevicesOperationsError =
   | DefaultErrors
@@ -5236,7 +5224,7 @@ export const cancelEnterprisesDevicesOperations: API.OperationMethod<
   CancelEnterprisesDevicesOperationsResponse,
   CancelEnterprisesDevicesOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelEnterprisesDevicesOperationsRequest,
   output: CancelEnterprisesDevicesOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5248,7 +5236,7 @@ export interface GetEnterprisesMigrationTokensRequest {
 }
 
 export const GetEnterprisesMigrationTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5257,7 +5245,7 @@ export const GetEnterprisesMigrationTokensRequest =
 
 export type GetEnterprisesMigrationTokensResponse = MigrationToken;
 export const GetEnterprisesMigrationTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MigrationToken;
+  /*@__PURE__*/ MigrationToken;
 
 export type GetEnterprisesMigrationTokensError =
   | DefaultErrors
@@ -5270,7 +5258,7 @@ export const getEnterprisesMigrationTokens: API.OperationMethod<
   GetEnterprisesMigrationTokensResponse,
   GetEnterprisesMigrationTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesMigrationTokensRequest,
   output: GetEnterprisesMigrationTokensResponse,
   errors: [NotFound, Forbidden],
@@ -5284,7 +5272,7 @@ export interface CreateEnterprisesMigrationTokensRequest {
 }
 
 export const CreateEnterprisesMigrationTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(MigrationToken).pipe(T.HttpBody()),
   }).pipe(
@@ -5298,7 +5286,7 @@ export const CreateEnterprisesMigrationTokensRequest =
 
 export type CreateEnterprisesMigrationTokensResponse = MigrationToken;
 export const CreateEnterprisesMigrationTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MigrationToken;
+  /*@__PURE__*/ MigrationToken;
 
 export type CreateEnterprisesMigrationTokensError =
   | DefaultErrors
@@ -5313,7 +5301,7 @@ export const createEnterprisesMigrationTokens: API.OperationMethod<
   CreateEnterprisesMigrationTokensResponse,
   CreateEnterprisesMigrationTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnterprisesMigrationTokensRequest,
   output: CreateEnterprisesMigrationTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5329,7 +5317,7 @@ export interface ListEnterprisesMigrationTokensRequest {
 }
 
 export const ListEnterprisesMigrationTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5341,7 +5329,7 @@ export const ListEnterprisesMigrationTokensRequest =
 export type ListEnterprisesMigrationTokensResponse =
   ListMigrationTokensResponse;
 export const ListEnterprisesMigrationTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMigrationTokensResponse;
+  /*@__PURE__*/ ListMigrationTokensResponse;
 
 export type ListEnterprisesMigrationTokensError =
   | DefaultErrors
@@ -5354,7 +5342,7 @@ export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
   ListEnterprisesMigrationTokensResponse,
   ListEnterprisesMigrationTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesMigrationTokensRequest,
   output: ListEnterprisesMigrationTokensResponse,
   errors: [NotFound, Forbidden],
@@ -5370,7 +5358,7 @@ export interface DeleteEnterprisesEnrollmentTokensRequest {
 }
 
 export const DeleteEnterprisesEnrollmentTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -5378,8 +5366,7 @@ export const DeleteEnterprisesEnrollmentTokensRequest =
   ) as unknown as Schema.Codec<DeleteEnterprisesEnrollmentTokensRequest>;
 
 export type DeleteEnterprisesEnrollmentTokensResponse = Empty;
-export const DeleteEnterprisesEnrollmentTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteEnterprisesEnrollmentTokensResponse = /*@__PURE__*/ Empty;
 
 export type DeleteEnterprisesEnrollmentTokensError =
   | DefaultErrors
@@ -5394,7 +5381,7 @@ export const deleteEnterprisesEnrollmentTokens: API.OperationMethod<
   DeleteEnterprisesEnrollmentTokensResponse,
   DeleteEnterprisesEnrollmentTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesEnrollmentTokensRequest,
   output: DeleteEnterprisesEnrollmentTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5406,7 +5393,7 @@ export interface GetEnterprisesEnrollmentTokensRequest {
 }
 
 export const GetEnterprisesEnrollmentTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5415,7 +5402,7 @@ export const GetEnterprisesEnrollmentTokensRequest =
 
 export type GetEnterprisesEnrollmentTokensResponse = EnrollmentToken;
 export const GetEnterprisesEnrollmentTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EnrollmentToken;
+  /*@__PURE__*/ EnrollmentToken;
 
 export type GetEnterprisesEnrollmentTokensError =
   | DefaultErrors
@@ -5428,7 +5415,7 @@ export const getEnterprisesEnrollmentTokens: API.OperationMethod<
   GetEnterprisesEnrollmentTokensResponse,
   GetEnterprisesEnrollmentTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesEnrollmentTokensRequest,
   output: GetEnterprisesEnrollmentTokensResponse,
   errors: [NotFound, Forbidden],
@@ -5442,7 +5429,7 @@ export interface CreateEnterprisesEnrollmentTokensRequest {
 }
 
 export const CreateEnterprisesEnrollmentTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EnrollmentToken).pipe(T.HttpBody()),
   }).pipe(
@@ -5456,7 +5443,7 @@ export const CreateEnterprisesEnrollmentTokensRequest =
 
 export type CreateEnterprisesEnrollmentTokensResponse = EnrollmentToken;
 export const CreateEnterprisesEnrollmentTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EnrollmentToken;
+  /*@__PURE__*/ EnrollmentToken;
 
 export type CreateEnterprisesEnrollmentTokensError =
   | DefaultErrors
@@ -5471,7 +5458,7 @@ export const createEnterprisesEnrollmentTokens: API.OperationMethod<
   CreateEnterprisesEnrollmentTokensResponse,
   CreateEnterprisesEnrollmentTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnterprisesEnrollmentTokensRequest,
   output: CreateEnterprisesEnrollmentTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5487,7 +5474,7 @@ export interface ListEnterprisesEnrollmentTokensRequest {
 }
 
 export const ListEnterprisesEnrollmentTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5499,7 +5486,7 @@ export const ListEnterprisesEnrollmentTokensRequest =
 export type ListEnterprisesEnrollmentTokensResponse =
   ListEnrollmentTokensResponse;
 export const ListEnterprisesEnrollmentTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListEnrollmentTokensResponse;
+  /*@__PURE__*/ ListEnrollmentTokensResponse;
 
 export type ListEnterprisesEnrollmentTokensError =
   | DefaultErrors
@@ -5512,7 +5499,7 @@ export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
   ListEnterprisesEnrollmentTokensResponse,
   ListEnterprisesEnrollmentTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesEnrollmentTokensRequest,
   output: ListEnterprisesEnrollmentTokensResponse,
   errors: [NotFound, Forbidden],
@@ -5532,7 +5519,7 @@ export interface ListEnterprisesPoliciesRequest {
 }
 
 export const ListEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5543,7 +5530,7 @@ export const ListEnterprisesPoliciesRequest =
 
 export type ListEnterprisesPoliciesResponse = ListPoliciesResponse;
 export const ListEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPoliciesResponse;
+  /*@__PURE__*/ ListPoliciesResponse;
 
 export type ListEnterprisesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5553,7 +5540,7 @@ export const listEnterprisesPolicies: API.PaginatedOperationMethod<
   ListEnterprisesPoliciesResponse,
   ListEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesPoliciesRequest,
   output: ListEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -5571,7 +5558,7 @@ export interface ModifyPolicyApplicationsEnterprisesPoliciesRequest {
 }
 
 export const ModifyPolicyApplicationsEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ModifyPolicyApplicationsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5586,7 +5573,7 @@ export const ModifyPolicyApplicationsEnterprisesPoliciesRequest =
 export type ModifyPolicyApplicationsEnterprisesPoliciesResponse =
   ModifyPolicyApplicationsResponse;
 export const ModifyPolicyApplicationsEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ModifyPolicyApplicationsResponse;
+  /*@__PURE__*/ ModifyPolicyApplicationsResponse;
 
 export type ModifyPolicyApplicationsEnterprisesPoliciesError =
   | DefaultErrors
@@ -5601,7 +5588,7 @@ export const modifyPolicyApplicationsEnterprisesPolicies: API.OperationMethod<
   ModifyPolicyApplicationsEnterprisesPoliciesResponse,
   ModifyPolicyApplicationsEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyPolicyApplicationsEnterprisesPoliciesRequest,
   output: ModifyPolicyApplicationsEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5613,7 +5600,7 @@ export interface DeleteEnterprisesPoliciesRequest {
 }
 
 export const DeleteEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -5621,8 +5608,7 @@ export const DeleteEnterprisesPoliciesRequest =
   ) as unknown as Schema.Codec<DeleteEnterprisesPoliciesRequest>;
 
 export type DeleteEnterprisesPoliciesResponse = Empty;
-export const DeleteEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteEnterprisesPoliciesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteEnterprisesPoliciesError =
   | DefaultErrors
@@ -5637,7 +5623,7 @@ export const deleteEnterprisesPolicies: API.OperationMethod<
   DeleteEnterprisesPoliciesResponse,
   DeleteEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesPoliciesRequest,
   output: DeleteEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5653,7 +5639,7 @@ export interface PatchEnterprisesPoliciesRequest {
 }
 
 export const PatchEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Policy).pipe(T.HttpBody()),
@@ -5663,8 +5649,7 @@ export const PatchEnterprisesPoliciesRequest =
   ) as unknown as Schema.Codec<PatchEnterprisesPoliciesRequest>;
 
 export type PatchEnterprisesPoliciesResponse = Policy;
-export const PatchEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const PatchEnterprisesPoliciesResponse = /*@__PURE__*/ Policy;
 
 export type PatchEnterprisesPoliciesError =
   | DefaultErrors
@@ -5679,7 +5664,7 @@ export const patchEnterprisesPolicies: API.OperationMethod<
   PatchEnterprisesPoliciesResponse,
   PatchEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEnterprisesPoliciesRequest,
   output: PatchEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5691,7 +5676,7 @@ export interface GetEnterprisesPoliciesRequest {
 }
 
 export const GetEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5699,8 +5684,7 @@ export const GetEnterprisesPoliciesRequest =
   ) as unknown as Schema.Codec<GetEnterprisesPoliciesRequest>;
 
 export type GetEnterprisesPoliciesResponse = Policy;
-export const GetEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetEnterprisesPoliciesResponse = /*@__PURE__*/ Policy;
 
 export type GetEnterprisesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -5710,7 +5694,7 @@ export const getEnterprisesPolicies: API.OperationMethod<
   GetEnterprisesPoliciesResponse,
   GetEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesPoliciesRequest,
   output: GetEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -5724,7 +5708,7 @@ export interface RemovePolicyApplicationsEnterprisesPoliciesRequest {
 }
 
 export const RemovePolicyApplicationsEnterprisesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemovePolicyApplicationsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -5739,7 +5723,7 @@ export const RemovePolicyApplicationsEnterprisesPoliciesRequest =
 export type RemovePolicyApplicationsEnterprisesPoliciesResponse =
   RemovePolicyApplicationsResponse;
 export const RemovePolicyApplicationsEnterprisesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RemovePolicyApplicationsResponse;
+  /*@__PURE__*/ RemovePolicyApplicationsResponse;
 
 export type RemovePolicyApplicationsEnterprisesPoliciesError =
   | DefaultErrors
@@ -5754,7 +5738,7 @@ export const removePolicyApplicationsEnterprisesPolicies: API.OperationMethod<
   RemovePolicyApplicationsEnterprisesPoliciesResponse,
   RemovePolicyApplicationsEnterprisesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePolicyApplicationsEnterprisesPoliciesRequest,
   output: RemovePolicyApplicationsEnterprisesPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5770,7 +5754,7 @@ export interface ListEnterprisesWebAppsRequest {
 }
 
 export const ListEnterprisesWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -5780,8 +5764,7 @@ export const ListEnterprisesWebAppsRequest =
   ) as unknown as Schema.Codec<ListEnterprisesWebAppsRequest>;
 
 export type ListEnterprisesWebAppsResponse = ListWebAppsResponse;
-export const ListEnterprisesWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListWebAppsResponse;
+export const ListEnterprisesWebAppsResponse = /*@__PURE__*/ ListWebAppsResponse;
 
 export type ListEnterprisesWebAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5791,7 +5774,7 @@ export const listEnterprisesWebApps: API.PaginatedOperationMethod<
   ListEnterprisesWebAppsResponse,
   ListEnterprisesWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesWebAppsRequest,
   output: ListEnterprisesWebAppsResponse,
   errors: [NotFound, Forbidden],
@@ -5807,7 +5790,7 @@ export interface DeleteEnterprisesWebAppsRequest {
 }
 
 export const DeleteEnterprisesWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -5815,8 +5798,7 @@ export const DeleteEnterprisesWebAppsRequest =
   ) as unknown as Schema.Codec<DeleteEnterprisesWebAppsRequest>;
 
 export type DeleteEnterprisesWebAppsResponse = Empty;
-export const DeleteEnterprisesWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteEnterprisesWebAppsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteEnterprisesWebAppsError =
   | DefaultErrors
@@ -5831,7 +5813,7 @@ export const deleteEnterprisesWebApps: API.OperationMethod<
   DeleteEnterprisesWebAppsResponse,
   DeleteEnterprisesWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesWebAppsRequest,
   output: DeleteEnterprisesWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5845,7 +5827,7 @@ export interface CreateEnterprisesWebAppsRequest {
 }
 
 export const CreateEnterprisesWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
@@ -5854,8 +5836,7 @@ export const CreateEnterprisesWebAppsRequest =
   ) as unknown as Schema.Codec<CreateEnterprisesWebAppsRequest>;
 
 export type CreateEnterprisesWebAppsResponse = WebApp;
-export const CreateEnterprisesWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebApp;
+export const CreateEnterprisesWebAppsResponse = /*@__PURE__*/ WebApp;
 
 export type CreateEnterprisesWebAppsError =
   | DefaultErrors
@@ -5870,7 +5851,7 @@ export const createEnterprisesWebApps: API.OperationMethod<
   CreateEnterprisesWebAppsResponse,
   CreateEnterprisesWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnterprisesWebAppsRequest,
   output: CreateEnterprisesWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5886,7 +5867,7 @@ export interface PatchEnterprisesWebAppsRequest {
 }
 
 export const PatchEnterprisesWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
@@ -5896,8 +5877,7 @@ export const PatchEnterprisesWebAppsRequest =
   ) as unknown as Schema.Codec<PatchEnterprisesWebAppsRequest>;
 
 export type PatchEnterprisesWebAppsResponse = WebApp;
-export const PatchEnterprisesWebAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebApp;
+export const PatchEnterprisesWebAppsResponse = /*@__PURE__*/ WebApp;
 
 export type PatchEnterprisesWebAppsError =
   | DefaultErrors
@@ -5912,7 +5892,7 @@ export const patchEnterprisesWebApps: API.OperationMethod<
   PatchEnterprisesWebAppsResponse,
   PatchEnterprisesWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEnterprisesWebAppsRequest,
   output: PatchEnterprisesWebAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5924,7 +5904,7 @@ export interface GetEnterprisesWebAppsRequest {
 }
 
 export const GetEnterprisesWebAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5932,7 +5912,7 @@ export const GetEnterprisesWebAppsRequest =
   ) as unknown as Schema.Codec<GetEnterprisesWebAppsRequest>;
 
 export type GetEnterprisesWebAppsResponse = WebApp;
-export const GetEnterprisesWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
+export const GetEnterprisesWebAppsResponse = /*@__PURE__*/ WebApp;
 
 export type GetEnterprisesWebAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5942,7 +5922,7 @@ export const getEnterprisesWebApps: API.OperationMethod<
   GetEnterprisesWebAppsResponse,
   GetEnterprisesWebAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesWebAppsRequest,
   output: GetEnterprisesWebAppsResponse,
   errors: [NotFound, Forbidden],
@@ -5956,7 +5936,7 @@ export interface CreateEnterprisesWebTokensRequest {
 }
 
 export const CreateEnterprisesWebTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebToken).pipe(T.HttpBody()),
   }).pipe(
@@ -5965,8 +5945,7 @@ export const CreateEnterprisesWebTokensRequest =
   ) as unknown as Schema.Codec<CreateEnterprisesWebTokensRequest>;
 
 export type CreateEnterprisesWebTokensResponse = WebToken;
-export const CreateEnterprisesWebTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WebToken;
+export const CreateEnterprisesWebTokensResponse = /*@__PURE__*/ WebToken;
 
 export type CreateEnterprisesWebTokensError =
   | DefaultErrors
@@ -5981,7 +5960,7 @@ export const createEnterprisesWebTokens: API.OperationMethod<
   CreateEnterprisesWebTokensResponse,
   CreateEnterprisesWebTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnterprisesWebTokensRequest,
   output: CreateEnterprisesWebTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5995,7 +5974,7 @@ export interface GetEnterprisesApplicationsRequest {
 }
 
 export const GetEnterprisesApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -6006,8 +5985,7 @@ export const GetEnterprisesApplicationsRequest =
   ) as unknown as Schema.Codec<GetEnterprisesApplicationsRequest>;
 
 export type GetEnterprisesApplicationsResponse = Application;
-export const GetEnterprisesApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Application;
+export const GetEnterprisesApplicationsResponse = /*@__PURE__*/ Application;
 
 export type GetEnterprisesApplicationsError =
   | DefaultErrors
@@ -6020,7 +5998,7 @@ export const getEnterprisesApplications: API.OperationMethod<
   GetEnterprisesApplicationsResponse,
   GetEnterprisesApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesApplicationsRequest,
   output: GetEnterprisesApplicationsResponse,
   errors: [NotFound, Forbidden],

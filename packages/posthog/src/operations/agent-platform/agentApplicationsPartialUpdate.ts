@@ -22,7 +22,7 @@ export interface AgentApplicationsPartialUpdateInput {
   ingress_base_url?: string | null;
 }
 export const AgentApplicationsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     team_id: Schema.optional(Schema.Number),
@@ -73,7 +73,7 @@ export interface AgentApplicationsPartialUpdateOutput {
   ingress_base_url: string | null;
 }
 export const AgentApplicationsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     team_id: Schema.Number,
     name: Schema.String,
@@ -116,7 +116,7 @@ export const AgentApplicationsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsPartialUpdateInput,
     outputSchema: AgentApplicationsPartialUpdateOutput,
   }));

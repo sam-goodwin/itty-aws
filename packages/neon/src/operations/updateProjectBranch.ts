@@ -10,7 +10,7 @@ export interface UpdateProjectBranchInput {
   branch: { name?: string; protected?: boolean; expires_at?: string | null };
 }
 export const UpdateProjectBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     branch: Schema.Struct({
@@ -120,7 +120,7 @@ export interface UpdateProjectBranchOutput {
   }[];
 }
 export const UpdateProjectBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -242,7 +242,7 @@ export const UpdateProjectBranchOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const updateProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateProjectBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateProjectBranchInput,
   outputSchema: UpdateProjectBranchOutput,
   errors: [BadRequest, NotFound] as const,

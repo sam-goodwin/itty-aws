@@ -11,7 +11,7 @@ export interface GetGroupClusterStatusInput {
   pretty?: boolean;
 }
 export const GetGroupClusterStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupClusterStatusInput =
 // Output Schema
 export type GetGroupClusterStatusOutput = void;
 export const GetGroupClusterStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterStatusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterStatusOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupClusterStatusOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const getGroupClusterStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterStatusInput,
-    outputSchema: GetGroupClusterStatusOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterStatusInput,
+  outputSchema: GetGroupClusterStatusOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

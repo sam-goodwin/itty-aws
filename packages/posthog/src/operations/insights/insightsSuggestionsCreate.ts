@@ -90,7 +90,7 @@ export interface InsightsSuggestionsCreateInput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const InsightsSuggestionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -221,7 +221,7 @@ export const InsightsSuggestionsCreateInput =
 // Output Schema
 export type InsightsSuggestionsCreateOutput = void;
 export const InsightsSuggestionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsSuggestionsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsSuggestionsCreateOutput>;
 
 // The operation
 /**
@@ -234,10 +234,8 @@ export const InsightsSuggestionsCreateOutput =
  * @param id - A unique integer value identifying this insight.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsSuggestionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightsSuggestionsCreateInput,
-    outputSchema: InsightsSuggestionsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const insightsSuggestionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsSuggestionsCreateInput,
+  outputSchema: InsightsSuggestionsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

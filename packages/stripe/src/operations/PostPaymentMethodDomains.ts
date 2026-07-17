@@ -9,7 +9,7 @@ export interface PostPaymentMethodDomainsInput {
   expand?: string[];
 }
 export const PostPaymentMethodDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain_name: Schema.String,
     enabled: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -55,7 +55,7 @@ export interface PostPaymentMethodDomainsOutput {
   };
 }
 export const PostPaymentMethodDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
       status: Schema.Literals(["active", "inactive"]),
       status_details: Schema.optional(
@@ -118,9 +118,7 @@ export const PostPaymentMethodDomainsOutput =
  *
  * <p>Creates a payment method domain.</p>
  */
-export const PostPaymentMethodDomains = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostPaymentMethodDomainsInput,
-    outputSchema: PostPaymentMethodDomainsOutput,
-  }),
-);
+export const PostPaymentMethodDomains = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPaymentMethodDomainsInput,
+  outputSchema: PostPaymentMethodDomainsOutput,
+}));

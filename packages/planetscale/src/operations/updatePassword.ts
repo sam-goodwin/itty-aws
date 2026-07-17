@@ -12,9 +12,9 @@ export interface UpdatePasswordInput {
   branch: string;
   id: string;
   name?: string;
-  cidrs?: string[];
+  cidrs?: ReadonlyArray<string>;
 }
-export const UpdatePasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -33,24 +33,24 @@ export interface UpdatePasswordOutput {
   id: string;
   name: string;
   role: "reader" | "writer" | "admin" | "readwriter";
-  cidrs: string[] | null;
+  cidrs: ReadonlyArray<string> | null;
   created_at: string;
   deleted_at: string | null;
   expires_at: string | null;
   last_used_at: string | null;
   expired: boolean;
   direct_vtgate: boolean;
-  direct_vtgate_addresses: string[];
+  direct_vtgate_addresses: ReadonlyArray<string>;
   ttl_seconds: number | null;
   access_host_url: string;
   access_host_regional_url: string;
-  access_host_regional_urls: string[];
+  access_host_regional_urls: ReadonlyArray<string>;
   actor: { id: string; display_name: string; avatar_url: string } | null;
   region: {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -70,7 +70,7 @@ export interface UpdatePasswordOutput {
     private_edge_connectivity: boolean;
   };
 }
-export const UpdatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -129,7 +129,7 @@ export const UpdatePasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name for the password
  * @param cidrs - List of IP addresses or CIDR ranges that can use this password
  */
-export const updatePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updatePassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatePasswordInput,
   outputSchema: UpdatePasswordOutput,
   errors: [Forbidden, NotFound] as const,

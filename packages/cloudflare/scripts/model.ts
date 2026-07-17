@@ -447,6 +447,13 @@ export interface ParsedOperation {
   /** True when the SDK method uses Core.multipartFormRequestOptions */
   isMultipart?: boolean;
   /**
+   * Explicit request `Content-Type` for a raw binary body when the API needs a
+   * specific media type instead of `application/octet-stream` (e.g.
+   * `application/x-ndjson` for Vectorize insert/upsert). Emitted as
+   * `bodyMediaType` on the `T.Http` trait.
+   */
+  requestMediaType?: string;
+  /**
    * When set to `"binary"`, the operation's response body is a raw
    * `application/octet-stream` download surfaced as an object of the shape
    * `{ body: Stream.Stream<Uint8Array>, ...headers }` (e.g. R2 GetObject).

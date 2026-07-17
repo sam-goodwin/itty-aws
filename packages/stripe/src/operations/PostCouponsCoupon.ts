@@ -10,27 +10,25 @@ export interface PostCouponsCouponInput {
   metadata?: Record<string, string> | "";
   name?: string;
 }
-export const PostCouponsCouponInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    coupon: Schema.String.pipe(T.PathParam()),
-    currency_options: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          amount_off: Schema.Number,
-        }),
-      ),
+export const PostCouponsCouponInput = /*@__PURE__*/ Schema.Struct({
+  coupon: Schema.String.pipe(T.PathParam()),
+  currency_options: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        amount_off: Schema.Number,
+      }),
     ),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-    name: Schema.optional(Schema.String),
-  },
-).pipe(
+  ),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+  name: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/coupons/{coupon}",
@@ -59,7 +57,7 @@ export interface PostCouponsCouponOutput {
   valid: boolean;
 }
 export const PostCouponsCouponOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_off: Schema.NullOr(Schema.Number),
     applies_to: Schema.optional(
       Schema.Struct({
@@ -96,7 +94,7 @@ export const PostCouponsCouponOutput =
  *
  * <p>Updates the metadata of a coupon. Other coupon details (currency, duration, amount_off) are, by design, not editable.</p>
  */
-export const PostCouponsCoupon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCouponsCoupon = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCouponsCouponInput,
   outputSchema: PostCouponsCouponOutput,
 }));

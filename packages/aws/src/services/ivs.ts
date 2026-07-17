@@ -149,22 +149,21 @@ export type StreamMetadata = string | redacted.Redacted<string>;
 
 //# Schemas
 export type ChannelArnList = string[];
-export const ChannelArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ChannelArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetChannelRequest {
   arns: string[];
 }
-export const BatchGetChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arns: ChannelArnList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetChannel" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arns: ChannelArnList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetChannel" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetChannelRequest",
 }) as any as S.Schema<BatchGetChannelRequest>;
@@ -174,42 +173,39 @@ export type ChannelType =
   | "ADVANCED_SD"
   | "ADVANCED_HD"
   | (string & {});
-export const ChannelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChannelType = /*@__PURE__*/ S.String;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type TranscodePreset =
   | "HIGHER_BANDWIDTH_DELIVERY"
   | "CONSTRAINED_BANDWIDTH_DELIVERY"
   | (string & {});
-export const TranscodePreset = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TranscodePreset = /*@__PURE__*/ S.String;
 export interface Srt {
   endpoint?: string;
   passphrase?: string | redacted.Redacted<string>;
 }
-export const Srt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Srt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     passphrase: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Srt" }) as any as S.Schema<Srt>;
 export type MultitrackPolicy = "ALLOW" | "REQUIRE" | (string & {});
-export const MultitrackPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MultitrackPolicy = /*@__PURE__*/ S.String;
 export type MultitrackMaximumResolution =
   | "SD"
   | "HD"
   | "FULL_HD"
   | (string & {});
-export const MultitrackMaximumResolution = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MultitrackMaximumResolution = /*@__PURE__*/ S.String;
 export interface MultitrackInputConfiguration {
   enabled?: boolean;
   policy?: MultitrackPolicy;
   maximumResolution?: MultitrackMaximumResolution;
 }
 export const MultitrackInputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
       policy: S.optional(MultitrackPolicy),
@@ -236,7 +232,7 @@ export interface Channel {
   containerFormat?: string;
   adConfigurationArn?: string;
 }
-export const Channel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.optional(S.String),
@@ -257,13 +253,13 @@ export const Channel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 export type Channels = Channel[];
-export const Channels = /*@__PURE__*/ /*#__PURE__*/ S.Array(Channel);
+export const Channels = /*@__PURE__*/ S.Array(Channel);
 export interface BatchError {
   arn?: string;
   code?: string;
   message?: string;
 }
-export const BatchError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     code: S.optional(S.String),
@@ -271,7 +267,7 @@ export const BatchError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchError" }) as any as S.Schema<BatchError>;
 export type BatchErrors = BatchError[];
-export const BatchErrors = /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchError);
+export const BatchErrors = /*@__PURE__*/ S.Array(BatchError);
 export interface BatchGetChannelResponse {
   accessControlAllowOrigin?: string;
   accessControlExposeHeaders?: string;
@@ -283,49 +279,47 @@ export interface BatchGetChannelResponse {
   channels?: Channel[];
   errors?: BatchError[];
 }
-export const BatchGetChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessControlAllowOrigin: S.optional(S.String).pipe(
-        T.HttpHeader("Access-Control-Allow-Origin"),
-      ),
-      accessControlExposeHeaders: S.optional(S.String).pipe(
-        T.HttpHeader("Access-Control-Expose-Headers"),
-      ),
-      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-      contentSecurityPolicy: S.optional(S.String).pipe(
-        T.HttpHeader("Content-Security-Policy"),
-      ),
-      strictTransportSecurity: S.optional(S.String).pipe(
-        T.HttpHeader("Strict-Transport-Security"),
-      ),
-      xContentTypeOptions: S.optional(S.String).pipe(
-        T.HttpHeader("X-Content-Type-Options"),
-      ),
-      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-      channels: S.optional(Channels),
-      errors: S.optional(BatchErrors),
-    }),
+export const BatchGetChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    channels: S.optional(Channels),
+    errors: S.optional(BatchErrors),
+  }),
 ).annotate({
   identifier: "BatchGetChannelResponse",
 }) as any as S.Schema<BatchGetChannelResponse>;
 export type StreamKeyArnList = string[];
-export const StreamKeyArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StreamKeyArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetStreamKeyRequest {
   arns: string[];
 }
-export const BatchGetStreamKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arns: StreamKeyArnList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchGetStreamKey" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arns: StreamKeyArnList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchGetStreamKey" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetStreamKeyRequest",
 }) as any as S.Schema<BatchGetStreamKeyRequest>;
@@ -335,7 +329,7 @@ export interface StreamKey {
   channelArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const StreamKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     value: S.optional(SensitiveString),
@@ -344,7 +338,7 @@ export const StreamKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamKey" }) as any as S.Schema<StreamKey>;
 export type StreamKeys = StreamKey[];
-export const StreamKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamKey);
+export const StreamKeys = /*@__PURE__*/ S.Array(StreamKey);
 export interface BatchGetStreamKeyResponse {
   accessControlAllowOrigin?: string;
   accessControlExposeHeaders?: string;
@@ -356,29 +350,28 @@ export interface BatchGetStreamKeyResponse {
   streamKeys?: StreamKey[];
   errors?: BatchError[];
 }
-export const BatchGetStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessControlAllowOrigin: S.optional(S.String).pipe(
-        T.HttpHeader("Access-Control-Allow-Origin"),
-      ),
-      accessControlExposeHeaders: S.optional(S.String).pipe(
-        T.HttpHeader("Access-Control-Expose-Headers"),
-      ),
-      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-      contentSecurityPolicy: S.optional(S.String).pipe(
-        T.HttpHeader("Content-Security-Policy"),
-      ),
-      strictTransportSecurity: S.optional(S.String).pipe(
-        T.HttpHeader("Strict-Transport-Security"),
-      ),
-      xContentTypeOptions: S.optional(S.String).pipe(
-        T.HttpHeader("X-Content-Type-Options"),
-      ),
-      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-      streamKeys: S.optional(StreamKeys),
-      errors: S.optional(BatchErrors),
-    }),
+export const BatchGetStreamKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    streamKeys: S.optional(StreamKeys),
+    errors: S.optional(BatchErrors),
+  }),
 ).annotate({
   identifier: "BatchGetStreamKeyResponse",
 }) as any as S.Schema<BatchGetStreamKeyResponse>;
@@ -388,7 +381,7 @@ export interface BatchStartViewerSessionRevocationViewerSession {
   viewerSessionVersionsLessThanOrEqualTo?: number;
 }
 export const BatchStartViewerSessionRevocationViewerSession =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelArn: S.String,
       viewerId: S.String,
@@ -400,14 +393,12 @@ export const BatchStartViewerSessionRevocationViewerSession =
 export type BatchStartViewerSessionRevocationViewerSessionList =
   BatchStartViewerSessionRevocationViewerSession[];
 export const BatchStartViewerSessionRevocationViewerSessionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    BatchStartViewerSessionRevocationViewerSession,
-  );
+  /*@__PURE__*/ S.Array(BatchStartViewerSessionRevocationViewerSession);
 export interface BatchStartViewerSessionRevocationRequest {
   viewerSessions: BatchStartViewerSessionRevocationViewerSession[];
 }
 export const BatchStartViewerSessionRevocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       viewerSessions: BatchStartViewerSessionRevocationViewerSessionList,
     }).pipe(
@@ -430,7 +421,7 @@ export interface BatchStartViewerSessionRevocationError_ {
   message?: string;
 }
 export const BatchStartViewerSessionRevocationError_ =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelArn: S.String,
       viewerId: S.String,
@@ -443,7 +434,7 @@ export const BatchStartViewerSessionRevocationError_ =
 export type BatchStartViewerSessionRevocationErrors =
   BatchStartViewerSessionRevocationError_[];
 export const BatchStartViewerSessionRevocationErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchStartViewerSessionRevocationError_);
+  /*@__PURE__*/ S.Array(BatchStartViewerSessionRevocationError_);
 export interface BatchStartViewerSessionRevocationResponse {
   accessControlAllowOrigin?: string;
   accessControlExposeHeaders?: string;
@@ -455,7 +446,7 @@ export interface BatchStartViewerSessionRevocationResponse {
   errors?: BatchStartViewerSessionRevocationError_[];
 }
 export const BatchStartViewerSessionRevocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControlAllowOrigin: S.optional(S.String).pipe(
         T.HttpHeader("Access-Control-Allow-Origin"),
@@ -483,7 +474,7 @@ export interface MediaTailorPlaybackConfiguration {
   playbackConfigurationArn?: string;
 }
 export const MediaTailorPlaybackConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ playbackConfigurationArn: S.optional(S.String) }),
   ).annotate({
     identifier: "MediaTailorPlaybackConfiguration",
@@ -491,14 +482,14 @@ export const MediaTailorPlaybackConfiguration =
 export type MediaTailorPlaybackConfigurationsList =
   MediaTailorPlaybackConfiguration[];
 export const MediaTailorPlaybackConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MediaTailorPlaybackConfiguration);
+  /*@__PURE__*/ S.Array(MediaTailorPlaybackConfiguration);
 export interface CreateAdConfigurationRequest {
   name?: string;
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
   tags?: { [key: string]: string | undefined };
 }
 export const CreateAdConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
       mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
@@ -522,7 +513,7 @@ export interface AdConfiguration {
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
   tags?: { [key: string]: string | undefined };
 }
-export const AdConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AdConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.optional(S.String),
@@ -536,7 +527,7 @@ export interface CreateAdConfigurationResponse {
   adConfiguration: AdConfiguration;
 }
 export const CreateAdConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ adConfiguration: AdConfiguration }),
   ).annotate({
     identifier: "CreateAdConfigurationResponse",
@@ -555,7 +546,7 @@ export interface CreateChannelRequest {
   containerFormat?: string;
   adConfigurationArn?: string;
 }
-export const CreateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     latencyMode: S.optional(S.String),
@@ -586,17 +577,17 @@ export interface CreateChannelResponse {
   channel?: Channel;
   streamKey?: StreamKey;
 }
-export const CreateChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channel: S.optional(Channel), streamKey: S.optional(StreamKey) }),
 ).annotate({
   identifier: "CreateChannelResponse",
 }) as any as S.Schema<CreateChannelResponse>;
 export type PlaybackRestrictionPolicyAllowedCountryList = string[];
 export const PlaybackRestrictionPolicyAllowedCountryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export type PlaybackRestrictionPolicyAllowedOriginList = string[];
 export const PlaybackRestrictionPolicyAllowedOriginList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export interface CreatePlaybackRestrictionPolicyRequest {
   allowedCountries?: string[];
   allowedOrigins?: string[];
@@ -605,7 +596,7 @@ export interface CreatePlaybackRestrictionPolicyRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreatePlaybackRestrictionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedCountries: S.optional(PlaybackRestrictionPolicyAllowedCountryList),
       allowedOrigins: S.optional(PlaybackRestrictionPolicyAllowedOriginList),
@@ -633,16 +624,15 @@ export interface PlaybackRestrictionPolicy {
   name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const PlaybackRestrictionPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      allowedCountries: PlaybackRestrictionPolicyAllowedCountryList,
-      allowedOrigins: PlaybackRestrictionPolicyAllowedOriginList,
-      enableStrictOriginEnforcement: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
+export const PlaybackRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    allowedCountries: PlaybackRestrictionPolicyAllowedCountryList,
+    allowedOrigins: PlaybackRestrictionPolicyAllowedOriginList,
+    enableStrictOriginEnforcement: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
 ).annotate({
   identifier: "PlaybackRestrictionPolicy",
 }) as any as S.Schema<PlaybackRestrictionPolicy>;
@@ -650,7 +640,7 @@ export interface CreatePlaybackRestrictionPolicyResponse {
   playbackRestrictionPolicy?: PlaybackRestrictionPolicy;
 }
 export const CreatePlaybackRestrictionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       playbackRestrictionPolicy: S.optional(PlaybackRestrictionPolicy),
     }),
@@ -660,16 +650,16 @@ export const CreatePlaybackRestrictionPolicyResponse =
 export interface S3DestinationConfiguration {
   bucketName: string;
 }
-export const S3DestinationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ bucketName: S.String }),
+export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bucketName: S.String }),
 ).annotate({
   identifier: "S3DestinationConfiguration",
 }) as any as S.Schema<S3DestinationConfiguration>;
 export interface DestinationConfiguration {
   s3?: S3DestinationConfiguration;
 }
-export const DestinationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ s3: S.optional(S3DestinationConfiguration) }),
+export const DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3: S.optional(S3DestinationConfiguration) }),
 ).annotate({
   identifier: "DestinationConfiguration",
 }) as any as S.Schema<DestinationConfiguration>;
@@ -679,25 +669,23 @@ export type ThumbnailConfigurationResolution =
   | "FULL_HD"
   | "LOWEST_RESOLUTION"
   | (string & {});
-export const ThumbnailConfigurationResolution =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ThumbnailConfigurationResolution = /*@__PURE__*/ S.String;
 export type ThumbnailConfigurationStorageList = string[];
 export const ThumbnailConfigurationStorageList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export interface ThumbnailConfiguration {
   recordingMode?: string;
   targetIntervalSeconds?: number;
   resolution?: ThumbnailConfigurationResolution;
   storage?: string[];
 }
-export const ThumbnailConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recordingMode: S.optional(S.String),
-      targetIntervalSeconds: S.optional(S.Number),
-      resolution: S.optional(ThumbnailConfigurationResolution),
-      storage: S.optional(ThumbnailConfigurationStorageList),
-    }),
+export const ThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recordingMode: S.optional(S.String),
+    targetIntervalSeconds: S.optional(S.Number),
+    resolution: S.optional(ThumbnailConfigurationResolution),
+    storage: S.optional(ThumbnailConfigurationStorageList),
+  }),
 ).annotate({
   identifier: "ThumbnailConfiguration",
 }) as any as S.Schema<ThumbnailConfiguration>;
@@ -707,22 +695,20 @@ export type RenditionConfigurationRendition =
   | "FULL_HD"
   | "LOWEST_RESOLUTION"
   | (string & {});
-export const RenditionConfigurationRendition =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RenditionConfigurationRendition = /*@__PURE__*/ S.String;
 export type RenditionConfigurationRenditionList =
   RenditionConfigurationRendition[];
 export const RenditionConfigurationRenditionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RenditionConfigurationRendition);
+  /*@__PURE__*/ S.Array(RenditionConfigurationRendition);
 export interface RenditionConfiguration {
   renditionSelection?: string;
   renditions?: RenditionConfigurationRendition[];
 }
-export const RenditionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      renditionSelection: S.optional(S.String),
-      renditions: S.optional(RenditionConfigurationRenditionList),
-    }),
+export const RenditionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    renditionSelection: S.optional(S.String),
+    renditions: S.optional(RenditionConfigurationRenditionList),
+  }),
 ).annotate({
   identifier: "RenditionConfiguration",
 }) as any as S.Schema<RenditionConfiguration>;
@@ -735,7 +721,7 @@ export interface CreateRecordingConfigurationRequest {
   renditionConfiguration?: RenditionConfiguration;
 }
 export const CreateRecordingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
       destinationConfiguration: DestinationConfiguration,
@@ -766,18 +752,17 @@ export interface RecordingConfiguration {
   recordingReconnectWindowSeconds?: number;
   renditionConfiguration?: RenditionConfiguration;
 }
-export const RecordingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      name: S.optional(S.String),
-      destinationConfiguration: DestinationConfiguration,
-      state: S.String,
-      tags: S.optional(Tags),
-      thumbnailConfiguration: S.optional(ThumbnailConfiguration),
-      recordingReconnectWindowSeconds: S.optional(S.Number),
-      renditionConfiguration: S.optional(RenditionConfiguration),
-    }),
+export const RecordingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.optional(S.String),
+    destinationConfiguration: DestinationConfiguration,
+    state: S.String,
+    tags: S.optional(Tags),
+    thumbnailConfiguration: S.optional(ThumbnailConfiguration),
+    recordingReconnectWindowSeconds: S.optional(S.Number),
+    renditionConfiguration: S.optional(RenditionConfiguration),
+  }),
 ).annotate({
   identifier: "RecordingConfiguration",
 }) as any as S.Schema<RecordingConfiguration>;
@@ -785,7 +770,7 @@ export interface CreateRecordingConfigurationResponse {
   recordingConfiguration?: RecordingConfiguration;
 }
 export const CreateRecordingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ recordingConfiguration: S.optional(RecordingConfiguration) }),
   ).annotate({
     identifier: "CreateRecordingConfigurationResponse",
@@ -794,26 +779,25 @@ export interface CreateStreamKeyRequest {
   channelArn: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateStreamKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ channelArn: S.String, tags: S.optional(Tags) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateStreamKey" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ channelArn: S.String, tags: S.optional(Tags) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateStreamKey" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateStreamKeyRequest",
 }) as any as S.Schema<CreateStreamKeyRequest>;
 export interface CreateStreamKeyResponse {
   streamKey?: StreamKey;
 }
-export const CreateStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ streamKey: S.optional(StreamKey) }),
+export const CreateStreamKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ streamKey: S.optional(StreamKey) }),
 ).annotate({
   identifier: "CreateStreamKeyResponse",
 }) as any as S.Schema<CreateStreamKeyResponse>;
@@ -821,7 +805,7 @@ export interface DeleteAdConfigurationRequest {
   arn: string;
 }
 export const DeleteAdConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteAdConfiguration" }),
@@ -837,13 +821,13 @@ export const DeleteAdConfigurationRequest =
   }) as any as S.Schema<DeleteAdConfigurationRequest>;
 export interface DeleteAdConfigurationResponse {}
 export const DeleteAdConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAdConfigurationResponse",
   }) as any as S.Schema<DeleteAdConfigurationResponse>;
 export interface DeleteChannelRequest {
   arn: string;
 }
-export const DeleteChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteChannel" }),
@@ -858,7 +842,7 @@ export const DeleteChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelRequest",
 }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteChannelResponse",
@@ -867,7 +851,7 @@ export interface DeletePlaybackKeyPairRequest {
   arn: string;
 }
 export const DeletePlaybackKeyPairRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeletePlaybackKeyPair" }),
@@ -883,14 +867,14 @@ export const DeletePlaybackKeyPairRequest =
   }) as any as S.Schema<DeletePlaybackKeyPairRequest>;
 export interface DeletePlaybackKeyPairResponse {}
 export const DeletePlaybackKeyPairResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeletePlaybackKeyPairResponse",
   }) as any as S.Schema<DeletePlaybackKeyPairResponse>;
 export interface DeletePlaybackRestrictionPolicyRequest {
   arn: string;
 }
 export const DeletePlaybackRestrictionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeletePlaybackRestrictionPolicy" }),
@@ -906,14 +890,14 @@ export const DeletePlaybackRestrictionPolicyRequest =
   }) as any as S.Schema<DeletePlaybackRestrictionPolicyRequest>;
 export interface DeletePlaybackRestrictionPolicyResponse {}
 export const DeletePlaybackRestrictionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeletePlaybackRestrictionPolicyResponse",
   }) as any as S.Schema<DeletePlaybackRestrictionPolicyResponse>;
 export interface DeleteRecordingConfigurationRequest {
   arn: string;
 }
 export const DeleteRecordingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteRecordingConfiguration" }),
@@ -929,63 +913,61 @@ export const DeleteRecordingConfigurationRequest =
   }) as any as S.Schema<DeleteRecordingConfigurationRequest>;
 export interface DeleteRecordingConfigurationResponse {}
 export const DeleteRecordingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteRecordingConfigurationResponse",
   }) as any as S.Schema<DeleteRecordingConfigurationResponse>;
 export interface DeleteStreamKeyRequest {
   arn: string;
 }
-export const DeleteStreamKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteStreamKey" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteStreamKey" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteStreamKeyRequest",
 }) as any as S.Schema<DeleteStreamKeyRequest>;
 export interface DeleteStreamKeyResponse {}
-export const DeleteStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteStreamKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteStreamKeyResponse",
 }) as any as S.Schema<DeleteStreamKeyResponse>;
 export interface GetAdConfigurationRequest {
   arn: string;
 }
-export const GetAdConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetAdConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAdConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetAdConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetAdConfigurationRequest",
 }) as any as S.Schema<GetAdConfigurationRequest>;
 export interface GetAdConfigurationResponse {
   adConfiguration?: AdConfiguration;
 }
-export const GetAdConfigurationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ adConfiguration: S.optional(AdConfiguration) }),
+export const GetAdConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ adConfiguration: S.optional(AdConfiguration) }),
 ).annotate({
   identifier: "GetAdConfigurationResponse",
 }) as any as S.Schema<GetAdConfigurationResponse>;
 export interface GetChannelRequest {
   arn: string;
 }
-export const GetChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetChannel" }),
@@ -1002,7 +984,7 @@ export const GetChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetChannelResponse {
   channel?: Channel;
 }
-export const GetChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channel: S.optional(Channel) }),
 ).annotate({
   identifier: "GetChannelResponse",
@@ -1010,18 +992,17 @@ export const GetChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPlaybackKeyPairRequest {
   arn: string;
 }
-export const GetPlaybackKeyPairRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetPlaybackKeyPair" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPlaybackKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetPlaybackKeyPair" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPlaybackKeyPairRequest",
 }) as any as S.Schema<GetPlaybackKeyPairRequest>;
@@ -1031,7 +1012,7 @@ export interface PlaybackKeyPair {
   fingerprint?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const PlaybackKeyPair = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PlaybackKeyPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.optional(S.String),
@@ -1044,8 +1025,8 @@ export const PlaybackKeyPair = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPlaybackKeyPairResponse {
   keyPair?: PlaybackKeyPair;
 }
-export const GetPlaybackKeyPairResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ keyPair: S.optional(PlaybackKeyPair) }),
+export const GetPlaybackKeyPairResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ keyPair: S.optional(PlaybackKeyPair) }),
 ).annotate({
   identifier: "GetPlaybackKeyPairResponse",
 }) as any as S.Schema<GetPlaybackKeyPairResponse>;
@@ -1053,7 +1034,7 @@ export interface GetPlaybackRestrictionPolicyRequest {
   arn: string;
 }
 export const GetPlaybackRestrictionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetPlaybackRestrictionPolicy" }),
@@ -1071,7 +1052,7 @@ export interface GetPlaybackRestrictionPolicyResponse {
   playbackRestrictionPolicy?: PlaybackRestrictionPolicy;
 }
 export const GetPlaybackRestrictionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       playbackRestrictionPolicy: S.optional(PlaybackRestrictionPolicy),
     }),
@@ -1082,7 +1063,7 @@ export interface GetRecordingConfigurationRequest {
   arn: string;
 }
 export const GetRecordingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetRecordingConfiguration" }),
@@ -1100,7 +1081,7 @@ export interface GetRecordingConfigurationResponse {
   recordingConfiguration?: RecordingConfiguration;
 }
 export const GetRecordingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ recordingConfiguration: S.optional(RecordingConfiguration) }),
   ).annotate({
     identifier: "GetRecordingConfigurationResponse",
@@ -1108,7 +1089,7 @@ export const GetRecordingConfigurationResponse =
 export interface GetStreamRequest {
   channelArn: string;
 }
-export const GetStreamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetStream" }),
@@ -1131,7 +1112,7 @@ export interface Stream {
   health?: string;
   viewerCount?: number;
 }
-export const Stream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Stream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelArn: S.optional(S.String),
     streamId: S.optional(S.String),
@@ -1147,7 +1128,7 @@ export const Stream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetStreamResponse {
   stream?: Stream;
 }
-export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ stream: S.optional(Stream) }),
 ).annotate({
   identifier: "GetStreamResponse",
@@ -1155,7 +1136,7 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetStreamKeyRequest {
   arn: string;
 }
-export const GetStreamKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetStreamKey" }),
@@ -1172,7 +1153,7 @@ export const GetStreamKeyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetStreamKeyResponse {
   streamKey?: StreamKey;
 }
-export const GetStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStreamKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ streamKey: S.optional(StreamKey) }),
 ).annotate({
   identifier: "GetStreamKeyResponse",
@@ -1181,18 +1162,17 @@ export interface GetStreamSessionRequest {
   channelArn: string;
   streamId?: string;
 }
-export const GetStreamSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ channelArn: S.String, streamId: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetStreamSession" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetStreamSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ channelArn: S.String, streamId: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetStreamSession" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetStreamSessionRequest",
 }) as any as S.Schema<GetStreamSessionRequest>;
@@ -1209,7 +1189,7 @@ export interface VideoConfiguration {
   track?: string;
   profile?: string;
 }
-export const VideoConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VideoConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avcProfile: S.optional(S.String),
     avcLevel: S.optional(S.String),
@@ -1233,7 +1213,7 @@ export interface AudioConfiguration {
   channels?: number;
   track?: string;
 }
-export const AudioConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudioConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codec: S.optional(S.String),
     targetBitrate: S.optional(S.Number),
@@ -1248,7 +1228,7 @@ export interface IngestConfiguration {
   video?: VideoConfiguration;
   audio?: AudioConfiguration;
 }
-export const IngestConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IngestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     video: S.optional(VideoConfiguration),
     audio: S.optional(AudioConfiguration),
@@ -1257,16 +1237,14 @@ export const IngestConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IngestConfiguration",
 }) as any as S.Schema<IngestConfiguration>;
 export type VideoConfigurationList = VideoConfiguration[];
-export const VideoConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VideoConfiguration);
+export const VideoConfigurationList = /*@__PURE__*/ S.Array(VideoConfiguration);
 export type AudioConfigurationList = AudioConfiguration[];
-export const AudioConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioConfiguration);
+export const AudioConfigurationList = /*@__PURE__*/ S.Array(AudioConfiguration);
 export interface IngestConfigurations {
   videoConfigurations: VideoConfiguration[];
   audioConfigurations: AudioConfiguration[];
 }
-export const IngestConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IngestConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoConfigurations: VideoConfigurationList,
     audioConfigurations: AudioConfigurationList,
@@ -1280,7 +1258,7 @@ export interface StreamEvent {
   eventTime?: Date;
   code?: string;
 }
-export const StreamEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -1291,7 +1269,7 @@ export const StreamEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamEvent" }) as any as S.Schema<StreamEvent>;
 export type StreamEvents = StreamEvent[];
-export const StreamEvents = /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamEvent);
+export const StreamEvents = /*@__PURE__*/ S.Array(StreamEvent);
 export interface StreamSession {
   streamId?: string;
   startTime?: Date;
@@ -1302,7 +1280,7 @@ export interface StreamSession {
   recordingConfiguration?: RecordingConfiguration;
   truncatedEvents?: StreamEvent[];
 }
-export const StreamSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.optional(S.String),
     startTime: S.optional(
@@ -1319,8 +1297,8 @@ export const StreamSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetStreamSessionResponse {
   streamSession?: StreamSession;
 }
-export const GetStreamSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ streamSession: S.optional(StreamSession) }),
+export const GetStreamSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ streamSession: S.optional(StreamSession) }),
 ).annotate({
   identifier: "GetStreamSessionResponse",
 }) as any as S.Schema<GetStreamSessionResponse>;
@@ -1330,7 +1308,7 @@ export interface ImportPlaybackKeyPairRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const ImportPlaybackKeyPairRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       publicKeyMaterial: S.String,
       name: S.optional(S.String),
@@ -1352,7 +1330,7 @@ export interface ImportPlaybackKeyPairResponse {
   keyPair?: PlaybackKeyPair;
 }
 export const ImportPlaybackKeyPairResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ keyPair: S.optional(PlaybackKeyPair) }),
   ).annotate({
     identifier: "ImportPlaybackKeyPairResponse",
@@ -1361,7 +1339,7 @@ export interface InsertAdBreakRequest {
   channelArn: string;
   durationSeconds: number;
 }
-export const InsertAdBreakRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InsertAdBreakRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String, durationSeconds: S.Number }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/InsertAdBreak" }),
@@ -1378,7 +1356,7 @@ export const InsertAdBreakRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface InsertAdBreakResponse {
   adBreakId?: string;
 }
-export const InsertAdBreakResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InsertAdBreakResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ adBreakId: S.optional(S.String) }),
 ).annotate({
   identifier: "InsertAdBreakResponse",
@@ -1388,7 +1366,7 @@ export interface ListAdConfigurationsRequest {
   maxResults?: number;
 }
 export const ListAdConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -1411,19 +1389,18 @@ export interface AdConfigurationSummary {
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
   tags?: { [key: string]: string | undefined };
 }
-export const AdConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      name: S.optional(S.String),
-      mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
-      tags: S.optional(Tags),
-    }),
+export const AdConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.optional(S.String),
+    mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+    tags: S.optional(Tags),
+  }),
 ).annotate({
   identifier: "AdConfigurationSummary",
 }) as any as S.Schema<AdConfigurationSummary>;
 export type AdConfigurationList = AdConfigurationSummary[];
-export const AdConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AdConfigurationList = /*@__PURE__*/ S.Array(
   AdConfigurationSummary,
 );
 export interface ListAdConfigurationsResponse {
@@ -1431,7 +1408,7 @@ export interface ListAdConfigurationsResponse {
   nextToken?: string;
 }
 export const ListAdConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       adConfigurations: AdConfigurationList,
       nextToken: S.optional(S.String),
@@ -1447,7 +1424,7 @@ export interface ListChannelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterByName: S.optional(S.String),
     filterByRecordingConfigurationArn: S.optional(S.String),
@@ -1481,7 +1458,7 @@ export interface ChannelSummary {
   playbackRestrictionPolicyArn?: string;
   adConfigurationArn?: string;
 }
-export const ChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.optional(S.String),
@@ -1497,12 +1474,12 @@ export const ChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelSummary" }) as any as S.Schema<ChannelSummary>;
 export type ChannelList = ChannelSummary[];
-export const ChannelList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ChannelSummary);
+export const ChannelList = /*@__PURE__*/ S.Array(ChannelSummary);
 export interface ListChannelsResponse {
   channels: ChannelSummary[];
   nextToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channels: ChannelList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListChannelsResponse",
@@ -1512,7 +1489,7 @@ export interface ListPlaybackKeyPairsRequest {
   maxResults?: number;
 }
 export const ListPlaybackKeyPairsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -1534,18 +1511,17 @@ export interface PlaybackKeyPairSummary {
   name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const PlaybackKeyPairSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.optional(S.String),
-      name: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
+export const PlaybackKeyPairSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
 ).annotate({
   identifier: "PlaybackKeyPairSummary",
 }) as any as S.Schema<PlaybackKeyPairSummary>;
 export type PlaybackKeyPairList = PlaybackKeyPairSummary[];
-export const PlaybackKeyPairList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PlaybackKeyPairList = /*@__PURE__*/ S.Array(
   PlaybackKeyPairSummary,
 );
 export interface ListPlaybackKeyPairsResponse {
@@ -1553,7 +1529,7 @@ export interface ListPlaybackKeyPairsResponse {
   nextToken?: string;
 }
 export const ListPlaybackKeyPairsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keyPairs: PlaybackKeyPairList,
       nextToken: S.optional(S.String),
@@ -1566,7 +1542,7 @@ export interface ListPlaybackRestrictionPoliciesRequest {
   maxResults?: number;
 }
 export const ListPlaybackRestrictionPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -1592,7 +1568,7 @@ export interface PlaybackRestrictionPolicySummary {
   tags?: { [key: string]: string | undefined };
 }
 export const PlaybackRestrictionPolicySummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       allowedCountries: PlaybackRestrictionPolicyAllowedCountryList,
@@ -1606,13 +1582,13 @@ export const PlaybackRestrictionPolicySummary =
   }) as any as S.Schema<PlaybackRestrictionPolicySummary>;
 export type PlaybackRestrictionPolicyList = PlaybackRestrictionPolicySummary[];
 export const PlaybackRestrictionPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PlaybackRestrictionPolicySummary);
+  /*@__PURE__*/ S.Array(PlaybackRestrictionPolicySummary);
 export interface ListPlaybackRestrictionPoliciesResponse {
   playbackRestrictionPolicies: PlaybackRestrictionPolicySummary[];
   nextToken?: string;
 }
 export const ListPlaybackRestrictionPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       playbackRestrictionPolicies: PlaybackRestrictionPolicyList,
       nextToken: S.optional(S.String),
@@ -1625,7 +1601,7 @@ export interface ListRecordingConfigurationsRequest {
   maxResults?: number;
 }
 export const ListRecordingConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -1650,7 +1626,7 @@ export interface RecordingConfigurationSummary {
   tags?: { [key: string]: string | undefined };
 }
 export const RecordingConfigurationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.optional(S.String),
@@ -1662,7 +1638,7 @@ export const RecordingConfigurationSummary =
     identifier: "RecordingConfigurationSummary",
   }) as any as S.Schema<RecordingConfigurationSummary>;
 export type RecordingConfigurationList = RecordingConfigurationSummary[];
-export const RecordingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RecordingConfigurationList = /*@__PURE__*/ S.Array(
   RecordingConfigurationSummary,
 );
 export interface ListRecordingConfigurationsResponse {
@@ -1670,7 +1646,7 @@ export interface ListRecordingConfigurationsResponse {
   nextToken?: string;
 }
 export const ListRecordingConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       recordingConfigurations: RecordingConfigurationList,
       nextToken: S.optional(S.String),
@@ -1683,7 +1659,7 @@ export interface ListStreamKeysRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListStreamKeysRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelArn: S.String,
     nextToken: S.optional(S.String),
@@ -1706,7 +1682,7 @@ export interface StreamKeySummary {
   channelArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const StreamKeySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamKeySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     channelArn: S.optional(S.String),
@@ -1716,22 +1692,20 @@ export const StreamKeySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StreamKeySummary",
 }) as any as S.Schema<StreamKeySummary>;
 export type StreamKeyList = StreamKeySummary[];
-export const StreamKeyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamKeySummary);
+export const StreamKeyList = /*@__PURE__*/ S.Array(StreamKeySummary);
 export interface ListStreamKeysResponse {
   streamKeys: StreamKeySummary[];
   nextToken?: string;
 }
-export const ListStreamKeysResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ streamKeys: StreamKeyList, nextToken: S.optional(S.String) }),
+export const ListStreamKeysResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ streamKeys: StreamKeyList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListStreamKeysResponse",
 }) as any as S.Schema<ListStreamKeysResponse>;
 export interface StreamFilters {
   health?: string;
 }
-export const StreamFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ health: S.optional(S.String) }),
 ).annotate({ identifier: "StreamFilters" }) as any as S.Schema<StreamFilters>;
 export interface ListStreamsRequest {
@@ -1739,7 +1713,7 @@ export interface ListStreamsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterBy: S.optional(StreamFilters),
     nextToken: S.optional(S.String),
@@ -1765,7 +1739,7 @@ export interface StreamSummary {
   viewerCount?: number;
   startTime?: Date;
 }
-export const StreamSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelArn: S.optional(S.String),
     streamId: S.optional(S.String),
@@ -1778,12 +1752,12 @@ export const StreamSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamSummary" }) as any as S.Schema<StreamSummary>;
 export type StreamList = StreamSummary[];
-export const StreamList = /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamSummary);
+export const StreamList = /*@__PURE__*/ S.Array(StreamSummary);
 export interface ListStreamsResponse {
   streams: StreamSummary[];
   nextToken?: string;
 }
-export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ streams: StreamList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListStreamsResponse",
@@ -1793,22 +1767,21 @@ export interface ListStreamSessionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListStreamSessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      channelArn: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListStreamSessions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStreamSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channelArn: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListStreamSessions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListStreamSessionsRequest",
 }) as any as S.Schema<ListStreamSessionsRequest>;
@@ -1818,7 +1791,7 @@ export interface StreamSessionSummary {
   endTime?: Date;
   hasErrorEvent?: boolean;
 }
-export const StreamSessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamSessionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.optional(S.String),
     startTime: S.optional(
@@ -1831,36 +1804,33 @@ export const StreamSessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StreamSessionSummary",
 }) as any as S.Schema<StreamSessionSummary>;
 export type StreamSessionList = StreamSessionSummary[];
-export const StreamSessionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamSessionSummary);
+export const StreamSessionList = /*@__PURE__*/ S.Array(StreamSessionSummary);
 export interface ListStreamSessionsResponse {
   streamSessions: StreamSessionSummary[];
   nextToken?: string;
 }
-export const ListStreamSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      streamSessions: StreamSessionList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListStreamSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamSessions: StreamSessionList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListStreamSessionsResponse",
 }) as any as S.Schema<ListStreamSessionsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -1868,16 +1838,14 @@ export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: Tags }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: Tags })).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutMetadataRequest {
   channelArn: string;
   metadata: string | redacted.Redacted<string>;
 }
-export const PutMetadataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String, metadata: SensitiveString }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/PutMetadata" }),
@@ -1892,7 +1860,7 @@ export const PutMetadataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PutMetadataRequest",
 }) as any as S.Schema<PutMetadataRequest>;
 export interface PutMetadataResponse {}
-export const PutMetadataResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PutMetadataResponse",
@@ -1903,7 +1871,7 @@ export interface StartViewerSessionRevocationRequest {
   viewerSessionVersionsLessThanOrEqualTo?: number;
 }
 export const StartViewerSessionRevocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelArn: S.String,
       viewerId: S.String,
@@ -1923,13 +1891,13 @@ export const StartViewerSessionRevocationRequest =
   }) as any as S.Schema<StartViewerSessionRevocationRequest>;
 export interface StartViewerSessionRevocationResponse {}
 export const StartViewerSessionRevocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartViewerSessionRevocationResponse",
   }) as any as S.Schema<StartViewerSessionRevocationResponse>;
 export interface StopStreamRequest {
   channelArn: string;
 }
-export const StopStreamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/StopStream" }),
@@ -1944,7 +1912,7 @@ export const StopStreamRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StopStreamRequest",
 }) as any as S.Schema<StopStreamRequest>;
 export interface StopStreamResponse {}
-export const StopStreamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "StopStreamResponse",
@@ -1953,7 +1921,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: Tags,
@@ -1971,18 +1939,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -2000,7 +1968,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -2011,7 +1979,7 @@ export interface UpdateAdConfigurationRequest {
   mediaTailorPlaybackConfigurations?: MediaTailorPlaybackConfiguration[];
 }
 export const UpdateAdConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.optional(S.String),
@@ -2035,7 +2003,7 @@ export interface UpdateAdConfigurationResponse {
   adConfiguration: AdConfiguration;
 }
 export const UpdateAdConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ adConfiguration: AdConfiguration }),
   ).annotate({
     identifier: "UpdateAdConfigurationResponse",
@@ -2054,7 +2022,7 @@ export interface UpdateChannelRequest {
   containerFormat?: string;
   adConfigurationArn?: string;
 }
-export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.optional(S.String),
@@ -2084,7 +2052,7 @@ export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateChannelResponse {
   channel?: Channel;
 }
-export const UpdateChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channel: S.optional(Channel) }),
 ).annotate({
   identifier: "UpdateChannelResponse",
@@ -2097,7 +2065,7 @@ export interface UpdatePlaybackRestrictionPolicyRequest {
   name?: string;
 }
 export const UpdatePlaybackRestrictionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       allowedCountries: S.optional(PlaybackRestrictionPolicyAllowedCountryList),
@@ -2121,7 +2089,7 @@ export interface UpdatePlaybackRestrictionPolicyResponse {
   playbackRestrictionPolicy?: PlaybackRestrictionPolicy;
 }
 export const UpdatePlaybackRestrictionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       playbackRestrictionPolicy: S.optional(PlaybackRestrictionPolicy),
     }),
@@ -2420,7 +2388,7 @@ export const batchGetChannel: API.OperationMethod<
   BatchGetChannelResponse,
   BatchGetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
   errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
@@ -2439,7 +2407,7 @@ export const batchGetStreamKey: API.OperationMethod<
   BatchGetStreamKeyResponse,
   BatchGetStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
   errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
@@ -2459,7 +2427,7 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
   BatchStartViewerSessionRevocationResponse,
   BatchStartViewerSessionRevocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchStartViewerSessionRevocationRequest,
   output: BatchStartViewerSessionRevocationResponse,
   errors: [
@@ -2488,7 +2456,7 @@ export const createAdConfiguration: API.OperationMethod<
   CreateAdConfigurationResponse,
   CreateAdConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAdConfigurationRequest,
   output: CreateAdConfigurationResponse,
   errors: [
@@ -2519,7 +2487,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelResponse,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [
@@ -2547,7 +2515,7 @@ export const createPlaybackRestrictionPolicy: API.OperationMethod<
   CreatePlaybackRestrictionPolicyResponse,
   CreatePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePlaybackRestrictionPolicyRequest,
   output: CreatePlaybackRestrictionPolicyResponse,
   errors: [
@@ -2580,7 +2548,7 @@ export const createRecordingConfiguration: API.OperationMethod<
   CreateRecordingConfigurationResponse,
   CreateRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecordingConfigurationRequest,
   output: CreateRecordingConfigurationResponse,
   errors: [
@@ -2612,7 +2580,7 @@ export const createStreamKey: API.OperationMethod<
   CreateStreamKeyResponse,
   CreateStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamKeyRequest,
   output: CreateStreamKeyResponse,
   errors: [
@@ -2641,7 +2609,7 @@ export const deleteAdConfiguration: API.OperationMethod<
   DeleteAdConfigurationResponse,
   DeleteAdConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdConfigurationRequest,
   output: DeleteAdConfigurationResponse,
   errors: [
@@ -2672,7 +2640,7 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelResponse,
   DeleteChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [
@@ -2700,7 +2668,7 @@ export const deletePlaybackKeyPair: API.OperationMethod<
   DeletePlaybackKeyPairResponse,
   DeletePlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaybackKeyPairRequest,
   output: DeletePlaybackKeyPairResponse,
   errors: [
@@ -2728,7 +2696,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
   DeletePlaybackRestrictionPolicyResponse,
   DeletePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePlaybackRestrictionPolicyRequest,
   output: DeletePlaybackRestrictionPolicyResponse,
   errors: [
@@ -2759,7 +2727,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
   DeleteRecordingConfigurationResponse,
   DeleteRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordingConfigurationRequest,
   output: DeleteRecordingConfigurationResponse,
   errors: [
@@ -2787,7 +2755,7 @@ export const deleteStreamKey: API.OperationMethod<
   DeleteStreamKeyResponse,
   DeleteStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamKeyRequest,
   output: DeleteStreamKeyResponse,
   errors: [
@@ -2814,7 +2782,7 @@ export const getAdConfiguration: API.OperationMethod<
   GetAdConfigurationResponse,
   GetAdConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdConfigurationRequest,
   output: GetAdConfigurationResponse,
   errors: [
@@ -2840,7 +2808,7 @@ export const getChannel: API.OperationMethod<
   GetChannelResponse,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelRequest,
   output: GetChannelResponse,
   errors: [
@@ -2865,7 +2833,7 @@ export const getPlaybackKeyPair: API.OperationMethod<
   GetPlaybackKeyPairResponse,
   GetPlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackKeyPairRequest,
   output: GetPlaybackKeyPairResponse,
   errors: [
@@ -2891,7 +2859,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
   GetPlaybackRestrictionPolicyResponse,
   GetPlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackRestrictionPolicyRequest,
   output: GetPlaybackRestrictionPolicyResponse,
   errors: [
@@ -2918,7 +2886,7 @@ export const getRecordingConfiguration: API.OperationMethod<
   GetRecordingConfigurationResponse,
   GetRecordingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordingConfigurationRequest,
   output: GetRecordingConfigurationResponse,
   errors: [
@@ -2945,7 +2913,7 @@ export const getStream: API.OperationMethod<
   GetStreamResponse,
   GetStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamRequest,
   output: GetStreamResponse,
   errors: [
@@ -2971,7 +2939,7 @@ export const getStreamKey: API.OperationMethod<
   GetStreamKeyResponse,
   GetStreamKeyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamKeyRequest,
   output: GetStreamKeyResponse,
   errors: [
@@ -2996,7 +2964,7 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionResponse,
   GetStreamSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamSessionRequest,
   output: GetStreamSessionResponse,
   errors: [
@@ -3023,7 +2991,7 @@ export const importPlaybackKeyPair: API.OperationMethod<
   ImportPlaybackKeyPairResponse,
   ImportPlaybackKeyPairError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportPlaybackKeyPairRequest,
   output: ImportPlaybackKeyPairResponse,
   errors: [
@@ -3055,7 +3023,7 @@ export const insertAdBreak: API.OperationMethod<
   InsertAdBreakResponse,
   InsertAdBreakError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAdBreakRequest,
   output: InsertAdBreakResponse,
   errors: [
@@ -3098,7 +3066,7 @@ export const listAdConfigurations: API.OperationMethod<
     ListAdConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdConfigurationsRequest,
   output: ListAdConfigurationsResponse,
   errors: [
@@ -3144,7 +3112,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -3188,7 +3156,7 @@ export const listPlaybackKeyPairs: API.OperationMethod<
     ListPlaybackKeyPairsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -3229,7 +3197,7 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     ListPlaybackRestrictionPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackRestrictionPoliciesRequest,
   output: ListPlaybackRestrictionPoliciesResponse,
   errors: [
@@ -3275,7 +3243,7 @@ export const listRecordingConfigurations: API.OperationMethod<
     ListRecordingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
   errors: [
@@ -3320,7 +3288,7 @@ export const listStreamKeys: API.OperationMethod<
     ListStreamKeysError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamKeysRequest,
   output: ListStreamKeysResponse,
   errors: [
@@ -3364,7 +3332,7 @@ export const listStreams: API.OperationMethod<
     ListStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -3404,7 +3372,7 @@ export const listStreamSessions: API.OperationMethod<
     ListStreamSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsRequest,
   output: ListStreamSessionsResponse,
   errors: [
@@ -3434,7 +3402,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3460,7 +3428,7 @@ export const putMetadata: API.OperationMethod<
   PutMetadataResponse,
   PutMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetadataRequest,
   output: PutMetadataResponse,
   errors: [
@@ -3488,7 +3456,7 @@ export const startViewerSessionRevocation: API.OperationMethod<
   StartViewerSessionRevocationResponse,
   StartViewerSessionRevocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartViewerSessionRevocationRequest,
   output: StartViewerSessionRevocationResponse,
   errors: [
@@ -3519,7 +3487,7 @@ export const stopStream: API.OperationMethod<
   StopStreamResponse,
   StopStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopStreamRequest,
   output: StopStreamResponse,
   errors: [
@@ -3546,7 +3514,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3571,7 +3539,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3600,7 +3568,7 @@ export const updateAdConfiguration: API.OperationMethod<
   UpdateAdConfigurationResponse,
   UpdateAdConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAdConfigurationRequest,
   output: UpdateAdConfigurationResponse,
   errors: [
@@ -3631,7 +3599,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelResponse,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [
@@ -3659,7 +3627,7 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
   UpdatePlaybackRestrictionPolicyResponse,
   UpdatePlaybackRestrictionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePlaybackRestrictionPolicyRequest,
   output: UpdatePlaybackRestrictionPolicyResponse,
   errors: [

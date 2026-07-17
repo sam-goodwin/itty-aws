@@ -8,7 +8,7 @@ export interface ExportEvmAccountByNameInput {
   exportEncryptionKey: string;
 }
 export const ExportEvmAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     exportEncryptionKey: Schema.String,
   }).pipe(
@@ -20,7 +20,7 @@ export interface ExportEvmAccountByNameOutput {
   encryptedPrivateKey: string;
 }
 export const ExportEvmAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptedPrivateKey: Schema.String,
   }) as unknown as Schema.Codec<ExportEvmAccountByNameOutput>;
 
@@ -40,9 +40,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param name - The name of the EVM account.
  */
-export const exportEvmAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExportEvmAccountByNameInput,
-    outputSchema: ExportEvmAccountByNameOutput,
-  }),
-);
+export const exportEvmAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExportEvmAccountByNameInput,
+  outputSchema: ExportEvmAccountByNameOutput,
+}));

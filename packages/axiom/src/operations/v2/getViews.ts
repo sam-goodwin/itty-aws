@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetViewsInput {}
-export const GetViewsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetViewsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/views" }),
 ) as unknown as Schema.Codec<GetViewsInput>;
 
@@ -17,7 +17,7 @@ export type GetViewsOutput = ReadonlyArray<{
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }>;
-export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetViewsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     aplQuery: Schema.String,
     datasets: Schema.optional(Schema.Array(Schema.String)),
@@ -29,7 +29,7 @@ export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 ) as unknown as Schema.Codec<GetViewsOutput>;
 
 // The operation
-export const getViews = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getViews = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetViewsInput,
   outputSchema: GetViewsOutput,
 }));

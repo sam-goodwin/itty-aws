@@ -8,7 +8,7 @@ export interface V1GetRealtimeConfigInput {
   ref: string;
 }
 export const V1GetRealtimeConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/realtime" }),
@@ -29,7 +29,7 @@ export interface V1GetRealtimeConfigOutput {
   presence_enabled: boolean;
 }
 export const V1GetRealtimeConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     private_only: Schema.NullOr(Schema.Boolean),
     connection_pool: Schema.NullOr(Schema.Number),
     max_concurrent_users: Schema.NullOr(Schema.Number),
@@ -49,7 +49,7 @@ export const V1GetRealtimeConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetRealtimeConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetRealtimeConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetRealtimeConfigInput,
   outputSchema: V1GetRealtimeConfigOutput,
   errors: [BadRequest, Forbidden] as const,

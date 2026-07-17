@@ -10,7 +10,7 @@ export interface GetGroupProcessInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetGroupProcessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupProcessInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   processId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetGroupProcessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupProcessOutput = void;
 export const GetGroupProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const GetGroupProcessOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param processId - Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
  */
-export const getGroupProcess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupProcess = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupProcessInput,
   outputSchema: GetGroupProcessOutput,
   errors: [Forbidden, NotFound] as const,

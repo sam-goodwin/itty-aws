@@ -22,7 +22,7 @@ export interface PostProductsIdInput {
   unit_label?: string | "";
   url?: string | "";
 }
-export const PostProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostProductsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Boolean),
   default_price: Schema.optional(Schema.String),
@@ -206,7 +206,7 @@ export interface PostProductsIdOutput {
   updated: number;
   url: string | null;
 }
-export const PostProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostProductsIdOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   created: Schema.Number,
   default_price: Schema.optional(Schema.Unknown),
@@ -257,7 +257,7 @@ export const PostProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Updates the specific product by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostProductsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostProductsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostProductsIdInput,
   outputSchema: PostProductsIdOutput,
 }));

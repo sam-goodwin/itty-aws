@@ -386,7 +386,7 @@ export interface PostTestHelpersIssuingTransactionsCreateForceCaptureInput {
   };
 }
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     card: Schema.String,
     currency: Schema.optional(Schema.String),
@@ -1257,7 +1257,7 @@ export interface PostTestHelpersIssuingTransactionsCreateForceCaptureOutput {
   wallet: "apple_pay" | "google_pay" | "samsung_pay" | null;
 }
 export const PostTestHelpersIssuingTransactionsCreateForceCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -1671,7 +1671,7 @@ export const PostTestHelpersIssuingTransactionsCreateForceCaptureOutput =
  * <p>Allows the user to capture an arbitrary amount, also known as a forced capture.</p>
  */
 export const PostTestHelpersIssuingTransactionsCreateForceCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsCreateForceCaptureInput,
     outputSchema: PostTestHelpersIssuingTransactionsCreateForceCaptureOutput,
   }));

@@ -127,11 +127,9 @@ export type UpdateLoggingConfigurationState = string;
 
 //# Schemas
 export type ChatTokenCapabilities = string[];
-export const ChatTokenCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ChatTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
 export type ChatTokenAttributes = { [key: string]: string | undefined };
-export const ChatTokenAttributes = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ChatTokenAttributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -142,24 +140,23 @@ export interface CreateChatTokenRequest {
   sessionDurationInMinutes?: number;
   attributes?: { [key: string]: string | undefined };
 }
-export const CreateChatTokenRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      roomIdentifier: S.String,
-      userId: SensitiveString,
-      capabilities: S.optional(ChatTokenCapabilities),
-      sessionDurationInMinutes: S.optional(S.Number),
-      attributes: S.optional(ChatTokenAttributes),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateChatToken" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roomIdentifier: S.String,
+    userId: SensitiveString,
+    capabilities: S.optional(ChatTokenCapabilities),
+    sessionDurationInMinutes: S.optional(S.Number),
+    attributes: S.optional(ChatTokenAttributes),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateChatToken" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateChatTokenRequest",
 }) as any as S.Schema<CreateChatTokenRequest>;
@@ -168,17 +165,16 @@ export interface CreateChatTokenResponse {
   tokenExpirationTime?: Date;
   sessionExpirationTime?: Date;
 }
-export const CreateChatTokenResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      token: S.optional(SensitiveString),
-      tokenExpirationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      sessionExpirationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const CreateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    token: S.optional(SensitiveString),
+    tokenExpirationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    sessionExpirationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "CreateChatTokenResponse",
 }) as any as S.Schema<CreateChatTokenResponse>;
@@ -186,20 +182,20 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface S3DestinationConfiguration {
   bucketName: string;
 }
-export const S3DestinationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ bucketName: S.String }),
+export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bucketName: S.String }),
 ).annotate({
   identifier: "S3DestinationConfiguration",
 }) as any as S.Schema<S3DestinationConfiguration>;
@@ -207,16 +203,14 @@ export interface CloudWatchLogsDestinationConfiguration {
   logGroupName: string;
 }
 export const CloudWatchLogsDestinationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ logGroupName: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ logGroupName: S.String })).annotate({
     identifier: "CloudWatchLogsDestinationConfiguration",
   }) as any as S.Schema<CloudWatchLogsDestinationConfiguration>;
 export interface FirehoseDestinationConfiguration {
   deliveryStreamName: string;
 }
 export const FirehoseDestinationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ deliveryStreamName: S.String }),
   ).annotate({
     identifier: "FirehoseDestinationConfiguration",
@@ -233,23 +227,20 @@ export type DestinationConfiguration =
       cloudWatchLogs?: never;
       firehose: FirehoseDestinationConfiguration;
     };
-export const DestinationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DestinationConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ s3: S3DestinationConfiguration }),
   S.Struct({ cloudWatchLogs: CloudWatchLogsDestinationConfiguration }),
   S.Struct({ firehose: FirehoseDestinationConfiguration }),
 ]);
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateLoggingConfigurationRequest {
   name?: string;
   destinationConfiguration: DestinationConfiguration;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
       destinationConfiguration: DestinationConfiguration,
@@ -278,7 +269,7 @@ export interface CreateLoggingConfigurationResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.optional(S.String),
       id: S.optional(S.String),
@@ -300,14 +291,14 @@ export interface MessageReviewHandler {
   uri?: string;
   fallbackResult?: string;
 }
-export const MessageReviewHandler = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MessageReviewHandler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.optional(S.String), fallbackResult: S.optional(S.String) }),
 ).annotate({
   identifier: "MessageReviewHandler",
 }) as any as S.Schema<MessageReviewHandler>;
 export type LoggingConfigurationIdentifierList = string[];
 export const LoggingConfigurationIdentifierList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export interface CreateRoomRequest {
   name?: string;
   maximumMessageRatePerSecond?: number;
@@ -316,7 +307,7 @@ export interface CreateRoomRequest {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const CreateRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     maximumMessageRatePerSecond: S.optional(S.Number),
@@ -351,7 +342,7 @@ export interface CreateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const CreateRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -377,7 +368,7 @@ export interface DeleteLoggingConfigurationRequest {
   identifier: string;
 }
 export const DeleteLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ identifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteLoggingConfiguration" }),
@@ -393,7 +384,7 @@ export const DeleteLoggingConfigurationRequest =
   }) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
 export const DeleteLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteLoggingConfigurationResponse",
   }) as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export interface DeleteMessageRequest {
@@ -401,7 +392,7 @@ export interface DeleteMessageRequest {
   id: string;
   reason?: string;
 }
-export const DeleteMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     id: S.String,
@@ -422,7 +413,7 @@ export const DeleteMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteMessageResponse {
   id?: string;
 }
-export const DeleteMessageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteMessageResponse",
@@ -430,7 +421,7 @@ export const DeleteMessageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteRoomRequest {
   identifier: string;
 }
-export const DeleteRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteRoom" }),
@@ -445,7 +436,7 @@ export const DeleteRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteRoomRequest",
 }) as any as S.Schema<DeleteRoomRequest>;
 export interface DeleteRoomResponse {}
-export const DeleteRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteRoomResponse",
@@ -455,7 +446,7 @@ export interface DisconnectUserRequest {
   userId: string | redacted.Redacted<string>;
   reason?: string;
 }
-export const DisconnectUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisconnectUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     userId: SensitiveString,
@@ -474,8 +465,8 @@ export const DisconnectUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DisconnectUserRequest",
 }) as any as S.Schema<DisconnectUserRequest>;
 export interface DisconnectUserResponse {}
-export const DisconnectUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DisconnectUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DisconnectUserResponse",
 }) as any as S.Schema<DisconnectUserResponse>;
@@ -483,7 +474,7 @@ export interface GetLoggingConfigurationRequest {
   identifier: string;
 }
 export const GetLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ identifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetLoggingConfiguration" }),
@@ -508,7 +499,7 @@ export interface GetLoggingConfigurationResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const GetLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.optional(S.String),
       id: S.optional(S.String),
@@ -529,7 +520,7 @@ export const GetLoggingConfigurationResponse =
 export interface GetRoomRequest {
   identifier: string;
 }
-export const GetRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetRoom" }),
@@ -553,7 +544,7 @@ export interface GetRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const GetRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -580,7 +571,7 @@ export interface ListLoggingConfigurationsRequest {
   maxResults?: number;
 }
 export const ListLoggingConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -608,7 +599,7 @@ export interface LoggingConfigurationSummary {
   tags?: { [key: string]: string | undefined };
 }
 export const LoggingConfigurationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.optional(S.String),
       id: S.optional(S.String),
@@ -627,7 +618,7 @@ export const LoggingConfigurationSummary =
     identifier: "LoggingConfigurationSummary",
   }) as any as S.Schema<LoggingConfigurationSummary>;
 export type LoggingConfigurationList = LoggingConfigurationSummary[];
-export const LoggingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const LoggingConfigurationList = /*@__PURE__*/ S.Array(
   LoggingConfigurationSummary,
 );
 export interface ListLoggingConfigurationsResponse {
@@ -635,7 +626,7 @@ export interface ListLoggingConfigurationsResponse {
   nextToken?: string;
 }
 export const ListLoggingConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       loggingConfigurations: LoggingConfigurationList,
       nextToken: S.optional(S.String),
@@ -650,7 +641,7 @@ export interface ListRoomsRequest {
   messageReviewHandlerUri?: string;
   loggingConfigurationIdentifier?: string;
 }
-export const ListRoomsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nextToken: S.optional(S.String),
@@ -680,7 +671,7 @@ export interface RoomSummary {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const RoomSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RoomSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -699,12 +690,12 @@ export const RoomSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoomSummary" }) as any as S.Schema<RoomSummary>;
 export type RoomList = RoomSummary[];
-export const RoomList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RoomSummary);
+export const RoomList = /*@__PURE__*/ S.Array(RoomSummary);
 export interface ListRoomsResponse {
   rooms: RoomSummary[];
   nextToken?: string;
 }
-export const ListRoomsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rooms: RoomList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRoomsResponse",
@@ -712,18 +703,17 @@ export const ListRoomsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -731,13 +721,11 @@ export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: Tags }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: Tags })).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export type EventAttributes = { [key: string]: string | undefined };
-export const EventAttributes = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const EventAttributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -746,7 +734,7 @@ export interface SendEventRequest {
   eventName: string;
   attributes?: { [key: string]: string | undefined };
 }
-export const SendEventRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     eventName: S.String,
@@ -767,7 +755,7 @@ export const SendEventRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SendEventResponse {
   id?: string;
 }
-export const SendEventResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String) }),
 ).annotate({
   identifier: "SendEventResponse",
@@ -776,7 +764,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: Tags,
@@ -794,18 +782,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -823,7 +811,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -834,7 +822,7 @@ export interface UpdateLoggingConfigurationRequest {
   destinationConfiguration?: DestinationConfiguration;
 }
 export const UpdateLoggingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identifier: S.String,
       name: S.optional(S.String),
@@ -863,7 +851,7 @@ export interface UpdateLoggingConfigurationResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const UpdateLoggingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.optional(S.String),
       id: S.optional(S.String),
@@ -889,7 +877,7 @@ export interface UpdateRoomRequest {
   messageReviewHandler?: MessageReviewHandler;
   loggingConfigurationIdentifiers?: string[];
 }
-export const UpdateRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     name: S.optional(S.String),
@@ -924,7 +912,7 @@ export interface UpdateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const UpdateRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -1026,7 +1014,7 @@ export const createChatToken: API.OperationMethod<
   CreateChatTokenResponse,
   CreateChatTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChatTokenRequest,
   output: CreateChatTokenResponse,
   errors: [
@@ -1055,7 +1043,7 @@ export const createLoggingConfiguration: API.OperationMethod<
   CreateLoggingConfigurationResponse,
   CreateLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLoggingConfigurationRequest,
   output: CreateLoggingConfigurationResponse,
   errors: [
@@ -1086,7 +1074,7 @@ export const createRoom: API.OperationMethod<
   CreateRoomResponse,
   CreateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoomRequest,
   output: CreateRoomResponse,
   errors: [
@@ -1116,7 +1104,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationResponse,
   DeleteLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLoggingConfigurationRequest,
   output: DeleteLoggingConfigurationResponse,
   errors: [
@@ -1147,7 +1135,7 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageResponse,
   DeleteMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMessageRequest,
   output: DeleteMessageResponse,
   errors: [
@@ -1174,7 +1162,7 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomResponse,
   DeleteRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoomRequest,
   output: DeleteRoomResponse,
   errors: [
@@ -1203,7 +1191,7 @@ export const disconnectUser: API.OperationMethod<
   DisconnectUserResponse,
   DisconnectUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisconnectUserRequest,
   output: DisconnectUserResponse,
   errors: [
@@ -1229,7 +1217,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   GetLoggingConfigurationResponse,
   GetLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLoggingConfigurationRequest,
   output: GetLoggingConfigurationResponse,
   errors: [
@@ -1254,7 +1242,7 @@ export const getRoom: API.OperationMethod<
   GetRoomResponse,
   GetRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoomRequest,
   output: GetRoomResponse,
   errors: [
@@ -1294,7 +1282,7 @@ export const listLoggingConfigurations: API.OperationMethod<
     ListLoggingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -1335,7 +1323,7 @@ export const listRooms: API.OperationMethod<
     ListRoomsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomsRequest,
   output: ListRoomsResponse,
   errors: [
@@ -1365,7 +1353,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1393,7 +1381,7 @@ export const sendEvent: API.OperationMethod<
   SendEventResponse,
   SendEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEventRequest,
   output: SendEventResponse,
   errors: [
@@ -1419,7 +1407,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1444,7 +1432,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1471,7 +1459,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
   UpdateLoggingConfigurationResponse,
   UpdateLoggingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLoggingConfigurationRequest,
   output: UpdateLoggingConfigurationResponse,
   errors: [
@@ -1499,7 +1487,7 @@ export const updateRoom: API.OperationMethod<
   UpdateRoomResponse,
   UpdateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoomRequest,
   output: UpdateRoomResponse,
   errors: [

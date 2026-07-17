@@ -9,7 +9,7 @@ export interface GetGroupByNameInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetGroupByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupByNameInput = /*@__PURE__*/ Schema.Struct({
   groupName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const GetGroupByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupByNameOutput = void;
 export const GetGroupByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupByNameOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupByNameOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const GetGroupByNameOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param groupName - Human-readable label that identifies this project.
  */
-export const getGroupByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupByName = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupByNameInput,
   outputSchema: GetGroupByNameOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

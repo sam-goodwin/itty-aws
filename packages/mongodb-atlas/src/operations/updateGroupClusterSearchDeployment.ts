@@ -11,7 +11,7 @@ export interface UpdateGroupClusterSearchDeploymentInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterSearchDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupClusterSearchDeploymentInput =
 // Output Schema
 export type UpdateGroupClusterSearchDeploymentOutput = void;
 export const UpdateGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchDeploymentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchDeploymentOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const UpdateGroupClusterSearchDeploymentOutput =
  * @param clusterName - Label that identifies the cluster to update the Search Nodes for.
  */
 export const updateGroupClusterSearchDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterSearchDeploymentInput,
     outputSchema: UpdateGroupClusterSearchDeploymentOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

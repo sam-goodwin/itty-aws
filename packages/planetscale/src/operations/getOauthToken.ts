@@ -11,7 +11,7 @@ export interface GetOauthTokenInput {
   application_id: string;
   token_id: string;
 }
-export const GetOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOauthTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   token_id: Schema.String.pipe(T.PathParam()),
@@ -37,54 +37,52 @@ export interface GetOauthTokenOutput {
   actor_id: string | null;
   actor_display_name: string | null;
   actor_type: string | null;
-  service_token_accesses?:
-    | {
-        id: string;
-        access: string;
-        description: string;
-        resource_name: string;
-        resource_id: string;
-        resource_type: string;
-        resource: {
-          id: string;
-          name: string;
-          created_at: string;
-          updated_at: string;
-          deleted_at: string | null;
-        };
-      }[]
-    | null;
+  service_token_accesses?: ReadonlyArray<{
+    id: string;
+    access: string;
+    description: string;
+    resource_name: string;
+    resource_id: string;
+    resource_type: string;
+    resource: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+  }> | null;
   oauth_accesses_by_resource?: {
     database: {
-      databases: {
+      databases: ReadonlyArray<{
         name: string;
         id: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     organization: {
-      organizations: { name: string; id: string; url: string }[];
-      accesses: { name: string; description: string }[];
+      organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     branch: {
-      branches: {
+      branches: ReadonlyArray<{
         name: string;
         id: string;
         database: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     user: {
-      users: { name: string; id: string }[];
-      accesses: { name: string; description: string }[];
+      users: ReadonlyArray<{ name: string; id: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
   } | null;
 }
-export const GetOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOauthTokenOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
   display_name: Schema.String,
@@ -197,7 +195,7 @@ export const GetOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param application_id - The ID of the OAuth application
  * @param token_id - The ID of the OAuth application token
  */
-export const getOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOauthToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOauthTokenInput,
   outputSchema: GetOauthTokenOutput,
   errors: [Forbidden, NotFound] as const,

@@ -118,29 +118,28 @@ export type ListTelemetryPipelinesMaxResults = number;
 
 //# Schemas
 export type Regions = string[];
-export const Regions = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Regions = /*@__PURE__*/ S.Array(S.String);
 export type EncryptedLogGroupStrategy = "ALLOW" | "SKIP" | (string & {});
-export const EncryptedLogGroupStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptedLogGroupStrategy = /*@__PURE__*/ S.String;
 export interface SourceLogsConfiguration {
   LogGroupSelectionCriteria?: string;
   DataSourceSelectionCriteria?: string;
   EncryptedLogGroupStrategy: EncryptedLogGroupStrategy;
 }
-export const SourceLogsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LogGroupSelectionCriteria: S.optional(S.String),
-      DataSourceSelectionCriteria: S.optional(S.String),
-      EncryptedLogGroupStrategy: EncryptedLogGroupStrategy,
-    }),
+export const SourceLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogGroupSelectionCriteria: S.optional(S.String),
+    DataSourceSelectionCriteria: S.optional(S.String),
+    EncryptedLogGroupStrategy: EncryptedLogGroupStrategy,
+  }),
 ).annotate({
   identifier: "SourceLogsConfiguration",
 }) as any as S.Schema<SourceLogsConfiguration>;
 export interface SourceMetricsConfiguration {
   MetricsSelectionCriteria?: string;
 }
-export const SourceMetricsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ MetricsSelectionCriteria: S.optional(S.String) }),
+export const SourceMetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MetricsSelectionCriteria: S.optional(S.String) }),
 ).annotate({
   identifier: "SourceMetricsConfiguration",
 }) as any as S.Schema<SourceMetricsConfiguration>;
@@ -150,14 +149,13 @@ export interface CentralizationRuleSource {
   SourceLogsConfiguration?: SourceLogsConfiguration;
   SourceMetricsConfiguration?: SourceMetricsConfiguration;
 }
-export const CentralizationRuleSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Regions: Regions,
-      Scope: S.optional(S.String),
-      SourceLogsConfiguration: S.optional(SourceLogsConfiguration),
-      SourceMetricsConfiguration: S.optional(SourceMetricsConfiguration),
-    }),
+export const CentralizationRuleSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Regions: Regions,
+    Scope: S.optional(S.String),
+    SourceLogsConfiguration: S.optional(SourceLogsConfiguration),
+    SourceMetricsConfiguration: S.optional(SourceMetricsConfiguration),
+  }),
 ).annotate({
   identifier: "CentralizationRuleSource",
 }) as any as S.Schema<CentralizationRuleSource>;
@@ -165,20 +163,19 @@ export type EncryptionStrategy =
   | "CUSTOMER_MANAGED"
   | "AWS_OWNED"
   | (string & {});
-export const EncryptionStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionStrategy = /*@__PURE__*/ S.String;
 export type EncryptionConflictResolutionStrategy =
   | "ALLOW"
   | "SKIP"
   | (string & {});
-export const EncryptionConflictResolutionStrategy =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionConflictResolutionStrategy = /*@__PURE__*/ S.String;
 export interface LogsEncryptionConfiguration {
   EncryptionStrategy: EncryptionStrategy;
   KmsKeyArn?: string;
   EncryptionConflictResolutionStrategy?: EncryptionConflictResolutionStrategy;
 }
 export const LogsEncryptionConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EncryptionStrategy: EncryptionStrategy,
       KmsKeyArn: S.optional(S.String),
@@ -193,16 +190,16 @@ export interface LogsBackupConfiguration {
   Region: string;
   KmsKeyArn?: string;
 }
-export const LogsBackupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Region: S.String, KmsKeyArn: S.optional(S.String) }),
+export const LogsBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Region: S.String, KmsKeyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "LogsBackupConfiguration",
 }) as any as S.Schema<LogsBackupConfiguration>;
 export interface LogGroupNameConfiguration {
   LogGroupNamePattern: string;
 }
-export const LogGroupNameConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ LogGroupNamePattern: S.String }),
+export const LogGroupNameConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LogGroupNamePattern: S.String }),
 ).annotate({
   identifier: "LogGroupNameConfiguration",
 }) as any as S.Schema<LogGroupNameConfiguration>;
@@ -212,7 +209,7 @@ export interface DestinationLogsConfiguration {
   LogGroupNameConfiguration?: LogGroupNameConfiguration;
 }
 export const DestinationLogsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       LogsEncryptionConfiguration: S.optional(LogsEncryptionConfiguration),
       BackupConfiguration: S.optional(LogsBackupConfiguration),
@@ -224,8 +221,8 @@ export const DestinationLogsConfiguration =
 export interface MetricsBackupConfiguration {
   Region: string;
 }
-export const MetricsBackupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Region: S.String }),
+export const MetricsBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Region: S.String }),
 ).annotate({
   identifier: "MetricsBackupConfiguration",
 }) as any as S.Schema<MetricsBackupConfiguration>;
@@ -233,7 +230,7 @@ export interface DestinationMetricsConfiguration {
   BackupConfiguration?: MetricsBackupConfiguration;
 }
 export const DestinationMetricsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ BackupConfiguration: S.optional(MetricsBackupConfiguration) }),
   ).annotate({
     identifier: "DestinationMetricsConfiguration",
@@ -245,7 +242,7 @@ export interface CentralizationRuleDestination {
   DestinationMetricsConfiguration?: DestinationMetricsConfiguration;
 }
 export const CentralizationRuleDestination =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Region: S.String,
       Account: S.optional(S.String),
@@ -261,7 +258,7 @@ export interface CentralizationRule {
   Source: CentralizationRuleSource;
   Destination: CentralizationRuleDestination;
 }
-export const CentralizationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CentralizationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Source: CentralizationRuleSource,
     Destination: CentralizationRuleDestination,
@@ -270,7 +267,7 @@ export const CentralizationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CentralizationRule",
 }) as any as S.Schema<CentralizationRule>;
 export type TagMapInput = { [key: string]: string | undefined };
-export const TagMapInput = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMapInput = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -280,7 +277,7 @@ export interface CreateCentralizationRuleForOrganizationInput {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateCentralizationRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleName: S.String,
       Rule: CentralizationRule,
@@ -305,13 +302,13 @@ export interface CreateCentralizationRuleForOrganizationOutput {
   RuleArn?: string;
 }
 export const CreateCentralizationRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateCentralizationRuleForOrganizationOutput",
   }) as any as S.Schema<CreateCentralizationRuleForOrganizationOutput>;
 export type FieldMap = { [key: string]: string | undefined };
-export const FieldMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FieldMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -320,7 +317,7 @@ export interface ValidationError {
   Reason?: string;
   FieldMap?: { [key: string]: string | undefined };
 }
-export const ValidationError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ValidationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Message: S.optional(S.String),
     Reason: S.optional(S.String),
@@ -330,15 +327,14 @@ export const ValidationError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ValidationError",
 }) as any as S.Schema<ValidationError>;
 export type ValidationErrors = ValidationError[];
-export const ValidationErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ValidationError);
+export const ValidationErrors = /*@__PURE__*/ S.Array(ValidationError);
 export type SSEAlgorithm = "aws:kms" | "AES256" | (string & {});
-export const SSEAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SSEAlgorithm = /*@__PURE__*/ S.String;
 export interface Encryption {
   SseAlgorithm: SSEAlgorithm;
   KmsKeyArn?: string;
 }
-export const Encryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SseAlgorithm: SSEAlgorithm, KmsKeyArn: S.optional(S.String) }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 export interface CreateS3TableIntegrationInput {
@@ -347,7 +343,7 @@ export interface CreateS3TableIntegrationInput {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateS3TableIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Encryption: Encryption,
       RoleArn: S.String,
@@ -369,7 +365,7 @@ export interface CreateS3TableIntegrationOutput {
   Arn?: string;
 }
 export const CreateS3TableIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Arn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateS3TableIntegrationOutput",
@@ -395,9 +391,9 @@ export type ResourceType =
   | "AWS::CloudWatch::OTelEnrichment"
   | "AWS::MSK::Cluster"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export type TelemetryType = "Logs" | "Metrics" | "Traces" | (string & {});
-export const TelemetryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetryType = /*@__PURE__*/ S.String;
 export type TelemetrySourceType =
   | "VPC_FLOW_LOGS"
   | "ROUTE53_RESOLVER_QUERY_LOGS"
@@ -407,18 +403,17 @@ export type TelemetrySourceType =
   | "EKS_SCHEDULER_LOGS"
   | "EKS_API_LOGS"
   | (string & {});
-export const TelemetrySourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetrySourceType = /*@__PURE__*/ S.String;
 export type TelemetrySourceTypes = TelemetrySourceType[];
-export const TelemetrySourceTypes =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TelemetrySourceType);
+export const TelemetrySourceTypes = /*@__PURE__*/ S.Array(TelemetrySourceType);
 export type DestinationType = "cloud-watch-logs" | (string & {});
-export const DestinationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DestinationType = /*@__PURE__*/ S.String;
 export interface VPCFlowLogParameters {
   LogFormat?: string;
   TrafficType?: string;
   MaxAggregationInterval?: number;
 }
-export const VPCFlowLogParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VPCFlowLogParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LogFormat: S.optional(S.String),
     TrafficType: S.optional(S.String),
@@ -428,7 +423,7 @@ export const VPCFlowLogParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "VPCFlowLogParameters",
 }) as any as S.Schema<VPCFlowLogParameters>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface AdvancedFieldSelector {
   Field: string;
   Equals?: string[];
@@ -438,7 +433,7 @@ export interface AdvancedFieldSelector {
   NotStartsWith?: string[];
   NotEndsWith?: string[];
 }
-export const AdvancedFieldSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AdvancedFieldSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Field: S.String,
     Equals: S.optional(StringList),
@@ -452,38 +447,36 @@ export const AdvancedFieldSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AdvancedFieldSelector",
 }) as any as S.Schema<AdvancedFieldSelector>;
 export type FieldSelectors = AdvancedFieldSelector[];
-export const FieldSelectors = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  AdvancedFieldSelector,
-);
+export const FieldSelectors = /*@__PURE__*/ S.Array(AdvancedFieldSelector);
 export interface AdvancedEventSelector {
   Name?: string;
   FieldSelectors: AdvancedFieldSelector[];
 }
-export const AdvancedEventSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AdvancedEventSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), FieldSelectors: FieldSelectors }),
 ).annotate({
   identifier: "AdvancedEventSelector",
 }) as any as S.Schema<AdvancedEventSelector>;
 export type AdvancedEventSelectors = AdvancedEventSelector[];
-export const AdvancedEventSelectors = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AdvancedEventSelectors = /*@__PURE__*/ S.Array(
   AdvancedEventSelector,
 );
 export interface CloudtrailParameters {
   AdvancedEventSelectors: AdvancedEventSelector[];
 }
-export const CloudtrailParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CloudtrailParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AdvancedEventSelectors: AdvancedEventSelectors }),
 ).annotate({
   identifier: "CloudtrailParameters",
 }) as any as S.Schema<CloudtrailParameters>;
 export type OutputFormat = "plain" | "json" | (string & {});
-export const OutputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OutputFormat = /*@__PURE__*/ S.String;
 export interface ELBLoadBalancerLoggingParameters {
   OutputFormat?: OutputFormat;
   FieldDelimiter?: string;
 }
 export const ELBLoadBalancerLoggingParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OutputFormat: S.optional(OutputFormat),
       FieldDelimiter: S.optional(S.String),
@@ -494,7 +487,7 @@ export const ELBLoadBalancerLoggingParameters =
 export interface SingleHeader {
   Name?: string;
 }
-export const SingleHeader = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SingleHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "SingleHeader" }) as any as S.Schema<SingleHeader>;
 export interface FieldToMatch {
@@ -503,7 +496,7 @@ export interface FieldToMatch {
   QueryString?: string;
   Method?: string;
 }
-export const FieldToMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SingleHeader: S.optional(SingleHeader),
     UriPath: S.optional(S.String),
@@ -512,11 +505,11 @@ export const FieldToMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldToMatch" }) as any as S.Schema<FieldToMatch>;
 export type RedactedFields = FieldToMatch[];
-export const RedactedFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(FieldToMatch);
+export const RedactedFields = /*@__PURE__*/ S.Array(FieldToMatch);
 export type FilterBehavior = "KEEP" | "DROP" | (string & {});
-export const FilterBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FilterBehavior = /*@__PURE__*/ S.String;
 export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
-export const FilterRequirement = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FilterRequirement = /*@__PURE__*/ S.String;
 export type Action =
   | "ALLOW"
   | "BLOCK"
@@ -525,11 +518,11 @@ export type Action =
   | "CHALLENGE"
   | "EXCLUDED_AS_COUNT"
   | (string & {});
-export const Action = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Action = /*@__PURE__*/ S.String;
 export interface ActionCondition {
   Action?: Action;
 }
-export const ActionCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: S.optional(Action) }),
 ).annotate({
   identifier: "ActionCondition",
@@ -537,7 +530,7 @@ export const ActionCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LabelNameCondition {
   LabelName?: string;
 }
-export const LabelNameCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LabelNameCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LabelName: S.optional(S.String) }),
 ).annotate({
   identifier: "LabelNameCondition",
@@ -546,20 +539,20 @@ export interface Condition {
   ActionCondition?: ActionCondition;
   LabelNameCondition?: LabelNameCondition;
 }
-export const Condition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActionCondition: S.optional(ActionCondition),
     LabelNameCondition: S.optional(LabelNameCondition),
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 export type Conditions = Condition[];
-export const Conditions = /*@__PURE__*/ /*#__PURE__*/ S.Array(Condition);
+export const Conditions = /*@__PURE__*/ S.Array(Condition);
 export interface Filter {
   Behavior?: FilterBehavior;
   Requirement?: FilterRequirement;
   Conditions?: Condition[];
 }
-export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Behavior: S.optional(FilterBehavior),
     Requirement: S.optional(FilterRequirement),
@@ -567,25 +560,25 @@ export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
-export const Filters = /*@__PURE__*/ /*#__PURE__*/ S.Array(Filter);
+export const Filters = /*@__PURE__*/ S.Array(Filter);
 export interface LoggingFilter {
   Filters?: Filter[];
   DefaultBehavior?: FilterBehavior;
 }
-export const LoggingFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(Filters),
     DefaultBehavior: S.optional(FilterBehavior),
   }),
 ).annotate({ identifier: "LoggingFilter" }) as any as S.Schema<LoggingFilter>;
 export type WAFLogType = "WAF_LOGS" | (string & {});
-export const WAFLogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WAFLogType = /*@__PURE__*/ S.String;
 export interface WAFLoggingParameters {
   RedactedFields?: FieldToMatch[];
   LoggingFilter?: LoggingFilter;
   LogType?: WAFLogType;
 }
-export const WAFLoggingParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WAFLoggingParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RedactedFields: S.optional(RedactedFields),
     LoggingFilter: S.optional(LoggingFilter),
@@ -601,13 +594,13 @@ export type LogType =
   | "ACCESS_LOGS"
   | "CONNECTION_LOGS"
   | (string & {});
-export const LogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogType = /*@__PURE__*/ S.String;
 export type LogTypes = LogType[];
-export const LogTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(LogType);
+export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogDeliveryParameters {
   LogTypes?: LogType[];
 }
-export const LogDeliveryParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogDeliveryParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogTypes: S.optional(LogTypes) }),
 ).annotate({
   identifier: "LogDeliveryParameters",
@@ -618,13 +611,12 @@ export type MskEnhancedMonitoringLevel =
   | "PER_TOPIC_PER_BROKER"
   | "PER_TOPIC_PER_PARTITION"
   | (string & {});
-export const MskEnhancedMonitoringLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MskEnhancedMonitoringLevel = /*@__PURE__*/ S.String;
 export interface MskMonitoringParameters {
   EnhancedMonitoring?: MskEnhancedMonitoringLevel;
 }
-export const MskMonitoringParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ EnhancedMonitoring: S.optional(MskEnhancedMonitoringLevel) }),
+export const MskMonitoringParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EnhancedMonitoring: S.optional(MskEnhancedMonitoringLevel) }),
 ).annotate({
   identifier: "MskMonitoringParameters",
 }) as any as S.Schema<MskMonitoringParameters>;
@@ -640,7 +632,7 @@ export interface TelemetryDestinationConfiguration {
   MskMonitoringParameters?: MskMonitoringParameters;
 }
 export const TelemetryDestinationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       DestinationType: S.optional(DestinationType),
       DestinationPattern: S.optional(S.String),
@@ -668,7 +660,7 @@ export interface TelemetryRule {
   Regions?: string[];
   AllRegions?: boolean;
 }
-export const TelemetryRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TelemetryRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceType: S.optional(ResourceType),
     TelemetryType: TelemetryType,
@@ -686,30 +678,29 @@ export interface CreateTelemetryRuleInput {
   Rule: TelemetryRule;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateTelemetryRuleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RuleName: S.String,
-      Rule: TelemetryRule,
-      Tags: S.optional(TagMapInput),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateTelemetryRule" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleName: S.String,
+    Rule: TelemetryRule,
+    Tags: S.optional(TagMapInput),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateTelemetryRule" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTelemetryRuleInput",
 }) as any as S.Schema<CreateTelemetryRuleInput>;
 export interface CreateTelemetryRuleOutput {
   RuleArn?: string;
 }
-export const CreateTelemetryRuleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ RuleArn: S.optional(S.String) }),
+export const CreateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateTelemetryRuleOutput",
 }) as any as S.Schema<CreateTelemetryRuleOutput>;
@@ -719,7 +710,7 @@ export interface CreateTelemetryRuleForOrganizationInput {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleName: S.String,
       Rule: TelemetryRule,
@@ -741,7 +732,7 @@ export interface CreateTelemetryRuleForOrganizationOutput {
   RuleArn?: string;
 }
 export const CreateTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateTelemetryRuleForOrganizationOutput",
@@ -750,7 +741,7 @@ export interface DeleteCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
 }
 export const DeleteCentralizationRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({
@@ -769,14 +760,14 @@ export const DeleteCentralizationRuleForOrganizationInput =
   }) as any as S.Schema<DeleteCentralizationRuleForOrganizationInput>;
 export interface DeleteCentralizationRuleForOrganizationResponse {}
 export const DeleteCentralizationRuleForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCentralizationRuleForOrganizationResponse",
   }) as any as S.Schema<DeleteCentralizationRuleForOrganizationResponse>;
 export interface DeleteS3TableIntegrationInput {
   Arn: string;
 }
 export const DeleteS3TableIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Arn: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteS3TableIntegration" }),
@@ -792,37 +783,36 @@ export const DeleteS3TableIntegrationInput =
   }) as any as S.Schema<DeleteS3TableIntegrationInput>;
 export interface DeleteS3TableIntegrationResponse {}
 export const DeleteS3TableIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteS3TableIntegrationResponse",
   }) as any as S.Schema<DeleteS3TableIntegrationResponse>;
 export interface DeleteTelemetryRuleInput {
   RuleIdentifier: string;
 }
-export const DeleteTelemetryRuleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ RuleIdentifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteTelemetryRule" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleIdentifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteTelemetryRule" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTelemetryRuleInput",
 }) as any as S.Schema<DeleteTelemetryRuleInput>;
 export interface DeleteTelemetryRuleResponse {}
 export const DeleteTelemetryRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTelemetryRuleResponse",
   }) as any as S.Schema<DeleteTelemetryRuleResponse>;
 export interface DeleteTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
 }
 export const DeleteTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteTelemetryRuleForOrganization" }),
@@ -838,14 +828,14 @@ export const DeleteTelemetryRuleForOrganizationInput =
   }) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>;
 export interface DeleteTelemetryRuleForOrganizationResponse {}
 export const DeleteTelemetryRuleForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTelemetryRuleForOrganizationResponse",
   }) as any as S.Schema<DeleteTelemetryRuleForOrganizationResponse>;
 export interface GetCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
 }
 export const GetCentralizationRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({
@@ -867,13 +857,13 @@ export type RuleHealth =
   | "Unhealthy"
   | "Provisioning"
   | (string & {});
-export const RuleHealth = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleHealth = /*@__PURE__*/ S.String;
 export type CentralizationFailureReason =
   | "TRUSTED_ACCESS_NOT_ENABLED"
   | "DESTINATION_ACCOUNT_NOT_IN_ORGANIZATION"
   | "INTERNAL_SERVER_ERROR"
   | (string & {});
-export const CentralizationFailureReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CentralizationFailureReason = /*@__PURE__*/ S.String;
 export interface GetCentralizationRuleForOrganizationOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -886,7 +876,7 @@ export interface GetCentralizationRuleForOrganizationOutput {
   CentralizationRule?: CentralizationRule;
 }
 export const GetCentralizationRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleName: S.optional(S.String),
       RuleArn: S.optional(S.String),
@@ -904,23 +894,22 @@ export const GetCentralizationRuleForOrganizationOutput =
 export interface GetS3TableIntegrationInput {
   Arn: string;
 }
-export const GetS3TableIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetS3TableIntegration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetS3TableIntegration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetS3TableIntegrationInput",
 }) as any as S.Schema<GetS3TableIntegrationInput>;
 export type IntegrationStatus = "ACTIVE" | "DELETING" | (string & {});
-export const IntegrationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IntegrationStatus = /*@__PURE__*/ S.String;
 export interface GetS3TableIntegrationOutput {
   Arn?: string;
   RoleArn?: string;
@@ -930,7 +919,7 @@ export interface GetS3TableIntegrationOutput {
   CreatedTimeStamp?: number;
 }
 export const GetS3TableIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.optional(S.String),
       RoleArn: S.optional(S.String),
@@ -944,7 +933,7 @@ export const GetS3TableIntegrationOutput =
   }) as any as S.Schema<GetS3TableIntegrationOutput>;
 export interface GetTelemetryEnrichmentStatusRequest {}
 export const GetTelemetryEnrichmentStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetTelemetryEnrichmentStatus" }),
@@ -963,13 +952,13 @@ export type TelemetryEnrichmentStatus =
   | "Stopped"
   | "Impaired"
   | (string & {});
-export const TelemetryEnrichmentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetryEnrichmentStatus = /*@__PURE__*/ S.String;
 export interface GetTelemetryEnrichmentStatusOutput {
   Status?: TelemetryEnrichmentStatus;
   AwsResourceExplorerManagedViewArn?: string;
 }
 export const GetTelemetryEnrichmentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(TelemetryEnrichmentStatus),
       AwsResourceExplorerManagedViewArn: S.optional(S.String),
@@ -979,7 +968,7 @@ export const GetTelemetryEnrichmentStatusOutput =
   }) as any as S.Schema<GetTelemetryEnrichmentStatusOutput>;
 export interface GetTelemetryEvaluationStatusRequest {}
 export const GetTelemetryEvaluationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetTelemetryEvaluationStatus" }),
@@ -1002,14 +991,14 @@ export type Status =
   | "FAILED_STOP"
   | "STOPPED"
   | (string & {});
-export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Status = /*@__PURE__*/ S.String;
 export interface RegionStatus {
   Region?: string;
   Status?: string;
   FailureReason?: string;
   RuleArn?: string;
 }
-export const RegionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Region: S.optional(S.String),
     Status: S.optional(S.String),
@@ -1018,7 +1007,7 @@ export const RegionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionStatus" }) as any as S.Schema<RegionStatus>;
 export type RegionStatuses = RegionStatus[];
-export const RegionStatuses = /*@__PURE__*/ /*#__PURE__*/ S.Array(RegionStatus);
+export const RegionStatuses = /*@__PURE__*/ S.Array(RegionStatus);
 export interface GetTelemetryEvaluationStatusOutput {
   Status?: Status;
   FailureReason?: string;
@@ -1026,7 +1015,7 @@ export interface GetTelemetryEvaluationStatusOutput {
   RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryEvaluationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(Status),
       FailureReason: S.optional(S.String),
@@ -1038,7 +1027,7 @@ export const GetTelemetryEvaluationStatusOutput =
   }) as any as S.Schema<GetTelemetryEvaluationStatusOutput>;
 export interface GetTelemetryEvaluationStatusForOrganizationRequest {}
 export const GetTelemetryEvaluationStatusForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({
@@ -1062,7 +1051,7 @@ export interface GetTelemetryEvaluationStatusForOrganizationOutput {
   RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryEvaluationStatusForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(Status),
       FailureReason: S.optional(S.String),
@@ -1075,7 +1064,7 @@ export const GetTelemetryEvaluationStatusForOrganizationOutput =
 export interface GetTelemetryRuleInput {
   RuleIdentifier: string;
 }
-export const GetTelemetryRuleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RuleIdentifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetTelemetryRule" }),
@@ -1099,18 +1088,17 @@ export interface GetTelemetryRuleOutput {
   IsReplicated?: boolean;
   RegionStatuses?: RegionStatus[];
 }
-export const GetTelemetryRuleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RuleName: S.optional(S.String),
-      RuleArn: S.optional(S.String),
-      CreatedTimeStamp: S.optional(S.Number),
-      LastUpdateTimeStamp: S.optional(S.Number),
-      TelemetryRule: S.optional(TelemetryRule),
-      HomeRegion: S.optional(S.String),
-      IsReplicated: S.optional(S.Boolean),
-      RegionStatuses: S.optional(RegionStatuses),
-    }),
+export const GetTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleName: S.optional(S.String),
+    RuleArn: S.optional(S.String),
+    CreatedTimeStamp: S.optional(S.Number),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    TelemetryRule: S.optional(TelemetryRule),
+    HomeRegion: S.optional(S.String),
+    IsReplicated: S.optional(S.Boolean),
+    RegionStatuses: S.optional(RegionStatuses),
+  }),
 ).annotate({
   identifier: "GetTelemetryRuleOutput",
 }) as any as S.Schema<GetTelemetryRuleOutput>;
@@ -1118,7 +1106,7 @@ export interface GetTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
 }
 export const GetTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetTelemetryRuleForOrganization" }),
@@ -1143,7 +1131,7 @@ export interface GetTelemetryRuleForOrganizationOutput {
   RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleName: S.optional(S.String),
       RuleArn: S.optional(S.String),
@@ -1164,7 +1152,7 @@ export interface ListCentralizationRulesForOrganizationInput {
   NextToken?: string;
 }
 export const ListCentralizationRulesForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleNamePrefix: S.optional(S.String),
       AllRegions: S.optional(S.Boolean),
@@ -1198,25 +1186,24 @@ export interface CentralizationRuleSummary {
   DestinationAccountId?: string;
   DestinationRegion?: string;
 }
-export const CentralizationRuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RuleName: S.optional(S.String),
-      RuleArn: S.optional(S.String),
-      CreatorAccountId: S.optional(S.String),
-      CreatedTimeStamp: S.optional(S.Number),
-      CreatedRegion: S.optional(S.String),
-      LastUpdateTimeStamp: S.optional(S.Number),
-      RuleHealth: S.optional(RuleHealth),
-      FailureReason: S.optional(CentralizationFailureReason),
-      DestinationAccountId: S.optional(S.String),
-      DestinationRegion: S.optional(S.String),
-    }),
+export const CentralizationRuleSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleName: S.optional(S.String),
+    RuleArn: S.optional(S.String),
+    CreatorAccountId: S.optional(S.String),
+    CreatedTimeStamp: S.optional(S.Number),
+    CreatedRegion: S.optional(S.String),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    RuleHealth: S.optional(RuleHealth),
+    FailureReason: S.optional(CentralizationFailureReason),
+    DestinationAccountId: S.optional(S.String),
+    DestinationRegion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CentralizationRuleSummary",
 }) as any as S.Schema<CentralizationRuleSummary>;
 export type CentralizationRuleSummaries = CentralizationRuleSummary[];
-export const CentralizationRuleSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CentralizationRuleSummaries = /*@__PURE__*/ S.Array(
   CentralizationRuleSummary,
 );
 export interface ListCentralizationRulesForOrganizationOutput {
@@ -1224,7 +1211,7 @@ export interface ListCentralizationRulesForOrganizationOutput {
   NextToken?: string;
 }
 export const ListCentralizationRulesForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       CentralizationRuleSummaries: S.optional(CentralizationRuleSummaries),
       NextToken: S.optional(S.String),
@@ -1233,17 +1220,17 @@ export const ListCentralizationRulesForOrganizationOutput =
     identifier: "ListCentralizationRulesForOrganizationOutput",
   }) as any as S.Schema<ListCentralizationRulesForOrganizationOutput>;
 export type ResourceTypes = ResourceType[];
-export const ResourceTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceType);
+export const ResourceTypes = /*@__PURE__*/ S.Array(ResourceType);
 export type TelemetryState =
   | "Enabled"
   | "Disabled"
   | "NotApplicable"
   | (string & {});
-export const TelemetryState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetryState = /*@__PURE__*/ S.String;
 export type TelemetryConfigurationState = {
   [key in TelemetryType]?: TelemetryState;
 };
-export const TelemetryConfigurationState = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TelemetryConfigurationState = /*@__PURE__*/ S.Record(
   TelemetryType,
   TelemetryState.pipe(S.optional),
 );
@@ -1255,30 +1242,29 @@ export interface ListResourceTelemetryInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListResourceTelemetryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceIdentifierPrefix: S.optional(S.String),
-      ResourceTypes: S.optional(ResourceTypes),
-      TelemetryConfigurationState: S.optional(TelemetryConfigurationState),
-      ResourceTags: S.optional(TagMapInput),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListResourceTelemetry" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceTelemetryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceIdentifierPrefix: S.optional(S.String),
+    ResourceTypes: S.optional(ResourceTypes),
+    TelemetryConfigurationState: S.optional(TelemetryConfigurationState),
+    ResourceTags: S.optional(TagMapInput),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListResourceTelemetry" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListResourceTelemetryInput",
 }) as any as S.Schema<ListResourceTelemetryInput>;
 export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMapOutput = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1291,22 +1277,21 @@ export interface TelemetryConfiguration {
   LastUpdateTimeStamp?: number;
   TelemetrySourceType?: TelemetrySourceType;
 }
-export const TelemetryConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountIdentifier: S.optional(S.String),
-      TelemetryConfigurationState: S.optional(TelemetryConfigurationState),
-      ResourceType: S.optional(ResourceType),
-      ResourceIdentifier: S.optional(S.String),
-      ResourceTags: S.optional(TagMapOutput),
-      LastUpdateTimeStamp: S.optional(S.Number),
-      TelemetrySourceType: S.optional(TelemetrySourceType),
-    }),
+export const TelemetryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountIdentifier: S.optional(S.String),
+    TelemetryConfigurationState: S.optional(TelemetryConfigurationState),
+    ResourceType: S.optional(ResourceType),
+    ResourceIdentifier: S.optional(S.String),
+    ResourceTags: S.optional(TagMapOutput),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    TelemetrySourceType: S.optional(TelemetrySourceType),
+  }),
 ).annotate({
   identifier: "TelemetryConfiguration",
 }) as any as S.Schema<TelemetryConfiguration>;
 export type TelemetryConfigurations = TelemetryConfiguration[];
-export const TelemetryConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TelemetryConfigurations = /*@__PURE__*/ S.Array(
   TelemetryConfiguration,
 );
 export interface ListResourceTelemetryOutput {
@@ -1314,7 +1299,7 @@ export interface ListResourceTelemetryOutput {
   NextToken?: string;
 }
 export const ListResourceTelemetryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TelemetryConfigurations: S.optional(TelemetryConfigurations),
       NextToken: S.optional(S.String),
@@ -1323,7 +1308,7 @@ export const ListResourceTelemetryOutput =
     identifier: "ListResourceTelemetryOutput",
   }) as any as S.Schema<ListResourceTelemetryOutput>;
 export type AccountIdentifiers = string[];
-export const AccountIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AccountIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export interface ListResourceTelemetryForOrganizationInput {
   AccountIdentifiers?: string[];
   ResourceIdentifierPrefix?: string;
@@ -1334,7 +1319,7 @@ export interface ListResourceTelemetryForOrganizationInput {
   NextToken?: string;
 }
 export const ListResourceTelemetryForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccountIdentifiers: S.optional(AccountIdentifiers),
       ResourceIdentifierPrefix: S.optional(S.String),
@@ -1364,7 +1349,7 @@ export interface ListResourceTelemetryForOrganizationOutput {
   NextToken?: string;
 }
 export const ListResourceTelemetryForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TelemetryConfigurations: S.optional(TelemetryConfigurations),
       NextToken: S.optional(S.String),
@@ -1377,7 +1362,7 @@ export interface ListS3TableIntegrationsInput {
   NextToken?: string;
 }
 export const ListS3TableIntegrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
@@ -1398,7 +1383,7 @@ export interface IntegrationSummary {
   Arn?: string;
   Status?: IntegrationStatus;
 }
-export const IntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntegrationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Status: S.optional(IntegrationStatus),
@@ -1407,14 +1392,13 @@ export const IntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IntegrationSummary",
 }) as any as S.Schema<IntegrationSummary>;
 export type IntegrationSummaries = IntegrationSummary[];
-export const IntegrationSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegrationSummary);
+export const IntegrationSummaries = /*@__PURE__*/ S.Array(IntegrationSummary);
 export interface ListS3TableIntegrationsOutput {
   IntegrationSummaries?: IntegrationSummary[];
   NextToken?: string;
 }
 export const ListS3TableIntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       IntegrationSummaries: S.optional(IntegrationSummaries),
       NextToken: S.optional(S.String),
@@ -1425,26 +1409,25 @@ export const ListS3TableIntegrationsOutput =
 export interface ListTagsForResourceInput {
   ResourceARN: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTagsForResource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Tags: TagMapOutput }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: TagMapOutput }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -1453,22 +1436,21 @@ export interface ListTelemetryRulesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListTelemetryRulesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RuleNamePrefix: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTelemetryRules" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTelemetryRulesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleNamePrefix: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTelemetryRules" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTelemetryRulesInput",
 }) as any as S.Schema<ListTelemetryRulesInput>;
@@ -1481,7 +1463,7 @@ export interface TelemetryRuleSummary {
   TelemetryType?: TelemetryType;
   TelemetrySourceTypes?: TelemetrySourceType[];
 }
-export const TelemetryRuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TelemetryRuleSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RuleName: S.optional(S.String),
     RuleArn: S.optional(S.String),
@@ -1496,24 +1478,21 @@ export const TelemetryRuleSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelemetryRuleSummary>;
 export type TelemetryRuleSummaries = TelemetryRuleSummary[];
 export const TelemetryRuleSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TelemetryRuleSummary);
+  /*@__PURE__*/ S.Array(TelemetryRuleSummary);
 export interface ListTelemetryRulesOutput {
   TelemetryRuleSummaries?: TelemetryRuleSummary[];
   NextToken?: string;
 }
-export const ListTelemetryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListTelemetryRulesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListTelemetryRulesOutput",
 }) as any as S.Schema<ListTelemetryRulesOutput>;
 export type OrganizationUnitIdentifiers = string[];
-export const OrganizationUnitIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const OrganizationUnitIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export interface ListTelemetryRulesForOrganizationInput {
   RuleNamePrefix?: string;
   SourceAccountIds?: string[];
@@ -1522,7 +1501,7 @@ export interface ListTelemetryRulesForOrganizationInput {
   NextToken?: string;
 }
 export const ListTelemetryRulesForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RuleNamePrefix: S.optional(S.String),
       SourceAccountIds: S.optional(AccountIdentifiers),
@@ -1547,7 +1526,7 @@ export interface ListTelemetryRulesForOrganizationOutput {
   NextToken?: string;
 }
 export const ListTelemetryRulesForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
       NextToken: S.optional(S.String),
@@ -1557,7 +1536,7 @@ export const ListTelemetryRulesForOrganizationOutput =
   }) as any as S.Schema<ListTelemetryRulesForOrganizationOutput>;
 export interface StartTelemetryEnrichmentRequest {}
 export const StartTelemetryEnrichmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/StartTelemetryEnrichment" }),
@@ -1576,7 +1555,7 @@ export interface StartTelemetryEnrichmentOutput {
   AwsResourceExplorerManagedViewArn?: string;
 }
 export const StartTelemetryEnrichmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(TelemetryEnrichmentStatus),
       AwsResourceExplorerManagedViewArn: S.optional(S.String),
@@ -1589,7 +1568,7 @@ export interface StartTelemetryEvaluationInput {
   AllRegions?: boolean;
 }
 export const StartTelemetryEvaluationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Regions: S.optional(Regions),
       AllRegions: S.optional(S.Boolean),
@@ -1608,7 +1587,7 @@ export const StartTelemetryEvaluationInput =
   }) as any as S.Schema<StartTelemetryEvaluationInput>;
 export interface StartTelemetryEvaluationResponse {}
 export const StartTelemetryEvaluationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartTelemetryEvaluationResponse",
   }) as any as S.Schema<StartTelemetryEvaluationResponse>;
 export interface StartTelemetryEvaluationForOrganizationInput {
@@ -1616,7 +1595,7 @@ export interface StartTelemetryEvaluationForOrganizationInput {
   AllRegions?: boolean;
 }
 export const StartTelemetryEvaluationForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Regions: S.optional(Regions),
       AllRegions: S.optional(S.Boolean),
@@ -1638,12 +1617,12 @@ export const StartTelemetryEvaluationForOrganizationInput =
   }) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>;
 export interface StartTelemetryEvaluationForOrganizationResponse {}
 export const StartTelemetryEvaluationForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartTelemetryEvaluationForOrganizationResponse",
   }) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>;
 export interface StopTelemetryEnrichmentRequest {}
 export const StopTelemetryEnrichmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/StopTelemetryEnrichment" }),
@@ -1661,14 +1640,14 @@ export interface StopTelemetryEnrichmentOutput {
   Status?: TelemetryEnrichmentStatus;
 }
 export const StopTelemetryEnrichmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Status: S.optional(TelemetryEnrichmentStatus) }),
   ).annotate({
     identifier: "StopTelemetryEnrichmentOutput",
   }) as any as S.Schema<StopTelemetryEnrichmentOutput>;
 export interface StopTelemetryEvaluationRequest {}
 export const StopTelemetryEvaluationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/StopTelemetryEvaluation" }),
@@ -1684,12 +1663,12 @@ export const StopTelemetryEvaluationRequest =
   }) as any as S.Schema<StopTelemetryEvaluationRequest>;
 export interface StopTelemetryEvaluationResponse {}
 export const StopTelemetryEvaluationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StopTelemetryEvaluationResponse",
   }) as any as S.Schema<StopTelemetryEvaluationResponse>;
 export interface StopTelemetryEvaluationForOrganizationRequest {}
 export const StopTelemetryEvaluationForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(
         T.Http({
@@ -1708,14 +1687,14 @@ export const StopTelemetryEvaluationForOrganizationRequest =
   }) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>;
 export interface StopTelemetryEvaluationForOrganizationResponse {}
 export const StopTelemetryEvaluationForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StopTelemetryEvaluationForOrganizationResponse",
   }) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagMapInput }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/TagResource" }),
@@ -1730,57 +1709,54 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type RecordFormat = "STRING" | "JSON" | (string & {});
-export const RecordFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RecordFormat = /*@__PURE__*/ S.String;
 export interface Record {
   Data?: string;
   Type?: RecordFormat;
 }
-export const Record = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Data: S.optional(S.String), Type: S.optional(RecordFormat) }),
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type Records = Record[];
-export const Records = /*@__PURE__*/ /*#__PURE__*/ S.Array(Record);
+export const Records = /*@__PURE__*/ S.Array(Record);
 export interface TelemetryPipelineConfiguration {
   Body: string;
 }
 export const TelemetryPipelineConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Body: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ Body: S.String })).annotate({
     identifier: "TelemetryPipelineConfiguration",
   }) as any as S.Schema<TelemetryPipelineConfiguration>;
 export interface TestTelemetryPipelineInput {
   Records: Record[];
   Configuration: TelemetryPipelineConfiguration;
 }
-export const TestTelemetryPipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Records: Records,
-      Configuration: TelemetryPipelineConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/TestTelemetryPipeline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const TestTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Records: Records,
+    Configuration: TelemetryPipelineConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/TestTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "TestTelemetryPipelineInput",
 }) as any as S.Schema<TestTelemetryPipelineInput>;
 export interface PipelineOutputError {
   Message?: string;
 }
-export const PipelineOutputError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineOutputError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Message: S.optional(S.String) }),
 ).annotate({
   identifier: "PipelineOutputError",
@@ -1789,31 +1765,30 @@ export interface PipelineOutput {
   Record?: Record;
   Error?: PipelineOutputError;
 }
-export const PipelineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Record: S.optional(Record),
     Error: S.optional(PipelineOutputError),
   }),
 ).annotate({ identifier: "PipelineOutput" }) as any as S.Schema<PipelineOutput>;
 export type PipelineOutputs = PipelineOutput[];
-export const PipelineOutputs =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PipelineOutput);
+export const PipelineOutputs = /*@__PURE__*/ S.Array(PipelineOutput);
 export interface TestTelemetryPipelineOutput {
   Results?: PipelineOutput[];
 }
 export const TestTelemetryPipelineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Results: S.optional(PipelineOutputs) }),
   ).annotate({
     identifier: "TestTelemetryPipelineOutput",
   }) as any as S.Schema<TestTelemetryPipelineOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UntagResource" }),
@@ -1828,7 +1803,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1838,7 +1813,7 @@ export interface UpdateCentralizationRuleForOrganizationInput {
   Rule: CentralizationRule;
 }
 export const UpdateCentralizationRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String, Rule: CentralizationRule }).pipe(
       T.all(
         T.Http({
@@ -1859,7 +1834,7 @@ export interface UpdateCentralizationRuleForOrganizationOutput {
   RuleArn?: string;
 }
 export const UpdateCentralizationRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleArn: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateCentralizationRuleForOrganizationOutput",
@@ -1868,26 +1843,25 @@ export interface UpdateTelemetryRuleInput {
   RuleIdentifier: string;
   Rule: TelemetryRule;
 }
-export const UpdateTelemetryRuleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateTelemetryRule" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateTelemetryRule" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateTelemetryRuleInput",
 }) as any as S.Schema<UpdateTelemetryRuleInput>;
 export interface UpdateTelemetryRuleOutput {
   RuleArn?: string;
 }
-export const UpdateTelemetryRuleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ RuleArn: S.optional(S.String) }),
+export const UpdateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleArn: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateTelemetryRuleOutput",
 }) as any as S.Schema<UpdateTelemetryRuleOutput>;
@@ -1896,7 +1870,7 @@ export interface UpdateTelemetryRuleForOrganizationInput {
   Rule: TelemetryRule;
 }
 export const UpdateTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateTelemetryRuleForOrganization" }),
@@ -1914,7 +1888,7 @@ export interface UpdateTelemetryRuleForOrganizationOutput {
   RuleArn?: string;
 }
 export const UpdateTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RuleArn: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateTelemetryRuleForOrganizationOutput",
@@ -1923,7 +1897,7 @@ export interface ValidateTelemetryPipelineConfigurationInput {
   Configuration: TelemetryPipelineConfiguration;
 }
 export const ValidateTelemetryPipelineConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Configuration: TelemetryPipelineConfiguration }).pipe(
       T.all(
         T.Http({
@@ -1944,7 +1918,7 @@ export interface ValidateTelemetryPipelineConfigurationOutput {
   Errors?: ValidationError[];
 }
 export const ValidateTelemetryPipelineConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Errors: S.optional(ValidationErrors) }),
   ).annotate({
     identifier: "ValidateTelemetryPipelineConfigurationOutput",
@@ -1955,7 +1929,7 @@ export interface CreateTelemetryPipelineInput {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateTelemetryPipelineInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       Configuration: TelemetryPipelineConfiguration,
@@ -1977,7 +1951,7 @@ export interface CreateTelemetryPipelineOutput {
   Arn?: string;
 }
 export const CreateTelemetryPipelineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Arn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateTelemetryPipelineOutput",
@@ -1985,18 +1959,17 @@ export const CreateTelemetryPipelineOutput =
 export interface GetTelemetryPipelineInput {
   PipelineIdentifier: string;
 }
-export const GetTelemetryPipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ PipelineIdentifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetTelemetryPipeline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PipelineIdentifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTelemetryPipelineInput",
 }) as any as S.Schema<GetTelemetryPipelineInput>;
@@ -2008,12 +1981,12 @@ export type TelemetryPipelineStatus =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | (string & {});
-export const TelemetryPipelineStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetryPipelineStatus = /*@__PURE__*/ S.String;
 export interface TelemetryPipelineStatusReason {
   Description?: string;
 }
 export const TelemetryPipelineStatusReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Description: S.optional(S.String) }),
   ).annotate({
     identifier: "TelemetryPipelineStatusReason",
@@ -2028,7 +2001,7 @@ export interface TelemetryPipeline {
   StatusReason?: TelemetryPipelineStatusReason;
   Tags?: { [key: string]: string | undefined };
 }
-export const TelemetryPipeline = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TelemetryPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreatedTimeStamp: S.optional(S.Number),
     LastUpdateTimeStamp: S.optional(S.Number),
@@ -2045,8 +2018,8 @@ export const TelemetryPipeline = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetTelemetryPipelineOutput {
   Pipeline?: TelemetryPipeline;
 }
-export const GetTelemetryPipelineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Pipeline: S.optional(TelemetryPipeline) }),
+export const GetTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Pipeline: S.optional(TelemetryPipeline) }),
 ).annotate({
   identifier: "GetTelemetryPipelineOutput",
 }) as any as S.Schema<GetTelemetryPipelineOutput>;
@@ -2055,7 +2028,7 @@ export interface UpdateTelemetryPipelineInput {
   Configuration: TelemetryPipelineConfiguration;
 }
 export const UpdateTelemetryPipelineInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PipelineIdentifier: S.String,
       Configuration: TelemetryPipelineConfiguration,
@@ -2074,14 +2047,14 @@ export const UpdateTelemetryPipelineInput =
   }) as any as S.Schema<UpdateTelemetryPipelineInput>;
 export interface UpdateTelemetryPipelineOutput {}
 export const UpdateTelemetryPipelineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateTelemetryPipelineOutput",
   }) as any as S.Schema<UpdateTelemetryPipelineOutput>;
 export interface DeleteTelemetryPipelineInput {
   PipelineIdentifier: string;
 }
 export const DeleteTelemetryPipelineInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PipelineIdentifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteTelemetryPipeline" }),
@@ -2097,7 +2070,7 @@ export const DeleteTelemetryPipelineInput =
   }) as any as S.Schema<DeleteTelemetryPipelineInput>;
 export interface DeleteTelemetryPipelineOutput {}
 export const DeleteTelemetryPipelineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTelemetryPipelineOutput",
   }) as any as S.Schema<DeleteTelemetryPipelineOutput>;
 export interface ListTelemetryPipelinesInput {
@@ -2105,7 +2078,7 @@ export interface ListTelemetryPipelinesInput {
   NextToken?: string;
 }
 export const ListTelemetryPipelinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
@@ -2125,24 +2098,24 @@ export const ListTelemetryPipelinesInput =
 export interface Source {
   Type?: string;
 }
-export const Source = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(S.String) }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 export type Sources = Source[];
-export const Sources = /*@__PURE__*/ /*#__PURE__*/ S.Array(Source);
+export const Sources = /*@__PURE__*/ S.Array(Source);
 export interface DataSource {
   Name?: string;
   Type?: string;
 }
-export const DataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export type DataSources = DataSource[];
-export const DataSources = /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSource);
+export const DataSources = /*@__PURE__*/ S.Array(DataSource);
 export type Processors = string[];
-export const Processors = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Processors = /*@__PURE__*/ S.Array(S.String);
 export type Sinks = string[];
-export const Sinks = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Sinks = /*@__PURE__*/ S.Array(S.String);
 export interface ConfigurationSummary {
   Sources?: Source[];
   DataSources?: DataSource[];
@@ -2150,7 +2123,7 @@ export interface ConfigurationSummary {
   ProcessorCount?: number;
   Sinks?: string[];
 }
-export const ConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Sources: S.optional(Sources),
     DataSources: S.optional(DataSources),
@@ -2170,22 +2143,21 @@ export interface TelemetryPipelineSummary {
   Tags?: { [key: string]: string | undefined };
   ConfigurationSummary?: ConfigurationSummary;
 }
-export const TelemetryPipelineSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CreatedTimeStamp: S.optional(S.Number),
-      LastUpdateTimeStamp: S.optional(S.Number),
-      Arn: S.optional(S.String),
-      Name: S.optional(S.String),
-      Status: S.optional(TelemetryPipelineStatus),
-      Tags: S.optional(TagMapOutput),
-      ConfigurationSummary: S.optional(ConfigurationSummary),
-    }),
+export const TelemetryPipelineSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreatedTimeStamp: S.optional(S.Number),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Status: S.optional(TelemetryPipelineStatus),
+    Tags: S.optional(TagMapOutput),
+    ConfigurationSummary: S.optional(ConfigurationSummary),
+  }),
 ).annotate({
   identifier: "TelemetryPipelineSummary",
 }) as any as S.Schema<TelemetryPipelineSummary>;
 export type TelemetryPipelineSummaries = TelemetryPipelineSummary[];
-export const TelemetryPipelineSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TelemetryPipelineSummaries = /*@__PURE__*/ S.Array(
   TelemetryPipelineSummary,
 );
 export interface ListTelemetryPipelinesOutput {
@@ -2193,7 +2165,7 @@ export interface ListTelemetryPipelinesOutput {
   NextToken?: string;
 }
 export const ListTelemetryPipelinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PipelineSummaries: S.optional(TelemetryPipelineSummaries),
       NextToken: S.optional(S.String),
@@ -2275,7 +2247,7 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
   CreateCentralizationRuleForOrganizationOutput,
   CreateCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCentralizationRuleForOrganizationInput,
   output: CreateCentralizationRuleForOrganizationOutput,
   errors: [
@@ -2304,7 +2276,7 @@ export const createS3TableIntegration: API.OperationMethod<
   CreateS3TableIntegrationOutput,
   CreateS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateS3TableIntegrationInput,
   output: CreateS3TableIntegrationOutput,
   errors: [
@@ -2333,7 +2305,7 @@ export const createTelemetryRule: API.OperationMethod<
   CreateTelemetryRuleOutput,
   CreateTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleInput,
   output: CreateTelemetryRuleOutput,
   errors: [
@@ -2362,7 +2334,7 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
   CreateTelemetryRuleForOrganizationOutput,
   CreateTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryRuleForOrganizationInput,
   output: CreateTelemetryRuleForOrganizationOutput,
   errors: [
@@ -2390,7 +2362,7 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
   DeleteCentralizationRuleForOrganizationResponse,
   DeleteCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCentralizationRuleForOrganizationInput,
   output: DeleteCentralizationRuleForOrganizationResponse,
   errors: [
@@ -2418,7 +2390,7 @@ export const deleteS3TableIntegration: API.OperationMethod<
   DeleteS3TableIntegrationResponse,
   DeleteS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteS3TableIntegrationInput,
   output: DeleteS3TableIntegrationResponse,
   errors: [
@@ -2446,7 +2418,7 @@ export const deleteTelemetryRule: API.OperationMethod<
   DeleteTelemetryRuleResponse,
   DeleteTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleInput,
   output: DeleteTelemetryRuleResponse,
   errors: [
@@ -2473,7 +2445,7 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
   DeleteTelemetryRuleForOrganizationResponse,
   DeleteTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryRuleForOrganizationInput,
   output: DeleteTelemetryRuleForOrganizationResponse,
   errors: [
@@ -2500,7 +2472,7 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
   GetCentralizationRuleForOrganizationOutput,
   GetCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCentralizationRuleForOrganizationInput,
   output: GetCentralizationRuleForOrganizationOutput,
   errors: [
@@ -2527,7 +2499,7 @@ export const getS3TableIntegration: API.OperationMethod<
   GetS3TableIntegrationOutput,
   GetS3TableIntegrationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetS3TableIntegrationInput,
   output: GetS3TableIntegrationOutput,
   errors: [
@@ -2553,7 +2525,7 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
   GetTelemetryEnrichmentStatusOutput,
   GetTelemetryEnrichmentStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEnrichmentStatusRequest,
   output: GetTelemetryEnrichmentStatusOutput,
   errors: [
@@ -2577,7 +2549,7 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
   GetTelemetryEvaluationStatusOutput,
   GetTelemetryEvaluationStatusError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusRequest,
   output: GetTelemetryEvaluationStatusOutput,
   errors: [
@@ -2601,7 +2573,7 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
   GetTelemetryEvaluationStatusForOrganizationOutput,
   GetTelemetryEvaluationStatusForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryEvaluationStatusForOrganizationRequest,
   output: GetTelemetryEvaluationStatusForOrganizationOutput,
   errors: [
@@ -2627,7 +2599,7 @@ export const getTelemetryRule: API.OperationMethod<
   GetTelemetryRuleOutput,
   GetTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleInput,
   output: GetTelemetryRuleOutput,
   errors: [
@@ -2654,7 +2626,7 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
   GetTelemetryRuleForOrganizationOutput,
   GetTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryRuleForOrganizationInput,
   output: GetTelemetryRuleForOrganizationOutput,
   errors: [
@@ -2695,7 +2667,7 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     ListCentralizationRulesForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCentralizationRulesForOrganizationInput,
   output: ListCentralizationRulesForOrganizationOutput,
   errors: [
@@ -2741,7 +2713,7 @@ export const listResourceTelemetry: API.OperationMethod<
     ListResourceTelemetryError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryInput,
   output: ListResourceTelemetryOutput,
   errors: [
@@ -2787,7 +2759,7 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     ListResourceTelemetryForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryForOrganizationInput,
   output: ListResourceTelemetryForOrganizationOutput,
   errors: [
@@ -2833,7 +2805,7 @@ export const listS3TableIntegrations: API.OperationMethod<
     ListS3TableIntegrationsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListS3TableIntegrationsInput,
   output: ListS3TableIntegrationsOutput,
   errors: [
@@ -2865,7 +2837,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2906,7 +2878,7 @@ export const listTelemetryRules: API.OperationMethod<
     ListTelemetryRulesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesInput,
   output: ListTelemetryRulesOutput,
   errors: [
@@ -2952,7 +2924,7 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     ListTelemetryRulesForOrganizationError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesForOrganizationInput,
   output: ListTelemetryRulesForOrganizationOutput,
   errors: [
@@ -2983,7 +2955,7 @@ export const startTelemetryEnrichment: API.OperationMethod<
   StartTelemetryEnrichmentOutput,
   StartTelemetryEnrichmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEnrichmentRequest,
   output: StartTelemetryEnrichmentOutput,
   errors: [
@@ -3008,7 +2980,7 @@ export const startTelemetryEvaluation: API.OperationMethod<
   StartTelemetryEvaluationResponse,
   StartTelemetryEvaluationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationInput,
   output: StartTelemetryEvaluationResponse,
   errors: [
@@ -3033,7 +3005,7 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
   StartTelemetryEvaluationForOrganizationResponse,
   StartTelemetryEvaluationForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTelemetryEvaluationForOrganizationInput,
   output: StartTelemetryEvaluationForOrganizationResponse,
   errors: [
@@ -3058,7 +3030,7 @@ export const stopTelemetryEnrichment: API.OperationMethod<
   StopTelemetryEnrichmentOutput,
   StopTelemetryEnrichmentError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEnrichmentRequest,
   output: StopTelemetryEnrichmentOutput,
   errors: [
@@ -3083,7 +3055,7 @@ export const stopTelemetryEvaluation: API.OperationMethod<
   StopTelemetryEvaluationResponse,
   StopTelemetryEvaluationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationRequest,
   output: StopTelemetryEvaluationResponse,
   errors: [
@@ -3108,7 +3080,7 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
   StopTelemetryEvaluationForOrganizationResponse,
   StopTelemetryEvaluationForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopTelemetryEvaluationForOrganizationRequest,
   output: StopTelemetryEvaluationForOrganizationResponse,
   errors: [
@@ -3135,7 +3107,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [
@@ -3162,7 +3134,7 @@ export const testTelemetryPipeline: API.OperationMethod<
   TestTelemetryPipelineOutput,
   TestTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestTelemetryPipelineInput,
   output: TestTelemetryPipelineOutput,
   errors: [
@@ -3188,7 +3160,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [
@@ -3216,7 +3188,7 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
   UpdateCentralizationRuleForOrganizationOutput,
   UpdateCentralizationRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCentralizationRuleForOrganizationInput,
   output: UpdateCentralizationRuleForOrganizationOutput,
   errors: [
@@ -3246,7 +3218,7 @@ export const updateTelemetryRule: API.OperationMethod<
   UpdateTelemetryRuleOutput,
   UpdateTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleInput,
   output: UpdateTelemetryRuleOutput,
   errors: [
@@ -3276,7 +3248,7 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
   UpdateTelemetryRuleForOrganizationOutput,
   UpdateTelemetryRuleForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryRuleForOrganizationInput,
   output: UpdateTelemetryRuleForOrganizationOutput,
   errors: [
@@ -3303,7 +3275,7 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
   ValidateTelemetryPipelineConfigurationOutput,
   ValidateTelemetryPipelineConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateTelemetryPipelineConfigurationInput,
   output: ValidateTelemetryPipelineConfigurationOutput,
   errors: [
@@ -3330,7 +3302,7 @@ export const createTelemetryPipeline: API.OperationMethod<
   CreateTelemetryPipelineOutput,
   CreateTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTelemetryPipelineInput,
   output: CreateTelemetryPipelineOutput,
   errors: [
@@ -3358,7 +3330,7 @@ export const getTelemetryPipeline: API.OperationMethod<
   GetTelemetryPipelineOutput,
   GetTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTelemetryPipelineInput,
   output: GetTelemetryPipelineOutput,
   errors: [
@@ -3433,7 +3405,7 @@ export const updateTelemetryPipeline: API.OperationMethod<
   UpdateTelemetryPipelineOutput,
   UpdateTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTelemetryPipelineInput,
   output: UpdateTelemetryPipelineOutput,
   errors: [
@@ -3461,7 +3433,7 @@ export const deleteTelemetryPipeline: API.OperationMethod<
   DeleteTelemetryPipelineOutput,
   DeleteTelemetryPipelineError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTelemetryPipelineInput,
   output: DeleteTelemetryPipelineOutput,
   errors: [
@@ -3503,7 +3475,7 @@ export const listTelemetryPipelines: API.OperationMethod<
     ListTelemetryPipelinesError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryPipelinesInput,
   output: ListTelemetryPipelinesOutput,
   errors: [

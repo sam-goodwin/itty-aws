@@ -52,7 +52,7 @@ export interface EventSchemasPartialUpdateInput {
   updated_at?: string;
 }
 export const EventSchemasPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     event_definition: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface EventSchemasPartialUpdateOutput {
   updated_at?: string;
 }
 export const EventSchemasPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     event_definition: Schema.optional(Schema.String),
     property_group: Schema.optional(
@@ -272,10 +272,8 @@ export const EventSchemasPartialUpdateOutput =
  * @param id - A UUID string identifying this event schema.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventSchemasPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSchemasPartialUpdateInput,
-    outputSchema: EventSchemasPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const eventSchemasPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSchemasPartialUpdateInput,
+  outputSchema: EventSchemasPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

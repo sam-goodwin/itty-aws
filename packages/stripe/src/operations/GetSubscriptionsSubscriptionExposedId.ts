@@ -13,7 +13,7 @@ export interface GetSubscriptionsSubscriptionExposedIdInput {
   expand?: string;
 }
 export const GetSubscriptionsSubscriptionExposedIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription_exposed_id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -1082,7 +1082,7 @@ export interface GetSubscriptionsSubscriptionExposedIdOutput {
   trial_start: number | null;
 }
 export const GetSubscriptionsSubscriptionExposedIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -1955,7 +1955,7 @@ export const GetSubscriptionsSubscriptionExposedIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetSubscriptionsSubscriptionExposedId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetSubscriptionsSubscriptionExposedIdInput,
     outputSchema: GetSubscriptionsSubscriptionExposedIdOutput,
   }));

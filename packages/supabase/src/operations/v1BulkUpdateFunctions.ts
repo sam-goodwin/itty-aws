@@ -8,7 +8,7 @@ export interface V1BulkUpdateFunctionsInput {
   ref: string;
 }
 export const V1BulkUpdateFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "PUT", path: "/v1/projects/{ref}/functions" }),
@@ -32,7 +32,7 @@ export interface V1BulkUpdateFunctionsOutput {
   }[];
 }
 export const V1BulkUpdateFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     functions: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -59,10 +59,8 @@ export const V1BulkUpdateFunctionsOutput =
  *
  * @param ref - Project ref
  */
-export const v1BulkUpdateFunctions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1BulkUpdateFunctionsInput,
-    outputSchema: V1BulkUpdateFunctionsOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1BulkUpdateFunctions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1BulkUpdateFunctionsInput,
+  outputSchema: V1BulkUpdateFunctionsOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

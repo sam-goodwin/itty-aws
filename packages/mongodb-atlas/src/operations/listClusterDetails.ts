@@ -12,7 +12,7 @@ export interface ListClusterDetailsInput {
   pretty?: boolean;
 }
 export const ListClusterDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -25,7 +25,7 @@ export const ListClusterDetailsInput =
 // Output Schema
 export type ListClusterDetailsOutput = void;
 export const ListClusterDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListClusterDetailsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListClusterDetailsOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const ListClusterDetailsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listClusterDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listClusterDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListClusterDetailsInput,
   outputSchema: ListClusterDetailsOutput,
   errors: [Forbidden] as const,

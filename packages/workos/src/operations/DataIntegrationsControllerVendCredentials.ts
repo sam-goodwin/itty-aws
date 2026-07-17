@@ -10,7 +10,7 @@ export interface DataIntegrationsControllerVendCredentialsInput {
   organization_id?: string;
 }
 export const DataIntegrationsControllerVendCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
     organization_id: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export type DataIntegrationsControllerVendCredentialsOutput =
     }
   | { active: boolean; error: "not_installed" | "needs_reauthorization" };
 export const DataIntegrationsControllerVendCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       active: Schema.Boolean,
       credential: Schema.Struct({
@@ -72,7 +72,7 @@ export const DataIntegrationsControllerVendCredentialsOutput =
  * @param slug - The identifier of the integration.
  */
 export const DataIntegrationsControllerVendCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataIntegrationsControllerVendCredentialsInput,
     outputSchema: DataIntegrationsControllerVendCredentialsOutput,
     errors: [BadRequest, NotFound] as const,

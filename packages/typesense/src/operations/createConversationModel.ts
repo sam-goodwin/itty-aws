@@ -18,7 +18,7 @@ export interface CreateConversationModelInput {
   vllm_url?: string;
 }
 export const CreateConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     model_name: Schema.String,
     api_key: Schema.optional(SensitiveString),
@@ -37,7 +37,7 @@ export interface CreateConversationModelOutput {
   id: string;
 }
 export const CreateConversationModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<CreateConversationModelOutput>;
 
@@ -47,10 +47,8 @@ export const CreateConversationModelOutput =
  *
  * Create a Conversation Model
  */
-export const createConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateConversationModelInput,
-    outputSchema: CreateConversationModelOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const createConversationModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateConversationModelInput,
+  outputSchema: CreateConversationModelOutput,
+  errors: [BadRequest] as const,
+}));

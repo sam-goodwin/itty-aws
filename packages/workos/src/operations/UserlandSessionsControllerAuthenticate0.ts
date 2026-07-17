@@ -13,7 +13,7 @@ import * as Redacted from "effect/Redacted";
 // Input Schema
 export interface UserlandSessionsControllerAuthenticate0Input {}
 export const UserlandSessionsControllerAuthenticate0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/user_management/authenticate" }),
   ) as unknown as Schema.Codec<UserlandSessionsControllerAuthenticate0Input>;
 
@@ -72,7 +72,7 @@ export interface UserlandSessionsControllerAuthenticate0Output {
   };
 }
 export const UserlandSessionsControllerAuthenticate0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export const UserlandSessionsControllerAuthenticate0Output =
  * Authenticate a user with a specified [authentication method](/reference/authkit/authentication).
  */
 export const UserlandSessionsControllerAuthenticate0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandSessionsControllerAuthenticate0Input,
     outputSchema: UserlandSessionsControllerAuthenticate0Output,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

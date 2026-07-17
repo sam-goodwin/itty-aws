@@ -187,28 +187,27 @@ export interface Tag {
   key?: string;
   value?: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type EncryptionType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
-export const EncryptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionType = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
   kmsKeyId?: string;
   kmsDataKeyReusePeriodSeconds?: number;
   type: EncryptionType;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kmsKeyId: S.optional(S.String),
-      kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
-      type: EncryptionType,
-    }),
+export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kmsKeyId: S.optional(S.String),
+    kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
+    type: EncryptionType,
+  }),
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
@@ -217,7 +216,7 @@ export interface CreateActivityInput {
   tags?: Tag[];
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const CreateActivityInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateActivityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tags: S.optional(TagList),
@@ -240,7 +239,7 @@ export interface CreateActivityOutput {
   activityArn: string;
   creationDate: Date;
 }
-export const CreateActivityOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateActivityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityArn: S.String,
     creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -249,32 +248,31 @@ export const CreateActivityOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateActivityOutput",
 }) as any as S.Schema<CreateActivityOutput>;
 export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
-export const StateMachineType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StateMachineType = /*@__PURE__*/ S.String;
 export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF" | (string & {});
-export const LogLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogLevel = /*@__PURE__*/ S.String;
 export interface CloudWatchLogsLogGroup {
   logGroupArn?: string;
 }
-export const CloudWatchLogsLogGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ logGroupArn: S.optional(S.String) }),
+export const CloudWatchLogsLogGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ logGroupArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CloudWatchLogsLogGroup",
 }) as any as S.Schema<CloudWatchLogsLogGroup>;
 export interface LogDestination {
   cloudWatchLogsLogGroup?: CloudWatchLogsLogGroup;
 }
-export const LogDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
 ).annotate({ identifier: "LogDestination" }) as any as S.Schema<LogDestination>;
 export type LogDestinationList = LogDestination[];
-export const LogDestinationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LogDestination);
+export const LogDestinationList = /*@__PURE__*/ S.Array(LogDestination);
 export interface LoggingConfiguration {
   level?: LogLevel;
   includeExecutionData?: boolean;
   destinations?: LogDestination[];
 }
-export const LoggingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(LogLevel),
     includeExecutionData: S.optional(S.Boolean),
@@ -286,7 +284,7 @@ export const LoggingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface TracingConfiguration {
   enabled?: boolean;
 }
-export const TracingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TracingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ enabled: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "TracingConfiguration",
@@ -303,30 +301,29 @@ export interface CreateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const CreateStateMachineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      definition: SensitiveString,
-      roleArn: S.String,
-      type: S.optional(StateMachineType),
-      loggingConfiguration: S.optional(LoggingConfiguration),
-      tags: S.optional(TagList),
-      tracingConfiguration: S.optional(TracingConfiguration),
-      publish: S.optional(S.Boolean),
-      versionDescription: S.optional(SensitiveString),
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateStateMachineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    definition: SensitiveString,
+    roleArn: S.String,
+    type: S.optional(StateMachineType),
+    loggingConfiguration: S.optional(LoggingConfiguration),
+    tags: S.optional(TagList),
+    tracingConfiguration: S.optional(TracingConfiguration),
+    publish: S.optional(S.Boolean),
+    versionDescription: S.optional(SensitiveString),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateStateMachineInput",
 }) as any as S.Schema<CreateStateMachineInput>;
@@ -335,13 +332,12 @@ export interface CreateStateMachineOutput {
   creationDate: Date;
   stateMachineVersionArn?: string;
 }
-export const CreateStateMachineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineArn: S.String,
-      creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      stateMachineVersionArn: S.optional(S.String),
-    }).pipe(ns),
+export const CreateStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineArn: S.String,
+    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    stateMachineVersionArn: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "CreateStateMachineOutput",
 }) as any as S.Schema<CreateStateMachineOutput>;
@@ -351,19 +347,19 @@ export type ValidationExceptionReason =
   | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
   | "INVALID_ROUTING_CONFIGURATION"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface RoutingConfigurationListItem {
   stateMachineVersionArn: string;
   weight: number;
 }
 export const RoutingConfigurationListItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ stateMachineVersionArn: S.String, weight: S.Number }),
   ).annotate({
     identifier: "RoutingConfigurationListItem",
   }) as any as S.Schema<RoutingConfigurationListItem>;
 export type RoutingConfigurationList = RoutingConfigurationListItem[];
-export const RoutingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RoutingConfigurationList = /*@__PURE__*/ S.Array(
   RoutingConfigurationListItem,
 );
 export interface CreateStateMachineAliasInput {
@@ -372,7 +368,7 @@ export interface CreateStateMachineAliasInput {
   routingConfiguration: RoutingConfigurationListItem[];
 }
 export const CreateStateMachineAliasInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.optional(SensitiveString),
       name: S.String,
@@ -396,7 +392,7 @@ export interface CreateStateMachineAliasOutput {
   creationDate: Date;
 }
 export const CreateStateMachineAliasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineAliasArn: S.String,
       creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -407,7 +403,7 @@ export const CreateStateMachineAliasOutput =
 export interface DeleteActivityInput {
   activityArn: string;
 }
-export const DeleteActivityInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteActivityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activityArn: S.String }).pipe(
     T.all(
       ns,
@@ -423,7 +419,7 @@ export const DeleteActivityInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteActivityInput",
 }) as any as S.Schema<DeleteActivityInput>;
 export interface DeleteActivityOutput {}
-export const DeleteActivityOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteActivityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteActivityOutput",
@@ -431,25 +427,24 @@ export const DeleteActivityOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteStateMachineInput {
   stateMachineArn: string;
 }
-export const DeleteStateMachineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ stateMachineArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteStateMachineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ stateMachineArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteStateMachineInput",
 }) as any as S.Schema<DeleteStateMachineInput>;
 export interface DeleteStateMachineOutput {}
-export const DeleteStateMachineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const DeleteStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteStateMachineOutput",
 }) as any as S.Schema<DeleteStateMachineOutput>;
@@ -457,7 +452,7 @@ export interface DeleteStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
 export const DeleteStateMachineAliasInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ stateMachineAliasArn: S.String }).pipe(
       T.all(
         ns,
@@ -474,14 +469,14 @@ export const DeleteStateMachineAliasInput =
   }) as any as S.Schema<DeleteStateMachineAliasInput>;
 export interface DeleteStateMachineAliasOutput {}
 export const DeleteStateMachineAliasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteStateMachineAliasOutput",
   }) as any as S.Schema<DeleteStateMachineAliasOutput>;
 export interface DeleteStateMachineVersionInput {
   stateMachineVersionArn: string;
 }
 export const DeleteStateMachineVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ stateMachineVersionArn: S.String }).pipe(
       T.all(
         ns,
@@ -498,13 +493,13 @@ export const DeleteStateMachineVersionInput =
   }) as any as S.Schema<DeleteStateMachineVersionInput>;
 export interface DeleteStateMachineVersionOutput {}
 export const DeleteStateMachineVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteStateMachineVersionOutput",
   }) as any as S.Schema<DeleteStateMachineVersionOutput>;
 export interface DescribeActivityInput {
   activityArn: string;
 }
-export const DescribeActivityInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeActivityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activityArn: S.String }).pipe(
     T.all(
       ns,
@@ -525,39 +520,37 @@ export interface DescribeActivityOutput {
   creationDate: Date;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const DescribeActivityOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      activityArn: S.String,
-      name: S.String,
-      creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-    }).pipe(ns),
+export const DescribeActivityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    activityArn: S.String,
+    name: S.String,
+    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeActivityOutput",
 }) as any as S.Schema<DescribeActivityOutput>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
-export const IncludedData = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IncludedData = /*@__PURE__*/ S.String;
 export interface DescribeExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
 }
-export const DescribeExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.String,
-      includedData: S.optional(IncludedData),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.String,
+    includedData: S.optional(IncludedData),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeExecutionInput",
 }) as any as S.Schema<DescribeExecutionInput>;
@@ -569,12 +562,12 @@ export type ExecutionStatus =
   | "ABORTED"
   | "PENDING_REDRIVE"
   | (string & {});
-export const ExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionStatus = /*@__PURE__*/ S.String;
 export interface CloudWatchEventsExecutionDataDetails {
   included?: boolean;
 }
 export const CloudWatchEventsExecutionDataDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ included: S.optional(S.Boolean) }),
   ).annotate({
     identifier: "CloudWatchEventsExecutionDataDetails",
@@ -584,7 +577,7 @@ export type ExecutionRedriveStatus =
   | "NOT_REDRIVABLE"
   | "REDRIVABLE_BY_MAP_RUN"
   | (string & {});
-export const ExecutionRedriveStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionRedriveStatus = /*@__PURE__*/ S.String;
 export interface DescribeExecutionOutput {
   executionArn: string;
   stateMachineArn: string;
@@ -607,30 +600,29 @@ export interface DescribeExecutionOutput {
   redriveStatus?: ExecutionRedriveStatus;
   redriveStatusReason?: string | redacted.Redacted<string>;
 }
-export const DescribeExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.String,
-      stateMachineArn: S.String,
-      name: S.optional(S.String),
-      status: ExecutionStatus,
-      startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      input: S.optional(SensitiveString),
-      inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-      output: S.optional(SensitiveString),
-      outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-      traceHeader: S.optional(S.String),
-      mapRunArn: S.optional(S.String),
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-      stateMachineVersionArn: S.optional(S.String),
-      stateMachineAliasArn: S.optional(S.String),
-      redriveCount: S.optional(S.Number),
-      redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      redriveStatus: S.optional(ExecutionRedriveStatus),
-      redriveStatusReason: S.optional(SensitiveString),
-    }).pipe(ns),
+export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.String,
+    stateMachineArn: S.String,
+    name: S.optional(S.String),
+    status: ExecutionStatus,
+    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    input: S.optional(SensitiveString),
+    inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+    output: S.optional(SensitiveString),
+    outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+    traceHeader: S.optional(S.String),
+    mapRunArn: S.optional(S.String),
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+    stateMachineVersionArn: S.optional(S.String),
+    stateMachineAliasArn: S.optional(S.String),
+    redriveCount: S.optional(S.Number),
+    redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    redriveStatus: S.optional(ExecutionRedriveStatus),
+    redriveStatusReason: S.optional(SensitiveString),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeExecutionOutput",
 }) as any as S.Schema<DescribeExecutionOutput>;
@@ -641,11 +633,11 @@ export type KmsKeyState =
   | "UNAVAILABLE"
   | "CREATING"
   | (string & {});
-export const KmsKeyState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const KmsKeyState = /*@__PURE__*/ S.String;
 export interface DescribeMapRunInput {
   mapRunArn: string;
 }
-export const DescribeMapRunInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeMapRunInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mapRunArn: S.String }).pipe(
     T.all(
       ns,
@@ -666,7 +658,7 @@ export type MapRunStatus =
   | "FAILED"
   | "ABORTED"
   | (string & {});
-export const MapRunStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MapRunStatus = /*@__PURE__*/ S.String;
 export interface MapRunItemCounts {
   pending: number;
   running: number;
@@ -679,7 +671,7 @@ export interface MapRunItemCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-export const MapRunItemCounts = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MapRunItemCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pending: S.Number,
     running: S.Number,
@@ -707,7 +699,7 @@ export interface MapRunExecutionCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-export const MapRunExecutionCounts = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MapRunExecutionCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pending: S.Number,
     running: S.Number,
@@ -737,7 +729,7 @@ export interface DescribeMapRunOutput {
   redriveCount?: number;
   redriveDate?: Date;
 }
-export const DescribeMapRunOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeMapRunOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapRunArn: S.String,
     executionArn: S.String,
@@ -759,34 +751,32 @@ export interface DescribeStateMachineInput {
   stateMachineArn: string;
   includedData?: IncludedData;
 }
-export const DescribeStateMachineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineArn: S.String,
-      includedData: S.optional(IncludedData),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineArn: S.String,
+    includedData: S.optional(IncludedData),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeStateMachineInput",
 }) as any as S.Schema<DescribeStateMachineInput>;
 export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
-export const StateMachineStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StateMachineStatus = /*@__PURE__*/ S.String;
 export type VariableNameList = string | redacted.Redacted<string>[];
-export const VariableNameList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const VariableNameList = /*@__PURE__*/ S.Array(SensitiveString);
 export type VariableReferences = {
   [key: string]: string | redacted.Redacted<string>[] | undefined;
 };
-export const VariableReferences = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const VariableReferences = /*@__PURE__*/ S.Record(
   S.String,
   VariableNameList.pipe(S.optional),
 );
@@ -808,24 +798,23 @@ export interface DescribeStateMachineOutput {
     [key: string]: string | redacted.Redacted<string>[] | undefined;
   };
 }
-export const DescribeStateMachineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineArn: S.String,
-      name: S.String,
-      status: S.optional(StateMachineStatus),
-      definition: SensitiveString,
-      roleArn: S.String,
-      type: StateMachineType,
-      creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      loggingConfiguration: S.optional(LoggingConfiguration),
-      tracingConfiguration: S.optional(TracingConfiguration),
-      label: S.optional(S.String),
-      revisionId: S.optional(S.String),
-      description: S.optional(SensitiveString),
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-      variableReferences: S.optional(VariableReferences),
-    }).pipe(ns),
+export const DescribeStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineArn: S.String,
+    name: S.String,
+    status: S.optional(StateMachineStatus),
+    definition: SensitiveString,
+    roleArn: S.String,
+    type: StateMachineType,
+    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    loggingConfiguration: S.optional(LoggingConfiguration),
+    tracingConfiguration: S.optional(TracingConfiguration),
+    label: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    variableReferences: S.optional(VariableReferences),
+  }).pipe(ns),
 ).annotate({
   identifier: "DescribeStateMachineOutput",
 }) as any as S.Schema<DescribeStateMachineOutput>;
@@ -833,7 +822,7 @@ export interface DescribeStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
 export const DescribeStateMachineAliasInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ stateMachineAliasArn: S.String }).pipe(
       T.all(
         ns,
@@ -857,7 +846,7 @@ export interface DescribeStateMachineAliasOutput {
   updateDate?: Date;
 }
 export const DescribeStateMachineAliasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineAliasArn: S.optional(S.String),
       name: S.optional(S.String),
@@ -874,7 +863,7 @@ export interface DescribeStateMachineForExecutionInput {
   includedData?: IncludedData;
 }
 export const DescribeStateMachineForExecutionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       executionArn: S.String,
       includedData: S.optional(IncludedData),
@@ -909,7 +898,7 @@ export interface DescribeStateMachineForExecutionOutput {
   };
 }
 export const DescribeStateMachineForExecutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineArn: S.String,
       name: S.String,
@@ -931,7 +920,7 @@ export interface GetActivityTaskInput {
   activityArn: string;
   workerName?: string;
 }
-export const GetActivityTaskInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActivityTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activityArn: S.String, workerName: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -950,7 +939,7 @@ export interface GetActivityTaskOutput {
   taskToken?: string;
   input?: string | redacted.Redacted<string>;
 }
-export const GetActivityTaskOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActivityTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskToken: S.optional(S.String),
     input: S.optional(SensitiveString),
@@ -965,25 +954,24 @@ export interface GetExecutionHistoryInput {
   nextToken?: string;
   includeExecutionData?: boolean;
 }
-export const GetExecutionHistoryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.String,
-      maxResults: S.optional(S.Number),
-      reverseOrder: S.optional(S.Boolean),
-      nextToken: S.optional(S.String),
-      includeExecutionData: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetExecutionHistoryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.String,
+    maxResults: S.optional(S.Number),
+    reverseOrder: S.optional(S.Boolean),
+    nextToken: S.optional(S.String),
+    includeExecutionData: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetExecutionHistoryInput",
 }) as any as S.Schema<GetExecutionHistoryInput>;
@@ -1051,17 +1039,16 @@ export type HistoryEventType =
   | "MapRunRedriven"
   | "EvaluationFailed"
   | (string & {});
-export const HistoryEventType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HistoryEventType = /*@__PURE__*/ S.String;
 export interface ActivityFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ActivityFailedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-    }),
+export const ActivityFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "ActivityFailedEventDetails",
 }) as any as S.Schema<ActivityFailedEventDetails>;
@@ -1070,7 +1057,7 @@ export interface ActivityScheduleFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const ActivityScheduleFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1082,7 +1069,7 @@ export interface HistoryEventExecutionDataDetails {
   truncated?: boolean;
 }
 export const HistoryEventExecutionDataDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ truncated: S.optional(S.Boolean) }),
   ).annotate({
     identifier: "HistoryEventExecutionDataDetails",
@@ -1095,7 +1082,7 @@ export interface ActivityScheduledEventDetails {
   heartbeatInSeconds?: number;
 }
 export const ActivityScheduledEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String,
       input: S.optional(SensitiveString),
@@ -1110,7 +1097,7 @@ export interface ActivityStartedEventDetails {
   workerName?: string;
 }
 export const ActivityStartedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ workerName: S.optional(S.String) }),
   ).annotate({
     identifier: "ActivityStartedEventDetails",
@@ -1120,7 +1107,7 @@ export interface ActivitySucceededEventDetails {
   outputDetails?: HistoryEventExecutionDataDetails;
 }
 export const ActivitySucceededEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       output: S.optional(SensitiveString),
       outputDetails: S.optional(HistoryEventExecutionDataDetails),
@@ -1133,7 +1120,7 @@ export interface ActivityTimedOutEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const ActivityTimedOutEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1147,21 +1134,20 @@ export interface TaskFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const TaskFailedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.String,
-      resource: S.String,
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-    }),
+export const TaskFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.String,
+    resource: S.String,
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "TaskFailedEventDetails",
 }) as any as S.Schema<TaskFailedEventDetails>;
 export interface TaskCredentials {
   roleArn?: string;
 }
-export const TaskCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TaskCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roleArn: S.optional(S.String) }),
 ).annotate({
   identifier: "TaskCredentials",
@@ -1175,17 +1161,16 @@ export interface TaskScheduledEventDetails {
   heartbeatInSeconds?: number;
   taskCredentials?: TaskCredentials;
 }
-export const TaskScheduledEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.String,
-      resource: S.String,
-      region: S.String,
-      parameters: SensitiveString,
-      timeoutInSeconds: S.optional(S.Number),
-      heartbeatInSeconds: S.optional(S.Number),
-      taskCredentials: S.optional(TaskCredentials),
-    }),
+export const TaskScheduledEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.String,
+    resource: S.String,
+    region: S.String,
+    parameters: SensitiveString,
+    timeoutInSeconds: S.optional(S.Number),
+    heartbeatInSeconds: S.optional(S.Number),
+    taskCredentials: S.optional(TaskCredentials),
+  }),
 ).annotate({
   identifier: "TaskScheduledEventDetails",
 }) as any as S.Schema<TaskScheduledEventDetails>;
@@ -1196,7 +1181,7 @@ export interface TaskStartFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const TaskStartFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceType: S.String,
       resource: S.String,
@@ -1210,8 +1195,8 @@ export interface TaskStartedEventDetails {
   resourceType: string;
   resource: string;
 }
-export const TaskStartedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ resourceType: S.String, resource: S.String }),
+export const TaskStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceType: S.String, resource: S.String }),
 ).annotate({
   identifier: "TaskStartedEventDetails",
 }) as any as S.Schema<TaskStartedEventDetails>;
@@ -1222,7 +1207,7 @@ export interface TaskSubmitFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const TaskSubmitFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceType: S.String,
       resource: S.String,
@@ -1238,14 +1223,13 @@ export interface TaskSubmittedEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-export const TaskSubmittedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.String,
-      resource: S.String,
-      output: S.optional(SensitiveString),
-      outputDetails: S.optional(HistoryEventExecutionDataDetails),
-    }),
+export const TaskSubmittedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.String,
+    resource: S.String,
+    output: S.optional(SensitiveString),
+    outputDetails: S.optional(HistoryEventExecutionDataDetails),
+  }),
 ).annotate({
   identifier: "TaskSubmittedEventDetails",
 }) as any as S.Schema<TaskSubmittedEventDetails>;
@@ -1255,14 +1239,13 @@ export interface TaskSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-export const TaskSucceededEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.String,
-      resource: S.String,
-      output: S.optional(SensitiveString),
-      outputDetails: S.optional(HistoryEventExecutionDataDetails),
-    }),
+export const TaskSucceededEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.String,
+    resource: S.String,
+    output: S.optional(SensitiveString),
+    outputDetails: S.optional(HistoryEventExecutionDataDetails),
+  }),
 ).annotate({
   identifier: "TaskSucceededEventDetails",
 }) as any as S.Schema<TaskSucceededEventDetails>;
@@ -1272,14 +1255,13 @@ export interface TaskTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const TaskTimedOutEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.String,
-      resource: S.String,
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-    }),
+export const TaskTimedOutEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.String,
+    resource: S.String,
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "TaskTimedOutEventDetails",
 }) as any as S.Schema<TaskTimedOutEventDetails>;
@@ -1288,7 +1270,7 @@ export interface ExecutionFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const ExecutionFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1304,7 +1286,7 @@ export interface ExecutionStartedEventDetails {
   stateMachineVersionArn?: string;
 }
 export const ExecutionStartedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       input: S.optional(SensitiveString),
       inputDetails: S.optional(HistoryEventExecutionDataDetails),
@@ -1320,7 +1302,7 @@ export interface ExecutionSucceededEventDetails {
   outputDetails?: HistoryEventExecutionDataDetails;
 }
 export const ExecutionSucceededEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       output: S.optional(SensitiveString),
       outputDetails: S.optional(HistoryEventExecutionDataDetails),
@@ -1333,7 +1315,7 @@ export interface ExecutionAbortedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const ExecutionAbortedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1346,7 +1328,7 @@ export interface ExecutionTimedOutEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const ExecutionTimedOutEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1358,7 +1340,7 @@ export interface ExecutionRedrivenEventDetails {
   redriveCount?: number;
 }
 export const ExecutionRedrivenEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ redriveCount: S.optional(S.Number) }),
   ).annotate({
     identifier: "ExecutionRedrivenEventDetails",
@@ -1367,7 +1349,7 @@ export interface MapStateStartedEventDetails {
   length?: number;
 }
 export const MapStateStartedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ length: S.optional(S.Number) }),
   ).annotate({
     identifier: "MapStateStartedEventDetails",
@@ -1376,8 +1358,8 @@ export interface MapIterationEventDetails {
   name?: string;
   index?: number;
 }
-export const MapIterationEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.optional(S.String), index: S.optional(S.Number) }),
+export const MapIterationEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), index: S.optional(S.Number) }),
 ).annotate({
   identifier: "MapIterationEventDetails",
 }) as any as S.Schema<MapIterationEventDetails>;
@@ -1386,7 +1368,7 @@ export interface LambdaFunctionFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const LambdaFunctionFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1399,7 +1381,7 @@ export interface LambdaFunctionScheduleFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const LambdaFunctionScheduleFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1415,7 +1397,7 @@ export interface LambdaFunctionScheduledEventDetails {
   taskCredentials?: TaskCredentials;
 }
 export const LambdaFunctionScheduledEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String,
       input: S.optional(SensitiveString),
@@ -1431,7 +1413,7 @@ export interface LambdaFunctionStartFailedEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const LambdaFunctionStartFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1444,7 +1426,7 @@ export interface LambdaFunctionSucceededEventDetails {
   outputDetails?: HistoryEventExecutionDataDetails;
 }
 export const LambdaFunctionSucceededEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       output: S.optional(SensitiveString),
       outputDetails: S.optional(HistoryEventExecutionDataDetails),
@@ -1457,7 +1439,7 @@ export interface LambdaFunctionTimedOutEventDetails {
   cause?: string | redacted.Redacted<string>;
 }
 export const LambdaFunctionTimedOutEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1470,28 +1452,27 @@ export interface StateEnteredEventDetails {
   input?: string | redacted.Redacted<string>;
   inputDetails?: HistoryEventExecutionDataDetails;
 }
-export const StateEnteredEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      input: S.optional(SensitiveString),
-      inputDetails: S.optional(HistoryEventExecutionDataDetails),
-    }),
+export const StateEnteredEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    input: S.optional(SensitiveString),
+    inputDetails: S.optional(HistoryEventExecutionDataDetails),
+  }),
 ).annotate({
   identifier: "StateEnteredEventDetails",
 }) as any as S.Schema<StateEnteredEventDetails>;
 export type AssignedVariables = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const AssignedVariables = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const AssignedVariables = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
 export interface AssignedVariablesDetails {
   truncated?: boolean;
 }
-export const AssignedVariablesDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ truncated: S.optional(S.Boolean) }),
+export const AssignedVariablesDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ truncated: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "AssignedVariablesDetails",
 }) as any as S.Schema<AssignedVariablesDetails>;
@@ -1504,23 +1485,22 @@ export interface StateExitedEventDetails {
   };
   assignedVariablesDetails?: AssignedVariablesDetails;
 }
-export const StateExitedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      output: S.optional(SensitiveString),
-      outputDetails: S.optional(HistoryEventExecutionDataDetails),
-      assignedVariables: S.optional(AssignedVariables),
-      assignedVariablesDetails: S.optional(AssignedVariablesDetails),
-    }),
+export const StateExitedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    output: S.optional(SensitiveString),
+    outputDetails: S.optional(HistoryEventExecutionDataDetails),
+    assignedVariables: S.optional(AssignedVariables),
+    assignedVariablesDetails: S.optional(AssignedVariablesDetails),
+  }),
 ).annotate({
   identifier: "StateExitedEventDetails",
 }) as any as S.Schema<StateExitedEventDetails>;
 export interface MapRunStartedEventDetails {
   mapRunArn?: string;
 }
-export const MapRunStartedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ mapRunArn: S.optional(S.String) }),
+export const MapRunStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ mapRunArn: S.optional(S.String) }),
 ).annotate({
   identifier: "MapRunStartedEventDetails",
 }) as any as S.Schema<MapRunStartedEventDetails>;
@@ -1528,12 +1508,11 @@ export interface MapRunFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const MapRunFailedEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-    }),
+export const MapRunFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "MapRunFailedEventDetails",
 }) as any as S.Schema<MapRunFailedEventDetails>;
@@ -1541,12 +1520,11 @@ export interface MapRunRedrivenEventDetails {
   mapRunArn?: string;
   redriveCount?: number;
 }
-export const MapRunRedrivenEventDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mapRunArn: S.optional(S.String),
-      redriveCount: S.optional(S.Number),
-    }),
+export const MapRunRedrivenEventDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mapRunArn: S.optional(S.String),
+    redriveCount: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "MapRunRedrivenEventDetails",
 }) as any as S.Schema<MapRunRedrivenEventDetails>;
@@ -1557,7 +1535,7 @@ export interface EvaluationFailedEventDetails {
   state: string;
 }
 export const EvaluationFailedEventDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(SensitiveString),
       cause: S.optional(SensitiveString),
@@ -1610,7 +1588,7 @@ export interface HistoryEvent {
   mapRunRedrivenEventDetails?: MapRunRedrivenEventDetails;
   evaluationFailedEventDetails?: EvaluationFailedEventDetails;
 }
-export const HistoryEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HistoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     type: HistoryEventType,
@@ -1670,18 +1648,16 @@ export const HistoryEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HistoryEvent" }) as any as S.Schema<HistoryEvent>;
 export type HistoryEventList = HistoryEvent[];
-export const HistoryEventList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HistoryEvent);
+export const HistoryEventList = /*@__PURE__*/ S.Array(HistoryEvent);
 export interface GetExecutionHistoryOutput {
   events: HistoryEvent[];
   nextToken?: string;
 }
-export const GetExecutionHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      events: HistoryEventList,
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
+export const GetExecutionHistoryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    events: HistoryEventList,
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "GetExecutionHistoryOutput",
 }) as any as S.Schema<GetExecutionHistoryOutput>;
@@ -1689,7 +1665,7 @@ export interface ListActivitiesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListActivitiesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActivitiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -1712,7 +1688,7 @@ export interface ActivityListItem {
   name: string;
   creationDate: Date;
 }
-export const ActivityListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActivityListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityArn: S.String,
     name: S.String,
@@ -1722,13 +1698,12 @@ export const ActivityListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActivityListItem",
 }) as any as S.Schema<ActivityListItem>;
 export type ActivityList = ActivityListItem[];
-export const ActivityList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActivityListItem);
+export const ActivityList = /*@__PURE__*/ S.Array(ActivityListItem);
 export interface ListActivitiesOutput {
   activities: ActivityListItem[];
   nextToken?: string;
 }
-export const ListActivitiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activities: ActivityList, nextToken: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -1739,7 +1714,7 @@ export type ExecutionRedriveFilter =
   | "REDRIVEN"
   | "NOT_REDRIVEN"
   | (string & {});
-export const ExecutionRedriveFilter = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionRedriveFilter = /*@__PURE__*/ S.String;
 export interface ListExecutionsInput {
   stateMachineArn?: string;
   statusFilter?: ExecutionStatus;
@@ -1748,7 +1723,7 @@ export interface ListExecutionsInput {
   mapRunArn?: string;
   redriveFilter?: ExecutionRedriveFilter;
 }
-export const ListExecutionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListExecutionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateMachineArn: S.optional(S.String),
     statusFilter: S.optional(ExecutionStatus),
@@ -1784,7 +1759,7 @@ export interface ExecutionListItem {
   redriveCount?: number;
   redriveDate?: Date;
 }
-export const ExecutionListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutionListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     stateMachineArn: S.String,
@@ -1803,13 +1778,12 @@ export const ExecutionListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExecutionListItem",
 }) as any as S.Schema<ExecutionListItem>;
 export type ExecutionList = ExecutionListItem[];
-export const ExecutionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExecutionListItem);
+export const ExecutionList = /*@__PURE__*/ S.Array(ExecutionListItem);
 export interface ListExecutionsOutput {
   executions: ExecutionListItem[];
   nextToken?: string;
 }
-export const ListExecutionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ executions: ExecutionList, nextToken: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -1821,7 +1795,7 @@ export interface ListMapRunsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListMapRunsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMapRunsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     maxResults: S.optional(S.Number),
@@ -1847,7 +1821,7 @@ export interface MapRunListItem {
   startDate: Date;
   stopDate?: Date;
 }
-export const MapRunListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MapRunListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     mapRunArn: S.String,
@@ -1857,12 +1831,12 @@ export const MapRunListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MapRunListItem" }) as any as S.Schema<MapRunListItem>;
 export type MapRunList = MapRunListItem[];
-export const MapRunList = /*@__PURE__*/ /*#__PURE__*/ S.Array(MapRunListItem);
+export const MapRunList = /*@__PURE__*/ S.Array(MapRunListItem);
 export interface ListMapRunsOutput {
   mapRuns: MapRunListItem[];
   nextToken?: string;
 }
-export const ListMapRunsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMapRunsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mapRuns: MapRunList, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListMapRunsOutput",
@@ -1873,7 +1847,7 @@ export interface ListStateMachineAliasesInput {
   maxResults?: number;
 }
 export const ListStateMachineAliasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineArn: S.String,
       nextToken: S.optional(S.String),
@@ -1896,17 +1870,16 @@ export interface StateMachineAliasListItem {
   stateMachineAliasArn: string;
   creationDate: Date;
 }
-export const StateMachineAliasListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineAliasArn: S.String,
-      creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
+export const StateMachineAliasListItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineAliasArn: S.String,
+    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
 ).annotate({
   identifier: "StateMachineAliasListItem",
 }) as any as S.Schema<StateMachineAliasListItem>;
 export type StateMachineAliasList = StateMachineAliasListItem[];
-export const StateMachineAliasList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const StateMachineAliasList = /*@__PURE__*/ S.Array(
   StateMachineAliasListItem,
 );
 export interface ListStateMachineAliasesOutput {
@@ -1914,7 +1887,7 @@ export interface ListStateMachineAliasesOutput {
   nextToken?: string;
 }
 export const ListStateMachineAliasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineAliases: StateMachineAliasList,
       nextToken: S.optional(S.String),
@@ -1926,22 +1899,21 @@ export interface ListStateMachinesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListStateMachinesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStateMachinesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListStateMachinesInput",
 }) as any as S.Schema<ListStateMachinesInput>;
@@ -1951,7 +1923,7 @@ export interface StateMachineListItem {
   type: StateMachineType;
   creationDate: Date;
 }
-export const StateMachineListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StateMachineListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateMachineArn: S.String,
     name: S.String,
@@ -1962,18 +1934,16 @@ export const StateMachineListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StateMachineListItem",
 }) as any as S.Schema<StateMachineListItem>;
 export type StateMachineList = StateMachineListItem[];
-export const StateMachineList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StateMachineListItem);
+export const StateMachineList = /*@__PURE__*/ S.Array(StateMachineListItem);
 export interface ListStateMachinesOutput {
   stateMachines: StateMachineListItem[];
   nextToken?: string;
 }
-export const ListStateMachinesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachines: StateMachineList,
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
+export const ListStateMachinesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachines: StateMachineList,
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListStateMachinesOutput",
 }) as any as S.Schema<ListStateMachinesOutput>;
@@ -1983,7 +1953,7 @@ export interface ListStateMachineVersionsInput {
   maxResults?: number;
 }
 export const ListStateMachineVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineArn: S.String,
       nextToken: S.optional(S.String),
@@ -2007,7 +1977,7 @@ export interface StateMachineVersionListItem {
   creationDate: Date;
 }
 export const StateMachineVersionListItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineVersionArn: S.String,
       creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2016,7 +1986,7 @@ export const StateMachineVersionListItem =
     identifier: "StateMachineVersionListItem",
   }) as any as S.Schema<StateMachineVersionListItem>;
 export type StateMachineVersionList = StateMachineVersionListItem[];
-export const StateMachineVersionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const StateMachineVersionList = /*@__PURE__*/ S.Array(
   StateMachineVersionListItem,
 );
 export interface ListStateMachineVersionsOutput {
@@ -2024,7 +1994,7 @@ export interface ListStateMachineVersionsOutput {
   nextToken?: string;
 }
 export const ListStateMachineVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineVersions: StateMachineVersionList,
       nextToken: S.optional(S.String),
@@ -2035,27 +2005,26 @@ export const ListStateMachineVersionsOutput =
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: Tag[];
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tags: S.optional(TagList) }).pipe(ns),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -2065,7 +2034,7 @@ export interface PublishStateMachineVersionInput {
   description?: string | redacted.Redacted<string>;
 }
 export const PublishStateMachineVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineArn: S.String,
       revisionId: S.optional(S.String),
@@ -2089,7 +2058,7 @@ export interface PublishStateMachineVersionOutput {
   stateMachineVersionArn: string;
 }
 export const PublishStateMachineVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       stateMachineVersionArn: S.String,
@@ -2101,7 +2070,7 @@ export interface RedriveExecutionInput {
   executionArn: string;
   clientToken?: string;
 }
-export const RedriveExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RedriveExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2122,11 +2091,10 @@ export const RedriveExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RedriveExecutionOutput {
   redriveDate: Date;
 }
-export const RedriveExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      redriveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }).pipe(ns),
+export const RedriveExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    redriveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }).pipe(ns),
 ).annotate({
   identifier: "RedriveExecutionOutput",
 }) as any as S.Schema<RedriveExecutionOutput>;
@@ -2135,7 +2103,7 @@ export interface SendTaskFailureInput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const SendTaskFailureInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendTaskFailureInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskToken: S.String,
     error: S.optional(SensitiveString),
@@ -2155,7 +2123,7 @@ export const SendTaskFailureInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SendTaskFailureInput",
 }) as any as S.Schema<SendTaskFailureInput>;
 export interface SendTaskFailureOutput {}
-export const SendTaskFailureOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendTaskFailureOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "SendTaskFailureOutput",
@@ -2163,25 +2131,24 @@ export const SendTaskFailureOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SendTaskHeartbeatInput {
   taskToken: string;
 }
-export const SendTaskHeartbeatInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ taskToken: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SendTaskHeartbeatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskToken: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "SendTaskHeartbeatInput",
 }) as any as S.Schema<SendTaskHeartbeatInput>;
 export interface SendTaskHeartbeatOutput {}
-export const SendTaskHeartbeatOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const SendTaskHeartbeatOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "SendTaskHeartbeatOutput",
 }) as any as S.Schema<SendTaskHeartbeatOutput>;
@@ -2189,7 +2156,7 @@ export interface SendTaskSuccessInput {
   taskToken: string;
   output: string | redacted.Redacted<string>;
 }
-export const SendTaskSuccessInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendTaskSuccessInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taskToken: S.String, output: SensitiveString }).pipe(
     T.all(
       ns,
@@ -2205,7 +2172,7 @@ export const SendTaskSuccessInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SendTaskSuccessInput",
 }) as any as S.Schema<SendTaskSuccessInput>;
 export interface SendTaskSuccessOutput {}
-export const SendTaskSuccessOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendTaskSuccessOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "SendTaskSuccessOutput",
@@ -2216,7 +2183,7 @@ export interface StartExecutionInput {
   input?: string | redacted.Redacted<string>;
   traceHeader?: string;
 }
-export const StartExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateMachineArn: S.String,
     name: S.optional(S.String),
@@ -2240,7 +2207,7 @@ export interface StartExecutionOutput {
   executionArn: string;
   startDate: Date;
 }
-export const StartExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2255,25 +2222,24 @@ export interface StartSyncExecutionInput {
   traceHeader?: string;
   includedData?: IncludedData;
 }
-export const StartSyncExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineArn: S.String,
-      name: S.optional(S.String),
-      input: S.optional(SensitiveString),
-      traceHeader: S.optional(S.String),
-      includedData: S.optional(IncludedData),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartSyncExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineArn: S.String,
+    name: S.optional(S.String),
+    input: S.optional(SensitiveString),
+    traceHeader: S.optional(S.String),
+    includedData: S.optional(IncludedData),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartSyncExecutionInput",
 }) as any as S.Schema<StartSyncExecutionInput>;
@@ -2282,12 +2248,12 @@ export type SyncExecutionStatus =
   | "FAILED"
   | "TIMED_OUT"
   | (string & {});
-export const SyncExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SyncExecutionStatus = /*@__PURE__*/ S.String;
 export interface BillingDetails {
   billedMemoryUsedInMB?: number;
   billedDurationInMilliseconds?: number;
 }
-export const BillingDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BillingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billedMemoryUsedInMB: S.optional(S.Number),
     billedDurationInMilliseconds: S.optional(S.Number),
@@ -2309,24 +2275,23 @@ export interface StartSyncExecutionOutput {
   traceHeader?: string;
   billingDetails?: BillingDetails;
 }
-export const StartSyncExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.String,
-      stateMachineArn: S.optional(S.String),
-      name: S.optional(S.String),
-      startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      status: SyncExecutionStatus,
-      error: S.optional(SensitiveString),
-      cause: S.optional(SensitiveString),
-      input: S.optional(SensitiveString),
-      inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-      output: S.optional(SensitiveString),
-      outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-      traceHeader: S.optional(S.String),
-      billingDetails: S.optional(BillingDetails),
-    }).pipe(ns),
+export const StartSyncExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.String,
+    stateMachineArn: S.optional(S.String),
+    name: S.optional(S.String),
+    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: SyncExecutionStatus,
+    error: S.optional(SensitiveString),
+    cause: S.optional(SensitiveString),
+    input: S.optional(SensitiveString),
+    inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+    output: S.optional(SensitiveString),
+    outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+    traceHeader: S.optional(S.String),
+    billingDetails: S.optional(BillingDetails),
+  }).pipe(ns),
 ).annotate({
   identifier: "StartSyncExecutionOutput",
 }) as any as S.Schema<StartSyncExecutionOutput>;
@@ -2335,7 +2300,7 @@ export interface StopExecutionInput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const StopExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     error: S.optional(SensitiveString),
@@ -2357,7 +2322,7 @@ export const StopExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StopExecutionOutput {
   stopDate: Date;
 }
-export const StopExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(
     ns,
   ),
@@ -2368,7 +2333,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
     T.all(
       ns,
@@ -2384,18 +2349,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
-export const InspectionLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InspectionLevel = /*@__PURE__*/ S.String;
 export interface MockErrorOutput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const MockErrorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MockErrorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(SensitiveString),
     cause: S.optional(SensitiveString),
@@ -2408,13 +2373,13 @@ export type MockResponseValidationMode =
   | "PRESENT"
   | "NONE"
   | (string & {});
-export const MockResponseValidationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MockResponseValidationMode = /*@__PURE__*/ S.String;
 export interface MockInput {
   result?: string | redacted.Redacted<string>;
   errorOutput?: MockErrorOutput;
   fieldValidationMode?: MockResponseValidationMode;
 }
-export const MockInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SensitiveString),
     errorOutput: S.optional(MockErrorOutput),
@@ -2427,14 +2392,13 @@ export interface TestStateConfiguration {
   mapIterationFailureCount?: number;
   mapItemReaderData?: string | redacted.Redacted<string>;
 }
-export const TestStateConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      retrierRetryCount: S.optional(S.Number),
-      errorCausedByState: S.optional(SensitiveString),
-      mapIterationFailureCount: S.optional(S.Number),
-      mapItemReaderData: S.optional(SensitiveString),
-    }),
+export const TestStateConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retrierRetryCount: S.optional(S.Number),
+    errorCausedByState: S.optional(SensitiveString),
+    mapIterationFailureCount: S.optional(S.Number),
+    mapItemReaderData: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "TestStateConfiguration",
 }) as any as S.Schema<TestStateConfiguration>;
@@ -2450,7 +2414,7 @@ export interface TestStateInput {
   context?: string | redacted.Redacted<string>;
   stateConfiguration?: TestStateConfiguration;
 }
-export const TestStateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestStateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: SensitiveString,
     roleArn: S.optional(S.String),
@@ -2481,7 +2445,7 @@ export interface InspectionDataRequest {
   headers?: string;
   body?: string;
 }
-export const InspectionDataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InspectionDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocol: S.optional(S.String),
     method: S.optional(S.String),
@@ -2499,15 +2463,14 @@ export interface InspectionDataResponse {
   headers?: string;
   body?: string;
 }
-export const InspectionDataResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      protocol: S.optional(S.String),
-      statusCode: S.optional(S.String),
-      statusMessage: S.optional(S.String),
-      headers: S.optional(S.String),
-      body: S.optional(S.String),
-    }),
+export const InspectionDataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocol: S.optional(S.String),
+    statusCode: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    headers: S.optional(S.String),
+    body: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "InspectionDataResponse",
 }) as any as S.Schema<InspectionDataResponse>;
@@ -2516,13 +2479,12 @@ export interface InspectionErrorDetails {
   retryIndex?: number;
   retryBackoffIntervalSeconds?: number;
 }
-export const InspectionErrorDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      catchIndex: S.optional(S.Number),
-      retryIndex: S.optional(S.Number),
-      retryBackoffIntervalSeconds: S.optional(S.Number),
-    }),
+export const InspectionErrorDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    catchIndex: S.optional(S.Number),
+    retryIndex: S.optional(S.Number),
+    retryBackoffIntervalSeconds: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "InspectionErrorDetails",
 }) as any as S.Schema<InspectionErrorDetails>;
@@ -2546,7 +2508,7 @@ export interface InspectionData {
   toleratedFailurePercentage?: number;
   maxConcurrency?: number;
 }
-export const InspectionData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InspectionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(SensitiveString),
     afterArguments: S.optional(SensitiveString),
@@ -2574,7 +2536,7 @@ export type TestExecutionStatus =
   | "RETRIABLE"
   | "CAUGHT_ERROR"
   | (string & {});
-export const TestExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TestExecutionStatus = /*@__PURE__*/ S.String;
 export interface TestStateOutput {
   output?: string | redacted.Redacted<string>;
   error?: string | redacted.Redacted<string>;
@@ -2583,7 +2545,7 @@ export interface TestStateOutput {
   nextState?: string;
   status?: TestExecutionStatus;
 }
-export const TestStateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestStateOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output: S.optional(SensitiveString),
     error: S.optional(SensitiveString),
@@ -2596,12 +2558,12 @@ export const TestStateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TestStateOutput",
 }) as any as S.Schema<TestStateOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(
       ns,
@@ -2617,7 +2579,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -2628,7 +2590,7 @@ export interface UpdateMapRunInput {
   toleratedFailurePercentage?: number;
   toleratedFailureCount?: number;
 }
-export const UpdateMapRunInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMapRunInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapRunArn: S.String,
     maxConcurrency: S.optional(S.Number),
@@ -2649,7 +2611,7 @@ export const UpdateMapRunInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateMapRunInput",
 }) as any as S.Schema<UpdateMapRunInput>;
 export interface UpdateMapRunOutput {}
-export const UpdateMapRunOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMapRunOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateMapRunOutput",
@@ -2664,28 +2626,27 @@ export interface UpdateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const UpdateStateMachineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stateMachineArn: S.String,
-      definition: S.optional(SensitiveString),
-      roleArn: S.optional(S.String),
-      loggingConfiguration: S.optional(LoggingConfiguration),
-      tracingConfiguration: S.optional(TracingConfiguration),
-      publish: S.optional(S.Boolean),
-      versionDescription: S.optional(SensitiveString),
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateStateMachineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stateMachineArn: S.String,
+    definition: S.optional(SensitiveString),
+    roleArn: S.optional(S.String),
+    loggingConfiguration: S.optional(LoggingConfiguration),
+    tracingConfiguration: S.optional(TracingConfiguration),
+    publish: S.optional(S.Boolean),
+    versionDescription: S.optional(SensitiveString),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateStateMachineInput",
 }) as any as S.Schema<UpdateStateMachineInput>;
@@ -2694,13 +2655,12 @@ export interface UpdateStateMachineOutput {
   revisionId?: string;
   stateMachineVersionArn?: string;
 }
-export const UpdateStateMachineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      revisionId: S.optional(S.String),
-      stateMachineVersionArn: S.optional(S.String),
-    }).pipe(ns),
+export const UpdateStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    revisionId: S.optional(S.String),
+    stateMachineVersionArn: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "UpdateStateMachineOutput",
 }) as any as S.Schema<UpdateStateMachineOutput>;
@@ -2710,7 +2670,7 @@ export interface UpdateStateMachineAliasInput {
   routingConfiguration?: RoutingConfigurationListItem[];
 }
 export const UpdateStateMachineAliasInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stateMachineAliasArn: S.String,
       description: S.optional(SensitiveString),
@@ -2733,7 +2693,7 @@ export interface UpdateStateMachineAliasOutput {
   updateDate: Date;
 }
 export const UpdateStateMachineAliasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }).pipe(ns),
@@ -2744,8 +2704,7 @@ export type ValidateStateMachineDefinitionSeverity =
   | "ERROR"
   | "WARNING"
   | (string & {});
-export const ValidateStateMachineDefinitionSeverity =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidateStateMachineDefinitionSeverity = /*@__PURE__*/ S.String;
 export interface ValidateStateMachineDefinitionInput {
   definition: string | redacted.Redacted<string>;
   type?: StateMachineType;
@@ -2753,7 +2712,7 @@ export interface ValidateStateMachineDefinitionInput {
   maxResults?: number;
 }
 export const ValidateStateMachineDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       definition: SensitiveString,
       type: S.optional(StateMachineType),
@@ -2777,8 +2736,7 @@ export type ValidateStateMachineDefinitionResultCode =
   | "OK"
   | "FAIL"
   | (string & {});
-export const ValidateStateMachineDefinitionResultCode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidateStateMachineDefinitionResultCode = /*@__PURE__*/ S.String;
 export interface ValidateStateMachineDefinitionDiagnostic {
   severity: ValidateStateMachineDefinitionSeverity;
   code: string | redacted.Redacted<string>;
@@ -2786,7 +2744,7 @@ export interface ValidateStateMachineDefinitionDiagnostic {
   location?: string | redacted.Redacted<string>;
 }
 export const ValidateStateMachineDefinitionDiagnostic =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       severity: ValidateStateMachineDefinitionSeverity,
       code: SensitiveString,
@@ -2799,14 +2757,14 @@ export const ValidateStateMachineDefinitionDiagnostic =
 export type ValidateStateMachineDefinitionDiagnosticList =
   ValidateStateMachineDefinitionDiagnostic[];
 export const ValidateStateMachineDefinitionDiagnosticList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ValidateStateMachineDefinitionDiagnostic);
+  /*@__PURE__*/ S.Array(ValidateStateMachineDefinitionDiagnostic);
 export interface ValidateStateMachineDefinitionOutput {
   result: ValidateStateMachineDefinitionResultCode;
   diagnostics: ValidateStateMachineDefinitionDiagnostic[];
   truncated?: boolean;
 }
 export const ValidateStateMachineDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: ValidateStateMachineDefinitionResultCode,
       diagnostics: ValidateStateMachineDefinitionDiagnosticList,
@@ -2983,7 +2941,7 @@ export const createActivity: API.OperationMethod<
   CreateActivityOutput,
   CreateActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateActivityInput,
   output: CreateActivityOutput,
   errors: [
@@ -3043,7 +3001,7 @@ export const createStateMachine: API.OperationMethod<
   CreateStateMachineOutput,
   CreateStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineInput,
   output: CreateStateMachineOutput,
   errors: [
@@ -3110,7 +3068,7 @@ export const createStateMachineAlias: API.OperationMethod<
   CreateStateMachineAliasOutput,
   CreateStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStateMachineAliasInput,
   output: CreateStateMachineAliasOutput,
   errors: [
@@ -3133,7 +3091,7 @@ export const deleteActivity: API.OperationMethod<
   DeleteActivityOutput,
   DeleteActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteActivityInput,
   output: DeleteActivityOutput,
   errors: [InvalidArn],
@@ -3172,7 +3130,7 @@ export const deleteStateMachine: API.OperationMethod<
   DeleteStateMachineOutput,
   DeleteStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineInput,
   output: DeleteStateMachineOutput,
   errors: [InvalidArn, ValidationException],
@@ -3206,7 +3164,7 @@ export const deleteStateMachineAlias: API.OperationMethod<
   DeleteStateMachineAliasOutput,
   DeleteStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineAliasInput,
   output: DeleteStateMachineAliasOutput,
   errors: [
@@ -3242,7 +3200,7 @@ export const deleteStateMachineVersion: API.OperationMethod<
   DeleteStateMachineVersionOutput,
   DeleteStateMachineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStateMachineVersionInput,
   output: DeleteStateMachineVersionOutput,
   errors: [ConflictException, InvalidArn, ValidationException],
@@ -3262,7 +3220,7 @@ export const describeActivity: API.OperationMethod<
   DescribeActivityOutput,
   DescribeActivityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeActivityInput,
   output: DescribeActivityOutput,
   errors: [ActivityDoesNotExist, InvalidArn],
@@ -3290,7 +3248,7 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionOutput,
   DescribeExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeExecutionInput,
   output: DescribeExecutionOutput,
   errors: [
@@ -3311,7 +3269,7 @@ export const describeMapRun: API.OperationMethod<
   DescribeMapRunOutput,
   DescribeMapRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMapRunInput,
   output: DescribeMapRunOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -3357,7 +3315,7 @@ export const describeStateMachine: API.OperationMethod<
   DescribeStateMachineOutput,
   DescribeStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineInput,
   output: DescribeStateMachineOutput,
   errors: [
@@ -3392,7 +3350,7 @@ export const describeStateMachineAlias: API.OperationMethod<
   DescribeStateMachineAliasOutput,
   DescribeStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineAliasInput,
   output: DescribeStateMachineAliasOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
@@ -3420,7 +3378,7 @@ export const describeStateMachineForExecution: API.OperationMethod<
   DescribeStateMachineForExecutionOutput,
   DescribeStateMachineForExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStateMachineForExecutionInput,
   output: DescribeStateMachineForExecutionOutput,
   errors: [
@@ -3462,7 +3420,7 @@ export const getActivityTask: API.OperationMethod<
   GetActivityTaskOutput,
   GetActivityTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActivityTaskInput,
   output: GetActivityTaskOutput,
   errors: [
@@ -3513,7 +3471,7 @@ export const getExecutionHistory: API.OperationMethod<
     GetExecutionHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionHistoryInput,
   output: GetExecutionHistoryOutput,
   errors: [
@@ -3561,7 +3519,7 @@ export const listActivities: API.OperationMethod<
     ListActivitiesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesInput,
   output: ListActivitiesOutput,
   errors: [InvalidToken],
@@ -3616,7 +3574,7 @@ export const listExecutions: API.OperationMethod<
     ListExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
   output: ListExecutionsOutput,
   errors: [
@@ -3663,7 +3621,7 @@ export const listMapRuns: API.OperationMethod<
     ListMapRunsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapRunsInput,
   output: ListMapRunsOutput,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
@@ -3705,7 +3663,7 @@ export const listStateMachineAliases: API.OperationMethod<
   ListStateMachineAliasesOutput,
   ListStateMachineAliasesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineAliasesInput,
   output: ListStateMachineAliasesOutput,
   errors: [
@@ -3746,7 +3704,7 @@ export const listStateMachines: API.OperationMethod<
     ListStateMachinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateMachinesInput,
   output: ListStateMachinesOutput,
   errors: [InvalidToken],
@@ -3782,7 +3740,7 @@ export const listStateMachineVersions: API.OperationMethod<
   ListStateMachineVersionsOutput,
   ListStateMachineVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListStateMachineVersionsInput,
   output: ListStateMachineVersionsOutput,
   errors: [InvalidArn, InvalidToken, ValidationException],
@@ -3802,7 +3760,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -3842,7 +3800,7 @@ export const publishStateMachineVersion: API.OperationMethod<
   PublishStateMachineVersionOutput,
   PublishStateMachineVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishStateMachineVersionInput,
   output: PublishStateMachineVersionOutput,
   errors: [
@@ -3888,7 +3846,7 @@ export const redriveExecution: API.OperationMethod<
   RedriveExecutionOutput,
   RedriveExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedriveExecutionInput,
   output: RedriveExecutionOutput,
   errors: [
@@ -3921,7 +3879,7 @@ export const sendTaskFailure: API.OperationMethod<
   SendTaskFailureOutput,
   SendTaskFailureError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskFailureInput,
   output: SendTaskFailureOutput,
   errors: [
@@ -3960,7 +3918,7 @@ export const sendTaskHeartbeat: API.OperationMethod<
   SendTaskHeartbeatOutput,
   SendTaskHeartbeatError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskHeartbeatInput,
   output: SendTaskHeartbeatOutput,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
@@ -3985,7 +3943,7 @@ export const sendTaskSuccess: API.OperationMethod<
   SendTaskSuccessOutput,
   SendTaskSuccessError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendTaskSuccessInput,
   output: SendTaskSuccessOutput,
   errors: [
@@ -4053,7 +4011,7 @@ export const startExecution: API.OperationMethod<
   StartExecutionOutput,
   StartExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExecutionInput,
   output: StartExecutionOutput,
   errors: [
@@ -4099,7 +4057,7 @@ export const startSyncExecution: API.OperationMethod<
   StartSyncExecutionOutput,
   StartSyncExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSyncExecutionInput,
   output: StartSyncExecutionOutput,
   errors: [
@@ -4138,7 +4096,7 @@ export const stopExecution: API.OperationMethod<
   StopExecutionOutput,
   StopExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopExecutionInput,
   output: StopExecutionOutput,
   errors: [
@@ -4171,7 +4129,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
@@ -4218,7 +4176,7 @@ export const testState: API.OperationMethod<
   TestStateOutput,
   TestStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestStateInput,
   output: TestStateOutput,
   errors: [
@@ -4239,7 +4197,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
@@ -4258,7 +4216,7 @@ export const updateMapRun: API.OperationMethod<
   UpdateMapRunOutput,
   UpdateMapRunError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMapRunInput,
   output: UpdateMapRunOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
@@ -4324,7 +4282,7 @@ export const updateStateMachine: API.OperationMethod<
   UpdateStateMachineOutput,
   UpdateStateMachineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineInput,
   output: UpdateStateMachineOutput,
   errors: [
@@ -4381,7 +4339,7 @@ export const updateStateMachineAlias: API.OperationMethod<
   UpdateStateMachineAliasOutput,
   UpdateStateMachineAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStateMachineAliasInput,
   output: UpdateStateMachineAliasOutput,
   errors: [
@@ -4435,7 +4393,7 @@ export const validateStateMachineDefinition: API.OperationMethod<
   ValidateStateMachineDefinitionOutput,
   ValidateStateMachineDefinitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateStateMachineDefinitionInput,
   output: ValidateStateMachineDefinitionOutput,
   errors: [ValidationException],

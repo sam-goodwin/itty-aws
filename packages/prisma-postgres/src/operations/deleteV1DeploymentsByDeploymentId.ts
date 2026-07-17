@@ -8,7 +8,7 @@ export interface DeleteV1DeploymentsByDeploymentIdInput {
   deploymentId: string;
 }
 export const DeleteV1DeploymentsByDeploymentIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/deployments/{deploymentId}" }),
@@ -17,7 +17,7 @@ export const DeleteV1DeploymentsByDeploymentIdInput =
 // Output Schema
 export type DeleteV1DeploymentsByDeploymentIdOutput = void;
 export const DeleteV1DeploymentsByDeploymentIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DeploymentsByDeploymentIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DeploymentsByDeploymentIdOutput>;
 
 // The operation
 /**
@@ -27,7 +27,7 @@ export const DeleteV1DeploymentsByDeploymentIdOutput =
  * Permanently deletes the deployment, its metadata, and any associated VM. The deployment must be stopped or in the `new` state before it can be deleted.
  */
 export const deleteV1DeploymentsByDeploymentId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1DeploymentsByDeploymentIdInput,
     outputSchema: DeleteV1DeploymentsByDeploymentIdOutput,
     errors: [Forbidden, NotFound, Conflict] as const,

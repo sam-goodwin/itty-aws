@@ -28,7 +28,7 @@ export interface GoogleAdsSearchads360V0Common__AdTextAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__AdTextAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__AdTextAsset" });
 
@@ -44,7 +44,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroup: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface GoogleAdsSearchads360V0Common__LocationGroupInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__LocationGroupInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     radiusUnits: Schema.optional(Schema.String),
     feedItemSets: Schema.optional(Schema.Array(Schema.String)),
     radius: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface GoogleAdsSearchads360V0Common__LocationInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__LocationInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geoTargetConstant: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__LocationInfo" });
 
@@ -312,7 +312,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorCode {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorCode =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestError: Schema.optional(Schema.String),
     invalidParameterError: Schema.optional(Schema.String),
     distinctError: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface GoogleAdsSearchads360V0Common__Value {
 }
 
 export const GoogleAdsSearchads360V0Common__Value =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     booleanValue: Schema.optional(Schema.Boolean),
     int64Value: Schema.optional(Schema.String),
@@ -359,7 +359,7 @@ export interface GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement {
 }
 
 export const GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     index: Schema.optional(Schema.Number),
   }).annotate({
@@ -372,7 +372,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorLocation {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorLocation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldPathElements: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement,
@@ -395,7 +395,7 @@ export interface GoogleAdsSearchads360V0Errors__QuotaErrorDetails {
 }
 
 export const GoogleAdsSearchads360V0Errors__QuotaErrorDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rateScope: Schema.optional(Schema.String),
     rateName: Schema.optional(Schema.String),
     retryDelay: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface GoogleAdsSearchads360V0Errors__ErrorDetails {
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorDetails =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unpublishedErrorCode: Schema.optional(Schema.String),
     quotaErrorDetails: Schema.optional(
       GoogleAdsSearchads360V0Errors__QuotaErrorDetails,
@@ -432,7 +432,7 @@ export interface GoogleAdsSearchads360V0Errors__SearchAds360Error {
 }
 
 export const GoogleAdsSearchads360V0Errors__SearchAds360Error =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(GoogleAdsSearchads360V0Errors__ErrorCode),
     trigger: Schema.optional(GoogleAdsSearchads360V0Common__Value),
     location: Schema.optional(GoogleAdsSearchads360V0Errors__ErrorLocation),
@@ -455,7 +455,7 @@ export interface GoogleAdsSearchads360V0Common__MobileAppAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__MobileAppAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     appStore: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__MobileAppAsset" });
@@ -476,7 +476,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting {
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     salesCountry: Schema.optional(Schema.String),
     enableLocal: Schema.optional(Schema.Boolean),
     useVehicleInventory: Schema.optional(Schema.Boolean),
@@ -497,7 +497,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetti
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainName: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     useSuppliedUrlsOnly: Schema.optional(Schema.Boolean),
@@ -509,7 +509,7 @@ export const GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting =
 export interface GoogleAdsSearchads360V0Common__FrequencyCapEntry {}
 
 export const GoogleAdsSearchads360V0Common__FrequencyCapEntry =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__FrequencyCapEntry",
   });
 
@@ -521,7 +521,7 @@ export interface GoogleAdsSearchads360V0Common__TargetSpend {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetSpend =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpendMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__TargetSpend" });
@@ -534,7 +534,7 @@ export interface GoogleAdsSearchads360V0Common__CustomParameter {
 }
 
 export const GoogleAdsSearchads360V0Common__CustomParameter =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__CustomParameter" });
@@ -545,7 +545,7 @@ export interface GoogleAdsSearchads360V0Common__ManualCpc {
 }
 
 export const GoogleAdsSearchads360V0Common__ManualCpc =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enhancedCpcEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__ManualCpc" });
 
@@ -559,7 +559,7 @@ export interface GoogleAdsSearchads360V0Common__TargetRoas {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetRoas =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     targetRoas: Schema.optional(Schema.Number),
     cpcBidFloorMicros: Schema.optional(Schema.String),
@@ -578,7 +578,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetti
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     optimizationGoalTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -591,7 +591,7 @@ export interface GoogleAdsSearchads360V0Common__RealTimeBiddingSetting {
 }
 
 export const GoogleAdsSearchads360V0Common__RealTimeBiddingSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     optIn: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Common__RealTimeBiddingSetting",
@@ -605,7 +605,7 @@ export interface GoogleAdsSearchads360V0Common__PercentCpc {
 }
 
 export const GoogleAdsSearchads360V0Common__PercentCpc =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     enhancedCpcEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__PercentCpc" });
@@ -613,7 +613,7 @@ export const GoogleAdsSearchads360V0Common__PercentCpc =
 export interface GoogleAdsSearchads360V0Common__TargetCpm {}
 
 export const GoogleAdsSearchads360V0Common__TargetCpm =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__TargetCpm",
   });
 
@@ -629,7 +629,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings {
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetGoogleSearch: Schema.optional(Schema.Boolean),
     targetContentNetwork: Schema.optional(Schema.Boolean),
     targetPartnerSearchNetwork: Schema.optional(Schema.Boolean),
@@ -644,7 +644,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting {
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackingUrl: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting",
@@ -660,7 +660,7 @@ export interface GoogleAdsSearchads360V0Common__TargetCpa {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetCpa =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidFloorMicros: Schema.optional(Schema.String),
     targetCpaMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
@@ -676,7 +676,7 @@ export interface GoogleAdsSearchads360V0Common__MaximizeConversions {
 }
 
 export const GoogleAdsSearchads360V0Common__MaximizeConversions =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidFloorMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     targetCpaMicros: Schema.optional(Schema.String),
@@ -690,7 +690,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversionActions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -713,7 +713,7 @@ export interface GoogleAdsSearchads360V0Common__TargetImpressionShare {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetImpressionShare =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     locationFractionMicros: Schema.optional(Schema.String),
@@ -724,7 +724,7 @@ export const GoogleAdsSearchads360V0Common__TargetImpressionShare =
 export interface GoogleAdsSearchads360V0Common__ManualCpm {}
 
 export const GoogleAdsSearchads360V0Common__ManualCpm =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__ManualCpm",
   });
 
@@ -747,7 +747,7 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting 
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     negativeGeoTargetType: Schema.optional(Schema.String),
     positiveGeoTargetType: Schema.optional(Schema.String),
   }).annotate({
@@ -758,7 +758,7 @@ export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting =
 export interface GoogleAdsSearchads360V0Common__ManualCpa {}
 
 export const GoogleAdsSearchads360V0Common__ManualCpa =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__ManualCpa",
   });
 
@@ -772,7 +772,7 @@ export interface GoogleAdsSearchads360V0Common__MaximizeConversionValue {
 }
 
 export const GoogleAdsSearchads360V0Common__MaximizeConversionValue =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
     cpcBidFloorMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
@@ -1041,7 +1041,7 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
 }
 
 export const GoogleAdsSearchads360V0Resources__Campaign =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shoppingSetting: Schema.optional(
       GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting,
     ),
@@ -1131,7 +1131,7 @@ export interface GoogleAdsSearchads360V0Resources__LanguageConstant {
 }
 
 export const GoogleAdsSearchads360V0Resources__LanguageConstant =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     targetable: Schema.optional(Schema.Boolean),
@@ -1149,7 +1149,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpendMicros: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({
@@ -1163,7 +1163,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Maxi
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -1178,7 +1178,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Maxi
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
     targetCpa: Schema.optional(Schema.String),
   }).annotate({
@@ -1202,7 +1202,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     cpcBidCeilingMicros: Schema.optional(Schema.String),
     locationFractionMicros: Schema.optional(Schema.String),
@@ -1217,7 +1217,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRoas: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -1230,7 +1230,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
 }
 
 export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCpaMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1285,7 +1285,7 @@ export interface GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy {
 }
 
 export const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetSpend: Schema.optional(
       GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend,
     ),
@@ -1328,7 +1328,7 @@ export interface GoogleAdsSearchads360V0Common__KeywordInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__KeywordInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matchType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__KeywordInfo" });
@@ -1341,7 +1341,7 @@ export interface GoogleAdsSearchads360V0Common__Keyword {
 }
 
 export const GoogleAdsSearchads360V0Common__Keyword =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(GoogleAdsSearchads360V0Common__KeywordInfo),
     adGroupCriterion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__Keyword" });
@@ -1365,7 +1365,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionCustomVariable_Flood
 }
 
 export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     floodlightVariableType: Schema.optional(Schema.String),
     floodlightVariableDataType: Schema.optional(Schema.String),
   }).annotate({
@@ -1379,7 +1379,7 @@ export interface GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstim
 }
 
 export const GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topOfPageCpcMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1402,7 +1402,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     index: Schema.optional(Schema.String),
   }).annotate({
@@ -1426,7 +1426,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     level: Schema.optional(Schema.String),
   }).annotate({
@@ -1440,7 +1440,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1453,7 +1453,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channel: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1472,7 +1472,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1485,7 +1485,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1508,7 +1508,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
 }
 
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     level: Schema.optional(Schema.String),
   }).annotate({
@@ -1534,7 +1534,7 @@ export interface GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension {
 }
 
 export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productCustomAttribute: Schema.optional(
       GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute,
     ),
@@ -1566,7 +1566,7 @@ export interface GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPa
 }
 
 export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension,
@@ -1603,7 +1603,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter 
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
     caseValue: Schema.optional(
@@ -1627,7 +1627,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAudienceView {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignAudienceView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources__CampaignAudienceView",
@@ -1645,7 +1645,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabe
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupCriterion: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -1667,7 +1667,7 @@ export interface GoogleAdsSearchads360V0Resources__Audience {
 }
 
 export const GoogleAdsSearchads360V0Resources__Audience =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1692,7 +1692,7 @@ export interface GoogleAdsSearchads360V0Common__WebpageConditionInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__WebpageConditionInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operand: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.String),
@@ -1710,7 +1710,7 @@ export interface GoogleAdsSearchads360V0Common__WebpageInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__WebpageInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criterionName: Schema.optional(Schema.String),
     coveragePercentage: Schema.optional(Schema.Number),
     conditions: Schema.optional(
@@ -1770,7 +1770,7 @@ export interface GoogleAdsSearchads360V0Common__AssetUsage {
 }
 
 export const GoogleAdsSearchads360V0Common__AssetUsage =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     servedAssetFieldType: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__AssetUsage" });
@@ -1781,7 +1781,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDat
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetCombinationServedAssets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__AssetUsage),
     ),
@@ -1798,7 +1798,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView 
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetGroupTopCombinations: Schema.optional(
       Schema.Array(
         GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData,
@@ -1820,7 +1820,7 @@ export interface GoogleAdsSearchads360V0Common__ImageDimension {
 }
 
 export const GoogleAdsSearchads360V0Common__ImageDimension =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heightPixels: Schema.optional(Schema.String),
     widthPixels: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -1834,7 +1834,7 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionDimensionHea
 }
 
 export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -1856,7 +1856,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdIn
 }
 
 export const GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path2: Schema.optional(Schema.String),
     headlines: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__AdTextAsset),
@@ -1879,7 +1879,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetSet {
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetSet =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__AssetSet" });
@@ -1894,7 +1894,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings
 }
 
 export const GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultValue: Schema.optional(Schema.Number),
     defaultCurrencyCode: Schema.optional(Schema.String),
     alwaysUseDefaultValue: Schema.optional(Schema.Boolean),
@@ -1913,7 +1913,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSet
 }
 
 export const GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityGroupTag: Schema.optional(Schema.String),
     activityId: Schema.optional(Schema.String),
     activityTag: Schema.optional(Schema.String),
@@ -1947,7 +1947,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_AttributionMo
 }
 
 export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettings =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataDrivenModelStatus: Schema.optional(Schema.String),
     attributionModel: Schema.optional(Schema.String),
   }).annotate({
@@ -2066,7 +2066,7 @@ export interface GoogleAdsSearchads360V0Resources__ConversionAction {
 }
 
 export const GoogleAdsSearchads360V0Resources__ConversionAction =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeInConversionsMetric: Schema.optional(Schema.Boolean),
     clickThroughLookbackWindowDays: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -2105,7 +2105,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAssetSet {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAssetSet =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adGroup: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     assetSet: Schema.optional(Schema.String),
@@ -2152,7 +2152,7 @@ export interface GoogleAdsSearchads360V0Common__AdScheduleInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__AdScheduleInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startMinute: Schema.optional(Schema.String),
     endMinute: Schema.optional(Schema.String),
     startHour: Schema.optional(Schema.Number),
@@ -2199,7 +2199,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroup {
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroup =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finalMobileUrls: Schema.optional(Schema.Array(Schema.String)),
     resourceName: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2232,7 +2232,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
     adTrackingId: Schema.optional(Schema.String),
@@ -2251,7 +2251,7 @@ export interface GoogleAdsSearchads360V0Common__TargetOutrankShare {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetOutrankShare =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cpcBidCeilingMicros: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Common__TargetOutrankShare",
@@ -2260,7 +2260,7 @@ export const GoogleAdsSearchads360V0Common__TargetOutrankShare =
 export interface GoogleAdsSearchads360V0Common__EnhancedCpc {}
 
 export const GoogleAdsSearchads360V0Common__EnhancedCpc =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__EnhancedCpc",
   });
 
@@ -2322,7 +2322,7 @@ export interface GoogleAdsSearchads360V0Resources__BiddingStrategy {
 }
 
 export const GoogleAdsSearchads360V0Resources__BiddingStrategy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maximizeConversions: Schema.optional(
       GoogleAdsSearchads360V0Common__MaximizeConversions,
     ),
@@ -2358,7 +2358,7 @@ export interface GoogleAdsSearchads360V0Services__ListAccessibleCustomersRespons
 }
 
 export const GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -2390,7 +2390,7 @@ export interface GoogleAdsSearchads360V0Resources__ConversionTrackingSetting {
 }
 
 export const GoogleAdsSearchads360V0Resources__ConversionTrackingSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     crossAccountConversionTrackingId: Schema.optional(Schema.String),
     enhancedConversionsForLeadsEnabled: Schema.optional(Schema.Boolean),
     googleAdsCrossAccountConversionTrackingId: Schema.optional(Schema.String),
@@ -2412,7 +2412,7 @@ export interface GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSet
 }
 
 export const GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     advertiserId: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -2510,7 +2510,7 @@ export interface GoogleAdsSearchads360V0Resources__Customer {
 }
 
 export const GoogleAdsSearchads360V0Resources__Customer =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     trackingUrlTemplate: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -2549,7 +2549,7 @@ export interface GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermVie
 }
 
 export const GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     landingPage: Schema.optional(Schema.String),
   }).annotate({
@@ -2563,7 +2563,7 @@ export interface GoogleAdsSearchads360V0Resources__AgeRangeView {
 }
 
 export const GoogleAdsSearchads360V0Resources__AgeRangeView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__AgeRangeView" });
 
@@ -2586,7 +2586,7 @@ export interface GoogleAdsSearchads360V0Common__TargetRestriction {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetRestriction =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetingDimension: Schema.optional(Schema.String),
     bidOnly: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -2599,7 +2599,7 @@ export interface GoogleAdsSearchads360V0Common__TargetingSetting {
 }
 
 export const GoogleAdsSearchads360V0Common__TargetingSetting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetRestrictions: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__TargetRestriction),
     ),
@@ -2629,7 +2629,7 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Request {
 }
 
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     returnTotalResultsCount: Schema.optional(Schema.Boolean),
     pageToken: Schema.optional(Schema.String),
@@ -2652,7 +2652,7 @@ export interface GoogleAdsSearchads360V0Common__GenderInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__GenderInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__GenderInfo" });
 
@@ -2662,7 +2662,7 @@ export interface GoogleAdsSearchads360V0Resources__KeywordView {
 }
 
 export const GoogleAdsSearchads360V0Resources__KeywordView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__KeywordView" });
 
@@ -2674,7 +2674,7 @@ export interface GoogleAdsSearchads360V0Common__TextLabel {
 }
 
 export const GoogleAdsSearchads360V0Common__TextLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__TextLabel" });
@@ -2693,7 +2693,7 @@ export interface GoogleAdsSearchads360V0Resources__Label {
 }
 
 export const GoogleAdsSearchads360V0Resources__Label =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2715,7 +2715,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedCalloutAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedCalloutAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adScheduleTargets: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__AdScheduleInfo),
     ),
@@ -2733,7 +2733,7 @@ export interface GoogleAdsSearchads360V0Resources__WebpageView {
 }
 
 export const GoogleAdsSearchads360V0Resources__WebpageView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__WebpageView" });
 
@@ -2747,7 +2747,7 @@ export interface GoogleAdsSearchads360V0Common__BusinessProfileLocation {
 }
 
 export const GoogleAdsSearchads360V0Common__BusinessProfileLocation =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
     storeCode: Schema.optional(Schema.String),
     listingId: Schema.optional(Schema.String),
@@ -2761,7 +2761,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAudienceView {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAudienceView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources__AdGroupAudienceView",
@@ -2777,7 +2777,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearc
 }
 
 export const GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearchAdInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description1: Schema.optional(Schema.String),
     description2: Schema.optional(Schema.String),
     adTrackingId: Schema.optional(Schema.String),
@@ -2794,7 +2794,7 @@ export interface GoogleAdsSearchads360V0Common__FinalAppUrl {
 }
 
 export const GoogleAdsSearchads360V0Common__FinalAppUrl =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osType: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__FinalAppUrl" });
@@ -2802,7 +2802,7 @@ export const GoogleAdsSearchads360V0Common__FinalAppUrl =
 export interface GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo {}
 
 export const GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo",
   });
 
@@ -2822,7 +2822,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description1: Schema.optional(Schema.String),
     displayMobileUrl: Schema.optional(Schema.String),
     headline: Schema.optional(Schema.String),
@@ -2903,7 +2903,7 @@ export interface GoogleAdsSearchads360V0Resources__Ad {
 }
 
 export const GoogleAdsSearchads360V0Resources__Ad =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     finalUrls: Schema.optional(Schema.Array(Schema.String)),
     expandedDynamicSearchAd: Schema.optional(
@@ -2949,7 +2949,7 @@ export interface GoogleAdsSearchads360V0Common__AgeRangeInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__AgeRangeInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__AgeRangeInfo" });
 
@@ -2979,7 +2979,7 @@ export interface GoogleAdsSearchads360V0Common__CallToActionAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__CallToActionAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callToAction: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Common__CallToActionAsset",
@@ -2999,7 +2999,7 @@ export interface GoogleAdsSearchads360V0Common__DeviceInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__DeviceInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__DeviceInfo" });
 
@@ -3025,7 +3025,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerManagerLink {
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomerManagerLink =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managerLinkId: Schema.optional(Schema.String),
     managerCustomer: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3045,7 +3045,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupBidModifier {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupBidModifier =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     bidModifier: Schema.optional(Schema.Number),
     device: Schema.optional(GoogleAdsSearchads360V0Common__DeviceInfo),
@@ -3059,7 +3059,7 @@ export interface GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo {
 }
 
 export const GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     qualityScore: Schema.optional(Schema.Number),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo",
@@ -3086,7 +3086,7 @@ export interface GoogleAdsSearchads360V0Resources__UserList {
 }
 
 export const GoogleAdsSearchads360V0Resources__UserList =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3101,7 +3101,7 @@ export interface GoogleAdsSearchads360V0Common__YoutubeVideoAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__YoutubeVideoAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeVideoId: Schema.optional(Schema.String),
     youtubeVideoTitle: Schema.optional(Schema.String),
   }).annotate({
@@ -3131,7 +3131,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignBudget {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignBudget =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
     period: Schema.optional(Schema.String),
@@ -3152,7 +3152,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupAd: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -3179,7 +3179,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAsset {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3201,7 +3201,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedLocationAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedLocationAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeId: Schema.optional(Schema.String),
     businessProfileLocations: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__BusinessProfileLocation),
@@ -3217,7 +3217,7 @@ export interface GoogleAdsSearchads360V0Resources__LocationView {
 }
 
 export const GoogleAdsSearchads360V0Resources__LocationView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__LocationView" });
 
@@ -3229,7 +3229,7 @@ export interface GoogleAdsSearchads360V0Errors__SearchAds360Failure {
 }
 
 export const GoogleAdsSearchads360V0Errors__SearchAds360Failure =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Errors__SearchAds360Error),
     ),
@@ -3250,7 +3250,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
@@ -3329,7 +3329,7 @@ export interface GoogleAdsSearchads360V0Resources__Visit {
 }
 
 export const GoogleAdsSearchads360V0Resources__Visit =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     criterionId: Schema.optional(Schema.String),
     adId: Schema.optional(Schema.String),
     clickId: Schema.optional(Schema.String),
@@ -3399,7 +3399,7 @@ export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
 }
 
 export const GoogleAdsSearchads360V0Resources__SearchAds360Field =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectable: Schema.optional(Schema.Boolean),
     sortable: Schema.optional(Schema.Boolean),
     resourceName: Schema.optional(Schema.String),
@@ -3459,7 +3459,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomColumn {
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomColumn =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     renderType: Schema.optional(Schema.String),
@@ -3478,7 +3478,7 @@ export interface GoogleAdsSearchads360V0Services__ListCustomColumnsResponse {
 }
 
 export const GoogleAdsSearchads360V0Services__ListCustomColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customColumns: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Resources__CustomColumn),
     ),
@@ -3581,7 +3581,7 @@ export interface GoogleAdsSearchads360V0Resources__Conversion {
 }
 
 export const GoogleAdsSearchads360V0Resources__Conversion =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLanguageCode: Schema.optional(Schema.String),
     productStoreId: Schema.optional(Schema.String),
     floodlightOriginalRevenue: Schema.optional(Schema.String),
@@ -3616,7 +3616,7 @@ export interface GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader {
 }
 
 export const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -3653,7 +3653,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedCallAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedCallAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
     startDate: Schema.optional(Schema.String),
@@ -3682,7 +3682,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetSetAsset {
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetSetAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSet: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -3709,7 +3709,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAsset {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
@@ -3724,7 +3724,7 @@ export interface GoogleAdsSearchads360V0Common__LanguageInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__LanguageInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageConstant: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__LanguageInfo" });
 
@@ -3734,7 +3734,7 @@ export interface GoogleAdsSearchads360V0Common__UserListInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__UserListInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userList: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__UserListInfo" });
 
@@ -3823,7 +3823,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignCriterion {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignCriterion =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     language: Schema.optional(GoogleAdsSearchads360V0Common__LanguageInfo),
     webpage: Schema.optional(GoogleAdsSearchads360V0Common__WebpageInfo),
     criterionId: Schema.optional(Schema.String),
@@ -3872,7 +3872,7 @@ export interface GoogleAdsSearchads360V0Common__ImageAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__ImageAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullSize: Schema.optional(GoogleAdsSearchads360V0Common__ImageDimension),
     mimeType: Schema.optional(Schema.String),
     fileSize: Schema.optional(Schema.String),
@@ -3884,7 +3884,7 @@ export interface GoogleAdsSearchads360V0Resources__ShoppingPerformanceView {
 }
 
 export const GoogleAdsSearchads360V0Resources__ShoppingPerformanceView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources__ShoppingPerformanceView",
@@ -3896,7 +3896,7 @@ export interface GoogleAdsSearchads360V0Common__AudienceInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__AudienceInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audience: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__AudienceInfo" });
 
@@ -3910,7 +3910,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupSignal {
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupSignal =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
     audience: Schema.optional(GoogleAdsSearchads360V0Common__AudienceInfo),
@@ -3930,7 +3930,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     ownerCustomerId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -3947,7 +3947,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageUrl: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3976,7 +3976,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description2: Schema.optional(Schema.String),
     mobilePreferred: Schema.optional(Schema.Boolean),
     description1: Schema.optional(Schema.String),
@@ -3998,7 +3998,7 @@ export interface GoogleAdsSearchads360V0Common__TextAsset {
 }
 
 export const GoogleAdsSearchads360V0Common__TextAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Common__TextAsset" });
 
@@ -4097,7 +4097,7 @@ export interface GoogleAdsSearchads360V0Resources__Asset {
 }
 
 export const GoogleAdsSearchads360V0Resources__Asset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     pageFeedAsset: Schema.optional(
       GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset,
@@ -4151,7 +4151,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerAssetSet {
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomerAssetSet =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSet: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -4213,7 +4213,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupAsset {
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     assetGroup: Schema.optional(Schema.String),
@@ -4229,7 +4229,7 @@ export interface GoogleAdsSearchads360V0Resources__CartDataSalesView {
 }
 
 export const GoogleAdsSearchads360V0Resources__CartDataSalesView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources__CartDataSalesView",
@@ -4277,7 +4277,7 @@ export interface GoogleAdsSearchads360V0Resources__ConversionCustomVariable {
 }
 
 export const GoogleAdsSearchads360V0Resources__ConversionCustomVariable =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     family: Schema.optional(Schema.String),
     customColumnIds: Schema.optional(Schema.Array(Schema.String)),
     cardinality: Schema.optional(Schema.String),
@@ -4319,7 +4319,7 @@ export interface GoogleAdsSearchads360V0Resources__GeoTargetConstant {
 }
 
 export const GoogleAdsSearchads360V0Resources__GeoTargetConstant =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     parentGeoTarget: Schema.optional(Schema.String),
@@ -4360,7 +4360,7 @@ export interface GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstan
 }
 
 export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     localizedName: Schema.optional(Schema.String),
@@ -4386,7 +4386,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAssetSet {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignAssetSet =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assetSet: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -4430,7 +4430,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerClient {
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomerClient =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manager: Schema.optional(Schema.Boolean),
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -4533,7 +4533,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroup {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroup =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastModifiedTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -4573,7 +4573,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerAsset {
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomerAsset =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     asset: Schema.optional(Schema.String),
@@ -4587,7 +4587,7 @@ export interface GoogleAdsSearchads360V0Common__ListingGroupInfo {
 }
 
 export const GoogleAdsSearchads360V0Common__ListingGroupInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Common__ListingGroupInfo",
@@ -4724,7 +4724,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterion {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterion =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlCustomParameters: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Common__CustomParameter),
     ),
@@ -4778,7 +4778,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     campaign: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -5017,7 +5017,7 @@ export interface GoogleAdsSearchads360V0Common__Metrics {
 }
 
 export const GoogleAdsSearchads360V0Common__Metrics =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averageImpressionFrequencyPerUser: Schema.optional(Schema.Number),
     orders: Schema.optional(Schema.Number),
     clientAccountConversions: Schema.optional(Schema.Number),
@@ -5136,7 +5136,7 @@ export interface GoogleAdsSearchads360V0Common__AssetInteractionTarget {
 }
 
 export const GoogleAdsSearchads360V0Common__AssetInteractionTarget =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     interactionOnThisAsset: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -5387,7 +5387,7 @@ export interface GoogleAdsSearchads360V0Common__Segments {
 }
 
 export const GoogleAdsSearchads360V0Common__Segments =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productBiddingCategoryLevel1: Schema.optional(Schema.String),
     assetInteractionTarget: Schema.optional(
       GoogleAdsSearchads360V0Common__AssetInteractionTarget,
@@ -5518,7 +5518,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAd {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAd =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     engineStatus: Schema.optional(Schema.String),
@@ -5542,7 +5542,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupCriterion: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -5557,7 +5557,7 @@ export interface GoogleAdsSearchads360V0Resources__GenderView {
 }
 
 export const GoogleAdsSearchads360V0Resources__GenderView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAdsSearchads360V0Resources__GenderView" });
 
@@ -5567,7 +5567,7 @@ export interface GoogleAdsSearchads360V0Resources__ProductGroupView {
 }
 
 export const GoogleAdsSearchads360V0Resources__ProductGroupView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsSearchads360V0Resources__ProductGroupView",
@@ -5583,7 +5583,7 @@ export interface GoogleAdsSearchads360V0Resources__UserLocationView {
 }
 
 export const GoogleAdsSearchads360V0Resources__UserLocationView =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countryCriterionId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     targetingLocation: Schema.optional(Schema.Boolean),
@@ -5603,7 +5603,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAdLabel {
 }
 
 export const GoogleAdsSearchads360V0Resources__AdGroupAdLabel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     adGroupAd: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -5734,7 +5734,7 @@ export interface GoogleAdsSearchads360V0Services__SearchAds360Row {
 }
 
 export const GoogleAdsSearchads360V0Services__SearchAds360Row =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shoppingPerformanceView: Schema.optional(
       GoogleAdsSearchads360V0Resources__ShoppingPerformanceView,
     ),
@@ -5890,7 +5890,7 @@ export interface GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeade
 }
 
 export const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -5906,7 +5906,7 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader
 }
 
 export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -5924,7 +5924,7 @@ export interface GoogleAdsSearchads360V0Services__CustomColumnHeader {
 }
 
 export const GoogleAdsSearchads360V0Services__CustomColumnHeader =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     referencesMetrics: Schema.optional(Schema.Boolean),
@@ -5956,7 +5956,7 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Response {
 }
 
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360Response =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Services__SearchAds360Row),
     ),
@@ -6003,7 +6003,7 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRespon
 }
 
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleAdsSearchads360V0Resources__SearchAds360Field),
     ),
@@ -6024,7 +6024,7 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsReques
 }
 
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -6093,7 +6093,7 @@ export interface SearchSearchAds360FieldsRequest {
 }
 
 export const SearchSearchAds360FieldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest,
     ).pipe(T.HttpBody()),
@@ -6109,7 +6109,7 @@ export const SearchSearchAds360FieldsRequest =
 export type SearchSearchAds360FieldsResponse =
   GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse;
 export const SearchSearchAds360FieldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse;
 
 export type SearchSearchAds360FieldsError =
   | DefaultErrors
@@ -6124,7 +6124,7 @@ export const searchSearchAds360Fields: API.OperationMethod<
   SearchSearchAds360FieldsResponse,
   SearchSearchAds360FieldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchSearchAds360FieldsRequest,
   output: SearchSearchAds360FieldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6136,7 +6136,7 @@ export interface GetSearchAds360FieldsRequest {
 }
 
 export const GetSearchAds360FieldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
     T.Http({ method: "GET", path: "v0/{+resourceName}" }),
@@ -6146,7 +6146,7 @@ export const GetSearchAds360FieldsRequest =
 export type GetSearchAds360FieldsResponse =
   GoogleAdsSearchads360V0Resources__SearchAds360Field;
 export const GetSearchAds360FieldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Resources__SearchAds360Field;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Resources__SearchAds360Field;
 
 export type GetSearchAds360FieldsError = DefaultErrors | NotFound | Forbidden;
 
@@ -6156,7 +6156,7 @@ export const getSearchAds360Fields: API.OperationMethod<
   GetSearchAds360FieldsResponse,
   GetSearchAds360FieldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSearchAds360FieldsRequest,
   output: GetSearchAds360FieldsResponse,
   errors: [NotFound, Forbidden],
@@ -6165,7 +6165,7 @@ export const getSearchAds360Fields: API.OperationMethod<
 export interface ListAccessibleCustomersCustomersRequest {}
 
 export const ListAccessibleCustomersCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v0/customers:listAccessibleCustomers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessibleCustomersCustomersRequest>;
@@ -6173,7 +6173,7 @@ export const ListAccessibleCustomersCustomersRequest =
 export type ListAccessibleCustomersCustomersResponse =
   GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse;
 export const ListAccessibleCustomersCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse;
 
 export type ListAccessibleCustomersCustomersError =
   | DefaultErrors
@@ -6186,7 +6186,7 @@ export const listAccessibleCustomersCustomers: API.OperationMethod<
   ListAccessibleCustomersCustomersResponse,
   ListAccessibleCustomersCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessibleCustomersCustomersRequest,
   output: ListAccessibleCustomersCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -6198,7 +6198,7 @@ export interface ListCustomersCustomColumnsRequest {
 }
 
 export const ListCustomersCustomColumnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
     T.Http({ method: "GET", path: "v0/customers/{+customerId}/customColumns" }),
@@ -6208,7 +6208,7 @@ export const ListCustomersCustomColumnsRequest =
 export type ListCustomersCustomColumnsResponse =
   GoogleAdsSearchads360V0Services__ListCustomColumnsResponse;
 export const ListCustomersCustomColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__ListCustomColumnsResponse;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Services__ListCustomColumnsResponse;
 
 export type ListCustomersCustomColumnsError =
   | DefaultErrors
@@ -6221,7 +6221,7 @@ export const listCustomersCustomColumns: API.OperationMethod<
   ListCustomersCustomColumnsResponse,
   ListCustomersCustomColumnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersCustomColumnsRequest,
   output: ListCustomersCustomColumnsResponse,
   errors: [NotFound, Forbidden],
@@ -6233,7 +6233,7 @@ export interface GetCustomersCustomColumnsRequest {
 }
 
 export const GetCustomersCustomColumnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
     T.Http({ method: "GET", path: "v0/{+resourceName}" }),
@@ -6243,7 +6243,7 @@ export const GetCustomersCustomColumnsRequest =
 export type GetCustomersCustomColumnsResponse =
   GoogleAdsSearchads360V0Resources__CustomColumn;
 export const GetCustomersCustomColumnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Resources__CustomColumn;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Resources__CustomColumn;
 
 export type GetCustomersCustomColumnsError =
   | DefaultErrors
@@ -6256,7 +6256,7 @@ export const getCustomersCustomColumns: API.OperationMethod<
   GetCustomersCustomColumnsResponse,
   GetCustomersCustomColumnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersCustomColumnsRequest,
   output: GetCustomersCustomColumnsResponse,
   errors: [NotFound, Forbidden],
@@ -6270,7 +6270,7 @@ export interface SearchCustomersSearchAds360Request {
 }
 
 export const SearchCustomersSearchAds360Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(
       GoogleAdsSearchads360V0Services__SearchSearchAds360Request,
@@ -6287,7 +6287,7 @@ export const SearchCustomersSearchAds360Request =
 export type SearchCustomersSearchAds360Response =
   GoogleAdsSearchads360V0Services__SearchSearchAds360Response;
 export const SearchCustomersSearchAds360Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360Response;
+  /*@__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360Response;
 
 export type SearchCustomersSearchAds360Error =
   | DefaultErrors
@@ -6302,7 +6302,7 @@ export const searchCustomersSearchAds360: API.OperationMethod<
   SearchCustomersSearchAds360Response,
   SearchCustomersSearchAds360Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchCustomersSearchAds360Request,
   output: SearchCustomersSearchAds360Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

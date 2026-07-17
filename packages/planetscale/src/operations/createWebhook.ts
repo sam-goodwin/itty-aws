@@ -11,9 +11,9 @@ export interface CreateWebhookInput {
   database: string;
   url: string;
   enabled?: boolean;
-  events?: string[];
+  events?: ReadonlyArray<string>;
 }
-export const CreateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   url: Schema.String,
@@ -37,7 +37,7 @@ export interface CreateWebhookOutput {
   last_sent_at: string | null;
   created_at: string;
   updated_at: string;
-  events: (
+  events: ReadonlyArray<
     | "branch.ready"
     | "branch.anomaly"
     | "branch.out_of_memory"
@@ -57,9 +57,9 @@ export interface CreateWebhookOutput {
     | "deploy_request.schema_applied"
     | "keyspace.storage"
     | "webhook.test"
-  )[];
+  >;
 }
-export const CreateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -104,7 +104,7 @@ export const CreateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param enabled - Whether the webhook should be enabled
  * @param events - The events this webhook should subscribe to
  */
-export const createWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateWebhookInput,
   outputSchema: CreateWebhookOutput,
   errors: [Forbidden, NotFound] as const,

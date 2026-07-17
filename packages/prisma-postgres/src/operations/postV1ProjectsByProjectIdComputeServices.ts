@@ -23,7 +23,7 @@ export interface PostV1ProjectsByProjectIdComputeServicesInput {
   branchGitName?: string | null;
 }
 export const PostV1ProjectsByProjectIdComputeServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.String,
     regionId: Schema.optional(
@@ -61,7 +61,7 @@ export interface PostV1ProjectsByProjectIdComputeServicesOutput {
   };
 }
 export const PostV1ProjectsByProjectIdComputeServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -87,7 +87,7 @@ export const PostV1ProjectsByProjectIdComputeServicesOutput =
  * Creates a new compute service under the specified project. The service is placed in the given region (or the default region if omitted). Returns `409 Conflict` with the existing service's id, name, and branch if a service with the same name already exists on the resolved branch.
  */
 export const postV1ProjectsByProjectIdComputeServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ProjectsByProjectIdComputeServicesInput,
     outputSchema: PostV1ProjectsByProjectIdComputeServicesOutput,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,

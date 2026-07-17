@@ -9,7 +9,7 @@ export interface V1RollbackMigrationsInput {
   gte: string;
 }
 export const V1RollbackMigrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     gte: Schema.String,
   }).pipe(
@@ -22,7 +22,7 @@ export const V1RollbackMigrationsInput =
 // Output Schema
 export type V1RollbackMigrationsOutput = void;
 export const V1RollbackMigrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RollbackMigrationsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RollbackMigrationsOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const V1RollbackMigrationsOutput =
  * @param ref - Project ref
  * @param gte - Rollback migrations greater or equal to this version
  */
-export const v1RollbackMigrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RollbackMigrationsInput,
-    outputSchema: V1RollbackMigrationsOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1RollbackMigrations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RollbackMigrationsInput,
+  outputSchema: V1RollbackMigrationsOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -14,7 +14,7 @@ export interface PostFinancialConnectionsAccountsAccountUnsubscribeInput {
   features: "transactions"[];
 }
 export const PostFinancialConnectionsAccountsAccountUnsubscribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     features: Schema.Array(Schema.Literals(["transactions"])),
@@ -118,7 +118,7 @@ export interface PostFinancialConnectionsAccountsAccountUnsubscribeOutput {
   } | null;
 }
 export const PostFinancialConnectionsAccountsAccountUnsubscribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -267,7 +267,7 @@ export const PostFinancialConnectionsAccountsAccountUnsubscribeOutput =
  * <p>Unsubscribes from periodic refreshes of data associated with a Financial Connections <code>Account</code>.</p>
  */
 export const PostFinancialConnectionsAccountsAccountUnsubscribe =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsAccountsAccountUnsubscribeInput,
     outputSchema: PostFinancialConnectionsAccountsAccountUnsubscribeOutput,
   }));

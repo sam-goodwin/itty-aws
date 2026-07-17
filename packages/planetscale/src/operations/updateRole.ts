@@ -15,7 +15,7 @@ export interface UpdateRoleInput {
   require_where_on_delete?: string;
   require_where_on_update?: string;
 }
-export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -51,7 +51,7 @@ export interface UpdateRoleOutput {
   expired: boolean;
   default: boolean;
   ttl: number | null;
-  inherited_roles: (
+  inherited_roles: ReadonlyArray<
     | "pscale_managed"
     | "pg_checkpoint"
     | "pg_create_subscription"
@@ -65,7 +65,8 @@ export interface UpdateRoleOutput {
     | "pg_use_reserved_connections"
     | "pg_write_all_data"
     | "postgres"
-  )[];
+  >;
+  with_replication: boolean;
   branch: {
     id: string;
     name: string;
@@ -79,7 +80,7 @@ export interface UpdateRoleOutput {
     require_where_on_update: "off" | "warn" | "on";
   };
 }
-export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -116,6 +117,7 @@ export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "postgres",
     ]),
   ),
+  with_replication: Schema.Boolean,
   branch: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -146,7 +148,7 @@ export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param require_where_on_delete - Require WHERE clause on DELETE statements
  * @param require_where_on_update - Require WHERE clause on UPDATE statements
  */
-export const updateRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRoleInput,
   outputSchema: UpdateRoleOutput,
   errors: [Forbidden, NotFound] as const,

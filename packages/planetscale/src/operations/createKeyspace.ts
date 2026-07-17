@@ -13,7 +13,7 @@ export interface CreateKeyspaceInput {
   extra_replicas?: number;
   shards?: number;
 }
-export const CreateKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateKeyspaceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -63,7 +63,7 @@ export interface CreateKeyspaceOutput {
   mysqld_options: Record<string, unknown>;
   vttablet_options: Record<string, unknown>;
 }
-export const CreateKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateKeyspaceOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   shards: Schema.Number,
@@ -113,7 +113,7 @@ export const CreateKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param extra_replicas - The number of additional replicas beyond the included default
  * @param shards - The number of shards. Default: 1
  */
-export const createKeyspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createKeyspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateKeyspaceInput,
   outputSchema: CreateKeyspaceOutput,
   errors: [Forbidden, NotFound] as const,

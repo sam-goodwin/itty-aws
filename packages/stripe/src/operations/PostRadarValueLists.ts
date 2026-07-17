@@ -23,7 +23,7 @@ export interface PostRadarValueListsInput {
   name: string;
 }
 export const PostRadarValueListsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.String,
     expand: Schema.optional(Schema.Array(Schema.String)),
     item_type: Schema.optional(
@@ -91,7 +91,7 @@ export interface PostRadarValueListsOutput {
   object: "radar.value_list";
 }
 export const PostRadarValueListsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.String,
     created: Schema.Number,
     created_by: Schema.String,
@@ -138,7 +138,7 @@ export const PostRadarValueListsOutput =
  *
  * <p>Creates a new <code>ValueList</code> object, which can then be referenced in rules.</p>
  */
-export const PostRadarValueLists = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostRadarValueLists = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostRadarValueListsInput,
   outputSchema: PostRadarValueListsOutput,
 }));

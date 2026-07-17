@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface HealthInput {}
-export const HealthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const HealthInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/health" }),
 ) as unknown as Schema.Codec<HealthInput>;
 
@@ -12,7 +12,7 @@ export const HealthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 export interface HealthOutput {
   ok: boolean;
 }
-export const HealthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HealthOutput = /*@__PURE__*/ Schema.Struct({
   ok: Schema.Boolean,
 }) as unknown as Schema.Codec<HealthOutput>;
 
@@ -20,7 +20,7 @@ export const HealthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Checks if Typesense server is ready to accept requests.
  */
-export const health = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const health = /*@__PURE__*/ API.make(() => ({
   inputSchema: HealthInput,
   outputSchema: HealthOutput,
 }));

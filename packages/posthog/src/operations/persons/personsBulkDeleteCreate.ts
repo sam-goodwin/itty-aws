@@ -14,7 +14,7 @@ export interface PersonsBulkDeleteCreateInput {
   keep_person?: boolean;
 }
 export const PersonsBulkDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     ids: Schema.optional(Schema.Array(Schema.String)),
@@ -32,7 +32,7 @@ export const PersonsBulkDeleteCreateInput =
 // Output Schema
 export type PersonsBulkDeleteCreateOutput = void;
 export const PersonsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBulkDeleteCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBulkDeleteCreateOutput>;
 
 // The operation
 /**
@@ -40,10 +40,8 @@ export const PersonsBulkDeleteCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsBulkDeleteCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsBulkDeleteCreateInput,
-    outputSchema: PersonsBulkDeleteCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsBulkDeleteCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsBulkDeleteCreateInput,
+  outputSchema: PersonsBulkDeleteCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

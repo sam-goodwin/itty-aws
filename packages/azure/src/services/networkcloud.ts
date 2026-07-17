@@ -48,7 +48,7 @@ export interface AccessBridgesCreateOrUpdateInput {
   location: string;
 }
 export const AccessBridgesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessBridgeName: Schema.Literals([
@@ -126,7 +126,7 @@ export interface AccessBridgesCreateOrUpdateOutput {
   };
 }
 export const AccessBridgesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -155,12 +155,10 @@ export const AccessBridgesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessBridgeName - The name of the access bridge.
  */
-export const AccessBridgesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessBridgesCreateOrUpdateInput,
-    outputSchema: AccessBridgesCreateOrUpdateOutput,
-  }),
-);
+export const AccessBridgesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesCreateOrUpdateInput,
+  outputSchema: AccessBridgesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AccessBridgesDeleteInput {
   subscriptionId: string;
@@ -168,7 +166,7 @@ export interface AccessBridgesDeleteInput {
   accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
 }
 export const AccessBridgesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessBridgeName: Schema.Literals([
@@ -187,7 +185,7 @@ export const AccessBridgesDeleteInput =
 // Output Schema
 export type AccessBridgesDeleteOutput = void;
 export const AccessBridgesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessBridgesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessBridgesDeleteOutput>;
 
 // The operation
 /**
@@ -200,7 +198,7 @@ export const AccessBridgesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const AccessBridgesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessBridgesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessBridgesDeleteInput,
   outputSchema: AccessBridgesDeleteOutput,
 }));
@@ -210,7 +208,7 @@ export interface AccessBridgesGetInput {
   resourceGroupName: string;
   accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
 }
-export const AccessBridgesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessBridgesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accessBridgeName: Schema.Literals([
@@ -240,27 +238,25 @@ export interface AccessBridgesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccessBridgesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AccessBridgesGetOutput>;
+export const AccessBridgesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AccessBridgesGetOutput>;
 
 // The operation
 /**
@@ -271,7 +267,7 @@ export const AccessBridgesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessBridgeName - The name of the access bridge.
  */
-export const AccessBridgesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessBridgesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessBridgesGetInput,
   outputSchema: AccessBridgesGetOutput,
 }));
@@ -283,7 +279,7 @@ export interface AccessBridgesListByResourceGroupInput {
   $skipToken?: string;
 }
 export const AccessBridgesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -314,7 +310,7 @@ export interface AccessBridgesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AccessBridgesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -360,7 +356,7 @@ export const AccessBridgesListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const AccessBridgesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessBridgesListByResourceGroupInput,
     outputSchema: AccessBridgesListByResourceGroupOutput,
   }));
@@ -371,7 +367,7 @@ export interface AccessBridgesListBySubscriptionInput {
   $skipToken?: string;
 }
 export const AccessBridgesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -401,7 +397,7 @@ export interface AccessBridgesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AccessBridgesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -446,7 +442,7 @@ export const AccessBridgesListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const AccessBridgesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessBridgesListBySubscriptionInput,
     outputSchema: AccessBridgesListBySubscriptionOutput,
   }));
@@ -467,7 +463,7 @@ export interface AccessBridgesUpdateInput {
   tags?: Record<string, string>;
 }
 export const AccessBridgesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessBridgeName: Schema.Literals([
@@ -514,7 +510,7 @@ export interface AccessBridgesUpdateOutput {
   };
 }
 export const AccessBridgesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -545,7 +541,7 @@ export const AccessBridgesUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const AccessBridgesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessBridgesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessBridgesUpdateInput,
   outputSchema: AccessBridgesUpdateOutput,
 }));
@@ -605,7 +601,7 @@ export interface AgentPoolsCreateOrUpdateInput {
   location: string;
 }
 export const AgentPoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -760,7 +756,7 @@ export interface AgentPoolsCreateOrUpdateOutput {
   };
 }
 export const AgentPoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -792,12 +788,10 @@ export const AgentPoolsCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const AgentPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentPoolsCreateOrUpdateInput,
-    outputSchema: AgentPoolsCreateOrUpdateOutput,
-  }),
-);
+export const AgentPoolsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolsCreateOrUpdateInput,
+  outputSchema: AgentPoolsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AgentPoolsDeleteInput {
   subscriptionId: string;
@@ -805,7 +799,7 @@ export interface AgentPoolsDeleteInput {
   kubernetesClusterName: string;
   agentPoolName: string;
 }
-export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -821,7 +815,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AgentPoolsDeleteOutput = void;
 export const AgentPoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -835,7 +829,7 @@ export const AgentPoolsDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const AgentPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentPoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsDeleteInput,
   outputSchema: AgentPoolsDeleteOutput,
 }));
@@ -846,7 +840,7 @@ export interface AgentPoolsGetInput {
   kubernetesClusterName: string;
   agentPoolName: string;
 }
-export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -873,7 +867,7 @@ export interface AgentPoolsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AgentPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -903,7 +897,7 @@ export const AgentPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
  */
-export const AgentPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentPoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsGetInput,
   outputSchema: AgentPoolsGetOutput,
 }));
@@ -916,7 +910,7 @@ export interface AgentPoolsListByKubernetesClusterInput {
   $skipToken?: string;
 }
 export const AgentPoolsListByKubernetesClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -948,7 +942,7 @@ export interface AgentPoolsListByKubernetesClusterOutput {
   nextLink?: string;
 }
 export const AgentPoolsListByKubernetesClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -995,7 +989,7 @@ export const AgentPoolsListByKubernetesClusterOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const AgentPoolsListByKubernetesCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentPoolsListByKubernetesClusterInput,
     outputSchema: AgentPoolsListByKubernetesClusterOutput,
   }));
@@ -1016,7 +1010,7 @@ export interface AgentPoolsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -1067,27 +1061,25 @@ export interface AgentPoolsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AgentPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AgentPoolsUpdateOutput>;
+export const AgentPoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AgentPoolsUpdateOutput>;
 
 // The operation
 /**
@@ -1101,7 +1093,7 @@ export const AgentPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const AgentPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentPoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsUpdateInput,
   outputSchema: AgentPoolsUpdateOutput,
 }));
@@ -1145,7 +1137,7 @@ export interface BareMetalMachineKeySetsCreateOrUpdateInput {
   location: string;
 }
 export const BareMetalMachineKeySetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1226,7 +1218,7 @@ export interface BareMetalMachineKeySetsCreateOrUpdateOutput {
   };
 }
 export const BareMetalMachineKeySetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1259,7 +1251,7 @@ export const BareMetalMachineKeySetsCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachineKeySetsCreateOrUpdateInput,
     outputSchema: BareMetalMachineKeySetsCreateOrUpdateOutput,
   }));
@@ -1271,7 +1263,7 @@ export interface BareMetalMachineKeySetsDeleteInput {
   bareMetalMachineKeySetName: string;
 }
 export const BareMetalMachineKeySetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1287,7 +1279,7 @@ export const BareMetalMachineKeySetsDeleteInput =
 // Output Schema
 export type BareMetalMachineKeySetsDeleteOutput = void;
 export const BareMetalMachineKeySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachineKeySetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachineKeySetsDeleteOutput>;
 
 // The operation
 /**
@@ -1302,7 +1294,7 @@ export const BareMetalMachineKeySetsDeleteOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachineKeySetsDeleteInput,
     outputSchema: BareMetalMachineKeySetsDeleteOutput,
   }));
@@ -1314,7 +1306,7 @@ export interface BareMetalMachineKeySetsGetInput {
   bareMetalMachineKeySetName: string;
 }
 export const BareMetalMachineKeySetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1342,7 +1334,7 @@ export interface BareMetalMachineKeySetsGetOutput {
   };
 }
 export const BareMetalMachineKeySetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1372,12 +1364,10 @@ export const BareMetalMachineKeySetsGetOutput =
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
  */
-export const BareMetalMachineKeySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachineKeySetsGetInput,
-    outputSchema: BareMetalMachineKeySetsGetOutput,
-  }),
-);
+export const BareMetalMachineKeySetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachineKeySetsGetInput,
+  outputSchema: BareMetalMachineKeySetsGetOutput,
+}));
 // Input Schema
 export interface BareMetalMachineKeySetsListByClusterInput {
   subscriptionId: string;
@@ -1387,7 +1377,7 @@ export interface BareMetalMachineKeySetsListByClusterInput {
   $skipToken?: string;
 }
 export const BareMetalMachineKeySetsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1419,7 +1409,7 @@ export interface BareMetalMachineKeySetsListByClusterOutput {
   nextLink?: string;
 }
 export const BareMetalMachineKeySetsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1466,7 +1456,7 @@ export const BareMetalMachineKeySetsListByClusterOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachineKeySetsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachineKeySetsListByClusterInput,
     outputSchema: BareMetalMachineKeySetsListByClusterOutput,
   }));
@@ -1489,7 +1479,7 @@ export interface BareMetalMachineKeySetsUpdateInput {
   tags?: Record<string, string>;
 }
 export const BareMetalMachineKeySetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1536,7 +1526,7 @@ export interface BareMetalMachineKeySetsUpdateOutput {
   };
 }
 export const BareMetalMachineKeySetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1569,7 +1559,7 @@ export const BareMetalMachineKeySetsUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachineKeySetsUpdateInput,
     outputSchema: BareMetalMachineKeySetsUpdateOutput,
   }));
@@ -1581,7 +1571,7 @@ export interface BareMetalMachinesCordonInput {
   evacuate?: "True" | "False";
 }
 export const BareMetalMachinesCordonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -1597,7 +1587,7 @@ export const BareMetalMachinesCordonInput =
 // Output Schema
 export type BareMetalMachinesCordonOutput = void;
 export const BareMetalMachinesCordonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesCordonOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesCordonOutput>;
 
 // The operation
 /**
@@ -1608,12 +1598,10 @@ export const BareMetalMachinesCordonOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesCordon = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesCordonInput,
-    outputSchema: BareMetalMachinesCordonOutput,
-  }),
-);
+export const BareMetalMachinesCordon = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesCordonInput,
+  outputSchema: BareMetalMachinesCordonOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1743,7 +1731,7 @@ export interface BareMetalMachinesCreateOrUpdateInput {
   location: string;
 }
 export const BareMetalMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -1962,7 +1950,7 @@ export interface BareMetalMachinesCreateOrUpdateOutput {
   };
 }
 export const BareMetalMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1994,7 +1982,7 @@ export const BareMetalMachinesCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesCreateOrUpdateInput,
     outputSchema: BareMetalMachinesCreateOrUpdateOutput,
   }));
@@ -2005,7 +1993,7 @@ export interface BareMetalMachinesDeleteInput {
   bareMetalMachineName: string;
 }
 export const BareMetalMachinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2020,7 +2008,7 @@ export const BareMetalMachinesDeleteInput =
 // Output Schema
 export type BareMetalMachinesDeleteOutput = void;
 export const BareMetalMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -2033,12 +2021,10 @@ export const BareMetalMachinesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const BareMetalMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesDeleteInput,
-    outputSchema: BareMetalMachinesDeleteOutput,
-  }),
-);
+export const BareMetalMachinesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesDeleteInput,
+  outputSchema: BareMetalMachinesDeleteOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesGetInput {
   subscriptionId: string;
@@ -2046,7 +2032,7 @@ export interface BareMetalMachinesGetInput {
   bareMetalMachineName: string;
 }
 export const BareMetalMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2073,7 +2059,7 @@ export interface BareMetalMachinesGetOutput {
   };
 }
 export const BareMetalMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2102,12 +2088,10 @@ export const BareMetalMachinesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesGetInput,
-    outputSchema: BareMetalMachinesGetOutput,
-  }),
-);
+export const BareMetalMachinesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesGetInput,
+  outputSchema: BareMetalMachinesGetOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesListByResourceGroupInput {
   subscriptionId: string;
@@ -2116,7 +2100,7 @@ export interface BareMetalMachinesListByResourceGroupInput {
   $skipToken?: string;
 }
 export const BareMetalMachinesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -2147,7 +2131,7 @@ export interface BareMetalMachinesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const BareMetalMachinesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2193,7 +2177,7 @@ export const BareMetalMachinesListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesListByResourceGroupInput,
     outputSchema: BareMetalMachinesListByResourceGroupOutput,
   }));
@@ -2204,7 +2188,7 @@ export interface BareMetalMachinesListBySubscriptionInput {
   $skipToken?: string;
 }
 export const BareMetalMachinesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -2234,7 +2218,7 @@ export interface BareMetalMachinesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const BareMetalMachinesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2279,7 +2263,7 @@ export const BareMetalMachinesListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesListBySubscriptionInput,
     outputSchema: BareMetalMachinesListBySubscriptionOutput,
   }));
@@ -2291,7 +2275,7 @@ export interface BareMetalMachinesPowerOffInput {
   skipShutdown?: "True" | "False";
 }
 export const BareMetalMachinesPowerOffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2307,7 +2291,7 @@ export const BareMetalMachinesPowerOffInput =
 // Output Schema
 export type BareMetalMachinesPowerOffOutput = void;
 export const BareMetalMachinesPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesPowerOffOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesPowerOffOutput>;
 
 // The operation
 /**
@@ -2318,12 +2302,10 @@ export const BareMetalMachinesPowerOffOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesPowerOff = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesPowerOffInput,
-    outputSchema: BareMetalMachinesPowerOffOutput,
-  }),
-);
+export const BareMetalMachinesPowerOff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesPowerOffInput,
+  outputSchema: BareMetalMachinesPowerOffOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesReimageInput {
   subscriptionId: string;
@@ -2332,7 +2314,7 @@ export interface BareMetalMachinesReimageInput {
   safeguardMode?: "All" | "None";
 }
 export const BareMetalMachinesReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2348,7 +2330,7 @@ export const BareMetalMachinesReimageInput =
 // Output Schema
 export type BareMetalMachinesReimageOutput = void;
 export const BareMetalMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReimageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReimageOutput>;
 
 // The operation
 /**
@@ -2359,12 +2341,10 @@ export const BareMetalMachinesReimageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesReimageInput,
-    outputSchema: BareMetalMachinesReimageOutput,
-  }),
-);
+export const BareMetalMachinesReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesReimageInput,
+  outputSchema: BareMetalMachinesReimageOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesReplaceInput {
   subscriptionId: string;
@@ -2382,7 +2362,7 @@ export interface BareMetalMachinesReplaceInput {
   storagePolicy?: "Preserve" | "DiscardAll";
 }
 export const BareMetalMachinesReplaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2409,7 +2389,7 @@ export const BareMetalMachinesReplaceInput =
 // Output Schema
 export type BareMetalMachinesReplaceOutput = void;
 export const BareMetalMachinesReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReplaceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReplaceOutput>;
 
 // The operation
 /**
@@ -2420,12 +2400,10 @@ export const BareMetalMachinesReplaceOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesReplaceInput,
-    outputSchema: BareMetalMachinesReplaceOutput,
-  }),
-);
+export const BareMetalMachinesReplace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesReplaceInput,
+  outputSchema: BareMetalMachinesReplaceOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesRestartInput {
   subscriptionId: string;
@@ -2433,7 +2411,7 @@ export interface BareMetalMachinesRestartInput {
   bareMetalMachineName: string;
 }
 export const BareMetalMachinesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2448,7 +2426,7 @@ export const BareMetalMachinesRestartInput =
 // Output Schema
 export type BareMetalMachinesRestartOutput = void;
 export const BareMetalMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRestartOutput>;
 
 // The operation
 /**
@@ -2459,12 +2437,10 @@ export const BareMetalMachinesRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesRestartInput,
-    outputSchema: BareMetalMachinesRestartOutput,
-  }),
-);
+export const BareMetalMachinesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesRestartInput,
+  outputSchema: BareMetalMachinesRestartOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesRunCommandInput {
   subscriptionId: string;
@@ -2475,7 +2451,7 @@ export interface BareMetalMachinesRunCommandInput {
   script: string;
 }
 export const BareMetalMachinesRunCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2493,7 +2469,7 @@ export const BareMetalMachinesRunCommandInput =
 // Output Schema
 export type BareMetalMachinesRunCommandOutput = void;
 export const BareMetalMachinesRunCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunCommandOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunCommandOutput>;
 
 // The operation
 /**
@@ -2504,12 +2480,10 @@ export const BareMetalMachinesRunCommandOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesRunCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesRunCommandInput,
-    outputSchema: BareMetalMachinesRunCommandOutput,
-  }),
-);
+export const BareMetalMachinesRunCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesRunCommandInput,
+  outputSchema: BareMetalMachinesRunCommandOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesRunDataExtractsInput {
   subscriptionId: string;
@@ -2519,7 +2493,7 @@ export interface BareMetalMachinesRunDataExtractsInput {
   limitTimeSeconds: number;
 }
 export const BareMetalMachinesRunDataExtractsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2541,7 +2515,7 @@ export const BareMetalMachinesRunDataExtractsInput =
 // Output Schema
 export type BareMetalMachinesRunDataExtractsOutput = void;
 export const BareMetalMachinesRunDataExtractsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsOutput>;
 
 // The operation
 /**
@@ -2553,7 +2527,7 @@ export const BareMetalMachinesRunDataExtractsOutput =
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
 export const BareMetalMachinesRunDataExtracts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesRunDataExtractsInput,
     outputSchema: BareMetalMachinesRunDataExtractsOutput,
   }));
@@ -2566,7 +2540,7 @@ export interface BareMetalMachinesRunDataExtractsRestrictedInput {
   limitTimeSeconds: number;
 }
 export const BareMetalMachinesRunDataExtractsRestrictedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2588,7 +2562,7 @@ export const BareMetalMachinesRunDataExtractsRestrictedInput =
 // Output Schema
 export type BareMetalMachinesRunDataExtractsRestrictedOutput = void;
 export const BareMetalMachinesRunDataExtractsRestrictedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsRestrictedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsRestrictedOutput>;
 
 // The operation
 /**
@@ -2600,7 +2574,7 @@ export const BareMetalMachinesRunDataExtractsRestrictedOutput =
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
 export const BareMetalMachinesRunDataExtractsRestricted =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesRunDataExtractsRestrictedInput,
     outputSchema: BareMetalMachinesRunDataExtractsRestrictedOutput,
   }));
@@ -2613,7 +2587,7 @@ export interface BareMetalMachinesRunReadCommandsInput {
   limitTimeSeconds: number;
 }
 export const BareMetalMachinesRunReadCommandsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2635,7 +2609,7 @@ export const BareMetalMachinesRunReadCommandsInput =
 // Output Schema
 export type BareMetalMachinesRunReadCommandsOutput = void;
 export const BareMetalMachinesRunReadCommandsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunReadCommandsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunReadCommandsOutput>;
 
 // The operation
 /**
@@ -2647,7 +2621,7 @@ export const BareMetalMachinesRunReadCommandsOutput =
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
 export const BareMetalMachinesRunReadCommands =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BareMetalMachinesRunReadCommandsInput,
     outputSchema: BareMetalMachinesRunReadCommandsOutput,
   }));
@@ -2658,7 +2632,7 @@ export interface BareMetalMachinesStartInput {
   bareMetalMachineName: string;
 }
 export const BareMetalMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2673,7 +2647,7 @@ export const BareMetalMachinesStartInput =
 // Output Schema
 export type BareMetalMachinesStartOutput = void;
 export const BareMetalMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesStartOutput>;
 
 // The operation
 /**
@@ -2684,12 +2658,10 @@ export const BareMetalMachinesStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesStartInput,
-    outputSchema: BareMetalMachinesStartOutput,
-  }),
-);
+export const BareMetalMachinesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesStartInput,
+  outputSchema: BareMetalMachinesStartOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesUncordonInput {
   subscriptionId: string;
@@ -2697,7 +2669,7 @@ export interface BareMetalMachinesUncordonInput {
   bareMetalMachineName: string;
 }
 export const BareMetalMachinesUncordonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2712,7 +2684,7 @@ export const BareMetalMachinesUncordonInput =
 // Output Schema
 export type BareMetalMachinesUncordonOutput = void;
 export const BareMetalMachinesUncordonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesUncordonOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesUncordonOutput>;
 
 // The operation
 /**
@@ -2723,12 +2695,10 @@ export const BareMetalMachinesUncordonOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
  */
-export const BareMetalMachinesUncordon = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesUncordonInput,
-    outputSchema: BareMetalMachinesUncordonOutput,
-  }),
-);
+export const BareMetalMachinesUncordon = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesUncordonInput,
+  outputSchema: BareMetalMachinesUncordonOutput,
+}));
 // Input Schema
 export interface BareMetalMachinesUpdateInput {
   subscriptionId: string;
@@ -2738,7 +2708,7 @@ export interface BareMetalMachinesUpdateInput {
   tags?: Record<string, string>;
 }
 export const BareMetalMachinesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
@@ -2771,7 +2741,7 @@ export interface BareMetalMachinesUpdateOutput {
   };
 }
 export const BareMetalMachinesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2802,12 +2772,10 @@ export const BareMetalMachinesUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const BareMetalMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BareMetalMachinesUpdateInput,
-    outputSchema: BareMetalMachinesUpdateOutput,
-  }),
-);
+export const BareMetalMachinesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BareMetalMachinesUpdateInput,
+  outputSchema: BareMetalMachinesUpdateOutput,
+}));
 // Input Schema
 export interface BmcKeySetsCreateOrUpdateInput {
   subscriptionId: string;
@@ -2845,7 +2813,7 @@ export interface BmcKeySetsCreateOrUpdateInput {
   location: string;
 }
 export const BmcKeySetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2923,7 +2891,7 @@ export interface BmcKeySetsCreateOrUpdateOutput {
   };
 }
 export const BmcKeySetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2955,12 +2923,10 @@ export const BmcKeySetsCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const BmcKeySetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BmcKeySetsCreateOrUpdateInput,
-    outputSchema: BmcKeySetsCreateOrUpdateOutput,
-  }),
-);
+export const BmcKeySetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BmcKeySetsCreateOrUpdateInput,
+  outputSchema: BmcKeySetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BmcKeySetsDeleteInput {
   subscriptionId: string;
@@ -2968,7 +2934,7 @@ export interface BmcKeySetsDeleteInput {
   clusterName: string;
   bmcKeySetName: string;
 }
-export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BmcKeySetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -2984,7 +2950,7 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BmcKeySetsDeleteOutput = void;
 export const BmcKeySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BmcKeySetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BmcKeySetsDeleteOutput>;
 
 // The operation
 /**
@@ -2998,7 +2964,7 @@ export const BmcKeySetsDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const BmcKeySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BmcKeySetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsDeleteInput,
   outputSchema: BmcKeySetsDeleteOutput,
 }));
@@ -3009,7 +2975,7 @@ export interface BmcKeySetsGetInput {
   clusterName: string;
   bmcKeySetName: string;
 }
-export const BmcKeySetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BmcKeySetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3036,7 +3002,7 @@ export interface BmcKeySetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BmcKeySetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BmcKeySetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3066,7 +3032,7 @@ export const BmcKeySetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
  */
-export const BmcKeySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BmcKeySetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsGetInput,
   outputSchema: BmcKeySetsGetOutput,
 }));
@@ -3079,7 +3045,7 @@ export interface BmcKeySetsListByClusterInput {
   $skipToken?: string;
 }
 export const BmcKeySetsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3111,7 +3077,7 @@ export interface BmcKeySetsListByClusterOutput {
   nextLink?: string;
 }
 export const BmcKeySetsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3157,12 +3123,10 @@ export const BmcKeySetsListByClusterOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const BmcKeySetsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BmcKeySetsListByClusterInput,
-    outputSchema: BmcKeySetsListByClusterOutput,
-  }),
-);
+export const BmcKeySetsListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BmcKeySetsListByClusterInput,
+  outputSchema: BmcKeySetsListByClusterOutput,
+}));
 // Input Schema
 export interface BmcKeySetsUpdateInput {
   subscriptionId: string;
@@ -3180,7 +3144,7 @@ export interface BmcKeySetsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BmcKeySetsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3225,27 +3189,25 @@ export interface BmcKeySetsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const BmcKeySetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<BmcKeySetsUpdateOutput>;
+export const BmcKeySetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<BmcKeySetsUpdateOutput>;
 
 // The operation
 /**
@@ -3259,7 +3221,7 @@ export const BmcKeySetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const BmcKeySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BmcKeySetsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsUpdateInput,
   outputSchema: BmcKeySetsUpdateOutput,
 }));
@@ -3316,7 +3278,7 @@ export interface CloudServicesNetworksCreateOrUpdateInput {
   location: string;
 }
 export const CloudServicesNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
@@ -3430,7 +3392,7 @@ export interface CloudServicesNetworksCreateOrUpdateOutput {
   };
 }
 export const CloudServicesNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3462,7 +3424,7 @@ export const CloudServicesNetworksCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudServicesNetworksCreateOrUpdateInput,
     outputSchema: CloudServicesNetworksCreateOrUpdateOutput,
   }));
@@ -3473,7 +3435,7 @@ export interface CloudServicesNetworksDeleteInput {
   cloudServicesNetworkName: string;
 }
 export const CloudServicesNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
@@ -3488,7 +3450,7 @@ export const CloudServicesNetworksDeleteInput =
 // Output Schema
 export type CloudServicesNetworksDeleteOutput = void;
 export const CloudServicesNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudServicesNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudServicesNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -3501,12 +3463,10 @@ export const CloudServicesNetworksDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const CloudServicesNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudServicesNetworksDeleteInput,
-    outputSchema: CloudServicesNetworksDeleteOutput,
-  }),
-);
+export const CloudServicesNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudServicesNetworksDeleteInput,
+  outputSchema: CloudServicesNetworksDeleteOutput,
+}));
 // Input Schema
 export interface CloudServicesNetworksGetInput {
   subscriptionId: string;
@@ -3514,7 +3474,7 @@ export interface CloudServicesNetworksGetInput {
   cloudServicesNetworkName: string;
 }
 export const CloudServicesNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
@@ -3541,7 +3501,7 @@ export interface CloudServicesNetworksGetOutput {
   };
 }
 export const CloudServicesNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3570,12 +3530,10 @@ export const CloudServicesNetworksGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
  */
-export const CloudServicesNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudServicesNetworksGetInput,
-    outputSchema: CloudServicesNetworksGetOutput,
-  }),
-);
+export const CloudServicesNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudServicesNetworksGetInput,
+  outputSchema: CloudServicesNetworksGetOutput,
+}));
 // Input Schema
 export interface CloudServicesNetworksListByResourceGroupInput {
   subscriptionId: string;
@@ -3584,7 +3542,7 @@ export interface CloudServicesNetworksListByResourceGroupInput {
   $skipToken?: string;
 }
 export const CloudServicesNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -3615,7 +3573,7 @@ export interface CloudServicesNetworksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CloudServicesNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3661,7 +3619,7 @@ export const CloudServicesNetworksListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudServicesNetworksListByResourceGroupInput,
     outputSchema: CloudServicesNetworksListByResourceGroupOutput,
   }));
@@ -3672,7 +3630,7 @@ export interface CloudServicesNetworksListBySubscriptionInput {
   $skipToken?: string;
 }
 export const CloudServicesNetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -3702,7 +3660,7 @@ export interface CloudServicesNetworksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CloudServicesNetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3747,7 +3705,7 @@ export const CloudServicesNetworksListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CloudServicesNetworksListBySubscriptionInput,
     outputSchema: CloudServicesNetworksListBySubscriptionOutput,
   }));
@@ -3771,7 +3729,7 @@ export interface CloudServicesNetworksUpdateInput {
   tags?: Record<string, string>;
 }
 export const CloudServicesNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cloudServicesNetworkName: Schema.String.pipe(T.PathParam()),
@@ -3826,7 +3784,7 @@ export interface CloudServicesNetworksUpdateOutput {
   };
 }
 export const CloudServicesNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3857,12 +3815,10 @@ export const CloudServicesNetworksUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const CloudServicesNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudServicesNetworksUpdateInput,
-    outputSchema: CloudServicesNetworksUpdateOutput,
-  }),
-);
+export const CloudServicesNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudServicesNetworksUpdateInput,
+  outputSchema: CloudServicesNetworksUpdateOutput,
+}));
 // Input Schema
 export interface ClusterManagersCreateOrUpdateInput {
   subscriptionId: string;
@@ -3918,7 +3874,7 @@ export interface ClusterManagersCreateOrUpdateInput {
   location: string;
 }
 export const ClusterManagersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
@@ -4022,7 +3978,7 @@ export interface ClusterManagersCreateOrUpdateOutput {
   };
 }
 export const ClusterManagersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4054,7 +4010,7 @@ export const ClusterManagersCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterManagersCreateOrUpdateInput,
     outputSchema: ClusterManagersCreateOrUpdateOutput,
   }));
@@ -4065,7 +4021,7 @@ export interface ClusterManagersDeleteInput {
   clusterManagerName: string;
 }
 export const ClusterManagersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
@@ -4080,7 +4036,7 @@ export const ClusterManagersDeleteInput =
 // Output Schema
 export type ClusterManagersDeleteOutput = void;
 export const ClusterManagersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersDeleteOutput>;
 
 // The operation
 /**
@@ -4093,12 +4049,10 @@ export const ClusterManagersDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ClusterManagersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClusterManagersDeleteInput,
-    outputSchema: ClusterManagersDeleteOutput,
-  }),
-);
+export const ClusterManagersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClusterManagersDeleteInput,
+  outputSchema: ClusterManagersDeleteOutput,
+}));
 // Input Schema
 export interface ClusterManagersGetInput {
   subscriptionId: string;
@@ -4106,7 +4060,7 @@ export interface ClusterManagersGetInput {
   clusterManagerName: string;
 }
 export const ClusterManagersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
@@ -4133,7 +4087,7 @@ export interface ClusterManagersGetOutput {
   };
 }
 export const ClusterManagersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4162,7 +4116,7 @@ export const ClusterManagersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
  */
-export const ClusterManagersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClusterManagersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClusterManagersGetInput,
   outputSchema: ClusterManagersGetOutput,
 }));
@@ -4174,7 +4128,7 @@ export interface ClusterManagersListByResourceGroupInput {
   $skipToken?: string;
 }
 export const ClusterManagersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -4205,7 +4159,7 @@ export interface ClusterManagersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClusterManagersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4251,7 +4205,7 @@ export const ClusterManagersListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterManagersListByResourceGroupInput,
     outputSchema: ClusterManagersListByResourceGroupOutput,
   }));
@@ -4262,7 +4216,7 @@ export interface ClusterManagersListBySubscriptionInput {
   $skipToken?: string;
 }
 export const ClusterManagersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -4292,7 +4246,7 @@ export interface ClusterManagersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ClusterManagersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4337,7 +4291,7 @@ export const ClusterManagersListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterManagersListBySubscriptionInput,
     outputSchema: ClusterManagersListBySubscriptionOutput,
   }));
@@ -4362,7 +4316,7 @@ export interface ClusterManagersUpdateInput {
   tags?: Record<string, string>;
 }
 export const ClusterManagersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
@@ -4411,7 +4365,7 @@ export interface ClusterManagersUpdateOutput {
   };
 }
 export const ClusterManagersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4442,12 +4396,10 @@ export const ClusterManagersUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ClusterManagersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClusterManagersUpdateInput,
-    outputSchema: ClusterManagersUpdateOutput,
-  }),
-);
+export const ClusterManagersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClusterManagersUpdateInput,
+  outputSchema: ClusterManagersUpdateOutput,
+}));
 // Input Schema
 export interface ClusterManagersUpdateRelayPrivateEndpointConnectionInput {
   subscriptionId: string;
@@ -4458,7 +4410,7 @@ export interface ClusterManagersUpdateRelayPrivateEndpointConnectionInput {
   privateEndpointResourceId: string;
 }
 export const ClusterManagersUpdateRelayPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterManagerName: Schema.String.pipe(T.PathParam()),
@@ -4476,7 +4428,7 @@ export const ClusterManagersUpdateRelayPrivateEndpointConnectionInput =
 // Output Schema
 export type ClusterManagersUpdateRelayPrivateEndpointConnectionOutput = void;
 export const ClusterManagersUpdateRelayPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersUpdateRelayPrivateEndpointConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersUpdateRelayPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -4488,7 +4440,7 @@ export const ClusterManagersUpdateRelayPrivateEndpointConnectionOutput =
  * @param clusterManagerName - The name of the cluster manager.
  */
 export const ClusterManagersUpdateRelayPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionInput,
     outputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionOutput,
   }));
@@ -4501,7 +4453,7 @@ export interface ClustersContinueUpdateVersionInput {
   safeguardMode?: "All" | "None";
 }
 export const ClustersContinueUpdateVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -4520,7 +4472,7 @@ export const ClustersContinueUpdateVersionInput =
 // Output Schema
 export type ClustersContinueUpdateVersionOutput = void;
 export const ClustersContinueUpdateVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersContinueUpdateVersionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersContinueUpdateVersionOutput>;
 
 // The operation
 /**
@@ -4532,7 +4484,7 @@ export const ClustersContinueUpdateVersionOutput =
  * @param clusterName - The name of the cluster.
  */
 export const ClustersContinueUpdateVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersContinueUpdateVersionInput,
     outputSchema: ClustersContinueUpdateVersionOutput,
   }));
@@ -4762,7 +4714,7 @@ export interface ClustersCreateOrUpdateInput {
   location: string;
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5144,7 +5096,7 @@ export interface ClustersCreateOrUpdateOutput {
   };
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5175,19 +5127,17 @@ export const ClustersCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -5202,7 +5152,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -5215,7 +5165,7 @@ export const ClustersDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -5226,7 +5176,7 @@ export interface ClustersDeployInput {
   clusterName: string;
   skipValidationsForMachines?: string[];
 }
-export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeployInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -5242,7 +5192,7 @@ export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeployOutput = void;
 export const ClustersDeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeployOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeployOutput>;
 
 // The operation
 /**
@@ -5253,7 +5203,7 @@ export const ClustersDeployOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersDeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDeploy = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeployInput,
   outputSchema: ClustersDeployOutput,
 }));
@@ -5263,7 +5213,7 @@ export interface ClustersGetInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -5289,7 +5239,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5318,7 +5268,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -5330,7 +5280,7 @@ export interface ClustersInspectInput {
   additionalActions?: "ResetHardware"[];
   filterDevices?: { bareMetalMachineNames?: string[]; rackNames?: string[] };
 }
-export const ClustersInspectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersInspectInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -5354,7 +5304,7 @@ export const ClustersInspectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersInspectOutput = void;
 export const ClustersInspectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersInspectOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersInspectOutput>;
 
 // The operation
 /**
@@ -5365,7 +5315,7 @@ export const ClustersInspectOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersInspect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersInspect = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersInspectInput,
   outputSchema: ClustersInspectOutput,
 }));
@@ -5377,7 +5327,7 @@ export interface ClustersListByResourceGroupInput {
   $skipToken?: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -5408,7 +5358,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5453,12 +5403,10 @@ export const ClustersListByResourceGroupOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersListBySubscriptionInput {
   subscriptionId: string;
@@ -5466,7 +5414,7 @@ export interface ClustersListBySubscriptionInput {
   $skipToken?: string;
 }
 export const ClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -5496,7 +5444,7 @@ export interface ClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5540,12 +5488,10 @@ export const ClustersListBySubscriptionOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListBySubscriptionInput,
-    outputSchema: ClustersListBySubscriptionOutput,
-  }),
-);
+export const ClustersListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListBySubscriptionInput,
+  outputSchema: ClustersListBySubscriptionOutput,
+}));
 // Input Schema
 export interface ClustersRotateCredentialInput {
   subscriptionId: string;
@@ -5554,7 +5500,7 @@ export interface ClustersRotateCredentialInput {
   credentials: string[];
 }
 export const ClustersRotateCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5570,7 +5516,7 @@ export const ClustersRotateCredentialInput =
 // Output Schema
 export type ClustersRotateCredentialOutput = void;
 export const ClustersRotateCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRotateCredentialOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRotateCredentialOutput>;
 
 // The operation
 /**
@@ -5581,12 +5527,10 @@ export const ClustersRotateCredentialOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersRotateCredential = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersRotateCredentialInput,
-    outputSchema: ClustersRotateCredentialOutput,
-  }),
-);
+export const ClustersRotateCredential = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersRotateCredentialInput,
+  outputSchema: ClustersRotateCredentialOutput,
+}));
 // Input Schema
 export interface ClustersScanRuntimeInput {
   subscriptionId: string;
@@ -5595,7 +5539,7 @@ export interface ClustersScanRuntimeInput {
   scanActivity?: "Scan" | "Skip";
 }
 export const ClustersScanRuntimeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -5611,7 +5555,7 @@ export const ClustersScanRuntimeInput =
 // Output Schema
 export type ClustersScanRuntimeOutput = void;
 export const ClustersScanRuntimeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersScanRuntimeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersScanRuntimeOutput>;
 
 // The operation
 /**
@@ -5622,7 +5566,7 @@ export const ClustersScanRuntimeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersScanRuntime = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersScanRuntime = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersScanRuntimeInput,
   outputSchema: ClustersScanRuntimeOutput,
 }));
@@ -5771,7 +5715,7 @@ export interface ClustersUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -6049,7 +5993,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6080,7 +6024,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -6093,7 +6037,7 @@ export interface ClustersUpdateVersionInput {
   targetClusterVersion: string;
 }
 export const ClustersUpdateVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -6110,7 +6054,7 @@ export const ClustersUpdateVersionInput =
 // Output Schema
 export type ClustersUpdateVersionOutput = void;
 export const ClustersUpdateVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateVersionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateVersionOutput>;
 
 // The operation
 /**
@@ -6121,12 +6065,10 @@ export const ClustersUpdateVersionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  */
-export const ClustersUpdateVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersUpdateVersionInput,
-    outputSchema: ClustersUpdateVersionOutput,
-  }),
-);
+export const ClustersUpdateVersion = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersUpdateVersionInput,
+  outputSchema: ClustersUpdateVersionOutput,
+}));
 // Input Schema
 export interface ConsolesCreateOrUpdateInput {
   subscriptionId: string;
@@ -6154,7 +6096,7 @@ export interface ConsolesCreateOrUpdateInput {
   location: string;
 }
 export const ConsolesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -6209,7 +6151,7 @@ export interface ConsolesCreateOrUpdateOutput {
   };
 }
 export const ConsolesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6241,12 +6183,10 @@ export const ConsolesCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ConsolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConsolesCreateOrUpdateInput,
-    outputSchema: ConsolesCreateOrUpdateOutput,
-  }),
-);
+export const ConsolesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsolesCreateOrUpdateInput,
+  outputSchema: ConsolesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ConsolesDeleteInput {
   subscriptionId: string;
@@ -6254,7 +6194,7 @@ export interface ConsolesDeleteInput {
   virtualMachineName: string;
   consoleName: string;
 }
-export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConsolesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -6270,7 +6210,7 @@ export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConsolesDeleteOutput = void;
 export const ConsolesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConsolesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConsolesDeleteOutput>;
 
 // The operation
 /**
@@ -6284,7 +6224,7 @@ export const ConsolesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ConsolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsolesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConsolesDeleteInput,
   outputSchema: ConsolesDeleteOutput,
 }));
@@ -6295,7 +6235,7 @@ export interface ConsolesGetInput {
   virtualMachineName: string;
   consoleName: string;
 }
-export const ConsolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConsolesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -6322,7 +6262,7 @@ export interface ConsolesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConsolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConsolesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6352,7 +6292,7 @@ export const ConsolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
  */
-export const ConsolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsolesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConsolesGetInput,
   outputSchema: ConsolesGetOutput,
 }));
@@ -6365,7 +6305,7 @@ export interface ConsolesListByVirtualMachineInput {
   $skipToken?: string;
 }
 export const ConsolesListByVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -6397,7 +6337,7 @@ export interface ConsolesListByVirtualMachineOutput {
   nextLink?: string;
 }
 export const ConsolesListByVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6444,7 +6384,7 @@ export const ConsolesListByVirtualMachineOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ConsolesListByVirtualMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConsolesListByVirtualMachineInput,
     outputSchema: ConsolesListByVirtualMachineOutput,
   }));
@@ -6461,7 +6401,7 @@ export interface ConsolesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConsolesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -6500,7 +6440,7 @@ export interface ConsolesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConsolesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConsolesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6532,7 +6472,7 @@ export const ConsolesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const ConsolesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConsolesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConsolesUpdateInput,
   outputSchema: ConsolesUpdateOutput,
 }));
@@ -6562,7 +6502,7 @@ export interface KubernetesClusterFeaturesCreateOrUpdateInput {
   location: string;
 }
 export const KubernetesClusterFeaturesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -6624,7 +6564,7 @@ export interface KubernetesClusterFeaturesCreateOrUpdateOutput {
   };
 }
 export const KubernetesClusterFeaturesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6657,7 +6597,7 @@ export const KubernetesClusterFeaturesCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClusterFeaturesCreateOrUpdateInput,
     outputSchema: KubernetesClusterFeaturesCreateOrUpdateOutput,
   }));
@@ -6669,7 +6609,7 @@ export interface KubernetesClusterFeaturesDeleteInput {
   featureName: string;
 }
 export const KubernetesClusterFeaturesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -6685,7 +6625,7 @@ export const KubernetesClusterFeaturesDeleteInput =
 // Output Schema
 export type KubernetesClusterFeaturesDeleteOutput = void;
 export const KubernetesClusterFeaturesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClusterFeaturesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClusterFeaturesDeleteOutput>;
 
 // The operation
 /**
@@ -6700,7 +6640,7 @@ export const KubernetesClusterFeaturesDeleteOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClusterFeaturesDeleteInput,
     outputSchema: KubernetesClusterFeaturesDeleteOutput,
   }));
@@ -6712,7 +6652,7 @@ export interface KubernetesClusterFeaturesGetInput {
   featureName: string;
 }
 export const KubernetesClusterFeaturesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -6740,7 +6680,7 @@ export interface KubernetesClusterFeaturesGetOutput {
   };
 }
 export const KubernetesClusterFeaturesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6771,7 +6711,7 @@ export const KubernetesClusterFeaturesGetOutput =
  * @param featureName - The name of the feature.
  */
 export const KubernetesClusterFeaturesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClusterFeaturesGetInput,
     outputSchema: KubernetesClusterFeaturesGetOutput,
   }));
@@ -6784,7 +6724,7 @@ export interface KubernetesClusterFeaturesListByKubernetesClusterInput {
   $skipToken?: string;
 }
 export const KubernetesClusterFeaturesListByKubernetesClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -6816,7 +6756,7 @@ export interface KubernetesClusterFeaturesListByKubernetesClusterOutput {
   nextLink?: string;
 }
 export const KubernetesClusterFeaturesListByKubernetesClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6863,7 +6803,7 @@ export const KubernetesClusterFeaturesListByKubernetesClusterOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClusterFeaturesListByKubernetesCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClusterFeaturesListByKubernetesClusterInput,
     outputSchema: KubernetesClusterFeaturesListByKubernetesClusterOutput,
   }));
@@ -6877,7 +6817,7 @@ export interface KubernetesClusterFeaturesUpdateInput {
   tags?: Record<string, string>;
 }
 export const KubernetesClusterFeaturesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -6918,7 +6858,7 @@ export interface KubernetesClusterFeaturesUpdateOutput {
   };
 }
 export const KubernetesClusterFeaturesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6951,7 +6891,7 @@ export const KubernetesClusterFeaturesUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClusterFeaturesUpdateInput,
     outputSchema: KubernetesClusterFeaturesUpdateOutput,
   }));
@@ -7136,7 +7076,7 @@ export interface KubernetesClustersCreateOrUpdateInput {
   location: string;
 }
 export const KubernetesClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -7564,7 +7504,7 @@ export interface KubernetesClustersCreateOrUpdateOutput {
   };
 }
 export const KubernetesClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7596,7 +7536,7 @@ export const KubernetesClustersCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClustersCreateOrUpdateInput,
     outputSchema: KubernetesClustersCreateOrUpdateOutput,
   }));
@@ -7607,7 +7547,7 @@ export interface KubernetesClustersDeleteInput {
   kubernetesClusterName: string;
 }
 export const KubernetesClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -7622,7 +7562,7 @@ export const KubernetesClustersDeleteInput =
 // Output Schema
 export type KubernetesClustersDeleteOutput = void;
 export const KubernetesClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersDeleteOutput>;
 
 // The operation
 /**
@@ -7635,12 +7575,10 @@ export const KubernetesClustersDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const KubernetesClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesClustersDeleteInput,
-    outputSchema: KubernetesClustersDeleteOutput,
-  }),
-);
+export const KubernetesClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesClustersDeleteInput,
+  outputSchema: KubernetesClustersDeleteOutput,
+}));
 // Input Schema
 export interface KubernetesClustersGetInput {
   subscriptionId: string;
@@ -7648,7 +7586,7 @@ export interface KubernetesClustersGetInput {
   kubernetesClusterName: string;
 }
 export const KubernetesClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -7675,7 +7613,7 @@ export interface KubernetesClustersGetOutput {
   };
 }
 export const KubernetesClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7704,12 +7642,10 @@ export const KubernetesClustersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  */
-export const KubernetesClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesClustersGetInput,
-    outputSchema: KubernetesClustersGetOutput,
-  }),
-);
+export const KubernetesClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesClustersGetInput,
+  outputSchema: KubernetesClustersGetOutput,
+}));
 // Input Schema
 export interface KubernetesClustersListByResourceGroupInput {
   subscriptionId: string;
@@ -7718,7 +7654,7 @@ export interface KubernetesClustersListByResourceGroupInput {
   $skipToken?: string;
 }
 export const KubernetesClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -7749,7 +7685,7 @@ export interface KubernetesClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const KubernetesClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7795,7 +7731,7 @@ export const KubernetesClustersListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClustersListByResourceGroupInput,
     outputSchema: KubernetesClustersListByResourceGroupOutput,
   }));
@@ -7806,7 +7742,7 @@ export interface KubernetesClustersListBySubscriptionInput {
   $skipToken?: string;
 }
 export const KubernetesClustersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -7836,7 +7772,7 @@ export interface KubernetesClustersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const KubernetesClustersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7881,7 +7817,7 @@ export const KubernetesClustersListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClustersListBySubscriptionInput,
     outputSchema: KubernetesClustersListBySubscriptionOutput,
   }));
@@ -7893,7 +7829,7 @@ export interface KubernetesClustersRestartNodeInput {
   nodeName: string;
 }
 export const KubernetesClustersRestartNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -7909,7 +7845,7 @@ export const KubernetesClustersRestartNodeInput =
 // Output Schema
 export type KubernetesClustersRestartNodeOutput = void;
 export const KubernetesClustersRestartNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersRestartNodeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersRestartNodeOutput>;
 
 // The operation
 /**
@@ -7921,7 +7857,7 @@ export const KubernetesClustersRestartNodeOutput =
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  */
 export const KubernetesClustersRestartNode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesClustersRestartNodeInput,
     outputSchema: KubernetesClustersRestartNodeOutput,
   }));
@@ -7941,7 +7877,7 @@ export interface KubernetesClustersUpdateInput {
   tags?: Record<string, string>;
 }
 export const KubernetesClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
@@ -8001,7 +7937,7 @@ export interface KubernetesClustersUpdateOutput {
   };
 }
 export const KubernetesClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8032,12 +7968,10 @@ export const KubernetesClustersUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const KubernetesClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesClustersUpdateInput,
-    outputSchema: KubernetesClustersUpdateOutput,
-  }),
-);
+export const KubernetesClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesClustersUpdateInput,
+  outputSchema: KubernetesClustersUpdateOutput,
+}));
 // Input Schema
 export interface KubernetesVersionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -8053,7 +7987,7 @@ export interface KubernetesVersionsCreateOrUpdateInput {
   location: string;
 }
 export const KubernetesVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesVersionName: Schema.String.pipe(T.PathParam()),
@@ -8100,7 +8034,7 @@ export interface KubernetesVersionsCreateOrUpdateOutput {
   };
 }
 export const KubernetesVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8132,7 +8066,7 @@ export const KubernetesVersionsCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesVersionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesVersionsCreateOrUpdateInput,
     outputSchema: KubernetesVersionsCreateOrUpdateOutput,
   }));
@@ -8143,7 +8077,7 @@ export interface KubernetesVersionsDeleteInput {
   kubernetesVersionName: string;
 }
 export const KubernetesVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesVersionName: Schema.String.pipe(T.PathParam()),
@@ -8158,7 +8092,7 @@ export const KubernetesVersionsDeleteInput =
 // Output Schema
 export type KubernetesVersionsDeleteOutput = void;
 export const KubernetesVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesVersionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -8171,12 +8105,10 @@ export const KubernetesVersionsDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const KubernetesVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesVersionsDeleteInput,
-    outputSchema: KubernetesVersionsDeleteOutput,
-  }),
-);
+export const KubernetesVersionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesVersionsDeleteInput,
+  outputSchema: KubernetesVersionsDeleteOutput,
+}));
 // Input Schema
 export interface KubernetesVersionsGetInput {
   subscriptionId: string;
@@ -8184,7 +8116,7 @@ export interface KubernetesVersionsGetInput {
   kubernetesVersionName: string;
 }
 export const KubernetesVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesVersionName: Schema.String.pipe(T.PathParam()),
@@ -8211,7 +8143,7 @@ export interface KubernetesVersionsGetOutput {
   };
 }
 export const KubernetesVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8240,12 +8172,10 @@ export const KubernetesVersionsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesVersionName - The name of the Kubernetes version resource.
  */
-export const KubernetesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesVersionsGetInput,
-    outputSchema: KubernetesVersionsGetOutput,
-  }),
-);
+export const KubernetesVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesVersionsGetInput,
+  outputSchema: KubernetesVersionsGetOutput,
+}));
 // Input Schema
 export interface KubernetesVersionsListByResourceGroupInput {
   subscriptionId: string;
@@ -8254,7 +8184,7 @@ export interface KubernetesVersionsListByResourceGroupInput {
   $skipToken?: string;
 }
 export const KubernetesVersionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -8285,7 +8215,7 @@ export interface KubernetesVersionsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const KubernetesVersionsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8331,7 +8261,7 @@ export const KubernetesVersionsListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesVersionsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesVersionsListByResourceGroupInput,
     outputSchema: KubernetesVersionsListByResourceGroupOutput,
   }));
@@ -8342,7 +8272,7 @@ export interface KubernetesVersionsListBySubscriptionInput {
   $skipToken?: string;
 }
 export const KubernetesVersionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -8372,7 +8302,7 @@ export interface KubernetesVersionsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const KubernetesVersionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8417,7 +8347,7 @@ export const KubernetesVersionsListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesVersionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: KubernetesVersionsListBySubscriptionInput,
     outputSchema: KubernetesVersionsListBySubscriptionOutput,
   }));
@@ -8429,7 +8359,7 @@ export interface KubernetesVersionsUpdateInput {
   tags?: Record<string, string>;
 }
 export const KubernetesVersionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesVersionName: Schema.String.pipe(T.PathParam()),
@@ -8457,7 +8387,7 @@ export interface KubernetesVersionsUpdateOutput {
   };
 }
 export const KubernetesVersionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8488,12 +8418,10 @@ export const KubernetesVersionsUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const KubernetesVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesVersionsUpdateInput,
-    outputSchema: KubernetesVersionsUpdateOutput,
-  }),
-);
+export const KubernetesVersionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesVersionsUpdateInput,
+  outputSchema: KubernetesVersionsUpdateOutput,
+}));
 // Input Schema
 export interface L2NetworksCreateOrUpdateInput {
   subscriptionId: string;
@@ -8522,7 +8450,7 @@ export interface L2NetworksCreateOrUpdateInput {
   location: string;
 }
 export const L2NetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2NetworkName: Schema.String.pipe(T.PathParam()),
@@ -8584,7 +8512,7 @@ export interface L2NetworksCreateOrUpdateOutput {
   };
 }
 export const L2NetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8615,19 +8543,17 @@ export const L2NetworksCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L2NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2NetworksCreateOrUpdateInput,
-    outputSchema: L2NetworksCreateOrUpdateOutput,
-  }),
-);
+export const L2NetworksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2NetworksCreateOrUpdateInput,
+  outputSchema: L2NetworksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface L2NetworksDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   l2NetworkName: string;
 }
-export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L2NetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
@@ -8642,7 +8568,7 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type L2NetworksDeleteOutput = void;
 export const L2NetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2NetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<L2NetworksDeleteOutput>;
 
 // The operation
 /**
@@ -8655,7 +8581,7 @@ export const L2NetworksDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L2NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2NetworksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksDeleteInput,
   outputSchema: L2NetworksDeleteOutput,
 }));
@@ -8665,7 +8591,7 @@ export interface L2NetworksGetInput {
   resourceGroupName: string;
   l2NetworkName: string;
 }
-export const L2NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L2NetworksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
@@ -8691,7 +8617,7 @@ export interface L2NetworksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const L2NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L2NetworksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8720,7 +8646,7 @@ export const L2NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
  */
-export const L2NetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2NetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksGetInput,
   outputSchema: L2NetworksGetOutput,
 }));
@@ -8732,7 +8658,7 @@ export interface L2NetworksListByResourceGroupInput {
   $skipToken?: string;
 }
 export const L2NetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -8763,7 +8689,7 @@ export interface L2NetworksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const L2NetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8809,7 +8735,7 @@ export const L2NetworksListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2NetworksListByResourceGroupInput,
     outputSchema: L2NetworksListByResourceGroupOutput,
   }));
@@ -8820,7 +8746,7 @@ export interface L2NetworksListBySubscriptionInput {
   $skipToken?: string;
 }
 export const L2NetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -8850,7 +8776,7 @@ export interface L2NetworksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const L2NetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8895,7 +8821,7 @@ export const L2NetworksListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2NetworksListBySubscriptionInput,
     outputSchema: L2NetworksListBySubscriptionOutput,
   }));
@@ -8906,7 +8832,7 @@ export interface L2NetworksUpdateInput {
   l2NetworkName: string;
   tags?: Record<string, string>;
 }
-export const L2NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L2NetworksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l2NetworkName: Schema.String.pipe(T.PathParam()),
@@ -8933,27 +8859,25 @@ export interface L2NetworksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const L2NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<L2NetworksUpdateOutput>;
+export const L2NetworksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<L2NetworksUpdateOutput>;
 
 // The operation
 /**
@@ -8966,7 +8890,7 @@ export const L2NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L2NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2NetworksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksUpdateInput,
   outputSchema: L2NetworksUpdateOutput,
 }));
@@ -9003,7 +8927,7 @@ export interface L3NetworksCreateOrUpdateInput {
   location: string;
 }
 export const L3NetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3NetworkName: Schema.String.pipe(T.PathParam()),
@@ -9072,7 +8996,7 @@ export interface L3NetworksCreateOrUpdateOutput {
   };
 }
 export const L3NetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9103,19 +9027,17 @@ export const L3NetworksCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L3NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L3NetworksCreateOrUpdateInput,
-    outputSchema: L3NetworksCreateOrUpdateOutput,
-  }),
-);
+export const L3NetworksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L3NetworksCreateOrUpdateInput,
+  outputSchema: L3NetworksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface L3NetworksDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   l3NetworkName: string;
 }
-export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L3NetworksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
@@ -9130,7 +9052,7 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type L3NetworksDeleteOutput = void;
 export const L3NetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L3NetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<L3NetworksDeleteOutput>;
 
 // The operation
 /**
@@ -9143,7 +9065,7 @@ export const L3NetworksDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L3NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L3NetworksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksDeleteInput,
   outputSchema: L3NetworksDeleteOutput,
 }));
@@ -9153,7 +9075,7 @@ export interface L3NetworksGetInput {
   resourceGroupName: string;
   l3NetworkName: string;
 }
-export const L3NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L3NetworksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
@@ -9179,7 +9101,7 @@ export interface L3NetworksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const L3NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L3NetworksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9208,7 +9130,7 @@ export const L3NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
  */
-export const L3NetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L3NetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksGetInput,
   outputSchema: L3NetworksGetOutput,
 }));
@@ -9220,7 +9142,7 @@ export interface L3NetworksListByResourceGroupInput {
   $skipToken?: string;
 }
 export const L3NetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -9251,7 +9173,7 @@ export interface L3NetworksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const L3NetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9297,7 +9219,7 @@ export const L3NetworksListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3NetworksListByResourceGroupInput,
     outputSchema: L3NetworksListByResourceGroupOutput,
   }));
@@ -9308,7 +9230,7 @@ export interface L3NetworksListBySubscriptionInput {
   $skipToken?: string;
 }
 export const L3NetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -9338,7 +9260,7 @@ export interface L3NetworksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const L3NetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9383,7 +9305,7 @@ export const L3NetworksListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3NetworksListBySubscriptionInput,
     outputSchema: L3NetworksListBySubscriptionOutput,
   }));
@@ -9394,7 +9316,7 @@ export interface L3NetworksUpdateInput {
   l3NetworkName: string;
   tags?: Record<string, string>;
 }
-export const L3NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L3NetworksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   l3NetworkName: Schema.String.pipe(T.PathParam()),
@@ -9421,27 +9343,25 @@ export interface L3NetworksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const L3NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<L3NetworksUpdateOutput>;
+export const L3NetworksUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<L3NetworksUpdateOutput>;
 
 // The operation
 /**
@@ -9454,7 +9374,7 @@ export const L3NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const L3NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L3NetworksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksUpdateInput,
   outputSchema: L3NetworksUpdateOutput,
 }));
@@ -9483,7 +9403,7 @@ export interface MetricsConfigurationsCreateOrUpdateInput {
   location: string;
 }
 export const MetricsConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9536,7 +9456,7 @@ export interface MetricsConfigurationsCreateOrUpdateOutput {
   };
 }
 export const MetricsConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9569,7 +9489,7 @@ export const MetricsConfigurationsCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MetricsConfigurationsCreateOrUpdateInput,
     outputSchema: MetricsConfigurationsCreateOrUpdateOutput,
   }));
@@ -9581,7 +9501,7 @@ export interface MetricsConfigurationsDeleteInput {
   metricsConfigurationName: string;
 }
 export const MetricsConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9597,7 +9517,7 @@ export const MetricsConfigurationsDeleteInput =
 // Output Schema
 export type MetricsConfigurationsDeleteOutput = void;
 export const MetricsConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MetricsConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MetricsConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -9611,12 +9531,10 @@ export const MetricsConfigurationsDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const MetricsConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsConfigurationsDeleteInput,
-    outputSchema: MetricsConfigurationsDeleteOutput,
-  }),
-);
+export const MetricsConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsConfigurationsDeleteInput,
+  outputSchema: MetricsConfigurationsDeleteOutput,
+}));
 // Input Schema
 export interface MetricsConfigurationsGetInput {
   subscriptionId: string;
@@ -9625,7 +9543,7 @@ export interface MetricsConfigurationsGetInput {
   metricsConfigurationName: string;
 }
 export const MetricsConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9653,7 +9571,7 @@ export interface MetricsConfigurationsGetOutput {
   };
 }
 export const MetricsConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9683,12 +9601,10 @@ export const MetricsConfigurationsGetOutput =
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
  */
-export const MetricsConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsConfigurationsGetInput,
-    outputSchema: MetricsConfigurationsGetOutput,
-  }),
-);
+export const MetricsConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsConfigurationsGetInput,
+  outputSchema: MetricsConfigurationsGetOutput,
+}));
 // Input Schema
 export interface MetricsConfigurationsListByClusterInput {
   subscriptionId: string;
@@ -9698,7 +9614,7 @@ export interface MetricsConfigurationsListByClusterInput {
   $skipToken?: string;
 }
 export const MetricsConfigurationsListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9730,7 +9646,7 @@ export interface MetricsConfigurationsListByClusterOutput {
   nextLink?: string;
 }
 export const MetricsConfigurationsListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9777,7 +9693,7 @@ export const MetricsConfigurationsListByClusterOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const MetricsConfigurationsListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MetricsConfigurationsListByClusterInput,
     outputSchema: MetricsConfigurationsListByClusterOutput,
   }));
@@ -9791,7 +9707,7 @@ export interface MetricsConfigurationsUpdateInput {
   tags?: Record<string, string>;
 }
 export const MetricsConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -9826,7 +9742,7 @@ export interface MetricsConfigurationsUpdateOutput {
   };
 }
 export const MetricsConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9858,17 +9774,13 @@ export const MetricsConfigurationsUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const MetricsConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsConfigurationsUpdateInput,
-    outputSchema: MetricsConfigurationsUpdateOutput,
-  }),
-);
+export const MetricsConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsConfigurationsUpdateInput,
+  outputSchema: MetricsConfigurationsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetworkCloud/operations",
@@ -9892,7 +9804,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -9922,7 +9834,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -9952,7 +9864,7 @@ export interface RacksCreateOrUpdateInput {
   location: string;
 }
 export const RacksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     rackName: Schema.String.pipe(T.PathParam()),
@@ -10006,7 +9918,7 @@ export interface RacksCreateOrUpdateOutput {
   };
 }
 export const RacksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10037,7 +9949,7 @@ export const RacksCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const RacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RacksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RacksCreateOrUpdateInput,
   outputSchema: RacksCreateOrUpdateOutput,
 }));
@@ -10047,7 +9959,7 @@ export interface RacksDeleteInput {
   resourceGroupName: string;
   rackName: string;
 }
-export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RacksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
@@ -10062,7 +9974,7 @@ export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RacksDeleteOutput = void;
 export const RacksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RacksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RacksDeleteOutput>;
 
 // The operation
 /**
@@ -10075,7 +9987,7 @@ export const RacksDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const RacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RacksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RacksDeleteInput,
   outputSchema: RacksDeleteOutput,
 }));
@@ -10085,7 +9997,7 @@ export interface RacksGetInput {
   resourceGroupName: string;
   rackName: string;
 }
-export const RacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RacksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
@@ -10111,7 +10023,7 @@ export interface RacksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RacksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10140,7 +10052,7 @@ export const RacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
  */
-export const RacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RacksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RacksGetInput,
   outputSchema: RacksGetOutput,
 }));
@@ -10149,7 +10061,7 @@ export interface RackSkusGetInput {
   subscriptionId: string;
   rackSkuName: string;
 }
-export const RackSkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RackSkusGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   rackSkuName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -10174,7 +10086,7 @@ export interface RackSkusGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RackSkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RackSkusGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10202,7 +10114,7 @@ export const RackSkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param rackSkuName - The name of the rack SKU.
  */
-export const RackSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RackSkusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RackSkusGetInput,
   outputSchema: RackSkusGetOutput,
 }));
@@ -10211,7 +10123,7 @@ export interface RackSkusListBySubscriptionInput {
   subscriptionId: string;
 }
 export const RackSkusListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10239,7 +10151,7 @@ export interface RackSkusListBySubscriptionOutput {
   nextLink?: string;
 }
 export const RackSkusListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10281,12 +10193,10 @@ export const RackSkusListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RackSkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RackSkusListBySubscriptionInput,
-    outputSchema: RackSkusListBySubscriptionOutput,
-  }),
-);
+export const RackSkusListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RackSkusListBySubscriptionInput,
+  outputSchema: RackSkusListBySubscriptionOutput,
+}));
 // Input Schema
 export interface RacksListByResourceGroupInput {
   subscriptionId: string;
@@ -10295,7 +10205,7 @@ export interface RacksListByResourceGroupInput {
   $skipToken?: string;
 }
 export const RacksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -10326,7 +10236,7 @@ export interface RacksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const RacksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10371,12 +10281,10 @@ export const RacksListByResourceGroupOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RacksListByResourceGroupInput,
-    outputSchema: RacksListByResourceGroupOutput,
-  }),
-);
+export const RacksListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RacksListByResourceGroupInput,
+  outputSchema: RacksListByResourceGroupOutput,
+}));
 // Input Schema
 export interface RacksListBySubscriptionInput {
   subscriptionId: string;
@@ -10384,7 +10292,7 @@ export interface RacksListBySubscriptionInput {
   $skipToken?: string;
 }
 export const RacksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -10414,7 +10322,7 @@ export interface RacksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const RacksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10458,12 +10366,10 @@ export const RacksListBySubscriptionOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const RacksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RacksListBySubscriptionInput,
-    outputSchema: RacksListBySubscriptionOutput,
-  }),
-);
+export const RacksListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RacksListBySubscriptionInput,
+  outputSchema: RacksListBySubscriptionOutput,
+}));
 // Input Schema
 export interface RacksUpdateInput {
   subscriptionId: string;
@@ -10472,7 +10378,7 @@ export interface RacksUpdateInput {
   properties?: { rackLocation?: string; rackSerialNumber?: string };
   tags?: Record<string, string>;
 }
-export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RacksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   rackName: Schema.String.pipe(T.PathParam()),
@@ -10505,7 +10411,7 @@ export interface RacksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RacksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RacksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10536,7 +10442,7 @@ export const RacksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const RacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RacksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RacksUpdateInput,
   outputSchema: RacksUpdateOutput,
 }));
@@ -10596,7 +10502,7 @@ export interface StorageAppliancesCreateOrUpdateInput {
   location: string;
 }
 export const StorageAppliancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -10704,7 +10610,7 @@ export interface StorageAppliancesCreateOrUpdateOutput {
   };
 }
 export const StorageAppliancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10736,7 +10642,7 @@ export const StorageAppliancesCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesCreateOrUpdateInput,
     outputSchema: StorageAppliancesCreateOrUpdateOutput,
   }));
@@ -10747,7 +10653,7 @@ export interface StorageAppliancesDeleteInput {
   storageApplianceName: string;
 }
 export const StorageAppliancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -10762,7 +10668,7 @@ export const StorageAppliancesDeleteInput =
 // Output Schema
 export type StorageAppliancesDeleteOutput = void;
 export const StorageAppliancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDeleteOutput>;
 
 // The operation
 /**
@@ -10775,12 +10681,10 @@ export const StorageAppliancesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const StorageAppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAppliancesDeleteInput,
-    outputSchema: StorageAppliancesDeleteOutput,
-  }),
-);
+export const StorageAppliancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAppliancesDeleteInput,
+  outputSchema: StorageAppliancesDeleteOutput,
+}));
 // Input Schema
 export interface StorageAppliancesDisableRemoteVendorManagementInput {
   subscriptionId: string;
@@ -10788,7 +10692,7 @@ export interface StorageAppliancesDisableRemoteVendorManagementInput {
   storageApplianceName: string;
 }
 export const StorageAppliancesDisableRemoteVendorManagementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -10803,7 +10707,7 @@ export const StorageAppliancesDisableRemoteVendorManagementInput =
 // Output Schema
 export type StorageAppliancesDisableRemoteVendorManagementOutput = void;
 export const StorageAppliancesDisableRemoteVendorManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDisableRemoteVendorManagementOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDisableRemoteVendorManagementOutput>;
 
 // The operation
 /**
@@ -10815,7 +10719,7 @@ export const StorageAppliancesDisableRemoteVendorManagementOutput =
  * @param storageApplianceName - The name of the storage appliance.
  */
 export const StorageAppliancesDisableRemoteVendorManagement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesDisableRemoteVendorManagementInput,
     outputSchema: StorageAppliancesDisableRemoteVendorManagementOutput,
   }));
@@ -10827,7 +10731,7 @@ export interface StorageAppliancesEnableRemoteVendorManagementInput {
   supportEndpoints?: string[];
 }
 export const StorageAppliancesEnableRemoteVendorManagementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -10843,7 +10747,7 @@ export const StorageAppliancesEnableRemoteVendorManagementInput =
 // Output Schema
 export type StorageAppliancesEnableRemoteVendorManagementOutput = void;
 export const StorageAppliancesEnableRemoteVendorManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesEnableRemoteVendorManagementOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesEnableRemoteVendorManagementOutput>;
 
 // The operation
 /**
@@ -10855,7 +10759,7 @@ export const StorageAppliancesEnableRemoteVendorManagementOutput =
  * @param storageApplianceName - The name of the storage appliance.
  */
 export const StorageAppliancesEnableRemoteVendorManagement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesEnableRemoteVendorManagementInput,
     outputSchema: StorageAppliancesEnableRemoteVendorManagementOutput,
   }));
@@ -10866,7 +10770,7 @@ export interface StorageAppliancesGetInput {
   storageApplianceName: string;
 }
 export const StorageAppliancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -10893,7 +10797,7 @@ export interface StorageAppliancesGetOutput {
   };
 }
 export const StorageAppliancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10922,12 +10826,10 @@ export const StorageAppliancesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
  */
-export const StorageAppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAppliancesGetInput,
-    outputSchema: StorageAppliancesGetOutput,
-  }),
-);
+export const StorageAppliancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAppliancesGetInput,
+  outputSchema: StorageAppliancesGetOutput,
+}));
 // Input Schema
 export interface StorageAppliancesListByResourceGroupInput {
   subscriptionId: string;
@@ -10936,7 +10838,7 @@ export interface StorageAppliancesListByResourceGroupInput {
   $skipToken?: string;
 }
 export const StorageAppliancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -10967,7 +10869,7 @@ export interface StorageAppliancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StorageAppliancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11013,7 +10915,7 @@ export const StorageAppliancesListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesListByResourceGroupInput,
     outputSchema: StorageAppliancesListByResourceGroupOutput,
   }));
@@ -11024,7 +10926,7 @@ export interface StorageAppliancesListBySubscriptionInput {
   $skipToken?: string;
 }
 export const StorageAppliancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -11054,7 +10956,7 @@ export interface StorageAppliancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const StorageAppliancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11099,7 +11001,7 @@ export const StorageAppliancesListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesListBySubscriptionInput,
     outputSchema: StorageAppliancesListBySubscriptionOutput,
   }));
@@ -11112,7 +11014,7 @@ export interface StorageAppliancesRunReadCommandsInput {
   limitTimeSeconds: number;
 }
 export const StorageAppliancesRunReadCommandsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -11134,7 +11036,7 @@ export const StorageAppliancesRunReadCommandsInput =
 // Output Schema
 export type StorageAppliancesRunReadCommandsOutput = void;
 export const StorageAppliancesRunReadCommandsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesRunReadCommandsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesRunReadCommandsOutput>;
 
 // The operation
 /**
@@ -11146,7 +11048,7 @@ export const StorageAppliancesRunReadCommandsOutput =
  * @param storageApplianceName - The name of the storage appliance.
  */
 export const StorageAppliancesRunReadCommands =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAppliancesRunReadCommandsInput,
     outputSchema: StorageAppliancesRunReadCommandsOutput,
   }));
@@ -11159,7 +11061,7 @@ export interface StorageAppliancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const StorageAppliancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageApplianceName: Schema.String.pipe(T.PathParam()),
@@ -11192,7 +11094,7 @@ export interface StorageAppliancesUpdateOutput {
   };
 }
 export const StorageAppliancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11223,12 +11125,10 @@ export const StorageAppliancesUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const StorageAppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAppliancesUpdateInput,
-    outputSchema: StorageAppliancesUpdateOutput,
-  }),
-);
+export const StorageAppliancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAppliancesUpdateInput,
+  outputSchema: StorageAppliancesUpdateOutput,
+}));
 // Input Schema
 export interface TrunkedNetworksCreateOrUpdateInput {
   subscriptionId: string;
@@ -11258,7 +11158,7 @@ export interface TrunkedNetworksCreateOrUpdateInput {
   location: string;
 }
 export const TrunkedNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
@@ -11321,7 +11221,7 @@ export interface TrunkedNetworksCreateOrUpdateOutput {
   };
 }
 export const TrunkedNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11353,7 +11253,7 @@ export const TrunkedNetworksCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrunkedNetworksCreateOrUpdateInput,
     outputSchema: TrunkedNetworksCreateOrUpdateOutput,
   }));
@@ -11364,7 +11264,7 @@ export interface TrunkedNetworksDeleteInput {
   trunkedNetworkName: string;
 }
 export const TrunkedNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
@@ -11379,7 +11279,7 @@ export const TrunkedNetworksDeleteInput =
 // Output Schema
 export type TrunkedNetworksDeleteOutput = void;
 export const TrunkedNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrunkedNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TrunkedNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -11392,12 +11292,10 @@ export const TrunkedNetworksDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const TrunkedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrunkedNetworksDeleteInput,
-    outputSchema: TrunkedNetworksDeleteOutput,
-  }),
-);
+export const TrunkedNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrunkedNetworksDeleteInput,
+  outputSchema: TrunkedNetworksDeleteOutput,
+}));
 // Input Schema
 export interface TrunkedNetworksGetInput {
   subscriptionId: string;
@@ -11405,7 +11303,7 @@ export interface TrunkedNetworksGetInput {
   trunkedNetworkName: string;
 }
 export const TrunkedNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
@@ -11432,7 +11330,7 @@ export interface TrunkedNetworksGetOutput {
   };
 }
 export const TrunkedNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11461,7 +11359,7 @@ export const TrunkedNetworksGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
  */
-export const TrunkedNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TrunkedNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TrunkedNetworksGetInput,
   outputSchema: TrunkedNetworksGetOutput,
 }));
@@ -11473,7 +11371,7 @@ export interface TrunkedNetworksListByResourceGroupInput {
   $skipToken?: string;
 }
 export const TrunkedNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -11504,7 +11402,7 @@ export interface TrunkedNetworksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const TrunkedNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11550,7 +11448,7 @@ export const TrunkedNetworksListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrunkedNetworksListByResourceGroupInput,
     outputSchema: TrunkedNetworksListByResourceGroupOutput,
   }));
@@ -11561,7 +11459,7 @@ export interface TrunkedNetworksListBySubscriptionInput {
   $skipToken?: string;
 }
 export const TrunkedNetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -11591,7 +11489,7 @@ export interface TrunkedNetworksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const TrunkedNetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11636,7 +11534,7 @@ export const TrunkedNetworksListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrunkedNetworksListBySubscriptionInput,
     outputSchema: TrunkedNetworksListBySubscriptionOutput,
   }));
@@ -11648,7 +11546,7 @@ export interface TrunkedNetworksUpdateInput {
   tags?: Record<string, string>;
 }
 export const TrunkedNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trunkedNetworkName: Schema.String.pipe(T.PathParam()),
@@ -11676,7 +11574,7 @@ export interface TrunkedNetworksUpdateOutput {
   };
 }
 export const TrunkedNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11707,12 +11605,10 @@ export const TrunkedNetworksUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const TrunkedNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrunkedNetworksUpdateInput,
-    outputSchema: TrunkedNetworksUpdateOutput,
-  }),
-);
+export const TrunkedNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrunkedNetworksUpdateInput,
+  outputSchema: TrunkedNetworksUpdateOutput,
+}));
 // Input Schema
 export interface VirtualMachinesAssignRelayInput {
   subscriptionId: string;
@@ -11722,7 +11618,7 @@ export interface VirtualMachinesAssignRelayInput {
   relayType?: "Platform" | "Public";
 }
 export const VirtualMachinesAssignRelayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -11739,7 +11635,7 @@ export const VirtualMachinesAssignRelayInput =
 // Output Schema
 export type VirtualMachinesAssignRelayOutput = void;
 export const VirtualMachinesAssignRelayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAssignRelayOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAssignRelayOutput>;
 
 // The operation
 /**
@@ -11750,12 +11646,10 @@ export const VirtualMachinesAssignRelayOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesAssignRelay = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesAssignRelayInput,
-    outputSchema: VirtualMachinesAssignRelayOutput,
-  }),
-);
+export const VirtualMachinesAssignRelay = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesAssignRelayInput,
+  outputSchema: VirtualMachinesAssignRelayOutput,
+}));
 // Input Schema
 export interface VirtualMachinesCreateOrUpdateInput {
   subscriptionId: string;
@@ -11857,7 +11751,7 @@ export interface VirtualMachinesCreateOrUpdateInput {
   location: string;
 }
 export const VirtualMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12023,7 +11917,7 @@ export interface VirtualMachinesCreateOrUpdateOutput {
   };
 }
 export const VirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12055,7 +11949,7 @@ export const VirtualMachinesCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesCreateOrUpdateInput,
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
@@ -12066,7 +11960,7 @@ export interface VirtualMachinesDeleteInput {
   virtualMachineName: string;
 }
 export const VirtualMachinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12081,7 +11975,7 @@ export const VirtualMachinesDeleteInput =
 // Output Schema
 export type VirtualMachinesDeleteOutput = void;
 export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -12094,12 +11988,10 @@ export const VirtualMachinesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesDeleteInput,
-    outputSchema: VirtualMachinesDeleteOutput,
-  }),
-);
+export const VirtualMachinesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesDeleteInput,
+  outputSchema: VirtualMachinesDeleteOutput,
+}));
 // Input Schema
 export interface VirtualMachinesGetInput {
   subscriptionId: string;
@@ -12107,7 +11999,7 @@ export interface VirtualMachinesGetInput {
   virtualMachineName: string;
 }
 export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12134,7 +12026,7 @@ export interface VirtualMachinesGetOutput {
   };
 }
 export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12163,7 +12055,7 @@ export const VirtualMachinesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
@@ -12175,7 +12067,7 @@ export interface VirtualMachinesListByResourceGroupInput {
   $skipToken?: string;
 }
 export const VirtualMachinesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -12206,7 +12098,7 @@ export interface VirtualMachinesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const VirtualMachinesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12252,7 +12144,7 @@ export const VirtualMachinesListByResourceGroupOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesListByResourceGroupInput,
     outputSchema: VirtualMachinesListByResourceGroupOutput,
   }));
@@ -12263,7 +12155,7 @@ export interface VirtualMachinesListBySubscriptionInput {
   $skipToken?: string;
 }
 export const VirtualMachinesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -12293,7 +12185,7 @@ export interface VirtualMachinesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const VirtualMachinesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12338,7 +12230,7 @@ export const VirtualMachinesListBySubscriptionOutput =
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesListBySubscriptionInput,
     outputSchema: VirtualMachinesListBySubscriptionOutput,
   }));
@@ -12350,7 +12242,7 @@ export interface VirtualMachinesPowerOffInput {
   skipShutdown?: "True" | "False";
 }
 export const VirtualMachinesPowerOffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12366,7 +12258,7 @@ export const VirtualMachinesPowerOffInput =
 // Output Schema
 export type VirtualMachinesPowerOffOutput = void;
 export const VirtualMachinesPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesPowerOffOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesPowerOffOutput>;
 
 // The operation
 /**
@@ -12377,12 +12269,10 @@ export const VirtualMachinesPowerOffOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesPowerOff = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesPowerOffInput,
-    outputSchema: VirtualMachinesPowerOffOutput,
-  }),
-);
+export const VirtualMachinesPowerOff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesPowerOffInput,
+  outputSchema: VirtualMachinesPowerOffOutput,
+}));
 // Input Schema
 export interface VirtualMachinesReimageInput {
   subscriptionId: string;
@@ -12390,7 +12280,7 @@ export interface VirtualMachinesReimageInput {
   virtualMachineName: string;
 }
 export const VirtualMachinesReimageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12405,7 +12295,7 @@ export const VirtualMachinesReimageInput =
 // Output Schema
 export type VirtualMachinesReimageOutput = void;
 export const VirtualMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesReimageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesReimageOutput>;
 
 // The operation
 /**
@@ -12416,12 +12306,10 @@ export const VirtualMachinesReimageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesReimageInput,
-    outputSchema: VirtualMachinesReimageOutput,
-  }),
-);
+export const VirtualMachinesReimage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesReimageInput,
+  outputSchema: VirtualMachinesReimageOutput,
+}));
 // Input Schema
 export interface VirtualMachinesRestartInput {
   subscriptionId: string;
@@ -12429,7 +12317,7 @@ export interface VirtualMachinesRestartInput {
   virtualMachineName: string;
 }
 export const VirtualMachinesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12444,7 +12332,7 @@ export const VirtualMachinesRestartInput =
 // Output Schema
 export type VirtualMachinesRestartOutput = void;
 export const VirtualMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
 
 // The operation
 /**
@@ -12455,12 +12343,10 @@ export const VirtualMachinesRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRestartInput,
-    outputSchema: VirtualMachinesRestartOutput,
-  }),
-);
+export const VirtualMachinesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRestartInput,
+  outputSchema: VirtualMachinesRestartOutput,
+}));
 // Input Schema
 export interface VirtualMachinesStartInput {
   subscriptionId: string;
@@ -12468,7 +12354,7 @@ export interface VirtualMachinesStartInput {
   virtualMachineName: string;
 }
 export const VirtualMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12483,7 +12369,7 @@ export const VirtualMachinesStartInput =
 // Output Schema
 export type VirtualMachinesStartOutput = void;
 export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
 
 // The operation
 /**
@@ -12494,12 +12380,10 @@ export const VirtualMachinesStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  */
-export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesStartInput,
-    outputSchema: VirtualMachinesStartOutput,
-  }),
-);
+export const VirtualMachinesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesStartInput,
+  outputSchema: VirtualMachinesStartOutput,
+}));
 // Input Schema
 export interface VirtualMachinesUpdateInput {
   subscriptionId: string;
@@ -12528,7 +12412,7 @@ export interface VirtualMachinesUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualMachinesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -12588,7 +12472,7 @@ export interface VirtualMachinesUpdateOutput {
   };
 }
 export const VirtualMachinesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12619,12 +12503,10 @@ export const VirtualMachinesUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesUpdateInput,
-    outputSchema: VirtualMachinesUpdateOutput,
-  }),
-);
+export const VirtualMachinesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesUpdateInput,
+  outputSchema: VirtualMachinesUpdateOutput,
+}));
 // Input Schema
 export interface VolumesCreateOrUpdateInput {
   subscriptionId: string;
@@ -12652,7 +12534,7 @@ export interface VolumesCreateOrUpdateInput {
   location: string;
 }
 export const VolumesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     volumeName: Schema.String.pipe(T.PathParam()),
@@ -12707,7 +12589,7 @@ export interface VolumesCreateOrUpdateOutput {
   };
 }
 export const VolumesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12738,19 +12620,17 @@ export const VolumesCreateOrUpdateOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const VolumesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesCreateOrUpdateInput,
-    outputSchema: VolumesCreateOrUpdateOutput,
-  }),
-);
+export const VolumesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesCreateOrUpdateInput,
+  outputSchema: VolumesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface VolumesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   volumeName: string;
 }
-export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
@@ -12765,7 +12645,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VolumesDeleteOutput = void;
 export const VolumesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
 
 // The operation
 /**
@@ -12778,7 +12658,7 @@ export const VolumesDeleteOutput =
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesDeleteInput,
   outputSchema: VolumesDeleteOutput,
 }));
@@ -12788,7 +12668,7 @@ export interface VolumesGetInput {
   resourceGroupName: string;
   volumeName: string;
 }
-export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
@@ -12814,7 +12694,7 @@ export interface VolumesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12843,7 +12723,7 @@ export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
  */
-export const VolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesGetInput,
   outputSchema: VolumesGetOutput,
 }));
@@ -12855,7 +12735,7 @@ export interface VolumesListByResourceGroupInput {
   $skipToken?: string;
 }
 export const VolumesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -12886,7 +12766,7 @@ export interface VolumesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const VolumesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12931,12 +12811,10 @@ export const VolumesListByResourceGroupOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListByResourceGroupInput,
-    outputSchema: VolumesListByResourceGroupOutput,
-  }),
-);
+export const VolumesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListByResourceGroupInput,
+  outputSchema: VolumesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface VolumesListBySubscriptionInput {
   subscriptionId: string;
@@ -12944,7 +12822,7 @@ export interface VolumesListBySubscriptionInput {
   $skipToken?: string;
 }
 export const VolumesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $skipToken: Schema.optional(Schema.String),
@@ -12974,7 +12852,7 @@ export interface VolumesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const VolumesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13018,12 +12896,10 @@ export const VolumesListBySubscriptionOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
  * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
-export const VolumesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListBySubscriptionInput,
-    outputSchema: VolumesListBySubscriptionOutput,
-  }),
-);
+export const VolumesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListBySubscriptionInput,
+  outputSchema: VolumesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface VolumesUpdateInput {
   subscriptionId: string;
@@ -13031,7 +12907,7 @@ export interface VolumesUpdateInput {
   volumeName: string;
   tags?: Record<string, string>;
 }
-export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   volumeName: Schema.String.pipe(T.PathParam()),
@@ -13058,7 +12934,7 @@ export interface VolumesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13089,7 +12965,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
-export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,
   outputSchema: VolumesUpdateOutput,
 }));

@@ -58,7 +58,7 @@ export interface GetSmartRoutingRequest {
 }
 
 export const GetSmartRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -78,7 +78,7 @@ export interface GetSmartRoutingResponse {
 }
 
 export const GetSmartRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       editable: Schema.Boolean,
@@ -107,7 +107,7 @@ export const getSmartRouting: API.OperationMethod<
   GetSmartRoutingResponse,
   GetSmartRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSmartRoutingRequest,
   output: GetSmartRoutingResponse,
   errors: [InvalidObjectIdentifier, NotAuthorized, Forbidden],
@@ -121,7 +121,7 @@ export interface PatchSmartRoutingRequest {
 }
 
 export const PatchSmartRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -142,7 +142,7 @@ export interface PatchSmartRoutingResponse {
 }
 
 export const PatchSmartRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       editable: Schema.Boolean,
@@ -171,7 +171,7 @@ export const patchSmartRouting: API.OperationMethod<
   PatchSmartRoutingResponse,
   PatchSmartRoutingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSmartRoutingRequest,
   output: PatchSmartRoutingResponse,
   errors: [InvalidObjectIdentifier, NotAuthorized, Forbidden],
@@ -187,7 +187,7 @@ export interface GetTieredCachingRequest {
 }
 
 export const GetTieredCachingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -207,7 +207,7 @@ export interface GetTieredCachingResponse {
 }
 
 export const GetTieredCachingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_caching"),
       editable: Schema.Boolean,
@@ -236,7 +236,7 @@ export const getTieredCaching: API.OperationMethod<
   GetTieredCachingResponse,
   GetTieredCachingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTieredCachingRequest,
   output: GetTieredCachingResponse,
   errors: [InvalidObjectIdentifier, ZoneNotFound, Forbidden],
@@ -250,7 +250,7 @@ export interface PatchTieredCachingRequest {
 }
 
 export const PatchTieredCachingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
@@ -271,7 +271,7 @@ export interface PatchTieredCachingResponse {
 }
 
 export const PatchTieredCachingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Literal("tiered_caching"),
       editable: Schema.Boolean,
@@ -299,7 +299,7 @@ export const patchTieredCaching: API.OperationMethod<
   PatchTieredCachingResponse,
   PatchTieredCachingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTieredCachingRequest,
   output: PatchTieredCachingResponse,
   errors: [InvalidObjectIdentifier, Forbidden],

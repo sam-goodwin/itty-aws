@@ -13,7 +13,7 @@ export interface PostBillingAlertsIdDeactivateInput {
   expand?: string[];
 }
 export const PostBillingAlertsIdDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -56,7 +56,7 @@ export interface PostBillingAlertsIdDeactivateOutput {
   } | null;
 }
 export const PostBillingAlertsIdDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alert_type: Schema.Literals(["usage_threshold"]),
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -113,7 +113,7 @@ export const PostBillingAlertsIdDeactivateOutput =
  * <p>Deactivates this alert, preventing it from triggering.</p>
  */
 export const PostBillingAlertsIdDeactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingAlertsIdDeactivateInput,
     outputSchema: PostBillingAlertsIdDeactivateOutput,
   }));

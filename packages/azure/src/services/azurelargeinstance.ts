@@ -15,7 +15,7 @@ export interface AzureLargeInstanceGetInput {
   azureLargeInstanceName: string;
 }
 export const AzureLargeInstanceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
@@ -42,7 +42,7 @@ export interface AzureLargeInstanceGetOutput {
   };
 }
 export const AzureLargeInstanceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -72,19 +72,17 @@ export const AzureLargeInstanceGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeInstanceName - Name of the AzureLargeInstance.
  */
-export const AzureLargeInstanceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureLargeInstanceGetInput,
-    outputSchema: AzureLargeInstanceGetOutput,
-  }),
-);
+export const AzureLargeInstanceGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeInstanceGetInput,
+  outputSchema: AzureLargeInstanceGetOutput,
+}));
 // Input Schema
 export interface AzureLargeInstanceListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AzureLargeInstanceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -113,7 +111,7 @@ export interface AzureLargeInstanceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AzureLargeInstanceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -158,7 +156,7 @@ export const AzureLargeInstanceListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureLargeInstanceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeInstanceListByResourceGroupInput,
     outputSchema: AzureLargeInstanceListByResourceGroupOutput,
   }));
@@ -167,7 +165,7 @@ export interface AzureLargeInstanceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AzureLargeInstanceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -195,7 +193,7 @@ export interface AzureLargeInstanceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AzureLargeInstanceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -239,7 +237,7 @@ export const AzureLargeInstanceListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AzureLargeInstanceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeInstanceListBySubscriptionInput,
     outputSchema: AzureLargeInstanceListBySubscriptionOutput,
   }));
@@ -251,7 +249,7 @@ export interface AzureLargeInstanceRestartInput {
   forceState?: "active" | "inactive";
 }
 export const AzureLargeInstanceRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
@@ -299,7 +297,7 @@ export interface AzureLargeInstanceRestartOutput {
   };
 }
 export const AzureLargeInstanceRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -364,12 +362,10 @@ export const AzureLargeInstanceRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeInstanceName - Name of the AzureLargeInstance.
  */
-export const AzureLargeInstanceRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureLargeInstanceRestartInput,
-    outputSchema: AzureLargeInstanceRestartOutput,
-  }),
-);
+export const AzureLargeInstanceRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeInstanceRestartInput,
+  outputSchema: AzureLargeInstanceRestartOutput,
+}));
 // Input Schema
 export interface AzureLargeInstanceShutdownInput {
   subscriptionId: string;
@@ -377,7 +373,7 @@ export interface AzureLargeInstanceShutdownInput {
   azureLargeInstanceName: string;
 }
 export const AzureLargeInstanceShutdownInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
@@ -424,7 +420,7 @@ export interface AzureLargeInstanceShutdownOutput {
   };
 }
 export const AzureLargeInstanceShutdownOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -489,12 +485,10 @@ export const AzureLargeInstanceShutdownOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeInstanceName - Name of the AzureLargeInstance.
  */
-export const AzureLargeInstanceShutdown = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureLargeInstanceShutdownInput,
-    outputSchema: AzureLargeInstanceShutdownOutput,
-  }),
-);
+export const AzureLargeInstanceShutdown = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeInstanceShutdownInput,
+  outputSchema: AzureLargeInstanceShutdownOutput,
+}));
 // Input Schema
 export interface AzureLargeInstanceStartInput {
   subscriptionId: string;
@@ -502,7 +496,7 @@ export interface AzureLargeInstanceStartInput {
   azureLargeInstanceName: string;
 }
 export const AzureLargeInstanceStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
@@ -549,7 +543,7 @@ export interface AzureLargeInstanceStartOutput {
   };
 }
 export const AzureLargeInstanceStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -614,12 +608,10 @@ export const AzureLargeInstanceStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeInstanceName - Name of the AzureLargeInstance.
  */
-export const AzureLargeInstanceStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureLargeInstanceStartInput,
-    outputSchema: AzureLargeInstanceStartOutput,
-  }),
-);
+export const AzureLargeInstanceStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeInstanceStartInput,
+  outputSchema: AzureLargeInstanceStartOutput,
+}));
 // Input Schema
 export interface AzureLargeInstanceUpdateInput {
   subscriptionId: string;
@@ -628,7 +620,7 @@ export interface AzureLargeInstanceUpdateInput {
   tags?: Record<string, string>;
 }
 export const AzureLargeInstanceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeInstanceName: Schema.String.pipe(T.PathParam()),
@@ -656,7 +648,7 @@ export interface AzureLargeInstanceUpdateOutput {
   };
 }
 export const AzureLargeInstanceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -686,12 +678,10 @@ export const AzureLargeInstanceUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureLargeInstanceName - Name of the AzureLargeInstance.
  */
-export const AzureLargeInstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureLargeInstanceUpdateInput,
-    outputSchema: AzureLargeInstanceUpdateOutput,
-  }),
-);
+export const AzureLargeInstanceUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureLargeInstanceUpdateInput,
+  outputSchema: AzureLargeInstanceUpdateOutput,
+}));
 // Input Schema
 export interface AzureLargeStorageInstanceGetInput {
   subscriptionId: string;
@@ -699,7 +689,7 @@ export interface AzureLargeStorageInstanceGetInput {
   azureLargeStorageInstanceName: string;
 }
 export const AzureLargeStorageInstanceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -726,7 +716,7 @@ export interface AzureLargeStorageInstanceGetOutput {
   };
 }
 export const AzureLargeStorageInstanceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -757,7 +747,7 @@ export const AzureLargeStorageInstanceGetOutput =
  * @param azureLargeStorageInstanceName - Name of the AzureLargeStorageInstance.
  */
 export const AzureLargeStorageInstanceGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeStorageInstanceGetInput,
     outputSchema: AzureLargeStorageInstanceGetOutput,
   }));
@@ -767,7 +757,7 @@ export interface AzureLargeStorageInstanceListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AzureLargeStorageInstanceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -796,7 +786,7 @@ export interface AzureLargeStorageInstanceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AzureLargeStorageInstanceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -842,7 +832,7 @@ export const AzureLargeStorageInstanceListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureLargeStorageInstanceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeStorageInstanceListByResourceGroupInput,
     outputSchema: AzureLargeStorageInstanceListByResourceGroupOutput,
   }));
@@ -851,7 +841,7 @@ export interface AzureLargeStorageInstanceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AzureLargeStorageInstanceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -879,7 +869,7 @@ export interface AzureLargeStorageInstanceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AzureLargeStorageInstanceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -923,7 +913,7 @@ export const AzureLargeStorageInstanceListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AzureLargeStorageInstanceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeStorageInstanceListBySubscriptionInput,
     outputSchema: AzureLargeStorageInstanceListBySubscriptionOutput,
   }));
@@ -935,7 +925,7 @@ export interface AzureLargeStorageInstanceUpdateInput {
   tags?: Record<string, string>;
 }
 export const AzureLargeStorageInstanceUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureLargeStorageInstanceName: Schema.String.pipe(T.PathParam()),
@@ -963,7 +953,7 @@ export interface AzureLargeStorageInstanceUpdateOutput {
   };
 }
 export const AzureLargeStorageInstanceUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -994,15 +984,13 @@ export const AzureLargeStorageInstanceUpdateOutput =
  * @param azureLargeStorageInstanceName - Name of the AzureLargeStorageInstance.
  */
 export const AzureLargeStorageInstanceUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureLargeStorageInstanceUpdateInput,
     outputSchema: AzureLargeStorageInstanceUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureLargeInstance/operations",
@@ -1026,7 +1014,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1056,7 +1044,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

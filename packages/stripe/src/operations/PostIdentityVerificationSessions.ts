@@ -28,7 +28,7 @@ export interface PostIdentityVerificationSessionsInput {
   verification_flow?: string;
 }
 export const PostIdentityVerificationSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -277,7 +277,7 @@ export interface PostIdentityVerificationSessionsOutput {
   } | null;
 }
 export const PostIdentityVerificationSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
     client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
@@ -431,7 +431,7 @@ export const PostIdentityVerificationSessionsOutput =
  * <p>Related guide: <a href="/docs/identity/verify-identity-documents">Verify your users’ identity documents</a></p>
  */
 export const PostIdentityVerificationSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIdentityVerificationSessionsInput,
     outputSchema: PostIdentityVerificationSessionsOutput,
   }));

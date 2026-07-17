@@ -8,7 +8,7 @@ export interface ErrorTrackingIssuesRetrieveInput {
   project_id: string;
 }
 export const ErrorTrackingIssuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -37,7 +37,7 @@ export interface ErrorTrackingIssuesRetrieveOutput {
   cohort: { id: number; name: string } | null;
 }
 export const ErrorTrackingIssuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     status: Schema.String,
     name: Schema.NullOr(Schema.String),
@@ -78,9 +78,7 @@ export const ErrorTrackingIssuesRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingIssuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ErrorTrackingIssuesRetrieveInput,
-    outputSchema: ErrorTrackingIssuesRetrieveOutput,
-  }),
-);
+export const errorTrackingIssuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingIssuesRetrieveInput,
+  outputSchema: ErrorTrackingIssuesRetrieveOutput,
+}));

@@ -10,7 +10,7 @@ export interface GetGroupStreamPrivateLinkConnectionInput {
   envelope?: boolean;
 }
 export const GetGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     connectionId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetGroupStreamPrivateLinkConnectionInput =
 // Output Schema
 export type GetGroupStreamPrivateLinkConnectionOutput = void;
 export const GetGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamPrivateLinkConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamPrivateLinkConnectionOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const GetGroupStreamPrivateLinkConnectionOutput =
  * @param connectionId - Unique ID that identifies the Private Link connection.
  */
 export const getGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupStreamPrivateLinkConnectionInput,
     outputSchema: GetGroupStreamPrivateLinkConnectionOutput,
     errors: [Forbidden, NotFound] as const,

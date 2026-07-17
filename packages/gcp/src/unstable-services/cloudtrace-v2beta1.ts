@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -35,7 +35,7 @@ export interface OutputConfig {
 }
 
 export const OutputConfig: Schema.Codec<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutputConfig" });
 
@@ -49,7 +49,7 @@ export interface TraceSink {
 }
 
 export const TraceSink: Schema.Codec<TraceSink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     outputConfig: Schema.optional(OutputConfig),
     writerIdentity: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface ListTraceSinksResponse {
 }
 
 export const ListTraceSinksResponse: Schema.Codec<ListTraceSinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sinks: Schema.optional(Schema.Array(TraceSink)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTraceSinksResponse" });
@@ -132,7 +132,7 @@ export interface ListProjectsTraceSinksRequest {
 }
 
 export const ListProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -143,7 +143,7 @@ export const ListProjectsTraceSinksRequest =
 
 export type ListProjectsTraceSinksResponse = ListTraceSinksResponse;
 export const ListProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTraceSinksResponse;
+  /*@__PURE__*/ ListTraceSinksResponse;
 
 export type ListProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
@@ -153,7 +153,7 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   ListProjectsTraceSinksResponse,
   ListProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTraceSinksRequest,
   output: ListProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden],
@@ -171,7 +171,7 @@ export interface CreateProjectsTraceSinksRequest {
 }
 
 export const CreateProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TraceSink).pipe(T.HttpBody()),
   }).pipe(
@@ -184,8 +184,7 @@ export const CreateProjectsTraceSinksRequest =
   ) as unknown as Schema.Codec<CreateProjectsTraceSinksRequest>;
 
 export type CreateProjectsTraceSinksResponse = TraceSink;
-export const CreateProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+export const CreateProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
 
 export type CreateProjectsTraceSinksError =
   | DefaultErrors
@@ -200,7 +199,7 @@ export const createProjectsTraceSinks: API.OperationMethod<
   CreateProjectsTraceSinksResponse,
   CreateProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsTraceSinksRequest,
   output: CreateProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -216,7 +215,7 @@ export interface PatchProjectsTraceSinksRequest {
 }
 
 export const PatchProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TraceSink).pipe(T.HttpBody()),
@@ -226,8 +225,7 @@ export const PatchProjectsTraceSinksRequest =
   ) as unknown as Schema.Codec<PatchProjectsTraceSinksRequest>;
 
 export type PatchProjectsTraceSinksResponse = TraceSink;
-export const PatchProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+export const PatchProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
 
 export type PatchProjectsTraceSinksError =
   | DefaultErrors
@@ -242,7 +240,7 @@ export const patchProjectsTraceSinks: API.OperationMethod<
   PatchProjectsTraceSinksResponse,
   PatchProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsTraceSinksRequest,
   output: PatchProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -254,7 +252,7 @@ export interface DeleteProjectsTraceSinksRequest {
 }
 
 export const DeleteProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
@@ -262,8 +260,7 @@ export const DeleteProjectsTraceSinksRequest =
   ) as unknown as Schema.Codec<DeleteProjectsTraceSinksRequest>;
 
 export type DeleteProjectsTraceSinksResponse = Empty;
-export const DeleteProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsTraceSinksResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsTraceSinksError =
   | DefaultErrors
@@ -278,7 +275,7 @@ export const deleteProjectsTraceSinks: API.OperationMethod<
   DeleteProjectsTraceSinksResponse,
   DeleteProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsTraceSinksRequest,
   output: DeleteProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -290,7 +287,7 @@ export interface GetProjectsTraceSinksRequest {
 }
 
 export const GetProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+name}" }),
@@ -298,8 +295,7 @@ export const GetProjectsTraceSinksRequest =
   ) as unknown as Schema.Codec<GetProjectsTraceSinksRequest>;
 
 export type GetProjectsTraceSinksResponse = TraceSink;
-export const GetProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+export const GetProjectsTraceSinksResponse = /*@__PURE__*/ TraceSink;
 
 export type GetProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
@@ -309,7 +305,7 @@ export const getProjectsTraceSinks: API.OperationMethod<
   GetProjectsTraceSinksResponse,
   GetProjectsTraceSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsTraceSinksRequest,
   output: GetProjectsTraceSinksResponse,
   errors: [NotFound, Forbidden],

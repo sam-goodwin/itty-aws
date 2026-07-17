@@ -16,7 +16,7 @@ export interface LlmAnalyticsModelsRetrieveInput {
     | "together_ai";
 }
 export const LlmAnalyticsModelsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     key_id: Schema.optional(Schema.String),
     provider: Schema.Literals([
@@ -40,7 +40,7 @@ export interface LlmAnalyticsModelsRetrieveOutput {
   models: { id: string; posthog_available: boolean }[];
 }
 export const LlmAnalyticsModelsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     models: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -57,9 +57,7 @@ export const LlmAnalyticsModelsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param provider - LLM provider to list models for. Must be one of the supported providers.
  */
-export const llmAnalyticsModelsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmAnalyticsModelsRetrieveInput,
-    outputSchema: LlmAnalyticsModelsRetrieveOutput,
-  }),
-);
+export const llmAnalyticsModelsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmAnalyticsModelsRetrieveInput,
+  outputSchema: LlmAnalyticsModelsRetrieveOutput,
+}));

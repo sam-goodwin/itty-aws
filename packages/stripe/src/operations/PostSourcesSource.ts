@@ -68,116 +68,114 @@ export interface PostSourcesSourceInput {
     };
   };
 }
-export const PostSourcesSourceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    source: Schema.String.pipe(T.PathParam()),
-    amount: Schema.optional(Schema.Number),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    mandate: Schema.optional(
-      Schema.Struct({
-        acceptance: Schema.optional(
+export const PostSourcesSourceInput = /*@__PURE__*/ Schema.Struct({
+  source: Schema.String.pipe(T.PathParam()),
+  amount: Schema.optional(Schema.Number),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  mandate: Schema.optional(
+    Schema.Struct({
+      acceptance: Schema.optional(
+        Schema.Struct({
+          date: Schema.optional(Schema.Number),
+          ip: Schema.optional(Schema.String),
+          offline: Schema.optional(
+            Schema.Struct({
+              contact_email: Schema.String,
+            }),
+          ),
+          online: Schema.optional(
+            Schema.Struct({
+              date: Schema.optional(Schema.Number),
+              ip: Schema.optional(Schema.String),
+              user_agent: Schema.optional(Schema.String),
+            }),
+          ),
+          status: Schema.Literals([
+            "accepted",
+            "pending",
+            "refused",
+            "revoked",
+          ]),
+          type: Schema.optional(Schema.Literals(["offline", "online"])),
+          user_agent: Schema.optional(Schema.String),
+        }),
+      ),
+      amount: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Literals([""])]),
+      ),
+      currency: Schema.optional(Schema.String),
+      interval: Schema.optional(
+        Schema.Literals(["one_time", "scheduled", "variable"]),
+      ),
+      notification_method: Schema.optional(
+        Schema.Literals([
+          "deprecated_none",
+          "email",
+          "manual",
+          "none",
+          "stripe_email",
+        ]),
+      ),
+    }),
+  ),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+  owner: Schema.optional(
+    Schema.Struct({
+      address: Schema.optional(
+        Schema.Struct({
+          city: Schema.optional(Schema.String),
+          country: Schema.optional(Schema.String),
+          line1: Schema.optional(Schema.String),
+          line2: Schema.optional(Schema.String),
+          postal_code: Schema.optional(Schema.String),
+          state: Schema.optional(Schema.String),
+        }),
+      ),
+      email: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      phone: Schema.optional(Schema.String),
+    }),
+  ),
+  source_order: Schema.optional(
+    Schema.Struct({
+      items: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            date: Schema.optional(Schema.Number),
-            ip: Schema.optional(Schema.String),
-            offline: Schema.optional(
-              Schema.Struct({
-                contact_email: Schema.String,
-              }),
+            amount: Schema.optional(Schema.Number),
+            currency: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            parent: Schema.optional(Schema.String),
+            quantity: Schema.optional(Schema.Number),
+            type: Schema.optional(
+              Schema.Literals(["discount", "shipping", "sku", "tax"]),
             ),
-            online: Schema.optional(
-              Schema.Struct({
-                date: Schema.optional(Schema.Number),
-                ip: Schema.optional(Schema.String),
-                user_agent: Schema.optional(Schema.String),
-              }),
-            ),
-            status: Schema.Literals([
-              "accepted",
-              "pending",
-              "refused",
-              "revoked",
-            ]),
-            type: Schema.optional(Schema.Literals(["offline", "online"])),
-            user_agent: Schema.optional(Schema.String),
           }),
         ),
-        amount: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Literals([""])]),
-        ),
-        currency: Schema.optional(Schema.String),
-        interval: Schema.optional(
-          Schema.Literals(["one_time", "scheduled", "variable"]),
-        ),
-        notification_method: Schema.optional(
-          Schema.Literals([
-            "deprecated_none",
-            "email",
-            "manual",
-            "none",
-            "stripe_email",
-          ]),
-        ),
-      }),
-    ),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-    owner: Schema.optional(
-      Schema.Struct({
-        address: Schema.optional(
-          Schema.Struct({
+      ),
+      shipping: Schema.optional(
+        Schema.Struct({
+          address: Schema.Struct({
             city: Schema.optional(Schema.String),
             country: Schema.optional(Schema.String),
-            line1: Schema.optional(Schema.String),
+            line1: Schema.String,
             line2: Schema.optional(Schema.String),
             postal_code: Schema.optional(Schema.String),
             state: Schema.optional(Schema.String),
           }),
-        ),
-        email: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        phone: Schema.optional(Schema.String),
-      }),
-    ),
-    source_order: Schema.optional(
-      Schema.Struct({
-        items: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.optional(Schema.Number),
-              currency: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              parent: Schema.optional(Schema.String),
-              quantity: Schema.optional(Schema.Number),
-              type: Schema.optional(
-                Schema.Literals(["discount", "shipping", "sku", "tax"]),
-              ),
-            }),
-          ),
-        ),
-        shipping: Schema.optional(
-          Schema.Struct({
-            address: Schema.Struct({
-              city: Schema.optional(Schema.String),
-              country: Schema.optional(Schema.String),
-              line1: Schema.String,
-              line2: Schema.optional(Schema.String),
-              postal_code: Schema.optional(Schema.String),
-              state: Schema.optional(Schema.String),
-            }),
-            carrier: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            phone: Schema.optional(Schema.String),
-            tracking_number: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  },
-).pipe(
+          carrier: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          phone: Schema.optional(Schema.String),
+          tracking_number: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/sources/{source}",
@@ -498,7 +496,7 @@ export interface PostSourcesSourceOutput {
   };
 }
 export const PostSourcesSourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ach_credit_transfer: Schema.optional(
       Schema.Struct({
         account_number: Schema.optional(Schema.NullOr(Schema.String)),
@@ -922,7 +920,7 @@ export const PostSourcesSourceOutput =
  * <p>Updates the specified source by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  * <p>This request accepts the <code>metadata</code> and <code>owner</code> as arguments. It is also possible to update type specific information for selected payment methods. Please refer to our <a href="/docs/sources">payment method guides</a> for more detail.</p>
  */
-export const PostSourcesSource = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostSourcesSource = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostSourcesSourceInput,
   outputSchema: PostSourcesSourceOutput,
 }));

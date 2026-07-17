@@ -15,7 +15,7 @@ export interface PostV1AppsByAppIdRollbackInput {
   versionId?: string;
 }
 export const PostV1AppsByAppIdRollbackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     deploymentId: Schema.optional(Schema.String),
     versionId: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export interface PostV1AppsByAppIdRollbackOutput {
   data: { appEndpointDomain: string; reassignedDomains: number };
 }
 export const PostV1AppsByAppIdRollbackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       appEndpointDomain: Schema.String,
       reassignedDomains: Schema.Number,
@@ -42,10 +42,8 @@ export const PostV1AppsByAppIdRollbackOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Makes any eligible existing deployment live behind the app's stable endpoint (rollback or roll-forward). Unlike promote, a stopped target is started and waited until it is running before the endpoint is switched, so the currently-live deployment keeps serving with zero downtime. Returns the app endpoint domain.
  */
-export const postV1AppsByAppIdRollback = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1AppsByAppIdRollbackInput,
-    outputSchema: PostV1AppsByAppIdRollbackOutput,
-    errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const postV1AppsByAppIdRollback = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1AppsByAppIdRollbackInput,
+  outputSchema: PostV1AppsByAppIdRollbackOutput,
+  errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
+}));

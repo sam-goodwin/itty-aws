@@ -82,7 +82,7 @@ export interface CreateEventsV1NamespacedEventInput {
   type?: string;
 }
 export const CreateEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -253,7 +253,7 @@ export interface CreateEventsV1NamespacedEventOutput {
   type?: string;
 }
 export const CreateEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
@@ -357,7 +357,7 @@ export const CreateEventsV1NamespacedEventOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createEventsV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateEventsV1NamespacedEventInput,
     outputSchema: CreateEventsV1NamespacedEventOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -385,7 +385,7 @@ export interface DeleteEventsV1CollectionNamespacedEventInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteEventsV1CollectionNamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -444,7 +444,7 @@ export interface DeleteEventsV1CollectionNamespacedEventOutput {
   status?: string;
 }
 export const DeleteEventsV1CollectionNamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -547,7 +547,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteEventsV1CollectionNamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteEventsV1CollectionNamespacedEventInput,
     outputSchema: DeleteEventsV1CollectionNamespacedEventOutput,
   }));
@@ -566,7 +566,7 @@ export interface DeleteEventsV1NamespacedEventInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -617,7 +617,7 @@ export interface DeleteEventsV1NamespacedEventOutput {
   status?: string;
 }
 export const DeleteEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -671,16 +671,14 @@ export const DeleteEventsV1NamespacedEventOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteEventsV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteEventsV1NamespacedEventInput,
     outputSchema: DeleteEventsV1NamespacedEventOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export interface GetEventsAPIGroupInput {}
-export const GetEventsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetEventsAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/events.k8s.io/" }),
 ) as unknown as Schema.Codec<GetEventsAPIGroupInput>;
 
@@ -694,7 +692,7 @@ export interface GetEventsAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetEventsAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -724,14 +722,14 @@ export const GetEventsAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getEventsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEventsAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEventsAPIGroupInput,
   outputSchema: GetEventsAPIGroupOutput,
 }));
 // Input Schema
 export interface GetEventsV1APIResourcesInput {}
 export const GetEventsV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/events.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetEventsV1APIResourcesInput>;
 
@@ -754,7 +752,7 @@ export interface GetEventsV1APIResourcesOutput {
   }[];
 }
 export const GetEventsV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -778,12 +776,10 @@ export const GetEventsV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getEventsV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetEventsV1APIResourcesInput,
-    outputSchema: GetEventsV1APIResourcesOutput,
-  }),
-);
+export const getEventsV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetEventsV1APIResourcesInput,
+  outputSchema: GetEventsV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListEventsV1EventForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -800,7 +796,7 @@ export interface ListEventsV1EventForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListEventsV1EventForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -896,7 +892,7 @@ export interface ListEventsV1EventForAllNamespacesOutput {
   };
 }
 export const ListEventsV1EventForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1069,7 +1065,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listEventsV1EventForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListEventsV1EventForAllNamespacesInput,
     outputSchema: ListEventsV1EventForAllNamespacesOutput,
   }));
@@ -1090,7 +1086,7 @@ export interface ListEventsV1NamespacedEventInput {
   watch?: boolean;
 }
 export const ListEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1190,7 +1186,7 @@ export interface ListEventsV1NamespacedEventOutput {
   };
 }
 export const ListEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1363,12 +1359,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listEventsV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListEventsV1NamespacedEventInput,
-    outputSchema: ListEventsV1NamespacedEventOutput,
-  }),
-);
+export const listEventsV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListEventsV1NamespacedEventInput,
+  outputSchema: ListEventsV1NamespacedEventOutput,
+}));
 // Input Schema
 export interface PatchEventsV1NamespacedEventInput {
   name: string;
@@ -1380,7 +1374,7 @@ export interface PatchEventsV1NamespacedEventInput {
   force?: boolean;
 }
 export const PatchEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1463,7 +1457,7 @@ export interface PatchEventsV1NamespacedEventOutput {
   type?: string;
 }
 export const PatchEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
@@ -1569,7 +1563,7 @@ export const PatchEventsV1NamespacedEventOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchEventsV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchEventsV1NamespacedEventInput,
     outputSchema: PatchEventsV1NamespacedEventOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1581,7 +1575,7 @@ export interface ReadEventsV1NamespacedEventInput {
   pretty?: string;
 }
 export const ReadEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1660,7 +1654,7 @@ export interface ReadEventsV1NamespacedEventOutput {
   type?: string;
 }
 export const ReadEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
@@ -1761,13 +1755,11 @@ export const ReadEventsV1NamespacedEventOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readEventsV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadEventsV1NamespacedEventInput,
-    outputSchema: ReadEventsV1NamespacedEventOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readEventsV1NamespacedEvent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadEventsV1NamespacedEventInput,
+  outputSchema: ReadEventsV1NamespacedEventOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReplaceEventsV1NamespacedEventInput {
   name: string;
@@ -1842,7 +1834,7 @@ export interface ReplaceEventsV1NamespacedEventInput {
   type?: string;
 }
 export const ReplaceEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2014,7 +2006,7 @@ export interface ReplaceEventsV1NamespacedEventOutput {
   type?: string;
 }
 export const ReplaceEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
@@ -2119,7 +2111,7 @@ export const ReplaceEventsV1NamespacedEventOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceEventsV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceEventsV1NamespacedEventInput,
     outputSchema: ReplaceEventsV1NamespacedEventOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2140,7 +2132,7 @@ export interface WatchEventsV1EventListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchEventsV1EventListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2163,7 +2155,7 @@ export interface WatchEventsV1EventListForAllNamespacesOutput {
   type: string;
 }
 export const WatchEventsV1EventListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchEventsV1EventListForAllNamespacesOutput>;
@@ -2227,7 +2219,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchEventsV1EventListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchEventsV1EventListForAllNamespacesInput,
     outputSchema: WatchEventsV1EventListForAllNamespacesOutput,
   }));
@@ -2249,7 +2241,7 @@ export interface WatchEventsV1NamespacedEventInput {
   watch?: boolean;
 }
 export const WatchEventsV1NamespacedEventInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2277,7 +2269,7 @@ export interface WatchEventsV1NamespacedEventOutput {
   type: string;
 }
 export const WatchEventsV1NamespacedEventOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchEventsV1NamespacedEventOutput>;
@@ -2343,7 +2335,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchEventsV1NamespacedEvent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchEventsV1NamespacedEventInput,
     outputSchema: WatchEventsV1NamespacedEventOutput,
   }));
@@ -2364,7 +2356,7 @@ export interface WatchEventsV1NamespacedEventListInput {
   watch?: boolean;
 }
 export const WatchEventsV1NamespacedEventListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2391,7 +2383,7 @@ export interface WatchEventsV1NamespacedEventListOutput {
   type: string;
 }
 export const WatchEventsV1NamespacedEventListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchEventsV1NamespacedEventListOutput>;
@@ -2456,7 +2448,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchEventsV1NamespacedEventList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchEventsV1NamespacedEventListInput,
     outputSchema: WatchEventsV1NamespacedEventListOutput,
   }));

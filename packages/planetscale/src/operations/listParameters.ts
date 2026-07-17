@@ -9,7 +9,7 @@ export interface ListParametersInput {
   database: string;
   branch: string;
 }
-export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListParametersInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListParametersInput>;
 
 // Output Schema
-export type ListParametersOutput = {
+export type ListParametersOutput = ReadonlyArray<{
   id: string;
   name: string;
   display_name: string;
@@ -50,10 +50,10 @@ export type ListParametersOutput = {
   min: number;
   step: number;
   url: string;
-  options: string[];
+  options: ReadonlyArray<string>;
   actor: { id: string; display_name: string; avatar_url: string };
-}[];
-export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+}>;
+export const ListParametersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -97,13 +97,13 @@ export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * List cluster parameters
  *
- * Returns the parameters for a branch. To update the parameters, use the "Upsert a change request" endpoint.
+ * Returns the parameters for a branch. To update the parameters, use the "update_branch_change_request" endpoint.
  *
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const listParameters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listParameters = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListParametersInput,
   outputSchema: ListParametersOutput,
   errors: [Forbidden, NotFound] as const,

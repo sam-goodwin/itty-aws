@@ -22,7 +22,7 @@ interface Dnsrecord {
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-const Dnsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([
@@ -50,7 +50,7 @@ interface GetTenantCustomNameserverResponseResult {
   nsSet?: number | null;
 }
 const GetTenantCustomNameserverResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsRecords: Schema.Array(Dnsrecord),
       nsName: Schema.String,
@@ -80,7 +80,7 @@ export interface GetTenantCustomNameserverRequest {
 }
 
 export const GetTenantCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tenantTag: Schema.String.pipe(T.HttpPath("tenantTag")),
     }).pipe(T.Http({ method: "GET", path: "/tenants/{tenantTag}/custom_ns" })),
@@ -100,7 +100,7 @@ export interface GetTenantCustomNameserverResponse {
 }
 
 export const GetTenantCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetTenantCustomNameserverResponseResult),
     }),
@@ -113,7 +113,7 @@ export const getTenantCustomNameserver: API.PaginatedOperationMethod<
   GetTenantCustomNameserverResponse,
   GetTenantCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTenantCustomNameserverRequest,
   output: GetTenantCustomNameserverResponse,
   errors: [],
@@ -132,7 +132,7 @@ export interface CreateTenantCustomNameserverRequest {
 }
 
 export const CreateTenantCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tenantTag: Schema.String.pipe(T.HttpPath("tenantTag")),
       nsName: Schema.String,
@@ -160,7 +160,7 @@ export interface CreateTenantCustomNameserverResponse {
 }
 
 export const CreateTenantCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsRecords: Schema.Array(Dnsrecord),
       nsName: Schema.String,
@@ -190,7 +190,7 @@ export const createTenantCustomNameserver: API.OperationMethod<
   CreateTenantCustomNameserverResponse,
   CreateTenantCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTenantCustomNameserverRequest,
   output: CreateTenantCustomNameserverResponse,
   errors: [],
@@ -202,7 +202,7 @@ export interface DeleteTenantCustomNameserverRequest {
 }
 
 export const DeleteTenantCustomNameserverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tenantTag: Schema.String.pipe(T.HttpPath("tenantTag")),
       customNSId: Schema.String.pipe(T.HttpPath("customNSId")),
@@ -219,7 +219,7 @@ export interface DeleteTenantCustomNameserverResponse {
 }
 
 export const DeleteTenantCustomNameserverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -232,7 +232,7 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
   DeleteTenantCustomNameserverResponse,
   DeleteTenantCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DeleteTenantCustomNameserverRequest,
   output: DeleteTenantCustomNameserverResponse,
   errors: [],

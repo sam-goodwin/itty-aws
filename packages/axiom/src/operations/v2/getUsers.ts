@@ -4,7 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetUsersInput {}
-export const GetUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetUsersInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/users" }),
 ) as unknown as Schema.Codec<GetUsersInput>;
 
@@ -15,7 +15,7 @@ export type GetUsersOutput = ReadonlyArray<{
   name: string;
   role?: { id: string; name: string };
 }>;
-export const GetUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetUsersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     email: Schema.String,
     id: Schema.String,
@@ -33,7 +33,7 @@ export const GetUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * Get users
  */
-export const getUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetUsersInput,
   outputSchema: GetUsersOutput,
 }));

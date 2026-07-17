@@ -33,7 +33,7 @@ export interface TasksRunsArtifactsCreateInput {
   }[];
 }
 export const TasksRunsArtifactsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -104,7 +104,7 @@ export interface TasksRunsArtifactsCreateOutput {
   }[];
 }
 export const TasksRunsArtifactsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -143,10 +143,8 @@ export const TasksRunsArtifactsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsArtifactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRunsArtifactsCreateInput,
-    outputSchema: TasksRunsArtifactsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRunsArtifactsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsArtifactsCreateInput,
+  outputSchema: TasksRunsArtifactsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

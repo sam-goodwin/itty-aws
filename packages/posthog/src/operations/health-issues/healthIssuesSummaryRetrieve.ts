@@ -7,7 +7,7 @@ export interface HealthIssuesSummaryRetrieveInput {
   project_id: string;
 }
 export const HealthIssuesSummaryRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -23,7 +23,7 @@ export interface HealthIssuesSummaryRetrieveOutput {
   by_kind: Record<string, number>;
 }
 export const HealthIssuesSummaryRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     total: Schema.Number,
     by_severity: Schema.Record(Schema.String, Schema.Number),
     by_kind: Schema.Record(Schema.String, Schema.Number),
@@ -37,9 +37,7 @@ export const HealthIssuesSummaryRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const healthIssuesSummaryRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HealthIssuesSummaryRetrieveInput,
-    outputSchema: HealthIssuesSummaryRetrieveOutput,
-  }),
-);
+export const healthIssuesSummaryRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HealthIssuesSummaryRetrieveInput,
+  outputSchema: HealthIssuesSummaryRetrieveOutput,
+}));

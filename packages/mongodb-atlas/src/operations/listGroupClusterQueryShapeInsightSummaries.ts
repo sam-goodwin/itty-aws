@@ -19,7 +19,7 @@ export interface ListGroupClusterQueryShapeInsightSummariesInput {
   pretty?: boolean;
 }
 export const ListGroupClusterQueryShapeInsightSummariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     since: Schema.optional(Schema.Number),
@@ -42,7 +42,7 @@ export const ListGroupClusterQueryShapeInsightSummariesInput =
 // Output Schema
 export type ListGroupClusterQueryShapeInsightSummariesOutput = void;
 export const ListGroupClusterQueryShapeInsightSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesOutput>;
 
 // The operation
 /**
@@ -72,7 +72,7 @@ export const ListGroupClusterQueryShapeInsightSummariesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupClusterQueryShapeInsightSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterQueryShapeInsightSummariesInput,
     outputSchema: ListGroupClusterQueryShapeInsightSummariesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

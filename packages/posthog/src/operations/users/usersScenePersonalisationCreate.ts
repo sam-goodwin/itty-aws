@@ -723,7 +723,7 @@ export interface UsersScenePersonalisationCreateInput {
   requires_credential_review?: boolean;
 }
 export const UsersScenePersonalisationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1527,11 +1527,11 @@ export const UsersScenePersonalisationCreateInput =
 // Output Schema
 export type UsersScenePersonalisationCreateOutput = void;
 export const UsersScenePersonalisationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersScenePersonalisationCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersScenePersonalisationCreateOutput>;
 
 // The operation
 export const usersScenePersonalisationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersScenePersonalisationCreateInput,
     outputSchema: UsersScenePersonalisationCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

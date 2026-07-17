@@ -78,7 +78,7 @@ export interface LogsAlertsPartialUpdateInput {
   updated_at?: string | null;
 }
 export const LogsAlertsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -281,7 +281,7 @@ export interface LogsAlertsPartialUpdateOutput {
   updated_at?: string | null;
 }
 export const LogsAlertsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -410,10 +410,8 @@ export const LogsAlertsPartialUpdateOutput =
  * @param id - A UUID string identifying this logs alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsAlertsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsAlertsPartialUpdateInput,
-    outputSchema: LogsAlertsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const logsAlertsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsAlertsPartialUpdateInput,
+  outputSchema: LogsAlertsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

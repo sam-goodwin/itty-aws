@@ -137,7 +137,7 @@ export interface ApiGatewayProxyInput {
   EndpointType?: string;
   StageName?: string;
 }
-export const ApiGatewayProxyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiGatewayProxyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointType: S.optional(S.String),
     StageName: S.optional(S.String),
@@ -146,7 +146,7 @@ export const ApiGatewayProxyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApiGatewayProxyInput",
 }) as any as S.Schema<ApiGatewayProxyInput>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -159,31 +159,28 @@ export interface CreateApplicationRequest {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      EnvironmentIdentifier: S.String.pipe(
-        T.HttpLabel("EnvironmentIdentifier"),
-      ),
-      VpcId: S.String,
-      ProxyType: S.String,
-      ApiGatewayProxy: S.optional(ApiGatewayProxyInput),
-      Tags: S.optional(TagMap),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/environments/{EnvironmentIdentifier}/applications",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+    VpcId: S.String,
+    ProxyType: S.String,
+    ApiGatewayProxy: S.optional(ApiGatewayProxyInput),
+    Tags: S.optional(TagMap),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/environments/{EnvironmentIdentifier}/applications",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
@@ -202,25 +199,24 @@ export interface CreateApplicationResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      OwnerAccountId: S.optional(S.String),
-      CreatedByAccountId: S.optional(S.String),
-      ApplicationId: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      VpcId: S.optional(S.String),
-      ProxyType: S.optional(S.String),
-      ApiGatewayProxy: S.optional(ApiGatewayProxyInput),
-      State: S.optional(S.String),
-      Tags: S.optional(TagMap),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    OwnerAccountId: S.optional(S.String),
+    CreatedByAccountId: S.optional(S.String),
+    ApplicationId: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    VpcId: S.optional(S.String),
+    ProxyType: S.optional(S.String),
+    ApiGatewayProxy: S.optional(ApiGatewayProxyInput),
+    State: S.optional(S.String),
+    Tags: S.optional(TagMap),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
@@ -231,24 +227,23 @@ export interface CreateEnvironmentRequest {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(S.String),
-      NetworkFabricType: S.String,
-      Tags: S.optional(TagMap),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/environments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    NetworkFabricType: S.String,
+    Tags: S.optional(TagMap),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/environments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
@@ -264,35 +259,34 @@ export interface CreateEnvironmentResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Description: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      NetworkFabricType: S.optional(S.String),
-      OwnerAccountId: S.optional(S.String),
-      State: S.optional(S.String),
-      Tags: S.optional(TagMap),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Description: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    NetworkFabricType: S.optional(S.String),
+    OwnerAccountId: S.optional(S.String),
+    State: S.optional(S.String),
+    Tags: S.optional(TagMap),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
 export interface DefaultRouteInput {
   ActivationState?: string;
 }
-export const DefaultRouteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DefaultRouteInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ActivationState: S.optional(S.String) }),
 ).annotate({
   identifier: "DefaultRouteInput",
 }) as any as S.Schema<DefaultRouteInput>;
 export type HttpMethods = string[];
-export const HttpMethods = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const HttpMethods = /*@__PURE__*/ S.Array(S.String);
 export interface UriPathRouteInput {
   SourcePath: string;
   ActivationState: string;
@@ -300,7 +294,7 @@ export interface UriPathRouteInput {
   IncludeChildPaths?: boolean;
   AppendSourcePath?: boolean;
 }
-export const UriPathRouteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UriPathRouteInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourcePath: S.String,
     ActivationState: S.String,
@@ -321,7 +315,7 @@ export interface CreateRouteRequest {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateRouteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -361,7 +355,7 @@ export interface CreateRouteResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -385,7 +379,7 @@ export interface UrlEndpointInput {
   Url: string;
   HealthUrl?: string;
 }
-export const UrlEndpointInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UrlEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Url: S.String, HealthUrl: S.optional(S.String) }),
 ).annotate({
   identifier: "UrlEndpointInput",
@@ -393,7 +387,7 @@ export const UrlEndpointInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LambdaEndpointInput {
   Arn: string;
 }
-export const LambdaEndpointInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LambdaEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }),
 ).annotate({
   identifier: "LambdaEndpointInput",
@@ -410,7 +404,7 @@ export interface CreateServiceRequest {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Description: S.optional(S.String),
@@ -456,7 +450,7 @@ export interface CreateServiceResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const CreateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -484,28 +478,23 @@ export interface DeleteApplicationRequest {
   EnvironmentIdentifier: string;
   ApplicationIdentifier: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EnvironmentIdentifier: S.String.pipe(
-        T.HttpLabel("EnvironmentIdentifier"),
-      ),
-      ApplicationIdentifier: S.String.pipe(
-        T.HttpLabel("ApplicationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/environments/{EnvironmentIdentifier}/applications/{ApplicationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+    ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/environments/{EnvironmentIdentifier}/applications/{ApplicationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteApplicationRequest",
 }) as any as S.Schema<DeleteApplicationRequest>;
@@ -517,43 +506,39 @@ export interface DeleteApplicationResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const DeleteApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      ApplicationId: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      State: S.optional(S.String),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
+export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    ApplicationId: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    State: S.optional(S.String),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteEnvironmentRequest {
   EnvironmentIdentifier: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EnvironmentIdentifier: S.String.pipe(
-        T.HttpLabel("EnvironmentIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/environments/{EnvironmentIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/environments/{EnvironmentIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
@@ -564,17 +549,16 @@ export interface DeleteEnvironmentResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      State: S.optional(S.String),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
+export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    State: S.optional(S.String),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
@@ -582,7 +566,7 @@ export interface DeleteResourcePolicyRequest {
   Identifier: string;
 }
 export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/resourcepolicy/{Identifier}" }),
@@ -598,7 +582,7 @@ export const DeleteResourcePolicyRequest =
   }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
 export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteResourcePolicyResponse",
   }) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRouteRequest {
@@ -606,7 +590,7 @@ export interface DeleteRouteRequest {
   ApplicationIdentifier: string;
   RouteIdentifier: string;
 }
-export const DeleteRouteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -635,7 +619,7 @@ export interface DeleteRouteResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const DeleteRouteResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -654,7 +638,7 @@ export interface DeleteServiceRequest {
   ApplicationIdentifier: string;
   ServiceIdentifier: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -684,7 +668,7 @@ export interface DeleteServiceResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -703,7 +687,7 @@ export interface GetApplicationRequest {
   EnvironmentIdentifier: string;
   ApplicationIdentifier: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -732,7 +716,7 @@ export interface ApiGatewayProxyConfig {
   EndpointType?: string;
   StageName?: string;
 }
-export const ApiGatewayProxyConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiGatewayProxyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProxyUrl: S.optional(S.String),
     ApiGatewayId: S.optional(S.String),
@@ -746,7 +730,7 @@ export const ApiGatewayProxyConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApiGatewayProxyConfig",
 }) as any as S.Schema<ApiGatewayProxyConfig>;
 export type AdditionalDetails = { [key: string]: string | undefined };
-export const AdditionalDetails = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const AdditionalDetails = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -758,7 +742,7 @@ export interface ErrorResponse {
   ResourceType?: string;
   AdditionalDetails?: { [key: string]: string | undefined };
 }
-export const ErrorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Code: S.optional(S.String),
     Message: S.optional(S.String),
@@ -784,33 +768,32 @@ export interface GetApplicationResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const GetApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      OwnerAccountId: S.optional(S.String),
-      CreatedByAccountId: S.optional(S.String),
-      ApplicationId: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      VpcId: S.optional(S.String),
-      ProxyType: S.optional(S.String),
-      ApiGatewayProxy: S.optional(ApiGatewayProxyConfig),
-      State: S.optional(S.String),
-      Tags: S.optional(TagMap),
-      Error: S.optional(ErrorResponse),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    OwnerAccountId: S.optional(S.String),
+    CreatedByAccountId: S.optional(S.String),
+    ApplicationId: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    VpcId: S.optional(S.String),
+    ProxyType: S.optional(S.String),
+    ApiGatewayProxy: S.optional(ApiGatewayProxyConfig),
+    State: S.optional(S.String),
+    Tags: S.optional(TagMap),
+    Error: S.optional(ErrorResponse),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
 export interface GetEnvironmentRequest {
   EnvironmentIdentifier: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
   }).pipe(
@@ -840,50 +823,48 @@ export interface GetEnvironmentResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Description: S.optional(S.String),
-      EnvironmentId: S.optional(S.String),
-      NetworkFabricType: S.optional(S.String),
-      OwnerAccountId: S.optional(S.String),
-      TransitGatewayId: S.optional(S.String),
-      State: S.optional(S.String),
-      Tags: S.optional(TagMap),
-      Error: S.optional(ErrorResponse),
-      LastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Description: S.optional(S.String),
+    EnvironmentId: S.optional(S.String),
+    NetworkFabricType: S.optional(S.String),
+    OwnerAccountId: S.optional(S.String),
+    TransitGatewayId: S.optional(S.String),
+    State: S.optional(S.String),
+    Tags: S.optional(TagMap),
+    Error: S.optional(ErrorResponse),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "GetEnvironmentResponse",
 }) as any as S.Schema<GetEnvironmentResponse>;
 export interface GetResourcePolicyRequest {
   Identifier: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/resourcepolicy/{Identifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/resourcepolicy/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Policy: S.optional(S.String) }),
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
@@ -892,7 +873,7 @@ export interface GetRouteRequest {
   ApplicationIdentifier: string;
   RouteIdentifier: string;
 }
-export const GetRouteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -914,7 +895,7 @@ export const GetRouteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
 export type PathResourceToId = { [key: string]: string | undefined };
-export const PathResourceToId = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const PathResourceToId = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -938,7 +919,7 @@ export interface GetRouteResponse {
   CreatedTime?: Date;
   AppendSourcePath?: boolean;
 }
-export const GetRouteResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -969,7 +950,7 @@ export interface GetServiceRequest {
   ApplicationIdentifier: string;
   ServiceIdentifier: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -994,7 +975,7 @@ export interface UrlEndpointConfig {
   Url?: string;
   HealthUrl?: string;
 }
-export const UrlEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UrlEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Url: S.optional(S.String), HealthUrl: S.optional(S.String) }),
 ).annotate({
   identifier: "UrlEndpointConfig",
@@ -1002,7 +983,7 @@ export const UrlEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LambdaEndpointConfig {
   Arn?: string;
 }
-export const LambdaEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LambdaEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String) }),
 ).annotate({
   identifier: "LambdaEndpointConfig",
@@ -1026,7 +1007,7 @@ export interface GetServiceResponse {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const GetServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1056,27 +1037,24 @@ export interface ListApplicationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EnvironmentIdentifier: S.String.pipe(
-        T.HttpLabel("EnvironmentIdentifier"),
-      ),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/environments/{EnvironmentIdentifier}/applications",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/environments/{EnvironmentIdentifier}/applications",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListApplicationsRequest",
 }) as any as S.Schema<ListApplicationsRequest>;
@@ -1089,17 +1067,16 @@ export interface ApiGatewayProxySummary {
   EndpointType?: string;
   StageName?: string;
 }
-export const ApiGatewayProxySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProxyUrl: S.optional(S.String),
-      ApiGatewayId: S.optional(S.String),
-      VpcLinkId: S.optional(S.String),
-      NlbArn: S.optional(S.String),
-      NlbName: S.optional(S.String),
-      EndpointType: S.optional(S.String),
-      StageName: S.optional(S.String),
-    }),
+export const ApiGatewayProxySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProxyUrl: S.optional(S.String),
+    ApiGatewayId: S.optional(S.String),
+    VpcLinkId: S.optional(S.String),
+    NlbArn: S.optional(S.String),
+    NlbName: S.optional(S.String),
+    EndpointType: S.optional(S.String),
+    StageName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ApiGatewayProxySummary",
 }) as any as S.Schema<ApiGatewayProxySummary>;
@@ -1119,7 +1096,7 @@ export interface ApplicationSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -1142,18 +1119,16 @@ export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSummary",
 }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaries = ApplicationSummary[];
-export const ApplicationSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationSummary);
+export const ApplicationSummaries = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
   ApplicationSummaryList?: ApplicationSummary[];
   NextToken?: string;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ApplicationSummaryList: S.optional(ApplicationSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationSummaryList: S.optional(ApplicationSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
@@ -1161,21 +1136,20 @@ export interface ListEnvironmentsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/environments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/environments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
@@ -1193,7 +1167,7 @@ export interface EnvironmentSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -1214,18 +1188,16 @@ export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentSummary",
 }) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaries = EnvironmentSummary[];
-export const EnvironmentSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentSummary);
+export const EnvironmentSummaries = /*@__PURE__*/ S.Array(EnvironmentSummary);
 export interface ListEnvironmentsResponse {
   EnvironmentSummaryList?: EnvironmentSummary[];
   NextToken?: string;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EnvironmentSummaryList: S.optional(EnvironmentSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentSummaryList: S.optional(EnvironmentSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
@@ -1234,32 +1206,29 @@ export interface ListEnvironmentVpcsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListEnvironmentVpcsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EnvironmentIdentifier: S.String.pipe(
-        T.HttpLabel("EnvironmentIdentifier"),
-      ),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/environments/{EnvironmentIdentifier}/vpcs",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentVpcsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/environments/{EnvironmentIdentifier}/vpcs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListEnvironmentVpcsRequest",
 }) as any as S.Schema<ListEnvironmentVpcsRequest>;
 export type CidrBlocks = string[];
-export const CidrBlocks = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CidrBlocks = /*@__PURE__*/ S.Array(S.String);
 export interface EnvironmentVpc {
   EnvironmentId?: string;
   VpcId?: string;
@@ -1269,7 +1238,7 @@ export interface EnvironmentVpc {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const EnvironmentVpc = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentVpc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentId: S.optional(S.String),
     VpcId: S.optional(S.String),
@@ -1283,14 +1252,13 @@ export const EnvironmentVpc = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EnvironmentVpc" }) as any as S.Schema<EnvironmentVpc>;
 export type EnvironmentVpcs = EnvironmentVpc[];
-export const EnvironmentVpcs =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentVpc);
+export const EnvironmentVpcs = /*@__PURE__*/ S.Array(EnvironmentVpc);
 export interface ListEnvironmentVpcsResponse {
   EnvironmentVpcList?: EnvironmentVpc[];
   NextToken?: string;
 }
 export const ListEnvironmentVpcsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EnvironmentVpcList: S.optional(EnvironmentVpcs),
       NextToken: S.optional(S.String),
@@ -1304,7 +1272,7 @@ export interface ListRoutesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -1346,7 +1314,7 @@ export interface RouteSummary {
   CreatedTime?: Date;
   AppendSourcePath?: boolean;
 }
-export const RouteSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RouteSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -1371,12 +1339,12 @@ export const RouteSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouteSummary" }) as any as S.Schema<RouteSummary>;
 export type RouteSummaries = RouteSummary[];
-export const RouteSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(RouteSummary);
+export const RouteSummaries = /*@__PURE__*/ S.Array(RouteSummary);
 export interface ListRoutesResponse {
   RouteSummaryList?: RouteSummary[];
   NextToken?: string;
 }
-export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteSummaryList: S.optional(RouteSummaries),
     NextToken: S.optional(S.String),
@@ -1390,7 +1358,7 @@ export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -1416,7 +1384,7 @@ export interface UrlEndpointSummary {
   Url?: string;
   HealthUrl?: string;
 }
-export const UrlEndpointSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UrlEndpointSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Url: S.optional(S.String), HealthUrl: S.optional(S.String) }),
 ).annotate({
   identifier: "UrlEndpointSummary",
@@ -1424,7 +1392,7 @@ export const UrlEndpointSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LambdaEndpointSummary {
   Arn?: string;
 }
-export const LambdaEndpointSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LambdaEndpointSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String) }),
 ).annotate({
   identifier: "LambdaEndpointSummary",
@@ -1448,7 +1416,7 @@ export interface ServiceSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const ServiceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1472,13 +1440,12 @@ export const ServiceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceSummary" }) as any as S.Schema<ServiceSummary>;
 export type ServiceSummaries = ServiceSummary[];
-export const ServiceSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceSummary);
+export const ServiceSummaries = /*@__PURE__*/ S.Array(ServiceSummary);
 export interface ListServicesResponse {
   ServiceSummaryList?: ServiceSummary[];
   NextToken?: string;
 }
-export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceSummaryList: S.optional(ServiceSummaries),
     NextToken: S.optional(S.String),
@@ -1489,18 +1456,17 @@ export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -1508,7 +1474,7 @@ export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -1517,24 +1483,23 @@ export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/resourcepolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/resourcepolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutResourcePolicyRequest",
 }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
@@ -1542,7 +1507,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: TagMap,
@@ -1560,18 +1525,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -1589,7 +1554,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1600,7 +1565,7 @@ export interface UpdateRouteRequest {
   RouteIdentifier: string;
   ActivationState: string;
 }
-export const UpdateRouteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
     ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
@@ -1630,7 +1595,7 @@ export interface UpdateRouteResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const UpdateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -1717,7 +1682,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -1758,7 +1723,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentResponse,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [
@@ -1856,7 +1821,7 @@ export const createRoute: API.OperationMethod<
   CreateRouteResponse,
   CreateRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
   errors: [
@@ -1895,7 +1860,7 @@ export const createService: API.OperationMethod<
   CreateServiceResponse,
   CreateServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServiceRequest,
   output: CreateServiceResponse,
   errors: [
@@ -1926,7 +1891,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -1956,7 +1921,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [
@@ -1984,7 +1949,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -2012,7 +1977,7 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteResponse,
   DeleteRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [
@@ -2041,7 +2006,7 @@ export const deleteService: API.OperationMethod<
   DeleteServiceResponse,
   DeleteServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [
@@ -2069,7 +2034,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -2096,7 +2061,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentResponse,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [
@@ -2123,7 +2088,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -2150,7 +2115,7 @@ export const getRoute: API.OperationMethod<
   GetRouteResponse,
   GetRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRouteRequest,
   output: GetRouteResponse,
   errors: [
@@ -2177,7 +2142,7 @@ export const getService: API.OperationMethod<
   GetServiceResponse,
   GetServiceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceRequest,
   output: GetServiceResponse,
   errors: [
@@ -2221,7 +2186,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -2272,7 +2237,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [
@@ -2321,7 +2286,7 @@ export const listEnvironmentVpcs: API.OperationMethod<
     ListEnvironmentVpcsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentVpcsRequest,
   output: ListEnvironmentVpcsResponse,
   errors: [
@@ -2371,7 +2336,7 @@ export const listRoutes: API.OperationMethod<
     ListRoutesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
   errors: [
@@ -2423,7 +2388,7 @@ export const listServices: API.OperationMethod<
     ListServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [
@@ -2457,7 +2422,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2486,7 +2451,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -2517,7 +2482,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2542,7 +2507,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2567,7 +2532,7 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteResponse,
   UpdateRouteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRouteRequest,
   output: UpdateRouteResponse,
   errors: [

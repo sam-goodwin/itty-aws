@@ -5,7 +5,7 @@ import { Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     projectId: Schema.optional(Schema.String),
@@ -14,7 +14,7 @@ export type GetV1ComputeServicesInput = typeof GetV1ComputeServicesInput.Type;
 
 // Output Schema
 export const GetV1ComputeServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -45,10 +45,8 @@ export type GetV1ComputeServicesOutput = typeof GetV1ComputeServicesOutput.Type;
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns all compute services the token has access to, ordered by creation time (oldest first). Optionally filter by project ID. Supports cursor-based pagination.
  */
-export const getV1ComputeServices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1ComputeServicesInput,
-    outputSchema: GetV1ComputeServicesOutput,
-    errors: [Forbidden, UnprocessableEntity] as const,
-  }),
-);
+export const getV1ComputeServices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1ComputeServicesInput,
+  outputSchema: GetV1ComputeServicesOutput,
+  errors: [Forbidden, UnprocessableEntity] as const,
+}));

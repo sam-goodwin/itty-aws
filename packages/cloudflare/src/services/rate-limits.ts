@@ -22,7 +22,7 @@ interface Response {
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
   contentType?: string | null;
 }
-const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -44,7 +44,7 @@ interface Action {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or " */
   timeout?: number | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.optional(
       Schema.Union([
@@ -71,7 +71,7 @@ interface Bypass {
   /** The URL to bypass. */
   value?: string | null;
 }
-const Bypass = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bypass = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.Literal("url"), Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -86,7 +86,7 @@ interface Header {
   /** The value of the response header, which must match exactly. */
   value?: string | null;
 }
-const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Header = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     op: Schema.optional(
@@ -118,7 +118,7 @@ interface Request {
   /** The URL pattern to match, composed of a host and a path such as `example.org/path `. Normalization is applied before the pattern is matched. ` ` wildcards are expanded to match applicable traffic. Que */
   url?: string | null;
 }
-const Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     methods: Schema.optional(
       Schema.Union([
@@ -150,7 +150,7 @@ interface Response2 {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This  */
   originTraffic?: boolean | null;
 }
-const Response2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     originTraffic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
@@ -182,7 +182,7 @@ interface Match {
   } | null;
   response?: { originTraffic?: boolean | null } | null;
 }
-const Match = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Match = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Schema.optional(Schema.Union([Schema.Array(Header), Schema.Null])),
     request: Schema.optional(Schema.Union([Request, Schema.Null])),
@@ -244,20 +244,17 @@ interface ListRateLimitsResponseResult {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold?: number | null;
 }
-const ListRateLimitsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(Schema.Union([Action, Schema.Null])),
-      bypass: Schema.optional(
-        Schema.Union([Schema.Array(Bypass), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      match: Schema.optional(Schema.Union([Match, Schema.Null])),
-      period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
+const ListRateLimitsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    match: Schema.optional(Schema.Union([Match, Schema.Null])),
+    period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListRateLimitsResponseResult>;
 
 interface ListRateLimitsResponseResultInfo {
@@ -267,7 +264,7 @@ interface ListRateLimitsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListRateLimitsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -293,17 +290,16 @@ export interface GetRateLimitRequest {
   zoneId: string;
 }
 
-export const GetRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/rate_limits/{rateLimitId}",
-      }),
-    ),
+export const GetRateLimitRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rate_limits/{rateLimitId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetRateLimitRequest>;
 
 export interface GetRateLimitResponse {
@@ -361,20 +357,17 @@ export interface GetRateLimitResponse {
   threshold?: number | null;
 }
 
-export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(Schema.Union([Action, Schema.Null])),
-      bypass: Schema.optional(
-        Schema.Union([Schema.Array(Bypass), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      match: Schema.optional(Schema.Union([Match, Schema.Null])),
-      period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetRateLimitResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    match: Schema.optional(Schema.Union([Match, Schema.Null])),
+    period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRateLimitResponse>;
 
 export type GetRateLimitError = DefaultErrors;
@@ -384,7 +377,7 @@ export const getRateLimit: API.OperationMethod<
   GetRateLimitResponse,
   GetRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRateLimitRequest,
   output: GetRateLimitResponse,
   errors: [],
@@ -397,13 +390,12 @@ export interface ListRateLimitsRequest {
   perPage?: number;
 }
 
-export const ListRateLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/rate_limits" })),
+export const ListRateLimitsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/rate_limits" })),
 ) as unknown as Schema.Codec<ListRateLimitsRequest>;
 
 export interface ListRateLimitsResponse {
@@ -462,7 +454,7 @@ export interface ListRateLimitsResponse {
 }
 
 export const ListRateLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRateLimitsResponseResult),
       resultInfo: Schema.optional(
@@ -478,7 +470,7 @@ export const listRateLimits: API.PaginatedOperationMethod<
   ListRateLimitsResponse,
   ListRateLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRateLimitsRequest,
   output: ListRateLimitsResponse,
   errors: [],
@@ -536,7 +528,7 @@ export interface CreateRateLimitRequest {
 }
 
 export const CreateRateLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       action: Action,
@@ -602,7 +594,7 @@ export interface CreateRateLimitResponse {
 }
 
 export const CreateRateLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(Schema.Union([Action, Schema.Null])),
@@ -624,7 +616,7 @@ export const createRateLimit: API.OperationMethod<
   CreateRateLimitResponse,
   CreateRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRateLimitRequest,
   output: CreateRateLimitResponse,
   errors: [],
@@ -637,7 +629,7 @@ export interface DeleteRateLimitRequest {
 }
 
 export const DeleteRateLimitRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -705,7 +697,7 @@ export interface DeleteRateLimitResponse {
 }
 
 export const DeleteRateLimitResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       action: Schema.optional(Schema.Union([Action, Schema.Null])),
@@ -727,7 +719,7 @@ export const deleteRateLimit: API.OperationMethod<
   DeleteRateLimitResponse,
   DeleteRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRateLimitRequest,
   output: DeleteRateLimitResponse,
   errors: [],
@@ -778,21 +770,20 @@ export interface EditRateLimitRequest {
   threshold: number;
 }
 
-export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      action: Action,
-      match: Match,
-      period: Schema.Number,
-      threshold: Schema.Number,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/rate_limits/{rateLimitId}",
-      }),
-    ),
+export const EditRateLimitRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    action: Action,
+    match: Match,
+    period: Schema.Number,
+    threshold: Schema.Number,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/rate_limits/{rateLimitId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<EditRateLimitRequest>;
 
 export interface EditRateLimitResponse {
@@ -850,20 +841,17 @@ export interface EditRateLimitResponse {
   threshold?: number | null;
 }
 
-export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(Schema.Union([Action, Schema.Null])),
-      bypass: Schema.optional(
-        Schema.Union([Schema.Array(Bypass), Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      match: Schema.optional(Schema.Union([Match, Schema.Null])),
-      period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const EditRateLimitResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    match: Schema.optional(Schema.Union([Match, Schema.Null])),
+    period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<EditRateLimitResponse>;
 
 export type EditRateLimitError = DefaultErrors;
@@ -873,7 +861,7 @@ export const editRateLimit: API.OperationMethod<
   EditRateLimitResponse,
   EditRateLimitError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditRateLimitRequest,
   output: EditRateLimitResponse,
   errors: [],

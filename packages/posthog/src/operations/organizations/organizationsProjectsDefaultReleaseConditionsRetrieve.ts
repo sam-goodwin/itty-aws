@@ -10,7 +10,7 @@ export interface OrganizationsProjectsDefaultReleaseConditionsRetrieveInput {
   organization_id: string;
 }
 export const OrganizationsProjectsDefaultReleaseConditionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1114,7 +1114,7 @@ export interface OrganizationsProjectsDefaultReleaseConditionsRetrieveOutput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsDefaultReleaseConditionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2302,7 +2302,7 @@ export const OrganizationsProjectsDefaultReleaseConditionsRetrieveOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const organizationsProjectsDefaultReleaseConditionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsDefaultReleaseConditionsRetrieveInput,
     outputSchema: OrganizationsProjectsDefaultReleaseConditionsRetrieveOutput,
   }));

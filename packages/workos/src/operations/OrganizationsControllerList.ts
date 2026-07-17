@@ -13,7 +13,7 @@ export interface OrganizationsControllerListInput {
   search?: string;
 }
 export const OrganizationsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -58,7 +58,7 @@ export interface OrganizationsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const OrganizationsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -124,10 +124,8 @@ export const OrganizationsControllerListOutput =
  * @param domains - The domains of an Organization. Any Organization with a matching domain will be returned.
  * @param search - Searchable text for an Organization. Matches against the organization name.
  */
-export const OrganizationsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsControllerListInput,
-    outputSchema: OrganizationsControllerListOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const OrganizationsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsControllerListInput,
+  outputSchema: OrganizationsControllerListOutput,
+  errors: [UnprocessableEntity] as const,
+}));

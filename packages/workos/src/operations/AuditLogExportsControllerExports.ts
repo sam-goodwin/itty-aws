@@ -15,7 +15,7 @@ export interface AuditLogExportsControllerExportsInput {
   targets?: ReadonlyArray<string>;
 }
 export const AuditLogExportsControllerExportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
     range_start: Schema.optional(Schema.String),
     range_end: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export interface AuditLogExportsControllerExportsOutput {
   updated_at?: string;
 }
 export const AuditLogExportsControllerExportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     state: Schema.optional(
@@ -56,7 +56,7 @@ export const AuditLogExportsControllerExportsOutput =
  * Create an Audit Log Export. Exports are scoped to a single organization within a specified date range.
  */
 export const AuditLogExportsControllerExports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogExportsControllerExportsInput,
     outputSchema: AuditLogExportsControllerExportsOutput,
     errors: [BadRequest, NotFound] as const,

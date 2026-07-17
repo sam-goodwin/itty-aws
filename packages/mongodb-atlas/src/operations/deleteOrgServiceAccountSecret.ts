@@ -12,7 +12,7 @@ export interface DeleteOrgServiceAccountSecretInput {
   pretty?: boolean;
 }
 export const DeleteOrgServiceAccountSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
     secretId: Schema.String.pipe(T.PathParam()),
     orgId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteOrgServiceAccountSecretInput =
 // Output Schema
 export type DeleteOrgServiceAccountSecretOutput = void;
 export const DeleteOrgServiceAccountSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgServiceAccountSecretOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgServiceAccountSecretOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const DeleteOrgServiceAccountSecretOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const deleteOrgServiceAccountSecret =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrgServiceAccountSecretInput,
     outputSchema: DeleteOrgServiceAccountSecretOutput,
     errors: [Forbidden, NotFound] as const,

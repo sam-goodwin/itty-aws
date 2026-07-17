@@ -32,7 +32,7 @@ export interface Info {
 }
 
 export const Info: Schema.Codec<Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     documentTitle: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface PublishState {
 }
 
 export const PublishState: Schema.Codec<PublishState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isPublished: Schema.optional(Schema.Boolean),
     isAcceptingResponses: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "PublishState" });
@@ -57,7 +57,7 @@ export interface PublishSettings {
 }
 
 export const PublishSettings: Schema.Codec<PublishSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publishState: Schema.optional(PublishState),
   }).annotate({ identifier: "PublishSettings" });
 
@@ -69,7 +69,7 @@ export interface SetPublishSettingsRequest {
 }
 
 export const SetPublishSettingsRequest: Schema.Codec<SetPublishSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publishSettings: Schema.optional(PublishSettings),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetPublishSettingsRequest" });
@@ -77,7 +77,7 @@ export const SetPublishSettingsRequest: Schema.Codec<SetPublishSettingsRequest> 
 export interface PageBreakItem {}
 
 export const PageBreakItem: Schema.Codec<PageBreakItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PageBreakItem",
   });
 
@@ -94,7 +94,7 @@ export interface MediaProperties {
 }
 
 export const MediaProperties: Schema.Codec<MediaProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alignment: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MediaProperties" });
@@ -111,7 +111,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentUri: Schema.optional(Schema.String),
     sourceUri: Schema.optional(Schema.String),
     altText: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface ImageItem {
 }
 
 export const ImageItem: Schema.Codec<ImageItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
   }).annotate({ identifier: "ImageItem" });
 
@@ -147,7 +147,7 @@ export interface Option {
 }
 
 export const Option: Schema.Codec<Option> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goToAction: Schema.optional(Schema.String),
     image: Schema.optional(Image),
     value: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface ChoiceQuestion {
 }
 
 export const ChoiceQuestion: Schema.Codec<ChoiceQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(Schema.Array(Option)),
     type: Schema.optional(Schema.String),
     shuffle: Schema.optional(Schema.Boolean),
@@ -182,7 +182,7 @@ export interface TextQuestion {
 }
 
 export const TextQuestion: Schema.Codec<TextQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paragraph: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "TextQuestion" });
 
@@ -192,7 +192,7 @@ export interface TimeQuestion {
 }
 
 export const TimeQuestion: Schema.Codec<TimeQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "TimeQuestion" });
 
@@ -204,7 +204,7 @@ export interface DateQuestion {
 }
 
 export const DateQuestion: Schema.Codec<DateQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeTime: Schema.optional(Schema.Boolean),
     includeYear: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DateQuestion" });
@@ -215,7 +215,7 @@ export interface RowQuestion {
 }
 
 export const RowQuestion: Schema.Codec<RowQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({ identifier: "RowQuestion" });
 
@@ -232,7 +232,7 @@ export interface RatingQuestion {
 }
 
 export const RatingQuestion: Schema.Codec<RatingQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iconType: Schema.optional(Schema.String),
     ratingScaleLevel: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RatingQuestion" });
@@ -261,7 +261,7 @@ export interface FileUploadQuestion {
 }
 
 export const FileUploadQuestion: Schema.Codec<FileUploadQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     maxFileSize: Schema.optional(Schema.String),
     folderId: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface VideoLink {
 }
 
 export const VideoLink: Schema.Codec<VideoLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeUri: Schema.optional(Schema.String),
     displayText: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoLink" });
@@ -289,7 +289,7 @@ export interface TextLink {
 }
 
 export const TextLink: Schema.Codec<TextLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     displayText: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextLink" });
@@ -302,7 +302,7 @@ export interface ExtraMaterial {
 }
 
 export const ExtraMaterial: Schema.Codec<ExtraMaterial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     video: Schema.optional(VideoLink),
     link: Schema.optional(TextLink),
   }).annotate({ identifier: "ExtraMaterial" });
@@ -315,7 +315,7 @@ export interface Feedback {
 }
 
 export const Feedback: Schema.Codec<Feedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     material: Schema.optional(Schema.Array(ExtraMaterial)),
   }).annotate({ identifier: "Feedback" });
@@ -326,7 +326,7 @@ export interface CorrectAnswer {
 }
 
 export const CorrectAnswer: Schema.Codec<CorrectAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "CorrectAnswer" });
 
@@ -336,7 +336,7 @@ export interface CorrectAnswers {
 }
 
 export const CorrectAnswers: Schema.Codec<CorrectAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(CorrectAnswer)),
   }).annotate({ identifier: "CorrectAnswers" });
 
@@ -354,7 +354,7 @@ export interface Grading {
 }
 
 export const Grading: Schema.Codec<Grading> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pointValue: Schema.optional(Schema.Number),
     whenRight: Schema.optional(Feedback),
     generalFeedback: Schema.optional(Feedback),
@@ -374,7 +374,7 @@ export interface ScaleQuestion {
 }
 
 export const ScaleQuestion: Schema.Codec<ScaleQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     high: Schema.optional(Schema.Number),
     highLabel: Schema.optional(Schema.String),
     low: Schema.optional(Schema.Number),
@@ -407,7 +407,7 @@ export interface Question {
 }
 
 export const Question: Schema.Codec<Question> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     choiceQuestion: Schema.optional(ChoiceQuestion),
     textQuestion: Schema.optional(TextQuestion),
     timeQuestion: Schema.optional(TimeQuestion),
@@ -429,7 +429,7 @@ export interface QuestionItem {
 }
 
 export const QuestionItem: Schema.Codec<QuestionItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     question: Schema.optional(Question),
     image: Schema.optional(Image),
   }).annotate({ identifier: "QuestionItem" });
@@ -442,7 +442,7 @@ export interface Grid {
 }
 
 export const Grid: Schema.Codec<Grid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columns: Schema.optional(ChoiceQuestion),
     shuffleQuestions: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Grid" });
@@ -457,7 +457,7 @@ export interface QuestionGroupItem {
 }
 
 export const QuestionGroupItem: Schema.Codec<QuestionGroupItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     grid: Schema.optional(Grid),
     questions: Schema.optional(Schema.Array(Question)),
     image: Schema.optional(Image),
@@ -466,7 +466,7 @@ export const QuestionGroupItem: Schema.Codec<QuestionGroupItem> =
 export interface TextItem {}
 
 export const TextItem: Schema.Codec<TextItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TextItem",
   });
 
@@ -478,7 +478,7 @@ export interface Video {
 }
 
 export const Video: Schema.Codec<Video> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     youtubeUri: Schema.optional(Schema.String),
     properties: Schema.optional(MediaProperties),
   }).annotate({ identifier: "Video" });
@@ -491,7 +491,7 @@ export interface VideoItem {
 }
 
 export const VideoItem: Schema.Codec<VideoItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     video: Schema.optional(Video),
     caption: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoItem" });
@@ -518,7 +518,7 @@ export interface Item {
 }
 
 export const Item: Schema.Codec<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageBreakItem: Schema.optional(PageBreakItem),
     description: Schema.optional(Schema.String),
     imageItem: Schema.optional(ImageItem),
@@ -538,7 +538,7 @@ export interface CreateItemResponse {
 }
 
 export const CreateItemResponse: Schema.Codec<CreateItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     questionId: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CreateItemResponse" });
@@ -549,14 +549,14 @@ export interface Response {
 }
 
 export const Response: Schema.Codec<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createItem: Schema.optional(CreateItemResponse),
   }).annotate({ identifier: "Response" });
 
 export interface RenewWatchRequest {}
 
 export const RenewWatchRequest: Schema.Codec<RenewWatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RenewWatchRequest",
   });
 
@@ -566,7 +566,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Location" });
 
@@ -578,7 +578,7 @@ export interface CreateItemRequest {
 }
 
 export const CreateItemRequest: Schema.Codec<CreateItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.optional(Item),
     location: Schema.optional(Location),
   }).annotate({ identifier: "CreateItemRequest" });
@@ -591,7 +591,7 @@ export interface WriteControl {
 }
 
 export const WriteControl: Schema.Codec<WriteControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredRevisionId: Schema.optional(Schema.String),
     targetRevisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "WriteControl" });
@@ -602,7 +602,7 @@ export interface DeleteItemRequest {
 }
 
 export const DeleteItemRequest: Schema.Codec<DeleteItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Location),
   }).annotate({ identifier: "DeleteItemRequest" });
 
@@ -614,7 +614,7 @@ export interface UpdateFormInfoRequest {
 }
 
 export const UpdateFormInfoRequest: Schema.Codec<UpdateFormInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(Info),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateFormInfoRequest" });
@@ -627,7 +627,7 @@ export interface MoveItemRequest {
 }
 
 export const MoveItemRequest: Schema.Codec<MoveItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newLocation: Schema.optional(Location),
     originalLocation: Schema.optional(Location),
   }).annotate({ identifier: "MoveItemRequest" });
@@ -642,7 +642,7 @@ export interface UpdateItemRequest {
 }
 
 export const UpdateItemRequest: Schema.Codec<UpdateItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.optional(Item),
     location: Schema.optional(Location),
     updateMask: Schema.optional(Schema.String),
@@ -654,7 +654,7 @@ export interface QuizSettings {
 }
 
 export const QuizSettings: Schema.Codec<QuizSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isQuiz: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "QuizSettings" });
 
@@ -671,7 +671,7 @@ export interface FormSettings {
 }
 
 export const FormSettings: Schema.Codec<FormSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quizSettings: Schema.optional(QuizSettings),
     emailCollectionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "FormSettings" });
@@ -684,7 +684,7 @@ export interface UpdateSettingsRequest {
 }
 
 export const UpdateSettingsRequest: Schema.Codec<UpdateSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     settings: Schema.optional(FormSettings),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateSettingsRequest" });
@@ -705,7 +705,7 @@ export interface Request {
 }
 
 export const Request: Schema.Codec<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteItem: Schema.optional(DeleteItemRequest),
     createItem: Schema.optional(CreateItemRequest),
     updateFormInfo: Schema.optional(UpdateFormInfoRequest),
@@ -724,7 +724,7 @@ export interface BatchUpdateFormRequest {
 }
 
 export const BatchUpdateFormRequest: Schema.Codec<BatchUpdateFormRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(WriteControl),
     requests: Schema.optional(Schema.Array(Request)),
     includeFormInResponse: Schema.optional(Schema.Boolean),
@@ -740,7 +740,7 @@ export interface Grade {
 }
 
 export const Grade: Schema.Codec<Grade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     correct: Schema.optional(Schema.Boolean),
     feedback: Schema.optional(Feedback),
@@ -752,7 +752,7 @@ export interface TextAnswer {
 }
 
 export const TextAnswer: Schema.Codec<TextAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextAnswer" });
 
@@ -762,7 +762,7 @@ export interface TextAnswers {
 }
 
 export const TextAnswers: Schema.Codec<TextAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(TextAnswer)),
   }).annotate({ identifier: "TextAnswers" });
 
@@ -776,7 +776,7 @@ export interface FileUploadAnswer {
 }
 
 export const FileUploadAnswer: Schema.Codec<FileUploadAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileId: Schema.optional(Schema.String),
     fileName: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -788,7 +788,7 @@ export interface FileUploadAnswers {
 }
 
 export const FileUploadAnswers: Schema.Codec<FileUploadAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(FileUploadAnswer)),
   }).annotate({ identifier: "FileUploadAnswers" });
 
@@ -804,7 +804,7 @@ export interface Answer {
 }
 
 export const Answer: Schema.Codec<Answer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     grade: Schema.optional(Grade),
     textAnswers: Schema.optional(TextAnswers),
     fileUploadAnswers: Schema.optional(FileUploadAnswers),
@@ -817,7 +817,7 @@ export interface CloudPubsubTopic {
 }
 
 export const CloudPubsubTopic: Schema.Codec<CloudPubsubTopic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudPubsubTopic" });
 
@@ -827,7 +827,7 @@ export interface WatchTarget {
 }
 
 export const WatchTarget: Schema.Codec<WatchTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(CloudPubsubTopic),
   }).annotate({ identifier: "WatchTarget" });
 
@@ -854,7 +854,7 @@ export interface Watch {
 }
 
 export const Watch: Schema.Codec<Watch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     target: Schema.optional(WatchTarget),
     state: Schema.optional(Schema.String),
@@ -884,7 +884,7 @@ export interface Form {
 }
 
 export const Form: Schema.Codec<Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responderUri: Schema.optional(Schema.String),
     publishSettings: Schema.optional(PublishSettings),
     revisionId: Schema.optional(Schema.String),
@@ -905,7 +905,7 @@ export interface BatchUpdateFormResponse {
 }
 
 export const BatchUpdateFormResponse: Schema.Codec<BatchUpdateFormResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     form: Schema.optional(Form),
     replies: Schema.optional(Schema.Array(Response)),
     writeControl: Schema.optional(WriteControl),
@@ -919,7 +919,7 @@ export interface SetPublishSettingsResponse {
 }
 
 export const SetPublishSettingsResponse: Schema.Codec<SetPublishSettingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.optional(Schema.String),
     publishSettings: Schema.optional(PublishSettings),
   }).annotate({ identifier: "SetPublishSettingsResponse" });
@@ -942,7 +942,7 @@ export interface FormResponse {
 }
 
 export const FormResponse: Schema.Codec<FormResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalScore: Schema.optional(Schema.Number),
     respondentEmail: Schema.optional(Schema.String),
     lastSubmittedTime: Schema.optional(Schema.String),
@@ -960,7 +960,7 @@ export interface ListFormResponsesResponse {
 }
 
 export const ListFormResponsesResponse: Schema.Codec<ListFormResponsesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     responses: Schema.optional(Schema.Array(FormResponse)),
   }).annotate({ identifier: "ListFormResponsesResponse" });
@@ -971,14 +971,14 @@ export interface ListWatchesResponse {
 }
 
 export const ListWatchesResponse: Schema.Codec<ListWatchesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     watches: Schema.optional(Schema.Array(Watch)),
   }).annotate({ identifier: "ListWatchesResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -990,7 +990,7 @@ export interface CreateWatchRequest {
 }
 
 export const CreateWatchRequest: Schema.Codec<CreateWatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     watch: Schema.optional(Watch),
     watchId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateWatchRequest" });
@@ -1056,7 +1056,7 @@ export interface CreateFormsRequest {
   body?: Form;
 }
 
-export const CreateFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateFormsRequest = /*@__PURE__*/ Schema.Struct({
   unpublished: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("unpublished")),
   body: Schema.optional(Form).pipe(T.HttpBody()),
 }).pipe(
@@ -1065,7 +1065,7 @@ export const CreateFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateFormsRequest>;
 
 export type CreateFormsResponse = Form;
-export const CreateFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
+export const CreateFormsResponse = /*@__PURE__*/ Form;
 
 export type CreateFormsError =
   | DefaultErrors
@@ -1080,7 +1080,7 @@ export const createForms: API.OperationMethod<
   CreateFormsResponse,
   CreateFormsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFormsRequest,
   output: CreateFormsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1094,7 +1094,7 @@ export interface BatchUpdateFormsRequest {
 }
 
 export const BatchUpdateFormsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
     body: Schema.optional(BatchUpdateFormRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1107,8 +1107,7 @@ export const BatchUpdateFormsRequest =
   ) as unknown as Schema.Codec<BatchUpdateFormsRequest>;
 
 export type BatchUpdateFormsResponse = BatchUpdateFormResponse;
-export const BatchUpdateFormsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchUpdateFormResponse;
+export const BatchUpdateFormsResponse = /*@__PURE__*/ BatchUpdateFormResponse;
 
 export type BatchUpdateFormsError =
   | DefaultErrors
@@ -1123,7 +1122,7 @@ export const batchUpdateForms: API.OperationMethod<
   BatchUpdateFormsResponse,
   BatchUpdateFormsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateFormsRequest,
   output: BatchUpdateFormsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1134,7 +1133,7 @@ export interface GetFormsRequest {
   formId: string;
 }
 
-export const GetFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFormsRequest = /*@__PURE__*/ Schema.Struct({
   formId: Schema.String.pipe(T.HttpPath("formId")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/forms/{formId}" }),
@@ -1142,7 +1141,7 @@ export const GetFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetFormsRequest>;
 
 export type GetFormsResponse = Form;
-export const GetFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
+export const GetFormsResponse = /*@__PURE__*/ Form;
 
 export type GetFormsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1152,7 +1151,7 @@ export const getForms: API.OperationMethod<
   GetFormsResponse,
   GetFormsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFormsRequest,
   output: GetFormsResponse,
   errors: [NotFound, Forbidden],
@@ -1166,7 +1165,7 @@ export interface SetPublishSettingsFormsRequest {
 }
 
 export const SetPublishSettingsFormsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
     body: Schema.optional(SetPublishSettingsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1180,7 +1179,7 @@ export const SetPublishSettingsFormsRequest =
 
 export type SetPublishSettingsFormsResponse = SetPublishSettingsResponse;
 export const SetPublishSettingsFormsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPublishSettingsResponse;
+  /*@__PURE__*/ SetPublishSettingsResponse;
 
 export type SetPublishSettingsFormsError =
   | DefaultErrors
@@ -1195,7 +1194,7 @@ export const setPublishSettingsForms: API.OperationMethod<
   SetPublishSettingsFormsResponse,
   SetPublishSettingsFormsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPublishSettingsFormsRequest,
   output: SetPublishSettingsFormsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1213,7 +1212,7 @@ export interface ListFormsResponsesRequest {
 }
 
 export const ListFormsResponsesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     formId: Schema.String.pipe(T.HttpPath("formId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1225,7 +1224,7 @@ export const ListFormsResponsesRequest =
 
 export type ListFormsResponsesResponse = ListFormResponsesResponse;
 export const ListFormsResponsesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFormResponsesResponse;
+  /*@__PURE__*/ ListFormResponsesResponse;
 
 export type ListFormsResponsesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1235,7 +1234,7 @@ export const listFormsResponses: API.PaginatedOperationMethod<
   ListFormsResponsesResponse,
   ListFormsResponsesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsResponsesRequest,
   output: ListFormsResponsesResponse,
   errors: [NotFound, Forbidden],
@@ -1253,7 +1252,7 @@ export interface GetFormsResponsesRequest {
 }
 
 export const GetFormsResponsesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
     responseId: Schema.String.pipe(T.HttpPath("responseId")),
   }).pipe(
@@ -1262,8 +1261,7 @@ export const GetFormsResponsesRequest =
   ) as unknown as Schema.Codec<GetFormsResponsesRequest>;
 
 export type GetFormsResponsesResponse = FormResponse;
-export const GetFormsResponsesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FormResponse;
+export const GetFormsResponsesResponse = /*@__PURE__*/ FormResponse;
 
 export type GetFormsResponsesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1273,7 +1271,7 @@ export const getFormsResponses: API.OperationMethod<
   GetFormsResponsesResponse,
   GetFormsResponsesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFormsResponsesRequest,
   output: GetFormsResponsesResponse,
   errors: [NotFound, Forbidden],
@@ -1287,7 +1285,7 @@ export interface CreateFormsWatchesRequest {
 }
 
 export const CreateFormsWatchesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
     body: Schema.optional(CreateWatchRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1300,7 +1298,7 @@ export const CreateFormsWatchesRequest =
   ) as unknown as Schema.Codec<CreateFormsWatchesRequest>;
 
 export type CreateFormsWatchesResponse = Watch;
-export const CreateFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Watch;
+export const CreateFormsWatchesResponse = /*@__PURE__*/ Watch;
 
 export type CreateFormsWatchesError =
   | DefaultErrors
@@ -1315,7 +1313,7 @@ export const createFormsWatches: API.OperationMethod<
   CreateFormsWatchesResponse,
   CreateFormsWatchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFormsWatchesRequest,
   output: CreateFormsWatchesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1331,7 +1329,7 @@ export interface RenewFormsWatchesRequest {
 }
 
 export const RenewFormsWatchesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     watchId: Schema.String.pipe(T.HttpPath("watchId")),
     formId: Schema.String.pipe(T.HttpPath("formId")),
     body: Schema.optional(RenewWatchRequest).pipe(T.HttpBody()),
@@ -1345,7 +1343,7 @@ export const RenewFormsWatchesRequest =
   ) as unknown as Schema.Codec<RenewFormsWatchesRequest>;
 
 export type RenewFormsWatchesResponse = Watch;
-export const RenewFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Watch;
+export const RenewFormsWatchesResponse = /*@__PURE__*/ Watch;
 
 export type RenewFormsWatchesError =
   | DefaultErrors
@@ -1360,7 +1358,7 @@ export const renewFormsWatches: API.OperationMethod<
   RenewFormsWatchesResponse,
   RenewFormsWatchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenewFormsWatchesRequest,
   output: RenewFormsWatchesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1372,7 +1370,7 @@ export interface ListFormsWatchesRequest {
 }
 
 export const ListFormsWatchesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/forms/{formId}/watches" }),
@@ -1380,8 +1378,7 @@ export const ListFormsWatchesRequest =
   ) as unknown as Schema.Codec<ListFormsWatchesRequest>;
 
 export type ListFormsWatchesResponse = ListWatchesResponse;
-export const ListFormsWatchesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListWatchesResponse;
+export const ListFormsWatchesResponse = /*@__PURE__*/ ListWatchesResponse;
 
 export type ListFormsWatchesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1391,7 +1388,7 @@ export const listFormsWatches: API.OperationMethod<
   ListFormsWatchesResponse,
   ListFormsWatchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFormsWatchesRequest,
   output: ListFormsWatchesResponse,
   errors: [NotFound, Forbidden],
@@ -1405,7 +1402,7 @@ export interface DeleteFormsWatchesRequest {
 }
 
 export const DeleteFormsWatchesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formId: Schema.String.pipe(T.HttpPath("formId")),
     watchId: Schema.String.pipe(T.HttpPath("watchId")),
   }).pipe(
@@ -1414,7 +1411,7 @@ export const DeleteFormsWatchesRequest =
   ) as unknown as Schema.Codec<DeleteFormsWatchesRequest>;
 
 export type DeleteFormsWatchesResponse = Empty;
-export const DeleteFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteFormsWatchesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteFormsWatchesError =
   | DefaultErrors
@@ -1429,7 +1426,7 @@ export const deleteFormsWatches: API.OperationMethod<
   DeleteFormsWatchesResponse,
   DeleteFormsWatchesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFormsWatchesRequest,
   output: DeleteFormsWatchesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

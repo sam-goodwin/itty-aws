@@ -8,12 +8,10 @@ export interface ListOrganizationsInput {
   page?: number;
   per_page?: number;
 }
-export const ListOrganizationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    page: Schema.optional(Schema.Number),
-    per_page: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const ListOrganizationsInput = /*@__PURE__*/ Schema.Struct({
+  page: Schema.optional(Schema.Number),
+  per_page: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({ method: "GET", path: "/organizations" }),
 ) as unknown as Schema.Codec<ListOrganizationsInput>;
 
@@ -25,7 +23,7 @@ export interface ListOrganizationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     billing_email: string;
@@ -46,10 +44,10 @@ export interface ListOrganizationsOutput {
     keyspace_shard_limit: number;
     has_card: boolean;
     payment_info_required: boolean;
-  }[];
+  }>;
 }
 export const ListOrganizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -91,16 +89,14 @@ export const ListOrganizationsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListOrganizationsInput,
-    outputSchema: ListOrganizationsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listOrganizations = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListOrganizationsInput,
+  outputSchema: ListOrganizationsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

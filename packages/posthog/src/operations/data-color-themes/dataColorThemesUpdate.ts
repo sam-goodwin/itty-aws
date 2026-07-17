@@ -34,7 +34,7 @@ export interface DataColorThemesUpdateInput {
   } | null;
 }
 export const DataColorThemesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface DataColorThemesUpdateOutput {
   } | null;
 }
 export const DataColorThemesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     colors: Schema.optional(Schema.Unknown),
@@ -158,10 +158,8 @@ export const DataColorThemesUpdateOutput =
  * @param id - A unique integer value identifying this data color theme.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dataColorThemesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataColorThemesUpdateInput,
-    outputSchema: DataColorThemesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const dataColorThemesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataColorThemesUpdateInput,
+  outputSchema: DataColorThemesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

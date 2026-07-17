@@ -11,15 +11,31 @@ export interface UpdateBranchChangeRequestInput {
   cluster_size?: string;
   replicas?: number;
   parameters?: Record<string, unknown>;
+  storage?: {
+    minimum_storage_bytes?: number;
+    maximum_storage_bytes?: number;
+    storage_autoscaling?: boolean;
+    storage_iops?: number;
+    storage_throughput_mibs?: number;
+  };
 }
 export const UpdateBranchChangeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
     cluster_size: Schema.optional(Schema.String),
     replicas: Schema.optional(Schema.Number),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    storage: Schema.optional(
+      Schema.Struct({
+        minimum_storage_bytes: Schema.optional(Schema.Number),
+        maximum_storage_bytes: Schema.optional(Schema.Number),
+        storage_autoscaling: Schema.optional(Schema.Boolean),
+        storage_iops: Schema.optional(Schema.Number),
+        storage_throughput_mibs: Schema.optional(Schema.Number),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -30,7 +46,7 @@ export const UpdateBranchChangeRequestInput =
 // Output Schema
 export interface UpdateBranchChangeRequestOutput {
   id: string;
-  restart: number[];
+  restart: ReadonlyArray<number>;
   state: "queued" | "pending" | "resizing" | "canceled" | "completed";
   started_at: string | null;
   completed_at?: string | null;
@@ -63,7 +79,7 @@ export interface UpdateBranchChangeRequestOutput {
   previous_storage_throughput_mibs: number;
 }
 export const UpdateBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     restart: Schema.Array(Schema.Number),
     state: Schema.Literals([
@@ -110,7 +126,7 @@ export const UpdateBranchChangeRequestOutput =
 
 // The operation
 /**
- * Upsert a change request
+ * Upsert a change request for cluster size, replicas, storage, or parameters
  *
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
@@ -119,10 +135,8 @@ export const UpdateBranchChangeRequestOutput =
  * @param replicas - The total number of replicas
  * @param parameters - Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'.
  */
-export const updateBranchChangeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateBranchChangeRequestInput,
-    outputSchema: UpdateBranchChangeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateBranchChangeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateBranchChangeRequestInput,
+  outputSchema: UpdateBranchChangeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -14,7 +14,7 @@ export interface DeleteCustomersCustomerSourcesIdInput {
   expand?: string[];
 }
 export const DeleteCustomersCustomerSourcesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -37,7 +37,7 @@ export type DeleteCustomersCustomerSourcesIdOutput =
     }
   | { currency?: string | null; deleted: true; id: string; object: "card" };
 export const DeleteCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Unknown,
     Schema.Union([
       Schema.Struct({
@@ -62,7 +62,7 @@ export const DeleteCustomersCustomerSourcesIdOutput =
  * <p>Delete a specified source for a given customer.</p>
  */
 export const DeleteCustomersCustomerSourcesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteCustomersCustomerSourcesIdInput,
     outputSchema: DeleteCustomersCustomerSourcesIdOutput,
   }));

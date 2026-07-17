@@ -287,7 +287,9 @@ const loadServicePatches = (
       return yield* Effect.die(
         `Orphaned patch file(s) in ${patchDir}: ${orphans
           .map((o) => `${o}.json`)
-          .join(", ")} — no matching operation in the regenerated '${serviceName}' service. ` +
+          .join(
+            ", ",
+          )} — no matching operation in the regenerated '${serviceName}' service. ` +
           `The upstream spec likely renamed or removed the operation; ` +
           `re-key the patch to the new operation name (available: ${[...opNames].sort().join(", ")}) ` +
           `or delete it, and migrate consumers in packages/alchemy.`,
@@ -634,16 +636,25 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     }
   }
 
-  // Append variants to an object union (e.g. new binding type in metadata.bindings)
-  if (
-    !patch.type &&
-    patch.appendUnion &&
-    patch.appendUnion.length > 0 &&
-    typeInfo.kind === "union" &&
-    typeInfo.values
-  ) {
-    for (const variant of patch.appendUnion) {
-      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
+  // Append variants to a union (e.g. new binding type in metadata.bindings, or
+  // widen a scalar field to a value union). When the target is not already a
+  // union, wrap the current type in one with the appended variants — mirrors
+  // the "$"-root behavior in applyResponsePatch.
+  if (!patch.type && patch.appendUnion && patch.appendUnion.length > 0) {
+    if (typeInfo.kind === "union" && typeInfo.values) {
+      for (const variant of patch.appendUnion) {
+        typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
+      }
+    } else {
+      const currentCopy = JSON.parse(JSON.stringify(typeInfo)) as TypeInfo;
+      for (const key of Object.keys(typeInfo)) {
+        delete (typeInfo as unknown as Record<string, unknown>)[key];
+      }
+      typeInfo.kind = "union";
+      typeInfo.values = [
+        currentCopy,
+        ...(JSON.parse(JSON.stringify(patch.appendUnion)) as TypeInfo[]),
+      ];
     }
   }
 
@@ -867,7 +878,10 @@ function resolveOperationModel(
 
   // Hoist nested object schemas out of request body params (covers the
   // account/zone and plain operation generators, which consume this model).
-  hoistBodyParams(resolvedBodyParams, `${toPascalCase(op.operationName)}Request`);
+  hoistBodyParams(
+    resolvedBodyParams,
+    `${toPascalCase(op.operationName)}Request`,
+  );
 
   return {
     allParams,
@@ -1570,10 +1584,7 @@ function structuralKey(t: TypeInfo): string {
     case "array":
       return `arr(${t.elementType ? structuralKey(t.elementType) : "?"})`;
     case "union":
-      return `u(${(t.values ?? [])
-        .map(structuralKey)
-        .sort()
-        .join("|")})`;
+      return `u(${(t.values ?? []).map(structuralKey).sort().join("|")})`;
     case "object":
       if (!t.properties || t.properties.length === 0) return "rec";
       return `o{${t.properties
@@ -1763,7 +1774,7 @@ function emitHoistedDefs(): string {
     // applied by the post-processor in generateServiceFile.
     const schema = typeInfoToSchema(type, "", 0, true);
     out.push(
-      `const ${name} = /*@__PURE__*/ /*#__PURE__*/ ${schema} as unknown as Schema.Codec<${name}>;`,
+      `const ${name} = /*@__PURE__*/ ${schema} as unknown as Schema.Codec<${name}>;`,
     );
     out.push("");
   }
@@ -1980,7 +1991,7 @@ function generateOperationSchemaAst(
   const openApiPath = op.urlTemplate.replace(/\{(\w+)\}/g, "{$1}");
 
   lines.push(
-    `export const ${requestTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${requestTypeName} = /*@__PURE__*/ Schema.Struct({`,
   );
   if (requestProps.length > 0) {
     lines.push(requestProps.join(",\n"));
@@ -2010,6 +2021,8 @@ function generateOperationSchemaAst(
   ];
   if (isMultipart) httpTraitParts.push(`contentType: "multipart"`);
   else if (isBinary) httpTraitParts.push(`contentType: "binary"`);
+  if (isBinary && op.requestMediaType)
+    httpTraitParts.push(`bodyMediaType: "${op.requestMediaType}"`);
   if (op.responseContentType === "binary") {
     httpTraitParts.push(`responseContentType: "binary"`);
   }
@@ -2096,7 +2109,7 @@ function generateOperationSchemaAst(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -2159,7 +2172,7 @@ function generateOperationSchemaAst(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -2173,7 +2186,7 @@ function generateOperationSchemaAst(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2199,7 +2212,7 @@ function generateOperationSchemaAst(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2223,7 +2236,7 @@ function generateOperationSchemaAst(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2381,6 +2394,8 @@ function generateAccountOrZoneOperationSchema(
     const parts: string[] = [`method: "${op.httpMethod}"`, `path: "${path}"`];
     if (isMultipart) parts.push(`contentType: "multipart"`);
     else if (isBinary) parts.push(`contentType: "binary"`);
+    if (isBinary && op.requestMediaType)
+      parts.push(`bodyMediaType: "${op.requestMediaType}"`);
     if (op.responseContentType === "binary") {
       parts.push(`responseContentType: "binary"`);
     }
@@ -2490,7 +2505,7 @@ function generateAccountOrZoneOperationSchema(
 
   // ---- emit Request schemas ----
   lines.push(
-    `export const ${accountRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${accountRequestType} = /*@__PURE__*/ Schema.Struct({`,
   );
   lines.push(`  accountId: Schema.String.pipe(T.HttpPath("account_id")),`);
   lines.push(`  ...${baseFieldsConstName},`);
@@ -2501,7 +2516,7 @@ function generateAccountOrZoneOperationSchema(
   lines.push("");
 
   lines.push(
-    `export const ${zoneRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${zoneRequestType} = /*@__PURE__*/ Schema.Struct({`,
   );
   lines.push(`  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),`);
   lines.push(`  ...${baseFieldsConstName},`);
@@ -2530,7 +2545,7 @@ function generateAccountOrZoneOperationSchema(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -2586,7 +2601,7 @@ function generateAccountOrZoneOperationSchema(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -2602,7 +2617,7 @@ function generateAccountOrZoneOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2630,7 +2645,7 @@ function generateAccountOrZoneOperationSchema(
       lines.push(`  ${responseTypeName},`);
       lines.push(`  ${errorTypeName},`);
       lines.push(`  Credentials | HttpClient.HttpClient`);
-      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+      lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
       lines.push(`  input: ${requestType},`);
       lines.push(`  output: ${responseTypeName},`);
       lines.push(`  errors: ${errorsArray},`);
@@ -2654,7 +2669,7 @@ function generateAccountOrZoneOperationSchema(
       lines.push(`  ${responseTypeName},`);
       lines.push(`  ${errorTypeName},`);
       lines.push(`  Credentials | HttpClient.HttpClient`);
-      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+      lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
       lines.push(`  input: ${requestType},`);
       lines.push(`  output: ${responseTypeName},`);
       lines.push(`  errors: ${errorsArray},`);
@@ -2775,7 +2790,7 @@ function generateOperationSchema(
 
   const openApiPath = op.urlTemplate.replace(/\{(\w+)\}/g, "{$1}");
   lines.push(
-    `export const ${requestTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${requestTypeName} = /*@__PURE__*/ Schema.Struct({`,
   );
   if (requestProps.length > 0) {
     lines.push(requestProps.join(",\n"));
@@ -2800,6 +2815,8 @@ function generateOperationSchema(
   ];
   if (isMultipart) httpTraitParts2.push(`contentType: "multipart"`);
   else if (isBinary) httpTraitParts2.push(`contentType: "binary"`);
+  if (isBinary && op.requestMediaType)
+    httpTraitParts2.push(`bodyMediaType: "${op.requestMediaType}"`);
   if (op.responseContentType === "binary") {
     httpTraitParts2.push(`responseContentType: "binary"`);
   }
@@ -2830,7 +2847,7 @@ function generateOperationSchema(
     lines.push(`export type ${responseTypeName} = ${tsType};`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   } else if (
@@ -2886,7 +2903,7 @@ function generateOperationSchema(
       : "";
 
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
     );
     if (responseProps.length > 0) {
       lines.push(responseProps.join(",\n"));
@@ -2902,7 +2919,7 @@ function generateOperationSchema(
     lines.push(`export type ${responseTypeName} = unknown;`);
     lines.push("");
     lines.push(
-      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
+      `export const ${responseTypeName} = /*@__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Codec<${responseTypeName}>;`,
     );
     lines.push("");
   }
@@ -2927,7 +2944,7 @@ function generateOperationSchema(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -2951,7 +2968,7 @@ function generateOperationSchema(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+    lines.push(`> = /*@__PURE__*/ API.make(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -3444,7 +3461,7 @@ function emitBinaryResponse(
 
   // Schema
   lines.push(
-    `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    `export const ${responseTypeName} = /*@__PURE__*/ Schema.Struct({`,
   );
   lines.push(
     `  body: BinaryStreamResponseSchema.pipe(T.BinaryResponseBody()),`,
@@ -3657,7 +3674,7 @@ function generateServiceFile(
   // The tempered `(?!(?:export )?const )` body guard prevents a cast-less const
   // from swallowing the next const's tail.
   code = code.replace(
-    /((?:export )?const \w+ = \/\*@__PURE__\*\/ \/\*#__PURE__\*\/ )((?:(?!(?:export )?const )[\s\S])*?)( as unknown as Schema\.(?:Schema|Codec)<\w+>;)/g,
+    /((?:export )?const \w+ = \/\*@__PURE__\*\/ )((?:(?!(?:export )?const )[\s\S])*?)( as unknown as Schema\.(?:Schema|Codec)<\w+>;)/g,
     (_m, head: string, body: string, tail: string) =>
       `${head}Schema.suspend(() => ${body})${tail}`,
   );

@@ -40,7 +40,7 @@ export interface GeneratePreviewArtifactsInput {
   imageTag?: string;
 }
 export const GeneratePreviewArtifactsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     generationLanguage: Schema.optional(
@@ -87,7 +87,7 @@ export const GeneratePreviewArtifactsInput =
 // Output Schema
 export type GeneratePreviewArtifactsOutput = Record<string, string>;
 export const GeneratePreviewArtifactsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  /*@__PURE__*/ Schema.Record(
     Schema.String,
     Schema.String,
   ) as unknown as Schema.Codec<GeneratePreviewArtifactsOutput>;
@@ -100,19 +100,17 @@ export const GeneratePreviewArtifactsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const GeneratePreviewArtifacts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GeneratePreviewArtifactsInput,
-    outputSchema: GeneratePreviewArtifactsOutput,
-  }),
-);
+export const GeneratePreviewArtifacts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GeneratePreviewArtifactsInput,
+  outputSchema: GeneratePreviewArtifactsOutput,
+}));
 // Input Schema
 export interface GitHubOAuthInput {
   subscriptionId: string;
   location: string;
   redirectUrl?: string;
 }
-export const GitHubOAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GitHubOAuthInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   redirectUrl: Schema.optional(Schema.String),
@@ -129,7 +127,7 @@ export interface GitHubOAuthOutput {
   authURL?: string;
   token?: string;
 }
-export const GitHubOAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GitHubOAuthOutput = /*@__PURE__*/ Schema.Struct({
   authURL: Schema.optional(Schema.String),
   token: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<GitHubOAuthOutput>;
@@ -142,7 +140,7 @@ export const GitHubOAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const GitHubOAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GitHubOAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: GitHubOAuthInput,
   outputSchema: GitHubOAuthOutput,
 }));
@@ -154,7 +152,7 @@ export interface GitHubOAuthCallbackInput {
   state: string;
 }
 export const GitHubOAuthCallbackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     code: Schema.String,
@@ -182,7 +180,7 @@ export interface GitHubOAuthCallbackOutput {
   };
 }
 export const GitHubOAuthCallbackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -212,7 +210,7 @@ export const GitHubOAuthCallbackOutput =
  * @param code - The code response from authenticating the GitHub App.
  * @param state - The state response from authenticating the GitHub App.
  */
-export const GitHubOAuthCallback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GitHubOAuthCallback = /*@__PURE__*/ API.make(() => ({
   inputSchema: GitHubOAuthCallbackInput,
   outputSchema: GitHubOAuthCallbackOutput,
 }));
@@ -221,7 +219,7 @@ export interface ListGitHubOAuthInput {
   subscriptionId: string;
   location: string;
 }
-export const ListGitHubOAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGitHubOAuthInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -248,7 +246,7 @@ export interface ListGitHubOAuthOutput {
     };
   }[];
 }
-export const ListGitHubOAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGitHubOAuthOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -292,15 +290,13 @@ export const ListGitHubOAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const ListGitHubOAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ListGitHubOAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGitHubOAuthInput,
   outputSchema: ListGitHubOAuthOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DevHub/operations",
@@ -324,7 +320,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -356,7 +352,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -432,7 +428,7 @@ export interface WorkflowCreateOrUpdateInput {
   location: string;
 }
 export const WorkflowCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -560,7 +556,7 @@ export interface WorkflowCreateOrUpdateOutput {
   };
 }
 export const WorkflowCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -589,19 +585,17 @@ export const WorkflowCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workflowName - The name of the workflow resource.
  */
-export const WorkflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowCreateOrUpdateInput,
-    outputSchema: WorkflowCreateOrUpdateOutput,
-  }),
-);
+export const WorkflowCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowCreateOrUpdateInput,
+  outputSchema: WorkflowCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WorkflowDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -617,7 +611,7 @@ export const WorkflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WorkflowDeleteOutput {
   status?: string;
 }
-export const WorkflowDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowDeleteOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<WorkflowDeleteOutput>;
 
@@ -630,7 +624,7 @@ export const WorkflowDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workflowName - The name of the workflow resource.
  */
-export const WorkflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowDeleteInput,
   outputSchema: WorkflowDeleteOutput,
 }));
@@ -640,7 +634,7 @@ export interface WorkflowGetInput {
   resourceGroupName: string;
   workflowName: string;
 }
-export const WorkflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workflowName: Schema.String.pipe(T.PathParam()),
@@ -666,7 +660,7 @@ export interface WorkflowGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WorkflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -695,7 +689,7 @@ export const WorkflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workflowName - The name of the workflow resource.
  */
-export const WorkflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowGetInput,
   outputSchema: WorkflowGetOutput,
 }));
@@ -703,7 +697,7 @@ export const WorkflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface WorkflowListInput {
   subscriptionId: string;
 }
-export const WorkflowListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -730,7 +724,7 @@ export interface WorkflowListOutput {
   }[];
   nextLink?: string;
 }
-export const WorkflowListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkflowListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -774,7 +768,7 @@ export const WorkflowListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const WorkflowList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowListInput,
   outputSchema: WorkflowListOutput,
 }));
@@ -785,7 +779,7 @@ export interface WorkflowListByResourceGroupInput {
   managedClusterResource?: string;
 }
 export const WorkflowListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedClusterResource: Schema.optional(Schema.String),
@@ -815,7 +809,7 @@ export interface WorkflowListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WorkflowListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -861,12 +855,10 @@ export const WorkflowListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedClusterResource - The ManagedCluster resource associated with the workflows.
  */
-export const WorkflowListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowListByResourceGroupInput,
-    outputSchema: WorkflowListByResourceGroupOutput,
-  }),
-);
+export const WorkflowListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowListByResourceGroupInput,
+  outputSchema: WorkflowListByResourceGroupOutput,
+}));
 // Input Schema
 export interface WorkflowUpdateTagsInput {
   subscriptionId: string;
@@ -875,7 +867,7 @@ export interface WorkflowUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const WorkflowUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
@@ -903,7 +895,7 @@ export interface WorkflowUpdateTagsOutput {
   };
 }
 export const WorkflowUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -932,7 +924,7 @@ export const WorkflowUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workflowName - The name of the workflow resource.
  */
-export const WorkflowUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkflowUpdateTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkflowUpdateTagsInput,
   outputSchema: WorkflowUpdateTagsOutput,
 }));

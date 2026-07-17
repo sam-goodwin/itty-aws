@@ -13,7 +13,7 @@ import * as Redacted from "effect/Redacted";
 // Input Schema
 export interface DomainServiceOperationsListInput {}
 export const DomainServiceOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AAD/operations",
@@ -36,7 +36,7 @@ export interface DomainServiceOperationsListOutput {
   nextLink?: string;
 }
 export const DomainServiceOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -62,12 +62,10 @@ export const DomainServiceOperationsListOutput =
  *
  * @param api-version - Client Api Version.
  */
-export const DomainServiceOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainServiceOperationsListInput,
-    outputSchema: DomainServiceOperationsListOutput,
-  }),
-);
+export const DomainServiceOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainServiceOperationsListInput,
+  outputSchema: DomainServiceOperationsListOutput,
+}));
 // Input Schema
 export interface DomainServicesCreateOrUpdateInput {
   subscriptionId: string;
@@ -174,7 +172,7 @@ export interface DomainServicesCreateOrUpdateInput {
   };
 }
 export const DomainServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainServiceName: Schema.String.pipe(T.PathParam()),
@@ -389,7 +387,7 @@ export interface DomainServicesCreateOrUpdateOutput {
   };
 }
 export const DomainServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -424,7 +422,7 @@ export const DomainServicesCreateOrUpdateOutput =
  * @param domainServiceName - The name of the domain service.
  */
 export const DomainServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainServicesCreateOrUpdateInput,
     outputSchema: DomainServicesCreateOrUpdateOutput,
   }));
@@ -435,7 +433,7 @@ export interface DomainServicesDeleteInput {
   domainServiceName: string;
 }
 export const DomainServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainServiceName: Schema.String.pipe(T.PathParam()),
@@ -450,7 +448,7 @@ export const DomainServicesDeleteInput =
 // Output Schema
 export type DomainServicesDeleteOutput = void;
 export const DomainServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainServicesDeleteOutput>;
 
 // The operation
 /**
@@ -463,25 +461,21 @@ export const DomainServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param domainServiceName - The name of the domain service.
  */
-export const DomainServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainServicesDeleteInput,
-    outputSchema: DomainServicesDeleteOutput,
-  }),
-);
+export const DomainServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainServicesDeleteInput,
+  outputSchema: DomainServicesDeleteOutput,
+}));
 // Input Schema
 export interface DomainServicesGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   domainServiceName: string;
 }
-export const DomainServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainServiceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DomainServicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
@@ -507,7 +501,7 @@ export interface DomainServicesGetOutput {
   };
 }
 export const DomainServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -541,7 +535,7 @@ export const DomainServicesGetOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param domainServiceName - The name of the domain service.
  */
-export const DomainServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainServicesGetInput,
   outputSchema: DomainServicesGetOutput,
 }));
@@ -550,7 +544,7 @@ export interface DomainServicesListInput {
   subscriptionId: string;
 }
 export const DomainServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -581,7 +575,7 @@ export interface DomainServicesListOutput {
   nextLink?: string;
 }
 export const DomainServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -630,7 +624,7 @@ export const DomainServicesListOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const DomainServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainServicesListInput,
   outputSchema: DomainServicesListOutput,
 }));
@@ -640,7 +634,7 @@ export interface DomainServicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DomainServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -672,7 +666,7 @@ export interface DomainServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DomainServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -723,7 +717,7 @@ export const DomainServicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  */
 export const DomainServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainServicesListByResourceGroupInput,
     outputSchema: DomainServicesListByResourceGroupOutput,
   }));
@@ -833,7 +827,7 @@ export interface DomainServicesUpdateInput {
   };
 }
 export const DomainServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainServiceName: Schema.String.pipe(T.PathParam()),
@@ -1048,7 +1042,7 @@ export interface DomainServicesUpdateOutput {
   };
 }
 export const DomainServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1082,12 +1076,10 @@ export const DomainServicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param domainServiceName - The name of the domain service.
  */
-export const DomainServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainServicesUpdateInput,
-    outputSchema: DomainServicesUpdateOutput,
-  }),
-);
+export const DomainServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainServicesUpdateInput,
+  outputSchema: DomainServicesUpdateOutput,
+}));
 // Input Schema
 export interface OuContainerCreateInput {
   subscriptionId: string;
@@ -1098,17 +1090,15 @@ export interface OuContainerCreateInput {
   spn?: string;
   password?: string | Redacted.Redacted<string>;
 }
-export const OuContainerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainServiceName: Schema.String.pipe(T.PathParam()),
-    ouContainerName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.optional(Schema.String),
-    spn: Schema.optional(Schema.String),
-    password: Schema.optional(SensitiveString),
-  },
-).pipe(
+export const OuContainerCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+  ouContainerName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.optional(Schema.String),
+  spn: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveString),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
@@ -1134,7 +1124,7 @@ export interface OuContainerCreateOutput {
   };
 }
 export const OuContainerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1169,7 +1159,7 @@ export const OuContainerCreateOutput =
  * @param domainServiceName - The name of the domain service.
  * @param ouContainerName - The name of the OuContainer.
  */
-export const OuContainerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OuContainerCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OuContainerCreateInput,
   outputSchema: OuContainerCreateOutput,
 }));
@@ -1180,14 +1170,12 @@ export interface OuContainerDeleteInput {
   domainServiceName: string;
   ouContainerName: string;
 }
-export const OuContainerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainServiceName: Schema.String.pipe(T.PathParam()),
-    ouContainerName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const OuContainerDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+  ouContainerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
@@ -1198,7 +1186,7 @@ export const OuContainerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type OuContainerDeleteOutput = void;
 export const OuContainerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OuContainerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OuContainerDeleteOutput>;
 
 // The operation
 /**
@@ -1212,7 +1200,7 @@ export const OuContainerDeleteOutput =
  * @param domainServiceName - The name of the domain service.
  * @param ouContainerName - The name of the OuContainer.
  */
-export const OuContainerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OuContainerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OuContainerDeleteInput,
   outputSchema: OuContainerDeleteOutput,
 }));
@@ -1223,7 +1211,7 @@ export interface OuContainerGetInput {
   domainServiceName: string;
   ouContainerName: string;
 }
-export const OuContainerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OuContainerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainServiceName: Schema.String.pipe(T.PathParam()),
@@ -1253,7 +1241,7 @@ export interface OuContainerGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OuContainerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OuContainerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1288,7 +1276,7 @@ export const OuContainerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param domainServiceName - The name of the domain service.
  * @param ouContainerName - The name of the OuContainer.
  */
-export const OuContainerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OuContainerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OuContainerGetInput,
   outputSchema: OuContainerGetOutput,
 }));
@@ -1298,7 +1286,7 @@ export interface OuContainerListInput {
   resourceGroupName: string;
   domainServiceName: string;
 }
-export const OuContainerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OuContainerListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainServiceName: Schema.String.pipe(T.PathParam()),
@@ -1330,7 +1318,7 @@ export interface OuContainerListOutput {
   }[];
   nextLink?: string;
 }
-export const OuContainerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OuContainerListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1381,14 +1369,14 @@ export const OuContainerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param domainServiceName - The name of the domain service.
  */
-export const OuContainerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OuContainerList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OuContainerListInput,
   outputSchema: OuContainerListOutput,
 }));
 // Input Schema
 export interface OuContainerOperationsListInput {}
 export const OuContainerOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Aad/operations",
@@ -1411,7 +1399,7 @@ export interface OuContainerOperationsListOutput {
   nextLink?: string;
 }
 export const OuContainerOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1437,12 +1425,10 @@ export const OuContainerOperationsListOutput =
  *
  * @param api-version - Client Api Version.
  */
-export const OuContainerOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OuContainerOperationsListInput,
-    outputSchema: OuContainerOperationsListOutput,
-  }),
-);
+export const OuContainerOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OuContainerOperationsListInput,
+  outputSchema: OuContainerOperationsListOutput,
+}));
 // Input Schema
 export interface OuContainerUpdateInput {
   subscriptionId: string;
@@ -1453,17 +1439,15 @@ export interface OuContainerUpdateInput {
   spn?: string;
   password?: string | Redacted.Redacted<string>;
 }
-export const OuContainerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    domainServiceName: Schema.String.pipe(T.PathParam()),
-    ouContainerName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.optional(Schema.String),
-    spn: Schema.optional(Schema.String),
-    password: Schema.optional(SensitiveString),
-  },
-).pipe(
+export const OuContainerUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  domainServiceName: Schema.String.pipe(T.PathParam()),
+  ouContainerName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.optional(Schema.String),
+  spn: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveString),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
@@ -1489,7 +1473,7 @@ export interface OuContainerUpdateOutput {
   };
 }
 export const OuContainerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1524,7 +1508,7 @@ export const OuContainerUpdateOutput =
  * @param domainServiceName - The name of the domain service.
  * @param ouContainerName - The name of the OuContainer.
  */
-export const OuContainerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OuContainerUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OuContainerUpdateInput,
   outputSchema: OuContainerUpdateOutput,
 }));

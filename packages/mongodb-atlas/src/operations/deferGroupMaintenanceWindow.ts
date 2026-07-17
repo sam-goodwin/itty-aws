@@ -9,7 +9,7 @@ export interface DeferGroupMaintenanceWindowInput {
   envelope?: boolean;
 }
 export const DeferGroupMaintenanceWindowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const DeferGroupMaintenanceWindowInput =
 // Output Schema
 export type DeferGroupMaintenanceWindowOutput = void;
 export const DeferGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeferGroupMaintenanceWindowOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeferGroupMaintenanceWindowOutput>;
 
 // The operation
 /**
@@ -35,10 +35,8 @@ export const DeferGroupMaintenanceWindowOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const deferGroupMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeferGroupMaintenanceWindowInput,
-    outputSchema: DeferGroupMaintenanceWindowOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const deferGroupMaintenanceWindow = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeferGroupMaintenanceWindowInput,
+  outputSchema: DeferGroupMaintenanceWindowOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

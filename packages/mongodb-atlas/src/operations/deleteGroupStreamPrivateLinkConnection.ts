@@ -11,7 +11,7 @@ export interface DeleteGroupStreamPrivateLinkConnectionInput {
   pretty?: boolean;
 }
 export const DeleteGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     connectionId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupStreamPrivateLinkConnectionInput =
 // Output Schema
 export type DeleteGroupStreamPrivateLinkConnectionOutput = void;
 export const DeleteGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamPrivateLinkConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamPrivateLinkConnectionOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DeleteGroupStreamPrivateLinkConnectionOutput =
  * @param connectionId - Unique ID that identifies the Private Link connection.
  */
 export const deleteGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupStreamPrivateLinkConnectionInput,
     outputSchema: DeleteGroupStreamPrivateLinkConnectionOutput,
     errors: [Forbidden, NotFound] as const,

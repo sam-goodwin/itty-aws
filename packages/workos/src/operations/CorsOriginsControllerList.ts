@@ -10,7 +10,7 @@ export interface CorsOriginsControllerListInput {
   order?: string;
 }
 export const CorsOriginsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -32,7 +32,7 @@ export interface CorsOriginsControllerListOutput {
   }>;
 }
 export const CorsOriginsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -64,9 +64,7 @@ export const CorsOriginsControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
-export const CorsOriginsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CorsOriginsControllerListInput,
-    outputSchema: CorsOriginsControllerListOutput,
-  }),
-);
+export const CorsOriginsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CorsOriginsControllerListInput,
+  outputSchema: CorsOriginsControllerListOutput,
+}));

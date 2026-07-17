@@ -9,7 +9,7 @@ export interface VisualReviewRunsRetrieveInput {
   project_id: string;
 }
 export const VisualReviewRunsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -49,7 +49,7 @@ export interface VisualReviewRunsRetrieveOutput {
   metadata?: Record<string, unknown>;
 }
 export const VisualReviewRunsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approved_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -96,10 +96,8 @@ export const VisualReviewRunsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visualReviewRunsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisualReviewRunsRetrieveInput,
-    outputSchema: VisualReviewRunsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const visualReviewRunsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsRetrieveInput,
+  outputSchema: VisualReviewRunsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

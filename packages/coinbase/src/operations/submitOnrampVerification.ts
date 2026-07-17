@@ -8,7 +8,7 @@ export interface SubmitOnrampVerificationInput {
   otpCode: string;
 }
 export const SubmitOnrampVerificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationId: Schema.String.pipe(T.PathParam()),
     otpCode: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export interface SubmitOnrampVerificationOutput {
   verificationExpiresAt: string;
 }
 export const SubmitOnrampVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationId: Schema.String,
     verificationExpiresAt: Schema.String,
   }) as unknown as Schema.Codec<SubmitOnrampVerificationOutput>;
@@ -43,9 +43,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const submitOnrampVerification = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubmitOnrampVerificationInput,
-    outputSchema: SubmitOnrampVerificationOutput,
-  }),
-);
+export const submitOnrampVerification = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubmitOnrampVerificationInput,
+  outputSchema: SubmitOnrampVerificationOutput,
+}));

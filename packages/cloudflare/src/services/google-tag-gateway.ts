@@ -40,7 +40,7 @@ interface GetConfigResponse2 {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
 }
-const GetConfigResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetConfigResponse2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     endpoint: Schema.String,
@@ -59,7 +59,7 @@ export interface GetConfigRequest {
   zoneId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -78,11 +78,10 @@ export type GetConfigResponse = {
   setUpTag?: boolean | null;
 } | null;
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([GetConfigResponse2, Schema.Null]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const GetConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([GetConfigResponse2, Schema.Null]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<GetConfigResponse>;
 
 export type GetConfigError = DefaultErrors | Forbidden;
@@ -92,7 +91,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [Forbidden],
@@ -113,7 +112,7 @@ export interface PutConfigRequest {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     enabled: Schema.Boolean,
@@ -142,15 +141,14 @@ export interface PutConfigResponse {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      endpoint: Schema.String,
-      hideOriginalIp: Schema.Boolean,
-      measurementId: Schema.String,
-      setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const PutConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    endpoint: Schema.String,
+    hideOriginalIp: Schema.Boolean,
+    measurementId: Schema.String,
+    setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutConfigResponse>;
 
 export type PutConfigError = DefaultErrors | Forbidden;
@@ -160,7 +158,7 @@ export const putConfig: API.OperationMethod<
   PutConfigResponse,
   PutConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigRequest,
   output: PutConfigResponse,
   errors: [Forbidden],

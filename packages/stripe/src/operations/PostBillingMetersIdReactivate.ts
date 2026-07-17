@@ -8,7 +8,7 @@ export interface PostBillingMetersIdReactivateInput {
   expand?: string[];
 }
 export const PostBillingMetersIdReactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -36,7 +36,7 @@ export interface PostBillingMetersIdReactivateOutput {
   value_settings: { event_payload_key: string };
 }
 export const PostBillingMetersIdReactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     customer_mapping: Schema.Struct({
       event_payload_key: Schema.String,
@@ -68,7 +68,7 @@ export const PostBillingMetersIdReactivateOutput =
  * <p>When a meter is reactivated, events for this meter can be accepted and you can attach the meter to a price.</p>
  */
 export const PostBillingMetersIdReactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingMetersIdReactivateInput,
     outputSchema: PostBillingMetersIdReactivateOutput,
   }));

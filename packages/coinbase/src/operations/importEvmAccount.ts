@@ -8,7 +8,7 @@ export interface ImportEvmAccountInput {
   name?: string;
   accountPolicy?: string;
 }
-export const ImportEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportEvmAccountInput = /*@__PURE__*/ Schema.Struct({
   encryptedPrivateKey: Schema.String,
   name: Schema.optional(Schema.String),
   accountPolicy: Schema.optional(Schema.String),
@@ -24,15 +24,13 @@ export interface ImportEvmAccountOutput {
   createdAt?: string;
   updatedAt?: string;
 }
-export const ImportEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String,
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ImportEvmAccountOutput>;
+export const ImportEvmAccountOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ImportEvmAccountOutput>;
 
 // The operation
 /**
@@ -49,7 +47,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const importEvmAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importEvmAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportEvmAccountInput,
   outputSchema: ImportEvmAccountOutput,
 }));

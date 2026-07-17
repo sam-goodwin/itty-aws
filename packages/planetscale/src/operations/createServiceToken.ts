@@ -12,7 +12,7 @@ export interface CreateServiceTokenInput {
   ttl?: number;
 }
 export const CreateServiceTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.Number),
@@ -38,55 +38,53 @@ export interface CreateServiceTokenOutput {
   actor_id: string | null;
   actor_display_name: string | null;
   actor_type: string | null;
-  service_token_accesses?:
-    | {
-        id: string;
-        access: string;
-        description: string;
-        resource_name: string;
-        resource_id: string;
-        resource_type: string;
-        resource: {
-          id: string;
-          name: string;
-          created_at: string;
-          updated_at: string;
-          deleted_at: string | null;
-        };
-      }[]
-    | null;
+  service_token_accesses?: ReadonlyArray<{
+    id: string;
+    access: string;
+    description: string;
+    resource_name: string;
+    resource_id: string;
+    resource_type: string;
+    resource: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+  }> | null;
   oauth_accesses_by_resource?: {
     database: {
-      databases: {
+      databases: ReadonlyArray<{
         name: string;
         id: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     organization: {
-      organizations: { name: string; id: string; url: string }[];
-      accesses: { name: string; description: string }[];
+      organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     branch: {
-      branches: {
+      branches: ReadonlyArray<{
         name: string;
         id: string;
         database: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     user: {
-      users: { name: string; id: string }[];
-      accesses: { name: string; description: string }[];
+      users: ReadonlyArray<{ name: string; id: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
   } | null;
 }
 export const CreateServiceTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.optional(Schema.NullOr(Schema.String)),
     display_name: Schema.String,
@@ -201,7 +199,7 @@ export const CreateServiceTokenOutput =
  * @param name - The name of the service token
  * @param ttl - Time to live (in seconds) for the service token. The token will be invalid when TTL has passed
  */
-export const createServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateServiceTokenInput,
   outputSchema: CreateServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

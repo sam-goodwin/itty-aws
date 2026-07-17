@@ -14,7 +14,7 @@ export interface GetCustomersCustomerCashBalanceTransactionsTransactionInput {
   expand?: string;
 }
 export const GetCustomersCustomerCashBalanceTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -385,7 +385,7 @@ export interface GetCustomersCustomerCashBalanceTransactionsTransactionOutput {
   unapplied_from_payment?: { payment_intent: unknown };
 }
 export const GetCustomersCustomerCashBalanceTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjusted_for_overdraft: Schema.optional(
       Schema.Struct({
         balance_transaction: Schema.Union([
@@ -658,7 +658,7 @@ export const GetCustomersCustomerCashBalanceTransactionsTransactionOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetCustomersCustomerCashBalanceTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetCustomersCustomerCashBalanceTransactionsTransactionInput,
     outputSchema: GetCustomersCustomerCashBalanceTransactionsTransactionOutput,
   }));

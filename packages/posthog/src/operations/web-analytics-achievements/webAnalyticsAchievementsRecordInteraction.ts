@@ -8,7 +8,7 @@ export interface WebAnalyticsAchievementsRecordInteractionInput {
   interaction_kind: "data" | "recording";
 }
 export const WebAnalyticsAchievementsRecordInteractionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     interaction_kind: Schema.Literals(["data", "recording"]),
   }).pipe(
@@ -23,7 +23,7 @@ export interface WebAnalyticsAchievementsRecordInteractionOutput {
   recorded: boolean;
 }
 export const WebAnalyticsAchievementsRecordInteractionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recorded: Schema.Boolean,
   }) as unknown as Schema.Codec<WebAnalyticsAchievementsRecordInteractionOutput>;
 
@@ -36,7 +36,7 @@ export const WebAnalyticsAchievementsRecordInteractionOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const webAnalyticsAchievementsRecordInteraction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAnalyticsAchievementsRecordInteractionInput,
     outputSchema: WebAnalyticsAchievementsRecordInteractionOutput,
   }));

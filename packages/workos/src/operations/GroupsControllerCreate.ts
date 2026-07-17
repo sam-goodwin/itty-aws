@@ -15,7 +15,7 @@ export interface GroupsControllerCreateInput {
   description?: string | null;
 }
 export const GroupsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -34,7 +34,7 @@ export interface GroupsControllerCreateOutput {
   updated_at?: string;
 }
 export const GroupsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -52,10 +52,8 @@ export const GroupsControllerCreateOutput =
  *
  * @param organizationId - The ID of the organization.
  */
-export const GroupsControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsControllerCreateInput,
-    outputSchema: GroupsControllerCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const GroupsControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsControllerCreateInput,
+  outputSchema: GroupsControllerCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

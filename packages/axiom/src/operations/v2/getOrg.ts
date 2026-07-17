@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetOrgInput {
   id: string;
 }
-export const GetOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/orgs/{id}" }),
@@ -69,7 +69,7 @@ export interface GetOrgOutput {
   primaryEmail: string;
   role?: string;
 }
-export const GetOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
   id: Schema.String,
@@ -128,7 +128,7 @@ export const GetOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<GetOrgOutput>;
 
 // The operation
-export const getOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInput,
   outputSchema: GetOrgOutput,
   errors: [NotFound] as const,

@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.VirtualMachineImages/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -62,7 +60,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -85,7 +83,7 @@ export interface TriggersCreateOrUpdateInput {
   };
 }
 export const TriggersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -135,7 +133,7 @@ export interface TriggersCreateOrUpdateOutput {
   };
 }
 export const TriggersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -165,12 +163,10 @@ export const TriggersCreateOrUpdateOutput =
  * @param imageTemplateName - The name of the image Template
  * @param triggerName - The name of the trigger
  */
-export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersCreateOrUpdateInput,
-    outputSchema: TriggersCreateOrUpdateOutput,
-  }),
-);
+export const TriggersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersCreateOrUpdateInput,
+  outputSchema: TriggersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TriggersDeleteInput {
   subscriptionId: string;
@@ -178,7 +174,7 @@ export interface TriggersDeleteInput {
   imageTemplateName: string;
   triggerName: string;
 }
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -194,7 +190,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggersDeleteOutput = void;
 export const TriggersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -206,7 +202,7 @@ export const TriggersDeleteOutput =
  * @param imageTemplateName - The name of the image Template
  * @param triggerName - The name of the trigger
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
@@ -217,7 +213,7 @@ export interface TriggersGetInput {
   imageTemplateName: string;
   triggerName: string;
 }
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -244,7 +240,7 @@ export interface TriggersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -274,7 +270,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param imageTemplateName - The name of the image Template
  * @param triggerName - The name of the trigger
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
@@ -285,7 +281,7 @@ export interface TriggersListByImageTemplateInput {
   imageTemplateName: string;
 }
 export const TriggersListByImageTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -315,7 +311,7 @@ export interface TriggersListByImageTemplateOutput {
   nextLink?: string;
 }
 export const TriggersListByImageTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -359,12 +355,10 @@ export const TriggersListByImageTemplateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param imageTemplateName - The name of the image Template
  */
-export const TriggersListByImageTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersListByImageTemplateInput,
-    outputSchema: TriggersListByImageTemplateOutput,
-  }),
-);
+export const TriggersListByImageTemplate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersListByImageTemplateInput,
+  outputSchema: TriggersListByImageTemplateOutput,
+}));
 // Input Schema
 export interface VirtualMachineImageTemplatesCancelInput {
   subscriptionId: string;
@@ -372,7 +366,7 @@ export interface VirtualMachineImageTemplatesCancelInput {
   imageTemplateName: string;
 }
 export const VirtualMachineImageTemplatesCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -387,7 +381,7 @@ export const VirtualMachineImageTemplatesCancelInput =
 // Output Schema
 export type VirtualMachineImageTemplatesCancelOutput = void;
 export const VirtualMachineImageTemplatesCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesCancelOutput>;
 
 // The operation
 /**
@@ -399,7 +393,7 @@ export const VirtualMachineImageTemplatesCancelOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesCancelInput,
     outputSchema: VirtualMachineImageTemplatesCancelOutput,
   }));
@@ -506,7 +500,7 @@ export interface VirtualMachineImageTemplatesCreateOrUpdateInput {
   location: string;
 }
 export const VirtualMachineImageTemplatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -710,7 +704,7 @@ export interface VirtualMachineImageTemplatesCreateOrUpdateOutput {
   };
 }
 export const VirtualMachineImageTemplatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -740,7 +734,7 @@ export const VirtualMachineImageTemplatesCreateOrUpdateOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesCreateOrUpdateInput,
     outputSchema: VirtualMachineImageTemplatesCreateOrUpdateOutput,
   }));
@@ -751,7 +745,7 @@ export interface VirtualMachineImageTemplatesDeleteInput {
   imageTemplateName: string;
 }
 export const VirtualMachineImageTemplatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -766,7 +760,7 @@ export const VirtualMachineImageTemplatesDeleteInput =
 // Output Schema
 export type VirtualMachineImageTemplatesDeleteOutput = void;
 export const VirtualMachineImageTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesDeleteOutput>;
 
 // The operation
 /**
@@ -778,7 +772,7 @@ export const VirtualMachineImageTemplatesDeleteOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesDeleteInput,
     outputSchema: VirtualMachineImageTemplatesDeleteOutput,
   }));
@@ -789,7 +783,7 @@ export interface VirtualMachineImageTemplatesGetInput {
   imageTemplateName: string;
 }
 export const VirtualMachineImageTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -816,7 +810,7 @@ export interface VirtualMachineImageTemplatesGetOutput {
   };
 }
 export const VirtualMachineImageTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -846,7 +840,7 @@ export const VirtualMachineImageTemplatesGetOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesGetInput,
     outputSchema: VirtualMachineImageTemplatesGetOutput,
   }));
@@ -858,7 +852,7 @@ export interface VirtualMachineImageTemplatesGetRunOutputInput {
   runOutputName: string;
 }
 export const VirtualMachineImageTemplatesGetRunOutputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -886,7 +880,7 @@ export interface VirtualMachineImageTemplatesGetRunOutputOutput {
   };
 }
 export const VirtualMachineImageTemplatesGetRunOutputOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -917,7 +911,7 @@ export const VirtualMachineImageTemplatesGetRunOutputOutput =
  * @param runOutputName - The name of the run output
  */
 export const VirtualMachineImageTemplatesGetRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesGetRunOutputInput,
     outputSchema: VirtualMachineImageTemplatesGetRunOutputOutput,
   }));
@@ -926,7 +920,7 @@ export interface VirtualMachineImageTemplatesListInput {
   subscriptionId: string;
 }
 export const VirtualMachineImageTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -954,7 +948,7 @@ export interface VirtualMachineImageTemplatesListOutput {
   nextLink?: string;
 }
 export const VirtualMachineImageTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -997,7 +991,7 @@ export const VirtualMachineImageTemplatesListOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const VirtualMachineImageTemplatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesListInput,
     outputSchema: VirtualMachineImageTemplatesListOutput,
   }));
@@ -1007,7 +1001,7 @@ export interface VirtualMachineImageTemplatesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const VirtualMachineImageTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1036,7 +1030,7 @@ export interface VirtualMachineImageTemplatesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const VirtualMachineImageTemplatesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1080,7 +1074,7 @@ export const VirtualMachineImageTemplatesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesListByResourceGroupInput,
     outputSchema: VirtualMachineImageTemplatesListByResourceGroupOutput,
   }));
@@ -1091,7 +1085,7 @@ export interface VirtualMachineImageTemplatesListRunOutputsInput {
   imageTemplateName: string;
 }
 export const VirtualMachineImageTemplatesListRunOutputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -1121,7 +1115,7 @@ export interface VirtualMachineImageTemplatesListRunOutputsOutput {
   nextLink?: string;
 }
 export const VirtualMachineImageTemplatesListRunOutputsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1166,7 +1160,7 @@ export const VirtualMachineImageTemplatesListRunOutputsOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesListRunOutputs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesListRunOutputsInput,
     outputSchema: VirtualMachineImageTemplatesListRunOutputsOutput,
   }));
@@ -1177,7 +1171,7 @@ export interface VirtualMachineImageTemplatesRunInput {
   imageTemplateName: string;
 }
 export const VirtualMachineImageTemplatesRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -1192,7 +1186,7 @@ export const VirtualMachineImageTemplatesRunInput =
 // Output Schema
 export type VirtualMachineImageTemplatesRunOutput = void;
 export const VirtualMachineImageTemplatesRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesRunOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineImageTemplatesRunOutput>;
 
 // The operation
 /**
@@ -1204,7 +1198,7 @@ export const VirtualMachineImageTemplatesRunOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesRunInput,
     outputSchema: VirtualMachineImageTemplatesRunOutput,
   }));
@@ -1240,7 +1234,7 @@ export interface VirtualMachineImageTemplatesUpdateInput {
   };
 }
 export const VirtualMachineImageTemplatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageTemplateName: Schema.String.pipe(T.PathParam()),
@@ -1313,7 +1307,7 @@ export interface VirtualMachineImageTemplatesUpdateOutput {
   };
 }
 export const VirtualMachineImageTemplatesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1343,7 +1337,7 @@ export const VirtualMachineImageTemplatesUpdateOutput =
  * @param imageTemplateName - The name of the image Template
  */
 export const VirtualMachineImageTemplatesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineImageTemplatesUpdateInput,
     outputSchema: VirtualMachineImageTemplatesUpdateOutput,
   }));

@@ -9,7 +9,7 @@ export interface ListExtensionsInput {
   database: string;
   branch: string;
 }
-export const ListExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListExtensionsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -21,7 +21,7 @@ export const ListExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListExtensionsInput>;
 
 // Output Schema
-export type ListExtensionsOutput = {
+export type ListExtensionsOutput = ReadonlyArray<{
   id: string;
   name: string;
   description: string;
@@ -33,7 +33,7 @@ export type ListExtensionsOutput = {
   url: string;
   available: boolean;
   unavailable_reason: string;
-  parameters: {
+  parameters: ReadonlyArray<{
     id: string;
     name: string;
     display_name: string;
@@ -62,11 +62,11 @@ export type ListExtensionsOutput = {
     min: number;
     step: number;
     url: string;
-    options: string[];
+    options: ReadonlyArray<string>;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
-}[];
-export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  }>;
+}>;
+export const ListExtensionsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -130,7 +130,7 @@ export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const listExtensions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listExtensions = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListExtensionsInput,
   outputSchema: ListExtensionsOutput,
   errors: [Forbidden, NotFound] as const,

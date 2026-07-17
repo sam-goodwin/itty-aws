@@ -11,7 +11,7 @@ export interface GetGroupFlexClusterInput {
   pretty?: boolean;
 }
 export const GetGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupFlexClusterInput =
 // Output Schema
 export type GetGroupFlexClusterOutput = void;
 export const GetGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupFlexClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupFlexClusterOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const GetGroupFlexClusterOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const getGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupFlexCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupFlexClusterInput,
   outputSchema: GetGroupFlexClusterOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

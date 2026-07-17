@@ -11,7 +11,7 @@ export interface CreateGroupDatabaseUserCertInput {
   pretty?: boolean;
 }
 export const CreateGroupDatabaseUserCertInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupDatabaseUserCertInput =
 // Output Schema
 export type CreateGroupDatabaseUserCertOutput = void;
 export const CreateGroupDatabaseUserCertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupDatabaseUserCertOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupDatabaseUserCertOutput>;
 
 // The operation
 /**
@@ -43,10 +43,8 @@ export const CreateGroupDatabaseUserCertOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param username - Human-readable label that represents the MongoDB database user account for whom to create a certificate.
  */
-export const createGroupDatabaseUserCert = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupDatabaseUserCertInput,
-    outputSchema: CreateGroupDatabaseUserCertOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupDatabaseUserCert = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupDatabaseUserCertInput,
+  outputSchema: CreateGroupDatabaseUserCertOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

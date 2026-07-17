@@ -11,7 +11,7 @@ export interface V1DeleteNetworkBansInput {
   identifier?: string;
 }
 export const V1DeleteNetworkBansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     ipv4_addresses: Schema.Array(Schema.String),
     requester_ip: Schema.optional(Schema.Boolean),
@@ -23,7 +23,7 @@ export const V1DeleteNetworkBansInput =
 // Output Schema
 export type V1DeleteNetworkBansOutput = void;
 export const V1DeleteNetworkBansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteNetworkBansOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteNetworkBansOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const V1DeleteNetworkBansOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeleteNetworkBans = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteNetworkBans = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteNetworkBansInput,
   outputSchema: V1DeleteNetworkBansOutput,
   errors: [BadRequest, Forbidden] as const,

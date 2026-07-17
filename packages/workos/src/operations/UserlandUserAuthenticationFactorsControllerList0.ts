@@ -12,7 +12,7 @@ export interface UserlandUserAuthenticationFactorsControllerList0Input {
   order?: string;
 }
 export const UserlandUserAuthenticationFactorsControllerList0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface UserlandUserAuthenticationFactorsControllerList0Output {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const UserlandUserAuthenticationFactorsControllerList0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -89,7 +89,7 @@ export const UserlandUserAuthenticationFactorsControllerList0Output =
  * @param order - Order the results by the creation time.
  */
 export const UserlandUserAuthenticationFactorsControllerList0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserAuthenticationFactorsControllerList0Input,
     outputSchema: UserlandUserAuthenticationFactorsControllerList0Output,
     errors: [UnprocessableEntity] as const,

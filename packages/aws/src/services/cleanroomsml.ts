@@ -138,7 +138,7 @@ export interface ListCollaborationConfiguredModelAlgorithmAssociationsRequest {
   collaborationIdentifier: string;
 }
 export const ListCollaborationConfiguredModelAlgorithmAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -173,7 +173,7 @@ export interface CollaborationConfiguredModelAlgorithmAssociationSummary {
   creatorAccountId: string;
 }
 export const CollaborationConfiguredModelAlgorithmAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -191,7 +191,7 @@ export const CollaborationConfiguredModelAlgorithmAssociationSummary =
 export type CollaborationConfiguredModelAlgorithmAssociationList =
   CollaborationConfiguredModelAlgorithmAssociationSummary[];
 export const CollaborationConfiguredModelAlgorithmAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Array(
     CollaborationConfiguredModelAlgorithmAssociationSummary,
   );
 export interface ListCollaborationConfiguredModelAlgorithmAssociationsResponse {
@@ -199,7 +199,7 @@ export interface ListCollaborationConfiguredModelAlgorithmAssociationsResponse {
   collaborationConfiguredModelAlgorithmAssociations: CollaborationConfiguredModelAlgorithmAssociationSummary[];
 }
 export const ListCollaborationConfiguredModelAlgorithmAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       collaborationConfiguredModelAlgorithmAssociations:
@@ -214,7 +214,7 @@ export interface ListCollaborationMLInputChannelsRequest {
   collaborationIdentifier: string;
 }
 export const ListCollaborationMLInputChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -239,7 +239,7 @@ export const ListCollaborationMLInputChannelsRequest =
   }) as any as S.Schema<ListCollaborationMLInputChannelsRequest>;
 export type ConfiguredModelAlgorithmAssociationArnList = string[];
 export const ConfiguredModelAlgorithmAssociationArnList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export type MLInputChannelStatus =
   | "CREATE_PENDING"
   | "CREATE_IN_PROGRESS"
@@ -250,12 +250,12 @@ export type MLInputChannelStatus =
   | "DELETE_FAILED"
   | "INACTIVE"
   | (string & {});
-export const MLInputChannelStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MLInputChannelStatus = /*@__PURE__*/ S.String;
 export interface PayerConfiguration {
   computePayerAccountId?: string;
   syntheticDataPayerAccountId?: string;
 }
-export const PayerConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PayerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computePayerAccountId: S.optional(S.String),
     syntheticDataPayerAccountId: S.optional(S.String),
@@ -277,7 +277,7 @@ export interface CollaborationMLInputChannelSummary {
   payerConfiguration?: PayerConfiguration;
 }
 export const CollaborationMLInputChannelSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -298,13 +298,13 @@ export const CollaborationMLInputChannelSummary =
 export type CollaborationMLInputChannelsList =
   CollaborationMLInputChannelSummary[];
 export const CollaborationMLInputChannelsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CollaborationMLInputChannelSummary);
+  /*@__PURE__*/ S.Array(CollaborationMLInputChannelSummary);
 export interface ListCollaborationMLInputChannelsResponse {
   nextToken?: string;
   collaborationMLInputChannelsList: CollaborationMLInputChannelSummary[];
 }
 export const ListCollaborationMLInputChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       collaborationMLInputChannelsList: CollaborationMLInputChannelsList,
@@ -320,7 +320,7 @@ export interface ListCollaborationTrainedModelExportJobsRequest {
   trainedModelVersionIdentifier?: string;
 }
 export const ListCollaborationTrainedModelExportJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -351,20 +351,18 @@ export interface TrainedModelExportReceiverMember {
   accountId: string;
 }
 export const TrainedModelExportReceiverMember =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ accountId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ accountId: S.String })).annotate({
     identifier: "TrainedModelExportReceiverMember",
   }) as any as S.Schema<TrainedModelExportReceiverMember>;
 export type TrainedModelExportReceiverMembers =
   TrainedModelExportReceiverMember[];
 export const TrainedModelExportReceiverMembers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TrainedModelExportReceiverMember);
+  /*@__PURE__*/ S.Array(TrainedModelExportReceiverMember);
 export interface TrainedModelExportOutputConfiguration {
   members: TrainedModelExportReceiverMember[];
 }
 export const TrainedModelExportOutputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ members: TrainedModelExportReceiverMembers }),
   ).annotate({
     identifier: "TrainedModelExportOutputConfiguration",
@@ -375,12 +373,12 @@ export type TrainedModelExportJobStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | (string & {});
-export const TrainedModelExportJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelExportJobStatus = /*@__PURE__*/ S.String;
 export interface StatusDetails {
   statusCode?: string;
   message?: string;
 }
-export const StatusDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "StatusDetails" }) as any as S.Schema<StatusDetails>;
 export interface CollaborationTrainedModelExportJobSummary {
@@ -398,7 +396,7 @@ export interface CollaborationTrainedModelExportJobSummary {
   collaborationIdentifier: string;
 }
 export const CollaborationTrainedModelExportJobSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -419,15 +417,13 @@ export const CollaborationTrainedModelExportJobSummary =
 export type CollaborationTrainedModelExportJobList =
   CollaborationTrainedModelExportJobSummary[];
 export const CollaborationTrainedModelExportJobList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    CollaborationTrainedModelExportJobSummary,
-  );
+  /*@__PURE__*/ S.Array(CollaborationTrainedModelExportJobSummary);
 export interface ListCollaborationTrainedModelExportJobsResponse {
   nextToken?: string;
   collaborationTrainedModelExportJobs: CollaborationTrainedModelExportJobSummary[];
 }
 export const ListCollaborationTrainedModelExportJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       collaborationTrainedModelExportJobs:
@@ -444,7 +440,7 @@ export interface ListCollaborationTrainedModelInferenceJobsRequest {
   trainedModelVersionIdentifier?: string;
 }
 export const ListCollaborationTrainedModelInferenceJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -483,18 +479,17 @@ export type TrainedModelInferenceJobStatus =
   | "CANCEL_FAILED"
   | "INACTIVE"
   | (string & {});
-export const TrainedModelInferenceJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelInferenceJobStatus = /*@__PURE__*/ S.String;
 export interface InferenceReceiverMember {
   accountId: string;
 }
-export const InferenceReceiverMember = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ accountId: S.String }),
+export const InferenceReceiverMember = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accountId: S.String }),
 ).annotate({
   identifier: "InferenceReceiverMember",
 }) as any as S.Schema<InferenceReceiverMember>;
 export type InferenceReceiverMembers = InferenceReceiverMember[];
-export const InferenceReceiverMembers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const InferenceReceiverMembers = /*@__PURE__*/ S.Array(
   InferenceReceiverMember,
 );
 export interface InferenceOutputConfiguration {
@@ -502,7 +497,7 @@ export interface InferenceOutputConfiguration {
   members: InferenceReceiverMember[];
 }
 export const InferenceOutputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accept: S.optional(S.String),
       members: InferenceReceiverMembers,
@@ -514,9 +509,9 @@ export type MetricsStatus =
   | "PUBLISH_SUCCEEDED"
   | "PUBLISH_FAILED"
   | (string & {});
-export const MetricsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MetricsStatus = /*@__PURE__*/ S.String;
 export type LogsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED" | (string & {});
-export const LogsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogsStatus = /*@__PURE__*/ S.String;
 export interface CollaborationTrainedModelInferenceJobSummary {
   trainedModelInferenceJobArn: string;
   configuredModelAlgorithmAssociationArn?: string;
@@ -538,7 +533,7 @@ export interface CollaborationTrainedModelInferenceJobSummary {
   creatorAccountId: string;
 }
 export const CollaborationTrainedModelInferenceJobSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModelInferenceJobArn: S.String,
       configuredModelAlgorithmAssociationArn: S.optional(S.String),
@@ -565,15 +560,13 @@ export const CollaborationTrainedModelInferenceJobSummary =
 export type CollaborationTrainedModelInferenceJobList =
   CollaborationTrainedModelInferenceJobSummary[];
 export const CollaborationTrainedModelInferenceJobList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    CollaborationTrainedModelInferenceJobSummary,
-  );
+  /*@__PURE__*/ S.Array(CollaborationTrainedModelInferenceJobSummary);
 export interface ListCollaborationTrainedModelInferenceJobsResponse {
   nextToken?: string;
   collaborationTrainedModelInferenceJobs: CollaborationTrainedModelInferenceJobSummary[];
 }
 export const ListCollaborationTrainedModelInferenceJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       collaborationTrainedModelInferenceJobs:
@@ -588,7 +581,7 @@ export interface ListCollaborationTrainedModelsRequest {
   collaborationIdentifier: string;
 }
 export const ListCollaborationTrainedModelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -617,7 +610,7 @@ export interface IncrementalTrainingDataChannelOutput {
   modelName: string;
 }
 export const IncrementalTrainingDataChannelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channelName: S.String,
       versionIdentifier: S.optional(S.String),
@@ -629,7 +622,7 @@ export const IncrementalTrainingDataChannelOutput =
 export type IncrementalTrainingDataChannelsOutput =
   IncrementalTrainingDataChannelOutput[];
 export const IncrementalTrainingDataChannelsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IncrementalTrainingDataChannelOutput);
+  /*@__PURE__*/ S.Array(IncrementalTrainingDataChannelOutput);
 export type TrainedModelStatus =
   | "CREATE_PENDING"
   | "CREATE_IN_PROGRESS"
@@ -643,7 +636,7 @@ export type TrainedModelStatus =
   | "CANCEL_IN_PROGRESS"
   | "CANCEL_FAILED"
   | (string & {});
-export const TrainedModelStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelStatus = /*@__PURE__*/ S.String;
 export interface CollaborationTrainedModelSummary {
   createTime: Date;
   updateTime: Date;
@@ -660,7 +653,7 @@ export interface CollaborationTrainedModelSummary {
   mlModelTrainingPayerAccountId?: string;
 }
 export const CollaborationTrainedModelSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -683,13 +676,13 @@ export const CollaborationTrainedModelSummary =
   }) as any as S.Schema<CollaborationTrainedModelSummary>;
 export type CollaborationTrainedModelList = CollaborationTrainedModelSummary[];
 export const CollaborationTrainedModelList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CollaborationTrainedModelSummary);
+  /*@__PURE__*/ S.Array(CollaborationTrainedModelSummary);
 export interface ListCollaborationTrainedModelsResponse {
   nextToken?: string;
   collaborationTrainedModels: CollaborationTrainedModelSummary[];
 }
 export const ListCollaborationTrainedModelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       collaborationTrainedModels: CollaborationTrainedModelList,
@@ -700,23 +693,22 @@ export const ListCollaborationTrainedModelsResponse =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -724,16 +716,14 @@ export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: TagMap }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: TagMap })).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -751,18 +741,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -780,18 +770,18 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type AudienceSizeType = "ABSOLUTE" | "PERCENTAGE" | (string & {});
-export const AudienceSizeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AudienceSizeType = /*@__PURE__*/ S.String;
 export interface AudienceSize {
   type: AudienceSizeType;
   value: number;
 }
-export const AudienceSize = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudienceSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: AudienceSizeType, value: S.Number }),
 ).annotate({ identifier: "AudienceSize" }) as any as S.Schema<AudienceSize>;
 export interface StartAudienceExportJobRequest {
@@ -801,7 +791,7 @@ export interface StartAudienceExportJobRequest {
   description?: string;
 }
 export const StartAudienceExportJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       audienceGenerationJobArn: S.String,
@@ -822,7 +812,7 @@ export const StartAudienceExportJobRequest =
   }) as any as S.Schema<StartAudienceExportJobRequest>;
 export interface StartAudienceExportJobResponse {}
 export const StartAudienceExportJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartAudienceExportJobResponse",
   }) as any as S.Schema<StartAudienceExportJobResponse>;
 export interface ListAudienceExportJobsRequest {
@@ -831,7 +821,7 @@ export interface ListAudienceExportJobsRequest {
   audienceGenerationJobArn?: string;
 }
 export const ListAudienceExportJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -857,7 +847,7 @@ export type AudienceExportJobStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | (string & {});
-export const AudienceExportJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AudienceExportJobStatus = /*@__PURE__*/ S.String;
 export interface AudienceExportJobSummary {
   createTime: Date;
   updateTime: Date;
@@ -869,24 +859,23 @@ export interface AudienceExportJobSummary {
   statusDetails?: StatusDetails;
   outputLocation?: string;
 }
-export const AudienceExportJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      name: S.String,
-      audienceGenerationJobArn: S.String,
-      audienceSize: AudienceSize,
-      description: S.optional(S.String),
-      status: AudienceExportJobStatus,
-      statusDetails: S.optional(StatusDetails),
-      outputLocation: S.optional(S.String),
-    }),
+export const AudienceExportJobSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    name: S.String,
+    audienceGenerationJobArn: S.String,
+    audienceSize: AudienceSize,
+    description: S.optional(S.String),
+    status: AudienceExportJobStatus,
+    statusDetails: S.optional(StatusDetails),
+    outputLocation: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "AudienceExportJobSummary",
 }) as any as S.Schema<AudienceExportJobSummary>;
 export type AudienceExportJobList = AudienceExportJobSummary[];
-export const AudienceExportJobList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AudienceExportJobList = /*@__PURE__*/ S.Array(
   AudienceExportJobSummary,
 );
 export interface ListAudienceExportJobsResponse {
@@ -894,7 +883,7 @@ export interface ListAudienceExportJobsResponse {
   audienceExportJobs: AudienceExportJobSummary[];
 }
 export const ListAudienceExportJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       audienceExportJobs: AudienceExportJobList,
@@ -905,11 +894,11 @@ export const ListAudienceExportJobsResponse =
 export interface S3ConfigMap {
   s3Uri: string;
 }
-export const S3ConfigMap = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3ConfigMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Uri: S.String }),
 ).annotate({ identifier: "S3ConfigMap" }) as any as S.Schema<S3ConfigMap>;
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -919,7 +908,7 @@ export interface ProtectedQuerySQLParameters {
   parameters?: { [key: string]: string | undefined };
 }
 export const ProtectedQuerySQLParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       queryString: S.optional(S.String),
       analysisTemplateArn: S.optional(S.String),
@@ -929,9 +918,9 @@ export const ProtectedQuerySQLParameters =
     identifier: "ProtectedQuerySQLParameters",
   }) as any as S.Schema<ProtectedQuerySQLParameters>;
 export type WorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
-export const WorkerComputeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WorkerComputeType = /*@__PURE__*/ S.String;
 export type SparkProperties = { [key: string]: string | undefined };
-export const SparkProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SparkProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -939,24 +928,23 @@ export type WorkerComputeConfigurationProperties = {
   spark: { [key: string]: string | undefined };
 };
 export const WorkerComputeConfigurationProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([S.Struct({ spark: SparkProperties })]);
+  /*@__PURE__*/ S.Union([S.Struct({ spark: SparkProperties })]);
 export interface WorkerComputeConfiguration {
   type?: WorkerComputeType;
   number?: number;
   properties?: WorkerComputeConfigurationProperties;
 }
-export const WorkerComputeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(WorkerComputeType),
-      number: S.optional(S.Number),
-      properties: S.optional(WorkerComputeConfigurationProperties),
-    }),
+export const WorkerComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(WorkerComputeType),
+    number: S.optional(S.Number),
+    properties: S.optional(WorkerComputeConfigurationProperties),
+  }),
 ).annotate({
   identifier: "WorkerComputeConfiguration",
 }) as any as S.Schema<WorkerComputeConfiguration>;
 export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
-export const ComputeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ComputeConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ worker: WorkerComputeConfiguration }),
 ]);
 export interface AudienceGenerationJobDataSource {
@@ -966,7 +954,7 @@ export interface AudienceGenerationJobDataSource {
   sqlComputeConfiguration?: ComputeConfiguration;
 }
 export const AudienceGenerationJobDataSource =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataSource: S.optional(S3ConfigMap),
       roleArn: S.String,
@@ -986,7 +974,7 @@ export interface StartAudienceGenerationJobRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const StartAudienceGenerationJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       configuredAudienceModelArn: S.String,
@@ -1012,7 +1000,7 @@ export interface StartAudienceGenerationJobResponse {
   audienceGenerationJobArn: string;
 }
 export const StartAudienceGenerationJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ audienceGenerationJobArn: S.String }),
   ).annotate({
     identifier: "StartAudienceGenerationJobResponse",
@@ -1021,7 +1009,7 @@ export interface GetAudienceGenerationJobRequest {
   audienceGenerationJobArn: string;
 }
 export const GetAudienceGenerationJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audienceGenerationJobArn: S.String.pipe(
         T.HttpLabel("audienceGenerationJobArn"),
@@ -1051,29 +1039,27 @@ export type AudienceGenerationJobStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const AudienceGenerationJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AudienceGenerationJobStatus = /*@__PURE__*/ S.String;
 export interface RelevanceMetric {
   audienceSize: AudienceSize;
   score?: number;
 }
-export const RelevanceMetric = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RelevanceMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceSize: AudienceSize, score: S.optional(S.Number) }),
 ).annotate({
   identifier: "RelevanceMetric",
 }) as any as S.Schema<RelevanceMetric>;
 export type RelevanceMetrics = RelevanceMetric[];
-export const RelevanceMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RelevanceMetric);
+export const RelevanceMetrics = /*@__PURE__*/ S.Array(RelevanceMetric);
 export interface AudienceQualityMetrics {
   relevanceMetrics: RelevanceMetric[];
   recallMetric?: number;
 }
-export const AudienceQualityMetrics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      relevanceMetrics: RelevanceMetrics,
-      recallMetric: S.optional(S.Number),
-    }),
+export const AudienceQualityMetrics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relevanceMetrics: RelevanceMetrics,
+    recallMetric: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "AudienceQualityMetrics",
 }) as any as S.Schema<AudienceQualityMetrics>;
@@ -1095,7 +1081,7 @@ export interface GetAudienceGenerationJobResponse {
   protectedQueryIdentifier?: string;
 }
 export const GetAudienceGenerationJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1120,7 +1106,7 @@ export interface DeleteAudienceGenerationJobRequest {
   audienceGenerationJobArn: string;
 }
 export const DeleteAudienceGenerationJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audienceGenerationJobArn: S.String.pipe(
         T.HttpLabel("audienceGenerationJobArn"),
@@ -1143,7 +1129,7 @@ export const DeleteAudienceGenerationJobRequest =
   }) as any as S.Schema<DeleteAudienceGenerationJobRequest>;
 export interface DeleteAudienceGenerationJobResponse {}
 export const DeleteAudienceGenerationJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAudienceGenerationJobResponse",
   }) as any as S.Schema<DeleteAudienceGenerationJobResponse>;
 export interface ListAudienceGenerationJobsRequest {
@@ -1153,7 +1139,7 @@ export interface ListAudienceGenerationJobsRequest {
   collaborationId?: string;
 }
 export const ListAudienceGenerationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1188,7 +1174,7 @@ export interface AudienceGenerationJobSummary {
   startedBy?: string;
 }
 export const AudienceGenerationJobSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1204,7 +1190,7 @@ export const AudienceGenerationJobSummary =
     identifier: "AudienceGenerationJobSummary",
   }) as any as S.Schema<AudienceGenerationJobSummary>;
 export type AudienceGenerationJobList = AudienceGenerationJobSummary[];
-export const AudienceGenerationJobList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AudienceGenerationJobList = /*@__PURE__*/ S.Array(
   AudienceGenerationJobSummary,
 );
 export interface ListAudienceGenerationJobsResponse {
@@ -1212,7 +1198,7 @@ export interface ListAudienceGenerationJobsResponse {
   audienceGenerationJobs: AudienceGenerationJobSummary[];
 }
 export const ListAudienceGenerationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       audienceGenerationJobs: AudienceGenerationJobList,
@@ -1229,30 +1215,29 @@ export interface CreateAudienceModelRequest {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const CreateAudienceModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trainingDataStartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      trainingDataEndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: S.String,
-      trainingDatasetArn: S.String,
-      kmsKeyArn: S.optional(S.String),
-      tags: S.optional(TagMap),
-      description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/audience-model" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trainingDataStartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
+    trainingDataEndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: S.String,
+    trainingDatasetArn: S.String,
+    kmsKeyArn: S.optional(S.String),
+    tags: S.optional(TagMap),
+    description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/audience-model" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "CreateAudienceModelRequest",
 }) as any as S.Schema<CreateAudienceModelRequest>;
@@ -1260,7 +1245,7 @@ export interface CreateAudienceModelResponse {
   audienceModelArn: string;
 }
 export const CreateAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ audienceModelArn: S.String }),
   ).annotate({
     identifier: "CreateAudienceModelResponse",
@@ -1268,20 +1253,19 @@ export const CreateAudienceModelResponse =
 export interface GetAudienceModelRequest {
   audienceModelArn: string;
 }
-export const GetAudienceModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/audience-model/{audienceModelArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/audience-model/{audienceModelArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetAudienceModelRequest",
 }) as any as S.Schema<GetAudienceModelRequest>;
@@ -1294,7 +1278,7 @@ export type AudienceModelStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const AudienceModelStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AudienceModelStatus = /*@__PURE__*/ S.String;
 export interface GetAudienceModelResponse {
   createTime: Date;
   updateTime: Date;
@@ -1309,73 +1293,70 @@ export interface GetAudienceModelResponse {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const GetAudienceModelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      trainingDataStartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      trainingDataEndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      audienceModelArn: S.String,
-      name: S.String,
-      trainingDatasetArn: S.String,
-      status: AudienceModelStatus,
-      statusDetails: S.optional(StatusDetails),
-      kmsKeyArn: S.optional(S.String),
-      tags: S.optional(TagMap),
-      description: S.optional(S.String),
-    }),
+export const GetAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    trainingDataStartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    trainingDataEndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    audienceModelArn: S.String,
+    name: S.String,
+    trainingDatasetArn: S.String,
+    status: AudienceModelStatus,
+    statusDetails: S.optional(StatusDetails),
+    kmsKeyArn: S.optional(S.String),
+    tags: S.optional(TagMap),
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetAudienceModelResponse",
 }) as any as S.Schema<GetAudienceModelResponse>;
 export interface DeleteAudienceModelRequest {
   audienceModelArn: string;
 }
-export const DeleteAudienceModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/audience-model/{audienceModelArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/audience-model/{audienceModelArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteAudienceModelRequest",
 }) as any as S.Schema<DeleteAudienceModelRequest>;
 export interface DeleteAudienceModelResponse {}
 export const DeleteAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAudienceModelResponse",
   }) as any as S.Schema<DeleteAudienceModelResponse>;
 export interface ListAudienceModelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAudienceModelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/audience-model" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAudienceModelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/audience-model" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListAudienceModelsRequest",
 }) as any as S.Schema<ListAudienceModelsRequest>;
@@ -1388,7 +1369,7 @@ export interface AudienceModelSummary {
   status: AudienceModelStatus;
   description?: string;
 }
-export const AudienceModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1402,25 +1383,23 @@ export const AudienceModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AudienceModelSummary",
 }) as any as S.Schema<AudienceModelSummary>;
 export type AudienceModelList = AudienceModelSummary[];
-export const AudienceModelList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudienceModelSummary);
+export const AudienceModelList = /*@__PURE__*/ S.Array(AudienceModelSummary);
 export interface ListAudienceModelsResponse {
   nextToken?: string;
   audienceModels: AudienceModelSummary[];
 }
-export const ListAudienceModelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      audienceModels: AudienceModelList,
-    }),
+export const ListAudienceModelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    audienceModels: AudienceModelList,
+  }),
 ).annotate({
   identifier: "ListAudienceModelsResponse",
 }) as any as S.Schema<ListAudienceModelsResponse>;
 export interface AudienceDestination {
   s3Destination: S3ConfigMap;
 }
-export const AudienceDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudienceDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Destination: S3ConfigMap }),
 ).annotate({
   identifier: "AudienceDestination",
@@ -1430,24 +1409,22 @@ export interface ConfiguredAudienceModelOutputConfig {
   roleArn: string;
 }
 export const ConfiguredAudienceModelOutputConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ destination: AudienceDestination, roleArn: S.String }),
   ).annotate({
     identifier: "ConfiguredAudienceModelOutputConfig",
   }) as any as S.Schema<ConfiguredAudienceModelOutputConfig>;
 export type SharedAudienceMetrics = "ALL" | "NONE" | (string & {});
-export const SharedAudienceMetrics = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SharedAudienceMetrics = /*@__PURE__*/ S.String;
 export type MetricsList = SharedAudienceMetrics[];
-export const MetricsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  SharedAudienceMetrics,
-);
+export const MetricsList = /*@__PURE__*/ S.Array(SharedAudienceMetrics);
 export type AudienceSizeBins = number[];
-export const AudienceSizeBins = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const AudienceSizeBins = /*@__PURE__*/ S.Array(S.Number);
 export interface AudienceSizeConfig {
   audienceSizeType: AudienceSizeType;
   audienceSizeBins: number[];
 }
-export const AudienceSizeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudienceSizeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceSizeType: AudienceSizeType,
     audienceSizeBins: AudienceSizeBins,
@@ -1456,7 +1433,7 @@ export const AudienceSizeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AudienceSizeConfig",
 }) as any as S.Schema<AudienceSizeConfig>;
 export type TagOnCreatePolicy = "FROM_PARENT_RESOURCE" | "NONE" | (string & {});
-export const TagOnCreatePolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TagOnCreatePolicy = /*@__PURE__*/ S.String;
 export interface CreateConfiguredAudienceModelRequest {
   name: string;
   audienceModelArn: string;
@@ -1469,7 +1446,7 @@ export interface CreateConfiguredAudienceModelRequest {
   childResourceTagOnCreatePolicy?: TagOnCreatePolicy;
 }
 export const CreateConfiguredAudienceModelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       audienceModelArn: S.String,
@@ -1497,7 +1474,7 @@ export interface CreateConfiguredAudienceModelResponse {
   configuredAudienceModelArn: string;
 }
 export const CreateConfiguredAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuredAudienceModelArn: S.String }),
   ).annotate({
     identifier: "CreateConfiguredAudienceModelResponse",
@@ -1506,7 +1483,7 @@ export interface GetConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
 }
 export const GetConfiguredAudienceModelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1528,8 +1505,7 @@ export const GetConfiguredAudienceModelRequest =
     identifier: "GetConfiguredAudienceModelRequest",
   }) as any as S.Schema<GetConfiguredAudienceModelRequest>;
 export type ConfiguredAudienceModelStatus = "ACTIVE" | (string & {});
-export const ConfiguredAudienceModelStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfiguredAudienceModelStatus = /*@__PURE__*/ S.String;
 export interface GetConfiguredAudienceModelResponse {
   createTime: Date;
   updateTime: Date;
@@ -1546,7 +1522,7 @@ export interface GetConfiguredAudienceModelResponse {
   childResourceTagOnCreatePolicy?: TagOnCreatePolicy;
 }
 export const GetConfiguredAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1575,7 +1551,7 @@ export interface UpdateConfiguredAudienceModelRequest {
   description?: string;
 }
 export const UpdateConfiguredAudienceModelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1606,7 +1582,7 @@ export interface UpdateConfiguredAudienceModelResponse {
   configuredAudienceModelArn: string;
 }
 export const UpdateConfiguredAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuredAudienceModelArn: S.String }),
   ).annotate({
     identifier: "UpdateConfiguredAudienceModelResponse",
@@ -1615,7 +1591,7 @@ export interface DeleteConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
 }
 export const DeleteConfiguredAudienceModelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1638,7 +1614,7 @@ export const DeleteConfiguredAudienceModelRequest =
   }) as any as S.Schema<DeleteConfiguredAudienceModelRequest>;
 export interface DeleteConfiguredAudienceModelResponse {}
 export const DeleteConfiguredAudienceModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConfiguredAudienceModelResponse",
   }) as any as S.Schema<DeleteConfiguredAudienceModelResponse>;
 export interface ListConfiguredAudienceModelsRequest {
@@ -1646,7 +1622,7 @@ export interface ListConfiguredAudienceModelsRequest {
   maxResults?: number;
 }
 export const ListConfiguredAudienceModelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1674,7 +1650,7 @@ export interface ConfiguredAudienceModelSummary {
   status: ConfiguredAudienceModelStatus;
 }
 export const ConfiguredAudienceModelSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1689,7 +1665,7 @@ export const ConfiguredAudienceModelSummary =
     identifier: "ConfiguredAudienceModelSummary",
   }) as any as S.Schema<ConfiguredAudienceModelSummary>;
 export type ConfiguredAudienceModelList = ConfiguredAudienceModelSummary[];
-export const ConfiguredAudienceModelList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ConfiguredAudienceModelList = /*@__PURE__*/ S.Array(
   ConfiguredAudienceModelSummary,
 );
 export interface ListConfiguredAudienceModelsResponse {
@@ -1697,7 +1673,7 @@ export interface ListConfiguredAudienceModelsResponse {
   configuredAudienceModels: ConfiguredAudienceModelSummary[];
 }
 export const ListConfiguredAudienceModelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       configuredAudienceModels: ConfiguredAudienceModelList,
@@ -1709,7 +1685,7 @@ export type PolicyExistenceCondition =
   | "POLICY_MUST_EXIST"
   | "POLICY_MUST_NOT_EXIST"
   | (string & {});
-export const PolicyExistenceCondition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PolicyExistenceCondition = /*@__PURE__*/ S.String;
 export interface PutConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
   configuredAudienceModelPolicy: string;
@@ -1717,7 +1693,7 @@ export interface PutConfiguredAudienceModelPolicyRequest {
   policyExistenceCondition?: PolicyExistenceCondition;
 }
 export const PutConfiguredAudienceModelPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1746,7 +1722,7 @@ export interface PutConfiguredAudienceModelPolicyResponse {
   policyHash: string;
 }
 export const PutConfiguredAudienceModelPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuredAudienceModelPolicy: S.String, policyHash: S.String }),
   ).annotate({
     identifier: "PutConfiguredAudienceModelPolicyResponse",
@@ -1755,7 +1731,7 @@ export interface GetConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
 }
 export const GetConfiguredAudienceModelPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1782,7 +1758,7 @@ export interface GetConfiguredAudienceModelPolicyResponse {
   policyHash: string;
 }
 export const GetConfiguredAudienceModelPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String,
       configuredAudienceModelPolicy: S.String,
@@ -1795,7 +1771,7 @@ export interface DeleteConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
 }
 export const DeleteConfiguredAudienceModelPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredAudienceModelArn: S.String.pipe(
         T.HttpLabel("configuredAudienceModelArn"),
@@ -1818,34 +1794,31 @@ export const DeleteConfiguredAudienceModelPolicyRequest =
   }) as any as S.Schema<DeleteConfiguredAudienceModelPolicyRequest>;
 export interface DeleteConfiguredAudienceModelPolicyResponse {}
 export const DeleteConfiguredAudienceModelPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConfiguredAudienceModelPolicyResponse",
   }) as any as S.Schema<DeleteConfiguredAudienceModelPolicyResponse>;
 export type ContainerEntrypoint = string[];
-export const ContainerEntrypoint = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
 export type ContainerArguments = string[];
-export const ContainerArguments = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ContainerArguments = /*@__PURE__*/ S.Array(S.String);
 export interface MetricDefinition {
   name: string;
   regex: string;
 }
-export const MetricDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, regex: S.String }),
 ).annotate({
   identifier: "MetricDefinition",
 }) as any as S.Schema<MetricDefinition>;
 export type MetricDefinitionList = MetricDefinition[];
-export const MetricDefinitionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetricDefinition);
+export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
 export interface ContainerConfig {
   imageUri: string;
   entrypoint?: string[];
   arguments?: string[];
   metricDefinitions?: MetricDefinition[];
 }
-export const ContainerConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContainerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUri: S.String,
     entrypoint: S.optional(ContainerEntrypoint),
@@ -1858,8 +1831,8 @@ export const ContainerConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface InferenceContainerConfig {
   imageUri: string;
 }
-export const InferenceContainerConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ imageUri: S.String }),
+export const InferenceContainerConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ imageUri: S.String }),
 ).annotate({
   identifier: "InferenceContainerConfig",
 }) as any as S.Schema<InferenceContainerConfig>;
@@ -1873,7 +1846,7 @@ export interface CreateConfiguredModelAlgorithmRequest {
   kmsKeyArn?: string;
 }
 export const CreateConfiguredModelAlgorithmRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       description: S.optional(S.String),
@@ -1899,7 +1872,7 @@ export interface CreateConfiguredModelAlgorithmResponse {
   configuredModelAlgorithmArn: string;
 }
 export const CreateConfiguredModelAlgorithmResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuredModelAlgorithmArn: S.String }),
   ).annotate({
     identifier: "CreateConfiguredModelAlgorithmResponse",
@@ -1908,7 +1881,7 @@ export interface GetConfiguredModelAlgorithmRequest {
   configuredModelAlgorithmArn: string;
 }
 export const GetConfiguredModelAlgorithmRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredModelAlgorithmArn: S.String.pipe(
         T.HttpLabel("configuredModelAlgorithmArn"),
@@ -1942,7 +1915,7 @@ export interface GetConfiguredModelAlgorithmResponse {
   kmsKeyArn?: string;
 }
 export const GetConfiguredModelAlgorithmResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1962,7 +1935,7 @@ export interface DeleteConfiguredModelAlgorithmRequest {
   configuredModelAlgorithmArn: string;
 }
 export const DeleteConfiguredModelAlgorithmRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredModelAlgorithmArn: S.String.pipe(
         T.HttpLabel("configuredModelAlgorithmArn"),
@@ -1985,7 +1958,7 @@ export const DeleteConfiguredModelAlgorithmRequest =
   }) as any as S.Schema<DeleteConfiguredModelAlgorithmRequest>;
 export interface DeleteConfiguredModelAlgorithmResponse {}
 export const DeleteConfiguredModelAlgorithmResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConfiguredModelAlgorithmResponse",
   }) as any as S.Schema<DeleteConfiguredModelAlgorithmResponse>;
 export interface ListConfiguredModelAlgorithmsRequest {
@@ -1993,7 +1966,7 @@ export interface ListConfiguredModelAlgorithmsRequest {
   maxResults?: number;
 }
 export const ListConfiguredModelAlgorithmsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2018,7 +1991,7 @@ export interface ConfiguredModelAlgorithmSummary {
   description?: string;
 }
 export const ConfiguredModelAlgorithmSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2030,7 +2003,7 @@ export const ConfiguredModelAlgorithmSummary =
     identifier: "ConfiguredModelAlgorithmSummary",
   }) as any as S.Schema<ConfiguredModelAlgorithmSummary>;
 export type ConfiguredModelAlgorithmList = ConfiguredModelAlgorithmSummary[];
-export const ConfiguredModelAlgorithmList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ConfiguredModelAlgorithmList = /*@__PURE__*/ S.Array(
   ConfiguredModelAlgorithmSummary,
 );
 export interface ListConfiguredModelAlgorithmsResponse {
@@ -2038,7 +2011,7 @@ export interface ListConfiguredModelAlgorithmsResponse {
   configuredModelAlgorithms: ConfiguredModelAlgorithmSummary[];
 }
 export const ListConfiguredModelAlgorithmsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       configuredModelAlgorithms: ConfiguredModelAlgorithmList,
@@ -2047,25 +2020,23 @@ export const ListConfiguredModelAlgorithmsResponse =
     identifier: "ListConfiguredModelAlgorithmsResponse",
   }) as any as S.Schema<ListConfiguredModelAlgorithmsResponse>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type LogType = "ALL" | "ERROR_SUMMARY" | (string & {});
-export const LogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogType = /*@__PURE__*/ S.String;
 export type EntityType =
   | "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"
   | "NUMBERS"
   | "CUSTOM"
   | (string & {});
-export const EntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntityType = /*@__PURE__*/ S.String;
 export type EntityTypeList = EntityType[];
-export const EntityTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(EntityType);
+export const EntityTypeList = /*@__PURE__*/ S.Array(EntityType);
 export type CustomDataIdentifierList = string[];
-export const CustomDataIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const CustomDataIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface CustomEntityConfig {
   customDataIdentifiers: string[];
 }
-export const CustomEntityConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CustomEntityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customDataIdentifiers: CustomDataIdentifierList }),
 ).annotate({
   identifier: "CustomEntityConfig",
@@ -2074,12 +2045,11 @@ export interface LogRedactionConfiguration {
   entitiesToRedact: EntityType[];
   customEntityConfig?: CustomEntityConfig;
 }
-export const LogRedactionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entitiesToRedact: EntityTypeList,
-      customEntityConfig: S.optional(CustomEntityConfig),
-    }),
+export const LogRedactionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entitiesToRedact: EntityTypeList,
+    customEntityConfig: S.optional(CustomEntityConfig),
+  }),
 ).annotate({
   identifier: "LogRedactionConfiguration",
 }) as any as S.Schema<LogRedactionConfiguration>;
@@ -2089,40 +2059,38 @@ export interface LogsConfigurationPolicy {
   logType?: LogType;
   logRedactionConfiguration?: LogRedactionConfiguration;
 }
-export const LogsConfigurationPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowedAccountIds: AccountIdList,
-      filterPattern: S.optional(S.String),
-      logType: S.optional(LogType),
-      logRedactionConfiguration: S.optional(LogRedactionConfiguration),
-    }),
+export const LogsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedAccountIds: AccountIdList,
+    filterPattern: S.optional(S.String),
+    logType: S.optional(LogType),
+    logRedactionConfiguration: S.optional(LogRedactionConfiguration),
+  }),
 ).annotate({
   identifier: "LogsConfigurationPolicy",
 }) as any as S.Schema<LogsConfigurationPolicy>;
 export type LogsConfigurationPolicyList = LogsConfigurationPolicy[];
-export const LogsConfigurationPolicyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const LogsConfigurationPolicyList = /*@__PURE__*/ S.Array(
   LogsConfigurationPolicy,
 );
 export type NoiseLevelType = "HIGH" | "MEDIUM" | "LOW" | "NONE" | (string & {});
-export const NoiseLevelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NoiseLevelType = /*@__PURE__*/ S.String;
 export interface MetricsConfigurationPolicy {
   noiseLevel: NoiseLevelType;
 }
-export const MetricsConfigurationPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ noiseLevel: NoiseLevelType }),
+export const MetricsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ noiseLevel: NoiseLevelType }),
 ).annotate({
   identifier: "MetricsConfigurationPolicy",
 }) as any as S.Schema<MetricsConfigurationPolicy>;
 export type TrainedModelArtifactMaxSizeUnitType = "GB" | (string & {});
-export const TrainedModelArtifactMaxSizeUnitType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelArtifactMaxSizeUnitType = /*@__PURE__*/ S.String;
 export interface TrainedModelArtifactMaxSize {
   unit: TrainedModelArtifactMaxSizeUnitType;
   value: number;
 }
 export const TrainedModelArtifactMaxSize =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ unit: TrainedModelArtifactMaxSizeUnitType, value: S.Number }),
   ).annotate({
     identifier: "TrainedModelArtifactMaxSize",
@@ -2133,7 +2101,7 @@ export interface TrainedModelsConfigurationPolicy {
   maxArtifactSize?: TrainedModelArtifactMaxSize;
 }
 export const TrainedModelsConfigurationPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       containerLogs: S.optional(LogsConfigurationPolicyList),
       containerMetrics: S.optional(MetricsConfigurationPolicy),
@@ -2143,28 +2111,27 @@ export const TrainedModelsConfigurationPolicy =
     identifier: "TrainedModelsConfigurationPolicy",
   }) as any as S.Schema<TrainedModelsConfigurationPolicy>;
 export type TrainedModelExportsMaxSizeUnitType = "GB" | (string & {});
-export const TrainedModelExportsMaxSizeUnitType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelExportsMaxSizeUnitType = /*@__PURE__*/ S.String;
 export interface TrainedModelExportsMaxSize {
   unit: TrainedModelExportsMaxSizeUnitType;
   value: number;
 }
-export const TrainedModelExportsMaxSize = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ unit: TrainedModelExportsMaxSizeUnitType, value: S.Number }),
+export const TrainedModelExportsMaxSize = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ unit: TrainedModelExportsMaxSizeUnitType, value: S.Number }),
 ).annotate({
   identifier: "TrainedModelExportsMaxSize",
 }) as any as S.Schema<TrainedModelExportsMaxSize>;
 export type TrainedModelExportFileType = "MODEL" | "OUTPUT" | (string & {});
-export const TrainedModelExportFileType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainedModelExportFileType = /*@__PURE__*/ S.String;
 export type TrainedModelExportFileTypeList = TrainedModelExportFileType[];
 export const TrainedModelExportFileTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TrainedModelExportFileType);
+  /*@__PURE__*/ S.Array(TrainedModelExportFileType);
 export interface TrainedModelExportsConfigurationPolicy {
   maxSize: TrainedModelExportsMaxSize;
   filesToExport: TrainedModelExportFileType[];
 }
 export const TrainedModelExportsConfigurationPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxSize: TrainedModelExportsMaxSize,
       filesToExport: TrainedModelExportFileTypeList,
@@ -2174,13 +2141,13 @@ export const TrainedModelExportsConfigurationPolicy =
   }) as any as S.Schema<TrainedModelExportsConfigurationPolicy>;
 export type TrainedModelInferenceMaxOutputSizeUnitType = "GB" | (string & {});
 export const TrainedModelInferenceMaxOutputSizeUnitType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+  /*@__PURE__*/ S.String;
 export interface TrainedModelInferenceMaxOutputSize {
   unit: TrainedModelInferenceMaxOutputSizeUnitType;
   value: number;
 }
 export const TrainedModelInferenceMaxOutputSize =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       unit: TrainedModelInferenceMaxOutputSizeUnitType,
       value: S.Number,
@@ -2193,7 +2160,7 @@ export interface TrainedModelInferenceJobsConfigurationPolicy {
   maxOutputSize?: TrainedModelInferenceMaxOutputSize;
 }
 export const TrainedModelInferenceJobsConfigurationPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       containerLogs: S.optional(LogsConfigurationPolicyList),
       maxOutputSize: S.optional(TrainedModelInferenceMaxOutputSize),
@@ -2207,7 +2174,7 @@ export interface PrivacyConfigurationPolicies {
   trainedModelInferenceJobs?: TrainedModelInferenceJobsConfigurationPolicy;
 }
 export const PrivacyConfigurationPolicies =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModels: S.optional(TrainedModelsConfigurationPolicy),
       trainedModelExports: S.optional(TrainedModelExportsConfigurationPolicy),
@@ -2221,7 +2188,7 @@ export const PrivacyConfigurationPolicies =
 export interface PrivacyConfiguration {
   policies: PrivacyConfigurationPolicies;
 }
-export const PrivacyConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PrivacyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policies: PrivacyConfigurationPolicies }),
 ).annotate({
   identifier: "PrivacyConfiguration",
@@ -2235,7 +2202,7 @@ export interface CreateConfiguredModelAlgorithmAssociationRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateConfiguredModelAlgorithmAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
       configuredModelAlgorithmArn: S.String,
@@ -2263,7 +2230,7 @@ export interface CreateConfiguredModelAlgorithmAssociationResponse {
   configuredModelAlgorithmAssociationArn: string;
 }
 export const CreateConfiguredModelAlgorithmAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuredModelAlgorithmAssociationArn: S.String }),
   ).annotate({
     identifier: "CreateConfiguredModelAlgorithmAssociationResponse",
@@ -2273,7 +2240,7 @@ export interface GetConfiguredModelAlgorithmAssociationRequest {
   membershipIdentifier: string;
 }
 export const GetConfiguredModelAlgorithmAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredModelAlgorithmAssociationArn: S.String.pipe(
         T.HttpLabel("configuredModelAlgorithmAssociationArn"),
@@ -2308,7 +2275,7 @@ export interface GetConfiguredModelAlgorithmAssociationResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const GetConfiguredModelAlgorithmAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2329,7 +2296,7 @@ export interface DeleteConfiguredModelAlgorithmAssociationRequest {
   membershipIdentifier: string;
 }
 export const DeleteConfiguredModelAlgorithmAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredModelAlgorithmAssociationArn: S.String.pipe(
         T.HttpLabel("configuredModelAlgorithmAssociationArn"),
@@ -2353,7 +2320,7 @@ export const DeleteConfiguredModelAlgorithmAssociationRequest =
   }) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationRequest>;
 export interface DeleteConfiguredModelAlgorithmAssociationResponse {}
 export const DeleteConfiguredModelAlgorithmAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConfiguredModelAlgorithmAssociationResponse",
   }) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationResponse>;
 export interface ListConfiguredModelAlgorithmAssociationsRequest {
@@ -2362,7 +2329,7 @@ export interface ListConfiguredModelAlgorithmAssociationsRequest {
   membershipIdentifier: string;
 }
 export const ListConfiguredModelAlgorithmAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2394,7 +2361,7 @@ export interface ConfiguredModelAlgorithmAssociationSummary {
   collaborationIdentifier: string;
 }
 export const ConfiguredModelAlgorithmAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2411,15 +2378,13 @@ export const ConfiguredModelAlgorithmAssociationSummary =
 export type ConfiguredModelAlgorithmAssociationList =
   ConfiguredModelAlgorithmAssociationSummary[];
 export const ConfiguredModelAlgorithmAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ConfiguredModelAlgorithmAssociationSummary,
-  );
+  /*@__PURE__*/ S.Array(ConfiguredModelAlgorithmAssociationSummary);
 export interface ListConfiguredModelAlgorithmAssociationsResponse {
   nextToken?: string;
   configuredModelAlgorithmAssociations: ConfiguredModelAlgorithmAssociationSummary[];
 }
 export const ListConfiguredModelAlgorithmAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       configuredModelAlgorithmAssociations:
@@ -2433,7 +2398,7 @@ export interface GetCollaborationConfiguredModelAlgorithmAssociationRequest {
   collaborationIdentifier: string;
 }
 export const GetCollaborationConfiguredModelAlgorithmAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configuredModelAlgorithmAssociationArn: S.String.pipe(
         T.HttpLabel("configuredModelAlgorithmAssociationArn"),
@@ -2470,7 +2435,7 @@ export interface GetCollaborationConfiguredModelAlgorithmAssociationResponse {
   privacyConfiguration?: PrivacyConfiguration;
 }
 export const GetCollaborationConfiguredModelAlgorithmAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2489,14 +2454,14 @@ export const GetCollaborationConfiguredModelAlgorithmAssociationResponse =
 export interface Destination {
   s3Destination: S3ConfigMap;
 }
-export const Destination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Destination: S3ConfigMap }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 export interface MLOutputConfiguration {
   destination?: Destination;
   roleArn: string;
 }
-export const MLOutputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MLOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ destination: S.optional(Destination), roleArn: S.String }),
 ).annotate({
   identifier: "MLOutputConfiguration",
@@ -2505,53 +2470,51 @@ export interface PutMLConfigurationRequest {
   membershipIdentifier: string;
   defaultOutputLocation: MLOutputConfiguration;
 }
-export const PutMLConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-      defaultOutputLocation: MLOutputConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/memberships/{membershipIdentifier}/ml-configurations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+    defaultOutputLocation: MLOutputConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/memberships/{membershipIdentifier}/ml-configurations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutMLConfigurationRequest",
 }) as any as S.Schema<PutMLConfigurationRequest>;
 export interface PutMLConfigurationResponse {}
-export const PutMLConfigurationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutMLConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutMLConfigurationResponse",
 }) as any as S.Schema<PutMLConfigurationResponse>;
 export interface GetMLConfigurationRequest {
   membershipIdentifier: string;
 }
-export const GetMLConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/memberships/{membershipIdentifier}/ml-configurations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/memberships/{membershipIdentifier}/ml-configurations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetMLConfigurationRequest",
 }) as any as S.Schema<GetMLConfigurationRequest>;
@@ -2561,14 +2524,13 @@ export interface GetMLConfigurationResponse {
   createTime: Date;
   updateTime: Date;
 }
-export const GetMLConfigurationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String,
-      defaultOutputLocation: MLOutputConfiguration,
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
+export const GetMLConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String,
+    defaultOutputLocation: MLOutputConfiguration,
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
 ).annotate({
   identifier: "GetMLConfigurationResponse",
 }) as any as S.Schema<GetMLConfigurationResponse>;
@@ -2576,7 +2538,7 @@ export interface DeleteMLConfigurationRequest {
   membershipIdentifier: string;
 }
 export const DeleteMLConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     }).pipe(
@@ -2597,18 +2559,18 @@ export const DeleteMLConfigurationRequest =
   }) as any as S.Schema<DeleteMLConfigurationRequest>;
 export interface DeleteMLConfigurationResponse {}
 export const DeleteMLConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteMLConfigurationResponse",
   }) as any as S.Schema<DeleteMLConfigurationResponse>;
 export type ResultFormat = "CSV" | "PARQUET" | (string & {});
-export const ResultFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResultFormat = /*@__PURE__*/ S.String;
 export interface ProtectedQueryInputParameters {
   sqlParameters: ProtectedQuerySQLParameters;
   computeConfiguration?: ComputeConfiguration;
   resultFormat?: ResultFormat;
 }
 export const ProtectedQueryInputParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sqlParameters: ProtectedQuerySQLParameters,
       computeConfiguration: S.optional(ComputeConfiguration),
@@ -2620,14 +2582,14 @@ export const ProtectedQueryInputParameters =
 export type InputChannelDataSource = {
   protectedQueryInputParameters: ProtectedQueryInputParameters;
 };
-export const InputChannelDataSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const InputChannelDataSource = /*@__PURE__*/ S.Union([
   S.Struct({ protectedQueryInputParameters: ProtectedQueryInputParameters }),
 ]);
 export interface InputChannel {
   dataSource: InputChannelDataSource;
   roleArn: string;
 }
-export const InputChannel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InputChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSource: InputChannelDataSource, roleArn: S.String }),
 ).annotate({ identifier: "InputChannel" }) as any as S.Schema<InputChannel>;
 export interface CreateMLInputChannelRequest {
@@ -2642,7 +2604,7 @@ export interface CreateMLInputChannelRequest {
   payerConfiguration?: PayerConfiguration;
 }
 export const CreateMLInputChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
       configuredModelAlgorithmAssociations:
@@ -2674,7 +2636,7 @@ export interface CreateMLInputChannelResponse {
   mlInputChannelArn: string;
 }
 export const CreateMLInputChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ mlInputChannelArn: S.String }),
   ).annotate({
     identifier: "CreateMLInputChannelResponse",
@@ -2683,24 +2645,23 @@ export interface GetMLInputChannelRequest {
   mlInputChannelArn: string;
   membershipIdentifier: string;
 }
-export const GetMLInputChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/memberships/{membershipIdentifier}/ml-input-channels/{mlInputChannelArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/memberships/{membershipIdentifier}/ml-input-channels/{mlInputChannelArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetMLInputChannelRequest",
 }) as any as S.Schema<GetMLInputChannelRequest>;
@@ -2710,9 +2671,9 @@ export type AccessBudgetType =
   | "CALENDAR_WEEK"
   | "LIFETIME"
   | (string & {});
-export const AccessBudgetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessBudgetType = /*@__PURE__*/ S.String;
 export type AutoRefreshMode = "ENABLED" | "DISABLED" | (string & {});
-export const AutoRefreshMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AutoRefreshMode = /*@__PURE__*/ S.String;
 export interface AccessBudgetDetails {
   startTime: Date;
   endTime?: Date;
@@ -2721,7 +2682,7 @@ export interface AccessBudgetDetails {
   budgetType: AccessBudgetType;
   autoRefresh?: AutoRefreshMode;
 }
-export const AccessBudgetDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccessBudgetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -2735,13 +2696,13 @@ export const AccessBudgetDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessBudgetDetails>;
 export type AccessBudgetDetailsList = AccessBudgetDetails[];
 export const AccessBudgetDetailsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AccessBudgetDetails);
+  /*@__PURE__*/ S.Array(AccessBudgetDetails);
 export interface AccessBudget {
   resourceArn: string;
   details: AccessBudgetDetails[];
   aggregateRemainingBudget: number;
 }
-export const AccessBudget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccessBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String,
     details: AccessBudgetDetailsList,
@@ -2749,23 +2710,23 @@ export const AccessBudget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessBudget" }) as any as S.Schema<AccessBudget>;
 export type AccessBudgets = AccessBudget[];
-export const AccessBudgets = /*@__PURE__*/ /*#__PURE__*/ S.Array(AccessBudget);
+export const AccessBudgets = /*@__PURE__*/ S.Array(AccessBudget);
 export type PrivacyBudgets = { accessBudgets: AccessBudget[] };
-export const PrivacyBudgets = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PrivacyBudgets = /*@__PURE__*/ S.Union([
   S.Struct({ accessBudgets: AccessBudgets }),
 ]);
 export type SyntheticDataColumnType =
   | "CATEGORICAL"
   | "NUMERICAL"
   | (string & {});
-export const SyntheticDataColumnType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SyntheticDataColumnType = /*@__PURE__*/ S.String;
 export interface SyntheticDataColumnProperties {
   columnName: string;
   columnType: SyntheticDataColumnType;
   isPredictiveValue: boolean;
 }
 export const SyntheticDataColumnProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       columnName: S.String,
       columnType: SyntheticDataColumnType,
@@ -2775,14 +2736,14 @@ export const SyntheticDataColumnProperties =
     identifier: "SyntheticDataColumnProperties",
   }) as any as S.Schema<SyntheticDataColumnProperties>;
 export type ColumnMappingList = SyntheticDataColumnProperties[];
-export const ColumnMappingList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ColumnMappingList = /*@__PURE__*/ S.Array(
   SyntheticDataColumnProperties,
 );
 export interface ColumnClassificationDetails {
   columnMapping: SyntheticDataColumnProperties[];
 }
 export const ColumnClassificationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ columnMapping: ColumnMappingList }),
   ).annotate({
     identifier: "ColumnClassificationDetails",
@@ -2792,27 +2753,25 @@ export interface MLSyntheticDataParameters {
   maxMembershipInferenceAttackScore: number;
   columnClassification?: ColumnClassificationDetails;
 }
-export const MLSyntheticDataParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      epsilon: S.Number,
-      maxMembershipInferenceAttackScore: S.Number,
-      columnClassification: S.optional(ColumnClassificationDetails),
-    }),
+export const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    epsilon: S.Number,
+    maxMembershipInferenceAttackScore: S.Number,
+    columnClassification: S.optional(ColumnClassificationDetails),
+  }),
 ).annotate({
   identifier: "MLSyntheticDataParameters",
 }) as any as S.Schema<MLSyntheticDataParameters>;
 export type MembershipInferenceAttackVersion =
   | "DISTANCE_TO_CLOSEST_RECORD_V1"
   | (string & {});
-export const MembershipInferenceAttackVersion =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MembershipInferenceAttackVersion = /*@__PURE__*/ S.String;
 export interface MembershipInferenceAttackScore {
   attackVersion: MembershipInferenceAttackVersion;
   score: number;
 }
 export const MembershipInferenceAttackScore =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attackVersion: MembershipInferenceAttackVersion,
       score: S.Number,
@@ -2823,11 +2782,11 @@ export const MembershipInferenceAttackScore =
 export type MembershipInferenceAttackScoreList =
   MembershipInferenceAttackScore[];
 export const MembershipInferenceAttackScoreList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MembershipInferenceAttackScore);
+  /*@__PURE__*/ S.Array(MembershipInferenceAttackScore);
 export interface DataPrivacyScores {
   membershipInferenceAttackScores: MembershipInferenceAttackScore[];
 }
-export const DataPrivacyScores = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataPrivacyScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipInferenceAttackScores: MembershipInferenceAttackScoreList,
   }),
@@ -2838,7 +2797,7 @@ export interface SyntheticDataEvaluationScores {
   dataPrivacyScores: DataPrivacyScores;
 }
 export const SyntheticDataEvaluationScores =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dataPrivacyScores: DataPrivacyScores }),
   ).annotate({
     identifier: "SyntheticDataEvaluationScores",
@@ -2847,12 +2806,11 @@ export interface SyntheticDataConfiguration {
   syntheticDataParameters: MLSyntheticDataParameters;
   syntheticDataEvaluationScores?: SyntheticDataEvaluationScores;
 }
-export const SyntheticDataConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      syntheticDataParameters: MLSyntheticDataParameters,
-      syntheticDataEvaluationScores: S.optional(SyntheticDataEvaluationScores),
-    }),
+export const SyntheticDataConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    syntheticDataParameters: MLSyntheticDataParameters,
+    syntheticDataEvaluationScores: S.optional(SyntheticDataEvaluationScores),
+  }),
 ).annotate({
   identifier: "SyntheticDataConfiguration",
 }) as any as S.Schema<SyntheticDataConfiguration>;
@@ -2879,32 +2837,31 @@ export interface GetMLInputChannelResponse {
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMLInputChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String,
-      collaborationIdentifier: S.String,
-      mlInputChannelArn: S.String,
-      name: S.String,
-      configuredModelAlgorithmAssociations:
-        ConfiguredModelAlgorithmAssociationArnList,
-      status: MLInputChannelStatus,
-      statusDetails: S.optional(StatusDetails),
-      retentionInDays: S.Number,
-      numberOfRecords: S.optional(S.Number),
-      privacyBudgets: S.optional(PrivacyBudgets),
-      description: S.optional(S.String),
-      syntheticDataConfiguration: S.optional(SyntheticDataConfiguration),
-      payerConfiguration: S.optional(PayerConfiguration),
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      inputChannel: InputChannel,
-      protectedQueryIdentifier: S.optional(S.String),
-      numberOfFiles: S.optional(S.Number),
-      sizeInGb: S.optional(S.Number),
-      kmsKeyArn: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }),
+export const GetMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String,
+    collaborationIdentifier: S.String,
+    mlInputChannelArn: S.String,
+    name: S.String,
+    configuredModelAlgorithmAssociations:
+      ConfiguredModelAlgorithmAssociationArnList,
+    status: MLInputChannelStatus,
+    statusDetails: S.optional(StatusDetails),
+    retentionInDays: S.Number,
+    numberOfRecords: S.optional(S.Number),
+    privacyBudgets: S.optional(PrivacyBudgets),
+    description: S.optional(S.String),
+    syntheticDataConfiguration: S.optional(SyntheticDataConfiguration),
+    payerConfiguration: S.optional(PayerConfiguration),
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    inputChannel: InputChannel,
+    protectedQueryIdentifier: S.optional(S.String),
+    numberOfFiles: S.optional(S.Number),
+    sizeInGb: S.optional(S.Number),
+    kmsKeyArn: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "GetMLInputChannelResponse",
 }) as any as S.Schema<GetMLInputChannelResponse>;
@@ -2913,7 +2870,7 @@ export interface DeleteMLInputChannelDataRequest {
   membershipIdentifier: string;
 }
 export const DeleteMLInputChannelDataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -2935,7 +2892,7 @@ export const DeleteMLInputChannelDataRequest =
   }) as any as S.Schema<DeleteMLInputChannelDataRequest>;
 export interface DeleteMLInputChannelDataResponse {}
 export const DeleteMLInputChannelDataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteMLInputChannelDataResponse",
   }) as any as S.Schema<DeleteMLInputChannelDataResponse>;
 export interface ListMLInputChannelsRequest {
@@ -2943,25 +2900,24 @@ export interface ListMLInputChannelsRequest {
   maxResults?: number;
   membershipIdentifier: string;
 }
-export const ListMLInputChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/memberships/{membershipIdentifier}/ml-input-channels",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMLInputChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/memberships/{membershipIdentifier}/ml-input-channels",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListMLInputChannelsRequest",
 }) as any as S.Schema<ListMLInputChannelsRequest>;
@@ -2978,7 +2934,7 @@ export interface MLInputChannelSummary {
   description?: string;
   payerConfiguration?: PayerConfiguration;
 }
-export const MLInputChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2997,15 +2953,13 @@ export const MLInputChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MLInputChannelSummary",
 }) as any as S.Schema<MLInputChannelSummary>;
 export type MLInputChannelsList = MLInputChannelSummary[];
-export const MLInputChannelsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  MLInputChannelSummary,
-);
+export const MLInputChannelsList = /*@__PURE__*/ S.Array(MLInputChannelSummary);
 export interface ListMLInputChannelsResponse {
   nextToken?: string;
   mlInputChannelsList: MLInputChannelSummary[];
 }
 export const ListMLInputChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       mlInputChannelsList: MLInputChannelsList,
@@ -3018,7 +2972,7 @@ export interface GetCollaborationMLInputChannelRequest {
   collaborationIdentifier: string;
 }
 export const GetCollaborationMLInputChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
       collaborationIdentifier: S.String.pipe(
@@ -3059,7 +3013,7 @@ export interface GetCollaborationMLInputChannelResponse {
   creatorAccountId: string;
 }
 export const GetCollaborationMLInputChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String,
       collaborationIdentifier: S.String,
@@ -3083,12 +3037,12 @@ export const GetCollaborationMLInputChannelResponse =
     identifier: "GetCollaborationMLInputChannelResponse",
   }) as any as S.Schema<GetCollaborationMLInputChannelResponse>;
 export type HyperParameters = { [key: string]: string | undefined };
-export const HyperParameters = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const HyperParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type Environment = { [key: string]: string | undefined };
-export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Environment = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -3227,13 +3181,13 @@ export type InstanceType =
   | "ml.p3.16xlarge"
   | "ml.p3dn.24xlarge"
   | (string & {});
-export const InstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InstanceType = /*@__PURE__*/ S.String;
 export interface ResourceConfig {
   instanceCount?: number;
   instanceType: InstanceType;
   volumeSizeInGB: number;
 }
-export const ResourceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceCount: S.optional(S.Number),
     instanceType: InstanceType,
@@ -3243,7 +3197,7 @@ export const ResourceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StoppingCondition {
   maxRuntimeInSeconds?: number;
 }
-export const StoppingCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StoppingCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxRuntimeInSeconds: S.optional(S.Number) }),
 ).annotate({
   identifier: "StoppingCondition",
@@ -3254,7 +3208,7 @@ export interface IncrementalTrainingDataChannel {
   channelName: string;
 }
 export const IncrementalTrainingDataChannel =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModelArn: S.String,
       versionIdentifier: S.optional(S.String),
@@ -3265,33 +3219,32 @@ export const IncrementalTrainingDataChannel =
   }) as any as S.Schema<IncrementalTrainingDataChannel>;
 export type IncrementalTrainingDataChannels = IncrementalTrainingDataChannel[];
 export const IncrementalTrainingDataChannels =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IncrementalTrainingDataChannel);
+  /*@__PURE__*/ S.Array(IncrementalTrainingDataChannel);
 export type S3DataDistributionType =
   | "FullyReplicated"
   | "ShardedByS3Key"
   | (string & {});
-export const S3DataDistributionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const S3DataDistributionType = /*@__PURE__*/ S.String;
 export interface ModelTrainingDataChannel {
   mlInputChannelArn: string;
   channelName: string;
   s3DataDistributionType?: S3DataDistributionType;
 }
-export const ModelTrainingDataChannel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mlInputChannelArn: S.String,
-      channelName: S.String,
-      s3DataDistributionType: S.optional(S3DataDistributionType),
-    }),
+export const ModelTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mlInputChannelArn: S.String,
+    channelName: S.String,
+    s3DataDistributionType: S.optional(S3DataDistributionType),
+  }),
 ).annotate({
   identifier: "ModelTrainingDataChannel",
 }) as any as S.Schema<ModelTrainingDataChannel>;
 export type ModelTrainingDataChannels = ModelTrainingDataChannel[];
-export const ModelTrainingDataChannels = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ModelTrainingDataChannels = /*@__PURE__*/ S.Array(
   ModelTrainingDataChannel,
 );
 export type TrainingInputMode = "File" | "FastFile" | "Pipe" | (string & {});
-export const TrainingInputMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainingInputMode = /*@__PURE__*/ S.String;
 export interface CreateTrainedModelRequest {
   membershipIdentifier: string;
   name: string;
@@ -3308,38 +3261,37 @@ export interface CreateTrainedModelRequest {
   tags?: { [key: string]: string | undefined };
   mlModelTrainingPayerAccountId?: string;
 }
-export const CreateTrainedModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-      name: S.String,
-      configuredModelAlgorithmAssociationArn: S.String,
-      hyperparameters: S.optional(HyperParameters),
-      environment: S.optional(Environment),
-      resourceConfig: ResourceConfig,
-      stoppingCondition: S.optional(StoppingCondition),
-      incrementalTrainingDataChannels: S.optional(
-        IncrementalTrainingDataChannels,
-      ),
-      dataChannels: ModelTrainingDataChannels,
-      trainingInputMode: S.optional(TrainingInputMode),
-      description: S.optional(S.String),
-      kmsKeyArn: S.optional(S.String),
-      tags: S.optional(TagMap),
-      mlModelTrainingPayerAccountId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/memberships/{membershipIdentifier}/trained-models",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+    name: S.String,
+    configuredModelAlgorithmAssociationArn: S.String,
+    hyperparameters: S.optional(HyperParameters),
+    environment: S.optional(Environment),
+    resourceConfig: ResourceConfig,
+    stoppingCondition: S.optional(StoppingCondition),
+    incrementalTrainingDataChannels: S.optional(
+      IncrementalTrainingDataChannels,
     ),
+    dataChannels: ModelTrainingDataChannels,
+    trainingInputMode: S.optional(TrainingInputMode),
+    description: S.optional(S.String),
+    kmsKeyArn: S.optional(S.String),
+    tags: S.optional(TagMap),
+    mlModelTrainingPayerAccountId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/memberships/{membershipIdentifier}/trained-models",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "CreateTrainedModelRequest",
 }) as any as S.Schema<CreateTrainedModelRequest>;
@@ -3347,12 +3299,11 @@ export interface CreateTrainedModelResponse {
   trainedModelArn: string;
   versionIdentifier?: string;
 }
-export const CreateTrainedModelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trainedModelArn: S.String,
-      versionIdentifier: S.optional(S.String),
-    }),
+export const CreateTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trainedModelArn: S.String,
+    versionIdentifier: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateTrainedModelResponse",
 }) as any as S.Schema<CreateTrainedModelResponse>;
@@ -3361,27 +3312,26 @@ export interface GetTrainedModelRequest {
   membershipIdentifier: string;
   versionIdentifier?: string;
 }
-export const GetTrainedModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-      versionIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("versionIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+    versionIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("versionIdentifier"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetTrainedModelRequest",
 }) as any as S.Schema<GetTrainedModelRequest>;
@@ -3413,38 +3363,37 @@ export interface GetTrainedModelResponse {
   tags?: { [key: string]: string | undefined };
   dataChannels: ModelTrainingDataChannel[];
 }
-export const GetTrainedModelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String,
-      collaborationIdentifier: S.String,
-      trainedModelArn: S.String,
-      versionIdentifier: S.optional(S.String),
-      incrementalTrainingDataChannels: S.optional(
-        IncrementalTrainingDataChannelsOutput,
-      ),
-      name: S.String,
-      description: S.optional(S.String),
-      status: TrainedModelStatus,
-      statusDetails: S.optional(StatusDetails),
-      configuredModelAlgorithmAssociationArn: S.String,
-      resourceConfig: S.optional(ResourceConfig),
-      trainingInputMode: S.optional(TrainingInputMode),
-      stoppingCondition: S.optional(StoppingCondition),
-      metricsStatus: S.optional(MetricsStatus),
-      metricsStatusDetails: S.optional(S.String),
-      logsStatus: S.optional(LogsStatus),
-      logsStatusDetails: S.optional(S.String),
-      trainingContainerImageDigest: S.optional(S.String),
-      mlModelTrainingPayerAccountId: S.optional(S.String),
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      hyperparameters: S.optional(HyperParameters),
-      environment: S.optional(Environment),
-      kmsKeyArn: S.optional(S.String),
-      tags: S.optional(TagMap),
-      dataChannels: ModelTrainingDataChannels,
-    }),
+export const GetTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String,
+    collaborationIdentifier: S.String,
+    trainedModelArn: S.String,
+    versionIdentifier: S.optional(S.String),
+    incrementalTrainingDataChannels: S.optional(
+      IncrementalTrainingDataChannelsOutput,
+    ),
+    name: S.String,
+    description: S.optional(S.String),
+    status: TrainedModelStatus,
+    statusDetails: S.optional(StatusDetails),
+    configuredModelAlgorithmAssociationArn: S.String,
+    resourceConfig: S.optional(ResourceConfig),
+    trainingInputMode: S.optional(TrainingInputMode),
+    stoppingCondition: S.optional(StoppingCondition),
+    metricsStatus: S.optional(MetricsStatus),
+    metricsStatusDetails: S.optional(S.String),
+    logsStatus: S.optional(LogsStatus),
+    logsStatusDetails: S.optional(S.String),
+    trainingContainerImageDigest: S.optional(S.String),
+    mlModelTrainingPayerAccountId: S.optional(S.String),
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    hyperparameters: S.optional(HyperParameters),
+    environment: S.optional(Environment),
+    kmsKeyArn: S.optional(S.String),
+    tags: S.optional(TagMap),
+    dataChannels: ModelTrainingDataChannels,
+  }),
 ).annotate({
   identifier: "GetTrainedModelResponse",
 }) as any as S.Schema<GetTrainedModelResponse>;
@@ -3454,7 +3403,7 @@ export interface DeleteTrainedModelOutputRequest {
   versionIdentifier?: string;
 }
 export const DeleteTrainedModelOutputRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -3479,7 +3428,7 @@ export const DeleteTrainedModelOutputRequest =
   }) as any as S.Schema<DeleteTrainedModelOutputRequest>;
 export interface DeleteTrainedModelOutputResponse {}
 export const DeleteTrainedModelOutputResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTrainedModelOutputResponse",
   }) as any as S.Schema<DeleteTrainedModelOutputResponse>;
 export interface ListTrainedModelsRequest {
@@ -3487,25 +3436,24 @@ export interface ListTrainedModelsRequest {
   maxResults?: number;
   membershipIdentifier: string;
 }
-export const ListTrainedModelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/memberships/{membershipIdentifier}/trained-models",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTrainedModelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/memberships/{membershipIdentifier}/trained-models",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTrainedModelsRequest",
 }) as any as S.Schema<ListTrainedModelsRequest>;
@@ -3523,7 +3471,7 @@ export interface TrainedModelSummary {
   configuredModelAlgorithmAssociationArn: string;
   mlModelTrainingPayerAccountId?: string;
 }
-export const TrainedModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3544,18 +3492,16 @@ export const TrainedModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TrainedModelSummary",
 }) as any as S.Schema<TrainedModelSummary>;
 export type TrainedModelList = TrainedModelSummary[];
-export const TrainedModelList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TrainedModelSummary);
+export const TrainedModelList = /*@__PURE__*/ S.Array(TrainedModelSummary);
 export interface ListTrainedModelsResponse {
   nextToken?: string;
   trainedModels: TrainedModelSummary[];
 }
-export const ListTrainedModelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      trainedModels: TrainedModelList,
-    }),
+export const ListTrainedModelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    trainedModels: TrainedModelList,
+  }),
 ).annotate({
   identifier: "ListTrainedModelsResponse",
 }) as any as S.Schema<ListTrainedModelsResponse>;
@@ -3564,33 +3510,32 @@ export interface CancelTrainedModelRequest {
   trainedModelArn: string;
   versionIdentifier?: string;
 }
-export const CancelTrainedModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-      trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
-      versionIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("versionIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+    trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
+    versionIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("versionIdentifier"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "CancelTrainedModelRequest",
 }) as any as S.Schema<CancelTrainedModelRequest>;
 export interface CancelTrainedModelResponse {}
-export const CancelTrainedModelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const CancelTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CancelTrainedModelResponse",
 }) as any as S.Schema<CancelTrainedModelResponse>;
@@ -3600,7 +3545,7 @@ export interface GetCollaborationTrainedModelRequest {
   versionIdentifier?: string;
 }
 export const GetCollaborationTrainedModelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
       collaborationIdentifier: S.String.pipe(
@@ -3650,7 +3595,7 @@ export interface GetCollaborationTrainedModelResponse {
   creatorAccountId: string;
 }
 export const GetCollaborationTrainedModelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String,
       collaborationIdentifier: S.String,
@@ -3688,7 +3633,7 @@ export interface ListTrainedModelVersionsRequest {
   status?: TrainedModelStatus;
 }
 export const ListTrainedModelVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3716,7 +3661,7 @@ export interface ListTrainedModelVersionsResponse {
   trainedModels: TrainedModelSummary[];
 }
 export const ListTrainedModelVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       trainedModels: TrainedModelList,
@@ -3733,7 +3678,7 @@ export interface StartTrainedModelExportJobRequest {
   description?: string;
 }
 export const StartTrainedModelExportJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -3759,7 +3704,7 @@ export const StartTrainedModelExportJobRequest =
   }) as any as S.Schema<StartTrainedModelExportJobRequest>;
 export interface StartTrainedModelExportJobResponse {}
 export const StartTrainedModelExportJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartTrainedModelExportJobResponse",
   }) as any as S.Schema<StartTrainedModelExportJobResponse>;
 export type InferenceInstanceType =
@@ -3858,25 +3803,24 @@ export type InferenceInstanceType =
   | "ml.p3.2xlarge"
   | "ml.p3.8xlarge"
   | (string & {});
-export const InferenceInstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InferenceInstanceType = /*@__PURE__*/ S.String;
 export interface InferenceResourceConfig {
   instanceType: InferenceInstanceType;
   instanceCount?: number;
 }
-export const InferenceResourceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: InferenceInstanceType,
-      instanceCount: S.optional(S.Number),
-    }),
+export const InferenceResourceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceType: InferenceInstanceType,
+    instanceCount: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "InferenceResourceConfig",
 }) as any as S.Schema<InferenceResourceConfig>;
 export interface ModelInferenceDataSource {
   mlInputChannelArn: string;
 }
-export const ModelInferenceDataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ mlInputChannelArn: S.String }),
+export const ModelInferenceDataSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ mlInputChannelArn: S.String }),
 ).annotate({
   identifier: "ModelInferenceDataSource",
 }) as any as S.Schema<ModelInferenceDataSource>;
@@ -3884,13 +3828,13 @@ export interface InferenceContainerExecutionParameters {
   maxPayloadInMB?: number;
 }
 export const InferenceContainerExecutionParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ maxPayloadInMB: S.optional(S.Number) }),
   ).annotate({
     identifier: "InferenceContainerExecutionParameters",
   }) as any as S.Schema<InferenceContainerExecutionParameters>;
 export type InferenceEnvironmentMap = { [key: string]: string | undefined };
-export const InferenceEnvironmentMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const InferenceEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -3911,7 +3855,7 @@ export interface StartTrainedModelInferenceJobRequest {
   mlModelInferencePayerAccountId?: string;
 }
 export const StartTrainedModelInferenceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
       name: S.String,
@@ -3949,7 +3893,7 @@ export interface StartTrainedModelInferenceJobResponse {
   trainedModelInferenceJobArn: string;
 }
 export const StartTrainedModelInferenceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ trainedModelInferenceJobArn: S.String }),
   ).annotate({
     identifier: "StartTrainedModelInferenceJobResponse",
@@ -3959,7 +3903,7 @@ export interface GetTrainedModelInferenceJobRequest {
   trainedModelInferenceJobArn: string;
 }
 export const GetTrainedModelInferenceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
       trainedModelInferenceJobArn: S.String.pipe(
@@ -4008,7 +3952,7 @@ export interface GetTrainedModelInferenceJobResponse {
   mlModelInferencePayerAccountId?: string;
 }
 export const GetTrainedModelInferenceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4048,7 +3992,7 @@ export interface ListTrainedModelInferenceJobsRequest {
   trainedModelVersionIdentifier?: string;
 }
 export const ListTrainedModelInferenceJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4095,7 +4039,7 @@ export interface TrainedModelInferenceJobSummary {
   updateTime: Date;
 }
 export const TrainedModelInferenceJobSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainedModelInferenceJobArn: S.String,
       configuredModelAlgorithmAssociationArn: S.optional(S.String),
@@ -4119,7 +4063,7 @@ export const TrainedModelInferenceJobSummary =
     identifier: "TrainedModelInferenceJobSummary",
   }) as any as S.Schema<TrainedModelInferenceJobSummary>;
 export type TrainedModelInferenceJobList = TrainedModelInferenceJobSummary[];
-export const TrainedModelInferenceJobList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TrainedModelInferenceJobList = /*@__PURE__*/ S.Array(
   TrainedModelInferenceJobSummary,
 );
 export interface ListTrainedModelInferenceJobsResponse {
@@ -4127,7 +4071,7 @@ export interface ListTrainedModelInferenceJobsResponse {
   trainedModelInferenceJobs: TrainedModelInferenceJobSummary[];
 }
 export const ListTrainedModelInferenceJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       trainedModelInferenceJobs: TrainedModelInferenceJobList,
@@ -4140,7 +4084,7 @@ export interface CancelTrainedModelInferenceJobRequest {
   trainedModelInferenceJobArn: string;
 }
 export const CancelTrainedModelInferenceJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
       trainedModelInferenceJobArn: S.String.pipe(
@@ -4164,11 +4108,11 @@ export const CancelTrainedModelInferenceJobRequest =
   }) as any as S.Schema<CancelTrainedModelInferenceJobRequest>;
 export interface CancelTrainedModelInferenceJobResponse {}
 export const CancelTrainedModelInferenceJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CancelTrainedModelInferenceJobResponse",
   }) as any as S.Schema<CancelTrainedModelInferenceJobResponse>;
 export type DatasetType = "INTERACTIONS" | (string & {});
-export const DatasetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetType = /*@__PURE__*/ S.String;
 export type ColumnType =
   | "USER_ID"
   | "ITEM_ID"
@@ -4176,25 +4120,24 @@ export type ColumnType =
   | "CATEGORICAL_FEATURE"
   | "NUMERICAL_FEATURE"
   | (string & {});
-export const ColumnType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ColumnType = /*@__PURE__*/ S.String;
 export type ColumnTypeList = ColumnType[];
-export const ColumnTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ColumnType);
+export const ColumnTypeList = /*@__PURE__*/ S.Array(ColumnType);
 export interface ColumnSchema {
   columnName: string;
   columnTypes: ColumnType[];
 }
-export const ColumnSchema = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ColumnSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnName: S.String, columnTypes: ColumnTypeList }),
 ).annotate({ identifier: "ColumnSchema" }) as any as S.Schema<ColumnSchema>;
 export type DatasetSchemaList = ColumnSchema[];
-export const DatasetSchemaList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ColumnSchema);
+export const DatasetSchemaList = /*@__PURE__*/ S.Array(ColumnSchema);
 export interface GlueDataSource {
   tableName: string;
   databaseName: string;
   catalogId?: string;
 }
-export const GlueDataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GlueDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableName: S.String,
     databaseName: S.String,
@@ -4204,14 +4147,14 @@ export const GlueDataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DataSource {
   glueDataSource: GlueDataSource;
 }
-export const DataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ glueDataSource: GlueDataSource }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export interface DatasetInputConfig {
   schema: ColumnSchema[];
   dataSource: DataSource;
 }
-export const DatasetInputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetInputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ schema: DatasetSchemaList, dataSource: DataSource }),
 ).annotate({
   identifier: "DatasetInputConfig",
@@ -4220,11 +4163,11 @@ export interface Dataset {
   type: DatasetType;
   inputConfig: DatasetInputConfig;
 }
-export const Dataset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: DatasetType, inputConfig: DatasetInputConfig }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 export type DatasetList = Dataset[];
-export const DatasetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Dataset);
+export const DatasetList = /*@__PURE__*/ S.Array(Dataset);
 export interface CreateTrainingDatasetRequest {
   name: string;
   roleArn: string;
@@ -4233,7 +4176,7 @@ export interface CreateTrainingDatasetRequest {
   description?: string;
 }
 export const CreateTrainingDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       roleArn: S.String,
@@ -4257,7 +4200,7 @@ export interface CreateTrainingDatasetResponse {
   trainingDatasetArn: string;
 }
 export const CreateTrainingDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ trainingDatasetArn: S.String }),
   ).annotate({
     identifier: "CreateTrainingDatasetResponse",
@@ -4265,28 +4208,27 @@ export const CreateTrainingDatasetResponse =
 export interface GetTrainingDatasetRequest {
   trainingDatasetArn: string;
 }
-export const GetTrainingDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trainingDatasetArn: S.String.pipe(T.HttpLabel("trainingDatasetArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/training-dataset/{trainingDatasetArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trainingDatasetArn: S.String.pipe(T.HttpLabel("trainingDatasetArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/training-dataset/{trainingDatasetArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTrainingDatasetRequest",
 }) as any as S.Schema<GetTrainingDatasetRequest>;
 export type TrainingDatasetStatus = "ACTIVE" | (string & {});
-export const TrainingDatasetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TrainingDatasetStatus = /*@__PURE__*/ S.String;
 export interface GetTrainingDatasetResponse {
   createTime: Date;
   updateTime: Date;
@@ -4298,19 +4240,18 @@ export interface GetTrainingDatasetResponse {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const GetTrainingDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      trainingDatasetArn: S.String,
-      name: S.String,
-      trainingData: DatasetList,
-      status: TrainingDatasetStatus,
-      roleArn: S.String,
-      tags: S.optional(TagMap),
-      description: S.optional(S.String),
-    }),
+export const GetTrainingDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    trainingDatasetArn: S.String,
+    name: S.String,
+    trainingData: DatasetList,
+    status: TrainingDatasetStatus,
+    roleArn: S.String,
+    tags: S.optional(TagMap),
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetTrainingDatasetResponse",
 }) as any as S.Schema<GetTrainingDatasetResponse>;
@@ -4318,7 +4259,7 @@ export interface DeleteTrainingDatasetRequest {
   trainingDatasetArn: string;
 }
 export const DeleteTrainingDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainingDatasetArn: S.String.pipe(T.HttpLabel("trainingDatasetArn")),
     }).pipe(
@@ -4339,7 +4280,7 @@ export const DeleteTrainingDatasetRequest =
   }) as any as S.Schema<DeleteTrainingDatasetRequest>;
 export interface DeleteTrainingDatasetResponse {}
 export const DeleteTrainingDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTrainingDatasetResponse",
   }) as any as S.Schema<DeleteTrainingDatasetResponse>;
 export interface ListTrainingDatasetsRequest {
@@ -4347,7 +4288,7 @@ export interface ListTrainingDatasetsRequest {
   maxResults?: number;
 }
 export const ListTrainingDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4372,21 +4313,20 @@ export interface TrainingDatasetSummary {
   status: TrainingDatasetStatus;
   description?: string;
 }
-export const TrainingDatasetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      trainingDatasetArn: S.String,
-      name: S.String,
-      status: TrainingDatasetStatus,
-      description: S.optional(S.String),
-    }),
+export const TrainingDatasetSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    trainingDatasetArn: S.String,
+    name: S.String,
+    status: TrainingDatasetStatus,
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "TrainingDatasetSummary",
 }) as any as S.Schema<TrainingDatasetSummary>;
 export type TrainingDatasetList = TrainingDatasetSummary[];
-export const TrainingDatasetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TrainingDatasetList = /*@__PURE__*/ S.Array(
   TrainingDatasetSummary,
 );
 export interface ListTrainingDatasetsResponse {
@@ -4394,7 +4334,7 @@ export interface ListTrainingDatasetsResponse {
   trainingDatasets: TrainingDatasetSummary[];
 }
 export const ListTrainingDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       trainingDatasets: TrainingDatasetList,
@@ -4466,7 +4406,7 @@ export const listCollaborationConfiguredModelAlgorithmAssociations: API.Operatio
     ListCollaborationConfiguredModelAlgorithmAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
   output: ListCollaborationConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4506,7 +4446,7 @@ export const listCollaborationMLInputChannels: API.OperationMethod<
     ListCollaborationMLInputChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationMLInputChannelsRequest,
   output: ListCollaborationMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4546,7 +4486,7 @@ export const listCollaborationTrainedModelExportJobs: API.OperationMethod<
     ListCollaborationTrainedModelExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelExportJobsRequest,
   output: ListCollaborationTrainedModelExportJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4586,7 +4526,7 @@ export const listCollaborationTrainedModelInferenceJobs: API.OperationMethod<
     ListCollaborationTrainedModelInferenceJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelInferenceJobsRequest,
   output: ListCollaborationTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4626,7 +4566,7 @@ export const listCollaborationTrainedModels: API.OperationMethod<
     ListCollaborationTrainedModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelsRequest,
   output: ListCollaborationTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4651,7 +4591,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4674,7 +4614,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4697,7 +4637,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -4722,7 +4662,7 @@ export const startAudienceExportJob: API.OperationMethod<
   StartAudienceExportJobResponse,
   StartAudienceExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAudienceExportJobRequest,
   output: StartAudienceExportJobResponse,
   errors: [
@@ -4761,7 +4701,7 @@ export const listAudienceExportJobs: API.OperationMethod<
     ListAudienceExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceExportJobsRequest,
   output: ListAudienceExportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -4789,7 +4729,7 @@ export const startAudienceGenerationJob: API.OperationMethod<
   StartAudienceGenerationJobResponse,
   StartAudienceGenerationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAudienceGenerationJobRequest,
   output: StartAudienceGenerationJobResponse,
   errors: [
@@ -4815,7 +4755,7 @@ export const getAudienceGenerationJob: API.OperationMethod<
   GetAudienceGenerationJobResponse,
   GetAudienceGenerationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAudienceGenerationJobRequest,
   output: GetAudienceGenerationJobResponse,
   errors: [
@@ -4839,7 +4779,7 @@ export const deleteAudienceGenerationJob: API.OperationMethod<
   DeleteAudienceGenerationJobResponse,
   DeleteAudienceGenerationJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAudienceGenerationJobRequest,
   output: DeleteAudienceGenerationJobResponse,
   errors: [
@@ -4877,7 +4817,7 @@ export const listAudienceGenerationJobs: API.OperationMethod<
     ListAudienceGenerationJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceGenerationJobsRequest,
   output: ListAudienceGenerationJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -4904,7 +4844,7 @@ export const createAudienceModel: API.OperationMethod<
   CreateAudienceModelResponse,
   CreateAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAudienceModelRequest,
   output: CreateAudienceModelResponse,
   errors: [
@@ -4929,7 +4869,7 @@ export const getAudienceModel: API.OperationMethod<
   GetAudienceModelResponse,
   GetAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAudienceModelRequest,
   output: GetAudienceModelResponse,
   errors: [
@@ -4953,7 +4893,7 @@ export const deleteAudienceModel: API.OperationMethod<
   DeleteAudienceModelResponse,
   DeleteAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAudienceModelRequest,
   output: DeleteAudienceModelResponse,
   errors: [
@@ -4991,7 +4931,7 @@ export const listAudienceModels: API.OperationMethod<
     ListAudienceModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceModelsRequest,
   output: ListAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5018,7 +4958,7 @@ export const createConfiguredAudienceModel: API.OperationMethod<
   CreateConfiguredAudienceModelResponse,
   CreateConfiguredAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredAudienceModelRequest,
   output: CreateConfiguredAudienceModelResponse,
   errors: [
@@ -5043,7 +4983,7 @@ export const getConfiguredAudienceModel: API.OperationMethod<
   GetConfiguredAudienceModelResponse,
   GetConfiguredAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredAudienceModelRequest,
   output: GetConfiguredAudienceModelResponse,
   errors: [
@@ -5067,7 +5007,7 @@ export const updateConfiguredAudienceModel: API.OperationMethod<
   UpdateConfiguredAudienceModelResponse,
   UpdateConfiguredAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfiguredAudienceModelRequest,
   output: UpdateConfiguredAudienceModelResponse,
   errors: [
@@ -5092,7 +5032,7 @@ export const deleteConfiguredAudienceModel: API.OperationMethod<
   DeleteConfiguredAudienceModelResponse,
   DeleteConfiguredAudienceModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredAudienceModelRequest,
   output: DeleteConfiguredAudienceModelResponse,
   errors: [
@@ -5130,7 +5070,7 @@ export const listConfiguredAudienceModels: API.OperationMethod<
     ListConfiguredAudienceModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelsRequest,
   output: ListConfiguredAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5155,7 +5095,7 @@ export const putConfiguredAudienceModelPolicy: API.OperationMethod<
   PutConfiguredAudienceModelPolicyResponse,
   PutConfiguredAudienceModelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfiguredAudienceModelPolicyRequest,
   output: PutConfiguredAudienceModelPolicyResponse,
   errors: [
@@ -5178,7 +5118,7 @@ export const getConfiguredAudienceModelPolicy: API.OperationMethod<
   GetConfiguredAudienceModelPolicyResponse,
   GetConfiguredAudienceModelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredAudienceModelPolicyRequest,
   output: GetConfiguredAudienceModelPolicyResponse,
   errors: [
@@ -5201,7 +5141,7 @@ export const deleteConfiguredAudienceModelPolicy: API.OperationMethod<
   DeleteConfiguredAudienceModelPolicyResponse,
   DeleteConfiguredAudienceModelPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredAudienceModelPolicyRequest,
   output: DeleteConfiguredAudienceModelPolicyResponse,
   errors: [
@@ -5225,7 +5165,7 @@ export const createConfiguredModelAlgorithm: API.OperationMethod<
   CreateConfiguredModelAlgorithmResponse,
   CreateConfiguredModelAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredModelAlgorithmRequest,
   output: CreateConfiguredModelAlgorithmResponse,
   errors: [
@@ -5249,7 +5189,7 @@ export const getConfiguredModelAlgorithm: API.OperationMethod<
   GetConfiguredModelAlgorithmResponse,
   GetConfiguredModelAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredModelAlgorithmRequest,
   output: GetConfiguredModelAlgorithmResponse,
   errors: [
@@ -5273,7 +5213,7 @@ export const deleteConfiguredModelAlgorithm: API.OperationMethod<
   DeleteConfiguredModelAlgorithmResponse,
   DeleteConfiguredModelAlgorithmError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredModelAlgorithmRequest,
   output: DeleteConfiguredModelAlgorithmResponse,
   errors: [
@@ -5311,7 +5251,7 @@ export const listConfiguredModelAlgorithms: API.OperationMethod<
     ListConfiguredModelAlgorithmsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredModelAlgorithmsRequest,
   output: ListConfiguredModelAlgorithmsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5339,7 +5279,7 @@ export const createConfiguredModelAlgorithmAssociation: API.OperationMethod<
   CreateConfiguredModelAlgorithmAssociationResponse,
   CreateConfiguredModelAlgorithmAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfiguredModelAlgorithmAssociationRequest,
   output: CreateConfiguredModelAlgorithmAssociationResponse,
   errors: [
@@ -5366,7 +5306,7 @@ export const getConfiguredModelAlgorithmAssociation: API.OperationMethod<
   GetConfiguredModelAlgorithmAssociationResponse,
   GetConfiguredModelAlgorithmAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfiguredModelAlgorithmAssociationRequest,
   output: GetConfiguredModelAlgorithmAssociationResponse,
   errors: [
@@ -5392,7 +5332,7 @@ export const deleteConfiguredModelAlgorithmAssociation: API.OperationMethod<
   DeleteConfiguredModelAlgorithmAssociationResponse,
   DeleteConfiguredModelAlgorithmAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfiguredModelAlgorithmAssociationRequest,
   output: DeleteConfiguredModelAlgorithmAssociationResponse,
   errors: [
@@ -5432,7 +5372,7 @@ export const listConfiguredModelAlgorithmAssociations: API.OperationMethod<
     ListConfiguredModelAlgorithmAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredModelAlgorithmAssociationsRequest,
   output: ListConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5458,7 +5398,7 @@ export const getCollaborationConfiguredModelAlgorithmAssociation: API.OperationM
   GetCollaborationConfiguredModelAlgorithmAssociationResponse,
   GetCollaborationConfiguredModelAlgorithmAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationConfiguredModelAlgorithmAssociationRequest,
   output: GetCollaborationConfiguredModelAlgorithmAssociationResponse,
   errors: [
@@ -5482,7 +5422,7 @@ export const putMLConfiguration: API.OperationMethod<
   PutMLConfigurationResponse,
   PutMLConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMLConfigurationRequest,
   output: PutMLConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5502,7 +5442,7 @@ export const getMLConfiguration: API.OperationMethod<
   GetMLConfigurationResponse,
   GetMLConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMLConfigurationRequest,
   output: GetMLConfigurationResponse,
   errors: [
@@ -5527,7 +5467,7 @@ export const deleteMLConfiguration: API.OperationMethod<
   DeleteMLConfigurationResponse,
   DeleteMLConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMLConfigurationRequest,
   output: DeleteMLConfigurationResponse,
   errors: [
@@ -5554,7 +5494,7 @@ export const createMLInputChannel: API.OperationMethod<
   CreateMLInputChannelResponse,
   CreateMLInputChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMLInputChannelRequest,
   output: CreateMLInputChannelResponse,
   errors: [
@@ -5581,7 +5521,7 @@ export const getMLInputChannel: API.OperationMethod<
   GetMLInputChannelResponse,
   GetMLInputChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMLInputChannelRequest,
   output: GetMLInputChannelResponse,
   errors: [
@@ -5607,7 +5547,7 @@ export const deleteMLInputChannelData: API.OperationMethod<
   DeleteMLInputChannelDataResponse,
   DeleteMLInputChannelDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMLInputChannelDataRequest,
   output: DeleteMLInputChannelDataResponse,
   errors: [
@@ -5647,7 +5587,7 @@ export const listMLInputChannels: API.OperationMethod<
     ListMLInputChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMLInputChannelsRequest,
   output: ListMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5673,7 +5613,7 @@ export const getCollaborationMLInputChannel: API.OperationMethod<
   GetCollaborationMLInputChannelResponse,
   GetCollaborationMLInputChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationMLInputChannelRequest,
   output: GetCollaborationMLInputChannelResponse,
   errors: [
@@ -5701,7 +5641,7 @@ export const createTrainedModel: API.OperationMethod<
   CreateTrainedModelResponse,
   CreateTrainedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrainedModelRequest,
   output: CreateTrainedModelResponse,
   errors: [
@@ -5729,7 +5669,7 @@ export const getTrainedModel: API.OperationMethod<
   GetTrainedModelResponse,
   GetTrainedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrainedModelRequest,
   output: GetTrainedModelResponse,
   errors: [
@@ -5755,7 +5695,7 @@ export const deleteTrainedModelOutput: API.OperationMethod<
   DeleteTrainedModelOutputResponse,
   DeleteTrainedModelOutputError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrainedModelOutputRequest,
   output: DeleteTrainedModelOutputResponse,
   errors: [
@@ -5795,7 +5735,7 @@ export const listTrainedModels: API.OperationMethod<
     ListTrainedModelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelsRequest,
   output: ListTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5822,7 +5762,7 @@ export const cancelTrainedModel: API.OperationMethod<
   CancelTrainedModelResponse,
   CancelTrainedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTrainedModelRequest,
   output: CancelTrainedModelResponse,
   errors: [
@@ -5848,7 +5788,7 @@ export const getCollaborationTrainedModel: API.OperationMethod<
   GetCollaborationTrainedModelResponse,
   GetCollaborationTrainedModelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCollaborationTrainedModelRequest,
   output: GetCollaborationTrainedModelResponse,
   errors: [
@@ -5888,7 +5828,7 @@ export const listTrainedModelVersions: API.OperationMethod<
     ListTrainedModelVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelVersionsRequest,
   output: ListTrainedModelVersionsResponse,
   errors: [
@@ -5920,7 +5860,7 @@ export const startTrainedModelExportJob: API.OperationMethod<
   StartTrainedModelExportJobResponse,
   StartTrainedModelExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTrainedModelExportJobRequest,
   output: StartTrainedModelExportJobResponse,
   errors: [
@@ -5948,7 +5888,7 @@ export const startTrainedModelInferenceJob: API.OperationMethod<
   StartTrainedModelInferenceJobResponse,
   StartTrainedModelInferenceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTrainedModelInferenceJobRequest,
   output: StartTrainedModelInferenceJobResponse,
   errors: [
@@ -5975,7 +5915,7 @@ export const getTrainedModelInferenceJob: API.OperationMethod<
   GetTrainedModelInferenceJobResponse,
   GetTrainedModelInferenceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrainedModelInferenceJobRequest,
   output: GetTrainedModelInferenceJobResponse,
   errors: [
@@ -6014,7 +5954,7 @@ export const listTrainedModelInferenceJobs: API.OperationMethod<
     ListTrainedModelInferenceJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelInferenceJobsRequest,
   output: ListTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -6041,7 +5981,7 @@ export const cancelTrainedModelInferenceJob: API.OperationMethod<
   CancelTrainedModelInferenceJobResponse,
   CancelTrainedModelInferenceJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTrainedModelInferenceJobRequest,
   output: CancelTrainedModelInferenceJobResponse,
   errors: [
@@ -6066,7 +6006,7 @@ export const createTrainingDataset: API.OperationMethod<
   CreateTrainingDatasetResponse,
   CreateTrainingDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTrainingDatasetRequest,
   output: CreateTrainingDatasetResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
@@ -6085,7 +6025,7 @@ export const getTrainingDataset: API.OperationMethod<
   GetTrainingDatasetResponse,
   GetTrainingDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTrainingDatasetRequest,
   output: GetTrainingDatasetResponse,
   errors: [
@@ -6109,7 +6049,7 @@ export const deleteTrainingDataset: API.OperationMethod<
   DeleteTrainingDatasetResponse,
   DeleteTrainingDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTrainingDatasetRequest,
   output: DeleteTrainingDatasetResponse,
   errors: [
@@ -6147,7 +6087,7 @@ export const listTrainingDatasets: API.OperationMethod<
     ListTrainingDatasetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingDatasetsRequest,
   output: ListTrainingDatasetsResponse,
   errors: [AccessDeniedException, ValidationException],

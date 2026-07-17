@@ -27,7 +27,7 @@ export interface GetCreditNotesPreviewLinesInput {
   starting_after?: string;
 }
 export const GetCreditNotesPreviewLinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     credit_amount: Schema.optional(Schema.Number),
     effective_at: Schema.optional(Schema.Number),
@@ -548,7 +548,7 @@ export interface GetCreditNotesPreviewLinesOutput {
   url: string;
 }
 export const GetCreditNotesPreviewLinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -897,9 +897,7 @@ export const GetCreditNotesPreviewLinesOutput =
  * @param shipping_cost - When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is included in the credit note. One of `amount`, `lines`, or `shipping_cost` must be provided.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetCreditNotesPreviewLines = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCreditNotesPreviewLinesInput,
-    outputSchema: GetCreditNotesPreviewLinesOutput,
-  }),
-);
+export const GetCreditNotesPreviewLines = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCreditNotesPreviewLinesInput,
+  outputSchema: GetCreditNotesPreviewLinesOutput,
+}));

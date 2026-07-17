@@ -16,7 +16,7 @@ export interface PostTerminalReadersInput {
   registration_code: string;
 }
 export const PostTerminalReadersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     label: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface PostTerminalReadersOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -197,7 +197,7 @@ export const PostTerminalReadersOutput =
  *
  * <p>Creates a new <code>Reader</code> object.</p>
  */
-export const PostTerminalReaders = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTerminalReaders = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTerminalReadersInput,
   outputSchema: PostTerminalReadersOutput,
 }));

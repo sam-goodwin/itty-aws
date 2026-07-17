@@ -9,7 +9,7 @@ export interface IntegrationsGithubReposRefreshCreateInput {
   project_id: string;
 }
 export const IntegrationsGithubReposRefreshCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface IntegrationsGithubReposRefreshCreateOutput {
   repositories?: { id?: number; name?: string; full_name?: string }[];
 }
 export const IntegrationsGithubReposRefreshCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -43,7 +43,7 @@ export const IntegrationsGithubReposRefreshCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGithubReposRefreshCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGithubReposRefreshCreateInput,
     outputSchema: IntegrationsGithubReposRefreshCreateOutput,
     errors: [Forbidden, NotFound] as const,

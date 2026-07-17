@@ -41,7 +41,7 @@ export interface Channel {
 }
 
 export const Channel: Schema.Codec<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     channelType: Schema.optional(Schema.String),
   }).annotate({ identifier: "Channel" });
@@ -54,7 +54,7 @@ export interface Version {
 }
 
 export const Version: Schema.Codec<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "Version" });
@@ -67,7 +67,7 @@ export interface ListVersionsResponse {
 }
 
 export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListVersionsResponse" });
@@ -80,7 +80,7 @@ export interface Interval {
 }
 
 export const Interval: Schema.Codec<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Interval" });
@@ -93,7 +93,7 @@ export interface RolloutData {
 }
 
 export const RolloutData: Schema.Codec<RolloutData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rolloutName: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RolloutData" });
@@ -116,7 +116,7 @@ export interface Release {
 }
 
 export const Release: Schema.Codec<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serving: Schema.optional(Interval),
     fractionGroup: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface ListReleasesResponse {
 }
 
 export const ListReleasesResponse: Schema.Codec<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     releases: Schema.optional(Schema.Array(Release)),
   }).annotate({ identifier: "ListReleasesResponse" });
@@ -164,7 +164,7 @@ export interface Platform {
 }
 
 export const Platform: Schema.Codec<Platform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platformType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Platform" });
@@ -177,7 +177,7 @@ export interface ListPlatformsResponse {
 }
 
 export const ListPlatformsResponse: Schema.Codec<ListPlatformsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platforms: Schema.optional(Schema.Array(Platform)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlatformsResponse" });
@@ -190,7 +190,7 @@ export interface ListChannelsResponse {
 }
 
 export const ListChannelsResponse: Schema.Codec<ListChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channels: Schema.optional(Schema.Array(Channel)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListChannelsResponse" });
@@ -235,7 +235,7 @@ export interface ListPlatformsRequest {
   pageSize?: number;
 }
 
-export const ListPlatformsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPlatformsRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   parent: Schema.String.pipe(T.HttpPath("parent")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -245,8 +245,7 @@ export const ListPlatformsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListPlatformsRequest>;
 
 export type ListPlatformsResponse_Op = ListPlatformsResponse;
-export const ListPlatformsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlatformsResponse;
+export const ListPlatformsResponse_Op = /*@__PURE__*/ ListPlatformsResponse;
 
 export type ListPlatformsError = DefaultErrors | NotFound | Forbidden;
 
@@ -256,7 +255,7 @@ export const listPlatforms: API.PaginatedOperationMethod<
   ListPlatformsResponse_Op,
   ListPlatformsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsRequest,
   output: ListPlatformsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -276,7 +275,7 @@ export interface ListPlatformsChannelsRequest {
 }
 
 export const ListPlatformsChannelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -286,8 +285,7 @@ export const ListPlatformsChannelsRequest =
   ) as unknown as Schema.Codec<ListPlatformsChannelsRequest>;
 
 export type ListPlatformsChannelsResponse = ListChannelsResponse;
-export const ListPlatformsChannelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
+export const ListPlatformsChannelsResponse = /*@__PURE__*/ ListChannelsResponse;
 
 export type ListPlatformsChannelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -297,7 +295,7 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
   ListPlatformsChannelsResponse,
   ListPlatformsChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsRequest,
   output: ListPlatformsChannelsResponse,
   errors: [NotFound, Forbidden],
@@ -321,7 +319,7 @@ export interface ListPlatformsChannelsVersionsRequest {
 }
 
 export const ListPlatformsChannelsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -334,7 +332,7 @@ export const ListPlatformsChannelsVersionsRequest =
 
 export type ListPlatformsChannelsVersionsResponse = ListVersionsResponse;
 export const ListPlatformsChannelsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
+  /*@__PURE__*/ ListVersionsResponse;
 
 export type ListPlatformsChannelsVersionsError =
   | DefaultErrors
@@ -347,7 +345,7 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   ListPlatformsChannelsVersionsResponse,
   ListPlatformsChannelsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsRequest,
   output: ListPlatformsChannelsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -371,7 +369,7 @@ export interface ListPlatformsChannelsVersionsReleasesRequest {
 }
 
 export const ListPlatformsChannelsVersionsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -385,7 +383,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest =
 export type ListPlatformsChannelsVersionsReleasesResponse =
   ListReleasesResponse;
 export const ListPlatformsChannelsVersionsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
+  /*@__PURE__*/ ListReleasesResponse;
 
 export type ListPlatformsChannelsVersionsReleasesError =
   | DefaultErrors
@@ -398,7 +396,7 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
   ListPlatformsChannelsVersionsReleasesResponse,
   ListPlatformsChannelsVersionsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsReleasesRequest,
   output: ListPlatformsChannelsVersionsReleasesResponse,
   errors: [NotFound, Forbidden],

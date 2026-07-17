@@ -39,7 +39,7 @@ export interface NotificationSubscription {
 }
 
 export const NotificationSubscription: Schema.Codec<NotificationSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetAccount: Schema.optional(Schema.String),
     allManagedAccounts: Schema.optional(Schema.Boolean),
     registeredEvent: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface ListNotificationSubscriptionsResponse {
 }
 
 export const ListNotificationSubscriptionsResponse: Schema.Codec<ListNotificationSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationSubscriptions: Schema.optional(
       Schema.Array(NotificationSubscription),
     ),
@@ -95,7 +95,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export const ProductChange: Schema.Codec<ProductChange> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -135,7 +135,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     managingAccount: Schema.optional(Schema.String),
     changes: Schema.optional(Schema.Array(ProductChange)),
@@ -211,7 +211,7 @@ export interface ListAccountsNotificationsubscriptionsRequest {
 }
 
 export const ListAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -226,7 +226,7 @@ export const ListAccountsNotificationsubscriptionsRequest =
 export type ListAccountsNotificationsubscriptionsResponse =
   ListNotificationSubscriptionsResponse;
 export const ListAccountsNotificationsubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListNotificationSubscriptionsResponse;
+  /*@__PURE__*/ ListNotificationSubscriptionsResponse;
 
 export type ListAccountsNotificationsubscriptionsError =
   | DefaultErrors
@@ -239,7 +239,7 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
   ListAccountsNotificationsubscriptionsResponse,
   ListAccountsNotificationsubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsNotificationsubscriptionsRequest,
   output: ListAccountsNotificationsubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -257,7 +257,7 @@ export interface CreateAccountsNotificationsubscriptionsRequest {
 }
 
 export const CreateAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(NotificationSubscription).pipe(T.HttpBody()),
   }).pipe(
@@ -272,7 +272,7 @@ export const CreateAccountsNotificationsubscriptionsRequest =
 export type CreateAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
 export const CreateAccountsNotificationsubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
+  /*@__PURE__*/ NotificationSubscription;
 
 export type CreateAccountsNotificationsubscriptionsError =
   | DefaultErrors
@@ -287,7 +287,7 @@ export const createAccountsNotificationsubscriptions: API.OperationMethod<
   CreateAccountsNotificationsubscriptionsResponse,
   CreateAccountsNotificationsubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsNotificationsubscriptionsRequest,
   output: CreateAccountsNotificationsubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -299,7 +299,7 @@ export interface GetAccountsNotificationsubscriptionsRequest {
 }
 
 export const GetAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "notifications/v1beta/{+name}" }),
@@ -309,7 +309,7 @@ export const GetAccountsNotificationsubscriptionsRequest =
 export type GetAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
 export const GetAccountsNotificationsubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
+  /*@__PURE__*/ NotificationSubscription;
 
 export type GetAccountsNotificationsubscriptionsError =
   | DefaultErrors
@@ -322,7 +322,7 @@ export const getAccountsNotificationsubscriptions: API.OperationMethod<
   GetAccountsNotificationsubscriptionsResponse,
   GetAccountsNotificationsubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsNotificationsubscriptionsRequest,
   output: GetAccountsNotificationsubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -334,7 +334,7 @@ export interface DeleteAccountsNotificationsubscriptionsRequest {
 }
 
 export const DeleteAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "notifications/v1beta/{+name}" }),
@@ -343,7 +343,7 @@ export const DeleteAccountsNotificationsubscriptionsRequest =
 
 export type DeleteAccountsNotificationsubscriptionsResponse = Empty;
 export const DeleteAccountsNotificationsubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteAccountsNotificationsubscriptionsError =
   | DefaultErrors
@@ -358,7 +358,7 @@ export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
   DeleteAccountsNotificationsubscriptionsResponse,
   DeleteAccountsNotificationsubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsNotificationsubscriptionsRequest,
   output: DeleteAccountsNotificationsubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -374,7 +374,7 @@ export interface PatchAccountsNotificationsubscriptionsRequest {
 }
 
 export const PatchAccountsNotificationsubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(NotificationSubscription).pipe(T.HttpBody()),
@@ -390,7 +390,7 @@ export const PatchAccountsNotificationsubscriptionsRequest =
 export type PatchAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
 export const PatchAccountsNotificationsubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
+  /*@__PURE__*/ NotificationSubscription;
 
 export type PatchAccountsNotificationsubscriptionsError =
   | DefaultErrors
@@ -405,7 +405,7 @@ export const patchAccountsNotificationsubscriptions: API.OperationMethod<
   PatchAccountsNotificationsubscriptionsResponse,
   PatchAccountsNotificationsubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsNotificationsubscriptionsRequest,
   output: PatchAccountsNotificationsubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

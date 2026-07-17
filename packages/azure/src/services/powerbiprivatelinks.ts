@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.PowerBI/operations",
@@ -36,7 +34,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to be used with the HTTP request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -121,7 +119,7 @@ export interface PowerBIResourcesCreateInput {
   tags?: Record<string, string>;
 }
 export const PowerBIResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -271,7 +269,7 @@ export interface PowerBIResourcesCreateOutput {
   tags?: Record<string, string>;
 }
 export const PowerBIResourcesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -374,12 +372,10 @@ export const PowerBIResourcesCreateOutput =
  * @param api-version - The API version to be used with the HTTP request.
  * @param x-ms-client-tenant-id - The client tenant id in header. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  */
-export const PowerBIResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PowerBIResourcesCreateInput,
-    outputSchema: PowerBIResourcesCreateOutput,
-  }),
-);
+export const PowerBIResourcesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PowerBIResourcesCreateInput,
+  outputSchema: PowerBIResourcesCreateOutput,
+}));
 // Input Schema
 export interface PowerBIResourcesDeleteInput {
   subscriptionId: string;
@@ -387,7 +383,7 @@ export interface PowerBIResourcesDeleteInput {
   azureResourceName: string;
 }
 export const PowerBIResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -402,7 +398,7 @@ export const PowerBIResourcesDeleteInput =
 // Output Schema
 export type PowerBIResourcesDeleteOutput = void;
 export const PowerBIResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PowerBIResourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PowerBIResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -413,12 +409,10 @@ export const PowerBIResourcesDeleteOutput =
  * @param azureResourceName - The name of the Azure resource.
  * @param api-version - The API version to be used with the HTTP request.
  */
-export const PowerBIResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PowerBIResourcesDeleteInput,
-    outputSchema: PowerBIResourcesDeleteOutput,
-  }),
-);
+export const PowerBIResourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PowerBIResourcesDeleteInput,
+  outputSchema: PowerBIResourcesDeleteOutput,
+}));
 // Input Schema
 export interface PowerBIResourcesListByResourceNameInput {
   subscriptionId: string;
@@ -426,7 +420,7 @@ export interface PowerBIResourcesListByResourceNameInput {
   azureResourceName: string;
 }
 export const PowerBIResourcesListByResourceNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -486,7 +480,7 @@ export type PowerBIResourcesListByResourceNameOutput = {
   tags?: Record<string, string>;
 }[];
 export const PowerBIResourcesListByResourceNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -591,7 +585,7 @@ export const PowerBIResourcesListByResourceNameOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PowerBIResourcesListByResourceName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PowerBIResourcesListByResourceNameInput,
     outputSchema: PowerBIResourcesListByResourceNameOutput,
   }));
@@ -646,7 +640,7 @@ export interface PowerBIResourcesUpdateInput {
   tags?: Record<string, string>;
 }
 export const PowerBIResourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -796,7 +790,7 @@ export interface PowerBIResourcesUpdateOutput {
   tags?: Record<string, string>;
 }
 export const PowerBIResourcesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -899,12 +893,10 @@ export const PowerBIResourcesUpdateOutput =
  * @param api-version - The API version to be used with the HTTP request.
  * @param x-ms-client-tenant-id - The client tenant id in header. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  */
-export const PowerBIResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PowerBIResourcesUpdateInput,
-    outputSchema: PowerBIResourcesUpdateOutput,
-  }),
-);
+export const PowerBIResourcesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PowerBIResourcesUpdateInput,
+  outputSchema: PowerBIResourcesUpdateOutput,
+}));
 // Input Schema
 export interface PrivateEndpointConnectionsCreateInput {
   subscriptionId: string;
@@ -939,7 +931,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1032,7 +1024,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1098,7 +1090,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -1110,7 +1102,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1126,7 +1118,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1141,7 +1133,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1153,7 +1145,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1196,7 +1188,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1262,7 +1254,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1273,7 +1265,7 @@ export interface PrivateEndpointConnectionsListByResourceInput {
   azureResourceName: string;
 }
 export const PrivateEndpointConnectionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1318,7 +1310,7 @@ export interface PrivateEndpointConnectionsListByResourceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1400,7 +1392,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateEndpointConnectionsListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByResourceInput,
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
@@ -1412,7 +1404,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1437,7 +1429,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.optional(Schema.String),
@@ -1462,12 +1454,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param privateLinkResourceName - The name of private link resource.
  * @param api-version - The API version to be used with the HTTP request.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByResourceInput {
   subscriptionId: string;
@@ -1475,7 +1465,7 @@ export interface PrivateLinkResourcesListByResourceInput {
   azureResourceName: string;
 }
 export const PrivateLinkResourcesListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureResourceName: Schema.String.pipe(T.PathParam()),
@@ -1502,7 +1492,7 @@ export interface PrivateLinkResourcesListByResourceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1534,7 +1524,7 @@ export const PrivateLinkResourcesListByResourceOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkResourcesListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByResourceInput,
     outputSchema: PrivateLinkResourcesListByResourceOutput,
   }));
@@ -1544,7 +1534,7 @@ export interface PrivateLinkServiceResourceOperationResultsGetInput {
   operationId: string;
 }
 export const PrivateLinkServiceResourceOperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1577,7 +1567,7 @@ export interface PrivateLinkServiceResourceOperationResultsGetOutput {
   };
 }
 export const PrivateLinkServiceResourceOperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1627,7 +1617,7 @@ export const PrivateLinkServiceResourceOperationResultsGetOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkServiceResourceOperationResultsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServiceResourceOperationResultsGetInput,
     outputSchema: PrivateLinkServiceResourceOperationResultsGetOutput,
   }));
@@ -1636,7 +1626,7 @@ export interface PrivateLinkServicesForPowerBIListBySubscriptionIdInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1694,7 +1684,7 @@ export type PrivateLinkServicesForPowerBIListBySubscriptionIdOutput = {
   tags?: Record<string, string>;
 }[];
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -1797,7 +1787,7 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const privateLinkServicesForPowerBIListBySubscriptionId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForPowerBIListBySubscriptionIdInput,
     outputSchema: PrivateLinkServicesForPowerBIListBySubscriptionIdOutput,
   }));
@@ -1807,7 +1797,7 @@ export interface PrivateLinkServicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PrivateLinkServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1866,7 +1856,7 @@ export type PrivateLinkServicesListByResourceGroupOutput = {
   tags?: Record<string, string>;
 }[];
 export const PrivateLinkServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -1970,7 +1960,7 @@ export const PrivateLinkServicesListByResourceGroupOutput =
  * @param api-version - The API version to be used with the HTTP request.
  */
 export const PrivateLinkServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesListByResourceGroupInput,
     outputSchema: PrivateLinkServicesListByResourceGroupOutput,
   }));

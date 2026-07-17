@@ -10,7 +10,7 @@ export interface LlmSkillsNameFilesDestroyInput {
   base_version?: number;
 }
 export const LlmSkillsNameFilesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file_path: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.String.pipe(T.PathParam()),
@@ -66,7 +66,7 @@ export interface LlmSkillsNameFilesDestroyOutput {
   first_version_created_at?: string;
 }
 export const LlmSkillsNameFilesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -141,9 +141,7 @@ export const LlmSkillsNameFilesDestroyOutput =
  * @param base_version - Latest version you are editing from. If provided, the request fails with 409 when another write has landed in the meantime.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmSkillsNameFilesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmSkillsNameFilesDestroyInput,
-    outputSchema: LlmSkillsNameFilesDestroyOutput,
-  }),
-);
+export const llmSkillsNameFilesDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmSkillsNameFilesDestroyInput,
+  outputSchema: LlmSkillsNameFilesDestroyOutput,
+}));

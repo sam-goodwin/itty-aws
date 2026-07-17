@@ -56,7 +56,7 @@ export interface PlaceActionLink {
 }
 
 export const PlaceActionLink: Schema.Codec<PlaceActionLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface ListPlaceActionLinksResponse {
 }
 
 export const ListPlaceActionLinksResponse: Schema.Codec<ListPlaceActionLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPlaceActionLinksResponse" });
@@ -98,7 +98,7 @@ export interface PlaceActionTypeMetadata {
 }
 
 export const PlaceActionTypeMetadata: Schema.Codec<PlaceActionTypeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     placeActionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceActionTypeMetadata" });
@@ -111,7 +111,7 @@ export interface ListPlaceActionTypeMetadataResponse {
 }
 
 export const ListPlaceActionTypeMetadataResponse: Schema.Codec<ListPlaceActionTypeMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     placeActionTypeMetadata: Schema.optional(
       Schema.Array(PlaceActionTypeMetadata),
     ),
@@ -121,7 +121,7 @@ export const ListPlaceActionTypeMetadataResponse: Schema.Codec<ListPlaceActionTy
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -187,7 +187,7 @@ export interface CreateLocationsPlaceActionLinksRequest {
 }
 
 export const CreateLocationsPlaceActionLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(PlaceActionLink).pipe(T.HttpBody()),
   }).pipe(
@@ -201,7 +201,7 @@ export const CreateLocationsPlaceActionLinksRequest =
 
 export type CreateLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const CreateLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
+  /*@__PURE__*/ PlaceActionLink;
 
 export type CreateLocationsPlaceActionLinksError =
   | DefaultErrors
@@ -216,7 +216,7 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
   CreateLocationsPlaceActionLinksResponse,
   CreateLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationsPlaceActionLinksRequest,
   output: CreateLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -234,7 +234,7 @@ export interface ListLocationsPlaceActionLinksRequest {
 }
 
 export const ListLocationsPlaceActionLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -247,7 +247,7 @@ export const ListLocationsPlaceActionLinksRequest =
 export type ListLocationsPlaceActionLinksResponse =
   ListPlaceActionLinksResponse;
 export const ListLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionLinksResponse;
+  /*@__PURE__*/ ListPlaceActionLinksResponse;
 
 export type ListLocationsPlaceActionLinksError =
   | DefaultErrors
@@ -260,7 +260,7 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   ListLocationsPlaceActionLinksResponse,
   ListLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsPlaceActionLinksRequest,
   output: ListLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden],
@@ -276,7 +276,7 @@ export interface GetLocationsPlaceActionLinksRequest {
 }
 
 export const GetLocationsPlaceActionLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -285,7 +285,7 @@ export const GetLocationsPlaceActionLinksRequest =
 
 export type GetLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const GetLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
+  /*@__PURE__*/ PlaceActionLink;
 
 export type GetLocationsPlaceActionLinksError =
   | DefaultErrors
@@ -298,7 +298,7 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
   GetLocationsPlaceActionLinksResponse,
   GetLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLocationsPlaceActionLinksRequest,
   output: GetLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden],
@@ -314,7 +314,7 @@ export interface PatchLocationsPlaceActionLinksRequest {
 }
 
 export const PatchLocationsPlaceActionLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PlaceActionLink).pipe(T.HttpBody()),
@@ -325,7 +325,7 @@ export const PatchLocationsPlaceActionLinksRequest =
 
 export type PatchLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const PatchLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
+  /*@__PURE__*/ PlaceActionLink;
 
 export type PatchLocationsPlaceActionLinksError =
   | DefaultErrors
@@ -340,7 +340,7 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
   PatchLocationsPlaceActionLinksResponse,
   PatchLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLocationsPlaceActionLinksRequest,
   output: PatchLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -352,7 +352,7 @@ export interface DeleteLocationsPlaceActionLinksRequest {
 }
 
 export const DeleteLocationsPlaceActionLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -360,8 +360,7 @@ export const DeleteLocationsPlaceActionLinksRequest =
   ) as unknown as Schema.Codec<DeleteLocationsPlaceActionLinksRequest>;
 
 export type DeleteLocationsPlaceActionLinksResponse = Empty;
-export const DeleteLocationsPlaceActionLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLocationsPlaceActionLinksResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLocationsPlaceActionLinksError =
   | DefaultErrors
@@ -376,7 +375,7 @@ export const deleteLocationsPlaceActionLinks: API.OperationMethod<
   DeleteLocationsPlaceActionLinksResponse,
   DeleteLocationsPlaceActionLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationsPlaceActionLinksRequest,
   output: DeleteLocationsPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -394,7 +393,7 @@ export interface ListPlaceActionTypeMetadataRequest {
 }
 
 export const ListPlaceActionTypeMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -409,7 +408,7 @@ export const ListPlaceActionTypeMetadataRequest =
 export type ListPlaceActionTypeMetadataResponse_Op =
   ListPlaceActionTypeMetadataResponse;
 export const ListPlaceActionTypeMetadataResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionTypeMetadataResponse;
+  /*@__PURE__*/ ListPlaceActionTypeMetadataResponse;
 
 export type ListPlaceActionTypeMetadataError =
   | DefaultErrors
@@ -422,7 +421,7 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   ListPlaceActionTypeMetadataResponse_Op,
   ListPlaceActionTypeMetadataError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceActionTypeMetadataRequest,
   output: ListPlaceActionTypeMetadataResponse_Op,
   errors: [NotFound, Forbidden],

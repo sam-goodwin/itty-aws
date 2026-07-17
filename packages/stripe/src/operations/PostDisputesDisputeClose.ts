@@ -13,7 +13,7 @@ export interface PostDisputesDisputeCloseInput {
   expand?: string[];
 }
 export const PostDisputesDisputeCloseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dispute: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -703,7 +703,7 @@ export interface PostDisputesDisputeCloseOutput {
     | "won";
 }
 export const PostDisputesDisputeCloseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.Array(
       Schema.Struct({
@@ -1534,9 +1534,7 @@ export const PostDisputesDisputeCloseOutput =
  * <p>Closing the dispute for a charge indicates that you do not have any evidence to submit and are essentially dismissing the dispute, acknowledging it as lost.</p>
  * <p>The status of the dispute will change from <code>needs_response</code> to <code>lost</code>. <em>Closing a dispute is irreversible</em>.</p>
  */
-export const PostDisputesDisputeClose = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostDisputesDisputeCloseInput,
-    outputSchema: PostDisputesDisputeCloseOutput,
-  }),
-);
+export const PostDisputesDisputeClose = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostDisputesDisputeCloseInput,
+  outputSchema: PostDisputesDisputeCloseOutput,
+}));

@@ -8,7 +8,7 @@ export interface HogFlowsDestroyInput {
   id: string;
   project_id: string;
 }
-export const HogFlowsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HogFlowsDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const HogFlowsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type HogFlowsDestroyOutput = void;
 export const HogFlowsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsDestroyOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const HogFlowsDestroyOutput =
  * @param id - A UUID string identifying this hog flow.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const hogFlowsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: HogFlowsDestroyInput,
   outputSchema: HogFlowsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

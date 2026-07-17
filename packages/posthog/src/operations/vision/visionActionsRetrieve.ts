@@ -8,7 +8,7 @@ export interface VisionActionsRetrieveInput {
   project_id: string;
 }
 export const VisionActionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -71,7 +71,7 @@ export interface VisionActionsRetrieveOutput {
   updated_at: string;
 }
 export const VisionActionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     scanner: Schema.String,
@@ -157,9 +157,7 @@ export const VisionActionsRetrieveOutput =
  * @param id - A UUID string identifying this vision action.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visionActionsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisionActionsRetrieveInput,
-    outputSchema: VisionActionsRetrieveOutput,
-  }),
-);
+export const visionActionsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisionActionsRetrieveInput,
+  outputSchema: VisionActionsRetrieveOutput,
+}));

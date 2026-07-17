@@ -10,7 +10,7 @@ export interface JumpWireWebDataVaultControllercreateInput {
   value: string;
 }
 export const JumpWireWebDataVaultControllercreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key_context: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     value: Schema.String,
@@ -29,7 +29,7 @@ export interface JumpWireWebDataVaultControllercreateOutput {
   version_id?: string | null;
 }
 export const JumpWireWebDataVaultControllercreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     context: Schema.Record(Schema.String, Schema.String),
     environment_id: Schema.String,
     id: Schema.String,
@@ -49,7 +49,7 @@ export const JumpWireWebDataVaultControllercreateOutput =
  * Encrypt and store a new key-value object.
  */
 export const JumpWireWebDataVaultControllercreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllercreateInput,
     outputSchema: JumpWireWebDataVaultControllercreateOutput,
     errors: [BadRequest, Conflict, UnprocessableEntity] as const,

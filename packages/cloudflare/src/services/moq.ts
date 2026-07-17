@@ -21,7 +21,7 @@ interface LingeringSubscribe {
   /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
   maxTimeoutMs?: number | null;
 }
-const LingeringSubscribe = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LingeringSubscribe = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     maxTimeoutMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -34,7 +34,7 @@ interface Origin {
   /** Upstream origin relay URL. */
   url?: string | null;
 }
-const Origin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Origin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -45,7 +45,7 @@ interface OriginFallback {
   /** Ordered list of upstream origin relays. Each entry is an object (not a bare string) so per-origin configuration can be added in the future without another breaking change. */
   origins?: { url?: string | null }[] | null;
 }
-const OriginFallback = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OriginFallback = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     origins: Schema.optional(Schema.Union([Schema.Array(Origin), Schema.Null])),
@@ -62,7 +62,7 @@ interface Config {
     origins?: { url?: string | null }[] | null;
   } | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lingeringSubscribe: Schema.optional(
       Schema.Union([LingeringSubscribe, Schema.Null]),
@@ -84,14 +84,13 @@ interface ListRelaysResponseResult {
   name: string;
   uid: string;
 }
-const ListRelaysResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      created: Schema.String,
-      modified: Schema.String,
-      name: Schema.String,
-      uid: Schema.String,
-    }),
+const ListRelaysResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    created: Schema.String,
+    modified: Schema.String,
+    name: Schema.String,
+    uid: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ListRelaysResponseResult>;
 
 // =============================================================================
@@ -104,7 +103,7 @@ export interface GetRelayRequest {
   accountId: string;
 }
 
-export const GetRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRelayRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     relayId: Schema.String.pipe(T.HttpPath("relayId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -136,7 +135,7 @@ export interface GetRelayResponse {
   status?: "connected" | null;
 }
 
-export const GetRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRelayResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config,
     created: Schema.String,
@@ -156,7 +155,7 @@ export const getRelay: API.OperationMethod<
   GetRelayResponse,
   GetRelayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRelayRequest,
   output: GetRelayResponse,
   errors: [],
@@ -175,32 +174,28 @@ export interface ListRelaysRequest {
   perPage?: number;
 }
 
-export const ListRelaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      asc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("asc")),
-      createdAfter: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("created_after"),
-      ),
-      createdBefore: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("created_before"),
-      ),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/moq/relays" }),
+export const ListRelaysRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    asc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("asc")),
+    createdAfter: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("created_after"),
     ),
+    createdBefore: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("created_before"),
+    ),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/moq/relays" })),
 ) as unknown as Schema.Codec<ListRelaysRequest>;
 
 export interface ListRelaysResponse {
   result: { created: string; modified: string; name: string; uid: string }[];
 }
 
-export const ListRelaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListRelaysResponseResult),
-    }),
+export const ListRelaysResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListRelaysResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListRelaysResponse>;
 
 export type ListRelaysError = DefaultErrors;
@@ -210,7 +205,7 @@ export const listRelays: API.PaginatedOperationMethod<
   ListRelaysResponse,
   ListRelaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelaysRequest,
   output: ListRelaysResponse,
   errors: [],
@@ -227,14 +222,13 @@ export interface CreateRelayRequest {
   name: string;
 }
 
-export const CreateRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/moq/relays" }),
-    ),
+export const CreateRelayRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/moq/relays" }),
+  ),
 ) as unknown as Schema.Codec<CreateRelayRequest>;
 
 export interface CreateRelayResponse {
@@ -260,29 +254,28 @@ export interface CreateRelayResponse {
   uid: string;
 }
 
-export const CreateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      config: Config,
-      created: Schema.String,
-      modified: Schema.String,
-      name: Schema.String,
-      tokenPublishSubscribe: Schema.String,
-      tokenSubscribe: Schema.String,
-      uid: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          config: "config",
-          created: "created",
-          modified: "modified",
-          name: "name",
-          tokenPublishSubscribe: "token_publish_subscribe",
-          tokenSubscribe: "token_subscribe",
-          uid: "uid",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateRelayResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    config: Config,
+    created: Schema.String,
+    modified: Schema.String,
+    name: Schema.String,
+    tokenPublishSubscribe: Schema.String,
+    tokenSubscribe: Schema.String,
+    uid: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        config: "config",
+        created: "created",
+        modified: "modified",
+        name: "name",
+        tokenPublishSubscribe: "token_publish_subscribe",
+        tokenSubscribe: "token_subscribe",
+        uid: "uid",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRelayResponse>;
 
 export type CreateRelayError = DefaultErrors;
@@ -292,7 +285,7 @@ export const createRelay: API.OperationMethod<
   CreateRelayResponse,
   CreateRelayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRelayRequest,
   output: CreateRelayResponse,
   errors: [],
@@ -311,19 +304,18 @@ export interface UpdateRelayRequest {
   name?: string;
 }
 
-export const UpdateRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      relayId: Schema.String.pipe(T.HttpPath("relayId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      config: Schema.optional(Config),
-      name: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/moq/relays/{relayId}",
-      }),
-    ),
+export const UpdateRelayRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    relayId: Schema.String.pipe(T.HttpPath("relayId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    config: Schema.optional(Config),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/moq/relays/{relayId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRelayRequest>;
 
 export interface UpdateRelayResponse {
@@ -346,18 +338,17 @@ export interface UpdateRelayResponse {
   status?: "connected" | null;
 }
 
-export const UpdateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      config: Config,
-      created: Schema.String,
-      modified: Schema.String,
-      name: Schema.String,
-      uid: Schema.String,
-      status: Schema.optional(
-        Schema.Union([Schema.Literal("connected"), Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const UpdateRelayResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    config: Config,
+    created: Schema.String,
+    modified: Schema.String,
+    name: Schema.String,
+    uid: Schema.String,
+    status: Schema.optional(
+      Schema.Union([Schema.Literal("connected"), Schema.Null]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRelayResponse>;
 
 export type UpdateRelayError = DefaultErrors;
@@ -367,7 +358,7 @@ export const updateRelay: API.OperationMethod<
   UpdateRelayResponse,
   UpdateRelayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRelayRequest,
   output: UpdateRelayResponse,
   errors: [],
@@ -379,23 +370,22 @@ export interface DeleteRelayRequest {
   accountId: string;
 }
 
-export const DeleteRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      relayId: Schema.String.pipe(T.HttpPath("relayId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/moq/relays/{relayId}",
-      }),
-    ),
+export const DeleteRelayRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    relayId: Schema.String.pipe(T.HttpPath("relayId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/moq/relays/{relayId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRelayRequest>;
 
 export type DeleteRelayResponse = unknown;
 
-export const DeleteRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteRelayResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRelayResponse>;
 
 export type DeleteRelayError = DefaultErrors;
@@ -405,7 +395,7 @@ export const deleteRelay: API.OperationMethod<
   DeleteRelayResponse,
   DeleteRelayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRelayRequest,
   output: DeleteRelayResponse,
   errors: [],
@@ -424,7 +414,7 @@ export interface RotateRelayTokenRequest {
 }
 
 export const RotateRelayTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       relayId: Schema.String.pipe(T.HttpPath("relayId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -447,7 +437,7 @@ export interface RotateRelayTokenResponse {
 }
 
 export const RotateRelayTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       token: Schema.String,
       type: Schema.Union([
@@ -464,7 +454,7 @@ export const rotateRelayToken: API.OperationMethod<
   RotateRelayTokenResponse,
   RotateRelayTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateRelayTokenRequest,
   output: RotateRelayTokenResponse,
   errors: [],

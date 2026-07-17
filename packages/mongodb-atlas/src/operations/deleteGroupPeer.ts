@@ -10,7 +10,7 @@ export interface DeleteGroupPeerInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const DeleteGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupPeerInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const DeleteGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteGroupPeerOutput = void;
 export const DeleteGroupPeerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupPeerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupPeerOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const DeleteGroupPeerOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param peerId - Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
  */
-export const deleteGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroupPeer = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupPeerInput,
   outputSchema: DeleteGroupPeerOutput,
   errors: [Forbidden, NotFound, Conflict] as const,

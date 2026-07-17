@@ -72,7 +72,7 @@ interface ApishieldCredentialsJWTKeyRSA {
   n: string;
 }
 const ApishieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       alg: Schema.Union([
         Schema.Literals(["RS256", "RS384", "RS512", "PS256", "PS384", "PS512"]),
@@ -100,7 +100,7 @@ interface ApishieldCredentialsJWTKeyEcEs256 {
   y: string;
 }
 const ApishieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       alg: Schema.Literal("ES256"),
       crv: Schema.Literal("P-256"),
@@ -126,7 +126,7 @@ interface ApishieldCredentialsJWTKeyEcEs384 {
   y: string;
 }
 const ApishieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       alg: Schema.Literal("ES384"),
       crv: Schema.Literal("P-384"),
@@ -171,7 +171,7 @@ interface Credentials2 {
       }
   )[];
 }
-const Credentials2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Credentials2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     keys: Schema.Array(
       Schema.Union([
@@ -228,7 +228,7 @@ interface ListConfigurationsResponseResult {
   tokenType: "JWT";
 }
 const ListConfigurationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -259,7 +259,7 @@ interface ListConfigurationsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListConfigurationsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -278,7 +278,7 @@ const ListConfigurationsResponseResultInfo =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -290,7 +290,7 @@ interface MessageItem {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const MessageItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MessageItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -312,7 +312,7 @@ interface Exclude2 {
   /** Excluded operation IDs. */
   operationIds?: string[] | null;
 }
-const Exclude2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Exclude2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operationIds: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -324,7 +324,7 @@ interface Include {
   /** Included hostnames. */
   host?: string[] | null;
 }
-const Include = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Include = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -338,7 +338,7 @@ interface Selector {
   /** Select all matching operations. */
   include?: { host?: string[] | null }[] | null;
 }
-const Selector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Selector = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     exclude: Schema.optional(
       Schema.Union([Schema.Array(Exclude2), Schema.Null]),
@@ -370,7 +370,7 @@ interface ListRulesResponseResult {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-const ListRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListRulesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
     description: Schema.String,
@@ -400,7 +400,7 @@ interface ApishieldIndex {
   /** Move rule to this position */
   index: number;
 }
-const ApishieldIndex = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ApishieldIndex = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     index: Schema.Number,
   }),
@@ -410,7 +410,7 @@ interface ApishieldBefore {
   /** Move rule to before rule with this ID. */
   before?: string | null;
 }
-const ApishieldBefore = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ApishieldBefore = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -420,7 +420,7 @@ interface ApishieldAfter {
   /** Move rule to after rule with this ID. */
   after?: string | null;
 }
-const ApishieldAfter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ApishieldAfter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -443,7 +443,7 @@ interface Body {
   /** A human-readable name for the rule. */
   title: string;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
     description: Schema.String,
@@ -479,7 +479,7 @@ interface Body2 {
   /** A human-readable name for the rule. */
   title?: string | null;
 }
-const Body2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     action: Schema.optional(
@@ -513,7 +513,7 @@ export interface GetConfigurationRequest {
 }
 
 export const GetConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -571,7 +571,7 @@ export interface GetConfigurationResponse {
 }
 
 export const GetConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -608,7 +608,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationResponse,
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
@@ -622,7 +622,7 @@ export interface ListConfigurationsRequest {
 }
 
 export const ListConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -688,7 +688,7 @@ export interface ListConfigurationsResponse {
 }
 
 export const ListConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListConfigurationsResponseResult),
       resultInfo: Schema.optional(
@@ -707,7 +707,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsResponse,
   ListConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [TokenValidationNotEntitled, Forbidden],
@@ -769,7 +769,7 @@ export interface CreateConfigurationRequest {
 }
 
 export const CreateConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       credentials: Credentials2,
@@ -838,7 +838,7 @@ export interface CreateConfigurationResponse {
 }
 
 export const CreateConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -874,7 +874,7 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationResponse,
   CreateConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigurationRequest,
   output: CreateConfigurationResponse,
   errors: [TokenValidationNotEntitled, Forbidden],
@@ -893,7 +893,7 @@ export interface PatchConfigurationRequest {
 }
 
 export const PatchConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -922,7 +922,7 @@ export interface PatchConfigurationResponse {
 }
 
 export const PatchConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -953,7 +953,7 @@ export const patchConfiguration: API.OperationMethod<
   PatchConfigurationResponse,
   PatchConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConfigurationRequest,
   output: PatchConfigurationResponse,
   errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
@@ -966,7 +966,7 @@ export interface DeleteConfigurationRequest {
 }
 
 export const DeleteConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -984,7 +984,7 @@ export interface DeleteConfigurationResponse {
 }
 
 export const DeleteConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1001,7 +1001,7 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationResponse,
   DeleteConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigurationRequest,
   output: DeleteConfigurationResponse,
   errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
@@ -1051,7 +1051,7 @@ export interface PutConfigurationCredentialRequest {
 }
 
 export const PutConfigurationCredentialRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configId: Schema.String.pipe(T.HttpPath("configId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1120,7 +1120,7 @@ export interface PutConfigurationCredentialResponse {
 }
 
 export const PutConfigurationCredentialResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(MessageItem),
       keys: Schema.Array(
@@ -1146,7 +1146,7 @@ export const putConfigurationCredential: API.OperationMethod<
   PutConfigurationCredentialResponse,
   PutConfigurationCredentialError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationCredentialRequest,
   output: PutConfigurationCredentialResponse,
   errors: [TokenConfigurationNotFound, TokenValidationNotEntitled, Forbidden],
@@ -1162,7 +1162,7 @@ export interface GetRuleRequest {
   zoneId: string;
 }
 
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1196,7 +1196,7 @@ export interface GetRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
     description: Schema.String,
@@ -1235,7 +1235,7 @@ export const getRule: API.OperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
@@ -1262,7 +1262,7 @@ export interface ListRulesRequest {
   tokenConfiguration?: string[];
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1306,14 +1306,13 @@ export interface ListRulesResponse {
   } | null;
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListRulesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListConfigurationsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListRulesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListConfigurationsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError =
@@ -1326,7 +1325,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [TokenValidationNotEntitled, Forbidden],
@@ -1359,22 +1358,21 @@ export interface CreateRuleRequest {
   title: string;
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
-      description: Schema.String,
-      enabled: Schema.Boolean,
-      expression: Schema.String,
-      selector: Selector,
-      title: Schema.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/token_validation/rules",
-      }),
-    ),
+export const CreateRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+    description: Schema.String,
+    enabled: Schema.Boolean,
+    expression: Schema.String,
+    selector: Selector,
+    title: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/token_validation/rules",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateRuleRequest>;
 
 export interface CreateRuleResponse {
@@ -1399,33 +1397,32 @@ export interface CreateRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
-      description: Schema.String,
-      enabled: Schema.Boolean,
-      expression: Schema.String,
-      selector: Selector,
-      title: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          action: "action",
-          description: "description",
-          enabled: "enabled",
-          expression: "expression",
-          selector: "selector",
-          title: "title",
-          id: "id",
-          createdAt: "created_at",
-          lastUpdated: "last_updated",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+    description: Schema.String,
+    enabled: Schema.Boolean,
+    expression: Schema.String,
+    selector: Selector,
+    title: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        action: "action",
+        description: "description",
+        enabled: "enabled",
+        expression: "expression",
+        selector: "selector",
+        title: "title",
+        id: "id",
+        createdAt: "created_at",
+        lastUpdated: "last_updated",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRuleResponse>;
 
 export type CreateRuleError =
@@ -1438,7 +1435,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [TokenValidationNotEntitled, Forbidden],
@@ -1467,7 +1464,7 @@ export interface PatchRuleRequest {
   title?: string;
 }
 
-export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1512,33 +1509,32 @@ export interface PatchRuleResponse {
   lastUpdated?: string | null;
 }
 
-export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
-      description: Schema.String,
-      enabled: Schema.Boolean,
-      expression: Schema.String,
-      selector: Selector,
-      title: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          action: "action",
-          description: "description",
-          enabled: "enabled",
-          expression: "expression",
-          selector: "selector",
-          title: "title",
-          id: "id",
-          createdAt: "created_at",
-          lastUpdated: "last_updated",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    action: Schema.Union([Schema.Literals(["log", "block"]), Schema.String]),
+    description: Schema.String,
+    enabled: Schema.Boolean,
+    expression: Schema.String,
+    selector: Selector,
+    title: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        action: "action",
+        description: "description",
+        enabled: "enabled",
+        expression: "expression",
+        selector: "selector",
+        title: "title",
+        id: "id",
+        createdAt: "created_at",
+        lastUpdated: "last_updated",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchRuleResponse>;
 
 export type PatchRuleError =
@@ -1552,7 +1548,7 @@ export const patchRule: API.OperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
@@ -1564,23 +1560,22 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/token_validation/rules/{ruleId}",
-      }),
-    ),
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/token_validation/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRuleRequest>;
 
 export type DeleteRuleResponse = unknown;
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError =
@@ -1594,7 +1589,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [TokenValidationRuleNotFound, TokenValidationNotEntitled, Forbidden],
@@ -1618,7 +1613,7 @@ export interface BulkCreateRulesRequest {
 }
 
 export const BulkCreateRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Array(Body).pipe(T.HttpBody()),
@@ -1648,7 +1643,7 @@ export interface BulkCreateRulesResponse {
 }
 
 export const BulkCreateRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRulesResponseResult),
     }),
@@ -1661,7 +1656,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateRulesRequest,
   output: BulkCreateRulesResponse,
   errors: [],
@@ -1690,17 +1685,16 @@ export interface BulkPatchRulesRequest {
   }[];
 }
 
-export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(Body2).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/zones/{zone_id}/token_validation/rules/bulk",
-      }),
-    ),
+export const BulkPatchRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Array(Body2).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/token_validation/rules/bulk",
+    }),
+  ),
 ) as unknown as Schema.Codec<BulkPatchRulesRequest>;
 
 export interface BulkPatchRulesResponse {
@@ -1721,7 +1715,7 @@ export interface BulkPatchRulesResponse {
 }
 
 export const BulkPatchRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRulesResponseResult),
     }),
@@ -1734,7 +1728,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchRulesRequest,
   output: BulkPatchRulesResponse,
   errors: [],

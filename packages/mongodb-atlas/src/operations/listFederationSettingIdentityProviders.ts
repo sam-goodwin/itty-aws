@@ -13,7 +13,7 @@ export interface ListFederationSettingIdentityProvidersInput {
   idpType?: string;
 }
 export const ListFederationSettingIdentityProvidersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -30,7 +30,7 @@ export const ListFederationSettingIdentityProvidersInput =
 // Output Schema
 export type ListFederationSettingIdentityProvidersOutput = void;
 export const ListFederationSettingIdentityProvidersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingIdentityProvidersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingIdentityProvidersOutput>;
 
 // The operation
 /**
@@ -46,7 +46,7 @@ export const ListFederationSettingIdentityProvidersOutput =
  * @param idpType - The types of the target identity providers.
  */
 export const listFederationSettingIdentityProviders =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListFederationSettingIdentityProvidersInput,
     outputSchema: ListFederationSettingIdentityProvidersOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -10,7 +10,7 @@ export interface TasksPresenceCreateInput {
   device_id: string;
 }
 export const TasksPresenceCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     device_id: Schema.String,
@@ -24,7 +24,7 @@ export const TasksPresenceCreateInput =
 // Output Schema
 export type TasksPresenceCreateOutput = void;
 export const TasksPresenceCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksPresenceCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksPresenceCreateOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const TasksPresenceCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksPresenceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksPresenceCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksPresenceCreateInput,
   outputSchema: TasksPresenceCreateOutput,
   errors: [NotFound] as const,

@@ -18,7 +18,7 @@ export interface EndpointsCreateInput {
   deleted?: boolean | null;
   tags?: string[] | null;
 }
-export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   query: Schema.optional(Schema.Unknown),
@@ -90,7 +90,7 @@ export interface EndpointsCreateOutput {
   columns?: { name?: string; type?: string }[];
   tags?: string[];
 }
-export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -172,7 +172,7 @@ export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const endpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const endpointsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsCreateInput,
   outputSchema: EndpointsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

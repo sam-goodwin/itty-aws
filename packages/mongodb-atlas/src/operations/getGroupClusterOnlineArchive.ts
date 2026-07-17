@@ -12,7 +12,7 @@ export interface GetGroupClusterOnlineArchiveInput {
   pretty?: boolean;
 }
 export const GetGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     archiveId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupClusterOnlineArchiveInput =
 // Output Schema
 export type GetGroupClusterOnlineArchiveOutput = void;
 export const GetGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterOnlineArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const GetGroupClusterOnlineArchiveOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
  */
 export const getGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterOnlineArchiveInput,
     outputSchema: GetGroupClusterOnlineArchiveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

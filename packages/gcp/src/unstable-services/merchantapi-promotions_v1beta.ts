@@ -30,7 +30,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -43,7 +43,7 @@ export interface Interval {
 }
 
 export const Interval: Schema.Codec<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Interval" });
@@ -191,7 +191,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limitValue: Schema.optional(Price),
     eventApplicability: Schema.optional(Schema.String),
     freeGiftDescription: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface DestinationStatus {
 }
 
 export const DestinationStatus: Schema.Codec<DestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "DestinationStatus" });
@@ -325,7 +325,7 @@ export interface ItemLevelIssue {
 }
 
 export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     documentation: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface PromotionStatus {
 }
 
 export const PromotionStatus: Schema.Codec<PromotionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateDate: Schema.optional(Schema.String),
     destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
     itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
@@ -366,7 +366,7 @@ export interface CustomAttribute {
 }
 
 export const CustomAttribute: Schema.Codec<CustomAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       value: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface Promotion {
 }
 
 export const Promotion: Schema.Codec<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentLanguage: Schema.optional(Schema.String),
     redemptionChannel: Schema.optional(Schema.Array(Schema.String)),
     dataSource: Schema.optional(Schema.String),
@@ -423,7 +423,7 @@ export interface InsertPromotionRequest {
 }
 
 export const InsertPromotionRequest: Schema.Codec<InsertPromotionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     promotion: Schema.optional(Promotion),
     dataSource: Schema.optional(Schema.String),
   }).annotate({ identifier: "InsertPromotionRequest" });
@@ -461,7 +461,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -476,7 +476,7 @@ export interface ListPromotionsResponse {
 }
 
 export const ListPromotionsResponse: Schema.Codec<ListPromotionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     promotions: Schema.optional(Schema.Array(Promotion)),
   }).annotate({ identifier: "ListPromotionsResponse" });
@@ -507,7 +507,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -583,7 +583,7 @@ export interface ListAccountsPromotionsRequest {
 }
 
 export const ListAccountsPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -594,7 +594,7 @@ export const ListAccountsPromotionsRequest =
 
 export type ListAccountsPromotionsResponse = ListPromotionsResponse;
 export const ListAccountsPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
+  /*@__PURE__*/ ListPromotionsResponse;
 
 export type ListAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -604,7 +604,7 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
   ListAccountsPromotionsResponse,
   ListAccountsPromotionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPromotionsRequest,
   output: ListAccountsPromotionsResponse,
   errors: [NotFound, Forbidden],
@@ -622,7 +622,7 @@ export interface InsertAccountsPromotionsRequest {
 }
 
 export const InsertAccountsPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(InsertPromotionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -635,8 +635,7 @@ export const InsertAccountsPromotionsRequest =
   ) as unknown as Schema.Codec<InsertAccountsPromotionsRequest>;
 
 export type InsertAccountsPromotionsResponse = Promotion;
-export const InsertAccountsPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Promotion;
+export const InsertAccountsPromotionsResponse = /*@__PURE__*/ Promotion;
 
 export type InsertAccountsPromotionsError =
   | DefaultErrors
@@ -651,7 +650,7 @@ export const insertAccountsPromotions: API.OperationMethod<
   InsertAccountsPromotionsResponse,
   InsertAccountsPromotionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsPromotionsRequest,
   output: InsertAccountsPromotionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -663,7 +662,7 @@ export interface GetAccountsPromotionsRequest {
 }
 
 export const GetAccountsPromotionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "promotions/v1beta/{+name}" }),
@@ -671,8 +670,7 @@ export const GetAccountsPromotionsRequest =
   ) as unknown as Schema.Codec<GetAccountsPromotionsRequest>;
 
 export type GetAccountsPromotionsResponse = Promotion;
-export const GetAccountsPromotionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Promotion;
+export const GetAccountsPromotionsResponse = /*@__PURE__*/ Promotion;
 
 export type GetAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -682,7 +680,7 @@ export const getAccountsPromotions: API.OperationMethod<
   GetAccountsPromotionsResponse,
   GetAccountsPromotionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsPromotionsRequest,
   output: GetAccountsPromotionsResponse,
   errors: [NotFound, Forbidden],

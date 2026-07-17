@@ -12,7 +12,7 @@ export interface DeleteGroupStreamConnectionInput {
   pretty?: boolean;
 }
 export const DeleteGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupStreamConnectionInput =
 // Output Schema
 export type DeleteGroupStreamConnectionOutput = void;
 export const DeleteGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamConnectionOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const DeleteGroupStreamConnectionOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param connectionName - Label that identifies the stream connection.
  */
-export const deleteGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupStreamConnectionInput,
-    outputSchema: DeleteGroupStreamConnectionOutput,
-    errors: [Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const deleteGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupStreamConnectionInput,
+  outputSchema: DeleteGroupStreamConnectionOutput,
+  errors: [Forbidden, NotFound, Conflict] as const,
+}));

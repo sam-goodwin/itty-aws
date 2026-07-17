@@ -12,7 +12,7 @@ export interface PersonsUpdatePropertyCreateInput {
   value?: unknown;
 }
 export const PersonsUpdatePropertyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -28,7 +28,7 @@ export const PersonsUpdatePropertyCreateInput =
 // Output Schema
 export type PersonsUpdatePropertyCreateOutput = void;
 export const PersonsUpdatePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsUpdatePropertyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsUpdatePropertyCreateOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const PersonsUpdatePropertyCreateOutput =
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsUpdatePropertyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsUpdatePropertyCreateInput,
-    outputSchema: PersonsUpdatePropertyCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsUpdatePropertyCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsUpdatePropertyCreateInput,
+  outputSchema: PersonsUpdatePropertyCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -34,7 +34,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
     green: Schema.optional(Schema.Number),
@@ -51,7 +51,7 @@ export interface LightSettings {
 }
 
 export const LightSettings: Schema.Codec<LightSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lightOnDuration: Schema.optional(Schema.String),
     lightOffDuration: Schema.optional(Schema.String),
     color: Schema.optional(Color),
@@ -65,7 +65,7 @@ export interface WebpushFcmOptions {
 }
 
 export const WebpushFcmOptions: Schema.Codec<WebpushFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
     link: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebpushFcmOptions" });
@@ -82,7 +82,7 @@ export interface WebpushConfig {
 }
 
 export const WebpushConfig: Schema.Codec<WebpushConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notification: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -164,7 +164,7 @@ export interface AndroidNotification {
 }
 
 export const AndroidNotification: Schema.Codec<AndroidNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     sticky: Schema.optional(Schema.Boolean),
     lightSettings: Schema.optional(LightSettings),
@@ -204,7 +204,7 @@ export interface Notification {
 }
 
 export const Notification: Schema.Codec<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     body: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface ApnsFcmOptions {
 }
 
 export const ApnsFcmOptions: Schema.Codec<ApnsFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
     image: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApnsFcmOptions" });
@@ -235,7 +235,7 @@ export interface ApnsConfig {
 }
 
 export const ApnsConfig: Schema.Codec<ApnsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     fcmOptions: Schema.optional(ApnsFcmOptions),
@@ -248,7 +248,7 @@ export interface AndroidFcmOptions {
 }
 
 export const AndroidFcmOptions: Schema.Codec<AndroidFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "AndroidFcmOptions" });
 
@@ -276,7 +276,7 @@ export interface AndroidConfig {
 }
 
 export const AndroidConfig: Schema.Codec<AndroidConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bandwidthConstrainedOk: Schema.optional(Schema.Boolean),
     directBootOk: Schema.optional(Schema.Boolean),
     restrictedPackageName: Schema.optional(Schema.String),
@@ -295,7 +295,7 @@ export interface FcmOptions {
 }
 
 export const FcmOptions: Schema.Codec<FcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "FcmOptions" });
 
@@ -325,7 +325,7 @@ export interface Message {
 }
 
 export const Message: Schema.Codec<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     apns: Schema.optional(ApnsConfig),
@@ -347,7 +347,7 @@ export interface SendMessageRequest {
 }
 
 export const SendMessageRequest: Schema.Codec<SendMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     message: Schema.optional(Message),
   }).annotate({ identifier: "SendMessageRequest" });
@@ -414,7 +414,7 @@ export interface SendProjectsMessagesRequest {
 }
 
 export const SendProjectsMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SendMessageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -427,7 +427,7 @@ export const SendProjectsMessagesRequest =
   ) as unknown as Schema.Codec<SendProjectsMessagesRequest>;
 
 export type SendProjectsMessagesResponse = Message;
-export const SendProjectsMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
+export const SendProjectsMessagesResponse = /*@__PURE__*/ Message;
 
 export type SendProjectsMessagesError =
   | DefaultErrors
@@ -442,7 +442,7 @@ export const sendProjectsMessages: API.OperationMethod<
   SendProjectsMessagesResponse,
   SendProjectsMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendProjectsMessagesRequest,
   output: SendProjectsMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

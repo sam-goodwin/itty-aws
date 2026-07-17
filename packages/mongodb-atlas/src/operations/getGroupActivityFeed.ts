@@ -13,7 +13,7 @@ export interface GetGroupActivityFeedInput {
   clusterName?: string;
 }
 export const GetGroupActivityFeedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.Boolean),
     eventType: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export const GetGroupActivityFeedInput =
 // Output Schema
 export type GetGroupActivityFeedOutput = void;
 export const GetGroupActivityFeedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupActivityFeedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupActivityFeedOutput>;
 
 // The operation
 /**
@@ -49,10 +49,8 @@ export const GetGroupActivityFeedOutput =
  * @param minDate - Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const getGroupActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupActivityFeedInput,
-    outputSchema: GetGroupActivityFeedOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupActivityFeed = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupActivityFeedInput,
+  outputSchema: GetGroupActivityFeedOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

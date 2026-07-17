@@ -16,7 +16,7 @@ export interface CreateEvmEip7702DelegationInput {
   enableSpendPermissions?: boolean;
 }
 export const CreateEvmEip7702DelegationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base-sepolia",
@@ -40,7 +40,7 @@ export interface CreateEvmEip7702DelegationOutput {
   delegationOperationId: string;
 }
 export const CreateEvmEip7702DelegationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
   }) as unknown as Schema.Codec<CreateEvmEip7702DelegationOutput>;
 
@@ -66,9 +66,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account to delegate.
  */
-export const createEvmEip7702Delegation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateEvmEip7702DelegationInput,
-    outputSchema: CreateEvmEip7702DelegationOutput,
-  }),
-);
+export const createEvmEip7702Delegation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateEvmEip7702DelegationInput,
+  outputSchema: CreateEvmEip7702DelegationOutput,
+}));

@@ -12,7 +12,7 @@ export interface ReassignRoleObjectsInput {
   successor: string;
 }
 export const ReassignRoleObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const ReassignRoleObjectsInput =
 // Output Schema
 export type ReassignRoleObjectsOutput = void;
 export const ReassignRoleObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReassignRoleObjectsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReassignRoleObjectsOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const ReassignRoleObjectsOutput =
  * @param id - The ID of the role
  * @param successor - The role to reassign ownership to
  */
-export const reassignRoleObjects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const reassignRoleObjects = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReassignRoleObjectsInput,
   outputSchema: ReassignRoleObjectsOutput,
   errors: [Forbidden, NotFound] as const,

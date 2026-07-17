@@ -177,7 +177,7 @@ export type GroundTruthBlob = Uint8Array;
 
 //# Schemas
 export type UserFaceIdList = string[];
-export const UserFaceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserFaceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateFacesRequest {
   CollectionId: string;
   UserId: string;
@@ -185,7 +185,7 @@ export interface AssociateFacesRequest {
   UserMatchThreshold?: number;
   ClientRequestToken?: string;
 }
-export const AssociateFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociateFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     UserId: S.String,
@@ -201,23 +201,21 @@ export const AssociateFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AssociatedFace {
   FaceId?: string;
 }
-export const AssociatedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociatedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FaceId: S.optional(S.String) }),
 ).annotate({ identifier: "AssociatedFace" }) as any as S.Schema<AssociatedFace>;
 export type AssociatedFacesList = AssociatedFace[];
-export const AssociatedFacesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssociatedFace);
+export const AssociatedFacesList = /*@__PURE__*/ S.Array(AssociatedFace);
 export type UnsuccessfulFaceAssociationReason =
   | "FACE_NOT_FOUND"
   | "ASSOCIATED_TO_A_DIFFERENT_USER"
   | "LOW_MATCH_CONFIDENCE"
   | (string & {});
-export const UnsuccessfulFaceAssociationReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnsuccessfulFaceAssociationReason = /*@__PURE__*/ S.String;
 export type UnsuccessfulFaceAssociationReasons =
   UnsuccessfulFaceAssociationReason[];
 export const UnsuccessfulFaceAssociationReasons =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceAssociationReason);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceAssociationReason);
 export interface UnsuccessfulFaceAssociation {
   FaceId?: string;
   UserId?: string;
@@ -225,7 +223,7 @@ export interface UnsuccessfulFaceAssociation {
   Reasons?: UnsuccessfulFaceAssociationReason[];
 }
 export const UnsuccessfulFaceAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FaceId: S.optional(S.String),
       UserId: S.optional(S.String),
@@ -237,26 +235,25 @@ export const UnsuccessfulFaceAssociation =
   }) as any as S.Schema<UnsuccessfulFaceAssociation>;
 export type UnsuccessfulFaceAssociationList = UnsuccessfulFaceAssociation[];
 export const UnsuccessfulFaceAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceAssociation);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceAssociation);
 export type UserStatus =
   | "ACTIVE"
   | "UPDATING"
   | "CREATING"
   | "CREATED"
   | (string & {});
-export const UserStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserStatus = /*@__PURE__*/ S.String;
 export interface AssociateFacesResponse {
   AssociatedFaces?: AssociatedFace[];
   UnsuccessfulFaceAssociations?: UnsuccessfulFaceAssociation[];
   UserStatus?: UserStatus;
 }
-export const AssociateFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AssociatedFaces: S.optional(AssociatedFacesList),
-      UnsuccessfulFaceAssociations: S.optional(UnsuccessfulFaceAssociationList),
-      UserStatus: S.optional(UserStatus),
-    }),
+export const AssociateFacesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssociatedFaces: S.optional(AssociatedFacesList),
+    UnsuccessfulFaceAssociations: S.optional(UnsuccessfulFaceAssociationList),
+    UserStatus: S.optional(UserStatus),
+  }),
 ).annotate({
   identifier: "AssociateFacesResponse",
 }) as any as S.Schema<AssociateFacesResponse>;
@@ -265,7 +262,7 @@ export interface S3Object {
   Name?: string;
   Version?: string;
 }
-export const S3Object = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bucket: S.optional(S.String),
     Name: S.optional(S.String),
@@ -276,7 +273,7 @@ export interface Image {
   Bytes?: Uint8Array;
   S3Object?: S3Object;
 }
-export const Image = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bytes: S.optional(T.Blob), S3Object: S.optional(S3Object) }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 export type QualityFilter =
@@ -286,14 +283,14 @@ export type QualityFilter =
   | "MEDIUM"
   | "HIGH"
   | (string & {});
-export const QualityFilter = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QualityFilter = /*@__PURE__*/ S.String;
 export interface CompareFacesRequest {
   SourceImage: Image;
   TargetImage: Image;
   SimilarityThreshold?: number;
   QualityFilter?: QualityFilter;
 }
-export const CompareFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CompareFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceImage: Image,
     TargetImage: Image,
@@ -311,7 +308,7 @@ export interface BoundingBox {
   Left?: number;
   Top?: number;
 }
-export const BoundingBox = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BoundingBox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Width: S.optional(S.Number),
     Height: S.optional(S.Number),
@@ -323,12 +320,11 @@ export interface ComparedSourceImageFace {
   BoundingBox?: BoundingBox;
   Confidence?: number;
 }
-export const ComparedSourceImageFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      BoundingBox: S.optional(BoundingBox),
-      Confidence: S.optional(S.Number),
-    }),
+export const ComparedSourceImageFace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BoundingBox: S.optional(BoundingBox),
+    Confidence: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ComparedSourceImageFace",
 }) as any as S.Schema<ComparedSourceImageFace>;
@@ -364,13 +360,13 @@ export type LandmarkType =
   | "midJawlineRight"
   | "upperJawlineRight"
   | (string & {});
-export const LandmarkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LandmarkType = /*@__PURE__*/ S.String;
 export interface Landmark {
   Type?: LandmarkType;
   X?: number;
   Y?: number;
 }
-export const Landmark = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Landmark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(LandmarkType),
     X: S.optional(S.Number),
@@ -378,13 +374,13 @@ export const Landmark = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Landmark" }) as any as S.Schema<Landmark>;
 export type Landmarks = Landmark[];
-export const Landmarks = /*@__PURE__*/ /*#__PURE__*/ S.Array(Landmark);
+export const Landmarks = /*@__PURE__*/ S.Array(Landmark);
 export interface Pose {
   Roll?: number;
   Yaw?: number;
   Pitch?: number;
 }
-export const Pose = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Pose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Roll: S.optional(S.Number),
     Yaw: S.optional(S.Number),
@@ -395,7 +391,7 @@ export interface ImageQuality {
   Brightness?: number;
   Sharpness?: number;
 }
-export const ImageQuality = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImageQuality = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Brightness: S.optional(S.Number),
     Sharpness: S.optional(S.Number),
@@ -412,21 +408,21 @@ export type EmotionName =
   | "UNKNOWN"
   | "FEAR"
   | (string & {});
-export const EmotionName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EmotionName = /*@__PURE__*/ S.String;
 export interface Emotion {
   Type?: EmotionName;
   Confidence?: number;
 }
-export const Emotion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Emotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(EmotionName), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Emotion" }) as any as S.Schema<Emotion>;
 export type Emotions = Emotion[];
-export const Emotions = /*@__PURE__*/ /*#__PURE__*/ S.Array(Emotion);
+export const Emotions = /*@__PURE__*/ S.Array(Emotion);
 export interface Smile {
   Value?: boolean;
   Confidence?: number;
 }
-export const Smile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Smile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Smile" }) as any as S.Schema<Smile>;
 export interface ComparedFace {
@@ -438,7 +434,7 @@ export interface ComparedFace {
   Emotions?: Emotion[];
   Smile?: Smile;
 }
-export const ComparedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComparedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     Confidence: S.optional(S.Number),
@@ -453,7 +449,7 @@ export interface CompareFacesMatch {
   Similarity?: number;
   Face?: ComparedFace;
 }
-export const CompareFacesMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CompareFacesMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Similarity: S.optional(S.Number),
     Face: S.optional(ComparedFace),
@@ -462,18 +458,16 @@ export const CompareFacesMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CompareFacesMatch",
 }) as any as S.Schema<CompareFacesMatch>;
 export type CompareFacesMatchList = CompareFacesMatch[];
-export const CompareFacesMatchList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CompareFacesMatch);
+export const CompareFacesMatchList = /*@__PURE__*/ S.Array(CompareFacesMatch);
 export type CompareFacesUnmatchList = ComparedFace[];
-export const CompareFacesUnmatchList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComparedFace);
+export const CompareFacesUnmatchList = /*@__PURE__*/ S.Array(ComparedFace);
 export type OrientationCorrection =
   | "ROTATE_0"
   | "ROTATE_90"
   | "ROTATE_180"
   | "ROTATE_270"
   | (string & {});
-export const OrientationCorrection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrientationCorrection = /*@__PURE__*/ S.String;
 export interface CompareFacesResponse {
   SourceImageFace?: ComparedSourceImageFace;
   FaceMatches?: CompareFacesMatch[];
@@ -481,7 +475,7 @@ export interface CompareFacesResponse {
   SourceImageOrientationCorrection?: OrientationCorrection;
   TargetImageOrientationCorrection?: OrientationCorrection;
 }
-export const CompareFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CompareFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceImageFace: S.optional(ComparedSourceImageFace),
     FaceMatches: S.optional(CompareFacesMatchList),
@@ -496,14 +490,14 @@ export interface OutputConfig {
   S3Bucket?: string;
   S3KeyPrefix?: string;
 }
-export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Bucket: S.optional(S.String),
     S3KeyPrefix: S.optional(S.String),
   }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -516,27 +510,26 @@ export interface CopyProjectVersionRequest {
   Tags?: { [key: string]: string | undefined };
   KmsKeyId?: string;
 }
-export const CopyProjectVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SourceProjectArn: S.String,
-      SourceProjectVersionArn: S.String,
-      DestinationProjectArn: S.String,
-      VersionName: S.String,
-      OutputConfig: OutputConfig,
-      Tags: S.optional(TagMap),
-      KmsKeyId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CopyProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceProjectArn: S.String,
+    SourceProjectVersionArn: S.String,
+    DestinationProjectArn: S.String,
+    VersionName: S.String,
+    OutputConfig: OutputConfig,
+    Tags: S.optional(TagMap),
+    KmsKeyId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CopyProjectVersionRequest",
 }) as any as S.Schema<CopyProjectVersionRequest>;
 export interface CopyProjectVersionResponse {
   ProjectVersionArn?: string;
 }
-export const CopyProjectVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ProjectVersionArn: S.optional(S.String) }),
+export const CopyProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProjectVersionArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CopyProjectVersionResponse",
 }) as any as S.Schema<CopyProjectVersionResponse>;
@@ -544,11 +537,10 @@ export interface CreateCollectionRequest {
   CollectionId: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateCollectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ CollectionId: S.String, Tags: S.optional(TagMap) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CollectionId: S.String, Tags: S.optional(TagMap) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateCollectionRequest",
 }) as any as S.Schema<CreateCollectionRequest>;
@@ -557,20 +549,19 @@ export interface CreateCollectionResponse {
   CollectionArn?: string;
   FaceModelVersion?: string;
 }
-export const CreateCollectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      StatusCode: S.optional(S.Number),
-      CollectionArn: S.optional(S.String),
-      FaceModelVersion: S.optional(S.String),
-    }),
+export const CreateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StatusCode: S.optional(S.Number),
+    CollectionArn: S.optional(S.String),
+    FaceModelVersion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateCollectionResponse",
 }) as any as S.Schema<CreateCollectionResponse>;
 export interface GroundTruthManifest {
   S3Object?: S3Object;
 }
-export const GroundTruthManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroundTruthManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Object: S.optional(S3Object) }),
 ).annotate({
   identifier: "GroundTruthManifest",
@@ -579,21 +570,21 @@ export interface DatasetSource {
   GroundTruthManifest?: GroundTruthManifest;
   DatasetArn?: string;
 }
-export const DatasetSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GroundTruthManifest: S.optional(GroundTruthManifest),
     DatasetArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DatasetSource" }) as any as S.Schema<DatasetSource>;
 export type DatasetType = "TRAIN" | "TEST" | (string & {});
-export const DatasetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetType = /*@__PURE__*/ S.String;
 export interface CreateDatasetRequest {
   DatasetSource?: DatasetSource;
   DatasetType: DatasetType;
   ProjectArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatasetSource: S.optional(DatasetSource),
     DatasetType: DatasetType,
@@ -608,7 +599,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateDatasetResponse {
   DatasetArn?: string;
 }
-export const CreateDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatasetArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateDatasetResponse",
@@ -617,7 +608,7 @@ export interface LivenessOutputConfig {
   S3Bucket: string;
   S3KeyPrefix?: string;
 }
-export const LivenessOutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LivenessOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Bucket: S.String, S3KeyPrefix: S.optional(S.String) }),
 ).annotate({
   identifier: "LivenessOutputConfig",
@@ -626,33 +617,32 @@ export type ChallengeType =
   | "FaceMovementAndLightChallenge"
   | "FaceMovementChallenge"
   | (string & {});
-export const ChallengeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChallengeType = /*@__PURE__*/ S.String;
 export interface Versions {
   Minimum?: string;
   Maximum?: string;
 }
-export const Versions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Versions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Minimum: S.optional(S.String), Maximum: S.optional(S.String) }),
 ).annotate({ identifier: "Versions" }) as any as S.Schema<Versions>;
 export interface ChallengePreference {
   Type: ChallengeType;
   Versions?: Versions;
 }
-export const ChallengePreference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChallengePreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: ChallengeType, Versions: S.optional(Versions) }),
 ).annotate({
   identifier: "ChallengePreference",
 }) as any as S.Schema<ChallengePreference>;
 export type ChallengePreferences = ChallengePreference[];
-export const ChallengePreferences =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ChallengePreference);
+export const ChallengePreferences = /*@__PURE__*/ S.Array(ChallengePreference);
 export interface CreateFaceLivenessSessionRequestSettings {
   OutputConfig?: LivenessOutputConfig;
   AuditImagesLimit?: number;
   ChallengePreferences?: ChallengePreference[];
 }
 export const CreateFaceLivenessSessionRequestSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OutputConfig: S.optional(LivenessOutputConfig),
       AuditImagesLimit: S.optional(S.Number),
@@ -667,7 +657,7 @@ export interface CreateFaceLivenessSessionRequest {
   ClientRequestToken?: string;
 }
 export const CreateFaceLivenessSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       KmsKeyId: S.optional(S.String),
       Settings: S.optional(CreateFaceLivenessSessionRequestSettings),
@@ -682,25 +672,23 @@ export interface CreateFaceLivenessSessionResponse {
   SessionId: string;
 }
 export const CreateFaceLivenessSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SessionId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ SessionId: S.String })).annotate({
     identifier: "CreateFaceLivenessSessionResponse",
   }) as any as S.Schema<CreateFaceLivenessSessionResponse>;
 export type CustomizationFeature =
   | "CONTENT_MODERATION"
   | "CUSTOM_LABELS"
   | (string & {});
-export const CustomizationFeature = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CustomizationFeature = /*@__PURE__*/ S.String;
 export type ProjectAutoUpdate = "ENABLED" | "DISABLED" | (string & {});
-export const ProjectAutoUpdate = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProjectAutoUpdate = /*@__PURE__*/ S.String;
 export interface CreateProjectRequest {
   ProjectName: string;
   Feature?: CustomizationFeature;
   AutoUpdate?: ProjectAutoUpdate;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProjectName: S.String,
     Feature: S.optional(CustomizationFeature),
@@ -715,7 +703,7 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateProjectResponse {
   ProjectArn?: string;
 }
-export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProjectArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateProjectResponse",
@@ -723,29 +711,29 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface Asset {
   GroundTruthManifest?: GroundTruthManifest;
 }
-export const Asset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroundTruthManifest: S.optional(GroundTruthManifest) }),
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 export type Assets = Asset[];
-export const Assets = /*@__PURE__*/ /*#__PURE__*/ S.Array(Asset);
+export const Assets = /*@__PURE__*/ S.Array(Asset);
 export interface TrainingData {
   Assets?: Asset[];
 }
-export const TrainingData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrainingData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Assets: S.optional(Assets) }),
 ).annotate({ identifier: "TrainingData" }) as any as S.Schema<TrainingData>;
 export interface TestingData {
   Assets?: Asset[];
   AutoCreate?: boolean;
 }
-export const TestingData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestingData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Assets: S.optional(Assets), AutoCreate: S.optional(S.Boolean) }),
 ).annotate({ identifier: "TestingData" }) as any as S.Schema<TestingData>;
 export interface CustomizationFeatureContentModerationConfig {
   ConfidenceThreshold?: number;
 }
 export const CustomizationFeatureContentModerationConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ConfidenceThreshold: S.optional(S.Number) }),
   ).annotate({
     identifier: "CustomizationFeatureContentModerationConfig",
@@ -753,13 +741,10 @@ export const CustomizationFeatureContentModerationConfig =
 export interface CustomizationFeatureConfig {
   ContentModeration?: CustomizationFeatureContentModerationConfig;
 }
-export const CustomizationFeatureConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ContentModeration: S.optional(
-        CustomizationFeatureContentModerationConfig,
-      ),
-    }),
+export const CustomizationFeatureConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContentModeration: S.optional(CustomizationFeatureContentModerationConfig),
+  }),
 ).annotate({
   identifier: "CustomizationFeatureConfig",
 }) as any as S.Schema<CustomizationFeatureConfig>;
@@ -775,7 +760,7 @@ export interface CreateProjectVersionRequest {
   FeatureConfig?: CustomizationFeatureConfig;
 }
 export const CreateProjectVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProjectArn: S.String,
       VersionName: S.String,
@@ -796,7 +781,7 @@ export interface CreateProjectVersionResponse {
   ProjectVersionArn?: string;
 }
 export const CreateProjectVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ProjectVersionArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateProjectVersionResponse",
@@ -804,7 +789,7 @@ export const CreateProjectVersionResponse =
 export interface KinesisVideoStream {
   Arn?: string;
 }
-export const KinesisVideoStream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KinesisVideoStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String) }),
 ).annotate({
   identifier: "KinesisVideoStream",
@@ -812,7 +797,7 @@ export const KinesisVideoStream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StreamProcessorInput {
   KinesisVideoStream?: KinesisVideoStream;
 }
-export const StreamProcessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamProcessorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KinesisVideoStream: S.optional(KinesisVideoStream) }),
 ).annotate({
   identifier: "StreamProcessorInput",
@@ -820,7 +805,7 @@ export const StreamProcessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface KinesisDataStream {
   Arn?: string;
 }
-export const KinesisDataStream = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KinesisDataStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String) }),
 ).annotate({
   identifier: "KinesisDataStream",
@@ -829,14 +814,14 @@ export interface S3Destination {
   Bucket?: string;
   KeyPrefix?: string;
 }
-export const S3Destination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bucket: S.optional(S.String), KeyPrefix: S.optional(S.String) }),
 ).annotate({ identifier: "S3Destination" }) as any as S.Schema<S3Destination>;
 export interface StreamProcessorOutput {
   KinesisDataStream?: KinesisDataStream;
   S3Destination?: S3Destination;
 }
-export const StreamProcessorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamProcessorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     KinesisDataStream: S.optional(KinesisDataStream),
     S3Destination: S.optional(S3Destination),
@@ -848,7 +833,7 @@ export interface FaceSearchSettings {
   CollectionId?: string;
   FaceMatchThreshold?: number;
 }
-export const FaceSearchSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceSearchSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.optional(S.String),
     FaceMatchThreshold: S.optional(S.Number),
@@ -857,14 +842,12 @@ export const FaceSearchSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FaceSearchSettings",
 }) as any as S.Schema<FaceSearchSettings>;
 export type ConnectedHomeLabels = string[];
-export const ConnectedHomeLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ConnectedHomeLabels = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectedHomeSettings {
   Labels: string[];
   MinConfidence?: number;
 }
-export const ConnectedHomeSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectedHomeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Labels: ConnectedHomeLabels,
     MinConfidence: S.optional(S.Number),
@@ -876,12 +859,11 @@ export interface StreamProcessorSettings {
   FaceSearch?: FaceSearchSettings;
   ConnectedHome?: ConnectedHomeSettings;
 }
-export const StreamProcessorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      FaceSearch: S.optional(FaceSearchSettings),
-      ConnectedHome: S.optional(ConnectedHomeSettings),
-    }),
+export const StreamProcessorSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FaceSearch: S.optional(FaceSearchSettings),
+    ConnectedHome: S.optional(ConnectedHomeSettings),
+  }),
 ).annotate({
   identifier: "StreamProcessorSettings",
 }) as any as S.Schema<StreamProcessorSettings>;
@@ -889,25 +871,23 @@ export interface StreamProcessorNotificationChannel {
   SNSTopicArn: string;
 }
 export const StreamProcessorNotificationChannel =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SNSTopicArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ SNSTopicArn: S.String })).annotate({
     identifier: "StreamProcessorNotificationChannel",
   }) as any as S.Schema<StreamProcessorNotificationChannel>;
 export interface Point {
   X?: number;
   Y?: number;
 }
-export const Point = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Point = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ X: S.optional(S.Number), Y: S.optional(S.Number) }),
 ).annotate({ identifier: "Point" }) as any as S.Schema<Point>;
 export type Polygon = Point[];
-export const Polygon = /*@__PURE__*/ /*#__PURE__*/ S.Array(Point);
+export const Polygon = /*@__PURE__*/ S.Array(Point);
 export interface RegionOfInterest {
   BoundingBox?: BoundingBox;
   Polygon?: Point[];
 }
-export const RegionOfInterest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegionOfInterest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     Polygon: S.optional(Polygon),
@@ -916,15 +896,12 @@ export const RegionOfInterest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RegionOfInterest",
 }) as any as S.Schema<RegionOfInterest>;
 export type RegionsOfInterest = RegionOfInterest[];
-export const RegionsOfInterest =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RegionOfInterest);
+export const RegionsOfInterest = /*@__PURE__*/ S.Array(RegionOfInterest);
 export interface StreamProcessorDataSharingPreference {
   OptIn: boolean;
 }
 export const StreamProcessorDataSharingPreference =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OptIn: S.Boolean }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ OptIn: S.Boolean })).annotate({
     identifier: "StreamProcessorDataSharingPreference",
   }) as any as S.Schema<StreamProcessorDataSharingPreference>;
 export interface CreateStreamProcessorRequest {
@@ -940,7 +917,7 @@ export interface CreateStreamProcessorRequest {
   DataSharingPreference?: StreamProcessorDataSharingPreference;
 }
 export const CreateStreamProcessorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Input: StreamProcessorInput,
       Output: StreamProcessorOutput,
@@ -962,7 +939,7 @@ export interface CreateStreamProcessorResponse {
   StreamProcessorArn?: string;
 }
 export const CreateStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ StreamProcessorArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateStreamProcessorResponse",
@@ -972,7 +949,7 @@ export interface CreateUserRequest {
   UserId: string;
   ClientRequestToken?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     UserId: S.String,
@@ -984,7 +961,7 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateUserRequest",
 }) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResponse {}
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -992,26 +969,25 @@ export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteCollectionRequest {
   CollectionId: string;
 }
-export const DeleteCollectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ CollectionId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CollectionId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteCollectionRequest",
 }) as any as S.Schema<DeleteCollectionRequest>;
 export interface DeleteCollectionResponse {
   StatusCode?: number;
 }
-export const DeleteCollectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ StatusCode: S.optional(S.Number) }),
+export const DeleteCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StatusCode: S.optional(S.Number) }),
 ).annotate({
   identifier: "DeleteCollectionResponse",
 }) as any as S.Schema<DeleteCollectionResponse>;
 export interface DeleteDatasetRequest {
   DatasetArn: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatasetArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1019,18 +995,18 @@ export const DeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatasetRequest",
 }) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteDatasetResponse",
 }) as any as S.Schema<DeleteDatasetResponse>;
 export type FaceIdList = string[];
-export const FaceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FaceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteFacesRequest {
   CollectionId: string;
   FaceIds: string[];
 }
-export const DeleteFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CollectionId: S.String, FaceIds: FaceIdList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1041,34 +1017,32 @@ export type UnsuccessfulFaceDeletionReason =
   | "ASSOCIATED_TO_AN_EXISTING_USER"
   | "FACE_NOT_FOUND"
   | (string & {});
-export const UnsuccessfulFaceDeletionReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnsuccessfulFaceDeletionReason = /*@__PURE__*/ S.String;
 export type UnsuccessfulFaceDeletionReasons = UnsuccessfulFaceDeletionReason[];
 export const UnsuccessfulFaceDeletionReasons =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceDeletionReason);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceDeletionReason);
 export interface UnsuccessfulFaceDeletion {
   FaceId?: string;
   UserId?: string;
   Reasons?: UnsuccessfulFaceDeletionReason[];
 }
-export const UnsuccessfulFaceDeletion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      FaceId: S.optional(S.String),
-      UserId: S.optional(S.String),
-      Reasons: S.optional(UnsuccessfulFaceDeletionReasons),
-    }),
+export const UnsuccessfulFaceDeletion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FaceId: S.optional(S.String),
+    UserId: S.optional(S.String),
+    Reasons: S.optional(UnsuccessfulFaceDeletionReasons),
+  }),
 ).annotate({
   identifier: "UnsuccessfulFaceDeletion",
 }) as any as S.Schema<UnsuccessfulFaceDeletion>;
 export type UnsuccessfulFaceDeletionsList = UnsuccessfulFaceDeletion[];
 export const UnsuccessfulFaceDeletionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceDeletion);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceDeletion);
 export interface DeleteFacesResponse {
   DeletedFaces?: string[];
   UnsuccessfulFaceDeletions?: UnsuccessfulFaceDeletion[];
 }
-export const DeleteFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeletedFaces: S.optional(FaceIdList),
     UnsuccessfulFaceDeletions: S.optional(UnsuccessfulFaceDeletionsList),
@@ -1079,7 +1053,7 @@ export const DeleteFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteProjectRequest {
   ProjectArn: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProjectArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1087,11 +1061,11 @@ export const DeleteProjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectRequest",
 }) as any as S.Schema<DeleteProjectRequest>;
 export type ProjectStatus = "CREATING" | "CREATED" | "DELETING" | (string & {});
-export const ProjectStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProjectStatus = /*@__PURE__*/ S.String;
 export interface DeleteProjectResponse {
   Status?: ProjectStatus;
 }
-export const DeleteProjectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(ProjectStatus) }),
 ).annotate({
   identifier: "DeleteProjectResponse",
@@ -1101,28 +1075,27 @@ export interface DeleteProjectPolicyRequest {
   PolicyName: string;
   PolicyRevisionId?: string;
 }
-export const DeleteProjectPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectArn: S.String,
-      PolicyName: S.String,
-      PolicyRevisionId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectArn: S.String,
+    PolicyName: S.String,
+    PolicyRevisionId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteProjectPolicyRequest",
 }) as any as S.Schema<DeleteProjectPolicyRequest>;
 export interface DeleteProjectPolicyResponse {}
 export const DeleteProjectPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteProjectPolicyResponse",
   }) as any as S.Schema<DeleteProjectPolicyResponse>;
 export interface DeleteProjectVersionRequest {
   ProjectVersionArn: string;
 }
 export const DeleteProjectVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ProjectVersionArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1145,12 +1118,12 @@ export type ProjectVersionStatus =
   | "DEPRECATED"
   | "EXPIRED"
   | (string & {});
-export const ProjectVersionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProjectVersionStatus = /*@__PURE__*/ S.String;
 export interface DeleteProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
 export const DeleteProjectVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Status: S.optional(ProjectVersionStatus) }),
   ).annotate({
     identifier: "DeleteProjectVersionResponse",
@@ -1159,7 +1132,7 @@ export interface DeleteStreamProcessorRequest {
   Name: string;
 }
 export const DeleteStreamProcessorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Name: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1168,7 +1141,7 @@ export const DeleteStreamProcessorRequest =
   }) as any as S.Schema<DeleteStreamProcessorRequest>;
 export interface DeleteStreamProcessorResponse {}
 export const DeleteStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteStreamProcessorResponse",
   }) as any as S.Schema<DeleteStreamProcessorResponse>;
 export interface DeleteUserRequest {
@@ -1176,7 +1149,7 @@ export interface DeleteUserRequest {
   UserId: string;
   ClientRequestToken?: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     UserId: S.String,
@@ -1188,7 +1161,7 @@ export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserRequest",
 }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteUserResponse",
@@ -1196,11 +1169,10 @@ export const DeleteUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeCollectionRequest {
   CollectionId: string;
 }
-export const DescribeCollectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ CollectionId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CollectionId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeCollectionRequest",
 }) as any as S.Schema<DescribeCollectionRequest>;
@@ -1211,28 +1183,26 @@ export interface DescribeCollectionResponse {
   CreationTimestamp?: Date;
   UserCount?: number;
 }
-export const DescribeCollectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      FaceCount: S.optional(S.Number),
-      FaceModelVersion: S.optional(S.String),
-      CollectionARN: S.optional(S.String),
-      CreationTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      UserCount: S.optional(S.Number),
-    }),
+export const DescribeCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FaceCount: S.optional(S.Number),
+    FaceModelVersion: S.optional(S.String),
+    CollectionARN: S.optional(S.String),
+    CreationTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    UserCount: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "DescribeCollectionResponse",
 }) as any as S.Schema<DescribeCollectionResponse>;
 export interface DescribeDatasetRequest {
   DatasetArn: string;
 }
-export const DescribeDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ DatasetArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
@@ -1245,20 +1215,20 @@ export type DatasetStatus =
   | "UPDATE_FAILED"
   | "DELETE_IN_PROGRESS"
   | (string & {});
-export const DatasetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetStatus = /*@__PURE__*/ S.String;
 export type DatasetStatusMessageCode =
   | "SUCCESS"
   | "SERVICE_ERROR"
   | "CLIENT_ERROR"
   | (string & {});
-export const DatasetStatusMessageCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DatasetStatusMessageCode = /*@__PURE__*/ S.String;
 export interface DatasetStats {
   LabeledEntries?: number;
   TotalEntries?: number;
   TotalLabels?: number;
   ErrorEntries?: number;
 }
-export const DatasetStats = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LabeledEntries: S.optional(S.Number),
     TotalEntries: S.optional(S.Number),
@@ -1274,7 +1244,7 @@ export interface DatasetDescription {
   StatusMessageCode?: DatasetStatusMessageCode;
   DatasetStats?: DatasetStats;
 }
-export const DatasetDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationTimestamp: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1293,32 +1263,31 @@ export const DatasetDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeDatasetResponse {
   DatasetDescription?: DatasetDescription;
 }
-export const DescribeDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ DatasetDescription: S.optional(DatasetDescription) }),
+export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetDescription: S.optional(DatasetDescription) }),
 ).annotate({
   identifier: "DescribeDatasetResponse",
 }) as any as S.Schema<DescribeDatasetResponse>;
 export type ProjectNames = string[];
-export const ProjectNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ProjectNames = /*@__PURE__*/ S.Array(S.String);
 export type CustomizationFeatures = CustomizationFeature[];
 export const CustomizationFeatures =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomizationFeature);
+  /*@__PURE__*/ S.Array(CustomizationFeature);
 export interface DescribeProjectsRequest {
   NextToken?: string;
   MaxResults?: number;
   ProjectNames?: string[];
   Features?: CustomizationFeature[];
 }
-export const DescribeProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ProjectNames: S.optional(ProjectNames),
-      Features: S.optional(CustomizationFeatures),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ProjectNames: S.optional(ProjectNames),
+    Features: S.optional(CustomizationFeatures),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeProjectsRequest",
 }) as any as S.Schema<DescribeProjectsRequest>;
@@ -1330,7 +1299,7 @@ export interface DatasetMetadata {
   StatusMessage?: string;
   StatusMessageCode?: DatasetStatusMessageCode;
 }
-export const DatasetMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationTimestamp: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1345,8 +1314,7 @@ export const DatasetMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DatasetMetadata",
 }) as any as S.Schema<DatasetMetadata>;
 export type DatasetMetadataList = DatasetMetadata[];
-export const DatasetMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DatasetMetadata);
+export const DatasetMetadataList = /*@__PURE__*/ S.Array(DatasetMetadata);
 export interface ProjectDescription {
   ProjectArn?: string;
   CreationTimestamp?: Date;
@@ -1355,7 +1323,7 @@ export interface ProjectDescription {
   Feature?: CustomizationFeature;
   AutoUpdate?: ProjectAutoUpdate;
 }
-export const ProjectDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProjectDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProjectArn: S.optional(S.String),
     CreationTimestamp: S.optional(
@@ -1370,23 +1338,21 @@ export const ProjectDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ProjectDescription",
 }) as any as S.Schema<ProjectDescription>;
 export type ProjectDescriptions = ProjectDescription[];
-export const ProjectDescriptions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProjectDescription);
+export const ProjectDescriptions = /*@__PURE__*/ S.Array(ProjectDescription);
 export interface DescribeProjectsResponse {
   ProjectDescriptions?: ProjectDescription[];
   NextToken?: string;
 }
-export const DescribeProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectDescriptions: S.optional(ProjectDescriptions),
-      NextToken: S.optional(S.String),
-    }),
+export const DescribeProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectDescriptions: S.optional(ProjectDescriptions),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DescribeProjectsResponse",
 }) as any as S.Schema<DescribeProjectsResponse>;
 export type VersionNames = string[];
-export const VersionNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const VersionNames = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeProjectVersionsRequest {
   ProjectArn: string;
   VersionNames?: string[];
@@ -1394,7 +1360,7 @@ export interface DescribeProjectVersionsRequest {
   MaxResults?: number;
 }
 export const DescribeProjectVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProjectArn: S.String,
       VersionNames: S.optional(VersionNames),
@@ -1409,7 +1375,7 @@ export const DescribeProjectVersionsRequest =
 export interface ValidationData {
   Assets?: Asset[];
 }
-export const ValidationData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ValidationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Assets: S.optional(Assets) }),
 ).annotate({ identifier: "ValidationData" }) as any as S.Schema<ValidationData>;
 export interface TrainingDataResult {
@@ -1417,7 +1383,7 @@ export interface TrainingDataResult {
   Output?: TrainingData;
   Validation?: ValidationData;
 }
-export const TrainingDataResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrainingDataResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Input: S.optional(TrainingData),
     Output: S.optional(TrainingData),
@@ -1431,7 +1397,7 @@ export interface TestingDataResult {
   Output?: TestingData;
   Validation?: ValidationData;
 }
-export const TestingDataResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TestingDataResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Input: S.optional(TestingData),
     Output: S.optional(TestingData),
@@ -1443,14 +1409,14 @@ export const TestingDataResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface Summary {
   S3Object?: S3Object;
 }
-export const Summary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Summary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Object: S.optional(S3Object) }),
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 export interface EvaluationResult {
   F1Score?: number;
   Summary?: Summary;
 }
-export const EvaluationResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ F1Score: S.optional(S.Number), Summary: S.optional(Summary) }),
 ).annotate({
   identifier: "EvaluationResult",
@@ -1476,38 +1442,37 @@ export interface ProjectVersionDescription {
   BaseModelVersion?: string;
   FeatureConfig?: CustomizationFeatureConfig;
 }
-export const ProjectVersionDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectVersionArn: S.optional(S.String),
-      CreationTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      MinInferenceUnits: S.optional(S.Number),
-      Status: S.optional(ProjectVersionStatus),
-      StatusMessage: S.optional(S.String),
-      BillableTrainingTimeInSeconds: S.optional(S.Number),
-      TrainingEndTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      OutputConfig: S.optional(OutputConfig),
-      TrainingDataResult: S.optional(TrainingDataResult),
-      TestingDataResult: S.optional(TestingDataResult),
-      EvaluationResult: S.optional(EvaluationResult),
-      ManifestSummary: S.optional(GroundTruthManifest),
-      KmsKeyId: S.optional(S.String),
-      MaxInferenceUnits: S.optional(S.Number),
-      SourceProjectVersionArn: S.optional(S.String),
-      VersionDescription: S.optional(S.String),
-      Feature: S.optional(CustomizationFeature),
-      BaseModelVersion: S.optional(S.String),
-      FeatureConfig: S.optional(CustomizationFeatureConfig),
-    }),
+export const ProjectVersionDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectVersionArn: S.optional(S.String),
+    CreationTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    MinInferenceUnits: S.optional(S.Number),
+    Status: S.optional(ProjectVersionStatus),
+    StatusMessage: S.optional(S.String),
+    BillableTrainingTimeInSeconds: S.optional(S.Number),
+    TrainingEndTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    OutputConfig: S.optional(OutputConfig),
+    TrainingDataResult: S.optional(TrainingDataResult),
+    TestingDataResult: S.optional(TestingDataResult),
+    EvaluationResult: S.optional(EvaluationResult),
+    ManifestSummary: S.optional(GroundTruthManifest),
+    KmsKeyId: S.optional(S.String),
+    MaxInferenceUnits: S.optional(S.Number),
+    SourceProjectVersionArn: S.optional(S.String),
+    VersionDescription: S.optional(S.String),
+    Feature: S.optional(CustomizationFeature),
+    BaseModelVersion: S.optional(S.String),
+    FeatureConfig: S.optional(CustomizationFeatureConfig),
+  }),
 ).annotate({
   identifier: "ProjectVersionDescription",
 }) as any as S.Schema<ProjectVersionDescription>;
 export type ProjectVersionDescriptions = ProjectVersionDescription[];
-export const ProjectVersionDescriptions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ProjectVersionDescriptions = /*@__PURE__*/ S.Array(
   ProjectVersionDescription,
 );
 export interface DescribeProjectVersionsResponse {
@@ -1515,7 +1480,7 @@ export interface DescribeProjectVersionsResponse {
   NextToken?: string;
 }
 export const DescribeProjectVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProjectVersionDescriptions: S.optional(ProjectVersionDescriptions),
       NextToken: S.optional(S.String),
@@ -1527,7 +1492,7 @@ export interface DescribeStreamProcessorRequest {
   Name: string;
 }
 export const DescribeStreamProcessorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Name: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1542,7 +1507,7 @@ export type StreamProcessorStatus =
   | "STOPPING"
   | "UPDATING"
   | (string & {});
-export const StreamProcessorStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamProcessorStatus = /*@__PURE__*/ S.String;
 export interface DescribeStreamProcessorResponse {
   Name?: string;
   StreamProcessorArn?: string;
@@ -1560,7 +1525,7 @@ export interface DescribeStreamProcessorResponse {
   DataSharingPreference?: StreamProcessorDataSharingPreference;
 }
 export const DescribeStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.optional(S.String),
       StreamProcessorArn: S.optional(S.String),
@@ -1590,16 +1555,15 @@ export interface DetectCustomLabelsRequest {
   MaxResults?: number;
   MinConfidence?: number;
 }
-export const DetectCustomLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectVersionArn: S.String,
-      Image: Image,
-      MaxResults: S.optional(S.Number),
-      MinConfidence: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DetectCustomLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectVersionArn: S.String,
+    Image: Image,
+    MaxResults: S.optional(S.Number),
+    MinConfidence: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DetectCustomLabelsRequest",
 }) as any as S.Schema<DetectCustomLabelsRequest>;
@@ -1607,7 +1571,7 @@ export interface Geometry {
   BoundingBox?: BoundingBox;
   Polygon?: Point[];
 }
-export const Geometry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Geometry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     Polygon: S.optional(Polygon),
@@ -1618,7 +1582,7 @@ export interface CustomLabel {
   Confidence?: number;
   Geometry?: Geometry;
 }
-export const CustomLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CustomLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Confidence: S.optional(S.Number),
@@ -1626,12 +1590,12 @@ export const CustomLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomLabel" }) as any as S.Schema<CustomLabel>;
 export type CustomLabels = CustomLabel[];
-export const CustomLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomLabel);
+export const CustomLabels = /*@__PURE__*/ S.Array(CustomLabel);
 export interface DetectCustomLabelsResponse {
   CustomLabels?: CustomLabel[];
 }
-export const DetectCustomLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CustomLabels: S.optional(CustomLabels) }),
+export const DetectCustomLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CustomLabels: S.optional(CustomLabels) }),
 ).annotate({
   identifier: "DetectCustomLabelsResponse",
 }) as any as S.Schema<DetectCustomLabelsResponse>;
@@ -1651,14 +1615,14 @@ export type Attribute =
   | "SMILE"
   | "SUNGLASSES"
   | (string & {});
-export const Attribute = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Attribute = /*@__PURE__*/ S.String;
 export type Attributes = Attribute[];
-export const Attributes = /*@__PURE__*/ /*#__PURE__*/ S.Array(Attribute);
+export const Attributes = /*@__PURE__*/ S.Array(Attribute);
 export interface DetectFacesRequest {
   Image: Image;
   Attributes?: Attribute[];
 }
-export const DetectFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Image: Image, Attributes: S.optional(Attributes) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1669,65 +1633,65 @@ export interface AgeRange {
   Low?: number;
   High?: number;
 }
-export const AgeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Low: S.optional(S.Number), High: S.optional(S.Number) }),
 ).annotate({ identifier: "AgeRange" }) as any as S.Schema<AgeRange>;
 export interface Eyeglasses {
   Value?: boolean;
   Confidence?: number;
 }
-export const Eyeglasses = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Eyeglasses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Eyeglasses" }) as any as S.Schema<Eyeglasses>;
 export interface Sunglasses {
   Value?: boolean;
   Confidence?: number;
 }
-export const Sunglasses = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Sunglasses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Sunglasses" }) as any as S.Schema<Sunglasses>;
 export type GenderType = "Male" | "Female" | (string & {});
-export const GenderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GenderType = /*@__PURE__*/ S.String;
 export interface Gender {
   Value?: GenderType;
   Confidence?: number;
 }
-export const Gender = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Gender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(GenderType), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Gender" }) as any as S.Schema<Gender>;
 export interface Beard {
   Value?: boolean;
   Confidence?: number;
 }
-export const Beard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Beard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Beard" }) as any as S.Schema<Beard>;
 export interface Mustache {
   Value?: boolean;
   Confidence?: number;
 }
-export const Mustache = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Mustache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "Mustache" }) as any as S.Schema<Mustache>;
 export interface EyeOpen {
   Value?: boolean;
   Confidence?: number;
 }
-export const EyeOpen = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EyeOpen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "EyeOpen" }) as any as S.Schema<EyeOpen>;
 export interface MouthOpen {
   Value?: boolean;
   Confidence?: number;
 }
-export const MouthOpen = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MouthOpen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "MouthOpen" }) as any as S.Schema<MouthOpen>;
 export interface FaceOccluded {
   Value?: boolean;
   Confidence?: number;
 }
-export const FaceOccluded = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceOccluded = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "FaceOccluded" }) as any as S.Schema<FaceOccluded>;
 export interface EyeDirection {
@@ -1735,7 +1699,7 @@ export interface EyeDirection {
   Pitch?: number;
   Confidence?: number;
 }
-export const EyeDirection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EyeDirection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Yaw: S.optional(S.Number),
     Pitch: S.optional(S.Number),
@@ -1761,7 +1725,7 @@ export interface FaceDetail {
   FaceOccluded?: FaceOccluded;
   EyeDirection?: EyeDirection;
 }
-export const FaceDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     AgeRange: S.optional(AgeRange),
@@ -1783,12 +1747,12 @@ export const FaceDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FaceDetail" }) as any as S.Schema<FaceDetail>;
 export type FaceDetailList = FaceDetail[];
-export const FaceDetailList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FaceDetail);
+export const FaceDetailList = /*@__PURE__*/ S.Array(FaceDetail);
 export interface DetectFacesResponse {
   FaceDetails?: FaceDetail[];
   OrientationCorrection?: OrientationCorrection;
 }
-export const DetectFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FaceDetails: S.optional(FaceDetailList),
     OrientationCorrection: S.optional(OrientationCorrection),
@@ -1800,22 +1764,20 @@ export type DetectLabelsFeatureName =
   | "GENERAL_LABELS"
   | "IMAGE_PROPERTIES"
   | (string & {});
-export const DetectLabelsFeatureName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DetectLabelsFeatureName = /*@__PURE__*/ S.String;
 export type DetectLabelsFeatureList = DetectLabelsFeatureName[];
-export const DetectLabelsFeatureList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DetectLabelsFeatureList = /*@__PURE__*/ S.Array(
   DetectLabelsFeatureName,
 );
 export type GeneralLabelsFilterList = string[];
-export const GeneralLabelsFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const GeneralLabelsFilterList = /*@__PURE__*/ S.Array(S.String);
 export interface GeneralLabelsSettings {
   LabelInclusionFilters?: string[];
   LabelExclusionFilters?: string[];
   LabelCategoryInclusionFilters?: string[];
   LabelCategoryExclusionFilters?: string[];
 }
-export const GeneralLabelsSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeneralLabelsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LabelInclusionFilters: S.optional(GeneralLabelsFilterList),
     LabelExclusionFilters: S.optional(GeneralLabelsFilterList),
@@ -1829,7 +1791,7 @@ export interface DetectLabelsImagePropertiesSettings {
   MaxDominantColors?: number;
 }
 export const DetectLabelsImagePropertiesSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ MaxDominantColors: S.optional(S.Number) }),
   ).annotate({
     identifier: "DetectLabelsImagePropertiesSettings",
@@ -1838,7 +1800,7 @@ export interface DetectLabelsSettings {
   GeneralLabels?: GeneralLabelsSettings;
   ImageProperties?: DetectLabelsImagePropertiesSettings;
 }
-export const DetectLabelsSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectLabelsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GeneralLabels: S.optional(GeneralLabelsSettings),
     ImageProperties: S.optional(DetectLabelsImagePropertiesSettings),
@@ -1853,7 +1815,7 @@ export interface DetectLabelsRequest {
   Features?: DetectLabelsFeatureName[];
   Settings?: DetectLabelsSettings;
 }
-export const DetectLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Image: Image,
     MaxLabels: S.optional(S.Number),
@@ -1875,7 +1837,7 @@ export interface DominantColor {
   SimplifiedColor?: string;
   PixelPercent?: number;
 }
-export const DominantColor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DominantColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Red: S.optional(S.Number),
     Blue: S.optional(S.Number),
@@ -1887,14 +1849,13 @@ export const DominantColor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DominantColor" }) as any as S.Schema<DominantColor>;
 export type DominantColors = DominantColor[];
-export const DominantColors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DominantColor);
+export const DominantColors = /*@__PURE__*/ S.Array(DominantColor);
 export interface Instance {
   BoundingBox?: BoundingBox;
   Confidence?: number;
   DominantColors?: DominantColor[];
 }
-export const Instance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     Confidence: S.optional(S.Number),
@@ -1902,32 +1863,31 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 export type Instances = Instance[];
-export const Instances = /*@__PURE__*/ /*#__PURE__*/ S.Array(Instance);
+export const Instances = /*@__PURE__*/ S.Array(Instance);
 export interface Parent {
   Name?: string;
 }
-export const Parent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Parent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "Parent" }) as any as S.Schema<Parent>;
 export type Parents = Parent[];
-export const Parents = /*@__PURE__*/ /*#__PURE__*/ S.Array(Parent);
+export const Parents = /*@__PURE__*/ S.Array(Parent);
 export interface LabelAlias {
   Name?: string;
 }
-export const LabelAlias = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LabelAlias = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "LabelAlias" }) as any as S.Schema<LabelAlias>;
 export type LabelAliases = LabelAlias[];
-export const LabelAliases = /*@__PURE__*/ /*#__PURE__*/ S.Array(LabelAlias);
+export const LabelAliases = /*@__PURE__*/ S.Array(LabelAlias);
 export interface LabelCategory {
   Name?: string;
 }
-export const LabelCategory = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LabelCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "LabelCategory" }) as any as S.Schema<LabelCategory>;
 export type LabelCategories = LabelCategory[];
-export const LabelCategories =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LabelCategory);
+export const LabelCategories = /*@__PURE__*/ S.Array(LabelCategory);
 export interface Label {
   Name?: string;
   Confidence?: number;
@@ -1936,7 +1896,7 @@ export interface Label {
   Aliases?: LabelAlias[];
   Categories?: LabelCategory[];
 }
-export const Label = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Confidence: S.optional(S.Number),
@@ -1947,19 +1907,18 @@ export const Label = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 export type Labels = Label[];
-export const Labels = /*@__PURE__*/ /*#__PURE__*/ S.Array(Label);
+export const Labels = /*@__PURE__*/ S.Array(Label);
 export interface DetectLabelsImageQuality {
   Brightness?: number;
   Sharpness?: number;
   Contrast?: number;
 }
-export const DetectLabelsImageQuality = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Brightness: S.optional(S.Number),
-      Sharpness: S.optional(S.Number),
-      Contrast: S.optional(S.Number),
-    }),
+export const DetectLabelsImageQuality = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Brightness: S.optional(S.Number),
+    Sharpness: S.optional(S.Number),
+    Contrast: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "DetectLabelsImageQuality",
 }) as any as S.Schema<DetectLabelsImageQuality>;
@@ -1968,7 +1927,7 @@ export interface DetectLabelsImageForeground {
   DominantColors?: DominantColor[];
 }
 export const DetectLabelsImageForeground =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Quality: S.optional(DetectLabelsImageQuality),
       DominantColors: S.optional(DominantColors),
@@ -1981,7 +1940,7 @@ export interface DetectLabelsImageBackground {
   DominantColors?: DominantColor[];
 }
 export const DetectLabelsImageBackground =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Quality: S.optional(DetectLabelsImageQuality),
       DominantColors: S.optional(DominantColors),
@@ -1996,7 +1955,7 @@ export interface DetectLabelsImageProperties {
   Background?: DetectLabelsImageBackground;
 }
 export const DetectLabelsImageProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Quality: S.optional(DetectLabelsImageQuality),
       DominantColors: S.optional(DominantColors),
@@ -2012,7 +1971,7 @@ export interface DetectLabelsResponse {
   LabelModelVersion?: string;
   ImageProperties?: DetectLabelsImageProperties;
 }
-export const DetectLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Labels: S.optional(Labels),
     OrientationCorrection: S.optional(OrientationCorrection),
@@ -2026,15 +1985,14 @@ export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
   | "FreeOfAdultContent"
   | (string & {});
-export const ContentClassifier = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContentClassifier = /*@__PURE__*/ S.String;
 export type ContentClassifiers = ContentClassifier[];
-export const ContentClassifiers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContentClassifier);
+export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
-export const HumanLoopDataAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
+export const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
 ).annotate({
   identifier: "HumanLoopDataAttributes",
 }) as any as S.Schema<HumanLoopDataAttributes>;
@@ -2043,7 +2001,7 @@ export interface HumanLoopConfig {
   FlowDefinitionArn: string;
   DataAttributes?: HumanLoopDataAttributes;
 }
-export const HumanLoopConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HumanLoopConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HumanLoopName: S.String,
     FlowDefinitionArn: S.String,
@@ -2059,7 +2017,7 @@ export interface DetectModerationLabelsRequest {
   ProjectVersion?: string;
 }
 export const DetectModerationLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Image: Image,
       MinConfidence: S.optional(S.Number),
@@ -2077,7 +2035,7 @@ export interface ModerationLabel {
   ParentName?: string;
   TaxonomyLevel?: number;
 }
-export const ModerationLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModerationLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Confidence: S.optional(S.Number),
     Name: S.optional(S.String),
@@ -2088,24 +2046,20 @@ export const ModerationLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ModerationLabel",
 }) as any as S.Schema<ModerationLabel>;
 export type ModerationLabels = ModerationLabel[];
-export const ModerationLabels =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ModerationLabel);
+export const ModerationLabels = /*@__PURE__*/ S.Array(ModerationLabel);
 export type HumanLoopActivationReasons = string[];
-export const HumanLoopActivationReasons = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const HumanLoopActivationReasons = /*@__PURE__*/ S.Array(S.String);
 export interface HumanLoopActivationOutput {
   HumanLoopArn?: string;
   HumanLoopActivationReasons?: string[];
   HumanLoopActivationConditionsEvaluationResults?: string;
 }
-export const HumanLoopActivationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HumanLoopArn: S.optional(S.String),
-      HumanLoopActivationReasons: S.optional(HumanLoopActivationReasons),
-      HumanLoopActivationConditionsEvaluationResults: S.optional(S.String),
-    }),
+export const HumanLoopActivationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HumanLoopArn: S.optional(S.String),
+    HumanLoopActivationReasons: S.optional(HumanLoopActivationReasons),
+    HumanLoopActivationConditionsEvaluationResults: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "HumanLoopActivationOutput",
 }) as any as S.Schema<HumanLoopActivationOutput>;
@@ -2113,11 +2067,11 @@ export interface ContentType {
   Confidence?: number;
   Name?: string;
 }
-export const ContentType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Confidence: S.optional(S.Number), Name: S.optional(S.String) }),
 ).annotate({ identifier: "ContentType" }) as any as S.Schema<ContentType>;
 export type ContentTypes = ContentType[];
-export const ContentTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(ContentType);
+export const ContentTypes = /*@__PURE__*/ S.Array(ContentType);
 export interface DetectModerationLabelsResponse {
   ModerationLabels?: ModerationLabel[];
   ModerationModelVersion?: string;
@@ -2126,7 +2080,7 @@ export interface DetectModerationLabelsResponse {
   ContentTypes?: ContentType[];
 }
 export const DetectModerationLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ModerationLabels: S.optional(ModerationLabels),
       ModerationModelVersion: S.optional(S.String),
@@ -2142,9 +2096,9 @@ export type ProtectiveEquipmentType =
   | "HAND_COVER"
   | "HEAD_COVER"
   | (string & {});
-export const ProtectiveEquipmentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProtectiveEquipmentType = /*@__PURE__*/ S.String;
 export type ProtectiveEquipmentTypes = ProtectiveEquipmentType[];
-export const ProtectiveEquipmentTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ProtectiveEquipmentTypes = /*@__PURE__*/ S.Array(
   ProtectiveEquipmentType,
 );
 export interface ProtectiveEquipmentSummarizationAttributes {
@@ -2152,7 +2106,7 @@ export interface ProtectiveEquipmentSummarizationAttributes {
   RequiredEquipmentTypes: ProtectiveEquipmentType[];
 }
 export const ProtectiveEquipmentSummarizationAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MinConfidence: S.Number,
       RequiredEquipmentTypes: ProtectiveEquipmentTypes,
@@ -2165,7 +2119,7 @@ export interface DetectProtectiveEquipmentRequest {
   SummarizationAttributes?: ProtectiveEquipmentSummarizationAttributes;
 }
 export const DetectProtectiveEquipmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Image: Image,
       SummarizationAttributes: S.optional(
@@ -2183,12 +2137,12 @@ export type BodyPart =
   | "LEFT_HAND"
   | "RIGHT_HAND"
   | (string & {});
-export const BodyPart = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BodyPart = /*@__PURE__*/ S.String;
 export interface CoversBodyPart {
   Confidence?: number;
   Value?: boolean;
 }
-export const CoversBodyPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CoversBodyPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Confidence: S.optional(S.Number), Value: S.optional(S.Boolean) }),
 ).annotate({ identifier: "CoversBodyPart" }) as any as S.Schema<CoversBodyPart>;
 export interface EquipmentDetection {
@@ -2197,7 +2151,7 @@ export interface EquipmentDetection {
   Type?: ProtectiveEquipmentType;
   CoversBodyPart?: CoversBodyPart;
 }
-export const EquipmentDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EquipmentDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(BoundingBox),
     Confidence: S.optional(S.Number),
@@ -2208,15 +2162,14 @@ export const EquipmentDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EquipmentDetection",
 }) as any as S.Schema<EquipmentDetection>;
 export type EquipmentDetections = EquipmentDetection[];
-export const EquipmentDetections =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EquipmentDetection);
+export const EquipmentDetections = /*@__PURE__*/ S.Array(EquipmentDetection);
 export interface ProtectiveEquipmentBodyPart {
   Name?: BodyPart;
   Confidence?: number;
   EquipmentDetections?: EquipmentDetection[];
 }
 export const ProtectiveEquipmentBodyPart =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.optional(BodyPart),
       Confidence: S.optional(S.Number),
@@ -2226,46 +2179,40 @@ export const ProtectiveEquipmentBodyPart =
     identifier: "ProtectiveEquipmentBodyPart",
   }) as any as S.Schema<ProtectiveEquipmentBodyPart>;
 export type BodyParts = ProtectiveEquipmentBodyPart[];
-export const BodyParts = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  ProtectiveEquipmentBodyPart,
-);
+export const BodyParts = /*@__PURE__*/ S.Array(ProtectiveEquipmentBodyPart);
 export interface ProtectiveEquipmentPerson {
   BodyParts?: ProtectiveEquipmentBodyPart[];
   BoundingBox?: BoundingBox;
   Confidence?: number;
   Id?: number;
 }
-export const ProtectiveEquipmentPerson = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      BodyParts: S.optional(BodyParts),
-      BoundingBox: S.optional(BoundingBox),
-      Confidence: S.optional(S.Number),
-      Id: S.optional(S.Number),
-    }),
+export const ProtectiveEquipmentPerson = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BodyParts: S.optional(BodyParts),
+    BoundingBox: S.optional(BoundingBox),
+    Confidence: S.optional(S.Number),
+    Id: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ProtectiveEquipmentPerson",
 }) as any as S.Schema<ProtectiveEquipmentPerson>;
 export type ProtectiveEquipmentPersons = ProtectiveEquipmentPerson[];
-export const ProtectiveEquipmentPersons = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ProtectiveEquipmentPersons = /*@__PURE__*/ S.Array(
   ProtectiveEquipmentPerson,
 );
 export type ProtectiveEquipmentPersonIds = number[];
-export const ProtectiveEquipmentPersonIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.Number,
-);
+export const ProtectiveEquipmentPersonIds = /*@__PURE__*/ S.Array(S.Number);
 export interface ProtectiveEquipmentSummary {
   PersonsWithRequiredEquipment?: number[];
   PersonsWithoutRequiredEquipment?: number[];
   PersonsIndeterminate?: number[];
 }
-export const ProtectiveEquipmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PersonsWithRequiredEquipment: S.optional(ProtectiveEquipmentPersonIds),
-      PersonsWithoutRequiredEquipment: S.optional(ProtectiveEquipmentPersonIds),
-      PersonsIndeterminate: S.optional(ProtectiveEquipmentPersonIds),
-    }),
+export const ProtectiveEquipmentSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PersonsWithRequiredEquipment: S.optional(ProtectiveEquipmentPersonIds),
+    PersonsWithoutRequiredEquipment: S.optional(ProtectiveEquipmentPersonIds),
+    PersonsIndeterminate: S.optional(ProtectiveEquipmentPersonIds),
+  }),
 ).annotate({
   identifier: "ProtectiveEquipmentSummary",
 }) as any as S.Schema<ProtectiveEquipmentSummary>;
@@ -2275,7 +2222,7 @@ export interface DetectProtectiveEquipmentResponse {
   Summary?: ProtectiveEquipmentSummary;
 }
 export const DetectProtectiveEquipmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProtectiveEquipmentModelVersion: S.optional(S.String),
       Persons: S.optional(ProtectiveEquipmentPersons),
@@ -2289,7 +2236,7 @@ export interface DetectionFilter {
   MinBoundingBoxHeight?: number;
   MinBoundingBoxWidth?: number;
 }
-export const DetectionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MinConfidence: S.optional(S.Number),
     MinBoundingBoxHeight: S.optional(S.Number),
@@ -2302,7 +2249,7 @@ export interface DetectTextFilters {
   WordFilter?: DetectionFilter;
   RegionsOfInterest?: RegionOfInterest[];
 }
-export const DetectTextFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectTextFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WordFilter: S.optional(DetectionFilter),
     RegionsOfInterest: S.optional(RegionsOfInterest),
@@ -2314,7 +2261,7 @@ export interface DetectTextRequest {
   Image: Image;
   Filters?: DetectTextFilters;
 }
-export const DetectTextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Image: Image, Filters: S.optional(DetectTextFilters) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2322,7 +2269,7 @@ export const DetectTextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DetectTextRequest",
 }) as any as S.Schema<DetectTextRequest>;
 export type TextTypes = "LINE" | "WORD" | (string & {});
-export const TextTypes = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TextTypes = /*@__PURE__*/ S.String;
 export interface TextDetection {
   DetectedText?: string;
   Type?: TextTypes;
@@ -2331,7 +2278,7 @@ export interface TextDetection {
   Confidence?: number;
   Geometry?: Geometry;
 }
-export const TextDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectedText: S.optional(S.String),
     Type: S.optional(TextTypes),
@@ -2342,13 +2289,12 @@ export const TextDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextDetection" }) as any as S.Schema<TextDetection>;
 export type TextDetectionList = TextDetection[];
-export const TextDetectionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TextDetection);
+export const TextDetectionList = /*@__PURE__*/ S.Array(TextDetection);
 export interface DetectTextResponse {
   TextDetections?: TextDetection[];
   TextModelVersion?: string;
 }
-export const DetectTextResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DetectTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TextDetections: S.optional(TextDetectionList),
     TextModelVersion: S.optional(S.String),
@@ -2362,47 +2308,44 @@ export interface DisassociateFacesRequest {
   ClientRequestToken?: string;
   FaceIds: string[];
 }
-export const DisassociateFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CollectionId: S.String,
-      UserId: S.String,
-      ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      FaceIds: UserFaceIdList,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DisassociateFacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectionId: S.String,
+    UserId: S.String,
+    ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    FaceIds: UserFaceIdList,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DisassociateFacesRequest",
 }) as any as S.Schema<DisassociateFacesRequest>;
 export interface DisassociatedFace {
   FaceId?: string;
 }
-export const DisassociatedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisassociatedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FaceId: S.optional(S.String) }),
 ).annotate({
   identifier: "DisassociatedFace",
 }) as any as S.Schema<DisassociatedFace>;
 export type DisassociatedFacesList = DisassociatedFace[];
-export const DisassociatedFacesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DisassociatedFace);
+export const DisassociatedFacesList = /*@__PURE__*/ S.Array(DisassociatedFace);
 export type UnsuccessfulFaceDisassociationReason =
   | "FACE_NOT_FOUND"
   | "ASSOCIATED_TO_A_DIFFERENT_USER"
   | (string & {});
-export const UnsuccessfulFaceDisassociationReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnsuccessfulFaceDisassociationReason = /*@__PURE__*/ S.String;
 export type UnsuccessfulFaceDisassociationReasons =
   UnsuccessfulFaceDisassociationReason[];
 export const UnsuccessfulFaceDisassociationReasons =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceDisassociationReason);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceDisassociationReason);
 export interface UnsuccessfulFaceDisassociation {
   FaceId?: string;
   UserId?: string;
   Reasons?: UnsuccessfulFaceDisassociationReason[];
 }
 export const UnsuccessfulFaceDisassociation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FaceId: S.optional(S.String),
       UserId: S.optional(S.String),
@@ -2414,40 +2357,39 @@ export const UnsuccessfulFaceDisassociation =
 export type UnsuccessfulFaceDisassociationList =
   UnsuccessfulFaceDisassociation[];
 export const UnsuccessfulFaceDisassociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsuccessfulFaceDisassociation);
+  /*@__PURE__*/ S.Array(UnsuccessfulFaceDisassociation);
 export interface DisassociateFacesResponse {
   DisassociatedFaces?: DisassociatedFace[];
   UnsuccessfulFaceDisassociations?: UnsuccessfulFaceDisassociation[];
   UserStatus?: UserStatus;
 }
-export const DisassociateFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DisassociatedFaces: S.optional(DisassociatedFacesList),
-      UnsuccessfulFaceDisassociations: S.optional(
-        UnsuccessfulFaceDisassociationList,
-      ),
-      UserStatus: S.optional(UserStatus),
-    }),
+export const DisassociateFacesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DisassociatedFaces: S.optional(DisassociatedFacesList),
+    UnsuccessfulFaceDisassociations: S.optional(
+      UnsuccessfulFaceDisassociationList,
+    ),
+    UserStatus: S.optional(UserStatus),
+  }),
 ).annotate({
   identifier: "DisassociateFacesResponse",
 }) as any as S.Schema<DisassociateFacesResponse>;
 export interface DistributeDataset {
   Arn: string;
 }
-export const DistributeDataset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DistributeDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }),
 ).annotate({
   identifier: "DistributeDataset",
 }) as any as S.Schema<DistributeDataset>;
 export type DistributeDatasetMetadataList = DistributeDataset[];
 export const DistributeDatasetMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DistributeDataset);
+  /*@__PURE__*/ S.Array(DistributeDataset);
 export interface DistributeDatasetEntriesRequest {
   Datasets: DistributeDataset[];
 }
 export const DistributeDatasetEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Datasets: DistributeDatasetMetadataList }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2456,33 +2398,32 @@ export const DistributeDatasetEntriesRequest =
   }) as any as S.Schema<DistributeDatasetEntriesRequest>;
 export interface DistributeDatasetEntriesResponse {}
 export const DistributeDatasetEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DistributeDatasetEntriesResponse",
   }) as any as S.Schema<DistributeDatasetEntriesResponse>;
 export interface GetCelebrityInfoRequest {
   Id: string;
 }
-export const GetCelebrityInfoRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Id: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetCelebrityInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetCelebrityInfoRequest",
 }) as any as S.Schema<GetCelebrityInfoRequest>;
 export type Urls = string[];
-export const Urls = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Urls = /*@__PURE__*/ S.Array(S.String);
 export type KnownGenderType =
   | "Male"
   | "Female"
   | "Nonbinary"
   | "Unlisted"
   | (string & {});
-export const KnownGenderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const KnownGenderType = /*@__PURE__*/ S.String;
 export interface KnownGender {
   Type?: KnownGenderType;
 }
-export const KnownGender = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KnownGender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(KnownGenderType) }),
 ).annotate({ identifier: "KnownGender" }) as any as S.Schema<KnownGender>;
 export interface GetCelebrityInfoResponse {
@@ -2490,18 +2431,17 @@ export interface GetCelebrityInfoResponse {
   Name?: string;
   KnownGender?: KnownGender;
 }
-export const GetCelebrityInfoResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Urls: S.optional(Urls),
-      Name: S.optional(S.String),
-      KnownGender: S.optional(KnownGender),
-    }),
+export const GetCelebrityInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Urls: S.optional(Urls),
+    Name: S.optional(S.String),
+    KnownGender: S.optional(KnownGender),
+  }),
 ).annotate({
   identifier: "GetCelebrityInfoResponse",
 }) as any as S.Schema<GetCelebrityInfoResponse>;
 export type CelebrityRecognitionSortBy = "ID" | "TIMESTAMP" | (string & {});
-export const CelebrityRecognitionSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CelebrityRecognitionSortBy = /*@__PURE__*/ S.String;
 export interface GetCelebrityRecognitionRequest {
   JobId: string;
   MaxResults?: number;
@@ -2509,7 +2449,7 @@ export interface GetCelebrityRecognitionRequest {
   SortBy?: CelebrityRecognitionSortBy;
 }
 export const GetCelebrityRecognitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobId: S.String,
       MaxResults: S.optional(S.Number),
@@ -2526,9 +2466,9 @@ export type VideoJobStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const VideoJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VideoJobStatus = /*@__PURE__*/ S.String;
 export type VideoColorRange = "FULL" | "LIMITED" | (string & {});
-export const VideoColorRange = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VideoColorRange = /*@__PURE__*/ S.String;
 export interface VideoMetadata {
   Codec?: string;
   DurationMillis?: number;
@@ -2538,7 +2478,7 @@ export interface VideoMetadata {
   FrameWidth?: number;
   ColorRange?: VideoColorRange;
 }
-export const VideoMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VideoMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Codec: S.optional(S.String),
     DurationMillis: S.optional(S.Number),
@@ -2558,7 +2498,7 @@ export interface CelebrityDetail {
   Face?: FaceDetail;
   KnownGender?: KnownGender;
 }
-export const CelebrityDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CelebrityDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Urls: S.optional(Urls),
     Name: S.optional(S.String),
@@ -2575,7 +2515,7 @@ export interface CelebrityRecognition {
   Timestamp?: number;
   Celebrity?: CelebrityDetail;
 }
-export const CelebrityRecognition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CelebrityRecognition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(S.Number),
     Celebrity: S.optional(CelebrityDetail),
@@ -2585,11 +2525,11 @@ export const CelebrityRecognition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CelebrityRecognition>;
 export type CelebrityRecognitions = CelebrityRecognition[];
 export const CelebrityRecognitions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CelebrityRecognition);
+  /*@__PURE__*/ S.Array(CelebrityRecognition);
 export interface Video {
   S3Object?: S3Object;
 }
-export const Video = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Object: S.optional(S3Object) }),
 ).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
 export interface GetCelebrityRecognitionResponse {
@@ -2603,7 +2543,7 @@ export interface GetCelebrityRecognitionResponse {
   JobTag?: string;
 }
 export const GetCelebrityRecognitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobStatus: S.optional(VideoJobStatus),
       StatusMessage: S.optional(S.String),
@@ -2618,13 +2558,12 @@ export const GetCelebrityRecognitionResponse =
     identifier: "GetCelebrityRecognitionResponse",
   }) as any as S.Schema<GetCelebrityRecognitionResponse>;
 export type ContentModerationSortBy = "NAME" | "TIMESTAMP" | (string & {});
-export const ContentModerationSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContentModerationSortBy = /*@__PURE__*/ S.String;
 export type ContentModerationAggregateBy =
   | "TIMESTAMPS"
   | "SEGMENTS"
   | (string & {});
-export const ContentModerationAggregateBy =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContentModerationAggregateBy = /*@__PURE__*/ S.String;
 export interface GetContentModerationRequest {
   JobId: string;
   MaxResults?: number;
@@ -2633,7 +2572,7 @@ export interface GetContentModerationRequest {
   AggregateBy?: ContentModerationAggregateBy;
 }
 export const GetContentModerationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobId: S.String,
       MaxResults: S.optional(S.Number),
@@ -2654,21 +2593,20 @@ export interface ContentModerationDetection {
   DurationMillis?: number;
   ContentTypes?: ContentType[];
 }
-export const ContentModerationDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Timestamp: S.optional(S.Number),
-      ModerationLabel: S.optional(ModerationLabel),
-      StartTimestampMillis: S.optional(S.Number),
-      EndTimestampMillis: S.optional(S.Number),
-      DurationMillis: S.optional(S.Number),
-      ContentTypes: S.optional(ContentTypes),
-    }),
+export const ContentModerationDetection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Timestamp: S.optional(S.Number),
+    ModerationLabel: S.optional(ModerationLabel),
+    StartTimestampMillis: S.optional(S.Number),
+    EndTimestampMillis: S.optional(S.Number),
+    DurationMillis: S.optional(S.Number),
+    ContentTypes: S.optional(ContentTypes),
+  }),
 ).annotate({
   identifier: "ContentModerationDetection",
 }) as any as S.Schema<ContentModerationDetection>;
 export type ContentModerationDetections = ContentModerationDetection[];
-export const ContentModerationDetections = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ContentModerationDetections = /*@__PURE__*/ S.Array(
   ContentModerationDetection,
 );
 export interface GetContentModerationRequestMetadata {
@@ -2676,7 +2614,7 @@ export interface GetContentModerationRequestMetadata {
   AggregateBy?: ContentModerationAggregateBy;
 }
 export const GetContentModerationRequestMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SortBy: S.optional(ContentModerationSortBy),
       AggregateBy: S.optional(ContentModerationAggregateBy),
@@ -2697,7 +2635,7 @@ export interface GetContentModerationResponse {
   GetRequestMetadata?: GetContentModerationRequestMetadata;
 }
 export const GetContentModerationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobStatus: S.optional(VideoJobStatus),
       StatusMessage: S.optional(S.String),
@@ -2718,15 +2656,14 @@ export interface GetFaceDetectionRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetFaceDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetFaceDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetFaceDetectionRequest",
 }) as any as S.Schema<GetFaceDetectionRequest>;
@@ -2734,12 +2671,11 @@ export interface FaceDetection {
   Timestamp?: number;
   Face?: FaceDetail;
 }
-export const FaceDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Timestamp: S.optional(S.Number), Face: S.optional(FaceDetail) }),
 ).annotate({ identifier: "FaceDetection" }) as any as S.Schema<FaceDetection>;
 export type FaceDetections = FaceDetection[];
-export const FaceDetections =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FaceDetection);
+export const FaceDetections = /*@__PURE__*/ S.Array(FaceDetection);
 export interface GetFaceDetectionResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -2750,18 +2686,17 @@ export interface GetFaceDetectionResponse {
   Video?: Video;
   JobTag?: string;
 }
-export const GetFaceDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobStatus: S.optional(VideoJobStatus),
-      StatusMessage: S.optional(S.String),
-      VideoMetadata: S.optional(VideoMetadata),
-      NextToken: S.optional(S.String),
-      Faces: S.optional(FaceDetections),
-      JobId: S.optional(S.String),
-      Video: S.optional(Video),
-      JobTag: S.optional(S.String),
-    }),
+export const GetFaceDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobStatus: S.optional(VideoJobStatus),
+    StatusMessage: S.optional(S.String),
+    VideoMetadata: S.optional(VideoMetadata),
+    NextToken: S.optional(S.String),
+    Faces: S.optional(FaceDetections),
+    JobId: S.optional(S.String),
+    Video: S.optional(Video),
+    JobTag: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetFaceDetectionResponse",
 }) as any as S.Schema<GetFaceDetectionResponse>;
@@ -2769,7 +2704,7 @@ export interface GetFaceLivenessSessionResultsRequest {
   SessionId: string;
 }
 export const GetFaceLivenessSessionResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ SessionId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2783,13 +2718,13 @@ export type LivenessSessionStatus =
   | "FAILED"
   | "EXPIRED"
   | (string & {});
-export const LivenessSessionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LivenessSessionStatus = /*@__PURE__*/ S.String;
 export interface AuditImage {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   S3Object?: S3Object;
   BoundingBox?: BoundingBox;
 }
-export const AuditImage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AuditImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob),
     S3Object: S.optional(S3Object),
@@ -2797,12 +2732,12 @@ export const AuditImage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditImage" }) as any as S.Schema<AuditImage>;
 export type AuditImages = AuditImage[];
-export const AuditImages = /*@__PURE__*/ /*#__PURE__*/ S.Array(AuditImage);
+export const AuditImages = /*@__PURE__*/ S.Array(AuditImage);
 export interface Challenge {
   Type: ChallengeType;
   Version: string;
 }
-export const Challenge = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Challenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: ChallengeType, Version: S.String }),
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 export interface GetFaceLivenessSessionResultsResponse {
@@ -2814,7 +2749,7 @@ export interface GetFaceLivenessSessionResultsResponse {
   Challenge?: Challenge;
 }
 export const GetFaceLivenessSessionResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SessionId: S.String,
       Status: LivenessSessionStatus,
@@ -2827,14 +2762,14 @@ export const GetFaceLivenessSessionResultsResponse =
     identifier: "GetFaceLivenessSessionResultsResponse",
   }) as any as S.Schema<GetFaceLivenessSessionResultsResponse>;
 export type FaceSearchSortBy = "INDEX" | "TIMESTAMP" | (string & {});
-export const FaceSearchSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FaceSearchSortBy = /*@__PURE__*/ S.String;
 export interface GetFaceSearchRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
   SortBy?: FaceSearchSortBy;
 }
-export const GetFaceSearchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFaceSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobId: S.String,
     MaxResults: S.optional(S.Number),
@@ -2851,7 +2786,7 @@ export interface PersonDetail {
   BoundingBox?: BoundingBox;
   Face?: FaceDetail;
 }
-export const PersonDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PersonDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Index: S.optional(S.Number),
     BoundingBox: S.optional(BoundingBox),
@@ -2867,7 +2802,7 @@ export interface Face {
   IndexFacesModelVersion?: string;
   UserId?: string;
 }
-export const Face = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Face = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FaceId: S.optional(S.String),
     BoundingBox: S.optional(BoundingBox),
@@ -2882,17 +2817,17 @@ export interface FaceMatch {
   Similarity?: number;
   Face?: Face;
 }
-export const FaceMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Similarity: S.optional(S.Number), Face: S.optional(Face) }),
 ).annotate({ identifier: "FaceMatch" }) as any as S.Schema<FaceMatch>;
 export type FaceMatchList = FaceMatch[];
-export const FaceMatchList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FaceMatch);
+export const FaceMatchList = /*@__PURE__*/ S.Array(FaceMatch);
 export interface PersonMatch {
   Timestamp?: number;
   Person?: PersonDetail;
   FaceMatches?: FaceMatch[];
 }
-export const PersonMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PersonMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(S.Number),
     Person: S.optional(PersonDetail),
@@ -2900,7 +2835,7 @@ export const PersonMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersonMatch" }) as any as S.Schema<PersonMatch>;
 export type PersonMatches = PersonMatch[];
-export const PersonMatches = /*@__PURE__*/ /*#__PURE__*/ S.Array(PersonMatch);
+export const PersonMatches = /*@__PURE__*/ S.Array(PersonMatch);
 export interface GetFaceSearchResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -2911,7 +2846,7 @@ export interface GetFaceSearchResponse {
   Video?: Video;
   JobTag?: string;
 }
-export const GetFaceSearchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobStatus: S.optional(VideoJobStatus),
     StatusMessage: S.optional(S.String),
@@ -2926,12 +2861,12 @@ export const GetFaceSearchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetFaceSearchResponse",
 }) as any as S.Schema<GetFaceSearchResponse>;
 export type LabelDetectionSortBy = "NAME" | "TIMESTAMP" | (string & {});
-export const LabelDetectionSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LabelDetectionSortBy = /*@__PURE__*/ S.String;
 export type LabelDetectionAggregateBy =
   | "TIMESTAMPS"
   | "SEGMENTS"
   | (string & {});
-export const LabelDetectionAggregateBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LabelDetectionAggregateBy = /*@__PURE__*/ S.String;
 export interface GetLabelDetectionRequest {
   JobId: string;
   MaxResults?: number;
@@ -2939,17 +2874,16 @@ export interface GetLabelDetectionRequest {
   SortBy?: LabelDetectionSortBy;
   AggregateBy?: LabelDetectionAggregateBy;
 }
-export const GetLabelDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      SortBy: S.optional(LabelDetectionSortBy),
-      AggregateBy: S.optional(LabelDetectionAggregateBy),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetLabelDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    SortBy: S.optional(LabelDetectionSortBy),
+    AggregateBy: S.optional(LabelDetectionAggregateBy),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetLabelDetectionRequest",
 }) as any as S.Schema<GetLabelDetectionRequest>;
@@ -2960,7 +2894,7 @@ export interface LabelDetection {
   EndTimestampMillis?: number;
   DurationMillis?: number;
 }
-export const LabelDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LabelDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(S.Number),
     Label: S.optional(Label),
@@ -2970,14 +2904,13 @@ export const LabelDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelDetection" }) as any as S.Schema<LabelDetection>;
 export type LabelDetections = LabelDetection[];
-export const LabelDetections =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LabelDetection);
+export const LabelDetections = /*@__PURE__*/ S.Array(LabelDetection);
 export interface GetLabelDetectionRequestMetadata {
   SortBy?: LabelDetectionSortBy;
   AggregateBy?: LabelDetectionAggregateBy;
 }
 export const GetLabelDetectionRequestMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SortBy: S.optional(LabelDetectionSortBy),
       AggregateBy: S.optional(LabelDetectionAggregateBy),
@@ -2997,31 +2930,29 @@ export interface GetLabelDetectionResponse {
   JobTag?: string;
   GetRequestMetadata?: GetLabelDetectionRequestMetadata;
 }
-export const GetLabelDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobStatus: S.optional(VideoJobStatus),
-      StatusMessage: S.optional(S.String),
-      VideoMetadata: S.optional(VideoMetadata),
-      NextToken: S.optional(S.String),
-      Labels: S.optional(LabelDetections),
-      LabelModelVersion: S.optional(S.String),
-      JobId: S.optional(S.String),
-      Video: S.optional(Video),
-      JobTag: S.optional(S.String),
-      GetRequestMetadata: S.optional(GetLabelDetectionRequestMetadata),
-    }),
+export const GetLabelDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobStatus: S.optional(VideoJobStatus),
+    StatusMessage: S.optional(S.String),
+    VideoMetadata: S.optional(VideoMetadata),
+    NextToken: S.optional(S.String),
+    Labels: S.optional(LabelDetections),
+    LabelModelVersion: S.optional(S.String),
+    JobId: S.optional(S.String),
+    Video: S.optional(Video),
+    JobTag: S.optional(S.String),
+    GetRequestMetadata: S.optional(GetLabelDetectionRequestMetadata),
+  }),
 ).annotate({
   identifier: "GetLabelDetectionResponse",
 }) as any as S.Schema<GetLabelDetectionResponse>;
 export interface GetMediaAnalysisJobRequest {
   JobId: string;
 }
-export const GetMediaAnalysisJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ JobId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetMediaAnalysisJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetMediaAnalysisJobRequest",
 }) as any as S.Schema<GetMediaAnalysisJobRequest>;
@@ -3030,7 +2961,7 @@ export interface MediaAnalysisDetectModerationLabelsConfig {
   ProjectVersion?: string;
 }
 export const MediaAnalysisDetectModerationLabelsConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MinConfidence: S.optional(S.Number),
       ProjectVersion: S.optional(S.String),
@@ -3042,7 +2973,7 @@ export interface MediaAnalysisOperationsConfig {
   DetectModerationLabels?: MediaAnalysisDetectModerationLabelsConfig;
 }
 export const MediaAnalysisOperationsConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       DetectModerationLabels: S.optional(
         MediaAnalysisDetectModerationLabelsConfig,
@@ -3058,7 +2989,7 @@ export type MediaAnalysisJobStatus =
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const MediaAnalysisJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MediaAnalysisJobStatus = /*@__PURE__*/ S.String;
 export type MediaAnalysisJobFailureCode =
   | "INTERNAL_ERROR"
   | "INVALID_S3_OBJECT"
@@ -3070,13 +3001,13 @@ export type MediaAnalysisJobFailureCode =
   | "RESOURCE_NOT_READY"
   | "THROTTLED"
   | (string & {});
-export const MediaAnalysisJobFailureCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MediaAnalysisJobFailureCode = /*@__PURE__*/ S.String;
 export interface MediaAnalysisJobFailureDetails {
   Code?: MediaAnalysisJobFailureCode;
   Message?: string;
 }
 export const MediaAnalysisJobFailureDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Code: S.optional(MediaAnalysisJobFailureCode),
       Message: S.optional(S.String),
@@ -3087,7 +3018,7 @@ export const MediaAnalysisJobFailureDetails =
 export interface MediaAnalysisInput {
   S3Object: S3Object;
 }
-export const MediaAnalysisInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MediaAnalysisInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Object: S3Object }),
 ).annotate({
   identifier: "MediaAnalysisInput",
@@ -3096,16 +3027,16 @@ export interface MediaAnalysisOutputConfig {
   S3Bucket: string;
   S3KeyPrefix?: string;
 }
-export const MediaAnalysisOutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ S3Bucket: S.String, S3KeyPrefix: S.optional(S.String) }),
+export const MediaAnalysisOutputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Bucket: S.String, S3KeyPrefix: S.optional(S.String) }),
 ).annotate({
   identifier: "MediaAnalysisOutputConfig",
 }) as any as S.Schema<MediaAnalysisOutputConfig>;
 export interface MediaAnalysisModelVersions {
   Moderation?: string;
 }
-export const MediaAnalysisModelVersions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Moderation: S.optional(S.String) }),
+export const MediaAnalysisModelVersions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Moderation: S.optional(S.String) }),
 ).annotate({
   identifier: "MediaAnalysisModelVersions",
 }) as any as S.Schema<MediaAnalysisModelVersions>;
@@ -3113,7 +3044,7 @@ export interface MediaAnalysisResults {
   S3Object?: S3Object;
   ModelVersions?: MediaAnalysisModelVersions;
 }
-export const MediaAnalysisResults = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MediaAnalysisResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Object: S.optional(S3Object),
     ModelVersions: S.optional(MediaAnalysisModelVersions),
@@ -3125,7 +3056,7 @@ export interface MediaAnalysisManifestSummary {
   S3Object?: S3Object;
 }
 export const MediaAnalysisManifestSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ S3Object: S.optional(S3Object) }),
   ).annotate({
     identifier: "MediaAnalysisManifestSummary",
@@ -3145,7 +3076,7 @@ export interface GetMediaAnalysisJobResponse {
   ManifestSummary?: MediaAnalysisManifestSummary;
 }
 export const GetMediaAnalysisJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobId: S.String,
       JobName: S.optional(S.String),
@@ -3166,23 +3097,22 @@ export const GetMediaAnalysisJobResponse =
     identifier: "GetMediaAnalysisJobResponse",
   }) as any as S.Schema<GetMediaAnalysisJobResponse>;
 export type PersonTrackingSortBy = "INDEX" | "TIMESTAMP" | (string & {});
-export const PersonTrackingSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PersonTrackingSortBy = /*@__PURE__*/ S.String;
 export interface GetPersonTrackingRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
   SortBy?: PersonTrackingSortBy;
 }
-export const GetPersonTrackingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      SortBy: S.optional(PersonTrackingSortBy),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetPersonTrackingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    SortBy: S.optional(PersonTrackingSortBy),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetPersonTrackingRequest",
 }) as any as S.Schema<GetPersonTrackingRequest>;
@@ -3190,7 +3120,7 @@ export interface PersonDetection {
   Timestamp?: number;
   Person?: PersonDetail;
 }
-export const PersonDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PersonDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(S.Number),
     Person: S.optional(PersonDetail),
@@ -3199,8 +3129,7 @@ export const PersonDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PersonDetection",
 }) as any as S.Schema<PersonDetection>;
 export type PersonDetections = PersonDetection[];
-export const PersonDetections =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PersonDetection);
+export const PersonDetections = /*@__PURE__*/ S.Array(PersonDetection);
 export interface GetPersonTrackingResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -3211,18 +3140,17 @@ export interface GetPersonTrackingResponse {
   Video?: Video;
   JobTag?: string;
 }
-export const GetPersonTrackingResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobStatus: S.optional(VideoJobStatus),
-      StatusMessage: S.optional(S.String),
-      VideoMetadata: S.optional(VideoMetadata),
-      NextToken: S.optional(S.String),
-      Persons: S.optional(PersonDetections),
-      JobId: S.optional(S.String),
-      Video: S.optional(Video),
-      JobTag: S.optional(S.String),
-    }),
+export const GetPersonTrackingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobStatus: S.optional(VideoJobStatus),
+    StatusMessage: S.optional(S.String),
+    VideoMetadata: S.optional(VideoMetadata),
+    NextToken: S.optional(S.String),
+    Persons: S.optional(PersonDetections),
+    JobId: S.optional(S.String),
+    Video: S.optional(Video),
+    JobTag: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetPersonTrackingResponse",
 }) as any as S.Schema<GetPersonTrackingResponse>;
@@ -3231,28 +3159,26 @@ export interface GetSegmentDetectionRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetSegmentDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetSegmentDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetSegmentDetectionRequest",
 }) as any as S.Schema<GetSegmentDetectionRequest>;
 export type VideoMetadataList = VideoMetadata[];
-export const VideoMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VideoMetadata);
+export const VideoMetadataList = /*@__PURE__*/ S.Array(VideoMetadata);
 export interface AudioMetadata {
   Codec?: string;
   DurationMillis?: number;
   SampleRate?: number;
   NumberOfChannels?: number;
 }
-export const AudioMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudioMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Codec: S.optional(S.String),
     DurationMillis: S.optional(S.Number),
@@ -3261,10 +3187,9 @@ export const AudioMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudioMetadata" }) as any as S.Schema<AudioMetadata>;
 export type AudioMetadataList = AudioMetadata[];
-export const AudioMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioMetadata);
+export const AudioMetadataList = /*@__PURE__*/ S.Array(AudioMetadata);
 export type SegmentType = "TECHNICAL_CUE" | "SHOT" | (string & {});
-export const SegmentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SegmentType = /*@__PURE__*/ S.String;
 export type TechnicalCueType =
   | "ColorBars"
   | "EndCredits"
@@ -3274,12 +3199,12 @@ export type TechnicalCueType =
   | "Slate"
   | "Content"
   | (string & {});
-export const TechnicalCueType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TechnicalCueType = /*@__PURE__*/ S.String;
 export interface TechnicalCueSegment {
   Type?: TechnicalCueType;
   Confidence?: number;
 }
-export const TechnicalCueSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TechnicalCueSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(TechnicalCueType),
     Confidence: S.optional(S.Number),
@@ -3291,7 +3216,7 @@ export interface ShotSegment {
   Index?: number;
   Confidence?: number;
 }
-export const ShotSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ShotSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Index: S.optional(S.Number), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "ShotSegment" }) as any as S.Schema<ShotSegment>;
 export interface SegmentDetection {
@@ -3308,7 +3233,7 @@ export interface SegmentDetection {
   EndFrameNumber?: number;
   DurationFrames?: number;
 }
-export const SegmentDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SegmentDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(SegmentType),
     StartTimestampMillis: S.optional(S.Number),
@@ -3327,13 +3252,12 @@ export const SegmentDetection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SegmentDetection",
 }) as any as S.Schema<SegmentDetection>;
 export type SegmentDetections = SegmentDetection[];
-export const SegmentDetections =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SegmentDetection);
+export const SegmentDetections = /*@__PURE__*/ S.Array(SegmentDetection);
 export interface SegmentTypeInfo {
   Type?: SegmentType;
   ModelVersion?: string;
 }
-export const SegmentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SegmentTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(SegmentType),
     ModelVersion: S.optional(S.String),
@@ -3342,8 +3266,7 @@ export const SegmentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SegmentTypeInfo",
 }) as any as S.Schema<SegmentTypeInfo>;
 export type SegmentTypesInfo = SegmentTypeInfo[];
-export const SegmentTypesInfo =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SegmentTypeInfo);
+export const SegmentTypesInfo = /*@__PURE__*/ S.Array(SegmentTypeInfo);
 export interface GetSegmentDetectionResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -3357,7 +3280,7 @@ export interface GetSegmentDetectionResponse {
   JobTag?: string;
 }
 export const GetSegmentDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobStatus: S.optional(VideoJobStatus),
       StatusMessage: S.optional(S.String),
@@ -3378,15 +3301,14 @@ export interface GetTextDetectionRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetTextDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetTextDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetTextDetectionRequest",
 }) as any as S.Schema<GetTextDetectionRequest>;
@@ -3394,7 +3316,7 @@ export interface TextDetectionResult {
   Timestamp?: number;
   TextDetection?: TextDetection;
 }
-export const TextDetectionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextDetectionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.optional(S.Number),
     TextDetection: S.optional(TextDetection),
@@ -3403,8 +3325,7 @@ export const TextDetectionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TextDetectionResult",
 }) as any as S.Schema<TextDetectionResult>;
 export type TextDetectionResults = TextDetectionResult[];
-export const TextDetectionResults =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TextDetectionResult);
+export const TextDetectionResults = /*@__PURE__*/ S.Array(TextDetectionResult);
 export interface GetTextDetectionResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -3416,19 +3337,18 @@ export interface GetTextDetectionResponse {
   Video?: Video;
   JobTag?: string;
 }
-export const GetTextDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobStatus: S.optional(VideoJobStatus),
-      StatusMessage: S.optional(S.String),
-      VideoMetadata: S.optional(VideoMetadata),
-      TextDetections: S.optional(TextDetectionResults),
-      NextToken: S.optional(S.String),
-      TextModelVersion: S.optional(S.String),
-      JobId: S.optional(S.String),
-      Video: S.optional(Video),
-      JobTag: S.optional(S.String),
-    }),
+export const GetTextDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobStatus: S.optional(VideoJobStatus),
+    StatusMessage: S.optional(S.String),
+    VideoMetadata: S.optional(VideoMetadata),
+    TextDetections: S.optional(TextDetectionResults),
+    NextToken: S.optional(S.String),
+    TextModelVersion: S.optional(S.String),
+    JobId: S.optional(S.String),
+    Video: S.optional(Video),
+    JobTag: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetTextDetectionResponse",
 }) as any as S.Schema<GetTextDetectionResponse>;
@@ -3440,7 +3360,7 @@ export interface IndexFacesRequest {
   MaxFaces?: number;
   QualityFilter?: QualityFilter;
 }
-export const IndexFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IndexFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     Image: Image,
@@ -3458,11 +3378,11 @@ export interface FaceRecord {
   Face?: Face;
   FaceDetail?: FaceDetail;
 }
-export const FaceRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FaceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Face: S.optional(Face), FaceDetail: S.optional(FaceDetail) }),
 ).annotate({ identifier: "FaceRecord" }) as any as S.Schema<FaceRecord>;
 export type FaceRecordList = FaceRecord[];
-export const FaceRecordList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FaceRecord);
+export const FaceRecordList = /*@__PURE__*/ S.Array(FaceRecord);
 export type Reason =
   | "EXCEEDS_MAX_FACES"
   | "EXTREME_POSE"
@@ -3472,29 +3392,28 @@ export type Reason =
   | "SMALL_BOUNDING_BOX"
   | "LOW_FACE_QUALITY"
   | (string & {});
-export const Reason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Reason = /*@__PURE__*/ S.String;
 export type Reasons = Reason[];
-export const Reasons = /*@__PURE__*/ /*#__PURE__*/ S.Array(Reason);
+export const Reasons = /*@__PURE__*/ S.Array(Reason);
 export interface UnindexedFace {
   Reasons?: Reason[];
   FaceDetail?: FaceDetail;
 }
-export const UnindexedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnindexedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Reasons: S.optional(Reasons),
     FaceDetail: S.optional(FaceDetail),
   }),
 ).annotate({ identifier: "UnindexedFace" }) as any as S.Schema<UnindexedFace>;
 export type UnindexedFaces = UnindexedFace[];
-export const UnindexedFaces =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnindexedFace);
+export const UnindexedFaces = /*@__PURE__*/ S.Array(UnindexedFace);
 export interface IndexFacesResponse {
   FaceRecords?: FaceRecord[];
   OrientationCorrection?: OrientationCorrection;
   FaceModelVersion?: string;
   UnindexedFaces?: UnindexedFace[];
 }
-export const IndexFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IndexFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FaceRecords: S.optional(FaceRecordList),
     OrientationCorrection: S.optional(OrientationCorrection),
@@ -3508,40 +3427,36 @@ export interface ListCollectionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListCollectionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListCollectionsRequest",
 }) as any as S.Schema<ListCollectionsRequest>;
 export type CollectionIdList = string[];
-export const CollectionIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CollectionIdList = /*@__PURE__*/ S.Array(S.String);
 export type FaceModelVersionList = string[];
-export const FaceModelVersionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const FaceModelVersionList = /*@__PURE__*/ S.Array(S.String);
 export interface ListCollectionsResponse {
   CollectionIds?: string[];
   NextToken?: string;
   FaceModelVersions?: string[];
 }
-export const ListCollectionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CollectionIds: S.optional(CollectionIdList),
-      NextToken: S.optional(S.String),
-      FaceModelVersions: S.optional(FaceModelVersionList),
-    }),
+export const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectionIds: S.optional(CollectionIdList),
+    NextToken: S.optional(S.String),
+    FaceModelVersions: S.optional(FaceModelVersionList),
+  }),
 ).annotate({
   identifier: "ListCollectionsResponse",
 }) as any as S.Schema<ListCollectionsResponse>;
 export type DatasetLabels = string[];
-export const DatasetLabels = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DatasetLabels = /*@__PURE__*/ S.Array(S.String);
 export interface ListDatasetEntriesRequest {
   DatasetArn: string;
   ContainsLabels?: string[];
@@ -3551,34 +3466,32 @@ export interface ListDatasetEntriesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDatasetEntriesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DatasetArn: S.String,
-      ContainsLabels: S.optional(DatasetLabels),
-      Labeled: S.optional(S.Boolean),
-      SourceRefContains: S.optional(S.String),
-      HasErrors: S.optional(S.Boolean),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListDatasetEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetArn: S.String,
+    ContainsLabels: S.optional(DatasetLabels),
+    Labeled: S.optional(S.Boolean),
+    SourceRefContains: S.optional(S.String),
+    HasErrors: S.optional(S.Boolean),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListDatasetEntriesRequest",
 }) as any as S.Schema<ListDatasetEntriesRequest>;
 export type DatasetEntries = string[];
-export const DatasetEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DatasetEntries = /*@__PURE__*/ S.Array(S.String);
 export interface ListDatasetEntriesResponse {
   DatasetEntries?: string[];
   NextToken?: string;
 }
-export const ListDatasetEntriesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DatasetEntries: S.optional(DatasetEntries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListDatasetEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetEntries: S.optional(DatasetEntries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListDatasetEntriesResponse",
 }) as any as S.Schema<ListDatasetEntriesResponse>;
@@ -3587,15 +3500,14 @@ export interface ListDatasetLabelsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDatasetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DatasetArn: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListDatasetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetArn: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListDatasetLabelsRequest",
 }) as any as S.Schema<ListDatasetLabelsRequest>;
@@ -3603,7 +3515,7 @@ export interface DatasetLabelStats {
   EntryCount?: number;
   BoundingBoxCount?: number;
 }
-export const DatasetLabelStats = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetLabelStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EntryCount: S.optional(S.Number),
     BoundingBoxCount: S.optional(S.Number),
@@ -3615,29 +3527,27 @@ export interface DatasetLabelDescription {
   LabelName?: string;
   LabelStats?: DatasetLabelStats;
 }
-export const DatasetLabelDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LabelName: S.optional(S.String),
-      LabelStats: S.optional(DatasetLabelStats),
-    }),
+export const DatasetLabelDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LabelName: S.optional(S.String),
+    LabelStats: S.optional(DatasetLabelStats),
+  }),
 ).annotate({
   identifier: "DatasetLabelDescription",
 }) as any as S.Schema<DatasetLabelDescription>;
 export type DatasetLabelDescriptions = DatasetLabelDescription[];
-export const DatasetLabelDescriptions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DatasetLabelDescriptions = /*@__PURE__*/ S.Array(
   DatasetLabelDescription,
 );
 export interface ListDatasetLabelsResponse {
   DatasetLabelDescriptions?: DatasetLabelDescription[];
   NextToken?: string;
 }
-export const ListDatasetLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DatasetLabelDescriptions: S.optional(DatasetLabelDescriptions),
-      NextToken: S.optional(S.String),
-    }),
+export const ListDatasetLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetLabelDescriptions: S.optional(DatasetLabelDescriptions),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListDatasetLabelsResponse",
 }) as any as S.Schema<ListDatasetLabelsResponse>;
@@ -3648,7 +3558,7 @@ export interface ListFacesRequest {
   UserId?: string;
   FaceIds?: string[];
 }
-export const ListFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     NextToken: S.optional(S.String),
@@ -3662,13 +3572,13 @@ export const ListFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListFacesRequest",
 }) as any as S.Schema<ListFacesRequest>;
 export type FaceList = Face[];
-export const FaceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Face);
+export const FaceList = /*@__PURE__*/ S.Array(Face);
 export interface ListFacesResponse {
   Faces?: Face[];
   NextToken?: string;
   FaceModelVersion?: string;
 }
-export const ListFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Faces: S.optional(FaceList),
     NextToken: S.optional(S.String),
@@ -3682,7 +3592,7 @@ export interface ListMediaAnalysisJobsRequest {
   MaxResults?: number;
 }
 export const ListMediaAnalysisJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -3707,7 +3617,7 @@ export interface MediaAnalysisJobDescription {
   ManifestSummary?: MediaAnalysisManifestSummary;
 }
 export const MediaAnalysisJobDescription =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       JobId: S.String,
       JobName: S.optional(S.String),
@@ -3728,7 +3638,7 @@ export const MediaAnalysisJobDescription =
     identifier: "MediaAnalysisJobDescription",
   }) as any as S.Schema<MediaAnalysisJobDescription>;
 export type MediaAnalysisJobDescriptions = MediaAnalysisJobDescription[];
-export const MediaAnalysisJobDescriptions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MediaAnalysisJobDescriptions = /*@__PURE__*/ S.Array(
   MediaAnalysisJobDescription,
 );
 export interface ListMediaAnalysisJobsResponse {
@@ -3736,7 +3646,7 @@ export interface ListMediaAnalysisJobsResponse {
   MediaAnalysisJobs: MediaAnalysisJobDescription[];
 }
 export const ListMediaAnalysisJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MediaAnalysisJobs: MediaAnalysisJobDescriptions,
@@ -3749,15 +3659,14 @@ export interface ListProjectPoliciesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListProjectPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectArn: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListProjectPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectArn: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListProjectPoliciesRequest",
 }) as any as S.Schema<ListProjectPoliciesRequest>;
@@ -3769,7 +3678,7 @@ export interface ProjectPolicy {
   CreationTimestamp?: Date;
   LastUpdatedTimestamp?: Date;
 }
-export const ProjectPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProjectPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProjectArn: S.optional(S.String),
     PolicyName: S.optional(S.String),
@@ -3784,14 +3693,13 @@ export const ProjectPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProjectPolicy" }) as any as S.Schema<ProjectPolicy>;
 export type ProjectPolicies = ProjectPolicy[];
-export const ProjectPolicies =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProjectPolicy);
+export const ProjectPolicies = /*@__PURE__*/ S.Array(ProjectPolicy);
 export interface ListProjectPoliciesResponse {
   ProjectPolicies?: ProjectPolicy[];
   NextToken?: string;
 }
 export const ListProjectPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProjectPolicies: S.optional(ProjectPolicies),
       NextToken: S.optional(S.String),
@@ -3804,7 +3712,7 @@ export interface ListStreamProcessorsRequest {
   MaxResults?: number;
 }
 export const ListStreamProcessorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -3818,7 +3726,7 @@ export interface StreamProcessor {
   Name?: string;
   Status?: StreamProcessorStatus;
 }
-export const StreamProcessor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamProcessor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(StreamProcessorStatus),
@@ -3827,14 +3735,13 @@ export const StreamProcessor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StreamProcessor",
 }) as any as S.Schema<StreamProcessor>;
 export type StreamProcessorList = StreamProcessor[];
-export const StreamProcessorList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamProcessor);
+export const StreamProcessorList = /*@__PURE__*/ S.Array(StreamProcessor);
 export interface ListStreamProcessorsResponse {
   NextToken?: string;
   StreamProcessors?: StreamProcessor[];
 }
 export const ListStreamProcessorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       StreamProcessors: S.optional(StreamProcessorList),
@@ -3845,11 +3752,10 @@ export const ListStreamProcessorsResponse =
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -3857,7 +3763,7 @@ export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -3867,7 +3773,7 @@ export interface ListUsersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     MaxResults: S.optional(S.Number),
@@ -3882,19 +3788,19 @@ export interface User {
   UserId?: string;
   UserStatus?: UserStatus;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.optional(S.String),
     UserStatus: S.optional(UserStatus),
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type UserList = User[];
-export const UserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const UserList = /*@__PURE__*/ S.Array(User);
 export interface ListUsersResponse {
   Users?: User[];
   NextToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Users: S.optional(UserList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListUsersResponse",
@@ -3905,24 +3811,23 @@ export interface PutProjectPolicyRequest {
   PolicyRevisionId?: string;
   PolicyDocument: string;
 }
-export const PutProjectPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectArn: S.String,
-      PolicyName: S.String,
-      PolicyRevisionId: S.optional(S.String),
-      PolicyDocument: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectArn: S.String,
+    PolicyName: S.String,
+    PolicyRevisionId: S.optional(S.String),
+    PolicyDocument: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutProjectPolicyRequest",
 }) as any as S.Schema<PutProjectPolicyRequest>;
 export interface PutProjectPolicyResponse {
   PolicyRevisionId?: string;
 }
-export const PutProjectPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PolicyRevisionId: S.optional(S.String) }),
+export const PutProjectPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyRevisionId: S.optional(S.String) }),
 ).annotate({
   identifier: "PutProjectPolicyResponse",
 }) as any as S.Schema<PutProjectPolicyResponse>;
@@ -3930,7 +3835,7 @@ export interface RecognizeCelebritiesRequest {
   Image: Image;
 }
 export const RecognizeCelebritiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Image: Image }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -3945,7 +3850,7 @@ export interface Celebrity {
   MatchConfidence?: number;
   KnownGender?: KnownGender;
 }
-export const Celebrity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Celebrity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Urls: S.optional(Urls),
     Name: S.optional(S.String),
@@ -3956,17 +3861,16 @@ export const Celebrity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Celebrity" }) as any as S.Schema<Celebrity>;
 export type CelebrityList = Celebrity[];
-export const CelebrityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Celebrity);
+export const CelebrityList = /*@__PURE__*/ S.Array(Celebrity);
 export type ComparedFaceList = ComparedFace[];
-export const ComparedFaceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComparedFace);
+export const ComparedFaceList = /*@__PURE__*/ S.Array(ComparedFace);
 export interface RecognizeCelebritiesResponse {
   CelebrityFaces?: Celebrity[];
   UnrecognizedFaces?: ComparedFace[];
   OrientationCorrection?: OrientationCorrection;
 }
 export const RecognizeCelebritiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       CelebrityFaces: S.optional(CelebrityList),
       UnrecognizedFaces: S.optional(ComparedFaceList),
@@ -3981,7 +3885,7 @@ export interface SearchFacesRequest {
   MaxFaces?: number;
   FaceMatchThreshold?: number;
 }
-export const SearchFacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     FaceId: S.String,
@@ -3998,7 +3902,7 @@ export interface SearchFacesResponse {
   FaceMatches?: FaceMatch[];
   FaceModelVersion?: string;
 }
-export const SearchFacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SearchedFaceId: S.optional(S.String),
     FaceMatches: S.optional(FaceMatchList),
@@ -4014,17 +3918,16 @@ export interface SearchFacesByImageRequest {
   FaceMatchThreshold?: number;
   QualityFilter?: QualityFilter;
 }
-export const SearchFacesByImageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CollectionId: S.String,
-      Image: Image,
-      MaxFaces: S.optional(S.Number),
-      FaceMatchThreshold: S.optional(S.Number),
-      QualityFilter: S.optional(QualityFilter),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const SearchFacesByImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectionId: S.String,
+    Image: Image,
+    MaxFaces: S.optional(S.Number),
+    FaceMatchThreshold: S.optional(S.Number),
+    QualityFilter: S.optional(QualityFilter),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "SearchFacesByImageRequest",
 }) as any as S.Schema<SearchFacesByImageRequest>;
@@ -4034,14 +3937,13 @@ export interface SearchFacesByImageResponse {
   FaceMatches?: FaceMatch[];
   FaceModelVersion?: string;
 }
-export const SearchFacesByImageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      SearchedFaceBoundingBox: S.optional(BoundingBox),
-      SearchedFaceConfidence: S.optional(S.Number),
-      FaceMatches: S.optional(FaceMatchList),
-      FaceModelVersion: S.optional(S.String),
-    }),
+export const SearchFacesByImageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SearchedFaceBoundingBox: S.optional(BoundingBox),
+    SearchedFaceConfidence: S.optional(S.Number),
+    FaceMatches: S.optional(FaceMatchList),
+    FaceModelVersion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SearchFacesByImageResponse",
 }) as any as S.Schema<SearchFacesByImageResponse>;
@@ -4052,7 +3954,7 @@ export interface SearchUsersRequest {
   UserMatchThreshold?: number;
   MaxUsers?: number;
 }
-export const SearchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CollectionId: S.String,
     UserId: S.optional(S.String),
@@ -4069,7 +3971,7 @@ export interface MatchedUser {
   UserId?: string;
   UserStatus?: UserStatus;
 }
-export const MatchedUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MatchedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.optional(S.String),
     UserStatus: S.optional(UserStatus),
@@ -4079,21 +3981,21 @@ export interface UserMatch {
   Similarity?: number;
   User?: MatchedUser;
 }
-export const UserMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Similarity: S.optional(S.Number), User: S.optional(MatchedUser) }),
 ).annotate({ identifier: "UserMatch" }) as any as S.Schema<UserMatch>;
 export type UserMatchList = UserMatch[];
-export const UserMatchList = /*@__PURE__*/ /*#__PURE__*/ S.Array(UserMatch);
+export const UserMatchList = /*@__PURE__*/ S.Array(UserMatch);
 export interface SearchedFace {
   FaceId?: string;
 }
-export const SearchedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FaceId: S.optional(S.String) }),
 ).annotate({ identifier: "SearchedFace" }) as any as S.Schema<SearchedFace>;
 export interface SearchedUser {
   UserId?: string;
 }
-export const SearchedUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserId: S.optional(S.String) }),
 ).annotate({ identifier: "SearchedUser" }) as any as S.Schema<SearchedUser>;
 export interface SearchUsersResponse {
@@ -4102,7 +4004,7 @@ export interface SearchUsersResponse {
   SearchedFace?: SearchedFace;
   SearchedUser?: SearchedUser;
 }
-export const SearchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserMatches: S.optional(UserMatchList),
     FaceModelVersion: S.optional(S.String),
@@ -4119,24 +4021,23 @@ export interface SearchUsersByImageRequest {
   MaxUsers?: number;
   QualityFilter?: QualityFilter;
 }
-export const SearchUsersByImageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      CollectionId: S.String,
-      Image: Image,
-      UserMatchThreshold: S.optional(S.Number),
-      MaxUsers: S.optional(S.Number),
-      QualityFilter: S.optional(QualityFilter),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const SearchUsersByImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectionId: S.String,
+    Image: Image,
+    UserMatchThreshold: S.optional(S.Number),
+    MaxUsers: S.optional(S.Number),
+    QualityFilter: S.optional(QualityFilter),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "SearchUsersByImageRequest",
 }) as any as S.Schema<SearchUsersByImageRequest>;
 export interface SearchedFaceDetails {
   FaceDetail?: FaceDetail;
 }
-export const SearchedFaceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchedFaceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FaceDetail: S.optional(FaceDetail) }),
 ).annotate({
   identifier: "SearchedFaceDetails",
@@ -4151,37 +4052,35 @@ export type UnsearchedFaceReason =
   | "SMALL_BOUNDING_BOX"
   | "LOW_FACE_QUALITY"
   | (string & {});
-export const UnsearchedFaceReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UnsearchedFaceReason = /*@__PURE__*/ S.String;
 export type UnsearchedFaceReasons = UnsearchedFaceReason[];
 export const UnsearchedFaceReasons =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsearchedFaceReason);
+  /*@__PURE__*/ S.Array(UnsearchedFaceReason);
 export interface UnsearchedFace {
   FaceDetails?: FaceDetail;
   Reasons?: UnsearchedFaceReason[];
 }
-export const UnsearchedFace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UnsearchedFace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FaceDetails: S.optional(FaceDetail),
     Reasons: S.optional(UnsearchedFaceReasons),
   }),
 ).annotate({ identifier: "UnsearchedFace" }) as any as S.Schema<UnsearchedFace>;
 export type UnsearchedFacesList = UnsearchedFace[];
-export const UnsearchedFacesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UnsearchedFace);
+export const UnsearchedFacesList = /*@__PURE__*/ S.Array(UnsearchedFace);
 export interface SearchUsersByImageResponse {
   UserMatches?: UserMatch[];
   FaceModelVersion?: string;
   SearchedFace?: SearchedFaceDetails;
   UnsearchedFaces?: UnsearchedFace[];
 }
-export const SearchUsersByImageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      UserMatches: S.optional(UserMatchList),
-      FaceModelVersion: S.optional(S.String),
-      SearchedFace: S.optional(SearchedFaceDetails),
-      UnsearchedFaces: S.optional(UnsearchedFacesList),
-    }),
+export const SearchUsersByImageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UserMatches: S.optional(UserMatchList),
+    FaceModelVersion: S.optional(S.String),
+    SearchedFace: S.optional(SearchedFaceDetails),
+    UnsearchedFaces: S.optional(UnsearchedFacesList),
+  }),
 ).annotate({
   identifier: "SearchUsersByImageResponse",
 }) as any as S.Schema<SearchUsersByImageResponse>;
@@ -4189,7 +4088,7 @@ export interface NotificationChannel {
   SNSTopicArn: string;
   RoleArn: string;
 }
-export const NotificationChannel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NotificationChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SNSTopicArn: S.String, RoleArn: S.String }),
 ).annotate({
   identifier: "NotificationChannel",
@@ -4201,7 +4100,7 @@ export interface StartCelebrityRecognitionRequest {
   JobTag?: string;
 }
 export const StartCelebrityRecognitionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Video: Video,
       ClientRequestToken: S.optional(S.String),
@@ -4217,7 +4116,7 @@ export interface StartCelebrityRecognitionResponse {
   JobId?: string;
 }
 export const StartCelebrityRecognitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartCelebrityRecognitionResponse",
@@ -4230,7 +4129,7 @@ export interface StartContentModerationRequest {
   JobTag?: string;
 }
 export const StartContentModerationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Video: Video,
       MinConfidence: S.optional(S.Number),
@@ -4247,13 +4146,13 @@ export interface StartContentModerationResponse {
   JobId?: string;
 }
 export const StartContentModerationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartContentModerationResponse",
   }) as any as S.Schema<StartContentModerationResponse>;
 export type FaceAttributes = "DEFAULT" | "ALL" | (string & {});
-export const FaceAttributes = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FaceAttributes = /*@__PURE__*/ S.String;
 export interface StartFaceDetectionRequest {
   Video: Video;
   ClientRequestToken?: string;
@@ -4261,25 +4160,24 @@ export interface StartFaceDetectionRequest {
   FaceAttributes?: FaceAttributes;
   JobTag?: string;
 }
-export const StartFaceDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Video: Video,
-      ClientRequestToken: S.optional(S.String),
-      NotificationChannel: S.optional(NotificationChannel),
-      FaceAttributes: S.optional(FaceAttributes),
-      JobTag: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartFaceDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Video: Video,
+    ClientRequestToken: S.optional(S.String),
+    NotificationChannel: S.optional(NotificationChannel),
+    FaceAttributes: S.optional(FaceAttributes),
+    JobTag: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartFaceDetectionRequest",
 }) as any as S.Schema<StartFaceDetectionRequest>;
 export interface StartFaceDetectionResponse {
   JobId?: string;
 }
-export const StartFaceDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ JobId: S.optional(S.String) }),
+export const StartFaceDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.optional(S.String) }),
 ).annotate({
   identifier: "StartFaceDetectionResponse",
 }) as any as S.Schema<StartFaceDetectionResponse>;
@@ -4291,40 +4189,39 @@ export interface StartFaceSearchRequest {
   NotificationChannel?: NotificationChannel;
   JobTag?: string;
 }
-export const StartFaceSearchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Video: Video,
-      ClientRequestToken: S.optional(S.String),
-      FaceMatchThreshold: S.optional(S.Number),
-      CollectionId: S.String,
-      NotificationChannel: S.optional(NotificationChannel),
-      JobTag: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartFaceSearchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Video: Video,
+    ClientRequestToken: S.optional(S.String),
+    FaceMatchThreshold: S.optional(S.Number),
+    CollectionId: S.String,
+    NotificationChannel: S.optional(NotificationChannel),
+    JobTag: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartFaceSearchRequest",
 }) as any as S.Schema<StartFaceSearchRequest>;
 export interface StartFaceSearchResponse {
   JobId?: string;
 }
-export const StartFaceSearchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ JobId: S.optional(S.String) }),
+export const StartFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.optional(S.String) }),
 ).annotate({
   identifier: "StartFaceSearchResponse",
 }) as any as S.Schema<StartFaceSearchResponse>;
 export type LabelDetectionFeatureName = "GENERAL_LABELS" | (string & {});
-export const LabelDetectionFeatureName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LabelDetectionFeatureName = /*@__PURE__*/ S.String;
 export type LabelDetectionFeatureList = LabelDetectionFeatureName[];
-export const LabelDetectionFeatureList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const LabelDetectionFeatureList = /*@__PURE__*/ S.Array(
   LabelDetectionFeatureName,
 );
 export interface LabelDetectionSettings {
   GeneralLabels?: GeneralLabelsSettings;
 }
-export const LabelDetectionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ GeneralLabels: S.optional(GeneralLabelsSettings) }),
+export const LabelDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeneralLabels: S.optional(GeneralLabelsSettings) }),
 ).annotate({
   identifier: "LabelDetectionSettings",
 }) as any as S.Schema<LabelDetectionSettings>;
@@ -4337,19 +4234,18 @@ export interface StartLabelDetectionRequest {
   Features?: LabelDetectionFeatureName[];
   Settings?: LabelDetectionSettings;
 }
-export const StartLabelDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Video: Video,
-      ClientRequestToken: S.optional(S.String),
-      MinConfidence: S.optional(S.Number),
-      NotificationChannel: S.optional(NotificationChannel),
-      JobTag: S.optional(S.String),
-      Features: S.optional(LabelDetectionFeatureList),
-      Settings: S.optional(LabelDetectionSettings),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartLabelDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Video: Video,
+    ClientRequestToken: S.optional(S.String),
+    MinConfidence: S.optional(S.Number),
+    NotificationChannel: S.optional(NotificationChannel),
+    JobTag: S.optional(S.String),
+    Features: S.optional(LabelDetectionFeatureList),
+    Settings: S.optional(LabelDetectionSettings),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartLabelDetectionRequest",
 }) as any as S.Schema<StartLabelDetectionRequest>;
@@ -4357,7 +4253,7 @@ export interface StartLabelDetectionResponse {
   JobId?: string;
 }
 export const StartLabelDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartLabelDetectionResponse",
@@ -4371,7 +4267,7 @@ export interface StartMediaAnalysisJobRequest {
   KmsKeyId?: string;
 }
 export const StartMediaAnalysisJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       JobName: S.optional(S.String),
@@ -4389,9 +4285,7 @@ export interface StartMediaAnalysisJobResponse {
   JobId: string;
 }
 export const StartMediaAnalysisJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ JobId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ JobId: S.String })).annotate({
     identifier: "StartMediaAnalysisJobResponse",
   }) as any as S.Schema<StartMediaAnalysisJobResponse>;
 export interface StartPersonTrackingRequest {
@@ -4400,16 +4294,15 @@ export interface StartPersonTrackingRequest {
   NotificationChannel?: NotificationChannel;
   JobTag?: string;
 }
-export const StartPersonTrackingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Video: Video,
-      ClientRequestToken: S.optional(S.String),
-      NotificationChannel: S.optional(NotificationChannel),
-      JobTag: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartPersonTrackingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Video: Video,
+    ClientRequestToken: S.optional(S.String),
+    NotificationChannel: S.optional(NotificationChannel),
+    JobTag: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartPersonTrackingRequest",
 }) as any as S.Schema<StartPersonTrackingRequest>;
@@ -4417,7 +4310,7 @@ export interface StartPersonTrackingResponse {
   JobId?: string;
 }
 export const StartPersonTrackingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartPersonTrackingResponse",
@@ -4427,15 +4320,14 @@ export interface StartProjectVersionRequest {
   MinInferenceUnits: number;
   MaxInferenceUnits?: number;
 }
-export const StartProjectVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProjectVersionArn: S.String,
-      MinInferenceUnits: S.Number,
-      MaxInferenceUnits: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProjectVersionArn: S.String,
+    MinInferenceUnits: S.Number,
+    MaxInferenceUnits: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartProjectVersionRequest",
 }) as any as S.Schema<StartProjectVersionRequest>;
@@ -4443,7 +4335,7 @@ export interface StartProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
 export const StartProjectVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Status: S.optional(ProjectVersionStatus) }),
   ).annotate({
     identifier: "StartProjectVersionResponse",
@@ -4452,7 +4344,7 @@ export interface BlackFrame {
   MaxPixelThreshold?: number;
   MinCoveragePercentage?: number;
 }
-export const BlackFrame = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BlackFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxPixelThreshold: S.optional(S.Number),
     MinCoveragePercentage: S.optional(S.Number),
@@ -4463,7 +4355,7 @@ export interface StartTechnicalCueDetectionFilter {
   BlackFrame?: BlackFrame;
 }
 export const StartTechnicalCueDetectionFilter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MinSegmentConfidence: S.optional(S.Number),
       BlackFrame: S.optional(BlackFrame),
@@ -4474,8 +4366,8 @@ export const StartTechnicalCueDetectionFilter =
 export interface StartShotDetectionFilter {
   MinSegmentConfidence?: number;
 }
-export const StartShotDetectionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ MinSegmentConfidence: S.optional(S.Number) }),
+export const StartShotDetectionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MinSegmentConfidence: S.optional(S.Number) }),
 ).annotate({
   identifier: "StartShotDetectionFilter",
 }) as any as S.Schema<StartShotDetectionFilter>;
@@ -4484,7 +4376,7 @@ export interface StartSegmentDetectionFilters {
   ShotFilter?: StartShotDetectionFilter;
 }
 export const StartSegmentDetectionFilters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TechnicalCueFilter: S.optional(StartTechnicalCueDetectionFilter),
       ShotFilter: S.optional(StartShotDetectionFilter),
@@ -4493,7 +4385,7 @@ export const StartSegmentDetectionFilters =
     identifier: "StartSegmentDetectionFilters",
   }) as any as S.Schema<StartSegmentDetectionFilters>;
 export type SegmentTypes = SegmentType[];
-export const SegmentTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(SegmentType);
+export const SegmentTypes = /*@__PURE__*/ S.Array(SegmentType);
 export interface StartSegmentDetectionRequest {
   Video: Video;
   ClientRequestToken?: string;
@@ -4503,7 +4395,7 @@ export interface StartSegmentDetectionRequest {
   SegmentTypes: SegmentType[];
 }
 export const StartSegmentDetectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Video: Video,
       ClientRequestToken: S.optional(S.String),
@@ -4521,7 +4413,7 @@ export interface StartSegmentDetectionResponse {
   JobId?: string;
 }
 export const StartSegmentDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartSegmentDetectionResponse",
@@ -4531,7 +4423,7 @@ export interface KinesisVideoStreamStartSelector {
   FragmentNumber?: string;
 }
 export const KinesisVideoStreamStartSelector =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProducerTimestamp: S.optional(S.Number),
       FragmentNumber: S.optional(S.String),
@@ -4543,7 +4435,7 @@ export interface StreamProcessingStartSelector {
   KVSStreamStartSelector?: KinesisVideoStreamStartSelector;
 }
 export const StreamProcessingStartSelector =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       KVSStreamStartSelector: S.optional(KinesisVideoStreamStartSelector),
     }),
@@ -4554,7 +4446,7 @@ export interface StreamProcessingStopSelector {
   MaxDurationInSeconds?: number;
 }
 export const StreamProcessingStopSelector =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ MaxDurationInSeconds: S.optional(S.Number) }),
   ).annotate({
     identifier: "StreamProcessingStopSelector",
@@ -4565,7 +4457,7 @@ export interface StartStreamProcessorRequest {
   StopSelector?: StreamProcessingStopSelector;
 }
 export const StartStreamProcessorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       StartSelector: S.optional(StreamProcessingStartSelector),
@@ -4580,7 +4472,7 @@ export interface StartStreamProcessorResponse {
   SessionId?: string;
 }
 export const StartStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ SessionId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartStreamProcessorResponse",
@@ -4589,12 +4481,11 @@ export interface StartTextDetectionFilters {
   WordFilter?: DetectionFilter;
   RegionsOfInterest?: RegionOfInterest[];
 }
-export const StartTextDetectionFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      WordFilter: S.optional(DetectionFilter),
-      RegionsOfInterest: S.optional(RegionsOfInterest),
-    }),
+export const StartTextDetectionFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WordFilter: S.optional(DetectionFilter),
+    RegionsOfInterest: S.optional(RegionsOfInterest),
+  }),
 ).annotate({
   identifier: "StartTextDetectionFilters",
 }) as any as S.Schema<StartTextDetectionFilters>;
@@ -4605,68 +4496,65 @@ export interface StartTextDetectionRequest {
   JobTag?: string;
   Filters?: StartTextDetectionFilters;
 }
-export const StartTextDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Video: Video,
-      ClientRequestToken: S.optional(S.String),
-      NotificationChannel: S.optional(NotificationChannel),
-      JobTag: S.optional(S.String),
-      Filters: S.optional(StartTextDetectionFilters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StartTextDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Video: Video,
+    ClientRequestToken: S.optional(S.String),
+    NotificationChannel: S.optional(NotificationChannel),
+    JobTag: S.optional(S.String),
+    Filters: S.optional(StartTextDetectionFilters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StartTextDetectionRequest",
 }) as any as S.Schema<StartTextDetectionRequest>;
 export interface StartTextDetectionResponse {
   JobId?: string;
 }
-export const StartTextDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ JobId: S.optional(S.String) }),
+export const StartTextDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.optional(S.String) }),
 ).annotate({
   identifier: "StartTextDetectionResponse",
 }) as any as S.Schema<StartTextDetectionResponse>;
 export interface StopProjectVersionRequest {
   ProjectVersionArn: string;
 }
-export const StopProjectVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ProjectVersionArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StopProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProjectVersionArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StopProjectVersionRequest",
 }) as any as S.Schema<StopProjectVersionRequest>;
 export interface StopProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
-export const StopProjectVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Status: S.optional(ProjectVersionStatus) }),
+export const StopProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(ProjectVersionStatus) }),
 ).annotate({
   identifier: "StopProjectVersionResponse",
 }) as any as S.Schema<StopProjectVersionResponse>;
 export interface StopStreamProcessorRequest {
   Name: string;
 }
-export const StopStreamProcessorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Name: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const StopStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "StopStreamProcessorRequest",
 }) as any as S.Schema<StopStreamProcessorRequest>;
 export interface StopStreamProcessorResponse {}
 export const StopStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StopStreamProcessorResponse",
   }) as any as S.Schema<StopStreamProcessorResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, Tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -4674,18 +4562,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -4693,7 +4581,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -4701,7 +4589,7 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DatasetChanges {
   GroundTruth: Uint8Array;
 }
-export const DatasetChanges = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DatasetChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroundTruth: T.Blob }),
 ).annotate({ identifier: "DatasetChanges" }) as any as S.Schema<DatasetChanges>;
 export interface UpdateDatasetEntriesRequest {
@@ -4709,7 +4597,7 @@ export interface UpdateDatasetEntriesRequest {
   Changes: DatasetChanges;
 }
 export const UpdateDatasetEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DatasetArn: S.String, Changes: DatasetChanges }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -4718,7 +4606,7 @@ export const UpdateDatasetEntriesRequest =
   }) as any as S.Schema<UpdateDatasetEntriesRequest>;
 export interface UpdateDatasetEntriesResponse {}
 export const UpdateDatasetEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateDatasetEntriesResponse",
   }) as any as S.Schema<UpdateDatasetEntriesResponse>;
 export interface ConnectedHomeSettingsForUpdate {
@@ -4726,7 +4614,7 @@ export interface ConnectedHomeSettingsForUpdate {
   MinConfidence?: number;
 }
 export const ConnectedHomeSettingsForUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Labels: S.optional(ConnectedHomeLabels),
       MinConfidence: S.optional(S.Number),
@@ -4738,7 +4626,7 @@ export interface StreamProcessorSettingsForUpdate {
   ConnectedHomeForUpdate?: ConnectedHomeSettingsForUpdate;
 }
 export const StreamProcessorSettingsForUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ConnectedHomeForUpdate: S.optional(ConnectedHomeSettingsForUpdate),
     }),
@@ -4749,12 +4637,11 @@ export type StreamProcessorParameterToDelete =
   | "ConnectedHomeMinConfidence"
   | "RegionsOfInterest"
   | (string & {});
-export const StreamProcessorParameterToDelete =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamProcessorParameterToDelete = /*@__PURE__*/ S.String;
 export type StreamProcessorParametersToDelete =
   StreamProcessorParameterToDelete[];
 export const StreamProcessorParametersToDelete =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamProcessorParameterToDelete);
+  /*@__PURE__*/ S.Array(StreamProcessorParameterToDelete);
 export interface UpdateStreamProcessorRequest {
   Name: string;
   SettingsForUpdate?: StreamProcessorSettingsForUpdate;
@@ -4763,7 +4650,7 @@ export interface UpdateStreamProcessorRequest {
   ParametersToDelete?: StreamProcessorParameterToDelete[];
 }
 export const UpdateStreamProcessorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       SettingsForUpdate: S.optional(StreamProcessorSettingsForUpdate),
@@ -4780,7 +4667,7 @@ export const UpdateStreamProcessorRequest =
   }) as any as S.Schema<UpdateStreamProcessorRequest>;
 export interface UpdateStreamProcessorResponse {}
 export const UpdateStreamProcessorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateStreamProcessorResponse",
   }) as any as S.Schema<UpdateStreamProcessorResponse>;
 
@@ -5025,7 +4912,7 @@ export const associateFaces: API.OperationMethod<
   AssociateFacesResponse,
   AssociateFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFacesRequest,
   output: AssociateFacesResponse,
   errors: [
@@ -5114,7 +5001,7 @@ export const compareFaces: API.OperationMethod<
   CompareFacesResponse,
   CompareFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompareFacesRequest,
   output: CompareFacesResponse,
   errors: [
@@ -5173,7 +5060,7 @@ export const copyProjectVersion: API.OperationMethod<
   CopyProjectVersionResponse,
   CopyProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyProjectVersionRequest,
   output: CopyProjectVersionResponse,
   errors: [
@@ -5222,7 +5109,7 @@ export const createCollection: API.OperationMethod<
   CreateCollectionResponse,
   CreateCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCollectionRequest,
   output: CreateCollectionResponse,
   errors: [
@@ -5278,7 +5165,7 @@ export const createDataset: API.OperationMethod<
   CreateDatasetResponse,
   CreateDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDatasetRequest,
   output: CreateDatasetResponse,
   errors: [
@@ -5320,7 +5207,7 @@ export const createFaceLivenessSession: API.OperationMethod<
   CreateFaceLivenessSessionResponse,
   CreateFaceLivenessSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFaceLivenessSessionRequest,
   output: CreateFaceLivenessSessionResponse,
   errors: [
@@ -5354,7 +5241,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [
@@ -5415,7 +5302,7 @@ export const createProjectVersion: API.OperationMethod<
   CreateProjectVersionResponse,
   CreateProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectVersionRequest,
   output: CreateProjectVersionResponse,
   errors: [
@@ -5477,7 +5364,7 @@ export const createStreamProcessor: API.OperationMethod<
   CreateStreamProcessorResponse,
   CreateStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamProcessorRequest,
   output: CreateStreamProcessorResponse,
   errors: [
@@ -5519,7 +5406,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -5556,7 +5443,7 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionResponse,
   DeleteCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCollectionRequest,
   output: DeleteCollectionResponse,
   errors: [
@@ -5598,7 +5485,7 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetResponse,
   DeleteDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [
@@ -5633,7 +5520,7 @@ export const deleteFaces: API.OperationMethod<
   DeleteFacesResponse,
   DeleteFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFacesRequest,
   output: DeleteFacesResponse,
   errors: [
@@ -5672,7 +5559,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [
@@ -5709,7 +5596,7 @@ export const deleteProjectPolicy: API.OperationMethod<
   DeleteProjectPolicyResponse,
   DeleteProjectPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectPolicyRequest,
   output: DeleteProjectPolicyResponse,
   errors: [
@@ -5748,7 +5635,7 @@ export const deleteProjectVersion: API.OperationMethod<
   DeleteProjectVersionResponse,
   DeleteProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectVersionRequest,
   output: DeleteProjectVersionResponse,
   errors: [
@@ -5780,7 +5667,7 @@ export const deleteStreamProcessor: API.OperationMethod<
   DeleteStreamProcessorResponse,
   DeleteStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamProcessorRequest,
   output: DeleteStreamProcessorResponse,
   errors: [
@@ -5816,7 +5703,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -5852,7 +5739,7 @@ export const describeCollection: API.OperationMethod<
   DescribeCollectionResponse,
   DescribeCollectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCollectionRequest,
   output: DescribeCollectionResponse,
   errors: [
@@ -5886,7 +5773,7 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetResponse,
   DescribeDatasetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [
@@ -5932,7 +5819,7 @@ export const describeProjects: API.OperationMethod<
     DescribeProjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectsRequest,
   output: DescribeProjectsResponse,
   errors: [
@@ -5988,7 +5875,7 @@ export const describeProjectVersions: API.OperationMethod<
     DescribeProjectVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProjectVersionsRequest,
   output: DescribeProjectVersionsResponse,
   errors: [
@@ -6025,7 +5912,7 @@ export const describeStreamProcessor: API.OperationMethod<
   DescribeStreamProcessorResponse,
   DescribeStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeStreamProcessorRequest,
   output: DescribeStreamProcessorResponse,
   errors: [
@@ -6100,7 +5987,7 @@ export const detectCustomLabels: API.OperationMethod<
   DetectCustomLabelsResponse,
   DetectCustomLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectCustomLabelsRequest,
   output: DetectCustomLabelsResponse,
   errors: [
@@ -6156,7 +6043,7 @@ export const detectFaces: API.OperationMethod<
   DetectFacesResponse,
   DetectFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectFacesRequest,
   output: DetectFacesResponse,
   errors: [
@@ -6292,7 +6179,7 @@ export const detectLabels: API.OperationMethod<
   DetectLabelsResponse,
   DetectLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectLabelsRequest,
   output: DetectLabelsResponse,
   errors: [
@@ -6346,7 +6233,7 @@ export const detectModerationLabels: API.OperationMethod<
   DetectModerationLabelsResponse,
   DetectModerationLabelsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectModerationLabelsRequest,
   output: DetectModerationLabelsResponse,
   errors: [
@@ -6413,7 +6300,7 @@ export const detectProtectiveEquipment: API.OperationMethod<
   DetectProtectiveEquipmentResponse,
   DetectProtectiveEquipmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectProtectiveEquipmentRequest,
   output: DetectProtectiveEquipmentResponse,
   errors: [
@@ -6475,7 +6362,7 @@ export const detectText: API.OperationMethod<
   DetectTextResponse,
   DetectTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectTextRequest,
   output: DetectTextResponse,
   errors: [
@@ -6515,7 +6402,7 @@ export const disassociateFaces: API.OperationMethod<
   DisassociateFacesResponse,
   DisassociateFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFacesRequest,
   output: DisassociateFacesResponse,
   errors: [
@@ -6561,7 +6448,7 @@ export const distributeDatasetEntries: API.OperationMethod<
   DistributeDatasetEntriesResponse,
   DistributeDatasetEntriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DistributeDatasetEntriesRequest,
   output: DistributeDatasetEntriesResponse,
   errors: [
@@ -6599,7 +6486,7 @@ export const getCelebrityInfo: API.OperationMethod<
   GetCelebrityInfoResponse,
   GetCelebrityInfoError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCelebrityInfoRequest,
   output: GetCelebrityInfoResponse,
   errors: [
@@ -6687,7 +6574,7 @@ export const getCelebrityRecognition: API.OperationMethod<
     GetCelebrityRecognitionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCelebrityRecognitionRequest,
   output: GetCelebrityRecognitionResponse,
   errors: [
@@ -6768,7 +6655,7 @@ export const getContentModeration: API.OperationMethod<
     GetContentModerationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetContentModerationRequest,
   output: GetContentModerationResponse,
   errors: [
@@ -6836,7 +6723,7 @@ export const getFaceDetection: API.OperationMethod<
     GetFaceDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceDetectionRequest,
   output: GetFaceDetectionResponse,
   errors: [
@@ -6880,7 +6767,7 @@ export const getFaceLivenessSessionResults: API.OperationMethod<
   GetFaceLivenessSessionResultsResponse,
   GetFaceLivenessSessionResultsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFaceLivenessSessionResultsRequest,
   output: GetFaceLivenessSessionResultsResponse,
   errors: [
@@ -6955,7 +6842,7 @@ export const getFaceSearch: API.OperationMethod<
     GetFaceSearchError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFaceSearchRequest,
   output: GetFaceSearchResponse,
   errors: [
@@ -7071,7 +6958,7 @@ export const getLabelDetection: API.OperationMethod<
     GetLabelDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLabelDetectionRequest,
   output: GetLabelDetectionResponse,
   errors: [
@@ -7107,7 +6994,7 @@ export const getMediaAnalysisJob: API.OperationMethod<
   GetMediaAnalysisJobResponse,
   GetMediaAnalysisJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaAnalysisJobRequest,
   output: GetMediaAnalysisJobResponse,
   errors: [
@@ -7184,7 +7071,7 @@ export const getPersonTracking: API.OperationMethod<
     GetPersonTrackingError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPersonTrackingRequest,
   output: GetPersonTrackingResponse,
   errors: [
@@ -7260,7 +7147,7 @@ export const getSegmentDetection: API.OperationMethod<
     GetSegmentDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSegmentDetectionRequest,
   output: GetSegmentDetectionResponse,
   errors: [
@@ -7332,7 +7219,7 @@ export const getTextDetection: API.OperationMethod<
     GetTextDetectionError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTextDetectionRequest,
   output: GetTextDetectionResponse,
   errors: [
@@ -7462,7 +7349,7 @@ export const indexFaces: API.OperationMethod<
   IndexFacesResponse,
   IndexFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IndexFacesRequest,
   output: IndexFacesResponse,
   errors: [
@@ -7519,7 +7406,7 @@ export const listCollections: API.OperationMethod<
     ListCollectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [
@@ -7588,7 +7475,7 @@ export const listDatasetEntries: API.OperationMethod<
     ListDatasetEntriesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetEntriesRequest,
   output: ListDatasetEntriesResponse,
   errors: [
@@ -7650,7 +7537,7 @@ export const listDatasetLabels: API.OperationMethod<
     ListDatasetLabelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetLabelsRequest,
   output: ListDatasetLabelsResponse,
   errors: [
@@ -7710,7 +7597,7 @@ export const listFaces: API.OperationMethod<
     ListFacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacesRequest,
   output: ListFacesResponse,
   errors: [
@@ -7761,7 +7648,7 @@ export const listMediaAnalysisJobs: API.OperationMethod<
     ListMediaAnalysisJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMediaAnalysisJobsRequest,
   output: ListMediaAnalysisJobsResponse,
   errors: [
@@ -7817,7 +7704,7 @@ export const listProjectPolicies: API.OperationMethod<
     ListProjectPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectPoliciesRequest,
   output: ListProjectPoliciesResponse,
   errors: [
@@ -7868,7 +7755,7 @@ export const listStreamProcessors: API.OperationMethod<
     ListStreamProcessorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamProcessorsRequest,
   output: ListStreamProcessorsResponse,
   errors: [
@@ -7906,7 +7793,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -7955,7 +7842,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -8016,7 +7903,7 @@ export const putProjectPolicy: API.OperationMethod<
   PutProjectPolicyResponse,
   PutProjectPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProjectPolicyRequest,
   output: PutProjectPolicyResponse,
   errors: [
@@ -8083,7 +7970,7 @@ export const recognizeCelebrities: API.OperationMethod<
   RecognizeCelebritiesResponse,
   RecognizeCelebritiesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RecognizeCelebritiesRequest,
   output: RecognizeCelebritiesResponse,
   errors: [
@@ -8131,7 +8018,7 @@ export const searchFaces: API.OperationMethod<
   SearchFacesResponse,
   SearchFacesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchFacesRequest,
   output: SearchFacesResponse,
   errors: [
@@ -8204,7 +8091,7 @@ export const searchFacesByImage: API.OperationMethod<
   SearchFacesByImageResponse,
   SearchFacesByImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchFacesByImageRequest,
   output: SearchFacesByImageResponse,
   errors: [
@@ -8241,7 +8128,7 @@ export const searchUsers: API.OperationMethod<
   SearchUsersResponse,
   SearchUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchUsersRequest,
   output: SearchUsersResponse,
   errors: [
@@ -8283,7 +8170,7 @@ export const searchUsersByImage: API.OperationMethod<
   SearchUsersByImageResponse,
   SearchUsersByImageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchUsersByImageRequest,
   output: SearchUsersByImageResponse,
   errors: [
@@ -8330,7 +8217,7 @@ export const startCelebrityRecognition: API.OperationMethod<
   StartCelebrityRecognitionResponse,
   StartCelebrityRecognitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCelebrityRecognitionRequest,
   output: StartCelebrityRecognitionResponse,
   errors: [
@@ -8378,7 +8265,7 @@ export const startContentModeration: API.OperationMethod<
   StartContentModerationResponse,
   StartContentModerationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartContentModerationRequest,
   output: StartContentModerationResponse,
   errors: [
@@ -8426,7 +8313,7 @@ export const startFaceDetection: API.OperationMethod<
   StartFaceDetectionResponse,
   StartFaceDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFaceDetectionRequest,
   output: StartFaceDetectionResponse,
   errors: [
@@ -8472,7 +8359,7 @@ export const startFaceSearch: API.OperationMethod<
   StartFaceSearchResponse,
   StartFaceSearchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFaceSearchRequest,
   output: StartFaceSearchResponse,
   errors: [
@@ -8535,7 +8422,7 @@ export const startLabelDetection: API.OperationMethod<
   StartLabelDetectionResponse,
   StartLabelDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLabelDetectionRequest,
   output: StartLabelDetectionResponse,
   errors: [
@@ -8573,7 +8460,7 @@ export const startMediaAnalysisJob: API.OperationMethod<
   StartMediaAnalysisJobResponse,
   StartMediaAnalysisJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMediaAnalysisJobRequest,
   output: StartMediaAnalysisJobResponse,
   errors: [
@@ -8625,7 +8512,7 @@ export const startPersonTracking: API.OperationMethod<
   StartPersonTrackingResponse,
   StartPersonTrackingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPersonTrackingRequest,
   output: StartPersonTrackingResponse,
   errors: [
@@ -8671,7 +8558,7 @@ export const startProjectVersion: API.OperationMethod<
   StartProjectVersionResponse,
   StartProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProjectVersionRequest,
   output: StartProjectVersionResponse,
   errors: [
@@ -8722,7 +8609,7 @@ export const startSegmentDetection: API.OperationMethod<
   StartSegmentDetectionResponse,
   StartSegmentDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSegmentDetectionRequest,
   output: StartSegmentDetectionResponse,
   errors: [
@@ -8759,7 +8646,7 @@ export const startStreamProcessor: API.OperationMethod<
   StartStreamProcessorResponse,
   StartStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartStreamProcessorRequest,
   output: StartStreamProcessorResponse,
   errors: [
@@ -8801,7 +8688,7 @@ export const startTextDetection: API.OperationMethod<
   StartTextDetectionResponse,
   StartTextDetectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTextDetectionRequest,
   output: StartTextDetectionResponse,
   errors: [
@@ -8840,7 +8727,7 @@ export const stopProjectVersion: API.OperationMethod<
   StopProjectVersionResponse,
   StopProjectVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProjectVersionRequest,
   output: StopProjectVersionResponse,
   errors: [
@@ -8871,7 +8758,7 @@ export const stopStreamProcessor: API.OperationMethod<
   StopStreamProcessorResponse,
   StopStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopStreamProcessorRequest,
   output: StopStreamProcessorResponse,
   errors: [
@@ -8907,7 +8794,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8941,7 +8828,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -8998,7 +8885,7 @@ export const updateDatasetEntries: API.OperationMethod<
   UpdateDatasetEntriesResponse,
   UpdateDatasetEntriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDatasetEntriesRequest,
   output: UpdateDatasetEntriesResponse,
   errors: [
@@ -9030,7 +8917,7 @@ export const updateStreamProcessor: API.OperationMethod<
   UpdateStreamProcessorResponse,
   UpdateStreamProcessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateStreamProcessorRequest,
   output: UpdateStreamProcessorResponse,
   errors: [

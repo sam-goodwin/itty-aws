@@ -62,7 +62,7 @@ export interface PostPaymentIntentsIntentIncrementAuthorizationInput {
   transfer_data?: { amount?: number };
 }
 export const PostPaymentIntentsIntentIncrementAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount: Schema.Number,
     amount_details: Schema.optional(
@@ -454,7 +454,7 @@ export interface PostPaymentIntentsIntentIncrementAuthorizationOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -862,7 +862,7 @@ export const PostPaymentIntentsIntentIncrementAuthorizationOutput =
  * <a href="/docs/payments/incremental-authorization?platform=web&ui=elements">online payments</a>.</p>
  */
 export const PostPaymentIntentsIntentIncrementAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentIncrementAuthorizationInput,
     outputSchema: PostPaymentIntentsIntentIncrementAuthorizationOutput,
   }));

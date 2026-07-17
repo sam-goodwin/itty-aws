@@ -8,12 +8,10 @@ export interface V1DeleteJitAccessInput {
   ref: string;
   user_id: string;
 }
-export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    user_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1DeleteJitAccessInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  user_id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/v1/projects/{ref}/database/jit/{user_id}",
@@ -23,7 +21,7 @@ export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type V1DeleteJitAccessOutput = void;
 export const V1DeleteJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteJitAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteJitAccessOutput>;
 
 // The operation
 /**
@@ -33,7 +31,7 @@ export const V1DeleteJitAccessOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeleteJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteJitAccessInput,
   outputSchema: V1DeleteJitAccessOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

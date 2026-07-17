@@ -28,7 +28,7 @@ export interface DeviceMetadata {
 }
 
 export const DeviceMetadata: Schema.Codec<DeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "DeviceMetadata" });
 
@@ -58,7 +58,7 @@ export interface DeviceIdentifier {
 }
 
 export const DeviceIdentifier: Schema.Codec<DeviceIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     manufacturer: Schema.optional(Schema.String),
     meid: Schema.optional(Schema.String),
     deviceType: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export interface PartnerClaim {
 }
 
 export const PartnerClaim: Schema.Codec<PartnerClaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
     preProvisioningToken: Schema.optional(Schema.String),
     sectionType: Schema.optional(Schema.String),
@@ -115,7 +115,7 @@ export interface FindDevicesByDeviceIdentifierRequest {
 }
 
 export const FindDevicesByDeviceIdentifierRequest: Schema.Codec<FindDevicesByDeviceIdentifierRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     limit: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface DeviceClaim {
 }
 
 export const DeviceClaim: Schema.Codec<DeviceClaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ownerCompanyId: Schema.optional(Schema.String),
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
     sectionType: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface Device {
 }
 
 export const Device: Schema.Codec<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
     deviceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface FindDevicesByOwnerResponse {
 }
 
 export const FindDevicesByOwnerResponse: Schema.Codec<FindDevicesByOwnerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
     devices: Schema.optional(Schema.Array(Device)),
@@ -223,7 +223,7 @@ export interface Configuration {
 }
 
 export const Configuration: Schema.Codec<Configuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dpcResourcePath: Schema.optional(Schema.String),
     contactEmail: Schema.optional(Schema.String),
@@ -243,7 +243,7 @@ export interface CustomerListConfigurationsResponse {
 }
 
 export const CustomerListConfigurationsResponse: Schema.Codec<CustomerListConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(Schema.Array(Configuration)),
   }).annotate({ identifier: "CustomerListConfigurationsResponse" });
 
@@ -257,7 +257,7 @@ export interface GetDeviceSimLockStateResponse {
 }
 
 export const GetDeviceSimLockStateResponse: Schema.Codec<GetDeviceSimLockStateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     simLockState: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetDeviceSimLockStateResponse" });
 
@@ -267,7 +267,7 @@ export interface ClaimDevicesRequest {
 }
 
 export const ClaimDevicesRequest: Schema.Codec<ClaimDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claims: Schema.optional(Schema.Array(PartnerClaim)),
   }).annotate({ identifier: "ClaimDevicesRequest" });
 
@@ -281,7 +281,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -297,7 +297,7 @@ export interface DeviceReference {
 }
 
 export const DeviceReference: Schema.Codec<DeviceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
   }).annotate({ identifier: "DeviceReference" });
@@ -310,7 +310,7 @@ export interface ClaimDeviceResponse {
 }
 
 export const ClaimDeviceResponse: Schema.Codec<ClaimDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClaimDeviceResponse" });
@@ -333,7 +333,7 @@ export interface PartnerUnclaim {
 }
 
 export const PartnerUnclaim: Schema.Codec<PartnerUnclaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     sectionType: Schema.optional(Schema.String),
@@ -347,7 +347,7 @@ export interface UnclaimDevicesRequest {
 }
 
 export const UnclaimDevicesRequest: Schema.Codec<UnclaimDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unclaims: Schema.optional(Schema.Array(PartnerUnclaim)),
   }).annotate({ identifier: "UnclaimDevicesRequest" });
 
@@ -375,7 +375,7 @@ export interface PerDeviceStatusInBatch {
 }
 
 export const PerDeviceStatusInBatch: Schema.Codec<PerDeviceStatusInBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     deviceId: Schema.optional(Schema.String),
     errorIdentifier: Schema.optional(Schema.String),
@@ -392,7 +392,7 @@ export interface UpdateMetadataArguments {
 }
 
 export const UpdateMetadataArguments: Schema.Codec<UpdateMetadataArguments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     deviceId: Schema.optional(Schema.String),
     deviceMetadata: Schema.optional(DeviceMetadata),
@@ -410,7 +410,7 @@ export interface OperationPerDevice {
 }
 
 export const OperationPerDevice: Schema.Codec<OperationPerDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claim: Schema.optional(PartnerClaim),
     unclaim: Schema.optional(PartnerUnclaim),
     result: Schema.optional(PerDeviceStatusInBatch),
@@ -425,7 +425,7 @@ export interface DevicesLongRunningOperationResponse {
 }
 
 export const DevicesLongRunningOperationResponse: Schema.Codec<DevicesLongRunningOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     successCount: Schema.optional(Schema.Number),
     perDeviceStatus: Schema.optional(Schema.Array(OperationPerDevice)),
   }).annotate({ identifier: "DevicesLongRunningOperationResponse" });
@@ -436,7 +436,7 @@ export interface CustomerUnclaimDeviceRequest {
 }
 
 export const CustomerUnclaimDeviceRequest: Schema.Codec<CustomerUnclaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     device: Schema.optional(DeviceReference),
   }).annotate({ identifier: "CustomerUnclaimDeviceRequest" });
 
@@ -455,7 +455,7 @@ export interface DevicesLongRunningOperationMetadata {
 }
 
 export const DevicesLongRunningOperationMetadata: Schema.Codec<DevicesLongRunningOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devicesCount: Schema.optional(Schema.Number),
     processingStatus: Schema.optional(Schema.String),
     progress: Schema.optional(Schema.Number),
@@ -469,7 +469,7 @@ export interface GoogleWorkspaceAccount {
 }
 
 export const GoogleWorkspaceAccount: Schema.Codec<GoogleWorkspaceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String),
     preProvisioningTokens: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleWorkspaceAccount" });
@@ -501,7 +501,7 @@ export interface Company {
 }
 
 export const Company: Schema.Codec<Company> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skipWelcomeEmail: Schema.optional(Schema.Boolean),
     adminEmails: Schema.optional(Schema.Array(Schema.String)),
     googleWorkspaceAccount: Schema.optional(GoogleWorkspaceAccount),
@@ -522,13 +522,11 @@ export interface Dpc {
   name?: string;
 }
 
-export const Dpc: Schema.Codec<Dpc> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    packageName: Schema.optional(Schema.String),
-    dpcName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Dpc" });
+export const Dpc: Schema.Codec<Dpc> = /*@__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  dpcName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dpc" });
 
 export interface CustomerListDpcsResponse {
   /** The list of DPCs available to the customer that support zero-touch enrollment. */
@@ -536,14 +534,14 @@ export interface CustomerListDpcsResponse {
 }
 
 export const CustomerListDpcsResponse: Schema.Codec<CustomerListDpcsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dpcs: Schema.optional(Schema.Array(Dpc)),
   }).annotate({ identifier: "CustomerListDpcsResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -565,7 +563,7 @@ export interface UnclaimDeviceRequest {
 }
 
 export const UnclaimDeviceRequest: Schema.Codec<UnclaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     sectionType: Schema.optional(Schema.String),
@@ -583,7 +581,7 @@ export interface FindDevicesByDeviceIdentifierResponse {
 }
 
 export const FindDevicesByDeviceIdentifierResponse: Schema.Codec<FindDevicesByDeviceIdentifierResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
     devices: Schema.optional(Schema.Array(Device)),
@@ -595,7 +593,7 @@ export interface CustomerRemoveConfigurationRequest {
 }
 
 export const CustomerRemoveConfigurationRequest: Schema.Codec<CustomerRemoveConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     device: Schema.optional(DeviceReference),
   }).annotate({ identifier: "CustomerRemoveConfigurationRequest" });
 
@@ -623,7 +621,7 @@ export interface ClaimDeviceRequest {
 }
 
 export const ClaimDeviceRequest: Schema.Codec<ClaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
     preProvisioningToken: Schema.optional(Schema.String),
     sectionType: Schema.optional(Schema.String),
@@ -640,7 +638,7 @@ export interface UpdateDeviceMetadataInBatchRequest {
 }
 
 export const UpdateDeviceMetadataInBatchRequest: Schema.Codec<UpdateDeviceMetadataInBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updates: Schema.optional(Schema.Array(UpdateMetadataArguments)),
   }).annotate({ identifier: "UpdateDeviceMetadataInBatchRequest" });
 
@@ -652,7 +650,7 @@ export interface CustomerListDevicesResponse {
 }
 
 export const CustomerListDevicesResponse: Schema.Codec<CustomerListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(Device)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerListDevicesResponse" });
@@ -667,7 +665,7 @@ export interface ListVendorCustomersResponse {
 }
 
 export const ListVendorCustomersResponse: Schema.Codec<ListVendorCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -681,7 +679,7 @@ export interface CustomerApplyConfigurationRequest {
 }
 
 export const CustomerApplyConfigurationRequest: Schema.Codec<CustomerApplyConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
     device: Schema.optional(DeviceReference),
   }).annotate({ identifier: "CustomerApplyConfigurationRequest" });
@@ -694,7 +692,7 @@ export interface CustomerListCustomersResponse {
 }
 
 export const CustomerListCustomersResponse: Schema.Codec<CustomerListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerListCustomersResponse" });
@@ -705,7 +703,7 @@ export interface UpdateDeviceMetadataRequest {
 }
 
 export const UpdateDeviceMetadataRequest: Schema.Codec<UpdateDeviceMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceMetadata: Schema.optional(DeviceMetadata),
   }).annotate({ identifier: "UpdateDeviceMetadataRequest" });
 
@@ -715,7 +713,7 @@ export interface GetDeviceSimLockStateRequest {
 }
 
 export const GetDeviceSimLockStateRequest: Schema.Codec<GetDeviceSimLockStateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
   }).annotate({ identifier: "GetDeviceSimLockStateRequest" });
 
@@ -737,7 +735,7 @@ export interface FindDevicesByOwnerRequest {
 }
 
 export const FindDevicesByOwnerRequest: Schema.Codec<FindDevicesByOwnerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.Array(Schema.String)),
@@ -759,7 +757,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -773,7 +771,7 @@ export interface CreateCustomerRequest {
 }
 
 export const CreateCustomerRequest: Schema.Codec<CreateCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Company),
   }).annotate({ identifier: "CreateCustomerRequest" });
 
@@ -787,7 +785,7 @@ export interface ListCustomersResponse {
 }
 
 export const ListCustomersResponse: Schema.Codec<ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     customers: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
@@ -803,7 +801,7 @@ export interface ListVendorsResponse {
 }
 
 export const ListVendorsResponse: Schema.Codec<ListVendorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vendors: Schema.optional(Schema.Array(Company)),
     totalSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -871,7 +869,7 @@ export interface ClaimPartnersDevicesRequest {
 }
 
 export const ClaimPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(ClaimDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -884,8 +882,7 @@ export const ClaimPartnersDevicesRequest =
   ) as unknown as Schema.Codec<ClaimPartnersDevicesRequest>;
 
 export type ClaimPartnersDevicesResponse = ClaimDeviceResponse;
-export const ClaimPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ClaimDeviceResponse;
+export const ClaimPartnersDevicesResponse = /*@__PURE__*/ ClaimDeviceResponse;
 
 export type ClaimPartnersDevicesError =
   | DefaultErrors
@@ -900,7 +897,7 @@ export const claimPartnersDevices: API.OperationMethod<
   ClaimPartnersDevicesResponse,
   ClaimPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClaimPartnersDevicesRequest,
   output: ClaimPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -914,7 +911,7 @@ export interface GetSimLockStatePartnersDevicesRequest {
 }
 
 export const GetSimLockStatePartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(GetDeviceSimLockStateRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -929,7 +926,7 @@ export const GetSimLockStatePartnersDevicesRequest =
 export type GetSimLockStatePartnersDevicesResponse =
   GetDeviceSimLockStateResponse;
 export const GetSimLockStatePartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetDeviceSimLockStateResponse;
+  /*@__PURE__*/ GetDeviceSimLockStateResponse;
 
 export type GetSimLockStatePartnersDevicesError =
   | DefaultErrors
@@ -944,7 +941,7 @@ export const getSimLockStatePartnersDevices: API.OperationMethod<
   GetSimLockStatePartnersDevicesResponse,
   GetSimLockStatePartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSimLockStatePartnersDevicesRequest,
   output: GetSimLockStatePartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -958,7 +955,7 @@ export interface UnclaimPartnersDevicesRequest {
 }
 
 export const UnclaimPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(UnclaimDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -971,7 +968,7 @@ export const UnclaimPartnersDevicesRequest =
   ) as unknown as Schema.Codec<UnclaimPartnersDevicesRequest>;
 
 export type UnclaimPartnersDevicesResponse = Empty;
-export const UnclaimPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const UnclaimPartnersDevicesResponse = /*@__PURE__*/ Empty;
 
 export type UnclaimPartnersDevicesError =
   | DefaultErrors
@@ -986,7 +983,7 @@ export const unclaimPartnersDevices: API.OperationMethod<
   UnclaimPartnersDevicesResponse,
   UnclaimPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnclaimPartnersDevicesRequest,
   output: UnclaimPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1000,7 +997,7 @@ export interface UpdateMetadataAsyncPartnersDevicesRequest {
 }
 
 export const UpdateMetadataAsyncPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(UpdateDeviceMetadataInBatchRequest).pipe(
       T.HttpBody(),
@@ -1016,7 +1013,7 @@ export const UpdateMetadataAsyncPartnersDevicesRequest =
 
 export type UpdateMetadataAsyncPartnersDevicesResponse = Operation;
 export const UpdateMetadataAsyncPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type UpdateMetadataAsyncPartnersDevicesError =
   | DefaultErrors
@@ -1031,7 +1028,7 @@ export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
   UpdateMetadataAsyncPartnersDevicesResponse,
   UpdateMetadataAsyncPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMetadataAsyncPartnersDevicesRequest,
   output: UpdateMetadataAsyncPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1045,7 +1042,7 @@ export interface FindByIdentifierPartnersDevicesRequest {
 }
 
 export const FindByIdentifierPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(FindDevicesByDeviceIdentifierRequest).pipe(
       T.HttpBody(),
@@ -1062,7 +1059,7 @@ export const FindByIdentifierPartnersDevicesRequest =
 export type FindByIdentifierPartnersDevicesResponse =
   FindDevicesByDeviceIdentifierResponse;
 export const FindByIdentifierPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindDevicesByDeviceIdentifierResponse;
+  /*@__PURE__*/ FindDevicesByDeviceIdentifierResponse;
 
 export type FindByIdentifierPartnersDevicesError =
   | DefaultErrors
@@ -1077,7 +1074,7 @@ export const findByIdentifierPartnersDevices: API.OperationMethod<
   FindByIdentifierPartnersDevicesResponse,
   FindByIdentifierPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindByIdentifierPartnersDevicesRequest,
   output: FindByIdentifierPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1091,7 +1088,7 @@ export interface ClaimAsyncPartnersDevicesRequest {
 }
 
 export const ClaimAsyncPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(ClaimDevicesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1104,8 +1101,7 @@ export const ClaimAsyncPartnersDevicesRequest =
   ) as unknown as Schema.Codec<ClaimAsyncPartnersDevicesRequest>;
 
 export type ClaimAsyncPartnersDevicesResponse = Operation;
-export const ClaimAsyncPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const ClaimAsyncPartnersDevicesResponse = /*@__PURE__*/ Operation;
 
 export type ClaimAsyncPartnersDevicesError =
   | DefaultErrors
@@ -1120,7 +1116,7 @@ export const claimAsyncPartnersDevices: API.OperationMethod<
   ClaimAsyncPartnersDevicesResponse,
   ClaimAsyncPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClaimAsyncPartnersDevicesRequest,
   output: ClaimAsyncPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1134,7 +1130,7 @@ export interface FindByOwnerPartnersDevicesRequest {
 }
 
 export const FindByOwnerPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(FindDevicesByOwnerRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1148,7 +1144,7 @@ export const FindByOwnerPartnersDevicesRequest =
 
 export type FindByOwnerPartnersDevicesResponse = FindDevicesByOwnerResponse;
 export const FindByOwnerPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindDevicesByOwnerResponse;
+  /*@__PURE__*/ FindDevicesByOwnerResponse;
 
 export type FindByOwnerPartnersDevicesError =
   | DefaultErrors
@@ -1163,7 +1159,7 @@ export const findByOwnerPartnersDevices: API.OperationMethod<
   FindByOwnerPartnersDevicesResponse,
   FindByOwnerPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindByOwnerPartnersDevicesRequest,
   output: FindByOwnerPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1175,7 +1171,7 @@ export interface GetPartnersDevicesRequest {
 }
 
 export const GetPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1183,7 +1179,7 @@ export const GetPartnersDevicesRequest =
   ) as unknown as Schema.Codec<GetPartnersDevicesRequest>;
 
 export type GetPartnersDevicesResponse = Device;
-export const GetPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
+export const GetPartnersDevicesResponse = /*@__PURE__*/ Device;
 
 export type GetPartnersDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1193,7 +1189,7 @@ export const getPartnersDevices: API.OperationMethod<
   GetPartnersDevicesResponse,
   GetPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPartnersDevicesRequest,
   output: GetPartnersDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -1209,7 +1205,7 @@ export interface MetadataPartnersDevicesRequest {
 }
 
 export const MetadataPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadataOwnerId: Schema.String.pipe(T.HttpPath("metadataOwnerId")),
     deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
     body: Schema.optional(UpdateDeviceMetadataRequest).pipe(T.HttpBody()),
@@ -1223,8 +1219,7 @@ export const MetadataPartnersDevicesRequest =
   ) as unknown as Schema.Codec<MetadataPartnersDevicesRequest>;
 
 export type MetadataPartnersDevicesResponse = DeviceMetadata;
-export const MetadataPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeviceMetadata;
+export const MetadataPartnersDevicesResponse = /*@__PURE__*/ DeviceMetadata;
 
 export type MetadataPartnersDevicesError =
   | DefaultErrors
@@ -1239,7 +1234,7 @@ export const metadataPartnersDevices: API.OperationMethod<
   MetadataPartnersDevicesResponse,
   MetadataPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MetadataPartnersDevicesRequest,
   output: MetadataPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1253,7 +1248,7 @@ export interface UnclaimAsyncPartnersDevicesRequest {
 }
 
 export const UnclaimAsyncPartnersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     body: Schema.optional(UnclaimDevicesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1266,8 +1261,7 @@ export const UnclaimAsyncPartnersDevicesRequest =
   ) as unknown as Schema.Codec<UnclaimAsyncPartnersDevicesRequest>;
 
 export type UnclaimAsyncPartnersDevicesResponse = Operation;
-export const UnclaimAsyncPartnersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UnclaimAsyncPartnersDevicesResponse = /*@__PURE__*/ Operation;
 
 export type UnclaimAsyncPartnersDevicesError =
   | DefaultErrors
@@ -1282,7 +1276,7 @@ export const unclaimAsyncPartnersDevices: API.OperationMethod<
   UnclaimAsyncPartnersDevicesResponse,
   UnclaimAsyncPartnersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnclaimAsyncPartnersDevicesRequest,
   output: UnclaimAsyncPartnersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1298,7 +1292,7 @@ export interface ListPartnersVendorsRequest {
 }
 
 export const ListPartnersVendorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1308,8 +1302,7 @@ export const ListPartnersVendorsRequest =
   ) as unknown as Schema.Codec<ListPartnersVendorsRequest>;
 
 export type ListPartnersVendorsResponse = ListVendorsResponse;
-export const ListPartnersVendorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVendorsResponse;
+export const ListPartnersVendorsResponse = /*@__PURE__*/ ListVendorsResponse;
 
 export type ListPartnersVendorsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1319,7 +1312,7 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
   ListPartnersVendorsResponse,
   ListPartnersVendorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsRequest,
   output: ListPartnersVendorsResponse,
   errors: [NotFound, Forbidden],
@@ -1339,7 +1332,7 @@ export interface ListPartnersVendorsCustomersRequest {
 }
 
 export const ListPartnersVendorsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1350,7 +1343,7 @@ export const ListPartnersVendorsCustomersRequest =
 
 export type ListPartnersVendorsCustomersResponse = ListVendorCustomersResponse;
 export const ListPartnersVendorsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVendorCustomersResponse;
+  /*@__PURE__*/ ListVendorCustomersResponse;
 
 export type ListPartnersVendorsCustomersError =
   | DefaultErrors
@@ -1363,7 +1356,7 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
   ListPartnersVendorsCustomersResponse,
   ListPartnersVendorsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsCustomersRequest,
   output: ListPartnersVendorsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -1383,7 +1376,7 @@ export interface ListPartnersCustomersRequest {
 }
 
 export const ListPartnersCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1394,7 +1387,7 @@ export const ListPartnersCustomersRequest =
 
 export type ListPartnersCustomersResponse = ListCustomersResponse;
 export const ListPartnersCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
+  /*@__PURE__*/ ListCustomersResponse;
 
 export type ListPartnersCustomersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1404,7 +1397,7 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
   ListPartnersCustomersResponse,
   ListPartnersCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersCustomersRequest,
   output: ListPartnersCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -1422,7 +1415,7 @@ export interface CreatePartnersCustomersRequest {
 }
 
 export const CreatePartnersCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateCustomerRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1431,8 +1424,7 @@ export const CreatePartnersCustomersRequest =
   ) as unknown as Schema.Codec<CreatePartnersCustomersRequest>;
 
 export type CreatePartnersCustomersResponse = Company;
-export const CreatePartnersCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Company;
+export const CreatePartnersCustomersResponse = /*@__PURE__*/ Company;
 
 export type CreatePartnersCustomersError =
   | DefaultErrors
@@ -1447,7 +1439,7 @@ export const createPartnersCustomers: API.OperationMethod<
   CreatePartnersCustomersResponse,
   CreatePartnersCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePartnersCustomersRequest,
   output: CreatePartnersCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1458,7 +1450,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1466,7 +1458,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1476,7 +1468,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1489,7 +1481,7 @@ export interface ListCustomersRequest {
   pageSize?: number;
 }
 
-export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCustomersRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
@@ -1499,7 +1491,7 @@ export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListCustomersResponse_Op = CustomerListCustomersResponse;
 export const ListCustomersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerListCustomersResponse;
+  /*@__PURE__*/ CustomerListCustomersResponse;
 
 export type ListCustomersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1509,7 +1501,7 @@ export const listCustomers: API.PaginatedOperationMethod<
   ListCustomersResponse_Op,
   ListCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersRequest,
   output: ListCustomersResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1527,7 +1519,7 @@ export interface CreateCustomersConfigurationsRequest {
 }
 
 export const CreateCustomersConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Configuration).pipe(T.HttpBody()),
   }).pipe(
@@ -1541,7 +1533,7 @@ export const CreateCustomersConfigurationsRequest =
 
 export type CreateCustomersConfigurationsResponse = Configuration;
 export const CreateCustomersConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Configuration;
+  /*@__PURE__*/ Configuration;
 
 export type CreateCustomersConfigurationsError =
   | DefaultErrors
@@ -1556,7 +1548,7 @@ export const createCustomersConfigurations: API.OperationMethod<
   CreateCustomersConfigurationsResponse,
   CreateCustomersConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomersConfigurationsRequest,
   output: CreateCustomersConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1568,7 +1560,7 @@ export interface DeleteCustomersConfigurationsRequest {
 }
 
 export const DeleteCustomersConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1576,8 +1568,7 @@ export const DeleteCustomersConfigurationsRequest =
   ) as unknown as Schema.Codec<DeleteCustomersConfigurationsRequest>;
 
 export type DeleteCustomersConfigurationsResponse = Empty;
-export const DeleteCustomersConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteCustomersConfigurationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteCustomersConfigurationsError =
   | DefaultErrors
@@ -1592,7 +1583,7 @@ export const deleteCustomersConfigurations: API.OperationMethod<
   DeleteCustomersConfigurationsResponse,
   DeleteCustomersConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomersConfigurationsRequest,
   output: DeleteCustomersConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1604,7 +1595,7 @@ export interface ListCustomersConfigurationsRequest {
 }
 
 export const ListCustomersConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/configurations" }),
@@ -1614,7 +1605,7 @@ export const ListCustomersConfigurationsRequest =
 export type ListCustomersConfigurationsResponse =
   CustomerListConfigurationsResponse;
 export const ListCustomersConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerListConfigurationsResponse;
+  /*@__PURE__*/ CustomerListConfigurationsResponse;
 
 export type ListCustomersConfigurationsError =
   | DefaultErrors
@@ -1627,7 +1618,7 @@ export const listCustomersConfigurations: API.OperationMethod<
   ListCustomersConfigurationsResponse,
   ListCustomersConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersConfigurationsRequest,
   output: ListCustomersConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -1639,7 +1630,7 @@ export interface GetCustomersConfigurationsRequest {
 }
 
 export const GetCustomersConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1647,8 +1638,7 @@ export const GetCustomersConfigurationsRequest =
   ) as unknown as Schema.Codec<GetCustomersConfigurationsRequest>;
 
 export type GetCustomersConfigurationsResponse = Configuration;
-export const GetCustomersConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Configuration;
+export const GetCustomersConfigurationsResponse = /*@__PURE__*/ Configuration;
 
 export type GetCustomersConfigurationsError =
   | DefaultErrors
@@ -1661,7 +1651,7 @@ export const getCustomersConfigurations: API.OperationMethod<
   GetCustomersConfigurationsResponse,
   GetCustomersConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersConfigurationsRequest,
   output: GetCustomersConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -1677,7 +1667,7 @@ export interface PatchCustomersConfigurationsRequest {
 }
 
 export const PatchCustomersConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Configuration).pipe(T.HttpBody()),
@@ -1687,8 +1677,7 @@ export const PatchCustomersConfigurationsRequest =
   ) as unknown as Schema.Codec<PatchCustomersConfigurationsRequest>;
 
 export type PatchCustomersConfigurationsResponse = Configuration;
-export const PatchCustomersConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Configuration;
+export const PatchCustomersConfigurationsResponse = /*@__PURE__*/ Configuration;
 
 export type PatchCustomersConfigurationsError =
   | DefaultErrors
@@ -1703,7 +1692,7 @@ export const patchCustomersConfigurations: API.OperationMethod<
   PatchCustomersConfigurationsResponse,
   PatchCustomersConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCustomersConfigurationsRequest,
   output: PatchCustomersConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1715,7 +1704,7 @@ export interface GetCustomersDevicesRequest {
 }
 
 export const GetCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1723,7 +1712,7 @@ export const GetCustomersDevicesRequest =
   ) as unknown as Schema.Codec<GetCustomersDevicesRequest>;
 
 export type GetCustomersDevicesResponse = Device;
-export const GetCustomersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
+export const GetCustomersDevicesResponse = /*@__PURE__*/ Device;
 
 export type GetCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1733,7 +1722,7 @@ export const getCustomersDevices: API.OperationMethod<
   GetCustomersDevicesResponse,
   GetCustomersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersDevicesRequest,
   output: GetCustomersDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -1749,7 +1738,7 @@ export interface ListCustomersDevicesRequest {
 }
 
 export const ListCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.String).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1760,7 +1749,7 @@ export const ListCustomersDevicesRequest =
 
 export type ListCustomersDevicesResponse = CustomerListDevicesResponse;
 export const ListCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerListDevicesResponse;
+  /*@__PURE__*/ CustomerListDevicesResponse;
 
 export type ListCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1770,7 +1759,7 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   ListCustomersDevicesResponse,
   ListCustomersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDevicesRequest,
   output: ListCustomersDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -1788,7 +1777,7 @@ export interface ApplyConfigurationCustomersDevicesRequest {
 }
 
 export const ApplyConfigurationCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CustomerApplyConfigurationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1801,8 +1790,7 @@ export const ApplyConfigurationCustomersDevicesRequest =
   ) as unknown as Schema.Codec<ApplyConfigurationCustomersDevicesRequest>;
 
 export type ApplyConfigurationCustomersDevicesResponse = Empty;
-export const ApplyConfigurationCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ApplyConfigurationCustomersDevicesResponse = /*@__PURE__*/ Empty;
 
 export type ApplyConfigurationCustomersDevicesError =
   | DefaultErrors
@@ -1817,7 +1805,7 @@ export const applyConfigurationCustomersDevices: API.OperationMethod<
   ApplyConfigurationCustomersDevicesResponse,
   ApplyConfigurationCustomersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApplyConfigurationCustomersDevicesRequest,
   output: ApplyConfigurationCustomersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1831,7 +1819,7 @@ export interface RemoveConfigurationCustomersDevicesRequest {
 }
 
 export const RemoveConfigurationCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CustomerRemoveConfigurationRequest).pipe(
       T.HttpBody(),
@@ -1846,8 +1834,7 @@ export const RemoveConfigurationCustomersDevicesRequest =
   ) as unknown as Schema.Codec<RemoveConfigurationCustomersDevicesRequest>;
 
 export type RemoveConfigurationCustomersDevicesResponse = Empty;
-export const RemoveConfigurationCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RemoveConfigurationCustomersDevicesResponse = /*@__PURE__*/ Empty;
 
 export type RemoveConfigurationCustomersDevicesError =
   | DefaultErrors
@@ -1862,7 +1849,7 @@ export const removeConfigurationCustomersDevices: API.OperationMethod<
   RemoveConfigurationCustomersDevicesResponse,
   RemoveConfigurationCustomersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveConfigurationCustomersDevicesRequest,
   output: RemoveConfigurationCustomersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1876,7 +1863,7 @@ export interface UnclaimCustomersDevicesRequest {
 }
 
 export const UnclaimCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CustomerUnclaimDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1889,8 +1876,7 @@ export const UnclaimCustomersDevicesRequest =
   ) as unknown as Schema.Codec<UnclaimCustomersDevicesRequest>;
 
 export type UnclaimCustomersDevicesResponse = Empty;
-export const UnclaimCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const UnclaimCustomersDevicesResponse = /*@__PURE__*/ Empty;
 
 export type UnclaimCustomersDevicesError =
   | DefaultErrors
@@ -1905,7 +1891,7 @@ export const unclaimCustomersDevices: API.OperationMethod<
   UnclaimCustomersDevicesResponse,
   UnclaimCustomersDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnclaimCustomersDevicesRequest,
   output: UnclaimCustomersDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1917,7 +1903,7 @@ export interface ListCustomersDpcsRequest {
 }
 
 export const ListCustomersDpcsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dpcs" }),
@@ -1925,8 +1911,7 @@ export const ListCustomersDpcsRequest =
   ) as unknown as Schema.Codec<ListCustomersDpcsRequest>;
 
 export type ListCustomersDpcsResponse = CustomerListDpcsResponse;
-export const ListCustomersDpcsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CustomerListDpcsResponse;
+export const ListCustomersDpcsResponse = /*@__PURE__*/ CustomerListDpcsResponse;
 
 export type ListCustomersDpcsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1936,7 +1921,7 @@ export const listCustomersDpcs: API.OperationMethod<
   ListCustomersDpcsResponse,
   ListCustomersDpcsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListCustomersDpcsRequest,
   output: ListCustomersDpcsResponse,
   errors: [NotFound, Forbidden],

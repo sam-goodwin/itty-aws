@@ -42,7 +42,7 @@ export interface SignalsSourceConfigsUpdateInput {
   status?: string | null;
 }
 export const SignalsSourceConfigsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     source_product: Schema.optional(
@@ -129,7 +129,7 @@ export interface SignalsSourceConfigsUpdateOutput {
   status?: string | null;
 }
 export const SignalsSourceConfigsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     source_product: Schema.optional(
       Schema.Literals([
@@ -178,10 +178,8 @@ export const SignalsSourceConfigsUpdateOutput =
  * @param id - A UUID string identifying this signal source config.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsSourceConfigsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsSourceConfigsUpdateInput,
-    outputSchema: SignalsSourceConfigsUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const signalsSourceConfigsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsSourceConfigsUpdateInput,
+  outputSchema: SignalsSourceConfigsUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

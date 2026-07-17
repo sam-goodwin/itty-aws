@@ -34,7 +34,7 @@ export interface PrivateZonesCreateOrUpdateInput {
   etag?: string;
 }
 export const PrivateZonesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -89,7 +89,7 @@ export interface PrivateZonesCreateOrUpdateOutput {
   };
 }
 export const PrivateZonesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -120,12 +120,10 @@ export const PrivateZonesCreateOrUpdateOutput =
  * @param If-Match - The ETag of the Private DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new Private DNS zone to be created, but to prevent updating an existing zone. Other values will be ignored.
  */
-export const PrivateZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateZonesCreateOrUpdateInput,
-    outputSchema: PrivateZonesCreateOrUpdateOutput,
-  }),
-);
+export const PrivateZonesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateZonesCreateOrUpdateInput,
+  outputSchema: PrivateZonesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PrivateZonesDeleteInput {
   subscriptionId: string;
@@ -133,7 +131,7 @@ export interface PrivateZonesDeleteInput {
   privateZoneName: string;
 }
 export const PrivateZonesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -148,7 +146,7 @@ export const PrivateZonesDeleteInput =
 // Output Schema
 export type PrivateZonesDeleteOutput = void;
 export const PrivateZonesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateZonesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateZonesDeleteOutput>;
 
 // The operation
 /**
@@ -160,7 +158,7 @@ export const PrivateZonesDeleteOutput =
  * @param privateZoneName - The name of the Private DNS zone (without a terminating dot).
  * @param If-Match - The ETag of the Private DNS zone. Omit this value to always delete the current zone. Specify the last-seen ETag value to prevent accidentally deleting any concurrent changes.
  */
-export const PrivateZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateZonesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateZonesDeleteInput,
   outputSchema: PrivateZonesDeleteOutput,
 }));
@@ -170,7 +168,7 @@ export interface PrivateZonesGetInput {
   resourceGroupName: string;
   privateZoneName: string;
 }
-export const PrivateZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateZonesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -196,7 +194,7 @@ export interface PrivateZonesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PrivateZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateZonesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -225,7 +223,7 @@ export const PrivateZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateZoneName - The name of the Private DNS zone (without a terminating dot).
  */
-export const PrivateZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateZonesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateZonesGetInput,
   outputSchema: PrivateZonesGetOutput,
 }));
@@ -234,7 +232,7 @@ export interface PrivateZonesListInput {
   subscriptionId: string;
   $top?: number;
 }
-export const PrivateZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateZonesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
 }).pipe(
@@ -262,42 +260,30 @@ export interface PrivateZonesListOutput {
   }[];
   nextLink?: string;
 }
-export const PrivateZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<PrivateZonesListOutput>;
+export const PrivateZonesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<PrivateZonesListOutput>;
 
 // The operation
 /**
@@ -307,7 +293,7 @@ export const PrivateZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription.
  * @param $top - The maximum number of Private DNS zones to return. If not specified, returns up to 100 zones.
  */
-export const PrivateZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateZonesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateZonesListInput,
   outputSchema: PrivateZonesListOutput,
 }));
@@ -318,7 +304,7 @@ export interface PrivateZonesListByResourceGroupInput {
   $top?: number;
 }
 export const PrivateZonesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -348,7 +334,7 @@ export interface PrivateZonesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PrivateZonesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -393,7 +379,7 @@ export const PrivateZonesListByResourceGroupOutput =
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  */
 export const PrivateZonesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateZonesListByResourceGroupInput,
     outputSchema: PrivateZonesListByResourceGroupOutput,
   }));
@@ -423,7 +409,7 @@ export interface PrivateZonesUpdateInput {
   etag?: string;
 }
 export const PrivateZonesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -478,7 +464,7 @@ export interface PrivateZonesUpdateOutput {
   };
 }
 export const PrivateZonesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -508,7 +494,7 @@ export const PrivateZonesUpdateOutput =
  * @param privateZoneName - The name of the Private DNS zone (without a terminating dot).
  * @param If-Match - The ETag of the Private DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const PrivateZonesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateZonesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateZonesUpdateInput,
   outputSchema: PrivateZonesUpdateOutput,
 }));
@@ -549,7 +535,7 @@ export interface RecordSetsCreateOrUpdateInput {
   etag?: string;
 }
 export const RecordSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -658,7 +644,7 @@ export interface RecordSetsCreateOrUpdateOutput {
   };
 }
 export const RecordSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -691,12 +677,10 @@ export const RecordSetsCreateOrUpdateOutput =
  * @param If-Match - The ETag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.
  */
-export const RecordSetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsCreateOrUpdateInput,
-    outputSchema: RecordSetsCreateOrUpdateOutput,
-  }),
-);
+export const RecordSetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsCreateOrUpdateInput,
+  outputSchema: RecordSetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RecordSetsDeleteInput {
   subscriptionId: string;
@@ -705,7 +689,7 @@ export interface RecordSetsDeleteInput {
   recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
   relativeRecordSetName: string;
 }
-export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -731,7 +715,7 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RecordSetsDeleteOutput = void;
 export const RecordSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
 
 // The operation
 /**
@@ -745,7 +729,7 @@ export const RecordSetsDeleteOutput =
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  * @param If-Match - The ETag of the record set. Omit this value to always delete the current record set. Specify the last-seen ETag value to prevent accidentally deleting any concurrent changes.
  */
-export const RecordSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsDeleteInput,
   outputSchema: RecordSetsDeleteOutput,
 }));
@@ -757,7 +741,7 @@ export interface RecordSetsGetInput {
   recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
   relativeRecordSetName: string;
 }
-export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -794,7 +778,7 @@ export interface RecordSetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -825,7 +809,7 @@ export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param recordType - The type of DNS record in this record set.
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  */
-export const RecordSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsGetInput,
   outputSchema: RecordSetsGetOutput,
 }));
@@ -837,7 +821,7 @@ export interface RecordSetsListInput {
   $top?: number;
   $recordsetnamesuffix?: string;
 }
-export const RecordSetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -868,7 +852,7 @@ export interface RecordSetsListOutput {
   }[];
   nextLink?: string;
 }
-export const RecordSetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -904,7 +888,7 @@ export const RecordSetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  * @param $recordsetnamesuffix - The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with ".<recordsetnamesuffix>".
  */
-export const RecordSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsListInput,
   outputSchema: RecordSetsListOutput,
 }));
@@ -918,7 +902,7 @@ export interface RecordSetsListByTypeInput {
   $recordsetnamesuffix?: string;
 }
 export const RecordSetsListByTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -960,7 +944,7 @@ export interface RecordSetsListByTypeOutput {
   nextLink?: string;
 }
 export const RecordSetsListByTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1007,12 +991,10 @@ export const RecordSetsListByTypeOutput =
  * @param $top - The maximum number of record sets to return. If not specified, returns up to 100 record sets.
  * @param $recordsetnamesuffix - The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with ".<recordsetnamesuffix>".
  */
-export const RecordSetsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecordSetsListByTypeInput,
-    outputSchema: RecordSetsListByTypeOutput,
-  }),
-);
+export const RecordSetsListByType = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecordSetsListByTypeInput,
+  outputSchema: RecordSetsListByTypeOutput,
+}));
 // Input Schema
 export interface RecordSetsUpdateInput {
   subscriptionId: string;
@@ -1049,7 +1031,7 @@ export interface RecordSetsUpdateInput {
   };
   etag?: string;
 }
-export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecordSetsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1157,27 +1139,25 @@ export interface RecordSetsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
+export const RecordSetsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
 
 // The operation
 /**
@@ -1191,7 +1171,7 @@ export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param relativeRecordSetName - The name of the record set, relative to the name of the zone.
  * @param If-Match - The ETag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
-export const RecordSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecordSetsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecordSetsUpdateInput,
   outputSchema: RecordSetsUpdateOutput,
 }));
@@ -1219,7 +1199,7 @@ export interface VirtualNetworkLinksCreateOrUpdateInput {
   etag?: string;
 }
 export const VirtualNetworkLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1276,7 +1256,7 @@ export interface VirtualNetworkLinksCreateOrUpdateOutput {
   };
 }
 export const VirtualNetworkLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1309,7 +1289,7 @@ export const VirtualNetworkLinksCreateOrUpdateOutput =
  * @param If-None-Match - Set to '*' to allow a new virtual network link to the Private DNS zone to be created, but to prevent updating an existing link. Other values will be ignored.
  */
 export const VirtualNetworkLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworkLinksCreateOrUpdateInput,
     outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
   }));
@@ -1321,7 +1301,7 @@ export interface VirtualNetworkLinksDeleteInput {
   virtualNetworkLinkName: string;
 }
 export const VirtualNetworkLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1337,7 +1317,7 @@ export const VirtualNetworkLinksDeleteInput =
 // Output Schema
 export type VirtualNetworkLinksDeleteOutput = void;
 export const VirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -1350,12 +1330,10 @@ export const VirtualNetworkLinksDeleteOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param If-Match - The ETag of the virtual network link to the Private DNS zone. Omit this value to always delete the current zone. Specify the last-seen ETag value to prevent accidentally deleting any concurrent changes.
  */
-export const VirtualNetworkLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksDeleteInput,
-    outputSchema: VirtualNetworkLinksDeleteOutput,
-  }),
-);
+export const VirtualNetworkLinksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksDeleteInput,
+  outputSchema: VirtualNetworkLinksDeleteOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksGetInput {
   subscriptionId: string;
@@ -1364,7 +1342,7 @@ export interface VirtualNetworkLinksGetInput {
   virtualNetworkLinkName: string;
 }
 export const VirtualNetworkLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1392,7 +1370,7 @@ export interface VirtualNetworkLinksGetOutput {
   };
 }
 export const VirtualNetworkLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1422,12 +1400,10 @@ export const VirtualNetworkLinksGetOutput =
  * @param privateZoneName - The name of the Private DNS zone (without a terminating dot).
  * @param virtualNetworkLinkName - The name of the virtual network link.
  */
-export const VirtualNetworkLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksGetInput,
-    outputSchema: VirtualNetworkLinksGetOutput,
-  }),
-);
+export const VirtualNetworkLinksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksGetInput,
+  outputSchema: VirtualNetworkLinksGetOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksListInput {
   subscriptionId: string;
@@ -1436,7 +1412,7 @@ export interface VirtualNetworkLinksListInput {
   $top?: number;
 }
 export const VirtualNetworkLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1467,7 +1443,7 @@ export interface VirtualNetworkLinksListOutput {
   nextLink?: string;
 }
 export const VirtualNetworkLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1512,12 +1488,10 @@ export const VirtualNetworkLinksListOutput =
  * @param privateZoneName - The name of the Private DNS zone (without a terminating dot).
  * @param $top - The maximum number of virtual network links to return. If not specified, returns up to 100 virtual network links.
  */
-export const VirtualNetworkLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksListInput,
-    outputSchema: VirtualNetworkLinksListOutput,
-  }),
-);
+export const VirtualNetworkLinksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksListInput,
+  outputSchema: VirtualNetworkLinksListOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksUpdateInput {
   subscriptionId: string;
@@ -1542,7 +1516,7 @@ export interface VirtualNetworkLinksUpdateInput {
   etag?: string;
 }
 export const VirtualNetworkLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
@@ -1599,7 +1573,7 @@ export interface VirtualNetworkLinksUpdateOutput {
   };
 }
 export const VirtualNetworkLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1630,9 +1604,7 @@ export const VirtualNetworkLinksUpdateOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param If-Match - The ETag of the virtual network link to the Private DNS zone. Omit this value to always overwrite the current virtual network link. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const VirtualNetworkLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksUpdateInput,
-    outputSchema: VirtualNetworkLinksUpdateOutput,
-  }),
-);
+export const VirtualNetworkLinksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksUpdateInput,
+  outputSchema: VirtualNetworkLinksUpdateOutput,
+}));

@@ -17,7 +17,7 @@ export interface GetCustomersInput {
   starting_after?: string;
   test_clock?: string;
 }
-export const GetCustomersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCustomersInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   email: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -1264,7 +1264,7 @@ export interface GetCustomersOutput {
   object: "list";
   url: string;
 }
-export const GetCustomersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCustomersOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       address: Schema.optional(
@@ -2695,7 +2695,7 @@ export const GetCustomersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param test_clock - Provides a list of customers that are associated with the specified test clock. The response will not include customers with test clocks if this parameter is not set.
  */
-export const GetCustomers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCustomers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCustomersInput,
   outputSchema: GetCustomersOutput,
 }));

@@ -7,7 +7,7 @@ export interface DeleteCustomersCustomerInput {
   customer: string;
 }
 export const DeleteCustomersCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteCustomersCustomerOutput {
   object: "customer";
 }
 export const DeleteCustomersCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["customer"]),
@@ -36,9 +36,7 @@ export const DeleteCustomersCustomerOutput =
  *
  * <p>Permanently deletes a customer. It cannot be undone. Also immediately cancels any active subscriptions on the customer.</p>
  */
-export const DeleteCustomersCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteCustomersCustomerInput,
-    outputSchema: DeleteCustomersCustomerOutput,
-  }),
-);
+export const DeleteCustomersCustomer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteCustomersCustomerInput,
+  outputSchema: DeleteCustomersCustomerOutput,
+}));

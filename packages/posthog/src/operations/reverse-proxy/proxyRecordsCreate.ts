@@ -23,7 +23,7 @@ export interface ProxyRecordsCreateInput {
   created_by?: number;
 }
 export const ProxyRecordsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface ProxyRecordsCreateOutput {
   created_by?: number;
 }
 export const ProxyRecordsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
     target_cname: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export const ProxyRecordsCreateOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const proxyRecordsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const proxyRecordsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsCreateInput,
   outputSchema: ProxyRecordsCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

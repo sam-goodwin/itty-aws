@@ -661,7 +661,7 @@ export interface PostV2CoreAccountsInput {
   metadata?: Record<string, string>;
 }
 export const PostV2CoreAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_token: Schema.optional(Schema.String),
     configuration: Schema.optional(
       Schema.Struct({
@@ -3501,7 +3501,7 @@ export interface PostV2CoreAccountsOutput {
   };
 }
 export const PostV2CoreAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applied_configurations: Schema.Array(
       Schema.Literals(["customer", "merchant", "recipient"]),
     ),
@@ -6292,7 +6292,7 @@ export const PostV2CoreAccountsOutput =
  *
  * Create an Account that represents a company, individual, or other entity that your business interacts with. Accounts contain identifying information about the entity, and configurations that store the features an account has access to. An account can be configured as any or all of the following configurations: Customer, Merchant and/or Recipient.
  */
-export const PostV2CoreAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostV2CoreAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostV2CoreAccountsInput,
   outputSchema: PostV2CoreAccountsOutput,
 }));

@@ -10,7 +10,7 @@ export interface UsersIntegrationsListInput {
   offset?: number;
 }
 export const UsersIntegrationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["github", "slack"])),
     limit: Schema.optional(Schema.Number),
@@ -37,7 +37,7 @@ export interface UsersIntegrationsListOutput {
   }[];
 }
 export const UsersIntegrationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -86,9 +86,7 @@ export const UsersIntegrationsListOutput =
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const usersIntegrationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersIntegrationsListInput,
-    outputSchema: UsersIntegrationsListOutput,
-  }),
-);
+export const usersIntegrationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersIntegrationsListInput,
+  outputSchema: UsersIntegrationsListOutput,
+}));

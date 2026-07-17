@@ -11,7 +11,7 @@ export interface PostBillingMeterEventsInput {
   timestamp?: number;
 }
 export const PostBillingMeterEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event_name: Schema.String,
     expand: Schema.optional(Schema.Array(Schema.String)),
     identifier: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface PostBillingMeterEventsOutput {
   timestamp: number;
 }
 export const PostBillingMeterEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     event_name: Schema.String,
     identifier: Schema.String,
@@ -52,9 +52,7 @@ export const PostBillingMeterEventsOutput =
  *
  * <p>Creates a billing meter event.</p>
  */
-export const PostBillingMeterEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingMeterEventsInput,
-    outputSchema: PostBillingMeterEventsOutput,
-  }),
-);
+export const PostBillingMeterEvents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingMeterEventsInput,
+  outputSchema: PostBillingMeterEventsOutput,
+}));

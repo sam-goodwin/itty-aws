@@ -14,7 +14,7 @@ export interface CreateDatabaseInput {
   major_version?: string;
   storage?: { minimum_storage_bytes?: number; maximum_storage_bytes?: number };
 }
-export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   region: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface CreateDatabaseOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -100,7 +100,7 @@ export interface CreateDatabaseOutput {
   schema_last_updated_at?: string | null;
   kind: "mysql" | "postgresql";
 }
-export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   branches_url: Schema.String,
@@ -189,7 +189,7 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param kind - The kind of database to create.
  * @param major_version - For PostgreSQL databases, the PostgreSQL major version to use for the database. Defaults to the latest available major version.
  */
-export const createDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatabaseInput,
   outputSchema: CreateDatabaseOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

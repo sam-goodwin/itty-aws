@@ -12,7 +12,7 @@ export interface StopGroupStreamProcessorInput {
   pretty?: boolean;
 }
 export const StopGroupStreamProcessorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     processorName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const StopGroupStreamProcessorInput =
 // Output Schema
 export type StopGroupStreamProcessorOutput = void;
 export const StopGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StopGroupStreamProcessorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StopGroupStreamProcessorOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const StopGroupStreamProcessorOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const stopGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StopGroupStreamProcessorInput,
-    outputSchema: StopGroupStreamProcessorOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const stopGroupStreamProcessor = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StopGroupStreamProcessorInput,
+  outputSchema: StopGroupStreamProcessorOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

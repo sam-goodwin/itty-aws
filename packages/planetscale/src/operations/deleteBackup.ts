@@ -10,7 +10,7 @@ export interface DeleteBackupInput {
   database: string;
   branch: string;
 }
-export const DeleteBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBackupInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const DeleteBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteBackupOutput = void;
 export const DeleteBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBackupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBackupOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteBackupOutput =
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const deleteBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBackup = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBackupInput,
   outputSchema: DeleteBackupOutput,
   errors: [Forbidden, NotFound] as const,

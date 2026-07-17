@@ -18,7 +18,7 @@ export interface MoveCollectionsBulkRemoveInput {
   moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
 }
 export const MoveCollectionsBulkRemoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -60,7 +60,7 @@ export interface MoveCollectionsBulkRemoveOutput {
   properties?: {};
 }
 export const MoveCollectionsBulkRemoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -105,12 +105,10 @@ export const MoveCollectionsBulkRemoveOutput =
  * @param subscriptionId - The Subscription ID.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsBulkRemoveInput,
-    outputSchema: MoveCollectionsBulkRemoveOutput,
-  }),
-);
+export const MoveCollectionsBulkRemove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsBulkRemoveInput,
+  outputSchema: MoveCollectionsBulkRemoveOutput,
+}));
 // Input Schema
 export interface MoveCollectionsCommitInput {
   subscriptionId: string;
@@ -121,7 +119,7 @@ export interface MoveCollectionsCommitInput {
   moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
 }
 export const MoveCollectionsCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -163,7 +161,7 @@ export interface MoveCollectionsCommitOutput {
   properties?: {};
 }
 export const MoveCollectionsCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -210,12 +208,10 @@ export const MoveCollectionsCommitOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsCommitInput,
-    outputSchema: MoveCollectionsCommitOutput,
-  }),
-);
+export const MoveCollectionsCommit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsCommitInput,
+  outputSchema: MoveCollectionsCommitOutput,
+}));
 // Input Schema
 export interface MoveCollectionsCreateInput {
   subscriptionId: string;
@@ -258,7 +254,7 @@ export interface MoveCollectionsCreateInput {
   };
 }
 export const MoveCollectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -364,7 +360,7 @@ export interface MoveCollectionsCreateOutput {
   };
 }
 export const MoveCollectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -431,12 +427,10 @@ export const MoveCollectionsCreateOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsCreateInput,
-    outputSchema: MoveCollectionsCreateOutput,
-  }),
-);
+export const MoveCollectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsCreateInput,
+  outputSchema: MoveCollectionsCreateOutput,
+}));
 // Input Schema
 export interface MoveCollectionsDeleteInput {
   subscriptionId: string;
@@ -444,7 +438,7 @@ export interface MoveCollectionsDeleteInput {
   moveCollectionName: string;
 }
 export const MoveCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -481,7 +475,7 @@ export interface MoveCollectionsDeleteOutput {
   properties?: {};
 }
 export const MoveCollectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -528,12 +522,10 @@ export const MoveCollectionsDeleteOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsDeleteInput,
-    outputSchema: MoveCollectionsDeleteOutput,
-  }),
-);
+export const MoveCollectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsDeleteInput,
+  outputSchema: MoveCollectionsDeleteOutput,
+}));
 // Input Schema
 export interface MoveCollectionsDiscardInput {
   subscriptionId: string;
@@ -544,7 +536,7 @@ export interface MoveCollectionsDiscardInput {
   moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
 }
 export const MoveCollectionsDiscardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -586,7 +578,7 @@ export interface MoveCollectionsDiscardOutput {
   properties?: {};
 }
 export const MoveCollectionsDiscardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -633,12 +625,10 @@ export const MoveCollectionsDiscardOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsDiscard = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsDiscardInput,
-    outputSchema: MoveCollectionsDiscardOutput,
-  }),
-);
+export const MoveCollectionsDiscard = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsDiscardInput,
+  outputSchema: MoveCollectionsDiscardOutput,
+}));
 // Input Schema
 export interface MoveCollectionsGetInput {
   subscriptionId: string;
@@ -646,7 +636,7 @@ export interface MoveCollectionsGetInput {
   moveCollectionName: string;
 }
 export const MoveCollectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -697,7 +687,7 @@ export interface MoveCollectionsGetOutput {
   };
 }
 export const MoveCollectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -764,7 +754,7 @@ export const MoveCollectionsGetOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MoveCollectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveCollectionsGetInput,
   outputSchema: MoveCollectionsGetOutput,
 }));
@@ -778,7 +768,7 @@ export interface MoveCollectionsInitiateMoveInput {
   moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
 }
 export const MoveCollectionsInitiateMoveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -820,7 +810,7 @@ export interface MoveCollectionsInitiateMoveOutput {
   properties?: {};
 }
 export const MoveCollectionsInitiateMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -867,19 +857,17 @@ export const MoveCollectionsInitiateMoveOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsInitiateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsInitiateMoveInput,
-    outputSchema: MoveCollectionsInitiateMoveOutput,
-  }),
-);
+export const MoveCollectionsInitiateMove = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsInitiateMoveInput,
+  outputSchema: MoveCollectionsInitiateMoveOutput,
+}));
 // Input Schema
 export interface MoveCollectionsListMoveCollectionsByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const MoveCollectionsListMoveCollectionsByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -932,7 +920,7 @@ export interface MoveCollectionsListMoveCollectionsByResourceGroupOutput {
   nextLink?: string;
 }
 export const MoveCollectionsListMoveCollectionsByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1023,7 +1011,7 @@ export const MoveCollectionsListMoveCollectionsByResourceGroupOutput =
  * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MoveCollectionsListMoveCollectionsByResourceGroupInput,
     outputSchema: MoveCollectionsListMoveCollectionsByResourceGroupOutput,
   }));
@@ -1032,7 +1020,7 @@ export interface MoveCollectionsListMoveCollectionsBySubscriptionInput {
   subscriptionId: string;
 }
 export const MoveCollectionsListMoveCollectionsBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1084,7 +1072,7 @@ export interface MoveCollectionsListMoveCollectionsBySubscriptionOutput {
   nextLink?: string;
 }
 export const MoveCollectionsListMoveCollectionsBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1174,7 +1162,7 @@ export const MoveCollectionsListMoveCollectionsBySubscriptionOutput =
  * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MoveCollectionsListMoveCollectionsBySubscriptionInput,
     outputSchema: MoveCollectionsListMoveCollectionsBySubscriptionOutput,
   }));
@@ -1186,7 +1174,7 @@ export interface MoveCollectionsListRequiredForInput {
   sourceId: string;
 }
 export const MoveCollectionsListRequiredForInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1204,7 +1192,7 @@ export interface MoveCollectionsListRequiredForOutput {
   sourceIds?: string[];
 }
 export const MoveCollectionsListRequiredForOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceIds: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<MoveCollectionsListRequiredForOutput>;
 
@@ -1219,7 +1207,7 @@ export const MoveCollectionsListRequiredForOutput =
  * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListRequiredFor =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MoveCollectionsListRequiredForInput,
     outputSchema: MoveCollectionsListRequiredForOutput,
   }));
@@ -1233,7 +1221,7 @@ export interface MoveCollectionsPrepareInput {
   moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
 }
 export const MoveCollectionsPrepareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1275,7 +1263,7 @@ export interface MoveCollectionsPrepareOutput {
   properties?: {};
 }
 export const MoveCollectionsPrepareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1322,12 +1310,10 @@ export const MoveCollectionsPrepareOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsPrepareInput,
-    outputSchema: MoveCollectionsPrepareOutput,
-  }),
-);
+export const MoveCollectionsPrepare = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsPrepareInput,
+  outputSchema: MoveCollectionsPrepareOutput,
+}));
 // Input Schema
 export interface MoveCollectionsResolveDependenciesInput {
   subscriptionId: string;
@@ -1335,7 +1321,7 @@ export interface MoveCollectionsResolveDependenciesInput {
   moveCollectionName: string;
 }
 export const MoveCollectionsResolveDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1372,7 +1358,7 @@ export interface MoveCollectionsResolveDependenciesOutput {
   properties?: {};
 }
 export const MoveCollectionsResolveDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1420,7 +1406,7 @@ export const MoveCollectionsResolveDependenciesOutput =
  * @param api-version - Client Api Version.
  */
 export const MoveCollectionsResolveDependencies =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MoveCollectionsResolveDependenciesInput,
     outputSchema: MoveCollectionsResolveDependenciesOutput,
   }));
@@ -1437,7 +1423,7 @@ export interface MoveCollectionsUpdateInput {
   };
 }
 export const MoveCollectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1498,7 +1484,7 @@ export interface MoveCollectionsUpdateOutput {
   };
 }
 export const MoveCollectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1565,12 +1551,10 @@ export const MoveCollectionsUpdateOutput =
  * @param moveCollectionName - The Move Collection Name.
  * @param api-version - Client Api Version.
  */
-export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MoveCollectionsUpdateInput,
-    outputSchema: MoveCollectionsUpdateOutput,
-  }),
-);
+export const MoveCollectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MoveCollectionsUpdateInput,
+  outputSchema: MoveCollectionsUpdateOutput,
+}));
 // Input Schema
 export interface MoveResourcesCreateInput {
   subscriptionId: string;
@@ -1652,7 +1636,7 @@ export interface MoveResourcesCreateInput {
   };
 }
 export const MoveResourcesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1870,7 +1854,7 @@ export interface MoveResourcesCreateOutput {
   };
 }
 export const MoveResourcesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2011,7 +1995,7 @@ export const MoveResourcesCreateOutput =
  * @param moveResourceName - The Move Resource Name.
  * @param api-version - Client Api Version.
  */
-export const MoveResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MoveResourcesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesCreateInput,
   outputSchema: MoveResourcesCreateOutput,
 }));
@@ -2023,7 +2007,7 @@ export interface MoveResourcesDeleteInput {
   moveResourceName: string;
 }
 export const MoveResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2061,7 +2045,7 @@ export interface MoveResourcesDeleteOutput {
   properties?: {};
 }
 export const MoveResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2109,7 +2093,7 @@ export const MoveResourcesDeleteOutput =
  * @param moveResourceName - The Move Resource Name.
  * @param api-version - Client Api Version.
  */
-export const MoveResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MoveResourcesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesDeleteInput,
   outputSchema: MoveResourcesDeleteOutput,
 }));
@@ -2120,7 +2104,7 @@ export interface MoveResourcesGetInput {
   moveCollectionName: string;
   moveResourceName: string;
 }
-export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MoveResourcesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2209,138 +2193,136 @@ export interface MoveResourcesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MoveResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        sourceId: Schema.String,
-        targetId: Schema.optional(Schema.String),
-        existingTargetId: Schema.optional(Schema.String),
-        resourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        sourceResourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        moveStatus: Schema.optional(
-          Schema.Struct({
-            moveState: Schema.optional(
-              Schema.Literals([
-                "AssignmentPending",
-                "PreparePending",
-                "PrepareInProgress",
-                "PrepareFailed",
-                "MovePending",
-                "MoveInProgress",
-                "MoveFailed",
-                "DiscardInProgress",
-                "DiscardFailed",
-                "CommitPending",
-                "CommitInProgress",
-                "CommitFailed",
-                "Committed",
-                "DeleteSourcePending",
-                "ResourceMoveCompleted",
-              ]),
-            ),
-            jobStatus: Schema.optional(
-              Schema.Struct({
-                jobName: Schema.optional(Schema.Literals(["InitialSync"])),
-                jobProgress: Schema.optional(Schema.String),
-              }),
-            ),
-            errors: Schema.optional(
-              Schema.Struct({
-                properties: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        dependsOn: Schema.optional(
-          Schema.Array(
+export const MoveResourcesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
+      ),
+      sourceId: Schema.String,
+      targetId: Schema.optional(Schema.String),
+      existingTargetId: Schema.optional(Schema.String),
+      resourceSettings: Schema.optional(
+        Schema.Struct({
+          resourceType: Schema.String,
+          targetResourceName: Schema.optional(Schema.String),
+          targetResourceGroupName: Schema.optional(Schema.String),
+        }),
+      ),
+      sourceResourceSettings: Schema.optional(
+        Schema.Struct({
+          resourceType: Schema.String,
+          targetResourceName: Schema.optional(Schema.String),
+          targetResourceGroupName: Schema.optional(Schema.String),
+        }),
+      ),
+      moveStatus: Schema.optional(
+        Schema.Struct({
+          moveState: Schema.optional(
+            Schema.Literals([
+              "AssignmentPending",
+              "PreparePending",
+              "PrepareInProgress",
+              "PrepareFailed",
+              "MovePending",
+              "MoveInProgress",
+              "MoveFailed",
+              "DiscardInProgress",
+              "DiscardFailed",
+              "CommitPending",
+              "CommitInProgress",
+              "CommitFailed",
+              "Committed",
+              "DeleteSourcePending",
+              "ResourceMoveCompleted",
+            ]),
+          ),
+          jobStatus: Schema.optional(
             Schema.Struct({
-              id: Schema.optional(Schema.String),
-              resolutionStatus: Schema.optional(Schema.String),
-              resolutionType: Schema.optional(
-                Schema.Literals(["Manual", "Automatic"]),
-              ),
-              dependencyType: Schema.optional(
-                Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
-              ),
-              manualResolution: Schema.optional(
-                Schema.Struct({
-                  targetId: Schema.optional(Schema.String),
-                }),
-              ),
-              automaticResolution: Schema.optional(
-                Schema.Struct({
-                  moveResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-              isOptional: Schema.optional(Schema.String),
+              jobName: Schema.optional(Schema.Literals(["InitialSync"])),
+              jobProgress: Schema.optional(Schema.String),
             }),
           ),
-        ),
-        dependsOnOverrides: Schema.optional(
-          Schema.Array(
+          errors: Schema.optional(
             Schema.Struct({
-              id: Schema.optional(Schema.String),
-              targetId: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                }),
+              ),
             }),
           ),
-        ),
-        isResolveRequired: Schema.optional(Schema.Boolean),
-        errors: Schema.optional(
+        }),
+      ),
+      dependsOn: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            properties: Schema.optional(
+            id: Schema.optional(Schema.String),
+            resolutionStatus: Schema.optional(Schema.String),
+            resolutionType: Schema.optional(
+              Schema.Literals(["Manual", "Automatic"]),
+            ),
+            dependencyType: Schema.optional(
+              Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
+            ),
+            manualResolution: Schema.optional(
               Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
+                targetId: Schema.optional(Schema.String),
               }),
             ),
+            automaticResolution: Schema.optional(
+              Schema.Struct({
+                moveResourceId: Schema.optional(Schema.String),
+              }),
+            ),
+            isOptional: Schema.optional(Schema.String),
           }),
         ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      dependsOnOverrides: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            targetId: Schema.optional(Schema.String),
+          }),
         ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<MoveResourcesGetOutput>;
+      ),
+      isResolveRequired: Schema.optional(Schema.Boolean),
+      errors: Schema.optional(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        }),
+      ),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<MoveResourcesGetOutput>;
 
 // The operation
 /**
@@ -2352,7 +2334,7 @@ export const MoveResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param moveResourceName - The Move Resource Name.
  * @param api-version - Client Api Version.
  */
-export const MoveResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MoveResourcesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesGetInput,
   outputSchema: MoveResourcesGetOutput,
 }));
@@ -2363,14 +2345,12 @@ export interface MoveResourcesListInput {
   moveCollectionName: string;
   $filter?: string;
 }
-export const MoveResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    moveCollectionName: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
-  },
-).pipe(
+export const MoveResourcesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  moveCollectionName: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
@@ -2463,7 +2443,7 @@ export interface MoveResourcesListOutput {
   totalCount?: number;
 }
 export const MoveResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2647,14 +2627,14 @@ export const MoveResourcesListOutput =
  * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'.
  */
-export const MoveResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MoveResourcesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesListInput,
   outputSchema: MoveResourcesListOutput,
 }));
 // Input Schema
 export interface OperationsDiscoveryGetInput {}
 export const OperationsDiscoveryGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Migrate/operations",
@@ -2679,7 +2659,7 @@ export interface OperationsDiscoveryGetOutput {
   nextLink?: string;
 }
 export const OperationsDiscoveryGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2706,12 +2686,10 @@ export const OperationsDiscoveryGetOutput =
  *
  * @param api-version - Client Api Version.
  */
-export const OperationsDiscoveryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsDiscoveryGetInput,
-    outputSchema: OperationsDiscoveryGetOutput,
-  }),
-);
+export const OperationsDiscoveryGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsDiscoveryGetInput,
+  outputSchema: OperationsDiscoveryGetOutput,
+}));
 // Input Schema
 export interface UnresolvedDependenciesGetInput {
   subscriptionId: string;
@@ -2722,7 +2700,7 @@ export interface UnresolvedDependenciesGetInput {
   $filter?: string;
 }
 export const UnresolvedDependenciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2748,7 +2726,7 @@ export interface UnresolvedDependenciesGetOutput {
   totalCount?: number;
 }
 export const UnresolvedDependenciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2786,9 +2764,7 @@ export const UnresolvedDependenciesGetOutput =
  * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, $apply=filter(count eq 2).
  */
-export const UnresolvedDependenciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UnresolvedDependenciesGetInput,
-    outputSchema: UnresolvedDependenciesGetOutput,
-  }),
-);
+export const UnresolvedDependenciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UnresolvedDependenciesGetInput,
+  outputSchema: UnresolvedDependenciesGetOutput,
+}));

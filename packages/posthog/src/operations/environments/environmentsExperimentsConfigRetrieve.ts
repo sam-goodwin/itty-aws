@@ -9,7 +9,7 @@ export interface EnvironmentsExperimentsConfigRetrieveInput {
   project_id: string;
 }
 export const EnvironmentsExperimentsConfigRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const EnvironmentsExperimentsConfigRetrieveInput =
 // Output Schema
 export type EnvironmentsExperimentsConfigRetrieveOutput = void;
 export const EnvironmentsExperimentsConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsExperimentsConfigRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsExperimentsConfigRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const EnvironmentsExperimentsConfigRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsExperimentsConfigRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsExperimentsConfigRetrieveInput,
     outputSchema: EnvironmentsExperimentsConfigRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

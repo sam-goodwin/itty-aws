@@ -11,7 +11,7 @@ export interface GetQueryPatternsReportInput {
   id: string;
 }
 export const GetQueryPatternsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const GetQueryPatternsReportInput =
 // Output Schema
 export type GetQueryPatternsReportOutput = void;
 export const GetQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetQueryPatternsReportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetQueryPatternsReportOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const GetQueryPatternsReportOutput =
  * @param branch - The name of the branch
  * @param id - The ID of the query patterns report
  */
-export const getQueryPatternsReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetQueryPatternsReportInput,
-    outputSchema: GetQueryPatternsReportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getQueryPatternsReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetQueryPatternsReportInput,
+  outputSchema: GetQueryPatternsReportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -542,7 +542,7 @@ export interface PostSetupIntentsIntentInput {
   payment_method_types?: string[];
 }
 export const PostSetupIntentsIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     attach_to_self: Schema.optional(Schema.Boolean),
     customer: Schema.optional(Schema.String),
@@ -1845,7 +1845,7 @@ export interface PostSetupIntentsIntentOutput {
   usage: string;
 }
 export const PostSetupIntentsIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2027,9 +2027,7 @@ export const PostSetupIntentsIntentOutput =
  *
  * <p>Updates a SetupIntent object.</p>
  */
-export const PostSetupIntentsIntent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSetupIntentsIntentInput,
-    outputSchema: PostSetupIntentsIntentOutput,
-  }),
-);
+export const PostSetupIntentsIntent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSetupIntentsIntentInput,
+  outputSchema: PostSetupIntentsIntentOutput,
+}));

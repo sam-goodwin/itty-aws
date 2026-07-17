@@ -68,7 +68,7 @@ interface OwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
-const OwnershipVerification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OwnershipVerification = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(Schema.Union([Schema.Literal("txt"), Schema.Null])),
@@ -82,12 +82,11 @@ interface OwnershipVerificationHTTP {
   /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
   httpUrl?: string | null;
 }
-const OwnershipVerificationHTTP = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" })),
+const OwnershipVerificationHTTP = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" })),
 ) as unknown as Schema.Codec<OwnershipVerificationHTTP>;
 
 interface DcvdelegationRecord {
@@ -108,7 +107,7 @@ interface DcvdelegationRecord {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-const DcvdelegationRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DcvdelegationRecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     cnameTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -146,7 +145,7 @@ interface Settings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: "on" | "off" | (string & {}) | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ciphers: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -193,7 +192,7 @@ interface ValidationError {
   /** A domain validation error. */
   message?: string | null;
 }
-const ValidationError = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ValidationError = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -296,7 +295,7 @@ interface Ssl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
-const Ssl = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ssl = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     bundleMethod: Schema.optional(
@@ -535,7 +534,7 @@ interface ListCustomHostnamesResponseResult {
   verificationErrors?: string[] | null;
 }
 const ListCustomHostnamesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -612,7 +611,7 @@ interface ListCustomHostnamesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListCustomHostnamesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -634,7 +633,7 @@ interface CustomCERTBundle {
   /** The key for a custom uploaded certificate. */
   customKey: string;
 }
-const CustomCERTBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomCERTBundle = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     customCertificate: Schema.String,
     customKey: Schema.String,
@@ -682,7 +681,7 @@ interface Ssl2 {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
-const Ssl2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ssl2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bundleMethod: Schema.optional(
       Schema.Union([
@@ -759,7 +758,7 @@ export interface PutCertificatePackCertificateRequest {
 }
 
 export const PutCertificatePackCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
@@ -907,7 +906,7 @@ export interface PutCertificatePackCertificateResponse {
 }
 
 export const PutCertificatePackCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -986,7 +985,7 @@ export const putCertificatePackCertificate: API.OperationMethod<
   PutCertificatePackCertificateResponse,
   PutCertificatePackCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCertificatePackCertificateRequest,
   output: PutCertificatePackCertificateResponse,
   errors: [],
@@ -1001,7 +1000,7 @@ export interface DeleteCertificatePackCertificateRequest {
 }
 
 export const DeleteCertificatePackCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
       certificatePackId: Schema.String.pipe(T.HttpPath("certificatePackId")),
@@ -1021,7 +1020,7 @@ export interface DeleteCertificatePackCertificateResponse {
 }
 
 export const DeleteCertificatePackCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -1034,7 +1033,7 @@ export const deleteCertificatePackCertificate: API.OperationMethod<
   DeleteCertificatePackCertificateResponse,
   DeleteCertificatePackCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCertificatePackCertificateRequest,
   output: DeleteCertificatePackCertificateResponse,
   errors: [],
@@ -1051,7 +1050,7 @@ export interface GetCustomHostnameRequest {
 }
 
 export const GetCustomHostnameRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1191,7 +1190,7 @@ export interface GetCustomHostnameResponse {
 }
 
 export const GetCustomHostnameResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -1274,7 +1273,7 @@ export const getCustomHostname: API.OperationMethod<
   GetCustomHostnameResponse,
   GetCustomHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomHostnameRequest,
   output: GetCustomHostnameResponse,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, Forbidden],
@@ -1347,7 +1346,7 @@ export interface ListCustomHostnamesRequest {
 }
 
 export const ListCustomHostnamesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1561,7 +1560,7 @@ export interface ListCustomHostnamesResponse {
 }
 
 export const ListCustomHostnamesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCustomHostnamesResponseResult),
       resultInfo: Schema.optional(
@@ -1580,7 +1579,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
   ListCustomHostnamesResponse,
   ListCustomHostnamesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomHostnamesRequest,
   output: ListCustomHostnamesResponse,
   errors: [SaasQuotaNotAllocated, Forbidden],
@@ -1628,7 +1627,7 @@ export interface CreateCustomHostnameRequest {
 }
 
 export const CreateCustomHostnameRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       hostname: Schema.String,
@@ -1774,7 +1773,7 @@ export interface CreateCustomHostnameResponse {
 }
 
 export const CreateCustomHostnameResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -1853,7 +1852,7 @@ export const createCustomHostname: API.OperationMethod<
   CreateCustomHostnameResponse,
   CreateCustomHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomHostnameRequest,
   output: CreateCustomHostnameResponse,
   errors: [SaasQuotaNotAllocated],
@@ -1897,7 +1896,7 @@ export interface PatchCustomHostnameRequest {
 }
 
 export const PatchCustomHostnameRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2049,7 +2048,7 @@ export interface PatchCustomHostnameResponse {
 }
 
 export const PatchCustomHostnameResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -2131,7 +2130,7 @@ export const patchCustomHostname: API.OperationMethod<
   PatchCustomHostnameResponse,
   PatchCustomHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCustomHostnameRequest,
   output: PatchCustomHostnameResponse,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated],
@@ -2144,7 +2143,7 @@ export interface DeleteCustomHostnameRequest {
 }
 
 export const DeleteCustomHostnameRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2162,7 +2161,7 @@ export interface DeleteCustomHostnameResponse {
 }
 
 export const DeleteCustomHostnameResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -2178,7 +2177,7 @@ export const deleteCustomHostname: API.OperationMethod<
   DeleteCustomHostnameResponse,
   DeleteCustomHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomHostnameRequest,
   output: DeleteCustomHostnameResponse,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated],
@@ -2194,7 +2193,7 @@ export interface GetFallbackOriginRequest {
 }
 
 export const GetFallbackOriginRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -2227,7 +2226,7 @@ export interface GetFallbackOriginResponse {
 }
 
 export const GetFallbackOriginResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       errors: Schema.optional(
@@ -2275,7 +2274,7 @@ export const getFallbackOrigin: API.OperationMethod<
   GetFallbackOriginResponse,
   GetFallbackOriginError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFallbackOriginRequest,
   output: GetFallbackOriginResponse,
   errors: [FallbackOriginNotFound, SaasAccessNotGranted, Forbidden],
@@ -2289,7 +2288,7 @@ export interface PutFallbackOriginRequest {
 }
 
 export const PutFallbackOriginRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       origin: Schema.String,
@@ -2323,7 +2322,7 @@ export interface PutFallbackOriginResponse {
 }
 
 export const PutFallbackOriginResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       errors: Schema.optional(
@@ -2367,7 +2366,7 @@ export const putFallbackOrigin: API.OperationMethod<
   PutFallbackOriginResponse,
   PutFallbackOriginError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutFallbackOriginRequest,
   output: PutFallbackOriginResponse,
   errors: [SaasAccessNotGranted],
@@ -2379,7 +2378,7 @@ export interface DeleteFallbackOriginRequest {
 }
 
 export const DeleteFallbackOriginRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -2412,7 +2411,7 @@ export interface DeleteFallbackOriginResponse {
 }
 
 export const DeleteFallbackOriginResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       errors: Schema.optional(
@@ -2459,7 +2458,7 @@ export const deleteFallbackOrigin: API.OperationMethod<
   DeleteFallbackOriginResponse,
   DeleteFallbackOriginError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFallbackOriginRequest,
   output: DeleteFallbackOriginResponse,
   errors: [FallbackOriginNotFound, SaasAccessNotGranted],

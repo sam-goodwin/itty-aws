@@ -8,7 +8,7 @@ export interface CreateOrgApiKeyInput {
   key_name: string;
   project_id?: string;
 }
-export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
   key_name: Schema.String,
   project_id: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export interface CreateOrgApiKeyOutput {
   created_by: string;
   project_id?: string;
 }
-export const CreateOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   key: Schema.String,
   name: Schema.String,
@@ -47,7 +47,7 @@ export const CreateOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param org_id - The Neon organization ID
  */
-export const createOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgApiKeyInput,
   outputSchema: CreateOrgApiKeyOutput,
 }));

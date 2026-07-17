@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface RecoverProjectInput {
   project_id: string;
 }
-export const RecoverProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecoverProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "POST", path: "/projects/{project_id}/recover" }),
@@ -138,7 +138,7 @@ export interface RecoverProjectOutput {
     };
   }[];
 }
-export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RecoverProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -313,7 +313,7 @@ export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const recoverProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const recoverProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoverProjectInput,
   outputSchema: RecoverProjectOutput,
 }));

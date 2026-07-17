@@ -8,7 +8,7 @@ export interface MarketingAnalyticsDataSourcesRetrieveInput {
   source_type?: string;
 }
 export const MarketingAnalyticsDataSourcesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_type: Schema.optional(Schema.String),
   }).pipe(
@@ -50,7 +50,7 @@ export interface MarketingAnalyticsDataSourcesRetrieveOutput {
   issues_summary: string[];
 }
 export const MarketingAnalyticsDataSourcesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrations: Schema.Array(
       Schema.Struct({
         source_type: Schema.String,
@@ -95,7 +95,7 @@ export const MarketingAnalyticsDataSourcesRetrieveOutput =
  * @param source_type - Optional. Restrict to one integration (e.g. 'GoogleAds').
  */
 export const marketingAnalyticsDataSourcesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketingAnalyticsDataSourcesRetrieveInput,
     outputSchema: MarketingAnalyticsDataSourcesRetrieveOutput,
   }));

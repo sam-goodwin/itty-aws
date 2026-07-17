@@ -28,7 +28,7 @@ export interface GoogleApiServiceusageV2betaMcpService {
 }
 
 export const GoogleApiServiceusageV2betaMcpService: Schema.Codec<GoogleApiServiceusageV2betaMcpService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleApiServiceusageV2betaMcpService" });
 
@@ -48,7 +48,7 @@ export interface QuotaOverride {
 }
 
 export const QuotaOverride: Schema.Codec<QuotaOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrideValue: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -65,7 +65,7 @@ export interface ListAdminOverridesResponse {
 }
 
 export const ListAdminOverridesResponse: Schema.Codec<ListAdminOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAdminOverridesResponse" });
@@ -78,7 +78,7 @@ export interface Option {
 }
 
 export const Option: Schema.Codec<Option> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Option" });
@@ -89,7 +89,7 @@ export interface SourceContext {
 }
 
 export const SourceContext: Schema.Codec<SourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceContext" });
 
@@ -103,7 +103,7 @@ export interface EnumValue {
 }
 
 export const EnumValue: Schema.Codec<EnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     number: Schema.optional(Schema.Number),
     options: Schema.optional(Schema.Array(Option)),
     name: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface Enum {
 }
 
 export const Enum: Schema.Codec<Enum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     options: Schema.optional(Schema.Array(Option)),
     edition: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface GoogleApiServiceusageV2betaEnableRule {
 }
 
 export const GoogleApiServiceusageV2betaEnableRule: Schema.Codec<GoogleApiServiceusageV2betaEnableRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleApiServiceusageV2betaEnableRule" });
 
@@ -162,7 +162,7 @@ export interface GoogleApiServiceusageV2betaConsumerPolicy {
 }
 
 export const GoogleApiServiceusageV2betaConsumerPolicy: Schema.Codec<GoogleApiServiceusageV2betaConsumerPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableRules: Schema.optional(
       Schema.Array(GoogleApiServiceusageV2betaEnableRule),
     ),
@@ -185,7 +185,7 @@ export interface GoogleApiServiceusageV2betaImpact {
 }
 
 export const GoogleApiServiceusageV2betaImpact: Schema.Codec<GoogleApiServiceusageV2betaImpact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detail: Schema.optional(Schema.String),
     missingDependency: Schema.optional(Schema.String),
     impactType: Schema.optional(Schema.String),
@@ -203,7 +203,7 @@ export interface Endpoint {
 }
 
 export const Endpoint: Schema.Codec<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
     allowCors: Schema.optional(Schema.Boolean),
@@ -224,7 +224,7 @@ export interface ContextRule {
 }
 
 export const ContextRule: Schema.Codec<ContextRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requested: Schema.optional(Schema.Array(Schema.String)),
     allowedResponseExtensions: Schema.optional(Schema.Array(Schema.String)),
     selector: Schema.optional(Schema.String),
@@ -240,7 +240,7 @@ export interface RemoveEnableRulesResponse {
 }
 
 export const RemoveEnableRulesResponse: Schema.Codec<RemoveEnableRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     removedValues: Schema.optional(Schema.Array(Schema.String)),
     parent: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveEnableRulesResponse" });
@@ -251,7 +251,7 @@ export interface SourceInfo {
 }
 
 export const SourceInfo: Schema.Codec<SourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceFiles: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -306,7 +306,7 @@ export interface Field {
 }
 
 export const Field: Schema.Codec<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardinality: Schema.optional(Schema.String),
     typeUrl: Schema.optional(Schema.String),
     packed: Schema.optional(Schema.Boolean),
@@ -341,7 +341,7 @@ export interface Type {
 }
 
 export const Type: Schema.Codec<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     syntax: Schema.optional(Schema.String),
     oneofs: Schema.optional(Schema.Array(Schema.String)),
     sourceContext: Schema.optional(SourceContext),
@@ -361,7 +361,7 @@ export interface LabelDescriptor {
 }
 
 export const LabelDescriptor: Schema.Codec<LabelDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valueType: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -379,7 +379,7 @@ export interface LogDescriptor {
 }
 
 export const LogDescriptor: Schema.Codec<LogDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(LabelDescriptor)),
     name: Schema.optional(Schema.String),
@@ -394,7 +394,7 @@ export interface AspectRule {
 }
 
 export const AspectRule: Schema.Codec<AspectRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     config: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "AspectRule" });
@@ -409,7 +409,7 @@ export interface Aspect {
 }
 
 export const Aspect: Schema.Codec<Aspect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(AspectRule)),
     kind: Schema.optional(Schema.String),
     spec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -423,7 +423,7 @@ export interface CustomErrorRule {
 }
 
 export const CustomErrorRule: Schema.Codec<CustomErrorRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     isErrorType: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CustomErrorRule" });
@@ -436,7 +436,7 @@ export interface CustomError {
 }
 
 export const CustomError: Schema.Codec<CustomError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(CustomErrorRule)),
     types: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomError" });
@@ -451,7 +451,7 @@ export interface Page {
 }
 
 export const Page: Schema.Codec<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       content: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
@@ -471,7 +471,7 @@ export interface DocumentationRule {
 }
 
 export const DocumentationRule: Schema.Codec<DocumentationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     disableReplacementWords: Schema.optional(Schema.String),
     selector: Schema.optional(Schema.String),
@@ -498,7 +498,7 @@ export interface Documentation {
 }
 
 export const Documentation: Schema.Codec<Documentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentationRootUrl: Schema.optional(Schema.String),
     sectionOverrides: Schema.optional(Schema.Array(Page)),
     pages: Schema.optional(Schema.Array(Page)),
@@ -534,7 +534,7 @@ export interface MonitoredResourceDescriptor {
 }
 
 export const MonitoredResourceDescriptor: Schema.Codec<MonitoredResourceDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     launchStage: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -551,7 +551,7 @@ export interface BillingDestination {
 }
 
 export const BillingDestination: Schema.Codec<BillingDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BillingDestination" });
@@ -562,7 +562,7 @@ export interface Billing {
 }
 
 export const Billing: Schema.Codec<Billing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(BillingDestination)),
   }).annotate({ identifier: "Billing" });
 
@@ -576,7 +576,7 @@ export interface SystemParameter {
 }
 
 export const SystemParameter: Schema.Codec<SystemParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlQueryParameter: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     httpHeader: Schema.optional(Schema.String),
@@ -590,7 +590,7 @@ export interface SystemParameterRule {
 }
 
 export const SystemParameterRule: Schema.Codec<SystemParameterRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(SystemParameter)),
   }).annotate({ identifier: "SystemParameterRule" });
@@ -601,7 +601,7 @@ export interface SystemParameters {
 }
 
 export const SystemParameters: Schema.Codec<SystemParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(SystemParameterRule)),
   }).annotate({ identifier: "SystemParameters" });
 
@@ -611,7 +611,7 @@ export interface Context {
 }
 
 export const Context: Schema.Codec<Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(ContextRule)),
   }).annotate({ identifier: "Context" });
 
@@ -645,7 +645,7 @@ export interface BackendRule {
 }
 
 export const BackendRule: Schema.Codec<BackendRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pathTranslation: Schema.optional(Schema.String),
       selector: Schema.optional(Schema.String),
@@ -669,7 +669,7 @@ export interface Backend {
 }
 
 export const Backend: Schema.Codec<Backend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(BackendRule)),
   }).annotate({ identifier: "Backend" });
 
@@ -683,7 +683,7 @@ export interface UsageRule {
 }
 
 export const UsageRule: Schema.Codec<UsageRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     allowUnregisteredCalls: Schema.optional(Schema.Boolean),
     skipServiceControl: Schema.optional(Schema.Boolean),
@@ -699,7 +699,7 @@ export interface Usage {
 }
 
 export const Usage: Schema.Codec<Usage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requirements: Schema.optional(Schema.Array(Schema.String)),
     producerNotificationChannel: Schema.optional(Schema.String),
     rules: Schema.optional(Schema.Array(UsageRule)),
@@ -730,7 +730,7 @@ export interface BatchingSettingsProto {
 }
 
 export const BatchingSettingsProto: Schema.Codec<BatchingSettingsProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delayThreshold: Schema.optional(Schema.String),
     flowControlElementLimit: Schema.optional(Schema.Number),
     requestByteThreshold: Schema.optional(Schema.String),
@@ -751,7 +751,7 @@ export interface BatchingDescriptorProto {
 }
 
 export const BatchingDescriptorProto: Schema.Codec<BatchingDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     discriminatorFields: Schema.optional(Schema.Array(Schema.String)),
     batchedField: Schema.optional(Schema.String),
     subresponseField: Schema.optional(Schema.String),
@@ -765,7 +765,7 @@ export interface BatchingConfigProto {
 }
 
 export const BatchingConfigProto: Schema.Codec<BatchingConfigProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thresholds: Schema.optional(BatchingSettingsProto),
     batchDescriptor: Schema.optional(BatchingDescriptorProto),
   }).annotate({ identifier: "BatchingConfigProto" });
@@ -782,7 +782,7 @@ export interface LongRunning {
 }
 
 export const LongRunning: Schema.Codec<LongRunning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     initialPollDelay: Schema.optional(Schema.String),
     pollDelayMultiplier: Schema.optional(Schema.Number),
     maxPollDelay: Schema.optional(Schema.String),
@@ -801,7 +801,7 @@ export interface MethodSettings {
 }
 
 export const MethodSettings: Schema.Codec<MethodSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     batching: Schema.optional(BatchingConfigProto),
     autoPopulatedFields: Schema.optional(Schema.Array(Schema.String)),
@@ -816,7 +816,7 @@ export interface SelectiveGapicGeneration {
 }
 
 export const SelectiveGapicGeneration: Schema.Codec<SelectiveGapicGeneration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     generateOmittedAsInternal: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SelectiveGapicGeneration" });
@@ -836,7 +836,7 @@ export interface CommonLanguageSettings {
 }
 
 export const CommonLanguageSettings: Schema.Codec<CommonLanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectiveGapicGeneration: Schema.optional(SelectiveGapicGeneration),
     referenceDocsUri: Schema.optional(Schema.String),
     destinations: Schema.optional(Schema.Array(Schema.String)),
@@ -848,7 +848,7 @@ export interface NodeSettings {
 }
 
 export const NodeSettings: Schema.Codec<NodeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "NodeSettings" });
 
@@ -862,7 +862,7 @@ export interface ExperimentalFeatures {
 }
 
 export const ExperimentalFeatures: Schema.Codec<ExperimentalFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     restAsyncIoEnabled: Schema.optional(Schema.Boolean),
     protobufPythonicTypesEnabled: Schema.optional(Schema.Boolean),
     unversionedPackageDisabled: Schema.optional(Schema.Boolean),
@@ -876,7 +876,7 @@ export interface PythonSettings {
 }
 
 export const PythonSettings: Schema.Codec<PythonSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     experimentalFeatures: Schema.optional(ExperimentalFeatures),
   }).annotate({ identifier: "PythonSettings" });
@@ -897,7 +897,7 @@ export interface DotnetSettings {
 }
 
 export const DotnetSettings: Schema.Codec<DotnetSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renamedResources: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -916,7 +916,7 @@ export interface RubySettings {
 }
 
 export const RubySettings: Schema.Codec<RubySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "RubySettings" });
 
@@ -928,7 +928,7 @@ export interface GoSettings {
 }
 
 export const GoSettings: Schema.Codec<GoSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     renamedServices: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -943,7 +943,7 @@ export interface PhpSettings {
 }
 
 export const PhpSettings: Schema.Codec<PhpSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     libraryPackage: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhpSettings" });
@@ -958,7 +958,7 @@ export interface JavaSettings {
 }
 
 export const JavaSettings: Schema.Codec<JavaSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     libraryPackage: Schema.optional(Schema.String),
     serviceClassNames: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -972,7 +972,7 @@ export interface CppSettings {
 }
 
 export const CppSettings: Schema.Codec<CppSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "CppSettings" });
 
@@ -1011,7 +1011,7 @@ export interface ClientLibrarySettings {
 }
 
 export const ClientLibrarySettings: Schema.Codec<ClientLibrarySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeSettings: Schema.optional(NodeSettings),
     pythonSettings: Schema.optional(PythonSettings),
     dotnetSettings: Schema.optional(DotnetSettings),
@@ -1061,7 +1061,7 @@ export interface Publishing {
 }
 
 export const Publishing: Schema.Codec<Publishing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methodSettings: Schema.optional(Schema.Array(MethodSettings)),
     protoReferenceDocumentationUri: Schema.optional(Schema.String),
     documentationUri: Schema.optional(Schema.String),
@@ -1083,7 +1083,7 @@ export interface LoggingDestination {
 }
 
 export const LoggingDestination: Schema.Codec<LoggingDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     logs: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "LoggingDestination" });
@@ -1096,7 +1096,7 @@ export interface Logging {
 }
 
 export const Logging: Schema.Codec<Logging> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
     producerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
   }).annotate({ identifier: "Logging" });
@@ -1109,7 +1109,7 @@ export interface MonitoringDestination {
 }
 
 export const MonitoringDestination: Schema.Codec<MonitoringDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "MonitoringDestination" });
@@ -1122,7 +1122,7 @@ export interface Monitoring {
 }
 
 export const Monitoring: Schema.Codec<Monitoring> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
     producerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
   }).annotate({ identifier: "Monitoring" });
@@ -1135,7 +1135,7 @@ export interface MetricRule {
 }
 
 export const MetricRule: Schema.Codec<MetricRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     metricCosts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "MetricRule" });
@@ -1164,7 +1164,7 @@ export interface QuotaLimit {
 }
 
 export const QuotaLimit: Schema.Codec<QuotaLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     maxLimit: Schema.optional(Schema.String),
@@ -1185,7 +1185,7 @@ export interface Quota {
 }
 
 export const Quota: Schema.Codec<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricRules: Schema.optional(Schema.Array(MetricRule)),
     limits: Schema.optional(Schema.Array(QuotaLimit)),
   }).annotate({ identifier: "Quota" });
@@ -1198,7 +1198,7 @@ export interface Mixin {
 }
 
 export const Mixin: Schema.Codec<Mixin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     root: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Mixin" });
@@ -1227,7 +1227,7 @@ export interface Method {
 }
 
 export const Method: Schema.Codec<Method> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseStreaming: Schema.optional(Schema.Boolean),
     syntax: Schema.optional(Schema.String),
     requestTypeUrl: Schema.optional(Schema.String),
@@ -1261,18 +1261,16 @@ export interface Api {
   options?: ReadonlyArray<Option>;
 }
 
-export const Api: Schema.Codec<Api> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    syntax: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    sourceContext: Schema.optional(SourceContext),
-    mixins: Schema.optional(Schema.Array(Mixin)),
-    name: Schema.optional(Schema.String),
-    methods: Schema.optional(Schema.Array(Method)),
-    edition: Schema.optional(Schema.String),
-    options: Schema.optional(Schema.Array(Option)),
-  },
-).annotate({ identifier: "Api" });
+export const Api: Schema.Codec<Api> = /*@__PURE__*/ Schema.Struct({
+  syntax: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  sourceContext: Schema.optional(SourceContext),
+  mixins: Schema.optional(Schema.Array(Mixin)),
+  name: Schema.optional(Schema.String),
+  methods: Schema.optional(Schema.Array(Method)),
+  edition: Schema.optional(Schema.String),
+  options: Schema.optional(Schema.Array(Option)),
+}).annotate({ identifier: "Api" });
 
 export interface CustomHttpPattern {
   /** The name of this custom HTTP verb. */
@@ -1282,7 +1280,7 @@ export interface CustomHttpPattern {
 }
 
 export const CustomHttpPattern: Schema.Codec<CustomHttpPattern> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomHttpPattern" });
@@ -1311,7 +1309,7 @@ export interface HttpRule {
 }
 
 export const HttpRule: Schema.Codec<HttpRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       selector: Schema.optional(Schema.String),
       delete: Schema.optional(Schema.String),
@@ -1334,7 +1332,7 @@ export interface Http {
 }
 
 export const Http: Schema.Codec<Http> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullyDecodeReservedExpansion: Schema.optional(Schema.Boolean),
     rules: Schema.optional(Schema.Array(HttpRule)),
   }).annotate({ identifier: "Http" });
@@ -1349,7 +1347,7 @@ export interface FieldPolicy {
 }
 
 export const FieldPolicy: Schema.Codec<FieldPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     selector: Schema.optional(Schema.String),
     resourcePermission: Schema.optional(Schema.String),
@@ -1363,7 +1361,7 @@ export interface MethodPolicy {
 }
 
 export const MethodPolicy: Schema.Codec<MethodPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestPolicies: Schema.optional(Schema.Array(FieldPolicy)),
     selector: Schema.optional(Schema.String),
   }).annotate({ identifier: "MethodPolicy" });
@@ -1376,7 +1374,7 @@ export interface Control {
 }
 
 export const Control: Schema.Codec<Control> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     methodPolicies: Schema.optional(Schema.Array(MethodPolicy)),
   }).annotate({ identifier: "Control" });
@@ -1408,7 +1406,7 @@ export interface MetricDescriptorMetadata {
 }
 
 export const MetricDescriptorMetadata: Schema.Codec<MetricDescriptorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     samplePeriod: Schema.optional(Schema.String),
     timeSeriesResourceHierarchyLevel: Schema.optional(
       Schema.Array(Schema.String),
@@ -1465,7 +1463,7 @@ export interface MetricDescriptor {
 }
 
 export const MetricDescriptor: Schema.Codec<MetricDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metricKind: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1485,7 +1483,7 @@ export interface OAuthRequirements {
 }
 
 export const OAuthRequirements: Schema.Codec<OAuthRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canonicalScopes: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthRequirements" });
 
@@ -1497,7 +1495,7 @@ export interface AuthRequirement {
 }
 
 export const AuthRequirement: Schema.Codec<AuthRequirement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     providerId: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthRequirement" });
@@ -1514,7 +1512,7 @@ export interface AuthenticationRule {
 }
 
 export const AuthenticationRule: Schema.Codec<AuthenticationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWithoutCredential: Schema.optional(Schema.Boolean),
     selector: Schema.optional(Schema.String),
     oauth: Schema.optional(OAuthRequirements),
@@ -1533,7 +1531,7 @@ export interface JwtLocation {
 }
 
 export const JwtLocation: Schema.Codec<JwtLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     cookie: Schema.optional(Schema.String),
     header: Schema.optional(Schema.String),
@@ -1556,7 +1554,7 @@ export interface AuthProvider {
 }
 
 export const AuthProvider: Schema.Codec<AuthProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jwksUri: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1573,7 +1571,7 @@ export interface Authentication {
 }
 
 export const Authentication: Schema.Codec<Authentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(AuthenticationRule)),
     providers: Schema.optional(Schema.Array(AuthProvider)),
   }).annotate({ identifier: "Authentication" });
@@ -1640,7 +1638,7 @@ export interface GoogleApiService {
 }
 
 export const GoogleApiService: Schema.Codec<GoogleApiService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     sourceInfo: Schema.optional(SourceInfo),
     types: Schema.optional(Schema.Array(Type)),
@@ -1698,7 +1696,7 @@ export interface GoogleApiServiceusageV1ServiceConfig {
 }
 
 export const GoogleApiServiceusageV1ServiceConfig: Schema.Codec<GoogleApiServiceusageV1ServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(Api)),
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1725,7 +1723,7 @@ export interface GoogleApiServiceusageV1Service {
 }
 
 export const GoogleApiServiceusageV1Service: Schema.Codec<GoogleApiServiceusageV1Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleApiServiceusageV1ServiceConfig),
     name: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -1740,7 +1738,7 @@ export interface EnableFailure {
 }
 
 export const EnableFailure: Schema.Codec<EnableFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceId: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnableFailure" });
@@ -1753,7 +1751,7 @@ export interface BatchEnableServicesResponse {
 }
 
 export const BatchEnableServicesResponse: Schema.Codec<BatchEnableServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(GoogleApiServiceusageV1Service)),
     failures: Schema.optional(Schema.Array(EnableFailure)),
   }).annotate({ identifier: "BatchEnableServicesResponse" });
@@ -1764,7 +1762,7 @@ export interface ContentSecurityProvider {
 }
 
 export const ContentSecurityProvider: Schema.Codec<ContentSecurityProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentSecurityProvider" });
 
@@ -1774,7 +1772,7 @@ export interface ContentSecurity {
 }
 
 export const ContentSecurity: Schema.Codec<ContentSecurity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentSecurityProviders: Schema.optional(
       Schema.Array(ContentSecurityProvider),
     ),
@@ -1786,7 +1784,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "OperationMetadata" });
 
@@ -1796,14 +1794,14 @@ export interface OverrideInlineSource {
 }
 
 export const OverrideInlineSource: Schema.Codec<OverrideInlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
   }).annotate({ identifier: "OverrideInlineSource" });
 
 export interface AddEnableRulesMetadata {}
 
 export const AddEnableRulesMetadata: Schema.Codec<AddEnableRulesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddEnableRulesMetadata",
   });
 
@@ -1821,7 +1819,7 @@ export interface Impact {
 }
 
 export const Impact: Schema.Codec<Impact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detail: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
     impactType: Schema.optional(Schema.String),
@@ -1835,7 +1833,7 @@ export interface AnalysisResult {
 }
 
 export const AnalysisResult: Schema.Codec<AnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blockers: Schema.optional(Schema.Array(Impact)),
     warnings: Schema.optional(Schema.Array(Impact)),
   }).annotate({ identifier: "AnalysisResult" });
@@ -1857,7 +1855,7 @@ export interface Analysis {
 }
 
 export const Analysis: Schema.Codec<Analysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     analysisType: Schema.optional(Schema.String),
@@ -1870,7 +1868,7 @@ export interface AnalyzeConsumerPolicyResponse {
 }
 
 export const AnalyzeConsumerPolicyResponse: Schema.Codec<AnalyzeConsumerPolicyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analysis: Schema.optional(Schema.Array(Analysis)),
   }).annotate({ identifier: "AnalyzeConsumerPolicyResponse" });
 
@@ -1880,7 +1878,7 @@ export interface GoogleApiServiceusageV2betaMcpEnableRule {
 }
 
 export const GoogleApiServiceusageV2betaMcpEnableRule: Schema.Codec<GoogleApiServiceusageV2betaMcpEnableRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mcpServices: Schema.optional(
       Schema.Array(GoogleApiServiceusageV2betaMcpService),
     ),
@@ -1889,7 +1887,7 @@ export const GoogleApiServiceusageV2betaMcpEnableRule: Schema.Codec<GoogleApiSer
 export interface UpdateAdminQuotaPolicyMetadata {}
 
 export const UpdateAdminQuotaPolicyMetadata: Schema.Codec<UpdateAdminQuotaPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateAdminQuotaPolicyMetadata",
   });
 
@@ -1903,7 +1901,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1925,7 +1923,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -1943,7 +1941,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1957,7 +1955,7 @@ export interface ServiceIdentity {
 }
 
 export const ServiceIdentity: Schema.Codec<ServiceIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uniqueId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceIdentity" });
@@ -1965,7 +1963,7 @@ export const ServiceIdentity: Schema.Codec<ServiceIdentity> =
 export interface DeleteAdminQuotaPolicyMetadata {}
 
 export const DeleteAdminQuotaPolicyMetadata: Schema.Codec<DeleteAdminQuotaPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteAdminQuotaPolicyMetadata",
   });
 
@@ -1975,14 +1973,14 @@ export interface GoogleApiServiceusageV2alphaEnableRule {
 }
 
 export const GoogleApiServiceusageV2alphaEnableRule: Schema.Codec<GoogleApiServiceusageV2alphaEnableRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleApiServiceusageV2alphaEnableRule" });
 
 export interface UpdateConsumerPolicyMetadata {}
 
 export const UpdateConsumerPolicyMetadata: Schema.Codec<UpdateConsumerPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateConsumerPolicyMetadata",
   });
 
@@ -2000,7 +1998,7 @@ export interface GoogleApiServiceusageV2betaMcpPolicy {
 }
 
 export const GoogleApiServiceusageV2betaMcpPolicy: Schema.Codec<GoogleApiServiceusageV2betaMcpPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2013,7 +2011,7 @@ export const GoogleApiServiceusageV2betaMcpPolicy: Schema.Codec<GoogleApiService
 export interface CreateAdminQuotaPolicyMetadata {}
 
 export const CreateAdminQuotaPolicyMetadata: Schema.Codec<CreateAdminQuotaPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateAdminQuotaPolicyMetadata",
   });
 
@@ -2025,7 +2023,7 @@ export interface AddEnableRulesResponse {
 }
 
 export const AddEnableRulesResponse: Schema.Codec<AddEnableRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     addedValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AddEnableRulesResponse" });
@@ -2036,7 +2034,7 @@ export interface RolloutInfo {
 }
 
 export const RolloutInfo: Schema.Codec<RolloutInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultLimitOngoingRollout: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RolloutInfo" });
 
@@ -2056,7 +2054,7 @@ export interface ProducerQuotaPolicy {
 }
 
 export const ProducerQuotaPolicy: Schema.Codec<ProducerQuotaPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     container: Schema.optional(Schema.String),
@@ -2085,7 +2083,7 @@ export interface QuotaBucket {
 }
 
 export const QuotaBucket: Schema.Codec<QuotaBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminOverride: Schema.optional(QuotaOverride),
     rolloutInfo: Schema.optional(RolloutInfo),
     producerQuotaPolicy: Schema.optional(ProducerQuotaPolicy),
@@ -2114,7 +2112,7 @@ export interface ConsumerQuotaLimit {
 }
 
 export const ConsumerQuotaLimit: Schema.Codec<ConsumerQuotaLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaBuckets: Schema.optional(Schema.Array(QuotaBucket)),
     name: Schema.optional(Schema.String),
     isPrecise: Schema.optional(Schema.Boolean),
@@ -2140,7 +2138,7 @@ export interface ConsumerQuotaMetric {
 }
 
 export const ConsumerQuotaMetric: Schema.Codec<ConsumerQuotaMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerQuotaLimits: Schema.optional(Schema.Array(ConsumerQuotaLimit)),
     name: Schema.optional(Schema.String),
     descendantConsumerQuotaLimits: Schema.optional(
@@ -2154,7 +2152,7 @@ export const ConsumerQuotaMetric: Schema.Codec<ConsumerQuotaMetric> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -2174,7 +2172,7 @@ export interface AdminQuotaPolicy {
 }
 
 export const AdminQuotaPolicy: Schema.Codec<AdminQuotaPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     container: Schema.optional(Schema.String),
     policyValue: Schema.optional(Schema.String),
@@ -2189,7 +2187,7 @@ export interface ImportAdminQuotaPoliciesResponse {
 }
 
 export const ImportAdminQuotaPoliciesResponse: Schema.Codec<ImportAdminQuotaPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(AdminQuotaPolicy)),
   }).annotate({ identifier: "ImportAdminQuotaPoliciesResponse" });
 
@@ -2210,7 +2208,7 @@ export interface EnableRule {
 }
 
 export const EnableRule: Schema.Codec<EnableRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Array(Schema.String)),
     values: Schema.optional(Schema.Array(Schema.String)),
     enableType: Schema.optional(Schema.String),
@@ -2220,14 +2218,14 @@ export const EnableRule: Schema.Codec<EnableRule> =
 export interface GetServiceIdentityMetadata {}
 
 export const GetServiceIdentityMetadata: Schema.Codec<GetServiceIdentityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GetServiceIdentityMetadata",
   });
 
 export interface ImportAdminQuotaPoliciesMetadata {}
 
 export const ImportAdminQuotaPoliciesMetadata: Schema.Codec<ImportAdminQuotaPoliciesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportAdminQuotaPoliciesMetadata",
   });
 
@@ -2237,14 +2235,14 @@ export interface DisableServiceResponse {
 }
 
 export const DisableServiceResponse: Schema.Codec<DisableServiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(GoogleApiServiceusageV1Service),
   }).annotate({ identifier: "DisableServiceResponse" });
 
 export interface AnalyzeConsumerPolicyMetadata {}
 
 export const AnalyzeConsumerPolicyMetadata: Schema.Codec<AnalyzeConsumerPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AnalyzeConsumerPolicyMetadata",
   });
 
@@ -2263,7 +2261,7 @@ export interface ImportAdminOverridesRequest {
 }
 
 export const ImportAdminOverridesRequest: Schema.Codec<ImportAdminOverridesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     inlineSource: Schema.optional(OverrideInlineSource),
     forceOnly: Schema.optional(Schema.Array(Schema.String)),
@@ -2275,14 +2273,14 @@ export interface ImportAdminOverridesResponse {
 }
 
 export const ImportAdminOverridesResponse: Schema.Codec<ImportAdminOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
   }).annotate({ identifier: "ImportAdminOverridesResponse" });
 
 export interface GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata {}
 
 export const GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata: Schema.Codec<GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata",
   });
 
@@ -2294,7 +2292,7 @@ export interface ListConsumerOverridesResponse {
 }
 
 export const ListConsumerOverridesResponse: Schema.Codec<ListConsumerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListConsumerOverridesResponse" });
@@ -2307,7 +2305,7 @@ export interface ContentSecurityPolicy {
 }
 
 export const ContentSecurityPolicy: Schema.Codec<ContentSecurityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mcpContentSecurity: Schema.optional(ContentSecurity),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentSecurityPolicy" });
@@ -2315,7 +2313,7 @@ export const ContentSecurityPolicy: Schema.Codec<ContentSecurityPolicy> =
 export interface ImportConsumerOverridesMetadata {}
 
 export const ImportConsumerOverridesMetadata: Schema.Codec<ImportConsumerOverridesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportConsumerOverridesMetadata",
   });
 
@@ -2335,7 +2333,7 @@ export interface GoogleApiServiceusageV2alphaConsumerPolicy {
 }
 
 export const GoogleApiServiceusageV2alphaConsumerPolicy: Schema.Codec<GoogleApiServiceusageV2alphaConsumerPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -2354,7 +2352,7 @@ export interface GoogleApiServiceusageV1beta1ServiceIdentity {
 }
 
 export const GoogleApiServiceusageV1beta1ServiceIdentity: Schema.Codec<GoogleApiServiceusageV1beta1ServiceIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uniqueId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleApiServiceusageV1beta1ServiceIdentity" });
@@ -2383,7 +2381,7 @@ export interface ServiceConfig {
 }
 
 export const ServiceConfig: Schema.Codec<ServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(Api)),
     title: Schema.optional(Schema.String),
     quota: Schema.optional(Quota),
@@ -2410,7 +2408,7 @@ export interface Service {
 }
 
 export const Service: Schema.Codec<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(ServiceConfig),
     name: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -2425,7 +2423,7 @@ export interface ListServicesResponse {
 }
 
 export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     services: Schema.optional(Schema.Array(Service)),
   }).annotate({ identifier: "ListServicesResponse" });
@@ -2433,14 +2431,14 @@ export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
 export interface GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata {}
 
 export const GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata: Schema.Codec<GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata",
   });
 
 export interface ImportAdminOverridesMetadata {}
 
 export const ImportAdminOverridesMetadata: Schema.Codec<ImportAdminOverridesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportAdminOverridesMetadata",
   });
 
@@ -2452,7 +2450,7 @@ export interface GoogleApiServiceusageV2betaAnalysisResult {
 }
 
 export const GoogleApiServiceusageV2betaAnalysisResult: Schema.Codec<GoogleApiServiceusageV2betaAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(GoogleApiServiceusageV2betaImpact)),
     blockers: Schema.optional(Schema.Array(GoogleApiServiceusageV2betaImpact)),
   }).annotate({ identifier: "GoogleApiServiceusageV2betaAnalysisResult" });
@@ -2473,7 +2471,7 @@ export interface GoogleApiServiceusageV2betaAnalysis {
 }
 
 export const GoogleApiServiceusageV2betaAnalysis: Schema.Codec<GoogleApiServiceusageV2betaAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analysisType: Schema.optional(Schema.String),
     analysisResult: Schema.optional(GoogleApiServiceusageV2betaAnalysisResult),
     service: Schema.optional(Schema.String),
@@ -2486,7 +2484,7 @@ export interface GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse {
 }
 
 export const GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse: Schema.Codec<GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analysis: Schema.optional(
       Schema.Array(GoogleApiServiceusageV2betaAnalysis),
     ),
@@ -2497,21 +2495,21 @@ export const GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse: Schema.Co
 export interface GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata {}
 
 export const GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata: Schema.Codec<GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata",
   });
 
 export interface GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata {}
 
 export const GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata: Schema.Codec<GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata",
   });
 
 export interface UpdateContentSecurityPolicyMetadata {}
 
 export const UpdateContentSecurityPolicyMetadata: Schema.Codec<UpdateContentSecurityPolicyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateContentSecurityPolicyMetadata",
   });
 
@@ -2523,7 +2521,7 @@ export interface GetServiceIdentityResponse {
 }
 
 export const GetServiceIdentityResponse: Schema.Codec<GetServiceIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identity: Schema.optional(ServiceIdentity),
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetServiceIdentityResponse" });
@@ -2536,7 +2534,7 @@ export interface ListConsumerQuotaMetricsResponse {
 }
 
 export const ListConsumerQuotaMetricsResponse: Schema.Codec<ListConsumerQuotaMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(ConsumerQuotaMetric)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListConsumerQuotaMetricsResponse" });
@@ -2544,7 +2542,7 @@ export const ListConsumerQuotaMetricsResponse: Schema.Codec<ListConsumerQuotaMet
 export interface EnableServiceRequest {}
 
 export const EnableServiceRequest: Schema.Codec<EnableServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableServiceRequest",
   });
 
@@ -2554,7 +2552,7 @@ export interface ImportConsumerOverridesResponse {
 }
 
 export const ImportConsumerOverridesResponse: Schema.Codec<ImportConsumerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
   }).annotate({ identifier: "ImportConsumerOverridesResponse" });
 
@@ -2566,7 +2564,7 @@ export interface GoogleApiServiceusageV1beta1GetServiceIdentityResponse {
 }
 
 export const GoogleApiServiceusageV1beta1GetServiceIdentityResponse: Schema.Codec<GoogleApiServiceusageV1beta1GetServiceIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identity: Schema.optional(GoogleApiServiceusageV1beta1ServiceIdentity),
     state: Schema.optional(Schema.String),
   }).annotate({
@@ -2587,7 +2585,7 @@ export interface ConsumerPolicy {
 }
 
 export const ConsumerPolicy: Schema.Codec<ConsumerPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableRules: Schema.optional(Schema.Array(EnableRule)),
     name: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2598,7 +2596,7 @@ export const ConsumerPolicy: Schema.Codec<ConsumerPolicy> =
 export interface DisableServiceRequest {}
 
 export const DisableServiceRequest: Schema.Codec<DisableServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableServiceRequest",
   });
 
@@ -2608,7 +2606,7 @@ export interface BatchCreateAdminOverridesResponse {
 }
 
 export const BatchCreateAdminOverridesResponse: Schema.Codec<BatchCreateAdminOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
   }).annotate({ identifier: "BatchCreateAdminOverridesResponse" });
 
@@ -2627,7 +2625,7 @@ export interface ImportConsumerOverridesRequest {
 }
 
 export const ImportConsumerOverridesRequest: Schema.Codec<ImportConsumerOverridesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(OverrideInlineSource),
     forceOnly: Schema.optional(Schema.Array(Schema.String)),
     force: Schema.optional(Schema.Boolean),
@@ -2639,7 +2637,7 @@ export interface GoogleApiServiceusageV1OperationMetadata {
 }
 
 export const GoogleApiServiceusageV1OperationMetadata: Schema.Codec<GoogleApiServiceusageV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleApiServiceusageV1OperationMetadata" });
 
@@ -2649,7 +2647,7 @@ export interface EnableServiceResponse {
 }
 
 export const EnableServiceResponse: Schema.Codec<EnableServiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(GoogleApiServiceusageV1Service),
   }).annotate({ identifier: "EnableServiceResponse" });
 
@@ -2659,14 +2657,14 @@ export interface BatchCreateConsumerOverridesResponse {
 }
 
 export const BatchCreateConsumerOverridesResponse: Schema.Codec<BatchCreateConsumerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(QuotaOverride)),
   }).annotate({ identifier: "BatchCreateConsumerOverridesResponse" });
 
 export interface RemoveEnableRulesMetadata {}
 
 export const RemoveEnableRulesMetadata: Schema.Codec<RemoveEnableRulesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveEnableRulesMetadata",
   });
 
@@ -2676,7 +2674,7 @@ export interface BatchEnableServicesRequest {
 }
 
 export const BatchEnableServicesRequest: Schema.Codec<BatchEnableServicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchEnableServicesRequest" });
 
@@ -2747,7 +2745,7 @@ export interface ListOperationsRequest {
   filter?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2761,8 +2759,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2772,7 +2769,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -2787,7 +2784,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2795,7 +2792,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2805,7 +2802,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2819,7 +2816,7 @@ export interface BatchEnableServicesRequest_Op {
 }
 
 export const BatchEnableServicesRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchEnableServicesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2832,8 +2829,7 @@ export const BatchEnableServicesRequest_Op =
   ) as unknown as Schema.Codec<BatchEnableServicesRequest_Op>;
 
 export type BatchEnableServicesResponse_Op = Operation;
-export const BatchEnableServicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const BatchEnableServicesResponse_Op = /*@__PURE__*/ Operation;
 
 export type BatchEnableServicesError =
   | DefaultErrors
@@ -2848,7 +2844,7 @@ export const batchEnableServices: API.OperationMethod<
   BatchEnableServicesResponse_Op,
   BatchEnableServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchEnableServicesRequest_Op,
   output: BatchEnableServicesResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2860,7 +2856,7 @@ export interface GenerateServiceIdentityServicesRequest {
 }
 
 export const GenerateServiceIdentityServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({
@@ -2872,8 +2868,7 @@ export const GenerateServiceIdentityServicesRequest =
   ) as unknown as Schema.Codec<GenerateServiceIdentityServicesRequest>;
 
 export type GenerateServiceIdentityServicesResponse = Operation;
-export const GenerateServiceIdentityServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GenerateServiceIdentityServicesResponse = /*@__PURE__*/ Operation;
 
 export type GenerateServiceIdentityServicesError =
   | DefaultErrors
@@ -2888,7 +2883,7 @@ export const generateServiceIdentityServices: API.OperationMethod<
   GenerateServiceIdentityServicesResponse,
   GenerateServiceIdentityServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateServiceIdentityServicesRequest,
   output: GenerateServiceIdentityServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2905,7 +2900,7 @@ export interface ListServicesRequest {
   pageToken?: string;
 }
 
-export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListServicesRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   parent: Schema.String.pipe(T.HttpPath("parent")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2916,8 +2911,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListServicesRequest>;
 
 export type ListServicesResponse_Op = ListServicesResponse;
-export const ListServicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
+export const ListServicesResponse_Op = /*@__PURE__*/ ListServicesResponse;
 
 export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2927,7 +2921,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesResponse_Op,
   ListServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -2944,7 +2938,7 @@ export interface EnableServicesRequest {
   body?: EnableServiceRequest;
 }
 
-export const EnableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableServicesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(EnableServiceRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -2953,7 +2947,7 @@ export const EnableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<EnableServicesRequest>;
 
 export type EnableServicesResponse = Operation;
-export const EnableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const EnableServicesResponse = /*@__PURE__*/ Operation;
 
 export type EnableServicesError =
   | DefaultErrors
@@ -2968,7 +2962,7 @@ export const enableServices: API.OperationMethod<
   EnableServicesResponse,
   EnableServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableServicesRequest,
   output: EnableServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2979,7 +2973,7 @@ export interface GetServicesRequest {
   name: string;
 }
 
-export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServicesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2987,7 +2981,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetServicesRequest>;
 
 export type GetServicesResponse = Service;
-export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
+export const GetServicesResponse = /*@__PURE__*/ Service;
 
 export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2997,7 +2991,7 @@ export const getServices: API.OperationMethod<
   GetServicesResponse,
   GetServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
   errors: [NotFound, Forbidden],
@@ -3010,18 +3004,16 @@ export interface DisableServicesRequest {
   body?: DisableServiceRequest;
 }
 
-export const DisableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(DisableServiceRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const DisableServicesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(DisableServiceRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "v1beta1/{+name}:disable", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<DisableServicesRequest>;
 
 export type DisableServicesResponse = Operation;
-export const DisableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DisableServicesResponse = /*@__PURE__*/ Operation;
 
 export type DisableServicesError =
   | DefaultErrors
@@ -3036,7 +3028,7 @@ export const disableServices: API.OperationMethod<
   DisableServicesResponse,
   DisableServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableServicesRequest,
   output: DisableServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3050,7 +3042,7 @@ export interface ImportConsumerOverridesServicesConsumerQuotaMetricsRequest {
 }
 
 export const ImportConsumerOverridesServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ImportConsumerOverridesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3065,7 +3057,7 @@ export const ImportConsumerOverridesServicesConsumerQuotaMetricsRequest =
 export type ImportConsumerOverridesServicesConsumerQuotaMetricsResponse =
   Operation;
 export const ImportConsumerOverridesServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ImportConsumerOverridesServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -3080,7 +3072,7 @@ export const importConsumerOverridesServicesConsumerQuotaMetrics: API.OperationM
   ImportConsumerOverridesServicesConsumerQuotaMetricsResponse,
   ImportConsumerOverridesServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportConsumerOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportConsumerOverridesServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3094,7 +3086,7 @@ export interface ImportAdminOverridesServicesConsumerQuotaMetricsRequest {
 }
 
 export const ImportAdminOverridesServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ImportAdminOverridesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -3109,7 +3101,7 @@ export const ImportAdminOverridesServicesConsumerQuotaMetricsRequest =
 export type ImportAdminOverridesServicesConsumerQuotaMetricsResponse =
   Operation;
 export const ImportAdminOverridesServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ImportAdminOverridesServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -3124,7 +3116,7 @@ export const importAdminOverridesServicesConsumerQuotaMetrics: API.OperationMeth
   ImportAdminOverridesServicesConsumerQuotaMetricsResponse,
   ImportAdminOverridesServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportAdminOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportAdminOverridesServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3142,7 +3134,7 @@ export interface ListServicesConsumerQuotaMetricsRequest {
 }
 
 export const ListServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3155,7 +3147,7 @@ export const ListServicesConsumerQuotaMetricsRequest =
 export type ListServicesConsumerQuotaMetricsResponse =
   ListConsumerQuotaMetricsResponse;
 export const ListServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConsumerQuotaMetricsResponse;
+  /*@__PURE__*/ ListConsumerQuotaMetricsResponse;
 
 export type ListServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -3168,7 +3160,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsResponse,
   ListServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: ListServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -3186,7 +3178,7 @@ export interface GetServicesConsumerQuotaMetricsRequest {
 }
 
 export const GetServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -3196,7 +3188,7 @@ export const GetServicesConsumerQuotaMetricsRequest =
 
 export type GetServicesConsumerQuotaMetricsResponse = ConsumerQuotaMetric;
 export const GetServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConsumerQuotaMetric;
+  /*@__PURE__*/ ConsumerQuotaMetric;
 
 export type GetServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -3209,7 +3201,7 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   GetServicesConsumerQuotaMetricsResponse,
   GetServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsRequest,
   output: GetServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -3223,7 +3215,7 @@ export interface GetServicesConsumerQuotaMetricsLimitsRequest {
 }
 
 export const GetServicesConsumerQuotaMetricsLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -3233,7 +3225,7 @@ export const GetServicesConsumerQuotaMetricsLimitsRequest =
 
 export type GetServicesConsumerQuotaMetricsLimitsResponse = ConsumerQuotaLimit;
 export const GetServicesConsumerQuotaMetricsLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConsumerQuotaLimit;
+  /*@__PURE__*/ ConsumerQuotaLimit;
 
 export type GetServicesConsumerQuotaMetricsLimitsError =
   | DefaultErrors
@@ -3246,7 +3238,7 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   GetServicesConsumerQuotaMetricsLimitsResponse,
   GetServicesConsumerQuotaMetricsLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsLimitsRequest,
   output: GetServicesConsumerQuotaMetricsLimitsResponse,
   errors: [NotFound, Forbidden],
@@ -3262,7 +3254,7 @@ export interface ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
 }
 
 export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3274,7 +3266,7 @@ export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   ListAdminOverridesResponse;
 export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAdminOverridesResponse;
+  /*@__PURE__*/ ListAdminOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | DefaultErrors
@@ -3287,7 +3279,7 @@ export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Paginated
   ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsAdminOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   errors: [NotFound, Forbidden],
@@ -3313,7 +3305,7 @@ export interface CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
 }
 
 export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
     ),
@@ -3332,7 +3324,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   Operation;
 export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | DefaultErrors
@@ -3347,7 +3339,7 @@ export const createServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
   CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   CreateServicesConsumerQuotaMetricsLimitsAdminOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3371,7 +3363,7 @@ export interface PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
 }
 
 export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -3387,7 +3379,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   Operation;
 export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | DefaultErrors
@@ -3402,7 +3394,7 @@ export const patchServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operatio
   PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3422,7 +3414,7 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
 }
 
 export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
@@ -3436,7 +3428,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
 export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   Operation;
 export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesError =
   | DefaultErrors
@@ -3451,7 +3443,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
   DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3473,7 +3465,7 @@ export interface CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesReques
 }
 
 export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
@@ -3492,7 +3484,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
 export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   Operation;
 export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
   | DefaultErrors
@@ -3507,7 +3499,7 @@ export const createServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
   CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3531,7 +3523,7 @@ export interface PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest
 }
 
 export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
@@ -3547,7 +3539,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
 export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   Operation;
 export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
   | DefaultErrors
@@ -3562,7 +3554,7 @@ export const patchServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Opera
   PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3582,7 +3574,7 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesReques
 }
 
 export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
@@ -3596,7 +3588,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
 export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   Operation;
 export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
   | DefaultErrors
@@ -3611,7 +3603,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
   DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3627,7 +3619,7 @@ export interface ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest 
 }
 
 export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -3639,7 +3631,7 @@ export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
 export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   ListConsumerOverridesResponse;
 export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConsumerOverridesResponse;
+  /*@__PURE__*/ ListConsumerOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
   | DefaultErrors
@@ -3652,7 +3644,7 @@ export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Pagina
   ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
   errors: [NotFound, Forbidden],

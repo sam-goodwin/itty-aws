@@ -15,7 +15,7 @@ export interface EventsControllerListInput {
   organization_id?: string;
 }
 export const EventsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -42,7 +42,7 @@ export interface EventsControllerListOutput {
   list_metadata?: { after: string | null };
 }
 export const EventsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -80,10 +80,8 @@ export const EventsControllerListOutput =
  * @param range_end - ISO-8601 date string to filter events created before this date.
  * @param organization_id - Filter events by the [Organization](/reference/organization) that the event is associated with.
  */
-export const EventsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsControllerListInput,
-    outputSchema: EventsControllerListOutput,
-    errors: [BadRequest, UnprocessableEntity] as const,
-  }),
-);
+export const EventsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsControllerListInput,
+  outputSchema: EventsControllerListOutput,
+  errors: [BadRequest, UnprocessableEntity] as const,
+}));

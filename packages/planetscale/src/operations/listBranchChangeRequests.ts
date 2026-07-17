@@ -12,7 +12,7 @@ export interface ListBranchChangeRequestsInput {
   per_page?: number;
 }
 export const ListBranchChangeRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -33,9 +33,9 @@ export interface ListBranchChangeRequestsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
-    restart: number[];
+    restart: ReadonlyArray<number>;
     state: "queued" | "pending" | "resizing" | "canceled" | "completed";
     started_at: string | null;
     completed_at?: string | null;
@@ -66,10 +66,10 @@ export interface ListBranchChangeRequestsOutput {
     previous_storage_type: string;
     previous_storage_iops: number;
     previous_storage_throughput_mibs: number;
-  }[];
+  }>;
 }
 export const ListBranchChangeRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -135,7 +135,7 @@ export const ListBranchChangeRequestsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listBranchChangeRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListBranchChangeRequestsInput,
     outputSchema: ListBranchChangeRequestsOutput,
     errors: [Forbidden, NotFound] as const,

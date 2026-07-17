@@ -24,7 +24,7 @@ export interface AccountsChangeKeyVaultInput {
   }[];
 }
 export const AccountsChangeKeyVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -48,7 +48,7 @@ export const AccountsChangeKeyVaultInput =
 // Output Schema
 export type AccountsChangeKeyVaultOutput = void;
 export const AccountsChangeKeyVaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsChangeKeyVaultOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsChangeKeyVaultOutput>;
 
 // The operation
 /**
@@ -59,12 +59,10 @@ export const AccountsChangeKeyVaultOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsChangeKeyVault = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsChangeKeyVaultInput,
-    outputSchema: AccountsChangeKeyVaultOutput,
-  }),
-);
+export const AccountsChangeKeyVault = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsChangeKeyVaultInput,
+  outputSchema: AccountsChangeKeyVaultOutput,
+}));
 // Input Schema
 export interface AccountsCreateOrUpdateInput {
   subscriptionId: string;
@@ -138,7 +136,7 @@ export interface AccountsCreateOrUpdateInput {
   location: string;
 }
 export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -273,7 +271,7 @@ export interface AccountsCreateOrUpdateOutput {
   };
 }
 export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -302,19 +300,17 @@ export const AccountsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsCreateOrUpdateInput,
-    outputSchema: AccountsCreateOrUpdateOutput,
-  }),
-);
+export const AccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCreateOrUpdateInput,
+  outputSchema: AccountsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AccountsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -329,7 +325,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -340,7 +336,7 @@ export const AccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -350,7 +346,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -376,7 +372,7 @@ export interface AccountsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -405,7 +401,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -416,7 +412,7 @@ export interface AccountsGetChangeKeyVaultInformationInput {
   accountName: string;
 }
 export const AccountsGetChangeKeyVaultInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -441,7 +437,7 @@ export interface AccountsGetChangeKeyVaultInformationOutput {
   };
 }
 export const AccountsGetChangeKeyVaultInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         keyVaultUri: Schema.optional(Schema.String),
@@ -469,7 +465,7 @@ export const AccountsGetChangeKeyVaultInformationOutput =
  * @param accountName - The name of the NetApp account
  */
 export const AccountsGetChangeKeyVaultInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsGetChangeKeyVaultInformationInput,
     outputSchema: AccountsGetChangeKeyVaultInformationOutput,
   }));
@@ -478,7 +474,7 @@ export interface AccountsListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -506,7 +502,7 @@ export interface AccountsListOutput {
   }[];
   nextLink?: string;
 }
-export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -539,7 +535,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
   outputSchema: AccountsListOutput,
 }));
@@ -548,7 +544,7 @@ export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -576,7 +572,7 @@ export interface AccountsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -618,12 +614,10 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsRenewCredentialsInput {
   subscriptionId: string;
@@ -631,7 +625,7 @@ export interface AccountsRenewCredentialsInput {
   accountName: string;
 }
 export const AccountsRenewCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -646,7 +640,7 @@ export const AccountsRenewCredentialsInput =
 // Output Schema
 export type AccountsRenewCredentialsOutput = void;
 export const AccountsRenewCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsRenewCredentialsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsRenewCredentialsOutput>;
 
 // The operation
 /**
@@ -657,12 +651,10 @@ export const AccountsRenewCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsRenewCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsRenewCredentialsInput,
-    outputSchema: AccountsRenewCredentialsOutput,
-  }),
-);
+export const AccountsRenewCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsRenewCredentialsInput,
+  outputSchema: AccountsRenewCredentialsOutput,
+}));
 // Input Schema
 export interface AccountsTransitionToCmkInput {
   subscriptionId: string;
@@ -672,7 +664,7 @@ export interface AccountsTransitionToCmkInput {
   privateEndpointId: string;
 }
 export const AccountsTransitionToCmkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -689,7 +681,7 @@ export const AccountsTransitionToCmkInput =
 // Output Schema
 export type AccountsTransitionToCmkOutput = void;
 export const AccountsTransitionToCmkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsTransitionToCmkOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsTransitionToCmkOutput>;
 
 // The operation
 /**
@@ -700,12 +692,10 @@ export const AccountsTransitionToCmkOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsTransitionToCmk = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsTransitionToCmkInput,
-    outputSchema: AccountsTransitionToCmkOutput,
-  }),
-);
+export const AccountsTransitionToCmk = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsTransitionToCmkInput,
+  outputSchema: AccountsTransitionToCmkOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -780,7 +770,7 @@ export interface AccountsUpdateInput {
     >;
   };
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -914,7 +904,7 @@ export interface AccountsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -943,7 +933,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -973,7 +963,7 @@ export interface BackupPoliciesCreateInput {
   location: string;
 }
 export const BackupPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1023,7 +1013,7 @@ export interface BackupPoliciesCreateOutput {
   };
 }
 export const BackupPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1053,12 +1043,10 @@ export const BackupPoliciesCreateOutput =
  * @param accountName - The name of the NetApp account
  * @param backupPolicyName - Backup policy Name which uniquely identify backup policy.
  */
-export const BackupPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupPoliciesCreateInput,
-    outputSchema: BackupPoliciesCreateOutput,
-  }),
-);
+export const BackupPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupPoliciesCreateInput,
+  outputSchema: BackupPoliciesCreateOutput,
+}));
 // Input Schema
 export interface BackupPoliciesDeleteInput {
   subscriptionId: string;
@@ -1067,7 +1055,7 @@ export interface BackupPoliciesDeleteInput {
   backupPolicyName: string;
 }
 export const BackupPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1083,7 +1071,7 @@ export const BackupPoliciesDeleteInput =
 // Output Schema
 export type BackupPoliciesDeleteOutput = void;
 export const BackupPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1095,12 +1083,10 @@ export const BackupPoliciesDeleteOutput =
  * @param accountName - The name of the NetApp account
  * @param backupPolicyName - Backup policy Name which uniquely identify backup policy.
  */
-export const BackupPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupPoliciesDeleteInput,
-    outputSchema: BackupPoliciesDeleteOutput,
-  }),
-);
+export const BackupPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupPoliciesDeleteInput,
+  outputSchema: BackupPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface BackupPoliciesGetInput {
   subscriptionId: string;
@@ -1108,14 +1094,12 @@ export interface BackupPoliciesGetInput {
   accountName: string;
   backupPolicyName: string;
 }
-export const BackupPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    backupPolicyName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const BackupPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  backupPolicyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
@@ -1138,7 +1122,7 @@ export interface BackupPoliciesGetOutput {
   };
 }
 export const BackupPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1168,7 +1152,7 @@ export const BackupPoliciesGetOutput =
  * @param accountName - The name of the NetApp account
  * @param backupPolicyName - Backup policy Name which uniquely identify backup policy.
  */
-export const BackupPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupPoliciesGetInput,
   outputSchema: BackupPoliciesGetOutput,
 }));
@@ -1179,7 +1163,7 @@ export interface BackupPoliciesListInput {
   accountName: string;
 }
 export const BackupPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1209,7 +1193,7 @@ export interface BackupPoliciesListOutput {
   nextLink?: string;
 }
 export const BackupPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1253,7 +1237,7 @@ export const BackupPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const BackupPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupPoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupPoliciesListInput,
   outputSchema: BackupPoliciesListOutput,
 }));
@@ -1285,7 +1269,7 @@ export interface BackupPoliciesUpdateInput {
   };
 }
 export const BackupPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1339,7 +1323,7 @@ export interface BackupPoliciesUpdateOutput {
   };
 }
 export const BackupPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1369,12 +1353,10 @@ export const BackupPoliciesUpdateOutput =
  * @param accountName - The name of the NetApp account
  * @param backupPolicyName - Backup policy Name which uniquely identify backup policy.
  */
-export const BackupPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupPoliciesUpdateInput,
-    outputSchema: BackupPoliciesUpdateOutput,
-  }),
-);
+export const BackupPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupPoliciesUpdateInput,
+  outputSchema: BackupPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface BackupsCreateInput {
   subscriptionId: string;
@@ -1399,7 +1381,7 @@ export interface BackupsCreateInput {
     isLargeVolume?: boolean;
   };
 }
-export const BackupsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1443,7 +1425,7 @@ export interface BackupsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const BackupsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1474,7 +1456,7 @@ export const BackupsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param backupVaultName - The name of the Backup Vault
  * @param backupName - The name of the backup
  */
-export const BackupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupsCreateInput,
   outputSchema: BackupsCreateOutput,
 }));
@@ -1486,7 +1468,7 @@ export interface BackupsDeleteInput {
   backupVaultName: string;
   backupName: string;
 }
-export const BackupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1503,7 +1485,7 @@ export const BackupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BackupsDeleteOutput = void;
 export const BackupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsDeleteOutput>;
 
 // The operation
 /**
@@ -1516,7 +1498,7 @@ export const BackupsDeleteOutput =
  * @param backupVaultName - The name of the Backup Vault
  * @param backupName - The name of the backup
  */
-export const BackupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupsDeleteInput,
   outputSchema: BackupsDeleteOutput,
 }));
@@ -1528,7 +1510,7 @@ export interface BackupsGetInput {
   backupVaultName: string;
   backupName: string;
 }
-export const BackupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1556,7 +1538,7 @@ export interface BackupsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BackupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1587,7 +1569,7 @@ export const BackupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param backupVaultName - The name of the Backup Vault
  * @param backupName - The name of the backup
  */
-export const BackupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupsGetInput,
   outputSchema: BackupsGetOutput,
 }));
@@ -1600,7 +1582,7 @@ export interface BackupsGetLatestStatusInput {
   volumeName: string;
 }
 export const BackupsGetLatestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1627,7 +1609,7 @@ export interface BackupsGetLatestStatusOutput {
   transferProgressBytes?: number;
 }
 export const BackupsGetLatestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     healthy: Schema.optional(Schema.Boolean),
     relationshipStatus: Schema.optional(
       Schema.Literals(["Idle", "Transferring", "Failed", "Unknown"]),
@@ -1654,12 +1636,10 @@ export const BackupsGetLatestStatusOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const BackupsGetLatestStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupsGetLatestStatusInput,
-    outputSchema: BackupsGetLatestStatusOutput,
-  }),
-);
+export const BackupsGetLatestStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupsGetLatestStatusInput,
+  outputSchema: BackupsGetLatestStatusOutput,
+}));
 // Input Schema
 export interface BackupsGetVolumeLatestRestoreStatusInput {
   subscriptionId: string;
@@ -1669,7 +1649,7 @@ export interface BackupsGetVolumeLatestRestoreStatusInput {
   volumeName: string;
 }
 export const BackupsGetVolumeLatestRestoreStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1693,7 +1673,7 @@ export interface BackupsGetVolumeLatestRestoreStatusOutput {
   totalTransferBytes?: number;
 }
 export const BackupsGetVolumeLatestRestoreStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     healthy: Schema.optional(Schema.Boolean),
     relationshipStatus: Schema.optional(
       Schema.Literals(["Idle", "Transferring", "Failed", "Unknown"]),
@@ -1718,7 +1698,7 @@ export const BackupsGetVolumeLatestRestoreStatusOutput =
  * @param volumeName - The name of the volume
  */
 export const BackupsGetVolumeLatestRestoreStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsGetVolumeLatestRestoreStatusInput,
     outputSchema: BackupsGetVolumeLatestRestoreStatusOutput,
   }));
@@ -1731,7 +1711,7 @@ export interface BackupsListByVaultInput {
   $filter?: string;
 }
 export const BackupsListByVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1763,7 +1743,7 @@ export interface BackupsListByVaultOutput {
   nextLink?: string;
 }
 export const BackupsListByVaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1809,7 +1789,7 @@ export const BackupsListByVaultOutput =
  * @param backupVaultName - The name of the Backup Vault
  * @param $filter - An option to specify the VolumeResourceId. If present, then only returns the backups under the specified volume
  */
-export const BackupsListByVault = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupsListByVault = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupsListByVaultInput,
   outputSchema: BackupsListByVaultOutput,
 }));
@@ -1821,7 +1801,7 @@ export interface BackupsUnderAccountMigrateBackupsInput {
   backupVaultId: string;
 }
 export const BackupsUnderAccountMigrateBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1837,7 +1817,7 @@ export const BackupsUnderAccountMigrateBackupsInput =
 // Output Schema
 export type BackupsUnderAccountMigrateBackupsOutput = void;
 export const BackupsUnderAccountMigrateBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderAccountMigrateBackupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderAccountMigrateBackupsOutput>;
 
 // The operation
 /**
@@ -1849,7 +1829,7 @@ export const BackupsUnderAccountMigrateBackupsOutput =
  * @param accountName - The name of the NetApp account
  */
 export const BackupsUnderAccountMigrateBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsUnderAccountMigrateBackupsInput,
     outputSchema: BackupsUnderAccountMigrateBackupsOutput,
   }));
@@ -1865,7 +1845,7 @@ export interface BackupsUnderBackupVaultRestoreFilesInput {
   destinationVolumeId: string;
 }
 export const BackupsUnderBackupVaultRestoreFilesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1885,7 +1865,7 @@ export const BackupsUnderBackupVaultRestoreFilesInput =
 // Output Schema
 export type BackupsUnderBackupVaultRestoreFilesOutput = void;
 export const BackupsUnderBackupVaultRestoreFilesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderBackupVaultRestoreFilesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderBackupVaultRestoreFilesOutput>;
 
 // The operation
 /**
@@ -1899,7 +1879,7 @@ export const BackupsUnderBackupVaultRestoreFilesOutput =
  * @param backupName - The name of the backup
  */
 export const BackupsUnderBackupVaultRestoreFiles =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsUnderBackupVaultRestoreFilesInput,
     outputSchema: BackupsUnderBackupVaultRestoreFilesOutput,
   }));
@@ -1913,7 +1893,7 @@ export interface BackupsUnderVolumeMigrateBackupsInput {
   backupVaultId: string;
 }
 export const BackupsUnderVolumeMigrateBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1931,7 +1911,7 @@ export const BackupsUnderVolumeMigrateBackupsInput =
 // Output Schema
 export type BackupsUnderVolumeMigrateBackupsOutput = void;
 export const BackupsUnderVolumeMigrateBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderVolumeMigrateBackupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsUnderVolumeMigrateBackupsOutput>;
 
 // The operation
 /**
@@ -1945,7 +1925,7 @@ export const BackupsUnderVolumeMigrateBackupsOutput =
  * @param volumeName - The name of the volume
  */
 export const BackupsUnderVolumeMigrateBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupsUnderVolumeMigrateBackupsInput,
     outputSchema: BackupsUnderVolumeMigrateBackupsOutput,
   }));
@@ -1958,7 +1938,7 @@ export interface BackupsUpdateInput {
   backupName: string;
   properties?: { label?: string };
 }
-export const BackupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1991,7 +1971,7 @@ export interface BackupsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const BackupsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2022,7 +2002,7 @@ export const BackupsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param backupVaultName - The name of the Backup Vault
  * @param backupName - The name of the backup
  */
-export const BackupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupsUpdateInput,
   outputSchema: BackupsUpdateOutput,
 }));
@@ -2037,7 +2017,7 @@ export interface BackupVaultsCreateOrUpdateInput {
   location: string;
 }
 export const BackupVaultsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2072,7 +2052,7 @@ export interface BackupVaultsCreateOrUpdateOutput {
   };
 }
 export const BackupVaultsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2102,12 +2082,10 @@ export const BackupVaultsCreateOrUpdateOutput =
  * @param accountName - The name of the NetApp account
  * @param backupVaultName - The name of the Backup Vault
  */
-export const BackupVaultsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupVaultsCreateOrUpdateInput,
-    outputSchema: BackupVaultsCreateOrUpdateOutput,
-  }),
-);
+export const BackupVaultsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupVaultsCreateOrUpdateInput,
+  outputSchema: BackupVaultsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BackupVaultsDeleteInput {
   subscriptionId: string;
@@ -2116,7 +2094,7 @@ export interface BackupVaultsDeleteInput {
   backupVaultName: string;
 }
 export const BackupVaultsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2132,7 +2110,7 @@ export const BackupVaultsDeleteInput =
 // Output Schema
 export type BackupVaultsDeleteOutput = void;
 export const BackupVaultsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupVaultsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupVaultsDeleteOutput>;
 
 // The operation
 /**
@@ -2144,7 +2122,7 @@ export const BackupVaultsDeleteOutput =
  * @param accountName - The name of the NetApp account
  * @param backupVaultName - The name of the Backup Vault
  */
-export const BackupVaultsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsDeleteInput,
   outputSchema: BackupVaultsDeleteOutput,
 }));
@@ -2155,7 +2133,7 @@ export interface BackupVaultsGetInput {
   accountName: string;
   backupVaultName: string;
 }
-export const BackupVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupVaultsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2182,7 +2160,7 @@ export interface BackupVaultsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BackupVaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupVaultsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2212,7 +2190,7 @@ export const BackupVaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param backupVaultName - The name of the Backup Vault
  */
-export const BackupVaultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsGetInput,
   outputSchema: BackupVaultsGetOutput,
 }));
@@ -2223,7 +2201,7 @@ export interface BackupVaultsListByNetAppAccountInput {
   accountName: string;
 }
 export const BackupVaultsListByNetAppAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2253,7 +2231,7 @@ export interface BackupVaultsListByNetAppAccountOutput {
   nextLink?: string;
 }
 export const BackupVaultsListByNetAppAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2298,7 +2276,7 @@ export const BackupVaultsListByNetAppAccountOutput =
  * @param accountName - The name of the NetApp account
  */
 export const BackupVaultsListByNetAppAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupVaultsListByNetAppAccountInput,
     outputSchema: BackupVaultsListByNetAppAccountOutput,
   }));
@@ -2311,7 +2289,7 @@ export interface BackupVaultsUpdateInput {
   tags?: Record<string, string>;
 }
 export const BackupVaultsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2340,7 +2318,7 @@ export interface BackupVaultsUpdateOutput {
   };
 }
 export const BackupVaultsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2370,7 +2348,7 @@ export const BackupVaultsUpdateOutput =
  * @param accountName - The name of the NetApp account
  * @param backupVaultName - The name of the Backup Vault
  */
-export const BackupVaultsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsUpdateInput,
   outputSchema: BackupVaultsUpdateOutput,
 }));
@@ -2420,7 +2398,7 @@ export interface BucketsCreateOrUpdateInput {
   };
 }
 export const BucketsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2516,7 +2494,7 @@ export interface BucketsCreateOrUpdateOutput {
   };
 }
 export const BucketsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2548,12 +2526,10 @@ export const BucketsCreateOrUpdateOutput =
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BucketsCreateOrUpdateInput,
-    outputSchema: BucketsCreateOrUpdateOutput,
-  }),
-);
+export const BucketsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BucketsCreateOrUpdateInput,
+  outputSchema: BucketsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BucketsDeleteInput {
   subscriptionId: string;
@@ -2563,7 +2539,7 @@ export interface BucketsDeleteInput {
   volumeName: string;
   bucketName: string;
 }
-export const BucketsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2581,7 +2557,7 @@ export const BucketsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BucketsDeleteOutput = void;
 export const BucketsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsDeleteOutput>;
 
 // The operation
 /**
@@ -2595,7 +2571,7 @@ export const BucketsDeleteOutput =
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BucketsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BucketsDeleteInput,
   outputSchema: BucketsDeleteOutput,
 }));
@@ -2610,7 +2586,7 @@ export interface BucketsGenerateAkvCredentialsInput {
   keyPairExpiryDays?: number;
 }
 export const BucketsGenerateAkvCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2629,7 +2605,7 @@ export const BucketsGenerateAkvCredentialsInput =
 // Output Schema
 export type BucketsGenerateAkvCredentialsOutput = void;
 export const BucketsGenerateAkvCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsGenerateAkvCredentialsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsGenerateAkvCredentialsOutput>;
 
 // The operation
 /**
@@ -2644,7 +2620,7 @@ export const BucketsGenerateAkvCredentialsOutput =
  * @param bucketName - The name of the bucket
  */
 export const BucketsGenerateAkvCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BucketsGenerateAkvCredentialsInput,
     outputSchema: BucketsGenerateAkvCredentialsOutput,
   }));
@@ -2659,7 +2635,7 @@ export interface BucketsGenerateCredentialsInput {
   keyPairExpiryDays?: number;
 }
 export const BucketsGenerateCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2682,7 +2658,7 @@ export interface BucketsGenerateCredentialsOutput {
   keyPairExpiry?: string;
 }
 export const BucketsGenerateCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessKey: Schema.optional(Schema.String),
     secretKey: Schema.optional(SensitiveOutputString),
     keyPairExpiry: Schema.optional(Schema.String),
@@ -2700,12 +2676,10 @@ export const BucketsGenerateCredentialsOutput =
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsGenerateCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BucketsGenerateCredentialsInput,
-    outputSchema: BucketsGenerateCredentialsOutput,
-  }),
-);
+export const BucketsGenerateCredentials = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BucketsGenerateCredentialsInput,
+  outputSchema: BucketsGenerateCredentialsOutput,
+}));
 // Input Schema
 export interface BucketsGetInput {
   subscriptionId: string;
@@ -2715,7 +2689,7 @@ export interface BucketsGetInput {
   volumeName: string;
   bucketName: string;
 }
-export const BucketsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2744,7 +2718,7 @@ export interface BucketsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BucketsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2776,7 +2750,7 @@ export const BucketsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BucketsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BucketsGetInput,
   outputSchema: BucketsGetOutput,
 }));
@@ -2788,7 +2762,7 @@ export interface BucketsListInput {
   poolName: string;
   volumeName: string;
 }
-export const BucketsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2819,7 +2793,7 @@ export interface BucketsListOutput {
   }[];
   nextLink?: string;
 }
-export const BucketsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2855,7 +2829,7 @@ export const BucketsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const BucketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BucketsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BucketsListInput,
   outputSchema: BucketsListOutput,
 }));
@@ -2869,7 +2843,7 @@ export interface BucketsRefreshCertificateInput {
   bucketName: string;
 }
 export const BucketsRefreshCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2887,7 +2861,7 @@ export const BucketsRefreshCertificateInput =
 // Output Schema
 export type BucketsRefreshCertificateOutput = void;
 export const BucketsRefreshCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsRefreshCertificateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BucketsRefreshCertificateOutput>;
 
 // The operation
 /**
@@ -2901,12 +2875,10 @@ export const BucketsRefreshCertificateOutput =
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsRefreshCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BucketsRefreshCertificateInput,
-    outputSchema: BucketsRefreshCertificateOutput,
-  }),
-);
+export const BucketsRefreshCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BucketsRefreshCertificateInput,
+  outputSchema: BucketsRefreshCertificateOutput,
+}));
 // Input Schema
 export interface BucketsUpdateInput {
   subscriptionId: string;
@@ -2947,7 +2919,7 @@ export interface BucketsUpdateInput {
     };
   };
 }
-export const BucketsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3033,7 +3005,7 @@ export interface BucketsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const BucketsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BucketsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3065,7 +3037,7 @@ export const BucketsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param bucketName - The name of the bucket
  */
-export const BucketsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BucketsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BucketsUpdateInput,
   outputSchema: BucketsUpdateOutput,
 }));
@@ -3220,7 +3192,7 @@ export interface CachesCreateOrUpdateInput {
   location: string;
 }
 export const CachesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3431,7 +3403,7 @@ export interface CachesCreateOrUpdateOutput {
   };
 }
 export const CachesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3462,12 +3434,10 @@ export const CachesCreateOrUpdateOutput =
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesCreateOrUpdateInput,
-    outputSchema: CachesCreateOrUpdateOutput,
-  }),
-);
+export const CachesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesCreateOrUpdateInput,
+  outputSchema: CachesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CachesDeleteInput {
   subscriptionId: string;
@@ -3476,7 +3446,7 @@ export interface CachesDeleteInput {
   poolName: string;
   cacheName: string;
 }
-export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3493,7 +3463,7 @@ export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesDeleteOutput = void;
 export const CachesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDeleteOutput>;
 
 // The operation
 /**
@@ -3506,7 +3476,7 @@ export const CachesDeleteOutput =
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesDeleteInput,
   outputSchema: CachesDeleteOutput,
 }));
@@ -3518,7 +3488,7 @@ export interface CachesGetInput {
   poolName: string;
   cacheName: string;
 }
-export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3546,7 +3516,7 @@ export interface CachesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3577,7 +3547,7 @@ export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesGetInput,
   outputSchema: CachesGetOutput,
 }));
@@ -3588,7 +3558,7 @@ export interface CachesListInput {
   accountName: string;
   poolName: string;
 }
-export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3618,7 +3588,7 @@ export interface CachesListOutput {
   }[];
   nextLink?: string;
 }
-export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3653,7 +3623,7 @@ export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const CachesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesListInput,
   outputSchema: CachesListOutput,
 }));
@@ -3666,7 +3636,7 @@ export interface CachesListPeeringPassphrasesInput {
   cacheName: string;
 }
 export const CachesListPeeringPassphrasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3688,7 +3658,7 @@ export interface CachesListPeeringPassphrasesOutput {
   criticalWarning?: string;
 }
 export const CachesListPeeringPassphrasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterPeeringCommand: Schema.String,
     clusterPeeringPassphrase: Schema.String,
     vserverPeeringCommand: Schema.String,
@@ -3707,7 +3677,7 @@ export const CachesListPeeringPassphrasesOutput =
  * @param cacheName - The name of the cache resource.
  */
 export const CachesListPeeringPassphrases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CachesListPeeringPassphrasesInput,
     outputSchema: CachesListPeeringPassphrasesOutput,
   }));
@@ -3720,7 +3690,7 @@ export interface CachesPoolChangeInput {
   cacheName: string;
   newPoolResourceId: string;
 }
-export const CachesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesPoolChangeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3749,27 +3719,25 @@ export interface CachesPoolChangeOutput {
     lastModifiedAt?: string;
   };
 }
-export const CachesPoolChangeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CachesPoolChangeOutput>;
+export const CachesPoolChangeOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CachesPoolChangeOutput>;
 
 // The operation
 /**
@@ -3782,7 +3750,7 @@ export const CachesPoolChangeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesPoolChange = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesPoolChange = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesPoolChangeInput,
   outputSchema: CachesPoolChangeOutput,
 }));
@@ -3795,7 +3763,7 @@ export interface CachesResetSmbPasswordInput {
   cacheName: string;
 }
 export const CachesResetSmbPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3824,7 +3792,7 @@ export interface CachesResetSmbPasswordOutput {
   };
 }
 export const CachesResetSmbPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3855,12 +3823,10 @@ export const CachesResetSmbPasswordOutput =
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesResetSmbPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesResetSmbPasswordInput,
-    outputSchema: CachesResetSmbPasswordOutput,
-  }),
-);
+export const CachesResetSmbPassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesResetSmbPasswordInput,
+  outputSchema: CachesResetSmbPasswordOutput,
+}));
 // Input Schema
 export interface CachesUpdateInput {
   subscriptionId: string;
@@ -3902,7 +3868,7 @@ export interface CachesUpdateInput {
     writeBack?: "Disabled" | "Enabled";
   };
 }
-export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3985,7 +3951,7 @@ export interface CachesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4016,7 +3982,7 @@ export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param cacheName - The name of the cache resource.
  */
-export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesUpdateInput,
   outputSchema: CachesUpdateOutput,
 }));
@@ -4029,7 +3995,7 @@ export interface NetAppResourceCheckFilePathAvailabilityInput {
   availabilityZone?: string | null;
 }
 export const NetAppResourceCheckFilePathAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -4050,7 +4016,7 @@ export interface NetAppResourceCheckFilePathAvailabilityOutput {
   message?: string;
 }
 export const NetAppResourceCheckFilePathAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -4067,7 +4033,7 @@ export const NetAppResourceCheckFilePathAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceCheckFilePathAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceCheckFilePathAvailabilityInput,
     outputSchema: NetAppResourceCheckFilePathAvailabilityOutput,
   }));
@@ -4086,7 +4052,7 @@ export interface NetAppResourceCheckNameAvailabilityInput {
   resourceGroup: string;
 }
 export const NetAppResourceCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -4114,7 +4080,7 @@ export interface NetAppResourceCheckNameAvailabilityOutput {
   message?: string;
 }
 export const NetAppResourceCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -4131,7 +4097,7 @@ export const NetAppResourceCheckNameAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceCheckNameAvailabilityInput,
     outputSchema: NetAppResourceCheckNameAvailabilityOutput,
   }));
@@ -4150,7 +4116,7 @@ export interface NetAppResourceCheckQuotaAvailabilityInput {
   resourceGroup: string;
 }
 export const NetAppResourceCheckQuotaAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -4178,7 +4144,7 @@ export interface NetAppResourceCheckQuotaAvailabilityOutput {
   message?: string;
 }
 export const NetAppResourceCheckQuotaAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -4195,7 +4161,7 @@ export const NetAppResourceCheckQuotaAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceCheckQuotaAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceCheckQuotaAvailabilityInput,
     outputSchema: NetAppResourceCheckQuotaAvailabilityOutput,
   }));
@@ -4207,7 +4173,7 @@ export interface NetAppResourceQueryNetworkSiblingSetInput {
   subnetId: string;
 }
 export const NetAppResourceQueryNetworkSiblingSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     networkSiblingSetId: Schema.String,
@@ -4230,7 +4196,7 @@ export interface NetAppResourceQueryNetworkSiblingSetOutput {
   nicInfoList?: { ipAddress?: string; volumeResourceIds?: string[] }[];
 }
 export const NetAppResourceQueryNetworkSiblingSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkSiblingSetId: Schema.optional(Schema.String),
     subnetId: Schema.optional(Schema.String),
     networkSiblingSetStateId: Schema.optional(Schema.String),
@@ -4266,7 +4232,7 @@ export const NetAppResourceQueryNetworkSiblingSetOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceQueryNetworkSiblingSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQueryNetworkSiblingSetInput,
     outputSchema: NetAppResourceQueryNetworkSiblingSetOutput,
   }));
@@ -4276,7 +4242,7 @@ export interface NetAppResourceQueryRegionInfoInput {
   location: string;
 }
 export const NetAppResourceQueryRegionInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4304,7 +4270,7 @@ export interface NetAppResourceQueryRegionInfoOutput {
   }[];
 }
 export const NetAppResourceQueryRegionInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageToNetworkProximity: Schema.optional(
       Schema.Literals([
         "Default",
@@ -4338,7 +4304,7 @@ export const NetAppResourceQueryRegionInfoOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceQueryRegionInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQueryRegionInfoInput,
     outputSchema: NetAppResourceQueryRegionInfoOutput,
   }));
@@ -4350,7 +4316,7 @@ export interface NetAppResourceQuotaLimitsAccountGetInput {
   quotaLimitName: string;
 }
 export const NetAppResourceQuotaLimitsAccountGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4378,7 +4344,7 @@ export interface NetAppResourceQuotaLimitsAccountGetOutput {
   };
 }
 export const NetAppResourceQuotaLimitsAccountGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4409,7 +4375,7 @@ export const NetAppResourceQuotaLimitsAccountGetOutput =
  * @param quotaLimitName - The name of the Quota Limit
  */
 export const NetAppResourceQuotaLimitsAccountGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQuotaLimitsAccountGetInput,
     outputSchema: NetAppResourceQuotaLimitsAccountGetOutput,
   }));
@@ -4420,7 +4386,7 @@ export interface NetAppResourceQuotaLimitsAccountListInput {
   accountName: string;
 }
 export const NetAppResourceQuotaLimitsAccountListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4450,7 +4416,7 @@ export interface NetAppResourceQuotaLimitsAccountListOutput {
   nextLink?: string;
 }
 export const NetAppResourceQuotaLimitsAccountListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4495,7 +4461,7 @@ export const NetAppResourceQuotaLimitsAccountListOutput =
  * @param accountName - The name of the NetApp account
  */
 export const NetAppResourceQuotaLimitsAccountList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQuotaLimitsAccountListInput,
     outputSchema: NetAppResourceQuotaLimitsAccountListOutput,
   }));
@@ -4506,7 +4472,7 @@ export interface NetAppResourceQuotaLimitsGetInput {
   quotaLimitName: string;
 }
 export const NetAppResourceQuotaLimitsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     quotaLimitName: Schema.String.pipe(T.PathParam()),
@@ -4533,7 +4499,7 @@ export interface NetAppResourceQuotaLimitsGetOutput {
   };
 }
 export const NetAppResourceQuotaLimitsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4563,7 +4529,7 @@ export const NetAppResourceQuotaLimitsGetOutput =
  * @param quotaLimitName - The name of the Quota Limit
  */
 export const NetAppResourceQuotaLimitsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQuotaLimitsGetInput,
     outputSchema: NetAppResourceQuotaLimitsGetOutput,
   }));
@@ -4573,7 +4539,7 @@ export interface NetAppResourceQuotaLimitsListInput {
   location: string;
 }
 export const NetAppResourceQuotaLimitsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4602,7 +4568,7 @@ export interface NetAppResourceQuotaLimitsListOutput {
   nextLink?: string;
 }
 export const NetAppResourceQuotaLimitsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4646,7 +4612,7 @@ export const NetAppResourceQuotaLimitsListOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceQuotaLimitsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceQuotaLimitsListInput,
     outputSchema: NetAppResourceQuotaLimitsListOutput,
   }));
@@ -4656,7 +4622,7 @@ export interface NetAppResourceRegionInfosGetInput {
   location: string;
 }
 export const NetAppResourceRegionInfosGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4682,7 +4648,7 @@ export interface NetAppResourceRegionInfosGetOutput {
   };
 }
 export const NetAppResourceRegionInfosGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4711,7 +4677,7 @@ export const NetAppResourceRegionInfosGetOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceRegionInfosGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceRegionInfosGetInput,
     outputSchema: NetAppResourceRegionInfosGetOutput,
   }));
@@ -4721,7 +4687,7 @@ export interface NetAppResourceRegionInfosListInput {
   location: string;
 }
 export const NetAppResourceRegionInfosListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4750,7 +4716,7 @@ export interface NetAppResourceRegionInfosListOutput {
   nextLink?: string;
 }
 export const NetAppResourceRegionInfosListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4794,7 +4760,7 @@ export const NetAppResourceRegionInfosListOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceRegionInfosList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceRegionInfosListInput,
     outputSchema: NetAppResourceRegionInfosListOutput,
   }));
@@ -4808,7 +4774,7 @@ export interface NetAppResourceUpdateNetworkSiblingSetInput {
   networkFeatures: "Basic" | "Standard" | "Basic_Standard" | "Standard_Basic";
 }
 export const NetAppResourceUpdateNetworkSiblingSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     networkSiblingSetId: Schema.String,
@@ -4838,7 +4804,7 @@ export interface NetAppResourceUpdateNetworkSiblingSetOutput {
   nicInfoList?: { ipAddress?: string; volumeResourceIds?: string[] }[];
 }
 export const NetAppResourceUpdateNetworkSiblingSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkSiblingSetId: Schema.optional(Schema.String),
     subnetId: Schema.optional(Schema.String),
     networkSiblingSetStateId: Schema.optional(Schema.String),
@@ -4874,7 +4840,7 @@ export const NetAppResourceUpdateNetworkSiblingSetOutput =
  * @param location - The name of the Azure region.
  */
 export const NetAppResourceUpdateNetworkSiblingSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetAppResourceUpdateNetworkSiblingSetInput,
     outputSchema: NetAppResourceUpdateNetworkSiblingSetOutput,
   }));
@@ -4885,7 +4851,7 @@ export interface NetAppResourceUsagesGetInput {
   usageType: string;
 }
 export const NetAppResourceUsagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     usageType: Schema.String.pipe(T.PathParam()),
@@ -4904,7 +4870,7 @@ export interface NetAppResourceUsagesGetOutput {
   properties?: { currentValue?: number; limit?: number; unit?: string };
 }
 export const NetAppResourceUsagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(
       Schema.Struct({
@@ -4932,19 +4898,17 @@ export const NetAppResourceUsagesGetOutput =
  * @param location - The name of the Azure region.
  * @param usageType - The type of usage
  */
-export const NetAppResourceUsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetAppResourceUsagesGetInput,
-    outputSchema: NetAppResourceUsagesGetOutput,
-  }),
-);
+export const NetAppResourceUsagesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceUsagesGetInput,
+  outputSchema: NetAppResourceUsagesGetOutput,
+}));
 // Input Schema
 export interface NetAppResourceUsagesListInput {
   subscriptionId: string;
   location: string;
 }
 export const NetAppResourceUsagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4965,7 +4929,7 @@ export interface NetAppResourceUsagesListOutput {
   nextLink?: string;
 }
 export const NetAppResourceUsagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4997,17 +4961,13 @@ export const NetAppResourceUsagesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const NetAppResourceUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetAppResourceUsagesListInput,
-    outputSchema: NetAppResourceUsagesListOutput,
-  }),
-);
+export const NetAppResourceUsagesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetAppResourceUsagesListInput,
+  outputSchema: NetAppResourceUsagesListOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetApp/operations",
@@ -5052,7 +5012,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -5127,7 +5087,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5154,7 +5114,7 @@ export interface PoolsCreateOrUpdateInput {
   location: string;
 }
 export const PoolsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5205,7 +5165,7 @@ export interface PoolsCreateOrUpdateOutput {
   };
 }
 export const PoolsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5235,7 +5195,7 @@ export const PoolsCreateOrUpdateOutput =
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const PoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsCreateOrUpdateInput,
   outputSchema: PoolsCreateOrUpdateOutput,
 }));
@@ -5246,7 +5206,7 @@ export interface PoolsDeleteInput {
   accountName: string;
   poolName: string;
 }
-export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5262,7 +5222,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PoolsDeleteOutput = void;
 export const PoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
 
 // The operation
 /**
@@ -5274,7 +5234,7 @@ export const PoolsDeleteOutput =
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const PoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsDeleteInput,
   outputSchema: PoolsDeleteOutput,
 }));
@@ -5285,7 +5245,7 @@ export interface PoolsGetInput {
   accountName: string;
   poolName: string;
 }
-export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5312,7 +5272,7 @@ export interface PoolsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5342,7 +5302,7 @@ export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsGetInput,
   outputSchema: PoolsGetOutput,
 }));
@@ -5352,7 +5312,7 @@ export interface PoolsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const PoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5381,7 +5341,7 @@ export interface PoolsListOutput {
   }[];
   nextLink?: string;
 }
-export const PoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -5415,7 +5375,7 @@ export const PoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const PoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsListInput,
   outputSchema: PoolsListOutput,
 }));
@@ -5437,7 +5397,7 @@ export interface PoolsUpdateInput {
     customThroughputMibps?: number | null;
   };
 }
-export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5477,7 +5437,7 @@ export interface PoolsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoolsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5507,7 +5467,7 @@ export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoolsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoolsUpdateInput,
   outputSchema: PoolsUpdateOutput,
 }));
@@ -5523,7 +5483,7 @@ export interface RansomwareReportsClearSuspectsInput {
   extensions: string[];
 }
 export const RansomwareReportsClearSuspectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5543,7 +5503,7 @@ export const RansomwareReportsClearSuspectsInput =
 // Output Schema
 export type RansomwareReportsClearSuspectsOutput = void;
 export const RansomwareReportsClearSuspectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RansomwareReportsClearSuspectsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RansomwareReportsClearSuspectsOutput>;
 
 // The operation
 /**
@@ -5559,7 +5519,7 @@ export const RansomwareReportsClearSuspectsOutput =
  * @param ransomwareReportName - The name of the ransomware report
  */
 export const RansomwareReportsClearSuspects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RansomwareReportsClearSuspectsInput,
     outputSchema: RansomwareReportsClearSuspectsOutput,
   }));
@@ -5573,7 +5533,7 @@ export interface RansomwareReportsGetInput {
   ransomwareReportName: string;
 }
 export const RansomwareReportsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5603,7 +5563,7 @@ export interface RansomwareReportsGetOutput {
   };
 }
 export const RansomwareReportsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5637,12 +5597,10 @@ export const RansomwareReportsGetOutput =
  * @param volumeName - The name of the volume
  * @param ransomwareReportName - The name of the ransomware report
  */
-export const RansomwareReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RansomwareReportsGetInput,
-    outputSchema: RansomwareReportsGetOutput,
-  }),
-);
+export const RansomwareReportsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RansomwareReportsGetInput,
+  outputSchema: RansomwareReportsGetOutput,
+}));
 // Input Schema
 export interface RansomwareReportsListInput {
   subscriptionId: string;
@@ -5652,7 +5610,7 @@ export interface RansomwareReportsListInput {
   volumeName: string;
 }
 export const RansomwareReportsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5684,7 +5642,7 @@ export interface RansomwareReportsListOutput {
   nextLink?: string;
 }
 export const RansomwareReportsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5733,12 +5691,10 @@ export const RansomwareReportsListOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const RansomwareReportsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RansomwareReportsListInput,
-    outputSchema: RansomwareReportsListOutput,
-  }),
-);
+export const RansomwareReportsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RansomwareReportsListInput,
+  outputSchema: RansomwareReportsListOutput,
+}));
 // Input Schema
 export interface SnapshotPoliciesCreateInput {
   subscriptionId: string;
@@ -5779,7 +5735,7 @@ export interface SnapshotPoliciesCreateInput {
   location: string;
 }
 export const SnapshotPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5847,7 +5803,7 @@ export interface SnapshotPoliciesCreateOutput {
   };
 }
 export const SnapshotPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5877,12 +5833,10 @@ export const SnapshotPoliciesCreateOutput =
  * @param accountName - The name of the NetApp account
  * @param snapshotPolicyName - The name of the snapshot policy
  */
-export const SnapshotPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotPoliciesCreateInput,
-    outputSchema: SnapshotPoliciesCreateOutput,
-  }),
-);
+export const SnapshotPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotPoliciesCreateInput,
+  outputSchema: SnapshotPoliciesCreateOutput,
+}));
 // Input Schema
 export interface SnapshotPoliciesDeleteInput {
   subscriptionId: string;
@@ -5891,7 +5845,7 @@ export interface SnapshotPoliciesDeleteInput {
   snapshotPolicyName: string;
 }
 export const SnapshotPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5907,7 +5861,7 @@ export const SnapshotPoliciesDeleteInput =
 // Output Schema
 export type SnapshotPoliciesDeleteOutput = void;
 export const SnapshotPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -5919,12 +5873,10 @@ export const SnapshotPoliciesDeleteOutput =
  * @param accountName - The name of the NetApp account
  * @param snapshotPolicyName - The name of the snapshot policy
  */
-export const SnapshotPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotPoliciesDeleteInput,
-    outputSchema: SnapshotPoliciesDeleteOutput,
-  }),
-);
+export const SnapshotPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotPoliciesDeleteInput,
+  outputSchema: SnapshotPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface SnapshotPoliciesGetInput {
   subscriptionId: string;
@@ -5933,7 +5885,7 @@ export interface SnapshotPoliciesGetInput {
   snapshotPolicyName: string;
 }
 export const SnapshotPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5961,7 +5913,7 @@ export interface SnapshotPoliciesGetOutput {
   };
 }
 export const SnapshotPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5991,7 +5943,7 @@ export const SnapshotPoliciesGetOutput =
  * @param accountName - The name of the NetApp account
  * @param snapshotPolicyName - The name of the snapshot policy
  */
-export const SnapshotPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotPoliciesGetInput,
   outputSchema: SnapshotPoliciesGetOutput,
 }));
@@ -6002,7 +5954,7 @@ export interface SnapshotPoliciesListInput {
   accountName: string;
 }
 export const SnapshotPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6032,7 +5984,7 @@ export interface SnapshotPoliciesListOutput {
   nextLink?: string;
 }
 export const SnapshotPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6076,12 +6028,10 @@ export const SnapshotPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the NetApp account
  */
-export const SnapshotPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotPoliciesListInput,
-    outputSchema: SnapshotPoliciesListOutput,
-  }),
-);
+export const SnapshotPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotPoliciesListInput,
+  outputSchema: SnapshotPoliciesListOutput,
+}));
 // Input Schema
 export interface SnapshotPoliciesListVolumesInput {
   subscriptionId: string;
@@ -6090,7 +6040,7 @@ export interface SnapshotPoliciesListVolumesInput {
   snapshotPolicyName: string;
 }
 export const SnapshotPoliciesListVolumesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6121,7 +6071,7 @@ export interface SnapshotPoliciesListVolumesOutput {
   nextLink?: string;
 }
 export const SnapshotPoliciesListVolumesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6166,12 +6116,10 @@ export const SnapshotPoliciesListVolumesOutput =
  * @param accountName - The name of the NetApp account
  * @param snapshotPolicyName - The name of the snapshot policy
  */
-export const SnapshotPoliciesListVolumes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotPoliciesListVolumesInput,
-    outputSchema: SnapshotPoliciesListVolumesOutput,
-  }),
-);
+export const SnapshotPoliciesListVolumes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotPoliciesListVolumesInput,
+  outputSchema: SnapshotPoliciesListVolumesOutput,
+}));
 // Input Schema
 export interface SnapshotPoliciesUpdateInput {
   subscriptionId: string;
@@ -6214,7 +6162,7 @@ export interface SnapshotPoliciesUpdateInput {
   };
 }
 export const SnapshotPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6286,7 +6234,7 @@ export interface SnapshotPoliciesUpdateOutput {
   };
 }
 export const SnapshotPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6316,12 +6264,10 @@ export const SnapshotPoliciesUpdateOutput =
  * @param accountName - The name of the NetApp account
  * @param snapshotPolicyName - The name of the snapshot policy
  */
-export const SnapshotPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotPoliciesUpdateInput,
-    outputSchema: SnapshotPoliciesUpdateOutput,
-  }),
-);
+export const SnapshotPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotPoliciesUpdateInput,
+  outputSchema: SnapshotPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface SnapshotsCreateInput {
   subscriptionId: string;
@@ -6337,7 +6283,7 @@ export interface SnapshotsCreateInput {
   };
   location: string;
 }
-export const SnapshotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6374,7 +6320,7 @@ export interface SnapshotsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6406,7 +6352,7 @@ export const SnapshotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param snapshotName - The name of the snapshot
  */
-export const SnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsCreateInput,
   outputSchema: SnapshotsCreateOutput,
 }));
@@ -6419,7 +6365,7 @@ export interface SnapshotsDeleteInput {
   volumeName: string;
   snapshotName: string;
 }
-export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6437,7 +6383,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SnapshotsDeleteOutput = void;
 export const SnapshotsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsDeleteOutput>;
 
 // The operation
 /**
@@ -6451,7 +6397,7 @@ export const SnapshotsDeleteOutput =
  * @param volumeName - The name of the volume
  * @param snapshotName - The name of the snapshot
  */
-export const SnapshotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsDeleteInput,
   outputSchema: SnapshotsDeleteOutput,
 }));
@@ -6464,7 +6410,7 @@ export interface SnapshotsGetInput {
   volumeName: string;
   snapshotName: string;
 }
-export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6493,7 +6439,7 @@ export interface SnapshotsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6525,7 +6471,7 @@ export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param snapshotName - The name of the snapshot
  */
-export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsGetInput,
   outputSchema: SnapshotsGetOutput,
 }));
@@ -6537,7 +6483,7 @@ export interface SnapshotsListInput {
   poolName: string;
   volumeName: string;
 }
-export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6568,7 +6514,7 @@ export interface SnapshotsListOutput {
   }[];
   nextLink?: string;
 }
-export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -6604,7 +6550,7 @@ export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const SnapshotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsListInput,
   outputSchema: SnapshotsListOutput,
 }));
@@ -6620,7 +6566,7 @@ export interface SnapshotsRestoreFilesInput {
   destinationPath?: string;
 }
 export const SnapshotsRestoreFilesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6640,7 +6586,7 @@ export const SnapshotsRestoreFilesInput =
 // Output Schema
 export type SnapshotsRestoreFilesOutput = void;
 export const SnapshotsRestoreFilesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsRestoreFilesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsRestoreFilesOutput>;
 
 // The operation
 /**
@@ -6654,12 +6600,10 @@ export const SnapshotsRestoreFilesOutput =
  * @param volumeName - The name of the volume
  * @param snapshotName - The name of the snapshot
  */
-export const SnapshotsRestoreFiles = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotsRestoreFilesInput,
-    outputSchema: SnapshotsRestoreFilesOutput,
-  }),
-);
+export const SnapshotsRestoreFiles = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotsRestoreFilesInput,
+  outputSchema: SnapshotsRestoreFilesOutput,
+}));
 // Input Schema
 export interface SnapshotsUpdateInput {
   subscriptionId: string;
@@ -6669,7 +6613,7 @@ export interface SnapshotsUpdateInput {
   volumeName: string;
   snapshotName: string;
 }
-export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6698,7 +6642,7 @@ export interface SnapshotsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6730,7 +6674,7 @@ export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param snapshotName - The name of the snapshot
  */
-export const SnapshotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsUpdateInput,
   outputSchema: SnapshotsUpdateOutput,
 }));
@@ -6749,7 +6693,7 @@ export interface SubvolumesCreateInput {
     provisioningState?: string;
   };
 }
-export const SubvolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubvolumesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6786,27 +6730,25 @@ export interface SubvolumesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SubvolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SubvolumesCreateOutput>;
+export const SubvolumesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SubvolumesCreateOutput>;
 
 // The operation
 /**
@@ -6820,7 +6762,7 @@ export const SubvolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param volumeName - The name of the volume
  * @param subvolumeName - The name of the subvolume.
  */
-export const SubvolumesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubvolumesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubvolumesCreateInput,
   outputSchema: SubvolumesCreateOutput,
 }));
@@ -6833,7 +6775,7 @@ export interface SubvolumesDeleteInput {
   volumeName: string;
   subvolumeName: string;
 }
-export const SubvolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubvolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6851,7 +6793,7 @@ export const SubvolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SubvolumesDeleteOutput = void;
 export const SubvolumesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SubvolumesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SubvolumesDeleteOutput>;
 
 // The operation
 /**
@@ -6865,7 +6807,7 @@ export const SubvolumesDeleteOutput =
  * @param volumeName - The name of the volume
  * @param subvolumeName - The name of the subvolume.
  */
-export const SubvolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubvolumesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubvolumesDeleteInput,
   outputSchema: SubvolumesDeleteOutput,
 }));
@@ -6878,7 +6820,7 @@ export interface SubvolumesGetInput {
   volumeName: string;
   subvolumeName: string;
 }
-export const SubvolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubvolumesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6907,7 +6849,7 @@ export interface SubvolumesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SubvolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubvolumesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6939,7 +6881,7 @@ export const SubvolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param volumeName - The name of the volume
  * @param subvolumeName - The name of the subvolume.
  */
-export const SubvolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubvolumesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubvolumesGetInput,
   outputSchema: SubvolumesGetOutput,
 }));
@@ -6953,7 +6895,7 @@ export interface SubvolumesGetMetadataInput {
   subvolumeName: string;
 }
 export const SubvolumesGetMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6987,7 +6929,7 @@ export interface SubvolumesGetMetadataOutput {
   };
 }
 export const SubvolumesGetMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7019,12 +6961,10 @@ export const SubvolumesGetMetadataOutput =
  * @param volumeName - The name of the volume
  * @param subvolumeName - The name of the subvolume.
  */
-export const SubvolumesGetMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubvolumesGetMetadataInput,
-    outputSchema: SubvolumesGetMetadataOutput,
-  }),
-);
+export const SubvolumesGetMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubvolumesGetMetadataInput,
+  outputSchema: SubvolumesGetMetadataOutput,
+}));
 // Input Schema
 export interface SubvolumesListByVolumeInput {
   subscriptionId: string;
@@ -7034,7 +6974,7 @@ export interface SubvolumesListByVolumeInput {
   volumeName: string;
 }
 export const SubvolumesListByVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7066,7 +7006,7 @@ export interface SubvolumesListByVolumeOutput {
   nextLink?: string;
 }
 export const SubvolumesListByVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7112,12 +7052,10 @@ export const SubvolumesListByVolumeOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const SubvolumesListByVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubvolumesListByVolumeInput,
-    outputSchema: SubvolumesListByVolumeOutput,
-  }),
-);
+export const SubvolumesListByVolume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubvolumesListByVolumeInput,
+  outputSchema: SubvolumesListByVolumeOutput,
+}));
 // Input Schema
 export interface SubvolumesUpdateInput {
   subscriptionId: string;
@@ -7128,7 +7066,7 @@ export interface SubvolumesUpdateInput {
   subvolumeName: string;
   properties?: { size?: number | null; path?: string };
 }
-export const SubvolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubvolumesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -7163,27 +7101,25 @@ export interface SubvolumesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SubvolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<SubvolumesUpdateOutput>;
+export const SubvolumesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SubvolumesUpdateOutput>;
 
 // The operation
 /**
@@ -7197,7 +7133,7 @@ export const SubvolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param volumeName - The name of the volume
  * @param subvolumeName - The name of the subvolume.
  */
-export const SubvolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SubvolumesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubvolumesUpdateInput,
   outputSchema: SubvolumesUpdateOutput,
 }));
@@ -7371,7 +7307,7 @@ export interface VolumeGroupsCreateInput {
   location?: string;
 }
 export const VolumeGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7685,7 +7621,7 @@ export interface VolumeGroupsCreateOutput {
   };
 }
 export const VolumeGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7715,7 +7651,7 @@ export const VolumeGroupsCreateOutput =
  * @param accountName - The name of the NetApp account
  * @param volumeGroupName - The name of the volumeGroup
  */
-export const VolumeGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsCreateInput,
   outputSchema: VolumeGroupsCreateOutput,
 }));
@@ -7727,7 +7663,7 @@ export interface VolumeGroupsDeleteInput {
   volumeGroupName: string;
 }
 export const VolumeGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7743,7 +7679,7 @@ export const VolumeGroupsDeleteInput =
 // Output Schema
 export type VolumeGroupsDeleteOutput = void;
 export const VolumeGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -7755,7 +7691,7 @@ export const VolumeGroupsDeleteOutput =
  * @param accountName - The name of the NetApp account
  * @param volumeGroupName - The name of the volumeGroup
  */
-export const VolumeGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsDeleteInput,
   outputSchema: VolumeGroupsDeleteOutput,
 }));
@@ -7766,7 +7702,7 @@ export interface VolumeGroupsGetInput {
   accountName: string;
   volumeGroupName: string;
 }
-export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -7793,7 +7729,7 @@ export interface VolumeGroupsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumeGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7823,7 +7759,7 @@ export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param volumeGroupName - The name of the volumeGroup
  */
-export const VolumeGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeGroupsGetInput,
   outputSchema: VolumeGroupsGetOutput,
 }));
@@ -7834,7 +7770,7 @@ export interface VolumeGroupsListByNetAppAccountInput {
   accountName: string;
 }
 export const VolumeGroupsListByNetAppAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7867,7 +7803,7 @@ export interface VolumeGroupsListByNetAppAccountOutput {
   nextLink?: string;
 }
 export const VolumeGroupsListByNetAppAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         location: Schema.optional(Schema.String),
@@ -7912,7 +7848,7 @@ export const VolumeGroupsListByNetAppAccountOutput =
  * @param accountName - The name of the NetApp account
  */
 export const VolumeGroupsListByNetAppAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumeGroupsListByNetAppAccountInput,
     outputSchema: VolumeGroupsListByNetAppAccountOutput,
   }));
@@ -7946,7 +7882,7 @@ export interface VolumeQuotaRulesCreateInput {
   location: string;
 }
 export const VolumeQuotaRulesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8004,7 +7940,7 @@ export interface VolumeQuotaRulesCreateOutput {
   };
 }
 export const VolumeQuotaRulesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8036,12 +7972,10 @@ export const VolumeQuotaRulesCreateOutput =
  * @param volumeName - The name of the volume
  * @param volumeQuotaRuleName - The name of volume quota rule
  */
-export const VolumeQuotaRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumeQuotaRulesCreateInput,
-    outputSchema: VolumeQuotaRulesCreateOutput,
-  }),
-);
+export const VolumeQuotaRulesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeQuotaRulesCreateInput,
+  outputSchema: VolumeQuotaRulesCreateOutput,
+}));
 // Input Schema
 export interface VolumeQuotaRulesDeleteInput {
   subscriptionId: string;
@@ -8052,7 +7986,7 @@ export interface VolumeQuotaRulesDeleteInput {
   volumeQuotaRuleName: string;
 }
 export const VolumeQuotaRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8070,7 +8004,7 @@ export const VolumeQuotaRulesDeleteInput =
 // Output Schema
 export type VolumeQuotaRulesDeleteOutput = void;
 export const VolumeQuotaRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeQuotaRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeQuotaRulesDeleteOutput>;
 
 // The operation
 /**
@@ -8084,12 +8018,10 @@ export const VolumeQuotaRulesDeleteOutput =
  * @param volumeName - The name of the volume
  * @param volumeQuotaRuleName - The name of volume quota rule
  */
-export const VolumeQuotaRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumeQuotaRulesDeleteInput,
-    outputSchema: VolumeQuotaRulesDeleteOutput,
-  }),
-);
+export const VolumeQuotaRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeQuotaRulesDeleteInput,
+  outputSchema: VolumeQuotaRulesDeleteOutput,
+}));
 // Input Schema
 export interface VolumeQuotaRulesGetInput {
   subscriptionId: string;
@@ -8100,7 +8032,7 @@ export interface VolumeQuotaRulesGetInput {
   volumeQuotaRuleName: string;
 }
 export const VolumeQuotaRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8130,7 +8062,7 @@ export interface VolumeQuotaRulesGetOutput {
   };
 }
 export const VolumeQuotaRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8162,7 +8094,7 @@ export const VolumeQuotaRulesGetOutput =
  * @param volumeName - The name of the volume
  * @param volumeQuotaRuleName - The name of volume quota rule
  */
-export const VolumeQuotaRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumeQuotaRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumeQuotaRulesGetInput,
   outputSchema: VolumeQuotaRulesGetOutput,
 }));
@@ -8175,7 +8107,7 @@ export interface VolumeQuotaRulesListByVolumeInput {
   volumeName: string;
 }
 export const VolumeQuotaRulesListByVolumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8207,7 +8139,7 @@ export interface VolumeQuotaRulesListByVolumeOutput {
   nextLink?: string;
 }
 export const VolumeQuotaRulesListByVolumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8254,7 +8186,7 @@ export const VolumeQuotaRulesListByVolumeOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumeQuotaRulesListByVolume =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumeQuotaRulesListByVolumeInput,
     outputSchema: VolumeQuotaRulesListByVolumeOutput,
   }));
@@ -8287,7 +8219,7 @@ export interface VolumeQuotaRulesUpdateInput {
   };
 }
 export const VolumeQuotaRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8344,7 +8276,7 @@ export interface VolumeQuotaRulesUpdateOutput {
   };
 }
 export const VolumeQuotaRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8376,12 +8308,10 @@ export const VolumeQuotaRulesUpdateOutput =
  * @param volumeName - The name of the volume
  * @param volumeQuotaRuleName - The name of volume quota rule
  */
-export const VolumeQuotaRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumeQuotaRulesUpdateInput,
-    outputSchema: VolumeQuotaRulesUpdateOutput,
-  }),
-);
+export const VolumeQuotaRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumeQuotaRulesUpdateInput,
+  outputSchema: VolumeQuotaRulesUpdateOutput,
+}));
 // Input Schema
 export interface VolumesAuthorizeExternalReplicationInput {
   subscriptionId: string;
@@ -8391,7 +8321,7 @@ export interface VolumesAuthorizeExternalReplicationInput {
   volumeName: string;
 }
 export const VolumesAuthorizeExternalReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8410,7 +8340,7 @@ export interface VolumesAuthorizeExternalReplicationOutput {
   properties?: { svmPeeringCommand?: string };
 }
 export const VolumesAuthorizeExternalReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         svmPeeringCommand: Schema.optional(Schema.String),
@@ -8430,7 +8360,7 @@ export const VolumesAuthorizeExternalReplicationOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesAuthorizeExternalReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesAuthorizeExternalReplicationInput,
     outputSchema: VolumesAuthorizeExternalReplicationOutput,
   }));
@@ -8444,7 +8374,7 @@ export interface VolumesAuthorizeReplicationInput {
   remoteVolumeResourceId?: string;
 }
 export const VolumesAuthorizeReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8462,7 +8392,7 @@ export const VolumesAuthorizeReplicationInput =
 // Output Schema
 export type VolumesAuthorizeReplicationOutput = void;
 export const VolumesAuthorizeReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesAuthorizeReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesAuthorizeReplicationOutput>;
 
 // The operation
 /**
@@ -8475,12 +8405,10 @@ export const VolumesAuthorizeReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesAuthorizeReplication = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesAuthorizeReplicationInput,
-    outputSchema: VolumesAuthorizeReplicationOutput,
-  }),
-);
+export const VolumesAuthorizeReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesAuthorizeReplicationInput,
+  outputSchema: VolumesAuthorizeReplicationOutput,
+}));
 // Input Schema
 export interface VolumesBreakFileLocksInput {
   subscriptionId: string;
@@ -8492,7 +8420,7 @@ export interface VolumesBreakFileLocksInput {
   confirmRunningDisruptiveOperation?: boolean;
 }
 export const VolumesBreakFileLocksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8511,7 +8439,7 @@ export const VolumesBreakFileLocksInput =
 // Output Schema
 export type VolumesBreakFileLocksOutput = void;
 export const VolumesBreakFileLocksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesBreakFileLocksOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesBreakFileLocksOutput>;
 
 // The operation
 /**
@@ -8524,12 +8452,10 @@ export const VolumesBreakFileLocksOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesBreakFileLocks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesBreakFileLocksInput,
-    outputSchema: VolumesBreakFileLocksOutput,
-  }),
-);
+export const VolumesBreakFileLocks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesBreakFileLocksInput,
+  outputSchema: VolumesBreakFileLocksOutput,
+}));
 // Input Schema
 export interface VolumesBreakReplicationInput {
   subscriptionId: string;
@@ -8540,7 +8466,7 @@ export interface VolumesBreakReplicationInput {
   forceBreakReplication?: boolean;
 }
 export const VolumesBreakReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8558,7 +8484,7 @@ export const VolumesBreakReplicationInput =
 // Output Schema
 export type VolumesBreakReplicationOutput = void;
 export const VolumesBreakReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesBreakReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesBreakReplicationOutput>;
 
 // The operation
 /**
@@ -8571,12 +8497,10 @@ export const VolumesBreakReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesBreakReplication = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesBreakReplicationInput,
-    outputSchema: VolumesBreakReplicationOutput,
-  }),
-);
+export const VolumesBreakReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesBreakReplicationInput,
+  outputSchema: VolumesBreakReplicationOutput,
+}));
 // Input Schema
 export interface VolumesCreateOrUpdateInput {
   subscriptionId: string;
@@ -8732,7 +8656,7 @@ export interface VolumesCreateOrUpdateInput {
   location: string;
 }
 export const VolumesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8987,7 +8911,7 @@ export interface VolumesCreateOrUpdateOutput {
   };
 }
 export const VolumesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9018,12 +8942,10 @@ export const VolumesCreateOrUpdateOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesCreateOrUpdateInput,
-    outputSchema: VolumesCreateOrUpdateOutput,
-  }),
-);
+export const VolumesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesCreateOrUpdateInput,
+  outputSchema: VolumesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface VolumesDeleteInput {
   subscriptionId: string;
@@ -9033,7 +8955,7 @@ export interface VolumesDeleteInput {
   volumeName: string;
   forceDelete?: boolean;
 }
-export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -9051,7 +8973,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VolumesDeleteOutput = void;
 export const VolumesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
 
 // The operation
 /**
@@ -9065,7 +8987,7 @@ export const VolumesDeleteOutput =
  * @param volumeName - The name of the volume
  * @param forceDelete - An option to force delete the volume. Will cleanup resources connected to the particular volume
  */
-export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesDeleteInput,
   outputSchema: VolumesDeleteOutput,
 }));
@@ -9078,7 +9000,7 @@ export interface VolumesDeleteReplicationInput {
   volumeName: string;
 }
 export const VolumesDeleteReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9095,7 +9017,7 @@ export const VolumesDeleteReplicationInput =
 // Output Schema
 export type VolumesDeleteReplicationOutput = void;
 export const VolumesDeleteReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteReplicationOutput>;
 
 // The operation
 /**
@@ -9108,12 +9030,10 @@ export const VolumesDeleteReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesDeleteReplication = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesDeleteReplicationInput,
-    outputSchema: VolumesDeleteReplicationOutput,
-  }),
-);
+export const VolumesDeleteReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesDeleteReplicationInput,
+  outputSchema: VolumesDeleteReplicationOutput,
+}));
 // Input Schema
 export interface VolumesFinalizeExternalReplicationInput {
   subscriptionId: string;
@@ -9123,7 +9043,7 @@ export interface VolumesFinalizeExternalReplicationInput {
   volumeName: string;
 }
 export const VolumesFinalizeExternalReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9140,7 +9060,7 @@ export const VolumesFinalizeExternalReplicationInput =
 // Output Schema
 export type VolumesFinalizeExternalReplicationOutput = void;
 export const VolumesFinalizeExternalReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesFinalizeExternalReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesFinalizeExternalReplicationOutput>;
 
 // The operation
 /**
@@ -9154,7 +9074,7 @@ export const VolumesFinalizeExternalReplicationOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesFinalizeExternalReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesFinalizeExternalReplicationInput,
     outputSchema: VolumesFinalizeExternalReplicationOutput,
   }));
@@ -9167,7 +9087,7 @@ export interface VolumesFinalizeRelocationInput {
   volumeName: string;
 }
 export const VolumesFinalizeRelocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9184,7 +9104,7 @@ export const VolumesFinalizeRelocationInput =
 // Output Schema
 export type VolumesFinalizeRelocationOutput = void;
 export const VolumesFinalizeRelocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesFinalizeRelocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesFinalizeRelocationOutput>;
 
 // The operation
 /**
@@ -9197,12 +9117,10 @@ export const VolumesFinalizeRelocationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesFinalizeRelocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesFinalizeRelocationInput,
-    outputSchema: VolumesFinalizeRelocationOutput,
-  }),
-);
+export const VolumesFinalizeRelocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesFinalizeRelocationInput,
+  outputSchema: VolumesFinalizeRelocationOutput,
+}));
 // Input Schema
 export interface VolumesGetInput {
   subscriptionId: string;
@@ -9211,7 +9129,7 @@ export interface VolumesGetInput {
   poolName: string;
   volumeName: string;
 }
-export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -9239,7 +9157,7 @@ export interface VolumesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9270,7 +9188,7 @@ export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesGetInput,
   outputSchema: VolumesGetOutput,
 }));
@@ -9281,7 +9199,7 @@ export interface VolumesListInput {
   accountName: string;
   poolName: string;
 }
-export const VolumesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -9311,7 +9229,7 @@ export interface VolumesListOutput {
   }[];
   nextLink?: string;
 }
-export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -9346,7 +9264,7 @@ export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the NetApp account
  * @param poolName - The name of the capacity pool
  */
-export const VolumesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesListInput,
   outputSchema: VolumesListOutput,
 }));
@@ -9360,7 +9278,7 @@ export interface VolumesListGetGroupIdListForLdapUserInput {
   username: string;
 }
 export const VolumesListGetGroupIdListForLdapUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9380,7 +9298,7 @@ export interface VolumesListGetGroupIdListForLdapUserOutput {
   groupIdsForLdapUser?: string[];
 }
 export const VolumesListGetGroupIdListForLdapUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupIdsForLdapUser: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<VolumesListGetGroupIdListForLdapUserOutput>;
 
@@ -9396,7 +9314,7 @@ export const VolumesListGetGroupIdListForLdapUserOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesListGetGroupIdListForLdapUser =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesListGetGroupIdListForLdapUserInput,
     outputSchema: VolumesListGetGroupIdListForLdapUserOutput,
   }));
@@ -9416,7 +9334,7 @@ export interface VolumesListQuotaReportInput {
   usageThresholdPercentage?: number;
 }
 export const VolumesListQuotaReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9458,7 +9376,7 @@ export interface VolumesListQuotaReportOutput {
   };
 }
 export const VolumesListQuotaReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         quotaReportRecords: Schema.optional(
@@ -9495,12 +9413,10 @@ export const VolumesListQuotaReportOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesListQuotaReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListQuotaReportInput,
-    outputSchema: VolumesListQuotaReportOutput,
-  }),
-);
+export const VolumesListQuotaReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListQuotaReportInput,
+  outputSchema: VolumesListQuotaReportOutput,
+}));
 // Input Schema
 export interface VolumesListReplicationsInput {
   subscriptionId: string;
@@ -9511,7 +9427,7 @@ export interface VolumesListReplicationsInput {
   exclude?: "None" | "Deleted";
 }
 export const VolumesListReplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9541,7 +9457,7 @@ export interface VolumesListReplicationsOutput {
   nextLink?: string;
 }
 export const VolumesListReplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         replicationId: Schema.optional(Schema.String),
@@ -9572,12 +9488,10 @@ export const VolumesListReplicationsOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesListReplications = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesListReplicationsInput,
-    outputSchema: VolumesListReplicationsOutput,
-  }),
-);
+export const VolumesListReplications = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesListReplicationsInput,
+  outputSchema: VolumesListReplicationsOutput,
+}));
 // Input Schema
 export interface VolumesPeerExternalClusterInput {
   subscriptionId: string;
@@ -9588,7 +9502,7 @@ export interface VolumesPeerExternalClusterInput {
   peerIpAddresses: string[];
 }
 export const VolumesPeerExternalClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9608,7 +9522,7 @@ export interface VolumesPeerExternalClusterOutput {
   properties?: { clusterPeeringCommand?: string; passphrase?: string };
 }
 export const VolumesPeerExternalClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         clusterPeeringCommand: Schema.optional(Schema.String),
@@ -9628,12 +9542,10 @@ export const VolumesPeerExternalClusterOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesPeerExternalCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesPeerExternalClusterInput,
-    outputSchema: VolumesPeerExternalClusterOutput,
-  }),
-);
+export const VolumesPeerExternalCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesPeerExternalClusterInput,
+  outputSchema: VolumesPeerExternalClusterOutput,
+}));
 // Input Schema
 export interface VolumesPerformReplicationTransferInput {
   subscriptionId: string;
@@ -9643,7 +9555,7 @@ export interface VolumesPerformReplicationTransferInput {
   volumeName: string;
 }
 export const VolumesPerformReplicationTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9660,7 +9572,7 @@ export const VolumesPerformReplicationTransferInput =
 // Output Schema
 export type VolumesPerformReplicationTransferOutput = void;
 export const VolumesPerformReplicationTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesPerformReplicationTransferOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesPerformReplicationTransferOutput>;
 
 // The operation
 /**
@@ -9674,7 +9586,7 @@ export const VolumesPerformReplicationTransferOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesPerformReplicationTransfer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesPerformReplicationTransferInput,
     outputSchema: VolumesPerformReplicationTransferOutput,
   }));
@@ -9687,16 +9599,14 @@ export interface VolumesPoolChangeInput {
   volumeName: string;
   newPoolResourceId: string;
 }
-export const VolumesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    poolName: Schema.String.pipe(T.PathParam()),
-    volumeName: Schema.String.pipe(T.PathParam()),
-    newPoolResourceId: Schema.String,
-  },
-).pipe(
+export const VolumesPoolChangeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  poolName: Schema.String.pipe(T.PathParam()),
+  volumeName: Schema.String.pipe(T.PathParam()),
+  newPoolResourceId: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
@@ -9707,7 +9617,7 @@ export const VolumesPoolChangeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type VolumesPoolChangeOutput = void;
 export const VolumesPoolChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesPoolChangeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesPoolChangeOutput>;
 
 // The operation
 /**
@@ -9720,7 +9630,7 @@ export const VolumesPoolChangeOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesPoolChange = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesPoolChange = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesPoolChangeInput,
   outputSchema: VolumesPoolChangeOutput,
 }));
@@ -9733,7 +9643,7 @@ export interface VolumesPopulateAvailabilityZoneInput {
   volumeName: string;
 }
 export const VolumesPopulateAvailabilityZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9762,7 +9672,7 @@ export interface VolumesPopulateAvailabilityZoneOutput {
   };
 }
 export const VolumesPopulateAvailabilityZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9794,7 +9704,7 @@ export const VolumesPopulateAvailabilityZoneOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesPopulateAvailabilityZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesPopulateAvailabilityZoneInput,
     outputSchema: VolumesPopulateAvailabilityZoneOutput,
   }));
@@ -9808,7 +9718,7 @@ export interface VolumesReestablishReplicationInput {
   sourceVolumeId?: string;
 }
 export const VolumesReestablishReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9826,7 +9736,7 @@ export const VolumesReestablishReplicationInput =
 // Output Schema
 export type VolumesReestablishReplicationOutput = void;
 export const VolumesReestablishReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesReestablishReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesReestablishReplicationOutput>;
 
 // The operation
 /**
@@ -9840,7 +9750,7 @@ export const VolumesReestablishReplicationOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesReestablishReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesReestablishReplicationInput,
     outputSchema: VolumesReestablishReplicationOutput,
   }));
@@ -9853,7 +9763,7 @@ export interface VolumesReInitializeReplicationInput {
   volumeName: string;
 }
 export const VolumesReInitializeReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9870,7 +9780,7 @@ export const VolumesReInitializeReplicationInput =
 // Output Schema
 export type VolumesReInitializeReplicationOutput = void;
 export const VolumesReInitializeReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesReInitializeReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesReInitializeReplicationOutput>;
 
 // The operation
 /**
@@ -9884,7 +9794,7 @@ export const VolumesReInitializeReplicationOutput =
  * @param volumeName - The name of the volume
  */
 export const VolumesReInitializeReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VolumesReInitializeReplicationInput,
     outputSchema: VolumesReInitializeReplicationOutput,
   }));
@@ -9897,7 +9807,7 @@ export interface VolumesRelocateInput {
   volumeName: string;
   creationToken?: string;
 }
-export const VolumesRelocateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesRelocateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -9915,7 +9825,7 @@ export const VolumesRelocateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VolumesRelocateOutput = void;
 export const VolumesRelocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRelocateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRelocateOutput>;
 
 // The operation
 /**
@@ -9928,7 +9838,7 @@ export const VolumesRelocateOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesRelocate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesRelocate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesRelocateInput,
   outputSchema: VolumesRelocateOutput,
 }));
@@ -9941,7 +9851,7 @@ export interface VolumesReplicationStatusInput {
   volumeName: string;
 }
 export const VolumesReplicationStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9964,7 +9874,7 @@ export interface VolumesReplicationStatusOutput {
   errorMessage?: string;
 }
 export const VolumesReplicationStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     healthy: Schema.optional(Schema.Boolean),
     relationshipStatus: Schema.optional(
       Schema.Literals(["Idle", "Transferring"]),
@@ -9987,12 +9897,10 @@ export const VolumesReplicationStatusOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesReplicationStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesReplicationStatusInput,
-    outputSchema: VolumesReplicationStatusOutput,
-  }),
-);
+export const VolumesReplicationStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesReplicationStatusInput,
+  outputSchema: VolumesReplicationStatusOutput,
+}));
 // Input Schema
 export interface VolumesResetCifsPasswordInput {
   subscriptionId: string;
@@ -10002,7 +9910,7 @@ export interface VolumesResetCifsPasswordInput {
   volumeName: string;
 }
 export const VolumesResetCifsPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10019,7 +9927,7 @@ export const VolumesResetCifsPasswordInput =
 // Output Schema
 export type VolumesResetCifsPasswordOutput = void;
 export const VolumesResetCifsPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesResetCifsPasswordOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesResetCifsPasswordOutput>;
 
 // The operation
 /**
@@ -10032,12 +9940,10 @@ export const VolumesResetCifsPasswordOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesResetCifsPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesResetCifsPasswordInput,
-    outputSchema: VolumesResetCifsPasswordOutput,
-  }),
-);
+export const VolumesResetCifsPassword = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesResetCifsPasswordInput,
+  outputSchema: VolumesResetCifsPasswordOutput,
+}));
 // Input Schema
 export interface VolumesResyncReplicationInput {
   subscriptionId: string;
@@ -10047,7 +9953,7 @@ export interface VolumesResyncReplicationInput {
   volumeName: string;
 }
 export const VolumesResyncReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10064,7 +9970,7 @@ export const VolumesResyncReplicationInput =
 // Output Schema
 export type VolumesResyncReplicationOutput = void;
 export const VolumesResyncReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesResyncReplicationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesResyncReplicationOutput>;
 
 // The operation
 /**
@@ -10077,12 +9983,10 @@ export const VolumesResyncReplicationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesResyncReplication = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesResyncReplicationInput,
-    outputSchema: VolumesResyncReplicationOutput,
-  }),
-);
+export const VolumesResyncReplication = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesResyncReplicationInput,
+  outputSchema: VolumesResyncReplicationOutput,
+}));
 // Input Schema
 export interface VolumesRevertInput {
   subscriptionId: string;
@@ -10092,7 +9996,7 @@ export interface VolumesRevertInput {
   volumeName: string;
   snapshotId?: string;
 }
-export const VolumesRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesRevertInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10110,7 +10014,7 @@ export const VolumesRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type VolumesRevertOutput = void;
 export const VolumesRevertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRevertOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRevertOutput>;
 
 // The operation
 /**
@@ -10123,7 +10027,7 @@ export const VolumesRevertOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesRevert = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesRevert = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesRevertInput,
   outputSchema: VolumesRevertOutput,
 }));
@@ -10136,7 +10040,7 @@ export interface VolumesRevertRelocationInput {
   volumeName: string;
 }
 export const VolumesRevertRelocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10153,7 +10057,7 @@ export const VolumesRevertRelocationInput =
 // Output Schema
 export type VolumesRevertRelocationOutput = void;
 export const VolumesRevertRelocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRevertRelocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesRevertRelocationOutput>;
 
 // The operation
 /**
@@ -10166,12 +10070,10 @@ export const VolumesRevertRelocationOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesRevertRelocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesRevertRelocationInput,
-    outputSchema: VolumesRevertRelocationOutput,
-  }),
-);
+export const VolumesRevertRelocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesRevertRelocationInput,
+  outputSchema: VolumesRevertRelocationOutput,
+}));
 // Input Schema
 export interface VolumesSplitCloneFromParentInput {
   subscriptionId: string;
@@ -10181,7 +10083,7 @@ export interface VolumesSplitCloneFromParentInput {
   volumeName: string;
 }
 export const VolumesSplitCloneFromParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10210,7 +10112,7 @@ export interface VolumesSplitCloneFromParentOutput {
   };
 }
 export const VolumesSplitCloneFromParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10241,12 +10143,10 @@ export const VolumesSplitCloneFromParentOutput =
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesSplitCloneFromParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VolumesSplitCloneFromParentInput,
-    outputSchema: VolumesSplitCloneFromParentOutput,
-  }),
-);
+export const VolumesSplitCloneFromParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VolumesSplitCloneFromParentInput,
+  outputSchema: VolumesSplitCloneFromParentOutput,
+}));
 // Input Schema
 export interface VolumesUpdateInput {
   subscriptionId: string;
@@ -10312,7 +10212,7 @@ export interface VolumesUpdateInput {
     smbNonBrowsable?: "Disabled" | "Enabled";
   };
 }
-export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10430,7 +10330,7 @@ export interface VolumesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VolumesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10461,7 +10361,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param poolName - The name of the capacity pool
  * @param volumeName - The name of the volume
  */
-export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VolumesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,
   outputSchema: VolumesUpdateOutput,
 }));

@@ -30,7 +30,7 @@ export interface GoogleChromePolicyVersionsV1NumericRangeConstraint {
 }
 
 export const GoogleChromePolicyVersionsV1NumericRangeConstraint: Schema.Codec<GoogleChromePolicyVersionsV1NumericRangeConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimum: Schema.optional(Schema.String),
     maximum: Schema.optional(Schema.String),
   }).annotate({
@@ -59,7 +59,7 @@ export interface GoogleChromePolicyVersionsV1UploadedFileConstraints {
 }
 
 export const GoogleChromePolicyVersionsV1UploadedFileConstraints: Schema.Codec<GoogleChromePolicyVersionsV1UploadedFileConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sizeLimitBytes: Schema.optional(Schema.String),
     supportedContentTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -74,7 +74,7 @@ export interface GoogleChromePolicyVersionsV1FieldConstraints {
 }
 
 export const GoogleChromePolicyVersionsV1FieldConstraints: Schema.Codec<GoogleChromePolicyVersionsV1FieldConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numericRangeConstraint: Schema.optional(
       GoogleChromePolicyVersionsV1NumericRangeConstraint,
     ),
@@ -91,7 +91,7 @@ export interface GoogleChromePolicyVersionsV1NetworkSetting {
 }
 
 export const GoogleChromePolicyVersionsV1NetworkSetting: Schema.Codec<GoogleChromePolicyVersionsV1NetworkSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     policySchema: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChromePolicyVersionsV1NetworkSetting" });
@@ -108,7 +108,7 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateRequest {
 }
 
 export const GoogleChromePolicyVersionsV1DefineCertificateRequest: Schema.Codec<GoogleChromePolicyVersionsV1DefineCertificateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     ceritificateName: Schema.optional(Schema.String),
     certificate: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaRequiredItems {
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldConditions: Schema.optional(Schema.Array(Schema.String)),
     requiredFields: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -142,7 +142,7 @@ export interface GoogleChromePolicyVersionsV1PolicyTargetKey {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyTargetKey: Schema.Codec<GoogleChromePolicyVersionsV1PolicyTargetKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     additionalTargetKeys: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -159,7 +159,7 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
 }
 
 export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest: Schema.Codec<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyNamespace: Schema.optional(Schema.String),
     policySchema: Schema.optional(Schema.String),
     policyTargetKey: Schema.optional(
@@ -179,7 +179,7 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateResponse {
 }
 
 export const GoogleChromePolicyVersionsV1DefineCertificateResponse: Schema.Codec<GoogleChromePolicyVersionsV1DefineCertificateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
     settings: Schema.optional(
@@ -197,7 +197,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationFieldError {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyModificationFieldError: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationFieldError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
   }).annotate({
@@ -216,7 +216,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationError {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyModificationError: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -235,7 +235,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationErrorDetails {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyModificationErrorDetails: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modificationErrors: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationError),
     ),
@@ -251,7 +251,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceField: Schema.optional(Schema.String),
     sourceFieldValue: Schema.optional(Schema.String),
   }).annotate({
@@ -300,7 +300,7 @@ export interface Proto2FieldDescriptorProto {
 }
 
 export const Proto2FieldDescriptorProto: Schema.Codec<Proto2FieldDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     oneofIndex: Schema.optional(Schema.Number),
     jsonName: Schema.optional(Schema.String),
@@ -318,7 +318,7 @@ export interface Proto2EnumValueDescriptorProto {
 }
 
 export const Proto2EnumValueDescriptorProto: Schema.Codec<Proto2EnumValueDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     number: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Proto2EnumValueDescriptorProto" });
@@ -335,7 +335,7 @@ export interface Proto2EnumDescriptorProto {
 }
 
 export const Proto2EnumDescriptorProto: Schema.Codec<Proto2EnumDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Proto2EnumValueDescriptorProto)),
     name: Schema.optional(Schema.String),
     visibility: Schema.optional(Schema.String),
@@ -346,7 +346,7 @@ export interface Proto2OneofDescriptorProto {
 }
 
 export const Proto2OneofDescriptorProto: Schema.Codec<Proto2OneofDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Proto2OneofDescriptorProto" });
 
@@ -365,7 +365,7 @@ export interface Proto2DescriptorProto {
 }
 
 export const Proto2DescriptorProto: Schema.Codec<Proto2DescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       field: Schema.optional(Schema.Array(Proto2FieldDescriptorProto)),
@@ -395,7 +395,7 @@ export interface Proto2FileDescriptorProto {
 }
 
 export const Proto2FileDescriptorProto: Schema.Codec<Proto2FileDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     package: Schema.optional(Schema.String),
     optionDependency: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -413,7 +413,7 @@ export interface GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
 }
 
 export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -428,7 +428,7 @@ export interface GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest 
 }
 
 export const GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest),
     ),
@@ -449,7 +449,7 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
 }
 
 export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse: Schema.Codec<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -470,7 +470,7 @@ export interface GoogleTypeDate {
 }
 
 export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -486,7 +486,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescript
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     fieldDependencies: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies),
@@ -523,7 +523,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       nestedFieldDescriptions: Schema.optional(
         Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDescription),
@@ -559,7 +559,7 @@ export interface GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
 }
 
 export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse: Schema.Codec<GoogleChromePolicyVersionsV1UploadPolicyFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     downloadUri: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleChromePolicyVersionsV1UploadPolicyFileResponse",
@@ -573,7 +573,7 @@ export interface GoogleChromePolicyVersionsV1PolicyValue {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Codec<GoogleChromePolicyVersionsV1PolicyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     policySchema: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChromePolicyVersionsV1PolicyValue" });
@@ -581,7 +581,7 @@ export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Codec<GoogleChromeP
 export interface GoogleChromePolicyVersionsV1RemoveCertificateResponse {}
 
 export const GoogleChromePolicyVersionsV1RemoveCertificateResponse: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveCertificateResponse",
   });
 
@@ -593,7 +593,7 @@ export interface GoogleChromePolicyVersionsV1RemoveNetworkRequest {
 }
 
 export const GoogleChromePolicyVersionsV1RemoveNetworkRequest: Schema.Codec<GoogleChromePolicyVersionsV1RemoveNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
   }).annotate({
@@ -610,7 +610,7 @@ export interface GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
 }
 
 export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -632,7 +632,7 @@ export interface GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest 
 }
 
 export const GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest: Schema.Codec<GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyNamespace: Schema.optional(Schema.String),
     policySchema: Schema.optional(Schema.String),
     policyTargetKey: Schema.optional(
@@ -652,7 +652,7 @@ export interface GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
 }
 
 export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName: Schema.Codec<GoogleChromePolicyVersionsV1AdditionalTargetKeyName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     keyDescription: Schema.optional(Schema.String),
   }).annotate({
@@ -671,7 +671,7 @@ export interface GoogleChromePolicyVersionsV1ResolvedPolicy {
 }
 
 export const GoogleChromePolicyVersionsV1ResolvedPolicy: Schema.Codec<GoogleChromePolicyVersionsV1ResolvedPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
     targetKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
     sourceKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
@@ -688,7 +688,7 @@ export interface GoogleChromePolicyVersionsV1ResolveResponse {
 }
 
 export const GoogleChromePolicyVersionsV1ResolveResponse: Schema.Codec<GoogleChromePolicyVersionsV1ResolveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resolvedPolicies: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ResolvedPolicy),
     ),
@@ -703,7 +703,7 @@ export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
 }
 
 export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -715,7 +715,7 @@ export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Codec<
 export interface GoogleChromePolicyVersionsV1RemoveNetworkResponse {}
 
 export const GoogleChromePolicyVersionsV1RemoveNetworkResponse: Schema.Codec<GoogleChromePolicyVersionsV1RemoveNetworkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveNetworkResponse",
   });
 
@@ -727,7 +727,7 @@ export interface GoogleChromePolicyVersionsV1CertificateReference {
 }
 
 export const GoogleChromePolicyVersionsV1CertificateReference: Schema.Codec<GoogleChromePolicyVersionsV1CertificateReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgUnitId: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
   }).annotate({
@@ -740,7 +740,7 @@ export interface GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails {
 }
 
 export const GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateReferences: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1CertificateReference),
     ),
@@ -758,7 +758,7 @@ export interface GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
 }
 
 export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -774,7 +774,7 @@ export interface GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest {
 }
 
 export const GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest),
     ),
@@ -802,7 +802,7 @@ export interface GoogleChromePolicyVersionsV1PolicyApiLifecycle {
 }
 
 export const GoogleChromePolicyVersionsV1PolicyApiLifecycle: Schema.Codec<GoogleChromePolicyVersionsV1PolicyApiLifecycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endSupport: Schema.optional(GoogleTypeDate),
     description: Schema.optional(Schema.String),
     deprecatedInFavorOf: Schema.optional(Schema.Array(Schema.String)),
@@ -820,7 +820,7 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkRequest {
 }
 
 export const GoogleChromePolicyVersionsV1DefineNetworkRequest: Schema.Codec<GoogleChromePolicyVersionsV1DefineNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     settings: Schema.optional(
@@ -842,7 +842,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     noticeValue: Schema.optional(Schema.String),
     noticeMessage: Schema.optional(Schema.String),
@@ -890,7 +890,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchema {
 }
 
 export const GoogleChromePolicyVersionsV1PolicySchema: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     fieldDescriptions: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDescription),
@@ -926,7 +926,7 @@ export interface GoogleChromePolicyVersionsV1ResolveRequest {
 }
 
 export const GoogleChromePolicyVersionsV1ResolveRequest: Schema.Codec<GoogleChromePolicyVersionsV1ResolveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
     ),
@@ -941,7 +941,7 @@ export interface GoogleChromePolicyVersionsV1UploadPolicyFileRequest {
 }
 
 export const GoogleChromePolicyVersionsV1UploadPolicyFileRequest: Schema.Codec<GoogleChromePolicyVersionsV1UploadPolicyFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyField: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleChromePolicyVersionsV1UploadPolicyFileRequest",
@@ -955,7 +955,7 @@ export interface GoogleChromePolicyVersionsV1RemoveCertificateRequest {
 }
 
 export const GoogleChromePolicyVersionsV1RemoveCertificateRequest: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
   }).annotate({
@@ -970,7 +970,7 @@ export interface GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
 }
 
 export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Codec<GoogleChromePolicyVersionsV1ListPolicySchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     policySchemas: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1PolicySchema),
@@ -982,7 +982,7 @@ export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Codec
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -992,7 +992,7 @@ export interface GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest {
 }
 
 export const GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest),
     ),
@@ -1006,7 +1006,7 @@ export interface GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
 }
 
 export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest),
     ),
@@ -1024,7 +1024,7 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkResponse {
 }
 
 export const GoogleChromePolicyVersionsV1DefineNetworkResponse: Schema.Codec<GoogleChromePolicyVersionsV1DefineNetworkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
     settings: Schema.optional(
@@ -1096,7 +1096,7 @@ export interface ResolveCustomersPoliciesRequest {
 }
 
 export const ResolveCustomersPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(GoogleChromePolicyVersionsV1ResolveRequest).pipe(
       T.HttpBody(),
@@ -1113,7 +1113,7 @@ export const ResolveCustomersPoliciesRequest =
 export type ResolveCustomersPoliciesResponse =
   GoogleChromePolicyVersionsV1ResolveResponse;
 export const ResolveCustomersPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ResolveResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1ResolveResponse;
 
 export type ResolveCustomersPoliciesError =
   | DefaultErrors
@@ -1128,7 +1128,7 @@ export const resolveCustomersPolicies: API.OperationMethod<
   ResolveCustomersPoliciesResponse,
   ResolveCustomersPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveCustomersPoliciesRequest,
   output: ResolveCustomersPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1142,7 +1142,7 @@ export interface BatchModifyCustomersPoliciesOrgunitsRequest {
 }
 
 export const BatchModifyCustomersPoliciesOrgunitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest,
@@ -1158,7 +1158,7 @@ export const BatchModifyCustomersPoliciesOrgunitsRequest =
 
 export type BatchModifyCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesOrgunitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchModifyCustomersPoliciesOrgunitsError =
   | DefaultErrors
@@ -1173,7 +1173,7 @@ export const batchModifyCustomersPoliciesOrgunits: API.OperationMethod<
   BatchModifyCustomersPoliciesOrgunitsResponse,
   BatchModifyCustomersPoliciesOrgunitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchModifyCustomersPoliciesOrgunitsRequest,
   output: BatchModifyCustomersPoliciesOrgunitsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1187,7 +1187,7 @@ export interface BatchInheritCustomersPoliciesOrgunitsRequest {
 }
 
 export const BatchInheritCustomersPoliciesOrgunitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest,
@@ -1203,7 +1203,7 @@ export const BatchInheritCustomersPoliciesOrgunitsRequest =
 
 export type BatchInheritCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchInheritCustomersPoliciesOrgunitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchInheritCustomersPoliciesOrgunitsError =
   | DefaultErrors
@@ -1218,7 +1218,7 @@ export const batchInheritCustomersPoliciesOrgunits: API.OperationMethod<
   BatchInheritCustomersPoliciesOrgunitsResponse,
   BatchInheritCustomersPoliciesOrgunitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchInheritCustomersPoliciesOrgunitsRequest,
   output: BatchInheritCustomersPoliciesOrgunitsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1232,7 +1232,7 @@ export interface BatchModifyCustomersPoliciesGroupsRequest {
 }
 
 export const BatchModifyCustomersPoliciesGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest,
@@ -1248,7 +1248,7 @@ export const BatchModifyCustomersPoliciesGroupsRequest =
 
 export type BatchModifyCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchModifyCustomersPoliciesGroupsError =
   | DefaultErrors
@@ -1263,7 +1263,7 @@ export const batchModifyCustomersPoliciesGroups: API.OperationMethod<
   BatchModifyCustomersPoliciesGroupsResponse,
   BatchModifyCustomersPoliciesGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchModifyCustomersPoliciesGroupsRequest,
   output: BatchModifyCustomersPoliciesGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1277,7 +1277,7 @@ export interface BatchDeleteCustomersPoliciesGroupsRequest {
 }
 
 export const BatchDeleteCustomersPoliciesGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest,
@@ -1293,7 +1293,7 @@ export const BatchDeleteCustomersPoliciesGroupsRequest =
 
 export type BatchDeleteCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchDeleteCustomersPoliciesGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchDeleteCustomersPoliciesGroupsError =
   | DefaultErrors
@@ -1308,7 +1308,7 @@ export const batchDeleteCustomersPoliciesGroups: API.OperationMethod<
   BatchDeleteCustomersPoliciesGroupsResponse,
   BatchDeleteCustomersPoliciesGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteCustomersPoliciesGroupsRequest,
   output: BatchDeleteCustomersPoliciesGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1322,7 +1322,7 @@ export interface ListGroupPriorityOrderingCustomersPoliciesGroupsRequest {
 }
 
 export const ListGroupPriorityOrderingCustomersPoliciesGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest,
@@ -1339,7 +1339,7 @@ export const ListGroupPriorityOrderingCustomersPoliciesGroupsRequest =
 export type ListGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse;
 export const ListGroupPriorityOrderingCustomersPoliciesGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse;
 
 export type ListGroupPriorityOrderingCustomersPoliciesGroupsError =
   | DefaultErrors
@@ -1354,7 +1354,7 @@ export const listGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMeth
   ListGroupPriorityOrderingCustomersPoliciesGroupsResponse,
   ListGroupPriorityOrderingCustomersPoliciesGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGroupPriorityOrderingCustomersPoliciesGroupsRequest,
   output: ListGroupPriorityOrderingCustomersPoliciesGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1368,7 +1368,7 @@ export interface UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest {
 }
 
 export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest,
@@ -1385,7 +1385,7 @@ export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest =
 export type UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   GoogleProtobufEmpty;
 export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateGroupPriorityOrderingCustomersPoliciesGroupsError =
   | DefaultErrors
@@ -1400,7 +1400,7 @@ export const updateGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMe
   UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse,
   UpdateGroupPriorityOrderingCustomersPoliciesGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest,
   output: UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1414,7 +1414,7 @@ export interface DefineCertificateCustomersPoliciesNetworksRequest {
 }
 
 export const DefineCertificateCustomersPoliciesNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1DefineCertificateRequest,
@@ -1431,7 +1431,7 @@ export const DefineCertificateCustomersPoliciesNetworksRequest =
 export type DefineCertificateCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1DefineCertificateResponse;
 export const DefineCertificateCustomersPoliciesNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1DefineCertificateResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1DefineCertificateResponse;
 
 export type DefineCertificateCustomersPoliciesNetworksError =
   | DefaultErrors
@@ -1446,7 +1446,7 @@ export const defineCertificateCustomersPoliciesNetworks: API.OperationMethod<
   DefineCertificateCustomersPoliciesNetworksResponse,
   DefineCertificateCustomersPoliciesNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineCertificateCustomersPoliciesNetworksRequest,
   output: DefineCertificateCustomersPoliciesNetworksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1460,7 +1460,7 @@ export interface RemoveCertificateCustomersPoliciesNetworksRequest {
 }
 
 export const RemoveCertificateCustomersPoliciesNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1RemoveCertificateRequest,
@@ -1477,7 +1477,7 @@ export const RemoveCertificateCustomersPoliciesNetworksRequest =
 export type RemoveCertificateCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1RemoveCertificateResponse;
 export const RemoveCertificateCustomersPoliciesNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1RemoveCertificateResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1RemoveCertificateResponse;
 
 export type RemoveCertificateCustomersPoliciesNetworksError =
   | DefaultErrors
@@ -1492,7 +1492,7 @@ export const removeCertificateCustomersPoliciesNetworks: API.OperationMethod<
   RemoveCertificateCustomersPoliciesNetworksResponse,
   RemoveCertificateCustomersPoliciesNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveCertificateCustomersPoliciesNetworksRequest,
   output: RemoveCertificateCustomersPoliciesNetworksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1506,7 +1506,7 @@ export interface RemoveNetworkCustomersPoliciesNetworksRequest {
 }
 
 export const RemoveNetworkCustomersPoliciesNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1RemoveNetworkRequest,
@@ -1523,7 +1523,7 @@ export const RemoveNetworkCustomersPoliciesNetworksRequest =
 export type RemoveNetworkCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1RemoveNetworkResponse;
 export const RemoveNetworkCustomersPoliciesNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1RemoveNetworkResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1RemoveNetworkResponse;
 
 export type RemoveNetworkCustomersPoliciesNetworksError =
   | DefaultErrors
@@ -1538,7 +1538,7 @@ export const removeNetworkCustomersPoliciesNetworks: API.OperationMethod<
   RemoveNetworkCustomersPoliciesNetworksResponse,
   RemoveNetworkCustomersPoliciesNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveNetworkCustomersPoliciesNetworksRequest,
   output: RemoveNetworkCustomersPoliciesNetworksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1552,7 +1552,7 @@ export interface DefineNetworkCustomersPoliciesNetworksRequest {
 }
 
 export const DefineNetworkCustomersPoliciesNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleChromePolicyVersionsV1DefineNetworkRequest,
@@ -1569,7 +1569,7 @@ export const DefineNetworkCustomersPoliciesNetworksRequest =
 export type DefineNetworkCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1DefineNetworkResponse;
 export const DefineNetworkCustomersPoliciesNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1DefineNetworkResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1DefineNetworkResponse;
 
 export type DefineNetworkCustomersPoliciesNetworksError =
   | DefaultErrors
@@ -1584,7 +1584,7 @@ export const defineNetworkCustomersPoliciesNetworks: API.OperationMethod<
   DefineNetworkCustomersPoliciesNetworksResponse,
   DefineNetworkCustomersPoliciesNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DefineNetworkCustomersPoliciesNetworksRequest,
   output: DefineNetworkCustomersPoliciesNetworksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1602,7 +1602,7 @@ export interface ListCustomersPolicySchemasRequest {
 }
 
 export const ListCustomersPolicySchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1615,7 +1615,7 @@ export const ListCustomersPolicySchemasRequest =
 export type ListCustomersPolicySchemasResponse =
   GoogleChromePolicyVersionsV1ListPolicySchemasResponse;
 export const ListCustomersPolicySchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ListPolicySchemasResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1ListPolicySchemasResponse;
 
 export type ListCustomersPolicySchemasError =
   | DefaultErrors
@@ -1628,7 +1628,7 @@ export const listCustomersPolicySchemas: API.PaginatedOperationMethod<
   ListCustomersPolicySchemasResponse,
   ListCustomersPolicySchemasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersPolicySchemasRequest,
   output: ListCustomersPolicySchemasResponse,
   errors: [NotFound, Forbidden],
@@ -1644,7 +1644,7 @@ export interface GetCustomersPolicySchemasRequest {
 }
 
 export const GetCustomersPolicySchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1654,7 +1654,7 @@ export const GetCustomersPolicySchemasRequest =
 export type GetCustomersPolicySchemasResponse =
   GoogleChromePolicyVersionsV1PolicySchema;
 export const GetCustomersPolicySchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1PolicySchema;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1PolicySchema;
 
 export type GetCustomersPolicySchemasError =
   | DefaultErrors
@@ -1667,7 +1667,7 @@ export const getCustomersPolicySchemas: API.OperationMethod<
   GetCustomersPolicySchemasResponse,
   GetCustomersPolicySchemasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomersPolicySchemasRequest,
   output: GetCustomersPolicySchemasResponse,
   errors: [NotFound, Forbidden],
@@ -1680,7 +1680,7 @@ export interface UploadMediaRequest {
   body?: GoogleChromePolicyVersionsV1UploadPolicyFileRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   customer: Schema.String.pipe(T.HttpPath("customer")),
   body: Schema.optional(
     GoogleChromePolicyVersionsV1UploadPolicyFileRequest,
@@ -1697,7 +1697,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UploadMediaResponse =
   GoogleChromePolicyVersionsV1UploadPolicyFileResponse;
 export const UploadMediaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1UploadPolicyFileResponse;
+  /*@__PURE__*/ GoogleChromePolicyVersionsV1UploadPolicyFileResponse;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -1712,7 +1712,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

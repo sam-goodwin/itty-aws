@@ -14,7 +14,7 @@ export interface PostIssuingTransactionsTransactionInput {
   metadata?: Record<string, string> | "";
 }
 export const PostIssuingTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(
@@ -463,7 +463,7 @@ export interface PostIssuingTransactionsTransactionOutput {
   wallet: "apple_pay" | "google_pay" | "samsung_pay" | null;
 }
 export const PostIssuingTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -877,7 +877,7 @@ export const PostIssuingTransactionsTransactionOutput =
  * <p>Updates the specified Issuing <code>Transaction</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
 export const PostIssuingTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIssuingTransactionsTransactionInput,
     outputSchema: PostIssuingTransactionsTransactionOutput,
   }));

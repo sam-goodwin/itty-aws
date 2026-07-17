@@ -19,7 +19,7 @@ export interface MachinesWaitInput {
     | "failed"
     | "settled";
 }
-export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesWaitInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   version: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface MachinesWaitOutput {
   state?: string;
   version?: string;
 }
-export const MachinesWaitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesWaitOutput = /*@__PURE__*/ Schema.Struct({
   event_id: Schema.optional(Schema.String),
   ok: Schema.optional(Schema.Boolean),
   state: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export const MachinesWaitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param timeout - wait timeout. default 60s
  * @param state - desired state(s), supports repeated or comma-separated values
  */
-export const MachinesWait = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesWait = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesWaitInput,
   outputSchema: MachinesWaitOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

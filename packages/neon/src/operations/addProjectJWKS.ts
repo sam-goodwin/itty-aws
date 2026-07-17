@@ -12,7 +12,7 @@ export interface AddProjectJWKSInput {
   role_names?: string[];
   skip_role_creation?: boolean;
 }
-export const AddProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddProjectJWKSInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   jwks_url: Schema.String,
   provider_name: Schema.String,
@@ -92,7 +92,7 @@ export interface AddProjectJWKSOutput {
     total_duration_ms: number;
   }[];
 }
-export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddProjectJWKSOutput = /*@__PURE__*/ Schema.Struct({
   jwks: Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
@@ -177,7 +177,7 @@ export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const addProjectJWKS = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addProjectJWKS = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddProjectJWKSInput,
   outputSchema: AddProjectJWKSOutput,
 }));

@@ -8,7 +8,7 @@ export interface UpsertAliasInput {
   aliasName: string;
   collection_name: string;
 }
-export const UpsertAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertAliasInput = /*@__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
   collection_name: Schema.String,
 }).pipe(
@@ -20,7 +20,7 @@ export interface UpsertAliasOutput {
   name: string;
   collection_name: string;
 }
-export const UpsertAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpsertAliasOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
 }) as unknown as Schema.Codec<UpsertAliasOutput>;
@@ -33,7 +33,7 @@ export const UpsertAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param aliasName - The name of the alias to create/update
  */
-export const upsertAlias = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertAlias = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertAliasInput,
   outputSchema: UpsertAliasOutput,
   errors: [BadRequest, NotFound] as const,

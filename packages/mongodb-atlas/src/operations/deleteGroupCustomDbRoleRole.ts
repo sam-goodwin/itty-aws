@@ -11,7 +11,7 @@ export interface DeleteGroupCustomDbRoleRoleInput {
   pretty?: boolean;
 }
 export const DeleteGroupCustomDbRoleRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupCustomDbRoleRoleInput =
 // Output Schema
 export type DeleteGroupCustomDbRoleRoleOutput = void;
 export const DeleteGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupCustomDbRoleRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const DeleteGroupCustomDbRoleRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const deleteGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupCustomDbRoleRoleInput,
-    outputSchema: DeleteGroupCustomDbRoleRoleOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const deleteGroupCustomDbRoleRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupCustomDbRoleRoleInput,
+  outputSchema: DeleteGroupCustomDbRoleRoleOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

@@ -12,7 +12,7 @@ export interface GetGroupClusterBackupSnapshotShardedClusterInput {
   pretty?: boolean;
 }
 export const GetGroupClusterBackupSnapshotShardedClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupClusterBackupSnapshotShardedClusterInput =
 // Output Schema
 export type GetGroupClusterBackupSnapshotShardedClusterOutput = void;
 export const GetGroupClusterBackupSnapshotShardedClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupSnapshotShardedClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupSnapshotShardedClusterOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const GetGroupClusterBackupSnapshotShardedClusterOutput =
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
 export const getGroupClusterBackupSnapshotShardedCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterBackupSnapshotShardedClusterInput,
     outputSchema: GetGroupClusterBackupSnapshotShardedClusterOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

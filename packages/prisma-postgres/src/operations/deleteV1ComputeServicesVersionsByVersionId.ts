@@ -5,7 +5,7 @@ import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const DeleteV1ComputeServicesVersionsByVersionIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type DeleteV1ComputeServicesVersionsByVersionIdInput =
 
 // Output Schema
 export const DeleteV1ComputeServicesVersionsByVersionIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type DeleteV1ComputeServicesVersionsByVersionIdOutput =
   typeof DeleteV1ComputeServicesVersionsByVersionIdOutput.Type;
 
@@ -30,7 +30,7 @@ export type DeleteV1ComputeServicesVersionsByVersionIdOutput =
  * Permanently deletes the compute version, its metadata, and any associated VM. The version must be stopped or in the `new` state before it can be deleted.
  */
 export const deleteV1ComputeServicesVersionsByVersionId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1ComputeServicesVersionsByVersionIdInput,
     outputSchema: DeleteV1ComputeServicesVersionsByVersionIdOutput,
     errors: [Forbidden, NotFound, Conflict] as const,

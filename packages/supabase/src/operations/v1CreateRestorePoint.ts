@@ -9,7 +9,7 @@ export interface V1CreateRestorePointInput {
   name: string;
 }
 export const V1CreateRestorePointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
@@ -26,7 +26,7 @@ export interface V1CreateRestorePointOutput {
   completed_on: string | null;
 }
 export const V1CreateRestorePointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     status: Schema.Literals(["AVAILABLE", "PENDING", "REMOVED", "FAILED"]),
     completed_on: Schema.NullOr(Schema.String),
@@ -38,10 +38,8 @@ export const V1CreateRestorePointOutput =
  *
  * @param ref - Project ref
  */
-export const v1CreateRestorePoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CreateRestorePointInput,
-    outputSchema: V1CreateRestorePointOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1CreateRestorePoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CreateRestorePointInput,
+  outputSchema: V1CreateRestorePointOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

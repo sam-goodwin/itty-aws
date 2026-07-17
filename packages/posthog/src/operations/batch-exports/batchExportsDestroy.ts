@@ -9,7 +9,7 @@ export interface BatchExportsDestroyInput {
   project_id: string;
 }
 export const BatchExportsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const BatchExportsDestroyInput =
 // Output Schema
 export type BatchExportsDestroyOutput = void;
 export const BatchExportsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsDestroyOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const BatchExportsDestroyOutput =
  * @param id - A UUID string identifying this batch export.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const batchExportsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: BatchExportsDestroyInput,
   outputSchema: BatchExportsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

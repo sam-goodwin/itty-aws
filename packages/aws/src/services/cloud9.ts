@@ -104,13 +104,13 @@ export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: SensitiveString, Value: SensitiveString }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM" | (string & {});
-export const ConnectionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConnectionType = /*@__PURE__*/ S.String;
 export interface CreateEnvironmentEC2Request {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -125,7 +125,7 @@ export interface CreateEnvironmentEC2Request {
   dryRun?: boolean;
 }
 export const CreateEnvironmentEC2Request =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       description: S.optional(SensitiveString),
@@ -147,20 +147,20 @@ export const CreateEnvironmentEC2Request =
 export interface CreateEnvironmentEC2Result {
   environmentId?: string;
 }
-export const CreateEnvironmentEC2Result = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environmentId: S.optional(S.String) }),
+export const CreateEnvironmentEC2Result = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environmentId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateEnvironmentEC2Result",
 }) as any as S.Schema<CreateEnvironmentEC2Result>;
 export type MemberPermissions = "read-write" | "read-only" | (string & {});
-export const MemberPermissions = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemberPermissions = /*@__PURE__*/ S.String;
 export interface CreateEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;
   permissions: MemberPermissions;
 }
 export const CreateEnvironmentMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environmentId: S.String,
       userArn: S.String,
@@ -172,7 +172,7 @@ export const CreateEnvironmentMembershipRequest =
     identifier: "CreateEnvironmentMembershipRequest",
   }) as any as S.Schema<CreateEnvironmentMembershipRequest>;
 export type Permissions = "owner" | "read-write" | "read-only" | (string & {});
-export const Permissions = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Permissions = /*@__PURE__*/ S.String;
 export interface EnvironmentMember {
   permissions: Permissions;
   userId: string;
@@ -180,7 +180,7 @@ export interface EnvironmentMember {
   environmentId: string;
   lastAccess?: Date;
 }
-export const EnvironmentMember = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: Permissions,
     userId: S.String,
@@ -195,7 +195,7 @@ export interface CreateEnvironmentMembershipResult {
   membership: EnvironmentMember;
 }
 export const CreateEnvironmentMembershipResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ membership: EnvironmentMember }),
   ).annotate({
     identifier: "CreateEnvironmentMembershipResult",
@@ -203,17 +203,16 @@ export const CreateEnvironmentMembershipResult =
 export interface DeleteEnvironmentRequest {
   environmentId: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ environmentId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environmentId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResult {}
-export const DeleteEnvironmentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteEnvironmentResult",
 }) as any as S.Schema<DeleteEnvironmentResult>;
@@ -222,7 +221,7 @@ export interface DeleteEnvironmentMembershipRequest {
   userArn: string;
 }
 export const DeleteEnvironmentMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ environmentId: S.String, userArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -231,11 +230,11 @@ export const DeleteEnvironmentMembershipRequest =
   }) as any as S.Schema<DeleteEnvironmentMembershipRequest>;
 export interface DeleteEnvironmentMembershipResult {}
 export const DeleteEnvironmentMembershipResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteEnvironmentMembershipResult",
   }) as any as S.Schema<DeleteEnvironmentMembershipResult>;
 export type PermissionsList = Permissions[];
-export const PermissionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Permissions);
+export const PermissionsList = /*@__PURE__*/ S.Array(Permissions);
 export interface DescribeEnvironmentMembershipsRequest {
   userArn?: string;
   environmentId?: string;
@@ -244,7 +243,7 @@ export interface DescribeEnvironmentMembershipsRequest {
   maxResults?: number;
 }
 export const DescribeEnvironmentMembershipsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       userArn: S.optional(S.String),
       environmentId: S.optional(S.String),
@@ -258,14 +257,13 @@ export const DescribeEnvironmentMembershipsRequest =
     identifier: "DescribeEnvironmentMembershipsRequest",
   }) as any as S.Schema<DescribeEnvironmentMembershipsRequest>;
 export type EnvironmentMembersList = EnvironmentMember[];
-export const EnvironmentMembersList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentMember);
+export const EnvironmentMembersList = /*@__PURE__*/ S.Array(EnvironmentMember);
 export interface DescribeEnvironmentMembershipsResult {
   memberships?: EnvironmentMember[];
   nextToken?: string;
 }
 export const DescribeEnvironmentMembershipsResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       memberships: S.optional(EnvironmentMembersList),
       nextToken: S.optional(S.String),
@@ -274,14 +272,12 @@ export const DescribeEnvironmentMembershipsResult =
     identifier: "DescribeEnvironmentMembershipsResult",
   }) as any as S.Schema<DescribeEnvironmentMembershipsResult>;
 export type BoundedEnvironmentIdList = string[];
-export const BoundedEnvironmentIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const BoundedEnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeEnvironmentsRequest {
   environmentIds: string[];
 }
 export const DescribeEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ environmentIds: BoundedEnvironmentIdList }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -289,7 +285,7 @@ export const DescribeEnvironmentsRequest =
     identifier: "DescribeEnvironmentsRequest",
   }) as any as S.Schema<DescribeEnvironmentsRequest>;
 export type EnvironmentType = "ssh" | "ec2" | (string & {});
-export const EnvironmentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentType = /*@__PURE__*/ S.String;
 export type EnvironmentLifecycleStatus =
   | "CREATING"
   | "CREATED"
@@ -297,13 +293,13 @@ export type EnvironmentLifecycleStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-export const EnvironmentLifecycleStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentLifecycleStatus = /*@__PURE__*/ S.String;
 export interface EnvironmentLifecycle {
   status?: EnvironmentLifecycleStatus;
   reason?: string;
   failureResource?: string;
 }
-export const EnvironmentLifecycle = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(EnvironmentLifecycleStatus),
     reason: S.optional(S.String),
@@ -325,7 +321,7 @@ export type ManagedCredentialsStatus =
   | "FAILED_REMOVAL_BY_COLLABORATOR"
   | "FAILED_REMOVAL_BY_OWNER"
   | (string & {});
-export const ManagedCredentialsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ManagedCredentialsStatus = /*@__PURE__*/ S.String;
 export interface Environment {
   id?: string;
   name?: string;
@@ -337,7 +333,7 @@ export interface Environment {
   lifecycle?: EnvironmentLifecycle;
   managedCredentialsStatus?: ManagedCredentialsStatus;
 }
-export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -351,12 +347,12 @@ export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 export type EnvironmentList = Environment[];
-export const EnvironmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Environment);
+export const EnvironmentList = /*@__PURE__*/ S.Array(Environment);
 export interface DescribeEnvironmentsResult {
   environments?: Environment[];
 }
-export const DescribeEnvironmentsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environments: S.optional(EnvironmentList) }),
+export const DescribeEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environments: S.optional(EnvironmentList) }),
 ).annotate({
   identifier: "DescribeEnvironmentsResult",
 }) as any as S.Schema<DescribeEnvironmentsResult>;
@@ -364,7 +360,7 @@ export interface DescribeEnvironmentStatusRequest {
   environmentId: string;
 }
 export const DescribeEnvironmentStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ environmentId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -380,13 +376,13 @@ export type EnvironmentStatus =
   | "stopped"
   | "deleting"
   | (string & {});
-export const EnvironmentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentStatus = /*@__PURE__*/ S.String;
 export interface DescribeEnvironmentStatusResult {
   status: EnvironmentStatus;
   message: string;
 }
 export const DescribeEnvironmentStatusResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ status: EnvironmentStatus, message: S.String }),
   ).annotate({
     identifier: "DescribeEnvironmentStatusResult",
@@ -395,40 +391,37 @@ export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentIdList = string[];
-export const EnvironmentIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListEnvironmentsResult {
   nextToken?: string;
   environmentIds?: string[];
 }
-export const ListEnvironmentsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      environmentIds: S.optional(EnvironmentIdList),
-    }),
+export const ListEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    environmentIds: S.optional(EnvironmentIdList),
+  }),
 ).annotate({
   identifier: "ListEnvironmentsResult",
 }) as any as S.Schema<ListEnvironmentsResult>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -436,7 +429,7 @@ export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -445,7 +438,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -453,18 +446,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string | redacted.Redacted<string>[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string | redacted.Redacted<string>[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -472,35 +465,34 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
-export const ManagedCredentialsAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ManagedCredentialsAction = /*@__PURE__*/ S.String;
 export interface UpdateEnvironmentRequest {
   environmentId: string;
   name?: string;
   description?: string | redacted.Redacted<string>;
   managedCredentialsAction?: ManagedCredentialsAction;
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String,
-      name: S.optional(S.String),
-      description: S.optional(SensitiveString),
-      managedCredentialsAction: S.optional(ManagedCredentialsAction),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    managedCredentialsAction: S.optional(ManagedCredentialsAction),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdateEnvironmentRequest",
 }) as any as S.Schema<UpdateEnvironmentRequest>;
 export interface UpdateEnvironmentResult {}
-export const UpdateEnvironmentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateEnvironmentResult",
 }) as any as S.Schema<UpdateEnvironmentResult>;
@@ -510,7 +502,7 @@ export interface UpdateEnvironmentMembershipRequest {
   permissions: MemberPermissions;
 }
 export const UpdateEnvironmentMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environmentId: S.String,
       userArn: S.String,
@@ -525,7 +517,7 @@ export interface UpdateEnvironmentMembershipResult {
   membership?: EnvironmentMember;
 }
 export const UpdateEnvironmentMembershipResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ membership: S.optional(EnvironmentMember) }),
   ).annotate({
     identifier: "UpdateEnvironmentMembershipResult",
@@ -620,7 +612,7 @@ export const createEnvironmentEC2: API.OperationMethod<
   CreateEnvironmentEC2Result,
   CreateEnvironmentEC2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentEC2Request,
   output: CreateEnvironmentEC2Result,
   errors: [
@@ -655,7 +647,7 @@ export const createEnvironmentMembership: API.OperationMethod<
   CreateEnvironmentMembershipResult,
   CreateEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentMembershipRequest,
   output: CreateEnvironmentMembershipResult,
   errors: [
@@ -691,7 +683,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResult,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResult,
   errors: [
@@ -726,7 +718,7 @@ export const deleteEnvironmentMembership: API.OperationMethod<
   DeleteEnvironmentMembershipResult,
   DeleteEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentMembershipRequest,
   output: DeleteEnvironmentMembershipResult,
   errors: [
@@ -776,7 +768,7 @@ export const describeEnvironmentMemberships: API.OperationMethod<
     DescribeEnvironmentMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEnvironmentMembershipsRequest,
   output: DescribeEnvironmentMembershipsResult,
   errors: [
@@ -816,7 +808,7 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsResult,
   DescribeEnvironmentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentsRequest,
   output: DescribeEnvironmentsResult,
   errors: [
@@ -851,7 +843,7 @@ export const describeEnvironmentStatus: API.OperationMethod<
   DescribeEnvironmentStatusResult,
   DescribeEnvironmentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEnvironmentStatusRequest,
   output: DescribeEnvironmentStatusResult,
   errors: [
@@ -905,7 +897,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResult,
   errors: [
@@ -941,7 +933,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -972,7 +964,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1001,7 +993,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1033,7 +1025,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentResult,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResult,
   errors: [
@@ -1069,7 +1061,7 @@ export const updateEnvironmentMembership: API.OperationMethod<
   UpdateEnvironmentMembershipResult,
   UpdateEnvironmentMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentMembershipRequest,
   output: UpdateEnvironmentMembershipResult,
   errors: [

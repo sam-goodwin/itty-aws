@@ -17,7 +17,7 @@ export interface ExperimentsMetricsRecalculationCreateInput {
     | "experiment_update";
 }
 export const ExperimentsMetricsRecalculationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     trigger: Schema.optional(
@@ -71,7 +71,7 @@ export interface ExperimentsMetricsRecalculationCreateOutput {
   }[];
 }
 export const ExperimentsMetricsRecalculationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     experiment_id: Schema.Number,
     status: Schema.Literals(["pending", "in_progress", "completed", "failed"]),
@@ -118,7 +118,7 @@ export const ExperimentsMetricsRecalculationCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const experimentsMetricsRecalculationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentsMetricsRecalculationCreateInput,
     outputSchema: ExperimentsMetricsRecalculationCreateOutput,
   }));

@@ -49,68 +49,66 @@ export interface AnnotationsUpdateInput {
   emoji?: string | null;
   hidden_in_user_interface?: boolean | null;
 }
-export const AnnotationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    content: Schema.optional(Schema.NullOr(Schema.String)),
-    date_marker: Schema.optional(Schema.NullOr(Schema.String)),
-    creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
-    dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
-    dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    dashboard_name: Schema.optional(Schema.NullOr(Schema.String)),
-    insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
-    insight_name: Schema.optional(Schema.NullOr(Schema.String)),
-    insight_derived_name: Schema.optional(Schema.NullOr(Schema.String)),
-    created_by: Schema.optional(
-      Schema.NullOr(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          uuid: Schema.optional(Schema.String),
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          role_at_organization: Schema.optional(
-            Schema.NullOr(
-              Schema.Union([
-                Schema.Literals([
-                  "engineering",
-                  "data",
-                  "product",
-                  "founder",
-                  "leadership",
-                  "marketing",
-                  "sales",
-                  "other",
-                ]),
-                Schema.Literals([""]),
+export const AnnotationsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  content: Schema.optional(Schema.NullOr(Schema.String)),
+  date_marker: Schema.optional(Schema.NullOr(Schema.String)),
+  creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
+  dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
+  dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
+  dashboard_name: Schema.optional(Schema.NullOr(Schema.String)),
+  insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
+  insight_name: Schema.optional(Schema.NullOr(Schema.String)),
+  insight_derived_name: Schema.optional(Schema.NullOr(Schema.String)),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
               ]),
-            ),
+              Schema.Literals([""]),
+            ]),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
-    created_at: Schema.optional(Schema.NullOr(Schema.String)),
-    updated_at: Schema.optional(Schema.String),
-    deleted: Schema.optional(Schema.Boolean),
-    scope: Schema.optional(
-      Schema.Literals([
-        "dashboard_item",
-        "dashboard",
-        "project",
-        "organization",
-        "recording",
-      ]),
-    ),
-    emoji: Schema.optional(Schema.NullOr(Schema.String)),
-    hidden_in_user_interface: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  },
-).pipe(
+  ),
+  created_at: Schema.optional(Schema.NullOr(Schema.String)),
+  updated_at: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  scope: Schema.optional(
+    Schema.Literals([
+      "dashboard_item",
+      "dashboard",
+      "project",
+      "organization",
+      "recording",
+    ]),
+  ),
+  emoji: Schema.optional(Schema.NullOr(Schema.String)),
+  hidden_in_user_interface: Schema.optional(Schema.NullOr(Schema.Boolean)),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/api/projects/{project_id}/annotations/{id}/",
@@ -163,7 +161,7 @@ export interface AnnotationsUpdateOutput {
   hidden_in_user_interface?: boolean | null;
 }
 export const AnnotationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
@@ -230,7 +228,7 @@ export const AnnotationsUpdateOutput =
  * @param id - A unique integer value identifying this annotation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const annotationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const annotationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AnnotationsUpdateInput,
   outputSchema: AnnotationsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

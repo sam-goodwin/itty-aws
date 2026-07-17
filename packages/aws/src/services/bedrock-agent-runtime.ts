@@ -186,41 +186,40 @@ export interface AgenticRetrieveMessageContent {
   text?: string;
 }
 export const AgenticRetrieveMessageContent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ text: S.optional(S.String) }),
   ).annotate({
     identifier: "AgenticRetrieveMessageContent",
   }) as any as S.Schema<AgenticRetrieveMessageContent>;
 export type ConversationRole = "user" | "assistant" | (string & {});
-export const ConversationRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConversationRole = /*@__PURE__*/ S.String;
 export interface AgenticRetrieveMessage {
   content: AgenticRetrieveMessageContent;
   role: ConversationRole;
 }
-export const AgenticRetrieveMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: AgenticRetrieveMessageContent,
-      role: ConversationRole,
-    }),
+export const AgenticRetrieveMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: AgenticRetrieveMessageContent,
+    role: ConversationRole,
+  }),
 ).annotate({
   identifier: "AgenticRetrieveMessage",
 }) as any as S.Schema<AgenticRetrieveMessage>;
 export type AgenticRetrieveMessages = AgenticRetrieveMessage[];
-export const AgenticRetrieveMessages = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveMessages = /*@__PURE__*/ S.Array(
   AgenticRetrieveMessage,
 );
 export interface FilterAttribute {
   key: string;
   value: any;
 }
-export const FilterAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FilterAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, value: S.Any }),
 ).annotate({
   identifier: "FilterAttribute",
 }) as any as S.Schema<FilterAttribute>;
 export type RetrievalFilterList = RetrievalFilter[];
-export const RetrievalFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RetrievalFilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
 ) as any as S.Schema<RetrievalFilterList>;
 export type RetrievalFilter =
@@ -419,7 +418,7 @@ export type RetrievalFilter =
       andAll?: never;
       orAll: RetrievalFilter[];
     };
-export const RetrievalFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RetrievalFilter = /*@__PURE__*/ S.Union([
   S.Struct({ equals: FilterAttribute }),
   S.Struct({ notEquals: FilterAttribute }),
   S.Struct({ greaterThan: FilterAttribute }),
@@ -446,7 +445,7 @@ export interface RetrievalOverrides {
   filter?: RetrievalFilter;
   maxNumberOfResults?: number;
 }
-export const RetrievalOverrides = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetrievalOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(RetrievalFilter),
     maxNumberOfResults: S.optional(S.Number),
@@ -459,7 +458,7 @@ export interface KnowledgeBaseRetrieverConfiguration {
   retrievalOverrides?: RetrievalOverrides;
 }
 export const KnowledgeBaseRetrieverConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       knowledgeBaseId: S.String,
       retrievalOverrides: S.optional(RetrievalOverrides),
@@ -470,14 +469,14 @@ export const KnowledgeBaseRetrieverConfiguration =
 export type RetrieverConfiguration = {
   knowledgeBase: KnowledgeBaseRetrieverConfiguration;
 };
-export const RetrieverConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RetrieverConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ knowledgeBase: KnowledgeBaseRetrieverConfiguration }),
 ]);
 export interface AgenticRetriever {
   description?: string;
   configuration: RetrieverConfiguration;
 }
-export const AgenticRetriever = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgenticRetriever = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     configuration: RetrieverConfiguration,
@@ -486,29 +485,25 @@ export const AgenticRetriever = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AgenticRetriever",
 }) as any as S.Schema<AgenticRetriever>;
 export type AgenticRetrievers = AgenticRetriever[];
-export const AgenticRetrievers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetriever);
+export const AgenticRetrievers = /*@__PURE__*/ S.Array(AgenticRetriever);
 export type FoundationModelType = "CUSTOM" | "MANAGED" | (string & {});
-export const FoundationModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FoundationModelType = /*@__PURE__*/ S.String;
 export type FoundationModelConfigurationType =
   | "BEDROCK_FOUNDATION_MODEL"
   | (string & {});
-export const FoundationModelConfigurationType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FoundationModelConfigurationType = /*@__PURE__*/ S.String;
 export interface BedrockFoundationModelModelConfiguration {
   modelArn: string;
 }
 export const BedrockFoundationModelModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ modelArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ modelArn: S.String })).annotate({
     identifier: "BedrockFoundationModelModelConfiguration",
   }) as any as S.Schema<BedrockFoundationModelModelConfiguration>;
 export interface BedrockFoundationModelConfiguration {
   modelConfiguration: BedrockFoundationModelModelConfiguration;
 }
 export const BedrockFoundationModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ modelConfiguration: BedrockFoundationModelModelConfiguration }),
   ).annotate({
     identifier: "BedrockFoundationModelConfiguration",
@@ -518,7 +513,7 @@ export interface FoundationModelConfiguration {
   bedrockFoundationModelConfiguration?: BedrockFoundationModelConfiguration;
 }
 export const FoundationModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: FoundationModelConfigurationType,
       bedrockFoundationModelConfiguration: S.optional(
@@ -533,27 +528,23 @@ export type AgenticRetrieveRerankingModelType =
   | "MANAGED"
   | "NONE"
   | (string & {});
-export const AgenticRetrieveRerankingModelType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgenticRetrieveRerankingModelType = /*@__PURE__*/ S.String;
 export type AgenticRetrieveRerankingConfigurationType =
   | "BEDROCK_RERANKING_MODEL"
   | (string & {});
-export const AgenticRetrieveRerankingConfigurationType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgenticRetrieveRerankingConfigurationType = /*@__PURE__*/ S.String;
 export interface AgenticRetrieveBedrockRerankingModelConfiguration {
   modelArn: string;
 }
 export const AgenticRetrieveBedrockRerankingModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ modelArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ modelArn: S.String })).annotate({
     identifier: "AgenticRetrieveBedrockRerankingModelConfiguration",
   }) as any as S.Schema<AgenticRetrieveBedrockRerankingModelConfiguration>;
 export interface AgenticRetrieveBedrockRerankingConfiguration {
   modelConfiguration: AgenticRetrieveBedrockRerankingModelConfiguration;
 }
 export const AgenticRetrieveBedrockRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelConfiguration: AgenticRetrieveBedrockRerankingModelConfiguration,
     }),
@@ -565,7 +556,7 @@ export interface AgenticRetrieveRerankingConfiguration {
   bedrockRerankingConfiguration?: AgenticRetrieveBedrockRerankingConfiguration;
 }
 export const AgenticRetrieveRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: AgenticRetrieveRerankingConfigurationType,
       bedrockRerankingConfiguration: S.optional(
@@ -583,7 +574,7 @@ export interface AgenticRetrieveConfiguration {
   maxAgentIteration?: number;
 }
 export const AgenticRetrieveConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       foundationModelType: S.optional(FoundationModelType),
       foundationModelConfiguration: S.optional(FoundationModelConfiguration),
@@ -599,7 +590,7 @@ export interface AgenticRetrieveBedrockGuardrailConfiguration {
   guardrailVersion: string;
 }
 export const AgenticRetrieveBedrockGuardrailConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
   ).annotate({
     identifier: "AgenticRetrieveBedrockGuardrailConfiguration",
@@ -608,7 +599,7 @@ export interface AgenticRetrievePolicyConfiguration {
   bedrockGuardrailConfiguration?: AgenticRetrieveBedrockGuardrailConfiguration;
 }
 export const AgenticRetrievePolicyConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bedrockGuardrailConfiguration: S.optional(
         AgenticRetrieveBedrockGuardrailConfiguration,
@@ -620,7 +611,7 @@ export const AgenticRetrievePolicyConfiguration =
 export interface UserContext {
   userId: string;
 }
-export const UserContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.String }),
 ).annotate({ identifier: "UserContext" }) as any as S.Schema<UserContext>;
 export interface AgenticRetrieveStreamRequest {
@@ -633,7 +624,7 @@ export interface AgenticRetrieveStreamRequest {
   generateResponse?: boolean;
 }
 export const AgenticRetrieveStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       messages: AgenticRetrieveMessages,
       retrievers: AgenticRetrievers,
@@ -660,7 +651,7 @@ export interface RetrievalContent {
   text?: string;
   mimeType: string;
 }
-export const RetrievalContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetrievalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     byteContent: S.optional(T.Blob),
     text: S.optional(S.String),
@@ -670,7 +661,7 @@ export const RetrievalContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RetrievalContent",
 }) as any as S.Schema<RetrievalContent>;
 export type AgenticRetrieveMetadata = { [key: string]: any | undefined };
-export const AgenticRetrieveMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const AgenticRetrieveMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
@@ -678,9 +669,7 @@ export interface AgenticRetrieveSourceRetriever {
   identifier: string;
 }
 export const AgenticRetrieveSourceRetriever =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ identifier: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ identifier: S.String })).annotate({
     identifier: "AgenticRetrieveSourceRetriever",
   }) as any as S.Schema<AgenticRetrieveSourceRetriever>;
 export interface AgenticRetrieveResultItem {
@@ -688,50 +677,46 @@ export interface AgenticRetrieveResultItem {
   metadata?: { [key: string]: any | undefined };
   sourceRetriever: AgenticRetrieveSourceRetriever;
 }
-export const AgenticRetrieveResultItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: RetrievalContent,
-      metadata: S.optional(AgenticRetrieveMetadata),
-      sourceRetriever: AgenticRetrieveSourceRetriever,
-    }),
+export const AgenticRetrieveResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: RetrievalContent,
+    metadata: S.optional(AgenticRetrieveMetadata),
+    sourceRetriever: AgenticRetrieveSourceRetriever,
+  }),
 ).annotate({
   identifier: "AgenticRetrieveResultItem",
 }) as any as S.Schema<AgenticRetrieveResultItem>;
 export type AgenticRetrieveResults = AgenticRetrieveResultItem[];
-export const AgenticRetrieveResults = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveResults = /*@__PURE__*/ S.Array(
   AgenticRetrieveResultItem,
 );
 export interface AgenticRetrieveCitationReference {
   resultIndex: number;
 }
 export const AgenticRetrieveCitationReference =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ resultIndex: S.Number }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ resultIndex: S.Number })).annotate({
     identifier: "AgenticRetrieveCitationReference",
   }) as any as S.Schema<AgenticRetrieveCitationReference>;
 export type AgenticRetrieveCitationReferenceList =
   AgenticRetrieveCitationReference[];
 export const AgenticRetrieveCitationReferenceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveCitationReference);
+  /*@__PURE__*/ S.Array(AgenticRetrieveCitationReference);
 export interface AgenticRetrieveCitation {
   startIndex: number;
   endIndex: number;
   references: AgenticRetrieveCitationReference[];
 }
-export const AgenticRetrieveCitation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      startIndex: S.Number,
-      endIndex: S.Number,
-      references: AgenticRetrieveCitationReferenceList,
-    }),
+export const AgenticRetrieveCitation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startIndex: S.Number,
+    endIndex: S.Number,
+    references: AgenticRetrieveCitationReferenceList,
+  }),
 ).annotate({
   identifier: "AgenticRetrieveCitation",
 }) as any as S.Schema<AgenticRetrieveCitation>;
 export type AgenticRetrieveCitationList = AgenticRetrieveCitation[];
-export const AgenticRetrieveCitationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveCitationList = /*@__PURE__*/ S.Array(
   AgenticRetrieveCitation,
 );
 export interface AgenticRetrieveGeneratedResponse {
@@ -739,7 +724,7 @@ export interface AgenticRetrieveGeneratedResponse {
   citations?: AgenticRetrieveCitation[];
 }
 export const AgenticRetrieveGeneratedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       answer: S.String,
       citations: S.optional(AgenticRetrieveCitationList),
@@ -752,13 +737,12 @@ export interface AgenticRetrieveResultEvent {
   generatedResponse?: AgenticRetrieveGeneratedResponse;
   nextToken?: string;
 }
-export const AgenticRetrieveResultEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      results: AgenticRetrieveResults,
-      generatedResponse: S.optional(AgenticRetrieveGeneratedResponse),
-      nextToken: S.optional(S.String),
-    }),
+export const AgenticRetrieveResultEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: AgenticRetrieveResults,
+    generatedResponse: S.optional(AgenticRetrieveGeneratedResponse),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "AgenticRetrieveResultEvent",
 }) as any as S.Schema<AgenticRetrieveResultEvent>;
@@ -768,23 +752,23 @@ export type AgenticRetrieveStep =
   | "SpeculativeRetrieval"
   | "FullDocumentExpansion"
   | (string & {});
-export const AgenticRetrieveStep = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgenticRetrieveStep = /*@__PURE__*/ S.String;
 export type AgenticRetrieveStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
-export const AgenticRetrieveStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgenticRetrieveStatus = /*@__PURE__*/ S.String;
 export type AgenticRetrieveSourceRetrieverList =
   AgenticRetrieveSourceRetriever[];
 export const AgenticRetrieveSourceRetrieverList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveSourceRetriever);
+  /*@__PURE__*/ S.Array(AgenticRetrieveSourceRetriever);
 export interface AgenticRetrieveActionDetails {
   inputQuery: AgenticRetrieveMessageContent;
   sourceRetrievers: AgenticRetrieveSourceRetriever[];
 }
 export const AgenticRetrieveActionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       inputQuery: AgenticRetrieveMessageContent,
       sourceRetrievers: AgenticRetrieveSourceRetrieverList,
@@ -797,7 +781,7 @@ export interface AgenticRetrieveFullDocExpansionDetails {
   sourceRetriever?: AgenticRetrieveSourceRetriever;
 }
 export const AgenticRetrieveFullDocExpansionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       documentId: S.optional(S.String),
       sourceRetriever: S.optional(AgenticRetrieveSourceRetriever),
@@ -809,7 +793,7 @@ export interface AgenticRetrieveAction {
   retrieve?: AgenticRetrieveActionDetails;
   fullDocumentExpansion?: AgenticRetrieveFullDocExpansionDetails;
 }
-export const AgenticRetrieveAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgenticRetrieveAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrieve: S.optional(AgenticRetrieveActionDetails),
     fullDocumentExpansion: S.optional(AgenticRetrieveFullDocExpansionDetails),
@@ -818,20 +802,18 @@ export const AgenticRetrieveAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AgenticRetrieveAction",
 }) as any as S.Schema<AgenticRetrieveAction>;
 export type AgenticRetrieveActions = AgenticRetrieveAction[];
-export const AgenticRetrieveActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveActions = /*@__PURE__*/ S.Array(
   AgenticRetrieveAction,
 );
 export interface AgenticRetrieveWarningMessage {
   message: string;
 }
 export const AgenticRetrieveWarningMessage =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ message: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ message: S.String })).annotate({
     identifier: "AgenticRetrieveWarningMessage",
   }) as any as S.Schema<AgenticRetrieveWarningMessage>;
 export type GuardrailAction = "INTERVENED" | "NONE" | (string & {});
-export const GuardrailAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailAction = /*@__PURE__*/ S.String;
 export interface AgenticRetrieveGuardrailWarning {
   id: string;
   version: string;
@@ -839,7 +821,7 @@ export interface AgenticRetrieveGuardrailWarning {
   message?: string;
 }
 export const AgenticRetrieveGuardrailWarning =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       version: S.String,
@@ -852,34 +834,34 @@ export const AgenticRetrieveGuardrailWarning =
 export type AgenticRetrieveWarning =
   | { message: AgenticRetrieveWarningMessage; guardrail?: never }
   | { message?: never; guardrail: AgenticRetrieveGuardrailWarning };
-export const AgenticRetrieveWarning = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const AgenticRetrieveWarning = /*@__PURE__*/ S.Union([
   S.Struct({ message: AgenticRetrieveWarningMessage }),
   S.Struct({ guardrail: AgenticRetrieveGuardrailWarning }),
 ]);
 export type AgenticRetrieveWarnings = AgenticRetrieveWarning[];
-export const AgenticRetrieveWarnings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveWarnings = /*@__PURE__*/ S.Array(
   AgenticRetrieveWarning,
 );
 export interface AgenticRetrieveFailure {
   message: string;
 }
-export const AgenticRetrieveFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ message: S.String }),
+export const AgenticRetrieveFailure = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ message: S.String }),
 ).annotate({
   identifier: "AgenticRetrieveFailure",
 }) as any as S.Schema<AgenticRetrieveFailure>;
 export type AgenticRetrieveFailures = AgenticRetrieveFailure[];
-export const AgenticRetrieveFailures = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveFailures = /*@__PURE__*/ S.Array(
   AgenticRetrieveFailure,
 );
 export type AgenticRetrieveType = "BedrockKnowledgeBase" | (string & {});
-export const AgenticRetrieveType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgenticRetrieveType = /*@__PURE__*/ S.String;
 export interface AgenticRetrieveSourceMetadata {
   identifier?: string;
   retrievalType?: AgenticRetrieveType;
 }
 export const AgenticRetrieveSourceMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identifier: S.optional(S.String),
       retrievalType: S.optional(AgenticRetrieveType),
@@ -889,14 +871,14 @@ export const AgenticRetrieveSourceMetadata =
   }) as any as S.Schema<AgenticRetrieveSourceMetadata>;
 export type AgenticRetrieveSourceMetadataList = AgenticRetrieveSourceMetadata[];
 export const AgenticRetrieveSourceMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveSourceMetadata);
+  /*@__PURE__*/ S.Array(AgenticRetrieveSourceMetadata);
 export interface AgenticRetrieveTraceResultItem {
   content?: RetrievalContent;
   metadata?: { [key: string]: any | undefined };
   sourceRetriever?: AgenticRetrieveSourceRetriever;
 }
 export const AgenticRetrieveTraceResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.optional(RetrievalContent),
       metadata: S.optional(AgenticRetrieveMetadata),
@@ -906,7 +888,7 @@ export const AgenticRetrieveTraceResultItem =
     identifier: "AgenticRetrieveTraceResultItem",
   }) as any as S.Schema<AgenticRetrieveTraceResultItem>;
 export type AgenticRetrieveTraceResults = AgenticRetrieveTraceResultItem[];
-export const AgenticRetrieveTraceResults = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AgenticRetrieveTraceResults = /*@__PURE__*/ S.Array(
   AgenticRetrieveTraceResultItem,
 );
 export interface AgenticRetrieveTraceEventAttributes {
@@ -920,7 +902,7 @@ export interface AgenticRetrieveTraceEventAttributes {
   retrievalResponse?: AgenticRetrieveTraceResultItem[];
 }
 export const AgenticRetrieveTraceEventAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       step: AgenticRetrieveStep,
       status: AgenticRetrieveStatus,
@@ -939,13 +921,12 @@ export interface AgenticRetrieveTraceEvent {
   timestamp: number;
   attributes: AgenticRetrieveTraceEventAttributes;
 }
-export const AgenticRetrieveTraceEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      timestamp: S.Number,
-      attributes: AgenticRetrieveTraceEventAttributes,
-    }),
+export const AgenticRetrieveTraceEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    timestamp: S.Number,
+    attributes: AgenticRetrieveTraceEventAttributes,
+  }),
 ).annotate({
   identifier: "AgenticRetrieveTraceEvent",
 }) as any as S.Schema<AgenticRetrieveTraceEvent>;
@@ -953,9 +934,7 @@ export interface AgenticRetrieveResponseEvent {
   text: string;
 }
 export const AgenticRetrieveResponseEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ text: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ text: S.String })).annotate({
     identifier: "AgenticRetrieveResponseEvent",
   }) as any as S.Schema<AgenticRetrieveResponseEvent>;
 export type AgenticRetrieveStreamResponseOutput =
@@ -1128,7 +1107,7 @@ export type AgenticRetrieveStreamResponseOutput =
       badGatewayException: BadGatewayException;
     };
 export const AgenticRetrieveStreamResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+  /*@__PURE__*/ T.EventStream(
     S.Union([
       S.Struct({ result: AgenticRetrieveResultEvent }),
       S.Struct({ traceEvent: AgenticRetrieveTraceEvent }),
@@ -1186,7 +1165,7 @@ export interface AgenticRetrieveStreamResponse {
   stream: stream.Stream<AgenticRetrieveStreamResponseOutput, Error, never>;
 }
 export const AgenticRetrieveStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stream: AgenticRetrieveStreamResponseOutput.pipe(T.HttpPayload()),
     }),
@@ -1199,7 +1178,7 @@ export interface GetExecutionFlowSnapshotRequest {
   executionIdentifier: string;
 }
 export const GetExecutionFlowSnapshotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
       flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
@@ -1229,7 +1208,7 @@ export interface GetExecutionFlowSnapshotResponse {
   customerEncryptionKeyArn?: string;
 }
 export const GetExecutionFlowSnapshotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       flowIdentifier: S.String,
       flowAliasIdentifier: S.String,
@@ -1246,25 +1225,24 @@ export interface GetFlowExecutionRequest {
   flowAliasIdentifier: string;
   executionIdentifier: string;
 }
-export const GetFlowExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
-      flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
-      executionIdentifier: S.String.pipe(T.HttpLabel("executionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFlowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
+    flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
+    executionIdentifier: S.String.pipe(T.HttpLabel("executionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetFlowExecutionRequest",
 }) as any as S.Schema<GetFlowExecutionRequest>;
@@ -1275,15 +1253,15 @@ export type FlowExecutionStatus =
   | "TimedOut"
   | "Aborted"
   | (string & {});
-export const FlowExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowExecutionStatus = /*@__PURE__*/ S.String;
 export type FlowExecutionErrorType = "ExecutionTimedOut" | (string & {});
-export const FlowExecutionErrorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowExecutionErrorType = /*@__PURE__*/ S.String;
 export interface FlowExecutionError {
   nodeName?: string;
   error?: FlowExecutionErrorType;
   message?: string;
 }
-export const FlowExecutionError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowExecutionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.optional(S.String),
     error: S.optional(FlowExecutionErrorType),
@@ -1293,8 +1271,7 @@ export const FlowExecutionError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FlowExecutionError",
 }) as any as S.Schema<FlowExecutionError>;
 export type FlowExecutionErrors = FlowExecutionError[];
-export const FlowExecutionErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowExecutionError);
+export const FlowExecutionErrors = /*@__PURE__*/ S.Array(FlowExecutionError);
 export interface GetFlowExecutionResponse {
   executionArn: string;
   status: FlowExecutionStatus;
@@ -1305,25 +1282,22 @@ export interface GetFlowExecutionResponse {
   flowIdentifier: string;
   flowVersion: string;
 }
-export const GetFlowExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.String,
-      status: FlowExecutionStatus,
-      startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      endedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      errors: S.optional(FlowExecutionErrors),
-      flowAliasIdentifier: S.String,
-      flowIdentifier: S.String,
-      flowVersion: S.String,
-    }),
+export const GetFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.String,
+    status: FlowExecutionStatus,
+    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    errors: S.optional(FlowExecutionErrors),
+    flowAliasIdentifier: S.String,
+    flowIdentifier: S.String,
+    flowVersion: S.String,
+  }),
 ).annotate({
   identifier: "GetFlowExecutionResponse",
 }) as any as S.Schema<GetFlowExecutionResponse>;
 export type FlowExecutionEventType = "Node" | "Flow" | (string & {});
-export const FlowExecutionEventType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowExecutionEventType = /*@__PURE__*/ S.String;
 export interface ListFlowExecutionEventsRequest {
   flowIdentifier: string;
   flowAliasIdentifier: string;
@@ -1333,7 +1307,7 @@ export interface ListFlowExecutionEventsRequest {
   eventType: FlowExecutionEventType;
 }
 export const ListFlowExecutionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
       flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
@@ -1358,31 +1332,29 @@ export const ListFlowExecutionEventsRequest =
     identifier: "ListFlowExecutionEventsRequest",
   }) as any as S.Schema<ListFlowExecutionEventsRequest>;
 export type FlowExecutionContent = { document: any };
-export const FlowExecutionContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowExecutionContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowInputField {
   name: string;
   content: FlowExecutionContent;
 }
-export const FlowInputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowInputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, content: FlowExecutionContent }),
 ).annotate({ identifier: "FlowInputField" }) as any as S.Schema<FlowInputField>;
 export type FlowInputFields = FlowInputField[];
-export const FlowInputFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowInputField);
+export const FlowInputFields = /*@__PURE__*/ S.Array(FlowInputField);
 export interface FlowExecutionInputEvent {
   nodeName: string;
   timestamp: Date;
   fields: FlowInputField[];
 }
-export const FlowExecutionInputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      fields: FlowInputFields,
-    }),
+export const FlowExecutionInputEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    fields: FlowInputFields,
+  }),
 ).annotate({
   identifier: "FlowExecutionInputEvent",
 }) as any as S.Schema<FlowExecutionInputEvent>;
@@ -1390,31 +1362,29 @@ export interface FlowOutputField {
   name: string;
   content: FlowExecutionContent;
 }
-export const FlowOutputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowOutputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, content: FlowExecutionContent }),
 ).annotate({
   identifier: "FlowOutputField",
 }) as any as S.Schema<FlowOutputField>;
 export type FlowOutputFields = FlowOutputField[];
-export const FlowOutputFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowOutputField);
+export const FlowOutputFields = /*@__PURE__*/ S.Array(FlowOutputField);
 export interface FlowExecutionOutputEvent {
   nodeName: string;
   timestamp: Date;
   fields: FlowOutputField[];
 }
-export const FlowExecutionOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      fields: FlowOutputFields,
-    }),
+export const FlowExecutionOutputEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    fields: FlowOutputFields,
+  }),
 ).annotate({
   identifier: "FlowExecutionOutputEvent",
 }) as any as S.Schema<FlowExecutionOutputEvent>;
 export type NodeExecutionContent = { document: any };
-export const NodeExecutionContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const NodeExecutionContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface NodeInputSource {
@@ -1422,7 +1392,7 @@ export interface NodeInputSource {
   outputFieldName: string;
   expression: string | redacted.Redacted<string>;
 }
-export const NodeInputSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeInputSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     outputFieldName: S.String,
@@ -1438,22 +1408,22 @@ export type FlowNodeIODataType =
   | "Object"
   | "Array"
   | (string & {});
-export const FlowNodeIODataType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowNodeIODataType = /*@__PURE__*/ S.String;
 export type FlowNodeInputCategory =
   | "LoopCondition"
   | "ReturnValueToLoopStart"
   | "ExitLoop"
   | (string & {});
-export const FlowNodeInputCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowNodeInputCategory = /*@__PURE__*/ S.String;
 export type FlowControlNodeType = "Iterator" | "Loop" | (string & {});
-export const FlowControlNodeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowControlNodeType = /*@__PURE__*/ S.String;
 export interface NodeInputExecutionChainItem {
   nodeName: string;
   index?: number;
   type: FlowControlNodeType;
 }
 export const NodeInputExecutionChainItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nodeName: S.String,
       index: S.optional(S.Number),
@@ -1463,7 +1433,7 @@ export const NodeInputExecutionChainItem =
     identifier: "NodeInputExecutionChainItem",
   }) as any as S.Schema<NodeInputExecutionChainItem>;
 export type NodeInputExecutionChain = NodeInputExecutionChainItem[];
-export const NodeInputExecutionChain = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NodeInputExecutionChain = /*@__PURE__*/ S.Array(
   NodeInputExecutionChainItem,
 );
 export interface NodeInputField {
@@ -1474,7 +1444,7 @@ export interface NodeInputField {
   category?: FlowNodeInputCategory;
   executionChain?: NodeInputExecutionChainItem[];
 }
-export const NodeInputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeInputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     content: NodeExecutionContent,
@@ -1485,14 +1455,13 @@ export const NodeInputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeInputField" }) as any as S.Schema<NodeInputField>;
 export type NodeInputFields = NodeInputField[];
-export const NodeInputFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NodeInputField);
+export const NodeInputFields = /*@__PURE__*/ S.Array(NodeInputField);
 export interface NodeInputEvent {
   nodeName: string;
   timestamp: Date;
   fields: NodeInputField[];
 }
-export const NodeInputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeInputEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1503,19 +1472,18 @@ export interface NodeOutputNext {
   nodeName: string;
   inputFieldName: string;
 }
-export const NodeOutputNext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeOutputNext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nodeName: S.String, inputFieldName: S.String }),
 ).annotate({ identifier: "NodeOutputNext" }) as any as S.Schema<NodeOutputNext>;
 export type NodeOutputNextList = NodeOutputNext[];
-export const NodeOutputNextList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NodeOutputNext);
+export const NodeOutputNextList = /*@__PURE__*/ S.Array(NodeOutputNext);
 export interface NodeOutputField {
   name: string;
   content: NodeExecutionContent;
   next?: NodeOutputNext[];
   type?: FlowNodeIODataType;
 }
-export const NodeOutputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeOutputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     content: NodeExecutionContent,
@@ -1526,14 +1494,13 @@ export const NodeOutputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NodeOutputField",
 }) as any as S.Schema<NodeOutputField>;
 export type NodeOutputFields = NodeOutputField[];
-export const NodeOutputFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NodeOutputField);
+export const NodeOutputFields = /*@__PURE__*/ S.Array(NodeOutputField);
 export interface NodeOutputEvent {
   nodeName: string;
   timestamp: Date;
   fields: NodeOutputField[];
 }
-export const NodeOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeOutputEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1545,20 +1512,19 @@ export const NodeOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SatisfiedCondition {
   conditionName: string;
 }
-export const SatisfiedCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SatisfiedCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditionName: S.String }),
 ).annotate({
   identifier: "SatisfiedCondition",
 }) as any as S.Schema<SatisfiedCondition>;
 export type SatisfiedConditions = SatisfiedCondition[];
-export const SatisfiedConditions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SatisfiedCondition);
+export const SatisfiedConditions = /*@__PURE__*/ S.Array(SatisfiedCondition);
 export interface ConditionResultEvent {
   nodeName: string;
   timestamp: Date;
   satisfiedConditions: SatisfiedCondition[];
 }
-export const ConditionResultEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConditionResultEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1573,14 +1539,14 @@ export type NodeErrorCode =
   | "BAD_GATEWAY"
   | "INTERNAL_SERVER"
   | (string & {});
-export const NodeErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NodeErrorCode = /*@__PURE__*/ S.String;
 export interface NodeFailureEvent {
   nodeName: string;
   timestamp: Date;
   errorCode: NodeErrorCode;
   errorMessage: string;
 }
-export const NodeFailureEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeFailureEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1595,13 +1561,13 @@ export type FlowErrorCode =
   | "INTERNAL_SERVER"
   | "NODE_EXECUTION_FAILED"
   | (string & {});
-export const FlowErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowErrorCode = /*@__PURE__*/ S.String;
 export interface FlowFailureEvent {
   timestamp: Date;
   errorCode: FlowErrorCode;
   errorMessage: string;
 }
-export const FlowFailureEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowFailureEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     errorCode: FlowErrorCode,
@@ -1619,7 +1585,7 @@ export interface NodeActionEvent {
   operationRequest?: any;
   operationResponse?: any;
 }
-export const NodeActionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeActionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1633,15 +1599,15 @@ export const NodeActionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NodeActionEvent",
 }) as any as S.Schema<NodeActionEvent>;
 export type GuardrailTopicType = "DENY" | (string & {});
-export const GuardrailTopicType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailTopicType = /*@__PURE__*/ S.String;
 export type GuardrailTopicPolicyAction = "BLOCKED" | (string & {});
-export const GuardrailTopicPolicyAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailTopicPolicyAction = /*@__PURE__*/ S.String;
 export interface GuardrailTopic {
   name?: string;
   type?: GuardrailTopicType;
   action?: GuardrailTopicPolicyAction;
 }
-export const GuardrailTopic = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(GuardrailTopicType),
@@ -1649,13 +1615,12 @@ export const GuardrailTopic = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuardrailTopic" }) as any as S.Schema<GuardrailTopic>;
 export type GuardrailTopicList = GuardrailTopic[];
-export const GuardrailTopicList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailTopic);
+export const GuardrailTopicList = /*@__PURE__*/ S.Array(GuardrailTopic);
 export interface GuardrailTopicPolicyAssessment {
   topics?: GuardrailTopic[];
 }
 export const GuardrailTopicPolicyAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ topics: S.optional(GuardrailTopicList) }),
   ).annotate({
     identifier: "GuardrailTopicPolicyAssessment",
@@ -1668,53 +1633,50 @@ export type GuardrailContentFilterType =
   | "MISCONDUCT"
   | "PROMPT_ATTACK"
   | (string & {});
-export const GuardrailContentFilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailContentFilterType = /*@__PURE__*/ S.String;
 export type GuardrailContentFilterConfidence =
   | "NONE"
   | "LOW"
   | "MEDIUM"
   | "HIGH"
   | (string & {});
-export const GuardrailContentFilterConfidence =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailContentFilterConfidence = /*@__PURE__*/ S.String;
 export type GuardrailContentPolicyAction = "BLOCKED" | (string & {});
-export const GuardrailContentPolicyAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailContentPolicyAction = /*@__PURE__*/ S.String;
 export interface GuardrailContentFilter {
   type?: GuardrailContentFilterType;
   confidence?: GuardrailContentFilterConfidence;
   action?: GuardrailContentPolicyAction;
 }
-export const GuardrailContentFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(GuardrailContentFilterType),
-      confidence: S.optional(GuardrailContentFilterConfidence),
-      action: S.optional(GuardrailContentPolicyAction),
-    }),
+export const GuardrailContentFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GuardrailContentFilterType),
+    confidence: S.optional(GuardrailContentFilterConfidence),
+    action: S.optional(GuardrailContentPolicyAction),
+  }),
 ).annotate({
   identifier: "GuardrailContentFilter",
 }) as any as S.Schema<GuardrailContentFilter>;
 export type GuardrailContentFilterList = GuardrailContentFilter[];
-export const GuardrailContentFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const GuardrailContentFilterList = /*@__PURE__*/ S.Array(
   GuardrailContentFilter,
 );
 export interface GuardrailContentPolicyAssessment {
   filters?: GuardrailContentFilter[];
 }
 export const GuardrailContentPolicyAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ filters: S.optional(GuardrailContentFilterList) }),
   ).annotate({
     identifier: "GuardrailContentPolicyAssessment",
   }) as any as S.Schema<GuardrailContentPolicyAssessment>;
 export type GuardrailWordPolicyAction = "BLOCKED" | (string & {});
-export const GuardrailWordPolicyAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailWordPolicyAction = /*@__PURE__*/ S.String;
 export interface GuardrailCustomWord {
   match?: string;
   action?: GuardrailWordPolicyAction;
 }
-export const GuardrailCustomWord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailCustomWord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     match: S.optional(S.String),
     action: S.optional(GuardrailWordPolicyAction),
@@ -1724,15 +1686,15 @@ export const GuardrailCustomWord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailCustomWord>;
 export type GuardrailCustomWordList = GuardrailCustomWord[];
 export const GuardrailCustomWordList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailCustomWord);
+  /*@__PURE__*/ S.Array(GuardrailCustomWord);
 export type GuardrailManagedWordType = "PROFANITY" | (string & {});
-export const GuardrailManagedWordType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailManagedWordType = /*@__PURE__*/ S.String;
 export interface GuardrailManagedWord {
   match?: string;
   type?: GuardrailManagedWordType;
   action?: GuardrailWordPolicyAction;
 }
-export const GuardrailManagedWord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailManagedWord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     match: S.optional(S.String),
     type: S.optional(GuardrailManagedWordType),
@@ -1743,13 +1705,13 @@ export const GuardrailManagedWord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailManagedWord>;
 export type GuardrailManagedWordList = GuardrailManagedWord[];
 export const GuardrailManagedWordList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailManagedWord);
+  /*@__PURE__*/ S.Array(GuardrailManagedWord);
 export interface GuardrailWordPolicyAssessment {
   customWords?: GuardrailCustomWord[];
   managedWordLists?: GuardrailManagedWord[];
 }
 export const GuardrailWordPolicyAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customWords: S.optional(GuardrailCustomWordList),
       managedWordLists: S.optional(GuardrailManagedWordList),
@@ -1790,30 +1752,28 @@ export type GuardrailPiiEntityType =
   | "US_SOCIAL_SECURITY_NUMBER"
   | "VEHICLE_IDENTIFICATION_NUMBER"
   | (string & {});
-export const GuardrailPiiEntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailPiiEntityType = /*@__PURE__*/ S.String;
 export type GuardrailSensitiveInformationPolicyAction =
   | "BLOCKED"
   | "ANONYMIZED"
   | (string & {});
-export const GuardrailSensitiveInformationPolicyAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuardrailSensitiveInformationPolicyAction = /*@__PURE__*/ S.String;
 export interface GuardrailPiiEntityFilter {
   type?: GuardrailPiiEntityType;
   match?: string;
   action?: GuardrailSensitiveInformationPolicyAction;
 }
-export const GuardrailPiiEntityFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(GuardrailPiiEntityType),
-      match: S.optional(S.String),
-      action: S.optional(GuardrailSensitiveInformationPolicyAction),
-    }),
+export const GuardrailPiiEntityFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GuardrailPiiEntityType),
+    match: S.optional(S.String),
+    action: S.optional(GuardrailSensitiveInformationPolicyAction),
+  }),
 ).annotate({
   identifier: "GuardrailPiiEntityFilter",
 }) as any as S.Schema<GuardrailPiiEntityFilter>;
 export type GuardrailPiiEntityFilterList = GuardrailPiiEntityFilter[];
-export const GuardrailPiiEntityFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const GuardrailPiiEntityFilterList = /*@__PURE__*/ S.Array(
   GuardrailPiiEntityFilter,
 );
 export interface GuardrailRegexFilter {
@@ -1822,7 +1782,7 @@ export interface GuardrailRegexFilter {
   match?: string;
   action?: GuardrailSensitiveInformationPolicyAction;
 }
-export const GuardrailRegexFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailRegexFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     regex: S.optional(S.String),
@@ -1834,13 +1794,13 @@ export const GuardrailRegexFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailRegexFilter>;
 export type GuardrailRegexFilterList = GuardrailRegexFilter[];
 export const GuardrailRegexFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailRegexFilter);
+  /*@__PURE__*/ S.Array(GuardrailRegexFilter);
 export interface GuardrailSensitiveInformationPolicyAssessment {
   piiEntities?: GuardrailPiiEntityFilter[];
   regexes?: GuardrailRegexFilter[];
 }
 export const GuardrailSensitiveInformationPolicyAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       piiEntities: S.optional(GuardrailPiiEntityFilterList),
       regexes: S.optional(GuardrailRegexFilterList),
@@ -1854,7 +1814,7 @@ export interface GuardrailAssessment {
   wordPolicy?: GuardrailWordPolicyAssessment;
   sensitiveInformationPolicy?: GuardrailSensitiveInformationPolicyAssessment;
 }
-export const GuardrailAssessment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicPolicy: S.optional(GuardrailTopicPolicyAssessment),
     contentPolicy: S.optional(GuardrailContentPolicyAssessment),
@@ -1868,12 +1828,12 @@ export const GuardrailAssessment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailAssessment>;
 export type GuardrailAssessmentList = GuardrailAssessment[];
 export const GuardrailAssessmentList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailAssessment);
+  /*@__PURE__*/ S.Array(GuardrailAssessment);
 export interface Usage {
   inputTokens?: number;
   outputTokens?: number;
 }
-export const Usage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputTokens: S.optional(S.Number),
     outputTokens: S.optional(S.Number),
@@ -1887,7 +1847,7 @@ export interface Metadata {
   clientRequestId?: string;
   usage?: Usage;
 }
-export const Metadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1906,7 +1866,7 @@ export interface GuardrailTrace {
   outputAssessments?: GuardrailAssessment[];
   metadata?: Metadata;
 }
-export const GuardrailTrace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(GuardrailAction),
     traceId: S.optional(S.String),
@@ -1922,11 +1882,11 @@ export type PromptType =
   | "POST_PROCESSING"
   | "ROUTING_CLASSIFIER"
   | (string & {});
-export const PromptType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PromptType = /*@__PURE__*/ S.String;
 export type CreationMode = "DEFAULT" | "OVERRIDDEN" | (string & {});
-export const CreationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CreationMode = /*@__PURE__*/ S.String;
 export type StopSequences = string[];
-export const StopSequences = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StopSequences = /*@__PURE__*/ S.Array(S.String);
 export interface InferenceConfiguration {
   temperature?: number;
   topP?: number;
@@ -1934,15 +1894,14 @@ export interface InferenceConfiguration {
   maximumLength?: number;
   stopSequences?: string[];
 }
-export const InferenceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      temperature: S.optional(S.Number),
-      topP: S.optional(S.Number),
-      topK: S.optional(S.Number),
-      maximumLength: S.optional(S.Number),
-      stopSequences: S.optional(StopSequences),
-    }),
+export const InferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    temperature: S.optional(S.Number),
+    topP: S.optional(S.Number),
+    topK: S.optional(S.Number),
+    maximumLength: S.optional(S.Number),
+    stopSequences: S.optional(StopSequences),
+  }),
 ).annotate({
   identifier: "InferenceConfiguration",
 }) as any as S.Schema<InferenceConfiguration>;
@@ -1956,7 +1915,7 @@ export interface ModelInvocationInput {
   parserMode?: CreationMode;
   foundationModel?: string;
 }
-export const ModelInvocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModelInvocationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     text: S.optional(SensitiveString),
@@ -1975,7 +1934,7 @@ export interface PreProcessingParsedResponse {
   isValid?: boolean;
 }
 export const PreProcessingParsedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rationale: S.optional(SensitiveString),
       isValid: S.optional(S.Boolean),
@@ -1986,14 +1945,14 @@ export const PreProcessingParsedResponse =
 export interface RawResponse {
   content?: string;
 }
-export const RawResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(S.String) }),
 ).annotate({ identifier: "RawResponse" }) as any as S.Schema<RawResponse>;
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
 }
-export const ReasoningTextBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReasoningTextBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.String, signature: S.optional(S.String) }),
 ).annotate({
   identifier: "ReasoningTextBlock",
@@ -2001,7 +1960,7 @@ export const ReasoningTextBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ReasoningContentBlock =
   | { reasoningText: ReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
-export const ReasoningContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ReasoningContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ reasoningText: ReasoningTextBlock }),
   S.Struct({ redactedContent: T.Blob }),
 ]);
@@ -2013,7 +1972,7 @@ export interface PreProcessingModelInvocationOutput {
   reasoningContent?: ReasoningContentBlock;
 }
 export const PreProcessingModelInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       traceId: S.optional(S.String),
       parsedResponse: S.optional(PreProcessingParsedResponse),
@@ -2033,7 +1992,7 @@ export type PreProcessingTrace =
       modelInvocationInput?: never;
       modelInvocationOutput: PreProcessingModelInvocationOutput;
     };
-export const PreProcessingTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PreProcessingTrace = /*@__PURE__*/ S.Union([
   S.Struct({ modelInvocationInput: ModelInvocationInput }),
   S.Struct({ modelInvocationOutput: PreProcessingModelInvocationOutput }),
 ]);
@@ -2041,7 +2000,7 @@ export interface Rationale {
   traceId?: string;
   text?: string | redacted.Redacted<string>;
 }
-export const Rationale = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Rationale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     text: S.optional(SensitiveString),
@@ -2054,13 +2013,13 @@ export type InvocationType =
   | "ACTION_GROUP_CODE_INTERPRETER"
   | "AGENT_COLLABORATOR"
   | (string & {});
-export const InvocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InvocationType = /*@__PURE__*/ S.String;
 export interface Parameter {
   name?: string;
   type?: string;
   value?: string;
 }
-export const Parameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2068,20 +2027,20 @@ export const Parameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type Parameters = Parameter[];
-export const Parameters = /*@__PURE__*/ /*#__PURE__*/ S.Array(Parameter);
+export const Parameters = /*@__PURE__*/ S.Array(Parameter);
 export type ContentMap = { [key: string]: Parameter[] | undefined };
-export const ContentMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ContentMap = /*@__PURE__*/ S.Record(
   S.String,
   Parameters.pipe(S.optional),
 );
 export interface RequestBody {
   content?: { [key: string]: Parameter[] | undefined };
 }
-export const RequestBody = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(ContentMap) }),
 ).annotate({ identifier: "RequestBody" }) as any as S.Schema<RequestBody>;
 export type ExecutionType = "LAMBDA" | "RETURN_CONTROL" | (string & {});
-export const ExecutionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionType = /*@__PURE__*/ S.String;
 export interface ActionGroupInvocationInput {
   actionGroupName?: string | redacted.Redacted<string>;
   verb?: string | redacted.Redacted<string>;
@@ -2092,18 +2051,17 @@ export interface ActionGroupInvocationInput {
   executionType?: ExecutionType;
   invocationId?: string;
 }
-export const ActionGroupInvocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionGroupName: S.optional(SensitiveString),
-      verb: S.optional(SensitiveString),
-      apiPath: S.optional(SensitiveString),
-      parameters: S.optional(Parameters),
-      requestBody: S.optional(RequestBody),
-      function: S.optional(SensitiveString),
-      executionType: S.optional(ExecutionType),
-      invocationId: S.optional(S.String),
-    }),
+export const ActionGroupInvocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionGroupName: S.optional(SensitiveString),
+    verb: S.optional(SensitiveString),
+    apiPath: S.optional(SensitiveString),
+    parameters: S.optional(Parameters),
+    requestBody: S.optional(RequestBody),
+    function: S.optional(SensitiveString),
+    executionType: S.optional(ExecutionType),
+    invocationId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ActionGroupInvocationInput",
 }) as any as S.Schema<ActionGroupInvocationInput>;
@@ -2111,57 +2069,56 @@ export interface KnowledgeBaseLookupInput {
   text?: string | redacted.Redacted<string>;
   knowledgeBaseId?: string | redacted.Redacted<string>;
 }
-export const KnowledgeBaseLookupInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      text: S.optional(SensitiveString),
-      knowledgeBaseId: S.optional(SensitiveString),
-    }),
+export const KnowledgeBaseLookupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    text: S.optional(SensitiveString),
+    knowledgeBaseId: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "KnowledgeBaseLookupInput",
 }) as any as S.Schema<KnowledgeBaseLookupInput>;
 export type Files = string[];
-export const Files = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Files = /*@__PURE__*/ S.Array(S.String);
 export interface CodeInterpreterInvocationInput {
   code?: string;
   files?: string[];
 }
 export const CodeInterpreterInvocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ code: S.optional(S.String), files: S.optional(Files) }),
   ).annotate({
     identifier: "CodeInterpreterInvocationInput",
   }) as any as S.Schema<CodeInterpreterInvocationInput>;
 export type PayloadType = "TEXT" | "RETURN_CONTROL" | (string & {});
-export const PayloadType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PayloadType = /*@__PURE__*/ S.String;
 export type ConfirmationState = "CONFIRM" | "DENY" | (string & {});
-export const ConfirmationState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfirmationState = /*@__PURE__*/ S.String;
 export type ResponseState = "FAILURE" | "REPROMPT" | (string & {});
-export const ResponseState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResponseState = /*@__PURE__*/ S.String;
 export type ImageInputFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
-export const ImageInputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImageInputFormat = /*@__PURE__*/ S.String;
 export type ImageInputSource = { bytes: Uint8Array };
-export const ImageInputSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ImageInputSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
 ]);
 export interface ImageInput {
   format: ImageInputFormat;
   source: ImageInputSource;
 }
-export const ImageInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: ImageInputFormat, source: ImageInputSource }),
 ).annotate({ identifier: "ImageInput" }) as any as S.Schema<ImageInput>;
 export type ImageInputs = ImageInput[];
-export const ImageInputs = /*@__PURE__*/ /*#__PURE__*/ S.Array(ImageInput);
+export const ImageInputs = /*@__PURE__*/ S.Array(ImageInput);
 export interface ContentBody {
   body?: string;
   images?: ImageInput[];
 }
-export const ContentBody = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContentBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ body: S.optional(S.String), images: S.optional(ImageInputs) }),
 ).annotate({ identifier: "ContentBody" }) as any as S.Schema<ContentBody>;
 export type ResponseBody = { [key: string]: ContentBody | undefined };
-export const ResponseBody = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ResponseBody = /*@__PURE__*/ S.Record(
   S.String,
   ContentBody.pipe(S.optional),
 );
@@ -2175,7 +2132,7 @@ export interface ApiResult {
   responseBody?: { [key: string]: ContentBody | undefined };
   agentId?: string;
 }
-export const ApiResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionGroup: S.String,
     httpMethod: S.optional(S.String),
@@ -2195,7 +2152,7 @@ export interface FunctionResult {
   responseState?: ResponseState;
   agentId?: string;
 }
-export const FunctionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FunctionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionGroup: S.String,
     confirmationState: S.optional(ConfirmationState),
@@ -2208,18 +2165,18 @@ export const FunctionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type InvocationResultMember =
   | { apiResult: ApiResult; functionResult?: never }
   | { apiResult?: never; functionResult: FunctionResult };
-export const InvocationResultMember = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const InvocationResultMember = /*@__PURE__*/ S.Union([
   S.Struct({ apiResult: ApiResult }),
   S.Struct({ functionResult: FunctionResult }),
 ]);
 export type ReturnControlInvocationResults = InvocationResultMember[];
 export const ReturnControlInvocationResults =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InvocationResultMember);
+  /*@__PURE__*/ S.Array(InvocationResultMember);
 export interface ReturnControlResults {
   invocationId?: string;
   returnControlInvocationResults?: InvocationResultMember[];
 }
-export const ReturnControlResults = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReturnControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invocationId: S.optional(S.String),
     returnControlInvocationResults: S.optional(ReturnControlInvocationResults),
@@ -2233,7 +2190,7 @@ export interface AgentCollaboratorInputPayload {
   returnControlResults?: ReturnControlResults;
 }
 export const AgentCollaboratorInputPayload =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(PayloadType),
       text: S.optional(SensitiveString),
@@ -2248,7 +2205,7 @@ export interface AgentCollaboratorInvocationInput {
   input?: AgentCollaboratorInputPayload;
 }
 export const AgentCollaboratorInvocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentCollaboratorName: S.optional(S.String),
       agentCollaboratorAliasArn: S.optional(S.String),
@@ -2265,7 +2222,7 @@ export interface InvocationInput {
   codeInterpreterInvocationInput?: CodeInterpreterInvocationInput;
   agentCollaboratorInvocationInput?: AgentCollaboratorInvocationInput;
 }
-export const InvocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvocationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     invocationType: S.optional(InvocationType),
@@ -2287,13 +2244,13 @@ export type Type =
   | "ASK_USER"
   | "REPROMPT"
   | (string & {});
-export const Type = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Type = /*@__PURE__*/ S.String;
 export interface ActionGroupInvocationOutput {
   text?: string | redacted.Redacted<string>;
   metadata?: Metadata;
 }
 export const ActionGroupInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       text: S.optional(SensitiveString),
       metadata: S.optional(Metadata),
@@ -2306,7 +2263,7 @@ export interface ApiParameter {
   type?: string;
   value?: string;
 }
-export const ApiParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2314,26 +2271,26 @@ export const ApiParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiParameter" }) as any as S.Schema<ApiParameter>;
 export type ApiParameters = ApiParameter[];
-export const ApiParameters = /*@__PURE__*/ /*#__PURE__*/ S.Array(ApiParameter);
+export const ApiParameters = /*@__PURE__*/ S.Array(ApiParameter);
 export type ParameterList = Parameter[];
-export const ParameterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Parameter);
+export const ParameterList = /*@__PURE__*/ S.Array(Parameter);
 export interface PropertyParameters {
   properties?: Parameter[];
 }
-export const PropertyParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PropertyParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ properties: S.optional(ParameterList) }),
 ).annotate({
   identifier: "PropertyParameters",
 }) as any as S.Schema<PropertyParameters>;
 export type ApiContentMap = { [key: string]: PropertyParameters | undefined };
-export const ApiContentMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ApiContentMap = /*@__PURE__*/ S.Record(
   S.String,
   PropertyParameters.pipe(S.optional),
 );
 export interface ApiRequestBody {
   content?: { [key: string]: PropertyParameters | undefined };
 }
-export const ApiRequestBody = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(ApiContentMap) }),
 ).annotate({ identifier: "ApiRequestBody" }) as any as S.Schema<ApiRequestBody>;
 export type ActionInvocationType =
@@ -2341,7 +2298,7 @@ export type ActionInvocationType =
   | "USER_CONFIRMATION"
   | "USER_CONFIRMATION_AND_RESULT"
   | (string & {});
-export const ActionInvocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionInvocationType = /*@__PURE__*/ S.String;
 export interface ApiInvocationInput {
   actionGroup: string;
   httpMethod?: string;
@@ -2352,7 +2309,7 @@ export interface ApiInvocationInput {
   agentId?: string;
   collaboratorName?: string | redacted.Redacted<string>;
 }
-export const ApiInvocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiInvocationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionGroup: S.String,
     httpMethod: S.optional(S.String),
@@ -2371,7 +2328,7 @@ export interface FunctionParameter {
   type?: string;
   value?: string;
 }
-export const FunctionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FunctionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2381,8 +2338,7 @@ export const FunctionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FunctionParameter",
 }) as any as S.Schema<FunctionParameter>;
 export type FunctionParameters = FunctionParameter[];
-export const FunctionParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FunctionParameter);
+export const FunctionParameters = /*@__PURE__*/ S.Array(FunctionParameter);
 export interface FunctionInvocationInput {
   actionGroup: string;
   parameters?: FunctionParameter[];
@@ -2391,16 +2347,15 @@ export interface FunctionInvocationInput {
   agentId?: string;
   collaboratorName?: string | redacted.Redacted<string>;
 }
-export const FunctionInvocationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionGroup: S.String,
-      parameters: S.optional(FunctionParameters),
-      function: S.optional(S.String),
-      actionInvocationType: S.optional(ActionInvocationType),
-      agentId: S.optional(S.String),
-      collaboratorName: S.optional(SensitiveString),
-    }),
+export const FunctionInvocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionGroup: S.String,
+    parameters: S.optional(FunctionParameters),
+    function: S.optional(S.String),
+    actionInvocationType: S.optional(ActionInvocationType),
+    agentId: S.optional(S.String),
+    collaboratorName: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "FunctionInvocationInput",
 }) as any as S.Schema<FunctionInvocationInput>;
@@ -2410,19 +2365,17 @@ export type InvocationInputMember =
       apiInvocationInput?: never;
       functionInvocationInput: FunctionInvocationInput;
     };
-export const InvocationInputMember = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const InvocationInputMember = /*@__PURE__*/ S.Union([
   S.Struct({ apiInvocationInput: ApiInvocationInput }),
   S.Struct({ functionInvocationInput: FunctionInvocationInput }),
 ]);
 export type InvocationInputs = InvocationInputMember[];
-export const InvocationInputs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  InvocationInputMember,
-);
+export const InvocationInputs = /*@__PURE__*/ S.Array(InvocationInputMember);
 export interface ReturnControlPayload {
   invocationInputs?: InvocationInputMember[];
   invocationId?: string;
 }
-export const ReturnControlPayload = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReturnControlPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invocationInputs: S.optional(InvocationInputs),
     invocationId: S.optional(S.String),
@@ -2436,7 +2389,7 @@ export interface AgentCollaboratorOutputPayload {
   returnControlPayload?: ReturnControlPayload;
 }
 export const AgentCollaboratorOutputPayload =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(PayloadType),
       text: S.optional(SensitiveString),
@@ -2452,7 +2405,7 @@ export interface AgentCollaboratorInvocationOutput {
   metadata?: Metadata;
 }
 export const AgentCollaboratorInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentCollaboratorName: S.optional(S.String),
       agentCollaboratorAliasArn: S.optional(S.String),
@@ -2469,19 +2422,19 @@ export type RetrievalResultContentType =
   | "AUDIO"
   | "VIDEO"
   | (string & {});
-export const RetrievalResultContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetrievalResultContentType = /*@__PURE__*/ S.String;
 export interface VideoSegment {
   s3Uri: string;
   summary?: string;
 }
-export const VideoSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VideoSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Uri: S.String, summary: S.optional(S.String) }),
 ).annotate({ identifier: "VideoSegment" }) as any as S.Schema<VideoSegment>;
 export interface AudioSegment {
   s3Uri: string;
   transcription?: string;
 }
-export const AudioSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudioSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Uri: S.String, transcription: S.optional(S.String) }),
 ).annotate({ identifier: "AudioSegment" }) as any as S.Schema<AudioSegment>;
 export type RetrievalResultContentColumnType =
@@ -2492,15 +2445,14 @@ export type RetrievalResultContentColumnType =
   | "LONG"
   | "STRING"
   | (string & {});
-export const RetrievalResultContentColumnType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetrievalResultContentColumnType = /*@__PURE__*/ S.String;
 export interface RetrievalResultContentColumn {
   columnName?: string;
   columnValue?: string;
   type?: RetrievalResultContentColumnType;
 }
 export const RetrievalResultContentColumn =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       columnName: S.optional(S.String),
       columnValue: S.optional(S.String),
@@ -2510,7 +2462,7 @@ export const RetrievalResultContentColumn =
     identifier: "RetrievalResultContentColumn",
   }) as any as S.Schema<RetrievalResultContentColumn>;
 export type RetrievalResultContentRow = RetrievalResultContentColumn[];
-export const RetrievalResultContentRow = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const RetrievalResultContentRow = /*@__PURE__*/ S.Array(
   RetrievalResultContentColumn,
 );
 export interface RetrievalResultContent {
@@ -2521,16 +2473,15 @@ export interface RetrievalResultContent {
   audio?: AudioSegment;
   row?: RetrievalResultContentColumn[];
 }
-export const RetrievalResultContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(RetrievalResultContentType),
-      text: S.optional(S.String),
-      byteContent: S.optional(S.String),
-      video: S.optional(VideoSegment),
-      audio: S.optional(AudioSegment),
-      row: S.optional(RetrievalResultContentRow),
-    }),
+export const RetrievalResultContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(RetrievalResultContentType),
+    text: S.optional(S.String),
+    byteContent: S.optional(S.String),
+    video: S.optional(VideoSegment),
+    audio: S.optional(AudioSegment),
+    row: S.optional(RetrievalResultContentRow),
+  }),
 ).annotate({
   identifier: "RetrievalResultContent",
 }) as any as S.Schema<RetrievalResultContent>;
@@ -2546,20 +2497,20 @@ export type RetrievalResultLocationType =
   | "ONEDRIVE"
   | "GOOGLEDRIVE"
   | (string & {});
-export const RetrievalResultLocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetrievalResultLocationType = /*@__PURE__*/ S.String;
 export interface RetrievalResultS3Location {
   uri?: string;
 }
-export const RetrievalResultS3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ uri: S.optional(S.String) }),
+export const RetrievalResultS3Location = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ uri: S.optional(S.String) }),
 ).annotate({
   identifier: "RetrievalResultS3Location",
 }) as any as S.Schema<RetrievalResultS3Location>;
 export interface RetrievalResultWebLocation {
   url?: string;
 }
-export const RetrievalResultWebLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ url: S.optional(S.String) }),
+export const RetrievalResultWebLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ url: S.optional(S.String) }),
 ).annotate({
   identifier: "RetrievalResultWebLocation",
 }) as any as S.Schema<RetrievalResultWebLocation>;
@@ -2567,7 +2518,7 @@ export interface RetrievalResultConfluenceLocation {
   url?: string;
 }
 export const RetrievalResultConfluenceLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ url: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultConfluenceLocation",
@@ -2576,7 +2527,7 @@ export interface RetrievalResultSalesforceLocation {
   url?: string;
 }
 export const RetrievalResultSalesforceLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ url: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultSalesforceLocation",
@@ -2585,7 +2536,7 @@ export interface RetrievalResultSharePointLocation {
   url?: string;
 }
 export const RetrievalResultSharePointLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ url: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultSharePointLocation",
@@ -2594,7 +2545,7 @@ export interface RetrievalResultCustomDocumentLocation {
   id?: string;
 }
 export const RetrievalResultCustomDocumentLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultCustomDocumentLocation",
@@ -2603,7 +2554,7 @@ export interface RetrievalResultKendraDocumentLocation {
   uri?: string;
 }
 export const RetrievalResultKendraDocumentLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ uri: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultKendraDocumentLocation",
@@ -2611,8 +2562,8 @@ export const RetrievalResultKendraDocumentLocation =
 export interface RetrievalResultSqlLocation {
   query?: string;
 }
-export const RetrievalResultSqlLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ query: S.optional(S.String) }),
+export const RetrievalResultSqlLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ query: S.optional(S.String) }),
 ).annotate({
   identifier: "RetrievalResultSqlLocation",
 }) as any as S.Schema<RetrievalResultSqlLocation>;
@@ -2620,7 +2571,7 @@ export interface RetrievalResultOneDriveLocation {
   url?: string;
 }
 export const RetrievalResultOneDriveLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ url: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultOneDriveLocation",
@@ -2629,7 +2580,7 @@ export interface RetrievalResultGoogleDriveLocation {
   url?: string;
 }
 export const RetrievalResultGoogleDriveLocation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ url: S.optional(S.String) }),
   ).annotate({
     identifier: "RetrievalResultGoogleDriveLocation",
@@ -2647,26 +2598,25 @@ export interface RetrievalResultLocation {
   oneDriveLocation?: RetrievalResultOneDriveLocation;
   googleDriveLocation?: RetrievalResultGoogleDriveLocation;
 }
-export const RetrievalResultLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: RetrievalResultLocationType,
-      s3Location: S.optional(RetrievalResultS3Location),
-      webLocation: S.optional(RetrievalResultWebLocation),
-      confluenceLocation: S.optional(RetrievalResultConfluenceLocation),
-      salesforceLocation: S.optional(RetrievalResultSalesforceLocation),
-      sharePointLocation: S.optional(RetrievalResultSharePointLocation),
-      customDocumentLocation: S.optional(RetrievalResultCustomDocumentLocation),
-      kendraDocumentLocation: S.optional(RetrievalResultKendraDocumentLocation),
-      sqlLocation: S.optional(RetrievalResultSqlLocation),
-      oneDriveLocation: S.optional(RetrievalResultOneDriveLocation),
-      googleDriveLocation: S.optional(RetrievalResultGoogleDriveLocation),
-    }),
+export const RetrievalResultLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: RetrievalResultLocationType,
+    s3Location: S.optional(RetrievalResultS3Location),
+    webLocation: S.optional(RetrievalResultWebLocation),
+    confluenceLocation: S.optional(RetrievalResultConfluenceLocation),
+    salesforceLocation: S.optional(RetrievalResultSalesforceLocation),
+    sharePointLocation: S.optional(RetrievalResultSharePointLocation),
+    customDocumentLocation: S.optional(RetrievalResultCustomDocumentLocation),
+    kendraDocumentLocation: S.optional(RetrievalResultKendraDocumentLocation),
+    sqlLocation: S.optional(RetrievalResultSqlLocation),
+    oneDriveLocation: S.optional(RetrievalResultOneDriveLocation),
+    googleDriveLocation: S.optional(RetrievalResultGoogleDriveLocation),
+  }),
 ).annotate({
   identifier: "RetrievalResultLocation",
 }) as any as S.Schema<RetrievalResultLocation>;
 export type RetrievalResultMetadata = { [key: string]: any | undefined };
-export const RetrievalResultMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RetrievalResultMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
@@ -2675,7 +2625,7 @@ export interface RetrievedReference {
   location?: RetrievalResultLocation;
   metadata?: { [key: string]: any | undefined };
 }
-export const RetrievedReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetrievedReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(RetrievalResultContent),
     location: S.optional(RetrievalResultLocation),
@@ -2685,18 +2635,16 @@ export const RetrievedReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RetrievedReference",
 }) as any as S.Schema<RetrievedReference>;
 export type RetrievedReferences = RetrievedReference[];
-export const RetrievedReferences =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RetrievedReference);
+export const RetrievedReferences = /*@__PURE__*/ S.Array(RetrievedReference);
 export interface KnowledgeBaseLookupOutput {
   retrievedReferences?: RetrievedReference[];
   metadata?: Metadata;
 }
-export const KnowledgeBaseLookupOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      retrievedReferences: S.optional(RetrievedReferences),
-      metadata: S.optional(Metadata),
-    }),
+export const KnowledgeBaseLookupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retrievedReferences: S.optional(RetrievedReferences),
+    metadata: S.optional(Metadata),
+  }),
 ).annotate({
   identifier: "KnowledgeBaseLookupOutput",
 }) as any as S.Schema<KnowledgeBaseLookupOutput>;
@@ -2704,7 +2652,7 @@ export interface FinalResponse {
   text?: string | redacted.Redacted<string>;
   metadata?: Metadata;
 }
-export const FinalResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FinalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(SensitiveString),
     metadata: S.optional(Metadata),
@@ -2715,12 +2663,12 @@ export type Source =
   | "KNOWLEDGE_BASE"
   | "PARSER"
   | (string & {});
-export const Source = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Source = /*@__PURE__*/ S.String;
 export interface RepromptResponse {
   text?: string;
   source?: Source;
 }
-export const RepromptResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RepromptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.optional(S.String), source: S.optional(Source) }),
 ).annotate({
   identifier: "RepromptResponse",
@@ -2733,7 +2681,7 @@ export interface CodeInterpreterInvocationOutput {
   metadata?: Metadata;
 }
 export const CodeInterpreterInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       executionOutput: S.optional(S.String),
       executionError: S.optional(S.String),
@@ -2754,7 +2702,7 @@ export interface Observation {
   repromptResponse?: RepromptResponse;
   codeInterpreterInvocationOutput?: CodeInterpreterInvocationOutput;
 }
-export const Observation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Observation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     type: S.optional(Type),
@@ -2777,7 +2725,7 @@ export interface OrchestrationModelInvocationOutput {
   reasoningContent?: ReasoningContentBlock;
 }
 export const OrchestrationModelInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       traceId: S.optional(S.String),
       rawResponse: S.optional(RawResponse),
@@ -2823,7 +2771,7 @@ export type OrchestrationTrace =
       modelInvocationInput?: never;
       modelInvocationOutput: OrchestrationModelInvocationOutput;
     };
-export const OrchestrationTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OrchestrationTrace = /*@__PURE__*/ S.Union([
   S.Struct({ rationale: Rationale }),
   S.Struct({ invocationInput: InvocationInput }),
   S.Struct({ observation: Observation }),
@@ -2834,7 +2782,7 @@ export interface PostProcessingParsedResponse {
   text?: string | redacted.Redacted<string>;
 }
 export const PostProcessingParsedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ text: S.optional(SensitiveString) }),
   ).annotate({
     identifier: "PostProcessingParsedResponse",
@@ -2847,7 +2795,7 @@ export interface PostProcessingModelInvocationOutput {
   reasoningContent?: ReasoningContentBlock;
 }
 export const PostProcessingModelInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       traceId: S.optional(S.String),
       parsedResponse: S.optional(PostProcessingParsedResponse),
@@ -2867,7 +2815,7 @@ export type PostProcessingTrace =
       modelInvocationInput?: never;
       modelInvocationOutput: PostProcessingModelInvocationOutput;
     };
-export const PostProcessingTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PostProcessingTrace = /*@__PURE__*/ S.Union([
   S.Struct({ modelInvocationInput: ModelInvocationInput }),
   S.Struct({ modelInvocationOutput: PostProcessingModelInvocationOutput }),
 ]);
@@ -2877,7 +2825,7 @@ export interface RoutingClassifierModelInvocationOutput {
   metadata?: Metadata;
 }
 export const RoutingClassifierModelInvocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       traceId: S.optional(S.String),
       rawResponse: S.optional(RawResponse),
@@ -2911,7 +2859,7 @@ export type RoutingClassifierTrace =
       modelInvocationInput?: never;
       modelInvocationOutput: RoutingClassifierModelInvocationOutput;
     };
-export const RoutingClassifierTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RoutingClassifierTrace = /*@__PURE__*/ S.Union([
   S.Struct({ invocationInput: InvocationInput }),
   S.Struct({ observation: Observation }),
   S.Struct({ modelInvocationInput: ModelInvocationInput }),
@@ -2923,7 +2871,7 @@ export interface FailureTrace {
   failureCode?: number;
   metadata?: Metadata;
 }
-export const FailureTrace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailureTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     failureReason: S.optional(SensitiveString),
@@ -2935,7 +2883,7 @@ export interface CustomOrchestrationTraceEvent {
   text?: string;
 }
 export const CustomOrchestrationTraceEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ text: S.optional(S.String) }),
   ).annotate({
     identifier: "CustomOrchestrationTraceEvent",
@@ -2944,12 +2892,11 @@ export interface CustomOrchestrationTrace {
   traceId?: string;
   event?: CustomOrchestrationTraceEvent;
 }
-export const CustomOrchestrationTrace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      traceId: S.optional(S.String),
-      event: S.optional(CustomOrchestrationTraceEvent),
-    }),
+export const CustomOrchestrationTrace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    traceId: S.optional(S.String),
+    event: S.optional(CustomOrchestrationTraceEvent),
+  }),
 ).annotate({
   identifier: "CustomOrchestrationTrace",
 }) as any as S.Schema<CustomOrchestrationTrace>;
@@ -3017,7 +2964,7 @@ export type Trace =
       failureTrace?: never;
       customOrchestrationTrace: CustomOrchestrationTrace;
     };
-export const Trace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Trace = /*@__PURE__*/ S.Union([
   S.Struct({ guardrailTrace: GuardrailTrace }),
   S.Struct({ preProcessingTrace: PreProcessingTrace }),
   S.Struct({ orchestrationTrace: OrchestrationTrace }),
@@ -3027,11 +2974,11 @@ export const Trace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ customOrchestrationTrace: CustomOrchestrationTrace }),
 ]);
 export type Caller = { agentAliasArn: string };
-export const Caller = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Caller = /*@__PURE__*/ S.Union([
   S.Struct({ agentAliasArn: S.String }),
 ]);
 export type CallerChain = Caller[];
-export const CallerChain = /*@__PURE__*/ /*#__PURE__*/ S.Array(Caller);
+export const CallerChain = /*@__PURE__*/ S.Array(Caller);
 export interface TracePart {
   sessionId?: string;
   trace?: Trace;
@@ -3042,7 +2989,7 @@ export interface TracePart {
   agentAliasId?: string;
   agentVersion?: string;
 }
-export const TracePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TracePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.optional(S.String),
     trace: S.optional(Trace),
@@ -3057,9 +3004,9 @@ export const TracePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TracePart" }) as any as S.Schema<TracePart>;
 export type AgentTraces = TracePart[];
-export const AgentTraces = /*@__PURE__*/ /*#__PURE__*/ S.Array(TracePart);
+export const AgentTraces = /*@__PURE__*/ S.Array(TracePart);
 export type NodeTraceElements = { agentTraces: TracePart[] };
-export const NodeTraceElements = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const NodeTraceElements = /*@__PURE__*/ S.Union([
   S.Struct({ agentTraces: AgentTraces }),
 ]);
 export interface NodeDependencyEvent {
@@ -3067,7 +3014,7 @@ export interface NodeDependencyEvent {
   timestamp: Date;
   traceElements: NodeTraceElements;
 }
-export const NodeDependencyEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeDependencyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3176,7 +3123,7 @@ export type FlowExecutionEvent =
       nodeActionEvent?: never;
       nodeDependencyEvent: NodeDependencyEvent;
     };
-export const FlowExecutionEvent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowExecutionEvent = /*@__PURE__*/ S.Union([
   S.Struct({ flowInputEvent: FlowExecutionInputEvent }),
   S.Struct({ flowOutputEvent: FlowExecutionOutputEvent }),
   S.Struct({ nodeInputEvent: NodeInputEvent }),
@@ -3188,14 +3135,13 @@ export const FlowExecutionEvent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ nodeDependencyEvent: NodeDependencyEvent }),
 ]);
 export type FlowExecutionEvents = FlowExecutionEvent[];
-export const FlowExecutionEvents =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowExecutionEvent);
+export const FlowExecutionEvents = /*@__PURE__*/ S.Array(FlowExecutionEvent);
 export interface ListFlowExecutionEventsResponse {
   flowExecutionEvents: FlowExecutionEvent[];
   nextToken?: string;
 }
 export const ListFlowExecutionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       flowExecutionEvents: FlowExecutionEvents,
       nextToken: S.optional(S.String),
@@ -3209,25 +3155,24 @@ export interface ListFlowExecutionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFlowExecutionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
-      flowAliasIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("flowAliasIdentifier"),
-      ),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/flows/{flowIdentifier}/executions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
+    flowAliasIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("flowAliasIdentifier"),
     ),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/flows/{flowIdentifier}/executions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListFlowExecutionsRequest",
 }) as any as S.Schema<ListFlowExecutionsRequest>;
@@ -3240,7 +3185,7 @@ export interface FlowExecutionSummary {
   createdAt: Date;
   endedAt?: Date;
 }
-export const FlowExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionArn: S.String,
     flowAliasIdentifier: S.String,
@@ -3255,22 +3200,21 @@ export const FlowExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowExecutionSummary>;
 export type FlowExecutionSummaries = FlowExecutionSummary[];
 export const FlowExecutionSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowExecutionSummary);
+  /*@__PURE__*/ S.Array(FlowExecutionSummary);
 export interface ListFlowExecutionsResponse {
   flowExecutionSummaries: FlowExecutionSummary[];
   nextToken?: string;
 }
-export const ListFlowExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flowExecutionSummaries: FlowExecutionSummaries,
-      nextToken: S.optional(S.String),
-    }),
+export const ListFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowExecutionSummaries: FlowExecutionSummaries,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListFlowExecutionsResponse",
 }) as any as S.Schema<ListFlowExecutionsResponse>;
 export type FlowInputContent = { document: any };
-export const FlowInputContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowInputContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowInput {
@@ -3279,7 +3223,7 @@ export interface FlowInput {
   content: FlowInputContent;
   nodeInputName?: string;
 }
-export const FlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     nodeOutputName: S.optional(S.String),
@@ -3288,14 +3232,14 @@ export const FlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlowInput" }) as any as S.Schema<FlowInput>;
 export type FlowInputs = FlowInput[];
-export const FlowInputs = /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowInput);
+export const FlowInputs = /*@__PURE__*/ S.Array(FlowInput);
 export type PerformanceConfigLatency = "standard" | "optimized" | (string & {});
-export const PerformanceConfigLatency = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PerformanceConfigLatency = /*@__PURE__*/ S.String;
 export interface PerformanceConfiguration {
   latency?: PerformanceConfigLatency;
 }
-export const PerformanceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
+export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
 ).annotate({
   identifier: "PerformanceConfiguration",
 }) as any as S.Schema<PerformanceConfiguration>;
@@ -3303,7 +3247,7 @@ export interface ModelPerformanceConfiguration {
   performanceConfig?: PerformanceConfiguration;
 }
 export const ModelPerformanceConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ performanceConfig: S.optional(PerformanceConfiguration) }),
   ).annotate({
     identifier: "ModelPerformanceConfiguration",
@@ -3315,35 +3259,34 @@ export interface StartFlowExecutionRequest {
   inputs: FlowInput[];
   modelPerformanceConfiguration?: ModelPerformanceConfiguration;
 }
-export const StartFlowExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
-      flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
-      flowExecutionName: S.optional(S.String),
-      inputs: FlowInputs,
-      modelPerformanceConfiguration: S.optional(ModelPerformanceConfiguration),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartFlowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
+    flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
+    flowExecutionName: S.optional(S.String),
+    inputs: FlowInputs,
+    modelPerformanceConfiguration: S.optional(ModelPerformanceConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartFlowExecutionRequest",
 }) as any as S.Schema<StartFlowExecutionRequest>;
 export interface StartFlowExecutionResponse {
   executionArn?: string;
 }
-export const StartFlowExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ executionArn: S.optional(S.String) }),
+export const StartFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ executionArn: S.optional(S.String) }),
 ).annotate({
   identifier: "StartFlowExecutionResponse",
 }) as any as S.Schema<StartFlowExecutionResponse>;
@@ -3352,25 +3295,24 @@ export interface StopFlowExecutionRequest {
   flowAliasIdentifier: string;
   executionIdentifier: string;
 }
-export const StopFlowExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
-      flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
-      executionIdentifier: S.String.pipe(T.HttpLabel("executionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/stop",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopFlowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
+    flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
+    executionIdentifier: S.String.pipe(T.HttpLabel("executionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/stop",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StopFlowExecutionRequest",
 }) as any as S.Schema<StopFlowExecutionRequest>;
@@ -3378,12 +3320,11 @@ export interface StopFlowExecutionResponse {
   executionArn?: string;
   status: FlowExecutionStatus;
 }
-export const StopFlowExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionArn: S.optional(S.String),
-      status: FlowExecutionStatus,
-    }),
+export const StopFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionArn: S.optional(S.String),
+    status: FlowExecutionStatus,
+  }),
 ).annotate({
   identifier: "StopFlowExecutionResponse",
 }) as any as S.Schema<StopFlowExecutionResponse>;
@@ -3395,7 +3336,7 @@ export interface InvokeFlowRequest {
   modelPerformanceConfiguration?: ModelPerformanceConfiguration;
   executionId?: string;
 }
-export const InvokeFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
     flowAliasIdentifier: S.String.pipe(T.HttpLabel("flowAliasIdentifier")),
@@ -3428,9 +3369,9 @@ export type NodeType =
   | "ConditionNode"
   | "LexNode"
   | (string & {});
-export const NodeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NodeType = /*@__PURE__*/ S.String;
 export type FlowOutputContent = { document: any };
-export const FlowOutputContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowOutputContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowOutputEvent {
@@ -3438,7 +3379,7 @@ export interface FlowOutputEvent {
   nodeType: NodeType;
   content: FlowOutputContent;
 }
-export const FlowOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowOutputEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.String,
     nodeType: NodeType,
@@ -3448,17 +3389,17 @@ export const FlowOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FlowOutputEvent",
 }) as any as S.Schema<FlowOutputEvent>;
 export type FlowCompletionReason = "SUCCESS" | "INPUT_REQUIRED" | (string & {});
-export const FlowCompletionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FlowCompletionReason = /*@__PURE__*/ S.String;
 export interface FlowCompletionEvent {
   completionReason: FlowCompletionReason;
 }
-export const FlowCompletionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowCompletionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ completionReason: FlowCompletionReason }),
 ).annotate({
   identifier: "FlowCompletionEvent",
 }) as any as S.Schema<FlowCompletionEvent>;
 export type FlowTraceNodeInputContent = { document: any };
-export const FlowTraceNodeInputContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowTraceNodeInputContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowTraceNodeInputSource {
@@ -3466,13 +3407,12 @@ export interface FlowTraceNodeInputSource {
   outputFieldName: string;
   expression: string | redacted.Redacted<string>;
 }
-export const FlowTraceNodeInputSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      outputFieldName: S.String,
-      expression: SensitiveString,
-    }),
+export const FlowTraceNodeInputSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    outputFieldName: S.String,
+    expression: SensitiveString,
+  }),
 ).annotate({
   identifier: "FlowTraceNodeInputSource",
 }) as any as S.Schema<FlowTraceNodeInputSource>;
@@ -3482,7 +3422,7 @@ export interface FlowTraceNodeInputExecutionChainItem {
   type: FlowControlNodeType;
 }
 export const FlowTraceNodeInputExecutionChainItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nodeName: S.String,
       index: S.optional(S.Number),
@@ -3494,7 +3434,7 @@ export const FlowTraceNodeInputExecutionChainItem =
 export type FlowTraceNodeInputExecutionChain =
   FlowTraceNodeInputExecutionChainItem[];
 export const FlowTraceNodeInputExecutionChain =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowTraceNodeInputExecutionChainItem);
+  /*@__PURE__*/ S.Array(FlowTraceNodeInputExecutionChainItem);
 export interface FlowTraceNodeInputField {
   nodeInputName: string;
   content: FlowTraceNodeInputContent;
@@ -3503,21 +3443,20 @@ export interface FlowTraceNodeInputField {
   category?: FlowNodeInputCategory;
   executionChain?: FlowTraceNodeInputExecutionChainItem[];
 }
-export const FlowTraceNodeInputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeInputName: S.String,
-      content: FlowTraceNodeInputContent,
-      source: S.optional(FlowTraceNodeInputSource),
-      type: S.optional(FlowNodeIODataType),
-      category: S.optional(FlowNodeInputCategory),
-      executionChain: S.optional(FlowTraceNodeInputExecutionChain),
-    }),
+export const FlowTraceNodeInputField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeInputName: S.String,
+    content: FlowTraceNodeInputContent,
+    source: S.optional(FlowTraceNodeInputSource),
+    type: S.optional(FlowNodeIODataType),
+    category: S.optional(FlowNodeInputCategory),
+    executionChain: S.optional(FlowTraceNodeInputExecutionChain),
+  }),
 ).annotate({
   identifier: "FlowTraceNodeInputField",
 }) as any as S.Schema<FlowTraceNodeInputField>;
 export type FlowTraceNodeInputFields = FlowTraceNodeInputField[];
-export const FlowTraceNodeInputFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const FlowTraceNodeInputFields = /*@__PURE__*/ S.Array(
   FlowTraceNodeInputField,
 );
 export interface FlowTraceNodeInputEvent {
@@ -3525,31 +3464,30 @@ export interface FlowTraceNodeInputEvent {
   timestamp: Date;
   fields: FlowTraceNodeInputField[];
 }
-export const FlowTraceNodeInputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      fields: FlowTraceNodeInputFields,
-    }),
+export const FlowTraceNodeInputEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    fields: FlowTraceNodeInputFields,
+  }),
 ).annotate({
   identifier: "FlowTraceNodeInputEvent",
 }) as any as S.Schema<FlowTraceNodeInputEvent>;
 export type FlowTraceNodeOutputContent = { document: any };
-export const FlowTraceNodeOutputContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowTraceNodeOutputContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowTraceNodeOutputNext {
   nodeName: string;
   inputFieldName: string;
 }
-export const FlowTraceNodeOutputNext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ nodeName: S.String, inputFieldName: S.String }),
+export const FlowTraceNodeOutputNext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ nodeName: S.String, inputFieldName: S.String }),
 ).annotate({
   identifier: "FlowTraceNodeOutputNext",
 }) as any as S.Schema<FlowTraceNodeOutputNext>;
 export type FlowTraceNodeOutputNextList = FlowTraceNodeOutputNext[];
-export const FlowTraceNodeOutputNextList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const FlowTraceNodeOutputNextList = /*@__PURE__*/ S.Array(
   FlowTraceNodeOutputNext,
 );
 export interface FlowTraceNodeOutputField {
@@ -3558,19 +3496,18 @@ export interface FlowTraceNodeOutputField {
   next?: FlowTraceNodeOutputNext[];
   type?: FlowNodeIODataType;
 }
-export const FlowTraceNodeOutputField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeOutputName: S.String,
-      content: FlowTraceNodeOutputContent,
-      next: S.optional(FlowTraceNodeOutputNextList),
-      type: S.optional(FlowNodeIODataType),
-    }),
+export const FlowTraceNodeOutputField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeOutputName: S.String,
+    content: FlowTraceNodeOutputContent,
+    next: S.optional(FlowTraceNodeOutputNextList),
+    type: S.optional(FlowNodeIODataType),
+  }),
 ).annotate({
   identifier: "FlowTraceNodeOutputField",
 }) as any as S.Schema<FlowTraceNodeOutputField>;
 export type FlowTraceNodeOutputFields = FlowTraceNodeOutputField[];
-export const FlowTraceNodeOutputFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const FlowTraceNodeOutputFields = /*@__PURE__*/ S.Array(
   FlowTraceNodeOutputField,
 );
 export interface FlowTraceNodeOutputEvent {
@@ -3578,34 +3515,32 @@ export interface FlowTraceNodeOutputEvent {
   timestamp: Date;
   fields: FlowTraceNodeOutputField[];
 }
-export const FlowTraceNodeOutputEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      fields: FlowTraceNodeOutputFields,
-    }),
+export const FlowTraceNodeOutputEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    fields: FlowTraceNodeOutputFields,
+  }),
 ).annotate({
   identifier: "FlowTraceNodeOutputEvent",
 }) as any as S.Schema<FlowTraceNodeOutputEvent>;
 export interface FlowTraceCondition {
   conditionName: string;
 }
-export const FlowTraceCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowTraceCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditionName: S.String }),
 ).annotate({
   identifier: "FlowTraceCondition",
 }) as any as S.Schema<FlowTraceCondition>;
 export type FlowTraceConditions = FlowTraceCondition[];
-export const FlowTraceConditions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FlowTraceCondition);
+export const FlowTraceConditions = /*@__PURE__*/ S.Array(FlowTraceCondition);
 export interface FlowTraceConditionNodeResultEvent {
   nodeName: string;
   timestamp: Date;
   satisfiedConditions: FlowTraceCondition[];
 }
 export const FlowTraceConditionNodeResultEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nodeName: S.String,
       timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3623,22 +3558,21 @@ export interface FlowTraceNodeActionEvent {
   operationRequest?: any;
   operationResponse?: any;
 }
-export const FlowTraceNodeActionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      requestId: S.String,
-      serviceName: S.String,
-      operationName: S.String,
-      operationRequest: S.optional(S.Any),
-      operationResponse: S.optional(S.Any),
-    }),
+export const FlowTraceNodeActionEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    requestId: S.String,
+    serviceName: S.String,
+    operationName: S.String,
+    operationRequest: S.optional(S.Any),
+    operationResponse: S.optional(S.Any),
+  }),
 ).annotate({
   identifier: "FlowTraceNodeActionEvent",
 }) as any as S.Schema<FlowTraceNodeActionEvent>;
 export type TraceElements = { agentTraces: TracePart[] };
-export const TraceElements = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TraceElements = /*@__PURE__*/ S.Union([
   S.Struct({ agentTraces: AgentTraces }),
 ]);
 export interface FlowTraceDependencyEvent {
@@ -3646,13 +3580,12 @@ export interface FlowTraceDependencyEvent {
   timestamp: Date;
   traceElements: TraceElements;
 }
-export const FlowTraceDependencyEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodeName: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      traceElements: TraceElements,
-    }),
+export const FlowTraceDependencyEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    traceElements: TraceElements,
+  }),
 ).annotate({
   identifier: "FlowTraceDependencyEvent",
 }) as any as S.Schema<FlowTraceDependencyEvent>;
@@ -3692,7 +3625,7 @@ export type FlowTrace =
       nodeActionTrace?: never;
       nodeDependencyTrace: FlowTraceDependencyEvent;
     };
-export const FlowTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowTrace = /*@__PURE__*/ S.Union([
   S.Struct({ nodeInputTrace: FlowTraceNodeInputEvent }),
   S.Struct({ nodeOutputTrace: FlowTraceNodeOutputEvent }),
   S.Struct({ conditionNodeResultTrace: FlowTraceConditionNodeResultEvent }),
@@ -3702,11 +3635,11 @@ export const FlowTrace = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 export interface FlowTraceEvent {
   trace: FlowTrace;
 }
-export const FlowTraceEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FlowTraceEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trace: FlowTrace }),
 ).annotate({ identifier: "FlowTraceEvent" }) as any as S.Schema<FlowTraceEvent>;
 export type FlowMultiTurnInputContent = { document: any };
-export const FlowMultiTurnInputContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FlowMultiTurnInputContent = /*@__PURE__*/ S.Union([
   S.Struct({ document: S.Any }),
 ]);
 export interface FlowMultiTurnInputRequestEvent {
@@ -3715,7 +3648,7 @@ export interface FlowMultiTurnInputRequestEvent {
   content: FlowMultiTurnInputContent;
 }
 export const FlowMultiTurnInputRequestEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nodeName: S.String,
       nodeType: NodeType,
@@ -3920,7 +3853,7 @@ export type FlowResponseStream =
       badGatewayException?: never;
       flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent;
     };
-export const FlowResponseStream = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const FlowResponseStream = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ flowOutputEvent: FlowOutputEvent }),
     S.Struct({ flowCompletionEvent: FlowCompletionEvent }),
@@ -3979,7 +3912,7 @@ export interface InvokeFlowResponse {
   responseStream: stream.Stream<FlowResponseStream, Error, never>;
   executionId?: string;
 }
-export const InvokeFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseStream: FlowResponseStream.pipe(T.HttpPayload()),
     executionId: S.optional(S.String).pipe(
@@ -3990,25 +3923,25 @@ export const InvokeFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InvokeFlowResponse",
 }) as any as S.Schema<InvokeFlowResponse>;
 export type InputQueryType = "TEXT" | (string & {});
-export const InputQueryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InputQueryType = /*@__PURE__*/ S.String;
 export interface QueryGenerationInput {
   type: InputQueryType;
   text: string;
 }
-export const QueryGenerationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueryGenerationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: InputQueryType, text: S.String }),
 ).annotate({
   identifier: "QueryGenerationInput",
 }) as any as S.Schema<QueryGenerationInput>;
 export type QueryTransformationMode = "TEXT_TO_SQL" | (string & {});
-export const QueryTransformationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryTransformationMode = /*@__PURE__*/ S.String;
 export type TextToSqlConfigurationType = "KNOWLEDGE_BASE" | (string & {});
-export const TextToSqlConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TextToSqlConfigurationType = /*@__PURE__*/ S.String;
 export interface TextToSqlKnowledgeBaseConfiguration {
   knowledgeBaseArn: string;
 }
 export const TextToSqlKnowledgeBaseConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ knowledgeBaseArn: S.String }),
   ).annotate({
     identifier: "TextToSqlKnowledgeBaseConfiguration",
@@ -4017,14 +3950,11 @@ export interface TextToSqlConfiguration {
   type: TextToSqlConfigurationType;
   knowledgeBaseConfiguration?: TextToSqlKnowledgeBaseConfiguration;
 }
-export const TextToSqlConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: TextToSqlConfigurationType,
-      knowledgeBaseConfiguration: S.optional(
-        TextToSqlKnowledgeBaseConfiguration,
-      ),
-    }),
+export const TextToSqlConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: TextToSqlConfigurationType,
+    knowledgeBaseConfiguration: S.optional(TextToSqlKnowledgeBaseConfiguration),
+  }),
 ).annotate({
   identifier: "TextToSqlConfiguration",
 }) as any as S.Schema<TextToSqlConfiguration>;
@@ -4033,7 +3963,7 @@ export interface TransformationConfiguration {
   textToSqlConfiguration?: TextToSqlConfiguration;
 }
 export const TransformationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: QueryTransformationMode,
       textToSqlConfiguration: S.optional(TextToSqlConfiguration),
@@ -4045,7 +3975,7 @@ export interface GenerateQueryRequest {
   queryGenerationInput: QueryGenerationInput;
   transformationConfiguration: TransformationConfiguration;
 }
-export const GenerateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GenerateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryGenerationInput: QueryGenerationInput,
     transformationConfiguration: TransformationConfiguration,
@@ -4063,27 +3993,26 @@ export const GenerateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GenerateQueryRequest",
 }) as any as S.Schema<GenerateQueryRequest>;
 export type GeneratedQueryType = "REDSHIFT_SQL" | (string & {});
-export const GeneratedQueryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GeneratedQueryType = /*@__PURE__*/ S.String;
 export interface GeneratedQuery {
   type?: GeneratedQueryType;
   sql?: string;
 }
-export const GeneratedQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeneratedQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(GeneratedQueryType), sql: S.optional(S.String) }),
 ).annotate({ identifier: "GeneratedQuery" }) as any as S.Schema<GeneratedQuery>;
 export type GeneratedQueries = GeneratedQuery[];
-export const GeneratedQueries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GeneratedQuery);
+export const GeneratedQueries = /*@__PURE__*/ S.Array(GeneratedQuery);
 export interface GenerateQueryResponse {
   queries?: GeneratedQuery[];
 }
-export const GenerateQueryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GenerateQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queries: S.optional(GeneratedQueries) }),
 ).annotate({
   identifier: "GenerateQueryResponse",
 }) as any as S.Schema<GenerateQueryResponse>;
 export type DocumentOutputFormat = "RAW" | "EXTRACTED" | (string & {});
-export const DocumentOutputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DocumentOutputFormat = /*@__PURE__*/ S.String;
 export interface GetDocumentContentRequest {
   knowledgeBaseId: string;
   dataSourceId: string;
@@ -4091,27 +4020,26 @@ export interface GetDocumentContentRequest {
   outputFormat?: DocumentOutputFormat;
   userContext?: UserContext;
 }
-export const GetDocumentContentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-      dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
-      documentId: S.String.pipe(T.HttpLabel("documentId")),
-      outputFormat: S.optional(DocumentOutputFormat),
-      userContext: S.optional(UserContext),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDocumentContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+    dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
+    documentId: S.String.pipe(T.HttpLabel("documentId")),
+    outputFormat: S.optional(DocumentOutputFormat),
+    userContext: S.optional(UserContext),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetDocumentContentRequest",
 }) as any as S.Schema<GetDocumentContentRequest>;
@@ -4120,39 +4048,38 @@ export interface GetDocumentContentResponse {
   presignedUrl: string | redacted.Redacted<string>;
   documentContentLength?: number;
 }
-export const GetDocumentContentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mimeType: S.String,
-      presignedUrl: SensitiveString,
-      documentContentLength: S.optional(S.Number),
-    }),
+export const GetDocumentContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mimeType: S.String,
+    presignedUrl: SensitiveString,
+    documentContentLength: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetDocumentContentResponse",
 }) as any as S.Schema<GetDocumentContentResponse>;
 export type SessionAttributesMap = { [key: string]: string | undefined };
-export const SessionAttributesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SessionAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type PromptSessionAttributesMap = { [key: string]: string | undefined };
-export const PromptSessionAttributesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const PromptSessionAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type FileSourceType = "S3" | "BYTE_CONTENT" | (string & {});
-export const FileSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FileSourceType = /*@__PURE__*/ S.String;
 export interface S3ObjectFile {
   uri: string;
 }
-export const S3ObjectFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3ObjectFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.String }),
 ).annotate({ identifier: "S3ObjectFile" }) as any as S.Schema<S3ObjectFile>;
 export interface ByteContentFile {
   mediaType: string;
   data: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const ByteContentFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ByteContentFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mediaType: S.String, data: SensitiveBlob }),
 ).annotate({
   identifier: "ByteContentFile",
@@ -4162,7 +4089,7 @@ export interface FileSource {
   s3Location?: S3ObjectFile;
   byteContent?: ByteContentFile;
 }
-export const FileSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FileSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: FileSourceType,
     s3Location: S.optional(S3ObjectFile),
@@ -4170,33 +4097,32 @@ export const FileSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileSource" }) as any as S.Schema<FileSource>;
 export type FileUseCase = "CODE_INTERPRETER" | "CHAT" | (string & {});
-export const FileUseCase = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FileUseCase = /*@__PURE__*/ S.String;
 export interface InputFile {
   name: string;
   source: FileSource;
   useCase: FileUseCase;
 }
-export const InputFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InputFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, source: FileSource, useCase: FileUseCase }),
 ).annotate({ identifier: "InputFile" }) as any as S.Schema<InputFile>;
 export type InputFiles = InputFile[];
-export const InputFiles = /*@__PURE__*/ /*#__PURE__*/ S.Array(InputFile);
+export const InputFiles = /*@__PURE__*/ S.Array(InputFile);
 export type SearchType = "HYBRID" | "SEMANTIC" | (string & {});
-export const SearchType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchType = /*@__PURE__*/ S.String;
 export type VectorSearchRerankingConfigurationType =
   | "BEDROCK_RERANKING_MODEL"
   | (string & {});
-export const VectorSearchRerankingConfigurationType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VectorSearchRerankingConfigurationType = /*@__PURE__*/ S.String;
 export type AdditionalModelRequestFields = { [key: string]: any | undefined };
 export const AdditionalModelRequestFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
 export const VectorSearchBedrockRerankingModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelArn: S.String,
       additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
@@ -4208,24 +4134,22 @@ export type RerankingMetadataSelectionMode =
   | "SELECTIVE"
   | "ALL"
   | (string & {});
-export const RerankingMetadataSelectionMode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankingMetadataSelectionMode = /*@__PURE__*/ S.String;
 export interface FieldForReranking {
   fieldName: string;
 }
-export const FieldForReranking = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FieldForReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fieldName: S.String }),
 ).annotate({
   identifier: "FieldForReranking",
 }) as any as S.Schema<FieldForReranking>;
 export type FieldsForReranking = FieldForReranking[];
-export const FieldsForReranking =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FieldForReranking);
+export const FieldsForReranking = /*@__PURE__*/ S.Array(FieldForReranking);
 export type RerankingMetadataSelectiveModeConfiguration =
   | { fieldsToInclude: FieldForReranking[]; fieldsToExclude?: never }
   | { fieldsToInclude?: never; fieldsToExclude: FieldForReranking[] };
 export const RerankingMetadataSelectiveModeConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Union([
     S.Struct({ fieldsToInclude: FieldsForReranking }),
     S.Struct({ fieldsToExclude: FieldsForReranking }),
   ]);
@@ -4234,7 +4158,7 @@ export interface MetadataConfigurationForReranking {
   selectiveModeConfiguration?: RerankingMetadataSelectiveModeConfiguration;
 }
 export const MetadataConfigurationForReranking =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       selectionMode: RerankingMetadataSelectionMode,
       selectiveModeConfiguration: S.optional(
@@ -4250,7 +4174,7 @@ export interface VectorSearchBedrockRerankingConfiguration {
   metadataConfiguration?: MetadataConfigurationForReranking;
 }
 export const VectorSearchBedrockRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelConfiguration: VectorSearchBedrockRerankingModelConfiguration,
       numberOfRerankedResults: S.optional(S.Number),
@@ -4264,7 +4188,7 @@ export interface VectorSearchRerankingConfiguration {
   bedrockRerankingConfiguration?: VectorSearchBedrockRerankingConfiguration;
 }
 export const VectorSearchRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: VectorSearchRerankingConfigurationType,
       bedrockRerankingConfiguration: S.optional(
@@ -4280,19 +4204,19 @@ export type AttributeType =
   | "BOOLEAN"
   | "STRING_LIST"
   | (string & {});
-export const AttributeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AttributeType = /*@__PURE__*/ S.String;
 export interface MetadataAttributeSchema {
   key: string;
   type: AttributeType;
   description: string;
 }
-export const MetadataAttributeSchema = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ key: S.String, type: AttributeType, description: S.String }),
+export const MetadataAttributeSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, type: AttributeType, description: S.String }),
 ).annotate({
   identifier: "MetadataAttributeSchema",
 }) as any as S.Schema<MetadataAttributeSchema>;
 export type MetadataAttributeSchemaList = MetadataAttributeSchema[];
-export const MetadataAttributeSchemaList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MetadataAttributeSchemaList = /*@__PURE__*/ S.Array(
   MetadataAttributeSchema,
 );
 export interface ImplicitFilterConfiguration {
@@ -4300,7 +4224,7 @@ export interface ImplicitFilterConfiguration {
   modelArn: string;
 }
 export const ImplicitFilterConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadataAttributes: MetadataAttributeSchemaList,
       modelArn: S.String,
@@ -4316,7 +4240,7 @@ export interface KnowledgeBaseVectorSearchConfiguration {
   implicitFilterConfiguration?: ImplicitFilterConfiguration;
 }
 export const KnowledgeBaseVectorSearchConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       numberOfResults: S.optional(S.Number),
       overrideSearchType: S.optional(SearchType),
@@ -4328,18 +4252,17 @@ export const KnowledgeBaseVectorSearchConfiguration =
     identifier: "KnowledgeBaseVectorSearchConfiguration",
   }) as any as S.Schema<KnowledgeBaseVectorSearchConfiguration>;
 export type RerankingModelType = "CUSTOM" | "MANAGED" | "NONE" | (string & {});
-export const RerankingModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankingModelType = /*@__PURE__*/ S.String;
 export type ManagedSearchRerankingConfigurationType =
   | "BEDROCK_RERANKING_MODEL"
   | (string & {});
-export const ManagedSearchRerankingConfigurationType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ManagedSearchRerankingConfigurationType = /*@__PURE__*/ S.String;
 export interface ManagedSearchBedrockRerankingModelConfiguration {
   modelArn: string;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
 export const ManagedSearchBedrockRerankingModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelArn: S.String,
       additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
@@ -4353,7 +4276,7 @@ export interface ManagedSearchBedrockRerankingConfiguration {
   metadataConfiguration?: MetadataConfigurationForReranking;
 }
 export const ManagedSearchBedrockRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelConfiguration: ManagedSearchBedrockRerankingModelConfiguration,
       numberOfRerankedResults: S.optional(S.Number),
@@ -4367,7 +4290,7 @@ export interface ManagedSearchRerankingConfiguration {
   bedrockRerankingConfiguration?: ManagedSearchBedrockRerankingConfiguration;
 }
 export const ManagedSearchRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: ManagedSearchRerankingConfigurationType,
       bedrockRerankingConfiguration: S.optional(
@@ -4383,14 +4306,13 @@ export interface ManagedSearchConfiguration {
   rerankingModelType?: RerankingModelType;
   rerankingConfiguration?: ManagedSearchRerankingConfiguration;
 }
-export const ManagedSearchConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      numberOfResults: S.optional(S.Number),
-      filter: S.optional(RetrievalFilter),
-      rerankingModelType: S.optional(RerankingModelType),
-      rerankingConfiguration: S.optional(ManagedSearchRerankingConfiguration),
-    }),
+export const ManagedSearchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    numberOfResults: S.optional(S.Number),
+    filter: S.optional(RetrievalFilter),
+    rerankingModelType: S.optional(RerankingModelType),
+    rerankingConfiguration: S.optional(ManagedSearchRerankingConfiguration),
+  }),
 ).annotate({
   identifier: "ManagedSearchConfiguration",
 }) as any as S.Schema<ManagedSearchConfiguration>;
@@ -4399,7 +4321,7 @@ export interface KnowledgeBaseRetrievalConfiguration {
   managedSearchConfiguration?: ManagedSearchConfiguration;
 }
 export const KnowledgeBaseRetrievalConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vectorSearchConfiguration: S.optional(
         KnowledgeBaseVectorSearchConfiguration,
@@ -4413,38 +4335,37 @@ export interface KnowledgeBaseConfiguration {
   knowledgeBaseId: string;
   retrievalConfiguration: KnowledgeBaseRetrievalConfiguration;
 }
-export const KnowledgeBaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      knowledgeBaseId: S.String,
-      retrievalConfiguration: KnowledgeBaseRetrievalConfiguration,
-    }),
+export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    knowledgeBaseId: S.String,
+    retrievalConfiguration: KnowledgeBaseRetrievalConfiguration,
+  }),
 ).annotate({
   identifier: "KnowledgeBaseConfiguration",
 }) as any as S.Schema<KnowledgeBaseConfiguration>;
 export type KnowledgeBaseConfigurations = KnowledgeBaseConfiguration[];
-export const KnowledgeBaseConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const KnowledgeBaseConfigurations = /*@__PURE__*/ S.Array(
   KnowledgeBaseConfiguration,
 );
 export type ContentBlock = { text: string };
-export const ContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
 ]);
 export type ContentBlocks = ContentBlock[];
-export const ContentBlocks = /*@__PURE__*/ /*#__PURE__*/ S.Array(ContentBlock);
+export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
 export interface Message {
   role: ConversationRole;
   content: ContentBlock[];
 }
-export const Message = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ role: ConversationRole, content: ContentBlocks }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 export type Messages = Message[];
-export const Messages = /*@__PURE__*/ /*#__PURE__*/ S.Array(Message);
+export const Messages = /*@__PURE__*/ S.Array(Message);
 export interface ConversationHistory {
   messages?: Message[];
 }
-export const ConversationHistory = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConversationHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ messages: S.optional(Messages) }),
 ).annotate({
   identifier: "ConversationHistory",
@@ -4458,7 +4379,7 @@ export interface SessionState {
   knowledgeBaseConfigurations?: KnowledgeBaseConfiguration[];
   conversationHistory?: ConversationHistory;
 }
-export const SessionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SessionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionAttributes: S.optional(SessionAttributesMap),
     promptSessionAttributes: S.optional(PromptSessionAttributesMap),
@@ -4472,8 +4393,8 @@ export const SessionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface BedrockModelConfigurations {
   performanceConfig?: PerformanceConfiguration;
 }
-export const BedrockModelConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ performanceConfig: S.optional(PerformanceConfiguration) }),
+export const BedrockModelConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ performanceConfig: S.optional(PerformanceConfiguration) }),
 ).annotate({
   identifier: "BedrockModelConfigurations",
 }) as any as S.Schema<BedrockModelConfigurations>;
@@ -4481,12 +4402,11 @@ export interface StreamingConfigurations {
   streamFinalResponse?: boolean;
   applyGuardrailInterval?: number;
 }
-export const StreamingConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      streamFinalResponse: S.optional(S.Boolean),
-      applyGuardrailInterval: S.optional(S.Number),
-    }),
+export const StreamingConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamFinalResponse: S.optional(S.Boolean),
+    applyGuardrailInterval: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "StreamingConfigurations",
 }) as any as S.Schema<StreamingConfigurations>;
@@ -4495,7 +4415,7 @@ export interface PromptCreationConfigurations {
   excludePreviousThinkingSteps?: boolean;
 }
 export const PromptCreationConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       previousConversationTurnsToInclude: S.optional(S.Number),
       excludePreviousThinkingSteps: S.optional(S.Boolean),
@@ -4517,7 +4437,7 @@ export interface InvokeAgentRequest {
   promptCreationConfigurations?: PromptCreationConfigurations;
   sourceArn?: string;
 }
-export const InvokeAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionState: S.optional(SessionState),
     agentId: S.String.pipe(T.HttpLabel("agentId")),
@@ -4551,14 +4471,14 @@ export interface Span {
   start?: number;
   end?: number;
 }
-export const Span = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Span = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ start: S.optional(S.Number), end: S.optional(S.Number) }),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 export interface TextResponsePart {
   text?: string;
   span?: Span;
 }
-export const TextResponsePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextResponsePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.optional(S.String), span: S.optional(Span) }),
 ).annotate({
   identifier: "TextResponsePart",
@@ -4566,7 +4486,7 @@ export const TextResponsePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GeneratedResponsePart {
   textResponsePart?: TextResponsePart;
 }
-export const GeneratedResponsePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GeneratedResponsePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ textResponsePart: S.optional(TextResponsePart) }),
 ).annotate({
   identifier: "GeneratedResponsePart",
@@ -4575,25 +4495,25 @@ export interface Citation {
   generatedResponsePart?: GeneratedResponsePart;
   retrievedReferences?: RetrievedReference[];
 }
-export const Citation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Citation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generatedResponsePart: S.optional(GeneratedResponsePart),
     retrievedReferences: S.optional(RetrievedReferences),
   }),
 ).annotate({ identifier: "Citation" }) as any as S.Schema<Citation>;
 export type Citations = Citation[];
-export const Citations = /*@__PURE__*/ /*#__PURE__*/ S.Array(Citation);
+export const Citations = /*@__PURE__*/ S.Array(Citation);
 export interface Attribution {
   citations?: Citation[];
 }
-export const Attribution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Attribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ citations: S.optional(Citations) }),
 ).annotate({ identifier: "Attribution" }) as any as S.Schema<Attribution>;
 export interface PayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   attribution?: Attribution;
 }
-export const PayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bytes: S.optional(SensitiveBlob),
     attribution: S.optional(Attribution),
@@ -4604,7 +4524,7 @@ export interface OutputFile {
   type?: string;
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const OutputFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OutputFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -4612,11 +4532,11 @@ export const OutputFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OutputFile" }) as any as S.Schema<OutputFile>;
 export type OutputFiles = OutputFile[];
-export const OutputFiles = /*@__PURE__*/ /*#__PURE__*/ S.Array(OutputFile);
+export const OutputFiles = /*@__PURE__*/ S.Array(OutputFile);
 export interface FilePart {
   files?: OutputFile[];
 }
-export const FilePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FilePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ files: S.optional(OutputFiles) }),
 ).annotate({ identifier: "FilePart" }) as any as S.Schema<FilePart>;
 export type ResponseStream =
@@ -4844,7 +4764,7 @@ export type ResponseStream =
       modelNotReadyException?: never;
       files: FilePart;
     };
-export const ResponseStream = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const ResponseStream = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ chunk: PayloadPart }),
     S.Struct({ trace: TracePart }),
@@ -4908,7 +4828,7 @@ export interface InvokeAgentResponse {
   sessionId: string;
   memoryId?: string;
 }
-export const InvokeAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completion: ResponseStream.pipe(T.HttpPayload()),
     contentType: S.String.pipe(
@@ -4929,13 +4849,13 @@ export type ActionGroupSignature =
   | "ANTHROPIC.Bash"
   | "ANTHROPIC.TextEditor"
   | (string & {});
-export const ActionGroupSignature = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionGroupSignature = /*@__PURE__*/ S.String;
 export type CustomControlMethod = "RETURN_CONTROL" | (string & {});
-export const CustomControlMethod = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CustomControlMethod = /*@__PURE__*/ S.String;
 export type ActionGroupExecutor =
   | { lambda: string; customControl?: never }
   | { lambda?: never; customControl: CustomControlMethod };
-export const ActionGroupExecutor = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ActionGroupExecutor = /*@__PURE__*/ S.Union([
   S.Struct({ lambda: S.String }),
   S.Struct({ customControl: CustomControlMethod }),
 ]);
@@ -4943,7 +4863,7 @@ export interface S3Identifier {
   s3BucketName?: string;
   s3ObjectKey?: string;
 }
-export const S3Identifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Identifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3BucketName: S.optional(S.String),
     s3ObjectKey: S.optional(S.String),
@@ -4952,7 +4872,7 @@ export const S3Identifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type APISchema =
   | { s3: S3Identifier; payload?: never }
   | { s3?: never; payload: string | redacted.Redacted<string> };
-export const APISchema = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const APISchema = /*@__PURE__*/ S.Union([
   S.Struct({ s3: S3Identifier }),
   S.Struct({ payload: SensitiveString }),
 ]);
@@ -4963,13 +4883,13 @@ export type ParameterType =
   | "boolean"
   | "array"
   | (string & {});
-export const ParameterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ParameterType = /*@__PURE__*/ S.String;
 export interface ParameterDetail {
   description?: string;
   type: ParameterType;
   required?: boolean;
 }
-export const ParameterDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ParameterDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: ParameterType,
@@ -4979,19 +4899,19 @@ export const ParameterDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ParameterDetail",
 }) as any as S.Schema<ParameterDetail>;
 export type ParameterMap = { [key: string]: ParameterDetail | undefined };
-export const ParameterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   ParameterDetail.pipe(S.optional),
 );
 export type RequireConfirmation = "ENABLED" | "DISABLED" | (string & {});
-export const RequireConfirmation = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RequireConfirmation = /*@__PURE__*/ S.String;
 export interface FunctionDefinition {
   name: string | redacted.Redacted<string>;
   description?: string;
   parameters?: { [key: string]: ParameterDetail | undefined };
   requireConfirmation?: RequireConfirmation;
 }
-export const FunctionDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FunctionDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SensitiveString,
     description: S.optional(S.String),
@@ -5002,14 +4922,13 @@ export const FunctionDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FunctionDefinition",
 }) as any as S.Schema<FunctionDefinition>;
 export type Functions = FunctionDefinition[];
-export const Functions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FunctionDefinition);
+export const Functions = /*@__PURE__*/ S.Array(FunctionDefinition);
 export type FunctionSchema = { functions: FunctionDefinition[] };
-export const FunctionSchema = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FunctionSchema = /*@__PURE__*/ S.Union([
   S.Struct({ functions: Functions }),
 ]);
 export type ActionGroupSignatureParams = { [key: string]: string | undefined };
-export const ActionGroupSignatureParams = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ActionGroupSignatureParams = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -5022,7 +4941,7 @@ export interface AgentActionGroup {
   functionSchema?: FunctionSchema;
   parentActionGroupSignatureParams?: { [key: string]: string | undefined };
 }
-export const AgentActionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgentActionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionGroupName: SensitiveString,
     description: S.optional(SensitiveString),
@@ -5036,14 +4955,13 @@ export const AgentActionGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AgentActionGroup",
 }) as any as S.Schema<AgentActionGroup>;
 export type AgentActionGroups = AgentActionGroup[];
-export const AgentActionGroups =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentActionGroup);
+export const AgentActionGroups = /*@__PURE__*/ S.Array(AgentActionGroup);
 export interface KnowledgeBase {
   knowledgeBaseId: string;
   description: string | redacted.Redacted<string>;
   retrievalConfiguration?: KnowledgeBaseRetrievalConfiguration;
 }
-export const KnowledgeBase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KnowledgeBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     knowledgeBaseId: S.String,
     description: SensitiveString,
@@ -5051,20 +4969,19 @@ export const KnowledgeBase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KnowledgeBase" }) as any as S.Schema<KnowledgeBase>;
 export type KnowledgeBases = KnowledgeBase[];
-export const KnowledgeBases =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(KnowledgeBase);
+export const KnowledgeBases = /*@__PURE__*/ S.Array(KnowledgeBase);
 export interface GuardrailConfigurationWithArn {
   guardrailIdentifier: string;
   guardrailVersion: string;
 }
 export const GuardrailConfigurationWithArn =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ guardrailIdentifier: S.String, guardrailVersion: S.String }),
   ).annotate({
     identifier: "GuardrailConfigurationWithArn",
   }) as any as S.Schema<GuardrailConfigurationWithArn>;
 export type PromptState = "ENABLED" | "DISABLED" | (string & {});
-export const PromptState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PromptState = /*@__PURE__*/ S.String;
 export interface PromptConfiguration {
   promptType?: PromptType;
   promptCreationMode?: CreationMode;
@@ -5075,7 +4992,7 @@ export interface PromptConfiguration {
   foundationModel?: string;
   additionalModelRequestFields?: any;
 }
-export const PromptConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PromptConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promptType: S.optional(PromptType),
     promptCreationMode: S.optional(CreationMode),
@@ -5090,14 +5007,13 @@ export const PromptConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PromptConfiguration",
 }) as any as S.Schema<PromptConfiguration>;
 export type PromptConfigurations = PromptConfiguration[];
-export const PromptConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PromptConfiguration);
+export const PromptConfigurations = /*@__PURE__*/ S.Array(PromptConfiguration);
 export interface PromptOverrideConfiguration {
   promptConfigurations: PromptConfiguration[];
   overrideLambda?: string;
 }
 export const PromptOverrideConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       promptConfigurations: PromptConfigurations,
       overrideLambda: S.optional(S.String),
@@ -5110,31 +5026,30 @@ export type AgentCollaboration =
   | "SUPERVISOR_ROUTER"
   | "DISABLED"
   | (string & {});
-export const AgentCollaboration = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgentCollaboration = /*@__PURE__*/ S.String;
 export type RelayConversationHistory =
   | "TO_COLLABORATOR"
   | "DISABLED"
   | (string & {});
-export const RelayConversationHistory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RelayConversationHistory = /*@__PURE__*/ S.String;
 export interface CollaboratorConfiguration {
   collaboratorName: string | redacted.Redacted<string>;
   collaboratorInstruction: string | redacted.Redacted<string>;
   agentAliasArn?: string;
   relayConversationHistory?: RelayConversationHistory;
 }
-export const CollaboratorConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      collaboratorName: SensitiveString,
-      collaboratorInstruction: SensitiveString,
-      agentAliasArn: S.optional(S.String),
-      relayConversationHistory: S.optional(RelayConversationHistory),
-    }),
+export const CollaboratorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    collaboratorName: SensitiveString,
+    collaboratorInstruction: SensitiveString,
+    agentAliasArn: S.optional(S.String),
+    relayConversationHistory: S.optional(RelayConversationHistory),
+  }),
 ).annotate({
   identifier: "CollaboratorConfiguration",
 }) as any as S.Schema<CollaboratorConfiguration>;
 export type CollaboratorConfigurations = CollaboratorConfiguration[];
-export const CollaboratorConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CollaboratorConfigurations = /*@__PURE__*/ S.Array(
   CollaboratorConfiguration,
 );
 export interface InlineSessionState {
@@ -5145,7 +5060,7 @@ export interface InlineSessionState {
   files?: InputFile[];
   conversationHistory?: ConversationHistory;
 }
-export const InlineSessionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InlineSessionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionAttributes: S.optional(SessionAttributesMap),
     promptSessionAttributes: S.optional(PromptSessionAttributesMap),
@@ -5170,7 +5085,7 @@ export interface Collaborator {
   collaboratorConfigurations?: CollaboratorConfiguration[];
   agentName?: string | redacted.Redacted<string>;
 }
-export const Collaborator = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Collaborator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerEncryptionKeyArn: S.optional(S.String),
     foundationModel: S.String,
@@ -5186,12 +5101,12 @@ export const Collaborator = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Collaborator" }) as any as S.Schema<Collaborator>;
 export type Collaborators = Collaborator[];
-export const Collaborators = /*@__PURE__*/ /*#__PURE__*/ S.Array(Collaborator);
+export const Collaborators = /*@__PURE__*/ S.Array(Collaborator);
 export interface InlineBedrockModelConfigurations {
   performanceConfig?: PerformanceConfiguration;
 }
 export const InlineBedrockModelConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ performanceConfig: S.optional(PerformanceConfiguration) }),
   ).annotate({
     identifier: "InlineBedrockModelConfigurations",
@@ -5200,15 +5115,15 @@ export type OrchestrationType =
   | "DEFAULT"
   | "CUSTOM_ORCHESTRATION"
   | (string & {});
-export const OrchestrationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrchestrationType = /*@__PURE__*/ S.String;
 export type OrchestrationExecutor = { lambda: string };
-export const OrchestrationExecutor = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OrchestrationExecutor = /*@__PURE__*/ S.Union([
   S.Struct({ lambda: S.String }),
 ]);
 export interface CustomOrchestration {
   executor?: OrchestrationExecutor;
 }
-export const CustomOrchestration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CustomOrchestration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ executor: S.optional(OrchestrationExecutor) }),
 ).annotate({
   identifier: "CustomOrchestration",
@@ -5237,41 +5152,40 @@ export interface InvokeInlineAgentRequest {
   orchestrationType?: OrchestrationType;
   customOrchestration?: CustomOrchestration;
 }
-export const InvokeInlineAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerEncryptionKeyArn: S.optional(S.String),
-      foundationModel: S.String,
-      instruction: SensitiveString,
-      idleSessionTTLInSeconds: S.optional(S.Number),
-      actionGroups: S.optional(AgentActionGroups),
-      knowledgeBases: S.optional(KnowledgeBases),
-      guardrailConfiguration: S.optional(GuardrailConfigurationWithArn),
-      promptOverrideConfiguration: S.optional(PromptOverrideConfiguration),
-      agentCollaboration: S.optional(AgentCollaboration),
-      collaboratorConfigurations: S.optional(CollaboratorConfigurations),
-      agentName: S.optional(SensitiveString),
-      sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-      endSession: S.optional(S.Boolean),
-      enableTrace: S.optional(S.Boolean),
-      inputText: S.optional(SensitiveString),
-      streamingConfigurations: S.optional(StreamingConfigurations),
-      promptCreationConfigurations: S.optional(PromptCreationConfigurations),
-      inlineSessionState: S.optional(InlineSessionState),
-      collaborators: S.optional(Collaborators),
-      bedrockModelConfigurations: S.optional(InlineBedrockModelConfigurations),
-      orchestrationType: S.optional(OrchestrationType),
-      customOrchestration: S.optional(CustomOrchestration),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/agents/{sessionId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const InvokeInlineAgentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerEncryptionKeyArn: S.optional(S.String),
+    foundationModel: S.String,
+    instruction: SensitiveString,
+    idleSessionTTLInSeconds: S.optional(S.Number),
+    actionGroups: S.optional(AgentActionGroups),
+    knowledgeBases: S.optional(KnowledgeBases),
+    guardrailConfiguration: S.optional(GuardrailConfigurationWithArn),
+    promptOverrideConfiguration: S.optional(PromptOverrideConfiguration),
+    agentCollaboration: S.optional(AgentCollaboration),
+    collaboratorConfigurations: S.optional(CollaboratorConfigurations),
+    agentName: S.optional(SensitiveString),
+    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+    endSession: S.optional(S.Boolean),
+    enableTrace: S.optional(S.Boolean),
+    inputText: S.optional(SensitiveString),
+    streamingConfigurations: S.optional(StreamingConfigurations),
+    promptCreationConfigurations: S.optional(PromptCreationConfigurations),
+    inlineSessionState: S.optional(InlineSessionState),
+    collaborators: S.optional(Collaborators),
+    bedrockModelConfigurations: S.optional(InlineBedrockModelConfigurations),
+    orchestrationType: S.optional(OrchestrationType),
+    customOrchestration: S.optional(CustomOrchestration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/agents/{sessionId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "InvokeInlineAgentRequest",
 }) as any as S.Schema<InvokeInlineAgentRequest>;
@@ -5279,12 +5193,11 @@ export interface InlineAgentPayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   attribution?: Attribution;
 }
-export const InlineAgentPayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bytes: S.optional(SensitiveBlob),
-      attribution: S.optional(Attribution),
-    }),
+export const InlineAgentPayloadPart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bytes: S.optional(SensitiveBlob),
+    attribution: S.optional(Attribution),
+  }),
 ).annotate({
   identifier: "InlineAgentPayloadPart",
 }) as any as S.Schema<InlineAgentPayloadPart>;
@@ -5295,7 +5208,7 @@ export interface InlineAgentTracePart {
   eventTime?: Date;
   collaboratorName?: string | redacted.Redacted<string>;
 }
-export const InlineAgentTracePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InlineAgentTracePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.optional(S.String),
     trace: S.optional(Trace),
@@ -5313,7 +5226,7 @@ export interface InlineAgentReturnControlPayload {
   invocationId?: string;
 }
 export const InlineAgentReturnControlPayload =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       invocationInputs: S.optional(InvocationInputs),
       invocationId: S.optional(S.String),
@@ -5324,7 +5237,7 @@ export const InlineAgentReturnControlPayload =
 export interface InlineAgentFilePart {
   files?: OutputFile[];
 }
-export const InlineAgentFilePart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InlineAgentFilePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ files: S.optional(OutputFiles) }),
 ).annotate({
   identifier: "InlineAgentFilePart",
@@ -5526,7 +5439,7 @@ export type InlineAgentResponseStream =
       files: InlineAgentFilePart;
     };
 export const InlineAgentResponseStream =
-  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+  /*@__PURE__*/ T.EventStream(
     S.Union([
       S.Struct({ chunk: InlineAgentPayloadPart }),
       S.Struct({ trace: InlineAgentTracePart }),
@@ -5584,15 +5497,14 @@ export interface InvokeInlineAgentResponse {
   contentType: string;
   sessionId: string;
 }
-export const InvokeInlineAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      completion: InlineAgentResponseStream.pipe(T.HttpPayload()),
-      contentType: S.String.pipe(
-        T.HttpHeader("x-amzn-bedrock-agent-content-type"),
-      ),
-      sessionId: S.String.pipe(T.HttpHeader("x-amz-bedrock-agent-session-id")),
-    }),
+export const InvokeInlineAgentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completion: InlineAgentResponseStream.pipe(T.HttpPayload()),
+    contentType: S.String.pipe(
+      T.HttpHeader("x-amzn-bedrock-agent-content-type"),
+    ),
+    sessionId: S.String.pipe(T.HttpHeader("x-amz-bedrock-agent-session-id")),
+  }),
 ).annotate({
   identifier: "InvokeInlineAgentResponse",
 }) as any as S.Schema<InvokeInlineAgentResponse>;
@@ -5602,37 +5514,36 @@ export interface DeleteAgentMemoryRequest {
   memoryId?: string;
   sessionId?: string;
 }
-export const DeleteAgentMemoryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentId: S.String.pipe(T.HttpLabel("agentId")),
-      agentAliasId: S.String.pipe(T.HttpLabel("agentAliasId")),
-      memoryId: S.optional(S.String).pipe(T.HttpQuery("memoryId")),
-      sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/agents/{agentId}/agentAliases/{agentAliasId}/memories",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAgentMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentId: S.String.pipe(T.HttpLabel("agentId")),
+    agentAliasId: S.String.pipe(T.HttpLabel("agentAliasId")),
+    memoryId: S.optional(S.String).pipe(T.HttpQuery("memoryId")),
+    sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/agents/{agentId}/agentAliases/{agentAliasId}/memories",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteAgentMemoryRequest",
 }) as any as S.Schema<DeleteAgentMemoryRequest>;
 export interface DeleteAgentMemoryResponse {}
-export const DeleteAgentMemoryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteAgentMemoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteAgentMemoryResponse",
 }) as any as S.Schema<DeleteAgentMemoryResponse>;
 export type MemoryType = "SESSION_SUMMARY" | (string & {});
-export const MemoryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemoryType = /*@__PURE__*/ S.String;
 export interface GetAgentMemoryRequest {
   nextToken?: string;
   maxItems?: number;
@@ -5641,7 +5552,7 @@ export interface GetAgentMemoryRequest {
   memoryType: MemoryType;
   memoryId: string;
 }
-export const GetAgentMemoryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAgentMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
@@ -5672,7 +5583,7 @@ export interface MemorySessionSummary {
   sessionExpiryTime?: Date;
   summaryText?: string;
 }
-export const MemorySessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemorySessionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryId: S.optional(S.String),
     sessionId: S.optional(S.String),
@@ -5688,39 +5599,38 @@ export const MemorySessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MemorySessionSummary",
 }) as any as S.Schema<MemorySessionSummary>;
 export type Memory = { sessionSummary: MemorySessionSummary };
-export const Memory = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Memory = /*@__PURE__*/ S.Union([
   S.Struct({ sessionSummary: MemorySessionSummary }),
 ]);
 export type Memories = Memory[];
-export const Memories = /*@__PURE__*/ /*#__PURE__*/ S.Array(Memory);
+export const Memories = /*@__PURE__*/ S.Array(Memory);
 export interface GetAgentMemoryResponse {
   nextToken?: string;
   memoryContents?: Memory[];
 }
-export const GetAgentMemoryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      memoryContents: S.optional(Memories),
-    }),
+export const GetAgentMemoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    memoryContents: S.optional(Memories),
+  }),
 ).annotate({
   identifier: "GetAgentMemoryResponse",
 }) as any as S.Schema<GetAgentMemoryResponse>;
 export interface TextPrompt {
   text: string;
 }
-export const TextPrompt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.String }),
 ).annotate({ identifier: "TextPrompt" }) as any as S.Schema<TextPrompt>;
 export type InputPrompt = { textPrompt: TextPrompt };
-export const InputPrompt = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const InputPrompt = /*@__PURE__*/ S.Union([
   S.Struct({ textPrompt: TextPrompt }),
 ]);
 export interface OptimizePromptRequest {
   input: InputPrompt;
   targetModelId: string;
 }
-export const OptimizePromptRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OptimizePromptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ input: InputPrompt, targetModelId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/optimize-prompt" }),
@@ -5735,13 +5645,13 @@ export const OptimizePromptRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OptimizePromptRequest",
 }) as any as S.Schema<OptimizePromptRequest>;
 export type OptimizedPrompt = { textPrompt: TextPrompt };
-export const OptimizedPrompt = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OptimizedPrompt = /*@__PURE__*/ S.Union([
   S.Struct({ textPrompt: TextPrompt }),
 ]);
 export interface OptimizedPromptEvent {
   optimizedPrompt?: OptimizedPrompt;
 }
-export const OptimizedPromptEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OptimizedPromptEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ optimizedPrompt: S.optional(OptimizedPrompt) }),
 ).annotate({
   identifier: "OptimizedPromptEvent",
@@ -5749,7 +5659,7 @@ export const OptimizedPromptEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AnalyzePromptEvent {
   message?: string;
 }
-export const AnalyzePromptEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AnalyzePromptEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String) }),
 ).annotate({
   identifier: "AnalyzePromptEvent",
@@ -5835,7 +5745,7 @@ export type OptimizedPromptStream =
       accessDeniedException?: never;
       badGatewayException: BadGatewayException;
     };
-export const OptimizedPromptStream = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const OptimizedPromptStream = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ optimizedPromptEvent: OptimizedPromptEvent }),
     S.Struct({ analyzePromptEvent: AnalyzePromptEvent }),
@@ -5874,18 +5784,17 @@ export const OptimizedPromptStream = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
 export interface OptimizePromptResponse {
   optimizedPrompt: stream.Stream<OptimizedPromptStream, Error, never>;
 }
-export const OptimizePromptResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ optimizedPrompt: OptimizedPromptStream.pipe(T.HttpPayload()) }),
+export const OptimizePromptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optimizedPrompt: OptimizedPromptStream.pipe(T.HttpPayload()) }),
 ).annotate({
   identifier: "OptimizePromptResponse",
 }) as any as S.Schema<OptimizePromptResponse>;
 export type RerankQueryContentType = "TEXT" | (string & {});
-export const RerankQueryContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankQueryContentType = /*@__PURE__*/ S.String;
 export interface RerankTextDocument {
   text?: string;
 }
-export const RerankTextDocument = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankTextDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.optional(S.String) }),
 ).annotate({
   identifier: "RerankTextDocument",
@@ -5894,22 +5803,21 @@ export interface RerankQuery {
   type: RerankQueryContentType;
   textQuery: RerankTextDocument;
 }
-export const RerankQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: RerankQueryContentType, textQuery: RerankTextDocument }),
 ).annotate({ identifier: "RerankQuery" }) as any as S.Schema<RerankQuery>;
 export type RerankQueriesList = RerankQuery[];
-export const RerankQueriesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RerankQuery);
+export const RerankQueriesList = /*@__PURE__*/ S.Array(RerankQuery);
 export type RerankSourceType = "INLINE" | (string & {});
-export const RerankSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankSourceType = /*@__PURE__*/ S.String;
 export type RerankDocumentType = "TEXT" | "JSON" | (string & {});
-export const RerankDocumentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankDocumentType = /*@__PURE__*/ S.String;
 export interface RerankDocument {
   type: RerankDocumentType;
   textDocument?: RerankTextDocument;
   jsonDocument?: any;
 }
-export const RerankDocument = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RerankDocumentType,
     textDocument: S.optional(RerankTextDocument),
@@ -5920,22 +5828,21 @@ export interface RerankSource {
   type: RerankSourceType;
   inlineDocumentSource: RerankDocument;
 }
-export const RerankSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: RerankSourceType, inlineDocumentSource: RerankDocument }),
 ).annotate({ identifier: "RerankSource" }) as any as S.Schema<RerankSource>;
 export type RerankSourcesList = RerankSource[];
-export const RerankSourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RerankSource);
+export const RerankSourcesList = /*@__PURE__*/ S.Array(RerankSource);
 export type RerankingConfigurationType =
   | "BEDROCK_RERANKING_MODEL"
   | (string & {});
-export const RerankingConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RerankingConfigurationType = /*@__PURE__*/ S.String;
 export interface BedrockRerankingModelConfiguration {
   modelArn: string;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
 export const BedrockRerankingModelConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelArn: S.String,
       additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
@@ -5948,7 +5855,7 @@ export interface BedrockRerankingConfiguration {
   modelConfiguration: BedrockRerankingModelConfiguration;
 }
 export const BedrockRerankingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       numberOfResults: S.optional(S.Number),
       modelConfiguration: BedrockRerankingModelConfiguration,
@@ -5960,12 +5867,11 @@ export interface RerankingConfiguration {
   type: RerankingConfigurationType;
   bedrockRerankingConfiguration: BedrockRerankingConfiguration;
 }
-export const RerankingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: RerankingConfigurationType,
-      bedrockRerankingConfiguration: BedrockRerankingConfiguration,
-    }),
+export const RerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: RerankingConfigurationType,
+    bedrockRerankingConfiguration: BedrockRerankingConfiguration,
+  }),
 ).annotate({
   identifier: "RerankingConfiguration",
 }) as any as S.Schema<RerankingConfiguration>;
@@ -5975,7 +5881,7 @@ export interface RerankRequest {
   rerankingConfiguration: RerankingConfiguration;
   nextToken?: string;
 }
-export const RerankRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queries: RerankQueriesList,
     sources: RerankSourcesList,
@@ -5997,7 +5903,7 @@ export interface RerankResult {
   relevanceScore: number;
   document?: RerankDocument;
 }
-export const RerankResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.Number,
     relevanceScore: S.Number,
@@ -6005,20 +5911,19 @@ export const RerankResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RerankResult" }) as any as S.Schema<RerankResult>;
 export type RerankResultsList = RerankResult[];
-export const RerankResultsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RerankResult);
+export const RerankResultsList = /*@__PURE__*/ S.Array(RerankResult);
 export interface RerankResponse {
   results: RerankResult[];
   nextToken?: string;
 }
-export const RerankResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RerankResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ results: RerankResultsList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "RerankResponse" }) as any as S.Schema<RerankResponse>;
 export interface RetrieveAndGenerateInput {
   text: string;
 }
-export const RetrieveAndGenerateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ text: S.String }),
+export const RetrieveAndGenerateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ text: S.String }),
 ).annotate({
   identifier: "RetrieveAndGenerateInput",
 }) as any as S.Schema<RetrieveAndGenerateInput>;
@@ -6026,31 +5931,31 @@ export type RetrieveAndGenerateType =
   | "KNOWLEDGE_BASE"
   | "EXTERNAL_SOURCES"
   | (string & {});
-export const RetrieveAndGenerateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetrieveAndGenerateType = /*@__PURE__*/ S.String;
 export interface PromptTemplate {
   textPromptTemplate?: string | redacted.Redacted<string>;
 }
-export const PromptTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PromptTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ textPromptTemplate: S.optional(SensitiveString) }),
 ).annotate({ identifier: "PromptTemplate" }) as any as S.Schema<PromptTemplate>;
 export interface GuardrailConfiguration {
   guardrailId: string;
   guardrailVersion: string;
 }
-export const GuardrailConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
+export const GuardrailConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
 ).annotate({
   identifier: "GuardrailConfiguration",
 }) as any as S.Schema<GuardrailConfiguration>;
 export type RAGStopSequences = string[];
-export const RAGStopSequences = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const RAGStopSequences = /*@__PURE__*/ S.Array(S.String);
 export interface TextInferenceConfig {
   temperature?: number;
   topP?: number;
   maxTokens?: number;
   stopSequences?: string[];
 }
-export const TextInferenceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TextInferenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     temperature: S.optional(S.Number),
     topP: S.optional(S.Number),
@@ -6063,7 +5968,7 @@ export const TextInferenceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface InferenceConfig {
   textInferenceConfig?: TextInferenceConfig;
 }
-export const InferenceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InferenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ textInferenceConfig: S.optional(TextInferenceConfig) }),
 ).annotate({
   identifier: "InferenceConfig",
@@ -6075,25 +5980,24 @@ export interface GenerationConfiguration {
   additionalModelRequestFields?: { [key: string]: any | undefined };
   performanceConfig?: PerformanceConfiguration;
 }
-export const GenerationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      promptTemplate: S.optional(PromptTemplate),
-      guardrailConfiguration: S.optional(GuardrailConfiguration),
-      inferenceConfig: S.optional(InferenceConfig),
-      additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-      performanceConfig: S.optional(PerformanceConfiguration),
-    }),
+export const GenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    promptTemplate: S.optional(PromptTemplate),
+    guardrailConfiguration: S.optional(GuardrailConfiguration),
+    inferenceConfig: S.optional(InferenceConfig),
+    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+    performanceConfig: S.optional(PerformanceConfiguration),
+  }),
 ).annotate({
   identifier: "GenerationConfiguration",
 }) as any as S.Schema<GenerationConfiguration>;
 export type QueryTransformationType = "QUERY_DECOMPOSITION" | (string & {});
-export const QueryTransformationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryTransformationType = /*@__PURE__*/ S.String;
 export interface QueryTransformationConfiguration {
   type: QueryTransformationType;
 }
 export const QueryTransformationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ type: QueryTransformationType }),
   ).annotate({
     identifier: "QueryTransformationConfiguration",
@@ -6105,17 +6009,16 @@ export interface OrchestrationConfiguration {
   queryTransformationConfiguration?: QueryTransformationConfiguration;
   performanceConfig?: PerformanceConfiguration;
 }
-export const OrchestrationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      promptTemplate: S.optional(PromptTemplate),
-      inferenceConfig: S.optional(InferenceConfig),
-      additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-      queryTransformationConfiguration: S.optional(
-        QueryTransformationConfiguration,
-      ),
-      performanceConfig: S.optional(PerformanceConfiguration),
-    }),
+export const OrchestrationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    promptTemplate: S.optional(PromptTemplate),
+    inferenceConfig: S.optional(InferenceConfig),
+    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+    queryTransformationConfiguration: S.optional(
+      QueryTransformationConfiguration,
+    ),
+    performanceConfig: S.optional(PerformanceConfiguration),
+  }),
 ).annotate({
   identifier: "OrchestrationConfiguration",
 }) as any as S.Schema<OrchestrationConfiguration>;
@@ -6127,7 +6030,7 @@ export interface KnowledgeBaseRetrieveAndGenerateConfiguration {
   orchestrationConfiguration?: OrchestrationConfiguration;
 }
 export const KnowledgeBaseRetrieveAndGenerateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       knowledgeBaseId: S.String,
       modelArn: S.String,
@@ -6139,11 +6042,11 @@ export const KnowledgeBaseRetrieveAndGenerateConfiguration =
     identifier: "KnowledgeBaseRetrieveAndGenerateConfiguration",
   }) as any as S.Schema<KnowledgeBaseRetrieveAndGenerateConfiguration>;
 export type ExternalSourceType = "S3" | "BYTE_CONTENT" | (string & {});
-export const ExternalSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExternalSourceType = /*@__PURE__*/ S.String;
 export interface S3ObjectDoc {
   uri: string;
 }
-export const S3ObjectDoc = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3ObjectDoc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.String }),
 ).annotate({ identifier: "S3ObjectDoc" }) as any as S.Schema<S3ObjectDoc>;
 export interface ByteContentDoc {
@@ -6151,7 +6054,7 @@ export interface ByteContentDoc {
   contentType: string;
   data: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const ByteContentDoc = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ByteContentDoc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: SensitiveString,
     contentType: S.String,
@@ -6163,7 +6066,7 @@ export interface ExternalSource {
   s3Location?: S3ObjectDoc;
   byteContent?: ByteContentDoc;
 }
-export const ExternalSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExternalSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: ExternalSourceType,
     s3Location: S.optional(S3ObjectDoc),
@@ -6171,8 +6074,7 @@ export const ExternalSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExternalSource" }) as any as S.Schema<ExternalSource>;
 export type ExternalSources = ExternalSource[];
-export const ExternalSources =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExternalSource);
+export const ExternalSources = /*@__PURE__*/ S.Array(ExternalSource);
 export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
@@ -6181,7 +6083,7 @@ export interface ExternalSourcesGenerationConfiguration {
   performanceConfig?: PerformanceConfiguration;
 }
 export const ExternalSourcesGenerationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       promptTemplate: S.optional(PromptTemplate),
       guardrailConfiguration: S.optional(GuardrailConfiguration),
@@ -6198,7 +6100,7 @@ export interface ExternalSourcesRetrieveAndGenerateConfiguration {
   generationConfiguration?: ExternalSourcesGenerationConfiguration;
 }
 export const ExternalSourcesRetrieveAndGenerateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelArn: S.String,
       sources: ExternalSources,
@@ -6215,7 +6117,7 @@ export interface RetrieveAndGenerateConfiguration {
   externalSourcesConfiguration?: ExternalSourcesRetrieveAndGenerateConfiguration;
 }
 export const RetrieveAndGenerateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RetrieveAndGenerateType,
       knowledgeBaseConfiguration: S.optional(
@@ -6232,9 +6134,7 @@ export interface RetrieveAndGenerateSessionConfiguration {
   kmsKeyArn: string;
 }
 export const RetrieveAndGenerateSessionConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ kmsKeyArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ kmsKeyArn: S.String })).annotate({
     identifier: "RetrieveAndGenerateSessionConfiguration",
   }) as any as S.Schema<RetrieveAndGenerateSessionConfiguration>;
 export interface RetrieveAndGenerateRequest {
@@ -6244,39 +6144,38 @@ export interface RetrieveAndGenerateRequest {
   sessionConfiguration?: RetrieveAndGenerateSessionConfiguration;
   userContext?: UserContext;
 }
-export const RetrieveAndGenerateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionId: S.optional(S.String),
-      input: RetrieveAndGenerateInput,
-      retrieveAndGenerateConfiguration: S.optional(
-        RetrieveAndGenerateConfiguration,
-      ),
-      sessionConfiguration: S.optional(RetrieveAndGenerateSessionConfiguration),
-      userContext: S.optional(UserContext),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/retrieveAndGenerate" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RetrieveAndGenerateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.optional(S.String),
+    input: RetrieveAndGenerateInput,
+    retrieveAndGenerateConfiguration: S.optional(
+      RetrieveAndGenerateConfiguration,
     ),
+    sessionConfiguration: S.optional(RetrieveAndGenerateSessionConfiguration),
+    userContext: S.optional(UserContext),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/retrieveAndGenerate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "RetrieveAndGenerateRequest",
 }) as any as S.Schema<RetrieveAndGenerateRequest>;
 export interface RetrieveAndGenerateOutput {
   text: string;
 }
-export const RetrieveAndGenerateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ text: S.String }),
+export const RetrieveAndGenerateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ text: S.String }),
 ).annotate({
   identifier: "RetrieveAndGenerateOutput",
 }) as any as S.Schema<RetrieveAndGenerateOutput>;
 export type GuadrailAction = "INTERVENED" | "NONE" | (string & {});
-export const GuadrailAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GuadrailAction = /*@__PURE__*/ S.String;
 export interface RetrieveAndGenerateResponse {
   sessionId: string;
   output: RetrieveAndGenerateOutput;
@@ -6284,7 +6183,7 @@ export interface RetrieveAndGenerateResponse {
   guardrailAction?: GuadrailAction;
 }
 export const RetrieveAndGenerateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sessionId: S.String,
       output: RetrieveAndGenerateOutput,
@@ -6302,7 +6201,7 @@ export interface RetrieveAndGenerateStreamRequest {
   userContext?: UserContext;
 }
 export const RetrieveAndGenerateStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sessionId: S.optional(S.String),
       input: RetrieveAndGenerateInput,
@@ -6328,9 +6227,7 @@ export interface RetrieveAndGenerateOutputEvent {
   text: string;
 }
 export const RetrieveAndGenerateOutputEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ text: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ text: S.String })).annotate({
     identifier: "RetrieveAndGenerateOutputEvent",
   }) as any as S.Schema<RetrieveAndGenerateOutputEvent>;
 export interface CitationEvent {
@@ -6338,7 +6235,7 @@ export interface CitationEvent {
   generatedResponsePart?: GeneratedResponsePart;
   retrievedReferences?: RetrievedReference[];
 }
-export const CitationEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CitationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citation: S.optional(Citation),
     generatedResponsePart: S.optional(GeneratedResponsePart),
@@ -6348,7 +6245,7 @@ export const CitationEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GuardrailEvent {
   action?: GuadrailAction;
 }
-export const GuardrailEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GuardrailEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.optional(GuadrailAction) }),
 ).annotate({ identifier: "GuardrailEvent" }) as any as S.Schema<GuardrailEvent>;
 export type RetrieveAndGenerateStreamResponseOutput =
@@ -6521,7 +6418,7 @@ export type RetrieveAndGenerateStreamResponseOutput =
       badGatewayException: BadGatewayException;
     };
 export const RetrieveAndGenerateStreamResponseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+  /*@__PURE__*/ T.EventStream(
     S.Union([
       S.Struct({ output: RetrieveAndGenerateOutputEvent }),
       S.Struct({ citation: CitationEvent }),
@@ -6580,7 +6477,7 @@ export interface RetrieveAndGenerateStreamResponse {
   sessionId: string;
 }
 export const RetrieveAndGenerateStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stream: RetrieveAndGenerateStreamResponseOutput.pipe(T.HttpPayload()),
       sessionId: S.String.pipe(
@@ -6591,14 +6488,14 @@ export const RetrieveAndGenerateStreamResponse =
     identifier: "RetrieveAndGenerateStreamResponse",
   }) as any as S.Schema<RetrieveAndGenerateStreamResponse>;
 export type KnowledgeBaseQueryType = "TEXT" | "IMAGE" | (string & {});
-export const KnowledgeBaseQueryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const KnowledgeBaseQueryType = /*@__PURE__*/ S.String;
 export type InputImageFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
-export const InputImageFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InputImageFormat = /*@__PURE__*/ S.String;
 export interface InputImage {
   format: InputImageFormat;
   inlineContent: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const InputImage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InputImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: InputImageFormat, inlineContent: SensitiveBlob }),
 ).annotate({ identifier: "InputImage" }) as any as S.Schema<InputImage>;
 export interface KnowledgeBaseQuery {
@@ -6606,7 +6503,7 @@ export interface KnowledgeBaseQuery {
   text?: string;
   image?: InputImage;
 }
-export const KnowledgeBaseQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KnowledgeBaseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(KnowledgeBaseQueryType),
     text: S.optional(S.String),
@@ -6623,7 +6520,7 @@ export interface RetrieveRequest {
   nextToken?: string;
   userContext?: UserContext;
 }
-export const RetrieveRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
     retrievalQuery: KnowledgeBaseQuery,
@@ -6655,7 +6552,7 @@ export interface KnowledgeBaseRetrievalResult {
   documentId?: string;
 }
 export const KnowledgeBaseRetrievalResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: RetrievalResultContent,
       location: S.optional(RetrievalResultLocation),
@@ -6668,13 +6565,13 @@ export const KnowledgeBaseRetrievalResult =
   }) as any as S.Schema<KnowledgeBaseRetrievalResult>;
 export type KnowledgeBaseRetrievalResults = KnowledgeBaseRetrievalResult[];
 export const KnowledgeBaseRetrievalResults =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(KnowledgeBaseRetrievalResult);
+  /*@__PURE__*/ S.Array(KnowledgeBaseRetrievalResult);
 export interface RetrieveResponse {
   retrievalResults: KnowledgeBaseRetrievalResult[];
   guardrailAction?: GuadrailAction;
   nextToken?: string;
 }
-export const RetrieveResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrievalResults: KnowledgeBaseRetrievalResults,
     guardrailAction: S.optional(GuadrailAction),
@@ -6684,12 +6581,12 @@ export const RetrieveResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RetrieveResponse",
 }) as any as S.Schema<RetrieveResponse>;
 export type SessionMetadataMap = { [key: string]: string | undefined };
-export const SessionMetadataMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SessionMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -6698,7 +6595,7 @@ export interface CreateSessionRequest {
   encryptionKeyArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionMetadata: S.optional(SessionMetadataMap),
     encryptionKeyArn: S.optional(S.String),
@@ -6717,14 +6614,14 @@ export const CreateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateSessionRequest",
 }) as any as S.Schema<CreateSessionRequest>;
 export type SessionStatus = "ACTIVE" | "EXPIRED" | "ENDED" | (string & {});
-export const SessionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SessionStatus = /*@__PURE__*/ S.String;
 export interface CreateSessionResponse {
   sessionId: string;
   sessionArn: string;
   sessionStatus: SessionStatus;
   createdAt: Date;
 }
-export const CreateSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     sessionArn: S.String,
@@ -6737,7 +6634,7 @@ export const CreateSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSessionRequest {
   sessionIdentifier: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
   }).pipe(
@@ -6762,7 +6659,7 @@ export interface GetSessionResponse {
   sessionMetadata?: { [key: string]: string | undefined };
   encryptionKeyArn?: string;
 }
-export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     sessionArn: S.String,
@@ -6779,7 +6676,7 @@ export interface UpdateSessionRequest {
   sessionMetadata?: { [key: string]: string | undefined };
   sessionIdentifier: string;
 }
-export const UpdateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionMetadata: S.optional(SessionMetadataMap),
     sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
@@ -6803,7 +6700,7 @@ export interface UpdateSessionResponse {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
-export const UpdateSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     sessionArn: S.String,
@@ -6817,7 +6714,7 @@ export const UpdateSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteSessionRequest {
   sessionIdentifier: string;
 }
-export const DeleteSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
   }).pipe(
@@ -6834,7 +6731,7 @@ export const DeleteSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteSessionRequest",
 }) as any as S.Schema<DeleteSessionRequest>;
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSessionResponse",
@@ -6843,7 +6740,7 @@ export interface ListSessionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -6867,7 +6764,7 @@ export interface SessionSummary {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
-export const SessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SessionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     sessionArn: S.String,
@@ -6877,13 +6774,12 @@ export const SessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionSummary" }) as any as S.Schema<SessionSummary>;
 export type SessionSummaries = SessionSummary[];
-export const SessionSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SessionSummary);
+export const SessionSummaries = /*@__PURE__*/ S.Array(SessionSummary);
 export interface ListSessionsResponse {
   sessionSummaries: SessionSummary[];
   nextToken?: string;
 }
-export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionSummaries: SessionSummaries,
     nextToken: S.optional(S.String),
@@ -6894,7 +6790,7 @@ export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface EndSessionRequest {
   sessionIdentifier: string;
 }
-export const EndSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EndSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
   }).pipe(
@@ -6915,7 +6811,7 @@ export interface EndSessionResponse {
   sessionArn: string;
   sessionStatus: SessionStatus;
 }
-export const EndSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EndSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     sessionArn: S.String,
@@ -6929,25 +6825,24 @@ export interface CreateInvocationRequest {
   description?: string;
   sessionIdentifier: string;
 }
-export const CreateInvocationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      invocationId: S.optional(S.String),
-      description: S.optional(S.String),
-      sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/sessions/{sessionIdentifier}/invocations/",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateInvocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationId: S.optional(S.String),
+    description: S.optional(S.String),
+    sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/sessions/{sessionIdentifier}/invocations/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateInvocationRequest",
 }) as any as S.Schema<CreateInvocationRequest>;
@@ -6956,13 +6851,12 @@ export interface CreateInvocationResponse {
   invocationId: string;
   createdAt: Date;
 }
-export const CreateInvocationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionId: S.String,
-      invocationId: S.String,
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
+export const CreateInvocationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    invocationId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
 ).annotate({
   identifier: "CreateInvocationResponse",
 }) as any as S.Schema<CreateInvocationResponse>;
@@ -6971,25 +6865,24 @@ export interface ListInvocationsRequest {
   maxResults?: number;
   sessionIdentifier: string;
 }
-export const ListInvocationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/sessions/{sessionIdentifier}/invocations/",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/sessions/{sessionIdentifier}/invocations/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListInvocationsRequest",
 }) as any as S.Schema<ListInvocationsRequest>;
@@ -6998,7 +6891,7 @@ export interface InvocationSummary {
   invocationId: string;
   createdAt: Date;
 }
-export const InvocationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvocationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     invocationId: S.String,
@@ -7008,33 +6901,31 @@ export const InvocationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InvocationSummary",
 }) as any as S.Schema<InvocationSummary>;
 export type InvocationSummaries = InvocationSummary[];
-export const InvocationSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InvocationSummary);
+export const InvocationSummaries = /*@__PURE__*/ S.Array(InvocationSummary);
 export interface ListInvocationsResponse {
   invocationSummaries: InvocationSummary[];
   nextToken?: string;
 }
-export const ListInvocationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      invocationSummaries: InvocationSummaries,
-      nextToken: S.optional(S.String),
-    }),
+export const ListInvocationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationSummaries: InvocationSummaries,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListInvocationsResponse",
 }) as any as S.Schema<ListInvocationsResponse>;
 export type ImageFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
-export const ImageFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImageFormat = /*@__PURE__*/ S.String;
 export interface S3Location {
   uri: string;
 }
-export const S3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.String }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export type ImageSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
-export const ImageSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ImageSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
   S.Struct({ s3Location: S3Location }),
 ]);
@@ -7042,24 +6933,24 @@ export interface ImageBlock {
   format: ImageFormat;
   source: ImageSource;
 }
-export const ImageBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImageBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: ImageFormat, source: ImageSource }),
 ).annotate({ identifier: "ImageBlock" }) as any as S.Schema<ImageBlock>;
 export type BedrockSessionContentBlock =
   | { text: string; image?: never }
   | { text?: never; image: ImageBlock };
-export const BedrockSessionContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const BedrockSessionContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
   S.Struct({ image: ImageBlock }),
 ]);
 export type BedrockSessionContentBlocks = BedrockSessionContentBlock[];
-export const BedrockSessionContentBlocks = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BedrockSessionContentBlocks = /*@__PURE__*/ S.Array(
   BedrockSessionContentBlock,
 );
 export type InvocationStepPayload = {
   contentBlocks: BedrockSessionContentBlock[];
 };
-export const InvocationStepPayload = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const InvocationStepPayload = /*@__PURE__*/ S.Union([
   S.Struct({ contentBlocks: BedrockSessionContentBlocks }),
 ]);
 export interface PutInvocationStepRequest {
@@ -7069,35 +6960,34 @@ export interface PutInvocationStepRequest {
   payload: InvocationStepPayload;
   invocationStepId?: string;
 }
-export const PutInvocationStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
-      invocationIdentifier: S.String,
-      invocationStepTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      payload: InvocationStepPayload,
-      invocationStepId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/sessions/{sessionIdentifier}/invocationSteps/",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutInvocationStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
+    invocationIdentifier: S.String,
+    invocationStepTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    payload: InvocationStepPayload,
+    invocationStepId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/sessions/{sessionIdentifier}/invocationSteps/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutInvocationStepRequest",
 }) as any as S.Schema<PutInvocationStepRequest>;
 export interface PutInvocationStepResponse {
   invocationStepId: string;
 }
-export const PutInvocationStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ invocationStepId: S.String }),
+export const PutInvocationStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ invocationStepId: S.String }),
 ).annotate({
   identifier: "PutInvocationStepResponse",
 }) as any as S.Schema<PutInvocationStepResponse>;
@@ -7106,25 +6996,24 @@ export interface GetInvocationStepRequest {
   invocationStepId: string;
   sessionIdentifier: string;
 }
-export const GetInvocationStepRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      invocationIdentifier: S.String,
-      invocationStepId: S.String.pipe(T.HttpLabel("invocationStepId")),
-      sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/sessions/{sessionIdentifier}/invocationSteps/{invocationStepId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetInvocationStepRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationIdentifier: S.String,
+    invocationStepId: S.String.pipe(T.HttpLabel("invocationStepId")),
+    sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/sessions/{sessionIdentifier}/invocationSteps/{invocationStepId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetInvocationStepRequest",
 }) as any as S.Schema<GetInvocationStepRequest>;
@@ -7135,7 +7024,7 @@ export interface InvocationStep {
   invocationStepTime: Date;
   payload: InvocationStepPayload;
 }
-export const InvocationStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvocationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     invocationId: S.String,
@@ -7147,8 +7036,8 @@ export const InvocationStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetInvocationStepResponse {
   invocationStep: InvocationStep;
 }
-export const GetInvocationStepResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ invocationStep: InvocationStep }),
+export const GetInvocationStepResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ invocationStep: InvocationStep }),
 ).annotate({
   identifier: "GetInvocationStepResponse",
 }) as any as S.Schema<GetInvocationStepResponse>;
@@ -7158,26 +7047,25 @@ export interface ListInvocationStepsRequest {
   maxResults?: number;
   sessionIdentifier: string;
 }
-export const ListInvocationStepsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      invocationIdentifier: S.optional(S.String),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/sessions/{sessionIdentifier}/invocationSteps/",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListInvocationStepsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationIdentifier: S.optional(S.String),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    sessionIdentifier: S.String.pipe(T.HttpLabel("sessionIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/sessions/{sessionIdentifier}/invocationSteps/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListInvocationStepsRequest",
 }) as any as S.Schema<ListInvocationStepsRequest>;
@@ -7187,7 +7075,7 @@ export interface InvocationStepSummary {
   invocationStepId: string;
   invocationStepTime: Date;
 }
-export const InvocationStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvocationStepSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     invocationId: S.String,
@@ -7198,7 +7086,7 @@ export const InvocationStepSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InvocationStepSummary",
 }) as any as S.Schema<InvocationStepSummary>;
 export type InvocationStepSummaries = InvocationStepSummary[];
-export const InvocationStepSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const InvocationStepSummaries = /*@__PURE__*/ S.Array(
   InvocationStepSummary,
 );
 export interface ListInvocationStepsResponse {
@@ -7206,7 +7094,7 @@ export interface ListInvocationStepsResponse {
   nextToken?: string;
 }
 export const ListInvocationStepsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       invocationStepSummaries: InvocationStepSummaries,
       nextToken: S.optional(S.String),
@@ -7217,18 +7105,17 @@ export const ListInvocationStepsResponse =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -7236,7 +7123,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagsMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -7245,7 +7132,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagsMap,
@@ -7263,18 +7150,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -7292,7 +7179,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -7362,7 +7249,7 @@ export const agenticRetrieveStream: API.OperationMethod<
   AgenticRetrieveStreamResponse,
   AgenticRetrieveStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AgenticRetrieveStreamRequest,
   output: AgenticRetrieveStreamResponse,
   errors: [
@@ -7395,7 +7282,7 @@ export const getExecutionFlowSnapshot: API.OperationMethod<
   GetExecutionFlowSnapshotResponse,
   GetExecutionFlowSnapshotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExecutionFlowSnapshotRequest,
   output: GetExecutionFlowSnapshotResponse,
   errors: [
@@ -7422,7 +7309,7 @@ export const getFlowExecution: API.OperationMethod<
   GetFlowExecutionResponse,
   GetFlowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFlowExecutionRequest,
   output: GetFlowExecutionResponse,
   errors: [
@@ -7466,7 +7353,7 @@ export const listFlowExecutionEvents: API.OperationMethod<
     ListFlowExecutionEventsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionEventsRequest,
   output: ListFlowExecutionEventsResponse,
   errors: [
@@ -7516,7 +7403,7 @@ export const listFlowExecutions: API.OperationMethod<
     ListFlowExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionsRequest,
   output: ListFlowExecutionsResponse,
   errors: [
@@ -7557,7 +7444,7 @@ export const startFlowExecution: API.OperationMethod<
   StartFlowExecutionResponse,
   StartFlowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartFlowExecutionRequest,
   output: StartFlowExecutionResponse,
   errors: [
@@ -7591,7 +7478,7 @@ export const stopFlowExecution: API.OperationMethod<
   StopFlowExecutionResponse,
   StopFlowExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopFlowExecutionRequest,
   output: StopFlowExecutionResponse,
   errors: [
@@ -7627,7 +7514,7 @@ export const invokeFlow: API.OperationMethod<
   InvokeFlowResponse,
   InvokeFlowError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeFlowRequest,
   output: InvokeFlowResponse,
   errors: [
@@ -7662,7 +7549,7 @@ export const generateQuery: API.OperationMethod<
   GenerateQueryResponse,
   GenerateQueryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateQueryRequest,
   output: GenerateQueryResponse,
   errors: [
@@ -7693,7 +7580,7 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentResponse,
   GetDocumentContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentContentRequest,
   output: GetDocumentContentResponse,
   errors: [
@@ -7745,7 +7632,7 @@ export const invokeAgent: API.OperationMethod<
   InvokeAgentResponse,
   InvokeAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeAgentRequest,
   output: InvokeAgentResponse,
   errors: [
@@ -7791,7 +7678,7 @@ export const invokeInlineAgent: API.OperationMethod<
   InvokeInlineAgentResponse,
   InvokeInlineAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeInlineAgentRequest,
   output: InvokeInlineAgentResponse,
   errors: [
@@ -7826,7 +7713,7 @@ export const deleteAgentMemory: API.OperationMethod<
   DeleteAgentMemoryResponse,
   DeleteAgentMemoryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentMemoryRequest,
   output: DeleteAgentMemoryResponse,
   errors: [
@@ -7876,7 +7763,7 @@ export const getAgentMemory: API.OperationMethod<
     GetAgentMemoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAgentMemoryRequest,
   output: GetAgentMemoryResponse,
   errors: [
@@ -7914,7 +7801,7 @@ export const optimizePrompt: API.OperationMethod<
   OptimizePromptResponse,
   OptimizePromptError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OptimizePromptRequest,
   output: OptimizePromptResponse,
   errors: [
@@ -7961,7 +7848,7 @@ export const rerank: API.OperationMethod<
     RerankError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: RerankRequest,
   output: RerankResponse,
   errors: [
@@ -8003,7 +7890,7 @@ export const retrieveAndGenerate: API.OperationMethod<
   RetrieveAndGenerateResponse,
   RetrieveAndGenerateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetrieveAndGenerateRequest,
   output: RetrieveAndGenerateResponse,
   errors: [
@@ -8044,7 +7931,7 @@ export const retrieveAndGenerateStream: API.OperationMethod<
   RetrieveAndGenerateStreamResponse,
   RetrieveAndGenerateStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetrieveAndGenerateStreamRequest,
   output: RetrieveAndGenerateStreamResponse,
   errors: [
@@ -8094,7 +7981,7 @@ export const retrieve: API.OperationMethod<
     RetrieveError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveRequest,
   output: RetrieveResponse,
   errors: [
@@ -8145,7 +8032,7 @@ export const createSession: API.OperationMethod<
   CreateSessionResponse,
   CreateSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionRequest,
   output: CreateSessionResponse,
   errors: [
@@ -8173,7 +8060,7 @@ export const getSession: API.OperationMethod<
   GetSessionResponse,
   GetSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
   errors: [
@@ -8201,7 +8088,7 @@ export const updateSession: API.OperationMethod<
   UpdateSessionResponse,
   UpdateSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSessionRequest,
   output: UpdateSessionResponse,
   errors: [
@@ -8230,7 +8117,7 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionResponse,
   DeleteSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSessionRequest,
   output: DeleteSessionResponse,
   errors: [
@@ -8272,7 +8159,7 @@ export const listSessions: API.OperationMethod<
     ListSessionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -8305,7 +8192,7 @@ export const endSession: API.OperationMethod<
   EndSessionResponse,
   EndSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EndSessionRequest,
   output: EndSessionResponse,
   errors: [
@@ -8343,7 +8230,7 @@ export const createInvocation: API.OperationMethod<
   CreateInvocationResponse,
   CreateInvocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvocationRequest,
   output: CreateInvocationResponse,
   errors: [
@@ -8387,7 +8274,7 @@ export const listInvocations: API.OperationMethod<
     ListInvocationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationsRequest,
   output: ListInvocationsResponse,
   errors: [
@@ -8432,7 +8319,7 @@ export const putInvocationStep: API.OperationMethod<
   PutInvocationStepResponse,
   PutInvocationStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInvocationStepRequest,
   output: PutInvocationStepResponse,
   errors: [
@@ -8461,7 +8348,7 @@ export const getInvocationStep: API.OperationMethod<
   GetInvocationStepResponse,
   GetInvocationStepError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvocationStepRequest,
   output: GetInvocationStepResponse,
   errors: [
@@ -8503,7 +8390,7 @@ export const listInvocationSteps: API.OperationMethod<
     ListInvocationStepsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvocationStepsRequest,
   output: ListInvocationStepsResponse,
   errors: [
@@ -8536,7 +8423,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -8564,7 +8451,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -8592,7 +8479,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

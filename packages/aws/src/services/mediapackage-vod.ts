@@ -90,7 +90,7 @@ export type MaxResults = number;
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
-export const EgressAccessLogs = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EgressAccessLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogGroupName: S.optional(S.String) }).pipe(
     S.encodeKeys({ LogGroupName: "logGroupName" }),
   ),
@@ -101,7 +101,7 @@ export interface ConfigureLogsRequest {
   EgressAccessLogs?: EgressAccessLogs;
   Id: string;
 }
-export const ConfigureLogsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigureLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EgressAccessLogs: S.optional(EgressAccessLogs),
     Id: S.String.pipe(T.HttpLabel("Id")),
@@ -124,7 +124,7 @@ export interface Authorization {
   CdnIdentifierSecret?: string;
   SecretsRoleArn?: string;
 }
-export const Authorization = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CdnIdentifierSecret: S.optional(S.String),
     SecretsRoleArn: S.optional(S.String),
@@ -136,10 +136,7 @@ export const Authorization = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ConfigureLogsResponse {
   Arn?: string;
   Authorization?: Authorization & {
@@ -152,7 +149,7 @@ export interface ConfigureLogsResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const ConfigureLogsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigureLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Authorization: S.optional(Authorization),
@@ -183,7 +180,7 @@ export interface CreateAssetRequest {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     PackagingGroupId: S.optional(S.String),
@@ -220,7 +217,7 @@ export interface EgressEndpoint {
   Status?: string;
   Url?: string;
 }
-export const EgressEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EgressEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackagingConfigurationId: S.optional(S.String),
     Status: S.optional(S.String),
@@ -234,8 +231,7 @@ export const EgressEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EgressEndpoint" }) as any as S.Schema<EgressEndpoint>;
 export type __listOfEgressEndpoint = EgressEndpoint[];
-export const __listOfEgressEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EgressEndpoint);
+export const __listOfEgressEndpoint = /*@__PURE__*/ S.Array(EgressEndpoint);
 export interface CreateAssetResponse {
   Arn?: string;
   CreatedAt?: string;
@@ -247,7 +243,7 @@ export interface CreateAssetResponse {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CreatedAt: S.optional(S.String),
@@ -281,7 +277,7 @@ export type PresetSpeke20Audio =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Audio = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
   | "PRESET-VIDEO-2"
@@ -294,13 +290,13 @@ export type PresetSpeke20Video =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Video = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PresetSpeke20Video = /*@__PURE__*/ S.String;
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
 }
 export const EncryptionContractConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PresetSpeke20Audio: S.optional(PresetSpeke20Audio),
       PresetSpeke20Video: S.optional(PresetSpeke20Video),
@@ -314,14 +310,14 @@ export const EncryptionContractConfiguration =
     identifier: "EncryptionContractConfiguration",
   }) as any as S.Schema<EncryptionContractConfiguration>;
 export type __listOf__string = string[];
-export const __listOf__string = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface SpekeKeyProvider {
   EncryptionContractConfiguration?: EncryptionContractConfiguration;
   RoleArn?: string;
   SystemIds?: string[];
   Url?: string;
 }
-export const SpekeKeyProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EncryptionContractConfiguration: S.optional(
       EncryptionContractConfiguration,
@@ -344,7 +340,7 @@ export interface CmafEncryption {
   ConstantInitializationVector?: string;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const CmafEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantInitializationVector: S.optional(S.String),
     SpekeKeyProvider: S.optional(SpekeKeyProvider),
@@ -360,19 +356,19 @@ export type AdMarkers =
   | "SCTE35_ENHANCED"
   | "PASSTHROUGH"
   | (string & {});
-export const AdMarkers = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AdMarkers = /*@__PURE__*/ S.String;
 export type StreamOrder =
   | "ORIGINAL"
   | "VIDEO_BITRATE_ASCENDING"
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
-export const StreamOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamOrder = /*@__PURE__*/ S.String;
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
   StreamOrder?: StreamOrder;
 }
-export const StreamSelection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxVideoBitsPerSecond: S.optional(S.Number),
     MinVideoBitsPerSecond: S.optional(S.Number),
@@ -395,7 +391,7 @@ export interface HlsManifest {
   RepeatExtXKey?: boolean;
   StreamSelection?: StreamSelection;
 }
-export const HlsManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HlsManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdMarkers: S.optional(AdMarkers),
     IncludeIframeOnlyStream: S.optional(S.Boolean),
@@ -415,15 +411,14 @@ export const HlsManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "HlsManifest" }) as any as S.Schema<HlsManifest>;
 export type __listOfHlsManifest = HlsManifest[];
-export const __listOfHlsManifest =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HlsManifest);
+export const __listOfHlsManifest = /*@__PURE__*/ S.Array(HlsManifest);
 export interface CmafPackage {
   Encryption?: CmafEncryption;
   HlsManifests?: HlsManifest[];
   IncludeEncoderConfigurationInSegments?: boolean;
   SegmentDurationSeconds?: number;
 }
-export const CmafPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CmafPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(CmafEncryption),
     HlsManifests: S.optional(__listOfHlsManifest),
@@ -440,11 +435,11 @@ export const CmafPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CmafPackage" }) as any as S.Schema<CmafPackage>;
 export type ManifestLayout = "FULL" | "COMPACT" | (string & {});
-export const ManifestLayout = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ManifestLayout = /*@__PURE__*/ S.String;
 export type Profile = "NONE" | "HBBTV_1_5" | (string & {});
-export const Profile = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Profile = /*@__PURE__*/ S.String;
 export type ScteMarkersSource = "SEGMENTS" | "MANIFEST" | (string & {});
-export const ScteMarkersSource = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScteMarkersSource = /*@__PURE__*/ S.String;
 export interface DashManifest {
   ManifestLayout?: ManifestLayout;
   ManifestName?: string;
@@ -453,7 +448,7 @@ export interface DashManifest {
   ScteMarkersSource?: ScteMarkersSource;
   StreamSelection?: StreamSelection;
 }
-export const DashManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DashManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestLayout: S.optional(ManifestLayout),
     ManifestName: S.optional(S.String),
@@ -473,27 +468,26 @@ export const DashManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DashManifest" }) as any as S.Schema<DashManifest>;
 export type __listOfDashManifest = DashManifest[];
-export const __listOfDashManifest =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DashManifest);
+export const __listOfDashManifest = /*@__PURE__*/ S.Array(DashManifest);
 export interface DashEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const DashEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SpekeKeyProvider: S.optional(SpekeKeyProvider) }).pipe(
     S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
   ),
 ).annotate({ identifier: "DashEncryption" }) as any as S.Schema<DashEncryption>;
 export type __PeriodTriggersElement = "ADS" | (string & {});
-export const __PeriodTriggersElement = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
 export const __listOf__PeriodTriggersElement =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(__PeriodTriggersElement);
+  /*@__PURE__*/ S.Array(__PeriodTriggersElement);
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
   | "NUMBER_WITH_DURATION"
   | (string & {});
-export const SegmentTemplateFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
 export interface DashPackage {
   DashManifests?: DashManifest[];
   Encryption?: DashEncryption;
@@ -503,7 +497,7 @@ export interface DashPackage {
   SegmentDurationSeconds?: number;
   SegmentTemplateFormat?: SegmentTemplateFormat;
 }
-export const DashPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DashPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DashManifests: S.optional(__listOfDashManifest),
     Encryption: S.optional(DashEncryption),
@@ -526,13 +520,13 @@ export const DashPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
-export const EncryptionMethod = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionMethod = /*@__PURE__*/ S.String;
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
   EncryptionMethod?: EncryptionMethod;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const HlsEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantInitializationVector: S.optional(S.String),
     EncryptionMethod: S.optional(EncryptionMethod),
@@ -552,7 +546,7 @@ export interface HlsPackage {
   SegmentDurationSeconds?: number;
   UseAudioRenditionGroup?: boolean;
 }
-export const HlsPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HlsPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(HlsEncryption),
     HlsManifests: S.optional(__listOfHlsManifest),
@@ -572,7 +566,7 @@ export const HlsPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MssEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const MssEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MssEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SpekeKeyProvider: S.optional(SpekeKeyProvider) }).pipe(
     S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
   ),
@@ -581,7 +575,7 @@ export interface MssManifest {
   ManifestName?: string;
   StreamSelection?: StreamSelection;
 }
-export const MssManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MssManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.optional(S.String),
     StreamSelection: S.optional(StreamSelection),
@@ -593,14 +587,13 @@ export const MssManifest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "MssManifest" }) as any as S.Schema<MssManifest>;
 export type __listOfMssManifest = MssManifest[];
-export const __listOfMssManifest =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MssManifest);
+export const __listOfMssManifest = /*@__PURE__*/ S.Array(MssManifest);
 export interface MssPackage {
   Encryption?: MssEncryption;
   MssManifests?: MssManifest[];
   SegmentDurationSeconds?: number;
 }
-export const MssPackage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MssPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(MssEncryption),
     MssManifests: S.optional(__listOfMssManifest),
@@ -623,7 +616,7 @@ export interface CreatePackagingConfigurationRequest {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreatePackagingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       CmafPackage: S.optional(CmafPackage),
       DashPackage: S.optional(DashPackage),
@@ -721,7 +714,7 @@ export interface CreatePackagingConfigurationResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreatePackagingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.optional(S.String),
       CmafPackage: S.optional(CmafPackage),
@@ -755,7 +748,7 @@ export interface CreatePackagingGroupRequest {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreatePackagingGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Authorization: S.optional(Authorization),
       EgressAccessLogs: S.optional(EgressAccessLogs),
@@ -796,7 +789,7 @@ export interface CreatePackagingGroupResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreatePackagingGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.optional(S.String),
       Authorization: S.optional(Authorization),
@@ -822,7 +815,7 @@ export const CreatePackagingGroupResponse =
 export interface DeleteAssetRequest {
   Id: string;
 }
-export const DeleteAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/assets/{Id}" }),
@@ -837,7 +830,7 @@ export const DeleteAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteAssetRequest",
 }) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteAssetResponse",
@@ -846,7 +839,7 @@ export interface DeletePackagingConfigurationRequest {
   Id: string;
 }
 export const DeletePackagingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/packaging_configurations/{Id}" }),
@@ -862,14 +855,14 @@ export const DeletePackagingConfigurationRequest =
   }) as any as S.Schema<DeletePackagingConfigurationRequest>;
 export interface DeletePackagingConfigurationResponse {}
 export const DeletePackagingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeletePackagingConfigurationResponse",
   }) as any as S.Schema<DeletePackagingConfigurationResponse>;
 export interface DeletePackagingGroupRequest {
   Id: string;
 }
 export const DeletePackagingGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/packaging_groups/{Id}" }),
@@ -885,13 +878,13 @@ export const DeletePackagingGroupRequest =
   }) as any as S.Schema<DeletePackagingGroupRequest>;
 export interface DeletePackagingGroupResponse {}
 export const DeletePackagingGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeletePackagingGroupResponse",
   }) as any as S.Schema<DeletePackagingGroupResponse>;
 export interface DescribeAssetRequest {
   Id: string;
 }
-export const DescribeAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/assets/{Id}" }),
@@ -916,7 +909,7 @@ export interface DescribeAssetResponse {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CreatedAt: S.optional(S.String),
@@ -947,7 +940,7 @@ export interface DescribePackagingConfigurationRequest {
   Id: string;
 }
 export const DescribePackagingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/packaging_configurations/{Id}" }),
@@ -1025,7 +1018,7 @@ export interface DescribePackagingConfigurationResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const DescribePackagingConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.optional(S.String),
       CmafPackage: S.optional(CmafPackage),
@@ -1056,7 +1049,7 @@ export interface DescribePackagingGroupRequest {
   Id: string;
 }
 export const DescribePackagingGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/packaging_groups/{Id}" }),
@@ -1084,7 +1077,7 @@ export interface DescribePackagingGroupResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const DescribePackagingGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApproximateAssetCount: S.optional(S.Number),
       Arn: S.optional(S.String),
@@ -1114,7 +1107,7 @@ export interface ListAssetsRequest {
   NextToken?: string;
   PackagingGroupId?: string;
 }
-export const ListAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1144,7 +1137,7 @@ export interface AssetShallow {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const AssetShallow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssetShallow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CreatedAt: S.optional(S.String),
@@ -1168,13 +1161,12 @@ export const AssetShallow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssetShallow" }) as any as S.Schema<AssetShallow>;
 export type __listOfAssetShallow = AssetShallow[];
-export const __listOfAssetShallow =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetShallow);
+export const __listOfAssetShallow = /*@__PURE__*/ S.Array(AssetShallow);
 export interface ListAssetsResponse {
   Assets?: AssetShallow[];
   NextToken?: string;
 }
-export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Assets: S.optional(__listOfAssetShallow),
     NextToken: S.optional(S.String),
@@ -1188,7 +1180,7 @@ export interface ListPackagingConfigurationsRequest {
   PackagingGroupId?: string;
 }
 export const ListPackagingConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1219,37 +1211,36 @@ export interface PackagingConfiguration {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const PackagingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      CmafPackage: S.optional(CmafPackage),
-      CreatedAt: S.optional(S.String),
-      DashPackage: S.optional(DashPackage),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      PackagingGroupId: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        Arn: "arn",
-        CmafPackage: "cmafPackage",
-        CreatedAt: "createdAt",
-        DashPackage: "dashPackage",
-        HlsPackage: "hlsPackage",
-        Id: "id",
-        MssPackage: "mssPackage",
-        PackagingGroupId: "packagingGroupId",
-        Tags: "tags",
-      }),
-    ),
+export const PackagingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    CmafPackage: S.optional(CmafPackage),
+    CreatedAt: S.optional(S.String),
+    DashPackage: S.optional(DashPackage),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    PackagingGroupId: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      Arn: "arn",
+      CmafPackage: "cmafPackage",
+      CreatedAt: "createdAt",
+      DashPackage: "dashPackage",
+      HlsPackage: "hlsPackage",
+      Id: "id",
+      MssPackage: "mssPackage",
+      PackagingGroupId: "packagingGroupId",
+      Tags: "tags",
+    }),
+  ),
 ).annotate({
   identifier: "PackagingConfiguration",
 }) as any as S.Schema<PackagingConfiguration>;
 export type __listOfPackagingConfiguration = PackagingConfiguration[];
 export const __listOfPackagingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PackagingConfiguration);
+  /*@__PURE__*/ S.Array(PackagingConfiguration);
 export interface ListPackagingConfigurationsResponse {
   NextToken?: string;
   PackagingConfigurations?: (PackagingConfiguration & {
@@ -1312,7 +1303,7 @@ export interface ListPackagingConfigurationsResponse {
   })[];
 }
 export const ListPackagingConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       PackagingConfigurations: S.optional(__listOfPackagingConfiguration),
@@ -1329,21 +1320,20 @@ export interface ListPackagingGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPackagingGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/packaging_groups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPackagingGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/packaging_groups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListPackagingGroupsRequest",
 }) as any as S.Schema<ListPackagingGroupsRequest>;
@@ -1357,7 +1347,7 @@ export interface PackagingGroup {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const PackagingGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PackagingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApproximateAssetCount: S.optional(S.Number),
     Arn: S.optional(S.String),
@@ -1381,8 +1371,7 @@ export const PackagingGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PackagingGroup" }) as any as S.Schema<PackagingGroup>;
 export type __listOfPackagingGroup = PackagingGroup[];
-export const __listOfPackagingGroup =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PackagingGroup);
+export const __listOfPackagingGroup = /*@__PURE__*/ S.Array(PackagingGroup);
 export interface ListPackagingGroupsResponse {
   NextToken?: string;
   PackagingGroups?: (PackagingGroup & {
@@ -1393,7 +1382,7 @@ export interface ListPackagingGroupsResponse {
   })[];
 }
 export const ListPackagingGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       PackagingGroups: S.optional(__listOfPackagingGroup),
@@ -1409,23 +1398,22 @@ export const ListPackagingGroupsResponse =
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const __mapOf__string = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1433,7 +1421,7 @@ export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(
       S.encodeKeys({ Tags: "tags" }),
     ),
@@ -1444,7 +1432,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: S.optional(__mapOf__string),
@@ -1464,7 +1452,7 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
@@ -1473,7 +1461,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: S.optional(__listOf__string).pipe(T.HttpQuery("tagKeys")),
@@ -1491,7 +1479,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1501,7 +1489,7 @@ export interface UpdatePackagingGroupRequest {
   Id: string;
 }
 export const UpdatePackagingGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Authorization: S.optional(Authorization),
       Id: S.String.pipe(T.HttpLabel("Id")),
@@ -1534,7 +1522,7 @@ export interface UpdatePackagingGroupResponse {
   Tags?: { [key: string]: string | undefined };
 }
 export const UpdatePackagingGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApproximateAssetCount: S.optional(S.Number),
       Arn: S.optional(S.String),
@@ -1603,7 +1591,7 @@ export const configureLogs: API.OperationMethod<
   ConfigureLogsResponse,
   ConfigureLogsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ConfigureLogsRequest,
   output: ConfigureLogsResponse,
   errors: [
@@ -1632,7 +1620,7 @@ export const createAsset: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetRequest,
   output: CreateAssetResponse,
   errors: [
@@ -1661,7 +1649,7 @@ export const createPackagingConfiguration: API.OperationMethod<
   CreatePackagingConfigurationResponse,
   CreatePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingConfigurationRequest,
   output: CreatePackagingConfigurationResponse,
   errors: [
@@ -1690,7 +1678,7 @@ export const createPackagingGroup: API.OperationMethod<
   CreatePackagingGroupResponse,
   CreatePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePackagingGroupRequest,
   output: CreatePackagingGroupResponse,
   errors: [
@@ -1719,7 +1707,7 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetRequest,
   output: DeleteAssetResponse,
   errors: [
@@ -1748,7 +1736,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
   DeletePackagingConfigurationResponse,
   DeletePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingConfigurationRequest,
   output: DeletePackagingConfigurationResponse,
   errors: [
@@ -1777,7 +1765,7 @@ export const deletePackagingGroup: API.OperationMethod<
   DeletePackagingGroupResponse,
   DeletePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePackagingGroupRequest,
   output: DeletePackagingGroupResponse,
   errors: [
@@ -1806,7 +1794,7 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetResponse,
   DescribeAssetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeAssetRequest,
   output: DescribeAssetResponse,
   errors: [
@@ -1835,7 +1823,7 @@ export const describePackagingConfiguration: API.OperationMethod<
   DescribePackagingConfigurationResponse,
   DescribePackagingConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingConfigurationRequest,
   output: DescribePackagingConfigurationResponse,
   errors: [
@@ -1864,7 +1852,7 @@ export const describePackagingGroup: API.OperationMethod<
   DescribePackagingGroupResponse,
   DescribePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribePackagingGroupRequest,
   output: DescribePackagingGroupResponse,
   errors: [
@@ -1908,7 +1896,7 @@ export const listAssets: API.OperationMethod<
     ListAssetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -1958,7 +1946,7 @@ export const listPackagingConfigurations: API.OperationMethod<
     ListPackagingConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingConfigurationsRequest,
   output: ListPackagingConfigurationsResponse,
   errors: [
@@ -2008,7 +1996,7 @@ export const listPackagingGroups: API.OperationMethod<
     ListPackagingGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingGroupsRequest,
   output: ListPackagingGroupsResponse,
   errors: [
@@ -2036,7 +2024,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
@@ -2051,7 +2039,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
@@ -2066,7 +2054,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
@@ -2088,7 +2076,7 @@ export const updatePackagingGroup: API.OperationMethod<
   UpdatePackagingGroupResponse,
   UpdatePackagingGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePackagingGroupRequest,
   output: UpdatePackagingGroupResponse,
   errors: [

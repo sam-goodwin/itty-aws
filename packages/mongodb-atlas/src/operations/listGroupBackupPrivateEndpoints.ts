@@ -14,7 +14,7 @@ export interface ListGroupBackupPrivateEndpointsInput {
   pageNum?: number;
 }
 export const ListGroupBackupPrivateEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
     pretty: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupBackupPrivateEndpointsInput =
 // Output Schema
 export type ListGroupBackupPrivateEndpointsOutput = void;
 export const ListGroupBackupPrivateEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupPrivateEndpointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupPrivateEndpointsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupBackupPrivateEndpointsOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoints to return.
  */
 export const listGroupBackupPrivateEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupBackupPrivateEndpointsInput,
     outputSchema: ListGroupBackupPrivateEndpointsOutput,
     errors: [Forbidden, NotFound] as const,

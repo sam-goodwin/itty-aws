@@ -12,7 +12,7 @@ import * as T from "../traits.ts";
 export interface DeleteConsoleInput {
   consoleName: string;
 }
-export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteConsoleInput = /*@__PURE__*/ Schema.Struct({
   consoleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -25,7 +25,7 @@ export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteConsoleOutput = void;
 export const DeleteConsoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteConsoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteConsoleOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteConsoleOutput =
  * @param api-version - Client API version
  * @param consoleName - The name of the console
  */
-export const DeleteConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteConsoleInput,
   outputSchema: DeleteConsoleOutput,
 }));
@@ -46,7 +46,7 @@ export interface DeleteConsoleWithLocationInput {
   location: string;
 }
 export const DeleteConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -60,7 +60,7 @@ export const DeleteConsoleWithLocationInput =
 // Output Schema
 export type DeleteConsoleWithLocationOutput = void;
 export const DeleteConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteConsoleWithLocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteConsoleWithLocationOutput>;
 
 // The operation
 /**
@@ -72,18 +72,16 @@ export const DeleteConsoleWithLocationOutput =
  * @param consoleName - The name of the console
  * @param location - The provider location
  */
-export const deleteConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteConsoleWithLocationInput,
-    outputSchema: DeleteConsoleWithLocationOutput,
-  }),
-);
+export const deleteConsoleWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteConsoleWithLocationInput,
+  outputSchema: DeleteConsoleWithLocationOutput,
+}));
 // Input Schema
 export interface DeleteUserSettingsInput {
   userSettingsName: string;
 }
 export const DeleteUserSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSettingsName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -96,7 +94,7 @@ export const DeleteUserSettingsInput =
 // Output Schema
 export type DeleteUserSettingsOutput = void;
 export const DeleteUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteUserSettingsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteUserSettingsOutput>;
 
 // The operation
 /**
@@ -107,7 +105,7 @@ export const DeleteUserSettingsOutput =
  * @param api-version - Client API version
  * @param userSettingsName - The name of the user settings
  */
-export const DeleteUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteUserSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteUserSettingsInput,
   outputSchema: DeleteUserSettingsOutput,
 }));
@@ -117,7 +115,7 @@ export interface DeleteUserSettingsWithLocationInput {
   location: string;
 }
 export const DeleteUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSettingsName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -131,7 +129,7 @@ export const DeleteUserSettingsWithLocationInput =
 // Output Schema
 export type DeleteUserSettingsWithLocationOutput = void;
 export const DeleteUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteUserSettingsWithLocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteUserSettingsWithLocationOutput>;
 
 // The operation
 /**
@@ -144,7 +142,7 @@ export const DeleteUserSettingsWithLocationOutput =
  * @param location - The provider location
  */
 export const deleteUserSettingsWithLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteUserSettingsWithLocationInput,
     outputSchema: DeleteUserSettingsWithLocationOutput,
   }));
@@ -152,7 +150,7 @@ export const deleteUserSettingsWithLocation =
 export interface GetConsoleInput {
   consoleName: string;
 }
-export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetConsoleInput = /*@__PURE__*/ Schema.Struct({
   consoleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -165,7 +163,7 @@ export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetConsoleOutput = unknown;
 export const GetConsoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetConsoleOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetConsoleOutput>;
 
 // The operation
 /**
@@ -176,7 +174,7 @@ export const GetConsoleOutput =
  * @param api-version - Client API version
  * @param consoleName - The name of the console
  */
-export const GetConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetConsoleInput,
   outputSchema: GetConsoleOutput,
 }));
@@ -186,7 +184,7 @@ export interface GetConsoleWithLocationInput {
   location: string;
 }
 export const GetConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -200,7 +198,7 @@ export const GetConsoleWithLocationInput =
 // Output Schema
 export type GetConsoleWithLocationOutput = unknown;
 export const GetConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetConsoleWithLocationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetConsoleWithLocationOutput>;
 
 // The operation
 /**
@@ -212,17 +210,15 @@ export const GetConsoleWithLocationOutput =
  * @param consoleName - The name of the console
  * @param location - The provider location
  */
-export const getConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetConsoleWithLocationInput,
-    outputSchema: GetConsoleWithLocationOutput,
-  }),
-);
+export const getConsoleWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetConsoleWithLocationInput,
+  outputSchema: GetConsoleWithLocationOutput,
+}));
 // Input Schema
 export interface GetUserSettingsInput {
   userSettingsName: string;
 }
-export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUserSettingsInput = /*@__PURE__*/ Schema.Struct({
   userSettingsName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -235,7 +231,7 @@ export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetUserSettingsOutput = unknown;
 export const GetUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetUserSettingsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetUserSettingsOutput>;
 
 // The operation
 /**
@@ -246,7 +242,7 @@ export const GetUserSettingsOutput =
  * @param api-version - Client API version
  * @param userSettingsName - The name of the user settings
  */
-export const GetUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetUserSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetUserSettingsInput,
   outputSchema: GetUserSettingsOutput,
 }));
@@ -256,7 +252,7 @@ export interface GetUserSettingsWithLocationInput {
   location: string;
 }
 export const GetUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSettingsName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -270,7 +266,7 @@ export const GetUserSettingsWithLocationInput =
 // Output Schema
 export type GetUserSettingsWithLocationOutput = unknown;
 export const GetUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetUserSettingsWithLocationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetUserSettingsWithLocationOutput>;
 
 // The operation
 /**
@@ -282,17 +278,15 @@ export const GetUserSettingsWithLocationOutput =
  * @param userSettingsName - The name of the user settings
  * @param location - The provider location
  */
-export const getUserSettingsWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetUserSettingsWithLocationInput,
-    outputSchema: GetUserSettingsWithLocationOutput,
-  }),
-);
+export const getUserSettingsWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetUserSettingsWithLocationInput,
+  outputSchema: GetUserSettingsWithLocationOutput,
+}));
 // Input Schema
 export interface KeepAliveInput {
   consoleName: string;
 }
-export const KeepAliveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const KeepAliveInput = /*@__PURE__*/ Schema.Struct({
   consoleName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -305,7 +299,7 @@ export const KeepAliveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type KeepAliveOutput = void;
 export const KeepAliveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KeepAliveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KeepAliveOutput>;
 
 // The operation
 /**
@@ -315,7 +309,7 @@ export const KeepAliveOutput =
  *
  * @param consoleName - The name of the console
  */
-export const KeepAlive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const KeepAlive = /*@__PURE__*/ API.make(() => ({
   inputSchema: KeepAliveInput,
   outputSchema: KeepAliveOutput,
 }));
@@ -325,7 +319,7 @@ export interface KeepAliveWithLocationInput {
   location: string;
 }
 export const KeepAliveWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -339,7 +333,7 @@ export const KeepAliveWithLocationInput =
 // Output Schema
 export type KeepAliveWithLocationOutput = void;
 export const KeepAliveWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KeepAliveWithLocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<KeepAliveWithLocationOutput>;
 
 // The operation
 /**
@@ -350,12 +344,10 @@ export const KeepAliveWithLocationOutput =
  * @param consoleName - The name of the console
  * @param location - The provider location
  */
-export const keepAliveWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KeepAliveWithLocationInput,
-    outputSchema: KeepAliveWithLocationOutput,
-  }),
-);
+export const keepAliveWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KeepAliveWithLocationInput,
+  outputSchema: KeepAliveWithLocationOutput,
+}));
 // Input Schema
 export interface PatchUserSettingsInput {
   userSettingsName: string;
@@ -374,31 +366,29 @@ export interface PatchUserSettingsInput {
     preferredShellType: "bash" | "pwsh" | "powershell";
   };
 }
-export const PatchUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userSettingsName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        preferredOsType: Schema.Literals(["Windows", "Linux"]),
-        preferredLocation: Schema.String,
-        storageProfile: Schema.Struct({
-          storageAccountResourceId: Schema.optional(Schema.String),
-          fileShareName: Schema.optional(Schema.String),
-          diskSizeInGB: Schema.optional(Schema.Number),
-        }),
-        terminalSettings: Schema.Struct({
-          fontSize: Schema.optional(
-            Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
-          ),
-          fontStyle: Schema.optional(
-            Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
-          ),
-        }),
-        preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+export const PatchUserSettingsInput = /*@__PURE__*/ Schema.Struct({
+  userSettingsName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      preferredOsType: Schema.Literals(["Windows", "Linux"]),
+      preferredLocation: Schema.String,
+      storageProfile: Schema.Struct({
+        storageAccountResourceId: Schema.optional(Schema.String),
+        fileShareName: Schema.optional(Schema.String),
+        diskSizeInGB: Schema.optional(Schema.Number),
       }),
-    ),
-  },
-).pipe(
+      terminalSettings: Schema.Struct({
+        fontSize: Schema.optional(
+          Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+        ),
+        fontStyle: Schema.optional(
+          Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+        ),
+      }),
+      preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
@@ -409,7 +399,7 @@ export const PatchUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type PatchUserSettingsOutput = unknown;
 export const PatchUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PatchUserSettingsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PatchUserSettingsOutput>;
 
 // The operation
 /**
@@ -420,7 +410,7 @@ export const PatchUserSettingsOutput =
  * @param api-version - Client API version
  * @param userSettingsName - The name of the user settings
  */
-export const PatchUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PatchUserSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchUserSettingsInput,
   outputSchema: PatchUserSettingsOutput,
 }));
@@ -444,7 +434,7 @@ export interface PatchUserSettingsWithLocationInput {
   };
 }
 export const PatchUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSettingsName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -478,7 +468,7 @@ export const PatchUserSettingsWithLocationInput =
 // Output Schema
 export type PatchUserSettingsWithLocationOutput = unknown;
 export const PatchUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PatchUserSettingsWithLocationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PatchUserSettingsWithLocationOutput>;
 
 // The operation
 /**
@@ -491,7 +481,7 @@ export const PatchUserSettingsWithLocationOutput =
  * @param location - The provider location
  */
 export const patchUserSettingsWithLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchUserSettingsWithLocationInput,
     outputSchema: PatchUserSettingsWithLocationOutput,
   }));
@@ -513,7 +503,7 @@ export interface PutConsoleInput {
     uri?: string;
   };
 }
-export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutConsoleInput = /*@__PURE__*/ Schema.Struct({
   consoleName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     osType: Schema.Literals(["Linux", "Windows"]),
@@ -543,7 +533,7 @@ export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PutConsoleOutput = unknown;
 export const PutConsoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutConsoleOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutConsoleOutput>;
 
 // The operation
 /**
@@ -554,7 +544,7 @@ export const PutConsoleOutput =
  * @param api-version - Client API version
  * @param consoleName - The name of the console
  */
-export const PutConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PutConsole = /*@__PURE__*/ API.make(() => ({
   inputSchema: PutConsoleInput,
   outputSchema: PutConsoleOutput,
 }));
@@ -564,7 +554,7 @@ export interface PutConsoleWithLocationInput {
   location: string;
 }
 export const PutConsoleWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consoleName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -578,7 +568,7 @@ export const PutConsoleWithLocationInput =
 // Output Schema
 export type PutConsoleWithLocationOutput = unknown;
 export const PutConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutConsoleWithLocationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutConsoleWithLocationOutput>;
 
 // The operation
 /**
@@ -590,12 +580,10 @@ export const PutConsoleWithLocationOutput =
  * @param consoleName - The name of the console
  * @param location - The provider location
  */
-export const putConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PutConsoleWithLocationInput,
-    outputSchema: PutConsoleWithLocationOutput,
-  }),
-);
+export const putConsoleWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PutConsoleWithLocationInput,
+  outputSchema: PutConsoleWithLocationOutput,
+}));
 // Input Schema
 export interface PutUserSettingsInput {
   userSettingsName: string;
@@ -614,7 +602,7 @@ export interface PutUserSettingsInput {
     preferredShellType: "bash" | "pwsh" | "powershell";
   };
 }
-export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutUserSettingsInput = /*@__PURE__*/ Schema.Struct({
   userSettingsName: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     preferredOsType: Schema.Literals(["Windows", "Linux"]),
@@ -645,7 +633,7 @@ export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PutUserSettingsOutput = unknown;
 export const PutUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutUserSettingsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutUserSettingsOutput>;
 
 // The operation
 /**
@@ -656,7 +644,7 @@ export const PutUserSettingsOutput =
  * @param api-version - Client API version
  * @param userSettingsName - The name of the user settings
  */
-export const PutUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PutUserSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: PutUserSettingsInput,
   outputSchema: PutUserSettingsOutput,
 }));
@@ -680,7 +668,7 @@ export interface PutUserSettingsWithLocationInput {
   };
 }
 export const PutUserSettingsWithLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userSettingsName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -712,7 +700,7 @@ export const PutUserSettingsWithLocationInput =
 // Output Schema
 export type PutUserSettingsWithLocationOutput = unknown;
 export const PutUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutUserSettingsWithLocationOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PutUserSettingsWithLocationOutput>;
 
 // The operation
 /**
@@ -724,9 +712,7 @@ export const PutUserSettingsWithLocationOutput =
  * @param userSettingsName - The name of the user settings
  * @param location - The provider location
  */
-export const putUserSettingsWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PutUserSettingsWithLocationInput,
-    outputSchema: PutUserSettingsWithLocationOutput,
-  }),
-);
+export const putUserSettingsWithLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PutUserSettingsWithLocationInput,
+  outputSchema: PutUserSettingsWithLocationOutput,
+}));

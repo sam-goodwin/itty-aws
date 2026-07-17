@@ -44,7 +44,7 @@ export interface PostPaymentRecordsIdReportPaymentAttemptInput {
   };
 }
 export const PostPaymentRecordsIdReportPaymentAttemptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -163,7 +163,7 @@ export interface PostPaymentRecordsIdReportPaymentAttemptOutput {
   } | null;
 }
 export const PostPaymentRecordsIdReportPaymentAttemptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -247,7 +247,7 @@ export const PostPaymentRecordsIdReportPaymentAttemptOutput =
  * @param id - The ID of the Payment Record.
  */
 export const PostPaymentRecordsIdReportPaymentAttempt =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentRecordsIdReportPaymentAttemptInput,
     outputSchema: PostPaymentRecordsIdReportPaymentAttemptOutput,
   }));

@@ -11,7 +11,7 @@ export interface EvaluationsTestHogCreateInput {
   conditions?: Record<string, unknown>[];
 }
 export const EvaluationsTestHogCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source: Schema.optional(Schema.String),
     sample_count: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface EvaluationsTestHogCreateOutput {
   message?: string;
 }
 export const EvaluationsTestHogCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -63,9 +63,7 @@ export const EvaluationsTestHogCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const evaluationsTestHogCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EvaluationsTestHogCreateInput,
-    outputSchema: EvaluationsTestHogCreateOutput,
-  }),
-);
+export const evaluationsTestHogCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EvaluationsTestHogCreateInput,
+  outputSchema: EvaluationsTestHogCreateOutput,
+}));

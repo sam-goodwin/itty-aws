@@ -10,7 +10,7 @@ export interface UnpinGroupClusterCollStatUnpinNamespacesInput {
   envelope?: boolean;
 }
 export const UnpinGroupClusterCollStatUnpinNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const UnpinGroupClusterCollStatUnpinNamespacesInput =
 // Output Schema
 export type UnpinGroupClusterCollStatUnpinNamespacesOutput = void;
 export const UnpinGroupClusterCollStatUnpinNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UnpinGroupClusterCollStatUnpinNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UnpinGroupClusterCollStatUnpinNamespacesOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const UnpinGroupClusterCollStatUnpinNamespacesOutput =
  * @param clusterName - Human-readable label that identifies the cluster to unpin namespaces from.
  */
 export const unpinGroupClusterCollStatUnpinNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UnpinGroupClusterCollStatUnpinNamespacesInput,
     outputSchema: UnpinGroupClusterCollStatUnpinNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

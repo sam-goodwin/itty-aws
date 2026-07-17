@@ -8,7 +8,7 @@ export interface V1GetProjectUsageRequestCountInput {
   ref: string;
 }
 export const V1GetProjectUsageRequestCountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -36,7 +36,7 @@ export interface V1GetProjectUsageRequestCountOutput {
       };
 }
 export const V1GetProjectUsageRequestCountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -72,7 +72,7 @@ export const V1GetProjectUsageRequestCountOutput =
  * @param ref - Project ref
  */
 export const v1GetProjectUsageRequestCount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetProjectUsageRequestCountInput,
     outputSchema: V1GetProjectUsageRequestCountOutput,
     errors: [BadRequest, Forbidden] as const,

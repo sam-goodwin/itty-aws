@@ -36,7 +36,7 @@ export interface FoodServing {
 }
 
 export const FoodServing: Schema.Codec<FoodServing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     foodMeasurementUnitDisplayName: Schema.optional(Schema.String),
     multiplier: Schema.optional(Schema.Number),
     amount: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface TotalCaloriesRollupValue {
 }
 
 export const TotalCaloriesRollupValue: Schema.Codec<TotalCaloriesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kcalSum: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TotalCaloriesRollupValue" });
 
@@ -64,7 +64,7 @@ export interface Health_Date {
 }
 
 export const Health_Date: Schema.Codec<Health_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -84,7 +84,7 @@ export interface DailyHeartRateVariability {
 }
 
 export const DailyHeartRateVariability: Schema.Codec<DailyHeartRateVariability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds: Schema.optional(
       Schema.Number,
     ),
@@ -100,7 +100,7 @@ export interface BatchDeleteDataPointsRequest {
 }
 
 export const BatchDeleteDataPointsRequest: Schema.Codec<BatchDeleteDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteDataPointsRequest" });
 
@@ -120,7 +120,7 @@ export interface HeartRateZone {
 }
 
 export const HeartRateZone: Schema.Codec<HeartRateZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartRateZoneType: Schema.optional(Schema.String),
     minBeatsPerMinute: Schema.optional(Schema.String),
     maxBeatsPerMinute: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface DailyHeartRateZones {
 }
 
 export const DailyHeartRateZones: Schema.Codec<DailyHeartRateZones> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartRateZones: Schema.optional(Schema.Array(HeartRateZone)),
     date: Schema.optional(Health_Date),
   }).annotate({ identifier: "DailyHeartRateZones" });
@@ -151,7 +151,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Codec<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -166,7 +166,7 @@ export interface CivilDateTime {
 }
 
 export const CivilDateTime: Schema.Codec<CivilDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Health_Date),
     time: Schema.optional(TimeOfDay),
   }).annotate({ identifier: "CivilDateTime" });
@@ -181,7 +181,7 @@ export interface ObservationSampleTime {
 }
 
 export const ObservationSampleTime: Schema.Codec<ObservationSampleTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     physicalTime: Schema.optional(Schema.String),
     utcOffset: Schema.optional(Schema.String),
     civilTime: Schema.optional(CivilDateTime),
@@ -195,7 +195,7 @@ export interface BodyFat {
 }
 
 export const BodyFat: Schema.Codec<BodyFat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     percentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BodyFat" });
@@ -210,7 +210,7 @@ export interface HeartRateVariability {
 }
 
 export const HeartRateVariability: Schema.Codec<HeartRateVariability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     rootMeanSquareOfSuccessiveDifferencesMilliseconds: Schema.optional(
       Schema.Number,
@@ -228,7 +228,7 @@ export interface DailyRestingHeartRateMetadata {
 }
 
 export const DailyRestingHeartRateMetadata: Schema.Codec<DailyRestingHeartRateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calculationMethod: Schema.optional(Schema.String),
   }).annotate({ identifier: "DailyRestingHeartRateMetadata" });
 
@@ -242,7 +242,7 @@ export interface DailyRestingHeartRate {
 }
 
 export const DailyRestingHeartRate: Schema.Codec<DailyRestingHeartRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyRestingHeartRateMetadata: Schema.optional(
       DailyRestingHeartRateMetadata,
     ),
@@ -272,7 +272,7 @@ export interface DailyVO2Max {
 }
 
 export const DailyVO2Max: Schema.Codec<DailyVO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vo2MaxCovariance: Schema.optional(Schema.Number),
     date: Schema.optional(Health_Date),
     vo2Max: Schema.optional(Schema.Number),
@@ -288,7 +288,7 @@ export interface OxygenSaturation {
 }
 
 export const OxygenSaturation: Schema.Codec<OxygenSaturation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     percentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "OxygenSaturation" });
@@ -303,7 +303,7 @@ export interface RespiratoryRateSleepSummaryStatistics {
 }
 
 export const RespiratoryRateSleepSummaryStatistics: Schema.Codec<RespiratoryRateSleepSummaryStatistics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     breathsPerMinute: Schema.optional(Schema.Number),
     signalToNoise: Schema.optional(Schema.Number),
     standardDeviation: Schema.optional(Schema.Number),
@@ -323,7 +323,7 @@ export interface RespiratoryRateSleepSummary {
 }
 
 export const RespiratoryRateSleepSummary: Schema.Codec<RespiratoryRateSleepSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deepSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
     lightSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
     remSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
@@ -347,7 +347,7 @@ export interface SessionTimeInterval {
 }
 
 export const SessionTimeInterval: Schema.Codec<SessionTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endUtcOffset: Schema.optional(Schema.String),
     civilEndTime: Schema.optional(CivilDateTime),
     civilStartTime: Schema.optional(CivilDateTime),
@@ -374,7 +374,7 @@ export interface StageSummary {
 }
 
 export const StageSummary: Schema.Codec<StageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     minutes: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -396,7 +396,7 @@ export interface SleepSummary {
 }
 
 export const SleepSummary: Schema.Codec<SleepSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minutesAsleep: Schema.optional(Schema.String),
     minutesAwake: Schema.optional(Schema.String),
     minutesToFallAsleep: Schema.optional(Schema.String),
@@ -417,7 +417,7 @@ export interface OutOfBedSegment {
 }
 
 export const OutOfBedSegment: Schema.Codec<OutOfBedSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     startUtcOffset: Schema.optional(Schema.String),
@@ -450,7 +450,7 @@ export interface SleepStage {
 }
 
 export const SleepStage: Schema.Codec<SleepStage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -485,7 +485,7 @@ export interface SleepMetadata {
 }
 
 export const SleepMetadata: Schema.Codec<SleepMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nap: Schema.optional(Schema.Boolean),
     externalId: Schema.optional(Schema.String),
     stagesStatus: Schema.optional(Schema.String),
@@ -513,7 +513,7 @@ export interface Sleep {
 }
 
 export const Sleep: Schema.Codec<Sleep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(SessionTimeInterval),
     type: Schema.optional(Schema.String),
     summary: Schema.optional(SleepSummary),
@@ -532,7 +532,7 @@ export interface RunVO2Max {
 }
 
 export const RunVO2Max: Schema.Codec<RunVO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     runVo2Max: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RunVO2Max" });
@@ -549,7 +549,7 @@ export interface TimeInHeartRateZones {
 }
 
 export const TimeInHeartRateZones: Schema.Codec<TimeInHeartRateZones> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vigorousTime: Schema.optional(Schema.String),
     peakTime: Schema.optional(Schema.String),
     lightTime: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface MobilityMetrics {
 }
 
 export const MobilityMetrics: Schema.Codec<MobilityMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     avgCadenceStepsPerMinute: Schema.optional(Schema.Number),
     avgStrideLengthMillimeters: Schema.optional(Schema.String),
     avgVerticalOscillationMillimeters: Schema.optional(Schema.String),
@@ -606,7 +606,7 @@ export interface MetricsSummary {
 }
 
 export const MetricsSummary: Schema.Codec<MetricsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averagePaceSecondsPerMeter: Schema.optional(Schema.Number),
     elevationGainMillimeters: Schema.optional(Schema.Number),
     averageHeartRateBeatsPerMinute: Schema.optional(Schema.String),
@@ -645,7 +645,7 @@ export interface SplitSummary {
 }
 
 export const SplitSummary: Schema.Codec<SplitSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     activeDuration: Schema.optional(Schema.String),
@@ -663,7 +663,7 @@ export interface ExerciseMetadata {
 }
 
 export const ExerciseMetadata: Schema.Codec<ExerciseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     poolLengthMillimeters: Schema.optional(Schema.String),
     hasGps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExerciseMetadata" });
@@ -686,7 +686,7 @@ export interface ExerciseEvent {
 }
 
 export const ExerciseEvent: Schema.Codec<ExerciseEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventUtcOffset: Schema.optional(Schema.String),
     exerciseEventType: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -903,7 +903,7 @@ export interface Exercise {
 }
 
 export const Exercise: Schema.Codec<Exercise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeDuration: Schema.optional(Schema.String),
     interval: Schema.optional(SessionTimeInterval),
     splits: Schema.optional(Schema.Array(SplitSummary)),
@@ -936,7 +936,7 @@ export interface WeightQuantity {
 }
 
 export const WeightQuantity: Schema.Codec<WeightQuantity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userProvidedUnit: Schema.optional(Schema.String),
     grams: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WeightQuantity" });
@@ -990,7 +990,7 @@ export interface NutrientQuantity {
 }
 
 export const NutrientQuantity: Schema.Codec<NutrientQuantity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quantity: Schema.optional(WeightQuantity),
     nutrient: Schema.optional(Schema.String),
   }).annotate({ identifier: "NutrientQuantity" });
@@ -1010,7 +1010,7 @@ export interface EnergyQuantity {
 }
 
 export const EnergyQuantity: Schema.Codec<EnergyQuantity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kcal: Schema.optional(Schema.Number),
     userProvidedUnit: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnergyQuantity" });
@@ -1025,7 +1025,7 @@ export interface Serving {
 }
 
 export const Serving: Schema.Codec<Serving> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     foodMeasurementUnit: Schema.optional(Schema.String),
     amount: Schema.optional(Schema.Number),
     foodMeasurementUnitDisplayName: Schema.optional(Schema.String),
@@ -1066,7 +1066,7 @@ export interface NutritionLog {
 }
 
 export const NutritionLog: Schema.Codec<NutritionLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalFat: Schema.optional(WeightQuantity),
     foodDisplayName: Schema.optional(Schema.String),
     nutrients: Schema.optional(Schema.Array(NutrientQuantity)),
@@ -1095,7 +1095,7 @@ export interface ObservationTimeInterval {
 }
 
 export const ObservationTimeInterval: Schema.Codec<ObservationTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endUtcOffset: Schema.optional(Schema.String),
     civilEndTime: Schema.optional(CivilDateTime),
     civilStartTime: Schema.optional(CivilDateTime),
@@ -1117,7 +1117,7 @@ export interface ActiveMinutesByActivityLevel {
 }
 
 export const ActiveMinutesByActivityLevel: Schema.Codec<ActiveMinutesByActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityLevel: Schema.optional(Schema.String),
     activeMinutes: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActiveMinutesByActivityLevel" });
@@ -1130,7 +1130,7 @@ export interface ActiveMinutes {
 }
 
 export const ActiveMinutes: Schema.Codec<ActiveMinutes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     activeMinutesByActivityLevel: Schema.optional(
       Schema.Array(ActiveMinutesByActivityLevel),
@@ -1145,7 +1145,7 @@ export interface BasalEnergyBurned {
 }
 
 export const BasalEnergyBurned: Schema.Codec<BasalEnergyBurned> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kcal: Schema.optional(Schema.Number),
     interval: Schema.optional(ObservationTimeInterval),
   }).annotate({ identifier: "BasalEnergyBurned" });
@@ -1164,7 +1164,7 @@ export interface ActivityLevel {
 }
 
 export const ActivityLevel: Schema.Codec<ActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     activityLevelType: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActivityLevel" });
@@ -1177,7 +1177,7 @@ export interface Floors {
 }
 
 export const Floors: Schema.Codec<Floors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "Floors" });
@@ -1188,7 +1188,7 @@ export interface SedentaryPeriod {
 }
 
 export const SedentaryPeriod: Schema.Codec<SedentaryPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
   }).annotate({ identifier: "SedentaryPeriod" });
 
@@ -1237,7 +1237,7 @@ export interface BloodGlucose {
 }
 
 export const BloodGlucose: Schema.Codec<BloodGlucose> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     measurementSource: Schema.optional(Schema.String),
     mealType: Schema.optional(Schema.String),
     measurementTiming: Schema.optional(Schema.String),
@@ -1255,7 +1255,7 @@ export interface Altitude {
 }
 
 export const Altitude: Schema.Codec<Altitude> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     gainMillimeters: Schema.optional(Schema.String),
   }).annotate({ identifier: "Altitude" });
@@ -1268,7 +1268,7 @@ export interface Height {
 }
 
 export const Height: Schema.Codec<Height> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     heightMillimeters: Schema.optional(Schema.String),
   }).annotate({ identifier: "Height" });
@@ -1281,7 +1281,7 @@ export interface Distance {
 }
 
 export const Distance: Schema.Codec<Distance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     millimeters: Schema.optional(Schema.String),
   }).annotate({ identifier: "Distance" });
@@ -1300,7 +1300,7 @@ export interface TimeInHeartRateZone {
 }
 
 export const TimeInHeartRateZone: Schema.Codec<TimeInHeartRateZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     heartRateZoneType: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeInHeartRateZone" });
@@ -1320,7 +1320,7 @@ export interface ActiveZoneMinutes {
 }
 
 export const ActiveZoneMinutes: Schema.Codec<ActiveZoneMinutes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     heartRateZone: Schema.optional(Schema.String),
     activeZoneMinutes: Schema.optional(Schema.String),
@@ -1342,7 +1342,7 @@ export interface SwimLengthsData {
 }
 
 export const SwimLengthsData: Schema.Codec<SwimLengthsData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     strokeCount: Schema.optional(Schema.String),
     interval: Schema.optional(ObservationTimeInterval),
     swimStrokeType: Schema.optional(Schema.String),
@@ -1358,7 +1358,7 @@ export interface Weight {
 }
 
 export const Weight: Schema.Codec<Weight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     weightGrams: Schema.optional(Schema.Number),
     notes: Schema.optional(Schema.String),
@@ -1382,7 +1382,7 @@ export interface VolumeQuantity {
 }
 
 export const VolumeQuantity: Schema.Codec<VolumeQuantity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     milliliters: Schema.optional(Schema.Number),
     userProvidedUnit: Schema.optional(Schema.String),
   }).annotate({ identifier: "VolumeQuantity" });
@@ -1395,7 +1395,7 @@ export interface HydrationLog {
 }
 
 export const HydrationLog: Schema.Codec<HydrationLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountConsumed: Schema.optional(VolumeQuantity),
     interval: Schema.optional(SessionTimeInterval),
   }).annotate({ identifier: "HydrationLog" });
@@ -1414,7 +1414,7 @@ export interface DailyOxygenSaturation {
 }
 
 export const DailyOxygenSaturation: Schema.Codec<DailyOxygenSaturation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lowerBoundPercentage: Schema.optional(Schema.Number),
     upperBoundPercentage: Schema.optional(Schema.Number),
     date: Schema.optional(Health_Date),
@@ -1430,7 +1430,7 @@ export interface DailyRespiratoryRate {
 }
 
 export const DailyRespiratoryRate: Schema.Codec<DailyRespiratoryRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Health_Date),
     breathsPerMinute: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DailyRespiratoryRate" });
@@ -1447,7 +1447,7 @@ export interface DailySleepTemperatureDerivations {
 }
 
 export const DailySleepTemperatureDerivations: Schema.Codec<DailySleepTemperatureDerivations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Health_Date),
     nightlyTemperatureCelsius: Schema.optional(Schema.Number),
     relativeNightlyStddev30dCelsius: Schema.optional(Schema.Number),
@@ -1462,7 +1462,7 @@ export interface ActiveEnergyBurned {
 }
 
 export const ActiveEnergyBurned: Schema.Codec<ActiveEnergyBurned> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kcal: Schema.optional(Schema.Number),
     interval: Schema.optional(ObservationTimeInterval),
   }).annotate({ identifier: "ActiveEnergyBurned" });
@@ -1490,7 +1490,7 @@ export interface VO2Max {
 }
 
 export const VO2Max: Schema.Codec<VO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     vo2Max: Schema.optional(Schema.Number),
     measurementMethod: Schema.optional(Schema.String),
@@ -1516,7 +1516,7 @@ export interface HeartRateMetadata {
 }
 
 export const HeartRateMetadata: Schema.Codec<HeartRateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     motionContext: Schema.optional(Schema.String),
     sensorLocation: Schema.optional(Schema.String),
   }).annotate({ identifier: "HeartRateMetadata" });
@@ -1531,7 +1531,7 @@ export interface HeartRate {
 }
 
 export const HeartRate: Schema.Codec<HeartRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(HeartRateMetadata),
     sampleTime: Schema.optional(ObservationSampleTime),
     beatsPerMinute: Schema.optional(Schema.String),
@@ -1568,7 +1568,7 @@ export interface CoreBodyTemperature {
 }
 
 export const CoreBodyTemperature: Schema.Codec<CoreBodyTemperature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(ObservationSampleTime),
     measurementLocation: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1583,7 +1583,7 @@ export interface Steps {
 }
 
 export const Steps: Schema.Codec<Steps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interval: Schema.optional(ObservationTimeInterval),
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "Steps" });
@@ -1662,7 +1662,7 @@ export interface ReconciledDataPoint {
 }
 
 export const ReconciledDataPoint: Schema.Codec<ReconciledDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dailyHeartRateVariability: Schema.optional(DailyHeartRateVariability),
     dailyHeartRateZones: Schema.optional(DailyHeartRateZones),
     bodyFat: Schema.optional(BodyFat),
@@ -1714,7 +1714,7 @@ export interface HeartBeat {
 }
 
 export const HeartBeat: Schema.Codec<HeartBeat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     beatsPerMinute: Schema.optional(Schema.Number),
     physicalTime: Schema.optional(Schema.String),
     utcOffset: Schema.optional(Schema.String),
@@ -1727,7 +1727,7 @@ export interface WeightRollupValue {
 }
 
 export const WeightRollupValue: Schema.Codec<WeightRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weightGramsAvg: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WeightRollupValue" });
 
@@ -1737,7 +1737,7 @@ export interface SwimLengthsDataRollupValue {
 }
 
 export const SwimLengthsDataRollupValue: Schema.Codec<SwimLengthsDataRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     strokeCountSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "SwimLengthsDataRollupValue" });
 
@@ -1751,7 +1751,7 @@ export interface ActiveZoneMinutesRollupValue {
 }
 
 export const ActiveZoneMinutesRollupValue: Schema.Codec<ActiveZoneMinutesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sumInPeakHeartZone: Schema.optional(Schema.String),
     sumInCardioHeartZone: Schema.optional(Schema.String),
     sumInFatBurnHeartZone: Schema.optional(Schema.String),
@@ -1763,7 +1763,7 @@ export interface DistanceRollupValue {
 }
 
 export const DistanceRollupValue: Schema.Codec<DistanceRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     millimetersSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "DistanceRollupValue" });
 
@@ -1781,7 +1781,7 @@ export interface TimeInHeartRateZoneValue {
 }
 
 export const TimeInHeartRateZoneValue: Schema.Codec<TimeInHeartRateZoneValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartRateZone: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeInHeartRateZoneValue" });
@@ -1792,7 +1792,7 @@ export interface TimeInHeartRateZoneRollupValue {
 }
 
 export const TimeInHeartRateZoneRollupValue: Schema.Codec<TimeInHeartRateZoneRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeInHeartRateZones: Schema.optional(
       Schema.Array(TimeInHeartRateZoneValue),
     ),
@@ -1806,7 +1806,7 @@ export interface RestingHeartRatePersonalRangeRollupValue {
 }
 
 export const RestingHeartRatePersonalRangeRollupValue: Schema.Codec<RestingHeartRatePersonalRangeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     beatsPerMinuteMin: Schema.optional(Schema.Number),
     beatsPerMinuteMax: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RestingHeartRatePersonalRangeRollupValue" });
@@ -1817,7 +1817,7 @@ export interface AltitudeRollupValue {
 }
 
 export const AltitudeRollupValue: Schema.Codec<AltitudeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gainMillimetersSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "AltitudeRollupValue" });
 
@@ -1827,7 +1827,7 @@ export interface FloorsRollupValue {
 }
 
 export const FloorsRollupValue: Schema.Codec<FloorsRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "FloorsRollupValue" });
 
@@ -1839,7 +1839,7 @@ export interface HeartRateVariabilityPersonalRangeRollupValue {
 }
 
 export const HeartRateVariabilityPersonalRangeRollupValue: Schema.Codec<HeartRateVariabilityPersonalRangeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     averageHeartRateVariabilityMillisecondsMax: Schema.optional(Schema.Number),
     averageHeartRateVariabilityMillisecondsMin: Schema.optional(Schema.Number),
   }).annotate({ identifier: "HeartRateVariabilityPersonalRangeRollupValue" });
@@ -1850,7 +1850,7 @@ export interface SedentaryPeriodRollupValue {
 }
 
 export const SedentaryPeriodRollupValue: Schema.Codec<SedentaryPeriodRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "SedentaryPeriodRollupValue" });
 
@@ -1860,7 +1860,7 @@ export interface BloodGlucoseRollupValue {
 }
 
 export const BloodGlucoseRollupValue: Schema.Codec<BloodGlucoseRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bloodGlucoseMilligramsPerDeciliterAvg: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BloodGlucoseRollupValue" });
 
@@ -1874,7 +1874,7 @@ export interface CoreBodyTemperatureRollupValue {
 }
 
 export const CoreBodyTemperatureRollupValue: Schema.Codec<CoreBodyTemperatureRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     temperatureCelsiusAvg: Schema.optional(Schema.Number),
     temperatureCelsiusMin: Schema.optional(Schema.Number),
     temperatureCelsiusMax: Schema.optional(Schema.Number),
@@ -1886,7 +1886,7 @@ export interface StepsRollupValue {
 }
 
 export const StepsRollupValue: Schema.Codec<StepsRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "StepsRollupValue" });
 
@@ -1900,7 +1900,7 @@ export interface HeartRateRollupValue {
 }
 
 export const HeartRateRollupValue: Schema.Codec<HeartRateRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     beatsPerMinuteAvg: Schema.optional(Schema.Number),
     beatsPerMinuteMax: Schema.optional(Schema.Number),
     beatsPerMinuteMin: Schema.optional(Schema.Number),
@@ -1912,7 +1912,7 @@ export interface ActiveEnergyBurnedRollupValue {
 }
 
 export const ActiveEnergyBurnedRollupValue: Schema.Codec<ActiveEnergyBurnedRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kcalSum: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ActiveEnergyBurnedRollupValue" });
 
@@ -1934,7 +1934,7 @@ export interface VolumeQuantityRollup {
 }
 
 export const VolumeQuantityRollup: Schema.Codec<VolumeQuantityRollup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     millilitersSum: Schema.optional(Schema.Number),
     userProvidedUnitLast: Schema.optional(Schema.String),
   }).annotate({ identifier: "VolumeQuantityRollup" });
@@ -1945,7 +1945,7 @@ export interface HydrationLogRollupValue {
 }
 
 export const HydrationLogRollupValue: Schema.Codec<HydrationLogRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountConsumed: Schema.optional(VolumeQuantityRollup),
   }).annotate({ identifier: "HydrationLogRollupValue" });
 
@@ -1963,7 +1963,7 @@ export interface CaloriesInHeartRateZoneValue {
 }
 
 export const CaloriesInHeartRateZoneValue: Schema.Codec<CaloriesInHeartRateZoneValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartRateZone: Schema.optional(Schema.String),
     kcal: Schema.optional(Schema.Number),
   }).annotate({ identifier: "CaloriesInHeartRateZoneValue" });
@@ -1974,7 +1974,7 @@ export interface CaloriesInHeartRateZoneRollupValue {
 }
 
 export const CaloriesInHeartRateZoneRollupValue: Schema.Codec<CaloriesInHeartRateZoneRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     caloriesInHeartRateZones: Schema.optional(
       Schema.Array(CaloriesInHeartRateZoneValue),
     ),
@@ -1986,7 +1986,7 @@ export interface BodyFatRollupValue {
 }
 
 export const BodyFatRollupValue: Schema.Codec<BodyFatRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bodyFatPercentageAvg: Schema.optional(Schema.Number),
   }).annotate({ identifier: "BodyFatRollupValue" });
 
@@ -2004,7 +2004,7 @@ export interface ActivityLevelRollupByActivityLevelType {
 }
 
 export const ActivityLevelRollupByActivityLevelType: Schema.Codec<ActivityLevelRollupByActivityLevelType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityLevelType: Schema.optional(Schema.String),
     totalDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActivityLevelRollupByActivityLevelType" });
@@ -2015,7 +2015,7 @@ export interface ActivityLevelRollupValue {
 }
 
 export const ActivityLevelRollupValue: Schema.Codec<ActivityLevelRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityLevelRollupsByActivityLevelType: Schema.optional(
       Schema.Array(ActivityLevelRollupByActivityLevelType),
     ),
@@ -2039,7 +2039,7 @@ export interface WeightQuantityRollup {
 }
 
 export const WeightQuantityRollup: Schema.Codec<WeightQuantityRollup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gramsSum: Schema.optional(Schema.Number),
     userProvidedUnitLast: Schema.optional(Schema.String),
   }).annotate({ identifier: "WeightQuantityRollup" });
@@ -2059,7 +2059,7 @@ export interface EnergyQuantityRollup {
 }
 
 export const EnergyQuantityRollup: Schema.Codec<EnergyQuantityRollup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userProvidedUnitLast: Schema.optional(Schema.String),
     kcalSum: Schema.optional(Schema.Number),
   }).annotate({ identifier: "EnergyQuantityRollup" });
@@ -2113,7 +2113,7 @@ export interface NutrientQuantityRollup {
 }
 
 export const NutrientQuantityRollup: Schema.Codec<NutrientQuantityRollup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nutrient: Schema.optional(Schema.String),
     quantity: Schema.optional(WeightQuantityRollup),
   }).annotate({ identifier: "NutrientQuantityRollup" });
@@ -2132,7 +2132,7 @@ export interface NutritionLogRollupValue {
 }
 
 export const NutritionLogRollupValue: Schema.Codec<NutritionLogRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalCarbohydrate: Schema.optional(WeightQuantityRollup),
     totalFat: Schema.optional(WeightQuantityRollup),
     energy: Schema.optional(EnergyQuantityRollup),
@@ -2153,7 +2153,7 @@ export interface ActiveMinutesRollupByActivityLevel {
 }
 
 export const ActiveMinutesRollupByActivityLevel: Schema.Codec<ActiveMinutesRollupByActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activityLevel: Schema.optional(Schema.String),
     activeMinutesSum: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActiveMinutesRollupByActivityLevel" });
@@ -2164,7 +2164,7 @@ export interface ActiveMinutesRollupValue {
 }
 
 export const ActiveMinutesRollupValue: Schema.Codec<ActiveMinutesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeMinutesRollupByActivityLevel: Schema.optional(
       Schema.Array(ActiveMinutesRollupByActivityLevel),
     ),
@@ -2180,7 +2180,7 @@ export interface RunVO2MaxRollupValue {
 }
 
 export const RunVO2MaxRollupValue: Schema.Codec<RunVO2MaxRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rateMin: Schema.optional(Schema.Number),
     rateAvg: Schema.optional(Schema.Number),
     rateMax: Schema.optional(Schema.Number),
@@ -2240,7 +2240,7 @@ export interface DailyRollupDataPoint {
 }
 
 export const DailyRollupDataPoint: Schema.Codec<DailyRollupDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(WeightRollupValue),
     swimLengthsData: Schema.optional(SwimLengthsDataRollupValue),
     activeZoneMinutes: Schema.optional(ActiveZoneMinutesRollupValue),
@@ -2280,7 +2280,7 @@ export interface DailyRollUpDataPointsResponse {
 }
 
 export const DailyRollUpDataPointsResponse: Schema.Codec<DailyRollUpDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rollupDataPoints: Schema.optional(Schema.Array(DailyRollupDataPoint)),
   }).annotate({ identifier: "DailyRollUpDataPointsResponse" });
 
@@ -2292,7 +2292,7 @@ export interface TimeZone {
 }
 
 export const TimeZone: Schema.Codec<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeZone" });
@@ -2319,7 +2319,7 @@ export interface DateTime {
 }
 
 export const DateTime: Schema.Codec<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(TimeZone),
     utcOffset: Schema.optional(Schema.String),
     hours: Schema.optional(Schema.Number),
@@ -2339,7 +2339,7 @@ export interface CivilTimeInterval {
 }
 
 export const CivilTimeInterval: Schema.Codec<CivilTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(CivilDateTime),
     start: Schema.optional(CivilDateTime),
   }).annotate({ identifier: "CivilTimeInterval" });
@@ -2358,7 +2358,7 @@ export interface MedicalDeviceInfo {
 }
 
 export const MedicalDeviceInfo: Schema.Codec<MedicalDeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     algorithmVersion: Schema.optional(Schema.String),
     firmwareVersion: Schema.optional(Schema.String),
     featureVersion: Schema.optional(Schema.String),
@@ -2395,7 +2395,7 @@ export interface Electrocardiogram {
 }
 
 export const Electrocardiogram: Schema.Codec<Electrocardiogram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     millivoltsScalingFactor: Schema.optional(Schema.Number),
     medicalDeviceInfo: Schema.optional(MedicalDeviceInfo),
     beatsPerMinuteAvg: Schema.optional(Schema.String),
@@ -2418,7 +2418,7 @@ export interface SubscriberConfig {
 }
 
 export const SubscriberConfig: Schema.Codec<SubscriberConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionCreatePolicy: Schema.optional(Schema.String),
     dataTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SubscriberConfig" });
@@ -2497,7 +2497,7 @@ export interface Settings {
 }
 
 export const Settings: Schema.Codec<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heightUnit: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
     distanceUnit: Schema.optional(Schema.String),
@@ -2523,7 +2523,7 @@ export interface EndpointAuthorization {
 }
 
 export const EndpointAuthorization: Schema.Codec<EndpointAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secret: Schema.optional(Schema.String),
     secretSet: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "EndpointAuthorization" });
@@ -2551,7 +2551,7 @@ export interface Subscriber {
 }
 
 export const Subscriber: Schema.Codec<Subscriber> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     subscriberConfigs: Schema.optional(Schema.Array(SubscriberConfig)),
@@ -2571,7 +2571,7 @@ export interface ListSubscribersResponse {
 }
 
 export const ListSubscribersResponse: Schema.Codec<ListSubscribersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscribers: Schema.optional(Schema.Array(Subscriber)),
     totalSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -2580,7 +2580,7 @@ export const ListSubscribersResponse: Schema.Codec<ListSubscribersResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -2602,7 +2602,7 @@ export interface Profile {
 }
 
 export const Profile: Schema.Codec<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoRunningStrideLengthMm: Schema.optional(Schema.Number),
     userConfiguredWalkingStrideLengthMm: Schema.optional(Schema.Number),
     userConfiguredRunningStrideLengthMm: Schema.optional(Schema.Number),
@@ -2620,7 +2620,7 @@ export interface HttpHeader {
 }
 
 export const HttpHeader: Schema.Codec<HttpHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "HttpHeader" });
@@ -2645,7 +2645,7 @@ export interface PairedDevice {
 }
 
 export const PairedDevice: Schema.Codec<PairedDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Array(Schema.String)),
     lastSyncTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2664,7 +2664,7 @@ export interface CreateSubscriptionPayload {
 }
 
 export const CreateSubscriptionPayload: Schema.Codec<CreateSubscriptionPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataTypes: Schema.optional(Schema.Array(Schema.String)),
     user: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateSubscriptionPayload" });
@@ -2689,7 +2689,7 @@ export interface AlertWindow {
 }
 
 export const AlertWindow: Schema.Codec<AlertWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartBeats: Schema.optional(Schema.Array(HeartBeat)),
     civilStartTime: Schema.optional(CivilDateTime),
     endUtcOffset: Schema.optional(Schema.String),
@@ -2706,7 +2706,7 @@ export interface GoogleDevicesandservicesHealthV4DataType {
 }
 
 export const GoogleDevicesandservicesHealthV4DataType: Schema.Codec<GoogleDevicesandservicesHealthV4DataType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDevicesandservicesHealthV4DataType" });
 
@@ -2718,7 +2718,7 @@ export interface ReconcileDataPointsResponse {
 }
 
 export const ReconcileDataPointsResponse: Schema.Codec<ReconcileDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataPoints: Schema.optional(Schema.Array(ReconciledDataPoint)),
   }).annotate({ identifier: "ReconcileDataPointsResponse" });
@@ -2731,7 +2731,7 @@ export interface FoodMeasurementUnit {
 }
 
 export const FoodMeasurementUnit: Schema.Codec<FoodMeasurementUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     pluralDisplayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "FoodMeasurementUnit" });
@@ -2746,7 +2746,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2766,7 +2766,7 @@ export interface IrnProfile {
 }
 
 export const IrnProfile: Schema.Codec<IrnProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     enrollmentStatus: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -2783,7 +2783,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataTypes: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
@@ -2797,7 +2797,7 @@ export interface ListSubscriptionsResponse {
 }
 
 export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSubscriptionsResponse" });
@@ -2810,7 +2810,7 @@ export interface ListPairedDevicesResponse {
 }
 
 export const ListPairedDevicesResponse: Schema.Codec<ListPairedDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pairedDevices: Schema.optional(Schema.Array(PairedDevice)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListPairedDevicesResponse" });
@@ -2825,7 +2825,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webClientId: Schema.optional(Schema.String),
     googleWebClientId: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -2852,7 +2852,7 @@ export interface Device {
 }
 
 export const Device: Schema.Codec<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formFactor: Schema.optional(Schema.String),
     manufacturer: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2887,7 +2887,7 @@ export interface DataSource {
 }
 
 export const DataSource: Schema.Codec<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recordingMethod: Schema.optional(Schema.String),
     application: Schema.optional(Application),
     device: Schema.optional(Device),
@@ -2908,7 +2908,7 @@ export interface DailyRollUpDataPointsRequest {
 }
 
 export const DailyRollUpDataPointsRequest: Schema.Codec<DailyRollUpDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     range: Schema.optional(CivilTimeInterval),
     windowSizeDays: Schema.optional(Schema.Number),
@@ -2965,7 +2965,7 @@ export interface Food {
 }
 
 export const Food: Schema.Codec<Food> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nutrients: Schema.optional(Schema.Array(NutrientQuantity)),
     totalFat: Schema.optional(WeightQuantity),
     energyMax: Schema.optional(EnergyQuantity),
@@ -2995,7 +2995,7 @@ export interface HttpResponse {
 }
 
 export const HttpResponse: Schema.Codec<HttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Number),
     body: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -3008,7 +3008,7 @@ export interface GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog {
 }
 
 export const GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog: Schema.Codec<GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     httpResponse: Schema.optional(HttpResponse),
   }).annotate({
     identifier: "GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog",
@@ -3022,7 +3022,7 @@ export interface Interval {
 }
 
 export const Interval: Schema.Codec<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Interval" });
@@ -3077,7 +3077,7 @@ export interface RollupDataPoint {
 }
 
 export const RollupDataPoint: Schema.Codec<RollupDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     altitude: Schema.optional(AltitudeRollupValue),
     distance: Schema.optional(DistanceRollupValue),
     timeInHeartRateZone: Schema.optional(TimeInHeartRateZoneRollupValue),
@@ -3113,7 +3113,7 @@ export interface RollUpDataPointsResponse {
 }
 
 export const RollUpDataPointsResponse: Schema.Codec<RollUpDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rollupDataPoints: Schema.optional(Schema.Array(RollupDataPoint)),
   }).annotate({ identifier: "RollUpDataPointsResponse" });
@@ -3128,7 +3128,7 @@ export interface Identity {
 }
 
 export const Identity: Schema.Codec<Identity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     healthUserId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     legacyUserId: Schema.optional(Schema.String),
@@ -3144,7 +3144,7 @@ export interface IrregularRhythmNotification {
 }
 
 export const IrregularRhythmNotification: Schema.Codec<IrregularRhythmNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alertWindows: Schema.optional(Schema.Array(AlertWindow)),
     interval: Schema.optional(SessionTimeInterval),
     medicalDeviceInfo: Schema.optional(MedicalDeviceInfo),
@@ -3234,7 +3234,7 @@ export interface DataPoint {
 }
 
 export const DataPoint: Schema.Codec<DataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     heartRate: Schema.optional(HeartRate),
     vo2Max: Schema.optional(VO2Max),
     steps: Schema.optional(Steps),
@@ -3293,7 +3293,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -3307,7 +3307,7 @@ export interface GoogleDevicesandservicesHealthV4User {
 }
 
 export const GoogleDevicesandservicesHealthV4User: Schema.Codec<GoogleDevicesandservicesHealthV4User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDevicesandservicesHealthV4User" });
 
@@ -3321,7 +3321,7 @@ export interface CreateSubscriberPayload {
 }
 
 export const CreateSubscriberPayload: Schema.Codec<CreateSubscriberPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUri: Schema.optional(Schema.String),
     endpointAuthorization: Schema.optional(EndpointAuthorization),
     subscriberConfigs: Schema.optional(Schema.Array(SubscriberConfig)),
@@ -3341,7 +3341,7 @@ export interface RollUpDataPointsRequest {
 }
 
 export const RollUpDataPointsRequest: Schema.Codec<RollUpDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     windowSize: Schema.optional(Schema.String),
     dataSourceFamily: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -3355,7 +3355,7 @@ export interface ExportExerciseTcxResponse {
 }
 
 export const ExportExerciseTcxResponse: Schema.Codec<ExportExerciseTcxResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tcxData: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExportExerciseTcxResponse" });
 
@@ -3367,7 +3367,7 @@ export interface ListDataPointsResponse {
 }
 
 export const ListDataPointsResponse: Schema.Codec<ListDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataPoints: Schema.optional(Schema.Array(DataPoint)),
   }).annotate({ identifier: "ListDataPointsResponse" });
@@ -3436,7 +3436,7 @@ export interface CreateProjectsSubscribersRequest {
 }
 
 export const CreateProjectsSubscribersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     subscriberId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subscriberId"),
@@ -3448,8 +3448,7 @@ export const CreateProjectsSubscribersRequest =
   ) as unknown as Schema.Codec<CreateProjectsSubscribersRequest>;
 
 export type CreateProjectsSubscribersResponse = Operation;
-export const CreateProjectsSubscribersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsSubscribersResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsSubscribersError =
   | DefaultErrors
@@ -3464,7 +3463,7 @@ export const createProjectsSubscribers: API.OperationMethod<
   CreateProjectsSubscribersResponse,
   CreateProjectsSubscribersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsSubscribersRequest,
   output: CreateProjectsSubscribersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3480,7 +3479,7 @@ export interface ListProjectsSubscribersRequest {
 }
 
 export const ListProjectsSubscribersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3491,7 +3490,7 @@ export const ListProjectsSubscribersRequest =
 
 export type ListProjectsSubscribersResponse = ListSubscribersResponse;
 export const ListProjectsSubscribersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscribersResponse;
+  /*@__PURE__*/ ListSubscribersResponse;
 
 export type ListProjectsSubscribersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3501,7 +3500,7 @@ export const listProjectsSubscribers: API.PaginatedOperationMethod<
   ListProjectsSubscribersResponse,
   ListProjectsSubscribersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscribersRequest,
   output: ListProjectsSubscribersResponse,
   errors: [NotFound, Forbidden],
@@ -3521,7 +3520,7 @@ export interface PatchProjectsSubscribersRequest {
 }
 
 export const PatchProjectsSubscribersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Subscriber).pipe(T.HttpBody()),
@@ -3531,8 +3530,7 @@ export const PatchProjectsSubscribersRequest =
   ) as unknown as Schema.Codec<PatchProjectsSubscribersRequest>;
 
 export type PatchProjectsSubscribersResponse = Operation;
-export const PatchProjectsSubscribersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsSubscribersResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsSubscribersError =
   | DefaultErrors
@@ -3547,7 +3545,7 @@ export const patchProjectsSubscribers: API.OperationMethod<
   PatchProjectsSubscribersResponse,
   PatchProjectsSubscribersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsSubscribersRequest,
   output: PatchProjectsSubscribersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3561,7 +3559,7 @@ export interface DeleteProjectsSubscribersRequest {
 }
 
 export const DeleteProjectsSubscribersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -3570,8 +3568,7 @@ export const DeleteProjectsSubscribersRequest =
   ) as unknown as Schema.Codec<DeleteProjectsSubscribersRequest>;
 
 export type DeleteProjectsSubscribersResponse = Operation;
-export const DeleteProjectsSubscribersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsSubscribersResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsSubscribersError =
   | DefaultErrors
@@ -3586,7 +3583,7 @@ export const deleteProjectsSubscribers: API.OperationMethod<
   DeleteProjectsSubscribersResponse,
   DeleteProjectsSubscribersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsSubscribersRequest,
   output: DeleteProjectsSubscribersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3602,7 +3599,7 @@ export interface CreateProjectsSubscribersSubscriptionsRequest {
 }
 
 export const CreateProjectsSubscribersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     subscriptionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subscriptionId"),
@@ -3619,7 +3616,7 @@ export const CreateProjectsSubscribersSubscriptionsRequest =
 
 export type CreateProjectsSubscribersSubscriptionsResponse = Subscription;
 export const CreateProjectsSubscribersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+  /*@__PURE__*/ Subscription;
 
 export type CreateProjectsSubscribersSubscriptionsError =
   | DefaultErrors
@@ -3634,7 +3631,7 @@ export const createProjectsSubscribersSubscriptions: API.OperationMethod<
   CreateProjectsSubscribersSubscriptionsResponse,
   CreateProjectsSubscribersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsSubscribersSubscriptionsRequest,
   output: CreateProjectsSubscribersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3652,7 +3649,7 @@ export interface ListProjectsSubscribersSubscriptionsRequest {
 }
 
 export const ListProjectsSubscribersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -3665,7 +3662,7 @@ export const ListProjectsSubscribersSubscriptionsRequest =
 export type ListProjectsSubscribersSubscriptionsResponse =
   ListSubscriptionsResponse;
 export const ListProjectsSubscribersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+  /*@__PURE__*/ ListSubscriptionsResponse;
 
 export type ListProjectsSubscribersSubscriptionsError =
   | DefaultErrors
@@ -3678,7 +3675,7 @@ export const listProjectsSubscribersSubscriptions: API.PaginatedOperationMethod<
   ListProjectsSubscribersSubscriptionsResponse,
   ListProjectsSubscribersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscribersSubscriptionsRequest,
   output: ListProjectsSubscribersSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -3698,7 +3695,7 @@ export interface PatchProjectsSubscribersSubscriptionsRequest {
 }
 
 export const PatchProjectsSubscribersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
@@ -3709,7 +3706,7 @@ export const PatchProjectsSubscribersSubscriptionsRequest =
 
 export type PatchProjectsSubscribersSubscriptionsResponse = Subscription;
 export const PatchProjectsSubscribersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+  /*@__PURE__*/ Subscription;
 
 export type PatchProjectsSubscribersSubscriptionsError =
   | DefaultErrors
@@ -3724,7 +3721,7 @@ export const patchProjectsSubscribersSubscriptions: API.OperationMethod<
   PatchProjectsSubscribersSubscriptionsResponse,
   PatchProjectsSubscribersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsSubscribersSubscriptionsRequest,
   output: PatchProjectsSubscribersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3736,7 +3733,7 @@ export interface DeleteProjectsSubscribersSubscriptionsRequest {
 }
 
 export const DeleteProjectsSubscribersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v4/{+name}" }),
@@ -3745,7 +3742,7 @@ export const DeleteProjectsSubscribersSubscriptionsRequest =
 
 export type DeleteProjectsSubscribersSubscriptionsResponse = Empty;
 export const DeleteProjectsSubscribersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsSubscribersSubscriptionsError =
   | DefaultErrors
@@ -3760,7 +3757,7 @@ export const deleteProjectsSubscribersSubscriptions: API.OperationMethod<
   DeleteProjectsSubscribersSubscriptionsResponse,
   DeleteProjectsSubscribersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsSubscribersSubscriptionsRequest,
   output: DeleteProjectsSubscribersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3772,7 +3769,7 @@ export interface GetSettingsUsersRequest {
 }
 
 export const GetSettingsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
@@ -3780,7 +3777,7 @@ export const GetSettingsUsersRequest =
   ) as unknown as Schema.Codec<GetSettingsUsersRequest>;
 
 export type GetSettingsUsersResponse = Settings;
-export const GetSettingsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
+export const GetSettingsUsersResponse = /*@__PURE__*/ Settings;
 
 export type GetSettingsUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3790,7 +3787,7 @@ export const getSettingsUsers: API.OperationMethod<
   GetSettingsUsersResponse,
   GetSettingsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingsUsersRequest,
   output: GetSettingsUsersResponse,
   errors: [NotFound, Forbidden],
@@ -3806,7 +3803,7 @@ export interface UpdateSettingsUsersRequest {
 }
 
 export const UpdateSettingsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Settings).pipe(T.HttpBody()),
@@ -3816,7 +3813,7 @@ export const UpdateSettingsUsersRequest =
   ) as unknown as Schema.Codec<UpdateSettingsUsersRequest>;
 
 export type UpdateSettingsUsersResponse = Settings;
-export const UpdateSettingsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
+export const UpdateSettingsUsersResponse = /*@__PURE__*/ Settings;
 
 export type UpdateSettingsUsersError =
   | DefaultErrors
@@ -3831,7 +3828,7 @@ export const updateSettingsUsers: API.OperationMethod<
   UpdateSettingsUsersResponse,
   UpdateSettingsUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSettingsUsersRequest,
   output: UpdateSettingsUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3842,17 +3839,15 @@ export interface GetProfileUsersRequest {
   name: string;
 }
 
-export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
+export const GetProfileUsersRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
   T.Http({ method: "GET", path: "v4/{+name}" }),
   svc,
 ) as unknown as Schema.Codec<GetProfileUsersRequest>;
 
 export type GetProfileUsersResponse = Profile;
-export const GetProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const GetProfileUsersResponse = /*@__PURE__*/ Profile;
 
 export type GetProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3862,7 +3857,7 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersResponse,
   GetProfileUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProfileUsersRequest,
   output: GetProfileUsersResponse,
   errors: [NotFound, Forbidden],
@@ -3878,7 +3873,7 @@ export interface UpdateProfileUsersRequest {
 }
 
 export const UpdateProfileUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
@@ -3888,7 +3883,7 @@ export const UpdateProfileUsersRequest =
   ) as unknown as Schema.Codec<UpdateProfileUsersRequest>;
 
 export type UpdateProfileUsersResponse = Profile;
-export const UpdateProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const UpdateProfileUsersResponse = /*@__PURE__*/ Profile;
 
 export type UpdateProfileUsersError =
   | DefaultErrors
@@ -3903,7 +3898,7 @@ export const updateProfileUsers: API.OperationMethod<
   UpdateProfileUsersResponse,
   UpdateProfileUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProfileUsersRequest,
   output: UpdateProfileUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3915,7 +3910,7 @@ export interface GetIrnProfileUsersRequest {
 }
 
 export const GetIrnProfileUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
@@ -3923,8 +3918,7 @@ export const GetIrnProfileUsersRequest =
   ) as unknown as Schema.Codec<GetIrnProfileUsersRequest>;
 
 export type GetIrnProfileUsersResponse = IrnProfile;
-export const GetIrnProfileUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IrnProfile;
+export const GetIrnProfileUsersResponse = /*@__PURE__*/ IrnProfile;
 
 export type GetIrnProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3934,7 +3928,7 @@ export const getIrnProfileUsers: API.OperationMethod<
   GetIrnProfileUsersResponse,
   GetIrnProfileUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIrnProfileUsersRequest,
   output: GetIrnProfileUsersResponse,
   errors: [NotFound, Forbidden],
@@ -3946,7 +3940,7 @@ export interface GetIdentityUsersRequest {
 }
 
 export const GetIdentityUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
@@ -3954,7 +3948,7 @@ export const GetIdentityUsersRequest =
   ) as unknown as Schema.Codec<GetIdentityUsersRequest>;
 
 export type GetIdentityUsersResponse = Identity;
-export const GetIdentityUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Identity;
+export const GetIdentityUsersResponse = /*@__PURE__*/ Identity;
 
 export type GetIdentityUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3964,7 +3958,7 @@ export const getIdentityUsers: API.OperationMethod<
   GetIdentityUsersResponse,
   GetIdentityUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityUsersRequest,
   output: GetIdentityUsersResponse,
   errors: [NotFound, Forbidden],
@@ -3976,7 +3970,7 @@ export interface GetUsersPairedDevicesRequest {
 }
 
 export const GetUsersPairedDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
@@ -3984,8 +3978,7 @@ export const GetUsersPairedDevicesRequest =
   ) as unknown as Schema.Codec<GetUsersPairedDevicesRequest>;
 
 export type GetUsersPairedDevicesResponse = PairedDevice;
-export const GetUsersPairedDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PairedDevice;
+export const GetUsersPairedDevicesResponse = /*@__PURE__*/ PairedDevice;
 
 export type GetUsersPairedDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3995,7 +3988,7 @@ export const getUsersPairedDevices: API.OperationMethod<
   GetUsersPairedDevicesResponse,
   GetUsersPairedDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersPairedDevicesRequest,
   output: GetUsersPairedDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -4011,7 +4004,7 @@ export interface ListUsersPairedDevicesRequest {
 }
 
 export const ListUsersPairedDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -4022,7 +4015,7 @@ export const ListUsersPairedDevicesRequest =
 
 export type ListUsersPairedDevicesResponse = ListPairedDevicesResponse;
 export const ListUsersPairedDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPairedDevicesResponse;
+  /*@__PURE__*/ ListPairedDevicesResponse;
 
 export type ListUsersPairedDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -4032,7 +4025,7 @@ export const listUsersPairedDevices: API.PaginatedOperationMethod<
   ListUsersPairedDevicesResponse,
   ListUsersPairedDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersPairedDevicesRequest,
   output: ListUsersPairedDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -4056,7 +4049,7 @@ export interface ReconcileUsersDataTypesDataPointsRequest {
 }
 
 export const ReconcileUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -4072,7 +4065,7 @@ export const ReconcileUsersDataTypesDataPointsRequest =
 export type ReconcileUsersDataTypesDataPointsResponse =
   ReconcileDataPointsResponse;
 export const ReconcileUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReconcileDataPointsResponse;
+  /*@__PURE__*/ ReconcileDataPointsResponse;
 
 export type ReconcileUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4085,7 +4078,7 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   ReconcileUsersDataTypesDataPointsResponse,
   ReconcileUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ReconcileUsersDataTypesDataPointsRequest,
   output: ReconcileUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden],
@@ -4103,7 +4096,7 @@ export interface PatchUsersDataTypesDataPointsRequest {
 }
 
 export const PatchUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
@@ -4112,8 +4105,7 @@ export const PatchUsersDataTypesDataPointsRequest =
   ) as unknown as Schema.Codec<PatchUsersDataTypesDataPointsRequest>;
 
 export type PatchUsersDataTypesDataPointsResponse = Operation;
-export const PatchUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchUsersDataTypesDataPointsResponse = /*@__PURE__*/ Operation;
 
 export type PatchUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4128,7 +4120,7 @@ export const patchUsersDataTypesDataPoints: API.OperationMethod<
   PatchUsersDataTypesDataPointsResponse,
   PatchUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersDataTypesDataPointsRequest,
   output: PatchUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4142,7 +4134,7 @@ export interface BatchDeleteUsersDataTypesDataPointsRequest {
 }
 
 export const BatchDeleteUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchDeleteDataPointsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4156,7 +4148,7 @@ export const BatchDeleteUsersDataTypesDataPointsRequest =
 
 export type BatchDeleteUsersDataTypesDataPointsResponse = Operation;
 export const BatchDeleteUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type BatchDeleteUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4171,7 +4163,7 @@ export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
   BatchDeleteUsersDataTypesDataPointsResponse,
   BatchDeleteUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteUsersDataTypesDataPointsRequest,
   output: BatchDeleteUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4189,7 +4181,7 @@ export interface ListUsersDataTypesDataPointsRequest {
 }
 
 export const ListUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -4201,7 +4193,7 @@ export const ListUsersDataTypesDataPointsRequest =
 
 export type ListUsersDataTypesDataPointsResponse = ListDataPointsResponse;
 export const ListUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataPointsResponse;
+  /*@__PURE__*/ ListDataPointsResponse;
 
 export type ListUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4214,7 +4206,7 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   ListUsersDataTypesDataPointsResponse,
   ListUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataTypesDataPointsRequest,
   output: ListUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden],
@@ -4232,7 +4224,7 @@ export interface DailyRollUpUsersDataTypesDataPointsRequest {
 }
 
 export const DailyRollUpUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DailyRollUpDataPointsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4247,7 +4239,7 @@ export const DailyRollUpUsersDataTypesDataPointsRequest =
 export type DailyRollUpUsersDataTypesDataPointsResponse =
   DailyRollUpDataPointsResponse;
 export const DailyRollUpUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DailyRollUpDataPointsResponse;
+  /*@__PURE__*/ DailyRollUpDataPointsResponse;
 
 export type DailyRollUpUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4262,7 +4254,7 @@ export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
   DailyRollUpUsersDataTypesDataPointsResponse,
   DailyRollUpUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DailyRollUpUsersDataTypesDataPointsRequest,
   output: DailyRollUpUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4276,7 +4268,7 @@ export interface RollUpUsersDataTypesDataPointsRequest {
 }
 
 export const RollUpUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RollUpDataPointsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -4290,7 +4282,7 @@ export const RollUpUsersDataTypesDataPointsRequest =
 
 export type RollUpUsersDataTypesDataPointsResponse = RollUpDataPointsResponse;
 export const RollUpUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RollUpDataPointsResponse;
+  /*@__PURE__*/ RollUpDataPointsResponse;
 
 export type RollUpUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4305,7 +4297,7 @@ export const rollUpUsersDataTypesDataPoints: API.OperationMethod<
   RollUpUsersDataTypesDataPointsResponse,
   RollUpUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollUpUsersDataTypesDataPointsRequest,
   output: RollUpUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4319,7 +4311,7 @@ export interface ExportExerciseTcxUsersDataTypesDataPointsRequest {
 }
 
 export const ExportExerciseTcxUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     partialData: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("partialData"),
@@ -4332,7 +4324,7 @@ export const ExportExerciseTcxUsersDataTypesDataPointsRequest =
 export type ExportExerciseTcxUsersDataTypesDataPointsResponse =
   ExportExerciseTcxResponse;
 export const ExportExerciseTcxUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExportExerciseTcxResponse;
+  /*@__PURE__*/ ExportExerciseTcxResponse;
 
 export type ExportExerciseTcxUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4345,7 +4337,7 @@ export const exportExerciseTcxUsersDataTypesDataPoints: API.OperationMethod<
   ExportExerciseTcxUsersDataTypesDataPointsResponse,
   ExportExerciseTcxUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportExerciseTcxUsersDataTypesDataPointsRequest,
   output: ExportExerciseTcxUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden],
@@ -4357,7 +4349,7 @@ export interface GetUsersDataTypesDataPointsRequest {
 }
 
 export const GetUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
@@ -4365,8 +4357,7 @@ export const GetUsersDataTypesDataPointsRequest =
   ) as unknown as Schema.Codec<GetUsersDataTypesDataPointsRequest>;
 
 export type GetUsersDataTypesDataPointsResponse = DataPoint;
-export const GetUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataPoint;
+export const GetUsersDataTypesDataPointsResponse = /*@__PURE__*/ DataPoint;
 
 export type GetUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4379,7 +4370,7 @@ export const getUsersDataTypesDataPoints: API.OperationMethod<
   GetUsersDataTypesDataPointsResponse,
   GetUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersDataTypesDataPointsRequest,
   output: GetUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden],
@@ -4393,7 +4384,7 @@ export interface CreateUsersDataTypesDataPointsRequest {
 }
 
 export const CreateUsersDataTypesDataPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
@@ -4402,8 +4393,7 @@ export const CreateUsersDataTypesDataPointsRequest =
   ) as unknown as Schema.Codec<CreateUsersDataTypesDataPointsRequest>;
 
 export type CreateUsersDataTypesDataPointsResponse = Operation;
-export const CreateUsersDataTypesDataPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateUsersDataTypesDataPointsResponse = /*@__PURE__*/ Operation;
 
 export type CreateUsersDataTypesDataPointsError =
   | DefaultErrors
@@ -4418,7 +4408,7 @@ export const createUsersDataTypesDataPoints: API.OperationMethod<
   CreateUsersDataTypesDataPointsResponse,
   CreateUsersDataTypesDataPointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersDataTypesDataPointsRequest,
   output: CreateUsersDataTypesDataPointsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

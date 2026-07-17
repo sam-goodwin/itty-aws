@@ -16,10 +16,10 @@ export interface UpdateTrafficBudgetInput {
   burst?: number;
   concurrency?: number;
   warning_threshold?: number;
-  rules?: string[];
+  rules?: ReadonlyArray<string>;
 }
 export const UpdateTrafficBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -50,27 +50,27 @@ export interface UpdateTrafficBudgetOutput {
   concurrency?: number | null;
   warning_threshold?: number | null;
   actor: { id: string; display_name: string; avatar_url: string };
-  rules: {
+  rules: ReadonlyArray<{
     id: string;
     kind: "match" | "each";
-    tags: {
+    tags: ReadonlyArray<{
       key_id: string;
       key: string;
       value: string;
       source: "sql" | "system";
-    }[];
+    }>;
     fingerprint?: string | null;
     keyspace?: string | null;
     actor: { id: string; display_name: string; avatar_url: string };
     syntax_highlighted_sql: string;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   created_at: string;
   updated_at: string;
 }
 export const UpdateTrafficBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     mode: Schema.Literals(["enforce", "warn", "off"]),
@@ -129,7 +129,7 @@ export const UpdateTrafficBudgetOutput =
  * @param warning_threshold - A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100).
  * @param rules - Array of traffic rules to apply to the budget
  */
-export const updateTrafficBudget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateTrafficBudget = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateTrafficBudgetInput,
   outputSchema: UpdateTrafficBudgetOutput,
   errors: [Forbidden, NotFound] as const,

@@ -16,7 +16,7 @@ export interface UpdateOrganizationTeamInput {
   description?: string;
 }
 export const UpdateOrganizationTeamInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -33,7 +33,7 @@ export interface UpdateOrganizationTeamOutput {
   id: string;
   display_name: string;
   creator: { id: string; display_name: string; avatar_url: string };
-  members: {
+  members: ReadonlyArray<{
     id: string;
     display_name: string;
     name: string;
@@ -53,14 +53,19 @@ export interface UpdateOrganizationTeamOutput {
     managed?: boolean | null;
     directory_managed?: boolean | null;
     email_verified?: boolean | null;
-  }[];
-  databases: { id: string; name: string; url: string; branches_url: string }[];
-  analyst_databases: {
+  }>;
+  databases: ReadonlyArray<{
     id: string;
     name: string;
     url: string;
     branches_url: string;
-  }[];
+  }>;
+  analyst_databases: ReadonlyArray<{
+    id: string;
+    name: string;
+    url: string;
+    branches_url: string;
+  }>;
   name: string;
   slug: string;
   created_at: string;
@@ -69,7 +74,7 @@ export interface UpdateOrganizationTeamOutput {
   managed: boolean;
 }
 export const UpdateOrganizationTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     display_name: Schema.String,
     creator: Schema.Struct({
@@ -137,10 +142,8 @@ export const UpdateOrganizationTeamOutput =
  * @param name - The new name for the team
  * @param description - The new description for the team
  */
-export const updateOrganizationTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateOrganizationTeamInput,
-    outputSchema: UpdateOrganizationTeamOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateOrganizationTeam = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateOrganizationTeamInput,
+  outputSchema: UpdateOrganizationTeamOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

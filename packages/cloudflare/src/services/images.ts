@@ -101,7 +101,7 @@ interface Image {
   /** Object specifying available variants for an image. */
   variants?: string[] | null;
 }
-const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Image = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -130,11 +130,10 @@ interface ListV1sResponseResultItem {
       }[]
     | null;
 }
-const ListV1sResponseResultItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      images: Schema.optional(Schema.Union([Schema.Array(Image), Schema.Null])),
-    }),
+const ListV1sResponseResultItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    images: Schema.optional(Schema.Union([Schema.Array(Image), Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListV1sResponseResultItem>;
 
 interface ListV1sResponseResult {
@@ -154,7 +153,7 @@ interface ListV1sResponseResult {
       }[]
     | null;
 }
-const ListV1sResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListV1sResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     items: Schema.optional(
       Schema.Union([Schema.Array(ListV1sResponseResultItem), Schema.Null]),
@@ -168,21 +167,20 @@ interface ListV1sResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListV1sResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListV1sResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListV1sResponseResultInfo>;
 
 interface Key {
@@ -191,7 +189,7 @@ interface Key {
   /** Key value. */
   value?: string | null;
 }
-const Key = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Key = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -204,7 +202,7 @@ interface Count {
   /** Cloudflare Images current usage. */
   current?: number | null;
 }
-const Count = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Count = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowed: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     current: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -221,7 +219,7 @@ interface Options {
   /** Maximum width in image pixels. */
   width: number;
 }
-const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Options = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fit: Schema.Union([
       Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
@@ -248,15 +246,14 @@ interface GetV1VariantResponseVariant {
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean | null;
 }
-const GetV1VariantResponseVariant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      options: Options,
-      neverRequireSignedURLs: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }),
+const GetV1VariantResponseVariant = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    options: Options,
+    neverRequireSignedURLs: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<GetV1VariantResponseVariant>;
 
 // =============================================================================
@@ -269,7 +266,7 @@ export interface GetV1Request {
   accountId: string;
 }
 
-export const GetV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetV1Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     imageId: Schema.String.pipe(T.HttpPath("imageId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -298,7 +295,7 @@ export interface GetV1Response {
   variants?: string[] | null;
 }
 
-export const GetV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetV1Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -321,7 +318,7 @@ export const getV1: API.OperationMethod<
   GetV1Response,
   GetV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV1Request,
   output: GetV1Response,
   errors: [ImagesAccessNotEnabled, ImageNotFound],
@@ -336,7 +333,7 @@ export interface ListV1sRequest {
   creator?: string | null;
 }
 
-export const ListV1sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListV1sRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -373,7 +370,7 @@ export interface ListV1sResponse {
   } | null;
 }
 
-export const ListV1sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListV1sResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: ListV1sResponseResult,
     resultInfo: Schema.optional(
@@ -389,7 +386,7 @@ export const listV1s: API.PaginatedOperationMethod<
   ListV1sResponse,
   ListV1sError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListV1sRequest,
   output: ListV1sResponse,
   errors: [ImagesAccessNotEnabled],
@@ -419,7 +416,7 @@ export interface CreateV1Request {
   url?: string;
 }
 
-export const CreateV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateV1Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     id: Schema.optional(Schema.String),
@@ -454,7 +451,7 @@ export interface CreateV1Response {
   variants?: string[] | null;
 }
 
-export const CreateV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateV1Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -477,7 +474,7 @@ export const createV1: API.OperationMethod<
   CreateV1Response,
   CreateV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateV1Request,
   output: CreateV1Response,
   errors: [ImagesAccessNotEnabled],
@@ -495,7 +492,7 @@ export interface PatchV1Request {
   requireSignedURLs?: boolean;
 }
 
-export const PatchV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchV1Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     imageId: Schema.String.pipe(T.HttpPath("imageId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -527,7 +524,7 @@ export interface PatchV1Response {
   variants?: string[] | null;
 }
 
-export const PatchV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchV1Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -553,7 +550,7 @@ export const patchV1: API.OperationMethod<
   PatchV1Response,
   PatchV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchV1Request,
   output: PatchV1Response,
   errors: [ImagesAccessNotEnabled, ImageNotFound],
@@ -565,7 +562,7 @@ export interface DeleteV1Request {
   accountId: string;
 }
 
-export const DeleteV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteV1Request = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     imageId: Schema.String.pipe(T.HttpPath("imageId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -579,7 +576,7 @@ export const DeleteV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type DeleteV1Response = unknown;
 
-export const DeleteV1Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteV1Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteV1Response>;
 
@@ -593,7 +590,7 @@ export const deleteV1: API.OperationMethod<
   DeleteV1Response,
   DeleteV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteV1Request,
   output: DeleteV1Response,
   errors: [ImagesAccessNotEnabled, ImageNotFound],
@@ -609,7 +606,7 @@ export interface GetV1BlobRequest {
   accountId: string;
 }
 
-export const GetV1BlobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetV1BlobRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     imageId: Schema.String.pipe(T.HttpPath("imageId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -623,7 +620,7 @@ export const GetV1BlobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type GetV1BlobResponse = unknown;
 
-export const GetV1BlobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const GetV1BlobResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<GetV1BlobResponse>;
 
@@ -637,7 +634,7 @@ export const getV1Blob: API.OperationMethod<
   GetV1BlobResponse,
   GetV1BlobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV1BlobRequest,
   output: GetV1BlobResponse,
   errors: [ImagesAccessNotEnabled, ImageNotFound],
@@ -652,24 +649,22 @@ export interface ListV1KeysRequest {
   accountId: string;
 }
 
-export const ListV1KeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/images/v1/keys" }),
-    ),
+export const ListV1KeysRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/images/v1/keys" }),
+  ),
 ) as unknown as Schema.Codec<ListV1KeysRequest>;
 
 export interface ListV1KeysResponse {
   keys?: { name?: string | null; value?: string | null }[] | null;
 }
 
-export const ListV1KeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const ListV1KeysResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListV1KeysResponse>;
 
 export type ListV1KeysError = DefaultErrors | ImagesAccessNotEnabled;
@@ -679,7 +674,7 @@ export const listV1Keys: API.OperationMethod<
   ListV1KeysResponse,
   ListV1KeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListV1KeysRequest,
   output: ListV1KeysResponse,
   errors: [ImagesAccessNotEnabled],
@@ -691,7 +686,7 @@ export interface PutV1KeyRequest {
   accountId: string;
 }
 
-export const PutV1KeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutV1KeyRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     signingKeyName: Schema.String.pipe(T.HttpPath("signingKeyName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -707,7 +702,7 @@ export interface PutV1KeyResponse {
   keys?: { name?: string | null; value?: string | null }[] | null;
 }
 
-export const PutV1KeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutV1KeyResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
   }).pipe(T.ResponsePath("result")),
@@ -720,7 +715,7 @@ export const putV1Key: API.OperationMethod<
   PutV1KeyResponse,
   PutV1KeyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutV1KeyRequest,
   output: PutV1KeyResponse,
   errors: [ImagesAccessNotEnabled],
@@ -732,28 +727,26 @@ export interface DeleteV1KeyRequest {
   accountId: string;
 }
 
-export const DeleteV1KeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      signingKeyName: Schema.String.pipe(T.HttpPath("signingKeyName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/images/v1/keys/{signingKeyName}",
-      }),
-    ),
+export const DeleteV1KeyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    signingKeyName: Schema.String.pipe(T.HttpPath("signingKeyName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/images/v1/keys/{signingKeyName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteV1KeyRequest>;
 
 export interface DeleteV1KeyResponse {
   keys?: { name?: string | null; value?: string | null }[] | null;
 }
 
-export const DeleteV1KeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const DeleteV1KeyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteV1KeyResponse>;
 
 export type DeleteV1KeyError =
@@ -766,7 +759,7 @@ export const deleteV1Key: API.OperationMethod<
   DeleteV1KeyResponse,
   DeleteV1KeyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteV1KeyRequest,
   output: DeleteV1KeyResponse,
   errors: [ImagesAccessNotEnabled, KeyNotFound],
@@ -781,7 +774,7 @@ export interface GetV1StatRequest {
   accountId: string;
 }
 
-export const GetV1StatRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetV1StatRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -793,11 +786,10 @@ export interface GetV1StatResponse {
   count?: { allowed?: number | null; current?: number | null } | null;
 }
 
-export const GetV1StatResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Count, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetV1StatResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Count, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetV1StatResponse>;
 
 export type GetV1StatError = DefaultErrors | ImagesAccessNotEnabled;
@@ -807,7 +799,7 @@ export const getV1Stat: API.OperationMethod<
   GetV1StatResponse,
   GetV1StatError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV1StatRequest,
   output: GetV1StatResponse,
   errors: [ImagesAccessNotEnabled],
@@ -823,17 +815,16 @@ export interface GetV1VariantRequest {
   accountId: string;
 }
 
-export const GetV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      variantId: Schema.String.pipe(T.HttpPath("variantId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/images/v1/variants/{variantId}",
-      }),
-    ),
+export const GetV1VariantRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    variantId: Schema.String.pipe(T.HttpPath("variantId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/images/v1/variants/{variantId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetV1VariantRequest>;
 
 export interface GetV1VariantResponse {
@@ -849,13 +840,12 @@ export interface GetV1VariantResponse {
   } | null;
 }
 
-export const GetV1VariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      variant: Schema.optional(
-        Schema.Union([GetV1VariantResponseVariant, Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const GetV1VariantResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    variant: Schema.optional(
+      Schema.Union([GetV1VariantResponseVariant, Schema.Null]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetV1VariantResponse>;
 
 export type GetV1VariantError =
@@ -869,7 +859,7 @@ export const getV1Variant: API.OperationMethod<
   GetV1VariantResponse,
   GetV1VariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV1VariantRequest,
   output: GetV1VariantResponse,
   errors: [ImagesAccessNotEnabled, VariantNameNotAllowed, VariantNotFound],
@@ -880,16 +870,15 @@ export interface ListV1VariantsRequest {
   accountId: string;
 }
 
-export const ListV1VariantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/images/v1/variants",
-      }),
-    ),
+export const ListV1VariantsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/images/v1/variants",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListV1VariantsRequest>;
 
 export interface ListV1VariantsResponse {
@@ -907,7 +896,7 @@ export interface ListV1VariantsResponse {
 }
 
 export const ListV1VariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       options: Schema.optional(Schema.Union([Options, Schema.Null])),
@@ -925,7 +914,7 @@ export const listV1Variants: API.OperationMethod<
   ListV1VariantsResponse,
   ListV1VariantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListV1VariantsRequest,
   output: ListV1VariantsResponse,
   errors: [ImagesAccessNotEnabled],
@@ -948,7 +937,7 @@ export interface CreateV1VariantRequest {
 }
 
 export const CreateV1VariantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.String,
@@ -976,7 +965,7 @@ export interface CreateV1VariantResponse {
 }
 
 export const CreateV1VariantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       variant: Schema.optional(
         Schema.Union([GetV1VariantResponseVariant, Schema.Null]),
@@ -995,7 +984,7 @@ export const createV1Variant: API.OperationMethod<
   CreateV1VariantResponse,
   CreateV1VariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateV1VariantRequest,
   output: CreateV1VariantResponse,
   errors: [ImagesAccessNotEnabled, VariantNameNotAllowed, VariantAlreadyExists],
@@ -1016,19 +1005,18 @@ export interface PatchV1VariantRequest {
   neverRequireSignedURLs?: boolean;
 }
 
-export const PatchV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      variantId: Schema.String.pipe(T.HttpPath("variantId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      options: Options,
-      neverRequireSignedURLs: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/images/v1/variants/{variantId}",
-      }),
-    ),
+export const PatchV1VariantRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    variantId: Schema.String.pipe(T.HttpPath("variantId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    options: Options,
+    neverRequireSignedURLs: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/images/v1/variants/{variantId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchV1VariantRequest>;
 
 export interface PatchV1VariantResponse {
@@ -1045,7 +1033,7 @@ export interface PatchV1VariantResponse {
 }
 
 export const PatchV1VariantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       variant: Schema.optional(
         Schema.Union([GetV1VariantResponseVariant, Schema.Null]),
@@ -1064,7 +1052,7 @@ export const patchV1Variant: API.OperationMethod<
   PatchV1VariantResponse,
   PatchV1VariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchV1VariantRequest,
   output: PatchV1VariantResponse,
   errors: [ImagesAccessNotEnabled, VariantNameNotAllowed, VariantNotFound],
@@ -1077,7 +1065,7 @@ export interface DeleteV1VariantRequest {
 }
 
 export const DeleteV1VariantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       variantId: Schema.String.pipe(T.HttpPath("variantId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1092,7 +1080,7 @@ export const DeleteV1VariantRequest =
 export type DeleteV1VariantResponse = unknown;
 
 export const DeleteV1VariantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteV1VariantResponse>;
 
@@ -1107,7 +1095,7 @@ export const deleteV1Variant: API.OperationMethod<
   DeleteV1VariantResponse,
   DeleteV1VariantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteV1VariantRequest,
   output: DeleteV1VariantResponse,
   errors: [ImagesAccessNotEnabled, VariantNameNotAllowed, VariantNotFound],
@@ -1132,7 +1120,7 @@ export interface ListV2sRequest {
   sortOrder?: "asc" | "desc" | (string & {});
 }
 
-export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListV2sRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     continuationToken: Schema.optional(
@@ -1169,7 +1157,7 @@ export interface ListV2sResponse {
     | null;
 }
 
-export const ListV2sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListV2sResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     continuationToken: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1192,7 +1180,7 @@ export const listV2s: API.OperationMethod<
   ListV2sResponse,
   ListV2sError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListV2sRequest,
   output: ListV2sResponse,
   errors: [ImagesAccessNotEnabled],
@@ -1218,7 +1206,7 @@ export interface CreateV2DirectUploadRequest {
 }
 
 export const CreateV2DirectUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.optional(Schema.String),
@@ -1243,7 +1231,7 @@ export interface CreateV2DirectUploadResponse {
 }
 
 export const CreateV2DirectUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadURL: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1261,7 +1249,7 @@ export const createV2DirectUpload: API.OperationMethod<
   CreateV2DirectUploadResponse,
   CreateV2DirectUploadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateV2DirectUploadRequest,
   output: CreateV2DirectUploadResponse,
   errors: [ImagesAccessNotEnabled, ImageAlreadyExists, InvalidUploadFormat],

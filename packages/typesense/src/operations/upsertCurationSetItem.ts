@@ -27,7 +27,7 @@ export interface UpsertCurationSetItemInput {
   id?: string;
 }
 export const UpsertCurationSetItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
     itemId: Schema.String.pipe(T.PathParam()),
     rule: Schema.Struct({
@@ -90,7 +90,7 @@ export interface UpsertCurationSetItemOutput {
   id: string;
 }
 export const UpsertCurationSetItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rule: Schema.Struct({
       tags: Schema.optional(Schema.Array(Schema.String)),
       query: Schema.optional(Schema.String),
@@ -133,10 +133,8 @@ export const UpsertCurationSetItemOutput =
  * @param curationSetName - The name of the curation set
  * @param itemId - The id of the curation item to upsert
  */
-export const upsertCurationSetItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpsertCurationSetItemInput,
-    outputSchema: UpsertCurationSetItemOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const upsertCurationSetItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpsertCurationSetItemInput,
+  outputSchema: UpsertCurationSetItemOutput,
+  errors: [BadRequest] as const,
+}));

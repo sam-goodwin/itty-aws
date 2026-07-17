@@ -7,7 +7,7 @@ export interface ListOrganizationInvitesV2Input {
   organizationSlug: string;
 }
 export const ListOrganizationInvitesV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -26,7 +26,7 @@ export interface ListOrganizationInvitesV2Output {
   }[];
 }
 export const ListOrganizationInvitesV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invites: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -47,9 +47,7 @@ export const ListOrganizationInvitesV2Output =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listOrganizationInvitesV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationInvitesV2Input,
-    outputSchema: ListOrganizationInvitesV2Output,
-  }),
-);
+export const listOrganizationInvitesV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationInvitesV2Input,
+  outputSchema: ListOrganizationInvitesV2Output,
+}));

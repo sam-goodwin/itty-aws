@@ -10,7 +10,7 @@ export interface GetDatabasePostgresCidrInput {
   id: string;
 }
 export const GetDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -26,14 +26,14 @@ export interface GetDatabasePostgresCidrOutput {
   id: string;
   schema: string;
   role: string;
-  cidrs: string[];
+  cidrs: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const GetDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     schema: Schema.String,
     role: Schema.String,
@@ -56,10 +56,8 @@ export const GetDatabasePostgresCidrOutput =
  * @param database - The name of the database
  * @param id - The ID of the IP restriction entry
  */
-export const getDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDatabasePostgresCidrInput,
-    outputSchema: GetDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const getDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDatabasePostgresCidrInput,
+  outputSchema: GetDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

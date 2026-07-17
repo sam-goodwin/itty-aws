@@ -15,7 +15,7 @@ export interface PostTerminalReadersReaderInput {
   metadata?: Record<string, string> | "";
 }
 export const PostTerminalReadersReaderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     label: Schema.optional(
@@ -137,7 +137,7 @@ export type PostTerminalReadersReaderOutput =
       serial_number: string;
     };
 export const PostTerminalReadersReaderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       action: Schema.Unknown,
       device_sw_version: Schema.NullOr(Schema.String),
@@ -253,9 +253,7 @@ export const PostTerminalReadersReaderOutput =
  *
  * <p>Updates a <code>Reader</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostTerminalReadersReader = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTerminalReadersReaderInput,
-    outputSchema: PostTerminalReadersReaderOutput,
-  }),
-);
+export const PostTerminalReadersReader = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTerminalReadersReaderInput,
+  outputSchema: PostTerminalReadersReaderOutput,
+}));

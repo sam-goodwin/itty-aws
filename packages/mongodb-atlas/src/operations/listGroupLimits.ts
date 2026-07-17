@@ -9,7 +9,7 @@ export interface ListGroupLimitsInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const ListGroupLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupLimitsInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const ListGroupLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupLimitsOutput = void;
 export const ListGroupLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupLimitsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupLimitsOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const ListGroupLimitsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupLimits = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupLimitsInput,
   outputSchema: ListGroupLimitsOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

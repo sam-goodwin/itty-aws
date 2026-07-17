@@ -12,7 +12,7 @@ export interface ListGroupApiKeysInput {
   pageNum?: number;
   pretty?: boolean;
 }
-export const ListGroupApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupApiKeysInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupApiKeysOutput = void;
 export const ListGroupApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupApiKeysOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupApiKeysOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const ListGroupApiKeysOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupApiKeysInput,
   outputSchema: ListGroupApiKeysOutput,
   errors: [Forbidden, NotFound] as const,

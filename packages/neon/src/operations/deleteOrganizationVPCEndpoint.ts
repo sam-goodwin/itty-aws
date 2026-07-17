@@ -9,7 +9,7 @@ export interface DeleteOrganizationVPCEndpointInput {
   vpc_endpoint_id: string;
 }
 export const DeleteOrganizationVPCEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     region_id: Schema.String.pipe(T.PathParam()),
     vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const DeleteOrganizationVPCEndpointInput =
 // Output Schema
 export type DeleteOrganizationVPCEndpointOutput = void;
 export const DeleteOrganizationVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationVPCEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationVPCEndpointOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ Azure regions are currently not supported.
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
 export const deleteOrganizationVPCEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrganizationVPCEndpointInput,
     outputSchema: DeleteOrganizationVPCEndpointOutput,
   }));

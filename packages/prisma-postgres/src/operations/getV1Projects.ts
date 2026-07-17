@@ -7,7 +7,7 @@ export interface GetV1ProjectsInput {
   cursor?: string;
   limit?: number;
 }
-export const GetV1ProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1ProjectsInput = /*@__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
 }).pipe(
@@ -27,7 +27,7 @@ export interface GetV1ProjectsOutput {
   }[];
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
-export const GetV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1ProjectsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -55,7 +55,7 @@ export const GetV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns the list of projects the token has access to.
  */
-export const getV1Projects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Projects = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1ProjectsInput,
   outputSchema: GetV1ProjectsOutput,
 }));

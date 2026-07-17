@@ -30,7 +30,7 @@ export interface PostTaxRatesInput {
     | "service_tax"
     | "vat";
 }
-export const PostTaxRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxRatesInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   country: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface PostTaxRatesOutput {
     | "vat"
     | null;
 }
-export const PostTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxRatesOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   country: Schema.NullOr(Schema.String),
   created: Schema.Number,
@@ -168,7 +168,7 @@ export const PostTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Creates a new tax rate.</p>
  */
-export const PostTaxRates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTaxRates = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTaxRatesInput,
   outputSchema: PostTaxRatesOutput,
 }));

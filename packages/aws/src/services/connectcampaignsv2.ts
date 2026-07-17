@@ -150,7 +150,7 @@ export type ProfileOutboundRequestFailureCode = string;
 export interface ProgressiveConfig {
   bandwidthAllocation: number;
 }
-export const ProgressiveConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProgressiveConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bandwidthAllocation: S.Number }),
 ).annotate({
   identifier: "ProgressiveConfig",
@@ -158,13 +158,13 @@ export const ProgressiveConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface PredictiveConfig {
   bandwidthAllocation: number;
 }
-export const PredictiveConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PredictiveConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bandwidthAllocation: S.Number }),
 ).annotate({
   identifier: "PredictiveConfig",
 }) as any as S.Schema<PredictiveConfig>;
 export interface AgentlessConfig {}
-export const AgentlessConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgentlessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AgentlessConfig",
@@ -172,17 +172,17 @@ export const AgentlessConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface TimeoutConfig {
   durationInSeconds: number;
 }
-export const TimeoutConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ durationInSeconds: S.Number }),
 ).annotate({ identifier: "TimeoutConfig" }) as any as S.Schema<TimeoutConfig>;
 export type AgentActions = string[];
-export const AgentActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AgentActions = /*@__PURE__*/ S.Array(S.String);
 export interface PreviewConfig {
   bandwidthAllocation: number;
   timeoutConfig: TimeoutConfig;
   agentActions?: string[];
 }
-export const PreviewConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PreviewConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthAllocation: S.Number,
     timeoutConfig: TimeoutConfig,
@@ -214,7 +214,7 @@ export type TelephonyOutboundMode =
       agentless?: never;
       preview: PreviewConfig;
     };
-export const TelephonyOutboundMode = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TelephonyOutboundMode = /*@__PURE__*/ S.Union([
   S.Struct({ progressive: ProgressiveConfig }),
   S.Struct({ predictive: PredictiveConfig }),
   S.Struct({ agentless: AgentlessConfig }),
@@ -225,7 +225,7 @@ export interface AnswerMachineDetectionConfig {
   awaitAnswerMachinePrompt?: boolean;
 }
 export const AnswerMachineDetectionConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enableAnswerMachineDetection: S.Boolean,
       awaitAnswerMachinePrompt: S.optional(S.Boolean),
@@ -239,14 +239,13 @@ export interface TelephonyOutboundConfig {
   answerMachineDetectionConfig?: AnswerMachineDetectionConfig;
   ringTimeout?: number;
 }
-export const TelephonyOutboundConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connectContactFlowId: S.String,
-      connectSourcePhoneNumber: S.optional(S.String),
-      answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
-      ringTimeout: S.optional(S.Number),
-    }),
+export const TelephonyOutboundConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectContactFlowId: S.String,
+    connectSourcePhoneNumber: S.optional(S.String),
+    answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
+    ringTimeout: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "TelephonyOutboundConfig",
 }) as any as S.Schema<TelephonyOutboundConfig>;
@@ -257,7 +256,7 @@ export interface TelephonyChannelSubtypeConfig {
   defaultOutboundConfig: TelephonyOutboundConfig;
 }
 export const TelephonyChannelSubtypeConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       capacity: S.optional(S.Number),
       connectQueueId: S.optional(S.String),
@@ -268,14 +267,14 @@ export const TelephonyChannelSubtypeConfig =
     identifier: "TelephonyChannelSubtypeConfig",
   }) as any as S.Schema<TelephonyChannelSubtypeConfig>;
 export type SmsOutboundMode = { agentless: AgentlessConfig };
-export const SmsOutboundMode = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const SmsOutboundMode = /*@__PURE__*/ S.Union([
   S.Struct({ agentless: AgentlessConfig }),
 ]);
 export interface SmsOutboundConfig {
   connectSourcePhoneNumberArn: string;
   wisdomTemplateArn: string;
 }
-export const SmsOutboundConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SmsOutboundConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectSourcePhoneNumberArn: S.String,
     wisdomTemplateArn: S.String,
@@ -288,18 +287,17 @@ export interface SmsChannelSubtypeConfig {
   outboundMode: SmsOutboundMode;
   defaultOutboundConfig: SmsOutboundConfig;
 }
-export const SmsChannelSubtypeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      capacity: S.optional(S.Number),
-      outboundMode: SmsOutboundMode,
-      defaultOutboundConfig: SmsOutboundConfig,
-    }),
+export const SmsChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacity: S.optional(S.Number),
+    outboundMode: SmsOutboundMode,
+    defaultOutboundConfig: SmsOutboundConfig,
+  }),
 ).annotate({
   identifier: "SmsChannelSubtypeConfig",
 }) as any as S.Schema<SmsChannelSubtypeConfig>;
 export type EmailOutboundMode = { agentless: AgentlessConfig };
-export const EmailOutboundMode = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const EmailOutboundMode = /*@__PURE__*/ S.Union([
   S.Struct({ agentless: AgentlessConfig }),
 ]);
 export interface EmailOutboundConfig {
@@ -307,7 +305,7 @@ export interface EmailOutboundConfig {
   sourceEmailAddressDisplayName?: string | redacted.Redacted<string>;
   wisdomTemplateArn: string;
 }
-export const EmailOutboundConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EmailOutboundConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectSourceEmailAddress: SensitiveString,
     sourceEmailAddressDisplayName: S.optional(SensitiveString),
@@ -321,30 +319,28 @@ export interface EmailChannelSubtypeConfig {
   outboundMode: EmailOutboundMode;
   defaultOutboundConfig: EmailOutboundConfig;
 }
-export const EmailChannelSubtypeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      capacity: S.optional(S.Number),
-      outboundMode: EmailOutboundMode,
-      defaultOutboundConfig: EmailOutboundConfig,
-    }),
+export const EmailChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacity: S.optional(S.Number),
+    outboundMode: EmailOutboundMode,
+    defaultOutboundConfig: EmailOutboundConfig,
+  }),
 ).annotate({
   identifier: "EmailChannelSubtypeConfig",
 }) as any as S.Schema<EmailChannelSubtypeConfig>;
 export type WhatsAppOutboundMode = { agentless: AgentlessConfig };
-export const WhatsAppOutboundMode = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const WhatsAppOutboundMode = /*@__PURE__*/ S.Union([
   S.Struct({ agentless: AgentlessConfig }),
 ]);
 export interface WhatsAppOutboundConfig {
   connectSourcePhoneNumberArn: string;
   wisdomTemplateArn: string;
 }
-export const WhatsAppOutboundConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connectSourcePhoneNumberArn: S.String,
-      wisdomTemplateArn: S.String,
-    }),
+export const WhatsAppOutboundConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectSourcePhoneNumberArn: S.String,
+    wisdomTemplateArn: S.String,
+  }),
 ).annotate({
   identifier: "WhatsAppOutboundConfig",
 }) as any as S.Schema<WhatsAppOutboundConfig>;
@@ -354,7 +350,7 @@ export interface WhatsAppChannelSubtypeConfig {
   defaultOutboundConfig: WhatsAppOutboundConfig;
 }
 export const WhatsAppChannelSubtypeConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       capacity: S.optional(S.Number),
       outboundMode: WhatsAppOutboundMode,
@@ -369,7 +365,7 @@ export interface ChannelSubtypeConfig {
   email?: EmailChannelSubtypeConfig;
   whatsApp?: WhatsAppChannelSubtypeConfig;
 }
-export const ChannelSubtypeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChannelSubtypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     telephony: S.optional(TelephonyChannelSubtypeConfig),
     sms: S.optional(SmsChannelSubtypeConfig),
@@ -382,13 +378,13 @@ export const ChannelSubtypeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface EventTrigger {
   customerProfilesDomainArn?: string;
 }
-export const EventTrigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customerProfilesDomainArn: S.optional(S.String) }),
 ).annotate({ identifier: "EventTrigger" }) as any as S.Schema<EventTrigger>;
 export type Source =
   | { customerProfilesSegmentArn: string; eventTrigger?: never }
   | { customerProfilesSegmentArn?: never; eventTrigger: EventTrigger };
-export const Source = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Source = /*@__PURE__*/ S.Union([
   S.Struct({ customerProfilesSegmentArn: S.String }),
   S.Struct({ eventTrigger: EventTrigger }),
 ]);
@@ -397,7 +393,7 @@ export interface Schedule {
   endTime: Date;
   refreshFrequency?: string;
 }
-export const Schedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -408,21 +404,19 @@ export interface EntryLimitsConfig {
   maxEntryCount: number;
   minEntryInterval: string;
 }
-export const EntryLimitsConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EntryLimitsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxEntryCount: S.Number, minEntryInterval: S.String }),
 ).annotate({
   identifier: "EntryLimitsConfig",
 }) as any as S.Schema<EntryLimitsConfig>;
 export type LocalTimeZoneDetection = string[];
-export const LocalTimeZoneDetection = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const LocalTimeZoneDetection = /*@__PURE__*/ S.Array(S.String);
 export interface LocalTimeZoneConfig {
   defaultTimeZone?: string;
   localTimeZoneDetection?: string[];
   localTimeZoneDetectionScope?: string;
 }
-export const LocalTimeZoneConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LocalTimeZoneConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultTimeZone: S.optional(S.String),
     localTimeZoneDetection: S.optional(LocalTimeZoneDetection),
@@ -435,20 +429,20 @@ export interface TimeRange {
   startTime: string;
   endTime: string;
 }
-export const TimeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startTime: S.String, endTime: S.String }),
 ).annotate({ identifier: "TimeRange" }) as any as S.Schema<TimeRange>;
 export type TimeRangeList = TimeRange[];
-export const TimeRangeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TimeRange);
+export const TimeRangeList = /*@__PURE__*/ S.Array(TimeRange);
 export type DailyHours = { [key: string]: TimeRange[] | undefined };
-export const DailyHours = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const DailyHours = /*@__PURE__*/ S.Record(
   S.String,
   TimeRangeList.pipe(S.optional),
 );
 export type OpenHours = {
   dailyHours: { [key: string]: TimeRange[] | undefined };
 };
-export const OpenHours = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OpenHours = /*@__PURE__*/ S.Union([
   S.Struct({ dailyHours: DailyHours }),
 ]);
 export interface RestrictedPeriod {
@@ -456,7 +450,7 @@ export interface RestrictedPeriod {
   startDate: string;
   endDate: string;
 }
-export const RestrictedPeriod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RestrictedPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     startDate: S.String,
@@ -466,17 +460,16 @@ export const RestrictedPeriod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RestrictedPeriod",
 }) as any as S.Schema<RestrictedPeriod>;
 export type RestrictedPeriodList = RestrictedPeriod[];
-export const RestrictedPeriodList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RestrictedPeriod);
+export const RestrictedPeriodList = /*@__PURE__*/ S.Array(RestrictedPeriod);
 export type RestrictedPeriods = { restrictedPeriodList: RestrictedPeriod[] };
-export const RestrictedPeriods = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RestrictedPeriods = /*@__PURE__*/ S.Union([
   S.Struct({ restrictedPeriodList: RestrictedPeriodList }),
 ]);
 export interface TimeWindow {
   openHours: OpenHours;
   restrictedPeriods?: RestrictedPeriods;
 }
-export const TimeWindow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openHours: OpenHours,
     restrictedPeriods: S.optional(RestrictedPeriods),
@@ -489,15 +482,14 @@ export interface CommunicationTimeConfig {
   email?: TimeWindow;
   whatsApp?: TimeWindow;
 }
-export const CommunicationTimeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      localTimeZoneConfig: LocalTimeZoneConfig,
-      telephony: S.optional(TimeWindow),
-      sms: S.optional(TimeWindow),
-      email: S.optional(TimeWindow),
-      whatsApp: S.optional(TimeWindow),
-    }),
+export const CommunicationTimeConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    localTimeZoneConfig: LocalTimeZoneConfig,
+    telephony: S.optional(TimeWindow),
+    sms: S.optional(TimeWindow),
+    email: S.optional(TimeWindow),
+    whatsApp: S.optional(TimeWindow),
+  }),
 ).annotate({
   identifier: "CommunicationTimeConfig",
 }) as any as S.Schema<CommunicationTimeConfig>;
@@ -506,7 +498,7 @@ export interface CommunicationLimit {
   frequency: number;
   unit: string;
 }
-export const CommunicationLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CommunicationLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCountPerRecipient: S.Number,
     frequency: S.Number,
@@ -516,29 +508,27 @@ export const CommunicationLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CommunicationLimit",
 }) as any as S.Schema<CommunicationLimit>;
 export type CommunicationLimitList = CommunicationLimit[];
-export const CommunicationLimitList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CommunicationLimit);
+export const CommunicationLimitList = /*@__PURE__*/ S.Array(CommunicationLimit);
 export type CommunicationLimits = {
   communicationLimitsList: CommunicationLimit[];
 };
-export const CommunicationLimits = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const CommunicationLimits = /*@__PURE__*/ S.Union([
   S.Struct({ communicationLimitsList: CommunicationLimitList }),
 ]);
 export interface CommunicationLimitsConfig {
   allChannelSubtypes?: CommunicationLimits;
   instanceLimitsHandling?: string;
 }
-export const CommunicationLimitsConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allChannelSubtypes: S.optional(CommunicationLimits),
-      instanceLimitsHandling: S.optional(S.String),
-    }),
+export const CommunicationLimitsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allChannelSubtypes: S.optional(CommunicationLimits),
+    instanceLimitsHandling: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CommunicationLimitsConfig",
 }) as any as S.Schema<CommunicationLimitsConfig>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -555,7 +545,7 @@ export interface CreateCampaignRequest {
   communicationLimitsOverride?: CommunicationLimitsConfig;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     connectInstanceId: S.String,
@@ -586,20 +576,19 @@ export interface CreateCampaignResponse {
   arn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }),
+export const CreateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "CreateCampaignResponse",
 }) as any as S.Schema<CreateCampaignResponse>;
 export interface DeleteCampaignRequest {
   id: string;
 }
-export const DeleteCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/campaigns/{id}" }),
@@ -614,8 +603,8 @@ export const DeleteCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteCampaignRequest",
 }) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {}
-export const DeleteCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteCampaignResponse",
 }) as any as S.Schema<DeleteCampaignResponse>;
@@ -624,7 +613,7 @@ export interface DeleteCampaignChannelSubtypeConfigRequest {
   channelSubtype: string;
 }
 export const DeleteCampaignChannelSubtypeConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       channelSubtype: S.String.pipe(T.HttpQuery("channelSubtype")),
@@ -646,7 +635,7 @@ export const DeleteCampaignChannelSubtypeConfigRequest =
   }) as any as S.Schema<DeleteCampaignChannelSubtypeConfigRequest>;
 export interface DeleteCampaignChannelSubtypeConfigResponse {}
 export const DeleteCampaignChannelSubtypeConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCampaignChannelSubtypeConfigResponse",
   }) as any as S.Schema<DeleteCampaignChannelSubtypeConfigResponse>;
 export interface DeleteCampaignCommunicationLimitsRequest {
@@ -654,7 +643,7 @@ export interface DeleteCampaignCommunicationLimitsRequest {
   config: string;
 }
 export const DeleteCampaignCommunicationLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       config: S.String.pipe(T.HttpQuery("config")),
@@ -676,7 +665,7 @@ export const DeleteCampaignCommunicationLimitsRequest =
   }) as any as S.Schema<DeleteCampaignCommunicationLimitsRequest>;
 export interface DeleteCampaignCommunicationLimitsResponse {}
 export const DeleteCampaignCommunicationLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCampaignCommunicationLimitsResponse",
   }) as any as S.Schema<DeleteCampaignCommunicationLimitsResponse>;
 export interface DeleteCampaignCommunicationTimeRequest {
@@ -684,7 +673,7 @@ export interface DeleteCampaignCommunicationTimeRequest {
   config: string;
 }
 export const DeleteCampaignCommunicationTimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       config: S.String.pipe(T.HttpQuery("config")),
@@ -706,14 +695,14 @@ export const DeleteCampaignCommunicationTimeRequest =
   }) as any as S.Schema<DeleteCampaignCommunicationTimeRequest>;
 export interface DeleteCampaignCommunicationTimeResponse {}
 export const DeleteCampaignCommunicationTimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCampaignCommunicationTimeResponse",
   }) as any as S.Schema<DeleteCampaignCommunicationTimeResponse>;
 export interface DeleteCampaignEntryLimitsRequest {
   id: string;
 }
 export const DeleteCampaignEntryLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/v2/campaigns/{id}/entry-limits" }),
@@ -729,7 +718,7 @@ export const DeleteCampaignEntryLimitsRequest =
   }) as any as S.Schema<DeleteCampaignEntryLimitsRequest>;
 export interface DeleteCampaignEntryLimitsResponse {}
 export const DeleteCampaignEntryLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCampaignEntryLimitsResponse",
   }) as any as S.Schema<DeleteCampaignEntryLimitsResponse>;
 export interface DeleteConnectInstanceConfigRequest {
@@ -737,7 +726,7 @@ export interface DeleteConnectInstanceConfigRequest {
   campaignDeletionPolicy?: string;
 }
 export const DeleteConnectInstanceConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       campaignDeletionPolicy: S.optional(S.String).pipe(
@@ -761,23 +750,21 @@ export const DeleteConnectInstanceConfigRequest =
   }) as any as S.Schema<DeleteConnectInstanceConfigRequest>;
 export interface DeleteConnectInstanceConfigResponse {}
 export const DeleteConnectInstanceConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConnectInstanceConfigResponse",
   }) as any as S.Schema<DeleteConnectInstanceConfigResponse>;
 export interface CustomerProfilesIntegrationIdentifier {
   domainArn: string;
 }
 export const CustomerProfilesIntegrationIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ domainArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ domainArn: S.String })).annotate({
     identifier: "CustomerProfilesIntegrationIdentifier",
   }) as any as S.Schema<CustomerProfilesIntegrationIdentifier>;
 export interface QConnectIntegrationIdentifier {
   knowledgeBaseArn: string;
 }
 export const QConnectIntegrationIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ knowledgeBaseArn: S.String }),
   ).annotate({
     identifier: "QConnectIntegrationIdentifier",
@@ -786,9 +773,7 @@ export interface LambdaIntegrationIdentifier {
   functionArn: string;
 }
 export const LambdaIntegrationIdentifier =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ functionArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ functionArn: S.String })).annotate({
     identifier: "LambdaIntegrationIdentifier",
   }) as any as S.Schema<LambdaIntegrationIdentifier>;
 export type IntegrationIdentifier =
@@ -807,7 +792,7 @@ export type IntegrationIdentifier =
       qConnect?: never;
       lambda: LambdaIntegrationIdentifier;
     };
-export const IntegrationIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegrationIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ customerProfiles: CustomerProfilesIntegrationIdentifier }),
   S.Struct({ qConnect: QConnectIntegrationIdentifier }),
   S.Struct({ lambda: LambdaIntegrationIdentifier }),
@@ -817,7 +802,7 @@ export interface DeleteConnectInstanceIntegrationRequest {
   integrationIdentifier: IntegrationIdentifier;
 }
 export const DeleteConnectInstanceIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       integrationIdentifier: IntegrationIdentifier,
@@ -839,14 +824,14 @@ export const DeleteConnectInstanceIntegrationRequest =
   }) as any as S.Schema<DeleteConnectInstanceIntegrationRequest>;
 export interface DeleteConnectInstanceIntegrationResponse {}
 export const DeleteConnectInstanceIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteConnectInstanceIntegrationResponse",
   }) as any as S.Schema<DeleteConnectInstanceIntegrationResponse>;
 export interface DeleteInstanceOnboardingJobRequest {
   connectInstanceId: string;
 }
 export const DeleteInstanceOnboardingJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
     }).pipe(
@@ -867,24 +852,23 @@ export const DeleteInstanceOnboardingJobRequest =
   }) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
 export interface DeleteInstanceOnboardingJobResponse {}
 export const DeleteInstanceOnboardingJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteInstanceOnboardingJobResponse",
   }) as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
 export interface DescribeCampaignRequest {
   id: string;
 }
-export const DescribeCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/campaigns/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/campaigns/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeCampaignRequest",
 }) as any as S.Schema<DescribeCampaignRequest>;
@@ -903,7 +887,7 @@ export interface Campaign {
   communicationLimitsOverride?: CommunicationLimitsConfig;
   tags?: { [key: string]: string | undefined };
 }
-export const Campaign = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Campaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     arn: S.String,
@@ -923,44 +907,43 @@ export const Campaign = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeCampaignResponse {
   campaign?: Campaign;
 }
-export const DescribeCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ campaign: S.optional(Campaign) }),
+export const DescribeCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ campaign: S.optional(Campaign) }),
 ).annotate({
   identifier: "DescribeCampaignResponse",
 }) as any as S.Schema<DescribeCampaignResponse>;
 export interface GetCampaignStateRequest {
   id: string;
 }
-export const GetCampaignStateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/campaigns/{id}/state" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCampaignStateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/campaigns/{id}/state" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetCampaignStateRequest",
 }) as any as S.Schema<GetCampaignStateRequest>;
 export interface GetCampaignStateResponse {
   state?: string;
 }
-export const GetCampaignStateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ state: S.optional(S.String) }),
+export const GetCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ state: S.optional(S.String) }),
 ).annotate({
   identifier: "GetCampaignStateResponse",
 }) as any as S.Schema<GetCampaignStateResponse>;
 export type CampaignIdList = string[];
-export const CampaignIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CampaignIdList = /*@__PURE__*/ S.Array(S.String);
 export interface GetCampaignStateBatchRequest {
   campaignIds: string[];
 }
 export const GetCampaignStateBatchRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ campaignIds: CampaignIdList }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/v2/campaigns-state" }),
@@ -979,7 +962,7 @@ export interface SuccessfulCampaignStateResponse {
   state?: string;
 }
 export const SuccessfulCampaignStateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
   ).annotate({
     identifier: "SuccessfulCampaignStateResponse",
@@ -987,13 +970,13 @@ export const SuccessfulCampaignStateResponse =
 export type SuccessfulCampaignStateResponseList =
   SuccessfulCampaignStateResponse[];
 export const SuccessfulCampaignStateResponseList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SuccessfulCampaignStateResponse);
+  /*@__PURE__*/ S.Array(SuccessfulCampaignStateResponse);
 export interface FailedCampaignStateResponse {
   campaignId?: string;
   failureCode?: string;
 }
 export const FailedCampaignStateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       campaignId: S.optional(S.String),
       failureCode: S.optional(S.String),
@@ -1003,13 +986,13 @@ export const FailedCampaignStateResponse =
   }) as any as S.Schema<FailedCampaignStateResponse>;
 export type FailedCampaignStateResponseList = FailedCampaignStateResponse[];
 export const FailedCampaignStateResponseList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedCampaignStateResponse);
+  /*@__PURE__*/ S.Array(FailedCampaignStateResponse);
 export interface GetCampaignStateBatchResponse {
   successfulRequests?: SuccessfulCampaignStateResponse[];
   failedRequests?: FailedCampaignStateResponse[];
 }
 export const GetCampaignStateBatchResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       successfulRequests: S.optional(SuccessfulCampaignStateResponseList),
       failedRequests: S.optional(FailedCampaignStateResponseList),
@@ -1021,7 +1004,7 @@ export interface GetConnectInstanceConfigRequest {
   connectInstanceId: string;
 }
 export const GetConnectInstanceConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
     }).pipe(
@@ -1045,7 +1028,7 @@ export interface EncryptionConfig {
   encryptionType?: string;
   keyArn?: string;
 }
-export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     encryptionType: S.optional(S.String),
@@ -1059,7 +1042,7 @@ export interface InstanceConfig {
   serviceLinkedRoleArn: string;
   encryptionConfig: EncryptionConfig;
 }
-export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectInstanceId: S.String,
     serviceLinkedRoleArn: S.String,
@@ -1070,7 +1053,7 @@ export interface GetConnectInstanceConfigResponse {
   connectInstanceConfig?: InstanceConfig;
 }
 export const GetConnectInstanceConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ connectInstanceConfig: S.optional(InstanceConfig) }),
   ).annotate({
     identifier: "GetConnectInstanceConfigResponse",
@@ -1079,7 +1062,7 @@ export interface GetInstanceCommunicationLimitsRequest {
   connectInstanceId: string;
 }
 export const GetInstanceCommunicationLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
     }).pipe(
@@ -1102,7 +1085,7 @@ export interface InstanceCommunicationLimitsConfig {
   allChannelSubtypes?: CommunicationLimits;
 }
 export const InstanceCommunicationLimitsConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ allChannelSubtypes: S.optional(CommunicationLimits) }),
   ).annotate({
     identifier: "InstanceCommunicationLimitsConfig",
@@ -1111,7 +1094,7 @@ export interface GetInstanceCommunicationLimitsResponse {
   communicationLimitsConfig?: InstanceCommunicationLimitsConfig;
 }
 export const GetInstanceCommunicationLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       communicationLimitsConfig: S.optional(InstanceCommunicationLimitsConfig),
     }),
@@ -1122,7 +1105,7 @@ export interface GetInstanceOnboardingJobStatusRequest {
   connectInstanceId: string;
 }
 export const GetInstanceOnboardingJobStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
     }).pipe(
@@ -1147,7 +1130,7 @@ export interface InstanceOnboardingJobStatus {
   failureCode?: string;
 }
 export const InstanceOnboardingJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String,
       status: S.String,
@@ -1160,7 +1143,7 @@ export interface GetInstanceOnboardingJobStatusResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
 export const GetInstanceOnboardingJobStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceOnboardingJobStatus: S.optional(
         InstanceOnboardingJobStatus,
@@ -1173,7 +1156,7 @@ export interface InstanceIdFilter {
   value: string;
   operator: string;
 }
-export const InstanceIdFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InstanceIdFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String, operator: S.String }),
 ).annotate({
   identifier: "InstanceIdFilter",
@@ -1181,7 +1164,7 @@ export const InstanceIdFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CampaignFilters {
   instanceIdFilter?: InstanceIdFilter;
 }
-export const CampaignFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CampaignFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceIdFilter: S.optional(InstanceIdFilter) }),
 ).annotate({
   identifier: "CampaignFilters",
@@ -1191,7 +1174,7 @@ export interface ListCampaignsRequest {
   nextToken?: string;
   filters?: CampaignFilters;
 }
-export const ListCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -1210,7 +1193,7 @@ export const ListCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListCampaignsRequest",
 }) as any as S.Schema<ListCampaignsRequest>;
 export type ChannelSubtypeList = string[];
-export const ChannelSubtypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ChannelSubtypeList = /*@__PURE__*/ S.Array(S.String);
 export interface CampaignSummary {
   id: string;
   arn: string;
@@ -1222,7 +1205,7 @@ export interface CampaignSummary {
   entryLimitsConfig?: EntryLimitsConfig;
   connectCampaignFlowArn?: string;
 }
-export const CampaignSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     arn: S.String,
@@ -1238,13 +1221,12 @@ export const CampaignSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CampaignSummary",
 }) as any as S.Schema<CampaignSummary>;
 export type CampaignSummaryList = CampaignSummary[];
-export const CampaignSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CampaignSummary);
+export const CampaignSummaryList = /*@__PURE__*/ S.Array(CampaignSummary);
 export interface ListCampaignsResponse {
   nextToken?: string;
   campaignSummaryList?: CampaignSummary[];
 }
-export const ListCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     campaignSummaryList: S.optional(CampaignSummaryList),
@@ -1258,7 +1240,7 @@ export interface ListConnectInstanceIntegrationsRequest {
   nextToken?: string;
 }
 export const ListConnectInstanceIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1280,7 +1262,7 @@ export const ListConnectInstanceIntegrationsRequest =
     identifier: "ListConnectInstanceIntegrationsRequest",
   }) as any as S.Schema<ListConnectInstanceIntegrationsRequest>;
 export type ObjectTypeNamesMap = { [key: string]: string | undefined };
-export const ObjectTypeNamesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ObjectTypeNamesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1289,7 +1271,7 @@ export interface CustomerProfilesIntegrationSummary {
   objectTypeNames: { [key: string]: string | undefined };
 }
 export const CustomerProfilesIntegrationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ domainArn: S.String, objectTypeNames: ObjectTypeNamesMap }),
   ).annotate({
     identifier: "CustomerProfilesIntegrationSummary",
@@ -1297,16 +1279,16 @@ export const CustomerProfilesIntegrationSummary =
 export interface QConnectIntegrationSummary {
   knowledgeBaseArn: string;
 }
-export const QConnectIntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ knowledgeBaseArn: S.String }),
+export const QConnectIntegrationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ knowledgeBaseArn: S.String }),
 ).annotate({
   identifier: "QConnectIntegrationSummary",
 }) as any as S.Schema<QConnectIntegrationSummary>;
 export interface LambdaIntegrationSummary {
   functionArn: string;
 }
-export const LambdaIntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ functionArn: S.String }),
+export const LambdaIntegrationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ functionArn: S.String }),
 ).annotate({
   identifier: "LambdaIntegrationSummary",
 }) as any as S.Schema<LambdaIntegrationSummary>;
@@ -1326,20 +1308,19 @@ export type IntegrationSummary =
       qConnect?: never;
       lambda: LambdaIntegrationSummary;
     };
-export const IntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegrationSummary = /*@__PURE__*/ S.Union([
   S.Struct({ customerProfiles: CustomerProfilesIntegrationSummary }),
   S.Struct({ qConnect: QConnectIntegrationSummary }),
   S.Struct({ lambda: LambdaIntegrationSummary }),
 ]);
 export type IntegrationSummaryList = IntegrationSummary[];
-export const IntegrationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntegrationSummary);
+export const IntegrationSummaryList = /*@__PURE__*/ S.Array(IntegrationSummary);
 export interface ListConnectInstanceIntegrationsResponse {
   nextToken?: string;
   integrationSummaryList?: IntegrationSummary[];
 }
 export const ListConnectInstanceIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       integrationSummaryList: S.optional(IntegrationSummaryList),
@@ -1350,18 +1331,17 @@ export const ListConnectInstanceIntegrationsResponse =
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/tags/{arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/tags/{arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -1369,7 +1349,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -1377,7 +1357,7 @@ export const ListTagsForResourceResponse =
 export interface PauseCampaignRequest {
   id: string;
 }
-export const PauseCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PauseCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/campaigns/{id}/pause" }),
@@ -1392,7 +1372,7 @@ export const PauseCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PauseCampaignRequest",
 }) as any as S.Schema<PauseCampaignRequest>;
 export interface PauseCampaignResponse {}
-export const PauseCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PauseCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PauseCampaignResponse",
@@ -1402,7 +1382,7 @@ export interface CustomerProfilesIntegrationConfig {
   objectTypeNames: { [key: string]: string | undefined };
 }
 export const CustomerProfilesIntegrationConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ domainArn: S.String, objectTypeNames: ObjectTypeNamesMap }),
   ).annotate({
     identifier: "CustomerProfilesIntegrationConfig",
@@ -1410,16 +1390,16 @@ export const CustomerProfilesIntegrationConfig =
 export interface QConnectIntegrationConfig {
   knowledgeBaseArn: string;
 }
-export const QConnectIntegrationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ knowledgeBaseArn: S.String }),
+export const QConnectIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ knowledgeBaseArn: S.String }),
 ).annotate({
   identifier: "QConnectIntegrationConfig",
 }) as any as S.Schema<QConnectIntegrationConfig>;
 export interface LambdaIntegrationConfig {
   functionArn: string;
 }
-export const LambdaIntegrationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ functionArn: S.String }),
+export const LambdaIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ functionArn: S.String }),
 ).annotate({
   identifier: "LambdaIntegrationConfig",
 }) as any as S.Schema<LambdaIntegrationConfig>;
@@ -1439,7 +1419,7 @@ export type IntegrationConfig =
       qConnect?: never;
       lambda: LambdaIntegrationConfig;
     };
-export const IntegrationConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const IntegrationConfig = /*@__PURE__*/ S.Union([
   S.Struct({ customerProfiles: CustomerProfilesIntegrationConfig }),
   S.Struct({ qConnect: QConnectIntegrationConfig }),
   S.Struct({ lambda: LambdaIntegrationConfig }),
@@ -1449,7 +1429,7 @@ export interface PutConnectInstanceIntegrationRequest {
   integrationConfig: IntegrationConfig;
 }
 export const PutConnectInstanceIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       integrationConfig: IntegrationConfig,
@@ -1471,7 +1451,7 @@ export const PutConnectInstanceIntegrationRequest =
   }) as any as S.Schema<PutConnectInstanceIntegrationRequest>;
 export interface PutConnectInstanceIntegrationResponse {}
 export const PutConnectInstanceIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutConnectInstanceIntegrationResponse",
   }) as any as S.Schema<PutConnectInstanceIntegrationResponse>;
 export interface PutInstanceCommunicationLimitsRequest {
@@ -1479,7 +1459,7 @@ export interface PutInstanceCommunicationLimitsRequest {
   communicationLimitsConfig: InstanceCommunicationLimitsConfig;
 }
 export const PutInstanceCommunicationLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       communicationLimitsConfig: InstanceCommunicationLimitsConfig,
@@ -1501,11 +1481,11 @@ export const PutInstanceCommunicationLimitsRequest =
   }) as any as S.Schema<PutInstanceCommunicationLimitsRequest>;
 export interface PutInstanceCommunicationLimitsResponse {}
 export const PutInstanceCommunicationLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutInstanceCommunicationLimitsResponse",
   }) as any as S.Schema<PutInstanceCommunicationLimitsResponse>;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1517,7 +1497,7 @@ export interface TelephonyChannelSubtypeParameters {
   ringTimeout?: number;
 }
 export const TelephonyChannelSubtypeParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationPhoneNumber: SensitiveString,
       attributes: Attributes,
@@ -1535,7 +1515,7 @@ export interface SmsChannelSubtypeParameters {
   templateParameters: { [key: string]: string | undefined };
 }
 export const SmsChannelSubtypeParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationPhoneNumber: SensitiveString,
       connectSourcePhoneNumberArn: S.optional(S.String),
@@ -1552,7 +1532,7 @@ export interface EmailChannelSubtypeParameters {
   templateParameters: { [key: string]: string | undefined };
 }
 export const EmailChannelSubtypeParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationEmailAddress: SensitiveString,
       connectSourceEmailAddress: S.optional(SensitiveString),
@@ -1569,7 +1549,7 @@ export interface WhatsAppChannelSubtypeParameters {
   templateParameters: { [key: string]: string | undefined };
 }
 export const WhatsAppChannelSubtypeParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationPhoneNumber: SensitiveString,
       connectSourcePhoneNumberArn: S.optional(S.String),
@@ -1604,7 +1584,7 @@ export type ChannelSubtypeParameters =
       email?: never;
       whatsApp: WhatsAppChannelSubtypeParameters;
     };
-export const ChannelSubtypeParameters = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ChannelSubtypeParameters = /*@__PURE__*/ S.Union([
   S.Struct({ telephony: TelephonyChannelSubtypeParameters }),
   S.Struct({ sms: SmsChannelSubtypeParameters }),
   S.Struct({ email: EmailChannelSubtypeParameters }),
@@ -1615,7 +1595,7 @@ export interface OutboundRequest {
   expirationTime: Date;
   channelSubtypeParameters: ChannelSubtypeParameters;
 }
-export const OutboundRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OutboundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String,
     expirationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1625,14 +1605,13 @@ export const OutboundRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OutboundRequest",
 }) as any as S.Schema<OutboundRequest>;
 export type OutboundRequestList = OutboundRequest[];
-export const OutboundRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OutboundRequest);
+export const OutboundRequestList = /*@__PURE__*/ S.Array(OutboundRequest);
 export interface PutOutboundRequestBatchRequest {
   id: string;
   outboundRequests: OutboundRequest[];
 }
 export const PutOutboundRequestBatchRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       outboundRequests: OutboundRequestList,
@@ -1653,20 +1632,19 @@ export interface SuccessfulRequest {
   clientToken?: string;
   id?: string;
 }
-export const SuccessfulRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SuccessfulRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
 ).annotate({
   identifier: "SuccessfulRequest",
 }) as any as S.Schema<SuccessfulRequest>;
 export type SuccessfulRequestList = SuccessfulRequest[];
-export const SuccessfulRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SuccessfulRequest);
+export const SuccessfulRequestList = /*@__PURE__*/ S.Array(SuccessfulRequest);
 export interface FailedRequest {
   clientToken?: string;
   id?: string;
   failureCode?: string;
 }
-export const FailedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String),
     id: S.optional(S.String),
@@ -1674,14 +1652,13 @@ export const FailedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FailedRequest" }) as any as S.Schema<FailedRequest>;
 export type FailedRequestList = FailedRequest[];
-export const FailedRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedRequest);
+export const FailedRequestList = /*@__PURE__*/ S.Array(FailedRequest);
 export interface PutOutboundRequestBatchResponse {
   successfulRequests?: SuccessfulRequest[];
   failedRequests?: FailedRequest[];
 }
 export const PutOutboundRequestBatchResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       successfulRequests: S.optional(SuccessfulRequestList),
       failedRequests: S.optional(FailedRequestList),
@@ -1693,26 +1670,25 @@ export interface WebNotificationContext {
   sessionId?: string;
   browserId?: string;
 }
-export const WebNotificationContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionId: S.optional(S.String),
-      browserId: S.optional(S.String),
-    }),
+export const WebNotificationContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.optional(S.String),
+    browserId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "WebNotificationContext",
 }) as any as S.Schema<WebNotificationContext>;
 export interface ChannelContext {
   webNotificationContext?: WebNotificationContext;
 }
-export const ChannelContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChannelContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webNotificationContext: S.optional(WebNotificationContext) }),
 ).annotate({ identifier: "ChannelContext" }) as any as S.Schema<ChannelContext>;
 export interface EventTriggerContext {
   sourceEvent?: string;
   channelContext?: ChannelContext;
 }
-export const EventTriggerContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventTriggerContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceEvent: S.optional(S.String),
     channelContext: S.optional(ChannelContext),
@@ -1726,21 +1702,20 @@ export interface ProfileOutboundRequest {
   expirationTime?: Date;
   eventTriggerContext?: EventTriggerContext;
 }
-export const ProfileOutboundRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.String,
-      profileId: S.String,
-      expirationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      eventTriggerContext: S.optional(EventTriggerContext),
-    }),
+export const ProfileOutboundRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.String,
+    profileId: S.String,
+    expirationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    eventTriggerContext: S.optional(EventTriggerContext),
+  }),
 ).annotate({
   identifier: "ProfileOutboundRequest",
 }) as any as S.Schema<ProfileOutboundRequest>;
 export type ProfileOutboundRequestList = ProfileOutboundRequest[];
-export const ProfileOutboundRequestList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ProfileOutboundRequestList = /*@__PURE__*/ S.Array(
   ProfileOutboundRequest,
 );
 export interface PutProfileOutboundRequestBatchRequest {
@@ -1748,7 +1723,7 @@ export interface PutProfileOutboundRequestBatchRequest {
   profileOutboundRequests: ProfileOutboundRequest[];
 }
 export const PutProfileOutboundRequestBatchRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       profileOutboundRequests: ProfileOutboundRequestList,
@@ -1773,7 +1748,7 @@ export interface SuccessfulProfileOutboundRequest {
   id?: string;
 }
 export const SuccessfulProfileOutboundRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
   ).annotate({
     identifier: "SuccessfulProfileOutboundRequest",
@@ -1781,14 +1756,14 @@ export const SuccessfulProfileOutboundRequest =
 export type SuccessfulProfileOutboundRequestList =
   SuccessfulProfileOutboundRequest[];
 export const SuccessfulProfileOutboundRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SuccessfulProfileOutboundRequest);
+  /*@__PURE__*/ S.Array(SuccessfulProfileOutboundRequest);
 export interface FailedProfileOutboundRequest {
   clientToken?: string;
   id?: string;
   failureCode?: string;
 }
 export const FailedProfileOutboundRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String),
       id: S.optional(S.String),
@@ -1799,13 +1774,13 @@ export const FailedProfileOutboundRequest =
   }) as any as S.Schema<FailedProfileOutboundRequest>;
 export type FailedProfileOutboundRequestList = FailedProfileOutboundRequest[];
 export const FailedProfileOutboundRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedProfileOutboundRequest);
+  /*@__PURE__*/ S.Array(FailedProfileOutboundRequest);
 export interface PutProfileOutboundRequestBatchResponse {
   successfulRequests?: SuccessfulProfileOutboundRequest[];
   failedRequests?: FailedProfileOutboundRequest[];
 }
 export const PutProfileOutboundRequestBatchResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       successfulRequests: S.optional(SuccessfulProfileOutboundRequestList),
       failedRequests: S.optional(FailedProfileOutboundRequestList),
@@ -1816,7 +1791,7 @@ export const PutProfileOutboundRequestBatchResponse =
 export interface ResumeCampaignRequest {
   id: string;
 }
-export const ResumeCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResumeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/campaigns/{id}/resume" }),
@@ -1831,15 +1806,15 @@ export const ResumeCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResumeCampaignRequest",
 }) as any as S.Schema<ResumeCampaignRequest>;
 export interface ResumeCampaignResponse {}
-export const ResumeCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const ResumeCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "ResumeCampaignResponse",
 }) as any as S.Schema<ResumeCampaignResponse>;
 export interface StartCampaignRequest {
   id: string;
 }
-export const StartCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/campaigns/{id}/start" }),
@@ -1854,7 +1829,7 @@ export const StartCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StartCampaignRequest",
 }) as any as S.Schema<StartCampaignRequest>;
 export interface StartCampaignResponse {}
-export const StartCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "StartCampaignResponse",
@@ -1864,7 +1839,7 @@ export interface StartInstanceOnboardingJobRequest {
   encryptionConfig: EncryptionConfig;
 }
 export const StartInstanceOnboardingJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
       encryptionConfig: EncryptionConfig,
@@ -1888,7 +1863,7 @@ export interface StartInstanceOnboardingJobResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
 export const StartInstanceOnboardingJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectInstanceOnboardingJobStatus: S.optional(
         InstanceOnboardingJobStatus,
@@ -1900,7 +1875,7 @@ export const StartInstanceOnboardingJobResponse =
 export interface StopCampaignRequest {
   id: string;
 }
-export const StopCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/campaigns/{id}/stop" }),
@@ -1915,7 +1890,7 @@ export const StopCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StopCampaignRequest",
 }) as any as S.Schema<StopCampaignRequest>;
 export interface StopCampaignResponse {}
-export const StopCampaignResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "StopCampaignResponse",
@@ -1924,7 +1899,7 @@ export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/tags/{arn}" }),
@@ -1939,18 +1914,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String.pipe(T.HttpLabel("arn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1968,7 +1943,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1978,7 +1953,7 @@ export interface UpdateCampaignChannelSubtypeConfigRequest {
   channelSubtypeConfig: ChannelSubtypeConfig;
 }
 export const UpdateCampaignChannelSubtypeConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       channelSubtypeConfig: ChannelSubtypeConfig,
@@ -2000,7 +1975,7 @@ export const UpdateCampaignChannelSubtypeConfigRequest =
   }) as any as S.Schema<UpdateCampaignChannelSubtypeConfigRequest>;
 export interface UpdateCampaignChannelSubtypeConfigResponse {}
 export const UpdateCampaignChannelSubtypeConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignChannelSubtypeConfigResponse",
   }) as any as S.Schema<UpdateCampaignChannelSubtypeConfigResponse>;
 export interface UpdateCampaignCommunicationLimitsRequest {
@@ -2008,7 +1983,7 @@ export interface UpdateCampaignCommunicationLimitsRequest {
   communicationLimitsOverride: CommunicationLimitsConfig;
 }
 export const UpdateCampaignCommunicationLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       communicationLimitsOverride: CommunicationLimitsConfig,
@@ -2030,7 +2005,7 @@ export const UpdateCampaignCommunicationLimitsRequest =
   }) as any as S.Schema<UpdateCampaignCommunicationLimitsRequest>;
 export interface UpdateCampaignCommunicationLimitsResponse {}
 export const UpdateCampaignCommunicationLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignCommunicationLimitsResponse",
   }) as any as S.Schema<UpdateCampaignCommunicationLimitsResponse>;
 export interface UpdateCampaignCommunicationTimeRequest {
@@ -2038,7 +2013,7 @@ export interface UpdateCampaignCommunicationTimeRequest {
   communicationTimeConfig: CommunicationTimeConfig;
 }
 export const UpdateCampaignCommunicationTimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       communicationTimeConfig: CommunicationTimeConfig,
@@ -2060,7 +2035,7 @@ export const UpdateCampaignCommunicationTimeRequest =
   }) as any as S.Schema<UpdateCampaignCommunicationTimeRequest>;
 export interface UpdateCampaignCommunicationTimeResponse {}
 export const UpdateCampaignCommunicationTimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignCommunicationTimeResponse",
   }) as any as S.Schema<UpdateCampaignCommunicationTimeResponse>;
 export interface UpdateCampaignEntryLimitsRequest {
@@ -2068,7 +2043,7 @@ export interface UpdateCampaignEntryLimitsRequest {
   entryLimitsConfig: EntryLimitsConfig;
 }
 export const UpdateCampaignEntryLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       entryLimitsConfig: EntryLimitsConfig,
@@ -2087,7 +2062,7 @@ export const UpdateCampaignEntryLimitsRequest =
   }) as any as S.Schema<UpdateCampaignEntryLimitsRequest>;
 export interface UpdateCampaignEntryLimitsResponse {}
 export const UpdateCampaignEntryLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignEntryLimitsResponse",
   }) as any as S.Schema<UpdateCampaignEntryLimitsResponse>;
 export interface UpdateCampaignFlowAssociationRequest {
@@ -2095,7 +2070,7 @@ export interface UpdateCampaignFlowAssociationRequest {
   connectCampaignFlowArn: string;
 }
 export const UpdateCampaignFlowAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       connectCampaignFlowArn: S.String,
@@ -2114,31 +2089,30 @@ export const UpdateCampaignFlowAssociationRequest =
   }) as any as S.Schema<UpdateCampaignFlowAssociationRequest>;
 export interface UpdateCampaignFlowAssociationResponse {}
 export const UpdateCampaignFlowAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignFlowAssociationResponse",
   }) as any as S.Schema<UpdateCampaignFlowAssociationResponse>;
 export interface UpdateCampaignNameRequest {
   id: string;
   name: string;
 }
-export const UpdateCampaignNameRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")), name: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/campaigns/{id}/name" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateCampaignNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")), name: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/campaigns/{id}/name" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateCampaignNameRequest",
 }) as any as S.Schema<UpdateCampaignNameRequest>;
 export interface UpdateCampaignNameResponse {}
-export const UpdateCampaignNameResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateCampaignNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateCampaignNameResponse",
 }) as any as S.Schema<UpdateCampaignNameResponse>;
@@ -2147,7 +2121,7 @@ export interface UpdateCampaignScheduleRequest {
   schedule: Schedule;
 }
 export const UpdateCampaignScheduleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")), schedule: Schedule }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/v2/campaigns/{id}/schedule" }),
@@ -2163,7 +2137,7 @@ export const UpdateCampaignScheduleRequest =
   }) as any as S.Schema<UpdateCampaignScheduleRequest>;
 export interface UpdateCampaignScheduleResponse {}
 export const UpdateCampaignScheduleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignScheduleResponse",
   }) as any as S.Schema<UpdateCampaignScheduleResponse>;
 export interface UpdateCampaignSourceRequest {
@@ -2171,7 +2145,7 @@ export interface UpdateCampaignSourceRequest {
   source: Source;
 }
 export const UpdateCampaignSourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")), source: Source }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/v2/campaigns/{id}/source" }),
@@ -2187,7 +2161,7 @@ export const UpdateCampaignSourceRequest =
   }) as any as S.Schema<UpdateCampaignSourceRequest>;
 export interface UpdateCampaignSourceResponse {}
 export const UpdateCampaignSourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignSourceResponse",
   }) as any as S.Schema<UpdateCampaignSourceResponse>;
 
@@ -2277,7 +2251,7 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignResponse,
   CreateCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCampaignRequest,
   output: CreateCampaignResponse,
   errors: [
@@ -2305,7 +2279,7 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignResponse,
   DeleteCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignRequest,
   output: DeleteCampaignResponse,
   errors: [
@@ -2331,7 +2305,7 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
   DeleteCampaignChannelSubtypeConfigResponse,
   DeleteCampaignChannelSubtypeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignChannelSubtypeConfigRequest,
   output: DeleteCampaignChannelSubtypeConfigResponse,
   errors: [
@@ -2359,7 +2333,7 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
   DeleteCampaignCommunicationLimitsResponse,
   DeleteCampaignCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationLimitsRequest,
   output: DeleteCampaignCommunicationLimitsResponse,
   errors: [
@@ -2388,7 +2362,7 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
   DeleteCampaignCommunicationTimeResponse,
   DeleteCampaignCommunicationTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationTimeRequest,
   output: DeleteCampaignCommunicationTimeResponse,
   errors: [
@@ -2417,7 +2391,7 @@ export const deleteCampaignEntryLimits: API.OperationMethod<
   DeleteCampaignEntryLimitsResponse,
   DeleteCampaignEntryLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCampaignEntryLimitsRequest,
   output: DeleteCampaignEntryLimitsResponse,
   errors: [
@@ -2446,7 +2420,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
   DeleteConnectInstanceConfigResponse,
   DeleteConnectInstanceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceConfigRequest,
   output: DeleteConnectInstanceConfigResponse,
   errors: [
@@ -2474,7 +2448,7 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
   DeleteConnectInstanceIntegrationResponse,
   DeleteConnectInstanceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectInstanceIntegrationRequest,
   output: DeleteConnectInstanceIntegrationResponse,
   errors: [
@@ -2501,7 +2475,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
   DeleteInstanceOnboardingJobResponse,
   DeleteInstanceOnboardingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInstanceOnboardingJobRequest,
   output: DeleteInstanceOnboardingJobResponse,
   errors: [
@@ -2527,7 +2501,7 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignResponse,
   DescribeCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
   errors: [
@@ -2553,7 +2527,7 @@ export const getCampaignState: API.OperationMethod<
   GetCampaignStateResponse,
   GetCampaignStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignStateRequest,
   output: GetCampaignStateResponse,
   errors: [
@@ -2579,7 +2553,7 @@ export const getCampaignStateBatch: API.OperationMethod<
   GetCampaignStateBatchResponse,
   GetCampaignStateBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCampaignStateBatchRequest,
   output: GetCampaignStateBatchResponse,
   errors: [
@@ -2604,7 +2578,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
   GetConnectInstanceConfigResponse,
   GetConnectInstanceConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectInstanceConfigRequest,
   output: GetConnectInstanceConfigResponse,
   errors: [
@@ -2629,7 +2603,7 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
   GetInstanceCommunicationLimitsResponse,
   GetInstanceCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceCommunicationLimitsRequest,
   output: GetInstanceCommunicationLimitsResponse,
   errors: [
@@ -2654,7 +2628,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
   GetInstanceOnboardingJobStatusResponse,
   GetInstanceOnboardingJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceOnboardingJobStatusRequest,
   output: GetInstanceOnboardingJobStatusResponse,
   errors: [
@@ -2693,7 +2667,7 @@ export const listCampaigns: API.OperationMethod<
     ListCampaignsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2735,7 +2709,7 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
     ListConnectInstanceIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectInstanceIntegrationsRequest,
   output: ListConnectInstanceIntegrationsResponse,
   errors: [
@@ -2768,7 +2742,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2797,7 +2771,7 @@ export const pauseCampaign: API.OperationMethod<
   PauseCampaignResponse,
   PauseCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseCampaignRequest,
   output: PauseCampaignResponse,
   errors: [
@@ -2827,7 +2801,7 @@ export const putConnectInstanceIntegration: API.OperationMethod<
   PutConnectInstanceIntegrationResponse,
   PutConnectInstanceIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConnectInstanceIntegrationRequest,
   output: PutConnectInstanceIntegrationResponse,
   errors: [
@@ -2855,7 +2829,7 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
   PutInstanceCommunicationLimitsResponse,
   PutInstanceCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInstanceCommunicationLimitsRequest,
   output: PutInstanceCommunicationLimitsResponse,
   errors: [
@@ -2884,7 +2858,7 @@ export const putOutboundRequestBatch: API.OperationMethod<
   PutOutboundRequestBatchResponse,
   PutOutboundRequestBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOutboundRequestBatchRequest,
   output: PutOutboundRequestBatchResponse,
   errors: [
@@ -2915,7 +2889,7 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
   PutProfileOutboundRequestBatchResponse,
   PutProfileOutboundRequestBatchError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProfileOutboundRequestBatchRequest,
   output: PutProfileOutboundRequestBatchResponse,
   errors: [
@@ -2946,7 +2920,7 @@ export const resumeCampaign: API.OperationMethod<
   ResumeCampaignResponse,
   ResumeCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResumeCampaignRequest,
   output: ResumeCampaignResponse,
   errors: [
@@ -2977,7 +2951,7 @@ export const startCampaign: API.OperationMethod<
   StartCampaignResponse,
   StartCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCampaignRequest,
   output: StartCampaignResponse,
   errors: [
@@ -3007,7 +2981,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
   StartInstanceOnboardingJobResponse,
   StartInstanceOnboardingJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartInstanceOnboardingJobRequest,
   output: StartInstanceOnboardingJobResponse,
   errors: [
@@ -3037,7 +3011,7 @@ export const stopCampaign: API.OperationMethod<
   StopCampaignResponse,
   StopCampaignError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopCampaignRequest,
   output: StopCampaignResponse,
   errors: [
@@ -3066,7 +3040,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3093,7 +3067,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3120,7 +3094,7 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
   UpdateCampaignChannelSubtypeConfigResponse,
   UpdateCampaignChannelSubtypeConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignChannelSubtypeConfigRequest,
   output: UpdateCampaignChannelSubtypeConfigResponse,
   errors: [
@@ -3148,7 +3122,7 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
   UpdateCampaignCommunicationLimitsResponse,
   UpdateCampaignCommunicationLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationLimitsRequest,
   output: UpdateCampaignCommunicationLimitsResponse,
   errors: [
@@ -3177,7 +3151,7 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
   UpdateCampaignCommunicationTimeResponse,
   UpdateCampaignCommunicationTimeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationTimeRequest,
   output: UpdateCampaignCommunicationTimeResponse,
   errors: [
@@ -3206,7 +3180,7 @@ export const updateCampaignEntryLimits: API.OperationMethod<
   UpdateCampaignEntryLimitsResponse,
   UpdateCampaignEntryLimitsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignEntryLimitsRequest,
   output: UpdateCampaignEntryLimitsResponse,
   errors: [
@@ -3235,7 +3209,7 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
   UpdateCampaignFlowAssociationResponse,
   UpdateCampaignFlowAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignFlowAssociationRequest,
   output: UpdateCampaignFlowAssociationResponse,
   errors: [
@@ -3263,7 +3237,7 @@ export const updateCampaignName: API.OperationMethod<
   UpdateCampaignNameResponse,
   UpdateCampaignNameError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignNameRequest,
   output: UpdateCampaignNameResponse,
   errors: [
@@ -3291,7 +3265,7 @@ export const updateCampaignSchedule: API.OperationMethod<
   UpdateCampaignScheduleResponse,
   UpdateCampaignScheduleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignScheduleRequest,
   output: UpdateCampaignScheduleResponse,
   errors: [
@@ -3320,7 +3294,7 @@ export const updateCampaignSource: API.OperationMethod<
   UpdateCampaignSourceResponse,
   UpdateCampaignSourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCampaignSourceRequest,
   output: UpdateCampaignSourceResponse,
   errors: [

@@ -14,7 +14,7 @@ export interface PostIssuingAuthorizationsAuthorizationInput {
   metadata?: Record<string, string> | "";
 }
 export const PostIssuingAuthorizationsAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(
@@ -2072,7 +2072,7 @@ export interface PostIssuingAuthorizationsAuthorizationOutput {
   wallet: string | null;
 }
 export const PostIssuingAuthorizationsAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4369,7 +4369,7 @@ export const PostIssuingAuthorizationsAuthorizationOutput =
  * <p>Updates the specified Issuing <code>Authorization</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
 export const PostIssuingAuthorizationsAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIssuingAuthorizationsAuthorizationInput,
     outputSchema: PostIssuingAuthorizationsAuthorizationOutput,
   }));

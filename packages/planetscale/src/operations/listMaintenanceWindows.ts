@@ -12,7 +12,7 @@ export interface ListMaintenanceWindowsInput {
   per_page?: number;
 }
 export const ListMaintenanceWindowsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
@@ -33,16 +33,16 @@ export interface ListMaintenanceWindowsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     created_at: string;
     updated_at: string;
     started_at: string | null;
     finished_at: string | null;
-  }[];
+  }>;
 }
 export const ListMaintenanceWindowsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -71,7 +71,7 @@ export const ListMaintenanceWindowsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listMaintenanceWindows =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListMaintenanceWindowsInput,
     outputSchema: ListMaintenanceWindowsOutput,
     errors: [Forbidden, NotFound] as const,

@@ -19,7 +19,7 @@ export interface ArmTemplatesGetInput {
   name: string;
   $expand?: string;
 }
-export const ArmTemplatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArmTemplatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -48,7 +48,7 @@ export interface ArmTemplatesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ArmTemplatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArmTemplatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -80,7 +80,7 @@ export const ArmTemplatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the azure resource manager template.
  * @param $expand - Specify the $expand query. Example: 'properties($select=displayName)'
  */
-export const ArmTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArmTemplatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArmTemplatesGetInput,
   outputSchema: ArmTemplatesGetOutput,
 }));
@@ -95,7 +95,7 @@ export interface ArmTemplatesListInput {
   $top?: number;
   $orderby?: string;
 }
-export const ArmTemplatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArmTemplatesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -129,42 +129,30 @@ export interface ArmTemplatesListOutput {
   }[];
   nextLink?: string;
 }
-export const ArmTemplatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ArmTemplatesListOutput>;
+export const ArmTemplatesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ArmTemplatesListOutput>;
 
 // The operation
 /**
@@ -180,7 +168,7 @@ export const ArmTemplatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const ArmTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArmTemplatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArmTemplatesListInput,
   outputSchema: ArmTemplatesListOutput,
 }));
@@ -197,7 +185,7 @@ export interface ArtifactsGenerateArmTemplateInput {
   fileUploadOptions?: "UploadFilesAndGenerateSasTokens" | "None";
 }
 export const ArtifactsGenerateArmTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -230,7 +218,7 @@ export interface ArtifactsGenerateArmTemplateOutput {
   parameters?: Record<string, unknown>;
 }
 export const ArtifactsGenerateArmTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }) as unknown as Schema.Codec<ArtifactsGenerateArmTemplateOutput>;
@@ -247,7 +235,7 @@ export const ArtifactsGenerateArmTemplateOutput =
  * @param name - The name of the artifact.
  */
 export const ArtifactsGenerateArmTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactsGenerateArmTemplateInput,
     outputSchema: ArtifactsGenerateArmTemplateOutput,
   }));
@@ -260,7 +248,7 @@ export interface ArtifactsGetInput {
   name: string;
   $expand?: string;
 }
-export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArtifactsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -289,7 +277,7 @@ export interface ArtifactsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArtifactsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -321,7 +309,7 @@ export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the artifact.
  * @param $expand - Specify the $expand query. Example: 'properties($select=title)'
  */
-export const ArtifactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArtifactsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArtifactsGetInput,
   outputSchema: ArtifactsGetOutput,
 }));
@@ -336,7 +324,7 @@ export interface ArtifactsListInput {
   $top?: number;
   $orderby?: string;
 }
-export const ArtifactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArtifactsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -370,7 +358,7 @@ export interface ArtifactsListOutput {
   }[];
   nextLink?: string;
 }
-export const ArtifactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ArtifactsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -409,7 +397,7 @@ export const ArtifactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const ArtifactsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArtifactsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArtifactsListInput,
   outputSchema: ArtifactsListOutput,
 }));
@@ -436,7 +424,7 @@ export interface ArtifactSourcesCreateOrUpdateInput {
   location?: string;
 }
 export const ArtifactSourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -481,7 +469,7 @@ export interface ArtifactSourcesCreateOrUpdateOutput {
   };
 }
 export const ArtifactSourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -512,7 +500,7 @@ export const ArtifactSourcesCreateOrUpdateOutput =
  * @param name - The name of the artifact source.
  */
 export const ArtifactSourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ArtifactSourcesCreateOrUpdateInput,
     outputSchema: ArtifactSourcesCreateOrUpdateOutput,
   }));
@@ -524,7 +512,7 @@ export interface ArtifactSourcesDeleteInput {
   name: string;
 }
 export const ArtifactSourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -540,7 +528,7 @@ export const ArtifactSourcesDeleteInput =
 // Output Schema
 export type ArtifactSourcesDeleteOutput = void;
 export const ArtifactSourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactSourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactSourcesDeleteOutput>;
 
 // The operation
 /**
@@ -552,12 +540,10 @@ export const ArtifactSourcesDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the artifact source.
  */
-export const ArtifactSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactSourcesDeleteInput,
-    outputSchema: ArtifactSourcesDeleteOutput,
-  }),
-);
+export const ArtifactSourcesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactSourcesDeleteInput,
+  outputSchema: ArtifactSourcesDeleteOutput,
+}));
 // Input Schema
 export interface ArtifactSourcesGetInput {
   subscriptionId: string;
@@ -567,7 +553,7 @@ export interface ArtifactSourcesGetInput {
   $expand?: string;
 }
 export const ArtifactSourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -596,7 +582,7 @@ export interface ArtifactSourcesGetOutput {
   };
 }
 export const ArtifactSourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -627,7 +613,7 @@ export const ArtifactSourcesGetOutput =
  * @param name - The name of the artifact source.
  * @param $expand - Specify the $expand query. Example: 'properties($select=displayName)'
  */
-export const ArtifactSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArtifactSourcesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArtifactSourcesGetInput,
   outputSchema: ArtifactSourcesGetOutput,
 }));
@@ -642,7 +628,7 @@ export interface ArtifactSourcesListInput {
   $orderby?: string;
 }
 export const ArtifactSourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -676,7 +662,7 @@ export interface ArtifactSourcesListOutput {
   nextLink?: string;
 }
 export const ArtifactSourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -724,7 +710,7 @@ export const ArtifactSourcesListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const ArtifactSourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ArtifactSourcesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ArtifactSourcesListInput,
   outputSchema: ArtifactSourcesListOutput,
 }));
@@ -737,7 +723,7 @@ export interface ArtifactSourcesUpdateInput {
   tags?: Record<string, string>;
 }
 export const ArtifactSourcesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -766,7 +752,7 @@ export interface ArtifactSourcesUpdateOutput {
   };
 }
 export const ArtifactSourcesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -796,12 +782,10 @@ export const ArtifactSourcesUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the artifact source.
  */
-export const ArtifactSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ArtifactSourcesUpdateInput,
-    outputSchema: ArtifactSourcesUpdateOutput,
-  }),
-);
+export const ArtifactSourcesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ArtifactSourcesUpdateInput,
+  outputSchema: ArtifactSourcesUpdateOutput,
+}));
 // Input Schema
 export interface CostsCreateOrUpdateInput {
   subscriptionId: string;
@@ -851,7 +835,7 @@ export interface CostsCreateOrUpdateInput {
   location?: string;
 }
 export const CostsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -950,7 +934,7 @@ export interface CostsCreateOrUpdateOutput {
   };
 }
 export const CostsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -980,7 +964,7 @@ export const CostsCreateOrUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the cost.
  */
-export const CostsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CostsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CostsCreateOrUpdateInput,
   outputSchema: CostsCreateOrUpdateOutput,
 }));
@@ -992,7 +976,7 @@ export interface CostsGetInput {
   name: string;
   $expand?: string;
 }
-export const CostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CostsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1020,7 +1004,7 @@ export interface CostsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CostsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1051,7 +1035,7 @@ export const CostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the cost.
  * @param $expand - Specify the $expand query. Example: 'properties($expand=labCostDetails)'
  */
-export const CostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CostsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CostsGetInput,
   outputSchema: CostsGetOutput,
 }));
@@ -1100,7 +1084,7 @@ export interface CustomImagesCreateOrUpdateInput {
   location?: string;
 }
 export const CustomImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -1191,7 +1175,7 @@ export interface CustomImagesCreateOrUpdateOutput {
   };
 }
 export const CustomImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1221,12 +1205,10 @@ export const CustomImagesCreateOrUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the CustomImage
  */
-export const CustomImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomImagesCreateOrUpdateInput,
-    outputSchema: CustomImagesCreateOrUpdateOutput,
-  }),
-);
+export const CustomImagesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomImagesCreateOrUpdateInput,
+  outputSchema: CustomImagesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CustomImagesDeleteInput {
   subscriptionId: string;
@@ -1235,7 +1217,7 @@ export interface CustomImagesDeleteInput {
   name: string;
 }
 export const CustomImagesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -1251,7 +1233,7 @@ export const CustomImagesDeleteInput =
 // Output Schema
 export type CustomImagesDeleteOutput = void;
 export const CustomImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomImagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomImagesDeleteOutput>;
 
 // The operation
 /**
@@ -1263,7 +1245,7 @@ export const CustomImagesDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the CustomImage
  */
-export const CustomImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomImagesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomImagesDeleteInput,
   outputSchema: CustomImagesDeleteOutput,
 }));
@@ -1275,7 +1257,7 @@ export interface CustomImagesGetInput {
   name: string;
   $expand?: string;
 }
-export const CustomImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomImagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1303,7 +1285,7 @@ export interface CustomImagesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CustomImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomImagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1334,7 +1316,7 @@ export const CustomImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the CustomImage
  * @param $expand - Specify the $expand query. Example: 'properties($select=vm)'
  */
-export const CustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomImagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomImagesGetInput,
   outputSchema: CustomImagesGetOutput,
 }));
@@ -1348,7 +1330,7 @@ export interface CustomImagesListInput {
   $top?: number;
   $orderby?: string;
 }
-export const CustomImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomImagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1381,42 +1363,30 @@ export interface CustomImagesListOutput {
   }[];
   nextLink?: string;
 }
-export const CustomImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<CustomImagesListOutput>;
+export const CustomImagesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<CustomImagesListOutput>;
 
 // The operation
 /**
@@ -1431,7 +1401,7 @@ export const CustomImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const CustomImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomImagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomImagesListInput,
   outputSchema: CustomImagesListOutput,
 }));
@@ -1444,7 +1414,7 @@ export interface CustomImagesUpdateInput {
   tags?: Record<string, string>;
 }
 export const CustomImagesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -1473,7 +1443,7 @@ export interface CustomImagesUpdateOutput {
   };
 }
 export const CustomImagesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1503,7 +1473,7 @@ export const CustomImagesUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the CustomImage
  */
-export const CustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomImagesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomImagesUpdateInput,
   outputSchema: CustomImagesUpdateOutput,
 }));
@@ -1516,7 +1486,7 @@ export interface DisksAttachInput {
   name: string;
   leasedByLabVmId?: string;
 }
-export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksAttachInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1534,7 +1504,7 @@ export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DisksAttachOutput = void;
 export const DisksAttachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksAttachOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksAttachOutput>;
 
 // The operation
 /**
@@ -1547,7 +1517,7 @@ export const DisksAttachOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the disk.
  */
-export const DisksAttach = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksAttach = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksAttachInput,
   outputSchema: DisksAttachOutput,
 }));
@@ -1575,7 +1545,7 @@ export interface DisksCreateOrUpdateInput {
   location?: string;
 }
 export const DisksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -1621,7 +1591,7 @@ export interface DisksCreateOrUpdateOutput {
   };
 }
 export const DisksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1652,7 +1622,7 @@ export const DisksCreateOrUpdateOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the disk.
  */
-export const DisksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksCreateOrUpdateInput,
   outputSchema: DisksCreateOrUpdateOutput,
 }));
@@ -1664,7 +1634,7 @@ export interface DisksDeleteInput {
   userName: string;
   name: string;
 }
-export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1681,7 +1651,7 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DisksDeleteOutput = void;
 export const DisksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
 
 // The operation
 /**
@@ -1694,7 +1664,7 @@ export const DisksDeleteOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the disk.
  */
-export const DisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksDeleteInput,
   outputSchema: DisksDeleteOutput,
 }));
@@ -1707,7 +1677,7 @@ export interface DisksDetachInput {
   name: string;
   leasedByLabVmId?: string;
 }
-export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksDetachInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1725,7 +1695,7 @@ export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DisksDetachOutput = void;
 export const DisksDetachOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDetachOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDetachOutput>;
 
 // The operation
 /**
@@ -1738,7 +1708,7 @@ export const DisksDetachOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the disk.
  */
-export const DisksDetach = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksDetach = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksDetachInput,
   outputSchema: DisksDetachOutput,
 }));
@@ -1751,7 +1721,7 @@ export interface DisksGetInput {
   name: string;
   $expand?: string;
 }
-export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1780,7 +1750,7 @@ export interface DisksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1812,7 +1782,7 @@ export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the disk.
  * @param $expand - Specify the $expand query. Example: 'properties($select=diskType)'
  */
-export const DisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksGetInput,
   outputSchema: DisksGetOutput,
 }));
@@ -1827,7 +1797,7 @@ export interface DisksListInput {
   $top?: number;
   $orderby?: string;
 }
-export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1861,7 +1831,7 @@ export interface DisksListOutput {
   }[];
   nextLink?: string;
 }
-export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1900,7 +1870,7 @@ export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const DisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksListInput,
   outputSchema: DisksListOutput,
 }));
@@ -1913,7 +1883,7 @@ export interface DisksUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -1942,7 +1912,7 @@ export interface DisksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1973,7 +1943,7 @@ export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param userName - The name of the user profile.
  * @param name - The name of the disk.
  */
-export const DisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksUpdateInput,
   outputSchema: DisksUpdateOutput,
 }));
@@ -1999,7 +1969,7 @@ export interface EnvironmentsCreateOrUpdateInput {
   location?: string;
 }
 export const EnvironmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -2050,7 +2020,7 @@ export interface EnvironmentsCreateOrUpdateOutput {
   };
 }
 export const EnvironmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2081,12 +2051,10 @@ export const EnvironmentsCreateOrUpdateOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the environment.
  */
-export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EnvironmentsCreateOrUpdateInput,
-    outputSchema: EnvironmentsCreateOrUpdateOutput,
-  }),
-);
+export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentsCreateOrUpdateInput,
+  outputSchema: EnvironmentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EnvironmentsDeleteInput {
   subscriptionId: string;
@@ -2096,7 +2064,7 @@ export interface EnvironmentsDeleteInput {
   name: string;
 }
 export const EnvironmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -2113,7 +2081,7 @@ export const EnvironmentsDeleteInput =
 // Output Schema
 export type EnvironmentsDeleteOutput = void;
 export const EnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -2126,7 +2094,7 @@ export const EnvironmentsDeleteOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the environment.
  */
-export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsDeleteInput,
   outputSchema: EnvironmentsDeleteOutput,
 }));
@@ -2139,7 +2107,7 @@ export interface EnvironmentsGetInput {
   name: string;
   $expand?: string;
 }
-export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2168,7 +2136,7 @@ export interface EnvironmentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2200,7 +2168,7 @@ export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the environment.
  * @param $expand - Specify the $expand query. Example: 'properties($select=deploymentProperties)'
  */
-export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsGetInput,
   outputSchema: EnvironmentsGetOutput,
 }));
@@ -2215,7 +2183,7 @@ export interface EnvironmentsListInput {
   $top?: number;
   $orderby?: string;
 }
-export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnvironmentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2249,42 +2217,30 @@ export interface EnvironmentsListOutput {
   }[];
   nextLink?: string;
 }
-export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<EnvironmentsListOutput>;
+export const EnvironmentsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<EnvironmentsListOutput>;
 
 // The operation
 /**
@@ -2300,7 +2256,7 @@ export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const EnvironmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsListInput,
   outputSchema: EnvironmentsListOutput,
 }));
@@ -2314,7 +2270,7 @@ export interface EnvironmentsUpdateInput {
   tags?: Record<string, string>;
 }
 export const EnvironmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -2344,7 +2300,7 @@ export interface EnvironmentsUpdateOutput {
   };
 }
 export const EnvironmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2375,7 +2331,7 @@ export const EnvironmentsUpdateOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the environment.
  */
-export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EnvironmentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EnvironmentsUpdateInput,
   outputSchema: EnvironmentsUpdateOutput,
 }));
@@ -2487,7 +2443,7 @@ export interface FormulasCreateOrUpdateInput {
   location?: string;
 }
 export const FormulasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -2693,7 +2649,7 @@ export interface FormulasCreateOrUpdateOutput {
   };
 }
 export const FormulasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2723,12 +2679,10 @@ export const FormulasCreateOrUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the formula.
  */
-export const FormulasCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FormulasCreateOrUpdateInput,
-    outputSchema: FormulasCreateOrUpdateOutput,
-  }),
-);
+export const FormulasCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FormulasCreateOrUpdateInput,
+  outputSchema: FormulasCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FormulasDeleteInput {
   subscriptionId: string;
@@ -2736,7 +2690,7 @@ export interface FormulasDeleteInput {
   labName: string;
   name: string;
 }
-export const FormulasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2752,7 +2706,7 @@ export const FormulasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FormulasDeleteOutput = void;
 export const FormulasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FormulasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FormulasDeleteOutput>;
 
 // The operation
 /**
@@ -2764,7 +2718,7 @@ export const FormulasDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the formula.
  */
-export const FormulasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FormulasDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FormulasDeleteInput,
   outputSchema: FormulasDeleteOutput,
 }));
@@ -2776,7 +2730,7 @@ export interface FormulasGetInput {
   name: string;
   $expand?: string;
 }
-export const FormulasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2804,7 +2758,7 @@ export interface FormulasGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FormulasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2835,7 +2789,7 @@ export const FormulasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the formula.
  * @param $expand - Specify the $expand query. Example: 'properties($select=description)'
  */
-export const FormulasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FormulasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FormulasGetInput,
   outputSchema: FormulasGetOutput,
 }));
@@ -2849,7 +2803,7 @@ export interface FormulasListInput {
   $top?: number;
   $orderby?: string;
 }
-export const FormulasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2882,7 +2836,7 @@ export interface FormulasListOutput {
   }[];
   nextLink?: string;
 }
-export const FormulasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2920,7 +2874,7 @@ export const FormulasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const FormulasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FormulasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FormulasListInput,
   outputSchema: FormulasListOutput,
 }));
@@ -2932,7 +2886,7 @@ export interface FormulasUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const FormulasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -2960,7 +2914,7 @@ export interface FormulasUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FormulasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FormulasUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2990,7 +2944,7 @@ export const FormulasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param labName - The name of the lab.
  * @param name - The name of the formula.
  */
-export const FormulasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FormulasUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FormulasUpdateInput,
   outputSchema: FormulasUpdateOutput,
 }));
@@ -3004,17 +2958,15 @@ export interface GalleryImagesListInput {
   $top?: number;
   $orderby?: string;
 }
-export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    labName: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
-    $filter: Schema.optional(Schema.String),
-    $top: Schema.optional(Schema.Number),
-    $orderby: Schema.optional(Schema.String),
-  },
-).pipe(
+export const GalleryImagesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $orderby: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/galleryimages",
@@ -3040,7 +2992,7 @@ export interface GalleryImagesListOutput {
   nextLink?: string;
 }
 export const GalleryImagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3088,7 +3040,7 @@ export const GalleryImagesListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const GalleryImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GalleryImagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GalleryImagesListInput,
   outputSchema: GalleryImagesListOutput,
 }));
@@ -3120,7 +3072,7 @@ export interface GlobalSchedulesCreateOrUpdateInput {
   location?: string;
 }
 export const GlobalSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3183,7 +3135,7 @@ export interface GlobalSchedulesCreateOrUpdateOutput {
   };
 }
 export const GlobalSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3213,7 +3165,7 @@ export const GlobalSchedulesCreateOrUpdateOutput =
  * @param name - The name of the Schedule
  */
 export const GlobalSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalSchedulesCreateOrUpdateInput,
     outputSchema: GlobalSchedulesCreateOrUpdateOutput,
   }));
@@ -3224,7 +3176,7 @@ export interface GlobalSchedulesDeleteInput {
   name: string;
 }
 export const GlobalSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3239,7 +3191,7 @@ export const GlobalSchedulesDeleteInput =
 // Output Schema
 export type GlobalSchedulesDeleteOutput = void;
 export const GlobalSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -3250,12 +3202,10 @@ export const GlobalSchedulesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the Schedule
  */
-export const GlobalSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchedulesDeleteInput,
-    outputSchema: GlobalSchedulesDeleteOutput,
-  }),
-);
+export const GlobalSchedulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchedulesDeleteInput,
+  outputSchema: GlobalSchedulesDeleteOutput,
+}));
 // Input Schema
 export interface GlobalSchedulesExecuteInput {
   subscriptionId: string;
@@ -3263,7 +3213,7 @@ export interface GlobalSchedulesExecuteInput {
   name: string;
 }
 export const GlobalSchedulesExecuteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3278,7 +3228,7 @@ export const GlobalSchedulesExecuteInput =
 // Output Schema
 export type GlobalSchedulesExecuteOutput = void;
 export const GlobalSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesExecuteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -3289,12 +3239,10 @@ export const GlobalSchedulesExecuteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the Schedule
  */
-export const GlobalSchedulesExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchedulesExecuteInput,
-    outputSchema: GlobalSchedulesExecuteOutput,
-  }),
-);
+export const GlobalSchedulesExecute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchedulesExecuteInput,
+  outputSchema: GlobalSchedulesExecuteOutput,
+}));
 // Input Schema
 export interface GlobalSchedulesGetInput {
   subscriptionId: string;
@@ -3303,7 +3251,7 @@ export interface GlobalSchedulesGetInput {
   $expand?: string;
 }
 export const GlobalSchedulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3331,7 +3279,7 @@ export interface GlobalSchedulesGetOutput {
   };
 }
 export const GlobalSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3361,7 +3309,7 @@ export const GlobalSchedulesGetOutput =
  * @param name - The name of the Schedule
  * @param $expand - Specify the $expand query. Example: 'properties($select=status)'
  */
-export const GlobalSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GlobalSchedulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GlobalSchedulesGetInput,
   outputSchema: GlobalSchedulesGetOutput,
 }));
@@ -3375,7 +3323,7 @@ export interface GlobalSchedulesListByResourceGroupInput {
   $orderby?: string;
 }
 export const GlobalSchedulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -3408,7 +3356,7 @@ export interface GlobalSchedulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const GlobalSchedulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3456,7 +3404,7 @@ export const GlobalSchedulesListByResourceGroupOutput =
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
 export const GlobalSchedulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalSchedulesListByResourceGroupInput,
     outputSchema: GlobalSchedulesListByResourceGroupOutput,
   }));
@@ -3469,7 +3417,7 @@ export interface GlobalSchedulesListBySubscriptionInput {
   $orderby?: string;
 }
 export const GlobalSchedulesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -3501,7 +3449,7 @@ export interface GlobalSchedulesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const GlobalSchedulesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3548,7 +3496,7 @@ export const GlobalSchedulesListBySubscriptionOutput =
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
 export const GlobalSchedulesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalSchedulesListBySubscriptionInput,
     outputSchema: GlobalSchedulesListBySubscriptionOutput,
   }));
@@ -3561,7 +3509,7 @@ export interface GlobalSchedulesRetargetInput {
   targetResourceId?: string;
 }
 export const GlobalSchedulesRetargetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3578,7 +3526,7 @@ export const GlobalSchedulesRetargetInput =
 // Output Schema
 export type GlobalSchedulesRetargetOutput = void;
 export const GlobalSchedulesRetargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesRetargetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesRetargetOutput>;
 
 // The operation
 /**
@@ -3589,12 +3537,10 @@ export const GlobalSchedulesRetargetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the Schedule
  */
-export const GlobalSchedulesRetarget = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchedulesRetargetInput,
-    outputSchema: GlobalSchedulesRetargetOutput,
-  }),
-);
+export const GlobalSchedulesRetarget = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchedulesRetargetInput,
+  outputSchema: GlobalSchedulesRetargetOutput,
+}));
 // Input Schema
 export interface GlobalSchedulesUpdateInput {
   subscriptionId: string;
@@ -3603,7 +3549,7 @@ export interface GlobalSchedulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const GlobalSchedulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3631,7 +3577,7 @@ export interface GlobalSchedulesUpdateOutput {
   };
 }
 export const GlobalSchedulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3660,19 +3606,17 @@ export const GlobalSchedulesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the Schedule
  */
-export const GlobalSchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalSchedulesUpdateInput,
-    outputSchema: GlobalSchedulesUpdateOutput,
-  }),
-);
+export const GlobalSchedulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalSchedulesUpdateInput,
+  outputSchema: GlobalSchedulesUpdateOutput,
+}));
 // Input Schema
 export interface LabsClaimAnyVmInput {
   subscriptionId: string;
   resourceGroupName: string;
   name: string;
 }
-export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsClaimAnyVmInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -3687,7 +3631,7 @@ export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LabsClaimAnyVmOutput = void;
 export const LabsClaimAnyVmOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsClaimAnyVmOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsClaimAnyVmOutput>;
 
 // The operation
 /**
@@ -3698,7 +3642,7 @@ export const LabsClaimAnyVmOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsClaimAnyVm = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsClaimAnyVm = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsClaimAnyVmInput,
   outputSchema: LabsClaimAnyVmOutput,
 }));
@@ -3795,7 +3739,7 @@ export interface LabsCreateEnvironmentInput {
   tags?: Record<string, string>;
 }
 export const LabsCreateEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3962,7 +3906,7 @@ export const LabsCreateEnvironmentInput =
 // Output Schema
 export type LabsCreateEnvironmentOutput = void;
 export const LabsCreateEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsCreateEnvironmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsCreateEnvironmentOutput>;
 
 // The operation
 /**
@@ -3973,12 +3917,10 @@ export const LabsCreateEnvironmentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsCreateEnvironment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsCreateEnvironmentInput,
-    outputSchema: LabsCreateEnvironmentOutput,
-  }),
-);
+export const LabsCreateEnvironment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsCreateEnvironmentInput,
+  outputSchema: LabsCreateEnvironmentOutput,
+}));
 // Input Schema
 export interface LabsCreateOrUpdateInput {
   subscriptionId: string;
@@ -4018,7 +3960,7 @@ export interface LabsCreateOrUpdateInput {
   location?: string;
 }
 export const LabsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4096,7 +4038,7 @@ export interface LabsCreateOrUpdateOutput {
   };
 }
 export const LabsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4125,7 +4067,7 @@ export const LabsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsCreateOrUpdateInput,
   outputSchema: LabsCreateOrUpdateOutput,
 }));
@@ -4135,7 +4077,7 @@ export interface LabsDeleteInput {
   resourceGroupName: string;
   name: string;
 }
-export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -4150,7 +4092,7 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LabsDeleteOutput = void;
 export const LabsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsDeleteOutput>;
 
 // The operation
 /**
@@ -4161,7 +4103,7 @@ export const LabsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsDeleteInput,
   outputSchema: LabsDeleteOutput,
 }));
@@ -4174,7 +4116,7 @@ export interface LabsExportResourceUsageInput {
   usageStartDate?: string;
 }
 export const LabsExportResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4191,7 +4133,7 @@ export const LabsExportResourceUsageInput =
 // Output Schema
 export type LabsExportResourceUsageOutput = void;
 export const LabsExportResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsExportResourceUsageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsExportResourceUsageOutput>;
 
 // The operation
 /**
@@ -4202,12 +4144,10 @@ export const LabsExportResourceUsageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsExportResourceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsExportResourceUsageInput,
-    outputSchema: LabsExportResourceUsageOutput,
-  }),
-);
+export const LabsExportResourceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsExportResourceUsageInput,
+  outputSchema: LabsExportResourceUsageOutput,
+}));
 // Input Schema
 export interface LabsGenerateUploadUriInput {
   subscriptionId: string;
@@ -4216,7 +4156,7 @@ export interface LabsGenerateUploadUriInput {
   blobName?: string;
 }
 export const LabsGenerateUploadUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4234,7 +4174,7 @@ export interface LabsGenerateUploadUriOutput {
   uploadUri?: string;
 }
 export const LabsGenerateUploadUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadUri: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<LabsGenerateUploadUriOutput>;
 
@@ -4247,12 +4187,10 @@ export const LabsGenerateUploadUriOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsGenerateUploadUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsGenerateUploadUriInput,
-    outputSchema: LabsGenerateUploadUriOutput,
-  }),
-);
+export const LabsGenerateUploadUri = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsGenerateUploadUriInput,
+  outputSchema: LabsGenerateUploadUriOutput,
+}));
 // Input Schema
 export interface LabsGetInput {
   subscriptionId: string;
@@ -4260,7 +4198,7 @@ export interface LabsGetInput {
   name: string;
   $expand?: string;
 }
-export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -4287,7 +4225,7 @@ export interface LabsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4317,7 +4255,7 @@ export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the lab.
  * @param $expand - Specify the $expand query. Example: 'properties($select=defaultStorageAccount)'
  */
-export const LabsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsGetInput,
   outputSchema: LabsGetOutput,
 }));
@@ -4330,7 +4268,7 @@ export interface LabsImportVirtualMachineInput {
   destinationVirtualMachineName?: string;
 }
 export const LabsImportVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4347,7 +4285,7 @@ export const LabsImportVirtualMachineInput =
 // Output Schema
 export type LabsImportVirtualMachineOutput = void;
 export const LabsImportVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsImportVirtualMachineOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsImportVirtualMachineOutput>;
 
 // The operation
 /**
@@ -4358,12 +4296,10 @@ export const LabsImportVirtualMachineOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsImportVirtualMachine = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsImportVirtualMachineInput,
-    outputSchema: LabsImportVirtualMachineOutput,
-  }),
-);
+export const LabsImportVirtualMachine = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsImportVirtualMachineInput,
+  outputSchema: LabsImportVirtualMachineOutput,
+}));
 // Input Schema
 export interface LabsListByResourceGroupInput {
   subscriptionId: string;
@@ -4374,7 +4310,7 @@ export interface LabsListByResourceGroupInput {
   $orderby?: string;
 }
 export const LabsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -4407,7 +4343,7 @@ export interface LabsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const LabsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4454,12 +4390,10 @@ export const LabsListByResourceGroupOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsListByResourceGroupInput,
-    outputSchema: LabsListByResourceGroupOutput,
-  }),
-);
+export const LabsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsListByResourceGroupInput,
+  outputSchema: LabsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface LabsListBySubscriptionInput {
   subscriptionId: string;
@@ -4469,7 +4403,7 @@ export interface LabsListBySubscriptionInput {
   $orderby?: string;
 }
 export const LabsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -4501,7 +4435,7 @@ export interface LabsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const LabsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4547,19 +4481,17 @@ export const LabsListBySubscriptionOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const LabsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LabsListBySubscriptionInput,
-    outputSchema: LabsListBySubscriptionOutput,
-  }),
-);
+export const LabsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LabsListBySubscriptionInput,
+  outputSchema: LabsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface LabsListVhdsInput {
   subscriptionId: string;
   resourceGroupName: string;
   name: string;
 }
-export const LabsListVhdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsListVhdsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -4576,7 +4508,7 @@ export interface LabsListVhdsOutput {
   value: { id?: string }[];
   nextLink?: string;
 }
-export const LabsListVhdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsListVhdsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -4594,7 +4526,7 @@ export const LabsListVhdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsListVhds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsListVhds = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsListVhdsInput,
   outputSchema: LabsListVhdsOutput,
 }));
@@ -4605,7 +4537,7 @@ export interface LabsUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -4632,7 +4564,7 @@ export interface LabsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LabsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4661,7 +4593,7 @@ export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the lab.
  */
-export const LabsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LabsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LabsUpdateInput,
   outputSchema: LabsUpdateOutput,
 }));
@@ -4685,7 +4617,7 @@ export interface NotificationChannelsCreateOrUpdateInput {
   location?: string;
 }
 export const NotificationChannelsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -4733,7 +4665,7 @@ export interface NotificationChannelsCreateOrUpdateOutput {
   };
 }
 export const NotificationChannelsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4764,7 +4696,7 @@ export const NotificationChannelsCreateOrUpdateOutput =
  * @param name - The name of the notification channel.
  */
 export const NotificationChannelsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotificationChannelsCreateOrUpdateInput,
     outputSchema: NotificationChannelsCreateOrUpdateOutput,
   }));
@@ -4776,7 +4708,7 @@ export interface NotificationChannelsDeleteInput {
   name: string;
 }
 export const NotificationChannelsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -4792,7 +4724,7 @@ export const NotificationChannelsDeleteInput =
 // Output Schema
 export type NotificationChannelsDeleteOutput = void;
 export const NotificationChannelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsDeleteOutput>;
 
 // The operation
 /**
@@ -4804,12 +4736,10 @@ export const NotificationChannelsDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the notification channel.
  */
-export const NotificationChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationChannelsDeleteInput,
-    outputSchema: NotificationChannelsDeleteOutput,
-  }),
-);
+export const NotificationChannelsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationChannelsDeleteInput,
+  outputSchema: NotificationChannelsDeleteOutput,
+}));
 // Input Schema
 export interface NotificationChannelsGetInput {
   subscriptionId: string;
@@ -4819,7 +4749,7 @@ export interface NotificationChannelsGetInput {
   $expand?: string;
 }
 export const NotificationChannelsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -4848,7 +4778,7 @@ export interface NotificationChannelsGetOutput {
   };
 }
 export const NotificationChannelsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4879,12 +4809,10 @@ export const NotificationChannelsGetOutput =
  * @param name - The name of the notification channel.
  * @param $expand - Specify the $expand query. Example: 'properties($select=webHookUrl)'
  */
-export const NotificationChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationChannelsGetInput,
-    outputSchema: NotificationChannelsGetOutput,
-  }),
-);
+export const NotificationChannelsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationChannelsGetInput,
+  outputSchema: NotificationChannelsGetOutput,
+}));
 // Input Schema
 export interface NotificationChannelsListInput {
   subscriptionId: string;
@@ -4896,7 +4824,7 @@ export interface NotificationChannelsListInput {
   $orderby?: string;
 }
 export const NotificationChannelsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -4930,7 +4858,7 @@ export interface NotificationChannelsListOutput {
   nextLink?: string;
 }
 export const NotificationChannelsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4978,12 +4906,10 @@ export const NotificationChannelsListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const NotificationChannelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationChannelsListInput,
-    outputSchema: NotificationChannelsListOutput,
-  }),
-);
+export const NotificationChannelsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationChannelsListInput,
+  outputSchema: NotificationChannelsListOutput,
+}));
 // Input Schema
 export interface NotificationChannelsNotifyInput {
   subscriptionId: string;
@@ -4994,7 +4920,7 @@ export interface NotificationChannelsNotifyInput {
   jsonPayload?: string;
 }
 export const NotificationChannelsNotifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -5012,7 +4938,7 @@ export const NotificationChannelsNotifyInput =
 // Output Schema
 export type NotificationChannelsNotifyOutput = void;
 export const NotificationChannelsNotifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsNotifyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsNotifyOutput>;
 
 // The operation
 /**
@@ -5024,12 +4950,10 @@ export const NotificationChannelsNotifyOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the notification channel.
  */
-export const NotificationChannelsNotify = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationChannelsNotifyInput,
-    outputSchema: NotificationChannelsNotifyOutput,
-  }),
-);
+export const NotificationChannelsNotify = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationChannelsNotifyInput,
+  outputSchema: NotificationChannelsNotifyOutput,
+}));
 // Input Schema
 export interface NotificationChannelsUpdateInput {
   subscriptionId: string;
@@ -5039,7 +4963,7 @@ export interface NotificationChannelsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NotificationChannelsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -5068,7 +4992,7 @@ export interface NotificationChannelsUpdateOutput {
   };
 }
 export const NotificationChannelsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5098,19 +5022,17 @@ export const NotificationChannelsUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the notification channel.
  */
-export const NotificationChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotificationChannelsUpdateInput,
-    outputSchema: NotificationChannelsUpdateOutput,
-  }),
-);
+export const NotificationChannelsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotificationChannelsUpdateInput,
+  outputSchema: NotificationChannelsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsGetInput {
   subscriptionId: string;
   locationName: string;
   name: string;
 }
-export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -5175,7 +5097,7 @@ export interface OperationsGetOutput {
     | "HttpVersionNotSupported";
   error?: { code?: string; message?: string };
 }
-export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsGetOutput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   statusCode: Schema.optional(
     Schema.Literals([
@@ -5245,7 +5167,7 @@ export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param locationName - The name of the location.
  * @param name - The name of the operation.
  */
-export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsGetInput,
   outputSchema: OperationsGetOutput,
 }));
@@ -5281,7 +5203,7 @@ export interface PoliciesCreateOrUpdateInput {
   location?: string;
 }
 export const PoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -5338,7 +5260,7 @@ export interface PoliciesCreateOrUpdateOutput {
   };
 }
 export const PoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5369,12 +5291,10 @@ export const PoliciesCreateOrUpdateOutput =
  * @param policySetName - policysets
  * @param name - The name of the Policy
  */
-export const PoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesCreateOrUpdateInput,
-    outputSchema: PoliciesCreateOrUpdateOutput,
-  }),
-);
+export const PoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesCreateOrUpdateInput,
+  outputSchema: PoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PoliciesDeleteInput {
   subscriptionId: string;
@@ -5383,7 +5303,7 @@ export interface PoliciesDeleteInput {
   policySetName: string;
   name: string;
 }
-export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5400,7 +5320,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PoliciesDeleteOutput = void;
 export const PoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -5413,7 +5333,7 @@ export const PoliciesDeleteOutput =
  * @param policySetName - policysets
  * @param name - The name of the Policy
  */
-export const PoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesDeleteInput,
   outputSchema: PoliciesDeleteOutput,
 }));
@@ -5426,7 +5346,7 @@ export interface PoliciesGetInput {
   name: string;
   $expand?: string;
 }
-export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5455,7 +5375,7 @@ export interface PoliciesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5487,7 +5407,7 @@ export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the Policy
  * @param $expand - Specify the $expand query. Example: 'properties($select=description)'
  */
-export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesGetInput,
   outputSchema: PoliciesGetOutput,
 }));
@@ -5502,7 +5422,7 @@ export interface PoliciesListInput {
   $top?: number;
   $orderby?: string;
 }
-export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5536,7 +5456,7 @@ export interface PoliciesListOutput {
   }[];
   nextLink?: string;
 }
-export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -5575,7 +5495,7 @@ export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesListInput,
   outputSchema: PoliciesListOutput,
 }));
@@ -5588,7 +5508,7 @@ export interface PoliciesUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5617,7 +5537,7 @@ export interface PoliciesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5648,7 +5568,7 @@ export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param policySetName - policysets
  * @param name - The name of the Policy
  */
-export const PoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesUpdateInput,
   outputSchema: PoliciesUpdateOutput,
 }));
@@ -5666,7 +5586,7 @@ export interface PolicySetsEvaluatePoliciesInput {
   }[];
 }
 export const PolicySetsEvaluatePoliciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -5697,7 +5617,7 @@ export interface PolicySetsEvaluatePoliciesOutput {
   }[];
 }
 export const PolicySetsEvaluatePoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5725,16 +5645,14 @@ export const PolicySetsEvaluatePoliciesOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the PolicySet
  */
-export const PolicySetsEvaluatePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PolicySetsEvaluatePoliciesInput,
-    outputSchema: PolicySetsEvaluatePoliciesOutput,
-  }),
-);
+export const PolicySetsEvaluatePolicies = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PolicySetsEvaluatePoliciesInput,
+  outputSchema: PolicySetsEvaluatePoliciesOutput,
+}));
 // Input Schema
 export interface ProviderOperationsListInput {}
 export const ProviderOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DevTestLab/operations",
@@ -5759,7 +5677,7 @@ export interface ProviderOperationsListOutput {
   nextLink?: string;
 }
 export const ProviderOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5789,12 +5707,10 @@ export const ProviderOperationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderOperationsListInput,
-    outputSchema: ProviderOperationsListOutput,
-  }),
-);
+export const ProviderOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderOperationsListInput,
+  outputSchema: ProviderOperationsListOutput,
+}));
 // Input Schema
 export interface SchedulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -5824,7 +5740,7 @@ export interface SchedulesCreateOrUpdateInput {
   location?: string;
 }
 export const SchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -5888,7 +5804,7 @@ export interface SchedulesCreateOrUpdateOutput {
   };
 }
 export const SchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5918,12 +5834,10 @@ export const SchedulesCreateOrUpdateOutput =
  * @param labName - labs
  * @param name - The name of the Schedule
  */
-export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulesCreateOrUpdateInput,
-    outputSchema: SchedulesCreateOrUpdateOutput,
-  }),
-);
+export const SchedulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesCreateOrUpdateInput,
+  outputSchema: SchedulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SchedulesDeleteInput {
   subscriptionId: string;
@@ -5931,7 +5845,7 @@ export interface SchedulesDeleteInput {
   labName: string;
   name: string;
 }
-export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5947,7 +5861,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SchedulesDeleteOutput = void;
 export const SchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -5959,7 +5873,7 @@ export const SchedulesDeleteOutput =
  * @param labName - labs
  * @param name - The name of the Schedule
  */
-export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesDeleteInput,
   outputSchema: SchedulesDeleteOutput,
 }));
@@ -5970,7 +5884,7 @@ export interface SchedulesExecuteInput {
   labName: string;
   name: string;
 }
-export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesExecuteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -5986,7 +5900,7 @@ export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SchedulesExecuteOutput = void;
 export const SchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesExecuteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -5998,7 +5912,7 @@ export const SchedulesExecuteOutput =
  * @param labName - labs
  * @param name - The name of the Schedule
  */
-export const SchedulesExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesExecute = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesExecuteInput,
   outputSchema: SchedulesExecuteOutput,
 }));
@@ -6010,7 +5924,7 @@ export interface SchedulesGetInput {
   name: string;
   $expand?: string;
 }
-export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6038,7 +5952,7 @@ export interface SchedulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6069,7 +5983,7 @@ export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the Schedule
  * @param $expand - Specify the $expand query. Example: 'properties($select=status)'
  */
-export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesGetInput,
   outputSchema: SchedulesGetOutput,
 }));
@@ -6083,7 +5997,7 @@ export interface SchedulesListInput {
   $top?: number;
   $orderby?: string;
 }
-export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6116,7 +6030,7 @@ export interface SchedulesListOutput {
   }[];
   nextLink?: string;
 }
-export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -6154,7 +6068,7 @@ export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const SchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesListInput,
   outputSchema: SchedulesListOutput,
 }));
@@ -6166,7 +6080,7 @@ export interface SchedulesListApplicableInput {
   name: string;
 }
 export const SchedulesListApplicableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6197,7 +6111,7 @@ export interface SchedulesListApplicableOutput {
   nextLink?: string;
 }
 export const SchedulesListApplicableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6242,12 +6156,10 @@ export const SchedulesListApplicableOutput =
  * @param labName - labs
  * @param name - The name of the Schedule
  */
-export const SchedulesListApplicable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SchedulesListApplicableInput,
-    outputSchema: SchedulesListApplicableOutput,
-  }),
-);
+export const SchedulesListApplicable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesListApplicableInput,
+  outputSchema: SchedulesListApplicableOutput,
+}));
 // Input Schema
 export interface SchedulesUpdateInput {
   subscriptionId: string;
@@ -6256,7 +6168,7 @@ export interface SchedulesUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6284,7 +6196,7 @@ export interface SchedulesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SchedulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6314,7 +6226,7 @@ export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param labName - labs
  * @param name - The name of the Schedule
  */
-export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SchedulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SchedulesUpdateInput,
   outputSchema: SchedulesUpdateOutput,
 }));
@@ -6334,7 +6246,7 @@ export interface SecretsCreateOrUpdateInput {
   location?: string;
 }
 export const SecretsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6370,7 +6282,7 @@ export interface SecretsCreateOrUpdateOutput {
   };
 }
 export const SecretsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6401,12 +6313,10 @@ export const SecretsCreateOrUpdateOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the secret.
  */
-export const SecretsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecretsCreateOrUpdateInput,
-    outputSchema: SecretsCreateOrUpdateOutput,
-  }),
-);
+export const SecretsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecretsCreateOrUpdateInput,
+  outputSchema: SecretsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SecretsDeleteInput {
   subscriptionId: string;
@@ -6415,7 +6325,7 @@ export interface SecretsDeleteInput {
   userName: string;
   name: string;
 }
-export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6432,7 +6342,7 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SecretsDeleteOutput = void;
 export const SecretsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretsDeleteOutput>;
 
 // The operation
 /**
@@ -6445,7 +6355,7 @@ export const SecretsDeleteOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the secret.
  */
-export const SecretsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsDeleteInput,
   outputSchema: SecretsDeleteOutput,
 }));
@@ -6458,7 +6368,7 @@ export interface SecretsGetInput {
   name: string;
   $expand?: string;
 }
-export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6487,7 +6397,7 @@ export interface SecretsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6519,7 +6429,7 @@ export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the secret.
  * @param $expand - Specify the $expand query. Example: 'properties($select=value)'
  */
-export const SecretsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsGetInput,
   outputSchema: SecretsGetOutput,
 }));
@@ -6534,7 +6444,7 @@ export interface SecretsListInput {
   $top?: number;
   $orderby?: string;
 }
-export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6568,7 +6478,7 @@ export interface SecretsListOutput {
   }[];
   nextLink?: string;
 }
-export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -6607,7 +6517,7 @@ export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const SecretsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsListInput,
   outputSchema: SecretsListOutput,
 }));
@@ -6620,7 +6530,7 @@ export interface SecretsUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -6649,7 +6559,7 @@ export interface SecretsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6680,7 +6590,7 @@ export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param userName - The name of the user profile.
  * @param name - The name of the secret.
  */
-export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsUpdateInput,
   outputSchema: SecretsUpdateOutput,
 }));
@@ -6715,7 +6625,7 @@ export interface ServiceFabricSchedulesCreateOrUpdateInput {
   location?: string;
 }
 export const ServiceFabricSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6781,7 +6691,7 @@ export interface ServiceFabricSchedulesCreateOrUpdateOutput {
   };
 }
 export const ServiceFabricSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6814,7 +6724,7 @@ export const ServiceFabricSchedulesCreateOrUpdateOutput =
  * @param name - The name of the Schedule
  */
 export const ServiceFabricSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricSchedulesCreateOrUpdateInput,
     outputSchema: ServiceFabricSchedulesCreateOrUpdateOutput,
   }));
@@ -6828,7 +6738,7 @@ export interface ServiceFabricSchedulesDeleteInput {
   name: string;
 }
 export const ServiceFabricSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6846,7 +6756,7 @@ export const ServiceFabricSchedulesDeleteInput =
 // Output Schema
 export type ServiceFabricSchedulesDeleteOutput = void;
 export const ServiceFabricSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -6861,7 +6771,7 @@ export const ServiceFabricSchedulesDeleteOutput =
  * @param name - The name of the Schedule
  */
 export const ServiceFabricSchedulesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricSchedulesDeleteInput,
     outputSchema: ServiceFabricSchedulesDeleteOutput,
   }));
@@ -6875,7 +6785,7 @@ export interface ServiceFabricSchedulesExecuteInput {
   name: string;
 }
 export const ServiceFabricSchedulesExecuteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6893,7 +6803,7 @@ export const ServiceFabricSchedulesExecuteInput =
 // Output Schema
 export type ServiceFabricSchedulesExecuteOutput = void;
 export const ServiceFabricSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesExecuteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -6908,7 +6818,7 @@ export const ServiceFabricSchedulesExecuteOutput =
  * @param name - The name of the Schedule
  */
 export const ServiceFabricSchedulesExecute =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricSchedulesExecuteInput,
     outputSchema: ServiceFabricSchedulesExecuteOutput,
   }));
@@ -6923,7 +6833,7 @@ export interface ServiceFabricSchedulesGetInput {
   $expand?: string;
 }
 export const ServiceFabricSchedulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -6954,7 +6864,7 @@ export interface ServiceFabricSchedulesGetOutput {
   };
 }
 export const ServiceFabricSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6987,12 +6897,10 @@ export const ServiceFabricSchedulesGetOutput =
  * @param name - The name of the Schedule
  * @param $expand - Specify the $expand query. Example: 'properties($select=status)'
  */
-export const ServiceFabricSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceFabricSchedulesGetInput,
-    outputSchema: ServiceFabricSchedulesGetOutput,
-  }),
-);
+export const ServiceFabricSchedulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceFabricSchedulesGetInput,
+  outputSchema: ServiceFabricSchedulesGetOutput,
+}));
 // Input Schema
 export interface ServiceFabricSchedulesListInput {
   subscriptionId: string;
@@ -7006,7 +6914,7 @@ export interface ServiceFabricSchedulesListInput {
   $orderby?: string;
 }
 export const ServiceFabricSchedulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7042,7 +6950,7 @@ export interface ServiceFabricSchedulesListOutput {
   nextLink?: string;
 }
 export const ServiceFabricSchedulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7092,12 +7000,10 @@ export const ServiceFabricSchedulesListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const ServiceFabricSchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceFabricSchedulesListInput,
-    outputSchema: ServiceFabricSchedulesListOutput,
-  }),
-);
+export const ServiceFabricSchedulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceFabricSchedulesListInput,
+  outputSchema: ServiceFabricSchedulesListOutput,
+}));
 // Input Schema
 export interface ServiceFabricSchedulesUpdateInput {
   subscriptionId: string;
@@ -7109,7 +7015,7 @@ export interface ServiceFabricSchedulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const ServiceFabricSchedulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7140,7 +7046,7 @@ export interface ServiceFabricSchedulesUpdateOutput {
   };
 }
 export const ServiceFabricSchedulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7173,7 +7079,7 @@ export const ServiceFabricSchedulesUpdateOutput =
  * @param name - The name of the Schedule
  */
 export const ServiceFabricSchedulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricSchedulesUpdateInput,
     outputSchema: ServiceFabricSchedulesUpdateOutput,
   }));
@@ -7207,7 +7113,7 @@ export interface ServiceFabricsCreateOrUpdateInput {
   location?: string;
 }
 export const ServiceFabricsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7275,7 +7181,7 @@ export interface ServiceFabricsCreateOrUpdateOutput {
   };
 }
 export const ServiceFabricsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7307,7 +7213,7 @@ export const ServiceFabricsCreateOrUpdateOutput =
  * @param name - The name of the service fabric.
  */
 export const ServiceFabricsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricsCreateOrUpdateInput,
     outputSchema: ServiceFabricsCreateOrUpdateOutput,
   }));
@@ -7320,7 +7226,7 @@ export interface ServiceFabricsDeleteInput {
   name: string;
 }
 export const ServiceFabricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7337,7 +7243,7 @@ export const ServiceFabricsDeleteInput =
 // Output Schema
 export type ServiceFabricsDeleteOutput = void;
 export const ServiceFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -7350,12 +7256,10 @@ export const ServiceFabricsDeleteOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the service fabric.
  */
-export const ServiceFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceFabricsDeleteInput,
-    outputSchema: ServiceFabricsDeleteOutput,
-  }),
-);
+export const ServiceFabricsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceFabricsDeleteInput,
+  outputSchema: ServiceFabricsDeleteOutput,
+}));
 // Input Schema
 export interface ServiceFabricsGetInput {
   subscriptionId: string;
@@ -7365,16 +7269,14 @@ export interface ServiceFabricsGetInput {
   name: string;
   $expand?: string;
 }
-export const ServiceFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    labName: Schema.String.pipe(T.PathParam()),
-    userName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ServiceFabricsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  userName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
@@ -7397,7 +7299,7 @@ export interface ServiceFabricsGetOutput {
   };
 }
 export const ServiceFabricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7429,7 +7331,7 @@ export const ServiceFabricsGetOutput =
  * @param name - The name of the service fabric.
  * @param $expand - Specify the $expand query. Example: 'properties($expand=applicableSchedule)'
  */
-export const ServiceFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceFabricsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceFabricsGetInput,
   outputSchema: ServiceFabricsGetOutput,
 }));
@@ -7445,7 +7347,7 @@ export interface ServiceFabricsListInput {
   $orderby?: string;
 }
 export const ServiceFabricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7480,7 +7382,7 @@ export interface ServiceFabricsListOutput {
   nextLink?: string;
 }
 export const ServiceFabricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7529,7 +7431,7 @@ export const ServiceFabricsListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const ServiceFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceFabricsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceFabricsListInput,
   outputSchema: ServiceFabricsListOutput,
 }));
@@ -7542,7 +7444,7 @@ export interface ServiceFabricsListApplicableSchedulesInput {
   name: string;
 }
 export const ServiceFabricsListApplicableSchedulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7571,7 +7473,7 @@ export interface ServiceFabricsListApplicableSchedulesOutput {
   };
 }
 export const ServiceFabricsListApplicableSchedulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7603,7 +7505,7 @@ export const ServiceFabricsListApplicableSchedulesOutput =
  * @param name - The name of the service fabric.
  */
 export const ServiceFabricsListApplicableSchedules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceFabricsListApplicableSchedulesInput,
     outputSchema: ServiceFabricsListApplicableSchedulesOutput,
   }));
@@ -7616,7 +7518,7 @@ export interface ServiceFabricsStartInput {
   name: string;
 }
 export const ServiceFabricsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7633,7 +7535,7 @@ export const ServiceFabricsStartInput =
 // Output Schema
 export type ServiceFabricsStartOutput = void;
 export const ServiceFabricsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStartOutput>;
 
 // The operation
 /**
@@ -7646,7 +7548,7 @@ export const ServiceFabricsStartOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the service fabric.
  */
-export const ServiceFabricsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceFabricsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceFabricsStartInput,
   outputSchema: ServiceFabricsStartOutput,
 }));
@@ -7659,7 +7561,7 @@ export interface ServiceFabricsStopInput {
   name: string;
 }
 export const ServiceFabricsStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7676,7 +7578,7 @@ export const ServiceFabricsStopInput =
 // Output Schema
 export type ServiceFabricsStopOutput = void;
 export const ServiceFabricsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStopOutput>;
 
 // The operation
 /**
@@ -7689,7 +7591,7 @@ export const ServiceFabricsStopOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the service fabric.
  */
-export const ServiceFabricsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceFabricsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceFabricsStopInput,
   outputSchema: ServiceFabricsStopOutput,
 }));
@@ -7703,7 +7605,7 @@ export interface ServiceFabricsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ServiceFabricsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7733,7 +7635,7 @@ export interface ServiceFabricsUpdateOutput {
   };
 }
 export const ServiceFabricsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7764,12 +7666,10 @@ export const ServiceFabricsUpdateOutput =
  * @param userName - The name of the user profile.
  * @param name - The name of the service fabric.
  */
-export const ServiceFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceFabricsUpdateInput,
-    outputSchema: ServiceFabricsUpdateOutput,
-  }),
-);
+export const ServiceFabricsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceFabricsUpdateInput,
+  outputSchema: ServiceFabricsUpdateOutput,
+}));
 // Input Schema
 export interface ServiceRunnersCreateOrUpdateInput {
   subscriptionId: string;
@@ -7790,7 +7690,7 @@ export interface ServiceRunnersCreateOrUpdateInput {
   };
 }
 export const ServiceRunnersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7835,7 +7735,7 @@ export interface ServiceRunnersCreateOrUpdateOutput {
   };
 }
 export const ServiceRunnersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7866,7 +7766,7 @@ export const ServiceRunnersCreateOrUpdateOutput =
  * @param name - The name of the service runner.
  */
 export const ServiceRunnersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceRunnersCreateOrUpdateInput,
     outputSchema: ServiceRunnersCreateOrUpdateOutput,
   }));
@@ -7878,7 +7778,7 @@ export interface ServiceRunnersDeleteInput {
   name: string;
 }
 export const ServiceRunnersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -7894,7 +7794,7 @@ export const ServiceRunnersDeleteInput =
 // Output Schema
 export type ServiceRunnersDeleteOutput = void;
 export const ServiceRunnersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceRunnersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceRunnersDeleteOutput>;
 
 // The operation
 /**
@@ -7906,12 +7806,10 @@ export const ServiceRunnersDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the service runner.
  */
-export const ServiceRunnersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceRunnersDeleteInput,
-    outputSchema: ServiceRunnersDeleteOutput,
-  }),
-);
+export const ServiceRunnersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRunnersDeleteInput,
+  outputSchema: ServiceRunnersDeleteOutput,
+}));
 // Input Schema
 export interface ServiceRunnersGetInput {
   subscriptionId: string;
@@ -7919,14 +7817,12 @@ export interface ServiceRunnersGetInput {
   labName: string;
   name: string;
 }
-export const ServiceRunnersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    labName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ServiceRunnersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  labName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
@@ -7949,7 +7845,7 @@ export interface ServiceRunnersGetOutput {
   };
 }
 export const ServiceRunnersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7979,7 +7875,7 @@ export const ServiceRunnersGetOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the service runner.
  */
-export const ServiceRunnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceRunnersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceRunnersGetInput,
   outputSchema: ServiceRunnersGetOutput,
 }));
@@ -8006,7 +7902,7 @@ export interface UsersCreateOrUpdateInput {
   location?: string;
 }
 export const UsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8056,7 +7952,7 @@ export interface UsersCreateOrUpdateOutput {
   };
 }
 export const UsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8086,7 +7982,7 @@ export const UsersCreateOrUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the user profile.
  */
-export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersCreateOrUpdateInput,
   outputSchema: UsersCreateOrUpdateOutput,
 }));
@@ -8097,7 +7993,7 @@ export interface UsersDeleteInput {
   labName: string;
   name: string;
 }
-export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -8113,7 +8009,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UsersDeleteOutput = void;
 export const UsersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -8125,7 +8021,7 @@ export const UsersDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the user profile.
  */
-export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersDeleteInput,
   outputSchema: UsersDeleteOutput,
 }));
@@ -8137,7 +8033,7 @@ export interface UsersGetInput {
   name: string;
   $expand?: string;
 }
-export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -8165,7 +8061,7 @@ export interface UsersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8196,7 +8092,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the user profile.
  * @param $expand - Specify the $expand query. Example: 'properties($select=identity)'
  */
-export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersGetInput,
   outputSchema: UsersGetOutput,
 }));
@@ -8210,7 +8106,7 @@ export interface UsersListInput {
   $top?: number;
   $orderby?: string;
 }
-export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -8243,7 +8139,7 @@ export interface UsersListOutput {
   }[];
   nextLink?: string;
 }
-export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -8281,7 +8177,7 @@ export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const UsersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersListInput,
   outputSchema: UsersListOutput,
 }));
@@ -8293,7 +8189,7 @@ export interface UsersUpdateInput {
   name: string;
   tags?: Record<string, string>;
 }
-export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   labName: Schema.String.pipe(T.PathParam()),
@@ -8321,7 +8217,7 @@ export interface UsersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8351,7 +8247,7 @@ export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param labName - The name of the lab.
  * @param name - The name of the user profile.
  */
-export const UsersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersUpdateInput,
   outputSchema: UsersUpdateOutput,
 }));
@@ -8370,7 +8266,7 @@ export interface VirtualMachinesAddDataDiskInput {
   hostCaching?: "None" | "ReadOnly" | "ReadWrite";
 }
 export const VirtualMachinesAddDataDiskInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8399,7 +8295,7 @@ export const VirtualMachinesAddDataDiskInput =
 // Output Schema
 export type VirtualMachinesAddDataDiskOutput = void;
 export const VirtualMachinesAddDataDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAddDataDiskOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAddDataDiskOutput>;
 
 // The operation
 /**
@@ -8411,12 +8307,10 @@ export const VirtualMachinesAddDataDiskOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesAddDataDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesAddDataDiskInput,
-    outputSchema: VirtualMachinesAddDataDiskOutput,
-  }),
-);
+export const VirtualMachinesAddDataDisk = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesAddDataDiskInput,
+  outputSchema: VirtualMachinesAddDataDiskOutput,
+}));
 // Input Schema
 export interface VirtualMachinesApplyArtifactsInput {
   subscriptionId: string;
@@ -8434,7 +8328,7 @@ export interface VirtualMachinesApplyArtifactsInput {
   }[];
 }
 export const VirtualMachinesApplyArtifactsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8470,7 +8364,7 @@ export const VirtualMachinesApplyArtifactsInput =
 // Output Schema
 export type VirtualMachinesApplyArtifactsOutput = void;
 export const VirtualMachinesApplyArtifactsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesApplyArtifactsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesApplyArtifactsOutput>;
 
 // The operation
 /**
@@ -8483,7 +8377,7 @@ export const VirtualMachinesApplyArtifactsOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesApplyArtifacts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesApplyArtifactsInput,
     outputSchema: VirtualMachinesApplyArtifactsOutput,
   }));
@@ -8517,7 +8411,7 @@ export interface VirtualMachineSchedulesCreateOrUpdateInput {
   location?: string;
 }
 export const VirtualMachineSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8582,7 +8476,7 @@ export interface VirtualMachineSchedulesCreateOrUpdateOutput {
   };
 }
 export const VirtualMachineSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8614,7 +8508,7 @@ export const VirtualMachineSchedulesCreateOrUpdateOutput =
  * @param name - The name of the Schedule
  */
 export const VirtualMachineSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineSchedulesCreateOrUpdateInput,
     outputSchema: VirtualMachineSchedulesCreateOrUpdateOutput,
   }));
@@ -8627,7 +8521,7 @@ export interface VirtualMachineSchedulesDeleteInput {
   name: string;
 }
 export const VirtualMachineSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8644,7 +8538,7 @@ export const VirtualMachineSchedulesDeleteInput =
 // Output Schema
 export type VirtualMachineSchedulesDeleteOutput = void;
 export const VirtualMachineSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -8658,7 +8552,7 @@ export const VirtualMachineSchedulesDeleteOutput =
  * @param name - The name of the Schedule
  */
 export const VirtualMachineSchedulesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineSchedulesDeleteInput,
     outputSchema: VirtualMachineSchedulesDeleteOutput,
   }));
@@ -8671,7 +8565,7 @@ export interface VirtualMachineSchedulesExecuteInput {
   name: string;
 }
 export const VirtualMachineSchedulesExecuteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8688,7 +8582,7 @@ export const VirtualMachineSchedulesExecuteInput =
 // Output Schema
 export type VirtualMachineSchedulesExecuteOutput = void;
 export const VirtualMachineSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesExecuteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -8702,7 +8596,7 @@ export const VirtualMachineSchedulesExecuteOutput =
  * @param name - The name of the Schedule
  */
 export const VirtualMachineSchedulesExecute =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineSchedulesExecuteInput,
     outputSchema: VirtualMachineSchedulesExecuteOutput,
   }));
@@ -8716,7 +8610,7 @@ export interface VirtualMachineSchedulesGetInput {
   $expand?: string;
 }
 export const VirtualMachineSchedulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8746,7 +8640,7 @@ export interface VirtualMachineSchedulesGetOutput {
   };
 }
 export const VirtualMachineSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8778,12 +8672,10 @@ export const VirtualMachineSchedulesGetOutput =
  * @param name - The name of the Schedule
  * @param $expand - Specify the $expand query. Example: 'properties($select=status)'
  */
-export const VirtualMachineSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineSchedulesGetInput,
-    outputSchema: VirtualMachineSchedulesGetOutput,
-  }),
-);
+export const VirtualMachineSchedulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineSchedulesGetInput,
+  outputSchema: VirtualMachineSchedulesGetOutput,
+}));
 // Input Schema
 export interface VirtualMachineSchedulesListInput {
   subscriptionId: string;
@@ -8796,7 +8688,7 @@ export interface VirtualMachineSchedulesListInput {
   $orderby?: string;
 }
 export const VirtualMachineSchedulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8831,7 +8723,7 @@ export interface VirtualMachineSchedulesListOutput {
   nextLink?: string;
 }
 export const VirtualMachineSchedulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8880,12 +8772,10 @@ export const VirtualMachineSchedulesListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const VirtualMachineSchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachineSchedulesListInput,
-    outputSchema: VirtualMachineSchedulesListOutput,
-  }),
-);
+export const VirtualMachineSchedulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachineSchedulesListInput,
+  outputSchema: VirtualMachineSchedulesListOutput,
+}));
 // Input Schema
 export interface VirtualMachineSchedulesUpdateInput {
   subscriptionId: string;
@@ -8896,7 +8786,7 @@ export interface VirtualMachineSchedulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualMachineSchedulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8926,7 +8816,7 @@ export interface VirtualMachineSchedulesUpdateOutput {
   };
 }
 export const VirtualMachineSchedulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8958,7 +8848,7 @@ export const VirtualMachineSchedulesUpdateOutput =
  * @param name - The name of the Schedule
  */
 export const VirtualMachineSchedulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineSchedulesUpdateInput,
     outputSchema: VirtualMachineSchedulesUpdateOutput,
   }));
@@ -8970,7 +8860,7 @@ export interface VirtualMachinesClaimInput {
   name: string;
 }
 export const VirtualMachinesClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -8986,7 +8876,7 @@ export const VirtualMachinesClaimInput =
 // Output Schema
 export type VirtualMachinesClaimOutput = void;
 export const VirtualMachinesClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesClaimOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesClaimOutput>;
 
 // The operation
 /**
@@ -8998,12 +8888,10 @@ export const VirtualMachinesClaimOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesClaim = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesClaimInput,
-    outputSchema: VirtualMachinesClaimOutput,
-  }),
-);
+export const VirtualMachinesClaim = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesClaimInput,
+  outputSchema: VirtualMachinesClaimOutput,
+}));
 // Input Schema
 export interface VirtualMachinesCreateOrUpdateInput {
   subscriptionId: string;
@@ -9141,7 +9029,7 @@ export interface VirtualMachinesCreateOrUpdateInput {
   location?: string;
 }
 export const VirtualMachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9393,7 +9281,7 @@ export interface VirtualMachinesCreateOrUpdateOutput {
   };
 }
 export const VirtualMachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9424,7 +9312,7 @@ export const VirtualMachinesCreateOrUpdateOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesCreateOrUpdateInput,
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
@@ -9436,7 +9324,7 @@ export interface VirtualMachinesDeleteInput {
   name: string;
 }
 export const VirtualMachinesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9452,7 +9340,7 @@ export const VirtualMachinesDeleteInput =
 // Output Schema
 export type VirtualMachinesDeleteOutput = void;
 export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -9464,12 +9352,10 @@ export const VirtualMachinesDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesDeleteInput,
-    outputSchema: VirtualMachinesDeleteOutput,
-  }),
-);
+export const VirtualMachinesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesDeleteInput,
+  outputSchema: VirtualMachinesDeleteOutput,
+}));
 // Input Schema
 export interface VirtualMachinesDetachDataDiskInput {
   subscriptionId: string;
@@ -9479,7 +9365,7 @@ export interface VirtualMachinesDetachDataDiskInput {
   existingLabDiskId?: string;
 }
 export const VirtualMachinesDetachDataDiskInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9496,7 +9382,7 @@ export const VirtualMachinesDetachDataDiskInput =
 // Output Schema
 export type VirtualMachinesDetachDataDiskOutput = void;
 export const VirtualMachinesDetachDataDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDetachDataDiskOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDetachDataDiskOutput>;
 
 // The operation
 /**
@@ -9509,7 +9395,7 @@ export const VirtualMachinesDetachDataDiskOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesDetachDataDisk =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesDetachDataDiskInput,
     outputSchema: VirtualMachinesDetachDataDiskOutput,
   }));
@@ -9522,7 +9408,7 @@ export interface VirtualMachinesGetInput {
   $expand?: string;
 }
 export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9551,7 +9437,7 @@ export interface VirtualMachinesGetOutput {
   };
 }
 export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9582,7 +9468,7 @@ export const VirtualMachinesGetOutput =
  * @param name - The name of the virtual machine.
  * @param $expand - Specify the $expand query. Example: 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
@@ -9594,7 +9480,7 @@ export interface VirtualMachinesGetRdpFileContentsInput {
   name: string;
 }
 export const VirtualMachinesGetRdpFileContentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9612,7 +9498,7 @@ export interface VirtualMachinesGetRdpFileContentsOutput {
   contents?: string;
 }
 export const VirtualMachinesGetRdpFileContentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<VirtualMachinesGetRdpFileContentsOutput>;
 
@@ -9627,7 +9513,7 @@ export const VirtualMachinesGetRdpFileContentsOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesGetRdpFileContents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesGetRdpFileContentsInput,
     outputSchema: VirtualMachinesGetRdpFileContentsOutput,
   }));
@@ -9642,7 +9528,7 @@ export interface VirtualMachinesListInput {
   $orderby?: string;
 }
 export const VirtualMachinesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9676,7 +9562,7 @@ export interface VirtualMachinesListOutput {
   nextLink?: string;
 }
 export const VirtualMachinesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9724,7 +9610,7 @@ export const VirtualMachinesListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesListInput,
   outputSchema: VirtualMachinesListOutput,
 }));
@@ -9736,7 +9622,7 @@ export interface VirtualMachinesListApplicableSchedulesInput {
   name: string;
 }
 export const VirtualMachinesListApplicableSchedulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9764,7 +9650,7 @@ export interface VirtualMachinesListApplicableSchedulesOutput {
   };
 }
 export const VirtualMachinesListApplicableSchedulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9795,7 +9681,7 @@ export const VirtualMachinesListApplicableSchedulesOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesListApplicableSchedules =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesListApplicableSchedulesInput,
     outputSchema: VirtualMachinesListApplicableSchedulesOutput,
   }));
@@ -9807,7 +9693,7 @@ export interface VirtualMachinesRedeployInput {
   name: string;
 }
 export const VirtualMachinesRedeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9823,7 +9709,7 @@ export const VirtualMachinesRedeployInput =
 // Output Schema
 export type VirtualMachinesRedeployOutput = void;
 export const VirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRedeployOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRedeployOutput>;
 
 // The operation
 /**
@@ -9835,12 +9721,10 @@ export const VirtualMachinesRedeployOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRedeployInput,
-    outputSchema: VirtualMachinesRedeployOutput,
-  }),
-);
+export const VirtualMachinesRedeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRedeployInput,
+  outputSchema: VirtualMachinesRedeployOutput,
+}));
 // Input Schema
 export interface VirtualMachinesResizeInput {
   subscriptionId: string;
@@ -9850,7 +9734,7 @@ export interface VirtualMachinesResizeInput {
   size?: string;
 }
 export const VirtualMachinesResizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9867,7 +9751,7 @@ export const VirtualMachinesResizeInput =
 // Output Schema
 export type VirtualMachinesResizeOutput = void;
 export const VirtualMachinesResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesResizeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesResizeOutput>;
 
 // The operation
 /**
@@ -9879,12 +9763,10 @@ export const VirtualMachinesResizeOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesResize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesResizeInput,
-    outputSchema: VirtualMachinesResizeOutput,
-  }),
-);
+export const VirtualMachinesResize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesResizeInput,
+  outputSchema: VirtualMachinesResizeOutput,
+}));
 // Input Schema
 export interface VirtualMachinesRestartInput {
   subscriptionId: string;
@@ -9893,7 +9775,7 @@ export interface VirtualMachinesRestartInput {
   name: string;
 }
 export const VirtualMachinesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9909,7 +9791,7 @@ export const VirtualMachinesRestartInput =
 // Output Schema
 export type VirtualMachinesRestartOutput = void;
 export const VirtualMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
 
 // The operation
 /**
@@ -9921,12 +9803,10 @@ export const VirtualMachinesRestartOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesRestartInput,
-    outputSchema: VirtualMachinesRestartOutput,
-  }),
-);
+export const VirtualMachinesRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesRestartInput,
+  outputSchema: VirtualMachinesRestartOutput,
+}));
 // Input Schema
 export interface VirtualMachinesStartInput {
   subscriptionId: string;
@@ -9935,7 +9815,7 @@ export interface VirtualMachinesStartInput {
   name: string;
 }
 export const VirtualMachinesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9951,7 +9831,7 @@ export const VirtualMachinesStartInput =
 // Output Schema
 export type VirtualMachinesStartOutput = void;
 export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
 
 // The operation
 /**
@@ -9963,12 +9843,10 @@ export const VirtualMachinesStartOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesStartInput,
-    outputSchema: VirtualMachinesStartOutput,
-  }),
-);
+export const VirtualMachinesStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesStartInput,
+  outputSchema: VirtualMachinesStartOutput,
+}));
 // Input Schema
 export interface VirtualMachinesStopInput {
   subscriptionId: string;
@@ -9977,7 +9855,7 @@ export interface VirtualMachinesStopInput {
   name: string;
 }
 export const VirtualMachinesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -9993,7 +9871,7 @@ export const VirtualMachinesStopInput =
 // Output Schema
 export type VirtualMachinesStopOutput = void;
 export const VirtualMachinesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStopOutput>;
 
 // The operation
 /**
@@ -10005,7 +9883,7 @@ export const VirtualMachinesStopOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesStopInput,
   outputSchema: VirtualMachinesStopOutput,
 }));
@@ -10017,7 +9895,7 @@ export interface VirtualMachinesTransferDisksInput {
   name: string;
 }
 export const VirtualMachinesTransferDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10033,7 +9911,7 @@ export const VirtualMachinesTransferDisksInput =
 // Output Schema
 export type VirtualMachinesTransferDisksOutput = void;
 export const VirtualMachinesTransferDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesTransferDisksOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesTransferDisksOutput>;
 
 // The operation
 /**
@@ -10046,7 +9924,7 @@ export const VirtualMachinesTransferDisksOutput =
  * @param name - The name of the virtual machine.
  */
 export const VirtualMachinesTransferDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesTransferDisksInput,
     outputSchema: VirtualMachinesTransferDisksOutput,
   }));
@@ -10058,7 +9936,7 @@ export interface VirtualMachinesUnClaimInput {
   name: string;
 }
 export const VirtualMachinesUnClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10074,7 +9952,7 @@ export const VirtualMachinesUnClaimInput =
 // Output Schema
 export type VirtualMachinesUnClaimOutput = void;
 export const VirtualMachinesUnClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesUnClaimOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesUnClaimOutput>;
 
 // The operation
 /**
@@ -10086,12 +9964,10 @@ export const VirtualMachinesUnClaimOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesUnClaim = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesUnClaimInput,
-    outputSchema: VirtualMachinesUnClaimOutput,
-  }),
-);
+export const VirtualMachinesUnClaim = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesUnClaimInput,
+  outputSchema: VirtualMachinesUnClaimOutput,
+}));
 // Input Schema
 export interface VirtualMachinesUpdateInput {
   subscriptionId: string;
@@ -10101,7 +9977,7 @@ export interface VirtualMachinesUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualMachinesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10130,7 +10006,7 @@ export interface VirtualMachinesUpdateOutput {
   };
 }
 export const VirtualMachinesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10160,12 +10036,10 @@ export const VirtualMachinesUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual machine.
  */
-export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualMachinesUpdateInput,
-    outputSchema: VirtualMachinesUpdateOutput,
-  }),
-);
+export const VirtualMachinesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualMachinesUpdateInput,
+  outputSchema: VirtualMachinesUpdateOutput,
+}));
 // Input Schema
 export interface VirtualNetworksCreateOrUpdateInput {
   subscriptionId: string;
@@ -10202,7 +10076,7 @@ export interface VirtualNetworksCreateOrUpdateInput {
   location?: string;
 }
 export const VirtualNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10287,7 +10161,7 @@ export interface VirtualNetworksCreateOrUpdateOutput {
   };
 }
 export const VirtualNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10318,7 +10192,7 @@ export const VirtualNetworksCreateOrUpdateOutput =
  * @param name - The name of the virtual network.
  */
 export const VirtualNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworksCreateOrUpdateInput,
     outputSchema: VirtualNetworksCreateOrUpdateOutput,
   }));
@@ -10330,7 +10204,7 @@ export interface VirtualNetworksDeleteInput {
   name: string;
 }
 export const VirtualNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10346,7 +10220,7 @@ export const VirtualNetworksDeleteInput =
 // Output Schema
 export type VirtualNetworksDeleteOutput = void;
 export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -10358,12 +10232,10 @@ export const VirtualNetworksDeleteOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual network.
  */
-export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksDeleteInput,
-    outputSchema: VirtualNetworksDeleteOutput,
-  }),
-);
+export const VirtualNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksDeleteInput,
+  outputSchema: VirtualNetworksDeleteOutput,
+}));
 // Input Schema
 export interface VirtualNetworksGetInput {
   subscriptionId: string;
@@ -10373,7 +10245,7 @@ export interface VirtualNetworksGetInput {
   $expand?: string;
 }
 export const VirtualNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10402,7 +10274,7 @@ export interface VirtualNetworksGetOutput {
   };
 }
 export const VirtualNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10433,7 +10305,7 @@ export const VirtualNetworksGetOutput =
  * @param name - The name of the virtual network.
  * @param $expand - Specify the $expand query. Example: 'properties($expand=externalSubnets)'
  */
-export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksGetInput,
   outputSchema: VirtualNetworksGetOutput,
 }));
@@ -10448,7 +10320,7 @@ export interface VirtualNetworksListInput {
   $orderby?: string;
 }
 export const VirtualNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10482,7 +10354,7 @@ export interface VirtualNetworksListOutput {
   nextLink?: string;
 }
 export const VirtualNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10530,7 +10402,7 @@ export const VirtualNetworksListOutput =
  * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'
  * @param $orderby - The ordering expression for the results, using OData notation. Example: '$orderby=name desc'
  */
-export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualNetworksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualNetworksListInput,
   outputSchema: VirtualNetworksListOutput,
 }));
@@ -10543,7 +10415,7 @@ export interface VirtualNetworksUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     labName: Schema.String.pipe(T.PathParam()),
@@ -10572,7 +10444,7 @@ export interface VirtualNetworksUpdateOutput {
   };
 }
 export const VirtualNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10602,9 +10474,7 @@ export const VirtualNetworksUpdateOutput =
  * @param labName - The name of the lab.
  * @param name - The name of the virtual network.
  */
-export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksUpdateInput,
-    outputSchema: VirtualNetworksUpdateOutput,
-  }),
-);
+export const VirtualNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksUpdateInput,
+  outputSchema: VirtualNetworksUpdateOutput,
+}));

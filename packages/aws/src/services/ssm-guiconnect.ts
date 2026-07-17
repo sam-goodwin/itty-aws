@@ -91,7 +91,7 @@ export type ErrorMessage = string;
 //# Schemas
 export interface GetConnectionRecordingPreferencesRequest {}
 export const GetConnectionRecordingPreferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -102,15 +102,15 @@ export interface S3Bucket {
   BucketOwner: string;
   BucketName: string;
 }
-export const S3Bucket = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketOwner: S.String, BucketName: S.String }),
 ).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
 export type S3Buckets = S3Bucket[];
-export const S3Buckets = /*@__PURE__*/ /*#__PURE__*/ S.Array(S3Bucket);
+export const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
 export interface RecordingDestinations {
   S3Buckets: S3Bucket[];
 }
-export const RecordingDestinations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Buckets: S3Buckets }),
 ).annotate({
   identifier: "RecordingDestinations",
@@ -120,7 +120,7 @@ export interface ConnectionRecordingPreferences {
   KMSKeyArn: string;
 }
 export const ConnectionRecordingPreferences =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RecordingDestinations: RecordingDestinations,
       KMSKeyArn: S.String,
@@ -133,7 +133,7 @@ export interface GetConnectionRecordingPreferencesResponse {
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
 export const GetConnectionRecordingPreferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String),
       ConnectionRecordingPreferences: S.optional(
@@ -147,7 +147,7 @@ export interface DeleteConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
 export const DeleteConnectionRecordingPreferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
@@ -170,7 +170,7 @@ export interface DeleteConnectionRecordingPreferencesResponse {
   ClientToken?: string;
 }
 export const DeleteConnectionRecordingPreferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ClientToken: S.optional(S.String) }),
   ).annotate({
     identifier: "DeleteConnectionRecordingPreferencesResponse",
@@ -180,7 +180,7 @@ export interface UpdateConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
 export const UpdateConnectionRecordingPreferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ConnectionRecordingPreferences: ConnectionRecordingPreferences,
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -205,7 +205,7 @@ export interface UpdateConnectionRecordingPreferencesResponse {
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
 export const UpdateConnectionRecordingPreferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String),
       ConnectionRecordingPreferences: S.optional(
@@ -264,7 +264,7 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
   GetConnectionRecordingPreferencesResponse,
   GetConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRecordingPreferencesRequest,
   output: GetConnectionRecordingPreferencesResponse,
   errors: [
@@ -295,7 +295,7 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
   DeleteConnectionRecordingPreferencesResponse,
   DeleteConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRecordingPreferencesRequest,
   output: DeleteConnectionRecordingPreferencesResponse,
   errors: [
@@ -326,7 +326,7 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   UpdateConnectionRecordingPreferencesResponse,
   UpdateConnectionRecordingPreferencesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRecordingPreferencesRequest,
   output: UpdateConnectionRecordingPreferencesResponse,
   errors: [

@@ -9,7 +9,7 @@ export interface V1GetPostgresUpgradeStatusInput {
   tracking_id?: string;
 }
 export const V1GetPostgresUpgradeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     tracking_id: Schema.optional(Schema.String),
   }).pipe(
@@ -48,7 +48,7 @@ export interface V1GetPostgresUpgradeStatusOutput {
   } | null;
 }
 export const V1GetPostgresUpgradeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseUpgradeStatus: Schema.NullOr(
       Schema.Struct({
         initiated_at: Schema.String,
@@ -93,10 +93,8 @@ export const V1GetPostgresUpgradeStatusOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPostgresUpgradeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetPostgresUpgradeStatusInput,
-    outputSchema: V1GetPostgresUpgradeStatusOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetPostgresUpgradeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetPostgresUpgradeStatusInput,
+  outputSchema: V1GetPostgresUpgradeStatusOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

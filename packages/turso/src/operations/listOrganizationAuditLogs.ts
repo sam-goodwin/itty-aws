@@ -9,7 +9,7 @@ export interface ListOrganizationAuditLogsInput {
   page?: number;
 }
 export const ListOrganizationAuditLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     page_size: Schema.optional(Schema.Number),
     page: Schema.optional(Schema.Number),
@@ -62,7 +62,7 @@ export interface ListOrganizationAuditLogsOutput {
   };
 }
 export const ListOrganizationAuditLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audit_logs: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -122,9 +122,7 @@ export const ListOrganizationAuditLogsOutput =
  * @param page_size - The limit of items to return per page. Defaults to 100.
  * @param page - The page number to return. Defaults to 1.
  */
-export const listOrganizationAuditLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationAuditLogsInput,
-    outputSchema: ListOrganizationAuditLogsOutput,
-  }),
-);
+export const listOrganizationAuditLogs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationAuditLogsInput,
+  outputSchema: ListOrganizationAuditLogsOutput,
+}));

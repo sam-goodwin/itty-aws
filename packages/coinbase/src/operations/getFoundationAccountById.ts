@@ -7,7 +7,7 @@ export interface GetFoundationAccountByIdInput {
   accountId: string;
 }
 export const GetFoundationAccountByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/accounts/{accountId}" }),
@@ -23,7 +23,7 @@ export interface GetFoundationAccountByIdOutput {
   updatedAt: string;
 }
 export const GetFoundationAccountByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String,
     type: Schema.Literals(["prime", "business", "cdp"]),
     owner: Schema.String,
@@ -40,9 +40,7 @@ export const GetFoundationAccountByIdOutput =
  *
  * @param accountId - The ID of the account to retrieve.
  */
-export const getFoundationAccountById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetFoundationAccountByIdInput,
-    outputSchema: GetFoundationAccountByIdOutput,
-  }),
-);
+export const getFoundationAccountById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetFoundationAccountByIdInput,
+  outputSchema: GetFoundationAccountByIdOutput,
+}));

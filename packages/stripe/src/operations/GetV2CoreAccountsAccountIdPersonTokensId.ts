@@ -8,7 +8,7 @@ export interface GetV2CoreAccountsAccountIdPersonTokensIdInput {
   id: string;
 }
 export const GetV2CoreAccountsAccountIdPersonTokensIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -28,7 +28,7 @@ export interface GetV2CoreAccountsAccountIdPersonTokensIdOutput {
   used: boolean;
 }
 export const GetV2CoreAccountsAccountIdPersonTokensIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.String,
     expires_at: Schema.String,
     id: Schema.String,
@@ -47,7 +47,7 @@ export const GetV2CoreAccountsAccountIdPersonTokensIdOutput =
  * @param id - The ID of the Person Token to retrieve.
  */
 export const GetV2CoreAccountsAccountIdPersonTokensId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CoreAccountsAccountIdPersonTokensIdInput,
     outputSchema: GetV2CoreAccountsAccountIdPersonTokensIdOutput,
   }));

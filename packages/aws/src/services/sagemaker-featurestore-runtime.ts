@@ -95,35 +95,34 @@ export type ListRecordsNextToken = string;
 
 //# Schemas
 export type RecordIdentifiers = string[];
-export const RecordIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const RecordIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type FeatureNames = string[];
-export const FeatureNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FeatureNames = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetRecordIdentifier {
   FeatureGroupName?: string;
   RecordIdentifiersValueAsString?: string[];
   FeatureNames?: string[];
 }
-export const BatchGetRecordIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      FeatureGroupName: S.optional(S.String),
-      RecordIdentifiersValueAsString: S.optional(RecordIdentifiers),
-      FeatureNames: S.optional(FeatureNames),
-    }),
+export const BatchGetRecordIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FeatureGroupName: S.optional(S.String),
+    RecordIdentifiersValueAsString: S.optional(RecordIdentifiers),
+    FeatureNames: S.optional(FeatureNames),
+  }),
 ).annotate({
   identifier: "BatchGetRecordIdentifier",
 }) as any as S.Schema<BatchGetRecordIdentifier>;
 export type BatchGetRecordIdentifiers = BatchGetRecordIdentifier[];
-export const BatchGetRecordIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(
   BatchGetRecordIdentifier,
 );
 export type ExpirationTimeResponse = "Enabled" | "Disabled" | (string & {});
-export const ExpirationTimeResponse = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExpirationTimeResponse = /*@__PURE__*/ S.String;
 export interface BatchGetRecordRequest {
   Identifiers?: BatchGetRecordIdentifier[];
   ExpirationTimeResponse?: ExpirationTimeResponse;
 }
-export const BatchGetRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifiers: S.optional(BatchGetRecordIdentifiers),
     ExpirationTimeResponse: S.optional(ExpirationTimeResponse),
@@ -141,13 +140,13 @@ export const BatchGetRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "BatchGetRecordRequest",
 }) as any as S.Schema<BatchGetRecordRequest>;
 export type ValueAsStringList = string[];
-export const ValueAsStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ValueAsStringList = /*@__PURE__*/ S.Array(S.String);
 export interface FeatureValue {
   FeatureName?: string;
   ValueAsString?: string;
   ValueAsStringList?: string[];
 }
-export const FeatureValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureName: S.optional(S.String),
     ValueAsString: S.optional(S.String),
@@ -155,26 +154,25 @@ export const FeatureValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 export type Record = FeatureValue[];
-export const Record = /*@__PURE__*/ /*#__PURE__*/ S.Array(FeatureValue);
+export const Record = /*@__PURE__*/ S.Array(FeatureValue);
 export interface BatchGetRecordResultDetail {
   FeatureGroupName?: string;
   RecordIdentifierValueAsString?: string;
   Record?: FeatureValue[];
   ExpiresAt?: string;
 }
-export const BatchGetRecordResultDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      FeatureGroupName: S.optional(S.String),
-      RecordIdentifierValueAsString: S.optional(S.String),
-      Record: S.optional(Record),
-      ExpiresAt: S.optional(S.String),
-    }),
+export const BatchGetRecordResultDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FeatureGroupName: S.optional(S.String),
+    RecordIdentifierValueAsString: S.optional(S.String),
+    Record: S.optional(Record),
+    ExpiresAt: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "BatchGetRecordResultDetail",
 }) as any as S.Schema<BatchGetRecordResultDetail>;
 export type BatchGetRecordResultDetails = BatchGetRecordResultDetail[];
-export const BatchGetRecordResultDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchGetRecordResultDetails = /*@__PURE__*/ S.Array(
   BatchGetRecordResultDetail,
 );
 export interface BatchGetRecordError_ {
@@ -183,7 +181,7 @@ export interface BatchGetRecordError_ {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const BatchGetRecordError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetRecordError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     RecordIdentifierValueAsString: S.optional(S.String),
@@ -194,10 +192,9 @@ export const BatchGetRecordError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "BatchGetRecordError",
 }) as any as S.Schema<BatchGetRecordError_>;
 export type BatchGetRecordErrors = BatchGetRecordError_[];
-export const BatchGetRecordErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchGetRecordError_);
+export const BatchGetRecordErrors = /*@__PURE__*/ S.Array(BatchGetRecordError_);
 export type UnprocessedIdentifiers = BatchGetRecordIdentifier[];
-export const UnprocessedIdentifiers = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const UnprocessedIdentifiers = /*@__PURE__*/ S.Array(
   BatchGetRecordIdentifier,
 );
 export interface BatchGetRecordResponse {
@@ -217,20 +214,19 @@ export interface BatchGetRecordResponse {
     RecordIdentifiersValueAsString: RecordIdentifiers;
   })[];
 }
-export const BatchGetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Records: S.optional(BatchGetRecordResultDetails),
-      Errors: S.optional(BatchGetRecordErrors),
-      UnprocessedIdentifiers: S.optional(UnprocessedIdentifiers),
-    }),
+export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Records: S.optional(BatchGetRecordResultDetails),
+    Errors: S.optional(BatchGetRecordErrors),
+    UnprocessedIdentifiers: S.optional(UnprocessedIdentifiers),
+  }),
 ).annotate({
   identifier: "BatchGetRecordResponse",
 }) as any as S.Schema<BatchGetRecordResponse>;
 export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
-export const TargetStore = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetStore = /*@__PURE__*/ S.String;
 export type TargetStores = TargetStore[];
-export const TargetStores = /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetStore);
+export const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
 export type TtlDurationUnit =
   | "Seconds"
   | "Minutes"
@@ -238,12 +234,12 @@ export type TtlDurationUnit =
   | "Days"
   | "Weeks"
   | (string & {});
-export const TtlDurationUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TtlDurationUnit = /*@__PURE__*/ S.String;
 export interface TtlDuration {
   Unit?: TtlDurationUnit;
   Value?: number;
 }
-export const TtlDuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Unit: S.optional(TtlDurationUnit), Value: S.optional(S.Number) }),
 ).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
 export interface BatchWriteRecordEntry {
@@ -252,7 +248,7 @@ export interface BatchWriteRecordEntry {
   TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
-export const BatchWriteRecordEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     Record: S.optional(Record),
@@ -263,28 +259,27 @@ export const BatchWriteRecordEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "BatchWriteRecordEntry",
 }) as any as S.Schema<BatchWriteRecordEntry>;
 export type BatchWriteRecordEntries = BatchWriteRecordEntry[];
-export const BatchWriteRecordEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchWriteRecordEntries = /*@__PURE__*/ S.Array(
   BatchWriteRecordEntry,
 );
 export interface BatchWriteRecordRequest {
   Entries?: BatchWriteRecordEntry[];
   TtlDuration?: TtlDuration;
 }
-export const BatchWriteRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Entries: S.optional(BatchWriteRecordEntries),
-      TtlDuration: S.optional(TtlDuration),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchWriteRecord" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchWriteRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entries: S.optional(BatchWriteRecordEntries),
+    TtlDuration: S.optional(TtlDuration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchWriteRecord" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchWriteRecordRequest",
 }) as any as S.Schema<BatchWriteRecordRequest>;
@@ -293,23 +288,22 @@ export interface BatchWriteRecordError_ {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const BatchWriteRecordError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Entry: S.optional(BatchWriteRecordEntry),
-      ErrorCode: S.optional(S.String),
-      ErrorMessage: S.optional(S.String),
-    }),
+export const BatchWriteRecordError_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entry: S.optional(BatchWriteRecordEntry),
+    ErrorCode: S.optional(S.String),
+    ErrorMessage: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "BatchWriteRecordError",
 }) as any as S.Schema<BatchWriteRecordError_>;
 export type BatchWriteRecordErrors = BatchWriteRecordError_[];
-export const BatchWriteRecordErrors = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchWriteRecordErrors = /*@__PURE__*/ S.Array(
   BatchWriteRecordError_,
 );
 export type UnprocessedBatchWriteRecordEntries = BatchWriteRecordEntry[];
 export const UnprocessedBatchWriteRecordEntries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchWriteRecordEntry);
+  /*@__PURE__*/ S.Array(BatchWriteRecordEntry);
 export interface BatchWriteRecordResponse {
   Errors: (BatchWriteRecordError & {
     Entry: BatchWriteRecordEntry & {
@@ -332,17 +326,16 @@ export interface BatchWriteRecordResponse {
     };
   })[];
 }
-export const BatchWriteRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Errors: S.optional(BatchWriteRecordErrors),
-      UnprocessedEntries: S.optional(UnprocessedBatchWriteRecordEntries),
-    }),
+export const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Errors: S.optional(BatchWriteRecordErrors),
+    UnprocessedEntries: S.optional(UnprocessedBatchWriteRecordEntries),
+  }),
 ).annotate({
   identifier: "BatchWriteRecordResponse",
 }) as any as S.Schema<BatchWriteRecordResponse>;
 export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
-export const DeletionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DeletionMode = /*@__PURE__*/ S.String;
 export interface DeleteRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
@@ -350,7 +343,7 @@ export interface DeleteRecordRequest {
   TargetStores?: TargetStore[];
   DeletionMode?: DeletionMode;
 }
-export const DeleteRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     RecordIdentifierValueAsString: S.optional(S.String).pipe(
@@ -373,7 +366,7 @@ export const DeleteRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteRecordRequest",
 }) as any as S.Schema<DeleteRecordRequest>;
 export interface DeleteRecordResponse {}
-export const DeleteRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteRecordResponse",
@@ -384,7 +377,7 @@ export interface GetRecordRequest {
   FeatureNames?: string[];
   ExpirationTimeResponse?: ExpirationTimeResponse;
 }
-export const GetRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     RecordIdentifierValueAsString: S.optional(S.String).pipe(
@@ -411,7 +404,7 @@ export interface GetRecordResponse {
   Record?: (FeatureValue & { FeatureName: FeatureName })[];
   ExpiresAt?: string;
 }
-export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Record: S.optional(Record), ExpiresAt: S.optional(S.String) }),
 ).annotate({
   identifier: "GetRecordResponse",
@@ -422,7 +415,7 @@ export interface ListRecordsRequest {
   NextToken?: string;
   IncludeSoftDeletedRecords?: boolean;
 }
-export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     MaxResults: S.optional(S.Number),
@@ -445,14 +438,12 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListRecordsRequest",
 }) as any as S.Schema<ListRecordsRequest>;
 export type RecordIdentifierList = string[];
-export const RecordIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const RecordIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface ListRecordsResponse {
   RecordIdentifiers: string[];
   NextToken?: string;
 }
-export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecordIdentifiers: S.optional(RecordIdentifierList),
     NextToken: S.optional(S.String),
@@ -466,7 +457,7 @@ export interface PutRecordRequest {
   TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
-export const PutRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     Record: S.optional(Record),
@@ -486,7 +477,7 @@ export const PutRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PutRecordRequest",
 }) as any as S.Schema<PutRecordRequest>;
 export interface PutRecordResponse {}
-export const PutRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PutRecordResponse",
@@ -542,7 +533,7 @@ export const batchGetRecord: API.OperationMethod<
   BatchGetRecordResponse,
   BatchGetRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetRecordRequest,
   output: BatchGetRecordResponse,
   errors: [
@@ -575,7 +566,7 @@ export const batchWriteRecord: API.OperationMethod<
   BatchWriteRecordResponse,
   BatchWriteRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchWriteRecordRequest,
   output: BatchWriteRecordResponse,
   errors: [
@@ -632,7 +623,7 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordResponse,
   DeleteRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordRequest,
   output: DeleteRecordResponse,
   errors: [
@@ -662,7 +653,7 @@ export const getRecord: API.OperationMethod<
   GetRecordResponse,
   GetRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordRequest,
   output: GetRecordResponse,
   errors: [
@@ -707,7 +698,7 @@ export const listRecords: API.OperationMethod<
     ListRecordsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
   errors: [
@@ -758,7 +749,7 @@ export const putRecord: API.OperationMethod<
   PutRecordResponse,
   PutRecordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRecordRequest,
   output: PutRecordResponse,
   errors: [

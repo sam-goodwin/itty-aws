@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetPaymentMethodInput {
   paymentMethodId: string;
 }
-export const GetPaymentMethodInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPaymentMethodInput = /*@__PURE__*/ Schema.Struct({
   paymentMethodId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/payment-methods/{paymentMethodId}" }),
@@ -49,7 +49,7 @@ export type GetPaymentMethodOutput =
       paymentRail: "sepa";
       sepa: { asset: string; bankName: string; ibanLast4: string; bic: string };
     };
-export const GetPaymentMethodOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const GetPaymentMethodOutput = /*@__PURE__*/ Schema.Union([
   Schema.Struct({
     paymentMethodId: Schema.String,
     active: Schema.Boolean,
@@ -100,7 +100,7 @@ export const GetPaymentMethodOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
  *
  * @param paymentMethodId - The unique identifier of the payment method.
  */
-export const getPaymentMethod = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPaymentMethod = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPaymentMethodInput,
   outputSchema: GetPaymentMethodOutput,
 }));

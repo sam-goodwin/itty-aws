@@ -28,7 +28,7 @@ export interface CreateDatabaseInput {
       | "aegis256x4";
   };
 }
-export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   group: Schema.String,
@@ -69,7 +69,7 @@ export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateDatabaseOutput {
   database?: { DbId?: string; Hostname?: string; Name?: string };
 }
-export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateDatabaseOutput = /*@__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Struct({
       DbId: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const createDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDatabase = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDatabaseInput,
   outputSchema: CreateDatabaseOutput,
   errors: [BadRequest, Conflict] as const,

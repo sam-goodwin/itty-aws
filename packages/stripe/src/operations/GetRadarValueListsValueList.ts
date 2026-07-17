@@ -8,7 +8,7 @@ export interface GetRadarValueListsValueListInput {
   expand?: string;
 }
 export const GetRadarValueListsValueListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value_list: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -58,7 +58,7 @@ export interface GetRadarValueListsValueListOutput {
   object: "radar.value_list";
 }
 export const GetRadarValueListsValueListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.String,
     created: Schema.Number,
     created_by: Schema.String,
@@ -107,9 +107,7 @@ export const GetRadarValueListsValueListOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetRadarValueListsValueList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetRadarValueListsValueListInput,
-    outputSchema: GetRadarValueListsValueListOutput,
-  }),
-);
+export const GetRadarValueListsValueList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRadarValueListsValueListInput,
+  outputSchema: GetRadarValueListsValueListOutput,
+}));

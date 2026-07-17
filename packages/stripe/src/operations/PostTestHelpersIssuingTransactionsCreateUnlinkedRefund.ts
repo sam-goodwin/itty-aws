@@ -386,7 +386,7 @@ export interface PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput {
   };
 }
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     card: Schema.String,
     currency: Schema.optional(Schema.String),
@@ -1257,7 +1257,7 @@ export interface PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput {
   wallet: "apple_pay" | "google_pay" | "samsung_pay" | null;
 }
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -1671,7 +1671,7 @@ export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput =
  * <p>Allows the user to refund an arbitrary amount, also known as a unlinked refund.</p>
  */
 export const PostTestHelpersIssuingTransactionsCreateUnlinkedRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsCreateUnlinkedRefundInput,
     outputSchema: PostTestHelpersIssuingTransactionsCreateUnlinkedRefundOutput,
   }));

@@ -17,7 +17,7 @@ export interface VisualReviewRunsAddSnapshotsCreateInput {
   baseline_hashes?: Record<string, string>;
 }
 export const VisualReviewRunsAddSnapshotsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     snapshots: Schema.optional(
@@ -53,7 +53,7 @@ export interface VisualReviewRunsAddSnapshotsCreateOutput {
   }[];
 }
 export const VisualReviewRunsAddSnapshotsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     added: Schema.optional(Schema.Number),
     uploads: Schema.optional(
       Schema.Array(
@@ -73,7 +73,7 @@ export const VisualReviewRunsAddSnapshotsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewRunsAddSnapshotsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewRunsAddSnapshotsCreateInput,
     outputSchema: VisualReviewRunsAddSnapshotsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

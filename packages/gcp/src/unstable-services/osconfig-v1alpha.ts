@@ -32,7 +32,7 @@ export interface InventoryVersionedPackage {
 }
 
 export const InventoryVersionedPackage: Schema.Codec<InventoryVersionedPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     architecture: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface InventoryWindowsQuickFixEngineeringPackage {
 }
 
 export const InventoryWindowsQuickFixEngineeringPackage: Schema.Codec<InventoryWindowsQuickFixEngineeringPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     hotFixId: Schema.optional(Schema.String),
     installTime: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
 }
 
 export const InventoryWindowsUpdatePackageWindowsUpdateCategory: Schema.Codec<InventoryWindowsUpdatePackageWindowsUpdateCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -94,7 +94,7 @@ export interface InventoryWindowsUpdatePackage {
 }
 
 export const InventoryWindowsUpdatePackage: Schema.Codec<InventoryWindowsUpdatePackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     moreInfoUrls: Schema.optional(Schema.Array(Schema.String)),
     kbArticleIds: Schema.optional(Schema.Array(Schema.String)),
     updateId: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export interface Osconfig_Date {
 }
 
 export const Osconfig_Date: Schema.Codec<Osconfig_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -138,7 +138,7 @@ export interface InventoryWindowsApplication {
 }
 
 export const InventoryWindowsApplication: Schema.Codec<InventoryWindowsApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     displayVersion: Schema.optional(Schema.String),
     helpLink: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface InventoryZypperPatch {
 }
 
 export const InventoryZypperPatch: Schema.Codec<InventoryZypperPatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     patchName: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export interface InventorySoftwarePackage {
 }
 
 export const InventorySoftwarePackage: Schema.Codec<InventorySoftwarePackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cosPackage: Schema.optional(InventoryVersionedPackage),
     qfePackage: Schema.optional(InventoryWindowsQuickFixEngineeringPackage),
     wuaPackage: Schema.optional(InventoryWindowsUpdatePackage),
@@ -221,7 +221,7 @@ export interface InventoryItem {
 }
 
 export const InventoryItem: Schema.Codec<InventoryItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originType: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     availablePackage: Schema.optional(InventorySoftwarePackage),
@@ -239,7 +239,7 @@ export interface OSPolicyOSFilter {
 }
 
 export const OSPolicyOSFilter: Schema.Codec<OSPolicyOSFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyOSFilter" });
@@ -256,7 +256,7 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceYumRepository: Schema.Codec<OSPolicyResourceRepositoryResourceYumRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     baseUrl: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceZypperRepository: Schema.Codec<OSPolicyResourceRepositoryResourceZypperRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gpgKeys: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -294,7 +294,7 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceGooRepository: Schema.Codec<OSPolicyResourceRepositoryResourceGooRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({
@@ -315,7 +315,7 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
 }
 
 export const OSPolicyResourceRepositoryResourceAptRepository: Schema.Codec<OSPolicyResourceRepositoryResourceAptRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gpgKey: Schema.optional(Schema.String),
     components: Schema.optional(Schema.Array(Schema.String)),
     archiveType: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface OSPolicyResourceRepositoryResource {
 }
 
 export const OSPolicyResourceRepositoryResource: Schema.Codec<OSPolicyResourceRepositoryResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourceRepositoryResourceYumRepository),
     zypper: Schema.optional(OSPolicyResourceRepositoryResourceZypperRepository),
     goo: Schema.optional(OSPolicyResourceRepositoryResourceGooRepository),
@@ -352,7 +352,7 @@ export interface OSPolicyResourceFileRemote {
 }
 
 export const OSPolicyResourceFileRemote: Schema.Codec<OSPolicyResourceFileRemote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     sha256Checksum: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourceFileRemote" });
@@ -367,7 +367,7 @@ export interface OSPolicyResourceFileGcs {
 }
 
 export const OSPolicyResourceFileGcs: Schema.Codec<OSPolicyResourceFileGcs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     object: Schema.optional(Schema.String),
     generation: Schema.optional(Schema.String),
@@ -385,7 +385,7 @@ export interface OSPolicyResourceFile {
 }
 
 export const OSPolicyResourceFile: Schema.Codec<OSPolicyResourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remote: Schema.optional(OSPolicyResourceFileRemote),
     gcs: Schema.optional(OSPolicyResourceFileGcs),
     allowInsecure: Schema.optional(Schema.Boolean),
@@ -411,7 +411,7 @@ export interface OSPolicyResourceExecResourceExec {
 }
 
 export const OSPolicyResourceExecResourceExec: Schema.Codec<OSPolicyResourceExecResourceExec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(OSPolicyResourceFile),
     script: Schema.optional(Schema.String),
     args: Schema.optional(Schema.Array(Schema.String)),
@@ -427,7 +427,7 @@ export interface OSPolicyResourceExecResource {
 }
 
 export const OSPolicyResourceExecResource: Schema.Codec<OSPolicyResourceExecResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validate: Schema.optional(OSPolicyResourceExecResourceExec),
     enforce: Schema.optional(OSPolicyResourceExecResourceExec),
   }).annotate({ identifier: "OSPolicyResourceExecResource" });
@@ -451,7 +451,7 @@ export interface OSPolicyResourceFileResource {
 }
 
 export const OSPolicyResourceFileResource: Schema.Codec<OSPolicyResourceFileResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(OSPolicyResourceFile),
     state: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -465,7 +465,7 @@ export interface OSPolicyResourcePackageResourceYUM {
 }
 
 export const OSPolicyResourcePackageResourceYUM: Schema.Codec<OSPolicyResourcePackageResourceYUM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" });
 
@@ -475,7 +475,7 @@ export interface OSPolicyResourcePackageResourceZypper {
 }
 
 export const OSPolicyResourcePackageResourceZypper: Schema.Codec<OSPolicyResourcePackageResourceZypper> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" });
 
@@ -487,7 +487,7 @@ export interface OSPolicyResourcePackageResourceRPM {
 }
 
 export const OSPolicyResourcePackageResourceRPM: Schema.Codec<OSPolicyResourcePackageResourceRPM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceRPM" });
@@ -500,7 +500,7 @@ export interface OSPolicyResourcePackageResourceDeb {
 }
 
 export const OSPolicyResourcePackageResourceDeb: Schema.Codec<OSPolicyResourcePackageResourceDeb> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceDeb" });
@@ -511,7 +511,7 @@ export interface OSPolicyResourcePackageResourceAPT {
 }
 
 export const OSPolicyResourcePackageResourceAPT: Schema.Codec<OSPolicyResourcePackageResourceAPT> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" });
 
@@ -521,7 +521,7 @@ export interface OSPolicyResourcePackageResourceGooGet {
 }
 
 export const OSPolicyResourcePackageResourceGooGet: Schema.Codec<OSPolicyResourcePackageResourceGooGet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" });
 
@@ -533,7 +533,7 @@ export interface OSPolicyResourcePackageResourceMSI {
 }
 
 export const OSPolicyResourcePackageResourceMSI: Schema.Codec<OSPolicyResourcePackageResourceMSI> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     properties: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceMSI" });
@@ -562,7 +562,7 @@ export interface OSPolicyResourcePackageResource {
 }
 
 export const OSPolicyResourcePackageResource: Schema.Codec<OSPolicyResourcePackageResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourcePackageResourceYUM),
     zypper: Schema.optional(OSPolicyResourcePackageResourceZypper),
     rpm: Schema.optional(OSPolicyResourcePackageResourceRPM),
@@ -587,7 +587,7 @@ export interface OSPolicyResource {
 }
 
 export const OSPolicyResource: Schema.Codec<OSPolicyResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     repository: Schema.optional(OSPolicyResourceRepositoryResource),
     exec: Schema.optional(OSPolicyResourceExecResource),
@@ -603,7 +603,7 @@ export interface OSPolicyInventoryFilter {
 }
 
 export const OSPolicyInventoryFilter: Schema.Codec<OSPolicyInventoryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osVersion: Schema.optional(Schema.String),
     osShortName: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyInventoryFilter" });
@@ -618,7 +618,7 @@ export interface OSPolicyResourceGroup {
 }
 
 export const OSPolicyResourceGroup: Schema.Codec<OSPolicyResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osFilter: Schema.optional(OSPolicyOSFilter),
     resources: Schema.optional(Schema.Array(OSPolicyResource)),
     inventoryFilters: Schema.optional(Schema.Array(OSPolicyInventoryFilter)),
@@ -630,7 +630,7 @@ export interface OSPolicyResourceComplianceExecResourceOutput {
 }
 
 export const OSPolicyResourceComplianceExecResourceOutput: Schema.Codec<OSPolicyResourceComplianceExecResourceOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enforcementOutput: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourceComplianceExecResourceOutput" });
 
@@ -650,7 +650,7 @@ export interface OSPolicyResourceConfigStep {
 }
 
 export const OSPolicyResourceConfigStep: Schema.Codec<OSPolicyResourceConfigStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     outcome: Schema.optional(Schema.String),
@@ -674,7 +674,7 @@ export interface OSPolicyResourceCompliance {
 }
 
 export const OSPolicyResourceCompliance: Schema.Codec<OSPolicyResourceCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyResourceId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     execResourceOutput: Schema.optional(
@@ -701,7 +701,7 @@ export interface InstanceOSPoliciesComplianceOSPolicyCompliance {
 }
 
 export const InstanceOSPoliciesComplianceOSPolicyCompliance: Schema.Codec<InstanceOSPoliciesComplianceOSPolicyCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     osPolicyResourceCompliances: Schema.optional(
       Schema.Array(OSPolicyResourceCompliance),
@@ -736,7 +736,7 @@ export interface InstanceOSPoliciesCompliance {
 }
 
 export const InstanceOSPoliciesCompliance: Schema.Codec<InstanceOSPoliciesCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastComplianceRunId: Schema.optional(Schema.String),
     detailedState: Schema.optional(Schema.String),
     detailedStateReason: Schema.optional(Schema.String),
@@ -757,7 +757,7 @@ export interface ListInstanceOSPoliciesCompliancesResponse {
 }
 
 export const ListInstanceOSPoliciesCompliancesResponse: Schema.Codec<ListInstanceOSPoliciesCompliancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instanceOsPoliciesCompliances: Schema.optional(
       Schema.Array(InstanceOSPoliciesCompliance),
     ),
@@ -772,7 +772,7 @@ export interface VulnerabilityReportVulnerabilityDetailsReference {
 }
 
 export const VulnerabilityReportVulnerabilityDetailsReference: Schema.Codec<VulnerabilityReportVulnerabilityDetailsReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
   }).annotate({
@@ -787,7 +787,7 @@ export interface FixedOrPercent {
 }
 
 export const FixedOrPercent: Schema.Codec<FixedOrPercent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fixed: Schema.optional(Schema.Number),
     percent: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FixedOrPercent" });
@@ -800,7 +800,7 @@ export interface OSPolicyAssignmentRollout {
 }
 
 export const OSPolicyAssignmentRollout: Schema.Codec<OSPolicyAssignmentRollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disruptionBudget: Schema.optional(FixedOrPercent),
     minWaitDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyAssignmentRollout" });
@@ -811,7 +811,7 @@ export interface OSPolicyAssignmentLabelSet {
 }
 
 export const OSPolicyAssignmentLabelSet: Schema.Codec<OSPolicyAssignmentLabelSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "OSPolicyAssignmentLabelSet" });
 
@@ -823,7 +823,7 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
 }
 
 export const OSPolicyAssignmentInstanceFilterInventory: Schema.Codec<OSPolicyAssignmentInstanceFilterInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyAssignmentInstanceFilterInventory" });
@@ -842,7 +842,7 @@ export interface OSPolicyAssignmentInstanceFilter {
 }
 
 export const OSPolicyAssignmentInstanceFilter: Schema.Codec<OSPolicyAssignmentInstanceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
     inventories: Schema.optional(
       Schema.Array(OSPolicyAssignmentInstanceFilterInventory),
@@ -866,7 +866,7 @@ export interface OSPolicy {
 }
 
 export const OSPolicy: Schema.Codec<OSPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     resourceGroups: Schema.optional(Schema.Array(OSPolicyResourceGroup)),
     id: Schema.optional(Schema.String),
@@ -910,7 +910,7 @@ export interface OSPolicyAssignment {
 }
 
 export const OSPolicyAssignment: Schema.Codec<OSPolicyAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -990,7 +990,7 @@ export interface CVSSv3 {
 }
 
 export const CVSSv3: Schema.Codec<CVSSv3> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userInteraction: Schema.optional(Schema.String),
     exploitabilityScore: Schema.optional(Schema.Number),
     attackVector: Schema.optional(Schema.String),
@@ -1020,7 +1020,7 @@ export interface VulnerabilityReportVulnerabilityDetails {
 }
 
 export const VulnerabilityReportVulnerabilityDetails: Schema.Codec<VulnerabilityReportVulnerabilityDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     references: Schema.optional(
       Schema.Array(VulnerabilityReportVulnerabilityDetailsReference),
     ),
@@ -1043,7 +1043,7 @@ export interface VulnerabilityReportVulnerabilityItem {
 }
 
 export const VulnerabilityReportVulnerabilityItem: Schema.Codec<VulnerabilityReportVulnerabilityItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installedInventoryItemId: Schema.optional(Schema.String),
     fixedCpeUri: Schema.optional(Schema.String),
     upstreamFix: Schema.optional(Schema.String),
@@ -1066,7 +1066,7 @@ export interface VulnerabilityReportVulnerability {
 }
 
 export const VulnerabilityReportVulnerability: Schema.Codec<VulnerabilityReportVulnerability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installedInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1095,7 +1095,7 @@ export interface VulnerabilityReport {
 }
 
 export const VulnerabilityReport: Schema.Codec<VulnerabilityReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vulnerabilities: Schema.optional(
       Schema.Array(VulnerabilityReportVulnerability),
     ),
@@ -1107,7 +1107,7 @@ export const VulnerabilityReport: Schema.Codec<VulnerabilityReport> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1131,7 +1131,7 @@ export interface InventoryOsInfo {
 }
 
 export const InventoryOsInfo: Schema.Codec<InventoryOsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shortName: Schema.optional(Schema.String),
     architecture: Schema.optional(Schema.String),
     kernelRelease: Schema.optional(Schema.String),
@@ -1154,7 +1154,7 @@ export interface Inventory {
 }
 
 export const Inventory: Schema.Codec<Inventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osInfo: Schema.optional(InventoryOsInfo),
     name: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Record(Schema.String, InventoryItem)),
@@ -1186,7 +1186,7 @@ export interface GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata {
 }
 
 export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.Codec<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rolloutState: Schema.optional(Schema.String),
     rolloutUpdateTime: Schema.optional(Schema.String),
     osPolicyAssignment: Schema.optional(Schema.String),
@@ -1199,7 +1199,7 @@ export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.
 export interface MessageSet {}
 
 export const MessageSet: Schema.Codec<MessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
 
@@ -1213,7 +1213,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1235,7 +1235,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1268,7 +1268,7 @@ export interface OSPolicyAssignmentOperationMetadata {
 }
 
 export const OSPolicyAssignmentOperationMetadata: Schema.Codec<OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignment: Schema.optional(Schema.String),
     rolloutState: Schema.optional(Schema.String),
     rolloutUpdateTime: Schema.optional(Schema.String),
@@ -1294,7 +1294,7 @@ export interface GoogleCloudOsconfigV2beta__OperationMetadata {
 }
 
 export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2beta__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -1318,7 +1318,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
 }
 
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
   }).annotate({
@@ -1334,7 +1334,7 @@ export interface ListOSPolicyAssignmentsResponse {
 }
 
 export const ListOSPolicyAssignmentsResponse: Schema.Codec<ListOSPolicyAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListOSPolicyAssignmentsResponse" });
@@ -1347,7 +1347,7 @@ export interface ListInventoriesResponse {
 }
 
 export const ListInventoriesResponse: Schema.Codec<ListInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inventories: Schema.optional(Schema.Array(Inventory)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListInventoriesResponse" });
@@ -1358,7 +1358,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
 }
 
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enforcementOutput: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1379,7 +1379,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
 }
 
 export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     complianceState: Schema.optional(Schema.String),
     configSteps: Schema.optional(
       Schema.Array(
@@ -1404,7 +1404,7 @@ export interface ListOSPolicyAssignmentRevisionsResponse {
 }
 
 export const ListOSPolicyAssignmentRevisionsResponse: Schema.Codec<ListOSPolicyAssignmentRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListOSPolicyAssignmentRevisionsResponse" });
@@ -1421,7 +1421,7 @@ export interface OSPolicyAssignmentReportOSPolicyCompliance {
 }
 
 export const OSPolicyAssignmentReportOSPolicyCompliance: Schema.Codec<OSPolicyAssignmentReportOSPolicyCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     complianceStateReason: Schema.optional(Schema.String),
     osPolicyResourceCompliances: Schema.optional(
       Schema.Array(
@@ -1448,7 +1448,7 @@ export interface OSPolicyAssignmentReport {
 }
 
 export const OSPolicyAssignmentReport: Schema.Codec<OSPolicyAssignmentReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     instance: Schema.optional(Schema.String),
     osPolicyCompliances: Schema.optional(
@@ -1467,7 +1467,7 @@ export interface ListOSPolicyAssignmentReportsResponse {
 }
 
 export const ListOSPolicyAssignmentReportsResponse: Schema.Codec<ListOSPolicyAssignmentReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignmentReports: Schema.optional(
       Schema.Array(OSPolicyAssignmentReport),
     ),
@@ -1482,7 +1482,7 @@ export interface ListVulnerabilityReportsResponse {
 }
 
 export const ListVulnerabilityReportsResponse: Schema.Codec<ListVulnerabilityReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vulnerabilityReports: Schema.optional(Schema.Array(VulnerabilityReport)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListVulnerabilityReportsResponse" });
@@ -1501,7 +1501,7 @@ export interface StatusProto {
 }
 
 export const StatusProto: Schema.Codec<StatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     canonicalCode: Schema.optional(Schema.Number),
     space: Schema.optional(Schema.String),
@@ -1527,7 +1527,7 @@ export interface GoogleCloudOsconfigV2__OperationMetadata {
 }
 
 export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -1540,7 +1540,7 @@ export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Codec<GoogleCloudO
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -1604,7 +1604,7 @@ export interface GetProjectsLocationsInstancesVulnerabilityReportsRequest {
 }
 
 export const GetProjectsLocationsInstancesVulnerabilityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1614,7 +1614,7 @@ export const GetProjectsLocationsInstancesVulnerabilityReportsRequest =
 export type GetProjectsLocationsInstancesVulnerabilityReportsResponse =
   VulnerabilityReport;
 export const GetProjectsLocationsInstancesVulnerabilityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ VulnerabilityReport;
+  /*@__PURE__*/ VulnerabilityReport;
 
 export type GetProjectsLocationsInstancesVulnerabilityReportsError =
   | DefaultErrors
@@ -1627,7 +1627,7 @@ export const getProjectsLocationsInstancesVulnerabilityReports: API.OperationMet
   GetProjectsLocationsInstancesVulnerabilityReportsResponse,
   GetProjectsLocationsInstancesVulnerabilityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: GetProjectsLocationsInstancesVulnerabilityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1645,7 +1645,7 @@ export interface ListProjectsLocationsInstancesVulnerabilityReportsRequest {
 }
 
 export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1658,7 +1658,7 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
 export type ListProjectsLocationsInstancesVulnerabilityReportsResponse =
   ListVulnerabilityReportsResponse;
 export const ListProjectsLocationsInstancesVulnerabilityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVulnerabilityReportsResponse;
+  /*@__PURE__*/ ListVulnerabilityReportsResponse;
 
 export type ListProjectsLocationsInstancesVulnerabilityReportsError =
   | DefaultErrors
@@ -1671,7 +1671,7 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
   ListProjectsLocationsInstancesVulnerabilityReportsResponse,
   ListProjectsLocationsInstancesVulnerabilityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: ListProjectsLocationsInstancesVulnerabilityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1687,7 +1687,7 @@ export interface GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest 
 }
 
 export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1697,7 +1697,7 @@ export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
 export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   OSPolicyAssignmentReport;
 export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OSPolicyAssignmentReport;
+  /*@__PURE__*/ OSPolicyAssignmentReport;
 
 export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
   | DefaultErrors
@@ -1710,7 +1710,7 @@ export const getProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Operat
   GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
   GetProjectsLocationsInstancesOsPolicyAssignmentsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1728,7 +1728,7 @@ export interface ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest
 }
 
 export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1741,7 +1741,7 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   ListOSPolicyAssignmentReportsResponse;
 export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentReportsResponse;
+  /*@__PURE__*/ ListOSPolicyAssignmentReportsResponse;
 
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
   | DefaultErrors
@@ -1754,7 +1754,7 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
   ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1772,7 +1772,7 @@ export interface GetProjectsLocationsInstancesInventoriesRequest {
 }
 
 export const GetProjectsLocationsInstancesInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -1782,7 +1782,7 @@ export const GetProjectsLocationsInstancesInventoriesRequest =
 
 export type GetProjectsLocationsInstancesInventoriesResponse = Inventory;
 export const GetProjectsLocationsInstancesInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Inventory;
+  /*@__PURE__*/ Inventory;
 
 export type GetProjectsLocationsInstancesInventoriesError =
   | DefaultErrors
@@ -1795,7 +1795,7 @@ export const getProjectsLocationsInstancesInventories: API.OperationMethod<
   GetProjectsLocationsInstancesInventoriesResponse,
   GetProjectsLocationsInstancesInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesInventoriesRequest,
   output: GetProjectsLocationsInstancesInventoriesResponse,
   errors: [NotFound, Forbidden],
@@ -1815,7 +1815,7 @@ export interface ListProjectsLocationsInstancesInventoriesRequest {
 }
 
 export const ListProjectsLocationsInstancesInventoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1829,7 +1829,7 @@ export const ListProjectsLocationsInstancesInventoriesRequest =
 export type ListProjectsLocationsInstancesInventoriesResponse =
   ListInventoriesResponse;
 export const ListProjectsLocationsInstancesInventoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInventoriesResponse;
+  /*@__PURE__*/ ListInventoriesResponse;
 
 export type ListProjectsLocationsInstancesInventoriesError =
   | DefaultErrors
@@ -1842,7 +1842,7 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
   ListProjectsLocationsInstancesInventoriesResponse,
   ListProjectsLocationsInstancesInventoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesInventoriesRequest,
   output: ListProjectsLocationsInstancesInventoriesResponse,
   errors: [NotFound, Forbidden],
@@ -1862,7 +1862,7 @@ export interface ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1874,7 +1874,7 @@ export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest =
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse =
   ListOSPolicyAssignmentRevisionsResponse;
 export const ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentRevisionsResponse;
+  /*@__PURE__*/ ListOSPolicyAssignmentRevisionsResponse;
 
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -1887,7 +1887,7 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
   ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse,
   ListRevisionsProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -1909,7 +1909,7 @@ export interface CreateProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const CreateProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     osPolicyAssignmentId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("osPolicyAssignmentId"),
     ),
@@ -1927,7 +1927,7 @@ export const CreateProjectsLocationsOsPolicyAssignmentsRequest =
 
 export type CreateProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const CreateProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -1942,7 +1942,7 @@ export const createProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   CreateProjectsLocationsOsPolicyAssignmentsResponse,
   CreateProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsOsPolicyAssignmentsRequest,
   output: CreateProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1954,7 +1954,7 @@ export interface GetProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const GetProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1964,7 +1964,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsRequest =
 export type GetProjectsLocationsOsPolicyAssignmentsResponse =
   OSPolicyAssignment;
 export const GetProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OSPolicyAssignment;
+  /*@__PURE__*/ OSPolicyAssignment;
 
 export type GetProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -1977,7 +1977,7 @@ export const getProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   GetProjectsLocationsOsPolicyAssignmentsResponse,
   GetProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOsPolicyAssignmentsRequest,
   output: GetProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -1993,7 +1993,7 @@ export interface ListProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const ListProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -2005,7 +2005,7 @@ export const ListProjectsLocationsOsPolicyAssignmentsRequest =
 export type ListProjectsLocationsOsPolicyAssignmentsResponse =
   ListOSPolicyAssignmentsResponse;
 export const ListProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentsResponse;
+  /*@__PURE__*/ ListOSPolicyAssignmentsResponse;
 
 export type ListProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -2018,7 +2018,7 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
   ListProjectsLocationsOsPolicyAssignmentsResponse,
   ListProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden],
@@ -2042,7 +2042,7 @@ export interface PatchProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const PatchProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -2057,7 +2057,7 @@ export const PatchProjectsLocationsOsPolicyAssignmentsRequest =
 
 export type PatchProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const PatchProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -2072,7 +2072,7 @@ export const patchProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   PatchProjectsLocationsOsPolicyAssignmentsResponse,
   PatchProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsOsPolicyAssignmentsRequest,
   output: PatchProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2086,7 +2086,7 @@ export interface DeleteProjectsLocationsOsPolicyAssignmentsRequest {
 }
 
 export const DeleteProjectsLocationsOsPolicyAssignmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -2096,7 +2096,7 @@ export const DeleteProjectsLocationsOsPolicyAssignmentsRequest =
 
 export type DeleteProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const DeleteProjectsLocationsOsPolicyAssignmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsOsPolicyAssignmentsError =
   | DefaultErrors
@@ -2111,7 +2111,7 @@ export const deleteProjectsLocationsOsPolicyAssignments: API.OperationMethod<
   DeleteProjectsLocationsOsPolicyAssignmentsResponse,
   DeleteProjectsLocationsOsPolicyAssignmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOsPolicyAssignmentsRequest,
   output: DeleteProjectsLocationsOsPolicyAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2123,7 +2123,7 @@ export interface GetProjectsLocationsOsPolicyAssignmentsOperationsRequest {
 }
 
 export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -2133,7 +2133,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest =
 export type GetProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   Operation;
 export const GetProjectsLocationsOsPolicyAssignmentsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOsPolicyAssignmentsOperationsError =
   | DefaultErrors
@@ -2146,7 +2146,7 @@ export const getProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMet
   GetProjectsLocationsOsPolicyAssignmentsOperationsResponse,
   GetProjectsLocationsOsPolicyAssignmentsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOsPolicyAssignmentsOperationsRequest,
   output: GetProjectsLocationsOsPolicyAssignmentsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2160,7 +2160,7 @@ export interface CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2171,7 +2171,7 @@ export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest =
 export type CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   Empty;
 export const CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOsPolicyAssignmentsOperationsError =
   | DefaultErrors
@@ -2186,7 +2186,7 @@ export const cancelProjectsLocationsOsPolicyAssignmentsOperations: API.Operation
   CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse,
   CancelProjectsLocationsOsPolicyAssignmentsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest,
   output: CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2198,7 +2198,7 @@ export interface GetProjectsLocationsInstanceOSPoliciesCompliancesRequest {
 }
 
 export const GetProjectsLocationsInstanceOSPoliciesCompliancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -2208,7 +2208,7 @@ export const GetProjectsLocationsInstanceOSPoliciesCompliancesRequest =
 export type GetProjectsLocationsInstanceOSPoliciesCompliancesResponse =
   InstanceOSPoliciesCompliance;
 export const GetProjectsLocationsInstanceOSPoliciesCompliancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InstanceOSPoliciesCompliance;
+  /*@__PURE__*/ InstanceOSPoliciesCompliance;
 
 export type GetProjectsLocationsInstanceOSPoliciesCompliancesError =
   | DefaultErrors
@@ -2221,7 +2221,7 @@ export const getProjectsLocationsInstanceOSPoliciesCompliances: API.OperationMet
   GetProjectsLocationsInstanceOSPoliciesCompliancesResponse,
   GetProjectsLocationsInstanceOSPoliciesCompliancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstanceOSPoliciesCompliancesRequest,
   output: GetProjectsLocationsInstanceOSPoliciesCompliancesResponse,
   errors: [NotFound, Forbidden],
@@ -2239,7 +2239,7 @@ export interface ListProjectsLocationsInstanceOSPoliciesCompliancesRequest {
 }
 
 export const ListProjectsLocationsInstanceOSPoliciesCompliancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2255,7 +2255,7 @@ export const ListProjectsLocationsInstanceOSPoliciesCompliancesRequest =
 export type ListProjectsLocationsInstanceOSPoliciesCompliancesResponse =
   ListInstanceOSPoliciesCompliancesResponse;
 export const ListProjectsLocationsInstanceOSPoliciesCompliancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstanceOSPoliciesCompliancesResponse;
+  /*@__PURE__*/ ListInstanceOSPoliciesCompliancesResponse;
 
 export type ListProjectsLocationsInstanceOSPoliciesCompliancesError =
   | DefaultErrors
@@ -2268,7 +2268,7 @@ export const listProjectsLocationsInstanceOSPoliciesCompliances: API.PaginatedOp
   ListProjectsLocationsInstanceOSPoliciesCompliancesResponse,
   ListProjectsLocationsInstanceOSPoliciesCompliancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstanceOSPoliciesCompliancesRequest,
   output: ListProjectsLocationsInstanceOSPoliciesCompliancesResponse,
   errors: [NotFound, Forbidden],

@@ -39,7 +39,7 @@ export interface PostCustomersCustomerSourcesIdInput {
   };
 }
 export const PostCustomersCustomerSourcesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     account_holder_name: Schema.optional(Schema.String),
@@ -90,14 +90,14 @@ export const PostCustomersCustomerSourcesIdInput =
 // Output Schema
 export type PostCustomersCustomerSourcesIdOutput = unknown;
 export const PostCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostCustomersCustomerSourcesIdOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostCustomersCustomerSourcesIdOutput>;
 
 // The operation
 /**
  * <p>Update a specified source for a given customer.</p>
  */
 export const PostCustomersCustomerSourcesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostCustomersCustomerSourcesIdInput,
     outputSchema: PostCustomersCustomerSourcesIdOutput,
   }));

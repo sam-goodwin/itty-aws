@@ -9,7 +9,7 @@ export interface ActionsDestroyInput {
   project_id: string;
   format?: "csv" | "json";
 }
-export const ActionsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsDestroyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -23,7 +23,7 @@ export const ActionsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ActionsDestroyOutput = void;
 export const ActionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDestroyOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const ActionsDestroyOutput =
  * @param id - A unique integer value identifying this action.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const actionsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const actionsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsDestroyInput,
   outputSchema: ActionsDestroyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

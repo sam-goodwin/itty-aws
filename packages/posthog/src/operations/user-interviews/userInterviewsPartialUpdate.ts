@@ -37,7 +37,7 @@ export interface UserInterviewsPartialUpdateInput {
   audio?: string;
 }
 export const UserInterviewsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_by: Schema.optional(
@@ -124,7 +124,7 @@ export interface UserInterviewsPartialUpdateOutput {
   audio?: string;
 }
 export const UserInterviewsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -177,9 +177,7 @@ export const UserInterviewsPartialUpdateOutput =
  * @param id - A UUID string identifying this user interview.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const userInterviewsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserInterviewsPartialUpdateInput,
-    outputSchema: UserInterviewsPartialUpdateOutput,
-  }),
-);
+export const userInterviewsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserInterviewsPartialUpdateInput,
+  outputSchema: UserInterviewsPartialUpdateOutput,
+}));

@@ -14,7 +14,7 @@ export interface ErrorTrackingAssignmentRulesReorderPartialUpdateInput {
   updated_at?: string;
 }
 export const ErrorTrackingAssignmentRulesReorderPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
@@ -40,7 +40,7 @@ export const ErrorTrackingAssignmentRulesReorderPartialUpdateInput =
 // Output Schema
 export type ErrorTrackingAssignmentRulesReorderPartialUpdateOutput = void;
 export const ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingAssignmentRulesReorderPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingAssignmentRulesReorderPartialUpdateOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const ErrorTrackingAssignmentRulesReorderPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingAssignmentRulesReorderPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesReorderPartialUpdateInput,
     outputSchema: ErrorTrackingAssignmentRulesReorderPartialUpdateOutput,
   }));

@@ -8,7 +8,7 @@ export interface ProviderControllerListForOrganizationInput {
   organizationId: string;
 }
 export const ProviderControllerListForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -40,7 +40,7 @@ export interface ProviderControllerListForOrganizationOutput {
   }>;
 }
 export const ProviderControllerListForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -79,7 +79,7 @@ export const ProviderControllerListForOrganizationOutput =
  * @param organizationId - An [Organization](/reference/organization) identifier to list provider configurations for.
  */
 export const ProviderControllerListForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderControllerListForOrganizationInput,
     outputSchema: ProviderControllerListForOrganizationOutput,
     errors: [NotFound] as const,

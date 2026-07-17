@@ -12,7 +12,7 @@ export interface LegalDocumentsCreateInput {
   representative_email?: string;
 }
 export const LegalDocumentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     document_type: Schema.optional(Schema.Literals(["BAA", "DPA"])),
     company_name: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface LegalDocumentsCreateOutput {
   created_at?: string;
 }
 export const LegalDocumentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     document_type: Schema.optional(Schema.String),
     company_name: Schema.optional(Schema.String),
@@ -58,10 +58,8 @@ export const LegalDocumentsCreateOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const legalDocumentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LegalDocumentsCreateInput,
-    outputSchema: LegalDocumentsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const legalDocumentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LegalDocumentsCreateInput,
+  outputSchema: LegalDocumentsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

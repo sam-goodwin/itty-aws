@@ -210,7 +210,7 @@ export interface AlertsSimulateCreateInput {
     | null;
 }
 export const AlertsSimulateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     insight: Schema.optional(Schema.Number),
     detector_config: Schema.optional(Schema.Unknown),
@@ -274,7 +274,7 @@ export interface AlertsSimulateCreateOutput {
   }[];
 }
 export const AlertsSimulateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Array(Schema.Number)),
     dates: Schema.optional(Schema.Array(Schema.String)),
     scores: Schema.optional(Schema.Array(Schema.NullOr(Schema.Number))),
@@ -311,10 +311,8 @@ export const AlertsSimulateCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const alertsSimulateCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertsSimulateCreateInput,
-    outputSchema: AlertsSimulateCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const alertsSimulateCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertsSimulateCreateInput,
+  outputSchema: AlertsSimulateCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

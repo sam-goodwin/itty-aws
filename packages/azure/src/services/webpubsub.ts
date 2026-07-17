@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SignalRService/operations",
@@ -55,7 +53,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -123,7 +121,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -132,7 +130,7 @@ export interface UsagesListInput {
   location: string;
   subscriptionId: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -154,7 +152,7 @@ export interface UsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -182,7 +180,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));
@@ -194,7 +192,7 @@ export interface WebPubSubCheckNameAvailabilityInput {
   name: string;
 }
 export const WebPubSubCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
@@ -214,7 +212,7 @@ export interface WebPubSubCheckNameAvailabilityOutput {
   message?: string;
 }
 export const WebPubSubCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -229,7 +227,7 @@ export const WebPubSubCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const WebPubSubCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCheckNameAvailabilityInput,
     outputSchema: WebPubSubCheckNameAvailabilityOutput,
   }));
@@ -349,7 +347,7 @@ export interface WebPubSubCreateOrUpdateInput {
   location: string;
 }
 export const WebPubSubCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -600,7 +598,7 @@ export interface WebPubSubCreateOrUpdateOutput {
   };
 }
 export const WebPubSubCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -629,12 +627,10 @@ export const WebPubSubCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCreateOrUpdateInput,
-    outputSchema: WebPubSubCreateOrUpdateOutput,
-  }),
-);
+export const WebPubSubCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCreateOrUpdateInput,
+  outputSchema: WebPubSubCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WebPubSubCustomCertificatesCreateOrUpdateInput {
   subscriptionId: string;
@@ -658,7 +654,7 @@ export interface WebPubSubCustomCertificatesCreateOrUpdateInput {
   };
 }
 export const WebPubSubCustomCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -704,7 +700,7 @@ export interface WebPubSubCustomCertificatesCreateOrUpdateOutput {
   };
 }
 export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -735,7 +731,7 @@ export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomCertificatesCreateOrUpdateInput,
     outputSchema: WebPubSubCustomCertificatesCreateOrUpdateOutput,
   }));
@@ -747,7 +743,7 @@ export interface WebPubSubCustomCertificatesDeleteInput {
   certificateName: string;
 }
 export const WebPubSubCustomCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -763,7 +759,7 @@ export const WebPubSubCustomCertificatesDeleteInput =
 // Output Schema
 export type WebPubSubCustomCertificatesDeleteOutput = void;
 export const WebPubSubCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomCertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -776,7 +772,7 @@ export const WebPubSubCustomCertificatesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomCertificatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomCertificatesDeleteInput,
     outputSchema: WebPubSubCustomCertificatesDeleteOutput,
   }));
@@ -788,7 +784,7 @@ export interface WebPubSubCustomCertificatesGetInput {
   certificateName: string;
 }
 export const WebPubSubCustomCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -816,7 +812,7 @@ export interface WebPubSubCustomCertificatesGetOutput {
   };
 }
 export const WebPubSubCustomCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -847,7 +843,7 @@ export const WebPubSubCustomCertificatesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomCertificatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomCertificatesGetInput,
     outputSchema: WebPubSubCustomCertificatesGetOutput,
   }));
@@ -858,7 +854,7 @@ export interface WebPubSubCustomCertificatesListInput {
   resourceName: string;
 }
 export const WebPubSubCustomCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -888,7 +884,7 @@ export interface WebPubSubCustomCertificatesListOutput {
   nextLink?: string;
 }
 export const WebPubSubCustomCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -935,7 +931,7 @@ export const WebPubSubCustomCertificatesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomCertificatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomCertificatesListInput,
     outputSchema: WebPubSubCustomCertificatesListOutput,
   }));
@@ -961,7 +957,7 @@ export interface WebPubSubCustomDomainsCreateOrUpdateInput {
   };
 }
 export const WebPubSubCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1008,7 +1004,7 @@ export interface WebPubSubCustomDomainsCreateOrUpdateOutput {
   };
 }
 export const WebPubSubCustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1039,7 +1035,7 @@ export const WebPubSubCustomDomainsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomDomainsCreateOrUpdateInput,
     outputSchema: WebPubSubCustomDomainsCreateOrUpdateOutput,
   }));
@@ -1051,7 +1047,7 @@ export interface WebPubSubCustomDomainsDeleteInput {
   name: string;
 }
 export const WebPubSubCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1067,7 +1063,7 @@ export const WebPubSubCustomDomainsDeleteInput =
 // Output Schema
 export type WebPubSubCustomDomainsDeleteOutput = void;
 export const WebPubSubCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -1080,7 +1076,7 @@ export const WebPubSubCustomDomainsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubCustomDomainsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubCustomDomainsDeleteInput,
     outputSchema: WebPubSubCustomDomainsDeleteOutput,
   }));
@@ -1092,7 +1088,7 @@ export interface WebPubSubCustomDomainsGetInput {
   name: string;
 }
 export const WebPubSubCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1120,7 +1116,7 @@ export interface WebPubSubCustomDomainsGetOutput {
   };
 }
 export const WebPubSubCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1150,12 +1146,10 @@ export const WebPubSubCustomDomainsGetOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCustomDomainsGetInput,
-    outputSchema: WebPubSubCustomDomainsGetOutput,
-  }),
-);
+export const WebPubSubCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomDomainsGetInput,
+  outputSchema: WebPubSubCustomDomainsGetOutput,
+}));
 // Input Schema
 export interface WebPubSubCustomDomainsListInput {
   subscriptionId: string;
@@ -1163,7 +1157,7 @@ export interface WebPubSubCustomDomainsListInput {
   resourceName: string;
 }
 export const WebPubSubCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1193,7 +1187,7 @@ export interface WebPubSubCustomDomainsListOutput {
   nextLink?: string;
 }
 export const WebPubSubCustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1239,19 +1233,17 @@ export const WebPubSubCustomDomainsListOutput =
  * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubCustomDomainsListInput,
-    outputSchema: WebPubSubCustomDomainsListOutput,
-  }),
-);
+export const WebPubSubCustomDomainsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubCustomDomainsListInput,
+  outputSchema: WebPubSubCustomDomainsListOutput,
+}));
 // Input Schema
 export interface WebPubSubDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1266,7 +1258,7 @@ export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WebPubSubDeleteOutput = void;
 export const WebPubSubDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubDeleteOutput>;
 
 // The operation
 /**
@@ -1277,7 +1269,7 @@ export const WebPubSubDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubDeleteInput,
   outputSchema: WebPubSubDeleteOutput,
 }));
@@ -1287,7 +1279,7 @@ export interface WebPubSubGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1313,7 +1305,7 @@ export interface WebPubSubGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1342,7 +1334,7 @@ export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubGetInput,
   outputSchema: WebPubSubGetOutput,
 }));
@@ -1371,7 +1363,7 @@ export interface WebPubSubHubsCreateOrUpdateInput {
   };
 }
 export const WebPubSubHubsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1436,7 +1428,7 @@ export interface WebPubSubHubsCreateOrUpdateOutput {
   };
 }
 export const WebPubSubHubsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1466,12 +1458,10 @@ export const WebPubSubHubsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubHubsCreateOrUpdateInput,
-    outputSchema: WebPubSubHubsCreateOrUpdateOutput,
-  }),
-);
+export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubHubsCreateOrUpdateInput,
+  outputSchema: WebPubSubHubsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WebPubSubHubsDeleteInput {
   hubName: string;
@@ -1480,7 +1470,7 @@ export interface WebPubSubHubsDeleteInput {
   resourceName: string;
 }
 export const WebPubSubHubsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1496,7 +1486,7 @@ export const WebPubSubHubsDeleteInput =
 // Output Schema
 export type WebPubSubHubsDeleteOutput = void;
 export const WebPubSubHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubHubsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubHubsDeleteOutput>;
 
 // The operation
 /**
@@ -1508,7 +1498,7 @@ export const WebPubSubHubsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsDeleteInput,
   outputSchema: WebPubSubHubsDeleteOutput,
 }));
@@ -1519,7 +1509,7 @@ export interface WebPubSubHubsGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubHubsGetInput = /*@__PURE__*/ Schema.Struct({
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1546,27 +1536,25 @@ export interface WebPubSubHubsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<WebPubSubHubsGetOutput>;
+export const WebPubSubHubsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<WebPubSubHubsGetOutput>;
 
 // The operation
 /**
@@ -1578,7 +1566,7 @@ export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsGetInput,
   outputSchema: WebPubSubHubsGetOutput,
 }));
@@ -1588,13 +1576,11 @@ export interface WebPubSubHubsListInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const WebPubSubHubsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs",
@@ -1620,7 +1606,7 @@ export interface WebPubSubHubsListOutput {
   nextLink?: string;
 }
 export const WebPubSubHubsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1666,7 +1652,7 @@ export const WebPubSubHubsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubHubsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubHubsListInput,
   outputSchema: WebPubSubHubsListOutput,
 }));
@@ -1676,7 +1662,7 @@ export interface WebPubSubListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const WebPubSubListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1705,7 +1691,7 @@ export interface WebPubSubListByResourceGroupOutput {
   nextLink?: string;
 }
 export const WebPubSubListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1751,7 +1737,7 @@ export const WebPubSubListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WebPubSubListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubListByResourceGroupInput,
     outputSchema: WebPubSubListByResourceGroupOutput,
   }));
@@ -1760,7 +1746,7 @@ export interface WebPubSubListBySubscriptionInput {
   subscriptionId: string;
 }
 export const WebPubSubListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1788,7 +1774,7 @@ export interface WebPubSubListBySubscriptionOutput {
   nextLink?: string;
 }
 export const WebPubSubListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1832,25 +1818,21 @@ export const WebPubSubListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const WebPubSubListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubListBySubscriptionInput,
-    outputSchema: WebPubSubListBySubscriptionOutput,
-  }),
-);
+export const WebPubSubListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubListBySubscriptionInput,
+  outputSchema: WebPubSubListBySubscriptionOutput,
+}));
 // Input Schema
 export interface WebPubSubListKeysInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const WebPubSubListKeysInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/listKeys",
@@ -1866,7 +1848,7 @@ export interface WebPubSubListKeysOutput {
   secondaryConnectionString?: string;
 }
 export const WebPubSubListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
@@ -1882,7 +1864,7 @@ export const WebPubSubListKeysOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListKeysInput,
   outputSchema: WebPubSubListKeysOutput,
 }));
@@ -1894,7 +1876,7 @@ export interface WebPubSubListReplicaSkusInput {
   replicaName: string;
 }
 export const WebPubSubListReplicaSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1929,7 +1911,7 @@ export interface WebPubSubListReplicaSkusOutput {
   nextLink?: string;
 }
 export const WebPubSubListReplicaSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1972,25 +1954,21 @@ export const WebPubSubListReplicaSkusOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubListReplicaSkusInput,
-    outputSchema: WebPubSubListReplicaSkusOutput,
-  }),
-);
+export const WebPubSubListReplicaSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubListReplicaSkusInput,
+  outputSchema: WebPubSubListReplicaSkusOutput,
+}));
 // Input Schema
 export interface WebPubSubListSkusInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const WebPubSubListSkusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/skus",
@@ -2020,7 +1998,7 @@ export interface WebPubSubListSkusOutput {
   nextLink?: string;
 }
 export const WebPubSubListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2062,7 +2040,7 @@ export const WebPubSubListSkusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubListSkusInput,
   outputSchema: WebPubSubListSkusOutput,
 }));
@@ -2074,7 +2052,7 @@ export interface WebPubSubPrivateEndpointConnectionsDeleteInput {
   resourceName: string;
 }
 export const WebPubSubPrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2090,7 +2068,7 @@ export const WebPubSubPrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type WebPubSubPrivateEndpointConnectionsDeleteOutput = void;
 export const WebPubSubPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2103,7 +2081,7 @@ export const WebPubSubPrivateEndpointConnectionsDeleteOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsDeleteInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2115,7 +2093,7 @@ export interface WebPubSubPrivateEndpointConnectionsGetInput {
   resourceName: string;
 }
 export const WebPubSubPrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2143,7 +2121,7 @@ export interface WebPubSubPrivateEndpointConnectionsGetOutput {
   };
 }
 export const WebPubSubPrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2174,7 +2152,7 @@ export const WebPubSubPrivateEndpointConnectionsGetOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsGetInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsGetOutput,
   }));
@@ -2185,7 +2163,7 @@ export interface WebPubSubPrivateEndpointConnectionsListInput {
   resourceName: string;
 }
 export const WebPubSubPrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2215,7 +2193,7 @@ export interface WebPubSubPrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const WebPubSubPrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2262,7 +2240,7 @@ export const WebPubSubPrivateEndpointConnectionsListOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsListInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsListOutput,
   }));
@@ -2293,7 +2271,7 @@ export interface WebPubSubPrivateEndpointConnectionsUpdateInput {
   };
 }
 export const WebPubSubPrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2358,7 +2336,7 @@ export interface WebPubSubPrivateEndpointConnectionsUpdateOutput {
   };
 }
 export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2389,7 +2367,7 @@ export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubPrivateEndpointConnectionsUpdateInput,
     outputSchema: WebPubSubPrivateEndpointConnectionsUpdateOutput,
   }));
@@ -2400,7 +2378,7 @@ export interface WebPubSubPrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const WebPubSubPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2430,7 +2408,7 @@ export interface WebPubSubPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const WebPubSubPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2477,7 +2455,7 @@ export const WebPubSubPrivateLinkResourcesListOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubPrivateLinkResourcesListInput,
     outputSchema: WebPubSubPrivateLinkResourcesListOutput,
   }));
@@ -2489,7 +2467,7 @@ export interface WebPubSubRegenerateKeyInput {
   keyType?: "Primary" | "Secondary" | "Salt";
 }
 export const WebPubSubRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2510,7 +2488,7 @@ export interface WebPubSubRegenerateKeyOutput {
   secondaryConnectionString?: string;
 }
 export const WebPubSubRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
@@ -2526,12 +2504,10 @@ export const WebPubSubRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubRegenerateKeyInput,
-    outputSchema: WebPubSubRegenerateKeyOutput,
-  }),
-);
+export const WebPubSubRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubRegenerateKeyInput,
+  outputSchema: WebPubSubRegenerateKeyOutput,
+}));
 // Input Schema
 export interface WebPubSubReplicasCreateOrUpdateInput {
   subscriptionId: string;
@@ -2563,7 +2539,7 @@ export interface WebPubSubReplicasCreateOrUpdateInput {
   location: string;
 }
 export const WebPubSubReplicasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2623,7 +2599,7 @@ export interface WebPubSubReplicasCreateOrUpdateOutput {
   };
 }
 export const WebPubSubReplicasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2654,7 +2630,7 @@ export const WebPubSubReplicasCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicasCreateOrUpdateInput,
     outputSchema: WebPubSubReplicasCreateOrUpdateOutput,
   }));
@@ -2666,7 +2642,7 @@ export interface WebPubSubReplicasDeleteInput {
   replicaName: string;
 }
 export const WebPubSubReplicasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2682,7 +2658,7 @@ export const WebPubSubReplicasDeleteInput =
 // Output Schema
 export type WebPubSubReplicasDeleteOutput = void;
 export const WebPubSubReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasDeleteOutput>;
 
 // The operation
 /**
@@ -2694,12 +2670,10 @@ export const WebPubSubReplicasDeleteOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasDeleteInput,
-    outputSchema: WebPubSubReplicasDeleteOutput,
-  }),
-);
+export const WebPubSubReplicasDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasDeleteInput,
+  outputSchema: WebPubSubReplicasDeleteOutput,
+}));
 // Input Schema
 export interface WebPubSubReplicasGetInput {
   subscriptionId: string;
@@ -2708,7 +2682,7 @@ export interface WebPubSubReplicasGetInput {
   replicaName: string;
 }
 export const WebPubSubReplicasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2736,7 +2710,7 @@ export interface WebPubSubReplicasGetOutput {
   };
 }
 export const WebPubSubReplicasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2766,12 +2740,10 @@ export const WebPubSubReplicasGetOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasGetInput,
-    outputSchema: WebPubSubReplicasGetOutput,
-  }),
-);
+export const WebPubSubReplicasGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasGetInput,
+  outputSchema: WebPubSubReplicasGetOutput,
+}));
 // Input Schema
 export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput {
   subscriptionId: string;
@@ -2797,7 +2769,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput {
   };
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2855,7 +2827,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput 
   };
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2887,7 +2859,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema:
       WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput,
@@ -2901,7 +2873,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesGetInput {
   sharedPrivateLinkResourceName: string;
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2930,7 +2902,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesGetOutput {
   };
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2962,7 +2934,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesGetInput,
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesGetOutput,
   }));
@@ -2974,7 +2946,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesListInput {
   replicaName: string;
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3005,7 +2977,7 @@ export interface WebPubSubReplicaSharedPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3053,7 +3025,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const WebPubSubReplicaSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubReplicaSharedPrivateLinkResourcesListInput,
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesListOutput,
   }));
@@ -3064,7 +3036,7 @@ export interface WebPubSubReplicasListInput {
   resourceName: string;
 }
 export const WebPubSubReplicasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3094,7 +3066,7 @@ export interface WebPubSubReplicasListOutput {
   nextLink?: string;
 }
 export const WebPubSubReplicasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3140,12 +3112,10 @@ export const WebPubSubReplicasListOutput =
  * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasListInput,
-    outputSchema: WebPubSubReplicasListOutput,
-  }),
-);
+export const WebPubSubReplicasList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasListInput,
+  outputSchema: WebPubSubReplicasListOutput,
+}));
 // Input Schema
 export interface WebPubSubReplicasRestartInput {
   subscriptionId: string;
@@ -3154,7 +3124,7 @@ export interface WebPubSubReplicasRestartInput {
   replicaName: string;
 }
 export const WebPubSubReplicasRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3170,7 +3140,7 @@ export const WebPubSubReplicasRestartInput =
 // Output Schema
 export type WebPubSubReplicasRestartOutput = void;
 export const WebPubSubReplicasRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasRestartOutput>;
 
 // The operation
 /**
@@ -3182,12 +3152,10 @@ export const WebPubSubReplicasRestartOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasRestartInput,
-    outputSchema: WebPubSubReplicasRestartOutput,
-  }),
-);
+export const WebPubSubReplicasRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasRestartInput,
+  outputSchema: WebPubSubReplicasRestartOutput,
+}));
 // Input Schema
 export interface WebPubSubReplicasUpdateInput {
   subscriptionId: string;
@@ -3219,7 +3187,7 @@ export interface WebPubSubReplicasUpdateInput {
   location: string;
 }
 export const WebPubSubReplicasUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3279,7 +3247,7 @@ export interface WebPubSubReplicasUpdateOutput {
   };
 }
 export const WebPubSubReplicasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3309,19 +3277,17 @@ export const WebPubSubReplicasUpdateOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const WebPubSubReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebPubSubReplicasUpdateInput,
-    outputSchema: WebPubSubReplicasUpdateOutput,
-  }),
-);
+export const WebPubSubReplicasUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebPubSubReplicasUpdateInput,
+  outputSchema: WebPubSubReplicasUpdateOutput,
+}));
 // Input Schema
 export interface WebPubSubRestartInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -3336,7 +3302,7 @@ export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WebPubSubRestartOutput = void;
 export const WebPubSubRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubRestartOutput>;
 
 // The operation
 /**
@@ -3347,7 +3313,7 @@ export const WebPubSubRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubRestartInput,
   outputSchema: WebPubSubRestartOutput,
 }));
@@ -3375,7 +3341,7 @@ export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput {
   };
 }
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3432,7 +3398,7 @@ export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput {
   };
 }
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3463,7 +3429,7 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
@@ -3475,7 +3441,7 @@ export interface WebPubSubSharedPrivateLinkResourcesDeleteInput {
   resourceName: string;
 }
 export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3491,7 +3457,7 @@ export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
 // Output Schema
 export type WebPubSubSharedPrivateLinkResourcesDeleteOutput = void;
 export const WebPubSubSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -3504,7 +3470,7 @@ export const WebPubSubSharedPrivateLinkResourcesDeleteOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesDeleteInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesDeleteOutput,
   }));
@@ -3516,7 +3482,7 @@ export interface WebPubSubSharedPrivateLinkResourcesGetInput {
   resourceName: string;
 }
 export const WebPubSubSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3544,7 +3510,7 @@ export interface WebPubSubSharedPrivateLinkResourcesGetOutput {
   };
 }
 export const WebPubSubSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3575,7 +3541,7 @@ export const WebPubSubSharedPrivateLinkResourcesGetOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesGetInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesGetOutput,
   }));
@@ -3586,7 +3552,7 @@ export interface WebPubSubSharedPrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const WebPubSubSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3616,7 +3582,7 @@ export interface WebPubSubSharedPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const WebPubSubSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3663,7 +3629,7 @@ export const WebPubSubSharedPrivateLinkResourcesListOutput =
  * @param resourceName - The name of the resource.
  */
 export const WebPubSubSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebPubSubSharedPrivateLinkResourcesListInput,
     outputSchema: WebPubSubSharedPrivateLinkResourcesListOutput,
   }));
@@ -3782,7 +3748,7 @@ export interface WebPubSubUpdateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -4032,7 +3998,7 @@ export interface WebPubSubUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebPubSubUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4061,7 +4027,7 @@ export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const WebPubSubUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebPubSubUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebPubSubUpdateInput,
   outputSchema: WebPubSubUpdateOutput,
 }));

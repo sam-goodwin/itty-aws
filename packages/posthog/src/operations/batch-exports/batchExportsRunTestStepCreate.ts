@@ -113,7 +113,7 @@ export interface BatchExportsRunTestStepCreateInput {
   offset_hour?: number | null;
 }
 export const BatchExportsRunTestStepCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     team_id: Schema.optional(Schema.Number),
@@ -282,7 +282,7 @@ export const BatchExportsRunTestStepCreateInput =
 // Output Schema
 export type BatchExportsRunTestStepCreateOutput = void;
 export const BatchExportsRunTestStepCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunTestStepCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunTestStepCreateOutput>;
 
 // The operation
 /**
@@ -291,7 +291,7 @@ export const BatchExportsRunTestStepCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const batchExportsRunTestStepCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BatchExportsRunTestStepCreateInput,
     outputSchema: BatchExportsRunTestStepCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -40,7 +40,7 @@ export interface EndpointsCreateOrUpdateInput {
   };
 }
 export const EndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -110,7 +110,7 @@ export interface EndpointsCreateOrUpdateOutput {
   type?: string;
 }
 export const EndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -127,12 +127,10 @@ export const EndpointsCreateOrUpdateOutput =
  * @param endpointType - The type of the Traffic Manager endpoint.
  * @param endpointName - The name of the Traffic Manager endpoint.
  */
-export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsCreateOrUpdateInput,
-    outputSchema: EndpointsCreateOrUpdateOutput,
-  }),
-);
+export const EndpointsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsCreateOrUpdateInput,
+  outputSchema: EndpointsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EndpointsDeleteInput {
   subscriptionId: string;
@@ -141,7 +139,7 @@ export interface EndpointsDeleteInput {
   endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
   endpointName: string;
 }
-export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -163,7 +161,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface EndpointsDeleteOutput {
   boolean?: boolean;
 }
-export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsDeleteOutput = /*@__PURE__*/ Schema.Struct({
   boolean: Schema.optional(Schema.Boolean),
 }) as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
@@ -178,7 +176,7 @@ export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointType - The type of the Traffic Manager endpoint.
  * @param endpointName - The name of the Traffic Manager endpoint.
  */
-export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsDeleteInput,
   outputSchema: EndpointsDeleteOutput,
 }));
@@ -190,7 +188,7 @@ export interface EndpointsGetInput {
   endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
   endpointName: string;
 }
-export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -214,7 +212,7 @@ export interface EndpointsGetOutput {
   name?: string;
   type?: string;
 }
-export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -231,7 +229,7 @@ export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointType - The type of the Traffic Manager endpoint.
  * @param endpointName - The name of the Traffic Manager endpoint.
  */
-export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsGetInput,
   outputSchema: EndpointsGetOutput,
 }));
@@ -266,7 +264,7 @@ export interface EndpointsUpdateInput {
     alwaysServe?: "Enabled" | "Disabled";
   };
 }
-export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -333,7 +331,7 @@ export interface EndpointsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -350,14 +348,14 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointType - The type of the Traffic Manager endpoint.
  * @param endpointName - The name of the Traffic Manager endpoint.
  */
-export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsUpdateInput,
   outputSchema: EndpointsUpdateOutput,
 }));
 // Input Schema
 export interface GeographicHierarchiesGetDefaultInput {}
 export const GeographicHierarchiesGetDefaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Network/trafficManagerGeographicHierarchies/default",
@@ -372,7 +370,7 @@ export interface GeographicHierarchiesGetDefaultOutput {
   type?: string;
 }
 export const GeographicHierarchiesGetDefaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -385,7 +383,7 @@ export const GeographicHierarchiesGetDefaultOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GeographicHierarchiesGetDefault =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GeographicHierarchiesGetDefaultInput,
     outputSchema: GeographicHierarchiesGetDefaultOutput,
   }));
@@ -398,7 +396,7 @@ export interface HeatMapGetInput {
   topLeft?: string;
   botRight?: string;
 }
-export const HeatMapGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HeatMapGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -419,7 +417,7 @@ export interface HeatMapGetOutput {
   name?: string;
   type?: string;
 }
-export const HeatMapGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HeatMapGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -437,7 +435,7 @@ export const HeatMapGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param topLeft - The top left latitude,longitude pair of the rectangular viewport to query for.
  * @param botRight - The bottom right latitude,longitude pair of the rectangular viewport to query for.
  */
-export const HeatMapGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HeatMapGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HeatMapGetInput,
   outputSchema: HeatMapGetOutput,
 }));
@@ -448,7 +446,7 @@ export interface ProfilesCheckTrafficManagerNameAvailabilityV2Input {
   type?: string;
 }
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -469,7 +467,7 @@ export interface ProfilesCheckTrafficManagerNameAvailabilityV2Output {
   message?: string;
 }
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -485,7 +483,7 @@ export const ProfilesCheckTrafficManagerNameAvailabilityV2Output =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const ProfilesCheckTrafficManagerNameAvailabilityV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProfilesCheckTrafficManagerNameAvailabilityV2Input,
     outputSchema: ProfilesCheckTrafficManagerNameAvailabilityV2Output,
   }));
@@ -495,7 +493,7 @@ export interface ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput {
   type?: string;
 }
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -515,7 +513,7 @@ export interface ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput {
   message?: string;
 }
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -530,7 +528,7 @@ export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput,
     outputSchema: ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput,
   }));
@@ -579,7 +577,7 @@ export interface ProfilesCreateOrUpdateInput {
   location?: string;
 }
 export const ProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -684,7 +682,7 @@ export interface ProfilesCreateOrUpdateOutput {
   type?: string;
 }
 export const ProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -699,19 +697,17 @@ export const ProfilesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The name of the Traffic Manager profile.
  */
-export const ProfilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesCreateOrUpdateInput,
-    outputSchema: ProfilesCreateOrUpdateOutput,
-  }),
-);
+export const ProfilesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesCreateOrUpdateInput,
+  outputSchema: ProfilesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ProfilesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   profileName: string;
 }
-export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -727,7 +723,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ProfilesDeleteOutput {
   boolean?: boolean;
 }
-export const ProfilesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesDeleteOutput = /*@__PURE__*/ Schema.Struct({
   boolean: Schema.optional(Schema.Boolean),
 }) as unknown as Schema.Codec<ProfilesDeleteOutput>;
 
@@ -740,7 +736,7 @@ export const ProfilesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The name of the Traffic Manager profile.
  */
-export const ProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesDeleteInput,
   outputSchema: ProfilesDeleteOutput,
 }));
@@ -750,7 +746,7 @@ export interface ProfilesGetInput {
   resourceGroupName: string;
   profileName: string;
 }
-export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -768,7 +764,7 @@ export interface ProfilesGetOutput {
   name?: string;
   type?: string;
 }
-export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -783,7 +779,7 @@ export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The name of the Traffic Manager profile.
  */
-export const ProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesGetInput,
   outputSchema: ProfilesGetOutput,
 }));
@@ -793,7 +789,7 @@ export interface ProfilesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ProfilesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -810,7 +806,7 @@ export interface ProfilesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -829,18 +825,16 @@ export const ProfilesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ProfilesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesListByResourceGroupInput,
-    outputSchema: ProfilesListByResourceGroupOutput,
-  }),
-);
+export const ProfilesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesListByResourceGroupInput,
+  outputSchema: ProfilesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ProfilesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ProfilesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -856,7 +850,7 @@ export interface ProfilesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ProfilesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -874,12 +868,10 @@ export const ProfilesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ProfilesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesListBySubscriptionInput,
-    outputSchema: ProfilesListBySubscriptionOutput,
-  }),
-);
+export const ProfilesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesListBySubscriptionInput,
+  outputSchema: ProfilesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface ProfilesUpdateInput {
   subscriptionId: string;
@@ -924,7 +916,7 @@ export interface ProfilesUpdateInput {
   tags?: Record<string, string>;
   location?: string;
 }
-export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -1019,7 +1011,7 @@ export interface ProfilesUpdateOutput {
   name?: string;
   type?: string;
 }
-export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1034,7 +1026,7 @@ export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - The name of the Traffic Manager profile.
  */
-export const ProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesUpdateInput,
   outputSchema: ProfilesUpdateOutput,
 }));
@@ -1043,7 +1035,7 @@ export interface TrafficManagerUserMetricsKeysCreateOrUpdateInput {
   subscriptionId: string;
 }
 export const TrafficManagerUserMetricsKeysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1060,7 +1052,7 @@ export interface TrafficManagerUserMetricsKeysCreateOrUpdateOutput {
   type?: string;
 }
 export const TrafficManagerUserMetricsKeysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1074,7 +1066,7 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const TrafficManagerUserMetricsKeysCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficManagerUserMetricsKeysCreateOrUpdateInput,
     outputSchema: TrafficManagerUserMetricsKeysCreateOrUpdateOutput,
   }));
@@ -1083,7 +1075,7 @@ export interface TrafficManagerUserMetricsKeysDeleteInput {
   subscriptionId: string;
 }
 export const TrafficManagerUserMetricsKeysDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1098,7 +1090,7 @@ export interface TrafficManagerUserMetricsKeysDeleteOutput {
   boolean?: boolean;
 }
 export const TrafficManagerUserMetricsKeysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boolean: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysDeleteOutput>;
 
@@ -1110,7 +1102,7 @@ export const TrafficManagerUserMetricsKeysDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const TrafficManagerUserMetricsKeysDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficManagerUserMetricsKeysDeleteInput,
     outputSchema: TrafficManagerUserMetricsKeysDeleteOutput,
   }));
@@ -1119,7 +1111,7 @@ export interface TrafficManagerUserMetricsKeysGetInput {
   subscriptionId: string;
 }
 export const TrafficManagerUserMetricsKeysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1136,7 +1128,7 @@ export interface TrafficManagerUserMetricsKeysGetOutput {
   type?: string;
 }
 export const TrafficManagerUserMetricsKeysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1150,7 +1142,7 @@ export const TrafficManagerUserMetricsKeysGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const TrafficManagerUserMetricsKeysGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrafficManagerUserMetricsKeysGetInput,
     outputSchema: TrafficManagerUserMetricsKeysGetOutput,
   }));

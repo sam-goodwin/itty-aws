@@ -8,7 +8,7 @@ export interface PostV2CoreAccountsIdCloseInput {
   applied_configurations?: ("customer" | "merchant" | "recipient")[];
 }
 export const PostV2CoreAccountsIdCloseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     applied_configurations: Schema.optional(
       Schema.Array(Schema.Literals(["customer", "merchant", "recipient"])),
@@ -1702,7 +1702,7 @@ export interface PostV2CoreAccountsIdCloseOutput {
   };
 }
 export const PostV2CoreAccountsIdCloseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applied_configurations: Schema.Array(
       Schema.Literals(["customer", "merchant", "recipient"]),
     ),
@@ -4495,9 +4495,7 @@ export const PostV2CoreAccountsIdCloseOutput =
  *
  * @param id - The ID of the Account to close.
  */
-export const PostV2CoreAccountsIdClose = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2CoreAccountsIdCloseInput,
-    outputSchema: PostV2CoreAccountsIdCloseOutput,
-  }),
-);
+export const PostV2CoreAccountsIdClose = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2CoreAccountsIdCloseInput,
+  outputSchema: PostV2CoreAccountsIdCloseOutput,
+}));

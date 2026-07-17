@@ -296,7 +296,7 @@ export interface AlertsPartialUpdateInput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const AlertsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_by: Schema.optional(
@@ -780,7 +780,7 @@ export interface AlertsPartialUpdateOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const AlertsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -972,7 +972,7 @@ export const AlertsPartialUpdateOutput =
  * @param id - A UUID string identifying this alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const alertsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const alertsPartialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsPartialUpdateInput,
   outputSchema: AlertsPartialUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

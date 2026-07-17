@@ -8,7 +8,7 @@ export interface UserlandUserInvitesControllerAcceptInput {
   id: string;
 }
 export const UserlandUserInvitesControllerAcceptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -36,7 +36,7 @@ export interface UserlandUserInvitesControllerAcceptOutput {
   accept_invitation_url: string;
 }
 export const UserlandUserInvitesControllerAcceptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     email: Schema.String,
@@ -63,7 +63,7 @@ export const UserlandUserInvitesControllerAcceptOutput =
  * @param id - The unique ID of the invitation.
  */
 export const UserlandUserInvitesControllerAccept =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerAcceptInput,
     outputSchema: UserlandUserInvitesControllerAcceptOutput,
     errors: [BadRequest, NotFound] as const,

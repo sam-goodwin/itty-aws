@@ -8,7 +8,7 @@ export interface GetV1IntegrationsByIdInput {
   id: string;
 }
 export const GetV1IntegrationsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/integrations/{id}" }),
@@ -26,7 +26,7 @@ export interface GetV1IntegrationsByIdOutput {
   };
 }
 export const GetV1IntegrationsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       url: Schema.String,
@@ -51,10 +51,8 @@ export const GetV1IntegrationsByIdOutput =
  *
  * Returns a single integration by its ID.
  */
-export const getV1IntegrationsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1IntegrationsByIdInput,
-    outputSchema: GetV1IntegrationsByIdOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const getV1IntegrationsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1IntegrationsByIdInput,
+  outputSchema: GetV1IntegrationsByIdOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

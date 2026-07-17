@@ -13,7 +13,7 @@ export interface ErrorTrackingReleasesUpdateInput {
   metadata?: Record<string, unknown> | null;
 }
 export const ErrorTrackingReleasesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     version: Schema.optional(Schema.NullOr(Schema.String)),
@@ -32,17 +32,15 @@ export const ErrorTrackingReleasesUpdateInput =
 // Output Schema
 export type ErrorTrackingReleasesUpdateOutput = void;
 export const ErrorTrackingReleasesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingReleasesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingReleasesUpdateOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const errorTrackingReleasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ErrorTrackingReleasesUpdateInput,
-    outputSchema: ErrorTrackingReleasesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const errorTrackingReleasesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ErrorTrackingReleasesUpdateInput,
+  outputSchema: ErrorTrackingReleasesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

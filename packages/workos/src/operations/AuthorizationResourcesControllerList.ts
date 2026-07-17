@@ -17,7 +17,7 @@ export interface AuthorizationResourcesControllerListInput {
   parent_external_id?: string;
 }
 export const AuthorizationResourcesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface AuthorizationResourcesControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationResourcesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -94,7 +94,7 @@ export const AuthorizationResourcesControllerListOutput =
  * @param parent_external_id - Filter resources by parent external ID. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.
  */
 export const AuthorizationResourcesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationResourcesControllerListInput,
     outputSchema: AuthorizationResourcesControllerListOutput,
     errors: [BadRequest, Forbidden, UnprocessableEntity] as const,

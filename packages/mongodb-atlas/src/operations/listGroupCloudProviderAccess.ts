@@ -10,7 +10,7 @@ export interface ListGroupCloudProviderAccessInput {
   pretty?: boolean;
 }
 export const ListGroupCloudProviderAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ListGroupCloudProviderAccessInput =
 // Output Schema
 export type ListGroupCloudProviderAccessOutput = void;
 export const ListGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupCloudProviderAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupCloudProviderAccessOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const ListGroupCloudProviderAccessOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupCloudProviderAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupCloudProviderAccessInput,
     outputSchema: ListGroupCloudProviderAccessOutput,
     errors: [Forbidden, NotFound] as const,

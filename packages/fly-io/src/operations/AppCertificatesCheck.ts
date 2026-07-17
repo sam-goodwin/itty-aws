@@ -9,7 +9,7 @@ export interface AppCertificatesCheckInput {
   hostname: string;
 }
 export const AppCertificatesCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -69,7 +69,7 @@ export interface AppCertificatesCheckOutput {
   }[];
 }
 export const AppCertificatesCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -160,10 +160,8 @@ export const AppCertificatesCheckOutput =
  * @param app_name - Fly App Name
  * @param hostname - Certificate Hostname
  */
-export const AppCertificatesCheck = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesCheckInput,
-    outputSchema: AppCertificatesCheckOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const AppCertificatesCheck = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesCheckInput,
+  outputSchema: AppCertificatesCheckOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

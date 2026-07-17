@@ -9,7 +9,7 @@ export interface DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput {
   workspaceId: string;
 }
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
     workspaceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
 // Output Schema
 export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput = void;
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
  * Revokes the integration tokens with the given client ID.
  */
 export const deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput,
     outputSchema: DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput,
     errors: [NotFound, UnprocessableEntity] as const,

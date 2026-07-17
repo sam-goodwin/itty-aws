@@ -10,7 +10,7 @@ export interface PostClimateOrdersOrderInput {
   metadata?: Record<string, string>;
 }
 export const PostClimateOrdersOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.String.pipe(T.PathParam()),
     beneficiary: Schema.optional(
       Schema.Union([
@@ -119,7 +119,7 @@ export interface PostClimateOrdersOrderOutput {
   status: "awaiting_funds" | "canceled" | "confirmed" | "delivered" | "open";
 }
 export const PostClimateOrdersOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_fees: Schema.Number,
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
@@ -244,9 +244,7 @@ export const PostClimateOrdersOrderOutput =
  *
  * @param order - Unique identifier of the order.
  */
-export const PostClimateOrdersOrder = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostClimateOrdersOrderInput,
-    outputSchema: PostClimateOrdersOrderOutput,
-  }),
-);
+export const PostClimateOrdersOrder = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostClimateOrdersOrderInput,
+  outputSchema: PostClimateOrdersOrderOutput,
+}));

@@ -10,7 +10,7 @@ export interface ForceCutoverDeployRequestInput {
   number: number;
 }
 export const ForceCutoverDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -102,8 +102,8 @@ export interface ForceCutoverDeployRequestOutput {
     into_branch: string;
     deploy_request_number: number;
     deployable: boolean;
-    preceding_deployments: Record<string, unknown>[];
-    deploy_operations: {
+    preceding_deployments: ReadonlyArray<Record<string, unknown>>;
+    deploy_operations: ReadonlyArray<{
       id: string;
       state:
         | "pending"
@@ -127,10 +127,10 @@ export interface ForceCutoverDeployRequestOutput {
       table_locked: boolean;
       table_recently_used: boolean;
       table_recently_used_at: string | null;
-      removed_foreign_key_names: string[] | null;
+      removed_foreign_key_names: ReadonlyArray<string> | null;
       deploy_errors: string | null;
-    }[];
-    deploy_operation_summaries: {
+    }>;
+    deploy_operation_summaries: ReadonlyArray<{
       id: string;
       created_at: string;
       deploy_errors: string;
@@ -144,13 +144,13 @@ export interface ForceCutoverDeployRequestOutput {
       table_name: string;
       table_recently_used_at: string | null;
       throttled_at: string | null;
-      removed_foreign_key_names: string[];
+      removed_foreign_key_names: ReadonlyArray<string>;
       shard_count: number;
-      shard_names: string[];
+      shard_names: ReadonlyArray<string>;
       can_drop_data: boolean;
       table_recently_used: boolean;
       sharded: boolean;
-      operations: {
+      operations: ReadonlyArray<{
         id: string;
         shard: string;
         state:
@@ -162,11 +162,11 @@ export interface ForceCutoverDeployRequestOutput {
           | "error";
         progress_percentage: number;
         eta_seconds: number;
-      }[];
-    }[];
-    lint_errors: Record<string, unknown>[];
-    sequential_diff_dependencies: Record<string, unknown>[];
-    lookup_vindex_operations: Record<string, unknown>[];
+      }>;
+    }>;
+    lint_errors: ReadonlyArray<Record<string, unknown>>;
+    sequential_diff_dependencies: ReadonlyArray<Record<string, unknown>>;
+    lookup_vindex_operations: ReadonlyArray<Record<string, unknown>>;
     throttler_configurations?: Record<string, unknown> | null;
     deployment_revert_request: Record<string, unknown> | null;
     actor?: { id: string; display_name: string; avatar_url: string } | null;
@@ -198,7 +198,7 @@ export interface ForceCutoverDeployRequestOutput {
   deployed_at: string | null;
 }
 export const ForceCutoverDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -440,10 +440,8 @@ export const ForceCutoverDeployRequestOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const forceCutoverDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForceCutoverDeployRequestInput,
-    outputSchema: ForceCutoverDeployRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const forceCutoverDeployRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForceCutoverDeployRequestInput,
+  outputSchema: ForceCutoverDeployRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

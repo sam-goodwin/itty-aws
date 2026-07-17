@@ -11,7 +11,7 @@ export interface AgentApplicationsPreviewProxyGetInput {
   revision_id: string;
 }
 export const AgentApplicationsPreviewProxyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     rest: Schema.String.pipe(T.PathParam()),
@@ -43,7 +43,7 @@ export interface AgentApplicationsPreviewProxyGetOutput {
   ingress_base_url: string | null;
 }
 export const AgentApplicationsPreviewProxyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     team_id: Schema.Number,
     name: Schema.String,
@@ -77,7 +77,7 @@ export const AgentApplicationsPreviewProxyGetOutput =
  * @param revision_id - Target draft revision. Must belong to this application and not be live.
  */
 export const agentApplicationsPreviewProxyGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsPreviewProxyGetInput,
     outputSchema: AgentApplicationsPreviewProxyGetOutput,
   }));

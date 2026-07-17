@@ -16,7 +16,7 @@ export interface NotebooksCollabSaveCreateInput {
   cursor_head?: number | null;
 }
 export const NotebooksCollabSaveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     client_id: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export const NotebooksCollabSaveCreateInput =
 // Output Schema
 export type NotebooksCollabSaveCreateOutput = void;
 export const NotebooksCollabSaveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabSaveCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabSaveCreateOutput>;
 
 // The operation
 /**
@@ -44,10 +44,8 @@ export const NotebooksCollabSaveCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const notebooksCollabSaveCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NotebooksCollabSaveCreateInput,
-    outputSchema: NotebooksCollabSaveCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const notebooksCollabSaveCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NotebooksCollabSaveCreateInput,
+  outputSchema: NotebooksCollabSaveCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

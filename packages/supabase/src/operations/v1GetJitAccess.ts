@@ -7,7 +7,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1GetJitAccessInput {
   ref: string;
 }
-export const V1GetJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetJitAccessInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}/database/jit" }),
@@ -26,7 +26,7 @@ export interface V1GetJitAccessOutput {
     branches_only?: boolean;
   }[];
 }
-export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetJitAccessOutput = /*@__PURE__*/ Schema.Struct({
   user_id: Schema.optional(Schema.String),
   user_roles: Schema.Array(
     Schema.Struct({
@@ -63,7 +63,7 @@ export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param ref - Project ref
  */
-export const v1GetJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetJitAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetJitAccessInput,
   outputSchema: V1GetJitAccessOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -7,7 +7,7 @@ export interface ListEvmAccountsInput {
   pageSize?: number;
   pageToken?: string;
 }
-export const ListEvmAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEvmAccountsInput = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
 }).pipe(
@@ -25,7 +25,7 @@ export interface ListEvmAccountsOutput {
   }[];
   nextPageToken?: string;
 }
-export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEvmAccountsOutput = /*@__PURE__*/ Schema.Struct({
   accounts: Schema.Array(
     Schema.Struct({
       address: Schema.String,
@@ -48,7 +48,7 @@ export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listEvmAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listEvmAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListEvmAccountsInput,
   outputSchema: ListEvmAccountsOutput,
 }));

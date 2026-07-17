@@ -7,7 +7,7 @@ export interface RemindersListInput {
   limit?: number;
   offset?: number;
 }
-export const RemindersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersListInput = /*@__PURE__*/ Schema.Struct({
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(
@@ -60,7 +60,7 @@ export interface RemindersListOutput {
     updated_at: string | null;
   }[];
 }
-export const RemindersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -129,7 +129,7 @@ export const RemindersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const remindersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const remindersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemindersListInput,
   outputSchema: RemindersListOutput,
 }));

@@ -30,7 +30,7 @@ export interface ConversationsCreateInput {
   resume_payload?: unknown;
 }
 export const ConversationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     conversation: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export interface ConversationsCreateOutput {
   resume_payload?: unknown;
 }
 export const ConversationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.NullOr(Schema.String)),
     conversation: Schema.optional(Schema.String),
     contextual_tools: Schema.optional(
@@ -133,7 +133,7 @@ export const ConversationsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const conversationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const conversationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConversationsCreateInput,
   outputSchema: ConversationsCreateOutput,
 }));

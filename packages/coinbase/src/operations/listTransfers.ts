@@ -21,7 +21,7 @@ export interface ListTransfersInput {
   pageSize?: number;
   pageToken?: string;
 }
-export const ListTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTransfersInput = /*@__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   accountId: Schema.optional(Schema.String),
   sourceAccountId: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface ListTransfersOutput {
   }[];
   nextPageToken?: string;
 }
-export const ListTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTransfersOutput = /*@__PURE__*/ Schema.Struct({
   transfers: Schema.Array(
     Schema.Struct({
       transferId: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export const ListTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listTransfers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listTransfers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListTransfersInput,
   outputSchema: ListTransfersOutput,
 }));

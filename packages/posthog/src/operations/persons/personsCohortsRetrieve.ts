@@ -10,7 +10,7 @@ export interface PersonsCohortsRetrieveInput {
   person_id: string;
 }
 export const PersonsCohortsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     person_id: Schema.String,
@@ -24,7 +24,7 @@ export const PersonsCohortsRetrieveInput =
 // Output Schema
 export type PersonsCohortsRetrieveOutput = void;
 export const PersonsCohortsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsCohortsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsCohortsRetrieveOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const PersonsCohortsRetrieveOutput =
  * @param person_id - The person ID or UUID to get cohorts for.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsCohortsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsCohortsRetrieveInput,
-    outputSchema: PersonsCohortsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsCohortsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsCohortsRetrieveInput,
+  outputSchema: PersonsCohortsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

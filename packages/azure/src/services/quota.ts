@@ -16,7 +16,7 @@ export interface GroupQuotaLimitsListInput {
   location: string;
 }
 export const GroupQuotaLimitsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -44,7 +44,7 @@ export interface GroupQuotaLimitsListOutput {
   };
 }
 export const GroupQuotaLimitsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -74,12 +74,10 @@ export const GroupQuotaLimitsListOutput =
  * @param resourceProviderName - The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this API.
  * @param location - The name of the Azure region.
  */
-export const GroupQuotaLimitsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaLimitsListInput,
-    outputSchema: GroupQuotaLimitsListOutput,
-  }),
-);
+export const GroupQuotaLimitsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaLimitsListInput,
+  outputSchema: GroupQuotaLimitsListOutput,
+}));
 // Input Schema
 export interface GroupQuotaLimitsRequestGetInput {
   managementGroupId: string;
@@ -87,7 +85,7 @@ export interface GroupQuotaLimitsRequestGetInput {
   requestId: string;
 }
 export const GroupQuotaLimitsRequestGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String.pipe(T.PathParam()),
@@ -114,7 +112,7 @@ export interface GroupQuotaLimitsRequestGetOutput {
   };
 }
 export const GroupQuotaLimitsRequestGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -143,12 +141,10 @@ export const GroupQuotaLimitsRequestGetOutput =
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  * @param requestId - Request Id.
  */
-export const GroupQuotaLimitsRequestGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaLimitsRequestGetInput,
-    outputSchema: GroupQuotaLimitsRequestGetOutput,
-  }),
-);
+export const GroupQuotaLimitsRequestGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaLimitsRequestGetInput,
+  outputSchema: GroupQuotaLimitsRequestGetOutput,
+}));
 // Input Schema
 export interface GroupQuotaLimitsRequestListInput {
   managementGroupId: string;
@@ -157,7 +153,7 @@ export interface GroupQuotaLimitsRequestListInput {
   $filter: string;
 }
 export const GroupQuotaLimitsRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -188,7 +184,7 @@ export interface GroupQuotaLimitsRequestListOutput {
   nextLink?: string;
 }
 export const GroupQuotaLimitsRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -233,12 +229,10 @@ export const GroupQuotaLimitsRequestListOutput =
  * @param resourceProviderName - The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this API.
  * @param $filter - | Field | Supported operators  \\r\\n|---------------------|------------------------\\n\\r\\n location eq {location} and resource eq {resourceName}\\n Example: $filter=location eq eastus and resourceName eq cores
  */
-export const GroupQuotaLimitsRequestList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaLimitsRequestListInput,
-    outputSchema: GroupQuotaLimitsRequestListOutput,
-  }),
-);
+export const GroupQuotaLimitsRequestList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaLimitsRequestListInput,
+  outputSchema: GroupQuotaLimitsRequestListOutput,
+}));
 // Input Schema
 export interface GroupQuotaLimitsRequestUpdateInput {
   managementGroupId: string;
@@ -272,7 +266,7 @@ export interface GroupQuotaLimitsRequestUpdateInput {
   };
 }
 export const GroupQuotaLimitsRequestUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -350,7 +344,7 @@ export interface GroupQuotaLimitsRequestUpdateOutput {
   };
 }
 export const GroupQuotaLimitsRequestUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -382,7 +376,7 @@ export const GroupQuotaLimitsRequestUpdateOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaLimitsRequestUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaLimitsRequestUpdateInput,
     outputSchema: GroupQuotaLimitsRequestUpdateOutput,
   }));
@@ -408,7 +402,7 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateInput {
   };
 }
 export const GroupQuotaLocationSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -457,7 +451,7 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateOutput {
   };
 }
 export const GroupQuotaLocationSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -492,7 +486,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdateOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaLocationSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaLocationSettingsCreateOrUpdateInput,
     outputSchema: GroupQuotaLocationSettingsCreateOrUpdateOutput,
   }));
@@ -504,7 +498,7 @@ export interface GroupQuotaLocationSettingsGetInput {
   location: string;
 }
 export const GroupQuotaLocationSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -532,7 +526,7 @@ export interface GroupQuotaLocationSettingsGetOutput {
   };
 }
 export const GroupQuotaLocationSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -563,7 +557,7 @@ export const GroupQuotaLocationSettingsGetOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaLocationSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaLocationSettingsGetInput,
     outputSchema: GroupQuotaLocationSettingsGetOutput,
   }));
@@ -589,7 +583,7 @@ export interface GroupQuotaLocationSettingsUpdateInput {
   };
 }
 export const GroupQuotaLocationSettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -638,7 +632,7 @@ export interface GroupQuotaLocationSettingsUpdateOutput {
   };
 }
 export const GroupQuotaLocationSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -673,7 +667,7 @@ export const GroupQuotaLocationSettingsUpdateOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaLocationSettingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaLocationSettingsUpdateInput,
     outputSchema: GroupQuotaLocationSettingsUpdateOutput,
   }));
@@ -696,7 +690,7 @@ export interface GroupQuotasCreateOrUpdateInput {
   };
 }
 export const GroupQuotasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -742,7 +736,7 @@ export interface GroupQuotasCreateOrUpdateOutput {
   };
 }
 export const GroupQuotasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -770,23 +764,19 @@ export const GroupQuotasCreateOrUpdateOutput =
  * @param managementGroupId - The management group ID.
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
-export const GroupQuotasCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotasCreateOrUpdateInput,
-    outputSchema: GroupQuotasCreateOrUpdateOutput,
-  }),
-);
+export const GroupQuotasCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotasCreateOrUpdateInput,
+  outputSchema: GroupQuotasCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface GroupQuotasDeleteInput {
   managementGroupId: string;
   groupQuotaName: string;
 }
-export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    managementGroupId: Schema.String.pipe(T.PathParam()),
-    groupQuotaName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GroupQuotasDeleteInput = /*@__PURE__*/ Schema.Struct({
+  managementGroupId: Schema.String.pipe(T.PathParam()),
+  groupQuotaName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
@@ -797,7 +787,7 @@ export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type GroupQuotasDeleteOutput = void;
 export const GroupQuotasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotasDeleteOutput>;
 
 // The operation
 /**
@@ -807,7 +797,7 @@ export const GroupQuotasDeleteOutput =
  * @param managementGroupId - The management group ID.
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
-export const GroupQuotasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupQuotasDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupQuotasDeleteInput,
   outputSchema: GroupQuotasDeleteOutput,
 }));
@@ -816,7 +806,7 @@ export interface GroupQuotasGetInput {
   managementGroupId: string;
   groupQuotaName: string;
 }
-export const GroupQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupQuotasGetInput = /*@__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
   groupQuotaName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -841,7 +831,7 @@ export interface GroupQuotasGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GroupQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupQuotasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -869,7 +859,7 @@ export const GroupQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param managementGroupId - The management group ID.
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
-export const GroupQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupQuotasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupQuotasGetInput,
   outputSchema: GroupQuotasGetOutput,
 }));
@@ -877,7 +867,7 @@ export const GroupQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface GroupQuotasListInput {
   managementGroupId: string;
 }
-export const GroupQuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupQuotasListInput = /*@__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -904,7 +894,7 @@ export interface GroupQuotasListOutput {
   }[];
   nextLink?: string;
 }
-export const GroupQuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GroupQuotasListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -936,7 +926,7 @@ export const GroupQuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param managementGroupId - The management group ID.
  */
-export const GroupQuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupQuotasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupQuotasListInput,
   outputSchema: GroupQuotasListOutput,
 }));
@@ -949,7 +939,7 @@ export interface GroupQuotaSubscriptionAllocationListInput {
   location: string;
 }
 export const GroupQuotaSubscriptionAllocationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
@@ -978,7 +968,7 @@ export interface GroupQuotaSubscriptionAllocationListOutput {
   };
 }
 export const GroupQuotaSubscriptionAllocationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1010,7 +1000,7 @@ export const GroupQuotaSubscriptionAllocationListOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaSubscriptionAllocationList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionAllocationListInput,
     outputSchema: GroupQuotaSubscriptionAllocationListOutput,
   }));
@@ -1023,7 +1013,7 @@ export interface GroupQuotaSubscriptionAllocationRequestGetInput {
   allocationId: string;
 }
 export const GroupQuotaSubscriptionAllocationRequestGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
@@ -1052,7 +1042,7 @@ export interface GroupQuotaSubscriptionAllocationRequestGetOutput {
   };
 }
 export const GroupQuotaSubscriptionAllocationRequestGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1084,7 +1074,7 @@ export const GroupQuotaSubscriptionAllocationRequestGetOutput =
  * @param allocationId - Request Id.
  */
 export const GroupQuotaSubscriptionAllocationRequestGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionAllocationRequestGetInput,
     outputSchema: GroupQuotaSubscriptionAllocationRequestGetOutput,
   }));
@@ -1097,7 +1087,7 @@ export interface GroupQuotaSubscriptionAllocationRequestListInput {
   $filter: string;
 }
 export const GroupQuotaSubscriptionAllocationRequestListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
@@ -1129,7 +1119,7 @@ export interface GroupQuotaSubscriptionAllocationRequestListOutput {
   nextLink?: string;
 }
 export const GroupQuotaSubscriptionAllocationRequestListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1180,7 +1170,7 @@ location eq {location}
 Example: $filter=location eq eastus
  */
 export const GroupQuotaSubscriptionAllocationRequestList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionAllocationRequestListInput,
     outputSchema: GroupQuotaSubscriptionAllocationRequestListOutput,
   }));
@@ -1213,7 +1203,7 @@ export interface GroupQuotaSubscriptionAllocationRequestUpdateInput {
   };
 }
 export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
@@ -1278,7 +1268,7 @@ export interface GroupQuotaSubscriptionAllocationRequestUpdateOutput {
   };
 }
 export const GroupQuotaSubscriptionAllocationRequestUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1310,7 +1300,7 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateOutput =
  * @param location - The name of the Azure region.
  */
 export const GroupQuotaSubscriptionAllocationRequestUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionAllocationRequestUpdateInput,
     outputSchema: GroupQuotaSubscriptionAllocationRequestUpdateOutput,
   }));
@@ -1321,7 +1311,7 @@ export interface GroupQuotaSubscriptionRequestsGetInput {
   requestId: string;
 }
 export const GroupQuotaSubscriptionRequestsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String.pipe(T.PathParam()),
@@ -1348,7 +1338,7 @@ export interface GroupQuotaSubscriptionRequestsGetOutput {
   };
 }
 export const GroupQuotaSubscriptionRequestsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1378,7 +1368,7 @@ export const GroupQuotaSubscriptionRequestsGetOutput =
  * @param requestId - Request Id.
  */
 export const GroupQuotaSubscriptionRequestsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionRequestsGetInput,
     outputSchema: GroupQuotaSubscriptionRequestsGetOutput,
   }));
@@ -1388,7 +1378,7 @@ export interface GroupQuotaSubscriptionRequestsListInput {
   groupQuotaName: string;
 }
 export const GroupQuotaSubscriptionRequestsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1417,7 +1407,7 @@ export interface GroupQuotaSubscriptionRequestsListOutput {
   nextLink?: string;
 }
 export const GroupQuotaSubscriptionRequestsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1461,7 +1451,7 @@ export const GroupQuotaSubscriptionRequestsListOutput =
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
 export const GroupQuotaSubscriptionRequestsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionRequestsListInput,
     outputSchema: GroupQuotaSubscriptionRequestsListOutput,
   }));
@@ -1472,7 +1462,7 @@ export interface GroupQuotaSubscriptionsCreateOrUpdateInput {
   subscriptionId: string;
 }
 export const GroupQuotaSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1499,7 +1489,7 @@ export interface GroupQuotaSubscriptionsCreateOrUpdateOutput {
   };
 }
 export const GroupQuotaSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1529,7 +1519,7 @@ export const GroupQuotaSubscriptionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GroupQuotaSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionsCreateOrUpdateInput,
     outputSchema: GroupQuotaSubscriptionsCreateOrUpdateOutput,
   }));
@@ -1540,7 +1530,7 @@ export interface GroupQuotaSubscriptionsDeleteInput {
   subscriptionId: string;
 }
 export const GroupQuotaSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1555,7 +1545,7 @@ export const GroupQuotaSubscriptionsDeleteInput =
 // Output Schema
 export type GroupQuotaSubscriptionsDeleteOutput = void;
 export const GroupQuotaSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotaSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotaSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -1567,7 +1557,7 @@ export const GroupQuotaSubscriptionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GroupQuotaSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionsDeleteInput,
     outputSchema: GroupQuotaSubscriptionsDeleteOutput,
   }));
@@ -1578,7 +1568,7 @@ export interface GroupQuotaSubscriptionsGetInput {
   subscriptionId: string;
 }
 export const GroupQuotaSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1605,7 +1595,7 @@ export interface GroupQuotaSubscriptionsGetOutput {
   };
 }
 export const GroupQuotaSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1634,19 +1624,17 @@ export const GroupQuotaSubscriptionsGetOutput =
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GroupQuotaSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaSubscriptionsGetInput,
-    outputSchema: GroupQuotaSubscriptionsGetOutput,
-  }),
-);
+export const GroupQuotaSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaSubscriptionsGetInput,
+  outputSchema: GroupQuotaSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface GroupQuotaSubscriptionsListInput {
   managementGroupId: string;
   groupQuotaName: string;
 }
 export const GroupQuotaSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1675,7 +1663,7 @@ export interface GroupQuotaSubscriptionsListOutput {
   nextLink?: string;
 }
 export const GroupQuotaSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1718,12 +1706,10 @@ export const GroupQuotaSubscriptionsListOutput =
  * @param managementGroupId - The management group ID.
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
-export const GroupQuotaSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaSubscriptionsListInput,
-    outputSchema: GroupQuotaSubscriptionsListOutput,
-  }),
-);
+export const GroupQuotaSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaSubscriptionsListInput,
+  outputSchema: GroupQuotaSubscriptionsListOutput,
+}));
 // Input Schema
 export interface GroupQuotaSubscriptionsUpdateInput {
   managementGroupId: string;
@@ -1731,7 +1717,7 @@ export interface GroupQuotaSubscriptionsUpdateInput {
   subscriptionId: string;
 }
 export const GroupQuotaSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1758,7 +1744,7 @@ export interface GroupQuotaSubscriptionsUpdateOutput {
   };
 }
 export const GroupQuotaSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1788,7 +1774,7 @@ export const GroupQuotaSubscriptionsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GroupQuotaSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupQuotaSubscriptionsUpdateInput,
     outputSchema: GroupQuotaSubscriptionsUpdateOutput,
   }));
@@ -1809,29 +1795,27 @@ export interface GroupQuotasUpdateInput {
       | "Canceled";
   };
 }
-export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    managementGroupId: Schema.String.pipe(T.PathParam()),
-    groupQuotaName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-      }),
-    ),
-  },
-).pipe(
+export const GroupQuotasUpdateInput = /*@__PURE__*/ Schema.Struct({
+  managementGroupId: Schema.String.pipe(T.PathParam()),
+  groupQuotaName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Created",
+          "Invalid",
+          "Succeeded",
+          "Escalated",
+          "Failed",
+          "InProgress",
+          "Canceled",
+        ]),
+      ),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
@@ -1854,7 +1838,7 @@ export interface GroupQuotasUpdateOutput {
   };
 }
 export const GroupQuotasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1883,7 +1867,7 @@ export const GroupQuotasUpdateOutput =
  * @param managementGroupId - The management group ID.
  * @param groupQuotaName - The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
  */
-export const GroupQuotasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupQuotasUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupQuotasUpdateInput,
   outputSchema: GroupQuotasUpdateOutput,
 }));
@@ -1895,7 +1879,7 @@ export interface GroupQuotaUsagesListInput {
   location: string;
 }
 export const GroupQuotaUsagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     resourceProviderName: Schema.String.pipe(T.PathParam()),
@@ -1926,7 +1910,7 @@ export interface GroupQuotaUsagesListOutput {
   nextLink?: string;
 }
 export const GroupQuotaUsagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1971,12 +1955,10 @@ export const GroupQuotaUsagesListOutput =
  * @param resourceProviderName - The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this API.
  * @param location - The name of the Azure region.
  */
-export const GroupQuotaUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupQuotaUsagesListInput,
-    outputSchema: GroupQuotaUsagesListOutput,
-  }),
-);
+export const GroupQuotaUsagesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupQuotaUsagesListInput,
+  outputSchema: GroupQuotaUsagesListOutput,
+}));
 // Input Schema
 export interface QuotaCreateOrUpdateInput {
   scope: string;
@@ -1992,7 +1974,7 @@ export interface QuotaCreateOrUpdateInput {
   };
 }
 export const QuotaCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2038,7 +2020,7 @@ export interface QuotaCreateOrUpdateOutput {
   };
 }
 export const QuotaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2071,7 +2053,7 @@ export const QuotaCreateOrUpdateOutput =
 - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
  For Microsoft.Network PublicIPAddresses.
  */
-export const QuotaCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaCreateOrUpdateInput,
   outputSchema: QuotaCreateOrUpdateOutput,
 }));
@@ -2080,7 +2062,7 @@ export interface QuotaGetInput {
   scope: string;
   resourceName: string;
 }
-export const QuotaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2105,7 +2087,7 @@ export interface QuotaGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2136,7 +2118,7 @@ export const QuotaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
  For Microsoft.Network PublicIPAddresses.
  */
-export const QuotaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaGetInput,
   outputSchema: QuotaGetOutput,
 }));
@@ -2144,7 +2126,7 @@ export const QuotaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface QuotaListInput {
   scope: string;
 }
-export const QuotaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2171,7 +2153,7 @@ export interface QuotaListOutput {
   }[];
   nextLink?: string;
 }
-export const QuotaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2203,14 +2185,14 @@ export const QuotaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const QuotaList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaListInput,
   outputSchema: QuotaListOutput,
 }));
 // Input Schema
 export interface QuotaOperationListInput {}
 export const QuotaOperationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Quota/operations",
@@ -2233,7 +2215,7 @@ export interface QuotaOperationListOutput {
   nextLink?: string;
 }
 export const QuotaOperationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -2257,7 +2239,7 @@ export const QuotaOperationListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const QuotaOperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaOperationList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaOperationListInput,
   outputSchema: QuotaOperationListOutput,
 }));
@@ -2267,7 +2249,7 @@ export interface QuotaRequestStatusGetInput {
   id: string;
 }
 export const QuotaRequestStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2293,7 +2275,7 @@ export interface QuotaRequestStatusGetOutput {
   };
 }
 export const QuotaRequestStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2321,12 +2303,10 @@ export const QuotaRequestStatusGetOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param id - Quota request ID.
  */
-export const QuotaRequestStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaRequestStatusGetInput,
-    outputSchema: QuotaRequestStatusGetOutput,
-  }),
-);
+export const QuotaRequestStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaRequestStatusGetInput,
+  outputSchema: QuotaRequestStatusGetOutput,
+}));
 // Input Schema
 export interface QuotaRequestStatusListInput {
   scope: string;
@@ -2335,7 +2315,7 @@ export interface QuotaRequestStatusListInput {
   $skiptoken?: string;
 }
 export const QuotaRequestStatusListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2366,7 +2346,7 @@ export interface QuotaRequestStatusListOutput {
   nextLink?: string;
 }
 export const QuotaRequestStatusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2416,12 +2396,10 @@ export const QuotaRequestStatusListOutput =
  * @param $top - Number of records to return.
  * @param $skiptoken - The **Skiptoken** parameter is used only if a previous operation returned a partial result. If a previous response contains a **nextLink** element, its value includes a **skiptoken** parameter that specifies a starting point to use for subsequent calls.
  */
-export const QuotaRequestStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaRequestStatusListInput,
-    outputSchema: QuotaRequestStatusListOutput,
-  }),
-);
+export const QuotaRequestStatusList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaRequestStatusListInput,
+  outputSchema: QuotaRequestStatusListOutput,
+}));
 // Input Schema
 export interface QuotaUpdateInput {
   scope: string;
@@ -2436,7 +2414,7 @@ export interface QuotaUpdateInput {
     properties?: unknown;
   };
 }
-export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaUpdateInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -2481,7 +2459,7 @@ export interface QuotaUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2514,7 +2492,7 @@ export const QuotaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
  For Microsoft.Network PublicIPAddresses.
  */
-export const QuotaUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaUpdateInput,
   outputSchema: QuotaUpdateOutput,
 }));
@@ -2523,7 +2501,7 @@ export interface UsagesGetInput {
   scope: string;
   resourceName: string;
 }
-export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2548,7 +2526,7 @@ export interface UsagesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2579,7 +2557,7 @@ export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
  For Microsoft.Network PublicIPAddresses.
  */
-export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesGetInput,
   outputSchema: UsagesGetOutput,
 }));
@@ -2587,7 +2565,7 @@ export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface UsagesListInput {
   scope: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2614,7 +2592,7 @@ export interface UsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2646,7 +2624,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));

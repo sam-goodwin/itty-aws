@@ -8,7 +8,7 @@ export interface GetTestHelpersTestClocksTestClockInput {
   expand?: string;
 }
 export const GetTestHelpersTestClocksTestClockInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -32,7 +32,7 @@ export interface GetTestHelpersTestClocksTestClockOutput {
   status_details: { advancing?: { target_frozen_time: number } };
 }
 export const GetTestHelpersTestClocksTestClockOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deletes_after: Schema.Number,
     frozen_time: Schema.Number,
@@ -59,7 +59,7 @@ export const GetTestHelpersTestClocksTestClockOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTestHelpersTestClocksTestClock =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTestHelpersTestClocksTestClockInput,
     outputSchema: GetTestHelpersTestClocksTestClockOutput,
   }));

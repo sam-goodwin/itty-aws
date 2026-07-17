@@ -22,7 +22,7 @@ export interface AgentApplicationsUpdateInput {
   ingress_base_url: string | null;
 }
 export const AgentApplicationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     team_id: Schema.Number,
@@ -71,7 +71,7 @@ export interface AgentApplicationsUpdateOutput {
   ingress_base_url: string | null;
 }
 export const AgentApplicationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     team_id: Schema.Number,
     name: Schema.String,
@@ -113,9 +113,7 @@ export const AgentApplicationsUpdateOutput =
  * @param id - A UUID string identifying this agent application.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsUpdateInput,
-    outputSchema: AgentApplicationsUpdateOutput,
-  }),
-);
+export const agentApplicationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsUpdateInput,
+  outputSchema: AgentApplicationsUpdateOutput,
+}));

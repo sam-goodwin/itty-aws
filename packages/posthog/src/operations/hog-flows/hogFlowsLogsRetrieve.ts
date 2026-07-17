@@ -15,7 +15,7 @@ export interface HogFlowsLogsRetrieveInput {
   search?: string;
 }
 export const HogFlowsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export const HogFlowsLogsRetrieveInput =
 // Output Schema
 export type HogFlowsLogsRetrieveOutput = void;
 export const HogFlowsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFlowsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -48,10 +48,8 @@ export const HogFlowsLogsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Case-insensitive substring search across log messages.
  */
-export const hogFlowsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFlowsLogsRetrieveInput,
-    outputSchema: HogFlowsLogsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFlowsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsLogsRetrieveInput,
+  outputSchema: HogFlowsLogsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

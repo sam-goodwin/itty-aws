@@ -9,7 +9,7 @@ export interface MachinesReleaseLeaseInput {
   machine_id: string;
 }
 export const MachinesReleaseLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const MachinesReleaseLeaseInput =
 // Output Schema
 export type MachinesReleaseLeaseOutput = void;
 export const MachinesReleaseLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesReleaseLeaseOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesReleaseLeaseOutput>;
 
 // The operation
 /**
@@ -34,10 +34,8 @@ export const MachinesReleaseLeaseOutput =
  * @param machine_id - Machine ID
  * @param fly-machine-lease-nonce - Existing lease nonce
  */
-export const MachinesReleaseLease = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesReleaseLeaseInput,
-    outputSchema: MachinesReleaseLeaseOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesReleaseLease = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesReleaseLeaseInput,
+  outputSchema: MachinesReleaseLeaseOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -47,7 +47,7 @@ export interface UpdateRoleInput {
     }
   >;
 }
-export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   datasetCapabilities: Schema.optional(
     Schema.Record(
@@ -179,7 +179,7 @@ export interface UpdateRoleOutput {
   >;
   id: string;
 }
-export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateRoleOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -273,7 +273,7 @@ export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique identifier of the role to update
  */
-export const updateRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateRoleInput,
   outputSchema: UpdateRoleOutput,
   errors: [NotFound, UnprocessableEntity] as const,

@@ -11,7 +11,7 @@ export interface EngineeringAnalyticsPullRequestsInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsPullRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     author: Schema.optional(Schema.String),
     date_from: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface EngineeringAnalyticsPullRequestsOutput {
   limit: number;
 }
 export const EngineeringAnalyticsPullRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.Array(
       Schema.Struct({
         author: Schema.Struct({
@@ -99,7 +99,7 @@ export const EngineeringAnalyticsPullRequestsOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsPullRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsPullRequestsInput,
     outputSchema: EngineeringAnalyticsPullRequestsOutput,
     errors: [BadRequest] as const,

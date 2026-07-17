@@ -19,7 +19,7 @@ export interface FeatureFlagsListInput {
   tags?: string;
   type?: "boolean" | "experiment" | "multivariant" | "remote_config";
 }
-export const FeatureFlagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FeatureFlagsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   active: Schema.optional(Schema.Literals(["STALE", "false", "true"])),
   archived: Schema.optional(Schema.Literals(["false", "true"])),
@@ -135,168 +135,150 @@ export interface FeatureFlagsListOutput {
     is_used_in_replay_settings?: boolean;
   }[];
 }
-export const FeatureFlagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    count: Schema.optional(Schema.Number),
-    next: Schema.optional(Schema.NullOr(Schema.String)),
-    previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          key: Schema.optional(Schema.String),
-          filters: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          deleted: Schema.optional(Schema.Boolean),
-          active: Schema.optional(Schema.Boolean),
-          archived: Schema.optional(Schema.Boolean),
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(
-                  Schema.NullOr(
-                    Schema.Union([
-                      Schema.Literals([
-                        "engineering",
-                        "data",
-                        "product",
-                        "founder",
-                        "leadership",
-                        "marketing",
-                        "sales",
-                        "other",
-                      ]),
-                      Schema.Literals([""]),
+export const FeatureFlagsListOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  next: Schema.optional(Schema.NullOr(Schema.String)),
+  previous: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        name: Schema.optional(Schema.String),
+        key: Schema.optional(Schema.String),
+        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        deleted: Schema.optional(Schema.Boolean),
+        active: Schema.optional(Schema.Boolean),
+        archived: Schema.optional(Schema.Boolean),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
                     ]),
-                  ),
+                    Schema.Literals([""]),
+                  ]),
                 ),
-              }),
-            ),
+              ),
+            }),
           ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-          version: Schema.optional(Schema.Number),
-          last_modified_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(
-                  Schema.NullOr(
-                    Schema.Union([
-                      Schema.Literals([
-                        "engineering",
-                        "data",
-                        "product",
-                        "founder",
-                        "leadership",
-                        "marketing",
-                        "sales",
-                        "other",
-                      ]),
-                      Schema.Literals([""]),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+        version: Schema.optional(Schema.Number),
+        last_modified_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
                     ]),
-                  ),
+                    Schema.Literals([""]),
+                  ]),
                 ),
-              }),
-            ),
+              ),
+            }),
           ),
-          ensure_experience_continuity: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
+        ),
+        ensure_experience_continuity: Schema.optional(
+          Schema.NullOr(Schema.Boolean),
+        ),
+        experiment_set: Schema.optional(Schema.Array(Schema.Number)),
+        experiment_set_metadata: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.Number,
+              name: Schema.String,
+              is_running: Schema.Boolean,
+            }),
           ),
-          experiment_set: Schema.optional(Schema.Array(Schema.Number)),
-          experiment_set_metadata: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.Number,
-                name: Schema.String,
-                is_running: Schema.Boolean,
-              }),
-            ),
-          ),
-          surveys: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          features: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          rollback_conditions: Schema.optional(Schema.Unknown),
-          performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          can_edit: Schema.optional(Schema.Boolean),
-          tags: Schema.optional(Schema.Array(Schema.Unknown)),
-          evaluation_contexts: Schema.optional(Schema.Array(Schema.Unknown)),
-          usage_dashboard: Schema.optional(Schema.Number),
-          analytics_dashboards: Schema.optional(Schema.Array(Schema.Number)),
-          has_enriched_analytics: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-          creation_context: Schema.optional(
-            Schema.Literals([
-              "feature_flags",
-              "experiments",
-              "surveys",
-              "early_access_features",
-              "web_experiments",
-              "product_tours",
+        ),
+        surveys: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        features: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        rollback_conditions: Schema.optional(Schema.Unknown),
+        performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        can_edit: Schema.optional(Schema.Boolean),
+        tags: Schema.optional(Schema.Array(Schema.Unknown)),
+        evaluation_contexts: Schema.optional(Schema.Array(Schema.Unknown)),
+        usage_dashboard: Schema.optional(Schema.Number),
+        analytics_dashboards: Schema.optional(Schema.Array(Schema.Number)),
+        has_enriched_analytics: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+        creation_context: Schema.optional(
+          Schema.Literals([
+            "feature_flags",
+            "experiments",
+            "surveys",
+            "early_access_features",
+            "web_experiments",
+            "product_tours",
+          ]),
+        ),
+        is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        status: Schema.optional(Schema.String),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
             ]),
           ),
-          is_remote_configuration: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
           ),
-          has_encrypted_payloads: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          status: Schema.optional(Schema.String),
-          evaluation_runtime: Schema.optional(
-            Schema.NullOr(
-              Schema.Union([
-                Schema.Literals(["server", "client", "all"]),
-                Schema.Literals([""]),
-              ]),
-            ),
-          ),
-          bucketing_identifier: Schema.optional(
-            Schema.NullOr(
-              Schema.Union([
-                Schema.Literals(["distinct_id", "device_id"]),
-                Schema.Literals([""]),
-              ]),
-            ),
-          ),
-          last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
-          _create_in_folder: Schema.optional(Schema.String),
-          _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
-          is_used_in_replay_settings: Schema.optional(Schema.Boolean),
-        }),
-      ),
+        ),
+        last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
+        _create_in_folder: Schema.optional(Schema.String),
+        _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
+        is_used_in_replay_settings: Schema.optional(Schema.Boolean),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<FeatureFlagsListOutput>;
+  ),
+}) as unknown as Schema.Codec<FeatureFlagsListOutput>;
 
 // The operation
 /**
@@ -315,7 +297,7 @@ export const FeatureFlagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param search - Search by feature flag key or name. Case insensitive.
  * @param tags - JSON-encoded list of tag names to filter feature flags by.
  */
-export const featureFlagsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const featureFlagsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeatureFlagsListInput,
   outputSchema: FeatureFlagsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

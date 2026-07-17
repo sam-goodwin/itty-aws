@@ -8,7 +8,7 @@ export interface WelcomeCurrentRetrieveInput {
   organization_id: string;
 }
 export const WelcomeCurrentRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -53,7 +53,7 @@ export interface WelcomeCurrentRetrieveOutput {
   is_organization_first_user?: boolean;
 }
 export const WelcomeCurrentRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_name: Schema.optional(Schema.String),
     inviter: Schema.optional(
       Schema.NullOr(
@@ -119,10 +119,8 @@ export const WelcomeCurrentRetrieveOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const welcomeCurrentRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WelcomeCurrentRetrieveInput,
-    outputSchema: WelcomeCurrentRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const welcomeCurrentRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WelcomeCurrentRetrieveInput,
+  outputSchema: WelcomeCurrentRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

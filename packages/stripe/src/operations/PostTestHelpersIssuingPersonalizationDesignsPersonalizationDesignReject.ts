@@ -29,7 +29,7 @@ export interface PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesi
   };
 }
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     rejection_reasons: Schema.Struct({
@@ -180,7 +180,7 @@ export interface PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesi
   status: "active" | "inactive" | "rejected" | "review";
 }
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -320,7 +320,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRe
  * <p>Updates the <code>status</code> of the specified testmode personalization design object to <code>rejected</code>.</p>
  */
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignReject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignRejectInput,
     outputSchema:

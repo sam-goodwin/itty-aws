@@ -46,48 +46,47 @@ interface ListCustomCsrsResponseResult {
   /** State or province name. */
   state?: string | null;
 }
-const ListCustomCsrsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      keyType: Schema.Union([
-        Schema.Literals(["rsa2048", "p256v1"]),
-        Schema.String,
-      ]),
-      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      organization: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      organizationalUnit: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      sans: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        keyType: "key_type",
-        accountTag: "account_tag",
-        commonName: "common_name",
-        country: "country",
-        csr: "csr",
-        description: "description",
-        locality: "locality",
-        name: "name",
-        organization: "organization",
-        organizationalUnit: "organizational_unit",
-        sans: "sans",
-        state: "state",
-      }),
+const ListCustomCsrsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    keyType: Schema.Union([
+      Schema.Literals(["rsa2048", "p256v1"]),
+      Schema.String,
+    ]),
+    accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    organizationalUnit: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
     ),
+    sans: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      keyType: "key_type",
+      accountTag: "account_tag",
+      commonName: "common_name",
+      country: "country",
+      csr: "csr",
+      description: "description",
+      locality: "locality",
+      name: "name",
+      organization: "organization",
+      organizationalUnit: "organizational_unit",
+      sans: "sans",
+      state: "state",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListCustomCsrsResponseResult>;
 
 interface ListCustomCsrsResponseResultInfo {
@@ -97,7 +96,7 @@ interface ListCustomCsrsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListCustomCsrsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -136,7 +135,7 @@ export interface GetCustomCsrForZoneRequest extends GetCustomCsrBaseRequest {
 }
 
 export const GetCustomCsrForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetCustomCsrBaseFields,
@@ -149,7 +148,7 @@ export const GetCustomCsrForAccountRequest =
   ) as unknown as Schema.Codec<GetCustomCsrForAccountRequest>;
 
 export const GetCustomCsrForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetCustomCsrBaseFields,
@@ -192,50 +191,49 @@ export interface GetCustomCsrResponse {
   state?: string | null;
 }
 
-export const GetCustomCsrResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      keyType: Schema.Union([
-        Schema.Literals(["rsa2048", "p256v1"]),
-        Schema.String,
-      ]),
-      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      organization: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      organizationalUnit: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      sans: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          keyType: "key_type",
-          accountTag: "account_tag",
-          commonName: "common_name",
-          country: "country",
-          csr: "csr",
-          description: "description",
-          locality: "locality",
-          name: "name",
-          organization: "organization",
-          organizationalUnit: "organizational_unit",
-          sans: "sans",
-          state: "state",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetCustomCsrResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    keyType: Schema.Union([
+      Schema.Literals(["rsa2048", "p256v1"]),
+      Schema.String,
+    ]),
+    accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    organizationalUnit: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    sans: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        keyType: "key_type",
+        accountTag: "account_tag",
+        commonName: "common_name",
+        country: "country",
+        csr: "csr",
+        description: "description",
+        locality: "locality",
+        name: "name",
+        organization: "organization",
+        organizationalUnit: "organizational_unit",
+        sans: "sans",
+        state: "state",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetCustomCsrResponse>;
 
 export type GetCustomCsrError = DefaultErrors;
@@ -245,7 +243,7 @@ export const getCustomCsrForAccount: API.OperationMethod<
   GetCustomCsrResponse,
   GetCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomCsrForAccountRequest,
   output: GetCustomCsrResponse,
   errors: [],
@@ -256,7 +254,7 @@ export const getCustomCsrForZone: API.OperationMethod<
   GetCustomCsrResponse,
   GetCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomCsrForZoneRequest,
   output: GetCustomCsrResponse,
   errors: [],
@@ -283,7 +281,7 @@ export interface ListCustomCsrsForZoneRequest extends ListCustomCsrsBaseRequest 
 }
 
 export const ListCustomCsrsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListCustomCsrsBaseFields,
@@ -293,7 +291,7 @@ export const ListCustomCsrsForAccountRequest =
   ) as unknown as Schema.Codec<ListCustomCsrsForAccountRequest>;
 
 export const ListCustomCsrsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListCustomCsrsBaseFields,
@@ -326,7 +324,7 @@ export interface ListCustomCsrsResponse {
 }
 
 export const ListCustomCsrsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCustomCsrsResponseResult),
       resultInfo: Schema.optional(
@@ -342,7 +340,7 @@ export const listCustomCsrsForAccount: API.PaginatedOperationMethod<
   ListCustomCsrsResponse,
   ListCustomCsrsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCsrsForAccountRequest,
   output: ListCustomCsrsResponse,
   errors: [],
@@ -360,7 +358,7 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
   ListCustomCsrsResponse,
   ListCustomCsrsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCsrsForZoneRequest,
   output: ListCustomCsrsResponse,
   errors: [],
@@ -422,7 +420,7 @@ export interface CreateCustomCsrForZoneRequest extends CreateCustomCsrBaseReques
 }
 
 export const CreateCustomCsrForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateCustomCsrBaseFields,
@@ -444,7 +442,7 @@ export const CreateCustomCsrForAccountRequest =
   ) as unknown as Schema.Codec<CreateCustomCsrForAccountRequest>;
 
 export const CreateCustomCsrForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateCustomCsrBaseFields,
@@ -497,7 +495,7 @@ export interface CreateCustomCsrResponse {
 }
 
 export const CreateCustomCsrResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -549,7 +547,7 @@ export const createCustomCsrForAccount: API.OperationMethod<
   CreateCustomCsrResponse,
   CreateCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomCsrForAccountRequest,
   output: CreateCustomCsrResponse,
   errors: [],
@@ -560,7 +558,7 @@ export const createCustomCsrForZone: API.OperationMethod<
   CreateCustomCsrResponse,
   CreateCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomCsrForZoneRequest,
   output: CreateCustomCsrResponse,
   errors: [],
@@ -585,7 +583,7 @@ export interface DeleteCustomCsrForZoneRequest extends DeleteCustomCsrBaseReques
 }
 
 export const DeleteCustomCsrForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteCustomCsrBaseFields,
@@ -598,7 +596,7 @@ export const DeleteCustomCsrForAccountRequest =
   ) as unknown as Schema.Codec<DeleteCustomCsrForAccountRequest>;
 
 export const DeleteCustomCsrForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteCustomCsrBaseFields,
@@ -616,7 +614,7 @@ export interface DeleteCustomCsrResponse {
 }
 
 export const DeleteCustomCsrResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -629,7 +627,7 @@ export const deleteCustomCsrForAccount: API.OperationMethod<
   DeleteCustomCsrResponse,
   DeleteCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomCsrForAccountRequest,
   output: DeleteCustomCsrResponse,
   errors: [],
@@ -640,7 +638,7 @@ export const deleteCustomCsrForZone: API.OperationMethod<
   DeleteCustomCsrResponse,
   DeleteCustomCsrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomCsrForZoneRequest,
   output: DeleteCustomCsrResponse,
   errors: [],

@@ -63,7 +63,7 @@ export interface ConnectionsControllerListInput {
   search?: string;
 }
 export const ConnectionsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -203,7 +203,7 @@ export interface ConnectionsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const ConnectionsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -320,10 +320,8 @@ export const ConnectionsControllerListOutput =
  * @param organization_id - Filter Connections by their associated organization.
  * @param search - Searchable text to match against Connection names.
  */
-export const ConnectionsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionsControllerListInput,
-    outputSchema: ConnectionsControllerListOutput,
-    errors: [Forbidden, UnprocessableEntity] as const,
-  }),
-);
+export const ConnectionsControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsControllerListInput,
+  outputSchema: ConnectionsControllerListOutput,
+  errors: [Forbidden, UnprocessableEntity] as const,
+}));

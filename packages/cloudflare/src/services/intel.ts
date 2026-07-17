@@ -54,7 +54,7 @@ interface Payload {
   detectionMethod?: string | null;
   zoneTag?: string | null;
 }
-const Payload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Payload = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     detectionMethod: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -95,7 +95,7 @@ interface Issue {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   userClassification?: "false_positive" | "accept_risk" | "other" | null;
 }
-const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Issue = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -206,7 +206,7 @@ interface ListAttackSurfaceReportIssuesResponseResultItem {
   perPage?: number | null;
 }
 const ListAttackSurfaceReportIssuesResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       issues: Schema.optional(Schema.Union([Schema.Array(Issue), Schema.Null])),
@@ -265,7 +265,7 @@ interface ListAttackSurfaceReportIssuesResponseResult {
     | null;
 }
 const ListAttackSurfaceReportIssuesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -283,7 +283,7 @@ interface ListAttackSurfaceReportIssuesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAttackSurfaceReportIssuesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -303,7 +303,7 @@ interface IssueClassResponseItem {
   count?: number | null;
   value?: string | null;
 }
-const IssueClassResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IssueClassResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -313,7 +313,7 @@ const IssueClassResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -325,7 +325,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -351,7 +351,7 @@ interface ReverseRecord {
   /** Last seen date of the DNS record during the time period. */
   lastSeen?: string | null;
 }
-const ReverseRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ReverseRecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     firstSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -381,23 +381,22 @@ interface ListDnsResponseResultItem {
       }[]
     | null;
 }
-const ListDnsResponseResultItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      reverseRecords: Schema.optional(
-        Schema.Union([Schema.Array(ReverseRecord), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        reverseRecords: "reverse_records",
-      }),
+const ListDnsResponseResultItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    reverseRecords: Schema.optional(
+      Schema.Union([Schema.Array(ReverseRecord), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      reverseRecords: "reverse_records",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDnsResponseResultItem>;
 
 interface ListDnsResponseResult {
@@ -416,7 +415,7 @@ interface ListDnsResponseResult {
       }[]
     | null;
 }
-const ListDnsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListDnsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     items: Schema.optional(
       Schema.Union([Schema.Array(ListDnsResponseResultItem), Schema.Null]),
@@ -428,7 +427,7 @@ interface AdditionalInformation {
   /** Suspected DGA malware family. */
   suspectedMalwareFamily?: string | null;
 }
-const AdditionalInformation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AdditionalInformation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     suspectedMalwareFamily: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -442,7 +441,7 @@ interface Application {
   id?: number | null;
   name?: string | null;
 }
-const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Application = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -454,7 +453,7 @@ interface ContentCategory {
   name?: string | null;
   superCategoryId?: number | null;
 }
-const ContentCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContentCategory = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -476,7 +475,7 @@ interface ResolvesToRef {
   /** IP address or domain name. */
   value?: string | null;
 }
-const ResolvesToRef = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResolvesToRef = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -524,7 +523,7 @@ interface BulkGetResponseItem {
       }[]
     | null;
 }
-const BulkGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BulkGetResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     additionalInformation: Schema.optional(
       Schema.Union([AdditionalInformation, Schema.Null]),
@@ -567,7 +566,7 @@ interface Categorization {
   end?: string | null;
   start?: string | null;
 }
-const Categorization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Categorization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     categories: Schema.optional(
       Schema.Union([Schema.Array(Application), Schema.Null]),
@@ -587,7 +586,7 @@ interface DomainHistory {
     | null;
   domain?: string | null;
 }
-const DomainHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainHistory = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     categorizations: Schema.optional(
       Schema.Union([Schema.Array(Categorization), Schema.Null]),
@@ -604,7 +603,7 @@ interface Persisted {
   urlsAdded?: number | null;
   urlsRemoved?: number | null;
 }
-const Persisted = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Persisted = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domainsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     domainsRemoved: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -632,7 +631,7 @@ interface Skipped {
   /** Reserved for future use. Currently always 0 — the unifier aborts the entire upload on a single bad indicator. */
   invalidIndicators?: number | null;
 }
-const Skipped = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Skipped = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowlistedDomains: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -660,7 +659,7 @@ interface Uploaded {
   /** Number of URL indicators in the upload */
   urls?: number | null;
 }
-const Uploaded = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uploaded = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domains: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     ips: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -691,7 +690,7 @@ interface LastUploadSummary {
     urls?: number | null;
   } | null;
 }
-const LastUploadSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LastUploadSummary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     persisted: Schema.optional(Schema.Union([Persisted, Schema.Null])),
     skipped: Schema.optional(Schema.Union([Skipped, Schema.Null])),
@@ -718,7 +717,7 @@ interface ListIndicatorFeedsResponseResult {
   name?: string | null;
 }
 const ListIndicatorFeedsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -760,29 +759,28 @@ interface PermissionListResponseItem {
   /** The name of the indicator feed */
   name?: string | null;
 }
-const PermissionListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      isAttributable: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      isDownloadable: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        isAttributable: "is_attributable",
-        isDownloadable: "is_downloadable",
-        isPublic: "is_public",
-        name: "name",
-      }),
+const PermissionListResponseItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    isAttributable: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    isDownloadable: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      description: "description",
+      isAttributable: "is_attributable",
+      isDownloadable: "is_downloadable",
+      isPublic: "is_public",
+      name: "name",
+    }),
+  ),
 ) as unknown as Schema.Codec<PermissionListResponseItem>;
 
 interface BelongsToRef {
@@ -793,7 +791,7 @@ interface BelongsToRef {
   type?: "hosting_provider" | "isp" | "organization" | (string & {}) | null;
   value?: string | null;
 }
-const BelongsToRef = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BelongsToRef = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -829,7 +827,7 @@ interface Ip {
       }[]
     | null;
 }
-const Ip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ip = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     belongsToRef: Schema.optional(Schema.Union([BelongsToRef, Schema.Null])),
     ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -861,27 +859,26 @@ interface ListSinkholesResponseResult {
   /** The id of the R2 instance. */
   r2Id?: string | null;
 }
-const ListSinkholesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      r2Bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      r2Id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountTag: "account_tag",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
-        name: "name",
-        r2Bucket: "r2_bucket",
-        r2Id: "r2_id",
-      }),
-    ),
+const ListSinkholesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    r2Bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    r2Id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      accountTag: "account_tag",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      name: "name",
+      r2Bucket: "r2_bucket",
+      r2Id: "r2_id",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSinkholesResponseResult>;
 
 // =============================================================================
@@ -894,7 +891,7 @@ export interface GetAsnRequest {
   asn: string;
 }
 
-export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAsnRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     asn: Schema.String.pipe(T.HttpPath("asn")),
@@ -905,7 +902,7 @@ export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type GetAsnResponse = number;
 
-export const GetAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAsnResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Number.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAsnResponse>;
 
@@ -916,7 +913,7 @@ export const getAsn: API.OperationMethod<
   GetAsnResponse,
   GetAsnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAsnRequest,
   output: GetAsnResponse,
   errors: [],
@@ -932,17 +929,16 @@ export interface GetAsnSubnetRequest {
   asn: string;
 }
 
-export const GetAsnSubnetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      asn: Schema.String.pipe(T.HttpPath("asn")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/intel/asn/{asn}/subnets",
-      }),
-    ),
+export const GetAsnSubnetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    asn: Schema.String.pipe(T.HttpPath("asn")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/intel/asn/{asn}/subnets",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAsnSubnetRequest>;
 
 export interface GetAsnSubnetResponse {
@@ -957,27 +953,26 @@ export interface GetAsnSubnetResponse {
   subnets?: string[] | null;
 }
 
-export const GetAsnSubnetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      ipCountTotal: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      subnets: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        asn: "asn",
-        count: "count",
-        ipCountTotal: "ip_count_total",
-        page: "page",
-        perPage: "per_page",
-        subnets: "subnets",
-      }),
+export const GetAsnSubnetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    ipCountTotal: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    subnets: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      asn: "asn",
+      count: "count",
+      ipCountTotal: "ip_count_total",
+      page: "page",
+      perPage: "per_page",
+      subnets: "subnets",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAsnSubnetResponse>;
 
 export type GetAsnSubnetError = DefaultErrors;
@@ -987,7 +982,7 @@ export const getAsnSubnet: API.OperationMethod<
   GetAsnSubnetResponse,
   GetAsnSubnetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAsnSubnetRequest,
   output: GetAsnSubnetResponse,
   errors: [],
@@ -1043,7 +1038,7 @@ export interface ListAttackSurfaceReportIssuesRequest {
 }
 
 export const ListAttackSurfaceReportIssuesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1178,7 +1173,7 @@ export interface ListAttackSurfaceReportIssuesResponse {
 }
 
 export const ListAttackSurfaceReportIssuesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListAttackSurfaceReportIssuesResponseResult,
       resultInfo: Schema.optional(
@@ -1197,7 +1192,7 @@ export const listAttackSurfaceReportIssues: API.PaginatedOperationMethod<
   ListAttackSurfaceReportIssuesResponse,
   ListAttackSurfaceReportIssuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttackSurfaceReportIssuesRequest,
   output: ListAttackSurfaceReportIssuesResponse,
   errors: [],
@@ -1254,7 +1249,7 @@ export interface ClassAttackSurfaceReportIssueRequest {
 }
 
 export const ClassAttackSurfaceReportIssueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
@@ -1336,7 +1331,7 @@ export type ClassAttackSurfaceReportIssueResponse = {
 }[];
 
 export const ClassAttackSurfaceReportIssueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ClassAttackSurfaceReportIssueResponse>;
 
@@ -1347,7 +1342,7 @@ export const classAttackSurfaceReportIssue: API.OperationMethod<
   ClassAttackSurfaceReportIssueResponse,
   ClassAttackSurfaceReportIssueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClassAttackSurfaceReportIssueRequest,
   output: ClassAttackSurfaceReportIssueResponse,
   errors: [],
@@ -1362,7 +1357,7 @@ export interface DismissAttackSurfaceReportIssueRequest {
 }
 
 export const DismissAttackSurfaceReportIssueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       issueId: Schema.String.pipe(T.HttpPath("issueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1393,7 +1388,7 @@ export interface DismissAttackSurfaceReportIssueResponse {
 }
 
 export const DismissAttackSurfaceReportIssueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1408,7 +1403,7 @@ export const dismissAttackSurfaceReportIssue: API.OperationMethod<
   DismissAttackSurfaceReportIssueResponse,
   DismissAttackSurfaceReportIssueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissAttackSurfaceReportIssueRequest,
   output: DismissAttackSurfaceReportIssueResponse,
   errors: [],
@@ -1458,7 +1453,7 @@ export interface SeverityAttackSurfaceReportIssueRequest {
 }
 
 export const SeverityAttackSurfaceReportIssueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
@@ -1540,7 +1535,7 @@ export type SeverityAttackSurfaceReportIssueResponse = {
 }[];
 
 export const SeverityAttackSurfaceReportIssueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<SeverityAttackSurfaceReportIssueResponse>;
 
@@ -1551,7 +1546,7 @@ export const severityAttackSurfaceReportIssue: API.OperationMethod<
   SeverityAttackSurfaceReportIssueResponse,
   SeverityAttackSurfaceReportIssueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SeverityAttackSurfaceReportIssueRequest,
   output: SeverityAttackSurfaceReportIssueResponse,
   errors: [],
@@ -1601,7 +1596,7 @@ export interface TypeAttackSurfaceReportIssueRequest {
 }
 
 export const TypeAttackSurfaceReportIssueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
@@ -1683,7 +1678,7 @@ export type TypeAttackSurfaceReportIssueResponse = {
 }[];
 
 export const TypeAttackSurfaceReportIssueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<TypeAttackSurfaceReportIssueResponse>;
 
@@ -1694,7 +1689,7 @@ export const typeAttackSurfaceReportIssue: API.OperationMethod<
   TypeAttackSurfaceReportIssueResponse,
   TypeAttackSurfaceReportIssueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TypeAttackSurfaceReportIssueRequest,
   output: TypeAttackSurfaceReportIssueResponse,
   errors: [],
@@ -1710,7 +1705,7 @@ export interface GetAttackSurfaceReportIssueTypeRequest {
 }
 
 export const GetAttackSurfaceReportIssueTypeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1726,7 +1721,7 @@ export interface GetAttackSurfaceReportIssueTypeResponse {
 }
 
 export const GetAttackSurfaceReportIssueTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -1739,7 +1734,7 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
   GetAttackSurfaceReportIssueTypeResponse,
   GetAttackSurfaceReportIssueTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAttackSurfaceReportIssueTypeRequest,
   output: GetAttackSurfaceReportIssueTypeResponse,
   errors: [],
@@ -1764,7 +1759,7 @@ export interface ListDnsRequest {
   startEndParams?: { end?: string; start?: string };
 }
 
-export const ListDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListDnsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1804,7 +1799,7 @@ export interface ListDnsResponse {
   } | null;
 }
 
-export const ListDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListDnsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: ListDnsResponseResult,
     resultInfo: Schema.optional(
@@ -1823,7 +1818,7 @@ export const listDns: API.PaginatedOperationMethod<
   ListDnsResponse,
   ListDnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDnsRequest,
   output: ListDnsResponse,
   errors: [],
@@ -1851,7 +1846,7 @@ export interface GetDomainRequest {
   skipRanking?: boolean;
 }
 
-export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetDomainRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
@@ -1908,53 +1903,48 @@ export interface GetDomainResponse {
     | null;
 }
 
-export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      additionalInformation: Schema.optional(
-        Schema.Union([AdditionalInformation, Schema.Null]),
-      ),
-      application: Schema.optional(Schema.Union([Application, Schema.Null])),
-      contentCategories: Schema.optional(
-        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
-      ),
-      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      inheritedContentCategories: Schema.optional(
-        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
-      ),
-      inheritedFrom: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      inheritedRiskTypes: Schema.optional(
-        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
-      ),
-      popularityRank: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      resolvesToRefs: Schema.optional(
-        Schema.Union([Schema.Array(ResolvesToRef), Schema.Null]),
-      ),
-      riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      riskTypes: Schema.optional(
-        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          additionalInformation: "additional_information",
-          application: "application",
-          contentCategories: "content_categories",
-          domain: "domain",
-          inheritedContentCategories: "inherited_content_categories",
-          inheritedFrom: "inherited_from",
-          inheritedRiskTypes: "inherited_risk_types",
-          popularityRank: "popularity_rank",
-          resolvesToRefs: "resolves_to_refs",
-          riskScore: "risk_score",
-          riskTypes: "risk_types",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetDomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    additionalInformation: Schema.optional(
+      Schema.Union([AdditionalInformation, Schema.Null]),
+    ),
+    application: Schema.optional(Schema.Union([Application, Schema.Null])),
+    contentCategories: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inheritedContentCategories: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    inheritedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inheritedRiskTypes: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    popularityRank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    resolvesToRefs: Schema.optional(
+      Schema.Union([Schema.Array(ResolvesToRef), Schema.Null]),
+    ),
+    riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    riskTypes: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        additionalInformation: "additional_information",
+        application: "application",
+        contentCategories: "content_categories",
+        domain: "domain",
+        inheritedContentCategories: "inherited_content_categories",
+        inheritedFrom: "inherited_from",
+        inheritedRiskTypes: "inherited_risk_types",
+        popularityRank: "popularity_rank",
+        resolvesToRefs: "resolves_to_refs",
+        riskScore: "risk_score",
+        riskTypes: "risk_types",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDomainResponse>;
 
 export type GetDomainError = DefaultErrors;
@@ -1964,7 +1954,7 @@ export const getDomain: API.OperationMethod<
   GetDomainResponse,
   GetDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainRequest,
   output: GetDomainResponse,
   errors: [],
@@ -1985,25 +1975,24 @@ export interface GetDomainBulkRequest {
   skipRanking?: boolean;
 }
 
-export const GetDomainBulkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      domain: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("domain"),
-      ),
-      includeRanking: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("include_ranking"),
-      ),
-      skipRanking: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("skip_ranking"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/intel/domain/bulk",
-      }),
+export const GetDomainBulkRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    domain: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("domain"),
     ),
+    includeRanking: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_ranking"),
+    ),
+    skipRanking: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("skip_ranking"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/intel/domain/bulk",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDomainBulkRequest>;
 
 export type GetDomainBulkResponse = {
@@ -2043,8 +2032,8 @@ export type GetDomainBulkResponse = {
     | null;
 }[];
 
-export const GetDomainBulkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Array(BulkGetResponseItem).pipe(T.ResponsePath("result")),
+export const GetDomainBulkResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Array(BulkGetResponseItem).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDomainBulkResponse>;
 
 export type GetDomainBulkError = DefaultErrors;
@@ -2054,7 +2043,7 @@ export const getDomainBulk: API.OperationMethod<
   GetDomainBulkResponse,
   GetDomainBulkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainBulkRequest,
   output: GetDomainBulkResponse,
   errors: [],
@@ -2072,7 +2061,7 @@ export interface GetDomainHistoryRequest {
 }
 
 export const GetDomainHistoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
@@ -2096,7 +2085,7 @@ export type GetDomainHistoryResponse = {
 }[];
 
 export const GetDomainHistoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(DomainHistory).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetDomainHistoryResponse>;
 
@@ -2107,7 +2096,7 @@ export const getDomainHistory: API.OperationMethod<
   GetDomainHistoryResponse,
   GetDomainHistoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainHistoryRequest,
   output: GetDomainHistoryResponse,
   errors: [],
@@ -2124,7 +2113,7 @@ export interface GetIndicatorFeedRequest {
 }
 
 export const GetIndicatorFeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       feedId: Schema.Number.pipe(T.HttpPath("feedId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2193,7 +2182,7 @@ export interface GetIndicatorFeedResponse {
 }
 
 export const GetIndicatorFeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2262,7 +2251,7 @@ export const getIndicatorFeed: API.OperationMethod<
   GetIndicatorFeedResponse,
   GetIndicatorFeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndicatorFeedRequest,
   output: GetIndicatorFeedResponse,
   errors: [IndicatorFeedNotFound, Forbidden],
@@ -2274,7 +2263,7 @@ export interface ListIndicatorFeedsRequest {
 }
 
 export const ListIndicatorFeedsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2299,7 +2288,7 @@ export interface ListIndicatorFeedsResponse {
 }
 
 export const ListIndicatorFeedsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListIndicatorFeedsResponseResult),
     }),
@@ -2312,7 +2301,7 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
   ListIndicatorFeedsResponse,
   ListIndicatorFeedsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicatorFeedsRequest,
   output: ListIndicatorFeedsResponse,
   errors: [Forbidden],
@@ -2332,7 +2321,7 @@ export interface CreateIndicatorFeedRequest {
 }
 
 export const CreateIndicatorFeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       description: Schema.optional(Schema.String),
@@ -2365,7 +2354,7 @@ export interface CreateIndicatorFeedResponse {
 }
 
 export const CreateIndicatorFeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2405,7 +2394,7 @@ export const createIndicatorFeed: API.OperationMethod<
   CreateIndicatorFeedResponse,
   CreateIndicatorFeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndicatorFeedRequest,
   output: CreateIndicatorFeedResponse,
   errors: [IndicatorFeedsNotEntitled, Forbidden],
@@ -2428,7 +2417,7 @@ export interface UpdateIndicatorFeedRequest {
 }
 
 export const UpdateIndicatorFeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       feedId: Schema.Number.pipe(T.HttpPath("feedId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2472,7 +2461,7 @@ export interface UpdateIndicatorFeedResponse {
 }
 
 export const UpdateIndicatorFeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2512,7 +2501,7 @@ export const updateIndicatorFeed: API.OperationMethod<
   UpdateIndicatorFeedResponse,
   UpdateIndicatorFeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndicatorFeedRequest,
   output: UpdateIndicatorFeedResponse,
   errors: [IndicatorFeedNotFound, Forbidden],
@@ -2525,7 +2514,7 @@ export interface DataIndicatorFeedRequest {
 }
 
 export const DataIndicatorFeedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       feedId: Schema.Number.pipe(T.HttpPath("feedId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2540,7 +2529,7 @@ export const DataIndicatorFeedRequest =
 export type DataIndicatorFeedResponse = string;
 
 export const DataIndicatorFeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.String,
   ) as unknown as Schema.Codec<DataIndicatorFeedResponse>;
 
@@ -2551,7 +2540,7 @@ export const dataIndicatorFeed: API.OperationMethod<
   DataIndicatorFeedResponse,
   DataIndicatorFeedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DataIndicatorFeedRequest,
   output: DataIndicatorFeedResponse,
   errors: [],
@@ -2567,7 +2556,7 @@ export interface ListIndicatorFeedPermissionsRequest {
 }
 
 export const ListIndicatorFeedPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2588,7 +2577,7 @@ export type ListIndicatorFeedPermissionsResponse = {
 }[];
 
 export const ListIndicatorFeedPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(PermissionListResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ListIndicatorFeedPermissionsResponse>;
 
@@ -2599,7 +2588,7 @@ export const listIndicatorFeedPermissions: API.OperationMethod<
   ListIndicatorFeedPermissionsResponse,
   ListIndicatorFeedPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIndicatorFeedPermissionsRequest,
   output: ListIndicatorFeedPermissionsResponse,
   errors: [Forbidden],
@@ -2615,7 +2604,7 @@ export interface CreateIndicatorFeedPermissionRequest {
 }
 
 export const CreateIndicatorFeedPermissionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       accountTag: Schema.optional(Schema.String),
@@ -2635,7 +2624,7 @@ export interface CreateIndicatorFeedPermissionResponse {
 }
 
 export const CreateIndicatorFeedPermissionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2651,7 +2640,7 @@ export const createIndicatorFeedPermission: API.OperationMethod<
   CreateIndicatorFeedPermissionResponse,
   CreateIndicatorFeedPermissionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndicatorFeedPermissionRequest,
   output: CreateIndicatorFeedPermissionResponse,
   errors: [IndicatorFeedNotFound, Forbidden],
@@ -2667,7 +2656,7 @@ export interface DeleteIndicatorFeedPermissionRequest {
 }
 
 export const DeleteIndicatorFeedPermissionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       accountTag: Schema.optional(Schema.String),
@@ -2687,7 +2676,7 @@ export interface DeleteIndicatorFeedPermissionResponse {
 }
 
 export const DeleteIndicatorFeedPermissionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2703,7 +2692,7 @@ export const deleteIndicatorFeedPermission: API.OperationMethod<
   DeleteIndicatorFeedPermissionResponse,
   DeleteIndicatorFeedPermissionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndicatorFeedPermissionRequest,
   output: DeleteIndicatorFeedPermissionResponse,
   errors: [IndicatorFeedNotFound, Forbidden],
@@ -2722,7 +2711,7 @@ export interface PutIndicatorFeedSnapshotRequest {
 }
 
 export const PutIndicatorFeedSnapshotRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       feedId: Schema.Number.pipe(T.HttpPath("feedId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2746,7 +2735,7 @@ export interface PutIndicatorFeedSnapshotResponse {
 }
 
 export const PutIndicatorFeedSnapshotResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fileId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2772,7 +2761,7 @@ export const putIndicatorFeedSnapshot: API.OperationMethod<
   PutIndicatorFeedSnapshotResponse,
   PutIndicatorFeedSnapshotError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutIndicatorFeedSnapshotRequest,
   output: PutIndicatorFeedSnapshotResponse,
   errors: [IndicatorFeedNotFound, Forbidden],
@@ -2791,7 +2780,7 @@ export interface GetIpRequest {
   ipv6?: string;
 }
 
-export const GetIpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetIpRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     ipv4: Schema.optional(Schema.String).pipe(T.HttpQuery("ipv4")),
@@ -2817,7 +2806,7 @@ export type GetIpResponse = {
     | null;
 }[];
 
-export const GetIpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetIpResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Array(Ip).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetIpResponse>;
 
@@ -2828,7 +2817,7 @@ export const getIp: API.OperationMethod<
   GetIpResponse,
   GetIpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIpRequest,
   output: GetIpResponse,
   errors: [],
@@ -2858,7 +2847,7 @@ export interface CreateMiscategorizationRequest {
 }
 
 export const CreateMiscategorizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       contentAdds: Schema.optional(Schema.Array(Schema.Number)),
@@ -2908,7 +2897,7 @@ export interface CreateMiscategorizationResponse {
 }
 
 export const CreateMiscategorizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -2923,7 +2912,7 @@ export const createMiscategorization: API.OperationMethod<
   CreateMiscategorizationResponse,
   CreateMiscategorizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMiscategorizationRequest,
   output: CreateMiscategorizationResponse,
   errors: [],
@@ -2938,13 +2927,12 @@ export interface ListSinkholesRequest {
   accountId: string;
 }
 
-export const ListSinkholesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/intel/sinkholes" }),
-    ),
+export const ListSinkholesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/intel/sinkholes" }),
+  ),
 ) as unknown as Schema.Codec<ListSinkholesRequest>;
 
 export interface ListSinkholesResponse {
@@ -2959,11 +2947,10 @@ export interface ListSinkholesResponse {
   }[];
 }
 
-export const ListSinkholesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSinkholesResponseResult),
-    }),
+export const ListSinkholesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSinkholesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListSinkholesResponse>;
 
 export type ListSinkholesError = DefaultErrors;
@@ -2973,7 +2960,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
   ListSinkholesResponse,
   ListSinkholesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSinkholesRequest,
   output: ListSinkholesResponse,
   errors: [],
@@ -2994,7 +2981,7 @@ export interface GetWhoiRequest {
   domain?: string;
 }
 
-export const GetWhoiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetWhoiRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
@@ -3093,7 +3080,7 @@ export interface GetWhoiResponse {
   whoisServer?: string | null;
 }
 
-export const GetWhoiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetWhoiResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dnssec: Schema.Boolean,
     domain: Schema.String,
@@ -3370,7 +3357,7 @@ export const getWhoi: API.OperationMethod<
   GetWhoiResponse,
   GetWhoiError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWhoiRequest,
   output: GetWhoiResponse,
   errors: [],

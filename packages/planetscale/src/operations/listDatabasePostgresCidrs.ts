@@ -11,7 +11,7 @@ export interface ListDatabasePostgresCidrsInput {
   per_page?: number;
 }
 export const ListDatabasePostgresCidrsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -31,19 +31,19 @@ export interface ListDatabasePostgresCidrsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     schema: string;
     role: string;
-    cidrs: string[];
+    cidrs: ReadonlyArray<string>;
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const ListDatabasePostgresCidrsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -78,7 +78,7 @@ export const ListDatabasePostgresCidrsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listDatabasePostgresCidrs =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListDatabasePostgresCidrsInput,
     outputSchema: ListDatabasePostgresCidrsOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

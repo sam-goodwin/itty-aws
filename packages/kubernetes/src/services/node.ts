@@ -63,7 +63,7 @@ export interface CreateNodeV1RuntimeClassInput {
   };
 }
 export const CreateNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface CreateNodeV1RuntimeClassOutput {
   };
 }
 export const CreateNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     handler: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -274,13 +274,11 @@ export const CreateNodeV1RuntimeClassOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateNodeV1RuntimeClassInput,
-    outputSchema: CreateNodeV1RuntimeClassOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNodeV1RuntimeClassInput,
+  outputSchema: CreateNodeV1RuntimeClassOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface DeleteNodeV1CollectionRuntimeClassInput {
   pretty?: string;
@@ -303,7 +301,7 @@ export interface DeleteNodeV1CollectionRuntimeClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNodeV1CollectionRuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -358,7 +356,7 @@ export interface DeleteNodeV1CollectionRuntimeClassOutput {
   status?: string;
 }
 export const DeleteNodeV1CollectionRuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -460,7 +458,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNodeV1CollectionRuntimeClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNodeV1CollectionRuntimeClassInput,
     outputSchema: DeleteNodeV1CollectionRuntimeClassOutput,
   }));
@@ -478,7 +476,7 @@ export interface DeleteNodeV1RuntimeClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -528,7 +526,7 @@ export interface DeleteNodeV1RuntimeClassOutput {
   status?: string;
 }
 export const DeleteNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -580,18 +578,14 @@ export const DeleteNodeV1RuntimeClassOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteNodeV1RuntimeClassInput,
-    outputSchema: DeleteNodeV1RuntimeClassOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNodeV1RuntimeClassInput,
+  outputSchema: DeleteNodeV1RuntimeClassOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface GetNodeAPIGroupInput {}
-export const GetNodeAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetNodeAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/node.k8s.io/" }),
 ) as unknown as Schema.Codec<GetNodeAPIGroupInput>;
 
@@ -604,7 +598,7 @@ export interface GetNodeAPIGroupOutput {
   serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
   versions: { groupVersion: string; version: string }[];
 }
-export const GetNodeAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetNodeAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   name: Schema.String,
@@ -634,14 +628,14 @@ export const GetNodeAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * get information of a group
  */
-export const getNodeAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getNodeAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetNodeAPIGroupInput,
   outputSchema: GetNodeAPIGroupOutput,
 }));
 // Input Schema
 export interface GetNodeV1APIResourcesInput {}
 export const GetNodeV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/node.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetNodeV1APIResourcesInput>;
 
@@ -664,7 +658,7 @@ export interface GetNodeV1APIResourcesOutput {
   }[];
 }
 export const GetNodeV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -688,12 +682,10 @@ export const GetNodeV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getNodeV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNodeV1APIResourcesInput,
-    outputSchema: GetNodeV1APIResourcesOutput,
-  }),
-);
+export const getNodeV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNodeV1APIResourcesInput,
+  outputSchema: GetNodeV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListNodeV1RuntimeClassInput {
   pretty?: string;
@@ -710,7 +702,7 @@ export interface ListNodeV1RuntimeClassInput {
   watch?: boolean;
 }
 export const ListNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -788,7 +780,7 @@ export interface ListNodeV1RuntimeClassOutput {
   };
 }
 export const ListNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -942,12 +934,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListNodeV1RuntimeClassInput,
-    outputSchema: ListNodeV1RuntimeClassOutput,
-  }),
-);
+export const listNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNodeV1RuntimeClassInput,
+  outputSchema: ListNodeV1RuntimeClassOutput,
+}));
 // Input Schema
 export interface PatchNodeV1RuntimeClassInput {
   name: string;
@@ -958,7 +948,7 @@ export interface PatchNodeV1RuntimeClassInput {
   force?: boolean;
 }
 export const PatchNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1022,7 +1012,7 @@ export interface PatchNodeV1RuntimeClassOutput {
   };
 }
 export const PatchNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     handler: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1106,20 +1096,18 @@ export const PatchNodeV1RuntimeClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchNodeV1RuntimeClassInput,
-    outputSchema: PatchNodeV1RuntimeClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNodeV1RuntimeClassInput,
+  outputSchema: PatchNodeV1RuntimeClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface ReadNodeV1RuntimeClassInput {
   name: string;
   pretty?: string;
 }
 export const ReadNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1179,7 +1167,7 @@ export interface ReadNodeV1RuntimeClassOutput {
   };
 }
 export const ReadNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     handler: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1259,13 +1247,11 @@ export const ReadNodeV1RuntimeClassOutput =
  * @param name - name of the RuntimeClass
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadNodeV1RuntimeClassInput,
-    outputSchema: ReadNodeV1RuntimeClassOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNodeV1RuntimeClassInput,
+  outputSchema: ReadNodeV1RuntimeClassOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReplaceNodeV1RuntimeClassInput {
   name: string;
@@ -1321,7 +1307,7 @@ export interface ReplaceNodeV1RuntimeClassInput {
   };
 }
 export const ReplaceNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1454,7 +1440,7 @@ export interface ReplaceNodeV1RuntimeClassOutput {
   };
 }
 export const ReplaceNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     handler: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1537,13 +1523,11 @@ export const ReplaceNodeV1RuntimeClassOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplaceNodeV1RuntimeClassInput,
-    outputSchema: ReplaceNodeV1RuntimeClassOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const replaceNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplaceNodeV1RuntimeClassInput,
+  outputSchema: ReplaceNodeV1RuntimeClassOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface WatchNodeV1RuntimeClassInput {
   name: string;
@@ -1561,7 +1545,7 @@ export interface WatchNodeV1RuntimeClassInput {
   watch?: boolean;
 }
 export const WatchNodeV1RuntimeClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -1588,7 +1572,7 @@ export interface WatchNodeV1RuntimeClassOutput {
   type: string;
 }
 export const WatchNodeV1RuntimeClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNodeV1RuntimeClassOutput>;
@@ -1652,12 +1636,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchNodeV1RuntimeClassInput,
-    outputSchema: WatchNodeV1RuntimeClassOutput,
-  }),
-);
+export const watchNodeV1RuntimeClass = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNodeV1RuntimeClassInput,
+  outputSchema: WatchNodeV1RuntimeClassOutput,
+}));
 // Input Schema
 export interface WatchNodeV1RuntimeClassListInput {
   allowWatchBookmarks?: boolean;
@@ -1674,7 +1656,7 @@ export interface WatchNodeV1RuntimeClassListInput {
   watch?: boolean;
 }
 export const WatchNodeV1RuntimeClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -1700,7 +1682,7 @@ export interface WatchNodeV1RuntimeClassListOutput {
   type: string;
 }
 export const WatchNodeV1RuntimeClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNodeV1RuntimeClassListOutput>;
@@ -1763,9 +1745,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchNodeV1RuntimeClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchNodeV1RuntimeClassListInput,
-    outputSchema: WatchNodeV1RuntimeClassListOutput,
-  }),
-);
+export const watchNodeV1RuntimeClassList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNodeV1RuntimeClassListInput,
+  outputSchema: WatchNodeV1RuntimeClassListOutput,
+}));

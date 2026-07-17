@@ -11,7 +11,7 @@ export interface UpdateNeonAuthMagicLinkPluginInput {
   disable_sign_up?: boolean;
 }
 export const UpdateNeonAuthMagicLinkPluginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
@@ -31,7 +31,7 @@ export interface UpdateNeonAuthMagicLinkPluginOutput {
   disable_sign_up: boolean;
 }
 export const UpdateNeonAuthMagicLinkPluginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     expires_in: Schema.Number,
     disable_sign_up: Schema.Boolean,
@@ -48,7 +48,7 @@ export const UpdateNeonAuthMagicLinkPluginOutput =
  * @param branch_id - The Neon branch ID
  */
 export const updateNeonAuthMagicLinkPlugin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateNeonAuthMagicLinkPluginInput,
     outputSchema: UpdateNeonAuthMagicLinkPluginOutput,
   }));

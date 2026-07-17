@@ -9,7 +9,7 @@ export interface UserlandUsersControllerSendEmailChangeInput {
   new_email?: string;
 }
 export const UserlandUsersControllerSendEmailChangeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     new_email: Schema.optional(Schema.String),
   }).pipe(
@@ -43,7 +43,7 @@ export interface UserlandUsersControllerSendEmailChangeOutput {
   created_at?: string;
 }
 export const UserlandUsersControllerSendEmailChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.Struct({
@@ -77,7 +77,7 @@ export const UserlandUsersControllerSendEmailChangeOutput =
  * @param id - The unique ID of the user.
  */
 export const UserlandUsersControllerSendEmailChange =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerSendEmailChangeInput,
     outputSchema: UserlandUsersControllerSendEmailChangeOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,

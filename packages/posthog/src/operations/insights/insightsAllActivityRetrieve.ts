@@ -11,7 +11,7 @@ export interface InsightsAllActivityRetrieveInput {
   page?: number;
 }
 export const InsightsAllActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     limit: Schema.optional(Schema.Number),
@@ -53,7 +53,7 @@ export interface InsightsAllActivityRetrieveOutput {
   total_count?: number;
 }
 export const InsightsAllActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -112,10 +112,8 @@ export const InsightsAllActivityRetrieveOutput =
  * @param page - 1-indexed page number. Defaults to 1.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsAllActivityRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightsAllActivityRetrieveInput,
-    outputSchema: InsightsAllActivityRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const insightsAllActivityRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightsAllActivityRetrieveInput,
+  outputSchema: InsightsAllActivityRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

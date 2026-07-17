@@ -12,7 +12,7 @@ export interface ListOauthTokensInput {
   page?: number;
   per_page?: number;
 }
-export const ListOauthTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOauthTokensInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -32,7 +32,7 @@ export interface ListOauthTokensOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name?: string | null;
     display_name: string;
@@ -46,55 +46,53 @@ export interface ListOauthTokensOutput {
     actor_id: string | null;
     actor_display_name: string | null;
     actor_type: string | null;
-    service_token_accesses?:
-      | {
-          id: string;
-          access: string;
-          description: string;
-          resource_name: string;
-          resource_id: string;
-          resource_type: string;
-          resource: {
-            id: string;
-            name: string;
-            created_at: string;
-            updated_at: string;
-            deleted_at: string | null;
-          };
-        }[]
-      | null;
+    service_token_accesses?: ReadonlyArray<{
+      id: string;
+      access: string;
+      description: string;
+      resource_name: string;
+      resource_id: string;
+      resource_type: string;
+      resource: {
+        id: string;
+        name: string;
+        created_at: string;
+        updated_at: string;
+        deleted_at: string | null;
+      };
+    }> | null;
     oauth_accesses_by_resource?: {
       database: {
-        databases: {
+        databases: ReadonlyArray<{
           name: string;
           id: string;
           organization: string;
           url: string;
-        }[];
-        accesses: { name: string; description: string }[];
+        }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       organization: {
-        organizations: { name: string; id: string; url: string }[];
-        accesses: { name: string; description: string }[];
+        organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       branch: {
-        branches: {
+        branches: ReadonlyArray<{
           name: string;
           id: string;
           database: string;
           organization: string;
           url: string;
-        }[];
-        accesses: { name: string; description: string }[];
+        }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
       user: {
-        users: { name: string; id: string }[];
-        accesses: { name: string; description: string }[];
+        users: ReadonlyArray<{ name: string; id: string }>;
+        accesses: ReadonlyArray<{ name: string; description: string }>;
       };
     } | null;
-  }[];
+  }>;
 }
-export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOauthTokensOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -220,16 +218,14 @@ export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listOauthTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListOauthTokensInput,
-    outputSchema: ListOauthTokensOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listOauthTokens = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListOauthTokensInput,
+  outputSchema: ListOauthTokensOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

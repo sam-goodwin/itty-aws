@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetDashboardInput {
   uid: string;
 }
-export const GetDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDashboardInput = /*@__PURE__*/ Schema.Struct({
   uid: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/dashboards/uid/{uid}" }),
@@ -186,7 +186,7 @@ export interface GetDashboardOutput {
   updatedBy: string;
   version: string | number;
 }
-export const GetDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDashboardOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.String,
   createdBy: Schema.String,
   dashboard: Schema.Struct({
@@ -245,7 +245,7 @@ export const GetDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Get a dashboard by UID.
  */
-export const getDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDashboardInput,
   outputSchema: GetDashboardOutput,
   errors: [NotFound] as const,

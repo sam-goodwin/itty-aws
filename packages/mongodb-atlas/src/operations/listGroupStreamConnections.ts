@@ -13,7 +13,7 @@ export interface ListGroupStreamConnectionsInput {
   pretty?: boolean;
 }
 export const ListGroupStreamConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupStreamConnectionsInput =
 // Output Schema
 export type ListGroupStreamConnectionsOutput = void;
 export const ListGroupStreamConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamConnectionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamConnectionsOutput>;
 
 // The operation
 /**
@@ -47,10 +47,8 @@ export const ListGroupStreamConnectionsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const listGroupStreamConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupStreamConnectionsInput,
-    outputSchema: ListGroupStreamConnectionsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupStreamConnections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupStreamConnectionsInput,
+  outputSchema: ListGroupStreamConnectionsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

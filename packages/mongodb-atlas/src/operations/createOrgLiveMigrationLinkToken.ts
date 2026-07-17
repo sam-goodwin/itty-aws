@@ -10,7 +10,7 @@ export interface CreateOrgLiveMigrationLinkTokenInput {
   pretty?: boolean;
 }
 export const CreateOrgLiveMigrationLinkTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateOrgLiveMigrationLinkTokenInput =
 // Output Schema
 export type CreateOrgLiveMigrationLinkTokenOutput = void;
 export const CreateOrgLiveMigrationLinkTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgLiveMigrationLinkTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgLiveMigrationLinkTokenOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const CreateOrgLiveMigrationLinkTokenOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const createOrgLiveMigrationLinkToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgLiveMigrationLinkTokenInput,
     outputSchema: CreateOrgLiveMigrationLinkTokenOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

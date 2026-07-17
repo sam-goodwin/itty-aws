@@ -341,7 +341,7 @@ export interface PostAccountsAccountInput {
   };
 }
 export const PostAccountsAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     account_token: Schema.optional(Schema.String),
     business_profile: Schema.optional(
@@ -2194,7 +2194,7 @@ export interface PostAccountsAccountOutput {
   type?: "custom" | "express" | "none" | "standard";
 }
 export const PostAccountsAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     business_profile: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -3611,7 +3611,7 @@ export const PostAccountsAccountOutput =
  * <p>To update your own account, use the <a href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our
  * <a href="/docs/connect/updating-accounts">Connect</a> documentation to learn more about updating accounts.</p>
  */
-export const PostAccountsAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccountsAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAccountsAccountInput,
   outputSchema: PostAccountsAccountOutput,
 }));

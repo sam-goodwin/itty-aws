@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/operations",
@@ -37,7 +35,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +64,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -83,7 +81,7 @@ export interface PrivateStoreAcknowledgeOfferNotificationInput {
   };
 }
 export const PrivateStoreAcknowledgeOfferNotificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -106,7 +104,7 @@ export const PrivateStoreAcknowledgeOfferNotificationInput =
 // Output Schema
 export type PrivateStoreAcknowledgeOfferNotificationOutput = void;
 export const PrivateStoreAcknowledgeOfferNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreAcknowledgeOfferNotificationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreAcknowledgeOfferNotificationOutput>;
 
 // The operation
 /**
@@ -117,7 +115,7 @@ export const PrivateStoreAcknowledgeOfferNotificationOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreAcknowledgeOfferNotification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreAcknowledgeOfferNotificationInput,
     outputSchema: PrivateStoreAcknowledgeOfferNotificationOutput,
   }));
@@ -126,7 +124,7 @@ export interface PrivateStoreAdminRequestApprovalsListInput {
   privateStoreId: string;
 }
 export const PrivateStoreAdminRequestApprovalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -154,7 +152,7 @@ export interface PrivateStoreAdminRequestApprovalsListOutput {
   nextLink?: string;
 }
 export const PrivateStoreAdminRequestApprovalsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -199,7 +197,7 @@ export const PrivateStoreAdminRequestApprovalsListOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreAdminRequestApprovalsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreAdminRequestApprovalsListInput,
     outputSchema: PrivateStoreAdminRequestApprovalsListOutput,
   }));
@@ -208,7 +206,7 @@ export interface PrivateStoreAnyExistingOffersInTheCollectionsInput {
   privateStoreId: string;
 }
 export const PrivateStoreAnyExistingOffersInTheCollectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -223,7 +221,7 @@ export interface PrivateStoreAnyExistingOffersInTheCollectionsOutput {
   value?: boolean;
 }
 export const PrivateStoreAnyExistingOffersInTheCollectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<PrivateStoreAnyExistingOffersInTheCollectionsOutput>;
 
@@ -235,7 +233,7 @@ export const PrivateStoreAnyExistingOffersInTheCollectionsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreAnyExistingOffersInTheCollections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreAnyExistingOffersInTheCollectionsInput,
     outputSchema: PrivateStoreAnyExistingOffersInTheCollectionsOutput,
   }));
@@ -244,7 +242,7 @@ export interface PrivateStoreBillingAccountsInput {
   privateStoreId: string;
 }
 export const PrivateStoreBillingAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -259,7 +257,7 @@ export interface PrivateStoreBillingAccountsOutput {
   billingAccounts?: string[];
 }
 export const PrivateStoreBillingAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccounts: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<PrivateStoreBillingAccountsOutput>;
 
@@ -270,19 +268,17 @@ export const PrivateStoreBillingAccountsOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreBillingAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreBillingAccountsInput,
-    outputSchema: PrivateStoreBillingAccountsOutput,
-  }),
-);
+export const PrivateStoreBillingAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreBillingAccountsInput,
+  outputSchema: PrivateStoreBillingAccountsOutput,
+}));
 // Input Schema
 export interface PrivateStoreBulkCollectionsActionInput {
   privateStoreId: string;
   properties?: { collectionIds?: string[]; action?: string };
 }
 export const PrivateStoreBulkCollectionsActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -304,7 +300,7 @@ export interface PrivateStoreBulkCollectionsActionOutput {
   failed?: { collectionName?: string; collectionId?: string }[];
 }
 export const PrivateStoreBulkCollectionsActionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -331,7 +327,7 @@ export const PrivateStoreBulkCollectionsActionOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreBulkCollectionsAction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreBulkCollectionsActionInput,
     outputSchema: PrivateStoreBulkCollectionsActionOutput,
   }));
@@ -341,7 +337,7 @@ export interface PrivateStoreCollectionApproveAllItemsInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionApproveAllItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -367,7 +363,7 @@ export interface PrivateStoreCollectionApproveAllItemsOutput {
   };
 }
 export const PrivateStoreCollectionApproveAllItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -396,7 +392,7 @@ export const PrivateStoreCollectionApproveAllItemsOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionApproveAllItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionApproveAllItemsInput,
     outputSchema: PrivateStoreCollectionApproveAllItemsOutput,
   }));
@@ -421,7 +417,7 @@ export interface PrivateStoreCollectionCreateOrUpdateInput {
   };
 }
 export const PrivateStoreCollectionCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -470,7 +466,7 @@ export interface PrivateStoreCollectionCreateOrUpdateOutput {
   };
 }
 export const PrivateStoreCollectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -499,7 +495,7 @@ export const PrivateStoreCollectionCreateOrUpdateOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionCreateOrUpdateInput,
     outputSchema: PrivateStoreCollectionCreateOrUpdateOutput,
   }));
@@ -509,7 +505,7 @@ export interface PrivateStoreCollectionDeleteInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -523,7 +519,7 @@ export const PrivateStoreCollectionDeleteInput =
 // Output Schema
 export type PrivateStoreCollectionDeleteOutput = void;
 export const PrivateStoreCollectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionDeleteOutput>;
 
 // The operation
 /**
@@ -534,7 +530,7 @@ export const PrivateStoreCollectionDeleteOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionDeleteInput,
     outputSchema: PrivateStoreCollectionDeleteOutput,
   }));
@@ -544,7 +540,7 @@ export interface PrivateStoreCollectionDisableApproveAllItemsInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionDisableApproveAllItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -570,7 +566,7 @@ export interface PrivateStoreCollectionDisableApproveAllItemsOutput {
   };
 }
 export const PrivateStoreCollectionDisableApproveAllItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -599,7 +595,7 @@ export const PrivateStoreCollectionDisableApproveAllItemsOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionDisableApproveAllItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionDisableApproveAllItemsInput,
     outputSchema: PrivateStoreCollectionDisableApproveAllItemsOutput,
   }));
@@ -609,7 +605,7 @@ export interface PrivateStoreCollectionGetInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -635,7 +631,7 @@ export interface PrivateStoreCollectionGetOutput {
   };
 }
 export const PrivateStoreCollectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -663,18 +659,16 @@ export const PrivateStoreCollectionGetOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionGetInput,
-    outputSchema: PrivateStoreCollectionGetOutput,
-  }),
-);
+export const PrivateStoreCollectionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionGetInput,
+  outputSchema: PrivateStoreCollectionGetOutput,
+}));
 // Input Schema
 export interface PrivateStoreCollectionListInput {
   privateStoreId: string;
 }
 export const PrivateStoreCollectionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -702,7 +696,7 @@ export interface PrivateStoreCollectionListOutput {
   nextLink?: string;
 }
 export const PrivateStoreCollectionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -746,12 +740,10 @@ export const PrivateStoreCollectionListOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreCollectionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionListInput,
-    outputSchema: PrivateStoreCollectionListOutput,
-  }),
-);
+export const PrivateStoreCollectionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionListInput,
+  outputSchema: PrivateStoreCollectionListOutput,
+}));
 // Input Schema
 export interface PrivateStoreCollectionOfferContextsViewInput {
   privateStoreId: string;
@@ -760,7 +752,7 @@ export interface PrivateStoreCollectionOfferContextsViewInput {
   properties?: { subscriptionIds?: string[] };
 }
 export const PrivateStoreCollectionOfferContextsViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -792,7 +784,7 @@ export interface PrivateStoreCollectionOfferContextsViewOutput {
   };
 }
 export const PrivateStoreCollectionOfferContextsViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -822,7 +814,7 @@ export const PrivateStoreCollectionOfferContextsViewOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferContextsView =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferContextsViewInput,
     outputSchema: PrivateStoreCollectionOfferContextsViewOutput,
   }));
@@ -859,7 +851,7 @@ export interface PrivateStoreCollectionOfferCreateOrUpdateInput {
   };
 }
 export const PrivateStoreCollectionOfferCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -923,7 +915,7 @@ export interface PrivateStoreCollectionOfferCreateOrUpdateOutput {
   };
 }
 export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -953,7 +945,7 @@ export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferCreateOrUpdateInput,
     outputSchema: PrivateStoreCollectionOfferCreateOrUpdateOutput,
   }));
@@ -964,7 +956,7 @@ export interface PrivateStoreCollectionOfferDeleteInput {
   offerId: string;
 }
 export const PrivateStoreCollectionOfferDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -979,7 +971,7 @@ export const PrivateStoreCollectionOfferDeleteInput =
 // Output Schema
 export type PrivateStoreCollectionOfferDeleteOutput = void;
 export const PrivateStoreCollectionOfferDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferDeleteOutput>;
 
 // The operation
 /**
@@ -991,7 +983,7 @@ export const PrivateStoreCollectionOfferDeleteOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferDeleteInput,
     outputSchema: PrivateStoreCollectionOfferDeleteOutput,
   }));
@@ -1002,7 +994,7 @@ export interface PrivateStoreCollectionOfferGetInput {
   offerId: string;
 }
 export const PrivateStoreCollectionOfferGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -1029,7 +1021,7 @@ export interface PrivateStoreCollectionOfferGetOutput {
   };
 }
 export const PrivateStoreCollectionOfferGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1059,7 +1051,7 @@ export const PrivateStoreCollectionOfferGetOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferGetInput,
     outputSchema: PrivateStoreCollectionOfferGetOutput,
   }));
@@ -1069,7 +1061,7 @@ export interface PrivateStoreCollectionOfferListInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionOfferListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1098,7 +1090,7 @@ export interface PrivateStoreCollectionOfferListOutput {
   nextLink?: string;
 }
 export const PrivateStoreCollectionOfferListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1142,7 +1134,7 @@ export const PrivateStoreCollectionOfferListOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionOfferList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferListInput,
     outputSchema: PrivateStoreCollectionOfferListOutput,
   }));
@@ -1153,7 +1145,7 @@ export interface PrivateStoreCollectionOfferListByContextsInput {
   properties?: { subscriptionIds?: string[] };
 }
 export const PrivateStoreCollectionOfferListByContextsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1205,7 +1197,7 @@ export interface PrivateStoreCollectionOfferListByContextsOutput {
   nextLink?: string;
 }
 export const PrivateStoreCollectionOfferListByContextsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1272,7 +1264,7 @@ export const PrivateStoreCollectionOfferListByContextsOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionOfferListByContexts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferListByContextsInput,
     outputSchema: PrivateStoreCollectionOfferListByContextsOutput,
   }));
@@ -1283,7 +1275,7 @@ export interface PrivateStoreCollectionOfferPostInput {
   offerId: string;
 }
 export const PrivateStoreCollectionOfferPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -1298,7 +1290,7 @@ export const PrivateStoreCollectionOfferPostInput =
 // Output Schema
 export type PrivateStoreCollectionOfferPostOutput = void;
 export const PrivateStoreCollectionOfferPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferPostOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferPostOutput>;
 
 // The operation
 /**
@@ -1310,7 +1302,7 @@ export const PrivateStoreCollectionOfferPostOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferPost =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferPostInput,
     outputSchema: PrivateStoreCollectionOfferPostOutput,
   }));
@@ -1326,7 +1318,7 @@ export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput {
   };
 }
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
@@ -1367,7 +1359,7 @@ export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput {
   };
 }
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1397,7 +1389,7 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
  * @param offerId - The offer ID to update or delete
  */
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContext =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput,
     outputSchema: PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput,
   }));
@@ -1407,7 +1399,7 @@ export interface PrivateStoreCollectionPostInput {
   collectionId: string;
 }
 export const PrivateStoreCollectionPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1421,7 +1413,7 @@ export const PrivateStoreCollectionPostInput =
 // Output Schema
 export type PrivateStoreCollectionPostOutput = void;
 export const PrivateStoreCollectionPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionPostOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionPostOutput>;
 
 // The operation
 /**
@@ -1431,19 +1423,17 @@ export const PrivateStoreCollectionPostOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const PrivateStoreCollectionPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCollectionPostInput,
-    outputSchema: PrivateStoreCollectionPostOutput,
-  }),
-);
+export const PrivateStoreCollectionPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCollectionPostInput,
+  outputSchema: PrivateStoreCollectionPostOutput,
+}));
 // Input Schema
 export interface PrivateStoreCollectionsToSubscriptionsMappingInput {
   privateStoreId: string;
   properties?: { subscriptionIds?: string[] };
 }
 export const PrivateStoreCollectionsToSubscriptionsMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1466,7 +1456,7 @@ export interface PrivateStoreCollectionsToSubscriptionsMappingOutput {
   >;
 }
 export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -1486,7 +1476,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreCollectionsToSubscriptionsMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionsToSubscriptionsMappingInput,
     outputSchema: PrivateStoreCollectionsToSubscriptionsMappingOutput,
   }));
@@ -1501,7 +1491,7 @@ export interface PrivateStoreCollectionTransferOffersInput {
   };
 }
 export const PrivateStoreCollectionTransferOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1525,7 +1515,7 @@ export interface PrivateStoreCollectionTransferOffersOutput {
   failed?: { collectionName?: string; collectionId?: string }[];
 }
 export const PrivateStoreCollectionTransferOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1553,7 +1543,7 @@ export const PrivateStoreCollectionTransferOffersOutput =
  * @param collectionId - The collection ID
  */
 export const PrivateStoreCollectionTransferOffers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCollectionTransferOffersInput,
     outputSchema: PrivateStoreCollectionTransferOffersOutput,
   }));
@@ -1578,7 +1568,7 @@ export interface PrivateStoreCreateApprovalRequestInput {
   };
 }
 export const PrivateStoreCreateApprovalRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1627,7 +1617,7 @@ export interface PrivateStoreCreateApprovalRequestOutput {
   };
 }
 export const PrivateStoreCreateApprovalRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1656,7 +1646,7 @@ export const PrivateStoreCreateApprovalRequestOutput =
  * @param requestApprovalId - The request approval ID to get create or update
  */
 export const PrivateStoreCreateApprovalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreCreateApprovalRequestInput,
     outputSchema: PrivateStoreCreateApprovalRequestOutput,
   }));
@@ -1683,7 +1673,7 @@ export interface PrivateStoreCreateOrUpdateInput {
   };
 }
 export const PrivateStoreCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1722,7 +1712,7 @@ export const PrivateStoreCreateOrUpdateInput =
 // Output Schema
 export type PrivateStoreCreateOrUpdateOutput = void;
 export const PrivateStoreCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1731,18 +1721,16 @@ export const PrivateStoreCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreCreateOrUpdateInput,
-    outputSchema: PrivateStoreCreateOrUpdateOutput,
-  }),
-);
+export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreCreateOrUpdateInput,
+  outputSchema: PrivateStoreCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PrivateStoreDeleteInput {
   privateStoreId: string;
 }
 export const PrivateStoreDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1755,7 +1743,7 @@ export const PrivateStoreDeleteInput =
 // Output Schema
 export type PrivateStoreDeleteOutput = void;
 export const PrivateStoreDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreDeleteOutput>;
 
 // The operation
 /**
@@ -1764,7 +1752,7 @@ export const PrivateStoreDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreDeleteInput,
   outputSchema: PrivateStoreDeleteOutput,
 }));
@@ -1773,7 +1761,7 @@ export interface PrivateStoreFetchAllSubscriptionsInTenantInput {
   privateStoreId: string;
 }
 export const PrivateStoreFetchAllSubscriptionsInTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1795,7 +1783,7 @@ export interface PrivateStoreFetchAllSubscriptionsInTenantOutput {
   count?: number;
 }
 export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1827,7 +1815,7 @@ export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
  * @param next-page-token - The skip token to get the next page.
  */
 export const PrivateStoreFetchAllSubscriptionsInTenant =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreFetchAllSubscriptionsInTenantInput,
     outputSchema: PrivateStoreFetchAllSubscriptionsInTenantOutput,
   }));
@@ -1835,7 +1823,7 @@ export const PrivateStoreFetchAllSubscriptionsInTenant =
 export interface PrivateStoreGetInput {
   privateStoreId: string;
 }
-export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreGetInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1859,7 +1847,7 @@ export interface PrivateStoreGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1886,7 +1874,7 @@ export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreGetInput,
   outputSchema: PrivateStoreGetOutput,
 }));
@@ -1897,7 +1885,7 @@ export interface PrivateStoreGetAdminRequestApprovalInput {
   publisherId: string;
 }
 export const PrivateStoreGetAdminRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
     publisherId: Schema.String,
@@ -1924,7 +1912,7 @@ export interface PrivateStoreGetAdminRequestApprovalOutput {
   };
 }
 export const PrivateStoreGetAdminRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1954,7 +1942,7 @@ export const PrivateStoreGetAdminRequestApprovalOutput =
  * @param publisherId - The publisher id of this offer.
  */
 export const PrivateStoreGetAdminRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreGetAdminRequestApprovalInput,
     outputSchema: PrivateStoreGetAdminRequestApprovalOutput,
   }));
@@ -1963,7 +1951,7 @@ export interface PrivateStoreGetApprovalRequestsListInput {
   privateStoreId: string;
 }
 export const PrivateStoreGetApprovalRequestsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1991,7 +1979,7 @@ export interface PrivateStoreGetApprovalRequestsListOutput {
   nextLink?: string;
 }
 export const PrivateStoreGetApprovalRequestsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2036,7 +2024,7 @@ export const PrivateStoreGetApprovalRequestsListOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreGetApprovalRequestsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreGetApprovalRequestsListInput,
     outputSchema: PrivateStoreGetApprovalRequestsListOutput,
   }));
@@ -2046,7 +2034,7 @@ export interface PrivateStoreGetRequestApprovalInput {
   requestApprovalId: string;
 }
 export const PrivateStoreGetRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2072,7 +2060,7 @@ export interface PrivateStoreGetRequestApprovalOutput {
   };
 }
 export const PrivateStoreGetRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2101,7 +2089,7 @@ export const PrivateStoreGetRequestApprovalOutput =
  * @param requestApprovalId - The request approval ID to get create or update
  */
 export const PrivateStoreGetRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreGetRequestApprovalInput,
     outputSchema: PrivateStoreGetRequestApprovalOutput,
   }));
@@ -2109,7 +2097,7 @@ export const PrivateStoreGetRequestApproval =
 export interface PrivateStoreListInput {
   "use-cache"?: string;
 }
-export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateStoreListInput = /*@__PURE__*/ Schema.Struct({
   "use-cache": Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -2136,42 +2124,30 @@ export interface PrivateStoreListOutput {
   }[];
   nextLink?: string;
 }
-export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<PrivateStoreListOutput>;
+export const PrivateStoreListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<PrivateStoreListOutput>;
 
 // The operation
 /**
@@ -2180,7 +2156,7 @@ export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param use-cache - Determines if to use cache or DB for serving this request
  */
-export const PrivateStoreList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateStoreList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateStoreListInput,
   outputSchema: PrivateStoreListOutput,
 }));
@@ -2189,7 +2165,7 @@ export interface PrivateStoreListNewPlansNotificationsInput {
   privateStoreId: string;
 }
 export const PrivateStoreListNewPlansNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2211,7 +2187,7 @@ export interface PrivateStoreListNewPlansNotificationsOutput {
   }[];
 }
 export const PrivateStoreListNewPlansNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newPlansNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2241,7 +2217,7 @@ export const PrivateStoreListNewPlansNotificationsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreListNewPlansNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreListNewPlansNotificationsInput,
     outputSchema: PrivateStoreListNewPlansNotificationsOutput,
   }));
@@ -2251,7 +2227,7 @@ export interface PrivateStoreListStopSellOffersPlansNotificationsInput {
   subscriptions?: string[];
 }
 export const PrivateStoreListStopSellOffersPlansNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     subscriptions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -2276,7 +2252,7 @@ export interface PrivateStoreListStopSellOffersPlansNotificationsOutput {
   }[];
 }
 export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2308,7 +2284,7 @@ export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreListStopSellOffersPlansNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreListStopSellOffersPlansNotificationsInput,
     outputSchema: PrivateStoreListStopSellOffersPlansNotificationsOutput,
   }));
@@ -2317,7 +2293,7 @@ export interface PrivateStoreListSubscriptionsContextInput {
   privateStoreId: string;
 }
 export const PrivateStoreListSubscriptionsContextInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2332,7 +2308,7 @@ export interface PrivateStoreListSubscriptionsContextOutput {
   subscriptionsIds?: string[];
 }
 export const PrivateStoreListSubscriptionsContextOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionsIds: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<PrivateStoreListSubscriptionsContextOutput>;
 
@@ -2344,7 +2320,7 @@ export const PrivateStoreListSubscriptionsContextOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreListSubscriptionsContext =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreListSubscriptionsContextInput,
     outputSchema: PrivateStoreListSubscriptionsContextOutput,
   }));
@@ -2358,7 +2334,7 @@ export interface PrivateStoreQueryApprovedPlansInput {
   };
 }
 export const PrivateStoreQueryApprovedPlansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2384,7 +2360,7 @@ export interface PrivateStoreQueryApprovedPlansOutput {
   }[];
 }
 export const PrivateStoreQueryApprovedPlansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2404,7 +2380,7 @@ export const PrivateStoreQueryApprovedPlansOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreQueryApprovedPlans =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreQueryApprovedPlansInput,
     outputSchema: PrivateStoreQueryApprovedPlansOutput,
   }));
@@ -2413,7 +2389,7 @@ export interface PrivateStoreQueryNotificationsStateInput {
   privateStoreId: string;
 }
 export const PrivateStoreQueryNotificationsStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2451,7 +2427,7 @@ export interface PrivateStoreQueryNotificationsStateOutput {
   }[];
 }
 export const PrivateStoreQueryNotificationsStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2519,7 +2495,7 @@ export const PrivateStoreQueryNotificationsStateOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  */
 export const PrivateStoreQueryNotificationsState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreQueryNotificationsStateInput,
     outputSchema: PrivateStoreQueryNotificationsStateOutput,
   }));
@@ -2528,7 +2504,7 @@ export interface PrivateStoreQueryOffersInput {
   privateStoreId: string;
 }
 export const PrivateStoreQueryOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2569,7 +2545,7 @@ export interface PrivateStoreQueryOffersOutput {
   nextLink?: string;
 }
 export const PrivateStoreQueryOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2621,12 +2597,10 @@ export const PrivateStoreQueryOffersOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreQueryOffersInput,
-    outputSchema: PrivateStoreQueryOffersOutput,
-  }),
-);
+export const PrivateStoreQueryOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryOffersInput,
+  outputSchema: PrivateStoreQueryOffersOutput,
+}));
 // Input Schema
 export interface PrivateStoreQueryRequestApprovalInput {
   privateStoreId: string;
@@ -2638,7 +2612,7 @@ export interface PrivateStoreQueryRequestApprovalInput {
   };
 }
 export const PrivateStoreQueryRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2674,7 +2648,7 @@ export interface PrivateStoreQueryRequestApprovalOutput {
   messageCode?: number;
 }
 export const PrivateStoreQueryRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uniqueOfferId: Schema.optional(Schema.String),
     plansDetails: Schema.optional(
       Schema.Record(
@@ -2704,7 +2678,7 @@ export const PrivateStoreQueryRequestApprovalOutput =
  * @param requestApprovalId - The request approval ID to get create or update
  */
 export const PrivateStoreQueryRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreQueryRequestApprovalInput,
     outputSchema: PrivateStoreQueryRequestApprovalOutput,
   }));
@@ -2714,7 +2688,7 @@ export interface PrivateStoreQueryUserOffersInput {
   properties?: { offerIds?: string[]; subscriptionIds?: string[] };
 }
 export const PrivateStoreQueryUserOffersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2761,7 +2735,7 @@ export interface PrivateStoreQueryUserOffersOutput {
   nextLink?: string;
 }
 export const PrivateStoreQueryUserOffersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2813,12 +2787,10 @@ export const PrivateStoreQueryUserOffersOutput =
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const PrivateStoreQueryUserOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreQueryUserOffersInput,
-    outputSchema: PrivateStoreQueryUserOffersOutput,
-  }),
-);
+export const PrivateStoreQueryUserOffers = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreQueryUserOffersInput,
+  outputSchema: PrivateStoreQueryUserOffersOutput,
+}));
 // Input Schema
 export interface PrivateStoreUpdateAdminRequestApprovalInput {
   privateStoreId: string;
@@ -2847,7 +2819,7 @@ export interface PrivateStoreUpdateAdminRequestApprovalInput {
   };
 }
 export const PrivateStoreUpdateAdminRequestApprovalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2905,7 +2877,7 @@ export interface PrivateStoreUpdateAdminRequestApprovalOutput {
   };
 }
 export const PrivateStoreUpdateAdminRequestApprovalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2934,7 +2906,7 @@ export const PrivateStoreUpdateAdminRequestApprovalOutput =
  * @param adminRequestApprovalId - The admin request approval ID to get create or update
  */
 export const PrivateStoreUpdateAdminRequestApproval =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateStoreUpdateAdminRequestApprovalInput,
     outputSchema: PrivateStoreUpdateAdminRequestApprovalOutput,
   }));
@@ -2945,7 +2917,7 @@ export interface PrivateStoreWithdrawPlanInput {
   properties?: { planId?: string; publisherId?: string };
 }
 export const PrivateStoreWithdrawPlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -2965,7 +2937,7 @@ export const PrivateStoreWithdrawPlanInput =
 // Output Schema
 export type PrivateStoreWithdrawPlanOutput = void;
 export const PrivateStoreWithdrawPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreWithdrawPlanOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreWithdrawPlanOutput>;
 
 // The operation
 /**
@@ -2975,18 +2947,16 @@ export const PrivateStoreWithdrawPlanOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param requestApprovalId - The request approval ID to get create or update
  */
-export const PrivateStoreWithdrawPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateStoreWithdrawPlanInput,
-    outputSchema: PrivateStoreWithdrawPlanOutput,
-  }),
-);
+export const PrivateStoreWithdrawPlan = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateStoreWithdrawPlanInput,
+  outputSchema: PrivateStoreWithdrawPlanOutput,
+}));
 // Input Schema
 export interface QueryRulesInput {
   privateStoreId: string;
   collectionId: string;
 }
-export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRulesInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   collectionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3005,7 +2975,7 @@ export interface QueryRulesOutput {
   }[];
   nextLink?: string;
 }
-export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryRulesOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3027,7 +2997,7 @@ export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const QueryRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryRulesInput,
   outputSchema: QueryRulesOutput,
 }));
@@ -3036,7 +3006,7 @@ export interface QueryUserRulesInput {
   privateStoreId: string;
   properties?: { subscriptionIds?: string[] };
 }
-export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUserRulesInput = /*@__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -3059,7 +3029,7 @@ export interface QueryUserRulesOutput {
   }[];
   nextLink?: string;
 }
-export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryUserRulesOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3080,7 +3050,7 @@ export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param privateStoreId - The store ID - must use the tenant ID
  */
-export const QueryUserRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueryUserRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryUserRulesInput,
   outputSchema: QueryUserRulesOutput,
 }));
@@ -3095,7 +3065,7 @@ export interface SetCollectionRulesInput {
   nextLink?: string;
 }
 export const SetCollectionRulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     value: Schema.optional(
@@ -3120,7 +3090,7 @@ export const SetCollectionRulesInput =
 // Output Schema
 export type SetCollectionRulesOutput = void;
 export const SetCollectionRulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SetCollectionRulesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SetCollectionRulesOutput>;
 
 // The operation
 /**
@@ -3130,7 +3100,7 @@ export const SetCollectionRulesOutput =
  * @param privateStoreId - The store ID - must use the tenant ID
  * @param collectionId - The collection ID
  */
-export const SetCollectionRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SetCollectionRules = /*@__PURE__*/ API.make(() => ({
   inputSchema: SetCollectionRulesInput,
   outputSchema: SetCollectionRulesOutput,
 }));

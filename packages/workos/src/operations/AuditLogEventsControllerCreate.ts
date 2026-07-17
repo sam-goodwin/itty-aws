@@ -22,7 +22,7 @@ export interface AuditLogEventsControllerCreateInput {
   };
 }
 export const AuditLogEventsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
     event: Schema.optional(
       Schema.Struct({
@@ -65,7 +65,7 @@ export interface AuditLogEventsControllerCreateOutput {
   success?: boolean;
 }
 export const AuditLogEventsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<AuditLogEventsControllerCreateOutput>;
 
@@ -81,7 +81,7 @@ export const AuditLogEventsControllerCreateOutput =
  * @param idempotency-key - A unique string to prevent duplicate requests. Each subsequent request matching this unique string will return the same response. We suggest using v4 UUIDs. Keys expire after 24 hours.
  */
 export const AuditLogEventsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogEventsControllerCreateInput,
     outputSchema: AuditLogEventsControllerCreateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

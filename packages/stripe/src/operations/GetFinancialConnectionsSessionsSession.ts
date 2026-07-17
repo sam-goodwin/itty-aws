@@ -13,7 +13,7 @@ export interface GetFinancialConnectionsSessionsSessionInput {
   expand?: string;
 }
 export const GetFinancialConnectionsSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -148,7 +148,7 @@ export interface GetFinancialConnectionsSessionsSessionOutput {
   return_url?: string;
 }
 export const GetFinancialConnectionsSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -352,7 +352,7 @@ export const GetFinancialConnectionsSessionsSessionOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetFinancialConnectionsSessionsSession =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFinancialConnectionsSessionsSessionInput,
     outputSchema: GetFinancialConnectionsSessionsSessionOutput,
   }));

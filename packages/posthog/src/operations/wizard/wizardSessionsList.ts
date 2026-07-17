@@ -11,7 +11,7 @@ export interface WizardSessionsListInput {
   workflow_id?: string;
 }
 export const WizardSessionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -49,7 +49,7 @@ export interface WizardSessionsListOutput {
   }[];
 }
 export const WizardSessionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -93,7 +93,7 @@ export const WizardSessionsListOutput =
  * @param skill_id - Filter to a single skill within the workflow (e.g. 'nextjs').
  * @param workflow_id - Filter to a single workflow (e.g. 'onboarding').
  */
-export const wizardSessionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const wizardSessionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WizardSessionsListInput,
   outputSchema: WizardSessionsListOutput,
 }));

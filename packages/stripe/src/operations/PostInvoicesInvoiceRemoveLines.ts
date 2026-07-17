@@ -15,7 +15,7 @@ export interface PostInvoicesInvoiceRemoveLinesInput {
   lines: { behavior: "delete" | "unassign"; id: string }[];
 }
 export const PostInvoicesInvoiceRemoveLinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     invoice_metadata: Schema.optional(
@@ -2224,7 +2224,7 @@ export interface PostInvoicesInvoiceRemoveLinesOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceRemoveLinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3934,7 +3934,7 @@ export const PostInvoicesInvoiceRemoveLinesOutput =
  * <p>Removes multiple line items from an invoice. This is only possible when an invoice is still a draft.</p>
  */
 export const PostInvoicesInvoiceRemoveLines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostInvoicesInvoiceRemoveLinesInput,
     outputSchema: PostInvoicesInvoiceRemoveLinesOutput,
   }));

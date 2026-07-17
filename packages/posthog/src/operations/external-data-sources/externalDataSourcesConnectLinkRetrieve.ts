@@ -8,7 +8,7 @@ export interface ExternalDataSourcesConnectLinkRetrieveInput {
   source_type: string;
 }
 export const ExternalDataSourcesConnectLinkRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_type: Schema.String,
   }).pipe(
@@ -26,7 +26,7 @@ export interface ExternalDataSourcesConnectLinkRetrieveOutput {
   instructions: string;
 }
 export const ExternalDataSourcesConnectLinkRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source_type: Schema.String,
     auth_method: Schema.Literals(["oauth", "credentials"]),
     connect_url: Schema.String,
@@ -45,7 +45,7 @@ export const ExternalDataSourcesConnectLinkRetrieveOutput =
  * @param source_type - The source type to generate a connect link for (e.g. 'Stripe', 'Postgres', 'Hubspot').
  */
 export const externalDataSourcesConnectLinkRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesConnectLinkRetrieveInput,
     outputSchema: ExternalDataSourcesConnectLinkRetrieveOutput,
   }));

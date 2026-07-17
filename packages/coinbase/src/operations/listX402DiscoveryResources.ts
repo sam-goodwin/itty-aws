@@ -9,7 +9,7 @@ export interface ListX402DiscoveryResourcesInput {
   offset?: number;
 }
 export const ListX402DiscoveryResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -71,7 +71,7 @@ export interface ListX402DiscoveryResourcesOutput {
   pagination: { limit?: number; offset?: number; total?: number };
 }
 export const ListX402DiscoveryResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x402Version: Schema.Literals([1, 2]),
     items: Schema.Array(
       Schema.Struct({
@@ -163,9 +163,7 @@ Currently, the only supported protocol type is "http".
  * @param limit - The number of discovered x402 resources to return per page.
  * @param offset - The offset of the first discovered x402 resource to return.
  */
-export const listX402DiscoveryResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListX402DiscoveryResourcesInput,
-    outputSchema: ListX402DiscoveryResourcesOutput,
-  }),
-);
+export const listX402DiscoveryResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListX402DiscoveryResourcesInput,
+  outputSchema: ListX402DiscoveryResourcesOutput,
+}));

@@ -10,7 +10,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataInstallation
   organization_id?: string;
 }
 export const DataIntegrationsUserManagementControllerGetUserDataInstallationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataInstallation
   updated_at?: string;
 }
 export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -61,7 +61,7 @@ export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutp
  * @param organization_id - An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.
  */
 export const DataIntegrationsUserManagementControllerGetUserDataInstallation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DataIntegrationsUserManagementControllerGetUserDataInstallationInput,
     outputSchema:

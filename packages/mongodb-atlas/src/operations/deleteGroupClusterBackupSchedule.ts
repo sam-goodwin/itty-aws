@@ -10,7 +10,7 @@ export interface DeleteGroupClusterBackupScheduleInput {
   envelope?: boolean;
 }
 export const DeleteGroupClusterBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const DeleteGroupClusterBackupScheduleInput =
 // Output Schema
 export type DeleteGroupClusterBackupScheduleOutput = void;
 export const DeleteGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupScheduleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupScheduleOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const DeleteGroupClusterBackupScheduleOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const deleteGroupClusterBackupSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterBackupScheduleInput,
     outputSchema: DeleteGroupClusterBackupScheduleOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

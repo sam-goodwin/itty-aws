@@ -11,7 +11,7 @@ export interface GetGroupClusterGlobalWritesInput {
   pretty?: boolean;
 }
 export const GetGroupClusterGlobalWritesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupClusterGlobalWritesInput =
 // Output Schema
 export type GetGroupClusterGlobalWritesOutput = void;
 export const GetGroupClusterGlobalWritesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterGlobalWritesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterGlobalWritesOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupClusterGlobalWritesOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const getGroupClusterGlobalWrites = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterGlobalWritesInput,
-    outputSchema: GetGroupClusterGlobalWritesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterGlobalWrites = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterGlobalWritesInput,
+  outputSchema: GetGroupClusterGlobalWritesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

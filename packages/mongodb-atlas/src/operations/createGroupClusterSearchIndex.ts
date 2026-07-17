@@ -11,7 +11,7 @@ export interface CreateGroupClusterSearchIndexInput {
   pretty?: boolean;
 }
 export const CreateGroupClusterSearchIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupClusterSearchIndexInput =
 // Output Schema
 export type CreateGroupClusterSearchIndexOutput = void;
 export const CreateGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterSearchIndexOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterSearchIndexOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupClusterSearchIndexOutput =
  * @param clusterName - Name of the cluster that contains the collection on which to create an Atlas Search index.
  */
 export const createGroupClusterSearchIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterSearchIndexInput,
     outputSchema: CreateGroupClusterSearchIndexOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

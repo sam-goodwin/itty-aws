@@ -81,7 +81,7 @@ export interface AssumeRoleForPodIdentityRequest {
   token: string | redacted.Redacted<string>;
 }
 export const AssumeRoleForPodIdentityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterName: S.String.pipe(T.HttpLabel("clusterName")),
       token: SensitiveString,
@@ -105,15 +105,15 @@ export interface Subject {
   namespace: string;
   serviceAccount: string;
 }
-export const Subject = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Subject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ namespace: S.String, serviceAccount: S.String }),
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 export interface PodIdentityAssociation {
   associationArn: string;
   associationId: string;
 }
-export const PodIdentityAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ associationArn: S.String, associationId: S.String }),
+export const PodIdentityAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ associationArn: S.String, associationId: S.String }),
 ).annotate({
   identifier: "PodIdentityAssociation",
 }) as any as S.Schema<PodIdentityAssociation>;
@@ -121,7 +121,7 @@ export interface AssumedRoleUser {
   arn: string;
   assumeRoleId: string;
 }
-export const AssumedRoleUser = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, assumeRoleId: S.String }),
 ).annotate({
   identifier: "AssumedRoleUser",
@@ -132,7 +132,7 @@ export interface Credentials {
   accessKeyId: string;
   expiration: Date;
 }
-export const Credentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionToken: SensitiveString,
     secretAccessKey: SensitiveString,
@@ -148,7 +148,7 @@ export interface AssumeRoleForPodIdentityResponse {
   credentials: Credentials;
 }
 export const AssumeRoleForPodIdentityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subject: Subject,
       audience: S.String,
@@ -232,7 +232,7 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
   AssumeRoleForPodIdentityResponse,
   AssumeRoleForPodIdentityError,
   Creds | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeRoleForPodIdentityRequest,
   output: AssumeRoleForPodIdentityResponse,
   errors: [

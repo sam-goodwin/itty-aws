@@ -10,7 +10,7 @@ export interface ApplicationCredentialsControllerCreateInput {
   id: string;
 }
 export const ApplicationCredentialsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -30,7 +30,7 @@ export interface ApplicationCredentialsControllerCreateOutput {
   secret?: Redacted.Redacted<string>;
 }
 export const ApplicationCredentialsControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     secret_hint: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export const ApplicationCredentialsControllerCreateOutput =
  * @param id - The application ID or client ID of the Connect Application.
  */
 export const ApplicationCredentialsControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationCredentialsControllerCreateInput,
     outputSchema: ApplicationCredentialsControllerCreateOutput,
     errors: [NotFound, UnprocessableEntity] as const,

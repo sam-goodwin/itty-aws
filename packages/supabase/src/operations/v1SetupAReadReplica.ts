@@ -27,7 +27,7 @@ export interface V1SetupAReadReplicaInput {
     | "sa-east-1";
 }
 export const V1SetupAReadReplicaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     read_replica_region: Schema.Literals([
       "us-east-1",
@@ -56,7 +56,7 @@ export const V1SetupAReadReplicaInput =
 // Output Schema
 export type V1SetupAReadReplicaOutput = void;
 export const V1SetupAReadReplicaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1SetupAReadReplicaOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1SetupAReadReplicaOutput>;
 
 // The operation
 /**
@@ -64,7 +64,7 @@ export const V1SetupAReadReplicaOutput =
  *
  * @param ref - Project ref
  */
-export const v1SetupAReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1SetupAReadReplica = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1SetupAReadReplicaInput,
   outputSchema: V1SetupAReadReplicaOutput,
   errors: [BadRequest, Forbidden] as const,

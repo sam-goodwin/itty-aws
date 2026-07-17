@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String,
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -20,7 +20,7 @@ export type UserlandUsersControllerCreateInput =
 
 // Output Schema
 export const UserlandUsersControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -45,7 +45,7 @@ export type UserlandUsersControllerCreateOutput =
  * Create a new user in the current environment.
  */
 export const UserlandUsersControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerCreateInput,
     outputSchema: UserlandUsersControllerCreateOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

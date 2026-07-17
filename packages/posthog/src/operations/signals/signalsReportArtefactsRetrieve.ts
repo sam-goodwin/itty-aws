@@ -9,7 +9,7 @@ export interface SignalsReportArtefactsRetrieveInput {
   report_id: string;
 }
 export const SignalsReportArtefactsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     report_id: Schema.String.pipe(T.PathParam()),
@@ -49,7 +49,7 @@ export interface SignalsReportArtefactsRetrieveOutput {
   task_id: string | null;
 }
 export const SignalsReportArtefactsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     type: Schema.Literals([
       "video_segment",
@@ -93,7 +93,7 @@ export const SignalsReportArtefactsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const signalsReportArtefactsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsReportArtefactsRetrieveInput,
     outputSchema: SignalsReportArtefactsRetrieveOutput,
   }));

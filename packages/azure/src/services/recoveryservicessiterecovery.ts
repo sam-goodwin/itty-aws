@@ -19,7 +19,7 @@ export interface ClusterRecoveryPointGetInput {
   recoveryPointName: string;
 }
 export const ClusterRecoveryPointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -50,7 +50,7 @@ export interface ClusterRecoveryPointGetOutput {
   };
 }
 export const ClusterRecoveryPointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -88,12 +88,10 @@ export const ClusterRecoveryPointGetOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  * @param recoveryPointName - The recovery point name.
  */
-export const ClusterRecoveryPointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClusterRecoveryPointGetInput,
-    outputSchema: ClusterRecoveryPointGetOutput,
-  }),
-);
+export const ClusterRecoveryPointGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClusterRecoveryPointGetInput,
+  outputSchema: ClusterRecoveryPointGetOutput,
+}));
 // Input Schema
 export interface ClusterRecoveryPointsListByReplicationProtectionClusterInput {
   subscriptionId: string;
@@ -104,7 +102,7 @@ export interface ClusterRecoveryPointsListByReplicationProtectionClusterInput {
   replicationProtectionClusterName: string;
 }
 export const ClusterRecoveryPointsListByReplicationProtectionClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -137,7 +135,7 @@ export interface ClusterRecoveryPointsListByReplicationProtectionClusterOutput {
   nextLink?: string;
 }
 export const ClusterRecoveryPointsListByReplicationProtectionClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -180,7 +178,7 @@ export const ClusterRecoveryPointsListByReplicationProtectionClusterOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ClusterRecoveryPointsListByReplicationProtectionCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterRecoveryPointsListByReplicationProtectionClusterInput,
     outputSchema: ClusterRecoveryPointsListByReplicationProtectionClusterOutput,
   }));
@@ -195,7 +193,7 @@ export interface MigrationRecoveryPointsGetInput {
   migrationRecoveryPointName: string;
 }
 export const MigrationRecoveryPointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -226,7 +224,7 @@ export interface MigrationRecoveryPointsGetOutput {
   };
 }
 export const MigrationRecoveryPointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -259,12 +257,10 @@ export const MigrationRecoveryPointsGetOutput =
  * @param migrationItemName - Migration item name.
  * @param migrationRecoveryPointName - The migration recovery point name.
  */
-export const MigrationRecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MigrationRecoveryPointsGetInput,
-    outputSchema: MigrationRecoveryPointsGetOutput,
-  }),
-);
+export const MigrationRecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationRecoveryPointsGetInput,
+  outputSchema: MigrationRecoveryPointsGetOutput,
+}));
 // Input Schema
 export interface MigrationRecoveryPointsListByReplicationMigrationItemsInput {
   subscriptionId: string;
@@ -275,7 +271,7 @@ export interface MigrationRecoveryPointsListByReplicationMigrationItemsInput {
   migrationItemName: string;
 }
 export const MigrationRecoveryPointsListByReplicationMigrationItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -308,7 +304,7 @@ export interface MigrationRecoveryPointsListByReplicationMigrationItemsOutput {
   nextLink?: string;
 }
 export const MigrationRecoveryPointsListByReplicationMigrationItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -356,7 +352,7 @@ export const MigrationRecoveryPointsListByReplicationMigrationItemsOutput =
  * @param migrationItemName - Migration item name.
  */
 export const MigrationRecoveryPointsListByReplicationMigrationItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationRecoveryPointsListByReplicationMigrationItemsInput,
     outputSchema: MigrationRecoveryPointsListByReplicationMigrationItemsOutput,
   }));
@@ -365,7 +361,7 @@ export interface OperationsListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -391,7 +387,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -420,7 +416,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -434,17 +430,15 @@ export interface RecoveryPointsGetInput {
   replicatedProtectedItemName: string;
   recoveryPointName: string;
 }
-export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    fabricName: Schema.String.pipe(T.PathParam()),
-    protectionContainerName: Schema.String.pipe(T.PathParam()),
-    replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
-    recoveryPointName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  fabricName: Schema.String.pipe(T.PathParam()),
+  protectionContainerName: Schema.String.pipe(T.PathParam()),
+  replicatedProtectedItemName: Schema.String.pipe(T.PathParam()),
+  recoveryPointName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints/{recoveryPointName}",
@@ -467,7 +461,7 @@ export interface RecoveryPointsGetOutput {
   };
 }
 export const RecoveryPointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -502,7 +496,7 @@ export const RecoveryPointsGetOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  * @param recoveryPointName - The recovery point name.
  */
-export const RecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoveryPointsGetInput,
   outputSchema: RecoveryPointsGetOutput,
 }));
@@ -516,7 +510,7 @@ export interface RecoveryPointsListByReplicationProtectedItemsInput {
   replicatedProtectedItemName: string;
 }
 export const RecoveryPointsListByReplicationProtectedItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -549,7 +543,7 @@ export interface RecoveryPointsListByReplicationProtectedItemsOutput {
   nextLink?: string;
 }
 export const RecoveryPointsListByReplicationProtectedItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -599,7 +593,7 @@ export const RecoveryPointsListByReplicationProtectedItemsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const RecoveryPointsListByReplicationProtectedItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecoveryPointsListByReplicationProtectedItemsInput,
     outputSchema: RecoveryPointsListByReplicationProtectedItemsOutput,
   }));
@@ -616,7 +610,7 @@ export interface ReplicationAlertSettingsCreateInput {
   };
 }
 export const ReplicationAlertSettingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -651,7 +645,7 @@ export interface ReplicationAlertSettingsCreateOutput {
   };
 }
 export const ReplicationAlertSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -684,7 +678,7 @@ export const ReplicationAlertSettingsCreateOutput =
  * @param alertSettingName - The name of the email notification configuration.
  */
 export const ReplicationAlertSettingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationAlertSettingsCreateInput,
     outputSchema: ReplicationAlertSettingsCreateOutput,
   }));
@@ -696,7 +690,7 @@ export interface ReplicationAlertSettingsGetInput {
   alertSettingName: string;
 }
 export const ReplicationAlertSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -724,7 +718,7 @@ export interface ReplicationAlertSettingsGetOutput {
   };
 }
 export const ReplicationAlertSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -756,12 +750,10 @@ export const ReplicationAlertSettingsGetOutput =
  * @param resourceName - The name of the Vault
  * @param alertSettingName - The name of the email notification configuration.
  */
-export const ReplicationAlertSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationAlertSettingsGetInput,
-    outputSchema: ReplicationAlertSettingsGetOutput,
-  }),
-);
+export const ReplicationAlertSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAlertSettingsGetInput,
+  outputSchema: ReplicationAlertSettingsGetOutput,
+}));
 // Input Schema
 export interface ReplicationAlertSettingsListInput {
   subscriptionId: string;
@@ -769,7 +761,7 @@ export interface ReplicationAlertSettingsListInput {
   resourceName: string;
 }
 export const ReplicationAlertSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -799,7 +791,7 @@ export interface ReplicationAlertSettingsListOutput {
   nextLink?: string;
 }
 export const ReplicationAlertSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -846,7 +838,7 @@ export const ReplicationAlertSettingsListOutput =
  * @param resourceName - The name of the Vault
  */
 export const ReplicationAlertSettingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationAlertSettingsListInput,
     outputSchema: ReplicationAlertSettingsListOutput,
   }));
@@ -858,7 +850,7 @@ export interface ReplicationAppliancesListInput {
   $filter?: string;
 }
 export const ReplicationAppliancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -879,7 +871,7 @@ export interface ReplicationAppliancesListOutput {
   nextLink?: string;
 }
 export const ReplicationAppliancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -908,12 +900,10 @@ export const ReplicationAppliancesListOutput =
  * @param resourceName - The name of the recovery services vault.
  * @param $filter - OData filter options.
  */
-export const ReplicationAppliancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationAppliancesListInput,
-    outputSchema: ReplicationAppliancesListOutput,
-  }),
-);
+export const ReplicationAppliancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationAppliancesListInput,
+  outputSchema: ReplicationAppliancesListOutput,
+}));
 // Input Schema
 export interface ReplicationEligibilityResultsGetInput {
   subscriptionId: string;
@@ -921,7 +911,7 @@ export interface ReplicationEligibilityResultsGetInput {
   virtualMachineName: string;
 }
 export const ReplicationEligibilityResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -948,7 +938,7 @@ export interface ReplicationEligibilityResultsGetOutput {
   };
 }
 export const ReplicationEligibilityResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -980,7 +970,7 @@ export const ReplicationEligibilityResultsGetOutput =
  * @param virtualMachineName - Virtual Machine name.
  */
 export const ReplicationEligibilityResultsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationEligibilityResultsGetInput,
     outputSchema: ReplicationEligibilityResultsGetOutput,
   }));
@@ -991,7 +981,7 @@ export interface ReplicationEligibilityResultsListInput {
   virtualMachineName: string;
 }
 export const ReplicationEligibilityResultsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
@@ -1020,7 +1010,7 @@ export interface ReplicationEligibilityResultsListOutput {
   }[];
 }
 export const ReplicationEligibilityResultsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1068,7 +1058,7 @@ export const ReplicationEligibilityResultsListOutput =
  * @param virtualMachineName - Virtual Machine name.
  */
 export const ReplicationEligibilityResultsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationEligibilityResultsListInput,
     outputSchema: ReplicationEligibilityResultsListOutput,
   }));
@@ -1080,7 +1070,7 @@ export interface ReplicationEventsGetInput {
   eventName: string;
 }
 export const ReplicationEventsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1108,7 +1098,7 @@ export interface ReplicationEventsGetOutput {
   };
 }
 export const ReplicationEventsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1140,12 +1130,10 @@ export const ReplicationEventsGetOutput =
  * @param resourceName - The name of the Vault
  * @param eventName - The name of the Azure Site Recovery event.
  */
-export const ReplicationEventsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationEventsGetInput,
-    outputSchema: ReplicationEventsGetOutput,
-  }),
-);
+export const ReplicationEventsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEventsGetInput,
+  outputSchema: ReplicationEventsGetOutput,
+}));
 // Input Schema
 export interface ReplicationEventsListInput {
   subscriptionId: string;
@@ -1154,7 +1142,7 @@ export interface ReplicationEventsListInput {
   $filter?: string;
 }
 export const ReplicationEventsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1185,7 +1173,7 @@ export interface ReplicationEventsListOutput {
   nextLink?: string;
 }
 export const ReplicationEventsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1232,12 +1220,10 @@ export const ReplicationEventsListOutput =
  * @param resourceName - The name of the Vault
  * @param $filter - OData filter options.
  */
-export const ReplicationEventsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationEventsListInput,
-    outputSchema: ReplicationEventsListOutput,
-  }),
-);
+export const ReplicationEventsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationEventsListInput,
+  outputSchema: ReplicationEventsListOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsCheckConsistencyInput {
   subscriptionId: string;
@@ -1246,7 +1232,7 @@ export interface ReplicationFabricsCheckConsistencyInput {
   fabricName: string;
 }
 export const ReplicationFabricsCheckConsistencyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1274,7 +1260,7 @@ export interface ReplicationFabricsCheckConsistencyOutput {
   };
 }
 export const ReplicationFabricsCheckConsistencyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1307,7 +1293,7 @@ export const ReplicationFabricsCheckConsistencyOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationFabricsCheckConsistency =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationFabricsCheckConsistencyInput,
     outputSchema: ReplicationFabricsCheckConsistencyOutput,
   }));
@@ -1320,7 +1306,7 @@ export interface ReplicationFabricsCreateInput {
   properties?: { customDetails?: { instanceType: string } };
 }
 export const ReplicationFabricsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1357,7 +1343,7 @@ export interface ReplicationFabricsCreateOutput {
   };
 }
 export const ReplicationFabricsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1389,12 +1375,10 @@ export const ReplicationFabricsCreateOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsCreateInput,
-    outputSchema: ReplicationFabricsCreateOutput,
-  }),
-);
+export const ReplicationFabricsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsCreateInput,
+  outputSchema: ReplicationFabricsCreateOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsDeleteInput {
   subscriptionId: string;
@@ -1403,7 +1387,7 @@ export interface ReplicationFabricsDeleteInput {
   fabricName: string;
 }
 export const ReplicationFabricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1419,7 +1403,7 @@ export const ReplicationFabricsDeleteInput =
 // Output Schema
 export type ReplicationFabricsDeleteOutput = void;
 export const ReplicationFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -1433,12 +1417,10 @@ export const ReplicationFabricsDeleteOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsDeleteInput,
-    outputSchema: ReplicationFabricsDeleteOutput,
-  }),
-);
+export const ReplicationFabricsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsDeleteInput,
+  outputSchema: ReplicationFabricsDeleteOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsGetInput {
   subscriptionId: string;
@@ -1448,7 +1430,7 @@ export interface ReplicationFabricsGetInput {
   $filter?: string;
 }
 export const ReplicationFabricsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1477,7 +1459,7 @@ export interface ReplicationFabricsGetOutput {
   };
 }
 export const ReplicationFabricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1510,12 +1492,10 @@ export const ReplicationFabricsGetOutput =
  * @param fabricName - Fabric name.
  * @param $filter - OData filter options.
  */
-export const ReplicationFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsGetInput,
-    outputSchema: ReplicationFabricsGetOutput,
-  }),
-);
+export const ReplicationFabricsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsGetInput,
+  outputSchema: ReplicationFabricsGetOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsListInput {
   subscriptionId: string;
@@ -1523,7 +1503,7 @@ export interface ReplicationFabricsListInput {
   resourceName: string;
 }
 export const ReplicationFabricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1553,7 +1533,7 @@ export interface ReplicationFabricsListOutput {
   nextLink?: string;
 }
 export const ReplicationFabricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1599,12 +1579,10 @@ export const ReplicationFabricsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsListInput,
-    outputSchema: ReplicationFabricsListOutput,
-  }),
-);
+export const ReplicationFabricsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsListInput,
+  outputSchema: ReplicationFabricsListOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsMigrateToAadInput {
   subscriptionId: string;
@@ -1613,7 +1591,7 @@ export interface ReplicationFabricsMigrateToAadInput {
   fabricName: string;
 }
 export const ReplicationFabricsMigrateToAadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1629,7 +1607,7 @@ export const ReplicationFabricsMigrateToAadInput =
 // Output Schema
 export type ReplicationFabricsMigrateToAadOutput = void;
 export const ReplicationFabricsMigrateToAadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsMigrateToAadOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsMigrateToAadOutput>;
 
 // The operation
 /**
@@ -1644,7 +1622,7 @@ export const ReplicationFabricsMigrateToAadOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationFabricsMigrateToAad =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationFabricsMigrateToAadInput,
     outputSchema: ReplicationFabricsMigrateToAadOutput,
   }));
@@ -1656,7 +1634,7 @@ export interface ReplicationFabricsPurgeInput {
   fabricName: string;
 }
 export const ReplicationFabricsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1672,7 +1650,7 @@ export const ReplicationFabricsPurgeInput =
 // Output Schema
 export type ReplicationFabricsPurgeOutput = void;
 export const ReplicationFabricsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsPurgeOutput>;
 
 // The operation
 /**
@@ -1686,12 +1664,10 @@ export const ReplicationFabricsPurgeOutput =
  * @param resourceName - The name of the Vault
  * @param fabricName - Fabric name.
  */
-export const ReplicationFabricsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationFabricsPurgeInput,
-    outputSchema: ReplicationFabricsPurgeOutput,
-  }),
-);
+export const ReplicationFabricsPurge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationFabricsPurgeInput,
+  outputSchema: ReplicationFabricsPurgeOutput,
+}));
 // Input Schema
 export interface ReplicationFabricsReassociateGatewayInput {
   subscriptionId: string;
@@ -1707,7 +1683,7 @@ export interface ReplicationFabricsReassociateGatewayInput {
   };
 }
 export const ReplicationFabricsReassociateGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1744,7 +1720,7 @@ export interface ReplicationFabricsReassociateGatewayOutput {
   };
 }
 export const ReplicationFabricsReassociateGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1777,7 +1753,7 @@ export const ReplicationFabricsReassociateGatewayOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationFabricsReassociateGateway =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationFabricsReassociateGatewayInput,
     outputSchema: ReplicationFabricsReassociateGatewayOutput,
   }));
@@ -1789,7 +1765,7 @@ export interface ReplicationFabricsRemoveInfraInput {
   fabricName: string;
 }
 export const ReplicationFabricsRemoveInfraInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1805,7 +1781,7 @@ export const ReplicationFabricsRemoveInfraInput =
 // Output Schema
 export type ReplicationFabricsRemoveInfraOutput = void;
 export const ReplicationFabricsRemoveInfraOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsRemoveInfraOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationFabricsRemoveInfraOutput>;
 
 // The operation
 /**
@@ -1818,7 +1794,7 @@ export const ReplicationFabricsRemoveInfraOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationFabricsRemoveInfra =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationFabricsRemoveInfraInput,
     outputSchema: ReplicationFabricsRemoveInfraOutput,
   }));
@@ -1831,7 +1807,7 @@ export interface ReplicationFabricsRenewCertificateInput {
   properties?: { renewCertificateType?: string };
 }
 export const ReplicationFabricsRenewCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1864,7 +1840,7 @@ export interface ReplicationFabricsRenewCertificateOutput {
   };
 }
 export const ReplicationFabricsRenewCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1897,7 +1873,7 @@ export const ReplicationFabricsRenewCertificateOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationFabricsRenewCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationFabricsRenewCertificateInput,
     outputSchema: ReplicationFabricsRenewCertificateOutput,
   }));
@@ -1909,7 +1885,7 @@ export interface ReplicationJobsCancelInput {
   jobName: string;
 }
 export const ReplicationJobsCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1937,7 +1913,7 @@ export interface ReplicationJobsCancelOutput {
   };
 }
 export const ReplicationJobsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1969,12 +1945,10 @@ export const ReplicationJobsCancelOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsCancelInput,
-    outputSchema: ReplicationJobsCancelOutput,
-  }),
-);
+export const ReplicationJobsCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsCancelInput,
+  outputSchema: ReplicationJobsCancelOutput,
+}));
 // Input Schema
 export interface ReplicationJobsExportInput {
   subscriptionId: string;
@@ -1990,7 +1964,7 @@ export interface ReplicationJobsExportInput {
   timezoneOffset?: number;
 }
 export const ReplicationJobsExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2025,7 +1999,7 @@ export interface ReplicationJobsExportOutput {
   };
 }
 export const ReplicationJobsExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2056,12 +2030,10 @@ export const ReplicationJobsExportOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationJobsExport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsExportInput,
-    outputSchema: ReplicationJobsExportOutput,
-  }),
-);
+export const ReplicationJobsExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsExportInput,
+  outputSchema: ReplicationJobsExportOutput,
+}));
 // Input Schema
 export interface ReplicationJobsGetInput {
   subscriptionId: string;
@@ -2070,7 +2042,7 @@ export interface ReplicationJobsGetInput {
   jobName: string;
 }
 export const ReplicationJobsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2098,7 +2070,7 @@ export interface ReplicationJobsGetOutput {
   };
 }
 export const ReplicationJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2130,7 +2102,7 @@ export const ReplicationJobsGetOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationJobsGetInput,
   outputSchema: ReplicationJobsGetOutput,
 }));
@@ -2142,7 +2114,7 @@ export interface ReplicationJobsListInput {
   $filter?: string;
 }
 export const ReplicationJobsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2173,7 +2145,7 @@ export interface ReplicationJobsListOutput {
   nextLink?: string;
 }
 export const ReplicationJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2220,7 +2192,7 @@ export const ReplicationJobsListOutput =
  * @param resourceName - The name of the Vault
  * @param $filter - OData filter options.
  */
-export const ReplicationJobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReplicationJobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReplicationJobsListInput,
   outputSchema: ReplicationJobsListOutput,
 }));
@@ -2232,7 +2204,7 @@ export interface ReplicationJobsRestartInput {
   jobName: string;
 }
 export const ReplicationJobsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2260,7 +2232,7 @@ export interface ReplicationJobsRestartOutput {
   };
 }
 export const ReplicationJobsRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2292,12 +2264,10 @@ export const ReplicationJobsRestartOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsRestartInput,
-    outputSchema: ReplicationJobsRestartOutput,
-  }),
-);
+export const ReplicationJobsRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsRestartInput,
+  outputSchema: ReplicationJobsRestartOutput,
+}));
 // Input Schema
 export interface ReplicationJobsResumeInput {
   subscriptionId: string;
@@ -2307,7 +2277,7 @@ export interface ReplicationJobsResumeInput {
   properties?: { comments?: string };
 }
 export const ReplicationJobsResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2340,7 +2310,7 @@ export interface ReplicationJobsResumeOutput {
   };
 }
 export const ReplicationJobsResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2372,12 +2342,10 @@ export const ReplicationJobsResumeOutput =
  * @param resourceName - The name of the Vault
  * @param jobName - Job identifier.
  */
-export const ReplicationJobsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationJobsResumeInput,
-    outputSchema: ReplicationJobsResumeOutput,
-  }),
-);
+export const ReplicationJobsResume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationJobsResumeInput,
+  outputSchema: ReplicationJobsResumeOutput,
+}));
 // Input Schema
 export interface ReplicationLogicalNetworksGetInput {
   subscriptionId: string;
@@ -2387,7 +2355,7 @@ export interface ReplicationLogicalNetworksGetInput {
   logicalNetworkName: string;
 }
 export const ReplicationLogicalNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2416,7 +2384,7 @@ export interface ReplicationLogicalNetworksGetOutput {
   };
 }
 export const ReplicationLogicalNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2450,7 +2418,7 @@ export const ReplicationLogicalNetworksGetOutput =
  * @param logicalNetworkName - Logical network name.
  */
 export const ReplicationLogicalNetworksGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationLogicalNetworksGetInput,
     outputSchema: ReplicationLogicalNetworksGetOutput,
   }));
@@ -2462,7 +2430,7 @@ export interface ReplicationLogicalNetworksListByReplicationFabricsInput {
   fabricName: string;
 }
 export const ReplicationLogicalNetworksListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2493,7 +2461,7 @@ export interface ReplicationLogicalNetworksListByReplicationFabricsOutput {
   nextLink?: string;
 }
 export const ReplicationLogicalNetworksListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2541,7 +2509,7 @@ export const ReplicationLogicalNetworksListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationLogicalNetworksListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationLogicalNetworksListByReplicationFabricsInput,
     outputSchema: ReplicationLogicalNetworksListByReplicationFabricsOutput,
   }));
@@ -2559,7 +2527,7 @@ export interface ReplicationMigrationItemsCreateInput {
   };
 }
 export const ReplicationMigrationItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2595,7 +2563,7 @@ export interface ReplicationMigrationItemsCreateOutput {
   };
 }
 export const ReplicationMigrationItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2630,7 +2598,7 @@ export const ReplicationMigrationItemsCreateOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsCreateInput,
     outputSchema: ReplicationMigrationItemsCreateOutput,
   }));
@@ -2645,7 +2613,7 @@ export interface ReplicationMigrationItemsDeleteInput {
   deleteOption?: string;
 }
 export const ReplicationMigrationItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2664,7 +2632,7 @@ export const ReplicationMigrationItemsDeleteInput =
 // Output Schema
 export type ReplicationMigrationItemsDeleteOutput = void;
 export const ReplicationMigrationItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationMigrationItemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationMigrationItemsDeleteOutput>;
 
 // The operation
 /**
@@ -2682,7 +2650,7 @@ export const ReplicationMigrationItemsDeleteOutput =
  * @param deleteOption - The delete option.
  */
 export const ReplicationMigrationItemsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsDeleteInput,
     outputSchema: ReplicationMigrationItemsDeleteOutput,
   }));
@@ -2696,7 +2664,7 @@ export interface ReplicationMigrationItemsGetInput {
   migrationItemName: string;
 }
 export const ReplicationMigrationItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2726,7 +2694,7 @@ export interface ReplicationMigrationItemsGetOutput {
   };
 }
 export const ReplicationMigrationItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2759,7 +2727,7 @@ export const ReplicationMigrationItemsGetOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsGetInput,
     outputSchema: ReplicationMigrationItemsGetOutput,
   }));
@@ -2773,7 +2741,7 @@ export interface ReplicationMigrationItemsListInput {
   $filter?: string;
 }
 export const ReplicationMigrationItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2806,7 +2774,7 @@ export interface ReplicationMigrationItemsListOutput {
   nextLink?: string;
 }
 export const ReplicationMigrationItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2854,7 +2822,7 @@ export const ReplicationMigrationItemsListOutput =
  * @param $filter - OData filter options.
  */
 export const ReplicationMigrationItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsListInput,
     outputSchema: ReplicationMigrationItemsListOutput,
   }));
@@ -2870,7 +2838,7 @@ export interface ReplicationMigrationItemsListByReplicationProtectionContainersI
   $filter?: string;
 }
 export const ReplicationMigrationItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2905,7 +2873,7 @@ export interface ReplicationMigrationItemsListByReplicationProtectionContainersO
   nextLink?: string;
 }
 export const ReplicationMigrationItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2957,7 +2925,7 @@ export const ReplicationMigrationItemsListByReplicationProtectionContainersOutpu
  * @param $filter - OData filter options.
  */
 export const ReplicationMigrationItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationMigrationItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -2974,7 +2942,7 @@ export interface ReplicationMigrationItemsMigrateInput {
   properties: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationMigrationItemsMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3009,7 +2977,7 @@ export interface ReplicationMigrationItemsMigrateOutput {
   };
 }
 export const ReplicationMigrationItemsMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3044,7 +3012,7 @@ export const ReplicationMigrationItemsMigrateOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsMigrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsMigrateInput,
     outputSchema: ReplicationMigrationItemsMigrateOutput,
   }));
@@ -3059,7 +3027,7 @@ export interface ReplicationMigrationItemsPauseReplicationInput {
   properties: { instanceType: string };
 }
 export const ReplicationMigrationItemsPauseReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3092,7 +3060,7 @@ export interface ReplicationMigrationItemsPauseReplicationOutput {
   };
 }
 export const ReplicationMigrationItemsPauseReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3127,7 +3095,7 @@ export const ReplicationMigrationItemsPauseReplicationOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsPauseReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsPauseReplicationInput,
     outputSchema: ReplicationMigrationItemsPauseReplicationOutput,
   }));
@@ -3142,7 +3110,7 @@ export interface ReplicationMigrationItemsResumeReplicationInput {
   properties: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationMigrationItemsResumeReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3177,7 +3145,7 @@ export interface ReplicationMigrationItemsResumeReplicationOutput {
   };
 }
 export const ReplicationMigrationItemsResumeReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3212,7 +3180,7 @@ export const ReplicationMigrationItemsResumeReplicationOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsResumeReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsResumeReplicationInput,
     outputSchema: ReplicationMigrationItemsResumeReplicationOutput,
   }));
@@ -3227,7 +3195,7 @@ export interface ReplicationMigrationItemsResyncInput {
   properties: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationMigrationItemsResyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3262,7 +3230,7 @@ export interface ReplicationMigrationItemsResyncOutput {
   };
 }
 export const ReplicationMigrationItemsResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3297,7 +3265,7 @@ export const ReplicationMigrationItemsResyncOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsResync =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsResyncInput,
     outputSchema: ReplicationMigrationItemsResyncOutput,
   }));
@@ -3312,7 +3280,7 @@ export interface ReplicationMigrationItemsTestMigrateInput {
   properties: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationMigrationItemsTestMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3347,7 +3315,7 @@ export interface ReplicationMigrationItemsTestMigrateOutput {
   };
 }
 export const ReplicationMigrationItemsTestMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3382,7 +3350,7 @@ export const ReplicationMigrationItemsTestMigrateOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsTestMigrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsTestMigrateInput,
     outputSchema: ReplicationMigrationItemsTestMigrateOutput,
   }));
@@ -3397,7 +3365,7 @@ export interface ReplicationMigrationItemsTestMigrateCleanupInput {
   properties: { comments?: string };
 }
 export const ReplicationMigrationItemsTestMigrateCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3430,7 +3398,7 @@ export interface ReplicationMigrationItemsTestMigrateCleanupOutput {
   };
 }
 export const ReplicationMigrationItemsTestMigrateCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3465,7 +3433,7 @@ export const ReplicationMigrationItemsTestMigrateCleanupOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsTestMigrateCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsTestMigrateCleanupInput,
     outputSchema: ReplicationMigrationItemsTestMigrateCleanupOutput,
   }));
@@ -3480,7 +3448,7 @@ export interface ReplicationMigrationItemsUpdateInput {
   properties?: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationMigrationItemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3517,7 +3485,7 @@ export interface ReplicationMigrationItemsUpdateOutput {
   };
 }
 export const ReplicationMigrationItemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3552,7 +3520,7 @@ export const ReplicationMigrationItemsUpdateOutput =
  * @param migrationItemName - Migration item name.
  */
 export const ReplicationMigrationItemsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationMigrationItemsUpdateInput,
     outputSchema: ReplicationMigrationItemsUpdateOutput,
   }));
@@ -3571,7 +3539,7 @@ export interface ReplicationNetworkMappingsCreateInput {
   };
 }
 export const ReplicationNetworkMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3610,7 +3578,7 @@ export interface ReplicationNetworkMappingsCreateOutput {
   };
 }
 export const ReplicationNetworkMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3645,7 +3613,7 @@ export const ReplicationNetworkMappingsCreateOutput =
  * @param networkMappingName - Network mapping name.
  */
 export const ReplicationNetworkMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsCreateInput,
     outputSchema: ReplicationNetworkMappingsCreateOutput,
   }));
@@ -3659,7 +3627,7 @@ export interface ReplicationNetworkMappingsDeleteInput {
   networkMappingName: string;
 }
 export const ReplicationNetworkMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3677,7 +3645,7 @@ export const ReplicationNetworkMappingsDeleteInput =
 // Output Schema
 export type ReplicationNetworkMappingsDeleteOutput = void;
 export const ReplicationNetworkMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationNetworkMappingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationNetworkMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -3694,7 +3662,7 @@ export const ReplicationNetworkMappingsDeleteOutput =
  * @param networkMappingName - Network mapping name.
  */
 export const ReplicationNetworkMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsDeleteInput,
     outputSchema: ReplicationNetworkMappingsDeleteOutput,
   }));
@@ -3708,7 +3676,7 @@ export interface ReplicationNetworkMappingsGetInput {
   networkMappingName: string;
 }
 export const ReplicationNetworkMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3738,7 +3706,7 @@ export interface ReplicationNetworkMappingsGetOutput {
   };
 }
 export const ReplicationNetworkMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3773,7 +3741,7 @@ export const ReplicationNetworkMappingsGetOutput =
  * @param networkMappingName - Network mapping name.
  */
 export const ReplicationNetworkMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsGetInput,
     outputSchema: ReplicationNetworkMappingsGetOutput,
   }));
@@ -3784,7 +3752,7 @@ export interface ReplicationNetworkMappingsListInput {
   resourceName: string;
 }
 export const ReplicationNetworkMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3814,7 +3782,7 @@ export interface ReplicationNetworkMappingsListOutput {
   nextLink?: string;
 }
 export const ReplicationNetworkMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3861,7 +3829,7 @@ export const ReplicationNetworkMappingsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationNetworkMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsListInput,
     outputSchema: ReplicationNetworkMappingsListOutput,
   }));
@@ -3874,7 +3842,7 @@ export interface ReplicationNetworkMappingsListByReplicationNetworksInput {
   networkName: string;
 }
 export const ReplicationNetworkMappingsListByReplicationNetworksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3906,7 +3874,7 @@ export interface ReplicationNetworkMappingsListByReplicationNetworksOutput {
   nextLink?: string;
 }
 export const ReplicationNetworkMappingsListByReplicationNetworksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3955,7 +3923,7 @@ export const ReplicationNetworkMappingsListByReplicationNetworksOutput =
  * @param networkName - Primary network name.
  */
 export const ReplicationNetworkMappingsListByReplicationNetworks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsListByReplicationNetworksInput,
     outputSchema: ReplicationNetworkMappingsListByReplicationNetworksOutput,
   }));
@@ -3974,7 +3942,7 @@ export interface ReplicationNetworkMappingsUpdateInput {
   };
 }
 export const ReplicationNetworkMappingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4015,7 +3983,7 @@ export interface ReplicationNetworkMappingsUpdateOutput {
   };
 }
 export const ReplicationNetworkMappingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4050,7 +4018,7 @@ export const ReplicationNetworkMappingsUpdateOutput =
  * @param networkMappingName - Network mapping name.
  */
 export const ReplicationNetworkMappingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworkMappingsUpdateInput,
     outputSchema: ReplicationNetworkMappingsUpdateOutput,
   }));
@@ -4063,7 +4031,7 @@ export interface ReplicationNetworksGetInput {
   networkName: string;
 }
 export const ReplicationNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4092,7 +4060,7 @@ export interface ReplicationNetworksGetOutput {
   };
 }
 export const ReplicationNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4125,12 +4093,10 @@ export const ReplicationNetworksGetOutput =
  * @param fabricName - Fabric name.
  * @param networkName - Primary network name.
  */
-export const ReplicationNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationNetworksGetInput,
-    outputSchema: ReplicationNetworksGetOutput,
-  }),
-);
+export const ReplicationNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworksGetInput,
+  outputSchema: ReplicationNetworksGetOutput,
+}));
 // Input Schema
 export interface ReplicationNetworksListInput {
   subscriptionId: string;
@@ -4138,7 +4104,7 @@ export interface ReplicationNetworksListInput {
   resourceName: string;
 }
 export const ReplicationNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4168,7 +4134,7 @@ export interface ReplicationNetworksListOutput {
   nextLink?: string;
 }
 export const ReplicationNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4214,12 +4180,10 @@ export const ReplicationNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationNetworksListInput,
-    outputSchema: ReplicationNetworksListOutput,
-  }),
-);
+export const ReplicationNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationNetworksListInput,
+  outputSchema: ReplicationNetworksListOutput,
+}));
 // Input Schema
 export interface ReplicationNetworksListByReplicationFabricsInput {
   subscriptionId: string;
@@ -4228,7 +4192,7 @@ export interface ReplicationNetworksListByReplicationFabricsInput {
   fabricName: string;
 }
 export const ReplicationNetworksListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4259,7 +4223,7 @@ export interface ReplicationNetworksListByReplicationFabricsOutput {
   nextLink?: string;
 }
 export const ReplicationNetworksListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4307,7 +4271,7 @@ export const ReplicationNetworksListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationNetworksListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationNetworksListByReplicationFabricsInput,
     outputSchema: ReplicationNetworksListByReplicationFabricsOutput,
   }));
@@ -4320,7 +4284,7 @@ export interface ReplicationPoliciesCreateInput {
   properties?: { providerSpecificInput?: { instanceType: string } };
 }
 export const ReplicationPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4357,7 +4321,7 @@ export interface ReplicationPoliciesCreateOutput {
   };
 }
 export const ReplicationPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4389,12 +4353,10 @@ export const ReplicationPoliciesCreateOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesCreateInput,
-    outputSchema: ReplicationPoliciesCreateOutput,
-  }),
-);
+export const ReplicationPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesCreateInput,
+  outputSchema: ReplicationPoliciesCreateOutput,
+}));
 // Input Schema
 export interface ReplicationPoliciesDeleteInput {
   subscriptionId: string;
@@ -4403,7 +4365,7 @@ export interface ReplicationPoliciesDeleteInput {
   policyName: string;
 }
 export const ReplicationPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4419,7 +4381,7 @@ export const ReplicationPoliciesDeleteInput =
 // Output Schema
 export type ReplicationPoliciesDeleteOutput = void;
 export const ReplicationPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -4433,12 +4395,10 @@ export const ReplicationPoliciesDeleteOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesDeleteInput,
-    outputSchema: ReplicationPoliciesDeleteOutput,
-  }),
-);
+export const ReplicationPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesDeleteInput,
+  outputSchema: ReplicationPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface ReplicationPoliciesGetInput {
   subscriptionId: string;
@@ -4447,7 +4407,7 @@ export interface ReplicationPoliciesGetInput {
   policyName: string;
 }
 export const ReplicationPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4475,7 +4435,7 @@ export interface ReplicationPoliciesGetOutput {
   };
 }
 export const ReplicationPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4507,12 +4467,10 @@ export const ReplicationPoliciesGetOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesGetInput,
-    outputSchema: ReplicationPoliciesGetOutput,
-  }),
-);
+export const ReplicationPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesGetInput,
+  outputSchema: ReplicationPoliciesGetOutput,
+}));
 // Input Schema
 export interface ReplicationPoliciesListInput {
   subscriptionId: string;
@@ -4520,7 +4478,7 @@ export interface ReplicationPoliciesListInput {
   resourceName: string;
 }
 export const ReplicationPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4550,7 +4508,7 @@ export interface ReplicationPoliciesListOutput {
   nextLink?: string;
 }
 export const ReplicationPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4596,12 +4554,10 @@ export const ReplicationPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the Vault
  */
-export const ReplicationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesListInput,
-    outputSchema: ReplicationPoliciesListOutput,
-  }),
-);
+export const ReplicationPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesListInput,
+  outputSchema: ReplicationPoliciesListOutput,
+}));
 // Input Schema
 export interface ReplicationPoliciesUpdateInput {
   subscriptionId: string;
@@ -4611,7 +4567,7 @@ export interface ReplicationPoliciesUpdateInput {
   properties?: { replicationProviderSettings?: { instanceType: string } };
 }
 export const ReplicationPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4648,7 +4604,7 @@ export interface ReplicationPoliciesUpdateOutput {
   };
 }
 export const ReplicationPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4680,12 +4636,10 @@ export const ReplicationPoliciesUpdateOutput =
  * @param resourceName - The name of the Vault
  * @param policyName - Replication policy name.
  */
-export const ReplicationPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationPoliciesUpdateInput,
-    outputSchema: ReplicationPoliciesUpdateOutput,
-  }),
-);
+export const ReplicationPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationPoliciesUpdateInput,
+  outputSchema: ReplicationPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface ReplicationProtectableItemsGetInput {
   subscriptionId: string;
@@ -4696,7 +4650,7 @@ export interface ReplicationProtectableItemsGetInput {
   protectableItemName: string;
 }
 export const ReplicationProtectableItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4726,7 +4680,7 @@ export interface ReplicationProtectableItemsGetOutput {
   };
 }
 export const ReplicationProtectableItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4761,7 +4715,7 @@ export const ReplicationProtectableItemsGetOutput =
  * @param protectableItemName - Protectable item name.
  */
 export const ReplicationProtectableItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectableItemsGetInput,
     outputSchema: ReplicationProtectableItemsGetOutput,
   }));
@@ -4777,7 +4731,7 @@ export interface ReplicationProtectableItemsListByReplicationProtectionContainer
   $skipToken?: string;
 }
 export const ReplicationProtectableItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4812,7 +4766,7 @@ export interface ReplicationProtectableItemsListByReplicationProtectionContainer
   nextLink?: string;
 }
 export const ReplicationProtectableItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4864,7 +4818,7 @@ export const ReplicationProtectableItemsListByReplicationProtectionContainersOut
  * @param $skipToken - skipToken OData query parameter.
  */
 export const ReplicationProtectableItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectableItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -4881,7 +4835,7 @@ export interface ReplicationProtectedItemsAddDisksInput {
   properties?: { providerSpecificDetails: { instanceType: string } };
 }
 export const ReplicationProtectedItemsAddDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4918,7 +4872,7 @@ export interface ReplicationProtectedItemsAddDisksOutput {
   };
 }
 export const ReplicationProtectedItemsAddDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4953,7 +4907,7 @@ export const ReplicationProtectedItemsAddDisksOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsAddDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsAddDisksInput,
     outputSchema: ReplicationProtectedItemsAddDisksOutput,
   }));
@@ -4971,7 +4925,7 @@ export interface ReplicationProtectedItemsApplyRecoveryPointInput {
   };
 }
 export const ReplicationProtectedItemsApplyRecoveryPointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5007,7 +4961,7 @@ export interface ReplicationProtectedItemsApplyRecoveryPointOutput {
   };
 }
 export const ReplicationProtectedItemsApplyRecoveryPointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5042,7 +4996,7 @@ export const ReplicationProtectedItemsApplyRecoveryPointOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsApplyRecoveryPoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsApplyRecoveryPointInput,
     outputSchema: ReplicationProtectedItemsApplyRecoveryPointOutput,
   }));
@@ -5061,7 +5015,7 @@ export interface ReplicationProtectedItemsCreateInput {
   };
 }
 export const ReplicationProtectedItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5102,7 +5056,7 @@ export interface ReplicationProtectedItemsCreateOutput {
   };
 }
 export const ReplicationProtectedItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5137,7 +5091,7 @@ export const ReplicationProtectedItemsCreateOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsCreateInput,
     outputSchema: ReplicationProtectedItemsCreateOutput,
   }));
@@ -5155,7 +5109,7 @@ export interface ReplicationProtectedItemsDeleteInput {
   };
 }
 export const ReplicationProtectedItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5183,7 +5137,7 @@ export const ReplicationProtectedItemsDeleteInput =
 // Output Schema
 export type ReplicationProtectedItemsDeleteOutput = void;
 export const ReplicationProtectedItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectedItemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectedItemsDeleteOutput>;
 
 // The operation
 /**
@@ -5200,7 +5154,7 @@ export const ReplicationProtectedItemsDeleteOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsDeleteInput,
     outputSchema: ReplicationProtectedItemsDeleteOutput,
   }));
@@ -5214,7 +5168,7 @@ export interface ReplicationProtectedItemsFailoverCancelInput {
   replicatedProtectedItemName: string;
 }
 export const ReplicationProtectedItemsFailoverCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5244,7 +5198,7 @@ export interface ReplicationProtectedItemsFailoverCancelOutput {
   };
 }
 export const ReplicationProtectedItemsFailoverCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5279,7 +5233,7 @@ export const ReplicationProtectedItemsFailoverCancelOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsFailoverCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsFailoverCancelInput,
     outputSchema: ReplicationProtectedItemsFailoverCancelOutput,
   }));
@@ -5293,7 +5247,7 @@ export interface ReplicationProtectedItemsFailoverCommitInput {
   replicatedProtectedItemName: string;
 }
 export const ReplicationProtectedItemsFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5323,7 +5277,7 @@ export interface ReplicationProtectedItemsFailoverCommitOutput {
   };
 }
 export const ReplicationProtectedItemsFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5358,7 +5312,7 @@ export const ReplicationProtectedItemsFailoverCommitOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsFailoverCommitInput,
     outputSchema: ReplicationProtectedItemsFailoverCommitOutput,
   }));
@@ -5372,7 +5326,7 @@ export interface ReplicationProtectedItemsGetInput {
   replicatedProtectedItemName: string;
 }
 export const ReplicationProtectedItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5402,7 +5356,7 @@ export interface ReplicationProtectedItemsGetOutput {
   };
 }
 export const ReplicationProtectedItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5437,7 +5391,7 @@ export const ReplicationProtectedItemsGetOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsGetInput,
     outputSchema: ReplicationProtectedItemsGetOutput,
   }));
@@ -5450,7 +5404,7 @@ export interface ReplicationProtectedItemsListInput {
   $filter?: string;
 }
 export const ReplicationProtectedItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5482,7 +5436,7 @@ export interface ReplicationProtectedItemsListOutput {
   nextLink?: string;
 }
 export const ReplicationProtectedItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5531,7 +5485,7 @@ export const ReplicationProtectedItemsListOutput =
  * @param $filter - OData filter options.
  */
 export const ReplicationProtectedItemsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsListInput,
     outputSchema: ReplicationProtectedItemsListOutput,
   }));
@@ -5544,7 +5498,7 @@ export interface ReplicationProtectedItemsListByReplicationProtectionContainersI
   protectionContainerName: string;
 }
 export const ReplicationProtectedItemsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5576,7 +5530,7 @@ export interface ReplicationProtectedItemsListByReplicationProtectionContainersO
   nextLink?: string;
 }
 export const ReplicationProtectedItemsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5625,7 +5579,7 @@ export const ReplicationProtectedItemsListByReplicationProtectionContainersOutpu
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectedItemsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectedItemsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -5645,7 +5599,7 @@ export interface ReplicationProtectedItemsPlannedFailoverInput {
   };
 }
 export const ReplicationProtectedItemsPlannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5685,7 +5639,7 @@ export interface ReplicationProtectedItemsPlannedFailoverOutput {
   };
 }
 export const ReplicationProtectedItemsPlannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5720,7 +5674,7 @@ export const ReplicationProtectedItemsPlannedFailoverOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsPlannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsPlannedFailoverInput,
     outputSchema: ReplicationProtectedItemsPlannedFailoverOutput,
   }));
@@ -5734,7 +5688,7 @@ export interface ReplicationProtectedItemsPurgeInput {
   replicatedProtectedItemName: string;
 }
 export const ReplicationProtectedItemsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5752,7 +5706,7 @@ export const ReplicationProtectedItemsPurgeInput =
 // Output Schema
 export type ReplicationProtectedItemsPurgeOutput = void;
 export const ReplicationProtectedItemsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectedItemsPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectedItemsPurgeOutput>;
 
 // The operation
 /**
@@ -5769,7 +5723,7 @@ export const ReplicationProtectedItemsPurgeOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsPurgeInput,
     outputSchema: ReplicationProtectedItemsPurgeOutput,
   }));
@@ -5784,7 +5738,7 @@ export interface ReplicationProtectedItemsReinstallMobilityServiceInput {
   properties?: { runAsAccountId?: string };
 }
 export const ReplicationProtectedItemsReinstallMobilityServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5819,7 +5773,7 @@ export interface ReplicationProtectedItemsReinstallMobilityServiceOutput {
   };
 }
 export const ReplicationProtectedItemsReinstallMobilityServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5854,7 +5808,7 @@ export const ReplicationProtectedItemsReinstallMobilityServiceOutput =
  * @param replicatedProtectedItemName - The name of the protected item on which the agent is to be updated.
  */
 export const ReplicationProtectedItemsReinstallMobilityService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsReinstallMobilityServiceInput,
     outputSchema: ReplicationProtectedItemsReinstallMobilityServiceOutput,
   }));
@@ -5869,7 +5823,7 @@ export interface ReplicationProtectedItemsRemoveDisksInput {
   properties?: { providerSpecificDetails?: { instanceType: string } };
 }
 export const ReplicationProtectedItemsRemoveDisksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5908,7 +5862,7 @@ export interface ReplicationProtectedItemsRemoveDisksOutput {
   };
 }
 export const ReplicationProtectedItemsRemoveDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5943,7 +5897,7 @@ export const ReplicationProtectedItemsRemoveDisksOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsRemoveDisks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsRemoveDisksInput,
     outputSchema: ReplicationProtectedItemsRemoveDisksOutput,
   }));
@@ -5957,7 +5911,7 @@ export interface ReplicationProtectedItemsRepairReplicationInput {
   replicatedProtectedItemName: string;
 }
 export const ReplicationProtectedItemsRepairReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5987,7 +5941,7 @@ export interface ReplicationProtectedItemsRepairReplicationOutput {
   };
 }
 export const ReplicationProtectedItemsRepairReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6022,7 +5976,7 @@ export const ReplicationProtectedItemsRepairReplicationOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsRepairReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsRepairReplicationInput,
     outputSchema: ReplicationProtectedItemsRepairReplicationOutput,
   }));
@@ -6040,7 +5994,7 @@ export interface ReplicationProtectedItemsReprotectInput {
   };
 }
 export const ReplicationProtectedItemsReprotectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6080,7 +6034,7 @@ export interface ReplicationProtectedItemsReprotectOutput {
   };
 }
 export const ReplicationProtectedItemsReprotectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6115,7 +6069,7 @@ export const ReplicationProtectedItemsReprotectOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsReprotect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsReprotectInput,
     outputSchema: ReplicationProtectedItemsReprotectOutput,
   }));
@@ -6130,7 +6084,7 @@ export interface ReplicationProtectedItemsResolveHealthErrorsInput {
   properties?: { healthErrors?: { healthErrorId?: string }[] };
 }
 export const ReplicationProtectedItemsResolveHealthErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6171,7 +6125,7 @@ export interface ReplicationProtectedItemsResolveHealthErrorsOutput {
   };
 }
 export const ReplicationProtectedItemsResolveHealthErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6206,7 +6160,7 @@ export const ReplicationProtectedItemsResolveHealthErrorsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsResolveHealthErrors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsResolveHealthErrorsInput,
     outputSchema: ReplicationProtectedItemsResolveHealthErrorsOutput,
   }));
@@ -6224,7 +6178,7 @@ export interface ReplicationProtectedItemsSwitchProviderInput {
   };
 }
 export const ReplicationProtectedItemsSwitchProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6264,7 +6218,7 @@ export interface ReplicationProtectedItemsSwitchProviderOutput {
   };
 }
 export const ReplicationProtectedItemsSwitchProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6299,7 +6253,7 @@ export const ReplicationProtectedItemsSwitchProviderOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsSwitchProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsSwitchProviderInput,
     outputSchema: ReplicationProtectedItemsSwitchProviderOutput,
   }));
@@ -6319,7 +6273,7 @@ export interface ReplicationProtectedItemsTestFailoverInput {
   };
 }
 export const ReplicationProtectedItemsTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6359,7 +6313,7 @@ export interface ReplicationProtectedItemsTestFailoverOutput {
   };
 }
 export const ReplicationProtectedItemsTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6394,7 +6348,7 @@ export const ReplicationProtectedItemsTestFailoverOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsTestFailoverInput,
     outputSchema: ReplicationProtectedItemsTestFailoverOutput,
   }));
@@ -6409,7 +6363,7 @@ export interface ReplicationProtectedItemsTestFailoverCleanupInput {
   properties: { comments?: string };
 }
 export const ReplicationProtectedItemsTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6442,7 +6396,7 @@ export interface ReplicationProtectedItemsTestFailoverCleanupOutput {
   };
 }
 export const ReplicationProtectedItemsTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6477,7 +6431,7 @@ export const ReplicationProtectedItemsTestFailoverCleanupOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsTestFailoverCleanupInput,
     outputSchema: ReplicationProtectedItemsTestFailoverCleanupOutput,
   }));
@@ -6496,7 +6450,7 @@ export interface ReplicationProtectedItemsUnplannedFailoverInput {
   };
 }
 export const ReplicationProtectedItemsUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6535,7 +6489,7 @@ export interface ReplicationProtectedItemsUnplannedFailoverOutput {
   };
 }
 export const ReplicationProtectedItemsUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6570,7 +6524,7 @@ export const ReplicationProtectedItemsUnplannedFailoverOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUnplannedFailoverInput,
     outputSchema: ReplicationProtectedItemsUnplannedFailoverOutput,
   }));
@@ -6623,7 +6577,7 @@ export interface ReplicationProtectedItemsUpdateInput {
   };
 }
 export const ReplicationProtectedItemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6714,7 +6668,7 @@ export interface ReplicationProtectedItemsUpdateOutput {
   };
 }
 export const ReplicationProtectedItemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6749,7 +6703,7 @@ export const ReplicationProtectedItemsUpdateOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUpdateInput,
     outputSchema: ReplicationProtectedItemsUpdateOutput,
   }));
@@ -6767,7 +6721,7 @@ export interface ReplicationProtectedItemsUpdateApplianceInput {
   };
 }
 export const ReplicationProtectedItemsUpdateApplianceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6803,7 +6757,7 @@ export interface ReplicationProtectedItemsUpdateApplianceOutput {
   };
 }
 export const ReplicationProtectedItemsUpdateApplianceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6838,7 +6792,7 @@ export const ReplicationProtectedItemsUpdateApplianceOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUpdateAppliance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUpdateApplianceInput,
     outputSchema: ReplicationProtectedItemsUpdateApplianceOutput,
   }));
@@ -6853,7 +6807,7 @@ export interface ReplicationProtectedItemsUpdateMobilityServiceInput {
   properties?: { runAsAccountId?: string };
 }
 export const ReplicationProtectedItemsUpdateMobilityServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6888,7 +6842,7 @@ export interface ReplicationProtectedItemsUpdateMobilityServiceOutput {
   };
 }
 export const ReplicationProtectedItemsUpdateMobilityServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6923,7 +6877,7 @@ export const ReplicationProtectedItemsUpdateMobilityServiceOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const ReplicationProtectedItemsUpdateMobilityService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectedItemsUpdateMobilityServiceInput,
     outputSchema: ReplicationProtectedItemsUpdateMobilityServiceOutput,
   }));
@@ -6942,7 +6896,7 @@ export interface ReplicationProtectionClustersApplyRecoveryPointInput {
   };
 }
 export const ReplicationProtectionClustersApplyRecoveryPointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6981,7 +6935,7 @@ export interface ReplicationProtectionClustersApplyRecoveryPointOutput {
   };
 }
 export const ReplicationProtectionClustersApplyRecoveryPointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7016,7 +6970,7 @@ export const ReplicationProtectionClustersApplyRecoveryPointOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersApplyRecoveryPoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersApplyRecoveryPointInput,
     outputSchema: ReplicationProtectionClustersApplyRecoveryPointOutput,
   }));
@@ -7146,7 +7100,7 @@ export interface ReplicationProtectionClustersCreateInput {
   };
 }
 export const ReplicationProtectionClustersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7340,7 +7294,7 @@ export interface ReplicationProtectionClustersCreateOutput {
   };
 }
 export const ReplicationProtectionClustersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7375,7 +7329,7 @@ export const ReplicationProtectionClustersCreateOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersCreateInput,
     outputSchema: ReplicationProtectionClustersCreateOutput,
   }));
@@ -7389,7 +7343,7 @@ export interface ReplicationProtectionClustersFailoverCommitInput {
   replicationProtectionClusterName: string;
 }
 export const ReplicationProtectionClustersFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7419,7 +7373,7 @@ export interface ReplicationProtectionClustersFailoverCommitOutput {
   };
 }
 export const ReplicationProtectionClustersFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7454,7 +7408,7 @@ export const ReplicationProtectionClustersFailoverCommitOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersFailoverCommitInput,
     outputSchema: ReplicationProtectionClustersFailoverCommitOutput,
   }));
@@ -7468,7 +7422,7 @@ export interface ReplicationProtectionClustersGetInput {
   replicationProtectionClusterName: string;
 }
 export const ReplicationProtectionClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7498,7 +7452,7 @@ export interface ReplicationProtectionClustersGetOutput {
   };
 }
 export const ReplicationProtectionClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7533,7 +7487,7 @@ export const ReplicationProtectionClustersGetOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersGetInput,
     outputSchema: ReplicationProtectionClustersGetOutput,
   }));
@@ -7548,7 +7502,7 @@ export interface ReplicationProtectionClustersGetOperationResultsInput {
   jobId: string;
 }
 export const ReplicationProtectionClustersGetOperationResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7579,7 +7533,7 @@ export interface ReplicationProtectionClustersGetOperationResultsOutput {
   };
 }
 export const ReplicationProtectionClustersGetOperationResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7615,7 +7569,7 @@ export const ReplicationProtectionClustersGetOperationResultsOutput =
  * @param jobId - job id to track.
  */
 export const ReplicationProtectionClustersGetOperationResults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersGetOperationResultsInput,
     outputSchema: ReplicationProtectionClustersGetOperationResultsOutput,
   }));
@@ -7628,7 +7582,7 @@ export interface ReplicationProtectionClustersListInput {
   $filter?: string;
 }
 export const ReplicationProtectionClustersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7660,7 +7614,7 @@ export interface ReplicationProtectionClustersListOutput {
   nextLink?: string;
 }
 export const ReplicationProtectionClustersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7709,7 +7663,7 @@ export const ReplicationProtectionClustersListOutput =
  * @param $filter - OData filter options.
  */
 export const ReplicationProtectionClustersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersListInput,
     outputSchema: ReplicationProtectionClustersListOutput,
   }));
@@ -7722,7 +7676,7 @@ export interface ReplicationProtectionClustersListByReplicationProtectionContain
   protectionContainerName: string;
 }
 export const ReplicationProtectionClustersListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7754,7 +7708,7 @@ export interface ReplicationProtectionClustersListByReplicationProtectionContain
   nextLink?: string;
 }
 export const ReplicationProtectionClustersListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7803,7 +7757,7 @@ export const ReplicationProtectionClustersListByReplicationProtectionContainersO
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionClustersListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectionClustersListByReplicationProtectionContainersInput,
     outputSchema:
@@ -7819,7 +7773,7 @@ export interface ReplicationProtectionClustersPurgeInput {
   replicationProtectionClusterName: string;
 }
 export const ReplicationProtectionClustersPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7837,7 +7791,7 @@ export const ReplicationProtectionClustersPurgeInput =
 // Output Schema
 export type ReplicationProtectionClustersPurgeOutput = void;
 export const ReplicationProtectionClustersPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionClustersPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionClustersPurgeOutput>;
 
 // The operation
 /**
@@ -7854,7 +7808,7 @@ export const ReplicationProtectionClustersPurgeOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersPurgeInput,
     outputSchema: ReplicationProtectionClustersPurgeOutput,
   }));
@@ -7868,7 +7822,7 @@ export interface ReplicationProtectionClustersRepairReplicationInput {
   replicationProtectionClusterName: string;
 }
 export const ReplicationProtectionClustersRepairReplicationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7898,7 +7852,7 @@ export interface ReplicationProtectionClustersRepairReplicationOutput {
   };
 }
 export const ReplicationProtectionClustersRepairReplicationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7933,7 +7887,7 @@ export const ReplicationProtectionClustersRepairReplicationOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersRepairReplication =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersRepairReplicationInput,
     outputSchema: ReplicationProtectionClustersRepairReplicationOutput,
   }));
@@ -7953,7 +7907,7 @@ export interface ReplicationProtectionClustersTestFailoverInput {
   };
 }
 export const ReplicationProtectionClustersTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -7995,7 +7949,7 @@ export interface ReplicationProtectionClustersTestFailoverOutput {
   };
 }
 export const ReplicationProtectionClustersTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8030,7 +7984,7 @@ export const ReplicationProtectionClustersTestFailoverOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersTestFailoverInput,
     outputSchema: ReplicationProtectionClustersTestFailoverOutput,
   }));
@@ -8045,7 +7999,7 @@ export interface ReplicationProtectionClustersTestFailoverCleanupInput {
   properties: { comments?: string };
 }
 export const ReplicationProtectionClustersTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8078,7 +8032,7 @@ export interface ReplicationProtectionClustersTestFailoverCleanupOutput {
   };
 }
 export const ReplicationProtectionClustersTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8113,7 +8067,7 @@ export const ReplicationProtectionClustersTestFailoverCleanupOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersTestFailoverCleanupInput,
     outputSchema: ReplicationProtectionClustersTestFailoverCleanupOutput,
   }));
@@ -8132,7 +8086,7 @@ export interface ReplicationProtectionClustersUnplannedFailoverInput {
   };
 }
 export const ReplicationProtectionClustersUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8171,7 +8125,7 @@ export interface ReplicationProtectionClustersUnplannedFailoverOutput {
   };
 }
 export const ReplicationProtectionClustersUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8206,7 +8160,7 @@ export const ReplicationProtectionClustersUnplannedFailoverOutput =
  * @param replicationProtectionClusterName - Replication protection cluster name.
  */
 export const ReplicationProtectionClustersUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionClustersUnplannedFailoverInput,
     outputSchema: ReplicationProtectionClustersUnplannedFailoverOutput,
   }));
@@ -8225,7 +8179,7 @@ export interface ReplicationProtectionContainerMappingsCreateInput {
   };
 }
 export const ReplicationProtectionContainerMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8266,7 +8220,7 @@ export interface ReplicationProtectionContainerMappingsCreateOutput {
   };
 }
 export const ReplicationProtectionContainerMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8301,7 +8255,7 @@ export const ReplicationProtectionContainerMappingsCreateOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsCreateInput,
     outputSchema: ReplicationProtectionContainerMappingsCreateOutput,
   }));
@@ -8316,7 +8270,7 @@ export interface ReplicationProtectionContainerMappingsDeleteInput {
   properties?: { providerSpecificInput?: { instanceType?: string } };
 }
 export const ReplicationProtectionContainerMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8343,7 +8297,7 @@ export const ReplicationProtectionContainerMappingsDeleteInput =
 // Output Schema
 export type ReplicationProtectionContainerMappingsDeleteOutput = void;
 export const ReplicationProtectionContainerMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainerMappingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainerMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -8360,7 +8314,7 @@ export const ReplicationProtectionContainerMappingsDeleteOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsDeleteInput,
     outputSchema: ReplicationProtectionContainerMappingsDeleteOutput,
   }));
@@ -8374,7 +8328,7 @@ export interface ReplicationProtectionContainerMappingsGetInput {
   mappingName: string;
 }
 export const ReplicationProtectionContainerMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8404,7 +8358,7 @@ export interface ReplicationProtectionContainerMappingsGetOutput {
   };
 }
 export const ReplicationProtectionContainerMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8439,7 +8393,7 @@ export const ReplicationProtectionContainerMappingsGetOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsGetInput,
     outputSchema: ReplicationProtectionContainerMappingsGetOutput,
   }));
@@ -8450,7 +8404,7 @@ export interface ReplicationProtectionContainerMappingsListInput {
   resourceName: string;
 }
 export const ReplicationProtectionContainerMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8480,7 +8434,7 @@ export interface ReplicationProtectionContainerMappingsListOutput {
   nextLink?: string;
 }
 export const ReplicationProtectionContainerMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8527,7 +8481,7 @@ export const ReplicationProtectionContainerMappingsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationProtectionContainerMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsListInput,
     outputSchema: ReplicationProtectionContainerMappingsListOutput,
   }));
@@ -8540,7 +8494,7 @@ export interface ReplicationProtectionContainerMappingsListByReplicationProtecti
   protectionContainerName: string;
 }
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8572,7 +8526,7 @@ export interface ReplicationProtectionContainerMappingsListByReplicationProtecti
   nextLink?: string;
 }
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8621,7 +8575,7 @@ export const ReplicationProtectionContainerMappingsListByReplicationProtectionCo
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainerMappingsListByReplicationProtectionContainers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationProtectionContainerMappingsListByReplicationProtectionContainersInput,
     outputSchema:
@@ -8637,7 +8591,7 @@ export interface ReplicationProtectionContainerMappingsPurgeInput {
   mappingName: string;
 }
 export const ReplicationProtectionContainerMappingsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8655,7 +8609,7 @@ export const ReplicationProtectionContainerMappingsPurgeInput =
 // Output Schema
 export type ReplicationProtectionContainerMappingsPurgeOutput = void;
 export const ReplicationProtectionContainerMappingsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainerMappingsPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainerMappingsPurgeOutput>;
 
 // The operation
 /**
@@ -8672,7 +8626,7 @@ export const ReplicationProtectionContainerMappingsPurgeOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsPurgeInput,
     outputSchema: ReplicationProtectionContainerMappingsPurgeOutput,
   }));
@@ -8687,7 +8641,7 @@ export interface ReplicationProtectionContainerMappingsUpdateInput {
   properties?: { providerSpecificInput?: { instanceType: string } };
 }
 export const ReplicationProtectionContainerMappingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8726,7 +8680,7 @@ export interface ReplicationProtectionContainerMappingsUpdateOutput {
   };
 }
 export const ReplicationProtectionContainerMappingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8761,7 +8715,7 @@ export const ReplicationProtectionContainerMappingsUpdateOutput =
  * @param mappingName - Protection Container mapping name.
  */
 export const ReplicationProtectionContainerMappingsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainerMappingsUpdateInput,
     outputSchema: ReplicationProtectionContainerMappingsUpdateOutput,
   }));
@@ -8775,7 +8729,7 @@ export interface ReplicationProtectionContainersCreateInput {
   properties?: { providerSpecificInput?: { instanceType: string }[] };
 }
 export const ReplicationProtectionContainersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8815,7 +8769,7 @@ export interface ReplicationProtectionContainersCreateOutput {
   };
 }
 export const ReplicationProtectionContainersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8849,7 +8803,7 @@ export const ReplicationProtectionContainersCreateOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersCreateInput,
     outputSchema: ReplicationProtectionContainersCreateOutput,
   }));
@@ -8862,7 +8816,7 @@ export interface ReplicationProtectionContainersDeleteInput {
   protectionContainerName: string;
 }
 export const ReplicationProtectionContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8879,7 +8833,7 @@ export const ReplicationProtectionContainersDeleteInput =
 // Output Schema
 export type ReplicationProtectionContainersDeleteOutput = void;
 export const ReplicationProtectionContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationProtectionContainersDeleteOutput>;
 
 // The operation
 /**
@@ -8895,7 +8849,7 @@ export const ReplicationProtectionContainersDeleteOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersDeleteInput,
     outputSchema: ReplicationProtectionContainersDeleteOutput,
   }));
@@ -8909,7 +8863,7 @@ export interface ReplicationProtectionContainersDiscoverProtectableItemInput {
   properties?: { friendlyName?: string; ipAddress?: string; osType?: string };
 }
 export const ReplicationProtectionContainersDiscoverProtectableItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -8945,7 +8899,7 @@ export interface ReplicationProtectionContainersDiscoverProtectableItemOutput {
   };
 }
 export const ReplicationProtectionContainersDiscoverProtectableItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8979,7 +8933,7 @@ export const ReplicationProtectionContainersDiscoverProtectableItemOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersDiscoverProtectableItem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersDiscoverProtectableItemInput,
     outputSchema: ReplicationProtectionContainersDiscoverProtectableItemOutput,
   }));
@@ -8992,7 +8946,7 @@ export interface ReplicationProtectionContainersGetInput {
   protectionContainerName: string;
 }
 export const ReplicationProtectionContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9021,7 +8975,7 @@ export interface ReplicationProtectionContainersGetOutput {
   };
 }
 export const ReplicationProtectionContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9055,7 +9009,7 @@ export const ReplicationProtectionContainersGetOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersGetInput,
     outputSchema: ReplicationProtectionContainersGetOutput,
   }));
@@ -9066,7 +9020,7 @@ export interface ReplicationProtectionContainersListInput {
   resourceName: string;
 }
 export const ReplicationProtectionContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9096,7 +9050,7 @@ export interface ReplicationProtectionContainersListOutput {
   nextLink?: string;
 }
 export const ReplicationProtectionContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9143,7 +9097,7 @@ export const ReplicationProtectionContainersListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationProtectionContainersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersListInput,
     outputSchema: ReplicationProtectionContainersListOutput,
   }));
@@ -9155,7 +9109,7 @@ export interface ReplicationProtectionContainersListByReplicationFabricsInput {
   fabricName: string;
 }
 export const ReplicationProtectionContainersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9186,7 +9140,7 @@ export interface ReplicationProtectionContainersListByReplicationFabricsOutput {
   nextLink?: string;
 }
 export const ReplicationProtectionContainersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9234,7 +9188,7 @@ export const ReplicationProtectionContainersListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationProtectionContainersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersListByReplicationFabricsInput,
     outputSchema: ReplicationProtectionContainersListByReplicationFabricsOutput,
   }));
@@ -9251,7 +9205,7 @@ export interface ReplicationProtectionContainersSwitchClusterProtectionInput {
   };
 }
 export const ReplicationProtectionContainersSwitchClusterProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9290,7 +9244,7 @@ export interface ReplicationProtectionContainersSwitchClusterProtectionOutput {
   };
 }
 export const ReplicationProtectionContainersSwitchClusterProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9324,7 +9278,7 @@ export const ReplicationProtectionContainersSwitchClusterProtectionOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersSwitchClusterProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersSwitchClusterProtectionInput,
     outputSchema: ReplicationProtectionContainersSwitchClusterProtectionOutput,
   }));
@@ -9341,7 +9295,7 @@ export interface ReplicationProtectionContainersSwitchProtectionInput {
   };
 }
 export const ReplicationProtectionContainersSwitchProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9380,7 +9334,7 @@ export interface ReplicationProtectionContainersSwitchProtectionOutput {
   };
 }
 export const ReplicationProtectionContainersSwitchProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9414,7 +9368,7 @@ export const ReplicationProtectionContainersSwitchProtectionOutput =
  * @param protectionContainerName - Protection container name.
  */
 export const ReplicationProtectionContainersSwitchProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionContainersSwitchProtectionInput,
     outputSchema: ReplicationProtectionContainersSwitchProtectionOutput,
   }));
@@ -9427,7 +9381,7 @@ export interface ReplicationProtectionIntentsCreateInput {
   properties?: { providerSpecificDetails?: { instanceType: string } };
 }
 export const ReplicationProtectionIntentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9464,7 +9418,7 @@ export interface ReplicationProtectionIntentsCreateOutput {
   };
 }
 export const ReplicationProtectionIntentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9497,7 +9451,7 @@ export const ReplicationProtectionIntentsCreateOutput =
  * @param intentObjectName - Replication protection intent name.
  */
 export const ReplicationProtectionIntentsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionIntentsCreateInput,
     outputSchema: ReplicationProtectionIntentsCreateOutput,
   }));
@@ -9509,7 +9463,7 @@ export interface ReplicationProtectionIntentsGetInput {
   intentObjectName: string;
 }
 export const ReplicationProtectionIntentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9537,7 +9491,7 @@ export interface ReplicationProtectionIntentsGetOutput {
   };
 }
 export const ReplicationProtectionIntentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9570,7 +9524,7 @@ export const ReplicationProtectionIntentsGetOutput =
  * @param intentObjectName - Replication protection intent name.
  */
 export const ReplicationProtectionIntentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionIntentsGetInput,
     outputSchema: ReplicationProtectionIntentsGetOutput,
   }));
@@ -9583,7 +9537,7 @@ export interface ReplicationProtectionIntentsListInput {
   takeToken?: string;
 }
 export const ReplicationProtectionIntentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9615,7 +9569,7 @@ export interface ReplicationProtectionIntentsListOutput {
   nextLink?: string;
 }
 export const ReplicationProtectionIntentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9664,7 +9618,7 @@ export const ReplicationProtectionIntentsListOutput =
  * @param takeToken - The page size.
  */
 export const ReplicationProtectionIntentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationProtectionIntentsListInput,
     outputSchema: ReplicationProtectionIntentsListOutput,
   }));
@@ -9728,7 +9682,7 @@ export interface ReplicationRecoveryPlansCreateInput {
   };
 }
 export const ReplicationRecoveryPlansCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9845,7 +9799,7 @@ export interface ReplicationRecoveryPlansCreateOutput {
   };
 }
 export const ReplicationRecoveryPlansCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9878,7 +9832,7 @@ export const ReplicationRecoveryPlansCreateOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansCreateInput,
     outputSchema: ReplicationRecoveryPlansCreateOutput,
   }));
@@ -9890,7 +9844,7 @@ export interface ReplicationRecoveryPlansDeleteInput {
   recoveryPlanName: string;
 }
 export const ReplicationRecoveryPlansDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9906,7 +9860,7 @@ export const ReplicationRecoveryPlansDeleteInput =
 // Output Schema
 export type ReplicationRecoveryPlansDeleteOutput = void;
 export const ReplicationRecoveryPlansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryPlansDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryPlansDeleteOutput>;
 
 // The operation
 /**
@@ -9921,7 +9875,7 @@ export const ReplicationRecoveryPlansDeleteOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansDeleteInput,
     outputSchema: ReplicationRecoveryPlansDeleteOutput,
   }));
@@ -9933,7 +9887,7 @@ export interface ReplicationRecoveryPlansFailoverCancelInput {
   recoveryPlanName: string;
 }
 export const ReplicationRecoveryPlansFailoverCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -9961,7 +9915,7 @@ export interface ReplicationRecoveryPlansFailoverCancelOutput {
   };
 }
 export const ReplicationRecoveryPlansFailoverCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9994,7 +9948,7 @@ export const ReplicationRecoveryPlansFailoverCancelOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansFailoverCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansFailoverCancelInput,
     outputSchema: ReplicationRecoveryPlansFailoverCancelOutput,
   }));
@@ -10006,7 +9960,7 @@ export interface ReplicationRecoveryPlansFailoverCommitInput {
   recoveryPlanName: string;
 }
 export const ReplicationRecoveryPlansFailoverCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10034,7 +9988,7 @@ export interface ReplicationRecoveryPlansFailoverCommitOutput {
   };
 }
 export const ReplicationRecoveryPlansFailoverCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10067,7 +10021,7 @@ export const ReplicationRecoveryPlansFailoverCommitOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansFailoverCommit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansFailoverCommitInput,
     outputSchema: ReplicationRecoveryPlansFailoverCommitOutput,
   }));
@@ -10079,7 +10033,7 @@ export interface ReplicationRecoveryPlansGetInput {
   recoveryPlanName: string;
 }
 export const ReplicationRecoveryPlansGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10107,7 +10061,7 @@ export interface ReplicationRecoveryPlansGetOutput {
   };
 }
 export const ReplicationRecoveryPlansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10139,12 +10093,10 @@ export const ReplicationRecoveryPlansGetOutput =
  * @param resourceName - The name of the Vault
  * @param recoveryPlanName - Name of the recovery plan.
  */
-export const ReplicationRecoveryPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationRecoveryPlansGetInput,
-    outputSchema: ReplicationRecoveryPlansGetOutput,
-  }),
-);
+export const ReplicationRecoveryPlansGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationRecoveryPlansGetInput,
+  outputSchema: ReplicationRecoveryPlansGetOutput,
+}));
 // Input Schema
 export interface ReplicationRecoveryPlansListInput {
   subscriptionId: string;
@@ -10152,7 +10104,7 @@ export interface ReplicationRecoveryPlansListInput {
   resourceName: string;
 }
 export const ReplicationRecoveryPlansListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10182,7 +10134,7 @@ export interface ReplicationRecoveryPlansListOutput {
   nextLink?: string;
 }
 export const ReplicationRecoveryPlansListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10229,7 +10181,7 @@ export const ReplicationRecoveryPlansListOutput =
  * @param resourceName - The name of the Vault
  */
 export const ReplicationRecoveryPlansList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansListInput,
     outputSchema: ReplicationRecoveryPlansListOutput,
   }));
@@ -10245,7 +10197,7 @@ export interface ReplicationRecoveryPlansPlannedFailoverInput {
   };
 }
 export const ReplicationRecoveryPlansPlannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10286,7 +10238,7 @@ export interface ReplicationRecoveryPlansPlannedFailoverOutput {
   };
 }
 export const ReplicationRecoveryPlansPlannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10319,7 +10271,7 @@ export const ReplicationRecoveryPlansPlannedFailoverOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansPlannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansPlannedFailoverInput,
     outputSchema: ReplicationRecoveryPlansPlannedFailoverOutput,
   }));
@@ -10331,7 +10283,7 @@ export interface ReplicationRecoveryPlansReprotectInput {
   recoveryPlanName: string;
 }
 export const ReplicationRecoveryPlansReprotectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10359,7 +10311,7 @@ export interface ReplicationRecoveryPlansReprotectOutput {
   };
 }
 export const ReplicationRecoveryPlansReprotectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10392,7 +10344,7 @@ export const ReplicationRecoveryPlansReprotectOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansReprotect =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansReprotectInput,
     outputSchema: ReplicationRecoveryPlansReprotectOutput,
   }));
@@ -10410,7 +10362,7 @@ export interface ReplicationRecoveryPlansTestFailoverInput {
   };
 }
 export const ReplicationRecoveryPlansTestFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10453,7 +10405,7 @@ export interface ReplicationRecoveryPlansTestFailoverOutput {
   };
 }
 export const ReplicationRecoveryPlansTestFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10486,7 +10438,7 @@ export const ReplicationRecoveryPlansTestFailoverOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansTestFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansTestFailoverInput,
     outputSchema: ReplicationRecoveryPlansTestFailoverOutput,
   }));
@@ -10499,7 +10451,7 @@ export interface ReplicationRecoveryPlansTestFailoverCleanupInput {
   properties: { comments?: string };
 }
 export const ReplicationRecoveryPlansTestFailoverCleanupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10530,7 +10482,7 @@ export interface ReplicationRecoveryPlansTestFailoverCleanupOutput {
   };
 }
 export const ReplicationRecoveryPlansTestFailoverCleanupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10563,7 +10515,7 @@ export const ReplicationRecoveryPlansTestFailoverCleanupOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansTestFailoverCleanup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansTestFailoverCleanupInput,
     outputSchema: ReplicationRecoveryPlansTestFailoverCleanupOutput,
   }));
@@ -10580,7 +10532,7 @@ export interface ReplicationRecoveryPlansUnplannedFailoverInput {
   };
 }
 export const ReplicationRecoveryPlansUnplannedFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10622,7 +10574,7 @@ export interface ReplicationRecoveryPlansUnplannedFailoverOutput {
   };
 }
 export const ReplicationRecoveryPlansUnplannedFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10655,7 +10607,7 @@ export const ReplicationRecoveryPlansUnplannedFailoverOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansUnplannedFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansUnplannedFailoverInput,
     outputSchema: ReplicationRecoveryPlansUnplannedFailoverOutput,
   }));
@@ -10715,7 +10667,7 @@ export interface ReplicationRecoveryPlansUpdateInput {
   };
 }
 export const ReplicationRecoveryPlansUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10830,7 +10782,7 @@ export interface ReplicationRecoveryPlansUpdateOutput {
   };
 }
 export const ReplicationRecoveryPlansUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10863,7 +10815,7 @@ export const ReplicationRecoveryPlansUpdateOutput =
  * @param recoveryPlanName - Name of the recovery plan.
  */
 export const ReplicationRecoveryPlansUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryPlansUpdateInput,
     outputSchema: ReplicationRecoveryPlansUpdateOutput,
   }));
@@ -10902,7 +10854,7 @@ export interface ReplicationRecoveryServicesProvidersCreateInput {
   };
 }
 export const ReplicationRecoveryServicesProvidersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -10959,7 +10911,7 @@ export interface ReplicationRecoveryServicesProvidersCreateOutput {
   };
 }
 export const ReplicationRecoveryServicesProvidersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10993,7 +10945,7 @@ export const ReplicationRecoveryServicesProvidersCreateOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersCreateInput,
     outputSchema: ReplicationRecoveryServicesProvidersCreateOutput,
   }));
@@ -11006,7 +10958,7 @@ export interface ReplicationRecoveryServicesProvidersDeleteInput {
   providerName: string;
 }
 export const ReplicationRecoveryServicesProvidersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11023,7 +10975,7 @@ export const ReplicationRecoveryServicesProvidersDeleteInput =
 // Output Schema
 export type ReplicationRecoveryServicesProvidersDeleteOutput = void;
 export const ReplicationRecoveryServicesProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryServicesProvidersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryServicesProvidersDeleteOutput>;
 
 // The operation
 /**
@@ -11039,7 +10991,7 @@ export const ReplicationRecoveryServicesProvidersDeleteOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersDeleteInput,
     outputSchema: ReplicationRecoveryServicesProvidersDeleteOutput,
   }));
@@ -11052,7 +11004,7 @@ export interface ReplicationRecoveryServicesProvidersGetInput {
   providerName: string;
 }
 export const ReplicationRecoveryServicesProvidersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11081,7 +11033,7 @@ export interface ReplicationRecoveryServicesProvidersGetOutput {
   };
 }
 export const ReplicationRecoveryServicesProvidersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11115,7 +11067,7 @@ export const ReplicationRecoveryServicesProvidersGetOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersGetInput,
     outputSchema: ReplicationRecoveryServicesProvidersGetOutput,
   }));
@@ -11126,7 +11078,7 @@ export interface ReplicationRecoveryServicesProvidersListInput {
   resourceName: string;
 }
 export const ReplicationRecoveryServicesProvidersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11156,7 +11108,7 @@ export interface ReplicationRecoveryServicesProvidersListOutput {
   nextLink?: string;
 }
 export const ReplicationRecoveryServicesProvidersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11203,7 +11155,7 @@ export const ReplicationRecoveryServicesProvidersListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationRecoveryServicesProvidersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersListInput,
     outputSchema: ReplicationRecoveryServicesProvidersListOutput,
   }));
@@ -11215,7 +11167,7 @@ export interface ReplicationRecoveryServicesProvidersListByReplicationFabricsInp
   fabricName: string;
 }
 export const ReplicationRecoveryServicesProvidersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11246,7 +11198,7 @@ export interface ReplicationRecoveryServicesProvidersListByReplicationFabricsOut
   nextLink?: string;
 }
 export const ReplicationRecoveryServicesProvidersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11294,7 +11246,7 @@ export const ReplicationRecoveryServicesProvidersListByReplicationFabricsOutput 
  * @param fabricName - Fabric name.
  */
 export const ReplicationRecoveryServicesProvidersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationRecoveryServicesProvidersListByReplicationFabricsInput,
     outputSchema:
@@ -11309,7 +11261,7 @@ export interface ReplicationRecoveryServicesProvidersPurgeInput {
   providerName: string;
 }
 export const ReplicationRecoveryServicesProvidersPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11326,7 +11278,7 @@ export const ReplicationRecoveryServicesProvidersPurgeInput =
 // Output Schema
 export type ReplicationRecoveryServicesProvidersPurgeOutput = void;
 export const ReplicationRecoveryServicesProvidersPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryServicesProvidersPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationRecoveryServicesProvidersPurgeOutput>;
 
 // The operation
 /**
@@ -11342,7 +11294,7 @@ export const ReplicationRecoveryServicesProvidersPurgeOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersPurge =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersPurgeInput,
     outputSchema: ReplicationRecoveryServicesProvidersPurgeOutput,
   }));
@@ -11355,7 +11307,7 @@ export interface ReplicationRecoveryServicesProvidersRefreshProviderInput {
   providerName: string;
 }
 export const ReplicationRecoveryServicesProvidersRefreshProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11384,7 +11336,7 @@ export interface ReplicationRecoveryServicesProvidersRefreshProviderOutput {
   };
 }
 export const ReplicationRecoveryServicesProvidersRefreshProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11418,7 +11370,7 @@ export const ReplicationRecoveryServicesProvidersRefreshProviderOutput =
  * @param providerName - Recovery services provider name.
  */
 export const ReplicationRecoveryServicesProvidersRefreshProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationRecoveryServicesProvidersRefreshProviderInput,
     outputSchema: ReplicationRecoveryServicesProvidersRefreshProviderOutput,
   }));
@@ -11433,7 +11385,7 @@ export interface ReplicationStorageClassificationMappingsCreateInput {
   properties?: { targetStorageClassificationId?: string };
 }
 export const ReplicationStorageClassificationMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11468,7 +11420,7 @@ export interface ReplicationStorageClassificationMappingsCreateOutput {
   };
 }
 export const ReplicationStorageClassificationMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11503,7 +11455,7 @@ export const ReplicationStorageClassificationMappingsCreateOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsCreateInput,
     outputSchema: ReplicationStorageClassificationMappingsCreateOutput,
   }));
@@ -11517,7 +11469,7 @@ export interface ReplicationStorageClassificationMappingsDeleteInput {
   storageClassificationMappingName: string;
 }
 export const ReplicationStorageClassificationMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11535,7 +11487,7 @@ export const ReplicationStorageClassificationMappingsDeleteInput =
 // Output Schema
 export type ReplicationStorageClassificationMappingsDeleteOutput = void;
 export const ReplicationStorageClassificationMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationStorageClassificationMappingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationStorageClassificationMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -11552,7 +11504,7 @@ export const ReplicationStorageClassificationMappingsDeleteOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsDeleteInput,
     outputSchema: ReplicationStorageClassificationMappingsDeleteOutput,
   }));
@@ -11566,7 +11518,7 @@ export interface ReplicationStorageClassificationMappingsGetInput {
   storageClassificationMappingName: string;
 }
 export const ReplicationStorageClassificationMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11596,7 +11548,7 @@ export interface ReplicationStorageClassificationMappingsGetOutput {
   };
 }
 export const ReplicationStorageClassificationMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11631,7 +11583,7 @@ export const ReplicationStorageClassificationMappingsGetOutput =
  * @param storageClassificationMappingName - Storage classification mapping name.
  */
 export const ReplicationStorageClassificationMappingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsGetInput,
     outputSchema: ReplicationStorageClassificationMappingsGetOutput,
   }));
@@ -11642,7 +11594,7 @@ export interface ReplicationStorageClassificationMappingsListInput {
   resourceName: string;
 }
 export const ReplicationStorageClassificationMappingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11672,7 +11624,7 @@ export interface ReplicationStorageClassificationMappingsListOutput {
   nextLink?: string;
 }
 export const ReplicationStorageClassificationMappingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11719,7 +11671,7 @@ export const ReplicationStorageClassificationMappingsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationStorageClassificationMappingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationMappingsListInput,
     outputSchema: ReplicationStorageClassificationMappingsListOutput,
   }));
@@ -11732,7 +11684,7 @@ export interface ReplicationStorageClassificationMappingsListByReplicationStorag
   storageClassificationName: string;
 }
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11764,7 +11716,7 @@ export interface ReplicationStorageClassificationMappingsListByReplicationStorag
   nextLink?: string;
 }
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11813,7 +11765,7 @@ export const ReplicationStorageClassificationMappingsListByReplicationStorageCla
  * @param storageClassificationName - Storage classification name.
  */
 export const ReplicationStorageClassificationMappingsListByReplicationStorageClassifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsInput,
     outputSchema:
@@ -11828,7 +11780,7 @@ export interface ReplicationStorageClassificationsGetInput {
   storageClassificationName: string;
 }
 export const ReplicationStorageClassificationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11857,7 +11809,7 @@ export interface ReplicationStorageClassificationsGetOutput {
   };
 }
 export const ReplicationStorageClassificationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11891,7 +11843,7 @@ export const ReplicationStorageClassificationsGetOutput =
  * @param storageClassificationName - Storage classification name.
  */
 export const ReplicationStorageClassificationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationsGetInput,
     outputSchema: ReplicationStorageClassificationsGetOutput,
   }));
@@ -11902,7 +11854,7 @@ export interface ReplicationStorageClassificationsListInput {
   resourceName: string;
 }
 export const ReplicationStorageClassificationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -11932,7 +11884,7 @@ export interface ReplicationStorageClassificationsListOutput {
   nextLink?: string;
 }
 export const ReplicationStorageClassificationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11979,7 +11931,7 @@ export const ReplicationStorageClassificationsListOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationStorageClassificationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationsListInput,
     outputSchema: ReplicationStorageClassificationsListOutput,
   }));
@@ -11991,7 +11943,7 @@ export interface ReplicationStorageClassificationsListByReplicationFabricsInput 
   fabricName: string;
 }
 export const ReplicationStorageClassificationsListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12022,7 +11974,7 @@ export interface ReplicationStorageClassificationsListByReplicationFabricsOutput
   nextLink?: string;
 }
 export const ReplicationStorageClassificationsListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12070,7 +12022,7 @@ export const ReplicationStorageClassificationsListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationStorageClassificationsListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationStorageClassificationsListByReplicationFabricsInput,
     outputSchema:
       ReplicationStorageClassificationsListByReplicationFabricsOutput,
@@ -12082,7 +12034,7 @@ export interface ReplicationVaultHealthGetInput {
   resourceName: string;
 }
 export const ReplicationVaultHealthGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12109,7 +12061,7 @@ export interface ReplicationVaultHealthGetOutput {
   };
 }
 export const ReplicationVaultHealthGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12140,12 +12092,10 @@ export const ReplicationVaultHealthGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationVaultHealthGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultHealthGetInput,
-    outputSchema: ReplicationVaultHealthGetOutput,
-  }),
-);
+export const ReplicationVaultHealthGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultHealthGetInput,
+  outputSchema: ReplicationVaultHealthGetOutput,
+}));
 // Input Schema
 export interface ReplicationVaultHealthRefreshInput {
   subscriptionId: string;
@@ -12153,7 +12103,7 @@ export interface ReplicationVaultHealthRefreshInput {
   resourceName: string;
 }
 export const ReplicationVaultHealthRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12180,7 +12130,7 @@ export interface ReplicationVaultHealthRefreshOutput {
   };
 }
 export const ReplicationVaultHealthRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12210,7 +12160,7 @@ export const ReplicationVaultHealthRefreshOutput =
  * @param resourceName - The name of the recovery services vault.
  */
 export const ReplicationVaultHealthRefresh =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationVaultHealthRefreshInput,
     outputSchema: ReplicationVaultHealthRefreshOutput,
   }));
@@ -12226,7 +12176,7 @@ export interface ReplicationVaultSettingCreateInput {
   };
 }
 export const ReplicationVaultSettingCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12258,7 +12208,7 @@ export interface ReplicationVaultSettingCreateOutput {
   };
 }
 export const ReplicationVaultSettingCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12291,7 +12241,7 @@ export const ReplicationVaultSettingCreateOutput =
  * @param vaultSettingName - Vault setting name.
  */
 export const ReplicationVaultSettingCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationVaultSettingCreateInput,
     outputSchema: ReplicationVaultSettingCreateOutput,
   }));
@@ -12303,7 +12253,7 @@ export interface ReplicationVaultSettingGetInput {
   vaultSettingName: string;
 }
 export const ReplicationVaultSettingGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12331,7 +12281,7 @@ export interface ReplicationVaultSettingGetOutput {
   };
 }
 export const ReplicationVaultSettingGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12363,12 +12313,10 @@ export const ReplicationVaultSettingGetOutput =
  * @param resourceName - The name of the Vault
  * @param vaultSettingName - Vault setting name.
  */
-export const ReplicationVaultSettingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultSettingGetInput,
-    outputSchema: ReplicationVaultSettingGetOutput,
-  }),
-);
+export const ReplicationVaultSettingGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultSettingGetInput,
+  outputSchema: ReplicationVaultSettingGetOutput,
+}));
 // Input Schema
 export interface ReplicationVaultSettingListInput {
   subscriptionId: string;
@@ -12376,7 +12324,7 @@ export interface ReplicationVaultSettingListInput {
   resourceName: string;
 }
 export const ReplicationVaultSettingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12406,7 +12354,7 @@ export interface ReplicationVaultSettingListOutput {
   nextLink?: string;
 }
 export const ReplicationVaultSettingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12452,12 +12400,10 @@ export const ReplicationVaultSettingListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationVaultSettingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationVaultSettingListInput,
-    outputSchema: ReplicationVaultSettingListOutput,
-  }),
-);
+export const ReplicationVaultSettingList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationVaultSettingListInput,
+  outputSchema: ReplicationVaultSettingListOutput,
+}));
 // Input Schema
 export interface ReplicationvCentersCreateInput {
   subscriptionId: string;
@@ -12474,7 +12420,7 @@ export interface ReplicationvCentersCreateInput {
   };
 }
 export const ReplicationvCentersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12512,7 +12458,7 @@ export interface ReplicationvCentersCreateOutput {
   };
 }
 export const ReplicationvCentersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12545,12 +12491,10 @@ export const ReplicationvCentersCreateOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersCreateInput,
-    outputSchema: ReplicationvCentersCreateOutput,
-  }),
-);
+export const ReplicationvCentersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersCreateInput,
+  outputSchema: ReplicationvCentersCreateOutput,
+}));
 // Input Schema
 export interface ReplicationvCentersDeleteInput {
   subscriptionId: string;
@@ -12560,7 +12504,7 @@ export interface ReplicationvCentersDeleteInput {
   vcenterName: string;
 }
 export const ReplicationvCentersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12577,7 +12521,7 @@ export const ReplicationvCentersDeleteInput =
 // Output Schema
 export type ReplicationvCentersDeleteOutput = void;
 export const ReplicationvCentersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationvCentersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationvCentersDeleteOutput>;
 
 // The operation
 /**
@@ -12592,12 +12536,10 @@ export const ReplicationvCentersDeleteOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersDeleteInput,
-    outputSchema: ReplicationvCentersDeleteOutput,
-  }),
-);
+export const ReplicationvCentersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersDeleteInput,
+  outputSchema: ReplicationvCentersDeleteOutput,
+}));
 // Input Schema
 export interface ReplicationvCentersGetInput {
   subscriptionId: string;
@@ -12607,7 +12549,7 @@ export interface ReplicationvCentersGetInput {
   vcenterName: string;
 }
 export const ReplicationvCentersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12636,7 +12578,7 @@ export interface ReplicationvCentersGetOutput {
   };
 }
 export const ReplicationvCentersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12669,12 +12611,10 @@ export const ReplicationvCentersGetOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersGetInput,
-    outputSchema: ReplicationvCentersGetOutput,
-  }),
-);
+export const ReplicationvCentersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersGetInput,
+  outputSchema: ReplicationvCentersGetOutput,
+}));
 // Input Schema
 export interface ReplicationvCentersListInput {
   subscriptionId: string;
@@ -12682,7 +12622,7 @@ export interface ReplicationvCentersListInput {
   resourceName: string;
 }
 export const ReplicationvCentersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12712,7 +12652,7 @@ export interface ReplicationvCentersListOutput {
   nextLink?: string;
 }
 export const ReplicationvCentersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12758,12 +12698,10 @@ export const ReplicationvCentersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the recovery services vault.
  */
-export const ReplicationvCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersListInput,
-    outputSchema: ReplicationvCentersListOutput,
-  }),
-);
+export const ReplicationvCentersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersListInput,
+  outputSchema: ReplicationvCentersListOutput,
+}));
 // Input Schema
 export interface ReplicationvCentersListByReplicationFabricsInput {
   subscriptionId: string;
@@ -12772,7 +12710,7 @@ export interface ReplicationvCentersListByReplicationFabricsInput {
   fabricName: string;
 }
 export const ReplicationvCentersListByReplicationFabricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12803,7 +12741,7 @@ export interface ReplicationvCentersListByReplicationFabricsOutput {
   nextLink?: string;
 }
 export const ReplicationvCentersListByReplicationFabricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12851,7 +12789,7 @@ export const ReplicationvCentersListByReplicationFabricsOutput =
  * @param fabricName - Fabric name.
  */
 export const ReplicationvCentersListByReplicationFabrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplicationvCentersListByReplicationFabricsInput,
     outputSchema: ReplicationvCentersListByReplicationFabricsOutput,
   }));
@@ -12871,7 +12809,7 @@ export interface ReplicationvCentersUpdateInput {
   };
 }
 export const ReplicationvCentersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12909,7 +12847,7 @@ export interface ReplicationvCentersUpdateOutput {
   };
 }
 export const ReplicationvCentersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12942,12 +12880,10 @@ export const ReplicationvCentersUpdateOutput =
  * @param fabricName - Fabric name.
  * @param vcenterName - vcenter name.
  */
-export const ReplicationvCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicationvCentersUpdateInput,
-    outputSchema: ReplicationvCentersUpdateOutput,
-  }),
-);
+export const ReplicationvCentersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicationvCentersUpdateInput,
+  outputSchema: ReplicationvCentersUpdateOutput,
+}));
 // Input Schema
 export interface SupportedOperatingSystemsGetInput {
   subscriptionId: string;
@@ -12956,7 +12892,7 @@ export interface SupportedOperatingSystemsGetInput {
   instanceType?: string;
 }
 export const SupportedOperatingSystemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -12984,7 +12920,7 @@ export interface SupportedOperatingSystemsGetOutput {
   };
 }
 export const SupportedOperatingSystemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13015,7 +12951,7 @@ export const SupportedOperatingSystemsGetOutput =
  * @param instanceType - The instance type.
  */
 export const SupportedOperatingSystemsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportedOperatingSystemsGetInput,
     outputSchema: SupportedOperatingSystemsGetOutput,
   }));
@@ -13029,7 +12965,7 @@ export interface TargetComputeSizesListByReplicationProtectedItemsInput {
   replicatedProtectedItemName: string;
 }
 export const TargetComputeSizesListByReplicationProtectedItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -13066,7 +13002,7 @@ export interface TargetComputeSizesListByReplicationProtectedItemsOutput {
   nextLink?: string;
 }
 export const TargetComputeSizesListByReplicationProtectedItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -13113,7 +13049,7 @@ export const TargetComputeSizesListByReplicationProtectedItemsOutput =
  * @param replicatedProtectedItemName - Replication protected item name.
  */
 export const TargetComputeSizesListByReplicationProtectedItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TargetComputeSizesListByReplicationProtectedItemsInput,
     outputSchema: TargetComputeSizesListByReplicationProtectedItemsOutput,
   }));

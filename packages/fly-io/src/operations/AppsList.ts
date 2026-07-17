@@ -8,7 +8,7 @@ export interface AppsListInput {
   org_slug: string;
   app_role?: string;
 }
-export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsListInput = /*@__PURE__*/ Schema.Struct({
   org_slug: Schema.String,
   app_role: Schema.optional(Schema.String),
 }).pipe(
@@ -33,7 +33,7 @@ export interface AppsListOutput {
   }[];
   total_apps?: number;
 }
-export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppsListOutput = /*@__PURE__*/ Schema.Struct({
   apps: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -66,7 +66,7 @@ export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param org_slug - The org slug, or 'personal', to filter apps
  * @param app_role - Filter apps by role
  */
-export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppsListInput,
   outputSchema: AppsListOutput,
   errors: [Forbidden] as const,

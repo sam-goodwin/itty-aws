@@ -14,7 +14,7 @@ export interface AggregatedCostGetByManagementGroupInput {
   $filter?: string;
 }
 export const AggregatedCostGetByManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -40,7 +40,7 @@ export interface AggregatedCostGetByManagementGroupOutput {
   };
 }
 export const AggregatedCostGetByManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export const AggregatedCostGetByManagementGroupOutput =
  * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
  */
 export const AggregatedCostGetByManagementGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AggregatedCostGetByManagementGroupInput,
     outputSchema: AggregatedCostGetByManagementGroupOutput,
   }));
@@ -79,7 +79,7 @@ export interface AggregatedCostGetForBillingPeriodByManagementGroupInput {
   billingPeriodName: string;
 }
 export const AggregatedCostGetForBillingPeriodByManagementGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -105,7 +105,7 @@ export interface AggregatedCostGetForBillingPeriodByManagementGroupOutput {
   };
 }
 export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
  * @param billingPeriodName - Billing Period Name.
  */
 export const AggregatedCostGetForBillingPeriodByManagementGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AggregatedCostGetForBillingPeriodByManagementGroupInput,
     outputSchema: AggregatedCostGetForBillingPeriodByManagementGroupOutput,
   }));
@@ -143,7 +143,7 @@ export interface BalancesGetByBillingAccountInput {
   billingAccountId: string;
 }
 export const BalancesGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -168,7 +168,7 @@ export interface BalancesGetByBillingAccountOutput {
   };
 }
 export const BalancesGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -195,19 +195,17 @@ export const BalancesGetByBillingAccountOutput =
  * @param api-version - The API version to use for this operation.
  * @param billingAccountId - BillingAccount ID
  */
-export const BalancesGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BalancesGetByBillingAccountInput,
-    outputSchema: BalancesGetByBillingAccountOutput,
-  }),
-);
+export const BalancesGetByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BalancesGetByBillingAccountInput,
+  outputSchema: BalancesGetByBillingAccountOutput,
+}));
 // Input Schema
 export interface BalancesGetForBillingPeriodByBillingAccountInput {
   billingAccountId: string;
   billingPeriodName: string;
 }
 export const BalancesGetForBillingPeriodByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -233,7 +231,7 @@ export interface BalancesGetForBillingPeriodByBillingAccountOutput {
   };
 }
 export const BalancesGetForBillingPeriodByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -262,7 +260,7 @@ export const BalancesGetForBillingPeriodByBillingAccountOutput =
  * @param billingPeriodName - Billing Period Name.
  */
 export const BalancesGetForBillingPeriodByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BalancesGetForBillingPeriodByBillingAccountInput,
     outputSchema: BalancesGetForBillingPeriodByBillingAccountOutput,
   }));
@@ -329,7 +327,7 @@ export interface BudgetsCreateOrUpdateInput {
   eTag?: string;
 }
 export const BudgetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     budgetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -469,7 +467,7 @@ export interface BudgetsCreateOrUpdateOutput {
   };
 }
 export const BudgetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -497,18 +495,16 @@ export const BudgetsCreateOrUpdateOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BudgetsCreateOrUpdateInput,
-    outputSchema: BudgetsCreateOrUpdateOutput,
-  }),
-);
+export const BudgetsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BudgetsCreateOrUpdateInput,
+  outputSchema: BudgetsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BudgetsDeleteInput {
   scope: string;
   budgetName: string;
 }
-export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -522,7 +518,7 @@ export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BudgetsDeleteOutput = void;
 export const BudgetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BudgetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BudgetsDeleteOutput>;
 
 // The operation
 /**
@@ -532,7 +528,7 @@ export const BudgetsDeleteOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsDeleteInput,
   outputSchema: BudgetsDeleteOutput,
 }));
@@ -541,7 +537,7 @@ export interface BudgetsGetInput {
   scope: string;
   budgetName: string;
 }
-export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -566,7 +562,7 @@ export interface BudgetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -594,7 +590,7 @@ export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param budgetName - Budget Name.
  */
-export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsGetInput,
   outputSchema: BudgetsGetOutput,
 }));
@@ -602,7 +598,7 @@ export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface BudgetsListInput {
   scope: string;
 }
-export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -629,7 +625,7 @@ export interface BudgetsListOutput {
   }[];
   nextLink?: string;
 }
-export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BudgetsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -673,7 +669,7 @@ export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const BudgetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BudgetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BudgetsListInput,
   outputSchema: BudgetsListOutput,
 }));
@@ -685,7 +681,7 @@ export interface ChargesListInput {
   $filter?: string;
   $apply?: string;
 }
-export const ChargesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChargesListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   startDate: Schema.optional(Schema.String),
   endDate: Schema.optional(Schema.String),
@@ -715,7 +711,7 @@ export interface ChargesListOutput {
     };
   }[];
 }
-export const ChargesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChargesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -762,7 +758,7 @@ export const ChargesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - May be used to filter charges by properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:).
  * @param $apply - May be used to group charges for billingAccount scope by properties/billingProfileId, properties/invoiceSectionId, properties/customerId (specific for Partner Led), or for billingProfile scope by properties/invoiceSectionId.
  */
-export const ChargesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChargesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChargesListInput,
   outputSchema: ChargesListOutput,
 }));
@@ -771,7 +767,7 @@ export interface CreditsGetInput {
   billingAccountId: string;
   billingProfileId: string;
 }
-export const CreditsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreditsGetInput = /*@__PURE__*/ Schema.Struct({
   billingAccountId: Schema.String.pipe(T.PathParam()),
   billingProfileId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -796,7 +792,7 @@ export interface CreditsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CreditsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreditsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -824,7 +820,7 @@ export const CreditsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param billingAccountId - BillingAccount ID
  * @param billingProfileId - Azure Billing Profile ID.
  */
-export const CreditsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CreditsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreditsGetInput,
   outputSchema: CreditsGetOutput,
 }));
@@ -834,7 +830,7 @@ export interface EventsListByBillingAccountInput {
   $filter?: string;
 }
 export const EventsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -863,7 +859,7 @@ export interface EventsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const EventsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -908,12 +904,10 @@ export const EventsListByBillingAccountOutput =
  * @param billingAccountId - BillingAccount ID
  * @param $filter - May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:).
  */
-export const EventsListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListByBillingAccountInput,
-    outputSchema: EventsListByBillingAccountOutput,
-  }),
-);
+export const EventsListByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListByBillingAccountInput,
+  outputSchema: EventsListByBillingAccountOutput,
+}));
 // Input Schema
 export interface EventsListByBillingProfileInput {
   billingAccountId: string;
@@ -922,7 +916,7 @@ export interface EventsListByBillingProfileInput {
   endDate: string;
 }
 export const EventsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     startDate: Schema.String,
@@ -953,7 +947,7 @@ export interface EventsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const EventsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1000,19 +994,17 @@ export const EventsListByBillingProfileOutput =
  * @param startDate - Start date
  * @param endDate - End date
  */
-export const EventsListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventsListByBillingProfileInput,
-    outputSchema: EventsListByBillingProfileOutput,
-  }),
-);
+export const EventsListByBillingProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventsListByBillingProfileInput,
+  outputSchema: EventsListByBillingProfileOutput,
+}));
 // Input Schema
 export interface LotsListByBillingAccountInput {
   billingAccountId: string;
   $filter?: string;
 }
 export const LotsListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -1041,7 +1033,7 @@ export interface LotsListByBillingAccountOutput {
   nextLink?: string;
 }
 export const LotsListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1086,19 +1078,17 @@ export const LotsListByBillingAccountOutput =
  * @param billingAccountId - BillingAccount ID
  * @param $filter - May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:).
  */
-export const LotsListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LotsListByBillingAccountInput,
-    outputSchema: LotsListByBillingAccountOutput,
-  }),
-);
+export const LotsListByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LotsListByBillingAccountInput,
+  outputSchema: LotsListByBillingAccountOutput,
+}));
 // Input Schema
 export interface LotsListByBillingProfileInput {
   billingAccountId: string;
   billingProfileId: string;
 }
 export const LotsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1127,7 +1117,7 @@ export interface LotsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const LotsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1172,12 +1162,10 @@ export const LotsListByBillingProfileOutput =
  * @param billingAccountId - BillingAccount ID
  * @param billingProfileId - Azure Billing Profile ID.
  */
-export const LotsListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LotsListByBillingProfileInput,
-    outputSchema: LotsListByBillingProfileOutput,
-  }),
-);
+export const LotsListByBillingProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LotsListByBillingProfileInput,
+  outputSchema: LotsListByBillingProfileOutput,
+}));
 // Input Schema
 export interface LotsListByCustomerInput {
   billingAccountId: string;
@@ -1185,7 +1173,7 @@ export interface LotsListByCustomerInput {
   $filter?: string;
 }
 export const LotsListByCustomerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     customerId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1215,7 +1203,7 @@ export interface LotsListByCustomerOutput {
   nextLink?: string;
 }
 export const LotsListByCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1261,7 +1249,7 @@ export const LotsListByCustomerOutput =
  * @param customerId - Customer ID
  * @param $filter - May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:).
  */
-export const LotsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LotsListByCustomer = /*@__PURE__*/ API.make(() => ({
   inputSchema: LotsListByCustomerInput,
   outputSchema: LotsListByCustomerOutput,
 }));
@@ -1272,7 +1260,7 @@ export interface MarketplacesListInput {
   $top?: number;
   $skiptoken?: string;
 }
-export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MarketplacesListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -1302,44 +1290,42 @@ export interface MarketplacesListOutput {
   }[];
   nextLink?: string;
 }
-export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const MarketplacesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<MarketplacesListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<MarketplacesListOutput>;
 
 // The operation
 /**
@@ -1351,15 +1337,13 @@ export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - May be used to limit the number of results to the most recent N marketplaces.
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const MarketplacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MarketplacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MarketplacesListInput,
   outputSchema: MarketplacesListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Consumption/operations",
@@ -1381,7 +1365,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1407,7 +1391,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1417,7 +1401,7 @@ export interface PriceSheetDownloadByBillingAccountPeriodInput {
   billingPeriodName: string;
 }
 export const PriceSheetDownloadByBillingAccountPeriodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1434,7 +1418,7 @@ export interface PriceSheetDownloadByBillingAccountPeriodOutput {
   properties?: { downloadUrl?: string; validTill?: string };
 }
 export const PriceSheetDownloadByBillingAccountPeriodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["Running", "Completed", "Failed"]),
     ),
@@ -1455,7 +1439,7 @@ export const PriceSheetDownloadByBillingAccountPeriodOutput =
  * @param billingPeriodName - Billing Period Name.
  */
 export const PriceSheetDownloadByBillingAccountPeriod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PriceSheetDownloadByBillingAccountPeriodInput,
     outputSchema: PriceSheetDownloadByBillingAccountPeriodOutput,
   }));
@@ -1466,7 +1450,7 @@ export interface PriceSheetGetInput {
   $skiptoken?: string;
   $top?: number;
 }
-export const PriceSheetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PriceSheetGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
   $skiptoken: Schema.optional(Schema.String),
@@ -1493,7 +1477,7 @@ export interface PriceSheetGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PriceSheetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PriceSheetGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1523,7 +1507,7 @@ export const PriceSheetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  * @param $top - May be used to limit the number of results to the top N results.
  */
-export const PriceSheetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PriceSheetGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PriceSheetGetInput,
   outputSchema: PriceSheetGetOutput,
 }));
@@ -1536,7 +1520,7 @@ export interface PriceSheetGetByBillingPeriodInput {
   $top?: number;
 }
 export const PriceSheetGetByBillingPeriodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     billingPeriodName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -1565,7 +1549,7 @@ export interface PriceSheetGetByBillingPeriodOutput {
   };
 }
 export const PriceSheetGetByBillingPeriodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1597,7 +1581,7 @@ export const PriceSheetGetByBillingPeriodOutput =
  * @param $top - May be used to limit the number of results to the top N results.
  */
 export const PriceSheetGetByBillingPeriod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PriceSheetGetByBillingPeriodInput,
     outputSchema: PriceSheetGetByBillingPeriodOutput,
   }));
@@ -1612,7 +1596,7 @@ export interface ReservationRecommendationDetailsGetInput {
   $filter?: string;
 }
 export const ReservationRecommendationDetailsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
     scope: Schema.Literals(["Single", "Shared"]),
     region: Schema.String,
@@ -1643,7 +1627,7 @@ export interface ReservationRecommendationDetailsGetOutput {
   };
 }
 export const ReservationRecommendationDetailsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1677,7 +1661,7 @@ export const ReservationRecommendationDetailsGetOutput =
  * @param $filter - Used to filter reservation recommendation details by: properties/subscriptionId can be specified for billing account and billing profile paths.
  */
 export const ReservationRecommendationDetailsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationRecommendationDetailsGetInput,
     outputSchema: ReservationRecommendationDetailsGetOutput,
   }));
@@ -1687,7 +1671,7 @@ export interface ReservationRecommendationsListInput {
   $filter?: string;
 }
 export const ReservationRecommendationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -1722,7 +1706,7 @@ export interface ReservationRecommendationsListOutput {
   previousLink?: string;
 }
 export const ReservationRecommendationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1774,7 +1758,7 @@ export const ReservationRecommendationsListOutput =
  * @param $filter - May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'.
  */
 export const ReservationRecommendationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationRecommendationsListInput,
     outputSchema: ReservationRecommendationsListOutput,
   }));
@@ -1788,7 +1772,7 @@ export interface ReservationsDetailsListInput {
   reservationOrderId?: string;
 }
 export const ReservationsDetailsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -1821,7 +1805,7 @@ export interface ReservationsDetailsListOutput {
   nextLink?: string;
 }
 export const ReservationsDetailsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1870,19 +1854,17 @@ export const ReservationsDetailsListOutput =
  * @param reservationId - Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation
  * @param reservationOrderId - Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order
  */
-export const ReservationsDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationsDetailsListInput,
-    outputSchema: ReservationsDetailsListOutput,
-  }),
-);
+export const ReservationsDetailsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationsDetailsListInput,
+  outputSchema: ReservationsDetailsListOutput,
+}));
 // Input Schema
 export interface ReservationsDetailsListByReservationOrderInput {
   reservationOrderId: string;
   $filter: string;
 }
 export const ReservationsDetailsListByReservationOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.String,
   }).pipe(
@@ -1911,7 +1893,7 @@ export interface ReservationsDetailsListByReservationOrderOutput {
   nextLink?: string;
 }
 export const ReservationsDetailsListByReservationOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1957,7 +1939,7 @@ export const ReservationsDetailsListByReservationOrderOutput =
  * @param $filter - Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
  */
 export const ReservationsDetailsListByReservationOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsDetailsListByReservationOrderInput,
     outputSchema: ReservationsDetailsListByReservationOrderOutput,
   }));
@@ -1968,7 +1950,7 @@ export interface ReservationsDetailsListByReservationOrderAndReservationInput {
   $filter: string;
 }
 export const ReservationsDetailsListByReservationOrderAndReservationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.String,
@@ -1998,7 +1980,7 @@ export interface ReservationsDetailsListByReservationOrderAndReservationOutput {
   nextLink?: string;
 }
 export const ReservationsDetailsListByReservationOrderAndReservationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2045,7 +2027,7 @@ export const ReservationsDetailsListByReservationOrderAndReservationOutput =
  * @param $filter - Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
  */
 export const ReservationsDetailsListByReservationOrderAndReservation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsDetailsListByReservationOrderAndReservationInput,
     outputSchema: ReservationsDetailsListByReservationOrderAndReservationOutput,
   }));
@@ -2060,7 +2042,7 @@ export interface ReservationsSummariesListInput {
   reservationOrderId?: string;
 }
 export const ReservationsSummariesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
     grain: Schema.Literals(["daily", "monthly"]),
     startDate: Schema.optional(Schema.String),
@@ -2094,7 +2076,7 @@ export interface ReservationsSummariesListOutput {
   nextLink?: string;
 }
 export const ReservationsSummariesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2144,12 +2126,10 @@ export const ReservationsSummariesListOutput =
  * @param reservationId - Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation
  * @param reservationOrderId - Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order
  */
-export const ReservationsSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationsSummariesListInput,
-    outputSchema: ReservationsSummariesListOutput,
-  }),
-);
+export const ReservationsSummariesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationsSummariesListInput,
+  outputSchema: ReservationsSummariesListOutput,
+}));
 // Input Schema
 export interface ReservationsSummariesListByReservationOrderInput {
   reservationOrderId: string;
@@ -2157,7 +2137,7 @@ export interface ReservationsSummariesListByReservationOrderInput {
   $filter?: string;
 }
 export const ReservationsSummariesListByReservationOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     grain: Schema.Literals(["daily", "monthly"]),
     $filter: Schema.optional(Schema.String),
@@ -2187,7 +2167,7 @@ export interface ReservationsSummariesListByReservationOrderOutput {
   nextLink?: string;
 }
 export const ReservationsSummariesListByReservationOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2234,7 +2214,7 @@ export const ReservationsSummariesListByReservationOrderOutput =
  * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
  */
 export const ReservationsSummariesListByReservationOrder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsSummariesListByReservationOrderInput,
     outputSchema: ReservationsSummariesListByReservationOrderOutput,
   }));
@@ -2246,7 +2226,7 @@ export interface ReservationsSummariesListByReservationOrderAndReservationInput 
   $filter?: string;
 }
 export const ReservationsSummariesListByReservationOrderAndReservationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
     reservationId: Schema.String.pipe(T.PathParam()),
     grain: Schema.Literals(["daily", "monthly"]),
@@ -2277,7 +2257,7 @@ export interface ReservationsSummariesListByReservationOrderAndReservationOutput
   nextLink?: string;
 }
 export const ReservationsSummariesListByReservationOrderAndReservationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2325,7 +2305,7 @@ export const ReservationsSummariesListByReservationOrderAndReservationOutput =
  * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
  */
 export const ReservationsSummariesListByReservationOrderAndReservation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationsSummariesListByReservationOrderAndReservationInput,
     outputSchema:
       ReservationsSummariesListByReservationOrderAndReservationOutput,
@@ -2338,7 +2318,7 @@ export interface ReservationTransactionsListInput {
   previewMarkupPercentage?: number;
 }
 export const ReservationTransactionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     useMarkupIfPartner: Schema.optional(Schema.Boolean),
@@ -2369,7 +2349,7 @@ export interface ReservationTransactionsListOutput {
   nextLink?: string;
 }
 export const ReservationTransactionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2416,12 +2396,10 @@ export const ReservationTransactionsListOutput =
  * @param useMarkupIfPartner - Applies mark up to the transactions if the caller is a partner.
  * @param previewMarkupPercentage - Preview markup percentage to be applied.
  */
-export const ReservationTransactionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReservationTransactionsListInput,
-    outputSchema: ReservationTransactionsListOutput,
-  }),
-);
+export const ReservationTransactionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReservationTransactionsListInput,
+  outputSchema: ReservationTransactionsListOutput,
+}));
 // Input Schema
 export interface ReservationTransactionsListByBillingProfileInput {
   billingAccountId: string;
@@ -2429,7 +2407,7 @@ export interface ReservationTransactionsListByBillingProfileInput {
   $filter?: string;
 }
 export const ReservationTransactionsListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -2459,7 +2437,7 @@ export interface ReservationTransactionsListByBillingProfileOutput {
   nextLink?: string;
 }
 export const ReservationTransactionsListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2506,7 +2484,7 @@ export const ReservationTransactionsListByBillingProfileOutput =
  * @param $filter - Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and  'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31)
  */
 export const ReservationTransactionsListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReservationTransactionsListByBillingProfileInput,
     outputSchema: ReservationTransactionsListByBillingProfileOutput,
   }));
@@ -2514,7 +2492,7 @@ export const ReservationTransactionsListByBillingProfile =
 export interface TagsGetInput {
   scope: string;
 }
-export const TagsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagsGetInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2538,7 +2516,7 @@ export interface TagsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TagsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2565,7 +2543,7 @@ export const TagsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const TagsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagsGetInput,
   outputSchema: TagsGetOutput,
 }));
@@ -2578,7 +2556,7 @@ export interface UsageDetailsListInput {
   $top?: number;
   metric?: "actualcost" | "amortizedcost" | "usage";
 }
-export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageDetailsListInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
@@ -2612,44 +2590,42 @@ export interface UsageDetailsListOutput {
   }[];
   nextLink?: string;
 }
-export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const UsageDetailsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<UsageDetailsListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<UsageDetailsListOutput>;
 
 // The operation
 /**
@@ -2664,7 +2640,7 @@ export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - May be used to limit the number of results to the most recent N usageDetails.
  * @param metric - Allows to select different type of cost/usage records.
  */
-export const UsageDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsageDetailsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsageDetailsListInput,
   outputSchema: UsageDetailsListOutput,
 }));

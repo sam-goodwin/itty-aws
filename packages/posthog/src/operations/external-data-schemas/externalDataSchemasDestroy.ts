@@ -9,7 +9,7 @@ export interface ExternalDataSchemasDestroyInput {
   project_id: string;
 }
 export const ExternalDataSchemasDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ExternalDataSchemasDestroyInput =
 // Output Schema
 export type ExternalDataSchemasDestroyOutput = void;
 export const ExternalDataSchemasDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasDestroyOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const ExternalDataSchemasDestroyOutput =
  * @param id - A UUID string identifying this external data schema.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const externalDataSchemasDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalDataSchemasDestroyInput,
-    outputSchema: ExternalDataSchemasDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const externalDataSchemasDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalDataSchemasDestroyInput,
+  outputSchema: ExternalDataSchemasDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

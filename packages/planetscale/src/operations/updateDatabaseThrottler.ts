@@ -8,10 +8,10 @@ export interface UpdateDatabaseThrottlerInput {
   organization: string;
   database: string;
   ratio?: number;
-  configurations?: string[];
+  configurations?: ReadonlyArray<string>;
 }
 export const UpdateDatabaseThrottlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     ratio: Schema.optional(Schema.Number),
@@ -25,7 +25,7 @@ export const UpdateDatabaseThrottlerInput =
 
 // Output Schema
 export interface UpdateDatabaseThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -33,10 +33,10 @@ export interface UpdateDatabaseThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const UpdateDatabaseThrottlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
     configurable: Schema.Struct({
       id: Schema.String,
@@ -62,10 +62,8 @@ export const UpdateDatabaseThrottlerOutput =
  * @param ratio - A throttler ratio between 0 and 95 that will apply to all keyspaces in the database. 0 effectively disables throttler, while 95 drastically slows down deploy request migrations
  * @param configurations - If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace
  */
-export const updateDatabaseThrottler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabaseThrottlerInput,
-    outputSchema: UpdateDatabaseThrottlerOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateDatabaseThrottler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabaseThrottlerInput,
+  outputSchema: UpdateDatabaseThrottlerOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

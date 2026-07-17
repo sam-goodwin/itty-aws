@@ -11,7 +11,7 @@ export interface DeleteQueryPatternsReportInput {
   id: string;
 }
 export const DeleteQueryPatternsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const DeleteQueryPatternsReportInput =
 // Output Schema
 export type DeleteQueryPatternsReportOutput = void;
 export const DeleteQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteQueryPatternsReportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteQueryPatternsReportOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const DeleteQueryPatternsReportOutput =
  * @param branch - The name of the branch
  * @param id - The ID of the query patterns report
  */
-export const deleteQueryPatternsReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteQueryPatternsReportInput,
-    outputSchema: DeleteQueryPatternsReportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteQueryPatternsReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteQueryPatternsReportInput,
+  outputSchema: DeleteQueryPatternsReportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

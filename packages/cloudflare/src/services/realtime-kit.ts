@@ -81,7 +81,7 @@ interface Livestream {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const Livestream = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Livestream = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -136,7 +136,7 @@ interface Session {
   /** The total view time for which the viewers watched the stream. */
   viewerSeconds?: string | null;
 }
-const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Session = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -190,7 +190,7 @@ interface Data {
     viewerSeconds?: string | null;
   } | null;
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     livestream: Schema.optional(Schema.Union([Livestream, Schema.Null])),
     session: Schema.optional(Schema.Union([Session, Schema.Null])),
@@ -230,7 +230,7 @@ interface Data2 {
   /** Total recording time in seconds. */
   recordingDuration?: number | null;
 }
-const Data2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     audioDownloadUrl: Schema.Union([Schema.String, Schema.Null]),
@@ -305,7 +305,7 @@ interface Data3 {
   /** Any meta data about session. */
   meta?: unknown | null;
 }
-const Data3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     associatedId: Schema.String,
@@ -353,7 +353,7 @@ interface Paging {
   startOffset?: number | null;
   totalCount?: number | null;
 }
-const Paging = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Paging = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endOffset: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     startOffset: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -393,7 +393,7 @@ interface Data4 {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const Data4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -435,7 +435,7 @@ interface Data5 {
   action?: string | null;
   kickedParticipantsCount?: number | null;
 }
-const Data5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     kickedParticipantsCount: Schema.optional(
@@ -454,7 +454,7 @@ interface Data6 {
   createdAt?: string | null;
   name?: string | null;
 }
-const Data6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -471,7 +471,7 @@ interface Data7 {
     name?: string | null;
   } | null;
 }
-const Data7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     app: Schema.optional(Schema.Union([Data6, Schema.Null])),
   }),
@@ -492,7 +492,7 @@ interface Data8 {
   /** Unique key for accessing each livestream. */
   streamKey?: string | null;
 }
-const Data8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -532,7 +532,7 @@ interface Data9 {
   /** Total view time for which the viewers watched the stream. */
   totalViewerSeconds?: number | null;
 }
-const Data9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     totalIngestSeconds: Schema.optional(
@@ -560,7 +560,7 @@ interface Data10 {
   /** Total view time for which the viewers watched the stream. */
   totalViewerSeconds?: number | null;
 }
-const Data10 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data10 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -586,7 +586,7 @@ interface VideoConfig {
   /** Width of the livestreaming video in pixels */
   width?: number | null;
 }
-const VideoConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VideoConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -604,7 +604,7 @@ interface Data11 {
   /** Unique key for accessing each livestream. */
   streamKey?: string | null;
 }
-const Data11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data11 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ingestServer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -633,7 +633,7 @@ const Data11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Data12 {
   message?: string | null;
 }
-const Data12 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data12 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -658,7 +658,7 @@ interface Data13 {
   /** Specifies if the livestream was disabled. */
   viewerSeconds?: number | null;
 }
-const Data13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -704,7 +704,7 @@ interface Session2 {
   /** The total view time for which the viewers watched the stream. */
   viewerSeconds?: number | null;
 }
-const Session2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Session2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -763,7 +763,7 @@ interface Data14 {
     viewerSeconds?: number | null;
   } | null;
 }
-const Data14 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data14 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     livestream: Schema.optional(Schema.Union([Livestream, Schema.Null])),
     paging: Schema.optional(Schema.Union([Paging, Schema.Null])),
@@ -779,7 +779,7 @@ interface AudioConfig {
   /** Controls whether to export audio file seperately */
   exportFile?: boolean | null;
 }
-const AudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AudioConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     channel: Schema.optional(
       Schema.Union([
@@ -807,7 +807,7 @@ interface LiveStreamingConfig {
   /** RTMP URL to stream to */
   rtmpUrl?: string | null;
 }
-const LiveStreamingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LiveStreamingConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rtmpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ rtmpUrl: "rtmp_url" })),
@@ -817,7 +817,7 @@ interface RealtimekitBucketConfig {
   /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
   enabled: boolean;
 }
-const RealtimekitBucketConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RealtimekitBucketConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
   }),
@@ -847,7 +847,7 @@ interface StorageConfig {
   /** SSH destination server username for SFTP type storage medium */
   username?: string | null;
 }
-const StorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StorageConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals(["aws", "azure", "digitalocean", "gcs", "sftp"]),
@@ -899,7 +899,7 @@ interface Watermark {
   /** URL of the watermark image */
   url?: string | null;
 }
-const Watermark = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Watermark = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     position: Schema.optional(
       Schema.Union([
@@ -942,7 +942,7 @@ interface VideoConfig2 {
   /** Width of the recording video in pixels */
   width?: number | null;
 }
-const VideoConfig2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VideoConfig2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     codec: Schema.optional(
       Schema.Union([
@@ -1009,7 +1009,7 @@ interface RecordingConfig {
     width?: number | null;
   } | null;
 }
-const RecordingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RecordingConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audioConfig: Schema.optional(Schema.Union([AudioConfig, Schema.Null])),
     fileNamePrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1101,7 +1101,7 @@ interface Data15 {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const Data15 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data15 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -1153,7 +1153,7 @@ interface Paging2 {
   startOffset: number;
   totalCount: number;
 }
-const Paging2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Paging2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endOffset: Schema.Number,
     startOffset: Schema.Number,
@@ -1186,7 +1186,7 @@ interface Summarization {
   /** Sets the maximum number of words in the meeting summary. */
   wordLimit?: number | null;
 }
-const Summarization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summarization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     summaryType: Schema.optional(
       Schema.Union([
@@ -1246,7 +1246,7 @@ interface Transcription {
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
 }
-const Transcription = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Transcription = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     keywords: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1320,7 +1320,7 @@ interface Aiconfig {
     profanityFilter?: boolean | null;
   } | null;
 }
-const Aiconfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Aiconfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     summarization: Schema.optional(Schema.Union([Summarization, Schema.Null])),
     transcription: Schema.optional(Schema.Union([Transcription, Schema.Null])),
@@ -1353,7 +1353,7 @@ interface StorageConfig2 {
   /** SSH destination server username for SFTP type storage medium */
   username?: string | null;
 }
-const StorageConfig2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StorageConfig2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals(["aws", "azure", "digitalocean", "gcs", "sftp"]),
@@ -1438,7 +1438,7 @@ interface RecordingConfig2 {
     width?: number | null;
   } | null;
 }
-const RecordingConfig2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RecordingConfig2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audioConfig: Schema.optional(Schema.Union([AudioConfig, Schema.Null])),
     fileNamePrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1566,7 +1566,7 @@ interface Data16 {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean | null;
 }
-const Data16 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data16 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -1635,7 +1635,7 @@ interface Data17 {
   /** Timestamp the object was updated at. The time is returned in ISO format. */
   updatedAt?: string | null;
 }
-const Data17 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data17 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1687,7 +1687,7 @@ interface Data18 {
   /** URL to a picture of the participant. */
   picture?: string | null;
 }
-const Data18 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data18 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -1719,7 +1719,7 @@ interface Data19 {
   /** Timestamp this object was updated at. The time is returned in ISO format. */
   updatedAt: string;
 }
-const Data19 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data19 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     createdAt: Schema.String,
     customParticipantId: Schema.String,
@@ -1743,7 +1743,7 @@ interface Caller {
   /** The user ID of the person who started the recording. */
   userId?: string | null;
 }
-const Caller = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Caller = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
@@ -1768,7 +1768,7 @@ interface StartReason {
   /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API.  If the recording is initiated using the "RECORD_ON_START" */
   reason?: "API_CALL" | "RECORD_ON_START" | (string & {}) | null;
 }
-const StartReason = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StartReason = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     caller: Schema.optional(Schema.Union([Caller, Schema.Null])),
     reason: Schema.optional(
@@ -1797,7 +1797,7 @@ interface StopReason {
     | (string & {})
     | null;
 }
-const StopReason = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const StopReason = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     caller: Schema.optional(Schema.Union([Caller, Schema.Null])),
     reason: Schema.optional(
@@ -1879,7 +1879,7 @@ interface Data20 {
     username?: string | null;
   } | null;
 }
-const Data20 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data20 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     audioDownloadUrl: Schema.Union([Schema.String, Schema.Null]),
@@ -1936,7 +1936,7 @@ interface DayStat {
   /** Total number of recordings for a specific day */
   totalRecordings?: number | null;
 }
-const DayStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DayStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     day: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     totalRecordingMinutes: Schema.optional(
@@ -1968,7 +1968,7 @@ interface RecordingStats {
   /** Total recording minutes during the range specified */
   recordingMinutesConsumed?: number | null;
 }
-const RecordingStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RecordingStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dayStats: Schema.optional(
       Schema.Union([Schema.Array(DayStat), Schema.Null]),
@@ -1993,7 +1993,7 @@ interface DayStat2 {
   /** Total number of sessions for a specific day */
   totalSessions?: number | null;
 }
-const DayStat2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DayStat2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     day: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     totalSessionMinutes: Schema.optional(
@@ -2023,7 +2023,7 @@ interface SessionStats {
   /** Total session minutes during the range specified */
   sessionsMinutesConsumed?: number | null;
 }
-const SessionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SessionStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dayStats: Schema.optional(
       Schema.Union([Schema.Array(DayStat2), Schema.Null]),
@@ -2067,7 +2067,7 @@ interface Data21 {
     sessionsMinutesConsumed?: number | null;
   } | null;
 }
-const Data21 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data21 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     recordingStats: Schema.optional(
       Schema.Union([RecordingStats, Schema.Null]),
@@ -2085,7 +2085,7 @@ interface PeerReport {
   metadata?: Record<string, unknown> | null;
   quality?: Record<string, unknown> | null;
 }
-const PeerReport = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PeerReport = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     metadata: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -2125,7 +2125,7 @@ interface Participant {
   /** User id for this participant. */
   userId?: string | null;
 }
-const Participant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Participant = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2186,7 +2186,7 @@ interface Data22 {
     userId?: string | null;
   } | null;
 }
-const Data22 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data22 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     participant: Schema.optional(Schema.Union([Participant, Schema.Null])),
   }),
@@ -2210,7 +2210,7 @@ interface Data23 {
   /** URL to a picture of the participant. */
   picture?: string | null;
 }
-const Data23 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data23 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     token: Schema.String,
@@ -2246,7 +2246,7 @@ interface Participant2 {
   /** A URL pointing to a picture of the participant. */
   picture?: string | null;
 }
-const Participant2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Participant2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -2279,7 +2279,7 @@ interface Data24 {
       }[]
     | null;
 }
-const Data24 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data24 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     participants: Schema.optional(
@@ -2292,7 +2292,7 @@ interface Data25 {
   /** Regenerated participant's authentication token. */
   token: string;
 }
-const Data25 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data25 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     token: Schema.String,
   }),
@@ -2302,7 +2302,7 @@ interface Vote {
   id: string;
   name: string;
 }
-const Vote = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Vote = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -2315,7 +2315,7 @@ interface Option {
   text: string;
   votes: { id: string; name: string }[];
 }
-const Option = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Option = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     text: Schema.String,
@@ -2339,7 +2339,7 @@ interface Poll {
   hideVotes?: boolean | null;
   voted?: string[] | null;
 }
-const Poll = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Poll = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     options: Schema.Array(Option),
@@ -2379,7 +2379,7 @@ interface Data26 {
     voted?: string[] | null;
   } | null;
 }
-const Data26 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data26 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     poll: Schema.optional(Schema.Union([Poll, Schema.Null])),
@@ -2396,7 +2396,7 @@ interface Data27 {
   /** Timestamp this preset was last updated */
   updatedAt?: string | null;
 }
-const Data27 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data27 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2418,7 +2418,7 @@ interface MaxVideoStreams {
   /** Maximum number of streams visible on mobile devices */
   mobile: number;
 }
-const MaxVideoStreams = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MaxVideoStreams = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     desktop: Schema.Number,
     mobile: Schema.Number,
@@ -2431,7 +2431,7 @@ interface Screenshare {
   /** Quality of screen share */
   quality: "hd" | "vga" | "qvga" | "fhd" | "uhd" | (string & {});
 }
-const Screenshare = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Screenshare = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     frameRate: Schema.Number,
     quality: Schema.Union([
@@ -2449,7 +2449,7 @@ interface Video {
   /** Enable simulcast for participant videos. */
   simulcast?: boolean | null;
 }
-const Video = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Video = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     frameRate: Schema.Number,
     quality: Schema.Union([
@@ -2472,7 +2472,7 @@ interface Audio {
   /** Enable Stereo for your meetings */
   enableStereo?: boolean | null;
 }
-const Audio = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Audio = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enableHighBitrate: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2504,7 +2504,7 @@ interface Media {
     enableStereo?: boolean | null;
   } | null;
 }
-const Media = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Media = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     screenshare: Screenshare,
     video: Video,
@@ -2543,7 +2543,7 @@ interface Config {
   /** Livestream viewer quality levels. */
   livestreamViewerQualities?: number[] | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maxScreenshareCount: Schema.Number,
     maxVideoStreams: MaxVideoStreams,
@@ -2572,7 +2572,7 @@ interface Private {
   files: boolean;
   text: boolean;
 }
-const Private = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Private = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canReceive: Schema.Boolean,
     canSend: Schema.Boolean,
@@ -2596,7 +2596,7 @@ interface Public {
   /** Can send text messages */
   text: boolean;
 }
-const Public = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Public = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canSend: Schema.Boolean,
     files: Schema.Boolean,
@@ -2615,7 +2615,7 @@ interface Chat {
   };
   public: { canSend: boolean; files: boolean; text: boolean };
 }
-const Chat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Chat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     private: Private,
     public: Public,
@@ -2627,7 +2627,7 @@ interface ConnectedMeetings {
   canSwitchConnectedMeetings: boolean;
   canSwitchToParentMeeting: boolean;
 }
-const ConnectedMeetings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConnectedMeetings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canAlterConnectedMeetings: Schema.Boolean,
     canSwitchConnectedMeetings: Schema.Boolean,
@@ -2645,7 +2645,7 @@ interface Audio2 {
   /** Can produce audio */
   canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
 }
-const Audio2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Audio2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canProduce: Schema.Union([
       Schema.Literals(["ALLOWED", "NOT_ALLOWED", "CAN_REQUEST"]),
@@ -2668,7 +2668,7 @@ interface Media2 {
     canProduce: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
   };
 }
-const Media2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Media2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audio: Audio2,
     screenshare: Audio2,
@@ -2686,7 +2686,7 @@ interface Plugins {
   /** Plugin configuration keyed by plugin UUID. */
   config: unknown;
 }
-const Plugins = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Plugins = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canClose: Schema.Boolean,
     canEditConfig: Schema.Boolean,
@@ -2710,7 +2710,7 @@ interface Polls {
   /** Can vote on polls */
   canVote: boolean;
 }
-const Polls = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Polls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canCreate: Schema.Boolean,
     canView: Schema.Boolean,
@@ -2795,7 +2795,7 @@ interface Permissions {
   stageEnabled?: boolean | null;
   transcriptionEnabled?: boolean | null;
 }
-const Permissions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Permissions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acceptWaitingRequests: Schema.Boolean,
     canAcceptProductionRequests: Schema.Boolean,
@@ -2880,7 +2880,7 @@ interface Background {
   "800": string;
   "900": string;
 }
-const Background = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Background = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "1000": Schema.String,
     "600": Schema.String,
@@ -2897,7 +2897,7 @@ interface Brand {
   "600": string;
   "700": string;
 }
-const Brand = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Brand = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "300": Schema.String,
     "400": Schema.String,
@@ -2929,7 +2929,7 @@ interface Colors {
   videoBg: string;
   warning: string;
 }
-const Colors = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Colors = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     background: Background,
     brand: Brand,
@@ -2989,7 +2989,7 @@ interface DesignTokens {
   googleFont?: string | null;
   logo?: string | null;
 }
-const DesignTokens = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DesignTokens = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     borderRadius: Schema.Union([
       Schema.Literals(["sharp", "rounded", "extra-rounded", "circular"]),
@@ -3061,7 +3061,7 @@ interface Ui {
   };
   configDiff: unknown;
 }
-const Ui = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ui = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     designTokens: DesignTokens,
     configDiff: Schema.Unknown,
@@ -3112,7 +3112,7 @@ interface Ui2 {
   };
   configDiff?: unknown | null;
 }
-const Ui2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ui2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     designTokens: DesignTokens,
     configDiff: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -3263,7 +3263,7 @@ interface Data28 {
   /** Timestamp this preset was last updated */
   updatedAt: string;
 }
-const Data28 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data28 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     config: Config,
@@ -3291,7 +3291,7 @@ interface MaxVideoStreams2 {
   /** Maximum number of streams visible on mobile devices */
   mobile?: number | null;
 }
-const MaxVideoStreams2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MaxVideoStreams2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     desktop: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     mobile: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -3304,7 +3304,7 @@ interface Screenshare2 {
   /** Quality of screen share */
   quality?: "hd" | "vga" | "qvga" | "fhd" | "uhd" | (string & {}) | null;
 }
-const Screenshare2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Screenshare2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     frameRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     quality: Schema.optional(
@@ -3327,7 +3327,7 @@ interface Video2 {
   /** Enable simulcast for participant videos. */
   simulcast?: boolean | null;
 }
-const Video2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Video2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     frameRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     quality: Schema.optional(
@@ -3367,7 +3367,7 @@ interface Media3 {
     simulcast?: boolean | null;
   } | null;
 }
-const Media3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Media3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audio: Schema.optional(Schema.Union([Audio, Schema.Null])),
     screenshare: Schema.optional(Schema.Union([Screenshare2, Schema.Null])),
@@ -3407,7 +3407,7 @@ interface Config2 {
     | (string & {})
     | null;
 }
-const Config2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     livestreamViewerQualities: Schema.optional(
       Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
@@ -3450,7 +3450,7 @@ interface Private2 {
   files?: boolean | null;
   text?: boolean | null;
 }
-const Private2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Private2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canReceive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     canSend: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3474,7 +3474,7 @@ interface Public2 {
   /** Can send text messages */
   text?: boolean | null;
 }
-const Public2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Public2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canSend: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     files: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3497,7 +3497,7 @@ interface Chat2 {
     text?: boolean | null;
   } | null;
 }
-const Chat2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Chat2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     private: Schema.optional(Schema.Union([Private2, Schema.Null])),
     public: Schema.optional(Schema.Union([Public2, Schema.Null])),
@@ -3509,7 +3509,7 @@ interface ConnectedMeetings2 {
   canSwitchConnectedMeetings?: boolean | null;
   canSwitchToParentMeeting?: boolean | null;
 }
-const ConnectedMeetings2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConnectedMeetings2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canAlterConnectedMeetings: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3533,7 +3533,7 @@ interface Audio3 {
   /** Can produce audio */
   canProduce?: "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {}) | null;
 }
-const Audio3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Audio3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canProduce: Schema.optional(
       Schema.Union([
@@ -3576,7 +3576,7 @@ interface Media4 {
       | null;
   } | null;
 }
-const Media4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Media4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audio: Schema.optional(Schema.Union([Audio3, Schema.Null])),
     screenshare: Schema.optional(Schema.Union([Audio3, Schema.Null])),
@@ -3594,7 +3594,7 @@ interface Plugins2 {
   /** Plugin configuration keyed by plugin UUID. */
   config?: unknown | null;
 }
-const Plugins2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Plugins2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canClose: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     canEditConfig: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3618,7 +3618,7 @@ interface Polls2 {
   /** Can vote on polls */
   canVote?: boolean | null;
 }
-const Polls2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Polls2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     canCreate: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     canView: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3727,7 +3727,7 @@ interface Permissions2 {
     | (string & {})
     | null;
 }
-const Permissions2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Permissions2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acceptStageRequests: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3850,7 +3850,7 @@ interface Background2 {
   "800"?: string | null;
   "900"?: string | null;
 }
-const Background2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Background2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "1000": Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     "600": Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3867,7 +3867,7 @@ interface Brand2 {
   "600"?: string | null;
   "700"?: string | null;
 }
-const Brand2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Brand2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     "300": Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     "400": Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3899,7 +3899,7 @@ interface Colors2 {
   videoBg?: string | null;
   warning?: string | null;
 }
-const Colors2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Colors2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     background: Schema.optional(Schema.Union([Background2, Schema.Null])),
     brand: Schema.optional(Schema.Union([Brand2, Schema.Null])),
@@ -3960,7 +3960,7 @@ interface DesignTokens2 {
   spacingBase?: number | null;
   theme?: "darkest" | "dark" | "light" | (string & {}) | null;
 }
-const DesignTokens2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DesignTokens2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     borderRadius: Schema.optional(
       Schema.Union([
@@ -4045,7 +4045,7 @@ interface Ui3 {
   } | null;
   configDiff?: unknown | null;
 }
-const Ui3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ui3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     designTokens: Schema.optional(Schema.Union([DesignTokens2, Schema.Null])),
     configDiff: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -4157,7 +4157,7 @@ interface Data29 {
     username?: string | null;
   } | null;
 }
-const Data29 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data29 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     audioDownloadUrl: Schema.Union([Schema.String, Schema.Null]),
@@ -4209,7 +4209,7 @@ interface InteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
   type?: "ID3" | null;
 }
-const InteractiveConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InteractiveConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(Schema.Union([Schema.Literal("ID3"), Schema.Null])),
   }),
@@ -4221,7 +4221,7 @@ interface Data30 {
   /** Time when the download URL will expire */
   chatDownloadUrlExpiry: string;
 }
-const Data30 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data30 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     chatDownloadUrl: Schema.String,
     chatDownloadUrlExpiry: Schema.String,
@@ -4255,7 +4255,7 @@ interface Participant3 {
   /** User id for this participant. */
   userId?: string | null;
 }
-const Participant3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Participant3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4299,7 +4299,7 @@ interface Data31 {
     userId?: string | null;
   } | null;
 }
-const Data31 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data31 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     participant: Schema.optional(Schema.Union([Participant3, Schema.Null])),
   }),
@@ -4321,7 +4321,7 @@ interface Data32 {
       }[]
     | null;
 }
-const Data32 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data32 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     participants: Schema.optional(
       Schema.Union([Schema.Array(Participant3), Schema.Null]),
@@ -4350,7 +4350,7 @@ interface Data33 {
       }[]
     | null;
 }
-const Data33 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data33 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sessions: Schema.optional(Schema.Union([Schema.Array(Data3), Schema.Null])),
   }),
@@ -4363,7 +4363,7 @@ interface Data34 {
   /** Time of Expiry before when you need to download the csv file. */
   summaryDownloadUrlExpiry: string;
 }
-const Data34 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data34 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sessionId: Schema.String,
     summaryDownloadUrl: Schema.String,
@@ -4378,7 +4378,7 @@ interface Data35 {
   /** Time when the download URL will expire */
   transcriptDownloadUrlExpiry: string;
 }
-const Data35 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data35 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sessionId: Schema.String,
     transcriptDownloadUrl: Schema.String,
@@ -4396,7 +4396,7 @@ interface Data36 {
   sessionId?: string | null;
   status?: string | null;
 }
-const Data36 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data36 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sessionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4426,7 +4426,7 @@ interface Data37 {
     recordingDuration?: number | null;
   };
 }
-const Data37 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data37 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     recording: Data2,
   }),
@@ -4459,7 +4459,7 @@ interface Data38 {
   /** URL the webhook will send events to */
   url: string;
 }
-const Data38 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data38 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -4508,7 +4508,7 @@ export interface GetActiveLivestreamsForLivestreamIdLivestreamRequest {
 }
 
 export const GetActiveLivestreamsForLivestreamIdLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       livestreamId: Schema.String.pipe(T.HttpPath("livestreamId")),
@@ -4552,7 +4552,7 @@ export interface GetActiveLivestreamsForLivestreamIdLivestreamResponse {
 }
 
 export const GetActiveLivestreamsForLivestreamIdLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4566,7 +4566,7 @@ export const getActiveLivestreamsForLivestreamIdLivestream: API.OperationMethod<
   GetActiveLivestreamsForLivestreamIdLivestreamResponse,
   GetActiveLivestreamsForLivestreamIdLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActiveLivestreamsForLivestreamIdLivestreamRequest,
   output: GetActiveLivestreamsForLivestreamIdLivestreamResponse,
   errors: [],
@@ -4584,7 +4584,7 @@ export interface GetActiveRecordingsRecordingRequest {
 }
 
 export const GetActiveRecordingsRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -4625,7 +4625,7 @@ export interface GetActiveRecordingsRecordingResponse {
 }
 
 export const GetActiveRecordingsRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data2,
       success: Schema.Boolean,
@@ -4639,7 +4639,7 @@ export const getActiveRecordingsRecording: API.OperationMethod<
   GetActiveRecordingsRecordingResponse,
   GetActiveRecordingsRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActiveRecordingsRecordingRequest,
   output: GetActiveRecordingsRecordingResponse,
   errors: [],
@@ -4657,7 +4657,7 @@ export interface GetActiveSessionActiveSessionRequest {
 }
 
 export const GetActiveSessionActiveSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -4692,7 +4692,7 @@ export interface GetActiveSessionActiveSessionResponse {
 }
 
 export const GetActiveSessionActiveSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data3, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4706,7 +4706,7 @@ export const getActiveSessionActiveSession: API.OperationMethod<
   GetActiveSessionActiveSessionResponse,
   GetActiveSessionActiveSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActiveSessionActiveSessionRequest,
   output: GetActiveSessionActiveSessionResponse,
   errors: [],
@@ -4737,7 +4737,7 @@ export interface GetAllLivestreamsLivestreamRequest {
 }
 
 export const GetAllLivestreamsLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4787,7 +4787,7 @@ export interface GetAllLivestreamsLivestreamResponse {
 }
 
 export const GetAllLivestreamsLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data4, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4801,7 +4801,7 @@ export const getAllLivestreamsLivestream: API.OperationMethod<
   GetAllLivestreamsLivestreamResponse,
   GetAllLivestreamsLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllLivestreamsLivestreamRequest,
   output: GetAllLivestreamsLivestreamResponse,
   errors: [],
@@ -4819,7 +4819,7 @@ export interface KickAllParticipantsActiveSessionRequest {
 }
 
 export const KickAllParticipantsActiveSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -4841,7 +4841,7 @@ export interface KickAllParticipantsActiveSessionResponse {
 }
 
 export const KickAllParticipantsActiveSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data5, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4855,7 +4855,7 @@ export const kickAllParticipantsActiveSession: API.OperationMethod<
   KickAllParticipantsActiveSessionResponse,
   KickAllParticipantsActiveSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: KickAllParticipantsActiveSessionRequest,
   output: KickAllParticipantsActiveSessionResponse,
   errors: [],
@@ -4878,7 +4878,7 @@ export interface GetAppRequest {
   sortOrder?: "ASC" | "DESC" | (string & {});
 }
 
-export const GetAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     pageNo: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_no")),
@@ -4904,7 +4904,7 @@ export interface GetAppResponse {
   success?: boolean | null;
 }
 
-export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.optional(Schema.Union([Schema.Array(Data6), Schema.Null])),
     paging: Schema.optional(Schema.Union([Paging, Schema.Null])),
@@ -4919,7 +4919,7 @@ export const getApp: API.OperationMethod<
   GetAppResponse,
   GetAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
   errors: [Forbidden],
@@ -4932,7 +4932,7 @@ export interface PostAppRequest {
   name: string;
 }
 
-export const PostAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PostAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
@@ -4955,7 +4955,7 @@ export interface PostAppResponse {
   success?: boolean | null;
 }
 
-export const PostAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PostAppResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.optional(Schema.Union([Data7, Schema.Null])),
     success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4969,7 +4969,7 @@ export const postApp: API.OperationMethod<
   PostAppResponse,
   PostAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostAppRequest,
   output: PostAppResponse,
   errors: [Forbidden],
@@ -4988,7 +4988,7 @@ export interface CreateIndependentLivestreamLivestreamRequest {
 }
 
 export const CreateIndependentLivestreamLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5016,7 +5016,7 @@ export interface CreateIndependentLivestreamLivestreamResponse {
 }
 
 export const CreateIndependentLivestreamLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data8, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5030,7 +5030,7 @@ export const createIndependentLivestreamLivestream: API.OperationMethod<
   CreateIndependentLivestreamLivestreamResponse,
   CreateIndependentLivestreamLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndependentLivestreamLivestreamRequest,
   output: CreateIndependentLivestreamLivestreamResponse,
   errors: [],
@@ -5053,7 +5053,7 @@ export interface GetLivestreamAnalyticsCompleteLivestreamRequest {
 }
 
 export const GetLivestreamAnalyticsCompleteLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5078,7 +5078,7 @@ export interface GetLivestreamAnalyticsCompleteLivestreamResponse {
 }
 
 export const GetLivestreamAnalyticsCompleteLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data9, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5092,7 +5092,7 @@ export const getLivestreamAnalyticsCompleteLivestream: API.OperationMethod<
   GetLivestreamAnalyticsCompleteLivestreamResponse,
   GetLivestreamAnalyticsCompleteLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLivestreamAnalyticsCompleteLivestreamRequest,
   output: GetLivestreamAnalyticsCompleteLivestreamResponse,
   errors: [],
@@ -5115,7 +5115,7 @@ export interface GetLivestreamAnalyticsDaywiseLivestreamRequest {
 }
 
 export const GetLivestreamAnalyticsDaywiseLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5143,7 +5143,7 @@ export interface GetLivestreamAnalyticsDaywiseLivestreamResponse {
 }
 
 export const GetLivestreamAnalyticsDaywiseLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Schema.Array(Data10), Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5157,7 +5157,7 @@ export const getLivestreamAnalyticsDaywiseLivestream: API.OperationMethod<
   GetLivestreamAnalyticsDaywiseLivestreamResponse,
   GetLivestreamAnalyticsDaywiseLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLivestreamAnalyticsDaywiseLivestreamRequest,
   output: GetLivestreamAnalyticsDaywiseLivestreamResponse,
   errors: [],
@@ -5179,7 +5179,7 @@ export interface StartLivestreamingAMeetingLivestreamRequest {
 }
 
 export const StartLivestreamingAMeetingLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -5207,7 +5207,7 @@ export interface StartLivestreamingAMeetingLivestreamResponse {
 }
 
 export const StartLivestreamingAMeetingLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data11, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5221,7 +5221,7 @@ export const startLivestreamingAMeetingLivestream: API.OperationMethod<
   StartLivestreamingAMeetingLivestreamResponse,
   StartLivestreamingAMeetingLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartLivestreamingAMeetingLivestreamRequest,
   output: StartLivestreamingAMeetingLivestreamResponse,
   errors: [],
@@ -5235,7 +5235,7 @@ export interface StopLivestreamingAMeetingLivestreamRequest {
 }
 
 export const StopLivestreamingAMeetingLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -5254,7 +5254,7 @@ export interface StopLivestreamingAMeetingLivestreamResponse {
 }
 
 export const StopLivestreamingAMeetingLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data12, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5268,7 +5268,7 @@ export const stopLivestreamingAMeetingLivestream: API.OperationMethod<
   StopLivestreamingAMeetingLivestreamResponse,
   StopLivestreamingAMeetingLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopLivestreamingAMeetingLivestreamRequest,
   output: StopLivestreamingAMeetingLivestreamResponse,
   errors: [],
@@ -5286,7 +5286,7 @@ export interface GetLivestreamSessionDetailsForSessionIdLivestreamRequest {
 }
 
 export const GetLivestreamSessionDetailsForSessionIdLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       livestreamSessionId: Schema.String.pipe(
@@ -5317,7 +5317,7 @@ export interface GetLivestreamSessionDetailsForSessionIdLivestreamResponse {
 }
 
 export const GetLivestreamSessionDetailsForSessionIdLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data13, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5332,7 +5332,7 @@ export const getLivestreamSessionDetailsForSessionIdLivestream: API.OperationMet
   GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
   GetLivestreamSessionDetailsForSessionIdLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLivestreamSessionDetailsForSessionIdLivestreamRequest,
   output: GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
   errors: [],
@@ -5354,7 +5354,7 @@ export interface GetLivestreamSessionForLivestreamIdLivestreamRequest {
 }
 
 export const GetLivestreamSessionForLivestreamIdLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       livestreamId: Schema.String.pipe(T.HttpPath("livestreamId")),
@@ -5405,7 +5405,7 @@ export interface GetLivestreamSessionForLivestreamIdLivestreamResponse {
 }
 
 export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data14, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5419,7 +5419,7 @@ export const getLivestreamSessionForLivestreamIdLivestream: API.OperationMethod<
   GetLivestreamSessionForLivestreamIdLivestreamResponse,
   GetLivestreamSessionForLivestreamIdLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLivestreamSessionForLivestreamIdLivestreamRequest,
   output: GetLivestreamSessionForLivestreamIdLivestreamResponse,
   errors: [],
@@ -5447,25 +5447,24 @@ export interface GetMeetingRequest {
   status?: "ACTIVE" | "INACTIVE" | (string & {});
 }
 
-export const GetMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("end_time")),
-      pageNo: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_no")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-      startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("start_time")),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["ACTIVE", "INACTIVE"]), Schema.String]),
-      ).pipe(T.HttpQuery("status")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/realtime/kit/{appId}/meetings",
-      }),
-    ),
+export const GetMeetingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("end_time")),
+    pageNo: Schema.optional(Schema.Number).pipe(T.HttpQuery("page_no")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("start_time")),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["ACTIVE", "INACTIVE"]), Schema.String]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/realtime/kit/{appId}/meetings",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetMeetingRequest>;
 
 export interface GetMeetingResponse {
@@ -5527,13 +5526,12 @@ export interface GetMeetingResponse {
   success: boolean;
 }
 
-export const GetMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.Array(Data15),
-      paging: Paging2,
-      success: Schema.Boolean,
-    }),
+export const GetMeetingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Array(Data15),
+    paging: Paging2,
+    success: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<GetMeetingResponse>;
 
 export type GetMeetingError = DefaultErrors;
@@ -5543,7 +5541,7 @@ export const getMeeting: API.OperationMethod<
   GetMeetingResponse,
   GetMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingRequest,
   output: GetMeetingResponse,
   errors: [],
@@ -5645,41 +5643,38 @@ export interface CreateMeetingRequest {
   transcribeOnEnd?: boolean;
 }
 
-export const CreateMeetingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      aiConfig: Schema.optional(Aiconfig),
-      liveStreamOnStart: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      persistChat: Schema.optional(Schema.Boolean),
-      recordOnStart: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      recordingConfig: Schema.optional(RecordingConfig2),
-      sessionKeepAliveTimeInSecs: Schema.optional(Schema.Number),
-      summarizeOnEnd: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      transcribeOnEnd: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        aiConfig: "ai_config",
-        liveStreamOnStart: "live_stream_on_start",
-        persistChat: "persist_chat",
-        recordOnStart: "record_on_start",
-        recordingConfig: "recording_config",
-        sessionKeepAliveTimeInSecs: "session_keep_alive_time_in_secs",
-        summarizeOnEnd: "summarize_on_end",
-        title: "title",
-        transcribeOnEnd: "transcribe_on_end",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/realtime/kit/{appId}/meetings",
-      }),
+export const CreateMeetingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    aiConfig: Schema.optional(Aiconfig),
+    liveStreamOnStart: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    persistChat: Schema.optional(Schema.Boolean),
+    recordOnStart: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    recordingConfig: Schema.optional(RecordingConfig2),
+    sessionKeepAliveTimeInSecs: Schema.optional(Schema.Number),
+    summarizeOnEnd: Schema.optional(Schema.Boolean),
+    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    transcribeOnEnd: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      aiConfig: "ai_config",
+      liveStreamOnStart: "live_stream_on_start",
+      persistChat: "persist_chat",
+      recordOnStart: "record_on_start",
+      recordingConfig: "recording_config",
+      sessionKeepAliveTimeInSecs: "session_keep_alive_time_in_secs",
+      summarizeOnEnd: "summarize_on_end",
+      title: "title",
+      transcribeOnEnd: "transcribe_on_end",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/realtime/kit/{appId}/meetings",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateMeetingRequest>;
 
 export interface CreateMeetingResponse {
@@ -5777,12 +5772,11 @@ export interface CreateMeetingResponse {
   } | null;
 }
 
-export const CreateMeetingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      success: Schema.Boolean,
-      data: Schema.optional(Schema.Union([Data16, Schema.Null])),
-    }),
+export const CreateMeetingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    success: Schema.Boolean,
+    data: Schema.optional(Schema.Union([Data16, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<CreateMeetingResponse>;
 
 export type CreateMeetingError = DefaultErrors;
@@ -5792,7 +5786,7 @@ export const createMeeting: API.OperationMethod<
   CreateMeetingResponse,
   CreateMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingRequest,
   output: CreateMeetingResponse,
   errors: [],
@@ -5810,7 +5804,7 @@ export interface GetMeetingActiveLivestreamsLivestreamRequest {
 }
 
 export const GetMeetingActiveLivestreamsLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -5840,7 +5834,7 @@ export interface GetMeetingActiveLivestreamsLivestreamResponse {
 }
 
 export const GetMeetingActiveLivestreamsLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data17, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -5854,7 +5848,7 @@ export const getMeetingActiveLivestreamsLivestream: API.OperationMethod<
   GetMeetingActiveLivestreamsLivestreamResponse,
   GetMeetingActiveLivestreamsLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingActiveLivestreamsLivestreamRequest,
   output: GetMeetingActiveLivestreamsLivestreamResponse,
   errors: [],
@@ -5874,7 +5868,7 @@ export interface GetMeetingByIdMeetingRequest {
 }
 
 export const GetMeetingByIdMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -5984,7 +5978,7 @@ export interface GetMeetingByIdMeetingResponse {
 }
 
 export const GetMeetingByIdMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data16, Schema.Null])),
@@ -5998,7 +5992,7 @@ export const getMeetingByIdMeeting: API.OperationMethod<
   GetMeetingByIdMeetingResponse,
   GetMeetingByIdMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingByIdMeetingRequest,
   output: GetMeetingByIdMeetingResponse,
   errors: [],
@@ -6104,7 +6098,7 @@ export interface UpdateMeetingByIdMeetingRequest {
 }
 
 export const UpdateMeetingByIdMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -6237,7 +6231,7 @@ export interface UpdateMeetingByIdMeetingResponse {
 }
 
 export const UpdateMeetingByIdMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data16, Schema.Null])),
@@ -6251,7 +6245,7 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
   UpdateMeetingByIdMeetingResponse,
   UpdateMeetingByIdMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMeetingByIdMeetingRequest,
   output: UpdateMeetingByIdMeetingResponse,
   errors: [],
@@ -6355,7 +6349,7 @@ export interface ReplaceMeetingByIdMeetingRequest {
 }
 
 export const ReplaceMeetingByIdMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -6488,7 +6482,7 @@ export interface ReplaceMeetingByIdMeetingResponse {
 }
 
 export const ReplaceMeetingByIdMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data16, Schema.Null])),
@@ -6502,7 +6496,7 @@ export const replaceMeetingByIdMeeting: API.OperationMethod<
   ReplaceMeetingByIdMeetingResponse,
   ReplaceMeetingByIdMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceMeetingByIdMeetingRequest,
   output: ReplaceMeetingByIdMeetingResponse,
   errors: [],
@@ -6521,7 +6515,7 @@ export interface GetMeetingParticipantMeetingRequest {
 }
 
 export const GetMeetingParticipantMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -6551,7 +6545,7 @@ export interface GetMeetingParticipantMeetingResponse {
 }
 
 export const GetMeetingParticipantMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data18,
       success: Schema.Boolean,
@@ -6565,7 +6559,7 @@ export const getMeetingParticipantMeeting: API.OperationMethod<
   GetMeetingParticipantMeetingResponse,
   GetMeetingParticipantMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingParticipantMeetingRequest,
   output: GetMeetingParticipantMeetingResponse,
   errors: [],
@@ -6580,7 +6574,7 @@ export interface DeleteMeetingParticipantMeetingRequest {
 }
 
 export const DeleteMeetingParticipantMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -6607,7 +6601,7 @@ export interface DeleteMeetingParticipantMeetingResponse {
 }
 
 export const DeleteMeetingParticipantMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data19, Schema.Null])),
@@ -6621,7 +6615,7 @@ export const deleteMeetingParticipantMeeting: API.OperationMethod<
   DeleteMeetingParticipantMeetingResponse,
   DeleteMeetingParticipantMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMeetingParticipantMeetingRequest,
   output: DeleteMeetingParticipantMeetingResponse,
   errors: [],
@@ -6643,7 +6637,7 @@ export interface GetMeetingParticipantsMeetingRequest {
 }
 
 export const GetMeetingParticipantsMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -6673,7 +6667,7 @@ export interface GetMeetingParticipantsMeetingResponse {
 }
 
 export const GetMeetingParticipantsMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data18),
       paging: Paging2,
@@ -6688,7 +6682,7 @@ export const getMeetingParticipantsMeeting: API.OperationMethod<
   GetMeetingParticipantsMeetingResponse,
   GetMeetingParticipantsMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMeetingParticipantsMeetingRequest,
   output: GetMeetingParticipantsMeetingResponse,
   errors: [],
@@ -6706,7 +6700,7 @@ export interface GetOneRecordingRecordingRequest {
 }
 
 export const GetOneRecordingRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       recordingId: Schema.String.pipe(T.HttpPath("recordingId")),
@@ -6781,7 +6775,7 @@ export interface GetOneRecordingRecordingResponse {
 }
 
 export const GetOneRecordingRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data20, Schema.Null])),
@@ -6795,7 +6789,7 @@ export const getOneRecordingRecording: API.OperationMethod<
   GetOneRecordingRecordingResponse,
   GetOneRecordingRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOneRecordingRecordingRequest,
   output: GetOneRecordingRecordingResponse,
   errors: [],
@@ -6816,7 +6810,7 @@ export interface GetOrgAnalyticsAnalyticRequest {
 }
 
 export const GetOrgAnalyticsAnalyticRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6859,7 +6853,7 @@ export interface GetOrgAnalyticsAnalyticResponse {
 }
 
 export const GetOrgAnalyticsAnalyticResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data21, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -6873,7 +6867,7 @@ export const getOrgAnalyticsAnalytic: API.OperationMethod<
   GetOrgAnalyticsAnalyticResponse,
   GetOrgAnalyticsAnalyticError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrgAnalyticsAnalyticRequest,
   output: GetOrgAnalyticsAnalyticResponse,
   errors: [],
@@ -6894,7 +6888,7 @@ export interface GetOrgAnalyticsLivestreamRequest {
 }
 
 export const GetOrgAnalyticsLivestreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6937,7 +6931,7 @@ export interface GetOrgAnalyticsLivestreamResponse {
 }
 
 export const GetOrgAnalyticsLivestreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data21, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -6951,7 +6945,7 @@ export const getOrgAnalyticsLivestream: API.OperationMethod<
   GetOrgAnalyticsLivestreamResponse,
   GetOrgAnalyticsLivestreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrgAnalyticsLivestreamRequest,
   output: GetOrgAnalyticsLivestreamResponse,
   errors: [],
@@ -6979,7 +6973,7 @@ export interface GetParticipantDataFromPeerIdSessionRequest {
 }
 
 export const GetParticipantDataFromPeerIdSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       peerId: Schema.String.pipe(T.HttpPath("peerId")),
@@ -7032,7 +7026,7 @@ export interface GetParticipantDataFromPeerIdSessionResponse {
 }
 
 export const GetParticipantDataFromPeerIdSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data22, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -7046,7 +7040,7 @@ export const getParticipantDataFromPeerIdSession: API.OperationMethod<
   GetParticipantDataFromPeerIdSessionResponse,
   GetParticipantDataFromPeerIdSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetParticipantDataFromPeerIdSessionRequest,
   output: GetParticipantDataFromPeerIdSessionResponse,
   errors: [],
@@ -7072,7 +7066,7 @@ export interface AddParticipantMeetingRequest {
 }
 
 export const AddParticipantMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -7112,7 +7106,7 @@ export interface AddParticipantMeetingResponse {
 }
 
 export const AddParticipantMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data23, Schema.Null])),
@@ -7126,7 +7120,7 @@ export const addParticipantMeeting: API.OperationMethod<
   AddParticipantMeetingResponse,
   AddParticipantMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddParticipantMeetingRequest,
   output: AddParticipantMeetingResponse,
   errors: [],
@@ -7147,7 +7141,7 @@ export interface EditParticipantMeetingRequest {
 }
 
 export const EditParticipantMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -7186,7 +7180,7 @@ export interface EditParticipantMeetingResponse {
 }
 
 export const EditParticipantMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data23, Schema.Null])),
@@ -7200,7 +7194,7 @@ export const editParticipantMeeting: API.OperationMethod<
   EditParticipantMeetingResponse,
   EditParticipantMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditParticipantMeetingRequest,
   output: EditParticipantMeetingResponse,
   errors: [],
@@ -7222,7 +7216,7 @@ export interface KickParticipantsActiveSessionRequest {
 }
 
 export const KickParticipantsActiveSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -7259,7 +7253,7 @@ export interface KickParticipantsActiveSessionResponse {
 }
 
 export const KickParticipantsActiveSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data24, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -7273,7 +7267,7 @@ export const kickParticipantsActiveSession: API.OperationMethod<
   KickParticipantsActiveSessionResponse,
   KickParticipantsActiveSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: KickParticipantsActiveSessionRequest,
   output: KickParticipantsActiveSessionResponse,
   errors: [],
@@ -7292,7 +7286,7 @@ export interface RefreshParticipantTokenMeetingRequest {
 }
 
 export const RefreshParticipantTokenMeetingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -7314,7 +7308,7 @@ export interface RefreshParticipantTokenMeetingResponse {
 }
 
 export const RefreshParticipantTokenMeetingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data25,
       success: Schema.Boolean,
@@ -7328,7 +7322,7 @@ export const refreshParticipantTokenMeeting: API.OperationMethod<
   RefreshParticipantTokenMeetingResponse,
   RefreshParticipantTokenMeetingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshParticipantTokenMeetingRequest,
   output: RefreshParticipantTokenMeetingResponse,
   errors: [],
@@ -7354,7 +7348,7 @@ export interface CreatePollActiveSessionRequest {
 }
 
 export const CreatePollActiveSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       meetingId: Schema.String.pipe(T.HttpPath("meetingId")),
@@ -7398,7 +7392,7 @@ export interface CreatePollActiveSessionResponse {
 }
 
 export const CreatePollActiveSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data26, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -7412,7 +7406,7 @@ export const createPollActiveSession: API.OperationMethod<
   CreatePollActiveSessionResponse,
   CreatePollActiveSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePollActiveSessionRequest,
   output: CreatePollActiveSessionResponse,
   errors: [],
@@ -7434,7 +7428,7 @@ export interface GetPresetRequest {
   search?: string;
 }
 
-export const GetPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetPresetRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7460,13 +7454,12 @@ export interface GetPresetResponse {
   success: boolean;
 }
 
-export const GetPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.Array(Data27),
-      paging: Paging2,
-      success: Schema.Boolean,
-    }),
+export const GetPresetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Array(Data27),
+    paging: Paging2,
+    success: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<GetPresetResponse>;
 
 export type GetPresetError = DefaultErrors | Forbidden;
@@ -7476,7 +7469,7 @@ export const getPreset: API.OperationMethod<
   GetPresetResponse,
   GetPresetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPresetRequest,
   output: GetPresetResponse,
   errors: [Forbidden],
@@ -7614,21 +7607,20 @@ export interface CreatePresetRequest {
   };
 }
 
-export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      config: Config,
-      name: Schema.String,
-      permissions: Permissions,
-      ui: Ui,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/realtime/kit/{appId}/presets",
-      }),
-    ),
+export const CreatePresetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    config: Config,
+    name: Schema.String,
+    permissions: Permissions,
+    ui: Ui,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/realtime/kit/{appId}/presets",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreatePresetRequest>;
 
 export interface CreatePresetResponse {
@@ -7772,12 +7764,11 @@ export interface CreatePresetResponse {
   success: boolean;
 }
 
-export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Data28,
-      success: Schema.Boolean,
-    }),
+export const CreatePresetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Data28,
+    success: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<CreatePresetResponse>;
 
 export type CreatePresetError =
@@ -7790,7 +7781,7 @@ export const createPreset: API.OperationMethod<
   CreatePresetResponse,
   CreatePresetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePresetRequest,
   output: CreatePresetResponse,
   errors: [RealtimeKitPresetExists, Forbidden],
@@ -7929,22 +7920,21 @@ export interface PatchPresetRequest {
   };
 }
 
-export const PatchPresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      presetId: Schema.String.pipe(T.HttpPath("presetId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      config: Schema.optional(Config2),
-      name: Schema.optional(Schema.String),
-      permissions: Schema.optional(Permissions2),
-      ui: Schema.optional(Ui3),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/realtime/kit/{appId}/presets/{presetId}",
-      }),
-    ),
+export const PatchPresetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    presetId: Schema.String.pipe(T.HttpPath("presetId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    config: Schema.optional(Config2),
+    name: Schema.optional(Schema.String),
+    permissions: Schema.optional(Permissions2),
+    ui: Schema.optional(Ui3),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/realtime/kit/{appId}/presets/{presetId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchPresetRequest>;
 
 export interface PatchPresetResponse {
@@ -7954,12 +7944,11 @@ export interface PatchPresetResponse {
   success: boolean;
 }
 
-export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.Unknown,
-      success: Schema.Boolean,
-    }),
+export const PatchPresetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Unknown,
+    success: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<PatchPresetResponse>;
 
 export type PatchPresetError =
@@ -7972,7 +7961,7 @@ export const patchPreset: API.OperationMethod<
   PatchPresetResponse,
   PatchPresetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPresetRequest,
   output: PatchPresetResponse,
   errors: [RealtimeKitPresetNotFound, Forbidden],
@@ -7985,18 +7974,17 @@ export interface DeletePresetRequest {
   accountId: string;
 }
 
-export const DeletePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      presetId: Schema.String.pipe(T.HttpPath("presetId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/realtime/kit/{appId}/presets/{presetId}",
-      }),
-    ),
+export const DeletePresetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    presetId: Schema.String.pipe(T.HttpPath("presetId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/realtime/kit/{appId}/presets/{presetId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePresetRequest>;
 
 export interface DeletePresetResponse {
@@ -8006,12 +7994,11 @@ export interface DeletePresetResponse {
   success: boolean;
 }
 
-export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.Unknown,
-      success: Schema.Boolean,
-    }),
+export const DeletePresetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Unknown,
+    success: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<DeletePresetResponse>;
 
 export type DeletePresetError =
@@ -8024,7 +8011,7 @@ export const deletePreset: API.OperationMethod<
   DeletePresetResponse,
   DeletePresetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePresetRequest,
   output: DeletePresetResponse,
   errors: [RealtimeKitPresetNotFound, Forbidden],
@@ -8042,7 +8029,7 @@ export interface GetPresetByIdPresetRequest {
 }
 
 export const GetPresetByIdPresetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       presetId: Schema.String.pipe(T.HttpPath("presetId")),
@@ -8197,7 +8184,7 @@ export interface GetPresetByIdPresetResponse {
 }
 
 export const GetPresetByIdPresetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data28,
       success: Schema.Boolean,
@@ -8214,7 +8201,7 @@ export const getPresetByIdPreset: API.OperationMethod<
   GetPresetByIdPresetResponse,
   GetPresetByIdPresetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPresetByIdPresetRequest,
   output: GetPresetByIdPresetResponse,
   errors: [RealtimeKitPresetNotFound, Forbidden],
@@ -8257,7 +8244,7 @@ export interface GetRecordingsRecordingRequest {
 }
 
 export const GetRecordingsRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8390,7 +8377,7 @@ export interface GetRecordingsRecordingResponse {
 }
 
 export const GetRecordingsRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data29),
       paging: Paging2,
@@ -8405,7 +8392,7 @@ export const getRecordingsRecording: API.OperationMethod<
   GetRecordingsRecordingResponse,
   GetRecordingsRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordingsRecordingRequest,
   output: GetRecordingsRecordingResponse,
   errors: [],
@@ -8472,7 +8459,7 @@ export interface StartRecordingsRecordingRequest {
 }
 
 export const StartRecordingsRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8572,7 +8559,7 @@ export interface StartRecordingsRecordingResponse {
 }
 
 export const StartRecordingsRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data20, Schema.Null])),
@@ -8586,7 +8573,7 @@ export const startRecordingsRecording: API.OperationMethod<
   StartRecordingsRecordingResponse,
   StartRecordingsRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartRecordingsRecordingRequest,
   output: StartRecordingsRecordingResponse,
   errors: [],
@@ -8606,7 +8593,7 @@ export interface PauseResumeStopRecordingRecordingRequest {
 }
 
 export const PauseResumeStopRecordingRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       recordingId: Schema.String.pipe(T.HttpPath("recordingId")),
@@ -8685,7 +8672,7 @@ export interface PauseResumeStopRecordingRecordingResponse {
 }
 
 export const PauseResumeStopRecordingRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data20, Schema.Null])),
@@ -8699,7 +8686,7 @@ export const pauseResumeStopRecordingRecording: API.OperationMethod<
   PauseResumeStopRecordingRecordingResponse,
   PauseResumeStopRecordingRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PauseResumeStopRecordingRecordingRequest,
   output: PauseResumeStopRecordingRecordingResponse,
   errors: [],
@@ -8717,7 +8704,7 @@ export interface GetSessionChatSessionRequest {
 }
 
 export const GetSessionChatSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -8736,7 +8723,7 @@ export interface GetSessionChatSessionResponse {
 }
 
 export const GetSessionChatSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data30, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -8750,7 +8737,7 @@ export const getSessionChatSession: API.OperationMethod<
   GetSessionChatSessionResponse,
   GetSessionChatSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionChatSessionRequest,
   output: GetSessionChatSessionResponse,
   errors: [],
@@ -8770,7 +8757,7 @@ export interface GetSessionDetailsSessionRequest {
 }
 
 export const GetSessionDetailsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -8808,7 +8795,7 @@ export interface GetSessionDetailsSessionResponse {
 }
 
 export const GetSessionDetailsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data3, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -8822,7 +8809,7 @@ export const getSessionDetailsSession: API.OperationMethod<
   GetSessionDetailsSessionResponse,
   GetSessionDetailsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionDetailsSessionRequest,
   output: GetSessionDetailsSessionResponse,
   errors: [],
@@ -8851,7 +8838,7 @@ export interface GetSessionParticipantDetailsSessionRequest {
 }
 
 export const GetSessionParticipantDetailsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -8899,7 +8886,7 @@ export interface GetSessionParticipantDetailsSessionResponse {
 }
 
 export const GetSessionParticipantDetailsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data31, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -8913,7 +8900,7 @@ export const getSessionParticipantDetailsSession: API.OperationMethod<
   GetSessionParticipantDetailsSessionResponse,
   GetSessionParticipantDetailsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionParticipantDetailsSessionRequest,
   output: GetSessionParticipantDetailsSessionResponse,
   errors: [],
@@ -8945,7 +8932,7 @@ export interface GetSessionParticipantsSessionRequest {
 }
 
 export const GetSessionParticipantsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -8997,7 +8984,7 @@ export interface GetSessionParticipantsSessionResponse {
 }
 
 export const GetSessionParticipantsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data32, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9011,7 +8998,7 @@ export const getSessionParticipantsSession: API.OperationMethod<
   GetSessionParticipantsSessionResponse,
   GetSessionParticipantsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionParticipantsSessionRequest,
   output: GetSessionParticipantsSessionResponse,
   errors: [],
@@ -9048,7 +9035,7 @@ export interface GetSessionsSessionRequest {
 }
 
 export const GetSessionsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9114,7 +9101,7 @@ export interface GetSessionsSessionResponse {
 }
 
 export const GetSessionsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data33, Schema.Null])),
       paging: Schema.optional(Schema.Union([Paging, Schema.Null])),
@@ -9129,7 +9116,7 @@ export const getSessionsSession: API.OperationMethod<
   GetSessionsSessionResponse,
   GetSessionsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionsSessionRequest,
   output: GetSessionsSessionResponse,
   errors: [],
@@ -9147,7 +9134,7 @@ export interface GetSessionSummarySessionRequest {
 }
 
 export const GetSessionSummarySessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -9170,7 +9157,7 @@ export interface GetSessionSummarySessionResponse {
 }
 
 export const GetSessionSummarySessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data34, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9184,7 +9171,7 @@ export const getSessionSummarySession: API.OperationMethod<
   GetSessionSummarySessionResponse,
   GetSessionSummarySessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionSummarySessionRequest,
   output: GetSessionSummarySessionResponse,
   errors: [],
@@ -9204,7 +9191,7 @@ export interface GetSessionTranscriptsSessionRequest {
 }
 
 export const GetSessionTranscriptsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -9233,7 +9220,7 @@ export interface GetSessionTranscriptsSessionResponse {
 }
 
 export const GetSessionTranscriptsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data35, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9247,7 +9234,7 @@ export const getSessionTranscriptsSession: API.OperationMethod<
   GetSessionTranscriptsSessionResponse,
   GetSessionTranscriptsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionTranscriptsSessionRequest,
   output: GetSessionTranscriptsSessionResponse,
   errors: [],
@@ -9265,7 +9252,7 @@ export interface GenerateSummaryOfTranscriptsSessionRequest {
 }
 
 export const GenerateSummaryOfTranscriptsSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
@@ -9284,7 +9271,7 @@ export interface GenerateSummaryOfTranscriptsSessionResponse {
 }
 
 export const GenerateSummaryOfTranscriptsSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.optional(Schema.Union([Data36, Schema.Null])),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9298,7 +9285,7 @@ export const generateSummaryOfTranscriptsSession: API.OperationMethod<
   GenerateSummaryOfTranscriptsSessionResponse,
   GenerateSummaryOfTranscriptsSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateSummaryOfTranscriptsSessionRequest,
   output: GenerateSummaryOfTranscriptsSessionResponse,
   errors: [],
@@ -9321,7 +9308,7 @@ export interface StartTrackRecordingRecordingRequest {
 }
 
 export const StartTrackRecordingRecordingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9371,7 +9358,7 @@ export interface StartTrackRecordingRecordingResponse {
 }
 
 export const StartTrackRecordingRecordingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       data: Schema.optional(Schema.Union([Data37, Schema.Null])),
@@ -9385,7 +9372,7 @@ export const startTrackRecordingRecording: API.OperationMethod<
   StartTrackRecordingRecordingResponse,
   StartTrackRecordingRecordingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartTrackRecordingRecordingRequest,
   output: StartTrackRecordingRecordingResponse,
   errors: [],
@@ -9403,7 +9390,7 @@ export interface GetWebhookByIdWebhookRequest {
 }
 
 export const GetWebhookByIdWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
@@ -9441,7 +9428,7 @@ export interface GetWebhookByIdWebhookResponse {
 }
 
 export const GetWebhookByIdWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data38,
       success: Schema.Boolean,
@@ -9458,7 +9445,7 @@ export const getWebhookByIdWebhook: API.OperationMethod<
   GetWebhookByIdWebhookResponse,
   GetWebhookByIdWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebhookByIdWebhookRequest,
   output: GetWebhookByIdWebhookResponse,
   errors: [RealtimeKitWebhookNotFound, Forbidden],
@@ -9475,7 +9462,7 @@ export interface GetWebhooksWebhookRequest {
 }
 
 export const GetWebhooksWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9512,7 +9499,7 @@ export interface GetWebhooksWebhookResponse {
 }
 
 export const GetWebhooksWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data38),
       success: Schema.Boolean,
@@ -9529,7 +9516,7 @@ export const getWebhooksWebhook: API.OperationMethod<
   GetWebhooksWebhookResponse,
   GetWebhooksWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWebhooksWebhookRequest,
   output: GetWebhooksWebhookResponse,
   errors: [RealtimeKitWebhookNotFound, Forbidden],
@@ -9565,7 +9552,7 @@ export interface CreateWebhookWebhookRequest {
 }
 
 export const CreateWebhookWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -9621,7 +9608,7 @@ export interface CreateWebhookWebhookResponse {
 }
 
 export const CreateWebhookWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data38,
       success: Schema.Boolean,
@@ -9638,7 +9625,7 @@ export const createWebhookWebhook: API.OperationMethod<
   CreateWebhookWebhookResponse,
   CreateWebhookWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWebhookWebhookRequest,
   output: CreateWebhookWebhookResponse,
   errors: [RealtimeKitWebhookExists, Forbidden],
@@ -9652,7 +9639,7 @@ export interface DeleteWebhookWebhookRequest {
 }
 
 export const DeleteWebhookWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
@@ -9671,7 +9658,7 @@ export interface DeleteWebhookWebhookResponse {
 }
 
 export const DeleteWebhookWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Unknown,
       success: Schema.Boolean,
@@ -9688,7 +9675,7 @@ export const deleteWebhookWebhook: API.OperationMethod<
   DeleteWebhookWebhookResponse,
   DeleteWebhookWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookWebhookRequest,
   output: DeleteWebhookWebhookResponse,
   errors: [RealtimeKitWebhookNotFound, Forbidden],
@@ -9721,7 +9708,7 @@ export interface EditWebhookWebhookRequest {
 }
 
 export const EditWebhookWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
@@ -9780,7 +9767,7 @@ export interface EditWebhookWebhookResponse {
 }
 
 export const EditWebhookWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data38,
       success: Schema.Boolean,
@@ -9794,7 +9781,7 @@ export const editWebhookWebhook: API.OperationMethod<
   EditWebhookWebhookResponse,
   EditWebhookWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditWebhookWebhookRequest,
   output: EditWebhookWebhookResponse,
   errors: [],
@@ -9827,7 +9814,7 @@ export interface ReplaceWebhookWebhookRequest {
 }
 
 export const ReplaceWebhookWebhookRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       webhookId: Schema.String.pipe(T.HttpPath("webhookId")),
@@ -9865,7 +9852,7 @@ export interface ReplaceWebhookWebhookResponse {
 }
 
 export const ReplaceWebhookWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Unknown,
       success: Schema.Boolean,
@@ -9882,7 +9869,7 @@ export const replaceWebhookWebhook: API.OperationMethod<
   ReplaceWebhookWebhookResponse,
   ReplaceWebhookWebhookError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceWebhookWebhookRequest,
   output: ReplaceWebhookWebhookResponse,
   errors: [RealtimeKitWebhookNotFound, Forbidden],

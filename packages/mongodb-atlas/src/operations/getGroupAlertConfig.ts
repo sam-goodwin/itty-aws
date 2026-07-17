@@ -11,7 +11,7 @@ export interface GetGroupAlertConfigInput {
   pretty?: boolean;
 }
 export const GetGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     alertConfigId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupAlertConfigInput =
 // Output Schema
 export type GetGroupAlertConfigOutput = void;
 export const GetGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertConfigOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupAlertConfigOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration.
  */
-export const getGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupAlertConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupAlertConfigInput,
   outputSchema: GetGroupAlertConfigOutput,
   errors: [Forbidden, NotFound] as const,

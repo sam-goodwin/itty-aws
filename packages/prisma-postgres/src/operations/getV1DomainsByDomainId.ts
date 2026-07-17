@@ -8,7 +8,7 @@ export interface GetV1DomainsByDomainIdInput {
   domainId: string;
 }
 export const GetV1DomainsByDomainIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/domains/{domainId}" }),
@@ -46,7 +46,7 @@ export interface GetV1DomainsByDomainIdOutput {
   };
 }
 export const GetV1DomainsByDomainIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -89,10 +89,8 @@ export const GetV1DomainsByDomainIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns details for a custom domain by id. Authorization is derived from the parent compute service's workspace.
  */
-export const getV1DomainsByDomainId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1DomainsByDomainIdInput,
-    outputSchema: GetV1DomainsByDomainIdOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getV1DomainsByDomainId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1DomainsByDomainIdInput,
+  outputSchema: GetV1DomainsByDomainIdOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

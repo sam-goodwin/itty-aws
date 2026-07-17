@@ -16,7 +16,7 @@ export interface AgentApplicationsRevisionsBundleUpdateInput {
   spec: Record<string, unknown>;
 }
 export const AgentApplicationsRevisionsBundleUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -233,7 +233,7 @@ export interface AgentApplicationsRevisionsBundleUpdateOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsBundleUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -573,7 +573,7 @@ export const AgentApplicationsRevisionsBundleUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsBundleUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsBundleUpdateInput,
     outputSchema: AgentApplicationsRevisionsBundleUpdateOutput,
   }));

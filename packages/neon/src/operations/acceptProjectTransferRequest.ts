@@ -9,7 +9,7 @@ export interface AcceptProjectTransferRequestInput {
   org_id?: string;
 }
 export const AcceptProjectTransferRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     request_id: Schema.String.pipe(T.PathParam()),
     org_id: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const AcceptProjectTransferRequestInput =
 // Output Schema
 export type AcceptProjectTransferRequestOutput = void;
 export const AcceptProjectTransferRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AcceptProjectTransferRequestOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AcceptProjectTransferRequestOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const AcceptProjectTransferRequestOutput =
  * @param request_id - The Neon project transfer request ID
  */
 export const acceptProjectTransferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AcceptProjectTransferRequestInput,
     outputSchema: AcceptProjectTransferRequestOutput,
   }));

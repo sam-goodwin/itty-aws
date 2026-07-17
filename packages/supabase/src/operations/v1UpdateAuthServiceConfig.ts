@@ -270,7 +270,7 @@ export interface V1UpdateAuthServiceConfigInput {
   custom_oauth_enabled?: boolean;
 }
 export const V1UpdateAuthServiceConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     site_url: Schema.optional(Schema.NullOr(Schema.String)),
     disable_signup: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -948,7 +948,7 @@ export interface V1UpdateAuthServiceConfigOutput {
   custom_oauth_max_providers: number;
 }
 export const V1UpdateAuthServiceConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_max_request_duration: Schema.NullOr(Schema.Number),
     db_max_pool_size: Schema.NullOr(Schema.Number),
     db_max_pool_size_unit: Schema.NullOr(
@@ -1243,10 +1243,8 @@ export const V1UpdateAuthServiceConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateAuthServiceConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateAuthServiceConfigInput,
-    outputSchema: V1UpdateAuthServiceConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateAuthServiceConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateAuthServiceConfigInput,
+  outputSchema: V1UpdateAuthServiceConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

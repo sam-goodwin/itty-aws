@@ -10,7 +10,7 @@ export interface GroupsTypesMetricsDestroyInput {
   project_id: string;
 }
 export const GroupsTypesMetricsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const GroupsTypesMetricsDestroyInput =
 // Output Schema
 export type GroupsTypesMetricsDestroyOutput = void;
 export const GroupsTypesMetricsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesMetricsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesMetricsDestroyOutput>;
 
 // The operation
 /**
@@ -32,10 +32,8 @@ export const GroupsTypesMetricsDestroyOutput =
  * @param id - A UUID string identifying this group usage metric.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsTypesMetricsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsTypesMetricsDestroyInput,
-    outputSchema: GroupsTypesMetricsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const groupsTypesMetricsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsTypesMetricsDestroyInput,
+  outputSchema: GroupsTypesMetricsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

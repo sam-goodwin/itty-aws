@@ -6,7 +6,7 @@ import { Forbidden } from "../errors.ts";
 // Input Schema
 export interface PlatformRegionsGetInput {}
 export const PlatformRegionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/platform/regions" }),
   ) as unknown as Schema.Codec<PlatformRegionsGetInput>;
 
@@ -25,7 +25,7 @@ export interface PlatformRegionsGetOutput {
   }[];
 }
 export const PlatformRegionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nearest: Schema.optional(Schema.String),
     regions: Schema.optional(
       Schema.Array(
@@ -49,7 +49,7 @@ export const PlatformRegionsGetOutput =
  *
  * List all regions on the platform with their details.
  */
-export const PlatformRegionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PlatformRegionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PlatformRegionsGetInput,
   outputSchema: PlatformRegionsGetOutput,
   errors: [Forbidden] as const,

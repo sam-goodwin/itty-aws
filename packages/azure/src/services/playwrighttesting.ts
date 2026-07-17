@@ -15,7 +15,7 @@ export interface AccountQuotasGetInput {
   accountName: string;
   quotaName: "ScalableExecution" | "Reporting";
 }
-export const AccountQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountQuotasGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -44,27 +44,25 @@ export interface AccountQuotasGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AccountQuotasGetOutput>;
+export const AccountQuotasGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AccountQuotasGetOutput>;
 
 // The operation
 /**
@@ -76,7 +74,7 @@ export const AccountQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - Name of account.
  * @param quotaName - The Playwright service account quota name.
  */
-export const AccountQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountQuotasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountQuotasGetInput,
   outputSchema: AccountQuotasGetOutput,
 }));
@@ -87,7 +85,7 @@ export interface AccountQuotasListByAccountInput {
   accountName: string;
 }
 export const AccountQuotasListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -117,7 +115,7 @@ export interface AccountQuotasListByAccountOutput {
   nextLink?: string;
 }
 export const AccountQuotasListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -161,12 +159,10 @@ export const AccountQuotasListByAccountOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Name of account.
  */
-export const AccountQuotasListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountQuotasListByAccountInput,
-    outputSchema: AccountQuotasListByAccountOutput,
-  }),
-);
+export const AccountQuotasListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountQuotasListByAccountInput,
+  outputSchema: AccountQuotasListByAccountOutput,
+}));
 // Input Schema
 export interface AccountsCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -174,7 +170,7 @@ export interface AccountsCheckNameAvailabilityInput {
   type?: string;
 }
 export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -193,7 +189,7 @@ export interface AccountsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -209,7 +205,7 @@ export const AccountsCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsCheckNameAvailabilityInput,
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
@@ -236,7 +232,7 @@ export interface AccountsCreateOrUpdateInput {
   location: string;
 }
 export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -288,7 +284,7 @@ export interface AccountsCreateOrUpdateOutput {
   };
 }
 export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -317,19 +313,17 @@ export const AccountsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Name of account.
  */
-export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsCreateOrUpdateInput,
-    outputSchema: AccountsCreateOrUpdateOutput,
-  }),
-);
+export const AccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCreateOrUpdateInput,
+  outputSchema: AccountsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AccountsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -344,7 +338,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -355,7 +349,7 @@ export const AccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Name of account.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -365,7 +359,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -391,7 +385,7 @@ export interface AccountsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -420,7 +414,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Name of account.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -430,7 +424,7 @@ export interface AccountsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -459,7 +453,7 @@ export interface AccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -502,18 +496,16 @@ export const AccountsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -541,7 +533,7 @@ export interface AccountsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -583,12 +575,10 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -602,7 +592,7 @@ export interface AccountsUpdateInput {
     localAuth?: "Enabled" | "Disabled";
   };
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -641,7 +631,7 @@ export interface AccountsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -670,15 +660,13 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - Name of account.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzurePlaywrightService/operations",
@@ -702,7 +690,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -732,7 +720,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -742,7 +730,7 @@ export interface QuotasGetInput {
   location: string;
   quotaName: "ScalableExecution" | "Reporting";
 }
-export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   quotaName: Schema.Literals(["ScalableExecution", "Reporting"]).pipe(
@@ -770,7 +758,7 @@ export interface QuotasGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotasGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -799,7 +787,7 @@ export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The location of quota in ARM Normalized format like eastus, southeastasia etc.
  * @param quotaName - The quota name.
  */
-export const QuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotasGetInput,
   outputSchema: QuotasGetOutput,
 }));
@@ -809,7 +797,7 @@ export interface QuotasListBySubscriptionInput {
   location: string;
 }
 export const QuotasListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -838,7 +826,7 @@ export interface QuotasListBySubscriptionOutput {
   nextLink?: string;
 }
 export const QuotasListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -881,9 +869,7 @@ export const QuotasListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The location of quota in ARM Normalized format like eastus, southeastasia etc.
  */
-export const QuotasListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotasListBySubscriptionInput,
-    outputSchema: QuotasListBySubscriptionOutput,
-  }),
-);
+export const QuotasListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotasListBySubscriptionInput,
+  outputSchema: QuotasListBySubscriptionOutput,
+}));

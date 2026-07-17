@@ -9,7 +9,7 @@ export interface HogFlowsMetricsGlobalRetrieveInput {
   before?: string;
 }
 export const HogFlowsMetricsGlobalRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
     before: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export type HogFlowsMetricsGlobalRetrieveOutput = {
   failed: number;
 }[];
 export const HogFlowsMetricsGlobalRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       workflow_id: Schema.String,
       succeeded: Schema.Number,
@@ -43,7 +43,7 @@ export const HogFlowsMetricsGlobalRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const hogFlowsMetricsGlobalRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFlowsMetricsGlobalRetrieveInput,
     outputSchema: HogFlowsMetricsGlobalRetrieveOutput,
   }));

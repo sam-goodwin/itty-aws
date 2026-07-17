@@ -8,7 +8,7 @@ export interface GetClimateOrdersOrderInput {
   expand?: string;
 }
 export const GetClimateOrdersOrderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -108,7 +108,7 @@ export interface GetClimateOrdersOrderOutput {
   status: "awaiting_funds" | "canceled" | "confirmed" | "delivered" | "open";
 }
 export const GetClimateOrdersOrderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_fees: Schema.Number,
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
@@ -234,9 +234,7 @@ export const GetClimateOrdersOrderOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param order - Unique identifier of the order.
  */
-export const GetClimateOrdersOrder = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetClimateOrdersOrderInput,
-    outputSchema: GetClimateOrdersOrderOutput,
-  }),
-);
+export const GetClimateOrdersOrder = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetClimateOrdersOrderInput,
+  outputSchema: GetClimateOrdersOrderOutput,
+}));

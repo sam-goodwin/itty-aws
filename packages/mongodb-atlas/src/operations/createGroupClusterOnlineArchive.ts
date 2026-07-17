@@ -11,7 +11,7 @@ export interface CreateGroupClusterOnlineArchiveInput {
   pretty?: boolean;
 }
 export const CreateGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupClusterOnlineArchiveInput =
 // Output Schema
 export type CreateGroupClusterOnlineArchiveOutput = void;
 export const CreateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOnlineArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupClusterOnlineArchiveOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
  */
 export const createGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterOnlineArchiveInput,
     outputSchema: CreateGroupClusterOnlineArchiveOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

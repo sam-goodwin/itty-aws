@@ -21,7 +21,7 @@ export interface PostTaxTransactionsCreateReversalInput {
   shipping_cost?: { amount: number; amount_tax: number };
 }
 export const PostTaxTransactionsCreateReversalInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     flat_amount: Schema.optional(Schema.Number),
     line_items: Schema.optional(
@@ -289,7 +289,7 @@ export interface PostTaxTransactionsCreateReversalOutput {
   type: "reversal" | "transaction";
 }
 export const PostTaxTransactionsCreateReversalOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -571,7 +571,7 @@ export const PostTaxTransactionsCreateReversalOutput =
  * <p>Partially or fully reverses a previously created <code>Transaction</code>.</p>
  */
 export const PostTaxTransactionsCreateReversal =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTaxTransactionsCreateReversalInput,
     outputSchema: PostTaxTransactionsCreateReversalOutput,
   }));

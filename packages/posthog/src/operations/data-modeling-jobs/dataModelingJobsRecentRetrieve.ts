@@ -7,7 +7,7 @@ export interface DataModelingJobsRecentRetrieveInput {
   project_id: string;
 }
 export const DataModelingJobsRecentRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -30,7 +30,7 @@ export interface DataModelingJobsRecentRetrieveOutput {
   rows_expected: number | null;
 }
 export const DataModelingJobsRecentRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     saved_query_id: Schema.NullOr(Schema.String),
     status: Schema.Literals(["Cancelled", "Completed", "Failed", "Running"]),
@@ -50,7 +50,7 @@ export const DataModelingJobsRecentRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dataModelingJobsRecentRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataModelingJobsRecentRetrieveInput,
     outputSchema: DataModelingJobsRecentRetrieveOutput,
   }));

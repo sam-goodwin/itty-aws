@@ -9,7 +9,7 @@ export interface CreateNeonAuthInput {
   auth_provider: "mock" | "stack" | "better_auth";
   database_name?: string;
 }
-export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNeonAuthInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
@@ -32,7 +32,7 @@ export interface CreateNeonAuthOutput {
   table_name: string;
   base_url?: string;
 }
-export const CreateNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateNeonAuthOutput = /*@__PURE__*/ Schema.Struct({
   auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   auth_provider_project_id: Schema.String,
   pub_client_key: Schema.String,
@@ -53,7 +53,7 @@ export const CreateNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const createNeonAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createNeonAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateNeonAuthInput,
   outputSchema: CreateNeonAuthOutput,
 }));

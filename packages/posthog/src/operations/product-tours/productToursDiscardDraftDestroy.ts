@@ -9,7 +9,7 @@ export interface ProductToursDiscardDraftDestroyInput {
   project_id: string;
 }
 export const ProductToursDiscardDraftDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -86,7 +86,7 @@ export interface ProductToursDiscardDraftDestroyOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const ProductToursDiscardDraftDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -212,7 +212,7 @@ export const ProductToursDiscardDraftDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const productToursDiscardDraftDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductToursDiscardDraftDestroyInput,
     outputSchema: ProductToursDiscardDraftDestroyOutput,
     errors: [Forbidden, NotFound] as const,

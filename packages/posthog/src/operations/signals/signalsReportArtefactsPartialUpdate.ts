@@ -11,7 +11,7 @@ export interface SignalsReportArtefactsPartialUpdateInput {
   content?: unknown;
 }
 export const SignalsReportArtefactsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     report_id: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export interface SignalsReportArtefactsPartialUpdateOutput {
   task_id: string | null;
 }
 export const SignalsReportArtefactsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     report_id: Schema.String,
     type: Schema.String,
@@ -54,7 +54,7 @@ export const SignalsReportArtefactsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const signalsReportArtefactsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsReportArtefactsPartialUpdateInput,
     outputSchema: SignalsReportArtefactsPartialUpdateOutput,
     errors: [BadRequest, NotFound] as const,

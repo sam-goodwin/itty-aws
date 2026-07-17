@@ -7,11 +7,9 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1VerifyDnsConfigInput {
   ref: string;
 }
-export const V1VerifyDnsConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1VerifyDnsConfigInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/projects/{ref}/custom-hostname/reverify",
@@ -47,7 +45,7 @@ export interface V1VerifyDnsConfigOutput {
   };
 }
 export const V1VerifyDnsConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals([
       "1_not_started",
       "2_initiated",
@@ -97,7 +95,7 @@ export const V1VerifyDnsConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1VerifyDnsConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1VerifyDnsConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1VerifyDnsConfigInput,
   outputSchema: V1VerifyDnsConfigOutput,
   errors: [BadRequest, Forbidden] as const,

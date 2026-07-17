@@ -18,7 +18,7 @@ export interface CreateGroupPrivateEndpointEndpointServiceEndpointInput {
   pretty?: boolean;
 }
 export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     endpointServiceId: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
 // Output Schema
 export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput = void;
 export const CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceEndpointOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to create a private endpoint.
  */
 export const createGroupPrivateEndpointEndpointServiceEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointInput,
     outputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointOutput,
     errors: [

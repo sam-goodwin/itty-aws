@@ -9,7 +9,7 @@ export interface FeatureFlagsDestroyInput {
   project_id: string;
 }
 export const FeatureFlagsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const FeatureFlagsDestroyInput =
 // Output Schema
 export type FeatureFlagsDestroyOutput = void;
 export const FeatureFlagsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const FeatureFlagsDestroyOutput =
  * @param id - A unique integer value identifying this feature flag.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const featureFlagsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: FeatureFlagsDestroyInput,
   outputSchema: FeatureFlagsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

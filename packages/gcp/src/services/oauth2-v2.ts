@@ -40,7 +40,7 @@ export interface Tokeninfo {
 }
 
 export const Tokeninfo: Schema.Codec<Tokeninfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audience: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     expires_in: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface Userinfo {
 }
 
 export const Userinfo: Schema.Codec<Userinfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     family_name: Schema.optional(Schema.String),
     gender: Schema.optional(Schema.String),
@@ -148,7 +148,7 @@ export interface TokeninfoRequest {
   id_token?: string;
 }
 
-export const TokeninfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokeninfoRequest = /*@__PURE__*/ Schema.Struct({
   id_token: Schema.optional(Schema.String).pipe(T.HttpQuery("id_token")),
 }).pipe(
   T.Http({ method: "POST", path: "oauth2/v2/tokeninfo", hasBody: true }),
@@ -156,7 +156,7 @@ export const TokeninfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<TokeninfoRequest>;
 
 export type TokeninfoResponse = Tokeninfo;
-export const TokeninfoResponse = /*@__PURE__*/ /*#__PURE__*/ Tokeninfo;
+export const TokeninfoResponse = /*@__PURE__*/ Tokeninfo;
 
 export type TokeninfoError =
   | DefaultErrors
@@ -170,7 +170,7 @@ export const tokeninfo: API.OperationMethod<
   TokeninfoResponse,
   TokeninfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TokeninfoRequest,
   output: TokeninfoResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -178,15 +178,13 @@ export const tokeninfo: API.OperationMethod<
 
 export interface GetUserinfoRequest {}
 
-export const GetUserinfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetUserinfoRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "oauth2/v2/userinfo" }),
   svc,
 ) as unknown as Schema.Codec<GetUserinfoRequest>;
 
 export type GetUserinfoResponse = Userinfo;
-export const GetUserinfoResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;
+export const GetUserinfoResponse = /*@__PURE__*/ Userinfo;
 
 export type GetUserinfoError = DefaultErrors | NotFound | Forbidden;
 
@@ -195,7 +193,7 @@ export const getUserinfo: API.OperationMethod<
   GetUserinfoResponse,
   GetUserinfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserinfoRequest,
   output: GetUserinfoResponse,
   errors: [NotFound, Forbidden],
@@ -203,15 +201,13 @@ export const getUserinfo: API.OperationMethod<
 
 export interface GetUserinfoV2MeRequest {}
 
-export const GetUserinfoV2MeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetUserinfoV2MeRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "userinfo/v2/me" }),
   svc,
 ) as unknown as Schema.Codec<GetUserinfoV2MeRequest>;
 
 export type GetUserinfoV2MeResponse = Userinfo;
-export const GetUserinfoV2MeResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;
+export const GetUserinfoV2MeResponse = /*@__PURE__*/ Userinfo;
 
 export type GetUserinfoV2MeError = DefaultErrors | NotFound | Forbidden;
 
@@ -220,7 +216,7 @@ export const getUserinfoV2Me: API.OperationMethod<
   GetUserinfoV2MeResponse,
   GetUserinfoV2MeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserinfoV2MeRequest,
   output: GetUserinfoV2MeResponse,
   errors: [NotFound, Forbidden],

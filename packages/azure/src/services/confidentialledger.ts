@@ -15,7 +15,7 @@ export interface CheckNameAvailabilityInput {
   type?: string;
 }
 export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export interface CheckNameAvailabilityOutput {
   message?: string;
 }
 export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -49,12 +49,10 @@ export const CheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface LedgerCreateInput {
   subscriptionId: string;
@@ -98,7 +96,7 @@ export interface LedgerCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const LedgerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ledgerName: Schema.String.pipe(T.PathParam()),
@@ -188,7 +186,7 @@ export interface LedgerCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LedgerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -217,7 +215,7 @@ export const LedgerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ledgerName - Name of the Confidential Ledger
  */
-export const LedgerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LedgerCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LedgerCreateInput,
   outputSchema: LedgerCreateOutput,
 }));
@@ -227,7 +225,7 @@ export interface LedgerDeleteInput {
   resourceGroupName: string;
   ledgerName: string;
 }
-export const LedgerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ledgerName: Schema.String.pipe(T.PathParam()),
@@ -242,7 +240,7 @@ export const LedgerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LedgerDeleteOutput = void;
 export const LedgerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LedgerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LedgerDeleteOutput>;
 
 // The operation
 /**
@@ -253,7 +251,7 @@ export const LedgerDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ledgerName - Name of the Confidential Ledger
  */
-export const LedgerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LedgerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LedgerDeleteInput,
   outputSchema: LedgerDeleteOutput,
 }));
@@ -265,15 +263,13 @@ export interface LedgerFilesExportInput {
   restoreRegion?: string;
   uri: string;
 }
-export const LedgerFilesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerName: Schema.String.pipe(T.PathParam()),
-    restoreRegion: Schema.optional(Schema.String),
-    uri: Schema.String,
-  },
-).pipe(
+export const LedgerFilesExportInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ledgerName: Schema.String.pipe(T.PathParam()),
+  restoreRegion: Schema.optional(Schema.String),
+  uri: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}/filesExport",
@@ -286,7 +282,7 @@ export interface LedgerFilesExportOutput {
   message?: string;
 }
 export const LedgerFilesExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<LedgerFilesExportOutput>;
 
@@ -299,7 +295,7 @@ export const LedgerFilesExportOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ledgerName - Name of the Confidential Ledger
  */
-export const LedgerFilesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LedgerFilesExport = /*@__PURE__*/ API.make(() => ({
   inputSchema: LedgerFilesExportInput,
   outputSchema: LedgerFilesExportOutput,
 }));
@@ -309,7 +305,7 @@ export interface LedgerGetInput {
   resourceGroupName: string;
   ledgerName: string;
 }
-export const LedgerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ledgerName: Schema.String.pipe(T.PathParam()),
@@ -335,7 +331,7 @@ export interface LedgerGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LedgerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -364,7 +360,7 @@ export const LedgerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ledgerName - Name of the Confidential Ledger
  */
-export const LedgerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LedgerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LedgerGetInput,
   outputSchema: LedgerGetOutput,
 }));
@@ -375,7 +371,7 @@ export interface LedgerListByResourceGroupInput {
   $filter?: string;
 }
 export const LedgerListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -405,7 +401,7 @@ export interface LedgerListByResourceGroupOutput {
   nextLink?: string;
 }
 export const LedgerListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -449,19 +445,17 @@ export const LedgerListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $filter - The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public'
  */
-export const LedgerListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LedgerListByResourceGroupInput,
-    outputSchema: LedgerListByResourceGroupOutput,
-  }),
-);
+export const LedgerListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LedgerListByResourceGroupInput,
+  outputSchema: LedgerListByResourceGroupOutput,
+}));
 // Input Schema
 export interface LedgerListBySubscriptionInput {
   subscriptionId: string;
   $filter?: string;
 }
 export const LedgerListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -490,7 +484,7 @@ export interface LedgerListBySubscriptionOutput {
   nextLink?: string;
 }
 export const LedgerListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -533,12 +527,10 @@ export const LedgerListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param $filter - The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public'
  */
-export const LedgerListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LedgerListBySubscriptionInput,
-    outputSchema: LedgerListBySubscriptionOutput,
-  }),
-);
+export const LedgerListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LedgerListBySubscriptionInput,
+  outputSchema: LedgerListBySubscriptionOutput,
+}));
 // Input Schema
 export interface LedgerUpdateInput {
   subscriptionId: string;
@@ -582,7 +574,7 @@ export interface LedgerUpdateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const LedgerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ledgerName: Schema.String.pipe(T.PathParam()),
@@ -672,7 +664,7 @@ export interface LedgerUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LedgerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LedgerUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -701,15 +693,13 @@ export const LedgerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ledgerName - Name of the Confidential Ledger
  */
-export const LedgerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LedgerUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LedgerUpdateInput,
   outputSchema: LedgerUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ConfidentialLedger/operations",
@@ -731,7 +721,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -757,7 +747,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

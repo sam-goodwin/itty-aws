@@ -10,7 +10,7 @@ export interface WorkflowSwitchPrimariesInput {
   number: number;
 }
 export const WorkflowSwitchPrimariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -109,7 +109,7 @@ export interface WorkflowSwitchPrimariesOutput {
   };
 }
 export const WorkflowSwitchPrimariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     number: Schema.Number,
@@ -245,10 +245,8 @@ export const WorkflowSwitchPrimariesOutput =
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const workflowSwitchPrimaries = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkflowSwitchPrimariesInput,
-    outputSchema: WorkflowSwitchPrimariesOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const workflowSwitchPrimaries = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkflowSwitchPrimariesInput,
+  outputSchema: WorkflowSwitchPrimariesOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

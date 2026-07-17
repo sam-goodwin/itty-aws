@@ -8,7 +8,7 @@ export interface ListOrganizationVPCEndpointsInput {
   region_id: string;
 }
 export const ListOrganizationVPCEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     region_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface ListOrganizationVPCEndpointsOutput {
   endpoints: { vpc_endpoint_id: string; label: string }[];
 }
 export const ListOrganizationVPCEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
       Schema.Struct({
         vpc_endpoint_id: Schema.String,
@@ -42,7 +42,7 @@ export const ListOrganizationVPCEndpointsOutput =
  * @param region_id - The Neon region ID
  */
 export const listOrganizationVPCEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListOrganizationVPCEndpointsInput,
     outputSchema: ListOrganizationVPCEndpointsOutput,
   }));

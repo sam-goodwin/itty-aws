@@ -9,7 +9,7 @@ export interface WizardSessionsLatestRetrieveInput {
   workflow_id: string;
 }
 export const WizardSessionsLatestRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_id: Schema.optional(Schema.String),
     workflow_id: Schema.String,
@@ -40,7 +40,7 @@ export interface WizardSessionsLatestRetrieveOutput {
   is_stale: boolean;
 }
 export const WizardSessionsLatestRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session_id: Schema.String,
     team_id: Schema.Number,
     workflow_id: Schema.String,
@@ -76,7 +76,7 @@ export const WizardSessionsLatestRetrieveOutput =
  * @param workflow_id - Filter to a single workflow (e.g. 'posthog-integration').
  */
 export const wizardSessionsLatestRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WizardSessionsLatestRetrieveInput,
     outputSchema: WizardSessionsLatestRetrieveOutput,
   }));

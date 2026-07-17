@@ -41,7 +41,7 @@ export interface CaCertificatesCreateOrUpdateInput {
   type?: string;
 }
 export const CaCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -97,7 +97,7 @@ export interface CaCertificatesCreateOrUpdateOutput {
   type?: string;
 }
 export const CaCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export const CaCertificatesCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const CaCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CaCertificatesCreateOrUpdateInput,
     outputSchema: CaCertificatesCreateOrUpdateOutput,
   }));
@@ -128,7 +128,7 @@ export interface CaCertificatesDeleteInput {
   caCertificateName: string;
 }
 export const CaCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -144,7 +144,7 @@ export const CaCertificatesDeleteInput =
 // Output Schema
 export type CaCertificatesDeleteOutput = void;
 export const CaCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CaCertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CaCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -158,12 +158,10 @@ export const CaCertificatesDeleteOutput =
  * @param caCertificateName - Name of the CA certificate.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const CaCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CaCertificatesDeleteInput,
-    outputSchema: CaCertificatesDeleteOutput,
-  }),
-);
+export const CaCertificatesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CaCertificatesDeleteInput,
+  outputSchema: CaCertificatesDeleteOutput,
+}));
 // Input Schema
 export interface CaCertificatesGetInput {
   subscriptionId: string;
@@ -171,14 +169,12 @@ export interface CaCertificatesGetInput {
   namespaceName: string;
   caCertificateName: string;
 }
-export const CaCertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    caCertificateName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const CaCertificatesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  caCertificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
@@ -193,7 +189,7 @@ export interface CaCertificatesGetOutput {
   type?: string;
 }
 export const CaCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -211,7 +207,7 @@ export const CaCertificatesGetOutput =
  * @param caCertificateName - Name of the CA certificate.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const CaCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CaCertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CaCertificatesGetInput,
   outputSchema: CaCertificatesGetOutput,
 }));
@@ -224,7 +220,7 @@ export interface CaCertificatesListByNamespaceInput {
   $top?: number;
 }
 export const CaCertificatesListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -244,7 +240,7 @@ export interface CaCertificatesListByNamespaceOutput {
   nextLink?: string;
 }
 export const CaCertificatesListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -271,7 +267,7 @@ export const CaCertificatesListByNamespaceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const CaCertificatesListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CaCertificatesListByNamespaceInput,
     outputSchema: CaCertificatesListByNamespaceOutput,
   }));
@@ -326,7 +322,7 @@ export interface ChannelsCreateOrUpdateInput {
   type?: string;
 }
 export const ChannelsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -408,7 +404,7 @@ export interface ChannelsCreateOrUpdateOutput {
   type?: string;
 }
 export const ChannelsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -426,12 +422,10 @@ export const ChannelsCreateOrUpdateOutput =
  * @param channelName - Name of the channel.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChannelsCreateOrUpdateInput,
-    outputSchema: ChannelsCreateOrUpdateOutput,
-  }),
-);
+export const ChannelsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChannelsCreateOrUpdateInput,
+  outputSchema: ChannelsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ChannelsDeleteInput {
   subscriptionId: string;
@@ -439,7 +433,7 @@ export interface ChannelsDeleteInput {
   partnerNamespaceName: string;
   channelName: string;
 }
-export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -455,7 +449,7 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ChannelsDeleteOutput = void;
 export const ChannelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsDeleteOutput>;
 
 // The operation
 /**
@@ -469,7 +463,7 @@ export const ChannelsDeleteOutput =
  * @param channelName - Name of the channel.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsDeleteInput,
   outputSchema: ChannelsDeleteOutput,
 }));
@@ -480,7 +474,7 @@ export interface ChannelsGetInput {
   partnerNamespaceName: string;
   channelName: string;
 }
-export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -499,7 +493,7 @@ export interface ChannelsGetOutput {
   name?: string;
   type?: string;
 }
-export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -517,7 +511,7 @@ export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param channelName - Name of the channel.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetInput,
   outputSchema: ChannelsGetOutput,
 }));
@@ -529,7 +523,7 @@ export interface ChannelsGetFullUrlInput {
   channelName: string;
 }
 export const ChannelsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -547,7 +541,7 @@ export interface ChannelsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const ChannelsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ChannelsGetFullUrlOutput>;
 
@@ -563,7 +557,7 @@ export const ChannelsGetFullUrlOutput =
  * @param channelName - Name of the Channel.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsGetFullUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsGetFullUrl = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsGetFullUrlInput,
   outputSchema: ChannelsGetFullUrlOutput,
 }));
@@ -576,7 +570,7 @@ export interface ChannelsListByPartnerNamespaceInput {
   $top?: number;
 }
 export const ChannelsListByPartnerNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -596,7 +590,7 @@ export interface ChannelsListByPartnerNamespaceOutput {
   nextLink?: string;
 }
 export const ChannelsListByPartnerNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -623,7 +617,7 @@ export const ChannelsListByPartnerNamespaceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const ChannelsListByPartnerNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChannelsListByPartnerNamespaceInput,
     outputSchema: ChannelsListByPartnerNamespaceOutput,
   }));
@@ -651,7 +645,7 @@ export interface ChannelsUpdateInput {
     };
   };
 }
-export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ChannelsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -692,7 +686,7 @@ export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ChannelsUpdateOutput = void;
 export const ChannelsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsUpdateOutput>;
 
 // The operation
 /**
@@ -706,7 +700,7 @@ export const ChannelsUpdateOutput =
  * @param channelName - Name of the channel.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChannelsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChannelsUpdateInput,
   outputSchema: ChannelsUpdateOutput,
 }));
@@ -741,7 +735,7 @@ export interface ClientGroupsCreateOrUpdateInput {
   type?: string;
 }
 export const ClientGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -795,7 +789,7 @@ export interface ClientGroupsCreateOrUpdateOutput {
   type?: string;
 }
 export const ClientGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -813,12 +807,10 @@ export const ClientGroupsCreateOrUpdateOutput =
  * @param clientGroupName - The client group name.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClientGroupsCreateOrUpdateInput,
-    outputSchema: ClientGroupsCreateOrUpdateOutput,
-  }),
-);
+export const ClientGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClientGroupsCreateOrUpdateInput,
+  outputSchema: ClientGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClientGroupsDeleteInput {
   subscriptionId: string;
@@ -827,7 +819,7 @@ export interface ClientGroupsDeleteInput {
   clientGroupName: string;
 }
 export const ClientGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -843,7 +835,7 @@ export const ClientGroupsDeleteInput =
 // Output Schema
 export type ClientGroupsDeleteOutput = void;
 export const ClientGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -857,7 +849,7 @@ export const ClientGroupsDeleteOutput =
  * @param clientGroupName - Name of the client group.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClientGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClientGroupsDeleteInput,
   outputSchema: ClientGroupsDeleteOutput,
 }));
@@ -868,7 +860,7 @@ export interface ClientGroupsGetInput {
   namespaceName: string;
   clientGroupName: string;
 }
-export const ClientGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClientGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -887,7 +879,7 @@ export interface ClientGroupsGetOutput {
   name?: string;
   type?: string;
 }
-export const ClientGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClientGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -905,7 +897,7 @@ export const ClientGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clientGroupName - Name of the client group.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClientGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClientGroupsGetInput,
   outputSchema: ClientGroupsGetOutput,
 }));
@@ -918,7 +910,7 @@ export interface ClientGroupsListByNamespaceInput {
   $top?: number;
 }
 export const ClientGroupsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -938,7 +930,7 @@ export interface ClientGroupsListByNamespaceOutput {
   nextLink?: string;
 }
 export const ClientGroupsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -964,12 +956,10 @@ export const ClientGroupsListByNamespaceOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const ClientGroupsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClientGroupsListByNamespaceInput,
-    outputSchema: ClientGroupsListByNamespaceOutput,
-  }),
-);
+export const ClientGroupsListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClientGroupsListByNamespaceInput,
+  outputSchema: ClientGroupsListByNamespaceOutput,
+}));
 // Input Schema
 export interface ClientsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1013,7 +1003,7 @@ export interface ClientsCreateOrUpdateInput {
   type?: string;
 }
 export const ClientsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1086,7 +1076,7 @@ export interface ClientsCreateOrUpdateOutput {
   type?: string;
 }
 export const ClientsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1104,12 +1094,10 @@ export const ClientsCreateOrUpdateOutput =
  * @param clientName - The client name.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClientsCreateOrUpdateInput,
-    outputSchema: ClientsCreateOrUpdateOutput,
-  }),
-);
+export const ClientsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClientsCreateOrUpdateInput,
+  outputSchema: ClientsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClientsDeleteInput {
   subscriptionId: string;
@@ -1117,7 +1105,7 @@ export interface ClientsDeleteInput {
   namespaceName: string;
   clientName: string;
 }
-export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClientsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1133,7 +1121,7 @@ export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClientsDeleteOutput = void;
 export const ClientsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientsDeleteOutput>;
 
 // The operation
 /**
@@ -1147,7 +1135,7 @@ export const ClientsDeleteOutput =
  * @param clientName - Name of the client.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClientsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClientsDeleteInput,
   outputSchema: ClientsDeleteOutput,
 }));
@@ -1158,7 +1146,7 @@ export interface ClientsGetInput {
   namespaceName: string;
   clientName: string;
 }
-export const ClientsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClientsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1177,7 +1165,7 @@ export interface ClientsGetOutput {
   name?: string;
   type?: string;
 }
-export const ClientsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClientsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1195,7 +1183,7 @@ export const ClientsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clientName - Name of the client.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ClientsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClientsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClientsGetInput,
   outputSchema: ClientsGetOutput,
 }));
@@ -1208,7 +1196,7 @@ export interface ClientsListByNamespaceInput {
   $top?: number;
 }
 export const ClientsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -1228,7 +1216,7 @@ export interface ClientsListByNamespaceOutput {
   nextLink?: string;
 }
 export const ClientsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1254,12 +1242,10 @@ export const ClientsListByNamespaceOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const ClientsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClientsListByNamespaceInput,
-    outputSchema: ClientsListByNamespaceOutput,
-  }),
-);
+export const ClientsListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClientsListByNamespaceInput,
+  outputSchema: ClientsListByNamespaceOutput,
+}));
 // Input Schema
 export interface DomainEventSubscriptionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1368,7 +1354,7 @@ export interface DomainEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const DomainEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1537,7 +1523,7 @@ export interface DomainEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const DomainEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1556,7 +1542,7 @@ export const DomainEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsCreateOrUpdateInput,
     outputSchema: DomainEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -1568,7 +1554,7 @@ export interface DomainEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const DomainEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1584,7 +1570,7 @@ export const DomainEventSubscriptionsDeleteInput =
 // Output Schema
 export type DomainEventSubscriptionsDeleteOutput = void;
 export const DomainEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -1599,7 +1585,7 @@ export const DomainEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsDeleteInput,
     outputSchema: DomainEventSubscriptionsDeleteOutput,
   }));
@@ -1611,7 +1597,7 @@ export interface DomainEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const DomainEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1631,7 +1617,7 @@ export interface DomainEventSubscriptionsGetOutput {
   type?: string;
 }
 export const DomainEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1649,12 +1635,10 @@ export const DomainEventSubscriptionsGetOutput =
  * @param eventSubscriptionName - Name of the event subscription to be found.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainEventSubscriptionsGetInput,
-    outputSchema: DomainEventSubscriptionsGetOutput,
-  }),
-);
+export const DomainEventSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainEventSubscriptionsGetInput,
+  outputSchema: DomainEventSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface DomainEventSubscriptionsGetDeliveryAttributesInput {
   subscriptionId: string;
@@ -1663,7 +1647,7 @@ export interface DomainEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const DomainEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1681,7 +1665,7 @@ export interface DomainEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const DomainEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1705,7 +1689,7 @@ export const DomainEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: DomainEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -1717,7 +1701,7 @@ export interface DomainEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const DomainEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1735,7 +1719,7 @@ export interface DomainEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const DomainEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DomainEventSubscriptionsGetFullUrlOutput>;
 
@@ -1752,7 +1736,7 @@ export const DomainEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsGetFullUrlInput,
     outputSchema: DomainEventSubscriptionsGetFullUrlOutput,
   }));
@@ -1765,7 +1749,7 @@ export interface DomainEventSubscriptionsListInput {
   $top?: number;
 }
 export const DomainEventSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -1785,7 +1769,7 @@ export interface DomainEventSubscriptionsListOutput {
   nextLink?: string;
 }
 export const DomainEventSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1812,7 +1796,7 @@ export const DomainEventSubscriptionsListOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainEventSubscriptionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsListInput,
     outputSchema: DomainEventSubscriptionsListOutput,
   }));
@@ -1902,7 +1886,7 @@ export interface DomainEventSubscriptionsUpdateInput {
   };
 }
 export const DomainEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -2038,7 +2022,7 @@ export interface DomainEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const DomainEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2057,7 +2041,7 @@ export const DomainEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainEventSubscriptionsUpdateInput,
     outputSchema: DomainEventSubscriptionsUpdateOutput,
   }));
@@ -2131,7 +2115,7 @@ export interface DomainsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -2262,7 +2246,7 @@ export interface DomainsCreateOrUpdateOutput {
   type?: string;
 }
 export const DomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2279,19 +2263,17 @@ export const DomainsCreateOrUpdateOutput =
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsCreateOrUpdateInput,
-    outputSchema: DomainsCreateOrUpdateOutput,
-  }),
-);
+export const DomainsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsCreateOrUpdateInput,
+  outputSchema: DomainsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DomainsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   domainName: string;
 }
-export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -2306,7 +2288,7 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DomainsDeleteOutput = void;
 export const DomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
 
 // The operation
 /**
@@ -2319,7 +2301,7 @@ export const DomainsDeleteOutput =
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsDeleteInput,
   outputSchema: DomainsDeleteOutput,
 }));
@@ -2329,7 +2311,7 @@ export interface DomainsGetInput {
   resourceGroupName: string;
   domainName: string;
 }
-export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -2347,7 +2329,7 @@ export interface DomainsGetOutput {
   name?: string;
   type?: string;
 }
-export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2364,7 +2346,7 @@ export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsGetInput,
   outputSchema: DomainsGetOutput,
 }));
@@ -2376,7 +2358,7 @@ export interface DomainsListByResourceGroupInput {
   $top?: number;
 }
 export const DomainsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -2395,7 +2377,7 @@ export interface DomainsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DomainsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2420,12 +2402,10 @@ export const DomainsListByResourceGroupOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListByResourceGroupInput,
-    outputSchema: DomainsListByResourceGroupOutput,
-  }),
-);
+export const DomainsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListByResourceGroupInput,
+  outputSchema: DomainsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface DomainsListBySubscriptionInput {
   subscriptionId: string;
@@ -2433,7 +2413,7 @@ export interface DomainsListBySubscriptionInput {
   $top?: number;
 }
 export const DomainsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -2451,7 +2431,7 @@ export interface DomainsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DomainsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2475,12 +2455,10 @@ export const DomainsListBySubscriptionOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const DomainsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListBySubscriptionInput,
-    outputSchema: DomainsListBySubscriptionOutput,
-  }),
-);
+export const DomainsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListBySubscriptionInput,
+  outputSchema: DomainsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface DomainsListSharedAccessKeysInput {
   subscriptionId: string;
@@ -2488,7 +2466,7 @@ export interface DomainsListSharedAccessKeysInput {
   domainName: string;
 }
 export const DomainsListSharedAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -2506,7 +2484,7 @@ export interface DomainsListSharedAccessKeysOutput {
   key2?: string;
 }
 export const DomainsListSharedAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DomainsListSharedAccessKeysOutput>;
@@ -2522,12 +2500,10 @@ export const DomainsListSharedAccessKeysOutput =
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsListSharedAccessKeysInput,
-    outputSchema: DomainsListSharedAccessKeysOutput,
-  }),
-);
+export const DomainsListSharedAccessKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsListSharedAccessKeysInput,
+  outputSchema: DomainsListSharedAccessKeysOutput,
+}));
 // Input Schema
 export interface DomainsRegenerateKeyInput {
   subscriptionId: string;
@@ -2536,7 +2512,7 @@ export interface DomainsRegenerateKeyInput {
   keyName: string;
 }
 export const DomainsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -2555,7 +2531,7 @@ export interface DomainsRegenerateKeyOutput {
   key2?: string;
 }
 export const DomainsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DomainsRegenerateKeyOutput>;
@@ -2571,12 +2547,10 @@ export const DomainsRegenerateKeyOutput =
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsRegenerateKeyInput,
-    outputSchema: DomainsRegenerateKeyOutput,
-  }),
-);
+export const DomainsRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsRegenerateKeyInput,
+  outputSchema: DomainsRegenerateKeyOutput,
+}));
 // Input Schema
 export interface DomainsUpdateInput {
   subscriptionId: string;
@@ -2618,7 +2592,7 @@ export interface DomainsUpdateInput {
     >;
   };
 }
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -2697,7 +2671,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DomainsUpdateOutput = void;
 export const DomainsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsUpdateOutput>;
 
 // The operation
 /**
@@ -2710,7 +2684,7 @@ export const DomainsUpdateOutput =
  * @param domainName - Name of the domain.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
 }));
@@ -2823,7 +2797,7 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -2993,7 +2967,7 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const DomainTopicEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3013,7 +2987,7 @@ export const DomainTopicEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsCreateOrUpdateInput,
     outputSchema: DomainTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -3026,7 +3000,7 @@ export interface DomainTopicEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const DomainTopicEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3043,7 +3017,7 @@ export const DomainTopicEventSubscriptionsDeleteInput =
 // Output Schema
 export type DomainTopicEventSubscriptionsDeleteOutput = void;
 export const DomainTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -3059,7 +3033,7 @@ export const DomainTopicEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsDeleteInput,
     outputSchema: DomainTopicEventSubscriptionsDeleteOutput,
   }));
@@ -3072,7 +3046,7 @@ export interface DomainTopicEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const DomainTopicEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3093,7 +3067,7 @@ export interface DomainTopicEventSubscriptionsGetOutput {
   type?: string;
 }
 export const DomainTopicEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3113,7 +3087,7 @@ export const DomainTopicEventSubscriptionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsGetInput,
     outputSchema: DomainTopicEventSubscriptionsGetOutput,
   }));
@@ -3126,7 +3100,7 @@ export interface DomainTopicEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3145,7 +3119,7 @@ export interface DomainTopicEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3170,7 +3144,7 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: DomainTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -3183,7 +3157,7 @@ export interface DomainTopicEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const DomainTopicEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3202,7 +3176,7 @@ export interface DomainTopicEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const DomainTopicEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetFullUrlOutput>;
 
@@ -3220,7 +3194,7 @@ export const DomainTopicEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsGetFullUrlInput,
     outputSchema: DomainTopicEventSubscriptionsGetFullUrlOutput,
   }));
@@ -3234,7 +3208,7 @@ export interface DomainTopicEventSubscriptionsListInput {
   $top?: number;
 }
 export const DomainTopicEventSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3255,7 +3229,7 @@ export interface DomainTopicEventSubscriptionsListOutput {
   nextLink?: string;
 }
 export const DomainTopicEventSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3283,7 +3257,7 @@ export const DomainTopicEventSubscriptionsListOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const DomainTopicEventSubscriptionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsListInput,
     outputSchema: DomainTopicEventSubscriptionsListOutput,
   }));
@@ -3374,7 +3348,7 @@ export interface DomainTopicEventSubscriptionsUpdateInput {
   };
 }
 export const DomainTopicEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3511,7 +3485,7 @@ export interface DomainTopicEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const DomainTopicEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3531,7 +3505,7 @@ export const DomainTopicEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const DomainTopicEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DomainTopicEventSubscriptionsUpdateInput,
     outputSchema: DomainTopicEventSubscriptionsUpdateOutput,
   }));
@@ -3543,7 +3517,7 @@ export interface DomainTopicsCreateOrUpdateInput {
   domainTopicName: string;
 }
 export const DomainTopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3563,7 +3537,7 @@ export interface DomainTopicsCreateOrUpdateOutput {
   type?: string;
 }
 export const DomainTopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3581,12 +3555,10 @@ export const DomainTopicsCreateOrUpdateOutput =
  * @param domainTopicName - Name of the domain topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainTopicsCreateOrUpdateInput,
-    outputSchema: DomainTopicsCreateOrUpdateOutput,
-  }),
-);
+export const DomainTopicsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainTopicsCreateOrUpdateInput,
+  outputSchema: DomainTopicsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DomainTopicsDeleteInput {
   subscriptionId: string;
@@ -3595,7 +3567,7 @@ export interface DomainTopicsDeleteInput {
   domainTopicName: string;
 }
 export const DomainTopicsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3611,7 +3583,7 @@ export const DomainTopicsDeleteInput =
 // Output Schema
 export type DomainTopicsDeleteOutput = void;
 export const DomainTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -3625,7 +3597,7 @@ export const DomainTopicsDeleteOutput =
  * @param domainTopicName - Name of the domain topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainTopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainTopicsDeleteInput,
   outputSchema: DomainTopicsDeleteOutput,
 }));
@@ -3636,7 +3608,7 @@ export interface DomainTopicsGetInput {
   domainName: string;
   domainTopicName: string;
 }
-export const DomainTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainTopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
@@ -3655,7 +3627,7 @@ export interface DomainTopicsGetOutput {
   name?: string;
   type?: string;
 }
-export const DomainTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainTopicsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3673,7 +3645,7 @@ export const DomainTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param domainTopicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const DomainTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DomainTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainTopicsGetInput,
   outputSchema: DomainTopicsGetOutput,
 }));
@@ -3686,7 +3658,7 @@ export interface DomainTopicsListByDomainInput {
   $top?: number;
 }
 export const DomainTopicsListByDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -3706,7 +3678,7 @@ export interface DomainTopicsListByDomainOutput {
   nextLink?: string;
 }
 export const DomainTopicsListByDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3732,12 +3704,10 @@ export const DomainTopicsListByDomainOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const DomainTopicsListByDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainTopicsListByDomainInput,
-    outputSchema: DomainTopicsListByDomainOutput,
-  }),
-);
+export const DomainTopicsListByDomain = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainTopicsListByDomainInput,
+  outputSchema: DomainTopicsListByDomainOutput,
+}));
 // Input Schema
 export interface EventSubscriptionsCreateOrUpdateInput {
   scope: string;
@@ -3844,7 +3814,7 @@ export interface EventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const EventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -4011,7 +3981,7 @@ export interface EventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const EventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4028,7 +3998,7 @@ export const EventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsCreateOrUpdateInput,
     outputSchema: EventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -4038,7 +4008,7 @@ export interface EventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const EventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4052,7 +4022,7 @@ export const EventSubscriptionsDeleteInput =
 // Output Schema
 export type EventSubscriptionsDeleteOutput = void;
 export const EventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -4064,19 +4034,17 @@ export const EventSubscriptionsDeleteOutput =
  * @param eventSubscriptionName - Name of the event subscription to be deleted.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSubscriptionsDeleteInput,
-    outputSchema: EventSubscriptionsDeleteOutput,
-  }),
-);
+export const EventSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSubscriptionsDeleteInput,
+  outputSchema: EventSubscriptionsDeleteOutput,
+}));
 // Input Schema
 export interface EventSubscriptionsGetInput {
   scope: string;
   eventSubscriptionName: string;
 }
 export const EventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4094,7 +4062,7 @@ export interface EventSubscriptionsGetOutput {
   type?: string;
 }
 export const EventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4110,19 +4078,17 @@ export const EventSubscriptionsGetOutput =
  * @param eventSubscriptionName - Name of the event subscription to be found.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSubscriptionsGetInput,
-    outputSchema: EventSubscriptionsGetOutput,
-  }),
-);
+export const EventSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSubscriptionsGetInput,
+  outputSchema: EventSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface EventSubscriptionsGetDeliveryAttributesInput {
   scope: string;
   eventSubscriptionName: string;
 }
 export const EventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4138,7 +4104,7 @@ export interface EventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const EventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4160,7 +4126,7 @@ export const EventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: EventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -4170,7 +4136,7 @@ export interface EventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const EventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4186,7 +4152,7 @@ export interface EventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const EventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<EventSubscriptionsGetFullUrlOutput>;
 
@@ -4201,7 +4167,7 @@ export const EventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const EventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsGetFullUrlInput,
     outputSchema: EventSubscriptionsGetFullUrlOutput,
   }));
@@ -4215,7 +4181,7 @@ export interface EventSubscriptionsListByDomainTopicInput {
   $top?: number;
 }
 export const EventSubscriptionsListByDomainTopicInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
@@ -4236,7 +4202,7 @@ export interface EventSubscriptionsListByDomainTopicOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListByDomainTopicOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4264,7 +4230,7 @@ export const EventSubscriptionsListByDomainTopicOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListByDomainTopic =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListByDomainTopicInput,
     outputSchema: EventSubscriptionsListByDomainTopicOutput,
   }));
@@ -4279,7 +4245,7 @@ export interface EventSubscriptionsListByResourceInput {
   $top?: number;
 }
 export const EventSubscriptionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -4301,7 +4267,7 @@ export interface EventSubscriptionsListByResourceOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4330,7 +4296,7 @@ export const EventSubscriptionsListByResourceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListByResourceInput,
     outputSchema: EventSubscriptionsListByResourceOutput,
   }));
@@ -4342,7 +4308,7 @@ export interface EventSubscriptionsListGlobalByResourceGroupInput {
   $top?: number;
 }
 export const EventSubscriptionsListGlobalByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -4361,7 +4327,7 @@ export interface EventSubscriptionsListGlobalByResourceGroupOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListGlobalByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4387,7 +4353,7 @@ export const EventSubscriptionsListGlobalByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListGlobalByResourceGroupInput,
     outputSchema: EventSubscriptionsListGlobalByResourceGroupOutput,
   }));
@@ -4400,7 +4366,7 @@ export interface EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput {
   $top?: number;
 }
 export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
@@ -4420,7 +4386,7 @@ export interface EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4447,7 +4413,7 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalByResourceGroupForTopicType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput,
     outputSchema: EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput,
   }));
@@ -4458,7 +4424,7 @@ export interface EventSubscriptionsListGlobalBySubscriptionInput {
   $top?: number;
 }
 export const EventSubscriptionsListGlobalBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -4476,7 +4442,7 @@ export interface EventSubscriptionsListGlobalBySubscriptionOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListGlobalBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4501,7 +4467,7 @@ export const EventSubscriptionsListGlobalBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListGlobalBySubscriptionInput,
     outputSchema: EventSubscriptionsListGlobalBySubscriptionOutput,
   }));
@@ -4513,7 +4479,7 @@ export interface EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput {
   $top?: number;
 }
 export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -4532,7 +4498,7 @@ export interface EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4558,7 +4524,7 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListGlobalBySubscriptionForTopicType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput,
     outputSchema: EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput,
   }));
@@ -4571,7 +4537,7 @@ export interface EventSubscriptionsListRegionalByResourceGroupInput {
   $top?: number;
 }
 export const EventSubscriptionsListRegionalByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -4591,7 +4557,7 @@ export interface EventSubscriptionsListRegionalByResourceGroupOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListRegionalByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4618,7 +4584,7 @@ export const EventSubscriptionsListRegionalByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListRegionalByResourceGroupInput,
     outputSchema: EventSubscriptionsListRegionalByResourceGroupOutput,
   }));
@@ -4632,7 +4598,7 @@ export interface EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput 
   $top?: number;
 }
 export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -4653,7 +4619,7 @@ export interface EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput
   nextLink?: string;
 }
 export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4681,7 +4647,7 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalByResourceGroupForTopicType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput,
     outputSchema:
       EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput,
@@ -4694,7 +4660,7 @@ export interface EventSubscriptionsListRegionalBySubscriptionInput {
   $top?: number;
 }
 export const EventSubscriptionsListRegionalBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -4713,7 +4679,7 @@ export interface EventSubscriptionsListRegionalBySubscriptionOutput {
   nextLink?: string;
 }
 export const EventSubscriptionsListRegionalBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4739,7 +4705,7 @@ export const EventSubscriptionsListRegionalBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListRegionalBySubscriptionInput,
     outputSchema: EventSubscriptionsListRegionalBySubscriptionOutput,
   }));
@@ -4752,7 +4718,7 @@ export interface EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput {
   $top?: number;
 }
 export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     topicTypeName: Schema.String.pipe(T.PathParam()),
@@ -4772,7 +4738,7 @@ export interface EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput 
   nextLink?: string;
 }
 export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4799,7 +4765,7 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const EventSubscriptionsListRegionalBySubscriptionForTopicType =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput,
     outputSchema:
       EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput,
@@ -4888,7 +4854,7 @@ export interface EventSubscriptionsUpdateInput {
   };
 }
 export const EventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     eventSubscriptionName: Schema.String.pipe(T.PathParam()),
     destination: Schema.optional(
@@ -5022,7 +4988,7 @@ export interface EventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const EventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5038,18 +5004,16 @@ export const EventSubscriptionsUpdateOutput =
  * @param eventSubscriptionName - Name of the event subscription to be updated.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const EventSubscriptionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventSubscriptionsUpdateInput,
-    outputSchema: EventSubscriptionsUpdateOutput,
-  }),
-);
+export const EventSubscriptionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventSubscriptionsUpdateInput,
+  outputSchema: EventSubscriptionsUpdateOutput,
+}));
 // Input Schema
 export interface ExtensionTopicsGetInput {
   scope: string;
 }
 export const ExtensionTopicsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5066,7 +5030,7 @@ export interface ExtensionTopicsGetOutput {
   type?: string;
 }
 export const ExtensionTopicsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5081,7 +5045,7 @@ export const ExtensionTopicsGetOutput =
  * @param scope - The identifier of the resource to which extension topic is queried. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for Azure resource.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ExtensionTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionTopicsGetInput,
   outputSchema: ExtensionTopicsGetOutput,
 }));
@@ -5178,7 +5142,7 @@ export interface NamespacesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const NamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5378,7 +5342,7 @@ export interface NamespacesCreateOrUpdateOutput {
   type?: string;
 }
 export const NamespacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5395,19 +5359,17 @@ export const NamespacesCreateOrUpdateOutput =
  * @param namespaceName - Name of the namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesCreateOrUpdateInput,
-    outputSchema: NamespacesCreateOrUpdateOutput,
-  }),
-);
+export const NamespacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesCreateOrUpdateInput,
+  outputSchema: NamespacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface NamespacesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   namespaceName: string;
 }
-export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5422,7 +5384,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type NamespacesDeleteOutput = void;
 export const NamespacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -5435,7 +5397,7 @@ export const NamespacesDeleteOutput =
  * @param namespaceName - Name of the namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesDeleteInput,
   outputSchema: NamespacesDeleteOutput,
 }));
@@ -5445,7 +5407,7 @@ export interface NamespacesGetInput {
   resourceGroupName: string;
   namespaceName: string;
 }
-export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5463,7 +5425,7 @@ export interface NamespacesGetOutput {
   name?: string;
   type?: string;
 }
-export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5480,7 +5442,7 @@ export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param namespaceName - Name of the namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesGetInput,
   outputSchema: NamespacesGetOutput,
 }));
@@ -5492,7 +5454,7 @@ export interface NamespacesListByResourceGroupInput {
   $top?: number;
 }
 export const NamespacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -5511,7 +5473,7 @@ export interface NamespacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NamespacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5537,7 +5499,7 @@ export const NamespacesListByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespacesListByResourceGroupInput,
     outputSchema: NamespacesListByResourceGroupOutput,
   }));
@@ -5548,7 +5510,7 @@ export interface NamespacesListBySubscriptionInput {
   $top?: number;
 }
 export const NamespacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -5566,7 +5528,7 @@ export interface NamespacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NamespacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5591,7 +5553,7 @@ export const NamespacesListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespacesListBySubscriptionInput,
     outputSchema: NamespacesListBySubscriptionOutput,
   }));
@@ -5602,7 +5564,7 @@ export interface NamespacesListSharedAccessKeysInput {
   namespaceName: string;
 }
 export const NamespacesListSharedAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5620,7 +5582,7 @@ export interface NamespacesListSharedAccessKeysOutput {
   key2?: string;
 }
 export const NamespacesListSharedAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NamespacesListSharedAccessKeysOutput>;
@@ -5637,7 +5599,7 @@ export const NamespacesListSharedAccessKeysOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesListSharedAccessKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespacesListSharedAccessKeysInput,
     outputSchema: NamespacesListSharedAccessKeysOutput,
   }));
@@ -5649,7 +5611,7 @@ export interface NamespacesRegenerateKeyInput {
   keyName: string;
 }
 export const NamespacesRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5668,7 +5630,7 @@ export interface NamespacesRegenerateKeyOutput {
   key2?: string;
 }
 export const NamespacesRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NamespacesRegenerateKeyOutput>;
@@ -5684,12 +5646,10 @@ export const NamespacesRegenerateKeyOutput =
  * @param namespaceName - Name of the Namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespacesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespacesRegenerateKeyInput,
-    outputSchema: NamespacesRegenerateKeyOutput,
-  }),
-);
+export const NamespacesRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespacesRegenerateKeyInput,
+  outputSchema: NamespacesRegenerateKeyOutput,
+}));
 // Input Schema
 export interface NamespacesUpdateInput {
   subscriptionId: string;
@@ -5753,7 +5713,7 @@ export interface NamespacesUpdateInput {
     inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
   };
 }
-export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NamespacesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5908,13 +5868,11 @@ export interface NamespacesUpdateOutput {
   name?: string;
   type?: string;
 }
-export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<NamespacesUpdateOutput>;
+export const NamespacesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<NamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -5927,7 +5885,7 @@ export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param namespaceName - Name of the namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespacesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespacesUpdateInput,
   outputSchema: NamespacesUpdateOutput,
 }));
@@ -5938,7 +5896,7 @@ export interface NamespacesValidateCustomDomainOwnershipInput {
   namespaceName: string;
 }
 export const NamespacesValidateCustomDomainOwnershipInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -5976,7 +5934,7 @@ export interface NamespacesValidateCustomDomainOwnershipOutput {
   }[];
 }
 export const NamespacesValidateCustomDomainOwnershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customDomainsForTopicsConfiguration: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6041,7 +5999,7 @@ export const NamespacesValidateCustomDomainOwnershipOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespacesValidateCustomDomainOwnership =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespacesValidateCustomDomainOwnershipInput,
     outputSchema: NamespacesValidateCustomDomainOwnershipOutput,
   }));
@@ -6163,7 +6121,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6351,7 +6309,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6371,7 +6329,7 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsCreateOrUpdateInput,
     outputSchema: NamespaceTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -6384,7 +6342,7 @@ export interface NamespaceTopicEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const NamespaceTopicEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6401,7 +6359,7 @@ export const NamespaceTopicEventSubscriptionsDeleteInput =
 // Output Schema
 export type NamespaceTopicEventSubscriptionsDeleteOutput = void;
 export const NamespaceTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -6417,7 +6375,7 @@ export const NamespaceTopicEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsDeleteInput,
     outputSchema: NamespaceTopicEventSubscriptionsDeleteOutput,
   }));
@@ -6430,7 +6388,7 @@ export interface NamespaceTopicEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const NamespaceTopicEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6451,7 +6409,7 @@ export interface NamespaceTopicEventSubscriptionsGetOutput {
   type?: string;
 }
 export const NamespaceTopicEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6471,7 +6429,7 @@ export const NamespaceTopicEventSubscriptionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsGetInput,
     outputSchema: NamespaceTopicEventSubscriptionsGetOutput,
   }));
@@ -6484,7 +6442,7 @@ export interface NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6503,7 +6461,7 @@ export interface NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6528,7 +6486,7 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -6541,7 +6499,7 @@ export interface NamespaceTopicEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const NamespaceTopicEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6560,7 +6518,7 @@ export interface NamespaceTopicEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const NamespaceTopicEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetFullUrlOutput>;
 
@@ -6578,7 +6536,7 @@ export const NamespaceTopicEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsGetFullUrlInput,
     outputSchema: NamespaceTopicEventSubscriptionsGetFullUrlOutput,
   }));
@@ -6592,7 +6550,7 @@ export interface NamespaceTopicEventSubscriptionsListByNamespaceTopicInput {
   $top?: number;
 }
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6613,7 +6571,7 @@ export interface NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput {
   nextLink?: string;
 }
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6641,7 +6599,7 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopic =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsListByNamespaceTopicInput,
     outputSchema: NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput,
   }));
@@ -6740,7 +6698,7 @@ export interface NamespaceTopicEventSubscriptionsUpdateInput {
   };
 }
 export const NamespaceTopicEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -6896,7 +6854,7 @@ export interface NamespaceTopicEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const NamespaceTopicEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6916,7 +6874,7 @@ export const NamespaceTopicEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicEventSubscriptionsUpdateInput,
     outputSchema: NamespaceTopicEventSubscriptionsUpdateOutput,
   }));
@@ -6955,7 +6913,7 @@ export interface NamespaceTopicsCreateOrUpdateInput {
   type?: string;
 }
 export const NamespaceTopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7013,7 +6971,7 @@ export interface NamespaceTopicsCreateOrUpdateOutput {
   type?: string;
 }
 export const NamespaceTopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7032,7 +6990,7 @@ export const NamespaceTopicsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicsCreateOrUpdateInput,
     outputSchema: NamespaceTopicsCreateOrUpdateOutput,
   }));
@@ -7044,7 +7002,7 @@ export interface NamespaceTopicsDeleteInput {
   topicName: string;
 }
 export const NamespaceTopicsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7060,7 +7018,7 @@ export const NamespaceTopicsDeleteInput =
 // Output Schema
 export type NamespaceTopicsDeleteOutput = void;
 export const NamespaceTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -7074,12 +7032,10 @@ export const NamespaceTopicsDeleteOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespaceTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespaceTopicsDeleteInput,
-    outputSchema: NamespaceTopicsDeleteOutput,
-  }),
-);
+export const NamespaceTopicsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespaceTopicsDeleteInput,
+  outputSchema: NamespaceTopicsDeleteOutput,
+}));
 // Input Schema
 export interface NamespaceTopicsGetInput {
   subscriptionId: string;
@@ -7088,7 +7044,7 @@ export interface NamespaceTopicsGetInput {
   topicName: string;
 }
 export const NamespaceTopicsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7108,7 +7064,7 @@ export interface NamespaceTopicsGetOutput {
   type?: string;
 }
 export const NamespaceTopicsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7126,7 +7082,7 @@ export const NamespaceTopicsGetOutput =
  * @param topicName - Name of the namespace topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespaceTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NamespaceTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NamespaceTopicsGetInput,
   outputSchema: NamespaceTopicsGetOutput,
 }));
@@ -7139,7 +7095,7 @@ export interface NamespaceTopicsListByNamespaceInput {
   $top?: number;
 }
 export const NamespaceTopicsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7159,7 +7115,7 @@ export interface NamespaceTopicsListByNamespaceOutput {
   nextLink?: string;
 }
 export const NamespaceTopicsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7186,7 +7142,7 @@ export const NamespaceTopicsListByNamespaceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const NamespaceTopicsListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicsListByNamespaceInput,
     outputSchema: NamespaceTopicsListByNamespaceOutput,
   }));
@@ -7198,7 +7154,7 @@ export interface NamespaceTopicsListSharedAccessKeysInput {
   topicName: string;
 }
 export const NamespaceTopicsListSharedAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7217,7 +7173,7 @@ export interface NamespaceTopicsListSharedAccessKeysOutput {
   key2?: string;
 }
 export const NamespaceTopicsListSharedAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NamespaceTopicsListSharedAccessKeysOutput>;
@@ -7235,7 +7191,7 @@ export const NamespaceTopicsListSharedAccessKeysOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsListSharedAccessKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicsListSharedAccessKeysInput,
     outputSchema: NamespaceTopicsListSharedAccessKeysOutput,
   }));
@@ -7248,7 +7204,7 @@ export interface NamespaceTopicsRegenerateKeyInput {
   keyName: string;
 }
 export const NamespaceTopicsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7268,7 +7224,7 @@ export interface NamespaceTopicsRegenerateKeyOutput {
   key2?: string;
 }
 export const NamespaceTopicsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NamespaceTopicsRegenerateKeyOutput>;
@@ -7286,7 +7242,7 @@ export const NamespaceTopicsRegenerateKeyOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const NamespaceTopicsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NamespaceTopicsRegenerateKeyInput,
     outputSchema: NamespaceTopicsRegenerateKeyOutput,
   }));
@@ -7299,7 +7255,7 @@ export interface NamespaceTopicsUpdateInput {
   properties?: { eventRetentionInDays?: number };
 }
 export const NamespaceTopicsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -7324,7 +7280,7 @@ export interface NamespaceTopicsUpdateOutput {
   type?: string;
 }
 export const NamespaceTopicsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7342,17 +7298,13 @@ export const NamespaceTopicsUpdateOutput =
  * @param topicName - Name of the namespace topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const NamespaceTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NamespaceTopicsUpdateInput,
-    outputSchema: NamespaceTopicsUpdateOutput,
-  }),
-);
+export const NamespaceTopicsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NamespaceTopicsUpdateInput,
+  outputSchema: NamespaceTopicsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EventGrid/operations",
@@ -7375,7 +7327,7 @@ export interface OperationsListOutput {
     properties?: unknown;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7404,7 +7356,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -7417,7 +7369,7 @@ export interface PartnerConfigurationsAuthorizePartnerInput {
   authorizationExpirationTimeInUtc?: string;
 }
 export const PartnerConfigurationsAuthorizePartnerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationImmutableId: Schema.optional(Schema.String),
@@ -7438,7 +7390,7 @@ export interface PartnerConfigurationsAuthorizePartnerOutput {
   type?: string;
 }
 export const PartnerConfigurationsAuthorizePartnerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7455,7 +7407,7 @@ export const PartnerConfigurationsAuthorizePartnerOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsAuthorizePartner =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerConfigurationsAuthorizePartnerInput,
     outputSchema: PartnerConfigurationsAuthorizePartnerOutput,
   }));
@@ -7495,7 +7447,7 @@ export interface PartnerConfigurationsCreateOrUpdateInput {
   type?: string;
 }
 export const PartnerConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -7564,7 +7516,7 @@ export interface PartnerConfigurationsCreateOrUpdateOutput {
   type?: string;
 }
 export const PartnerConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7581,7 +7533,7 @@ export const PartnerConfigurationsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerConfigurationsCreateOrUpdateInput,
     outputSchema: PartnerConfigurationsCreateOrUpdateOutput,
   }));
@@ -7591,7 +7543,7 @@ export interface PartnerConfigurationsDeleteInput {
   resourceGroupName: string;
 }
 export const PartnerConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7605,7 +7557,7 @@ export const PartnerConfigurationsDeleteInput =
 // Output Schema
 export type PartnerConfigurationsDeleteOutput = void;
 export const PartnerConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerConfigurationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -7617,19 +7569,17 @@ export const PartnerConfigurationsDeleteOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerConfigurationsDeleteInput,
-    outputSchema: PartnerConfigurationsDeleteOutput,
-  }),
-);
+export const PartnerConfigurationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerConfigurationsDeleteInput,
+  outputSchema: PartnerConfigurationsDeleteOutput,
+}));
 // Input Schema
 export interface PartnerConfigurationsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PartnerConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7647,7 +7597,7 @@ export interface PartnerConfigurationsGetOutput {
   type?: string;
 }
 export const PartnerConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7663,19 +7613,17 @@ export const PartnerConfigurationsGetOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerConfigurationsGetInput,
-    outputSchema: PartnerConfigurationsGetOutput,
-  }),
-);
+export const PartnerConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerConfigurationsGetInput,
+  outputSchema: PartnerConfigurationsGetOutput,
+}));
 // Input Schema
 export interface PartnerConfigurationsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PartnerConfigurationsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7692,7 +7640,7 @@ export interface PartnerConfigurationsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PartnerConfigurationsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7716,7 +7664,7 @@ export const PartnerConfigurationsListByResourceGroupOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerConfigurationsListByResourceGroupInput,
     outputSchema: PartnerConfigurationsListByResourceGroupOutput,
   }));
@@ -7727,7 +7675,7 @@ export interface PartnerConfigurationsListBySubscriptionInput {
   $top?: number;
 }
 export const PartnerConfigurationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -7745,7 +7693,7 @@ export interface PartnerConfigurationsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PartnerConfigurationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7770,7 +7718,7 @@ export const PartnerConfigurationsListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerConfigurationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerConfigurationsListBySubscriptionInput,
     outputSchema: PartnerConfigurationsListBySubscriptionOutput,
   }));
@@ -7783,7 +7731,7 @@ export interface PartnerConfigurationsUnauthorizePartnerInput {
   authorizationExpirationTimeInUtc?: string;
 }
 export const PartnerConfigurationsUnauthorizePartnerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationImmutableId: Schema.optional(Schema.String),
@@ -7804,7 +7752,7 @@ export interface PartnerConfigurationsUnauthorizePartnerOutput {
   type?: string;
 }
 export const PartnerConfigurationsUnauthorizePartnerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7821,7 +7769,7 @@ export const PartnerConfigurationsUnauthorizePartnerOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerConfigurationsUnauthorizePartner =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerConfigurationsUnauthorizePartnerInput,
     outputSchema: PartnerConfigurationsUnauthorizePartnerOutput,
   }));
@@ -7833,7 +7781,7 @@ export interface PartnerConfigurationsUpdateInput {
   properties?: { defaultMaximumExpirationTimeInDays?: number };
 }
 export const PartnerConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -7857,7 +7805,7 @@ export interface PartnerConfigurationsUpdateOutput {
   type?: string;
 }
 export const PartnerConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7873,12 +7821,10 @@ export const PartnerConfigurationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerConfigurationsUpdateInput,
-    outputSchema: PartnerConfigurationsUpdateOutput,
-  }),
-);
+export const PartnerConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerConfigurationsUpdateInput,
+  outputSchema: PartnerConfigurationsUpdateOutput,
+}));
 // Input Schema
 export interface PartnerNamespacesCreateOrUpdateInput {
   subscriptionId: string;
@@ -7917,7 +7863,7 @@ export interface PartnerNamespacesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const PartnerNamespacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -7995,7 +7941,7 @@ export interface PartnerNamespacesCreateOrUpdateOutput {
   type?: string;
 }
 export const PartnerNamespacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8013,7 +7959,7 @@ export const PartnerNamespacesCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerNamespacesCreateOrUpdateInput,
     outputSchema: PartnerNamespacesCreateOrUpdateOutput,
   }));
@@ -8024,7 +7970,7 @@ export interface PartnerNamespacesDeleteInput {
   partnerNamespaceName: string;
 }
 export const PartnerNamespacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -8039,7 +7985,7 @@ export const PartnerNamespacesDeleteInput =
 // Output Schema
 export type PartnerNamespacesDeleteOutput = void;
 export const PartnerNamespacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -8052,12 +7998,10 @@ export const PartnerNamespacesDeleteOutput =
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerNamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerNamespacesDeleteInput,
-    outputSchema: PartnerNamespacesDeleteOutput,
-  }),
-);
+export const PartnerNamespacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerNamespacesDeleteInput,
+  outputSchema: PartnerNamespacesDeleteOutput,
+}));
 // Input Schema
 export interface PartnerNamespacesGetInput {
   subscriptionId: string;
@@ -8065,7 +8009,7 @@ export interface PartnerNamespacesGetInput {
   partnerNamespaceName: string;
 }
 export const PartnerNamespacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -8084,7 +8028,7 @@ export interface PartnerNamespacesGetOutput {
   type?: string;
 }
 export const PartnerNamespacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8101,12 +8045,10 @@ export const PartnerNamespacesGetOutput =
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerNamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerNamespacesGetInput,
-    outputSchema: PartnerNamespacesGetOutput,
-  }),
-);
+export const PartnerNamespacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerNamespacesGetInput,
+  outputSchema: PartnerNamespacesGetOutput,
+}));
 // Input Schema
 export interface PartnerNamespacesListByResourceGroupInput {
   subscriptionId: string;
@@ -8115,7 +8057,7 @@ export interface PartnerNamespacesListByResourceGroupInput {
   $top?: number;
 }
 export const PartnerNamespacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -8134,7 +8076,7 @@ export interface PartnerNamespacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PartnerNamespacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8160,7 +8102,7 @@ export const PartnerNamespacesListByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerNamespacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerNamespacesListByResourceGroupInput,
     outputSchema: PartnerNamespacesListByResourceGroupOutput,
   }));
@@ -8171,7 +8113,7 @@ export interface PartnerNamespacesListBySubscriptionInput {
   $top?: number;
 }
 export const PartnerNamespacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -8189,7 +8131,7 @@ export interface PartnerNamespacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PartnerNamespacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8214,7 +8156,7 @@ export const PartnerNamespacesListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerNamespacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerNamespacesListBySubscriptionInput,
     outputSchema: PartnerNamespacesListBySubscriptionOutput,
   }));
@@ -8225,7 +8167,7 @@ export interface PartnerNamespacesListSharedAccessKeysInput {
   partnerNamespaceName: string;
 }
 export const PartnerNamespacesListSharedAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -8243,7 +8185,7 @@ export interface PartnerNamespacesListSharedAccessKeysOutput {
   key2?: string;
 }
 export const PartnerNamespacesListSharedAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<PartnerNamespacesListSharedAccessKeysOutput>;
@@ -8260,7 +8202,7 @@ export const PartnerNamespacesListSharedAccessKeysOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesListSharedAccessKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerNamespacesListSharedAccessKeysInput,
     outputSchema: PartnerNamespacesListSharedAccessKeysOutput,
   }));
@@ -8272,7 +8214,7 @@ export interface PartnerNamespacesRegenerateKeyInput {
   keyName: string;
 }
 export const PartnerNamespacesRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -8291,7 +8233,7 @@ export interface PartnerNamespacesRegenerateKeyOutput {
   key2?: string;
 }
 export const PartnerNamespacesRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<PartnerNamespacesRegenerateKeyOutput>;
@@ -8308,7 +8250,7 @@ export const PartnerNamespacesRegenerateKeyOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerNamespacesRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerNamespacesRegenerateKeyInput,
     outputSchema: PartnerNamespacesRegenerateKeyOutput,
   }));
@@ -8326,7 +8268,7 @@ export interface PartnerNamespacesUpdateInput {
   };
 }
 export const PartnerNamespacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerNamespaceName: Schema.String.pipe(T.PathParam()),
@@ -8361,7 +8303,7 @@ export const PartnerNamespacesUpdateInput =
 // Output Schema
 export type PartnerNamespacesUpdateOutput = void;
 export const PartnerNamespacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -8374,12 +8316,10 @@ export const PartnerNamespacesUpdateOutput =
  * @param partnerNamespaceName - Name of the partner namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerNamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerNamespacesUpdateInput,
-    outputSchema: PartnerNamespacesUpdateOutput,
-  }),
-);
+export const PartnerNamespacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerNamespacesUpdateInput,
+  outputSchema: PartnerNamespacesUpdateOutput,
+}));
 // Input Schema
 export interface PartnerRegistrationsCreateOrUpdateInput {
   subscriptionId: string;
@@ -8407,7 +8347,7 @@ export interface PartnerRegistrationsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const PartnerRegistrationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
@@ -8457,7 +8397,7 @@ export interface PartnerRegistrationsCreateOrUpdateOutput {
   type?: string;
 }
 export const PartnerRegistrationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8475,7 +8415,7 @@ export const PartnerRegistrationsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerRegistrationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerRegistrationsCreateOrUpdateInput,
     outputSchema: PartnerRegistrationsCreateOrUpdateOutput,
   }));
@@ -8486,7 +8426,7 @@ export interface PartnerRegistrationsDeleteInput {
   partnerRegistrationName: string;
 }
 export const PartnerRegistrationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
@@ -8501,7 +8441,7 @@ export const PartnerRegistrationsDeleteInput =
 // Output Schema
 export type PartnerRegistrationsDeleteOutput = void;
 export const PartnerRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -8514,12 +8454,10 @@ export const PartnerRegistrationsDeleteOutput =
  * @param partnerRegistrationName - Name of the partner registration.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerRegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerRegistrationsDeleteInput,
-    outputSchema: PartnerRegistrationsDeleteOutput,
-  }),
-);
+export const PartnerRegistrationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerRegistrationsDeleteInput,
+  outputSchema: PartnerRegistrationsDeleteOutput,
+}));
 // Input Schema
 export interface PartnerRegistrationsGetInput {
   subscriptionId: string;
@@ -8527,7 +8465,7 @@ export interface PartnerRegistrationsGetInput {
   partnerRegistrationName: string;
 }
 export const PartnerRegistrationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
@@ -8546,7 +8484,7 @@ export interface PartnerRegistrationsGetOutput {
   type?: string;
 }
 export const PartnerRegistrationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8563,12 +8501,10 @@ export const PartnerRegistrationsGetOutput =
  * @param partnerRegistrationName - Name of the partner registration.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerRegistrationsGetInput,
-    outputSchema: PartnerRegistrationsGetOutput,
-  }),
-);
+export const PartnerRegistrationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerRegistrationsGetInput,
+  outputSchema: PartnerRegistrationsGetOutput,
+}));
 // Input Schema
 export interface PartnerRegistrationsListByResourceGroupInput {
   subscriptionId: string;
@@ -8577,7 +8513,7 @@ export interface PartnerRegistrationsListByResourceGroupInput {
   $top?: number;
 }
 export const PartnerRegistrationsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -8596,7 +8532,7 @@ export interface PartnerRegistrationsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PartnerRegistrationsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8622,7 +8558,7 @@ export const PartnerRegistrationsListByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerRegistrationsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerRegistrationsListByResourceGroupInput,
     outputSchema: PartnerRegistrationsListByResourceGroupOutput,
   }));
@@ -8633,7 +8569,7 @@ export interface PartnerRegistrationsListBySubscriptionInput {
   $top?: number;
 }
 export const PartnerRegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -8651,7 +8587,7 @@ export interface PartnerRegistrationsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PartnerRegistrationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8676,7 +8612,7 @@ export const PartnerRegistrationsListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerRegistrationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerRegistrationsListBySubscriptionInput,
     outputSchema: PartnerRegistrationsListBySubscriptionOutput,
   }));
@@ -8688,7 +8624,7 @@ export interface PartnerRegistrationsUpdateInput {
   tags?: Record<string, string>;
 }
 export const PartnerRegistrationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerRegistrationName: Schema.String.pipe(T.PathParam()),
@@ -8704,7 +8640,7 @@ export const PartnerRegistrationsUpdateInput =
 // Output Schema
 export type PartnerRegistrationsUpdateOutput = void;
 export const PartnerRegistrationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsUpdateOutput>;
 
 // The operation
 /**
@@ -8717,12 +8653,10 @@ export const PartnerRegistrationsUpdateOutput =
  * @param partnerRegistrationName - Name of the partner registration.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerRegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerRegistrationsUpdateInput,
-    outputSchema: PartnerRegistrationsUpdateOutput,
-  }),
-);
+export const PartnerRegistrationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerRegistrationsUpdateInput,
+  outputSchema: PartnerRegistrationsUpdateOutput,
+}));
 // Input Schema
 export interface PartnerTopicEventSubscriptionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -8831,7 +8765,7 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9000,7 +8934,7 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const PartnerTopicEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9019,7 +8953,7 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsCreateOrUpdateInput,
     outputSchema: PartnerTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -9031,7 +8965,7 @@ export interface PartnerTopicEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const PartnerTopicEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9047,7 +8981,7 @@ export const PartnerTopicEventSubscriptionsDeleteInput =
 // Output Schema
 export type PartnerTopicEventSubscriptionsDeleteOutput = void;
 export const PartnerTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -9062,7 +8996,7 @@ export const PartnerTopicEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsDeleteInput,
     outputSchema: PartnerTopicEventSubscriptionsDeleteOutput,
   }));
@@ -9074,7 +9008,7 @@ export interface PartnerTopicEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const PartnerTopicEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9094,7 +9028,7 @@ export interface PartnerTopicEventSubscriptionsGetOutput {
   type?: string;
 }
 export const PartnerTopicEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9113,7 +9047,7 @@ export const PartnerTopicEventSubscriptionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsGetInput,
     outputSchema: PartnerTopicEventSubscriptionsGetOutput,
   }));
@@ -9125,7 +9059,7 @@ export interface PartnerTopicEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9143,7 +9077,7 @@ export interface PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9167,7 +9101,7 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -9179,7 +9113,7 @@ export interface PartnerTopicEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const PartnerTopicEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9197,7 +9131,7 @@ export interface PartnerTopicEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const PartnerTopicEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetFullUrlOutput>;
 
@@ -9214,7 +9148,7 @@ export const PartnerTopicEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsGetFullUrlInput,
     outputSchema: PartnerTopicEventSubscriptionsGetFullUrlOutput,
   }));
@@ -9227,7 +9161,7 @@ export interface PartnerTopicEventSubscriptionsListByPartnerTopicInput {
   $top?: number;
 }
 export const PartnerTopicEventSubscriptionsListByPartnerTopicInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9247,7 +9181,7 @@ export interface PartnerTopicEventSubscriptionsListByPartnerTopicOutput {
   nextLink?: string;
 }
 export const PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9274,7 +9208,7 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicEventSubscriptionsListByPartnerTopic =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsListByPartnerTopicInput,
     outputSchema: PartnerTopicEventSubscriptionsListByPartnerTopicOutput,
   }));
@@ -9364,7 +9298,7 @@ export interface PartnerTopicEventSubscriptionsUpdateInput {
   };
 }
 export const PartnerTopicEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9500,7 +9434,7 @@ export interface PartnerTopicEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const PartnerTopicEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9519,7 +9453,7 @@ export const PartnerTopicEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PartnerTopicEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicEventSubscriptionsUpdateInput,
     outputSchema: PartnerTopicEventSubscriptionsUpdateOutput,
   }));
@@ -9530,7 +9464,7 @@ export interface PartnerTopicsActivateInput {
   partnerTopicName: string;
 }
 export const PartnerTopicsActivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9549,7 +9483,7 @@ export interface PartnerTopicsActivateOutput {
   type?: string;
 }
 export const PartnerTopicsActivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9566,12 +9500,10 @@ export const PartnerTopicsActivateOutput =
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTopicsActivateInput,
-    outputSchema: PartnerTopicsActivateOutput,
-  }),
-);
+export const PartnerTopicsActivate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTopicsActivateInput,
+  outputSchema: PartnerTopicsActivateOutput,
+}));
 // Input Schema
 export interface PartnerTopicsCreateOrUpdateInput {
   subscriptionId: string;
@@ -9630,7 +9562,7 @@ export interface PartnerTopicsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const PartnerTopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9727,7 +9659,7 @@ export interface PartnerTopicsCreateOrUpdateOutput {
   type?: string;
 }
 export const PartnerTopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9744,12 +9676,10 @@ export const PartnerTopicsCreateOrUpdateOutput =
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTopicsCreateOrUpdateInput,
-    outputSchema: PartnerTopicsCreateOrUpdateOutput,
-  }),
-);
+export const PartnerTopicsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTopicsCreateOrUpdateInput,
+  outputSchema: PartnerTopicsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PartnerTopicsDeactivateInput {
   subscriptionId: string;
@@ -9757,7 +9687,7 @@ export interface PartnerTopicsDeactivateInput {
   partnerTopicName: string;
 }
 export const PartnerTopicsDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9776,7 +9706,7 @@ export interface PartnerTopicsDeactivateOutput {
   type?: string;
 }
 export const PartnerTopicsDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9793,12 +9723,10 @@ export const PartnerTopicsDeactivateOutput =
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsDeactivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PartnerTopicsDeactivateInput,
-    outputSchema: PartnerTopicsDeactivateOutput,
-  }),
-);
+export const PartnerTopicsDeactivate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PartnerTopicsDeactivateInput,
+  outputSchema: PartnerTopicsDeactivateOutput,
+}));
 // Input Schema
 export interface PartnerTopicsDeleteInput {
   subscriptionId: string;
@@ -9806,7 +9734,7 @@ export interface PartnerTopicsDeleteInput {
   partnerTopicName: string;
 }
 export const PartnerTopicsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9821,7 +9749,7 @@ export const PartnerTopicsDeleteInput =
 // Output Schema
 export type PartnerTopicsDeleteOutput = void;
 export const PartnerTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -9834,7 +9762,7 @@ export const PartnerTopicsDeleteOutput =
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PartnerTopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsDeleteInput,
   outputSchema: PartnerTopicsDeleteOutput,
 }));
@@ -9844,7 +9772,7 @@ export interface PartnerTopicsGetInput {
   resourceGroupName: string;
   partnerTopicName: string;
 }
-export const PartnerTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PartnerTopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -9862,13 +9790,11 @@ export interface PartnerTopicsGetOutput {
   name?: string;
   type?: string;
 }
-export const PartnerTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<PartnerTopicsGetOutput>;
+export const PartnerTopicsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<PartnerTopicsGetOutput>;
 
 // The operation
 /**
@@ -9881,7 +9807,7 @@ export const PartnerTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PartnerTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsGetInput,
   outputSchema: PartnerTopicsGetOutput,
 }));
@@ -9893,7 +9819,7 @@ export interface PartnerTopicsListByResourceGroupInput {
   $top?: number;
 }
 export const PartnerTopicsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -9912,7 +9838,7 @@ export interface PartnerTopicsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PartnerTopicsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9938,7 +9864,7 @@ export const PartnerTopicsListByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicsListByResourceGroupInput,
     outputSchema: PartnerTopicsListByResourceGroupOutput,
   }));
@@ -9949,7 +9875,7 @@ export interface PartnerTopicsListBySubscriptionInput {
   $top?: number;
 }
 export const PartnerTopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -9967,7 +9893,7 @@ export interface PartnerTopicsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PartnerTopicsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9992,7 +9918,7 @@ export const PartnerTopicsListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PartnerTopicsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PartnerTopicsListBySubscriptionInput,
     outputSchema: PartnerTopicsListBySubscriptionOutput,
   }));
@@ -10017,7 +9943,7 @@ export interface PartnerTopicsUpdateInput {
   };
 }
 export const PartnerTopicsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     partnerTopicName: Schema.String.pipe(T.PathParam()),
@@ -10056,7 +9982,7 @@ export const PartnerTopicsUpdateInput =
 // Output Schema
 export type PartnerTopicsUpdateOutput = void;
 export const PartnerTopicsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsUpdateOutput>;
 
 // The operation
 /**
@@ -10069,7 +9995,7 @@ export const PartnerTopicsUpdateOutput =
  * @param partnerTopicName - Name of the partner topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PartnerTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PartnerTopicsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PartnerTopicsUpdateInput,
   outputSchema: PartnerTopicsUpdateOutput,
 }));
@@ -10106,7 +10032,7 @@ export interface PermissionBindingsCreateOrUpdateInput {
   type?: string;
 }
 export const PermissionBindingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -10164,7 +10090,7 @@ export interface PermissionBindingsCreateOrUpdateOutput {
   type?: string;
 }
 export const PermissionBindingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10183,7 +10109,7 @@ export const PermissionBindingsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PermissionBindingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PermissionBindingsCreateOrUpdateInput,
     outputSchema: PermissionBindingsCreateOrUpdateOutput,
   }));
@@ -10195,7 +10121,7 @@ export interface PermissionBindingsDeleteInput {
   permissionBindingName: string;
 }
 export const PermissionBindingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -10211,7 +10137,7 @@ export const PermissionBindingsDeleteInput =
 // Output Schema
 export type PermissionBindingsDeleteOutput = void;
 export const PermissionBindingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PermissionBindingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PermissionBindingsDeleteOutput>;
 
 // The operation
 /**
@@ -10225,12 +10151,10 @@ export const PermissionBindingsDeleteOutput =
  * @param permissionBindingName - Name of the permission binding.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PermissionBindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PermissionBindingsDeleteInput,
-    outputSchema: PermissionBindingsDeleteOutput,
-  }),
-);
+export const PermissionBindingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PermissionBindingsDeleteInput,
+  outputSchema: PermissionBindingsDeleteOutput,
+}));
 // Input Schema
 export interface PermissionBindingsGetInput {
   subscriptionId: string;
@@ -10239,7 +10163,7 @@ export interface PermissionBindingsGetInput {
   permissionBindingName: string;
 }
 export const PermissionBindingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -10259,7 +10183,7 @@ export interface PermissionBindingsGetOutput {
   type?: string;
 }
 export const PermissionBindingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10277,12 +10201,10 @@ export const PermissionBindingsGetOutput =
  * @param permissionBindingName - Name of the permission binding.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PermissionBindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PermissionBindingsGetInput,
-    outputSchema: PermissionBindingsGetOutput,
-  }),
-);
+export const PermissionBindingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PermissionBindingsGetInput,
+  outputSchema: PermissionBindingsGetOutput,
+}));
 // Input Schema
 export interface PermissionBindingsListByNamespaceInput {
   subscriptionId: string;
@@ -10292,7 +10214,7 @@ export interface PermissionBindingsListByNamespaceInput {
   $top?: number;
 }
 export const PermissionBindingsListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -10312,7 +10234,7 @@ export interface PermissionBindingsListByNamespaceOutput {
   nextLink?: string;
 }
 export const PermissionBindingsListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10339,7 +10261,7 @@ export const PermissionBindingsListByNamespaceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PermissionBindingsListByNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PermissionBindingsListByNamespaceInput,
     outputSchema: PermissionBindingsListByNamespaceOutput,
   }));
@@ -10352,7 +10274,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
@@ -10374,7 +10296,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -10390,7 +10312,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -10403,7 +10325,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
@@ -10429,7 +10351,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10449,7 +10371,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -10463,7 +10385,7 @@ export interface PrivateEndpointConnectionsListByResourceInput {
   $top?: number;
 }
 export const PrivateEndpointConnectionsListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
@@ -10489,7 +10411,7 @@ export interface PrivateEndpointConnectionsListByResourceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10517,7 +10439,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PrivateEndpointConnectionsListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByResourceInput,
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
@@ -10549,7 +10471,7 @@ export interface PrivateEndpointConnectionsUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.Literals([
@@ -10612,7 +10534,7 @@ export interface PrivateEndpointConnectionsUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10632,7 +10554,7 @@ export const PrivateEndpointConnectionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsUpdateInput,
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
@@ -10645,7 +10567,7 @@ export interface PrivateLinkResourcesGetInput {
   privateLinkResourceName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.String.pipe(T.PathParam()),
@@ -10672,7 +10594,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         groupId: Schema.optional(Schema.String),
@@ -10699,12 +10621,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param privateLinkResourceName - The name of private link resource will be either topic, domain, partnerNamespace or namespace.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByResourceInput {
   subscriptionId: string;
@@ -10715,7 +10635,7 @@ export interface PrivateLinkResourcesListByResourceInput {
   $top?: number;
 }
 export const PrivateLinkResourcesListByResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     parentType: Schema.String.pipe(T.PathParam()),
@@ -10746,7 +10666,7 @@ export interface PrivateLinkResourcesListByResourceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10782,7 +10702,7 @@ export const PrivateLinkResourcesListByResourceOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const PrivateLinkResourcesListByResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByResourceInput,
     outputSchema: PrivateLinkResourcesListByResourceOutput,
   }));
@@ -10894,7 +10814,7 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11063,7 +10983,7 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const SystemTopicEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11082,7 +11002,7 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsCreateOrUpdateInput,
     outputSchema: SystemTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -11094,7 +11014,7 @@ export interface SystemTopicEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const SystemTopicEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11110,7 +11030,7 @@ export const SystemTopicEventSubscriptionsDeleteInput =
 // Output Schema
 export type SystemTopicEventSubscriptionsDeleteOutput = void;
 export const SystemTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -11125,7 +11045,7 @@ export const SystemTopicEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsDeleteInput,
     outputSchema: SystemTopicEventSubscriptionsDeleteOutput,
   }));
@@ -11137,7 +11057,7 @@ export interface SystemTopicEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const SystemTopicEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11157,7 +11077,7 @@ export interface SystemTopicEventSubscriptionsGetOutput {
   type?: string;
 }
 export const SystemTopicEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11176,7 +11096,7 @@ export const SystemTopicEventSubscriptionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsGetInput,
     outputSchema: SystemTopicEventSubscriptionsGetOutput,
   }));
@@ -11188,7 +11108,7 @@ export interface SystemTopicEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11206,7 +11126,7 @@ export interface SystemTopicEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11230,7 +11150,7 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: SystemTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -11242,7 +11162,7 @@ export interface SystemTopicEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const SystemTopicEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11260,7 +11180,7 @@ export interface SystemTopicEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const SystemTopicEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetFullUrlOutput>;
 
@@ -11277,7 +11197,7 @@ export const SystemTopicEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsGetFullUrlInput,
     outputSchema: SystemTopicEventSubscriptionsGetFullUrlOutput,
   }));
@@ -11290,7 +11210,7 @@ export interface SystemTopicEventSubscriptionsListBySystemTopicInput {
   $top?: number;
 }
 export const SystemTopicEventSubscriptionsListBySystemTopicInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11310,7 +11230,7 @@ export interface SystemTopicEventSubscriptionsListBySystemTopicOutput {
   nextLink?: string;
 }
 export const SystemTopicEventSubscriptionsListBySystemTopicOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11337,7 +11257,7 @@ export const SystemTopicEventSubscriptionsListBySystemTopicOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicEventSubscriptionsListBySystemTopic =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsListBySystemTopicInput,
     outputSchema: SystemTopicEventSubscriptionsListBySystemTopicOutput,
   }));
@@ -11427,7 +11347,7 @@ export interface SystemTopicEventSubscriptionsUpdateInput {
   };
 }
 export const SystemTopicEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11563,7 +11483,7 @@ export interface SystemTopicEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const SystemTopicEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11582,7 +11502,7 @@ export const SystemTopicEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const SystemTopicEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicEventSubscriptionsUpdateInput,
     outputSchema: SystemTopicEventSubscriptionsUpdateOutput,
   }));
@@ -11628,7 +11548,7 @@ export interface SystemTopicsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const SystemTopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11703,7 +11623,7 @@ export interface SystemTopicsCreateOrUpdateOutput {
   type?: string;
 }
 export const SystemTopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11720,12 +11640,10 @@ export const SystemTopicsCreateOrUpdateOutput =
  * @param systemTopicName - Name of the system topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const SystemTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SystemTopicsCreateOrUpdateInput,
-    outputSchema: SystemTopicsCreateOrUpdateOutput,
-  }),
-);
+export const SystemTopicsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SystemTopicsCreateOrUpdateInput,
+  outputSchema: SystemTopicsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SystemTopicsDeleteInput {
   subscriptionId: string;
@@ -11733,7 +11651,7 @@ export interface SystemTopicsDeleteInput {
   systemTopicName: string;
 }
 export const SystemTopicsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11748,7 +11666,7 @@ export const SystemTopicsDeleteInput =
 // Output Schema
 export type SystemTopicsDeleteOutput = void;
 export const SystemTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -11761,7 +11679,7 @@ export const SystemTopicsDeleteOutput =
  * @param systemTopicName - Name of the system topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const SystemTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SystemTopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsDeleteInput,
   outputSchema: SystemTopicsDeleteOutput,
 }));
@@ -11771,7 +11689,7 @@ export interface SystemTopicsGetInput {
   resourceGroupName: string;
   systemTopicName: string;
 }
-export const SystemTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SystemTopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11789,7 +11707,7 @@ export interface SystemTopicsGetOutput {
   name?: string;
   type?: string;
 }
-export const SystemTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SystemTopicsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11806,7 +11724,7 @@ export const SystemTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param systemTopicName - Name of the system topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const SystemTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SystemTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsGetInput,
   outputSchema: SystemTopicsGetOutput,
 }));
@@ -11818,7 +11736,7 @@ export interface SystemTopicsListByResourceGroupInput {
   $top?: number;
 }
 export const SystemTopicsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -11837,7 +11755,7 @@ export interface SystemTopicsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SystemTopicsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11863,7 +11781,7 @@ export const SystemTopicsListByResourceGroupOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicsListByResourceGroupInput,
     outputSchema: SystemTopicsListByResourceGroupOutput,
   }));
@@ -11874,7 +11792,7 @@ export interface SystemTopicsListBySubscriptionInput {
   $top?: number;
 }
 export const SystemTopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -11892,7 +11810,7 @@ export interface SystemTopicsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SystemTopicsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11917,7 +11835,7 @@ export const SystemTopicsListBySubscriptionOutput =
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
 export const SystemTopicsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemTopicsListBySubscriptionInput,
     outputSchema: SystemTopicsListBySubscriptionOutput,
   }));
@@ -11942,7 +11860,7 @@ export interface SystemTopicsUpdateInput {
   };
 }
 export const SystemTopicsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     systemTopicName: Schema.String.pipe(T.PathParam()),
@@ -11985,7 +11903,7 @@ export interface SystemTopicsUpdateOutput {
   type?: string;
 }
 export const SystemTopicsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12002,7 +11920,7 @@ export const SystemTopicsUpdateOutput =
  * @param systemTopicName - Name of the system topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const SystemTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SystemTopicsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SystemTopicsUpdateInput,
   outputSchema: SystemTopicsUpdateOutput,
 }));
@@ -12114,7 +12032,7 @@ export interface TopicEventSubscriptionsCreateOrUpdateInput {
   type?: string;
 }
 export const TopicEventSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12283,7 +12201,7 @@ export interface TopicEventSubscriptionsCreateOrUpdateOutput {
   type?: string;
 }
 export const TopicEventSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12302,7 +12220,7 @@ export const TopicEventSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopicEventSubscriptionsCreateOrUpdateInput,
     outputSchema: TopicEventSubscriptionsCreateOrUpdateOutput,
   }));
@@ -12314,7 +12232,7 @@ export interface TopicEventSubscriptionsDeleteInput {
   eventSubscriptionName: string;
 }
 export const TopicEventSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12330,7 +12248,7 @@ export const TopicEventSubscriptionsDeleteInput =
 // Output Schema
 export type TopicEventSubscriptionsDeleteOutput = void;
 export const TopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicEventSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -12345,7 +12263,7 @@ export const TopicEventSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopicEventSubscriptionsDeleteInput,
     outputSchema: TopicEventSubscriptionsDeleteOutput,
   }));
@@ -12357,7 +12275,7 @@ export interface TopicEventSubscriptionsGetInput {
   eventSubscriptionName: string;
 }
 export const TopicEventSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12377,7 +12295,7 @@ export interface TopicEventSubscriptionsGetOutput {
   type?: string;
 }
 export const TopicEventSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12395,12 +12313,10 @@ export const TopicEventSubscriptionsGetOutput =
  * @param eventSubscriptionName - Name of the event subscription to be found.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicEventSubscriptionsGetInput,
-    outputSchema: TopicEventSubscriptionsGetOutput,
-  }),
-);
+export const TopicEventSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicEventSubscriptionsGetInput,
+  outputSchema: TopicEventSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface TopicEventSubscriptionsGetDeliveryAttributesInput {
   subscriptionId: string;
@@ -12409,7 +12325,7 @@ export interface TopicEventSubscriptionsGetDeliveryAttributesInput {
   eventSubscriptionName: string;
 }
 export const TopicEventSubscriptionsGetDeliveryAttributesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12427,7 +12343,7 @@ export interface TopicEventSubscriptionsGetDeliveryAttributesOutput {
   value?: { name?: string; type: "Static" | "Dynamic" }[];
 }
 export const TopicEventSubscriptionsGetDeliveryAttributesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12451,7 +12367,7 @@ export const TopicEventSubscriptionsGetDeliveryAttributesOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsGetDeliveryAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopicEventSubscriptionsGetDeliveryAttributesInput,
     outputSchema: TopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
@@ -12463,7 +12379,7 @@ export interface TopicEventSubscriptionsGetFullUrlInput {
   eventSubscriptionName: string;
 }
 export const TopicEventSubscriptionsGetFullUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12481,7 +12397,7 @@ export interface TopicEventSubscriptionsGetFullUrlOutput {
   endpointUrl?: string;
 }
 export const TopicEventSubscriptionsGetFullUrlOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<TopicEventSubscriptionsGetFullUrlOutput>;
 
@@ -12498,7 +12414,7 @@ export const TopicEventSubscriptionsGetFullUrlOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsGetFullUrl =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopicEventSubscriptionsGetFullUrlInput,
     outputSchema: TopicEventSubscriptionsGetFullUrlOutput,
   }));
@@ -12511,7 +12427,7 @@ export interface TopicEventSubscriptionsListInput {
   $top?: number;
 }
 export const TopicEventSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12531,7 +12447,7 @@ export interface TopicEventSubscriptionsListOutput {
   nextLink?: string;
 }
 export const TopicEventSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -12557,12 +12473,10 @@ export const TopicEventSubscriptionsListOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const TopicEventSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicEventSubscriptionsListInput,
-    outputSchema: TopicEventSubscriptionsListOutput,
-  }),
-);
+export const TopicEventSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicEventSubscriptionsListInput,
+  outputSchema: TopicEventSubscriptionsListOutput,
+}));
 // Input Schema
 export interface TopicEventSubscriptionsUpdateInput {
   subscriptionId: string;
@@ -12649,7 +12563,7 @@ export interface TopicEventSubscriptionsUpdateInput {
   };
 }
 export const TopicEventSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -12785,7 +12699,7 @@ export interface TopicEventSubscriptionsUpdateOutput {
   type?: string;
 }
 export const TopicEventSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12804,7 +12718,7 @@ export const TopicEventSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const TopicEventSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TopicEventSubscriptionsUpdateInput,
     outputSchema: TopicEventSubscriptionsUpdateOutput,
   }));
@@ -12876,7 +12790,7 @@ export interface TopicsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const TopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -13005,7 +12919,7 @@ export interface TopicsCreateOrUpdateOutput {
   type?: string;
 }
 export const TopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13022,19 +12936,17 @@ export const TopicsCreateOrUpdateOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsCreateOrUpdateInput,
-    outputSchema: TopicsCreateOrUpdateOutput,
-  }),
-);
+export const TopicsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicsCreateOrUpdateInput,
+  outputSchema: TopicsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TopicsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   topicName: string;
 }
-export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
@@ -13049,7 +12961,7 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TopicsDeleteOutput = void;
 export const TopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
 
 // The operation
 /**
@@ -13062,7 +12974,7 @@ export const TopicsDeleteOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsDeleteInput,
   outputSchema: TopicsDeleteOutput,
 }));
@@ -13072,7 +12984,7 @@ export interface TopicsGetInput {
   resourceGroupName: string;
   topicName: string;
 }
-export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
@@ -13090,7 +13002,7 @@ export interface TopicsGetOutput {
   name?: string;
   type?: string;
 }
-export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13107,7 +13019,7 @@ export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsGetInput,
   outputSchema: TopicsGetOutput,
 }));
@@ -13119,7 +13031,7 @@ export interface TopicsListByResourceGroupInput {
   $top?: number;
 }
 export const TopicsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -13138,7 +13050,7 @@ export interface TopicsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const TopicsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13163,12 +13075,10 @@ export const TopicsListByResourceGroupOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const TopicsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsListByResourceGroupInput,
-    outputSchema: TopicsListByResourceGroupOutput,
-  }),
-);
+export const TopicsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicsListByResourceGroupInput,
+  outputSchema: TopicsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface TopicsListBySubscriptionInput {
   subscriptionId: string;
@@ -13176,7 +13086,7 @@ export interface TopicsListBySubscriptionInput {
   $top?: number;
 }
 export const TopicsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -13194,7 +13104,7 @@ export interface TopicsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const TopicsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13218,12 +13128,10 @@ export const TopicsListBySubscriptionOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const TopicsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsListBySubscriptionInput,
-    outputSchema: TopicsListBySubscriptionOutput,
-  }),
-);
+export const TopicsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicsListBySubscriptionInput,
+  outputSchema: TopicsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface TopicsListEventTypesInput {
   subscriptionId: string;
@@ -13233,7 +13141,7 @@ export interface TopicsListEventTypesInput {
   resourceName: string;
 }
 export const TopicsListEventTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -13252,7 +13160,7 @@ export interface TopicsListEventTypesOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const TopicsListEventTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13277,12 +13185,10 @@ export const TopicsListEventTypesOutput =
  * @param resourceName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsListEventTypesInput,
-    outputSchema: TopicsListEventTypesOutput,
-  }),
-);
+export const TopicsListEventTypes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicsListEventTypesInput,
+  outputSchema: TopicsListEventTypesOutput,
+}));
 // Input Schema
 export interface TopicsListSharedAccessKeysInput {
   subscriptionId: string;
@@ -13290,7 +13196,7 @@ export interface TopicsListSharedAccessKeysInput {
   topicName: string;
 }
 export const TopicsListSharedAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -13308,7 +13214,7 @@ export interface TopicsListSharedAccessKeysOutput {
   key2?: string;
 }
 export const TopicsListSharedAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<TopicsListSharedAccessKeysOutput>;
@@ -13324,12 +13230,10 @@ export const TopicsListSharedAccessKeysOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicsListSharedAccessKeysInput,
-    outputSchema: TopicsListSharedAccessKeysOutput,
-  }),
-);
+export const TopicsListSharedAccessKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicsListSharedAccessKeysInput,
+  outputSchema: TopicsListSharedAccessKeysOutput,
+}));
 // Input Schema
 export interface TopicSpacesCreateOrUpdateInput {
   subscriptionId: string;
@@ -13361,7 +13265,7 @@ export interface TopicSpacesCreateOrUpdateInput {
   type?: string;
 }
 export const TopicSpacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -13415,7 +13319,7 @@ export interface TopicSpacesCreateOrUpdateOutput {
   type?: string;
 }
 export const TopicSpacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13433,12 +13337,10 @@ export const TopicSpacesCreateOrUpdateOutput =
  * @param topicSpaceName - The topic space name.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicSpacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicSpacesCreateOrUpdateInput,
-    outputSchema: TopicSpacesCreateOrUpdateOutput,
-  }),
-);
+export const TopicSpacesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicSpacesCreateOrUpdateInput,
+  outputSchema: TopicSpacesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TopicSpacesDeleteInput {
   subscriptionId: string;
@@ -13446,14 +13348,12 @@ export interface TopicSpacesDeleteInput {
   namespaceName: string;
   topicSpaceName: string;
 }
-export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    namespaceName: Schema.String.pipe(T.PathParam()),
-    topicSpaceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const TopicSpacesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  namespaceName: Schema.String.pipe(T.PathParam()),
+  topicSpaceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
@@ -13464,7 +13364,7 @@ export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type TopicSpacesDeleteOutput = void;
 export const TopicSpacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicSpacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicSpacesDeleteOutput>;
 
 // The operation
 /**
@@ -13478,7 +13378,7 @@ export const TopicSpacesDeleteOutput =
  * @param topicSpaceName - Name of the Topic space.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicSpacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicSpacesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicSpacesDeleteInput,
   outputSchema: TopicSpacesDeleteOutput,
 }));
@@ -13489,7 +13389,7 @@ export interface TopicSpacesGetInput {
   namespaceName: string;
   topicSpaceName: string;
 }
-export const TopicSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicSpacesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
@@ -13508,7 +13408,7 @@ export interface TopicSpacesGetOutput {
   name?: string;
   type?: string;
 }
-export const TopicSpacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicSpacesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13526,7 +13426,7 @@ export const TopicSpacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param topicSpaceName - Name of the Topic space.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicSpacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicSpacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicSpacesGetInput,
   outputSchema: TopicSpacesGetOutput,
 }));
@@ -13539,7 +13439,7 @@ export interface TopicSpacesListByNamespaceInput {
   $top?: number;
 }
 export const TopicSpacesListByNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
@@ -13559,7 +13459,7 @@ export interface TopicSpacesListByNamespaceOutput {
   nextLink?: string;
 }
 export const TopicSpacesListByNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13585,12 +13485,10 @@ export const TopicSpacesListByNamespaceOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const TopicSpacesListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicSpacesListByNamespaceInput,
-    outputSchema: TopicSpacesListByNamespaceOutput,
-  }),
-);
+export const TopicSpacesListByNamespace = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicSpacesListByNamespaceInput,
+  outputSchema: TopicSpacesListByNamespaceOutput,
+}));
 // Input Schema
 export interface TopicsRegenerateKeyInput {
   subscriptionId: string;
@@ -13599,7 +13497,7 @@ export interface TopicsRegenerateKeyInput {
   keyName: string;
 }
 export const TopicsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
@@ -13618,7 +13516,7 @@ export interface TopicsRegenerateKeyOutput {
   key2?: string;
 }
 export const TopicsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<TopicsRegenerateKeyOutput>;
@@ -13634,7 +13532,7 @@ export const TopicsRegenerateKeyOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsRegenerateKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsRegenerateKeyInput,
   outputSchema: TopicsRegenerateKeyOutput,
 }));
@@ -13677,7 +13575,7 @@ export interface TopicsUpdateInput {
     };
   };
 }
-export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
@@ -13754,7 +13652,7 @@ export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TopicsUpdateOutput = void;
 export const TopicsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsUpdateOutput>;
 
 // The operation
 /**
@@ -13767,7 +13665,7 @@ export const TopicsUpdateOutput =
  * @param topicName - Name of the topic.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicsUpdateInput,
   outputSchema: TopicsUpdateOutput,
 }));
@@ -13775,7 +13673,7 @@ export const TopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface TopicTypesGetInput {
   topicTypeName: string;
 }
-export const TopicTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicTypesGetInput = /*@__PURE__*/ Schema.Struct({
   topicTypeName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -13791,7 +13689,7 @@ export interface TopicTypesGetOutput {
   name?: string;
   type?: string;
 }
-export const TopicTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicTypesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13806,15 +13704,13 @@ export const TopicTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param topicTypeName - Name of the topic type.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicTypesGetInput,
   outputSchema: TopicTypesGetOutput,
 }));
 // Input Schema
 export interface TopicTypesListInput {}
-export const TopicTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TopicTypesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.EventGrid/topicTypes",
@@ -13826,7 +13722,7 @@ export const TopicTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface TopicTypesListOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
-export const TopicTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TopicTypesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -13846,7 +13742,7 @@ export const TopicTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TopicTypesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TopicTypesListInput,
   outputSchema: TopicTypesListOutput,
 }));
@@ -13855,7 +13751,7 @@ export interface TopicTypesListEventTypesInput {
   topicTypeName: string;
 }
 export const TopicTypesListEventTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicTypeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -13870,7 +13766,7 @@ export interface TopicTypesListEventTypesOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const TopicTypesListEventTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13891,18 +13787,16 @@ export const TopicTypesListEventTypesOutput =
  * @param topicTypeName - Name of the topic type.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const TopicTypesListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TopicTypesListEventTypesInput,
-    outputSchema: TopicTypesListEventTypesOutput,
-  }),
-);
+export const TopicTypesListEventTypes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TopicTypesListEventTypesInput,
+  outputSchema: TopicTypesListEventTypesOutput,
+}));
 // Input Schema
 export interface VerifiedPartnersGetInput {
   verifiedPartnerName: string;
 }
 export const VerifiedPartnersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verifiedPartnerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -13919,7 +13813,7 @@ export interface VerifiedPartnersGetOutput {
   type?: string;
 }
 export const VerifiedPartnersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13934,7 +13828,7 @@ export const VerifiedPartnersGetOutput =
  * @param verifiedPartnerName - Name of the verified partner.
  * @param api-version - Version of the API to be used with the client request.
  */
-export const VerifiedPartnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VerifiedPartnersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VerifiedPartnersGetInput,
   outputSchema: VerifiedPartnersGetOutput,
 }));
@@ -13944,7 +13838,7 @@ export interface VerifiedPartnersListInput {
   $top?: number;
 }
 export const VerifiedPartnersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -13961,7 +13855,7 @@ export interface VerifiedPartnersListOutput {
   nextLink?: string;
 }
 export const VerifiedPartnersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -13984,9 +13878,7 @@ export const VerifiedPartnersListOutput =
  * @param $filter - The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'.
  * @param $top - The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page.
  */
-export const VerifiedPartnersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VerifiedPartnersListInput,
-    outputSchema: VerifiedPartnersListOutput,
-  }),
-);
+export const VerifiedPartnersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VerifiedPartnersListInput,
+  outputSchema: VerifiedPartnersListOutput,
+}));

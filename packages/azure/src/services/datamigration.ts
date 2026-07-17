@@ -35,7 +35,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -95,7 +95,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput,
   }));
@@ -139,7 +139,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput {
   force?: boolean;
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -156,7 +156,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
 // Output Schema
 export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput = void;
 export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput>;
 
 // The operation
 /**
@@ -170,7 +170,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbRUMongoDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput,
   }));
@@ -182,7 +182,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetInput {
   subscriptionId: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -210,7 +210,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -241,7 +241,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput,
   }));
@@ -252,7 +252,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput {
   subscriptionId: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -282,7 +282,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput {
   nextLink?: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -329,7 +329,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput,
   }));
@@ -358,7 +358,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -418,7 +418,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -449,7 +449,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput,
   }));
@@ -462,7 +462,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput {
   force?: boolean;
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -479,7 +479,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
 // Output Schema
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput = void;
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput>;
 
 // The operation
 /**
@@ -493,7 +493,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput,
   }));
@@ -505,7 +505,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput {
   subscriptionId: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     migrationName: Schema.String.pipe(T.PathParam()),
@@ -533,7 +533,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput {
   };
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -564,7 +564,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput,
   }));
@@ -575,7 +575,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput {
   subscriptionId: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -605,7 +605,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput {
   nextLink?: string;
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -652,7 +652,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput,
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput,
   }));
@@ -665,7 +665,7 @@ export interface DatabaseMigrationsSqlDbCancelInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlDbCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -682,7 +682,7 @@ export const DatabaseMigrationsSqlDbCancelInput =
 // Output Schema
 export type DatabaseMigrationsSqlDbCancelOutput = void;
 export const DatabaseMigrationsSqlDbCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbCancelOutput>;
 
 // The operation
 /**
@@ -694,7 +694,7 @@ export const DatabaseMigrationsSqlDbCancelOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlDbCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlDbCancelInput,
     outputSchema: DatabaseMigrationsSqlDbCancelOutput,
   }));
@@ -723,7 +723,7 @@ export interface DatabaseMigrationsSqlDbCreateOrUpdateInput {
   };
 }
 export const DatabaseMigrationsSqlDbCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -783,7 +783,7 @@ export interface DatabaseMigrationsSqlDbCreateOrUpdateOutput {
   };
 }
 export const DatabaseMigrationsSqlDbCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -813,7 +813,7 @@ export const DatabaseMigrationsSqlDbCreateOrUpdateOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlDbCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlDbCreateOrUpdateInput,
     outputSchema: DatabaseMigrationsSqlDbCreateOrUpdateOutput,
   }));
@@ -826,7 +826,7 @@ export interface DatabaseMigrationsSqlDbDeleteInput {
   force?: boolean;
 }
 export const DatabaseMigrationsSqlDbDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -843,7 +843,7 @@ export const DatabaseMigrationsSqlDbDeleteInput =
 // Output Schema
 export type DatabaseMigrationsSqlDbDeleteOutput = void;
 export const DatabaseMigrationsSqlDbDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbDeleteOutput>;
 
 // The operation
 /**
@@ -856,7 +856,7 @@ export const DatabaseMigrationsSqlDbDeleteOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlDbDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlDbDeleteInput,
     outputSchema: DatabaseMigrationsSqlDbDeleteOutput,
   }));
@@ -870,7 +870,7 @@ export interface DatabaseMigrationsSqlDbGetInput {
   $expand?: string;
 }
 export const DatabaseMigrationsSqlDbGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -900,7 +900,7 @@ export interface DatabaseMigrationsSqlDbGetOutput {
   };
 }
 export const DatabaseMigrationsSqlDbGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -931,12 +931,10 @@ export const DatabaseMigrationsSqlDbGetOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const DatabaseMigrationsSqlDbGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseMigrationsSqlDbGetInput,
-    outputSchema: DatabaseMigrationsSqlDbGetOutput,
-  }),
-);
+export const DatabaseMigrationsSqlDbGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseMigrationsSqlDbGetInput,
+  outputSchema: DatabaseMigrationsSqlDbGetOutput,
+}));
 // Input Schema
 export interface DatabaseMigrationsSqlDbRetryInput {
   resourceGroupName: string;
@@ -946,7 +944,7 @@ export interface DatabaseMigrationsSqlDbRetryInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlDbRetryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlDbInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -963,7 +961,7 @@ export const DatabaseMigrationsSqlDbRetryInput =
 // Output Schema
 export type DatabaseMigrationsSqlDbRetryOutput = void;
 export const DatabaseMigrationsSqlDbRetryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbRetryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbRetryOutput>;
 
 // The operation
 /**
@@ -975,7 +973,7 @@ export const DatabaseMigrationsSqlDbRetryOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlDbRetry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlDbRetryInput,
     outputSchema: DatabaseMigrationsSqlDbRetryOutput,
   }));
@@ -988,7 +986,7 @@ export interface DatabaseMigrationsSqlMiCancelInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlMiCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1005,7 +1003,7 @@ export const DatabaseMigrationsSqlMiCancelInput =
 // Output Schema
 export type DatabaseMigrationsSqlMiCancelOutput = void;
 export const DatabaseMigrationsSqlMiCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCancelOutput>;
 
 // The operation
 /**
@@ -1017,7 +1015,7 @@ export const DatabaseMigrationsSqlMiCancelOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlMiCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlMiCancelInput,
     outputSchema: DatabaseMigrationsSqlMiCancelOutput,
   }));
@@ -1046,7 +1044,7 @@ export interface DatabaseMigrationsSqlMiCreateOrUpdateInput {
   };
 }
 export const DatabaseMigrationsSqlMiCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1106,7 +1104,7 @@ export interface DatabaseMigrationsSqlMiCreateOrUpdateOutput {
   };
 }
 export const DatabaseMigrationsSqlMiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1136,7 +1134,7 @@ export const DatabaseMigrationsSqlMiCreateOrUpdateOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlMiCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlMiCreateOrUpdateInput,
     outputSchema: DatabaseMigrationsSqlMiCreateOrUpdateOutput,
   }));
@@ -1149,7 +1147,7 @@ export interface DatabaseMigrationsSqlMiCutoverInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlMiCutoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1166,7 +1164,7 @@ export const DatabaseMigrationsSqlMiCutoverInput =
 // Output Schema
 export type DatabaseMigrationsSqlMiCutoverOutput = void;
 export const DatabaseMigrationsSqlMiCutoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCutoverOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCutoverOutput>;
 
 // The operation
 /**
@@ -1178,7 +1176,7 @@ export const DatabaseMigrationsSqlMiCutoverOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlMiCutover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlMiCutoverInput,
     outputSchema: DatabaseMigrationsSqlMiCutoverOutput,
   }));
@@ -1191,7 +1189,7 @@ export interface DatabaseMigrationsSqlMiDeleteInput {
   force?: boolean;
 }
 export const DatabaseMigrationsSqlMiDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1220,7 +1218,7 @@ export interface DatabaseMigrationsSqlMiDeleteOutput {
   };
 }
 export const DatabaseMigrationsSqlMiDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1251,7 +1249,7 @@ export const DatabaseMigrationsSqlMiDeleteOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlMiDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlMiDeleteInput,
     outputSchema: DatabaseMigrationsSqlMiDeleteOutput,
   }));
@@ -1265,7 +1263,7 @@ export interface DatabaseMigrationsSqlMiGetInput {
   $expand?: string;
 }
 export const DatabaseMigrationsSqlMiGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1295,7 +1293,7 @@ export interface DatabaseMigrationsSqlMiGetOutput {
   };
 }
 export const DatabaseMigrationsSqlMiGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1326,12 +1324,10 @@ export const DatabaseMigrationsSqlMiGetOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const DatabaseMigrationsSqlMiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseMigrationsSqlMiGetInput,
-    outputSchema: DatabaseMigrationsSqlMiGetOutput,
-  }),
-);
+export const DatabaseMigrationsSqlMiGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseMigrationsSqlMiGetInput,
+  outputSchema: DatabaseMigrationsSqlMiGetOutput,
+}));
 // Input Schema
 export interface DatabaseMigrationsSqlVmCancelInput {
   resourceGroupName: string;
@@ -1341,7 +1337,7 @@ export interface DatabaseMigrationsSqlVmCancelInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlVmCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1358,7 +1354,7 @@ export const DatabaseMigrationsSqlVmCancelInput =
 // Output Schema
 export type DatabaseMigrationsSqlVmCancelOutput = void;
 export const DatabaseMigrationsSqlVmCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCancelOutput>;
 
 // The operation
 /**
@@ -1370,7 +1366,7 @@ export const DatabaseMigrationsSqlVmCancelOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlVmCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlVmCancelInput,
     outputSchema: DatabaseMigrationsSqlVmCancelOutput,
   }));
@@ -1399,7 +1395,7 @@ export interface DatabaseMigrationsSqlVmCreateOrUpdateInput {
   };
 }
 export const DatabaseMigrationsSqlVmCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1459,7 +1455,7 @@ export interface DatabaseMigrationsSqlVmCreateOrUpdateOutput {
   };
 }
 export const DatabaseMigrationsSqlVmCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1489,7 +1485,7 @@ export const DatabaseMigrationsSqlVmCreateOrUpdateOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlVmCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlVmCreateOrUpdateInput,
     outputSchema: DatabaseMigrationsSqlVmCreateOrUpdateOutput,
   }));
@@ -1502,7 +1498,7 @@ export interface DatabaseMigrationsSqlVmCutoverInput {
   migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlVmCutoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1519,7 +1515,7 @@ export const DatabaseMigrationsSqlVmCutoverInput =
 // Output Schema
 export type DatabaseMigrationsSqlVmCutoverOutput = void;
 export const DatabaseMigrationsSqlVmCutoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCutoverOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCutoverOutput>;
 
 // The operation
 /**
@@ -1531,7 +1527,7 @@ export const DatabaseMigrationsSqlVmCutoverOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlVmCutover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlVmCutoverInput,
     outputSchema: DatabaseMigrationsSqlVmCutoverOutput,
   }));
@@ -1544,7 +1540,7 @@ export interface DatabaseMigrationsSqlVmDeleteInput {
   force?: boolean;
 }
 export const DatabaseMigrationsSqlVmDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1573,7 +1569,7 @@ export interface DatabaseMigrationsSqlVmDeleteOutput {
   };
 }
 export const DatabaseMigrationsSqlVmDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1604,7 +1600,7 @@ export const DatabaseMigrationsSqlVmDeleteOutput =
  * @param api-version - API version to use for the request.
  */
 export const DatabaseMigrationsSqlVmDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabaseMigrationsSqlVmDeleteInput,
     outputSchema: DatabaseMigrationsSqlVmDeleteOutput,
   }));
@@ -1618,7 +1614,7 @@ export interface DatabaseMigrationsSqlVmGetInput {
   $expand?: string;
 }
 export const DatabaseMigrationsSqlVmGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlVirtualMachineName: Schema.String.pipe(T.PathParam()),
     targetDbName: Schema.String.pipe(T.PathParam()),
@@ -1648,7 +1644,7 @@ export interface DatabaseMigrationsSqlVmGetOutput {
   };
 }
 export const DatabaseMigrationsSqlVmGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1679,12 +1675,10 @@ export const DatabaseMigrationsSqlVmGetOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const DatabaseMigrationsSqlVmGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabaseMigrationsSqlVmGetInput,
-    outputSchema: DatabaseMigrationsSqlVmGetOutput,
-  }),
-);
+export const DatabaseMigrationsSqlVmGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabaseMigrationsSqlVmGetInput,
+  outputSchema: DatabaseMigrationsSqlVmGetOutput,
+}));
 // Input Schema
 export interface FilesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1713,7 +1707,7 @@ export interface FilesCreateOrUpdateInput {
   type?: string;
 }
 export const FilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1769,7 +1763,7 @@ export interface FilesCreateOrUpdateOutput {
   };
 }
 export const FilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1805,7 +1799,7 @@ export const FilesCreateOrUpdateOutput =
  * @param properties - Custom file properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const FilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesCreateOrUpdateInput,
   outputSchema: FilesCreateOrUpdateOutput,
 }));
@@ -1817,7 +1811,7 @@ export interface FilesDeleteInput {
   projectName: string;
   fileName: string;
 }
-export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -1834,7 +1828,7 @@ export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FilesDeleteOutput = void;
 export const FilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesDeleteOutput>;
 
 // The operation
 /**
@@ -1849,7 +1843,7 @@ export const FilesDeleteOutput =
  * @param fileName - Name of the File
  * @param api-version - Version of the API
  */
-export const FilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesDeleteInput,
   outputSchema: FilesDeleteOutput,
 }));
@@ -1861,7 +1855,7 @@ export interface FilesGetInput {
   projectName: string;
   fileName: string;
 }
-export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -1889,7 +1883,7 @@ export interface FilesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1922,7 +1916,7 @@ export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fileName - Name of the File
  * @param api-version - Version of the API
  */
-export const FilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesGetInput,
   outputSchema: FilesGetOutput,
 }));
@@ -1933,7 +1927,7 @@ export interface FilesListInput {
   serviceName: string;
   projectName: string;
 }
-export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -1963,7 +1957,7 @@ export interface FilesListOutput {
   }[];
   nextLink?: string;
 }
-export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2012,7 +2006,7 @@ export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param projectName - Name of the project
  * @param api-version - Version of the API
  */
-export const FilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesListInput,
   outputSchema: FilesListOutput,
 }));
@@ -2024,7 +2018,7 @@ export interface FilesReadInput {
   projectName: string;
   fileName: string;
 }
-export const FilesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesReadInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -2043,7 +2037,7 @@ export interface FilesReadOutput {
   uri?: string;
   headers?: Record<string, string>;
 }
-export const FilesReadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesReadOutput = /*@__PURE__*/ Schema.Struct({
   uri: Schema.optional(Schema.String),
   headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }) as unknown as Schema.Codec<FilesReadOutput>;
@@ -2061,7 +2055,7 @@ export const FilesReadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fileName - Name of the File
  * @param api-version - Version of the API
  */
-export const FilesRead = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesRead = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesReadInput,
   outputSchema: FilesReadOutput,
 }));
@@ -2073,7 +2067,7 @@ export interface FilesReadWriteInput {
   projectName: string;
   fileName: string;
 }
-export const FilesReadWriteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesReadWriteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -2092,7 +2086,7 @@ export interface FilesReadWriteOutput {
   uri?: string;
   headers?: Record<string, string>;
 }
-export const FilesReadWriteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesReadWriteOutput = /*@__PURE__*/ Schema.Struct({
   uri: Schema.optional(Schema.String),
   headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }) as unknown as Schema.Codec<FilesReadWriteOutput>;
@@ -2110,7 +2104,7 @@ export const FilesReadWriteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fileName - Name of the File
  * @param api-version - Version of the API
  */
-export const FilesReadWrite = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesReadWrite = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesReadWriteInput,
   outputSchema: FilesReadWriteOutput,
 }));
@@ -2141,7 +2135,7 @@ export interface FilesUpdateInput {
   name?: string;
   type?: string;
 }
-export const FilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -2196,7 +2190,7 @@ export interface FilesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2232,7 +2226,7 @@ export const FilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param properties - Custom file properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const FilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesUpdateInput,
   outputSchema: FilesUpdateOutput,
 }));
@@ -2254,7 +2248,7 @@ export interface MigrationServicesCreateOrUpdateInput {
   location: string;
 }
 export const MigrationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2297,7 +2291,7 @@ export interface MigrationServicesCreateOrUpdateOutput {
   };
 }
 export const MigrationServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2327,7 +2321,7 @@ export const MigrationServicesCreateOrUpdateOutput =
  * @param api-version - API version to use for the request.
  */
 export const MigrationServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationServicesCreateOrUpdateInput,
     outputSchema: MigrationServicesCreateOrUpdateOutput,
   }));
@@ -2338,7 +2332,7 @@ export interface MigrationServicesDeleteInput {
   subscriptionId: string;
 }
 export const MigrationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2353,7 +2347,7 @@ export const MigrationServicesDeleteInput =
 // Output Schema
 export type MigrationServicesDeleteOutput = void;
 export const MigrationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrationServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -2364,12 +2358,10 @@ export const MigrationServicesDeleteOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const MigrationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MigrationServicesDeleteInput,
-    outputSchema: MigrationServicesDeleteOutput,
-  }),
-);
+export const MigrationServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationServicesDeleteInput,
+  outputSchema: MigrationServicesDeleteOutput,
+}));
 // Input Schema
 export interface MigrationServicesGetInput {
   resourceGroupName: string;
@@ -2377,7 +2369,7 @@ export interface MigrationServicesGetInput {
   subscriptionId: string;
 }
 export const MigrationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2404,7 +2396,7 @@ export interface MigrationServicesGetOutput {
   };
 }
 export const MigrationServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2433,19 +2425,17 @@ export const MigrationServicesGetOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const MigrationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MigrationServicesGetInput,
-    outputSchema: MigrationServicesGetOutput,
-  }),
-);
+export const MigrationServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationServicesGetInput,
+  outputSchema: MigrationServicesGetOutput,
+}));
 // Input Schema
 export interface MigrationServicesListByResourceGroupInput {
   resourceGroupName: string;
   subscriptionId: string;
 }
 export const MigrationServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2474,7 +2464,7 @@ export interface MigrationServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MigrationServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2520,7 +2510,7 @@ export const MigrationServicesListByResourceGroupOutput =
  * @param api-version - API version to use for the request.
  */
 export const MigrationServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationServicesListByResourceGroupInput,
     outputSchema: MigrationServicesListByResourceGroupOutput,
   }));
@@ -2529,7 +2519,7 @@ export interface MigrationServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const MigrationServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2557,7 +2547,7 @@ export interface MigrationServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const MigrationServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2602,7 +2592,7 @@ export const MigrationServicesListBySubscriptionOutput =
  * @param api-version - API version to use for the request.
  */
 export const MigrationServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationServicesListBySubscriptionInput,
     outputSchema: MigrationServicesListBySubscriptionOutput,
   }));
@@ -2613,7 +2603,7 @@ export interface MigrationServicesListMigrationsInput {
   subscriptionId: string;
 }
 export const MigrationServicesListMigrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2643,7 +2633,7 @@ export interface MigrationServicesListMigrationsOutput {
   nextLink?: string;
 }
 export const MigrationServicesListMigrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2690,7 +2680,7 @@ export const MigrationServicesListMigrationsOutput =
  * @param api-version - API version to use for the request.
  */
 export const MigrationServicesListMigrations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MigrationServicesListMigrationsInput,
     outputSchema: MigrationServicesListMigrationsOutput,
   }));
@@ -2702,7 +2692,7 @@ export interface MigrationServicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const MigrationServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     migrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2730,7 +2720,7 @@ export interface MigrationServicesUpdateOutput {
   };
 }
 export const MigrationServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2759,17 +2749,13 @@ export const MigrationServicesUpdateOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const MigrationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MigrationServicesUpdateInput,
-    outputSchema: MigrationServicesUpdateOutput,
-  }),
-);
+export const MigrationServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MigrationServicesUpdateInput,
+  outputSchema: MigrationServicesUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataMigration/operations",
@@ -2793,7 +2779,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2823,7 +2809,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - API version to use for the request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2875,7 +2861,7 @@ export interface ProjectsCreateOrUpdateInput {
   location: string;
 }
 export const ProjectsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2972,7 +2958,7 @@ export interface ProjectsCreateOrUpdateOutput {
   };
 }
 export const ProjectsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3007,12 +2993,10 @@ export const ProjectsCreateOrUpdateOutput =
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  * @param etag - HTTP strong entity tag value. This is ignored if submitted.
  */
-export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectsCreateOrUpdateInput,
-    outputSchema: ProjectsCreateOrUpdateOutput,
-  }),
-);
+export const ProjectsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectsCreateOrUpdateInput,
+  outputSchema: ProjectsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ProjectsDeleteInput {
   subscriptionId: string;
@@ -3021,7 +3005,7 @@ export interface ProjectsDeleteInput {
   projectName: string;
   deleteRunningTasks?: boolean;
 }
-export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3038,7 +3022,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ProjectsDeleteOutput = void;
 export const ProjectsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -3053,7 +3037,7 @@ export const ProjectsDeleteOutput =
  * @param api-version - Version of the API
  * @param deleteRunningTasks - Delete the resource even if it contains running tasks
  */
-export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsDeleteInput,
   outputSchema: ProjectsDeleteOutput,
 }));
@@ -3064,7 +3048,7 @@ export interface ProjectsGetInput {
   serviceName: string;
   projectName: string;
 }
-export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3091,7 +3075,7 @@ export interface ProjectsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3123,7 +3107,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param projectName - Name of the project
  * @param api-version - Version of the API
  */
-export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsGetInput,
   outputSchema: ProjectsGetOutput,
 }));
@@ -3133,7 +3117,7 @@ export interface ProjectsListInput {
   groupName: string;
   serviceName: string;
 }
-export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3162,7 +3146,7 @@ export interface ProjectsListOutput {
   }[];
   nextLink?: string;
 }
-export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3210,7 +3194,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsListInput,
   outputSchema: ProjectsListOutput,
 }));
@@ -3261,7 +3245,7 @@ export interface ProjectsUpdateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3357,7 +3341,7 @@ export interface ProjectsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3392,7 +3376,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  * @param etag - HTTP strong entity tag value. This is ignored if submitted.
  */
-export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
   outputSchema: ProjectsUpdateOutput,
 }));
@@ -3401,7 +3385,7 @@ export interface ResourceSkusListSkusInput {
   subscriptionId: string;
 }
 export const ResourceSkusListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3439,7 +3423,7 @@ export interface ResourceSkusListSkusOutput {
   nextLink?: string;
 }
 export const ResourceSkusListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -3502,12 +3486,10 @@ export const ResourceSkusListSkusOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - Version of the API
  */
-export const ResourceSkusListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ResourceSkusListSkusInput,
-    outputSchema: ResourceSkusListSkusOutput,
-  }),
-);
+export const ResourceSkusListSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceSkusListSkusInput,
+  outputSchema: ResourceSkusListSkusOutput,
+}));
 // Input Schema
 export interface ServicesCheckChildrenNameAvailabilityInput {
   subscriptionId: string;
@@ -3517,7 +3499,7 @@ export interface ServicesCheckChildrenNameAvailabilityInput {
   type?: string;
 }
 export const ServicesCheckChildrenNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3538,7 +3520,7 @@ export interface ServicesCheckChildrenNameAvailabilityOutput {
   message?: string;
 }
 export const ServicesCheckChildrenNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
     message: Schema.optional(Schema.String),
@@ -3558,7 +3540,7 @@ export const ServicesCheckChildrenNameAvailabilityOutput =
  * @param type - The resource type chain (e.g. virtualMachines/extensions)
  */
 export const ServicesCheckChildrenNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesCheckChildrenNameAvailabilityInput,
     outputSchema: ServicesCheckChildrenNameAvailabilityOutput,
   }));
@@ -3570,7 +3552,7 @@ export interface ServicesCheckNameAvailabilityInput {
   type?: string;
 }
 export const ServicesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -3590,7 +3572,7 @@ export interface ServicesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const ServicesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
     message: Schema.optional(Schema.String),
@@ -3609,7 +3591,7 @@ export const ServicesCheckNameAvailabilityOutput =
  * @param type - The resource type chain (e.g. virtualMachines/extensions)
  */
 export const ServicesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesCheckNameAvailabilityInput,
     outputSchema: ServicesCheckNameAvailabilityOutput,
   }));
@@ -3620,7 +3602,7 @@ export interface ServicesCheckStatusInput {
   serviceName: string;
 }
 export const ServicesCheckStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3641,7 +3623,7 @@ export interface ServicesCheckStatusOutput {
   supportedTaskTypes?: string[];
 }
 export const ServicesCheckStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentVersion: Schema.optional(Schema.String),
     agentConfiguration: Schema.optional(Schema.Unknown),
     status: Schema.optional(Schema.String),
@@ -3660,7 +3642,7 @@ export const ServicesCheckStatusOutput =
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ServicesCheckStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesCheckStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesCheckStatusInput,
   outputSchema: ServicesCheckStatusOutput,
 }));
@@ -3708,7 +3690,7 @@ export interface ServicesCreateOrUpdateInput {
   location: string;
 }
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3785,7 +3767,7 @@ export interface ServicesCreateOrUpdateOutput {
   };
 }
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3821,12 +3803,10 @@ export const ServicesCreateOrUpdateOutput =
  * @param sku - Service SKU
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ServicesDeleteInput {
   subscriptionId: string;
@@ -3834,7 +3814,7 @@ export interface ServicesDeleteInput {
   serviceName: string;
   deleteRunningTasks?: boolean;
 }
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3850,7 +3830,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesDeleteOutput = void;
 export const ServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -3864,7 +3844,7 @@ export const ServicesDeleteOutput =
  * @param api-version - Version of the API
  * @param deleteRunningTasks - Delete the resource even if it contains running tasks
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
@@ -3874,7 +3854,7 @@ export interface ServicesGetInput {
   groupName: string;
   serviceName: string;
 }
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -3900,7 +3880,7 @@ export interface ServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3931,7 +3911,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
@@ -3939,7 +3919,7 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ServicesListInput {
   subscriptionId: string;
 }
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -3966,7 +3946,7 @@ export interface ServicesListOutput {
   }[];
   nextLink?: string;
 }
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4012,7 +3992,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - Version of the API
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
@@ -4022,7 +4002,7 @@ export interface ServicesListByResourceGroupInput {
   groupName: string;
 }
 export const ServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4051,7 +4031,7 @@ export interface ServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4098,19 +4078,17 @@ export const ServicesListByResourceGroupOutput =
  * @param groupName - Name of the resource group
  * @param api-version - Version of the API
  */
-export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListByResourceGroupInput,
-    outputSchema: ServicesListByResourceGroupOutput,
-  }),
-);
+export const ServicesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListByResourceGroupInput,
+  outputSchema: ServicesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ServicesListSkusInput {
   subscriptionId: string;
   groupName: string;
   serviceName: string;
 }
-export const ServicesListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4136,36 +4114,34 @@ export interface ServicesListSkusOutput {
   }[];
   nextLink?: string;
 }
-export const ServicesListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.String),
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              scaleType: Schema.optional(
-                Schema.Literals(["none", "manual", "automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+export const ServicesListSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            size: Schema.optional(Schema.String),
+            tier: Schema.optional(Schema.String),
+          }),
+        ),
+        capacity: Schema.optional(
+          Schema.Struct({
+            minimum: Schema.optional(Schema.Number),
+            maximum: Schema.optional(Schema.Number),
+            default: Schema.optional(Schema.Number),
+            scaleType: Schema.optional(
+              Schema.Literals(["none", "manual", "automatic"]),
+            ),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ServicesListSkusOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ServicesListSkusOutput>;
 
 // The operation
 /**
@@ -4178,7 +4154,7 @@ export const ServicesListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ServicesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListSkusInput,
   outputSchema: ServicesListSkusOutput,
 }));
@@ -4188,7 +4164,7 @@ export interface ServicesStartInput {
   groupName: string;
   serviceName: string;
 }
-export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4203,7 +4179,7 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesStartOutput = void;
 export const ServicesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStartOutput>;
 
 // The operation
 /**
@@ -4216,7 +4192,7 @@ export const ServicesStartOutput =
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ServicesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesStartInput,
   outputSchema: ServicesStartOutput,
 }));
@@ -4226,7 +4202,7 @@ export interface ServicesStopInput {
   groupName: string;
   serviceName: string;
 }
-export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4241,7 +4217,7 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesStopOutput = void;
 export const ServicesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStopOutput>;
 
 // The operation
 /**
@@ -4254,7 +4230,7 @@ export const ServicesStopOutput =
  * @param serviceName - Name of the service
  * @param api-version - Version of the API
  */
-export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesStopInput,
   outputSchema: ServicesStopOutput,
 }));
@@ -4301,7 +4277,7 @@ export interface ServicesUpdateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4377,7 +4353,7 @@ export interface ServicesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4413,7 +4389,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param sku - Service SKU
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
@@ -4425,7 +4401,7 @@ export interface ServiceTasksCancelInput {
   taskName: string;
 }
 export const ServiceTasksCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4453,7 +4429,7 @@ export interface ServiceTasksCancelOutput {
   };
 }
 export const ServiceTasksCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4485,7 +4461,7 @@ export const ServiceTasksCancelOutput =
  * @param taskName - Name of the Task
  * @param api-version - Version of the API
  */
-export const ServiceTasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceTasksCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksCancelInput,
   outputSchema: ServiceTasksCancelOutput,
 }));
@@ -4579,7 +4555,7 @@ export interface ServiceTasksCreateOrUpdateInput {
   type?: string;
 }
 export const ServiceTasksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4742,7 +4718,7 @@ export interface ServiceTasksCreateOrUpdateOutput {
   };
 }
 export const ServiceTasksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4777,12 +4753,10 @@ export const ServiceTasksCreateOrUpdateOutput =
  * @param properties - Custom task properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const ServiceTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceTasksCreateOrUpdateInput,
-    outputSchema: ServiceTasksCreateOrUpdateOutput,
-  }),
-);
+export const ServiceTasksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceTasksCreateOrUpdateInput,
+  outputSchema: ServiceTasksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ServiceTasksDeleteInput {
   subscriptionId: string;
@@ -4792,7 +4766,7 @@ export interface ServiceTasksDeleteInput {
   deleteRunningTasks?: boolean;
 }
 export const ServiceTasksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4809,7 +4783,7 @@ export const ServiceTasksDeleteInput =
 // Output Schema
 export type ServiceTasksDeleteOutput = void;
 export const ServiceTasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceTasksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceTasksDeleteOutput>;
 
 // The operation
 /**
@@ -4824,7 +4798,7 @@ export const ServiceTasksDeleteOutput =
  * @param api-version - Version of the API
  * @param deleteRunningTasks - Delete the resource even if it contains running tasks
  */
-export const ServiceTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceTasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksDeleteInput,
   outputSchema: ServiceTasksDeleteOutput,
 }));
@@ -4836,7 +4810,7 @@ export interface ServiceTasksGetInput {
   taskName: string;
   $expand?: string;
 }
-export const ServiceTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceTasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4864,7 +4838,7 @@ export interface ServiceTasksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServiceTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceTasksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4897,7 +4871,7 @@ export const ServiceTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API
  * @param $expand - Expand the response
  */
-export const ServiceTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceTasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksGetInput,
   outputSchema: ServiceTasksGetOutput,
 }));
@@ -4908,7 +4882,7 @@ export interface ServiceTasksListInput {
   serviceName: string;
   taskType?: string;
 }
-export const ServiceTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServiceTasksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -4938,44 +4912,42 @@ export interface ServiceTasksListOutput {
   }[];
   nextLink?: string;
 }
-export const ServiceTasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ServiceTasksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ServiceTasksListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ServiceTasksListOutput>;
 
 // The operation
 /**
@@ -4989,7 +4961,7 @@ export const ServiceTasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - Version of the API
  * @param taskType - Filter tasks by task type
  */
-export const ServiceTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceTasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksListInput,
   outputSchema: ServiceTasksListOutput,
 }));
@@ -5083,7 +5055,7 @@ export interface ServiceTasksUpdateInput {
   type?: string;
 }
 export const ServiceTasksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -5246,7 +5218,7 @@ export interface ServiceTasksUpdateOutput {
   };
 }
 export const ServiceTasksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5281,7 +5253,7 @@ export const ServiceTasksUpdateOutput =
  * @param properties - Custom task properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const ServiceTasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceTasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksUpdateInput,
   outputSchema: ServiceTasksUpdateOutput,
 }));
@@ -5295,7 +5267,7 @@ export interface SqlMigrationServicesCreateOrUpdateInput {
   location: string;
 }
 export const SqlMigrationServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5330,7 +5302,7 @@ export interface SqlMigrationServicesCreateOrUpdateOutput {
   };
 }
 export const SqlMigrationServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5360,7 +5332,7 @@ export const SqlMigrationServicesCreateOrUpdateOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesCreateOrUpdateInput,
     outputSchema: SqlMigrationServicesCreateOrUpdateOutput,
   }));
@@ -5371,7 +5343,7 @@ export interface SqlMigrationServicesDeleteInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5386,7 +5358,7 @@ export const SqlMigrationServicesDeleteInput =
 // Output Schema
 export type SqlMigrationServicesDeleteOutput = void;
 export const SqlMigrationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlMigrationServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlMigrationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -5397,12 +5369,10 @@ export const SqlMigrationServicesDeleteOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const SqlMigrationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlMigrationServicesDeleteInput,
-    outputSchema: SqlMigrationServicesDeleteOutput,
-  }),
-);
+export const SqlMigrationServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlMigrationServicesDeleteInput,
+  outputSchema: SqlMigrationServicesDeleteOutput,
+}));
 // Input Schema
 export interface SqlMigrationServicesDeleteNodeInput {
   resourceGroupName: string;
@@ -5412,7 +5382,7 @@ export interface SqlMigrationServicesDeleteNodeInput {
   integrationRuntimeName?: string;
 }
 export const SqlMigrationServicesDeleteNodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5432,7 +5402,7 @@ export interface SqlMigrationServicesDeleteNodeOutput {
   integrationRuntimeName?: string;
 }
 export const SqlMigrationServicesDeleteNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
     integrationRuntimeName: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SqlMigrationServicesDeleteNodeOutput>;
@@ -5447,7 +5417,7 @@ export const SqlMigrationServicesDeleteNodeOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesDeleteNode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesDeleteNodeInput,
     outputSchema: SqlMigrationServicesDeleteNodeOutput,
   }));
@@ -5458,7 +5428,7 @@ export interface SqlMigrationServicesGetInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5485,7 +5455,7 @@ export interface SqlMigrationServicesGetOutput {
   };
 }
 export const SqlMigrationServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5514,12 +5484,10 @@ export const SqlMigrationServicesGetOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const SqlMigrationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlMigrationServicesGetInput,
-    outputSchema: SqlMigrationServicesGetOutput,
-  }),
-);
+export const SqlMigrationServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlMigrationServicesGetInput,
+  outputSchema: SqlMigrationServicesGetOutput,
+}));
 // Input Schema
 export interface SqlMigrationServicesListAuthKeysInput {
   resourceGroupName: string;
@@ -5527,7 +5495,7 @@ export interface SqlMigrationServicesListAuthKeysInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesListAuthKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5545,7 +5513,7 @@ export interface SqlMigrationServicesListAuthKeysOutput {
   authKey2?: string;
 }
 export const SqlMigrationServicesListAuthKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SqlMigrationServicesListAuthKeysOutput>;
@@ -5560,7 +5528,7 @@ export const SqlMigrationServicesListAuthKeysOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesListAuthKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesListAuthKeysInput,
     outputSchema: SqlMigrationServicesListAuthKeysOutput,
   }));
@@ -5570,7 +5538,7 @@ export interface SqlMigrationServicesListByResourceGroupInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5599,7 +5567,7 @@ export interface SqlMigrationServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlMigrationServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5645,7 +5613,7 @@ export const SqlMigrationServicesListByResourceGroupOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesListByResourceGroupInput,
     outputSchema: SqlMigrationServicesListByResourceGroupOutput,
   }));
@@ -5654,7 +5622,7 @@ export interface SqlMigrationServicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5682,7 +5650,7 @@ export interface SqlMigrationServicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SqlMigrationServicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5727,7 +5695,7 @@ export const SqlMigrationServicesListBySubscriptionOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesListBySubscriptionInput,
     outputSchema: SqlMigrationServicesListBySubscriptionOutput,
   }));
@@ -5738,7 +5706,7 @@ export interface SqlMigrationServicesListMigrationsInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesListMigrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5768,7 +5736,7 @@ export interface SqlMigrationServicesListMigrationsOutput {
   nextLink?: string;
 }
 export const SqlMigrationServicesListMigrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5815,7 +5783,7 @@ export const SqlMigrationServicesListMigrationsOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesListMigrations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesListMigrationsInput,
     outputSchema: SqlMigrationServicesListMigrationsOutput,
   }));
@@ -5826,7 +5794,7 @@ export interface SqlMigrationServicesListMonitoringDataInput {
   subscriptionId: string;
 }
 export const SqlMigrationServicesListMonitoringDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5854,7 +5822,7 @@ export interface SqlMigrationServicesListMonitoringDataOutput {
   }[];
 }
 export const SqlMigrationServicesListMonitoringDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(
       Schema.Array(
@@ -5885,7 +5853,7 @@ export const SqlMigrationServicesListMonitoringDataOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesListMonitoringData =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesListMonitoringDataInput,
     outputSchema: SqlMigrationServicesListMonitoringDataOutput,
   }));
@@ -5899,7 +5867,7 @@ export interface SqlMigrationServicesRegenerateAuthKeysInput {
   authKey2?: string;
 }
 export const SqlMigrationServicesRegenerateAuthKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5921,7 +5889,7 @@ export interface SqlMigrationServicesRegenerateAuthKeysOutput {
   authKey2?: string;
 }
 export const SqlMigrationServicesRegenerateAuthKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyName: Schema.optional(Schema.String),
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
@@ -5937,7 +5905,7 @@ export const SqlMigrationServicesRegenerateAuthKeysOutput =
  * @param api-version - API version to use for the request.
  */
 export const SqlMigrationServicesRegenerateAuthKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlMigrationServicesRegenerateAuthKeysInput,
     outputSchema: SqlMigrationServicesRegenerateAuthKeysOutput,
   }));
@@ -5949,7 +5917,7 @@ export interface SqlMigrationServicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SqlMigrationServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlMigrationServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5977,7 +5945,7 @@ export interface SqlMigrationServicesUpdateOutput {
   };
 }
 export const SqlMigrationServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6006,12 +5974,10 @@ export const SqlMigrationServicesUpdateOutput =
  * @param subscriptionId - Subscription ID that identifies an Azure subscription.
  * @param api-version - API version to use for the request.
  */
-export const SqlMigrationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlMigrationServicesUpdateInput,
-    outputSchema: SqlMigrationServicesUpdateOutput,
-  }),
-);
+export const SqlMigrationServicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlMigrationServicesUpdateInput,
+  outputSchema: SqlMigrationServicesUpdateOutput,
+}));
 // Input Schema
 export interface TasksCancelInput {
   subscriptionId: string;
@@ -6020,7 +5986,7 @@ export interface TasksCancelInput {
   projectName: string;
   taskName: string;
 }
-export const TasksCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCancelInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6048,7 +6014,7 @@ export interface TasksCancelOutput {
     lastModifiedAt?: string;
   };
 }
-export const TasksCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCancelOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6081,7 +6047,7 @@ export const TasksCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param taskName - Name of the Task
  * @param api-version - Version of the API
  */
-export const TasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCancelInput,
   outputSchema: TasksCancelOutput,
 }));
@@ -6105,7 +6071,7 @@ export interface TasksCommandInput {
   }[];
   state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
 }
-export const TasksCommandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCommandInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6161,7 +6127,7 @@ export interface TasksCommandOutput {
   }[];
   state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
 }
-export const TasksCommandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksCommandOutput = /*@__PURE__*/ Schema.Struct({
   commandType: Schema.Literals([
     "Migrate.Sync.Complete.Database",
     "Migrate.SqlServer.AzureDbSqlMi.Complete",
@@ -6207,7 +6173,7 @@ export const TasksCommandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param errors - Array of errors. This is ignored if submitted.
  * @param state - The state of the command. This is ignored if submitted.
  */
-export const TasksCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksCommand = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCommandInput,
   outputSchema: TasksCommandOutput,
 }));
@@ -6302,7 +6268,7 @@ export interface TasksCreateOrUpdateInput {
   type?: string;
 }
 export const TasksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -6466,7 +6432,7 @@ export interface TasksCreateOrUpdateOutput {
   };
 }
 export const TasksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6502,7 +6468,7 @@ export const TasksCreateOrUpdateOutput =
  * @param properties - Custom task properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const TasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksCreateOrUpdateInput,
   outputSchema: TasksCreateOrUpdateOutput,
 }));
@@ -6515,7 +6481,7 @@ export interface TasksDeleteInput {
   taskName: string;
   deleteRunningTasks?: boolean;
 }
-export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6533,7 +6499,7 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TasksDeleteOutput = void;
 export const TasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
 
 // The operation
 /**
@@ -6549,7 +6515,7 @@ export const TasksDeleteOutput =
  * @param api-version - Version of the API
  * @param deleteRunningTasks - Delete the resource even if it contains running tasks
  */
-export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksDeleteInput,
   outputSchema: TasksDeleteOutput,
 }));
@@ -6562,7 +6528,7 @@ export interface TasksGetInput {
   taskName: string;
   $expand?: string;
 }
-export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6591,7 +6557,7 @@ export interface TasksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6625,7 +6591,7 @@ export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API
  * @param $expand - Expand the response
  */
-export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksGetInput,
   outputSchema: TasksGetOutput,
 }));
@@ -6637,7 +6603,7 @@ export interface TasksListInput {
   projectName: string;
   taskType?: string;
 }
-export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6668,7 +6634,7 @@ export interface TasksListOutput {
   }[];
   nextLink?: string;
 }
-export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6718,7 +6684,7 @@ export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Version of the API
  * @param taskType - Filter tasks by task type
  */
-export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksListInput,
   outputSchema: TasksListOutput,
 }));
@@ -6812,7 +6778,7 @@ export interface TasksUpdateInput {
   name?: string;
   type?: string;
 }
-export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -6971,7 +6937,7 @@ export interface TasksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7007,7 +6973,7 @@ export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param properties - Custom task properties
  * @param systemData - Metadata pertaining to creation and last modification of the resource.
  */
-export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TasksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksUpdateInput,
   outputSchema: TasksUpdateOutput,
 }));
@@ -7016,7 +6982,7 @@ export interface UsagesListInput {
   subscriptionId: string;
   location: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -7038,7 +7004,7 @@ export interface UsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7068,7 +7034,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The Azure region of the operation
  * @param api-version - Version of the API
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));

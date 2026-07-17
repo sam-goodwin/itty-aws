@@ -18,7 +18,7 @@ export interface ListOrganizationTeamMembersInput {
   per_page?: number;
 }
 export const ListOrganizationTeamMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -38,7 +38,7 @@ export interface ListOrganizationTeamMembersOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     user: {
       id: string;
@@ -64,28 +64,28 @@ export interface ListOrganizationTeamMembersOutput {
     actor: { id: string; display_name: string; avatar_url: string };
     created_at: string;
     updated_at: string;
-    passwords: {
+    passwords: ReadonlyArray<{
       id: string;
       name: string;
       role: "reader" | "writer" | "admin" | "readwriter";
-      cidrs: string[] | null;
+      cidrs: ReadonlyArray<string> | null;
       created_at: string;
       deleted_at: string | null;
       expires_at: string | null;
       last_used_at: string | null;
       expired: boolean;
       direct_vtgate: boolean;
-      direct_vtgate_addresses: string[];
+      direct_vtgate_addresses: ReadonlyArray<string>;
       ttl_seconds: number | null;
       access_host_url: string;
       access_host_regional_url: string;
-      access_host_regional_urls: string[];
+      access_host_regional_urls: ReadonlyArray<string>;
       actor: { id: string; display_name: string; avatar_url: string } | null;
       region: {
         id: string;
         provider: string;
         enabled: boolean;
-        public_ip_addresses: string[];
+        public_ip_addresses: ReadonlyArray<string>;
         display_name: string;
         location: string;
         slug: string;
@@ -104,11 +104,11 @@ export interface ListOrganizationTeamMembersOutput {
         mysql_edge_address: string;
         private_edge_connectivity: boolean;
       };
-    }[];
-  }[];
+    }>;
+  }>;
 }
 export const ListOrganizationTeamMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -213,7 +213,7 @@ export const ListOrganizationTeamMembersOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOrganizationTeamMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOrganizationTeamMembersInput,
     outputSchema: ListOrganizationTeamMembersOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

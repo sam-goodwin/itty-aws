@@ -14,7 +14,7 @@ export interface ListOrgServiceAccountAccessListInput {
   pretty?: boolean;
 }
 export const ListOrgServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListOrgServiceAccountAccessListInput =
 // Output Schema
 export type ListOrgServiceAccountAccessListOutput = void;
 export const ListOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgServiceAccountAccessListOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgServiceAccountAccessListOutput>;
 
 // The operation
 /**
@@ -49,7 +49,7 @@ export const ListOrgServiceAccountAccessListOutput =
  * @param clientId - The Client ID of the Service Account.
  */
 export const listOrgServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListOrgServiceAccountAccessListInput,
     outputSchema: ListOrgServiceAccountAccessListOutput,
     errors: [Forbidden, NotFound] as const,

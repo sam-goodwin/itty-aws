@@ -11,7 +11,7 @@ export interface GetOrganizationMembersInput {
   limit?: number;
 }
 export const GetOrganizationMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     sort_by: Schema.optional(Schema.Literals(["email", "role", "joined_at"])),
     cursor: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface GetOrganizationMembersOutput {
   pagination?: { next?: string; sort_by?: string; sort_order?: string };
 }
 export const GetOrganizationMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.Array(
       Schema.Struct({
         member: Schema.Struct({
@@ -81,7 +81,7 @@ export const GetOrganizationMembersOutput =
  * @param limit - The maximum number of members to return in the response
  */
 export const getOrganizationMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetOrganizationMembersInput,
     outputSchema: GetOrganizationMembersOutput,
     pagination: {

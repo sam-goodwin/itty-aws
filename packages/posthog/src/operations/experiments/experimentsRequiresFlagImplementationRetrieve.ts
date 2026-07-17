@@ -8,7 +8,7 @@ export interface ExperimentsRequiresFlagImplementationRetrieveInput {
   project_id: string;
 }
 export const ExperimentsRequiresFlagImplementationRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const ExperimentsRequiresFlagImplementationRetrieveInput =
 // Output Schema
 export type ExperimentsRequiresFlagImplementationRetrieveOutput = void;
 export const ExperimentsRequiresFlagImplementationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsRequiresFlagImplementationRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsRequiresFlagImplementationRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const ExperimentsRequiresFlagImplementationRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const experimentsRequiresFlagImplementationRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExperimentsRequiresFlagImplementationRetrieveInput,
     outputSchema: ExperimentsRequiresFlagImplementationRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

@@ -8,7 +8,7 @@ export interface DeleteDocumentsInput {
   collectionName: string;
   deleteDocumentsParameters?: string;
 }
-export const DeleteDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   deleteDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -19,7 +19,7 @@ export const DeleteDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DeleteDocumentsOutput {
   num_deleted: number;
 }
-export const DeleteDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDocumentsOutput = /*@__PURE__*/ Schema.Struct({
   num_deleted: Schema.Number,
 }) as unknown as Schema.Codec<DeleteDocumentsOutput>;
 
@@ -31,7 +31,7 @@ export const DeleteDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param collectionName - The name of the collection to delete documents from
  */
-export const deleteDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDocumentsInput,
   outputSchema: DeleteDocumentsOutput,
   errors: [NotFound] as const,

@@ -9,13 +9,11 @@ export interface DashboardsDestroyInput {
   project_id: string;
   format?: "json" | "txt";
 }
-export const DashboardsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.Number.pipe(T.PathParam()),
-    project_id: Schema.String.pipe(T.PathParam()),
-    format: Schema.optional(Schema.Literals(["json", "txt"])),
-  },
-).pipe(
+export const DashboardsDestroyInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.Number.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  format: Schema.optional(Schema.Literals(["json", "txt"])),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/api/projects/{project_id}/dashboards/{id}/",
@@ -25,7 +23,7 @@ export const DashboardsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DashboardsDestroyOutput = void;
 export const DashboardsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDestroyOutput>;
 
 // The operation
 /**
@@ -34,7 +32,7 @@ export const DashboardsDestroyOutput =
  * @param id - A unique integer value identifying this dashboard.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const dashboardsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsDestroyInput,
   outputSchema: DashboardsDestroyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

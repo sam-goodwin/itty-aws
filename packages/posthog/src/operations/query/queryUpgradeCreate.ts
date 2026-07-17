@@ -9,7 +9,7 @@ export interface QueryUpgradeCreateInput {
   query?: unknown;
 }
 export const QueryUpgradeCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -24,7 +24,7 @@ export interface QueryUpgradeCreateOutput {
   query?: unknown;
 }
 export const QueryUpgradeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.Unknown),
   }) as unknown as Schema.Codec<QueryUpgradeCreateOutput>;
 
@@ -34,7 +34,7 @@ export const QueryUpgradeCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const queryUpgradeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryUpgradeCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryUpgradeCreateInput,
   outputSchema: QueryUpgradeCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

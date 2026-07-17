@@ -9,7 +9,7 @@ export interface RemoveGroupTeamInput {
   teamId: string;
   envelope?: boolean;
 }
-export const RemoveGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemoveGroupTeamInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -23,7 +23,7 @@ export const RemoveGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RemoveGroupTeamOutput = void;
 export const RemoveGroupTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupTeamOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const RemoveGroupTeamOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team that you want to remove from the specified project.
  */
-export const removeGroupTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupTeamInput,
   outputSchema: RemoveGroupTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

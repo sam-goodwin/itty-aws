@@ -10,7 +10,7 @@ export interface RequestGroupSampleDatasetLoadInput {
   envelope?: boolean;
 }
 export const RequestGroupSampleDatasetLoadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const RequestGroupSampleDatasetLoadInput =
 // Output Schema
 export type RequestGroupSampleDatasetLoadOutput = void;
 export const RequestGroupSampleDatasetLoadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestGroupSampleDatasetLoadOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestGroupSampleDatasetLoadOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const RequestGroupSampleDatasetLoadOutput =
  * @param name - Human-readable label that identifies the cluster into which you load the sample dataset.
  */
 export const requestGroupSampleDatasetLoad =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RequestGroupSampleDatasetLoadInput,
     outputSchema: RequestGroupSampleDatasetLoadOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

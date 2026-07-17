@@ -14,7 +14,7 @@ export interface ListGroupFlexClusterBackupSnapshotsInput {
   pageNum?: number;
 }
 export const ListGroupFlexClusterBackupSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupFlexClusterBackupSnapshotsInput =
 // Output Schema
 export type ListGroupFlexClusterBackupSnapshotsOutput = void;
 export const ListGroupFlexClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClusterBackupSnapshotsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClusterBackupSnapshotsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupFlexClusterBackupSnapshotsOutput =
  * @param name - Human-readable label that identifies the flex cluster.
  */
 export const listGroupFlexClusterBackupSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupFlexClusterBackupSnapshotsInput,
     outputSchema: ListGroupFlexClusterBackupSnapshotsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

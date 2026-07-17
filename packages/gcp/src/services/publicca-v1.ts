@@ -32,7 +32,7 @@ export interface ExternalAccountKey {
 }
 
 export const ExternalAccountKey: Schema.Codec<ExternalAccountKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     b64MacKey: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface CreateProjectsLocationsExternalAccountKeysRequest {
 }
 
 export const CreateProjectsLocationsExternalAccountKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ExternalAccountKey).pipe(T.HttpBody()),
   }).pipe(
@@ -115,7 +115,7 @@ export const CreateProjectsLocationsExternalAccountKeysRequest =
 export type CreateProjectsLocationsExternalAccountKeysResponse =
   ExternalAccountKey;
 export const CreateProjectsLocationsExternalAccountKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExternalAccountKey;
+  /*@__PURE__*/ ExternalAccountKey;
 
 export type CreateProjectsLocationsExternalAccountKeysError =
   | DefaultErrors
@@ -130,7 +130,7 @@ export const createProjectsLocationsExternalAccountKeys: API.OperationMethod<
   CreateProjectsLocationsExternalAccountKeysResponse,
   CreateProjectsLocationsExternalAccountKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsExternalAccountKeysRequest,
   output: CreateProjectsLocationsExternalAccountKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

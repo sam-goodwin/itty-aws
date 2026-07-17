@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetAuthDetailsInput {}
-export const GetAuthDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetAuthDetailsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/auth" }),
 ) as unknown as Schema.Codec<GetAuthDetailsInput>;
 
@@ -21,7 +19,7 @@ export interface GetAuthDetailsOutput {
     | "oauth";
   auth_data?: string;
 }
-export const GetAuthDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAuthDetailsOutput = /*@__PURE__*/ Schema.Struct({
   account_id: Schema.String,
   auth_method: Schema.Literals([
     "keycloak",
@@ -41,7 +39,7 @@ export const GetAuthDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * including the credential type (API key, Bearer token, or OAuth session)
  * and the associated identity.
  */
-export const getAuthDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAuthDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAuthDetailsInput,
   outputSchema: GetAuthDetailsOutput,
 }));

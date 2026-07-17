@@ -15,7 +15,7 @@ export interface V1UpdateProjectApiKeyInput {
   secret_jwt_template?: Record<string, unknown> | null;
 }
 export const V1UpdateProjectApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     reveal: Schema.optional(Schema.Boolean),
@@ -42,7 +42,7 @@ export interface V1UpdateProjectApiKeyOutput {
   updated_at?: string | null;
 }
 export const V1UpdateProjectApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
@@ -66,10 +66,8 @@ export const V1UpdateProjectApiKeyOutput =
  * @param ref - Project ref
  * @param reveal - Boolean string, true or false
  */
-export const v1UpdateProjectApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateProjectApiKeyInput,
-    outputSchema: V1UpdateProjectApiKeyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1UpdateProjectApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateProjectApiKeyInput,
+  outputSchema: V1UpdateProjectApiKeyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

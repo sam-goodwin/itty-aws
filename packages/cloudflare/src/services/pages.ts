@@ -91,7 +91,7 @@ interface BuildConfig {
   /** Directory to run the command. */
   rootDir?: string | null;
 }
-const BuildConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BuildConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     webAnalyticsTag: Schema.Union([Schema.String, Schema.Null]),
     webAnalyticsToken: Schema.Union([Schema.String, Schema.Null]),
@@ -121,7 +121,7 @@ interface Metadata {
   /** Message of the deployment trigger commit. */
   commitMessage: string;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     branch: Schema.String,
     commitDirty: Schema.Boolean,
@@ -148,7 +148,7 @@ interface DeploymentTrigger {
   /** What caused the deployment. */
   type: "github:push" | "ad_hoc" | "deploy_hook" | (string & {});
 }
-const DeploymentTrigger = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeploymentTrigger = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     metadata: Metadata,
     type: Schema.Union([
@@ -180,7 +180,7 @@ interface Stage {
     | "canceled"
     | (string & {});
 }
-const Stage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Stage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endedOn: Schema.Union([Schema.String, Schema.Null]),
     name: Schema.Union([
@@ -236,7 +236,7 @@ interface Config {
   /** The name of the repository. */
   repoName: string;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deploymentsEnabled: Schema.Boolean,
     owner: Schema.String,
@@ -292,7 +292,7 @@ interface Source {
   /** The source control management provider. */
   type: "github" | "gitlab" | (string & {});
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config,
     type: Schema.Union([Schema.Literals(["github", "gitlab"]), Schema.String]),
@@ -401,7 +401,7 @@ interface Deployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Deployment = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -453,7 +453,7 @@ interface Limits {
   /** CPU time limit in milliseconds. */
   cpuMs: number;
 }
-const Limits = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Limits = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cpuMs: Schema.Number,
   }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
@@ -463,7 +463,7 @@ interface Placement {
   /** Placement mode. */
   mode: string;
 }
-const Placement = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Placement = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.String,
   }),
@@ -515,7 +515,7 @@ interface Preview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-const Preview = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Preview = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     alwaysUseLatestCompatibilityDate: Schema.Boolean,
     buildImageMajorVersion: Schema.Number,
@@ -651,7 +651,7 @@ interface DeploymentConfigs {
     wranglerConfigHash?: string | null;
   } | null;
 }
-const DeploymentConfigs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeploymentConfigs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     preview: Schema.optional(Schema.Union([Preview, Schema.Null])),
     production: Schema.optional(Schema.Union([Preview, Schema.Null])),
@@ -933,47 +933,46 @@ interface ListProjectsResponseResult {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
-const ListProjectsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      canonicalDeployment: Schema.Union([Deployment, Schema.Null]),
-      createdOn: Schema.String,
-      deploymentConfigs: DeploymentConfigs,
-      framework: Schema.String,
-      frameworkVersion: Schema.String,
-      latestDeployment: Schema.Union([Deployment, Schema.Null]),
-      name: Schema.String,
-      previewScriptName: Schema.String,
-      productionBranch: Schema.String,
-      productionScriptName: Schema.String,
-      usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
-      buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
-      domains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Source, Schema.Null])),
-      subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        canonicalDeployment: "canonical_deployment",
-        createdOn: "created_on",
-        deploymentConfigs: "deployment_configs",
-        framework: "framework",
-        frameworkVersion: "framework_version",
-        latestDeployment: "latest_deployment",
-        name: "name",
-        previewScriptName: "preview_script_name",
-        productionBranch: "production_branch",
-        productionScriptName: "production_script_name",
-        usesFunctions: "uses_functions",
-        buildConfig: "build_config",
-        domains: "domains",
-        source: "source",
-        subdomain: "subdomain",
-      }),
+const ListProjectsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    canonicalDeployment: Schema.Union([Deployment, Schema.Null]),
+    createdOn: Schema.String,
+    deploymentConfigs: DeploymentConfigs,
+    framework: Schema.String,
+    frameworkVersion: Schema.String,
+    latestDeployment: Schema.Union([Deployment, Schema.Null]),
+    name: Schema.String,
+    previewScriptName: Schema.String,
+    productionBranch: Schema.String,
+    productionScriptName: Schema.String,
+    usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
+    buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
+    domains: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+    subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      canonicalDeployment: "canonical_deployment",
+      createdOn: "created_on",
+      deploymentConfigs: "deployment_configs",
+      framework: "framework",
+      frameworkVersion: "framework_version",
+      latestDeployment: "latest_deployment",
+      name: "name",
+      previewScriptName: "preview_script_name",
+      productionBranch: "production_branch",
+      productionScriptName: "production_script_name",
+      usesFunctions: "uses_functions",
+      buildConfig: "build_config",
+      domains: "domains",
+      source: "source",
+      subdomain: "subdomain",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListProjectsResponseResult>;
 
 interface ListProjectsResponseResultInfo {
@@ -983,7 +982,7 @@ interface ListProjectsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListProjectsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1013,7 +1012,7 @@ interface BuildConfig2 {
   /** The auth token for analytics. */
   webAnalyticsToken?: string | null;
 }
-const BuildConfig2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BuildConfig2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     buildCaching: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     buildCommand: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1083,7 +1082,7 @@ interface Preview2 {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-const Preview2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Preview2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aiBindings: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -1231,7 +1230,7 @@ interface DeploymentConfigs2 {
     wranglerConfigHash?: string | null;
   } | null;
 }
-const DeploymentConfigs2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeploymentConfigs2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     preview: Schema.optional(Schema.Union([Preview2, Schema.Null])),
     production: Schema.optional(Schema.Union([Preview2, Schema.Null])),
@@ -1266,7 +1265,7 @@ interface Config2 {
   /** The name of the repository. */
   repoName?: string | null;
 }
-const Config2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deploymentsEnabled: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1343,7 +1342,7 @@ interface Source2 {
   /** The source control management provider. */
   type: "github" | "gitlab" | (string & {});
 }
-const Source2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config2,
     type: Schema.Union([Schema.Literals(["github", "gitlab"]), Schema.String]),
@@ -1452,7 +1451,7 @@ interface Deployment2 {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-const Deployment2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Deployment2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1552,7 +1551,7 @@ interface DeploymentConfigs3 {
     wranglerConfigHash?: string | null;
   };
 }
-const DeploymentConfigs3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeploymentConfigs3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     preview: Preview,
     production: Preview,
@@ -1563,7 +1562,7 @@ interface Data {
   line: string;
   ts: string;
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     line: Schema.String,
     ts: Schema.String,
@@ -1583,7 +1582,7 @@ interface ValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-const ValidationData = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ValidationData = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     method: Schema.optional(
       Schema.Union([
@@ -1620,7 +1619,7 @@ interface VerificationData {
   status?: "pending" | "active" | "deactivated" | "blocked" | "error" | null;
   errorMessage?: string | null;
 }
-const VerificationData = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VerificationData = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     status: Schema.optional(
       Schema.Union([
@@ -1673,7 +1672,7 @@ interface ListProjectDomainsResponseResult {
   zoneTag?: string | null;
 }
 const ListProjectDomainsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificateAuthority: Schema.optional(
@@ -1730,7 +1729,7 @@ export interface PurgeBuildCacheProjectRequest {
 }
 
 export const PurgeBuildCacheProjectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1745,7 +1744,7 @@ export const PurgeBuildCacheProjectRequest =
 export type PurgeBuildCacheProjectResponse = unknown;
 
 export const PurgeBuildCacheProjectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PurgeBuildCacheProjectResponse>;
 
@@ -1756,7 +1755,7 @@ export const purgeBuildCacheProject: API.OperationMethod<
   PurgeBuildCacheProjectResponse,
   PurgeBuildCacheProjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeBuildCacheProjectRequest,
   output: PurgeBuildCacheProjectResponse,
   errors: [],
@@ -1772,17 +1771,16 @@ export interface GetProjectRequest {
   accountId: string;
 }
 
-export const GetProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      projectName: Schema.String.pipe(T.HttpPath("projectName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/pages/projects/{projectName}",
-      }),
-    ),
+export const GetProjectRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    projectName: Schema.String.pipe(T.HttpPath("projectName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/pages/projects/{projectName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetProjectRequest>;
 
 export interface GetProjectResponse {
@@ -2061,49 +2059,48 @@ export interface GetProjectResponse {
   subdomain?: string | null;
 }
 
-export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      canonicalDeployment: Schema.Union([Deployment, Schema.Null]),
-      createdOn: Schema.String,
-      deploymentConfigs: DeploymentConfigs,
-      framework: Schema.String,
-      frameworkVersion: Schema.String,
-      latestDeployment: Schema.Union([Deployment, Schema.Null]),
-      name: Schema.String,
-      previewScriptName: Schema.String,
-      productionBranch: Schema.String,
-      productionScriptName: Schema.String,
-      usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
-      buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
-      domains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Source, Schema.Null])),
-      subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          canonicalDeployment: "canonical_deployment",
-          createdOn: "created_on",
-          deploymentConfigs: "deployment_configs",
-          framework: "framework",
-          frameworkVersion: "framework_version",
-          latestDeployment: "latest_deployment",
-          name: "name",
-          previewScriptName: "preview_script_name",
-          productionBranch: "production_branch",
-          productionScriptName: "production_script_name",
-          usesFunctions: "uses_functions",
-          buildConfig: "build_config",
-          domains: "domains",
-          source: "source",
-          subdomain: "subdomain",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetProjectResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    canonicalDeployment: Schema.Union([Deployment, Schema.Null]),
+    createdOn: Schema.String,
+    deploymentConfigs: DeploymentConfigs,
+    framework: Schema.String,
+    frameworkVersion: Schema.String,
+    latestDeployment: Schema.Union([Deployment, Schema.Null]),
+    name: Schema.String,
+    previewScriptName: Schema.String,
+    productionBranch: Schema.String,
+    productionScriptName: Schema.String,
+    usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
+    buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
+    domains: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+    subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        canonicalDeployment: "canonical_deployment",
+        createdOn: "created_on",
+        deploymentConfigs: "deployment_configs",
+        framework: "framework",
+        frameworkVersion: "framework_version",
+        latestDeployment: "latest_deployment",
+        name: "name",
+        previewScriptName: "preview_script_name",
+        productionBranch: "production_branch",
+        productionScriptName: "production_script_name",
+        usesFunctions: "uses_functions",
+        buildConfig: "build_config",
+        domains: "domains",
+        source: "source",
+        subdomain: "subdomain",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetProjectResponse>;
 
 export type GetProjectError = DefaultErrors | ProjectNotFound | Forbidden;
@@ -2113,7 +2110,7 @@ export const getProject: API.OperationMethod<
   GetProjectResponse,
   GetProjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResponse,
   errors: [ProjectNotFound, Forbidden],
@@ -2126,15 +2123,14 @@ export interface ListProjectsRequest {
   perPage?: number;
 }
 
-export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/pages/projects" }),
-    ),
+export const ListProjectsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/pages/projects" }),
+  ),
 ) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export interface ListProjectsResponse {
@@ -2405,14 +2401,13 @@ export interface ListProjectsResponse {
   } | null;
 }
 
-export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListProjectsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListProjectsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListProjectsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListProjectsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListProjectsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListProjectsResponse>;
 
 export type ListProjectsError = DefaultErrors | Forbidden;
@@ -2422,7 +2417,7 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsResponse,
   ListProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [Forbidden],
@@ -2523,25 +2518,24 @@ export interface CreateProjectRequest {
   };
 }
 
-export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      productionBranch: Schema.String,
-      buildConfig: Schema.optional(BuildConfig2),
-      deploymentConfigs: Schema.optional(DeploymentConfigs2),
-      source: Schema.optional(Source2),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        productionBranch: "production_branch",
-        buildConfig: "build_config",
-        deploymentConfigs: "deployment_configs",
-        source: "source",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/pages/projects" }),
-    ),
+export const CreateProjectRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    productionBranch: Schema.String,
+    buildConfig: Schema.optional(BuildConfig2),
+    deploymentConfigs: Schema.optional(DeploymentConfigs2),
+    source: Schema.optional(Source2),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      productionBranch: "production_branch",
+      buildConfig: "build_config",
+      deploymentConfigs: "deployment_configs",
+      source: "source",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/pages/projects" }),
+  ),
 ) as unknown as Schema.Codec<CreateProjectRequest>;
 
 export interface CreateProjectResponse {
@@ -2820,49 +2814,48 @@ export interface CreateProjectResponse {
   subdomain?: string | null;
 }
 
-export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      canonicalDeployment: Schema.Union([Deployment2, Schema.Null]),
-      createdOn: Schema.String,
-      deploymentConfigs: DeploymentConfigs3,
-      framework: Schema.String,
-      frameworkVersion: Schema.String,
-      latestDeployment: Schema.Union([Deployment2, Schema.Null]),
-      name: Schema.String,
-      previewScriptName: Schema.String,
-      productionBranch: Schema.String,
-      productionScriptName: Schema.String,
-      usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
-      buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
-      domains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Source, Schema.Null])),
-      subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          canonicalDeployment: "canonical_deployment",
-          createdOn: "created_on",
-          deploymentConfigs: "deployment_configs",
-          framework: "framework",
-          frameworkVersion: "framework_version",
-          latestDeployment: "latest_deployment",
-          name: "name",
-          previewScriptName: "preview_script_name",
-          productionBranch: "production_branch",
-          productionScriptName: "production_script_name",
-          usesFunctions: "uses_functions",
-          buildConfig: "build_config",
-          domains: "domains",
-          source: "source",
-          subdomain: "subdomain",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateProjectResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    canonicalDeployment: Schema.Union([Deployment2, Schema.Null]),
+    createdOn: Schema.String,
+    deploymentConfigs: DeploymentConfigs3,
+    framework: Schema.String,
+    frameworkVersion: Schema.String,
+    latestDeployment: Schema.Union([Deployment2, Schema.Null]),
+    name: Schema.String,
+    previewScriptName: Schema.String,
+    productionBranch: Schema.String,
+    productionScriptName: Schema.String,
+    usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
+    buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
+    domains: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+    subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        canonicalDeployment: "canonical_deployment",
+        createdOn: "created_on",
+        deploymentConfigs: "deployment_configs",
+        framework: "framework",
+        frameworkVersion: "framework_version",
+        latestDeployment: "latest_deployment",
+        name: "name",
+        previewScriptName: "preview_script_name",
+        productionBranch: "production_branch",
+        productionScriptName: "production_script_name",
+        usesFunctions: "uses_functions",
+        buildConfig: "build_config",
+        domains: "domains",
+        source: "source",
+        subdomain: "subdomain",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateProjectResponse>;
 
 export type CreateProjectError =
@@ -2875,7 +2868,7 @@ export const createProject: API.OperationMethod<
   CreateProjectResponse,
   CreateProjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [ProjectAlreadyExists, Forbidden],
@@ -2970,29 +2963,28 @@ export interface PatchProjectRequest {
   };
 }
 
-export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      projectName: Schema.String.pipe(T.HttpPath("projectName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      buildConfig: Schema.optional(BuildConfig2),
-      deploymentConfigs: Schema.optional(DeploymentConfigs2),
-      name: Schema.optional(Schema.String),
-      productionBranch: Schema.optional(Schema.String),
-      source: Schema.optional(Source2),
-    }).pipe(
-      Schema.encodeKeys({
-        buildConfig: "build_config",
-        deploymentConfigs: "deployment_configs",
-        name: "name",
-        productionBranch: "production_branch",
-        source: "source",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/pages/projects/{projectName}",
-      }),
-    ),
+export const PatchProjectRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    projectName: Schema.String.pipe(T.HttpPath("projectName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    buildConfig: Schema.optional(BuildConfig2),
+    deploymentConfigs: Schema.optional(DeploymentConfigs2),
+    name: Schema.optional(Schema.String),
+    productionBranch: Schema.optional(Schema.String),
+    source: Schema.optional(Source2),
+  }).pipe(
+    Schema.encodeKeys({
+      buildConfig: "build_config",
+      deploymentConfigs: "deployment_configs",
+      name: "name",
+      productionBranch: "production_branch",
+      source: "source",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/pages/projects/{projectName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchProjectRequest>;
 
 export interface PatchProjectResponse {
@@ -3271,49 +3263,48 @@ export interface PatchProjectResponse {
   subdomain?: string | null;
 }
 
-export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      canonicalDeployment: Schema.Union([Deployment2, Schema.Null]),
-      createdOn: Schema.String,
-      deploymentConfigs: DeploymentConfigs3,
-      framework: Schema.String,
-      frameworkVersion: Schema.String,
-      latestDeployment: Schema.Union([Deployment2, Schema.Null]),
-      name: Schema.String,
-      previewScriptName: Schema.String,
-      productionBranch: Schema.String,
-      productionScriptName: Schema.String,
-      usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
-      buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
-      domains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      source: Schema.optional(Schema.Union([Source, Schema.Null])),
-      subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          canonicalDeployment: "canonical_deployment",
-          createdOn: "created_on",
-          deploymentConfigs: "deployment_configs",
-          framework: "framework",
-          frameworkVersion: "framework_version",
-          latestDeployment: "latest_deployment",
-          name: "name",
-          previewScriptName: "preview_script_name",
-          productionBranch: "production_branch",
-          productionScriptName: "production_script_name",
-          usesFunctions: "uses_functions",
-          buildConfig: "build_config",
-          domains: "domains",
-          source: "source",
-          subdomain: "subdomain",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchProjectResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    canonicalDeployment: Schema.Union([Deployment2, Schema.Null]),
+    createdOn: Schema.String,
+    deploymentConfigs: DeploymentConfigs3,
+    framework: Schema.String,
+    frameworkVersion: Schema.String,
+    latestDeployment: Schema.Union([Deployment2, Schema.Null]),
+    name: Schema.String,
+    previewScriptName: Schema.String,
+    productionBranch: Schema.String,
+    productionScriptName: Schema.String,
+    usesFunctions: Schema.Union([Schema.Boolean, Schema.Null]),
+    buildConfig: Schema.optional(Schema.Union([BuildConfig, Schema.Null])),
+    domains: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+    subdomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        canonicalDeployment: "canonical_deployment",
+        createdOn: "created_on",
+        deploymentConfigs: "deployment_configs",
+        framework: "framework",
+        frameworkVersion: "framework_version",
+        latestDeployment: "latest_deployment",
+        name: "name",
+        previewScriptName: "preview_script_name",
+        productionBranch: "production_branch",
+        productionScriptName: "production_script_name",
+        usesFunctions: "uses_functions",
+        buildConfig: "build_config",
+        domains: "domains",
+        source: "source",
+        subdomain: "subdomain",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchProjectResponse>;
 
 export type PatchProjectError = DefaultErrors | ProjectNotFound | Forbidden;
@@ -3323,7 +3314,7 @@ export const patchProject: API.OperationMethod<
   PatchProjectResponse,
   PatchProjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectRequest,
   output: PatchProjectResponse,
   errors: [ProjectNotFound, Forbidden],
@@ -3335,23 +3326,22 @@ export interface DeleteProjectRequest {
   accountId: string;
 }
 
-export const DeleteProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      projectName: Schema.String.pipe(T.HttpPath("projectName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/pages/projects/{projectName}",
-      }),
-    ),
+export const DeleteProjectRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    projectName: Schema.String.pipe(T.HttpPath("projectName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/pages/projects/{projectName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteProjectRequest>;
 
 export type DeleteProjectResponse = unknown;
 
-export const DeleteProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteProjectResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteProjectResponse>;
 
 export type DeleteProjectError = DefaultErrors | ProjectNotFound | Forbidden;
@@ -3361,7 +3351,7 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectResponse,
   DeleteProjectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [ProjectNotFound, Forbidden],
@@ -3379,7 +3369,7 @@ export interface GetProjectDeploymentRequest {
 }
 
 export const GetProjectDeploymentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
@@ -3496,7 +3486,7 @@ export interface GetProjectDeploymentResponse {
 }
 
 export const GetProjectDeploymentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -3559,7 +3549,7 @@ export const getProjectDeployment: API.OperationMethod<
   GetProjectDeploymentResponse,
   GetProjectDeploymentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectDeploymentRequest,
   output: GetProjectDeploymentResponse,
   errors: [DeploymentNotFound, ProjectNotFound, Forbidden],
@@ -3576,7 +3566,7 @@ export interface ListProjectDeploymentsRequest {
 }
 
 export const ListProjectDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3691,7 +3681,7 @@ export interface ListProjectDeploymentsResponse {
 }
 
 export const ListProjectDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Deployment2),
       resultInfo: Schema.optional(
@@ -3707,7 +3697,7 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
   ListProjectDeploymentsResponse,
   ListProjectDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectDeploymentsRequest,
   output: ListProjectDeploymentsResponse,
   errors: [],
@@ -3753,7 +3743,7 @@ export interface CreateProjectDeploymentRequest {
 }
 
 export const CreateProjectDeploymentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3903,7 +3893,7 @@ export interface CreateProjectDeploymentResponse {
 }
 
 export const CreateProjectDeploymentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -3965,7 +3955,7 @@ export const createProjectDeployment: API.OperationMethod<
   CreateProjectDeploymentResponse,
   CreateProjectDeploymentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectDeploymentRequest,
   output: CreateProjectDeploymentResponse,
   errors: [ProjectNotFound, Forbidden],
@@ -3981,7 +3971,7 @@ export interface DeleteProjectDeploymentRequest {
 }
 
 export const DeleteProjectDeploymentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
@@ -3998,7 +3988,7 @@ export const DeleteProjectDeploymentRequest =
 export type DeleteProjectDeploymentResponse = unknown;
 
 export const DeleteProjectDeploymentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteProjectDeploymentResponse>;
 
@@ -4014,7 +4004,7 @@ export const deleteProjectDeployment: API.OperationMethod<
   DeleteProjectDeploymentResponse,
   DeleteProjectDeploymentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectDeploymentRequest,
   output: DeleteProjectDeploymentResponse,
   errors: [
@@ -4033,7 +4023,7 @@ export interface RetryProjectDeploymentRequest {
 }
 
 export const RetryProjectDeploymentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
@@ -4150,7 +4140,7 @@ export interface RetryProjectDeploymentResponse {
 }
 
 export const RetryProjectDeploymentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -4209,7 +4199,7 @@ export const retryProjectDeployment: API.OperationMethod<
   RetryProjectDeploymentResponse,
   RetryProjectDeploymentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryProjectDeploymentRequest,
   output: RetryProjectDeploymentResponse,
   errors: [],
@@ -4223,7 +4213,7 @@ export interface RollbackProjectDeploymentRequest {
 }
 
 export const RollbackProjectDeploymentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
@@ -4340,7 +4330,7 @@ export interface RollbackProjectDeploymentResponse {
 }
 
 export const RollbackProjectDeploymentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       aliases: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -4399,7 +4389,7 @@ export const rollbackProjectDeployment: API.OperationMethod<
   RollbackProjectDeploymentResponse,
   RollbackProjectDeploymentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackProjectDeploymentRequest,
   output: RollbackProjectDeploymentResponse,
   errors: [],
@@ -4417,7 +4407,7 @@ export interface GetProjectDeploymentHistoryLogRequest {
 }
 
 export const GetProjectDeploymentHistoryLogRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
@@ -4437,7 +4427,7 @@ export interface GetProjectDeploymentHistoryLogResponse {
 }
 
 export const GetProjectDeploymentHistoryLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data),
       includesContainerLogs: Schema.Boolean,
@@ -4460,7 +4450,7 @@ export const getProjectDeploymentHistoryLog: API.OperationMethod<
   GetProjectDeploymentHistoryLogResponse,
   GetProjectDeploymentHistoryLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectDeploymentHistoryLogRequest,
   output: GetProjectDeploymentHistoryLogResponse,
   errors: [],
@@ -4478,7 +4468,7 @@ export interface GetProjectDomainRequest {
 }
 
 export const GetProjectDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       domainName: Schema.String.pipe(T.HttpPath("domainName")),
@@ -4527,7 +4517,7 @@ export interface GetProjectDomainResponse {
 }
 
 export const GetProjectDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificateAuthority: Schema.optional(
@@ -4586,7 +4576,7 @@ export const getProjectDomain: API.OperationMethod<
   GetProjectDomainResponse,
   GetProjectDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectDomainRequest,
   output: GetProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],
@@ -4599,7 +4589,7 @@ export interface ListProjectDomainsRequest {
 }
 
 export const ListProjectDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4654,7 +4644,7 @@ export interface ListProjectDomainsResponse {
 }
 
 export const ListProjectDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListProjectDomainsResponseResult),
     }),
@@ -4670,7 +4660,7 @@ export const listProjectDomains: API.PaginatedOperationMethod<
   ListProjectDomainsResponse,
   ListProjectDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectDomainsRequest,
   output: ListProjectDomainsResponse,
   errors: [ProjectNotFound, Forbidden],
@@ -4689,7 +4679,7 @@ export interface CreateProjectDomainRequest {
 }
 
 export const CreateProjectDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4738,7 +4728,7 @@ export interface CreateProjectDomainResponse {
 }
 
 export const CreateProjectDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificateAuthority: Schema.optional(
@@ -4797,7 +4787,7 @@ export const createProjectDomain: API.OperationMethod<
   CreateProjectDomainResponse,
   CreateProjectDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectDomainRequest,
   output: CreateProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainAlreadyExists, Forbidden],
@@ -4811,7 +4801,7 @@ export interface PatchProjectDomainRequest {
 }
 
 export const PatchProjectDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       domainName: Schema.String.pipe(T.HttpPath("domainName")),
@@ -4860,7 +4850,7 @@ export interface PatchProjectDomainResponse {
 }
 
 export const PatchProjectDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       certificateAuthority: Schema.optional(
@@ -4919,7 +4909,7 @@ export const patchProjectDomain: API.OperationMethod<
   PatchProjectDomainResponse,
   PatchProjectDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectDomainRequest,
   output: PatchProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],
@@ -4933,7 +4923,7 @@ export interface DeleteProjectDomainRequest {
 }
 
 export const DeleteProjectDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       projectName: Schema.String.pipe(T.HttpPath("projectName")),
       domainName: Schema.String.pipe(T.HttpPath("domainName")),
@@ -4949,7 +4939,7 @@ export const DeleteProjectDomainRequest =
 export type DeleteProjectDomainResponse = unknown;
 
 export const DeleteProjectDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteProjectDomainResponse>;
 
@@ -4964,7 +4954,7 @@ export const deleteProjectDomain: API.OperationMethod<
   DeleteProjectDomainResponse,
   DeleteProjectDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectDomainRequest,
   output: DeleteProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden],

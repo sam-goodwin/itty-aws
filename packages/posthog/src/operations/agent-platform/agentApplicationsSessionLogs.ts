@@ -15,7 +15,7 @@ export interface AgentApplicationsSessionLogsInput {
   search?: string;
 }
 export const AgentApplicationsSessionLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     session_id: Schema.String.pipe(T.PathParam()),
@@ -43,7 +43,7 @@ export interface AgentApplicationsSessionLogsOutput {
   }[];
 }
 export const AgentApplicationsSessionLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         log_source_id: Schema.String,
@@ -73,7 +73,7 @@ export const AgentApplicationsSessionLogsOutput =
  * @param session_id - UUID of the session whose logs to fetch.
  */
 export const agentApplicationsSessionLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsSessionLogsInput,
     outputSchema: AgentApplicationsSessionLogsOutput,
   }));

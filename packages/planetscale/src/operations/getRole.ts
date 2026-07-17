@@ -12,7 +12,7 @@ export interface GetRoleInput {
   branch: string;
   id: string;
 }
-export const GetRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -45,7 +45,7 @@ export interface GetRoleOutput {
   expired: boolean;
   default: boolean;
   ttl: number | null;
-  inherited_roles: (
+  inherited_roles: ReadonlyArray<
     | "pscale_managed"
     | "pg_checkpoint"
     | "pg_create_subscription"
@@ -59,7 +59,8 @@ export interface GetRoleOutput {
     | "pg_use_reserved_connections"
     | "pg_write_all_data"
     | "postgres"
-  )[];
+  >;
+  with_replication: boolean;
   branch: {
     id: string;
     name: string;
@@ -73,7 +74,7 @@ export interface GetRoleOutput {
     require_where_on_update: "off" | "warn" | "on";
   };
 }
-export const GetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -110,6 +111,7 @@ export const GetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "postgres",
     ]),
   ),
+  with_replication: Schema.Boolean,
   branch: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -137,7 +139,7 @@ export const GetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param id - The ID of the role
  */
-export const getRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRoleInput,
   outputSchema: GetRoleOutput,
   errors: [Forbidden, NotFound] as const,

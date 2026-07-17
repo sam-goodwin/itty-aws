@@ -42,7 +42,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroup {
 }
 
 export const GoogleCloudApigeeV1EnvironmentGroup: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastModifiedAt: Schema.optional(Schema.String),
     hostnames: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
 }
 
 export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environmentGroups: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EnvironmentGroup),
     ),
@@ -70,7 +70,7 @@ export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Codec<Goog
 export interface GoogleCloudApigeeV1ProfileConfigMTLS {}
 
 export const GoogleCloudApigeeV1ProfileConfigMTLS: Schema.Codec<GoogleCloudApigeeV1ProfileConfigMTLS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMTLS",
   });
 
@@ -86,7 +86,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -110,7 +110,7 @@ export interface GoogleCloudApigeeV1NatAddress {
 }
 
 export const GoogleCloudApigeeV1NatAddress: Schema.Codec<GoogleCloudApigeeV1NatAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -128,7 +128,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
 }
 
 export const GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     basepath: Schema.optional(Schema.String),
     apiProxy: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
 }
 
 export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toDeployment: Schema.optional(
       GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
     ),
@@ -175,7 +175,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
 }
 
 export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conflictingDeployment: Schema.optional(
       GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
     ),
@@ -195,7 +195,7 @@ export interface GoogleRpcPreconditionFailureViolation {
 }
 
 export const GoogleRpcPreconditionFailureViolation: Schema.Codec<GoogleRpcPreconditionFailureViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface GoogleRpcPreconditionFailure {
 }
 
 export const GoogleRpcPreconditionFailure: Schema.Codec<GoogleRpcPreconditionFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violations: Schema.optional(
       Schema.Array(GoogleRpcPreconditionFailureViolation),
     ),
@@ -223,7 +223,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReport {
 }
 
 export const GoogleCloudApigeeV1DeploymentChangeReport: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routingChanges: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingChange),
     ),
@@ -245,7 +245,7 @@ export interface GoogleCloudApigeeV1Space {
 }
 
 export const GoogleCloudApigeeV1Space: Schema.Codec<GoogleCloudApigeeV1Space> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface GoogleCloudApigeeV1ListSpacesResponse {
 }
 
 export const GoogleCloudApigeeV1ListSpacesResponse: Schema.Codec<GoogleCloudApigeeV1ListSpacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(GoogleCloudApigeeV1Space)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListSpacesResponse" });
@@ -275,7 +275,7 @@ export interface GoogleCloudApigeeV1Quota {
 }
 
 export const GoogleCloudApigeeV1Quota: Schema.Codec<GoogleCloudApigeeV1Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     interval: Schema.optional(Schema.String),
     timeUnit: Schema.optional(Schema.String),
@@ -289,7 +289,7 @@ export interface GoogleCloudApigeeV1Attribute {
 }
 
 export const GoogleCloudApigeeV1Attribute: Schema.Codec<GoogleCloudApigeeV1Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Attribute" });
@@ -308,7 +308,7 @@ export interface GoogleCloudApigeeV1GrpcOperationConfig {
 }
 
 export const GoogleCloudApigeeV1GrpcOperationConfig: Schema.Codec<GoogleCloudApigeeV1GrpcOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     methods: Schema.optional(Schema.Array(Schema.String)),
     quota: Schema.optional(GoogleCloudApigeeV1Quota),
@@ -348,7 +348,7 @@ export interface GoogleCloudApigeeV1Developer {
 }
 
 export const GoogleCloudApigeeV1Developer: Schema.Codec<GoogleCloudApigeeV1Developer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(Schema.String)),
     lastModifiedAt: Schema.optional(Schema.String),
     appFamily: Schema.optional(Schema.String),
@@ -371,7 +371,7 @@ export interface GoogleCloudApigeeV1ListOfDevelopersResponse {
 }
 
 export const GoogleCloudApigeeV1ListOfDevelopersResponse: Schema.Codec<GoogleCloudApigeeV1ListOfDevelopersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     developer: Schema.optional(Schema.Array(GoogleCloudApigeeV1Developer)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListOfDevelopersResponse" });
 
@@ -383,7 +383,7 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironment {
 }
 
 export const GoogleCloudApigeeV1SecurityProfileEnvironment: Schema.Codec<GoogleCloudApigeeV1SecurityProfileEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     attachTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1SecurityProfileEnvironment" });
@@ -418,7 +418,7 @@ export interface GoogleCloudApigeeV1UpdateError {
 }
 
 export const GoogleCloudApigeeV1UpdateError: Schema.Codec<GoogleCloudApigeeV1UpdateError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -432,7 +432,7 @@ export interface GoogleCloudApigeeV1AccessSet {
 }
 
 export const GoogleCloudApigeeV1AccessSet: Schema.Codec<GoogleCloudApigeeV1AccessSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export const GoogleCloudApigeeV1AccessSet: Schema.Codec<GoogleCloudApigeeV1Acces
 export interface GoogleCloudApigeeV1EnableSecurityActionRequest {}
 
 export const GoogleCloudApigeeV1EnableSecurityActionRequest: Schema.Codec<GoogleCloudApigeeV1EnableSecurityActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1EnableSecurityActionRequest",
   });
 
@@ -453,7 +453,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHea
 }
 
 export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipHeaderName: Schema.optional(Schema.String),
     ipHeaderIndex: Schema.optional(Schema.Number),
   }).annotate({
@@ -464,7 +464,7 @@ export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderI
 export interface GoogleCloudApigeeV1ProfileConfigThreat {}
 
 export const GoogleCloudApigeeV1ProfileConfigThreat: Schema.Codec<GoogleCloudApigeeV1ProfileConfigThreat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigThreat",
   });
 
@@ -476,7 +476,7 @@ export interface GoogleCloudApigeeV1KeyAliasReference {
 }
 
 export const GoogleCloudApigeeV1KeyAliasReference: Schema.Codec<GoogleCloudApigeeV1KeyAliasReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aliasId: Schema.optional(Schema.String),
     reference: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1KeyAliasReference" });
@@ -487,7 +487,7 @@ export interface GoogleCloudApigeeV1Attributes {
 }
 
 export const GoogleCloudApigeeV1Attributes: Schema.Codec<GoogleCloudApigeeV1Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Attributes" });
 
@@ -499,7 +499,7 @@ export interface GoogleCloudApigeeV1ReferenceConfig {
 }
 
 export const GoogleCloudApigeeV1ReferenceConfig: Schema.Codec<GoogleCloudApigeeV1ReferenceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ReferenceConfig" });
@@ -520,7 +520,7 @@ export interface GoogleCloudApigeeV1QueryMetadata {
 }
 
 export const GoogleCloudApigeeV1QueryMetadata: Schema.Codec<GoogleCloudApigeeV1QueryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     endTimestamp: Schema.optional(Schema.String),
     dimensions: Schema.optional(Schema.Array(Schema.String)),
@@ -537,7 +537,7 @@ export interface GoogleCloudApigeeV1AsyncQueryResult {
 }
 
 export const GoogleCloudApigeeV1AsyncQueryResult: Schema.Codec<GoogleCloudApigeeV1AsyncQueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     expires: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AsyncQueryResult" });
@@ -572,7 +572,7 @@ export interface GoogleCloudApigeeV1AsyncQuery {
 }
 
 export const GoogleCloudApigeeV1AsyncQuery: Schema.Codec<GoogleCloudApigeeV1AsyncQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
     resultRows: Schema.optional(Schema.String),
@@ -598,7 +598,7 @@ export interface GoogleTypeMoney {
 }
 
 export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -610,7 +610,7 @@ export interface GoogleCloudApigeeV1AdjustAppGroupBalanceRequest {
 }
 
 export const GoogleCloudApigeeV1AdjustAppGroupBalanceRequest: Schema.Codec<GoogleCloudApigeeV1AdjustAppGroupBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjustment: Schema.optional(GoogleTypeMoney),
   }).annotate({
     identifier: "GoogleCloudApigeeV1AdjustAppGroupBalanceRequest",
@@ -626,7 +626,7 @@ export interface GoogleCloudApigeeV1AppGroupMonetizationConfig {
 }
 
 export const GoogleCloudApigeeV1AppGroupMonetizationConfig: Schema.Codec<GoogleCloudApigeeV1AppGroupMonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupMonetizationConfig" });
 
@@ -650,7 +650,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploy
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gatewayType: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -685,7 +685,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResource {
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultResource: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiHubGatewayType: Schema.optional(Schema.String),
     resourceRevisionId: Schema.optional(Schema.String),
@@ -711,7 +711,7 @@ export interface GoogleCloudApigeeV1SecurityReportQueryMetric {
 }
 
 export const GoogleCloudApigeeV1SecurityReportQueryMetric: Schema.Codec<GoogleCloudApigeeV1SecurityReportQueryMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
     aggregationFunction: Schema.optional(Schema.String),
@@ -745,7 +745,7 @@ export interface GoogleCloudApigeeV1SecurityReportQuery {
 }
 
 export const GoogleCloudApigeeV1SecurityReportQuery: Schema.Codec<GoogleCloudApigeeV1SecurityReportQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
     dimensions: Schema.optional(Schema.Array(Schema.String)),
@@ -777,7 +777,7 @@ export interface GoogleCloudApigeeV1AppGroupSubscription {
 }
 
 export const GoogleCloudApigeeV1AppGroupSubscription: Schema.Codec<GoogleCloudApigeeV1AppGroupSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -794,7 +794,7 @@ export interface GoogleCloudApigeeV1ResourceConfig {
 }
 
 export const GoogleCloudApigeeV1ResourceConfig: Schema.Codec<GoogleCloudApigeeV1ResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ResourceConfig" });
@@ -812,7 +812,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiH
 }
 
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gatewayTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -825,7 +825,7 @@ export interface GoogleCloudApigeeV1MonetizationConfig {
 }
 
 export const GoogleCloudApigeeV1MonetizationConfig: Schema.Codec<GoogleCloudApigeeV1MonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1MonetizationConfig" });
 
@@ -835,7 +835,7 @@ export interface GoogleCloudApigeeV1IntegrationConfig {
 }
 
 export const GoogleCloudApigeeV1IntegrationConfig: Schema.Codec<GoogleCloudApigeeV1IntegrationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1IntegrationConfig" });
 
@@ -847,7 +847,7 @@ export interface GoogleCloudApigeeV1ApiSecurityConfig {
 }
 
 export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Codec<GoogleCloudApigeeV1ApiSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresAt: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1ApiSecurityConfig" });
@@ -855,7 +855,7 @@ export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Codec<GoogleCloudApige
 export interface GoogleCloudApigeeV1ActivateNatAddressRequest {}
 
 export const GoogleCloudApigeeV1ActivateNatAddressRequest: Schema.Codec<GoogleCloudApigeeV1ActivateNatAddressRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ActivateNatAddressRequest",
   });
 
@@ -867,7 +867,7 @@ export interface GoogleCloudApigeeV1ConnectorsPlatformConfig {
 }
 
 export const GoogleCloudApigeeV1ConnectorsPlatformConfig: Schema.Codec<GoogleCloudApigeeV1ConnectorsPlatformConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     expiresAt: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ConnectorsPlatformConfig" });
@@ -890,7 +890,7 @@ export interface GoogleCloudApigeeV1AnalyticsConfig {
 }
 
 export const GoogleCloudApigeeV1AnalyticsConfig: Schema.Codec<GoogleCloudApigeeV1AnalyticsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     state: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -903,7 +903,7 @@ export interface GoogleCloudApigeeV1AdvancedApiOpsConfig {
 }
 
 export const GoogleCloudApigeeV1AdvancedApiOpsConfig: Schema.Codec<GoogleCloudApigeeV1AdvancedApiOpsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig" });
 
@@ -923,7 +923,7 @@ export interface GoogleCloudApigeeV1AddonsConfig {
 }
 
 export const GoogleCloudApigeeV1AddonsConfig: Schema.Codec<GoogleCloudApigeeV1AddonsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSecurityConfig: Schema.optional(GoogleCloudApigeeV1ApiSecurityConfig),
     monetizationConfig: Schema.optional(GoogleCloudApigeeV1MonetizationConfig),
     connectorsPlatformConfig: Schema.optional(
@@ -953,7 +953,7 @@ export interface GoogleCloudApigeeV1MetricAggregation {
 }
 
 export const GoogleCloudApigeeV1MetricAggregation: Schema.Codec<GoogleCloudApigeeV1MetricAggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     order: Schema.optional(Schema.String),
     aggregation: Schema.optional(Schema.String),
@@ -965,7 +965,7 @@ export interface GoogleCloudApigeeV1GrpcOperationGroup {
 }
 
 export const GoogleCloudApigeeV1GrpcOperationGroup: Schema.Codec<GoogleCloudApigeeV1GrpcOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GrpcOperationConfig),
     ),
@@ -1002,7 +1002,7 @@ export interface GoogleCloudApigeeV1SecurityIncident {
 }
 
 export const GoogleCloudApigeeV1SecurityIncident: Schema.Codec<GoogleCloudApigeeV1SecurityIncident> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     riskLevel: Schema.optional(Schema.String),
     detectionTypes: Schema.optional(Schema.Array(Schema.String)),
     lastObservabilityChangeTime: Schema.optional(Schema.String),
@@ -1022,7 +1022,7 @@ export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
 }
 
 export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest: Schema.Codec<GoogleCloudApigeeV1UpdateSecurityIncidentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityIncident: Schema.optional(GoogleCloudApigeeV1SecurityIncident),
     updateMask: Schema.optional(Schema.String),
   }).annotate({
@@ -1041,7 +1041,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroupAttachment {
 }
 
 export const GoogleCloudApigeeV1EnvironmentGroupAttachment: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroupAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     environment: Schema.optional(Schema.String),
     createdAt: Schema.optional(Schema.String),
@@ -1060,7 +1060,7 @@ export interface GoogleCloudApigeeV1ApiDebugSession {
 }
 
 export const GoogleCloudApigeeV1ApiDebugSession: Schema.Codec<GoogleCloudApigeeV1ApiDebugSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiProxyRevisionId: Schema.optional(Schema.String),
     environmentId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1075,7 +1075,7 @@ export interface GoogleCloudApigeeV1Session {
 }
 
 export const GoogleCloudApigeeV1Session: Schema.Codec<GoogleCloudApigeeV1Session> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     timestampMs: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Session" });
@@ -1088,7 +1088,7 @@ export interface GoogleCloudApigeeV1ListDebugSessionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListDebugSessionsResponse: Schema.Codec<GoogleCloudApigeeV1ListDebugSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1Session)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDebugSessionsResponse" });
@@ -1101,7 +1101,7 @@ export interface GoogleCloudApigeeV1ApiProductRef {
 }
 
 export const GoogleCloudApigeeV1ApiProductRef: Schema.Codec<GoogleCloudApigeeV1ApiProductRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ApiProductRef" });
@@ -1126,7 +1126,7 @@ export interface GoogleCloudApigeeV1Credential {
 }
 
 export const GoogleCloudApigeeV1Credential: Schema.Codec<GoogleCloudApigeeV1Credential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerSecret: Schema.optional(Schema.String),
     expiresAt: Schema.optional(Schema.String),
     apiProducts: Schema.optional(
@@ -1173,7 +1173,7 @@ export interface GoogleCloudApigeeV1App {
 }
 
 export const GoogleCloudApigeeV1App: Schema.Codec<GoogleCloudApigeeV1App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     appGroup: Schema.optional(Schema.String),
     callbackUrl: Schema.optional(Schema.String),
@@ -1210,7 +1210,7 @@ export interface GoogleCloudApigeeV1OperationMetadataProgress {
 }
 
 export const GoogleCloudApigeeV1OperationMetadataProgress: Schema.Codec<GoogleCloudApigeeV1OperationMetadataProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     percentDone: Schema.optional(Schema.Number),
@@ -1239,7 +1239,7 @@ export interface GoogleCloudApigeeV1OperationMetadata {
 }
 
 export const GoogleCloudApigeeV1OperationMetadata: Schema.Codec<GoogleCloudApigeeV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     targetResourceName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1269,7 +1269,7 @@ export interface GoogleCloudApigeeV1DebugMask {
 }
 
 export const GoogleCloudApigeeV1DebugMask: Schema.Codec<GoogleCloudApigeeV1DebugMask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespaces: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     responseXPaths: Schema.optional(Schema.Array(Schema.String)),
     requestXPaths: Schema.optional(Schema.Array(Schema.String)),
@@ -1290,7 +1290,7 @@ export interface GoogleCloudApigeeV1ListAppsResponse {
 }
 
 export const GoogleCloudApigeeV1ListAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app: Schema.optional(Schema.Array(GoogleCloudApigeeV1App)),
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -1305,7 +1305,7 @@ export interface GoogleCloudApigeeV1AliasRevisionConfig {
 }
 
 export const GoogleCloudApigeeV1AliasRevisionConfig: Schema.Codec<GoogleCloudApigeeV1AliasRevisionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1319,7 +1319,7 @@ export interface GoogleCloudApigeeV1KeystoreConfig {
 }
 
 export const GoogleCloudApigeeV1KeystoreConfig: Schema.Codec<GoogleCloudApigeeV1KeystoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aliases: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AliasRevisionConfig),
     ),
@@ -1334,7 +1334,7 @@ export interface GoogleCloudApigeeV1TlsInfoCommonName {
 }
 
 export const GoogleCloudApigeeV1TlsInfoCommonName: Schema.Codec<GoogleCloudApigeeV1TlsInfoCommonName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     wildcardMatch: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1TlsInfoCommonName" });
@@ -1347,7 +1347,7 @@ export interface EdgeConfigstoreBundleBadBundleViolation {
 }
 
 export const EdgeConfigstoreBundleBadBundleViolation: Schema.Codec<EdgeConfigstoreBundleBadBundleViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "EdgeConfigstoreBundleBadBundleViolation" });
@@ -1358,7 +1358,7 @@ export interface EdgeConfigstoreBundleBadBundle {
 }
 
 export const EdgeConfigstoreBundleBadBundle: Schema.Codec<EdgeConfigstoreBundleBadBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violations: Schema.optional(
       Schema.Array(EdgeConfigstoreBundleBadBundleViolation),
     ),
@@ -1372,7 +1372,7 @@ export interface GoogleCloudApigeeV1DocumentationFile {
 }
 
 export const GoogleCloudApigeeV1DocumentationFile: Schema.Codec<GoogleCloudApigeeV1DocumentationFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     contents: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DocumentationFile" });
@@ -1383,7 +1383,7 @@ export interface GoogleCloudApigeeV1AsyncApiDocumentation {
 }
 
 export const GoogleCloudApigeeV1AsyncApiDocumentation: Schema.Codec<GoogleCloudApigeeV1AsyncApiDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
   }).annotate({ identifier: "GoogleCloudApigeeV1AsyncApiDocumentation" });
 
@@ -1395,7 +1395,7 @@ export interface GoogleCloudApigeeV1OASDocumentation {
 }
 
 export const GoogleCloudApigeeV1OASDocumentation: Schema.Codec<GoogleCloudApigeeV1OASDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
     format: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1OASDocumentation" });
@@ -1408,7 +1408,7 @@ export interface GoogleCloudApigeeV1GraphqlDocumentation {
 }
 
 export const GoogleCloudApigeeV1GraphqlDocumentation: Schema.Codec<GoogleCloudApigeeV1GraphqlDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schema: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
     endpointUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1GraphqlDocumentation" });
@@ -1423,7 +1423,7 @@ export interface GoogleCloudApigeeV1ApiDocDocumentation {
 }
 
 export const GoogleCloudApigeeV1ApiDocDocumentation: Schema.Codec<GoogleCloudApigeeV1ApiDocDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asyncApiDocumentation: Schema.optional(
       GoogleCloudApigeeV1AsyncApiDocumentation,
     ),
@@ -1447,7 +1447,7 @@ export interface GoogleCloudApigeeV1ApiDocDocumentationResponse {
 }
 
 export const GoogleCloudApigeeV1ApiDocDocumentationResponse: Schema.Codec<GoogleCloudApigeeV1ApiDocDocumentationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     data: Schema.optional(GoogleCloudApigeeV1ApiDocDocumentation),
@@ -1471,7 +1471,7 @@ export interface GoogleCloudApigeeV1DeveloperSubscription {
 }
 
 export const GoogleCloudApigeeV1DeveloperSubscription: Schema.Codec<GoogleCloudApigeeV1DeveloperSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1488,7 +1488,7 @@ export interface GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     developerSubscriptions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeveloperSubscription),
     ),
@@ -1503,7 +1503,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendationActionActionCont
 }
 
 export const GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentationLink: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1518,7 +1518,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendationAction {
 }
 
 export const GoogleCloudApigeeV1ScoreComponentRecommendationAction: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendationAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     actionContext: Schema.optional(
       GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext,
@@ -1539,7 +1539,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendation {
 }
 
 export const GoogleCloudApigeeV1ScoreComponentRecommendation: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     actions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ScoreComponentRecommendationAction),
@@ -1566,7 +1566,7 @@ export interface GoogleCloudApigeeV1ScoreComponent {
 }
 
 export const GoogleCloudApigeeV1ScoreComponent: Schema.Codec<GoogleCloudApigeeV1ScoreComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     drilldownPaths: Schema.optional(Schema.Array(Schema.String)),
     calculateTime: Schema.optional(Schema.String),
     dataCaptureTime: Schema.optional(Schema.String),
@@ -1585,7 +1585,7 @@ export interface GoogleTypeInterval {
 }
 
 export const GoogleTypeInterval: Schema.Codec<GoogleTypeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeInterval" });
@@ -1600,7 +1600,7 @@ export interface GoogleCloudApigeeV1Score {
 }
 
 export const GoogleCloudApigeeV1Score: Schema.Codec<GoogleCloudApigeeV1Score> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     component: Schema.optional(GoogleCloudApigeeV1ScoreComponent),
     subcomponents: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ScoreComponent),
@@ -1618,7 +1618,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -1652,7 +1652,7 @@ export interface GoogleCloudApigeeV1CertInfo {
 }
 
 export const GoogleCloudApigeeV1CertInfo: Schema.Codec<GoogleCloudApigeeV1CertInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validFrom: Schema.optional(Schema.String),
     publicKey: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -1672,7 +1672,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(
       Schema.Array(
         GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource,
@@ -1686,7 +1686,7 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestReso
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll {}
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll",
   });
@@ -1721,7 +1721,7 @@ export interface GoogleCloudApigeeV1SecurityMonitoringCondition {
 }
 
 export const GoogleCloudApigeeV1SecurityMonitoringCondition: Schema.Codec<GoogleCloudApigeeV1SecurityMonitoringCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
     include: Schema.optional(
       GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray,
@@ -1747,7 +1747,7 @@ export interface GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityMonitoringConditions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityMonitoringCondition),
@@ -1777,7 +1777,7 @@ export interface GoogleCloudApigeeV1DataCollector {
 }
 
 export const GoogleCloudApigeeV1DataCollector: Schema.Codec<GoogleCloudApigeeV1DataCollector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1793,7 +1793,7 @@ export interface GoogleCloudApigeeV1ListDataCollectorsResponse {
 }
 
 export const GoogleCloudApigeeV1ListDataCollectorsResponse: Schema.Codec<GoogleCloudApigeeV1ListDataCollectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataCollectors: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DataCollector),
@@ -1810,7 +1810,7 @@ export interface GoogleCloudApigeeV1RateRange {
 }
 
 export const GoogleCloudApigeeV1RateRange: Schema.Codec<GoogleCloudApigeeV1RateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fee: Schema.optional(GoogleTypeMoney),
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -1846,7 +1846,7 @@ export interface GoogleCloudApigeeV1DeveloperApp {
 }
 
 export const GoogleCloudApigeeV1DeveloperApp: Schema.Codec<GoogleCloudApigeeV1DeveloperApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
     lastModifiedAt: Schema.optional(Schema.String),
     appFamily: Schema.optional(Schema.String),
@@ -1868,7 +1868,7 @@ export interface GoogleCloudApigeeV1ListDeveloperAppsResponse {
 }
 
 export const GoogleCloudApigeeV1ListDeveloperAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeveloperAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app: Schema.optional(Schema.Array(GoogleCloudApigeeV1DeveloperApp)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDeveloperAppsResponse" });
 
@@ -1886,7 +1886,7 @@ export interface GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
 }
 
 export const GoogleCloudApigeeV1ApiSecurityRuntimeConfig: Schema.Codec<GoogleCloudApigeeV1ApiSecurityRuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.Array(Schema.String)),
@@ -1902,7 +1902,7 @@ export interface GoogleCloudApigeeV1TestDatastoreResponse {
 }
 
 export const GoogleCloudApigeeV1TestDatastoreResponse: Schema.Codec<GoogleCloudApigeeV1TestDatastoreResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1TestDatastoreResponse" });
@@ -1917,7 +1917,7 @@ export interface GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
 }
 
 export const GoogleCloudApigeeV1CanaryEvaluationMetricLabels: Schema.Codec<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     env: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     instance_id: Schema.optional(Schema.String),
@@ -1947,7 +1947,7 @@ export interface GoogleCloudApigeeV1CanaryEvaluation {
 }
 
 export const GoogleCloudApigeeV1CanaryEvaluation: Schema.Codec<GoogleCloudApigeeV1CanaryEvaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     treatment: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1969,7 +1969,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -1985,7 +1985,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     link: Schema.optional(
       GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink,
@@ -2003,7 +2003,7 @@ export interface GoogleCloudApigeeV1Metric {
 }
 
 export const GoogleCloudApigeeV1Metric: Schema.Codec<GoogleCloudApigeeV1Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Metric" });
@@ -2018,7 +2018,7 @@ export interface GoogleCloudApigeeV1DimensionMetric {
 }
 
 export const GoogleCloudApigeeV1DimensionMetric: Schema.Codec<GoogleCloudApigeeV1DimensionMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     individualNames: Schema.optional(Schema.Array(Schema.String)),
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
     name: Schema.optional(Schema.String),
@@ -2034,7 +2034,7 @@ export interface GoogleCloudApigeeV1StatsEnvironmentStats {
 }
 
 export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Codec<GoogleCloudApigeeV1StatsEnvironmentStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
     dimensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DimensionMetric),
@@ -2045,7 +2045,7 @@ export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Codec<GoogleCloudA
 export interface GoogleCloudApigeeV1DisableSecurityActionRequest {}
 
 export const GoogleCloudApigeeV1DisableSecurityActionRequest: Schema.Codec<GoogleCloudApigeeV1DisableSecurityActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1DisableSecurityActionRequest",
   });
 
@@ -2061,7 +2061,7 @@ export interface GoogleCloudApigeeV1ApiCategory {
 }
 
 export const GoogleCloudApigeeV1ApiCategory: Schema.Codec<GoogleCloudApigeeV1ApiCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     siteId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2076,7 +2076,7 @@ export interface GoogleCloudApigeeV1ConfigVersion {
 }
 
 export const GoogleCloudApigeeV1ConfigVersion: Schema.Codec<GoogleCloudApigeeV1ConfigVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     majorVersion: Schema.optional(Schema.Number),
     minorVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudApigeeV1ConfigVersion" });
@@ -2103,7 +2103,7 @@ export interface GoogleCloudApigeeV1DeveloperAppKey {
 }
 
 export const GoogleCloudApigeeV1DeveloperAppKey: Schema.Codec<GoogleCloudApigeeV1DeveloperAppKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerSecret: Schema.optional(Schema.String),
     expiresAt: Schema.optional(Schema.String),
     consumerKey: Schema.optional(Schema.String),
@@ -2133,7 +2133,7 @@ export interface GoogleCloudApigeeV1RoutingRule {
 }
 
 export const GoogleCloudApigeeV1RoutingRule: Schema.Codec<GoogleCloudApigeeV1RoutingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentGroup: Schema.optional(Schema.String),
     otherTargets: Schema.optional(Schema.Array(Schema.String)),
     envGroupRevision: Schema.optional(Schema.String),
@@ -2151,7 +2151,7 @@ export interface GoogleCloudApigeeV1EndpointChainingRule {
 }
 
 export const GoogleCloudApigeeV1EndpointChainingRule: Schema.Codec<GoogleCloudApigeeV1EndpointChainingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     proxyIds: Schema.optional(Schema.Array(Schema.String)),
     deploymentGroup: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1EndpointChainingRule" });
@@ -2174,7 +2174,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroupConfig {
 }
 
 export const GoogleCloudApigeeV1EnvironmentGroupConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostnames: Schema.optional(Schema.Array(Schema.String)),
     routingRules: Schema.optional(Schema.Array(GoogleCloudApigeeV1RoutingRule)),
     uid: Schema.optional(Schema.String),
@@ -2200,7 +2200,7 @@ export interface GoogleCloudApigeeV1IngressConfig {
 }
 
 export const GoogleCloudApigeeV1IngressConfig: Schema.Codec<GoogleCloudApigeeV1IngressConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisionCreateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2220,7 +2220,7 @@ export interface GoogleCloudApigeeV1RevenueShareRange {
 }
 
 export const GoogleCloudApigeeV1RevenueShareRange: Schema.Codec<GoogleCloudApigeeV1RevenueShareRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
     sharePercentage: Schema.optional(Schema.Number),
@@ -2286,7 +2286,7 @@ export interface GoogleCloudApigeeV1RatePlan {
 }
 
 export const GoogleCloudApigeeV1RatePlan: Schema.Codec<GoogleCloudApigeeV1RatePlan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumptionPricingRates: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1RateRange),
     ),
@@ -2338,7 +2338,7 @@ export interface GoogleCloudApigeeV1AppGroup {
 }
 
 export const GoogleCloudApigeeV1AppGroup: Schema.Codec<GoogleCloudApigeeV1AppGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelUri: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2362,7 +2362,7 @@ export interface GoogleCloudApigeeV1ListAppGroupsResponse {
 }
 
 export const GoogleCloudApigeeV1ListAppGroupsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     appGroups: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2380,7 +2380,7 @@ export interface GoogleTypeTimeOfDay {
 }
 
 export const GoogleTypeTimeOfDay: Schema.Codec<GoogleTypeTimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
@@ -2404,7 +2404,7 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
 }
 
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow: Schema.Codec<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.String),
     startTime: Schema.optional(GoogleTypeTimeOfDay),
   }).annotate({
@@ -2423,7 +2423,7 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicy {
 }
 
 export const GoogleCloudApigeeV1MaintenanceUpdatePolicy: Schema.Codec<GoogleCloudApigeeV1MaintenanceUpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maintenanceWindows: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow),
     ),
@@ -2438,7 +2438,7 @@ export interface GoogleCloudApigeeV1AccessLoggingConfig {
 }
 
 export const GoogleCloudApigeeV1AccessLoggingConfig: Schema.Codec<GoogleCloudApigeeV1AccessLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AccessLoggingConfig" });
@@ -2449,7 +2449,7 @@ export interface GoogleCloudApigeeV1ScheduledMaintenance {
 }
 
 export const GoogleCloudApigeeV1ScheduledMaintenance: Schema.Codec<GoogleCloudApigeeV1ScheduledMaintenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ScheduledMaintenance" });
 
@@ -2510,7 +2510,7 @@ export interface GoogleCloudApigeeV1Instance {
 }
 
 export const GoogleCloudApigeeV1Instance: Schema.Codec<GoogleCloudApigeeV1Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     peeringCidrRange: Schema.optional(Schema.String),
     port: Schema.optional(Schema.String),
@@ -2544,7 +2544,7 @@ export interface GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
 }
 
 export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest: Schema.Codec<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjustment: Schema.optional(GoogleTypeMoney),
   }).annotate({
     identifier: "GoogleCloudApigeeV1AdjustDeveloperBalanceRequest",
@@ -2562,7 +2562,7 @@ export interface GoogleCloudApigeeV1ProvisionOrganizationRequest {
 }
 
 export const GoogleCloudApigeeV1ProvisionOrganizationRequest: Schema.Codec<GoogleCloudApigeeV1ProvisionOrganizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disableVpcPeering: Schema.optional(Schema.Boolean),
     authorizedNetwork: Schema.optional(Schema.String),
     analyticsRegion: Schema.optional(Schema.String),
@@ -2581,7 +2581,7 @@ export interface GoogleCloudApigeeV1FlowHookConfig {
 }
 
 export const GoogleCloudApigeeV1FlowHookConfig: Schema.Codec<GoogleCloudApigeeV1FlowHookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sharedFlowName: Schema.optional(Schema.String),
     continueOnError: Schema.optional(Schema.Boolean),
@@ -2601,7 +2601,7 @@ export interface GoogleCloudApigeeV1AsyncQueryResultView {
 }
 
 export const GoogleCloudApigeeV1AsyncQueryResultView: Schema.Codec<GoogleCloudApigeeV1AsyncQueryResultView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
     rows: Schema.optional(Schema.Array(Schema.Unknown)),
     error: Schema.optional(Schema.String),
@@ -2631,7 +2631,7 @@ export interface GoogleCloudApigeeV1Export {
 }
 
 export const GoogleCloudApigeeV1Export: Schema.Codec<GoogleCloudApigeeV1Export> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datastoreName: Schema.optional(Schema.String),
     self: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -2661,7 +2661,7 @@ export interface GoogleCloudApigeeV1DebugSession {
 }
 
 export const GoogleCloudApigeeV1DebugSession: Schema.Codec<GoogleCloudApigeeV1DebugSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tracesize: Schema.optional(Schema.Number),
     timeout: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2674,28 +2674,28 @@ export const GoogleCloudApigeeV1DebugSession: Schema.Codec<GoogleCloudApigeeV1De
 export interface GoogleCloudApigeeV1ProfileConfigMediation {}
 
 export const GoogleCloudApigeeV1ProfileConfigMediation: Schema.Codec<GoogleCloudApigeeV1ProfileConfigMediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMediation",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigAbuse {}
 
 export const GoogleCloudApigeeV1ProfileConfigAbuse: Schema.Codec<GoogleCloudApigeeV1ProfileConfigAbuse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAbuse",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigAuthorization {}
 
 export const GoogleCloudApigeeV1ProfileConfigAuthorization: Schema.Codec<GoogleCloudApigeeV1ProfileConfigAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAuthorization",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigCORS {}
 
 export const GoogleCloudApigeeV1ProfileConfigCORS: Schema.Codec<GoogleCloudApigeeV1ProfileConfigCORS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigCORS",
   });
 
@@ -2715,7 +2715,7 @@ export interface GoogleCloudApigeeV1ProfileConfigCategory {
 }
 
 export const GoogleCloudApigeeV1ProfileConfigCategory: Schema.Codec<GoogleCloudApigeeV1ProfileConfigCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediation: Schema.optional(GoogleCloudApigeeV1ProfileConfigMediation),
     abuse: Schema.optional(GoogleCloudApigeeV1ProfileConfigAbuse),
     authorization: Schema.optional(
@@ -2732,7 +2732,7 @@ export interface GoogleCloudApigeeV1ProfileConfig {
 }
 
 export const GoogleCloudApigeeV1ProfileConfig: Schema.Codec<GoogleCloudApigeeV1ProfileConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categories: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ProfileConfigCategory),
     ),
@@ -2748,7 +2748,7 @@ export interface GoogleCloudApigeeV1SecurityProfileScoringConfig {
 }
 
 export const GoogleCloudApigeeV1SecurityProfileScoringConfig: Schema.Codec<GoogleCloudApigeeV1SecurityProfileScoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     scorePath: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2784,7 +2784,7 @@ export interface GoogleCloudApigeeV1SecurityProfile {
 }
 
 export const GoogleCloudApigeeV1SecurityProfile: Schema.Codec<GoogleCloudApigeeV1SecurityProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     environments: Schema.optional(
@@ -2811,7 +2811,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfiles: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfile),
     ),
@@ -2828,7 +2828,7 @@ export interface GoogleCloudApigeeV1KeyValueEntry {
 }
 
 export const GoogleCloudApigeeV1KeyValueEntry: Schema.Codec<GoogleCloudApigeeV1KeyValueEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1KeyValueEntry" });
@@ -2841,7 +2841,7 @@ export interface GoogleCloudApigeeV1ListKeyValueEntriesResponse {
 }
 
 export const GoogleCloudApigeeV1ListKeyValueEntriesResponse: Schema.Codec<GoogleCloudApigeeV1ListKeyValueEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     keyValueEntries: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1KeyValueEntry),
@@ -2856,7 +2856,7 @@ export interface GoogleCloudApigeeV1APIProductAssociation {
 }
 
 export const GoogleCloudApigeeV1APIProductAssociation: Schema.Codec<GoogleCloudApigeeV1APIProductAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1APIProductAssociation" });
@@ -2883,7 +2883,7 @@ export interface GoogleCloudApigeeV1AppGroupAppKey {
 }
 
 export const GoogleCloudApigeeV1AppGroupAppKey: Schema.Codec<GoogleCloudApigeeV1AppGroupAppKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
     status: Schema.optional(Schema.String),
     apiProducts: Schema.optional(
@@ -2920,7 +2920,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionExtension {
 }
 
 export const GoogleCloudApigeeV1ApimServiceExtensionExtension: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtensionExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     failOpen: Schema.optional(Schema.Boolean),
     matchCondition: Schema.optional(Schema.String),
@@ -2942,7 +2942,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
 }
 
 export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     basepath: Schema.optional(Schema.String),
     envgroup: Schema.optional(Schema.String),
@@ -2957,7 +2957,7 @@ export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse {
 }
 
 export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse: Schema.Codec<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityIncidents: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityIncident),
     ),
@@ -2971,7 +2971,7 @@ export interface GoogleCloudApigeeV1AccessGet {
 }
 
 export const GoogleCloudApigeeV1AccessGet: Schema.Codec<GoogleCloudApigeeV1AccessGet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AccessGet" });
@@ -2982,7 +2982,7 @@ export interface GoogleCloudApigeeV1AccessRemove {
 }
 
 export const GoogleCloudApigeeV1AccessRemove: Schema.Codec<GoogleCloudApigeeV1AccessRemove> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     success: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1AccessRemove" });
@@ -2999,7 +2999,7 @@ export interface GoogleCloudApigeeV1RevisionStatus {
 }
 
 export const GoogleCloudApigeeV1RevisionStatus: Schema.Codec<GoogleCloudApigeeV1RevisionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleCloudApigeeV1UpdateError)),
     revisionId: Schema.optional(Schema.String),
     replicas: Schema.optional(Schema.Number),
@@ -3018,7 +3018,7 @@ export interface GoogleCloudApigeeV1ResourceStatus {
 }
 
 export const GoogleCloudApigeeV1ResourceStatus: Schema.Codec<GoogleCloudApigeeV1ResourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     totalReplicas: Schema.optional(Schema.Number),
     revisions: Schema.optional(Schema.Array(GoogleCloudApigeeV1RevisionStatus)),
@@ -3035,7 +3035,7 @@ export interface GoogleCloudApigeeV1ReportInstanceStatusRequest {
 }
 
 export const GoogleCloudApigeeV1ReportInstanceStatusRequest: Schema.Codec<GoogleCloudApigeeV1ReportInstanceStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportTime: Schema.optional(Schema.String),
     instanceUid: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(GoogleCloudApigeeV1ResourceStatus)),
@@ -3049,7 +3049,7 @@ export interface GoogleCloudApigeeV1SetAddonEnablementRequest {
 }
 
 export const GoogleCloudApigeeV1SetAddonEnablementRequest: Schema.Codec<GoogleCloudApigeeV1SetAddonEnablementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsEnabled: Schema.optional(Schema.Boolean),
     apiSecurityEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1SetAddonEnablementRequest" });
@@ -3062,7 +3062,7 @@ export interface GoogleCloudApigeeV1TraceSamplingConfig {
 }
 
 export const GoogleCloudApigeeV1TraceSamplingConfig: Schema.Codec<GoogleCloudApigeeV1TraceSamplingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampler: Schema.optional(Schema.String),
     samplingRate: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudApigeeV1TraceSamplingConfig" });
@@ -3077,7 +3077,7 @@ export interface GoogleCloudApigeeV1TraceConfigOverride {
 }
 
 export const GoogleCloudApigeeV1TraceConfigOverride: Schema.Codec<GoogleCloudApigeeV1TraceConfigOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiProxy: Schema.optional(Schema.String),
     samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
     name: Schema.optional(Schema.String),
@@ -3093,7 +3093,7 @@ export interface GoogleCloudApigeeV1LlmTokenQuota {
 }
 
 export const GoogleCloudApigeeV1LlmTokenQuota: Schema.Codec<GoogleCloudApigeeV1LlmTokenQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     interval: Schema.optional(Schema.String),
     timeUnit: Schema.optional(Schema.String),
@@ -3109,7 +3109,7 @@ export interface GoogleCloudApigeeV1LlmOperation {
 }
 
 export const GoogleCloudApigeeV1LlmOperation: Schema.Codec<GoogleCloudApigeeV1LlmOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     resource: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -3127,7 +3127,7 @@ export interface GoogleCloudApigeeV1LlmOperationConfig {
 }
 
 export const GoogleCloudApigeeV1LlmOperationConfig: Schema.Codec<GoogleCloudApigeeV1LlmOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     llmTokenQuota: Schema.optional(GoogleCloudApigeeV1LlmTokenQuota),
     apiSource: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
@@ -3142,7 +3142,7 @@ export interface GoogleCloudApigeeV1LlmOperationGroup {
 }
 
 export const GoogleCloudApigeeV1LlmOperationGroup: Schema.Codec<GoogleCloudApigeeV1LlmOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1LlmOperationConfig),
     ),
@@ -3156,7 +3156,7 @@ export interface GoogleCloudApigeeV1GraphQLOperation {
 }
 
 export const GoogleCloudApigeeV1GraphQLOperation: Schema.Codec<GoogleCloudApigeeV1GraphQLOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     operationTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApigeeV1GraphQLOperation" });
@@ -3173,7 +3173,7 @@ export interface GoogleCloudApigeeV1GraphQLOperationConfig {
 }
 
 export const GoogleCloudApigeeV1GraphQLOperationConfig: Schema.Codec<GoogleCloudApigeeV1GraphQLOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
     operations: Schema.optional(
@@ -3190,7 +3190,7 @@ export interface GoogleCloudApigeeV1GraphQLOperationGroup {
 }
 
 export const GoogleCloudApigeeV1GraphQLOperationGroup: Schema.Codec<GoogleCloudApigeeV1GraphQLOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GraphQLOperationConfig),
     ),
@@ -3203,7 +3203,7 @@ export interface GoogleCloudApigeeV1PayloadOperation {
 }
 
 export const GoogleCloudApigeeV1PayloadOperation: Schema.Codec<GoogleCloudApigeeV1PayloadOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1PayloadOperation" });
 
@@ -3219,7 +3219,7 @@ export interface GoogleCloudApigeeV1PayloadOperationConfig {
 }
 
 export const GoogleCloudApigeeV1PayloadOperationConfig: Schema.Codec<GoogleCloudApigeeV1PayloadOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1PayloadOperation),
     ),
@@ -3234,7 +3234,7 @@ export interface GoogleCloudApigeeV1PayloadOperationGroup {
 }
 
 export const GoogleCloudApigeeV1PayloadOperationGroup: Schema.Codec<GoogleCloudApigeeV1PayloadOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1PayloadOperationConfig),
     ),
@@ -3248,7 +3248,7 @@ export interface GoogleCloudApigeeV1Operation {
 }
 
 export const GoogleCloudApigeeV1Operation: Schema.Codec<GoogleCloudApigeeV1Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     resource: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Operation" });
@@ -3265,7 +3265,7 @@ export interface GoogleCloudApigeeV1OperationConfig {
 }
 
 export const GoogleCloudApigeeV1OperationConfig: Schema.Codec<GoogleCloudApigeeV1OperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
     operations: Schema.optional(Schema.Array(GoogleCloudApigeeV1Operation)),
@@ -3280,7 +3280,7 @@ export interface GoogleCloudApigeeV1OperationGroup {
 }
 
 export const GoogleCloudApigeeV1OperationGroup: Schema.Codec<GoogleCloudApigeeV1OperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1OperationConfig),
     ),
@@ -3344,7 +3344,7 @@ export interface GoogleCloudApigeeV1ApiProduct {
 }
 
 export const GoogleCloudApigeeV1ApiProduct: Schema.Codec<GoogleCloudApigeeV1ApiProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     grpcOperationGroup: Schema.optional(GoogleCloudApigeeV1GrpcOperationGroup),
     environments: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -3385,7 +3385,7 @@ export interface GoogleCloudApigeeV1EntityMetadata {
 }
 
 export const GoogleCloudApigeeV1EntityMetadata: Schema.Codec<GoogleCloudApigeeV1EntityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
     subType: Schema.optional(Schema.String),
@@ -3415,7 +3415,7 @@ export interface GoogleCloudApigeeV1ApiProxy {
 }
 
 export const GoogleCloudApigeeV1ApiProxy: Schema.Codec<GoogleCloudApigeeV1ApiProxy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.Array(Schema.String)),
     readOnly: Schema.optional(Schema.Boolean),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3431,7 +3431,7 @@ export interface GoogleCloudApigeeV1ListApiProxiesResponse {
 }
 
 export const GoogleCloudApigeeV1ListApiProxiesResponse: Schema.Codec<GoogleCloudApigeeV1ListApiProxiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     proxies: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProxy)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProxiesResponse" });
 
@@ -3447,7 +3447,7 @@ export interface GoogleCloudApigeeV1RuntimeConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     analyticsBucket: Schema.optional(Schema.String),
     traceBucket: Schema.optional(Schema.String),
@@ -3460,7 +3460,7 @@ export interface GoogleCloudApigeeV1Certificate {
 }
 
 export const GoogleCloudApigeeV1Certificate: Schema.Codec<GoogleCloudApigeeV1Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certInfo: Schema.optional(Schema.Array(GoogleCloudApigeeV1CertInfo)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Certificate" });
 
@@ -3488,7 +3488,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.String),
     verdict: Schema.optional(Schema.String),
     recommendations: Schema.optional(
@@ -3525,7 +3525,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failedAssessmentPerWeight: Schema.optional(
       Schema.Record(Schema.String, Schema.Number),
     ),
@@ -3554,7 +3554,7 @@ export interface GoogleCloudApigeeV1Reference {
 }
 
 export const GoogleCloudApigeeV1Reference: Schema.Codec<GoogleCloudApigeeV1Reference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refers: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3569,7 +3569,7 @@ export interface GoogleCloudApigeeV1Property {
 }
 
 export const GoogleCloudApigeeV1Property: Schema.Codec<GoogleCloudApigeeV1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Property" });
@@ -3580,7 +3580,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter {
 }
 
 export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scorePath: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter",
@@ -3598,7 +3598,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequest {
 }
 
 export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequest: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filters: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter),
     ),
@@ -3631,7 +3631,7 @@ export interface GoogleCloudApigeeV1DeploymentConfig {
 }
 
 export const GoogleCloudApigeeV1DeploymentConfig: Schema.Codec<GoogleCloudApigeeV1DeploymentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     proxyUid: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     deploymentGroups: Schema.optional(Schema.Array(Schema.String)),
@@ -3651,7 +3651,7 @@ export interface GoogleCloudApigeeV1SecuritySettings {
 }
 
 export const GoogleCloudApigeeV1SecuritySettings: Schema.Codec<GoogleCloudApigeeV1SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mlRetrainingFeedbackEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1SecuritySettings" });
@@ -3668,7 +3668,7 @@ export interface GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
 }
 
 export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext: Schema.Codec<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3697,7 +3697,7 @@ export interface GoogleCloudApigeeV1PodStatus {
 }
 
 export const GoogleCloudApigeeV1PodStatus: Schema.Codec<GoogleCloudApigeeV1PodStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentTime: Schema.optional(Schema.String),
     deploymentStatus: Schema.optional(Schema.String),
     podStatusTime: Schema.optional(Schema.String),
@@ -3719,7 +3719,7 @@ export interface GoogleCloudApigeeV1Alias {
 }
 
 export const GoogleCloudApigeeV1Alias: Schema.Codec<GoogleCloudApigeeV1Alias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
     certsInfo: Schema.optional(GoogleCloudApigeeV1Certificate),
     type: Schema.optional(Schema.String),
@@ -3738,7 +3738,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
 }
 
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.String),
     include: Schema.optional(
       GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray,
@@ -3772,7 +3772,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2 {
 }
 
 export const GoogleCloudApigeeV1SecurityProfileV2: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     profileAssessmentConfigs: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -3795,7 +3795,7 @@ export interface GoogleCloudApigeeV1ListRatePlansResponse {
 }
 
 export const GoogleCloudApigeeV1ListRatePlansResponse: Schema.Codec<GoogleCloudApigeeV1ListRatePlansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ratePlans: Schema.optional(Schema.Array(GoogleCloudApigeeV1RatePlan)),
     nextStartKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListRatePlansResponse" });
@@ -3812,7 +3812,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResult {
 }
 
 export const GoogleCloudApigeeV1SecurityAssessmentResult: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(
       GoogleCloudApigeeV1SecurityAssessmentResultResource,
     ),
@@ -3831,7 +3831,7 @@ export interface GoogleCloudApigeeV1RuntimeAnalyticsConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeAnalyticsConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeAnalyticsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     billingPipelineEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeAnalyticsConfig" });
@@ -3842,7 +3842,7 @@ export interface GoogleCloudApigeeV1RuntimeApiSecurityConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeApiSecurityConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeApiSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeApiSecurityConfig" });
 
@@ -3860,7 +3860,7 @@ export interface GoogleCloudApigeeV1RuntimeAddonsConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeAddonsConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeAddonsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsConfig: Schema.optional(GoogleCloudApigeeV1RuntimeAnalyticsConfig),
     apiSecurityConfig: Schema.optional(
       GoogleCloudApigeeV1RuntimeApiSecurityConfig,
@@ -3884,7 +3884,7 @@ export interface GoogleCloudApigeeV1DatastoreConfig {
 }
 
 export const GoogleCloudApigeeV1DatastoreConfig: Schema.Codec<GoogleCloudApigeeV1DatastoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     datasetName: Schema.optional(Schema.String),
     tablePrefix: Schema.optional(Schema.String),
@@ -3902,7 +3902,7 @@ export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
 }
 
 export const GoogleCloudApigeeV1DeveloperMonetizationConfig: Schema.Codec<GoogleCloudApigeeV1DeveloperMonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperMonetizationConfig" });
 
@@ -3914,7 +3914,7 @@ export interface GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
 }
 
 export const GoogleCloudApigeeV1ListTraceConfigOverridesResponse: Schema.Codec<GoogleCloudApigeeV1ListTraceConfigOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     traceConfigOverrides: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1TraceConfigOverride),
@@ -3930,7 +3930,7 @@ export interface GoogleCloudApigeeV1Access {
 }
 
 export const GoogleCloudApigeeV1Access: Schema.Codec<GoogleCloudApigeeV1Access> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     Get: Schema.optional(GoogleCloudApigeeV1AccessGet),
     Set: Schema.optional(GoogleCloudApigeeV1AccessSet),
     Remove: Schema.optional(GoogleCloudApigeeV1AccessRemove),
@@ -3942,7 +3942,7 @@ export interface GoogleCloudApigeeV1Properties {
 }
 
 export const GoogleCloudApigeeV1Properties: Schema.Codec<GoogleCloudApigeeV1Properties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Properties" });
 
@@ -3970,7 +3970,7 @@ export interface GoogleCloudApigeeV1Result {
 }
 
 export const GoogleCloudApigeeV1Result: Schema.Codec<GoogleCloudApigeeV1Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ActionResult: Schema.optional(Schema.String),
     uRI: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
@@ -3991,7 +3991,7 @@ export interface GoogleCloudApigeeV1Point {
 }
 
 export const GoogleCloudApigeeV1Point: Schema.Codec<GoogleCloudApigeeV1Point> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(GoogleCloudApigeeV1Result)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Point" });
@@ -4004,7 +4004,7 @@ export interface GoogleCloudApigeeV1DebugSessionTransaction {
 }
 
 export const GoogleCloudApigeeV1DebugSessionTransaction: Schema.Codec<GoogleCloudApigeeV1DebugSessionTransaction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     completed: Schema.optional(Schema.Boolean),
     point: Schema.optional(Schema.Array(GoogleCloudApigeeV1Point)),
   }).annotate({ identifier: "GoogleCloudApigeeV1DebugSessionTransaction" });
@@ -4023,7 +4023,7 @@ export interface GoogleCloudApigeeV1SharedFlow {
 }
 
 export const GoogleCloudApigeeV1SharedFlow: Schema.Codec<GoogleCloudApigeeV1SharedFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.Array(Schema.String)),
     space: Schema.optional(Schema.String),
     latestRevisionId: Schema.optional(Schema.String),
@@ -4036,7 +4036,7 @@ export interface GoogleCloudApigeeV1ListSharedFlowsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSharedFlowsResponse: Schema.Codec<GoogleCloudApigeeV1ListSharedFlowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedFlows: Schema.optional(Schema.Array(GoogleCloudApigeeV1SharedFlow)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListSharedFlowsResponse" });
 
@@ -4048,7 +4048,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
 }
 
 export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.String),
     percentage: Schema.optional(Schema.Number),
   }).annotate({
@@ -4085,7 +4085,7 @@ export interface GoogleCloudApigeeV1SecurityFeedback {
 }
 
 export const GoogleCloudApigeeV1SecurityFeedback: Schema.Codec<GoogleCloudApigeeV1SecurityFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -4106,7 +4106,7 @@ export interface GoogleCloudApigeeV1ListSecurityFeedbackResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityFeedbackResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityFeedbackResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityFeedback: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityFeedback),
     ),
@@ -4145,7 +4145,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsRequest {
 }
 
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequest: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     windowSize: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     timestampOrder: Schema.optional(Schema.String),
@@ -4164,7 +4164,7 @@ export interface GoogleCloudApigeeV1SetAddonsRequest {
 }
 
 export const GoogleCloudApigeeV1SetAddonsRequest: Schema.Codec<GoogleCloudApigeeV1SetAddonsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
   }).annotate({ identifier: "GoogleCloudApigeeV1SetAddonsRequest" });
 
@@ -4176,7 +4176,7 @@ export interface GoogleCloudApigeeV1CreditAppGroupBalanceRequest {
 }
 
 export const GoogleCloudApigeeV1CreditAppGroupBalanceRequest: Schema.Codec<GoogleCloudApigeeV1CreditAppGroupBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transactionAmount: Schema.optional(GoogleTypeMoney),
     transactionId: Schema.optional(Schema.String),
   }).annotate({
@@ -4196,7 +4196,7 @@ export interface GoogleIamV1AuditLogConfig {
 }
 
 export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
@@ -4209,7 +4209,7 @@ export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderInd
 }
 
 export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Codec<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipHeaderName: Schema.optional(Schema.String),
     ipHeaderIndex: Schema.optional(Schema.Number),
   }).annotate({
@@ -4225,7 +4225,7 @@ export interface GoogleCloudApigeeV1AppGroupBalanceWallet {
 }
 
 export const GoogleCloudApigeeV1AppGroupBalanceWallet: Schema.Codec<GoogleCloudApigeeV1AppGroupBalanceWallet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balance: Schema.optional(GoogleTypeMoney),
     lastCreditTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupBalanceWallet" });
@@ -4236,7 +4236,7 @@ export interface GoogleCloudApigeeV1AppGroupBalance {
 }
 
 export const GoogleCloudApigeeV1AppGroupBalance: Schema.Codec<GoogleCloudApigeeV1AppGroupBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wallets: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AppGroupBalanceWallet),
     ),
@@ -4250,7 +4250,7 @@ export interface GoogleCloudApigeeV1SyncAuthorization {
 }
 
 export const GoogleCloudApigeeV1SyncAuthorization: Schema.Codec<GoogleCloudApigeeV1SyncAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     identities: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApigeeV1SyncAuthorization" });
@@ -4263,7 +4263,7 @@ export interface GoogleCloudApigeeV1ResourceFile {
 }
 
 export const GoogleCloudApigeeV1ResourceFile: Schema.Codec<GoogleCloudApigeeV1ResourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ResourceFile" });
@@ -4274,7 +4274,7 @@ export interface GoogleCloudApigeeV1ResourceFiles {
 }
 
 export const GoogleCloudApigeeV1ResourceFiles: Schema.Codec<GoogleCloudApigeeV1ResourceFiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceFile: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ResourceFile),
     ),
@@ -4312,7 +4312,7 @@ export interface GoogleCloudApigeeV1SharedFlowRevision {
 }
 
 export const GoogleCloudApigeeV1SharedFlowRevision: Schema.Codec<GoogleCloudApigeeV1SharedFlowRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     entityMetaDataAsProperties: Schema.optional(
@@ -4339,7 +4339,7 @@ export interface GoogleCloudApigeeV1ServiceIssuersMapping {
 }
 
 export const GoogleCloudApigeeV1ServiceIssuersMapping: Schema.Codec<GoogleCloudApigeeV1ServiceIssuersMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     emailIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ServiceIssuersMapping" });
@@ -4350,7 +4350,7 @@ export interface GoogleCloudApigeeV1ListHybridIssuersResponse {
 }
 
 export const GoogleCloudApigeeV1ListHybridIssuersResponse: Schema.Codec<GoogleCloudApigeeV1ListHybridIssuersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issuers: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ServiceIssuersMapping),
     ),
@@ -4362,7 +4362,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gateways: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -4372,7 +4372,7 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiH
 export interface GoogleCloudApigeeV1SecurityActionAllow {}
 
 export const GoogleCloudApigeeV1SecurityActionAllow: Schema.Codec<GoogleCloudApigeeV1SecurityActionAllow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1SecurityActionAllow",
   });
 
@@ -4382,7 +4382,7 @@ export interface GoogleCloudApigeeV1SecurityActionDeny {
 }
 
 export const GoogleCloudApigeeV1SecurityActionDeny: Schema.Codec<GoogleCloudApigeeV1SecurityActionDeny> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseCode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionDeny" });
 
@@ -4412,7 +4412,7 @@ export interface GoogleCloudApigeeV1SecurityActionConditionConfig {
 }
 
 export const GoogleCloudApigeeV1SecurityActionConditionConfig: Schema.Codec<GoogleCloudApigeeV1SecurityActionConditionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     developers: Schema.optional(Schema.Array(Schema.String)),
     ipAddressRanges: Schema.optional(Schema.Array(Schema.String)),
     apiKeys: Schema.optional(Schema.Array(Schema.String)),
@@ -4436,7 +4436,7 @@ export interface GoogleCloudApigeeV1SecurityActionHttpHeader {
 }
 
 export const GoogleCloudApigeeV1SecurityActionHttpHeader: Schema.Codec<GoogleCloudApigeeV1SecurityActionHttpHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionHttpHeader" });
@@ -4447,7 +4447,7 @@ export interface GoogleCloudApigeeV1SecurityActionFlag {
 }
 
 export const GoogleCloudApigeeV1SecurityActionFlag: Schema.Codec<GoogleCloudApigeeV1SecurityActionFlag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headers: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityActionHttpHeader),
     ),
@@ -4481,7 +4481,7 @@ export interface GoogleCloudApigeeV1SecurityAction {
 }
 
 export const GoogleCloudApigeeV1SecurityAction: Schema.Codec<GoogleCloudApigeeV1SecurityAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allow: Schema.optional(GoogleCloudApigeeV1SecurityActionAllow),
     deny: Schema.optional(GoogleCloudApigeeV1SecurityActionDeny),
     updateTime: Schema.optional(Schema.String),
@@ -4506,7 +4506,7 @@ export interface GoogleCloudApigeeV1SecurityReportResultMetadata {
 }
 
 export const GoogleCloudApigeeV1SecurityReportResultMetadata: Schema.Codec<GoogleCloudApigeeV1SecurityReportResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     expires: Schema.optional(Schema.String),
   }).annotate({
@@ -4529,7 +4529,7 @@ export interface GoogleCloudApigeeV1SecurityReportMetadata {
 }
 
 export const GoogleCloudApigeeV1SecurityReportMetadata: Schema.Codec<GoogleCloudApigeeV1SecurityReportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     startTimestamp: Schema.optional(Schema.String),
     endTimestamp: Schema.optional(Schema.String),
@@ -4568,7 +4568,7 @@ export interface GoogleCloudApigeeV1SecurityReport {
 }
 
 export const GoogleCloudApigeeV1SecurityReport: Schema.Codec<GoogleCloudApigeeV1SecurityReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     result: Schema.optional(GoogleCloudApigeeV1SecurityReportResultMetadata),
     resultFileSize: Schema.optional(Schema.String),
@@ -4587,7 +4587,7 @@ export const GoogleCloudApigeeV1SecurityReport: Schema.Codec<GoogleCloudApigeeV1
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -4615,7 +4615,7 @@ export interface GoogleCloudApigeeV1TlsInfo {
 }
 
 export const GoogleCloudApigeeV1TlsInfo: Schema.Codec<GoogleCloudApigeeV1TlsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreValidationErrors: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
     clientAuthEnabled: Schema.optional(Schema.Boolean),
@@ -4636,7 +4636,7 @@ export interface GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
 }
 
 export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest: Schema.Codec<GoogleCloudApigeeV1CreditDeveloperBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transactionAmount: Schema.optional(GoogleTypeMoney),
     transactionId: Schema.optional(Schema.String),
   }).annotate({
@@ -4655,7 +4655,7 @@ export interface GoogleCloudApigeeV1OrganizationProjectMapping {
 }
 
 export const GoogleCloudApigeeV1OrganizationProjectMapping: Schema.Codec<GoogleCloudApigeeV1OrganizationProjectMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     organization: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -4668,7 +4668,7 @@ export interface GoogleCloudApigeeV1ListOrganizationsResponse {
 }
 
 export const GoogleCloudApigeeV1ListOrganizationsResponse: Schema.Codec<GoogleCloudApigeeV1ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizations: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1OrganizationProjectMapping),
     ),
@@ -4684,7 +4684,7 @@ export interface GoogleApiHttpBody {
 }
 
 export const GoogleApiHttpBody: Schema.Codec<GoogleApiHttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     extensions: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -4698,7 +4698,7 @@ export interface GoogleCloudApigeeV1ListExportsResponse {
 }
 
 export const GoogleCloudApigeeV1ListExportsResponse: Schema.Codec<GoogleCloudApigeeV1ListExportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exports: Schema.optional(Schema.Array(GoogleCloudApigeeV1Export)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListExportsResponse" });
 
@@ -4710,7 +4710,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
 }
 
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     points: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
   }).annotate({
@@ -4725,7 +4725,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig {
 }
 
 export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     subnet: Schema.optional(Schema.String),
   }).annotate({
@@ -4760,7 +4760,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtension {
 }
 
 export const GoogleCloudApigeeV1ApimServiceExtension: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     lbForwardingRule: Schema.optional(Schema.String),
     networkConfigs: Schema.optional(
@@ -4784,7 +4784,7 @@ export interface GoogleCloudApigeeV1ListApimServiceExtensionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListApimServiceExtensionsResponse: Schema.Codec<GoogleCloudApigeeV1ListApimServiceExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apimServiceExtensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ApimServiceExtension),
     ),
@@ -4805,7 +4805,7 @@ export interface GoogleCloudApigeeV1FlowHook {
 }
 
 export const GoogleCloudApigeeV1FlowHook: Schema.Codec<GoogleCloudApigeeV1FlowHook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowHookPoint: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     sharedFlow: Schema.optional(Schema.String),
@@ -4828,7 +4828,7 @@ export interface GoogleCloudApigeeV1QueryTabularStatsRequest {
 }
 
 export const GoogleCloudApigeeV1QueryTabularStatsRequest: Schema.Codec<GoogleCloudApigeeV1QueryTabularStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     pageToken: Schema.optional(Schema.String),
     timeRange: Schema.optional(GoogleTypeInterval),
@@ -4847,7 +4847,7 @@ export interface GoogleCloudApigeeV1CustomReportMetric {
 }
 
 export const GoogleCloudApigeeV1CustomReportMetric: Schema.Codec<GoogleCloudApigeeV1CustomReportMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1CustomReportMetric" });
@@ -4860,7 +4860,7 @@ export interface GoogleCloudApigeeV1ReportProperty {
 }
 
 export const GoogleCloudApigeeV1ReportProperty: Schema.Codec<GoogleCloudApigeeV1ReportProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ReportProperty" });
@@ -4913,7 +4913,7 @@ export interface GoogleCloudApigeeV1CustomReport {
 }
 
 export const GoogleCloudApigeeV1CustomReport: Schema.Codec<GoogleCloudApigeeV1CustomReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastViewedAt: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.String),
@@ -4956,7 +4956,7 @@ export interface GoogleCloudApigeeV1QueryMetric {
 }
 
 export const GoogleCloudApigeeV1QueryMetric: Schema.Codec<GoogleCloudApigeeV1QueryMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operator: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -4978,7 +4978,7 @@ export interface GoogleCloudApigeeV1ListApiCategoriesResponse {
 }
 
 export const GoogleCloudApigeeV1ListApiCategoriesResponse: Schema.Codec<GoogleCloudApigeeV1ListApiCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5014,7 +5014,7 @@ export interface GoogleCloudApigeeV1AppGroupApp {
 }
 
 export const GoogleCloudApigeeV1AppGroupApp: Schema.Codec<GoogleCloudApigeeV1AppGroupApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastModifiedAt: Schema.optional(Schema.String),
     credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
     appGroup: Schema.optional(Schema.String),
@@ -5037,7 +5037,7 @@ export interface GoogleCloudApigeeV1ListAppGroupAppsResponse {
 }
 
 export const GoogleCloudApigeeV1ListAppGroupAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     appGroupApps: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroupApp)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListAppGroupAppsResponse" });
@@ -5064,7 +5064,7 @@ export interface GoogleCloudApigeeV1TraceConfig {
 }
 
 export const GoogleCloudApigeeV1TraceConfig: Schema.Codec<GoogleCloudApigeeV1TraceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exporter: Schema.optional(Schema.String),
     traceProtocol: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
@@ -5079,7 +5079,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environmentGroupAttachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EnvironmentGroupAttachment),
     ),
@@ -5104,7 +5104,7 @@ export interface GoogleCloudApigeeV1DeploymentGroupConfig {
 }
 
 export const GoogleCloudApigeeV1DeploymentGroupConfig: Schema.Codec<GoogleCloudApigeeV1DeploymentGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5149,7 +5149,7 @@ export interface GoogleCloudApigeeV1ApiDoc {
 }
 
 export const GoogleCloudApigeeV1ApiDoc: Schema.Codec<GoogleCloudApigeeV1ApiDoc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
     apiProductName: Schema.optional(Schema.String),
     modified: Schema.optional(Schema.String),
@@ -5185,7 +5185,7 @@ export interface GoogleCloudApigeeV1ListApiDocsResponse {
 }
 
 export const GoogleCloudApigeeV1ListApiDocsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiDocsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5202,7 +5202,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceSamplingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampler: Schema.optional(Schema.String),
     samplingRate: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeTraceSamplingConfig" });
@@ -5215,7 +5215,7 @@ export interface GoogleCloudApigeeV1DnsZonePeeringConfig {
 }
 
 export const GoogleCloudApigeeV1DnsZonePeeringConfig: Schema.Codec<GoogleCloudApigeeV1DnsZonePeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetNetworkId: Schema.optional(Schema.String),
     targetProjectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DnsZonePeeringConfig" });
@@ -5244,7 +5244,7 @@ export interface GoogleCloudApigeeV1DnsZone {
 }
 
 export const GoogleCloudApigeeV1DnsZone: Schema.Codec<GoogleCloudApigeeV1DnsZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5270,7 +5270,7 @@ export interface GoogleCloudApigeeV1ArchiveDeployment {
 }
 
 export const GoogleCloudApigeeV1ArchiveDeployment: Schema.Codec<GoogleCloudApigeeV1ArchiveDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     gcsUri: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
@@ -5287,7 +5287,7 @@ export interface GoogleCloudApigeeV1ListArchiveDeploymentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListArchiveDeploymentsResponse: Schema.Codec<GoogleCloudApigeeV1ListArchiveDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     archiveDeployments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ArchiveDeployment),
     ),
@@ -5302,7 +5302,7 @@ export interface GoogleCloudApigeeV1Subscription {
 }
 
 export const GoogleCloudApigeeV1Subscription: Schema.Codec<GoogleCloudApigeeV1Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Subscription" });
 
@@ -5314,7 +5314,7 @@ export interface GoogleIamV1AuditConfig {
 }
 
 export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
   }).annotate({ identifier: "GoogleIamV1AuditConfig" });
@@ -5329,7 +5329,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponse {
 }
 
 export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponse: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence),
     ),
@@ -5347,7 +5347,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresResponse {
 }
 
 export const GoogleCloudApigeeV1ComputeEnvironmentScoresResponse: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Score)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -5362,7 +5362,7 @@ export interface GoogleCloudApigeeV1ListApiDebugSessionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListApiDebugSessionsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiDebugSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiDebugSession)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -5375,7 +5375,7 @@ export interface GoogleCloudApigeeV1MoveApiProxyRequest {
 }
 
 export const GoogleCloudApigeeV1MoveApiProxyRequest: Schema.Codec<GoogleCloudApigeeV1MoveApiProxyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProxyRequest" });
 
@@ -5385,7 +5385,7 @@ export interface GoogleCloudApigeeV1CommonNameConfig {
 }
 
 export const GoogleCloudApigeeV1CommonNameConfig: Schema.Codec<GoogleCloudApigeeV1CommonNameConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     matchWildCards: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1CommonNameConfig" });
@@ -5414,7 +5414,7 @@ export interface GoogleCloudApigeeV1TlsInfoConfig {
 }
 
 export const GoogleCloudApigeeV1TlsInfoConfig: Schema.Codec<GoogleCloudApigeeV1TlsInfoConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientAuthEnabled: Schema.optional(Schema.Boolean),
     trustStore: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -5450,7 +5450,7 @@ export interface GoogleCloudApigeeV1TargetServerConfig {
 }
 
 export const GoogleCloudApigeeV1TargetServerConfig: Schema.Codec<GoogleCloudApigeeV1TargetServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
     host: Schema.optional(Schema.String),
@@ -5469,7 +5469,7 @@ export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo {
 }
 
 export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo: Schema.Codec<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     md5: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
@@ -5487,7 +5487,7 @@ export interface GoogleCloudApigeeV1InstanceAttachment {
 }
 
 export const GoogleCloudApigeeV1InstanceAttachment: Schema.Codec<GoogleCloudApigeeV1InstanceAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     environment: Schema.optional(Schema.String),
@@ -5501,7 +5501,7 @@ export interface GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListInstanceAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1InstanceAttachment),
     ),
@@ -5520,7 +5520,7 @@ export interface GoogleCloudApigeeV1SchemaSchemaProperty {
 }
 
 export const GoogleCloudApigeeV1SchemaSchemaProperty: Schema.Codec<GoogleCloudApigeeV1SchemaSchemaProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     custom: Schema.optional(Schema.String),
@@ -5534,7 +5534,7 @@ export interface GoogleCloudApigeeV1SchemaSchemaElement {
 }
 
 export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Codec<GoogleCloudApigeeV1SchemaSchemaElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(GoogleCloudApigeeV1SchemaSchemaProperty),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1SchemaSchemaElement" });
@@ -5542,7 +5542,7 @@ export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Codec<GoogleCloudApi
 export interface GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest {}
 
 export const GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest: Schema.Codec<GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest",
   });
 
@@ -5556,7 +5556,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatus {
 }
 
 export const GoogleCloudApigeeV1InstanceDeploymentStatus: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
     deployedRevisions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision),
@@ -5601,7 +5601,7 @@ export interface GoogleCloudApigeeV1Deployment {
 }
 
 export const GoogleCloudApigeeV1Deployment: Schema.Codec<GoogleCloudApigeeV1Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiProxy: Schema.optional(Schema.String),
     deployStartTime: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
@@ -5625,7 +5625,7 @@ export interface GoogleCloudApigeeV1ListDeploymentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListDeploymentsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(GoogleCloudApigeeV1Deployment)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDeploymentsResponse" });
 
@@ -5639,7 +5639,7 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
 }
 
 export const GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation: Schema.Codec<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfileRevisionId: Schema.optional(Schema.String),
     attachTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5659,7 +5659,7 @@ export interface GoogleTypeExpr {
 }
 
 export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5676,7 +5676,7 @@ export interface GoogleIamV1Binding {
 }
 
 export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(GoogleTypeExpr),
     role: Schema.optional(Schema.String),
@@ -5694,7 +5694,7 @@ export interface GoogleIamV1Policy {
 }
 
 export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
     auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
@@ -5709,7 +5709,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
 }
 
 export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
@@ -5746,7 +5746,7 @@ export interface GoogleCloudApigeeV1EndpointAttachment {
 }
 
 export const GoogleCloudApigeeV1EndpointAttachment: Schema.Codec<GoogleCloudApigeeV1EndpointAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -5765,7 +5765,7 @@ export interface GoogleCloudApigeeV1ControlPlaneAccess {
 }
 
 export const GoogleCloudApigeeV1ControlPlaneAccess: Schema.Codec<GoogleCloudApigeeV1ControlPlaneAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsPublisherIdentities: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
     synchronizerIdentities: Schema.optional(Schema.Array(Schema.String)),
@@ -5779,7 +5779,7 @@ export interface GoogleCloudApigeeV1ListSecurityIncidentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityIncidentsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityIncidentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityIncidents: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityIncident),
     ),
@@ -5796,7 +5796,7 @@ export interface GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
 }
 
 export const GoogleCloudApigeeV1ListEndpointAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListEndpointAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointAttachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EndpointAttachment),
     ),
@@ -5813,7 +5813,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesV2Response {
 }
 
 export const GoogleCloudApigeeV1ListSecurityProfilesV2Response: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfilesV2Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfilesV2: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfileV2),
     ),
@@ -5828,7 +5828,7 @@ export interface GoogleCloudApigeeV1DeleteCustomReportResponse {
 }
 
 export const GoogleCloudApigeeV1DeleteCustomReportResponse: Schema.Codec<GoogleCloudApigeeV1DeleteCustomReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse" });
 
@@ -5838,14 +5838,14 @@ export interface GoogleCloudApigeeV1GenerateUploadUrlResponse {
 }
 
 export const GoogleCloudApigeeV1GenerateUploadUrlResponse: Schema.Codec<GoogleCloudApigeeV1GenerateUploadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1GenerateUploadUrlResponse" });
 
 export interface GoogleCloudApigeeV1ReportInstanceStatusResponse {}
 
 export const GoogleCloudApigeeV1ReportInstanceStatusResponse: Schema.Codec<GoogleCloudApigeeV1ReportInstanceStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ReportInstanceStatusResponse",
   });
 
@@ -5855,7 +5855,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
 }
 
 export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
@@ -5865,14 +5865,14 @@ export interface GoogleCloudApigeeV1OptimizedStatsNode {
 }
 
 export const GoogleCloudApigeeV1OptimizedStatsNode: Schema.Codec<GoogleCloudApigeeV1OptimizedStatsNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Array(Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStatsNode" });
 
 export interface GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest {}
 
 export const GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest: Schema.Codec<GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest",
   });
 
@@ -5884,7 +5884,7 @@ export interface GoogleCloudApigeeV1Metadata {
 }
 
 export const GoogleCloudApigeeV1Metadata: Schema.Codec<GoogleCloudApigeeV1Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notices: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Metadata" });
@@ -5901,7 +5901,7 @@ export interface GoogleCloudApigeeV1OptimizedStatsResponse {
 }
 
 export const GoogleCloudApigeeV1OptimizedStatsResponse: Schema.Codec<GoogleCloudApigeeV1OptimizedStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
     resultTruncated: Schema.optional(Schema.Boolean),
     TimeUnit: Schema.optional(Schema.Array(Schema.String)),
@@ -5932,7 +5932,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 }
 
 export const GoogleCloudApigeeV1RuntimeTraceConfigOverride: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceConfigOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     samplingConfig: Schema.optional(
       GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
     ),
@@ -5977,7 +5977,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfig {
 }
 
 export const GoogleCloudApigeeV1RuntimeTraceConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exporter: Schema.optional(Schema.String),
     traceProtocol: Schema.optional(Schema.String),
     samplingConfig: Schema.optional(
@@ -5999,7 +5999,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier:
@@ -6026,7 +6026,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     apiHubApis: Schema.optional(
       GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray,
@@ -6062,7 +6062,7 @@ export interface GoogleCloudApigeeV1ApiCategoryResponse {
 }
 
 export const GoogleCloudApigeeV1ApiCategoryResponse: Schema.Codec<GoogleCloudApigeeV1ApiCategoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -6080,7 +6080,7 @@ export interface GoogleCloudApigeeV1QueryTabularStatsResponse {
 }
 
 export const GoogleCloudApigeeV1QueryTabularStatsResponse: Schema.Codec<GoogleCloudApigeeV1QueryTabularStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
     columns: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6092,7 +6092,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
 }
 
 export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
@@ -6111,7 +6111,7 @@ export interface GoogleCloudApigeeV1DataCollectorConfig {
 }
 
 export const GoogleCloudApigeeV1DataCollectorConfig: Schema.Codec<GoogleCloudApigeeV1DataCollectorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DataCollectorConfig" });
@@ -6122,7 +6122,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig {
 }
 
 export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerIndexAlgorithm: Schema.optional(
       GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm,
     ),
@@ -6182,7 +6182,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfig {
 }
 
 export const GoogleCloudApigeeV1EnvironmentConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GoogleCloudApigeeV1ResourceConfig)),
     dataCollectors: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DataCollectorConfig),
@@ -6227,7 +6227,7 @@ export interface GoogleCloudApigeeV1ListApiProductsResponse {
 }
 
 export const GoogleCloudApigeeV1ListApiProductsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiProduct: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProduct)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProductsResponse" });
 
@@ -6236,7 +6236,7 @@ export interface GoogleCloudApigeeV1ListCustomReportsResponse {
 }
 
 export const GoogleCloudApigeeV1ListCustomReportsResponse: Schema.Codec<GoogleCloudApigeeV1ListCustomReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     qualifier: Schema.optional(Schema.Array(GoogleCloudApigeeV1CustomReport)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListCustomReportsResponse" });
 
@@ -6248,7 +6248,7 @@ export interface GoogleCloudApigeeV1DateRange {
 }
 
 export const GoogleCloudApigeeV1DateRange: Schema.Codec<GoogleCloudApigeeV1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DateRange" });
@@ -6269,7 +6269,7 @@ export interface GoogleCloudApigeeV1ExportRequest {
 }
 
 export const GoogleCloudApigeeV1ExportRequest: Schema.Codec<GoogleCloudApigeeV1ExportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     csvDelimiter: Schema.optional(Schema.String),
@@ -6304,7 +6304,7 @@ export interface GoogleCloudApigeeV1Query {
 }
 
 export const GoogleCloudApigeeV1Query: Schema.Codec<GoogleCloudApigeeV1Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     outputFormat: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1QueryMetric)),
@@ -6324,7 +6324,7 @@ export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig {
 }
 
 export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headerIndexAlgorithm: Schema.optional(
       GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm,
     ),
@@ -6340,7 +6340,7 @@ export interface GoogleCloudApigeeV1DeveloperBalanceWallet {
 }
 
 export const GoogleCloudApigeeV1DeveloperBalanceWallet: Schema.Codec<GoogleCloudApigeeV1DeveloperBalanceWallet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balance: Schema.optional(GoogleTypeMoney),
     lastCreditTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperBalanceWallet" });
@@ -6355,7 +6355,7 @@ export interface GoogleCloudApigeeV1Schema {
 }
 
 export const GoogleCloudApigeeV1Schema: Schema.Codec<GoogleCloudApigeeV1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
     ),
@@ -6373,7 +6373,7 @@ export interface GoogleCloudApigeeV1ListSecurityReportsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityReportsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityReports: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityReport),
@@ -6388,7 +6388,7 @@ export interface GoogleCloudApigeeV1ListNatAddressesResponse {
 }
 
 export const GoogleCloudApigeeV1ListNatAddressesResponse: Schema.Codec<GoogleCloudApigeeV1ListNatAddressesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     natAddresses: Schema.optional(Schema.Array(GoogleCloudApigeeV1NatAddress)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListNatAddressesResponse" });
@@ -6399,7 +6399,7 @@ export interface GoogleCloudApigeeV1ListAsyncQueriesResponse {
 }
 
 export const GoogleCloudApigeeV1ListAsyncQueriesResponse: Schema.Codec<GoogleCloudApigeeV1ListAsyncQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queries: Schema.optional(Schema.Array(GoogleCloudApigeeV1AsyncQuery)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListAsyncQueriesResponse" });
 
@@ -6421,7 +6421,7 @@ export interface GoogleCloudApigeeV1Datastore {
 }
 
 export const GoogleCloudApigeeV1Datastore: Schema.Codec<GoogleCloudApigeeV1Datastore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     self: Schema.optional(Schema.String),
@@ -6437,7 +6437,7 @@ export interface GoogleCloudApigeeV1OptimizedStats {
 }
 
 export const GoogleCloudApigeeV1OptimizedStats: Schema.Codec<GoogleCloudApigeeV1OptimizedStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     Response: Schema.optional(GoogleCloudApigeeV1OptimizedStatsResponse),
   }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStats" });
 
@@ -6451,7 +6451,7 @@ export interface GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
 }
 
 export const GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest: Schema.Codec<GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiProducts: Schema.optional(Schema.Array(Schema.String)),
     action: Schema.optional(Schema.String),
     appGroupAppKey: Schema.optional(GoogleCloudApigeeV1AppGroupAppKey),
@@ -6467,7 +6467,7 @@ export interface GoogleCloudApigeeV1StatsHostStats {
 }
 
 export const GoogleCloudApigeeV1StatsHostStats: Schema.Codec<GoogleCloudApigeeV1StatsHostStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
     dimensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DimensionMetric),
@@ -6485,7 +6485,7 @@ export interface GoogleCloudApigeeV1Stats {
 }
 
 export const GoogleCloudApigeeV1Stats: Schema.Codec<GoogleCloudApigeeV1Stats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
     environments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1StatsEnvironmentStats),
@@ -6496,7 +6496,7 @@ export const GoogleCloudApigeeV1Stats: Schema.Codec<GoogleCloudApigeeV1Stats> =
 export interface GoogleCloudApigeeV1GetSyncAuthorizationRequest {}
 
 export const GoogleCloudApigeeV1GetSyncAuthorizationRequest: Schema.Codec<GoogleCloudApigeeV1GetSyncAuthorizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GetSyncAuthorizationRequest",
   });
 
@@ -6510,7 +6510,7 @@ export interface GoogleCloudApigeeV1NodeConfig {
 }
 
 export const GoogleCloudApigeeV1NodeConfig: Schema.Codec<GoogleCloudApigeeV1NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxNodeCount: Schema.optional(Schema.String),
     currentAggregateNodeCount: Schema.optional(Schema.String),
     minNodeCount: Schema.optional(Schema.String),
@@ -6566,7 +6566,7 @@ export interface GoogleCloudApigeeV1Environment {
 }
 
 export const GoogleCloudApigeeV1Environment: Schema.Codec<GoogleCloudApigeeV1Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     apiProxyType: Schema.optional(Schema.String),
@@ -6595,7 +6595,7 @@ export interface GoogleCloudApigeeV1SecurityActionsConfig {
 }
 
 export const GoogleCloudApigeeV1SecurityActionsConfig: Schema.Codec<GoogleCloudApigeeV1SecurityActionsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6607,7 +6607,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
 }
 
 export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceFile: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ResourceFile),
     ),
@@ -6621,7 +6621,7 @@ export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
 }
 
 export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest: Schema.Codec<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1UpdateSecurityIncidentRequest),
     ),
@@ -6637,7 +6637,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityProfilesResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfiles: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfile),
     ),
@@ -6654,7 +6654,7 @@ export interface GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appGroupSubscriptions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AppGroupSubscription),
     ),
@@ -6669,7 +6669,7 @@ export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse {
 }
 
 export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse: Schema.Codec<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urls: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo),
     ),
@@ -6691,7 +6691,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -6709,7 +6709,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6723,7 +6723,7 @@ export interface GoogleCloudApigeeV1Keystore {
 }
 
 export const GoogleCloudApigeeV1Keystore: Schema.Codec<GoogleCloudApigeeV1Keystore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aliases: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Keystore" });
@@ -6738,7 +6738,7 @@ export interface GoogleCloudApigeeV1KeyValueMap {
 }
 
 export const GoogleCloudApigeeV1KeyValueMap: Schema.Codec<GoogleCloudApigeeV1KeyValueMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     maskedValues: Schema.optional(Schema.Boolean),
     encrypted: Schema.optional(Schema.Boolean),
@@ -6752,7 +6752,7 @@ export interface GoogleCloudApigeeV1ListSecurityActionsResponse {
 }
 
 export const GoogleCloudApigeeV1ListSecurityActionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityActions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityAction),
@@ -6767,7 +6767,7 @@ export interface GoogleCloudApigeeV1ListDnsZonesResponse {
 }
 
 export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Codec<GoogleCloudApigeeV1ListDnsZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dnsZones: Schema.optional(Schema.Array(GoogleCloudApigeeV1DnsZone)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDnsZonesResponse" });
@@ -6775,7 +6775,7 @@ export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Codec<GoogleCloudAp
 export interface GoogleCloudApigeeV1GenerateUploadUrlRequest {}
 
 export const GoogleCloudApigeeV1GenerateUploadUrlRequest: Schema.Codec<GoogleCloudApigeeV1GenerateUploadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateUploadUrlRequest",
   });
 
@@ -6785,7 +6785,7 @@ export interface GoogleCloudApigeeV1DeveloperBalance {
 }
 
 export const GoogleCloudApigeeV1DeveloperBalance: Schema.Codec<GoogleCloudApigeeV1DeveloperBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     wallets: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeveloperBalanceWallet),
     ),
@@ -6805,7 +6805,7 @@ export interface GoogleCloudApigeeV1DeleteResponse {
 }
 
 export const GoogleCloudApigeeV1DeleteResponse: Schema.Codec<GoogleCloudApigeeV1DeleteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -6819,7 +6819,7 @@ export interface GoogleCloudApigeeV1MoveApiProductRequest {
 }
 
 export const GoogleCloudApigeeV1MoveApiProductRequest: Schema.Codec<GoogleCloudApigeeV1MoveApiProductRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProductRequest" });
 
@@ -6837,7 +6837,7 @@ export interface GoogleCloudApigeeV1SecurityReportResultView {
 }
 
 export const GoogleCloudApigeeV1SecurityReportResultView: Schema.Codec<GoogleCloudApigeeV1SecurityReportResultView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Array(Schema.Unknown)),
     error: Schema.optional(Schema.String),
     metadata: Schema.optional(GoogleCloudApigeeV1SecurityReportMetadata),
@@ -6851,7 +6851,7 @@ export interface GoogleCloudApigeeV1GenerateDownloadUrlResponse {
 }
 
 export const GoogleCloudApigeeV1GenerateDownloadUrlResponse: Schema.Codec<GoogleCloudApigeeV1GenerateDownloadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     downloadUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1GenerateDownloadUrlResponse" });
 
@@ -6861,14 +6861,14 @@ export interface GoogleCloudApigeeV1MoveSharedFlowRequest {
 }
 
 export const GoogleCloudApigeeV1MoveSharedFlowRequest: Schema.Codec<GoogleCloudApigeeV1MoveSharedFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveSharedFlowRequest" });
 
 export interface GoogleCloudApigeeV1GenerateDownloadUrlRequest {}
 
 export const GoogleCloudApigeeV1GenerateDownloadUrlRequest: Schema.Codec<GoogleCloudApigeeV1GenerateDownloadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateDownloadUrlRequest",
   });
 
@@ -6897,7 +6897,7 @@ export interface GoogleCloudApigeeV1TargetServer {
 }
 
 export const GoogleCloudApigeeV1TargetServer: Schema.Codec<GoogleCloudApigeeV1TargetServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
     protocol: Schema.optional(Schema.String),
@@ -6913,7 +6913,7 @@ export interface GoogleCloudApigeeV1ListDatastoresResponse {
 }
 
 export const GoogleCloudApigeeV1ListDatastoresResponse: Schema.Codec<GoogleCloudApigeeV1ListDatastoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datastores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Datastore)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDatastoresResponse" });
 
@@ -6925,7 +6925,7 @@ export interface GoogleCloudApigeeV1ListInstancesResponse {
 }
 
 export const GoogleCloudApigeeV1ListInstancesResponse: Schema.Codec<GoogleCloudApigeeV1ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(GoogleCloudApigeeV1Instance)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListInstancesResponse" });
@@ -6986,7 +6986,7 @@ export interface GoogleCloudApigeeV1ApiProxyRevision {
 }
 
 export const GoogleCloudApigeeV1ApiProxyRevision: Schema.Codec<GoogleCloudApigeeV1ApiProxyRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrationEndpoints: Schema.optional(Schema.Array(Schema.String)),
     archive: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -7031,7 +7031,7 @@ export interface GoogleCloudApigeeV1ApiDocResponse {
 }
 
 export const GoogleCloudApigeeV1ApiDocResponse: Schema.Codec<GoogleCloudApigeeV1ApiDocResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     data: Schema.optional(GoogleCloudApigeeV1ApiDoc),
@@ -7049,7 +7049,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRespons
 }
 
 export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityAssessmentResults: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityAssessmentResult),
     ),
@@ -7148,7 +7148,7 @@ export interface GoogleCloudApigeeV1Organization {
 }
 
 export const GoogleCloudApigeeV1Organization: Schema.Codec<GoogleCloudApigeeV1Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disableVpcPeering: Schema.optional(Schema.Boolean),
     expiresAt: Schema.optional(Schema.String),
     apigeeProjectId: Schema.optional(Schema.String),
@@ -7243,7 +7243,7 @@ export interface ProvisionOrganizationProjectsRequest {
 }
 
 export const ProvisionOrganizationProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     body: Schema.optional(GoogleCloudApigeeV1ProvisionOrganizationRequest).pipe(
       T.HttpBody(),
@@ -7259,7 +7259,7 @@ export const ProvisionOrganizationProjectsRequest =
 
 export type ProvisionOrganizationProjectsResponse = GoogleLongrunningOperation;
 export const ProvisionOrganizationProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ProvisionOrganizationProjectsError =
   | DefaultErrors
@@ -7274,7 +7274,7 @@ export const provisionOrganizationProjects: API.OperationMethod<
   ProvisionOrganizationProjectsResponse,
   ProvisionOrganizationProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionOrganizationProjectsRequest,
   output: ProvisionOrganizationProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7286,7 +7286,7 @@ export interface ListHybridIssuersRequest {
 }
 
 export const ListHybridIssuersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7296,7 +7296,7 @@ export const ListHybridIssuersRequest =
 export type ListHybridIssuersResponse =
   GoogleCloudApigeeV1ListHybridIssuersResponse;
 export const ListHybridIssuersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListHybridIssuersResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListHybridIssuersResponse;
 
 export type ListHybridIssuersError = DefaultErrors | NotFound | Forbidden;
 
@@ -7306,7 +7306,7 @@ export const listHybridIssuers: API.OperationMethod<
   ListHybridIssuersResponse,
   ListHybridIssuersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListHybridIssuersRequest,
   output: ListHybridIssuersResponse,
   errors: [NotFound, Forbidden],
@@ -7320,7 +7320,7 @@ export interface SetAddonsOrganizationsRequest {
 }
 
 export const SetAddonsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org: Schema.String.pipe(T.HttpPath("org")),
     body: Schema.optional(GoogleCloudApigeeV1SetAddonsRequest).pipe(
       T.HttpBody(),
@@ -7332,7 +7332,7 @@ export const SetAddonsOrganizationsRequest =
 
 export type SetAddonsOrganizationsResponse = GoogleLongrunningOperation;
 export const SetAddonsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type SetAddonsOrganizationsError =
   | DefaultErrors
@@ -7347,7 +7347,7 @@ export const setAddonsOrganizations: API.OperationMethod<
   SetAddonsOrganizationsResponse,
   SetAddonsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetAddonsOrganizationsRequest,
   output: SetAddonsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7359,7 +7359,7 @@ export interface GetSecuritySettingsOrganizationsRequest {
 }
 
 export const GetSecuritySettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7369,7 +7369,7 @@ export const GetSecuritySettingsOrganizationsRequest =
 export type GetSecuritySettingsOrganizationsResponse =
   GoogleCloudApigeeV1SecuritySettings;
 export const GetSecuritySettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
 
 export type GetSecuritySettingsOrganizationsError =
   | DefaultErrors
@@ -7382,7 +7382,7 @@ export const getSecuritySettingsOrganizations: API.OperationMethod<
   GetSecuritySettingsOrganizationsResponse,
   GetSecuritySettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecuritySettingsOrganizationsRequest,
   output: GetSecuritySettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7398,7 +7398,7 @@ export interface UpdateControlPlaneAccessOrganizationsRequest {
 }
 
 export const UpdateControlPlaneAccessOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ControlPlaneAccess).pipe(
@@ -7412,7 +7412,7 @@ export const UpdateControlPlaneAccessOrganizationsRequest =
 export type UpdateControlPlaneAccessOrganizationsResponse =
   GoogleLongrunningOperation;
 export const UpdateControlPlaneAccessOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type UpdateControlPlaneAccessOrganizationsError =
   | DefaultErrors
@@ -7427,7 +7427,7 @@ export const updateControlPlaneAccessOrganizations: API.OperationMethod<
   UpdateControlPlaneAccessOrganizationsResponse,
   UpdateControlPlaneAccessOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateControlPlaneAccessOrganizationsRequest,
   output: UpdateControlPlaneAccessOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7441,7 +7441,7 @@ export interface CreateOrganizationsRequest {
 }
 
 export const CreateOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Organization).pipe(T.HttpBody()),
   }).pipe(
@@ -7451,7 +7451,7 @@ export const CreateOrganizationsRequest =
 
 export type CreateOrganizationsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsError =
   | DefaultErrors
@@ -7466,7 +7466,7 @@ export const createOrganizations: API.OperationMethod<
   CreateOrganizationsResponse,
   CreateOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsRequest,
   output: CreateOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7480,7 +7480,7 @@ export interface UpdateOrganizationsRequest {
 }
 
 export const UpdateOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Organization).pipe(T.HttpBody()),
   }).pipe(
@@ -7490,7 +7490,7 @@ export const UpdateOrganizationsRequest =
 
 export type UpdateOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const UpdateOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Organization;
+  /*@__PURE__*/ GoogleCloudApigeeV1Organization;
 
 export type UpdateOrganizationsError =
   | DefaultErrors
@@ -7505,7 +7505,7 @@ export const updateOrganizations: API.OperationMethod<
   UpdateOrganizationsResponse,
   UpdateOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsRequest,
   output: UpdateOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7519,7 +7519,7 @@ export interface GetDeployedIngressConfigOrganizationsRequest {
 }
 
 export const GetDeployedIngressConfigOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -7530,7 +7530,7 @@ export const GetDeployedIngressConfigOrganizationsRequest =
 export type GetDeployedIngressConfigOrganizationsResponse =
   GoogleCloudApigeeV1IngressConfig;
 export const GetDeployedIngressConfigOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1IngressConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1IngressConfig;
 
 export type GetDeployedIngressConfigOrganizationsError =
   | DefaultErrors
@@ -7543,7 +7543,7 @@ export const getDeployedIngressConfigOrganizations: API.OperationMethod<
   GetDeployedIngressConfigOrganizationsResponse,
   GetDeployedIngressConfigOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeployedIngressConfigOrganizationsRequest,
   output: GetDeployedIngressConfigOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7555,7 +7555,7 @@ export interface GetRuntimeConfigOrganizationsRequest {
 }
 
 export const GetRuntimeConfigOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7565,7 +7565,7 @@ export const GetRuntimeConfigOrganizationsRequest =
 export type GetRuntimeConfigOrganizationsResponse =
   GoogleCloudApigeeV1RuntimeConfig;
 export const GetRuntimeConfigOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RuntimeConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1RuntimeConfig;
 
 export type GetRuntimeConfigOrganizationsError =
   | DefaultErrors
@@ -7578,7 +7578,7 @@ export const getRuntimeConfigOrganizations: API.OperationMethod<
   GetRuntimeConfigOrganizationsResponse,
   GetRuntimeConfigOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuntimeConfigOrganizationsRequest,
   output: GetRuntimeConfigOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7590,7 +7590,7 @@ export interface GetProjectMappingOrganizationsRequest {
 }
 
 export const GetProjectMappingOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getProjectMapping" }),
@@ -7600,7 +7600,7 @@ export const GetProjectMappingOrganizationsRequest =
 export type GetProjectMappingOrganizationsResponse =
   GoogleCloudApigeeV1OrganizationProjectMapping;
 export const GetProjectMappingOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OrganizationProjectMapping;
+  /*@__PURE__*/ GoogleCloudApigeeV1OrganizationProjectMapping;
 
 export type GetProjectMappingOrganizationsError =
   | DefaultErrors
@@ -7613,7 +7613,7 @@ export const getProjectMappingOrganizations: API.OperationMethod<
   GetProjectMappingOrganizationsResponse,
   GetProjectMappingOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectMappingOrganizationsRequest,
   output: GetProjectMappingOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7627,7 +7627,7 @@ export interface SetSyncAuthorizationOrganizationsRequest {
 }
 
 export const SetSyncAuthorizationOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SyncAuthorization).pipe(
       T.HttpBody(),
@@ -7644,7 +7644,7 @@ export const SetSyncAuthorizationOrganizationsRequest =
 export type SetSyncAuthorizationOrganizationsResponse =
   GoogleCloudApigeeV1SyncAuthorization;
 export const SetSyncAuthorizationOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
+  /*@__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
 
 export type SetSyncAuthorizationOrganizationsError =
   | DefaultErrors
@@ -7659,7 +7659,7 @@ export const setSyncAuthorizationOrganizations: API.OperationMethod<
   SetSyncAuthorizationOrganizationsResponse,
   SetSyncAuthorizationOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetSyncAuthorizationOrganizationsRequest,
   output: SetSyncAuthorizationOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7675,7 +7675,7 @@ export interface UpdateSecuritySettingsOrganizationsRequest {
 }
 
 export const UpdateSecuritySettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SecuritySettings).pipe(
@@ -7689,7 +7689,7 @@ export const UpdateSecuritySettingsOrganizationsRequest =
 export type UpdateSecuritySettingsOrganizationsResponse =
   GoogleCloudApigeeV1SecuritySettings;
 export const UpdateSecuritySettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
 
 export type UpdateSecuritySettingsOrganizationsError =
   | DefaultErrors
@@ -7704,7 +7704,7 @@ export const updateSecuritySettingsOrganizations: API.OperationMethod<
   UpdateSecuritySettingsOrganizationsResponse,
   UpdateSecuritySettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecuritySettingsOrganizationsRequest,
   output: UpdateSecuritySettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7716,7 +7716,7 @@ export interface ListOrganizationsRequest {
 }
 
 export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}" }),
@@ -7726,7 +7726,7 @@ export const ListOrganizationsRequest =
 export type ListOrganizationsResponse =
   GoogleCloudApigeeV1ListOrganizationsResponse;
 export const ListOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListOrganizationsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListOrganizationsResponse;
 
 export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -7736,7 +7736,7 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7748,7 +7748,7 @@ export interface GetOrganizationsRequest {
 }
 
 export const GetOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7757,7 +7757,7 @@ export const GetOrganizationsRequest =
 
 export type GetOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const GetOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Organization;
+  /*@__PURE__*/ GoogleCloudApigeeV1Organization;
 
 export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -7767,7 +7767,7 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsResponse,
   GetOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7781,7 +7781,7 @@ export interface DeleteOrganizationsRequest {
 }
 
 export const DeleteOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     retention: Schema.optional(Schema.String).pipe(T.HttpQuery("retention")),
   }).pipe(
@@ -7791,7 +7791,7 @@ export const DeleteOrganizationsRequest =
 
 export type DeleteOrganizationsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsError =
   | DefaultErrors
@@ -7806,7 +7806,7 @@ export const deleteOrganizations: API.OperationMethod<
   DeleteOrganizationsResponse,
   DeleteOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsRequest,
   output: DeleteOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7818,7 +7818,7 @@ export interface GetControlPlaneAccessOrganizationsRequest {
 }
 
 export const GetControlPlaneAccessOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7828,7 +7828,7 @@ export const GetControlPlaneAccessOrganizationsRequest =
 export type GetControlPlaneAccessOrganizationsResponse =
   GoogleCloudApigeeV1ControlPlaneAccess;
 export const GetControlPlaneAccessOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ControlPlaneAccess;
+  /*@__PURE__*/ GoogleCloudApigeeV1ControlPlaneAccess;
 
 export type GetControlPlaneAccessOrganizationsError =
   | DefaultErrors
@@ -7841,7 +7841,7 @@ export const getControlPlaneAccessOrganizations: API.OperationMethod<
   GetControlPlaneAccessOrganizationsResponse,
   GetControlPlaneAccessOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetControlPlaneAccessOrganizationsRequest,
   output: GetControlPlaneAccessOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -7855,7 +7855,7 @@ export interface GetSyncAuthorizationOrganizationsRequest {
 }
 
 export const GetSyncAuthorizationOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1GetSyncAuthorizationRequest).pipe(
       T.HttpBody(),
@@ -7872,7 +7872,7 @@ export const GetSyncAuthorizationOrganizationsRequest =
 export type GetSyncAuthorizationOrganizationsResponse =
   GoogleCloudApigeeV1SyncAuthorization;
 export const GetSyncAuthorizationOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
+  /*@__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
 
 export type GetSyncAuthorizationOrganizationsError =
   | DefaultErrors
@@ -7887,7 +7887,7 @@ export const getSyncAuthorizationOrganizations: API.OperationMethod<
   GetSyncAuthorizationOrganizationsResponse,
   GetSyncAuthorizationOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSyncAuthorizationOrganizationsRequest,
   output: GetSyncAuthorizationOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7903,7 +7903,7 @@ export interface PatchOrganizationsApisRequest {
 }
 
 export const PatchOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProxy).pipe(T.HttpBody()),
@@ -7914,7 +7914,7 @@ export const PatchOrganizationsApisRequest =
 
 export type PatchOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const PatchOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
 export type PatchOrganizationsApisError =
   | DefaultErrors
@@ -7929,7 +7929,7 @@ export const patchOrganizationsApis: API.OperationMethod<
   PatchOrganizationsApisResponse,
   PatchOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsApisRequest,
   output: PatchOrganizationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7943,7 +7943,7 @@ export interface MoveOrganizationsApisRequest {
 }
 
 export const MoveOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1MoveApiProxyRequest).pipe(
       T.HttpBody(),
@@ -7955,7 +7955,7 @@ export const MoveOrganizationsApisRequest =
 
 export type MoveOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const MoveOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
 export type MoveOrganizationsApisError =
   | DefaultErrors
@@ -7970,7 +7970,7 @@ export const moveOrganizationsApis: API.OperationMethod<
   MoveOrganizationsApisResponse,
   MoveOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveOrganizationsApisRequest,
   output: MoveOrganizationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7992,7 +7992,7 @@ export interface CreateOrganizationsApisRequest {
 }
 
 export const CreateOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -8007,7 +8007,7 @@ export const CreateOrganizationsApisRequest =
 export type CreateOrganizationsApisResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
 export const CreateOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
 export type CreateOrganizationsApisError =
   | DefaultErrors
@@ -8022,7 +8022,7 @@ export const createOrganizationsApis: API.OperationMethod<
   CreateOrganizationsApisResponse,
   CreateOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisRequest,
   output: CreateOrganizationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8040,7 +8040,7 @@ export interface ListOrganizationsApisRequest {
 }
 
 export const ListOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeRevisions: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("includeRevisions"),
     ),
@@ -8057,7 +8057,7 @@ export const ListOrganizationsApisRequest =
 export type ListOrganizationsApisResponse =
   GoogleCloudApigeeV1ListApiProxiesResponse;
 export const ListOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiProxiesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApiProxiesResponse;
 
 export type ListOrganizationsApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -8067,7 +8067,7 @@ export const listOrganizationsApis: API.OperationMethod<
   ListOrganizationsApisResponse,
   ListOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisRequest,
   output: ListOrganizationsApisResponse,
   errors: [NotFound, Forbidden],
@@ -8079,7 +8079,7 @@ export interface GetOrganizationsApisRequest {
 }
 
 export const GetOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -8088,7 +8088,7 @@ export const GetOrganizationsApisRequest =
 
 export type GetOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const GetOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
 export type GetOrganizationsApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -8098,7 +8098,7 @@ export const getOrganizationsApis: API.OperationMethod<
   GetOrganizationsApisResponse,
   GetOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisRequest,
   output: GetOrganizationsApisResponse,
   errors: [NotFound, Forbidden],
@@ -8110,7 +8110,7 @@ export interface DeleteOrganizationsApisRequest {
 }
 
 export const DeleteOrganizationsApisRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -8119,7 +8119,7 @@ export const DeleteOrganizationsApisRequest =
 
 export type DeleteOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const DeleteOrganizationsApisResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
 export type DeleteOrganizationsApisError =
   | DefaultErrors
@@ -8134,7 +8134,7 @@ export const deleteOrganizationsApis: API.OperationMethod<
   DeleteOrganizationsApisResponse,
   DeleteOrganizationsApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisRequest,
   output: DeleteOrganizationsApisResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8148,7 +8148,7 @@ export interface GetOrganizationsApisRevisionsRequest {
 }
 
 export const GetOrganizationsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -8158,7 +8158,7 @@ export const GetOrganizationsApisRevisionsRequest =
 
 export type GetOrganizationsApisRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetOrganizationsApisRevisionsError =
   | DefaultErrors
@@ -8171,7 +8171,7 @@ export const getOrganizationsApisRevisions: API.OperationMethod<
   GetOrganizationsApisRevisionsResponse,
   GetOrganizationsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisRevisionsRequest,
   output: GetOrganizationsApisRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -8183,7 +8183,7 @@ export interface DeleteOrganizationsApisRevisionsRequest {
 }
 
 export const DeleteOrganizationsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -8193,7 +8193,7 @@ export const DeleteOrganizationsApisRevisionsRequest =
 export type DeleteOrganizationsApisRevisionsResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
 export const DeleteOrganizationsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
 export type DeleteOrganizationsApisRevisionsError =
   | DefaultErrors
@@ -8208,7 +8208,7 @@ export const deleteOrganizationsApisRevisions: API.OperationMethod<
   DeleteOrganizationsApisRevisionsResponse,
   DeleteOrganizationsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisRevisionsRequest,
   output: DeleteOrganizationsApisRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8224,7 +8224,7 @@ export interface UpdateApiProxyRevisionOrganizationsApisRevisionsRequest {
 }
 
 export const UpdateApiProxyRevisionOrganizationsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     validate: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("validate")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
@@ -8236,7 +8236,7 @@ export const UpdateApiProxyRevisionOrganizationsApisRevisionsRequest =
 export type UpdateApiProxyRevisionOrganizationsApisRevisionsResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
 export const UpdateApiProxyRevisionOrganizationsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
 export type UpdateApiProxyRevisionOrganizationsApisRevisionsError =
   | DefaultErrors
@@ -8251,7 +8251,7 @@ export const updateApiProxyRevisionOrganizationsApisRevisions: API.OperationMeth
   UpdateApiProxyRevisionOrganizationsApisRevisionsResponse,
   UpdateApiProxyRevisionOrganizationsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiProxyRevisionOrganizationsApisRevisionsRequest,
   output: UpdateApiProxyRevisionOrganizationsApisRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8263,7 +8263,7 @@ export interface ListOrganizationsApisRevisionsDeploymentsRequest {
 }
 
 export const ListOrganizationsApisRevisionsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -8273,7 +8273,7 @@ export const ListOrganizationsApisRevisionsDeploymentsRequest =
 export type ListOrganizationsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsApisRevisionsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsApisRevisionsDeploymentsError =
   | DefaultErrors
@@ -8286,7 +8286,7 @@ export const listOrganizationsApisRevisionsDeployments: API.OperationMethod<
   ListOrganizationsApisRevisionsDeploymentsResponse,
   ListOrganizationsApisRevisionsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisRevisionsDeploymentsRequest,
   output: ListOrganizationsApisRevisionsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -8298,7 +8298,7 @@ export interface ListOrganizationsApisDeploymentsRequest {
 }
 
 export const ListOrganizationsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -8308,7 +8308,7 @@ export const ListOrganizationsApisDeploymentsRequest =
 export type ListOrganizationsApisDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsApisDeploymentsError =
   | DefaultErrors
@@ -8321,7 +8321,7 @@ export const listOrganizationsApisDeployments: API.OperationMethod<
   ListOrganizationsApisDeploymentsResponse,
   ListOrganizationsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisDeploymentsRequest,
   output: ListOrganizationsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -8333,7 +8333,7 @@ export interface GetOrganizationsApisKeyvaluemapsRequest {
 }
 
 export const GetOrganizationsApisKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -8343,7 +8343,7 @@ export const GetOrganizationsApisKeyvaluemapsRequest =
 export type GetOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const GetOrganizationsApisKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type GetOrganizationsApisKeyvaluemapsError =
   | DefaultErrors
@@ -8356,7 +8356,7 @@ export const getOrganizationsApisKeyvaluemaps: API.OperationMethod<
   GetOrganizationsApisKeyvaluemapsResponse,
   GetOrganizationsApisKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisKeyvaluemapsRequest,
   output: GetOrganizationsApisKeyvaluemapsResponse,
   errors: [NotFound, Forbidden],
@@ -8370,7 +8370,7 @@ export interface UpdateOrganizationsApisKeyvaluemapsRequest {
 }
 
 export const UpdateOrganizationsApisKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -8381,7 +8381,7 @@ export const UpdateOrganizationsApisKeyvaluemapsRequest =
 export type UpdateOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const UpdateOrganizationsApisKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type UpdateOrganizationsApisKeyvaluemapsError =
   | DefaultErrors
@@ -8396,7 +8396,7 @@ export const updateOrganizationsApisKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsApisKeyvaluemapsResponse,
   UpdateOrganizationsApisKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApisKeyvaluemapsRequest,
   output: UpdateOrganizationsApisKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8410,7 +8410,7 @@ export interface CreateOrganizationsApisKeyvaluemapsRequest {
 }
 
 export const CreateOrganizationsApisKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -8425,7 +8425,7 @@ export const CreateOrganizationsApisKeyvaluemapsRequest =
 export type CreateOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const CreateOrganizationsApisKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type CreateOrganizationsApisKeyvaluemapsError =
   | DefaultErrors
@@ -8440,7 +8440,7 @@ export const createOrganizationsApisKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsApisKeyvaluemapsResponse,
   CreateOrganizationsApisKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisKeyvaluemapsRequest,
   output: CreateOrganizationsApisKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8452,7 +8452,7 @@ export interface DeleteOrganizationsApisKeyvaluemapsRequest {
 }
 
 export const DeleteOrganizationsApisKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -8462,7 +8462,7 @@ export const DeleteOrganizationsApisKeyvaluemapsRequest =
 export type DeleteOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const DeleteOrganizationsApisKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type DeleteOrganizationsApisKeyvaluemapsError =
   | DefaultErrors
@@ -8477,7 +8477,7 @@ export const deleteOrganizationsApisKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsApisKeyvaluemapsResponse,
   DeleteOrganizationsApisKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisKeyvaluemapsRequest,
   output: DeleteOrganizationsApisKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8489,7 +8489,7 @@ export interface DeleteOrganizationsApisKeyvaluemapsEntriesRequest {
 }
 
 export const DeleteOrganizationsApisKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -8499,7 +8499,7 @@ export const DeleteOrganizationsApisKeyvaluemapsEntriesRequest =
 export type DeleteOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const DeleteOrganizationsApisKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type DeleteOrganizationsApisKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -8514,7 +8514,7 @@ export const deleteOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   DeleteOrganizationsApisKeyvaluemapsEntriesResponse,
   DeleteOrganizationsApisKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsApisKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8526,7 +8526,7 @@ export interface GetOrganizationsApisKeyvaluemapsEntriesRequest {
 }
 
 export const GetOrganizationsApisKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -8536,7 +8536,7 @@ export const GetOrganizationsApisKeyvaluemapsEntriesRequest =
 export type GetOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const GetOrganizationsApisKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type GetOrganizationsApisKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -8549,7 +8549,7 @@ export const getOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   GetOrganizationsApisKeyvaluemapsEntriesResponse,
   GetOrganizationsApisKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisKeyvaluemapsEntriesRequest,
   output: GetOrganizationsApisKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -8565,7 +8565,7 @@ export interface ListOrganizationsApisKeyvaluemapsEntriesRequest {
 }
 
 export const ListOrganizationsApisKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -8577,7 +8577,7 @@ export const ListOrganizationsApisKeyvaluemapsEntriesRequest =
 export type ListOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 export const ListOrganizationsApisKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
 export type ListOrganizationsApisKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -8590,7 +8590,7 @@ export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMet
   ListOrganizationsApisKeyvaluemapsEntriesResponse,
   ListOrganizationsApisKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisKeyvaluemapsEntriesRequest,
   output: ListOrganizationsApisKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -8608,7 +8608,7 @@ export interface CreateOrganizationsApisKeyvaluemapsEntriesRequest {
 }
 
 export const CreateOrganizationsApisKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -8619,7 +8619,7 @@ export const CreateOrganizationsApisKeyvaluemapsEntriesRequest =
 export type CreateOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const CreateOrganizationsApisKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type CreateOrganizationsApisKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -8634,7 +8634,7 @@ export const createOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   CreateOrganizationsApisKeyvaluemapsEntriesResponse,
   CreateOrganizationsApisKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsApisKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8648,7 +8648,7 @@ export interface UpdateOrganizationsApisKeyvaluemapsEntriesRequest {
 }
 
 export const UpdateOrganizationsApisKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -8659,7 +8659,7 @@ export const UpdateOrganizationsApisKeyvaluemapsEntriesRequest =
 export type UpdateOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const UpdateOrganizationsApisKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type UpdateOrganizationsApisKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -8674,7 +8674,7 @@ export const updateOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
   UpdateOrganizationsApisKeyvaluemapsEntriesResponse,
   UpdateOrganizationsApisKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApisKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsApisKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8690,7 +8690,7 @@ export interface ListOrganizationsApisDebugsessionsRequest {
 }
 
 export const ListOrganizationsApisDebugsessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -8702,7 +8702,7 @@ export const ListOrganizationsApisDebugsessionsRequest =
 export type ListOrganizationsApisDebugsessionsResponse =
   GoogleCloudApigeeV1ListApiDebugSessionsResponse;
 export const ListOrganizationsApisDebugsessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiDebugSessionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApiDebugSessionsResponse;
 
 export type ListOrganizationsApisDebugsessionsError =
   | DefaultErrors
@@ -8715,7 +8715,7 @@ export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
   ListOrganizationsApisDebugsessionsResponse,
   ListOrganizationsApisDebugsessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisDebugsessionsRequest,
   output: ListOrganizationsApisDebugsessionsResponse,
   errors: [NotFound, Forbidden],
@@ -8733,7 +8733,7 @@ export interface SetDeveloperStatusOrganizationsDevelopersRequest {
 }
 
 export const SetDeveloperStatusOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
@@ -8744,7 +8744,7 @@ export const SetDeveloperStatusOrganizationsDevelopersRequest =
 export type SetDeveloperStatusOrganizationsDevelopersResponse =
   GoogleProtobufEmpty;
 export const SetDeveloperStatusOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type SetDeveloperStatusOrganizationsDevelopersError =
   | DefaultErrors
@@ -8759,7 +8759,7 @@ export const setDeveloperStatusOrganizationsDevelopers: API.OperationMethod<
   SetDeveloperStatusOrganizationsDevelopersResponse,
   SetDeveloperStatusOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetDeveloperStatusOrganizationsDevelopersRequest,
   output: SetDeveloperStatusOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8783,7 +8783,7 @@ export interface ListOrganizationsDevelopersRequest {
 }
 
 export const ListOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
     count: Schema.optional(Schema.String).pipe(T.HttpQuery("count")),
     includeCompany: Schema.optional(Schema.Boolean).pipe(
@@ -8801,7 +8801,7 @@ export const ListOrganizationsDevelopersRequest =
 export type ListOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1ListOfDevelopersResponse;
 export const ListOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListOfDevelopersResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListOfDevelopersResponse;
 
 export type ListOrganizationsDevelopersError =
   | DefaultErrors
@@ -8814,7 +8814,7 @@ export const listOrganizationsDevelopers: API.OperationMethod<
   ListOrganizationsDevelopersResponse,
   ListOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersRequest,
   output: ListOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden],
@@ -8828,7 +8828,7 @@ export interface GetOrganizationsDevelopersRequest {
 }
 
 export const GetOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -8838,7 +8838,7 @@ export const GetOrganizationsDevelopersRequest =
 
 export type GetOrganizationsDevelopersResponse = GoogleCloudApigeeV1Developer;
 export const GetOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
+  /*@__PURE__*/ GoogleCloudApigeeV1Developer;
 
 export type GetOrganizationsDevelopersError =
   | DefaultErrors
@@ -8851,7 +8851,7 @@ export const getOrganizationsDevelopers: API.OperationMethod<
   GetOrganizationsDevelopersResponse,
   GetOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersRequest,
   output: GetOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden],
@@ -8863,7 +8863,7 @@ export interface DeleteOrganizationsDevelopersRequest {
 }
 
 export const DeleteOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -8873,7 +8873,7 @@ export const DeleteOrganizationsDevelopersRequest =
 export type DeleteOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
 export const DeleteOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
+  /*@__PURE__*/ GoogleCloudApigeeV1Developer;
 
 export type DeleteOrganizationsDevelopersError =
   | DefaultErrors
@@ -8888,7 +8888,7 @@ export const deleteOrganizationsDevelopers: API.OperationMethod<
   DeleteOrganizationsDevelopersResponse,
   DeleteOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersRequest,
   output: DeleteOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8902,7 +8902,7 @@ export interface CreateOrganizationsDevelopersRequest {
 }
 
 export const CreateOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Developer).pipe(T.HttpBody()),
   }).pipe(
@@ -8913,7 +8913,7 @@ export const CreateOrganizationsDevelopersRequest =
 export type CreateOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
 export const CreateOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
+  /*@__PURE__*/ GoogleCloudApigeeV1Developer;
 
 export type CreateOrganizationsDevelopersError =
   | DefaultErrors
@@ -8928,7 +8928,7 @@ export const createOrganizationsDevelopers: API.OperationMethod<
   CreateOrganizationsDevelopersResponse,
   CreateOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersRequest,
   output: CreateOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8942,7 +8942,7 @@ export interface UpdateOrganizationsDevelopersRequest {
 }
 
 export const UpdateOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Developer).pipe(T.HttpBody()),
   }).pipe(
@@ -8953,7 +8953,7 @@ export const UpdateOrganizationsDevelopersRequest =
 export type UpdateOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
 export const UpdateOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
+  /*@__PURE__*/ GoogleCloudApigeeV1Developer;
 
 export type UpdateOrganizationsDevelopersError =
   | DefaultErrors
@@ -8968,7 +8968,7 @@ export const updateOrganizationsDevelopers: API.OperationMethod<
   UpdateOrganizationsDevelopersResponse,
   UpdateOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsDevelopersRequest,
   output: UpdateOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -8980,7 +8980,7 @@ export interface GetBalanceOrganizationsDevelopersRequest {
 }
 
 export const GetBalanceOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -8990,7 +8990,7 @@ export const GetBalanceOrganizationsDevelopersRequest =
 export type GetBalanceOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperBalance;
 export const GetBalanceOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
 export type GetBalanceOrganizationsDevelopersError =
   | DefaultErrors
@@ -9003,7 +9003,7 @@ export const getBalanceOrganizationsDevelopers: API.OperationMethod<
   GetBalanceOrganizationsDevelopersResponse,
   GetBalanceOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBalanceOrganizationsDevelopersRequest,
   output: GetBalanceOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden],
@@ -9017,7 +9017,7 @@ export interface AttributesOrganizationsDevelopersRequest {
 }
 
 export const AttributesOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
@@ -9028,7 +9028,7 @@ export const AttributesOrganizationsDevelopersRequest =
 export type AttributesOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Attributes;
 export const AttributesOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type AttributesOrganizationsDevelopersError =
   | DefaultErrors
@@ -9043,7 +9043,7 @@ export const attributesOrganizationsDevelopers: API.OperationMethod<
   AttributesOrganizationsDevelopersResponse,
   AttributesOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsDevelopersRequest,
   output: AttributesOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9055,7 +9055,7 @@ export interface GetMonetizationConfigOrganizationsDevelopersRequest {
 }
 
 export const GetMonetizationConfigOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -9065,7 +9065,7 @@ export const GetMonetizationConfigOrganizationsDevelopersRequest =
 export type GetMonetizationConfigOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperMonetizationConfig;
 export const GetMonetizationConfigOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
 
 export type GetMonetizationConfigOrganizationsDevelopersError =
   | DefaultErrors
@@ -9078,7 +9078,7 @@ export const getMonetizationConfigOrganizationsDevelopers: API.OperationMethod<
   GetMonetizationConfigOrganizationsDevelopersResponse,
   GetMonetizationConfigOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonetizationConfigOrganizationsDevelopersRequest,
   output: GetMonetizationConfigOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden],
@@ -9092,7 +9092,7 @@ export interface UpdateMonetizationConfigOrganizationsDevelopersRequest {
 }
 
 export const UpdateMonetizationConfigOrganizationsDevelopersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperMonetizationConfig).pipe(
       T.HttpBody(),
@@ -9105,7 +9105,7 @@ export const UpdateMonetizationConfigOrganizationsDevelopersRequest =
 export type UpdateMonetizationConfigOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperMonetizationConfig;
 export const UpdateMonetizationConfigOrganizationsDevelopersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
 
 export type UpdateMonetizationConfigOrganizationsDevelopersError =
   | DefaultErrors
@@ -9120,7 +9120,7 @@ export const updateMonetizationConfigOrganizationsDevelopers: API.OperationMetho
   UpdateMonetizationConfigOrganizationsDevelopersResponse,
   UpdateMonetizationConfigOrganizationsDevelopersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonetizationConfigOrganizationsDevelopersRequest,
   output: UpdateMonetizationConfigOrganizationsDevelopersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9134,7 +9134,7 @@ export interface CreateOrganizationsDevelopersSubscriptionsRequest {
 }
 
 export const CreateOrganizationsDevelopersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperSubscription).pipe(
       T.HttpBody(),
@@ -9151,7 +9151,7 @@ export const CreateOrganizationsDevelopersSubscriptionsRequest =
 export type CreateOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
 export const CreateOrganizationsDevelopersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
 export type CreateOrganizationsDevelopersSubscriptionsError =
   | DefaultErrors
@@ -9166,7 +9166,7 @@ export const createOrganizationsDevelopersSubscriptions: API.OperationMethod<
   CreateOrganizationsDevelopersSubscriptionsResponse,
   CreateOrganizationsDevelopersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersSubscriptionsRequest,
   output: CreateOrganizationsDevelopersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9178,7 +9178,7 @@ export interface GetOrganizationsDevelopersSubscriptionsRequest {
 }
 
 export const GetOrganizationsDevelopersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -9188,7 +9188,7 @@ export const GetOrganizationsDevelopersSubscriptionsRequest =
 export type GetOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
 export const GetOrganizationsDevelopersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
 export type GetOrganizationsDevelopersSubscriptionsError =
   | DefaultErrors
@@ -9201,7 +9201,7 @@ export const getOrganizationsDevelopersSubscriptions: API.OperationMethod<
   GetOrganizationsDevelopersSubscriptionsResponse,
   GetOrganizationsDevelopersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersSubscriptionsRequest,
   output: GetOrganizationsDevelopersSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -9215,7 +9215,7 @@ export interface ExpireOrganizationsDevelopersSubscriptionsRequest {
 }
 
 export const ExpireOrganizationsDevelopersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest,
@@ -9228,7 +9228,7 @@ export const ExpireOrganizationsDevelopersSubscriptionsRequest =
 export type ExpireOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
 export const ExpireOrganizationsDevelopersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
 export type ExpireOrganizationsDevelopersSubscriptionsError =
   | DefaultErrors
@@ -9243,7 +9243,7 @@ export const expireOrganizationsDevelopersSubscriptions: API.OperationMethod<
   ExpireOrganizationsDevelopersSubscriptionsResponse,
   ExpireOrganizationsDevelopersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExpireOrganizationsDevelopersSubscriptionsRequest,
   output: ExpireOrganizationsDevelopersSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9259,7 +9259,7 @@ export interface ListOrganizationsDevelopersSubscriptionsRequest {
 }
 
 export const ListOrganizationsDevelopersSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
     count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
@@ -9271,7 +9271,7 @@ export const ListOrganizationsDevelopersSubscriptionsRequest =
 export type ListOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse;
 export const ListOrganizationsDevelopersSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse;
 
 export type ListOrganizationsDevelopersSubscriptionsError =
   | DefaultErrors
@@ -9284,7 +9284,7 @@ export const listOrganizationsDevelopersSubscriptions: API.OperationMethod<
   ListOrganizationsDevelopersSubscriptionsResponse,
   ListOrganizationsDevelopersSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersSubscriptionsRequest,
   output: ListOrganizationsDevelopersSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -9304,7 +9304,7 @@ export interface ListOrganizationsDevelopersAppsRequest {
 }
 
 export const ListOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("expand")),
     count: Schema.optional(Schema.String).pipe(T.HttpQuery("count")),
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
@@ -9320,7 +9320,7 @@ export const ListOrganizationsDevelopersAppsRequest =
 export type ListOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1ListDeveloperAppsResponse;
 export const ListOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeveloperAppsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeveloperAppsResponse;
 
 export type ListOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9333,7 +9333,7 @@ export const listOrganizationsDevelopersApps: API.OperationMethod<
   ListOrganizationsDevelopersAppsResponse,
   ListOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAppsRequest,
   output: ListOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden],
@@ -9349,7 +9349,7 @@ export interface GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDeveloper
 }
 
 export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
@@ -9361,7 +9361,7 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
 export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9376,7 +9376,7 @@ export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsResponse,
   GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest,
   output:
@@ -9392,7 +9392,7 @@ export interface CreateOrganizationsDevelopersAppsRequest {
 }
 
 export const CreateOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
   }).pipe(
@@ -9403,7 +9403,7 @@ export const CreateOrganizationsDevelopersAppsRequest =
 export type CreateOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
 export const CreateOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type CreateOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9418,7 +9418,7 @@ export const createOrganizationsDevelopersApps: API.OperationMethod<
   CreateOrganizationsDevelopersAppsResponse,
   CreateOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsRequest,
   output: CreateOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9432,7 +9432,7 @@ export interface UpdateOrganizationsDevelopersAppsRequest {
 }
 
 export const UpdateOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
   }).pipe(
@@ -9443,7 +9443,7 @@ export const UpdateOrganizationsDevelopersAppsRequest =
 export type UpdateOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
 export const UpdateOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type UpdateOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9458,7 +9458,7 @@ export const updateOrganizationsDevelopersApps: API.OperationMethod<
   UpdateOrganizationsDevelopersAppsResponse,
   UpdateOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsDevelopersAppsRequest,
   output: UpdateOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9474,7 +9474,7 @@ export interface GetOrganizationsDevelopersAppsRequest {
 }
 
 export const GetOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     name: Schema.String.pipe(T.HttpPath("name")),
     entity: Schema.optional(Schema.String).pipe(T.HttpQuery("entity")),
@@ -9486,7 +9486,7 @@ export const GetOrganizationsDevelopersAppsRequest =
 export type GetOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
 export const GetOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type GetOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9499,7 +9499,7 @@ export const getOrganizationsDevelopersApps: API.OperationMethod<
   GetOrganizationsDevelopersAppsResponse,
   GetOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsRequest,
   output: GetOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden],
@@ -9513,7 +9513,7 @@ export interface AttributesOrganizationsDevelopersAppsRequest {
 }
 
 export const AttributesOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
@@ -9524,7 +9524,7 @@ export const AttributesOrganizationsDevelopersAppsRequest =
 export type AttributesOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1Attributes;
 export const AttributesOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type AttributesOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9539,7 +9539,7 @@ export const attributesOrganizationsDevelopersApps: API.OperationMethod<
   AttributesOrganizationsDevelopersAppsResponse,
   AttributesOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsDevelopersAppsRequest,
   output: AttributesOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9551,7 +9551,7 @@ export interface DeleteOrganizationsDevelopersAppsRequest {
 }
 
 export const DeleteOrganizationsDevelopersAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -9561,7 +9561,7 @@ export const DeleteOrganizationsDevelopersAppsRequest =
 export type DeleteOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
 export const DeleteOrganizationsDevelopersAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type DeleteOrganizationsDevelopersAppsError =
   | DefaultErrors
@@ -9576,7 +9576,7 @@ export const deleteOrganizationsDevelopersApps: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsResponse,
   DeleteOrganizationsDevelopersAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsRequest,
   output: DeleteOrganizationsDevelopersAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9590,7 +9590,7 @@ export interface ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest {
 }
 
 export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperAppKey).pipe(
       T.HttpBody(),
@@ -9603,7 +9603,7 @@ export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
 export type ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysError =
   | DefaultErrors
@@ -9618,7 +9618,7 @@ export const replaceDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operatio
   ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
   ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest,
   output: ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9632,7 +9632,7 @@ export interface CreateOrganizationsDevelopersAppsKeysRequest {
 }
 
 export const CreateOrganizationsDevelopersAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperAppKey).pipe(
       T.HttpBody(),
@@ -9645,7 +9645,7 @@ export const CreateOrganizationsDevelopersAppsKeysRequest =
 export type CreateOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const CreateOrganizationsDevelopersAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type CreateOrganizationsDevelopersAppsKeysError =
   | DefaultErrors
@@ -9660,7 +9660,7 @@ export const createOrganizationsDevelopersAppsKeys: API.OperationMethod<
   CreateOrganizationsDevelopersAppsKeysResponse,
   CreateOrganizationsDevelopersAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsKeysRequest,
   output: CreateOrganizationsDevelopersAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9676,7 +9676,7 @@ export interface UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest {
 }
 
 export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperAppKey).pipe(
@@ -9690,7 +9690,7 @@ export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
 export type UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysError =
   | DefaultErrors
@@ -9705,7 +9705,7 @@ export const updateDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operation
   UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
   UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest,
   output: UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9717,7 +9717,7 @@ export interface GetOrganizationsDevelopersAppsKeysRequest {
 }
 
 export const GetOrganizationsDevelopersAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -9727,7 +9727,7 @@ export const GetOrganizationsDevelopersAppsKeysRequest =
 export type GetOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const GetOrganizationsDevelopersAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type GetOrganizationsDevelopersAppsKeysError =
   | DefaultErrors
@@ -9740,7 +9740,7 @@ export const getOrganizationsDevelopersAppsKeys: API.OperationMethod<
   GetOrganizationsDevelopersAppsKeysResponse,
   GetOrganizationsDevelopersAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsKeysRequest,
   output: GetOrganizationsDevelopersAppsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -9752,7 +9752,7 @@ export interface DeleteOrganizationsDevelopersAppsKeysRequest {
 }
 
 export const DeleteOrganizationsDevelopersAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -9762,7 +9762,7 @@ export const DeleteOrganizationsDevelopersAppsKeysRequest =
 export type DeleteOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const DeleteOrganizationsDevelopersAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type DeleteOrganizationsDevelopersAppsKeysError =
   | DefaultErrors
@@ -9777,7 +9777,7 @@ export const deleteOrganizationsDevelopersAppsKeys: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsKeysResponse,
   DeleteOrganizationsDevelopersAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsKeysRequest,
   output: DeleteOrganizationsDevelopersAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9791,7 +9791,7 @@ export interface CreateOrganizationsDevelopersAppsKeysCreateRequest {
 }
 
 export const CreateOrganizationsDevelopersAppsKeysCreateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperAppKey).pipe(
       T.HttpBody(),
@@ -9804,7 +9804,7 @@ export const CreateOrganizationsDevelopersAppsKeysCreateRequest =
 export type CreateOrganizationsDevelopersAppsKeysCreateResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const CreateOrganizationsDevelopersAppsKeysCreateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type CreateOrganizationsDevelopersAppsKeysCreateError =
   | DefaultErrors
@@ -9819,7 +9819,7 @@ export const createOrganizationsDevelopersAppsKeysCreate: API.OperationMethod<
   CreateOrganizationsDevelopersAppsKeysCreateResponse,
   CreateOrganizationsDevelopersAppsKeysCreateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsKeysCreateRequest,
   output: CreateOrganizationsDevelopersAppsKeysCreateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9831,7 +9831,7 @@ export interface DeleteOrganizationsDevelopersAppsKeysApiproductsRequest {
 }
 
 export const DeleteOrganizationsDevelopersAppsKeysApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -9841,7 +9841,7 @@ export const DeleteOrganizationsDevelopersAppsKeysApiproductsRequest =
 export type DeleteOrganizationsDevelopersAppsKeysApiproductsResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
 export const DeleteOrganizationsDevelopersAppsKeysApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type DeleteOrganizationsDevelopersAppsKeysApiproductsError =
   | DefaultErrors
@@ -9856,7 +9856,7 @@ export const deleteOrganizationsDevelopersAppsKeysApiproducts: API.OperationMeth
   DeleteOrganizationsDevelopersAppsKeysApiproductsResponse,
   DeleteOrganizationsDevelopersAppsKeysApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsKeysApiproductsRequest,
   output: DeleteOrganizationsDevelopersAppsKeysApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9870,7 +9870,7 @@ export interface UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysA
 }
 
 export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
@@ -9881,7 +9881,7 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsResponse =
   GoogleProtobufEmpty;
 export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsError =
   | DefaultErrors
@@ -9896,7 +9896,7 @@ export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsResponse,
   UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest,
   output:
@@ -9910,7 +9910,7 @@ export interface DeleteOrganizationsDevelopersAppsAttributesRequest {
 }
 
 export const DeleteOrganizationsDevelopersAppsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -9920,7 +9920,7 @@ export const DeleteOrganizationsDevelopersAppsAttributesRequest =
 export type DeleteOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const DeleteOrganizationsDevelopersAppsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type DeleteOrganizationsDevelopersAppsAttributesError =
   | DefaultErrors
@@ -9935,7 +9935,7 @@ export const deleteOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   DeleteOrganizationsDevelopersAppsAttributesResponse,
   DeleteOrganizationsDevelopersAppsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsAttributesRequest,
   output: DeleteOrganizationsDevelopersAppsAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -9947,7 +9947,7 @@ export interface GetOrganizationsDevelopersAppsAttributesRequest {
 }
 
 export const GetOrganizationsDevelopersAppsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -9957,7 +9957,7 @@ export const GetOrganizationsDevelopersAppsAttributesRequest =
 export type GetOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const GetOrganizationsDevelopersAppsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type GetOrganizationsDevelopersAppsAttributesError =
   | DefaultErrors
@@ -9970,7 +9970,7 @@ export const getOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   GetOrganizationsDevelopersAppsAttributesResponse,
   GetOrganizationsDevelopersAppsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsAttributesRequest,
   output: GetOrganizationsDevelopersAppsAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -9984,7 +9984,7 @@ export interface UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttribute
 }
 
 export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
@@ -9995,7 +9995,7 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesReq
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesError =
   | DefaultErrors
@@ -10010,7 +10010,7 @@ export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: A
   UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesResponse,
   UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest,
   output:
@@ -10024,7 +10024,7 @@ export interface ListOrganizationsDevelopersAppsAttributesRequest {
 }
 
 export const ListOrganizationsDevelopersAppsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
@@ -10034,7 +10034,7 @@ export const ListOrganizationsDevelopersAppsAttributesRequest =
 export type ListOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attributes;
 export const ListOrganizationsDevelopersAppsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type ListOrganizationsDevelopersAppsAttributesError =
   | DefaultErrors
@@ -10047,7 +10047,7 @@ export const listOrganizationsDevelopersAppsAttributes: API.OperationMethod<
   ListOrganizationsDevelopersAppsAttributesResponse,
   ListOrganizationsDevelopersAppsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAppsAttributesRequest,
   output: ListOrganizationsDevelopersAppsAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -10059,7 +10059,7 @@ export interface GetOrganizationsDevelopersAttributesRequest {
 }
 
 export const GetOrganizationsDevelopersAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10069,7 +10069,7 @@ export const GetOrganizationsDevelopersAttributesRequest =
 export type GetOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const GetOrganizationsDevelopersAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type GetOrganizationsDevelopersAttributesError =
   | DefaultErrors
@@ -10082,7 +10082,7 @@ export const getOrganizationsDevelopersAttributes: API.OperationMethod<
   GetOrganizationsDevelopersAttributesResponse,
   GetOrganizationsDevelopersAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAttributesRequest,
   output: GetOrganizationsDevelopersAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -10094,7 +10094,7 @@ export interface DeleteOrganizationsDevelopersAttributesRequest {
 }
 
 export const DeleteOrganizationsDevelopersAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -10104,7 +10104,7 @@ export const DeleteOrganizationsDevelopersAttributesRequest =
 export type DeleteOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const DeleteOrganizationsDevelopersAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type DeleteOrganizationsDevelopersAttributesError =
   | DefaultErrors
@@ -10119,7 +10119,7 @@ export const deleteOrganizationsDevelopersAttributes: API.OperationMethod<
   DeleteOrganizationsDevelopersAttributesResponse,
   DeleteOrganizationsDevelopersAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAttributesRequest,
   output: DeleteOrganizationsDevelopersAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10131,7 +10131,7 @@ export interface ListOrganizationsDevelopersAttributesRequest {
 }
 
 export const ListOrganizationsDevelopersAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
@@ -10141,7 +10141,7 @@ export const ListOrganizationsDevelopersAttributesRequest =
 export type ListOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attributes;
 export const ListOrganizationsDevelopersAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type ListOrganizationsDevelopersAttributesError =
   | DefaultErrors
@@ -10154,7 +10154,7 @@ export const listOrganizationsDevelopersAttributes: API.OperationMethod<
   ListOrganizationsDevelopersAttributesResponse,
   ListOrganizationsDevelopersAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAttributesRequest,
   output: ListOrganizationsDevelopersAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -10168,7 +10168,7 @@ export interface UpdateDeveloperAttributeOrganizationsDevelopersAttributesReques
 }
 
 export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
@@ -10179,7 +10179,7 @@ export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest =
 export type UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAttributeOrganizationsDevelopersAttributesError =
   | DefaultErrors
@@ -10194,7 +10194,7 @@ export const updateDeveloperAttributeOrganizationsDevelopersAttributes: API.Oper
   UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse,
   UpdateDeveloperAttributeOrganizationsDevelopersAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest,
   output: UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10208,7 +10208,7 @@ export interface CreditOrganizationsDevelopersBalanceRequest {
 }
 
 export const CreditOrganizationsDevelopersBalanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudApigeeV1CreditDeveloperBalanceRequest,
@@ -10221,7 +10221,7 @@ export const CreditOrganizationsDevelopersBalanceRequest =
 export type CreditOrganizationsDevelopersBalanceResponse =
   GoogleCloudApigeeV1DeveloperBalance;
 export const CreditOrganizationsDevelopersBalanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
 export type CreditOrganizationsDevelopersBalanceError =
   | DefaultErrors
@@ -10236,7 +10236,7 @@ export const creditOrganizationsDevelopersBalance: API.OperationMethod<
   CreditOrganizationsDevelopersBalanceResponse,
   CreditOrganizationsDevelopersBalanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreditOrganizationsDevelopersBalanceRequest,
   output: CreditOrganizationsDevelopersBalanceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10250,7 +10250,7 @@ export interface AdjustOrganizationsDevelopersBalanceRequest {
 }
 
 export const AdjustOrganizationsDevelopersBalanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudApigeeV1AdjustDeveloperBalanceRequest,
@@ -10263,7 +10263,7 @@ export const AdjustOrganizationsDevelopersBalanceRequest =
 export type AdjustOrganizationsDevelopersBalanceResponse =
   GoogleCloudApigeeV1DeveloperBalance;
 export const AdjustOrganizationsDevelopersBalanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
 export type AdjustOrganizationsDevelopersBalanceError =
   | DefaultErrors
@@ -10278,7 +10278,7 @@ export const adjustOrganizationsDevelopersBalance: API.OperationMethod<
   AdjustOrganizationsDevelopersBalanceResponse,
   AdjustOrganizationsDevelopersBalanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdjustOrganizationsDevelopersBalanceRequest,
   output: AdjustOrganizationsDevelopersBalanceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10304,7 +10304,7 @@ export interface ListOrganizationsHostQueriesRequest {
 }
 
 export const ListOrganizationsHostQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inclQueriesWithoutReport: Schema.optional(Schema.String).pipe(
       T.HttpQuery("inclQueriesWithoutReport"),
     ),
@@ -10327,7 +10327,7 @@ export const ListOrganizationsHostQueriesRequest =
 export type ListOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1ListAsyncQueriesResponse;
 export const ListOrganizationsHostQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
 
 export type ListOrganizationsHostQueriesError =
   | DefaultErrors
@@ -10340,7 +10340,7 @@ export const listOrganizationsHostQueries: API.OperationMethod<
   ListOrganizationsHostQueriesResponse,
   ListOrganizationsHostQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsHostQueriesRequest,
   output: ListOrganizationsHostQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -10352,7 +10352,7 @@ export interface GetResultViewOrganizationsHostQueriesRequest {
 }
 
 export const GetResultViewOrganizationsHostQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10362,7 +10362,7 @@ export const GetResultViewOrganizationsHostQueriesRequest =
 export type GetResultViewOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1AsyncQueryResultView;
 export const GetResultViewOrganizationsHostQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQueryResultView;
+  /*@__PURE__*/ GoogleCloudApigeeV1AsyncQueryResultView;
 
 export type GetResultViewOrganizationsHostQueriesError =
   | DefaultErrors
@@ -10374,7 +10374,7 @@ export const getResultViewOrganizationsHostQueries: API.OperationMethod<
   GetResultViewOrganizationsHostQueriesResponse,
   GetResultViewOrganizationsHostQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsHostQueriesRequest,
   output: GetResultViewOrganizationsHostQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -10388,7 +10388,7 @@ export interface CreateOrganizationsHostQueriesRequest {
 }
 
 export const CreateOrganizationsHostQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Query).pipe(T.HttpBody()),
   }).pipe(
@@ -10399,7 +10399,7 @@ export const CreateOrganizationsHostQueriesRequest =
 export type CreateOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
 export const CreateOrganizationsHostQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
+  /*@__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
 export type CreateOrganizationsHostQueriesError =
   | DefaultErrors
@@ -10414,7 +10414,7 @@ export const createOrganizationsHostQueries: API.OperationMethod<
   CreateOrganizationsHostQueriesResponse,
   CreateOrganizationsHostQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsHostQueriesRequest,
   output: CreateOrganizationsHostQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10426,7 +10426,7 @@ export interface GetResultOrganizationsHostQueriesRequest {
 }
 
 export const GetResultOrganizationsHostQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10435,7 +10435,7 @@ export const GetResultOrganizationsHostQueriesRequest =
 
 export type GetResultOrganizationsHostQueriesResponse = GoogleApiHttpBody;
 export const GetResultOrganizationsHostQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetResultOrganizationsHostQueriesError =
   | DefaultErrors
@@ -10448,7 +10448,7 @@ export const getResultOrganizationsHostQueries: API.OperationMethod<
   GetResultOrganizationsHostQueriesResponse,
   GetResultOrganizationsHostQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsHostQueriesRequest,
   output: GetResultOrganizationsHostQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -10460,7 +10460,7 @@ export interface GetOrganizationsHostQueriesRequest {
 }
 
 export const GetOrganizationsHostQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10469,7 +10469,7 @@ export const GetOrganizationsHostQueriesRequest =
 
 export type GetOrganizationsHostQueriesResponse = GoogleCloudApigeeV1AsyncQuery;
 export const GetOrganizationsHostQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
+  /*@__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
 export type GetOrganizationsHostQueriesError =
   | DefaultErrors
@@ -10482,7 +10482,7 @@ export const getOrganizationsHostQueries: API.OperationMethod<
   GetOrganizationsHostQueriesResponse,
   GetOrganizationsHostQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostQueriesRequest,
   output: GetOrganizationsHostQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -10494,7 +10494,7 @@ export interface DeleteOrganizationsSitesApicategoriesRequest {
 }
 
 export const DeleteOrganizationsSitesApicategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -10504,7 +10504,7 @@ export const DeleteOrganizationsSitesApicategoriesRequest =
 export type DeleteOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1DeleteResponse;
 export const DeleteOrganizationsSitesApicategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
 
 export type DeleteOrganizationsSitesApicategoriesError =
   | DefaultErrors
@@ -10519,7 +10519,7 @@ export const deleteOrganizationsSitesApicategories: API.OperationMethod<
   DeleteOrganizationsSitesApicategoriesResponse,
   DeleteOrganizationsSitesApicategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSitesApicategoriesRequest,
   output: DeleteOrganizationsSitesApicategoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10531,7 +10531,7 @@ export interface GetOrganizationsSitesApicategoriesRequest {
 }
 
 export const GetOrganizationsSitesApicategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10541,7 +10541,7 @@ export const GetOrganizationsSitesApicategoriesRequest =
 export type GetOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
 export const GetOrganizationsSitesApicategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
 export type GetOrganizationsSitesApicategoriesError =
   | DefaultErrors
@@ -10554,7 +10554,7 @@ export const getOrganizationsSitesApicategories: API.OperationMethod<
   GetOrganizationsSitesApicategoriesResponse,
   GetOrganizationsSitesApicategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSitesApicategoriesRequest,
   output: GetOrganizationsSitesApicategoriesResponse,
   errors: [NotFound, Forbidden],
@@ -10566,7 +10566,7 @@ export interface ListOrganizationsSitesApicategoriesRequest {
 }
 
 export const ListOrganizationsSitesApicategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apicategories" }),
@@ -10576,7 +10576,7 @@ export const ListOrganizationsSitesApicategoriesRequest =
 export type ListOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ListApiCategoriesResponse;
 export const ListOrganizationsSitesApicategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiCategoriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApiCategoriesResponse;
 
 export type ListOrganizationsSitesApicategoriesError =
   | DefaultErrors
@@ -10589,7 +10589,7 @@ export const listOrganizationsSitesApicategories: API.OperationMethod<
   ListOrganizationsSitesApicategoriesResponse,
   ListOrganizationsSitesApicategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsSitesApicategoriesRequest,
   output: ListOrganizationsSitesApicategoriesResponse,
   errors: [NotFound, Forbidden],
@@ -10603,7 +10603,7 @@ export interface CreateOrganizationsSitesApicategoriesRequest {
 }
 
 export const CreateOrganizationsSitesApicategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ApiCategory).pipe(T.HttpBody()),
   }).pipe(
@@ -10618,7 +10618,7 @@ export const CreateOrganizationsSitesApicategoriesRequest =
 export type CreateOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
 export const CreateOrganizationsSitesApicategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
 export type CreateOrganizationsSitesApicategoriesError =
   | DefaultErrors
@@ -10633,7 +10633,7 @@ export const createOrganizationsSitesApicategories: API.OperationMethod<
   CreateOrganizationsSitesApicategoriesResponse,
   CreateOrganizationsSitesApicategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSitesApicategoriesRequest,
   output: CreateOrganizationsSitesApicategoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10647,7 +10647,7 @@ export interface PatchOrganizationsSitesApicategoriesRequest {
 }
 
 export const PatchOrganizationsSitesApicategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiCategory).pipe(T.HttpBody()),
   }).pipe(
@@ -10658,7 +10658,7 @@ export const PatchOrganizationsSitesApicategoriesRequest =
 export type PatchOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
 export const PatchOrganizationsSitesApicategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
 export type PatchOrganizationsSitesApicategoriesError =
   | DefaultErrors
@@ -10673,7 +10673,7 @@ export const patchOrganizationsSitesApicategories: API.OperationMethod<
   PatchOrganizationsSitesApicategoriesResponse,
   PatchOrganizationsSitesApicategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSitesApicategoriesRequest,
   output: PatchOrganizationsSitesApicategoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10689,7 +10689,7 @@ export interface ListOrganizationsSitesApidocsRequest {
 }
 
 export const ListOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -10701,7 +10701,7 @@ export const ListOrganizationsSitesApidocsRequest =
 export type ListOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ListApiDocsResponse;
 export const ListOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiDocsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApiDocsResponse;
 
 export type ListOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10714,7 +10714,7 @@ export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
   ListOrganizationsSitesApidocsResponse,
   ListOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSitesApidocsRequest,
   output: ListOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden],
@@ -10732,7 +10732,7 @@ export interface CreateOrganizationsSitesApidocsRequest {
 }
 
 export const CreateOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ApiDoc).pipe(T.HttpBody()),
   }).pipe(
@@ -10743,7 +10743,7 @@ export const CreateOrganizationsSitesApidocsRequest =
 export type CreateOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
 export const CreateOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
 export type CreateOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10758,7 +10758,7 @@ export const createOrganizationsSitesApidocs: API.OperationMethod<
   CreateOrganizationsSitesApidocsResponse,
   CreateOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSitesApidocsRequest,
   output: CreateOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10772,7 +10772,7 @@ export interface UpdateOrganizationsSitesApidocsRequest {
 }
 
 export const UpdateOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiDoc).pipe(T.HttpBody()),
   }).pipe(
@@ -10783,7 +10783,7 @@ export const UpdateOrganizationsSitesApidocsRequest =
 export type UpdateOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
 export const UpdateOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
 export type UpdateOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10798,7 +10798,7 @@ export const updateOrganizationsSitesApidocs: API.OperationMethod<
   UpdateOrganizationsSitesApidocsResponse,
   UpdateOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsSitesApidocsRequest,
   output: UpdateOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10812,7 +10812,7 @@ export interface UpdateDocumentationOrganizationsSitesApidocsRequest {
 }
 
 export const UpdateDocumentationOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiDocDocumentation).pipe(
       T.HttpBody(),
@@ -10825,7 +10825,7 @@ export const UpdateDocumentationOrganizationsSitesApidocsRequest =
 export type UpdateDocumentationOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocDocumentationResponse;
 export const UpdateDocumentationOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
 
 export type UpdateDocumentationOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10840,7 +10840,7 @@ export const updateDocumentationOrganizationsSitesApidocs: API.OperationMethod<
   UpdateDocumentationOrganizationsSitesApidocsResponse,
   UpdateDocumentationOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDocumentationOrganizationsSitesApidocsRequest,
   output: UpdateDocumentationOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10852,7 +10852,7 @@ export interface DeleteOrganizationsSitesApidocsRequest {
 }
 
 export const DeleteOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -10862,7 +10862,7 @@ export const DeleteOrganizationsSitesApidocsRequest =
 export type DeleteOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1DeleteResponse;
 export const DeleteOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
 
 export type DeleteOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10877,7 +10877,7 @@ export const deleteOrganizationsSitesApidocs: API.OperationMethod<
   DeleteOrganizationsSitesApidocsResponse,
   DeleteOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSitesApidocsRequest,
   output: DeleteOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -10889,7 +10889,7 @@ export interface GetDocumentationOrganizationsSitesApidocsRequest {
 }
 
 export const GetDocumentationOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10899,7 +10899,7 @@ export const GetDocumentationOrganizationsSitesApidocsRequest =
 export type GetDocumentationOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocDocumentationResponse;
 export const GetDocumentationOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
 
 export type GetDocumentationOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10912,7 +10912,7 @@ export const getDocumentationOrganizationsSitesApidocs: API.OperationMethod<
   GetDocumentationOrganizationsSitesApidocsResponse,
   GetDocumentationOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentationOrganizationsSitesApidocsRequest,
   output: GetDocumentationOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden],
@@ -10924,7 +10924,7 @@ export interface GetOrganizationsSitesApidocsRequest {
 }
 
 export const GetOrganizationsSitesApidocsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10934,7 +10934,7 @@ export const GetOrganizationsSitesApidocsRequest =
 export type GetOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
 export const GetOrganizationsSitesApidocsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
 export type GetOrganizationsSitesApidocsError =
   | DefaultErrors
@@ -10947,7 +10947,7 @@ export const getOrganizationsSitesApidocs: API.OperationMethod<
   GetOrganizationsSitesApidocsResponse,
   GetOrganizationsSitesApidocsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSitesApidocsRequest,
   output: GetOrganizationsSitesApidocsResponse,
   errors: [NotFound, Forbidden],
@@ -10959,7 +10959,7 @@ export interface GetOrganizationsSecurityProfilesRequest {
 }
 
 export const GetOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -10969,7 +10969,7 @@ export const GetOrganizationsSecurityProfilesRequest =
 export type GetOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
 export const GetOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
 export type GetOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -10982,7 +10982,7 @@ export const getOrganizationsSecurityProfiles: API.OperationMethod<
   GetOrganizationsSecurityProfilesResponse,
   GetOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityProfilesRequest,
   output: GetOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -10994,7 +10994,7 @@ export interface DeleteOrganizationsSecurityProfilesRequest {
 }
 
 export const DeleteOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -11003,7 +11003,7 @@ export const DeleteOrganizationsSecurityProfilesRequest =
 
 export type DeleteOrganizationsSecurityProfilesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -11018,7 +11018,7 @@ export const deleteOrganizationsSecurityProfiles: API.OperationMethod<
   DeleteOrganizationsSecurityProfilesResponse,
   DeleteOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesRequest,
   output: DeleteOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11034,7 +11034,7 @@ export interface ListOrganizationsSecurityProfilesRequest {
 }
 
 export const ListOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -11046,7 +11046,7 @@ export const ListOrganizationsSecurityProfilesRequest =
 export type ListOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1ListSecurityProfilesResponse;
 export const ListOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesResponse;
 
 export type ListOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -11059,7 +11059,7 @@ export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
   ListOrganizationsSecurityProfilesResponse,
   ListOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesRequest,
   output: ListOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -11079,7 +11079,7 @@ export interface PatchOrganizationsSecurityProfilesRequest {
 }
 
 export const PatchOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityProfile).pipe(
@@ -11093,7 +11093,7 @@ export const PatchOrganizationsSecurityProfilesRequest =
 export type PatchOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
 export const PatchOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
 export type PatchOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -11108,7 +11108,7 @@ export const patchOrganizationsSecurityProfiles: API.OperationMethod<
   PatchOrganizationsSecurityProfilesResponse,
   PatchOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityProfilesRequest,
   output: PatchOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11124,7 +11124,7 @@ export interface ListRevisionsOrganizationsSecurityProfilesRequest {
 }
 
 export const ListRevisionsOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -11136,7 +11136,7 @@ export const ListRevisionsOrganizationsSecurityProfilesRequest =
 export type ListRevisionsOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse;
 export const ListRevisionsOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse;
 
 export type ListRevisionsOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -11149,7 +11149,7 @@ export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationM
   ListRevisionsOrganizationsSecurityProfilesResponse,
   ListRevisionsOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsOrganizationsSecurityProfilesRequest,
   output: ListRevisionsOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -11169,7 +11169,7 @@ export interface CreateOrganizationsSecurityProfilesRequest {
 }
 
 export const CreateOrganizationsSecurityProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityProfileId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("securityProfileId"),
     ),
@@ -11189,7 +11189,7 @@ export const CreateOrganizationsSecurityProfilesRequest =
 export type CreateOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
 export const CreateOrganizationsSecurityProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
 export type CreateOrganizationsSecurityProfilesError =
   | DefaultErrors
@@ -11204,7 +11204,7 @@ export const createOrganizationsSecurityProfiles: API.OperationMethod<
   CreateOrganizationsSecurityProfilesResponse,
   CreateOrganizationsSecurityProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesRequest,
   output: CreateOrganizationsSecurityProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11218,7 +11218,7 @@ export interface CreateOrganizationsSecurityProfilesEnvironmentsRequest {
 }
 
 export const CreateOrganizationsSecurityProfilesEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation,
@@ -11235,7 +11235,7 @@ export const CreateOrganizationsSecurityProfilesEnvironmentsRequest =
 export type CreateOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation;
 export const CreateOrganizationsSecurityProfilesEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation;
 
 export type CreateOrganizationsSecurityProfilesEnvironmentsError =
   | DefaultErrors
@@ -11250,7 +11250,7 @@ export const createOrganizationsSecurityProfilesEnvironments: API.OperationMetho
   CreateOrganizationsSecurityProfilesEnvironmentsResponse,
   CreateOrganizationsSecurityProfilesEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesEnvironmentsRequest,
   output: CreateOrganizationsSecurityProfilesEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11262,7 +11262,7 @@ export interface DeleteOrganizationsSecurityProfilesEnvironmentsRequest {
 }
 
 export const DeleteOrganizationsSecurityProfilesEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -11272,7 +11272,7 @@ export const DeleteOrganizationsSecurityProfilesEnvironmentsRequest =
 export type DeleteOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityProfilesEnvironmentsError =
   | DefaultErrors
@@ -11287,7 +11287,7 @@ export const deleteOrganizationsSecurityProfilesEnvironments: API.OperationMetho
   DeleteOrganizationsSecurityProfilesEnvironmentsResponse,
   DeleteOrganizationsSecurityProfilesEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesEnvironmentsRequest,
   output: DeleteOrganizationsSecurityProfilesEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11301,7 +11301,7 @@ export interface ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmen
 }
 
 export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     profileEnvironment: Schema.String.pipe(T.HttpPath("profileEnvironment")),
     body: Schema.optional(
       GoogleCloudApigeeV1ComputeEnvironmentScoresRequest,
@@ -11318,7 +11318,7 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
 export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
 
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsError =
   | DefaultErrors
@@ -11333,7 +11333,7 @@ export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: 
   ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsResponse,
   ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest,
   output:
@@ -11347,7 +11347,7 @@ export interface GetOrganizationsApiproductsRequest {
 }
 
 export const GetOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -11356,7 +11356,7 @@ export const GetOrganizationsApiproductsRequest =
 
 export type GetOrganizationsApiproductsResponse = GoogleCloudApigeeV1ApiProduct;
 export const GetOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
 export type GetOrganizationsApiproductsError =
   | DefaultErrors
@@ -11369,7 +11369,7 @@ export const getOrganizationsApiproducts: API.OperationMethod<
   GetOrganizationsApiproductsResponse,
   GetOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsRequest,
   output: GetOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden],
@@ -11383,7 +11383,7 @@ export interface AttributesOrganizationsApiproductsRequest {
 }
 
 export const AttributesOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
@@ -11394,7 +11394,7 @@ export const AttributesOrganizationsApiproductsRequest =
 export type AttributesOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1Attributes;
 export const AttributesOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type AttributesOrganizationsApiproductsError =
   | DefaultErrors
@@ -11409,7 +11409,7 @@ export const attributesOrganizationsApiproducts: API.OperationMethod<
   AttributesOrganizationsApiproductsResponse,
   AttributesOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsApiproductsRequest,
   output: AttributesOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11421,7 +11421,7 @@ export interface DeleteOrganizationsApiproductsRequest {
 }
 
 export const DeleteOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -11431,7 +11431,7 @@ export const DeleteOrganizationsApiproductsRequest =
 export type DeleteOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
 export const DeleteOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
 export type DeleteOrganizationsApiproductsError =
   | DefaultErrors
@@ -11446,7 +11446,7 @@ export const deleteOrganizationsApiproducts: API.OperationMethod<
   DeleteOrganizationsApiproductsResponse,
   DeleteOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsRequest,
   output: DeleteOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11460,7 +11460,7 @@ export interface CreateOrganizationsApiproductsRequest {
 }
 
 export const CreateOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProduct).pipe(T.HttpBody()),
   }).pipe(
@@ -11471,7 +11471,7 @@ export const CreateOrganizationsApiproductsRequest =
 export type CreateOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
 export const CreateOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
 export type CreateOrganizationsApiproductsError =
   | DefaultErrors
@@ -11486,7 +11486,7 @@ export const createOrganizationsApiproducts: API.OperationMethod<
   CreateOrganizationsApiproductsResponse,
   CreateOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApiproductsRequest,
   output: CreateOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11500,7 +11500,7 @@ export interface MoveOrganizationsApiproductsRequest {
 }
 
 export const MoveOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1MoveApiProductRequest).pipe(
       T.HttpBody(),
@@ -11513,7 +11513,7 @@ export const MoveOrganizationsApiproductsRequest =
 export type MoveOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
 export const MoveOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
 export type MoveOrganizationsApiproductsError =
   | DefaultErrors
@@ -11528,7 +11528,7 @@ export const moveOrganizationsApiproducts: API.OperationMethod<
   MoveOrganizationsApiproductsResponse,
   MoveOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveOrganizationsApiproductsRequest,
   output: MoveOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11542,7 +11542,7 @@ export interface UpdateOrganizationsApiproductsRequest {
 }
 
 export const UpdateOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProduct).pipe(T.HttpBody()),
   }).pipe(
@@ -11553,7 +11553,7 @@ export const UpdateOrganizationsApiproductsRequest =
 export type UpdateOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
 export const UpdateOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
 export type UpdateOrganizationsApiproductsError =
   | DefaultErrors
@@ -11568,7 +11568,7 @@ export const updateOrganizationsApiproducts: API.OperationMethod<
   UpdateOrganizationsApiproductsResponse,
   UpdateOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApiproductsRequest,
   output: UpdateOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11592,7 +11592,7 @@ export interface ListOrganizationsApiproductsRequest {
 }
 
 export const ListOrganizationsApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
     count: Schema.optional(Schema.String).pipe(T.HttpQuery("count")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -11612,7 +11612,7 @@ export const ListOrganizationsApiproductsRequest =
 export type ListOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ListApiProductsResponse;
 export const ListOrganizationsApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiProductsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApiProductsResponse;
 
 export type ListOrganizationsApiproductsError =
   | DefaultErrors
@@ -11625,7 +11625,7 @@ export const listOrganizationsApiproducts: API.OperationMethod<
   ListOrganizationsApiproductsResponse,
   ListOrganizationsApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsRequest,
   output: ListOrganizationsApiproductsResponse,
   errors: [NotFound, Forbidden],
@@ -11637,7 +11637,7 @@ export interface GetOrganizationsApiproductsRateplansRequest {
 }
 
 export const GetOrganizationsApiproductsRateplansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -11647,7 +11647,7 @@ export const GetOrganizationsApiproductsRateplansRequest =
 export type GetOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
 export const GetOrganizationsApiproductsRateplansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
+  /*@__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
 export type GetOrganizationsApiproductsRateplansError =
   | DefaultErrors
@@ -11660,7 +11660,7 @@ export const getOrganizationsApiproductsRateplans: API.OperationMethod<
   GetOrganizationsApiproductsRateplansResponse,
   GetOrganizationsApiproductsRateplansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsRateplansRequest,
   output: GetOrganizationsApiproductsRateplansResponse,
   errors: [NotFound, Forbidden],
@@ -11672,7 +11672,7 @@ export interface DeleteOrganizationsApiproductsRateplansRequest {
 }
 
 export const DeleteOrganizationsApiproductsRateplansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -11682,7 +11682,7 @@ export const DeleteOrganizationsApiproductsRateplansRequest =
 export type DeleteOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
 export const DeleteOrganizationsApiproductsRateplansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
+  /*@__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
 export type DeleteOrganizationsApiproductsRateplansError =
   | DefaultErrors
@@ -11697,7 +11697,7 @@ export const deleteOrganizationsApiproductsRateplans: API.OperationMethod<
   DeleteOrganizationsApiproductsRateplansResponse,
   DeleteOrganizationsApiproductsRateplansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsRateplansRequest,
   output: DeleteOrganizationsApiproductsRateplansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11711,7 +11711,7 @@ export interface CreateOrganizationsApiproductsRateplansRequest {
 }
 
 export const CreateOrganizationsApiproductsRateplansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1RatePlan).pipe(T.HttpBody()),
   }).pipe(
@@ -11722,7 +11722,7 @@ export const CreateOrganizationsApiproductsRateplansRequest =
 export type CreateOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
 export const CreateOrganizationsApiproductsRateplansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
+  /*@__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
 export type CreateOrganizationsApiproductsRateplansError =
   | DefaultErrors
@@ -11737,7 +11737,7 @@ export const createOrganizationsApiproductsRateplans: API.OperationMethod<
   CreateOrganizationsApiproductsRateplansResponse,
   CreateOrganizationsApiproductsRateplansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApiproductsRateplansRequest,
   output: CreateOrganizationsApiproductsRateplansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11751,7 +11751,7 @@ export interface UpdateOrganizationsApiproductsRateplansRequest {
 }
 
 export const UpdateOrganizationsApiproductsRateplansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1RatePlan).pipe(T.HttpBody()),
   }).pipe(
@@ -11762,7 +11762,7 @@ export const UpdateOrganizationsApiproductsRateplansRequest =
 export type UpdateOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
 export const UpdateOrganizationsApiproductsRateplansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
+  /*@__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
 export type UpdateOrganizationsApiproductsRateplansError =
   | DefaultErrors
@@ -11777,7 +11777,7 @@ export const updateOrganizationsApiproductsRateplans: API.OperationMethod<
   UpdateOrganizationsApiproductsRateplansResponse,
   UpdateOrganizationsApiproductsRateplansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApiproductsRateplansRequest,
   output: UpdateOrganizationsApiproductsRateplansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11799,7 +11799,7 @@ export interface ListOrganizationsApiproductsRateplansRequest {
 }
 
 export const ListOrganizationsApiproductsRateplansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     state: Schema.optional(Schema.String).pipe(T.HttpQuery("state")),
     expand: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("expand")),
@@ -11814,7 +11814,7 @@ export const ListOrganizationsApiproductsRateplansRequest =
 export type ListOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1ListRatePlansResponse;
 export const ListOrganizationsApiproductsRateplansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListRatePlansResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListRatePlansResponse;
 
 export type ListOrganizationsApiproductsRateplansError =
   | DefaultErrors
@@ -11827,7 +11827,7 @@ export const listOrganizationsApiproductsRateplans: API.OperationMethod<
   ListOrganizationsApiproductsRateplansResponse,
   ListOrganizationsApiproductsRateplansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsRateplansRequest,
   output: ListOrganizationsApiproductsRateplansResponse,
   errors: [NotFound, Forbidden],
@@ -11841,7 +11841,7 @@ export interface UpdateApiProductAttributeOrganizationsApiproductsAttributesRequ
 }
 
 export const UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
@@ -11852,7 +11852,7 @@ export const UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest 
 export type UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateApiProductAttributeOrganizationsApiproductsAttributesError =
   | DefaultErrors
@@ -11867,7 +11867,7 @@ export const updateApiProductAttributeOrganizationsApiproductsAttributes: API.Op
   UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse,
   UpdateApiProductAttributeOrganizationsApiproductsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest,
   output: UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11879,7 +11879,7 @@ export interface ListOrganizationsApiproductsAttributesRequest {
 }
 
 export const ListOrganizationsApiproductsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
@@ -11889,7 +11889,7 @@ export const ListOrganizationsApiproductsAttributesRequest =
 export type ListOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attributes;
 export const ListOrganizationsApiproductsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attributes;
 
 export type ListOrganizationsApiproductsAttributesError =
   | DefaultErrors
@@ -11902,7 +11902,7 @@ export const listOrganizationsApiproductsAttributes: API.OperationMethod<
   ListOrganizationsApiproductsAttributesResponse,
   ListOrganizationsApiproductsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsAttributesRequest,
   output: ListOrganizationsApiproductsAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -11914,7 +11914,7 @@ export interface DeleteOrganizationsApiproductsAttributesRequest {
 }
 
 export const DeleteOrganizationsApiproductsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -11924,7 +11924,7 @@ export const DeleteOrganizationsApiproductsAttributesRequest =
 export type DeleteOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const DeleteOrganizationsApiproductsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type DeleteOrganizationsApiproductsAttributesError =
   | DefaultErrors
@@ -11939,7 +11939,7 @@ export const deleteOrganizationsApiproductsAttributes: API.OperationMethod<
   DeleteOrganizationsApiproductsAttributesResponse,
   DeleteOrganizationsApiproductsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsAttributesRequest,
   output: DeleteOrganizationsApiproductsAttributesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -11951,7 +11951,7 @@ export interface GetOrganizationsApiproductsAttributesRequest {
 }
 
 export const GetOrganizationsApiproductsAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -11961,7 +11961,7 @@ export const GetOrganizationsApiproductsAttributesRequest =
 export type GetOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
 export const GetOrganizationsApiproductsAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
+  /*@__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type GetOrganizationsApiproductsAttributesError =
   | DefaultErrors
@@ -11974,7 +11974,7 @@ export const getOrganizationsApiproductsAttributes: API.OperationMethod<
   GetOrganizationsApiproductsAttributesResponse,
   GetOrganizationsApiproductsAttributesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsAttributesRequest,
   output: GetOrganizationsApiproductsAttributesResponse,
   errors: [NotFound, Forbidden],
@@ -11990,7 +11990,7 @@ export interface CreateOrganizationsDatacollectorsRequest {
 }
 
 export const CreateOrganizationsDatacollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dataCollectorId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("dataCollectorId"),
@@ -12008,7 +12008,7 @@ export const CreateOrganizationsDatacollectorsRequest =
 export type CreateOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
 export const CreateOrganizationsDatacollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
+  /*@__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
 export type CreateOrganizationsDatacollectorsError =
   | DefaultErrors
@@ -12023,7 +12023,7 @@ export const createOrganizationsDatacollectors: API.OperationMethod<
   CreateOrganizationsDatacollectorsResponse,
   CreateOrganizationsDatacollectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDatacollectorsRequest,
   output: CreateOrganizationsDatacollectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12039,7 +12039,7 @@ export interface PatchOrganizationsDatacollectorsRequest {
 }
 
 export const PatchOrganizationsDatacollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DataCollector).pipe(T.HttpBody()),
@@ -12051,7 +12051,7 @@ export const PatchOrganizationsDatacollectorsRequest =
 export type PatchOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
 export const PatchOrganizationsDatacollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
+  /*@__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
 export type PatchOrganizationsDatacollectorsError =
   | DefaultErrors
@@ -12066,7 +12066,7 @@ export const patchOrganizationsDatacollectors: API.OperationMethod<
   PatchOrganizationsDatacollectorsResponse,
   PatchOrganizationsDatacollectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsDatacollectorsRequest,
   output: PatchOrganizationsDatacollectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12082,7 +12082,7 @@ export interface ListOrganizationsDatacollectorsRequest {
 }
 
 export const ListOrganizationsDatacollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -12094,7 +12094,7 @@ export const ListOrganizationsDatacollectorsRequest =
 export type ListOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1ListDataCollectorsResponse;
 export const ListOrganizationsDatacollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDataCollectorsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDataCollectorsResponse;
 
 export type ListOrganizationsDatacollectorsError =
   | DefaultErrors
@@ -12107,7 +12107,7 @@ export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
   ListOrganizationsDatacollectorsResponse,
   ListOrganizationsDatacollectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDatacollectorsRequest,
   output: ListOrganizationsDatacollectorsResponse,
   errors: [NotFound, Forbidden],
@@ -12123,7 +12123,7 @@ export interface DeleteOrganizationsDatacollectorsRequest {
 }
 
 export const DeleteOrganizationsDatacollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -12132,7 +12132,7 @@ export const DeleteOrganizationsDatacollectorsRequest =
 
 export type DeleteOrganizationsDatacollectorsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsDatacollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsDatacollectorsError =
   | DefaultErrors
@@ -12147,7 +12147,7 @@ export const deleteOrganizationsDatacollectors: API.OperationMethod<
   DeleteOrganizationsDatacollectorsResponse,
   DeleteOrganizationsDatacollectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDatacollectorsRequest,
   output: DeleteOrganizationsDatacollectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12159,7 +12159,7 @@ export interface GetOrganizationsDatacollectorsRequest {
 }
 
 export const GetOrganizationsDatacollectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -12169,7 +12169,7 @@ export const GetOrganizationsDatacollectorsRequest =
 export type GetOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
 export const GetOrganizationsDatacollectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
+  /*@__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
 export type GetOrganizationsDatacollectorsError =
   | DefaultErrors
@@ -12182,7 +12182,7 @@ export const getOrganizationsDatacollectors: API.OperationMethod<
   GetOrganizationsDatacollectorsResponse,
   GetOrganizationsDatacollectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDatacollectorsRequest,
   output: GetOrganizationsDatacollectorsResponse,
   errors: [NotFound, Forbidden],
@@ -12194,7 +12194,7 @@ export interface DeleteOrganizationsEnvgroupsRequest {
 }
 
 export const DeleteOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -12203,7 +12203,7 @@ export const DeleteOrganizationsEnvgroupsRequest =
 
 export type DeleteOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12218,7 +12218,7 @@ export const deleteOrganizationsEnvgroups: API.OperationMethod<
   DeleteOrganizationsEnvgroupsResponse,
   DeleteOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvgroupsRequest,
   output: DeleteOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12230,7 +12230,7 @@ export interface GetOrganizationsEnvgroupsRequest {
 }
 
 export const GetOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -12240,7 +12240,7 @@ export const GetOrganizationsEnvgroupsRequest =
 export type GetOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1EnvironmentGroup;
 export const GetOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroup;
+  /*@__PURE__*/ GoogleCloudApigeeV1EnvironmentGroup;
 
 export type GetOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12253,7 +12253,7 @@ export const getOrganizationsEnvgroups: API.OperationMethod<
   GetOrganizationsEnvgroupsResponse,
   GetOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvgroupsRequest,
   output: GetOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -12269,7 +12269,7 @@ export interface ListOrganizationsEnvgroupsRequest {
 }
 
 export const ListOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -12281,7 +12281,7 @@ export const ListOrganizationsEnvgroupsRequest =
 export type ListOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse;
 export const ListOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupsResponse;
 
 export type ListOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12294,7 +12294,7 @@ export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
   ListOrganizationsEnvgroupsResponse,
   ListOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsRequest,
   output: ListOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -12314,7 +12314,7 @@ export interface CreateOrganizationsEnvgroupsRequest {
 }
 
 export const CreateOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1EnvironmentGroup).pipe(
@@ -12327,7 +12327,7 @@ export const CreateOrganizationsEnvgroupsRequest =
 
 export type CreateOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12342,7 +12342,7 @@ export const createOrganizationsEnvgroups: API.OperationMethod<
   CreateOrganizationsEnvgroupsResponse,
   CreateOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvgroupsRequest,
   output: CreateOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12356,7 +12356,7 @@ export interface GetDeployedIngressConfigOrganizationsEnvgroupsRequest {
 }
 
 export const GetDeployedIngressConfigOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -12367,7 +12367,7 @@ export const GetDeployedIngressConfigOrganizationsEnvgroupsRequest =
 export type GetDeployedIngressConfigOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1EnvironmentGroupConfig;
 export const GetDeployedIngressConfigOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupConfig;
 
 export type GetDeployedIngressConfigOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12380,7 +12380,7 @@ export const getDeployedIngressConfigOrganizationsEnvgroups: API.OperationMethod
   GetDeployedIngressConfigOrganizationsEnvgroupsResponse,
   GetDeployedIngressConfigOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeployedIngressConfigOrganizationsEnvgroupsRequest,
   output: GetDeployedIngressConfigOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -12396,7 +12396,7 @@ export interface PatchOrganizationsEnvgroupsRequest {
 }
 
 export const PatchOrganizationsEnvgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1EnvironmentGroup).pipe(
@@ -12409,7 +12409,7 @@ export const PatchOrganizationsEnvgroupsRequest =
 
 export type PatchOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsEnvgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchOrganizationsEnvgroupsError =
   | DefaultErrors
@@ -12424,7 +12424,7 @@ export const patchOrganizationsEnvgroups: API.OperationMethod<
   PatchOrganizationsEnvgroupsResponse,
   PatchOrganizationsEnvgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvgroupsRequest,
   output: PatchOrganizationsEnvgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12440,7 +12440,7 @@ export interface ListOrganizationsEnvgroupsAttachmentsRequest {
 }
 
 export const ListOrganizationsEnvgroupsAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -12452,7 +12452,7 @@ export const ListOrganizationsEnvgroupsAttachmentsRequest =
 export type ListOrganizationsEnvgroupsAttachmentsResponse =
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse;
 export const ListOrganizationsEnvgroupsAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse;
 
 export type ListOrganizationsEnvgroupsAttachmentsError =
   | DefaultErrors
@@ -12465,7 +12465,7 @@ export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod
   ListOrganizationsEnvgroupsAttachmentsResponse,
   ListOrganizationsEnvgroupsAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsAttachmentsRequest,
   output: ListOrganizationsEnvgroupsAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -12481,7 +12481,7 @@ export interface GetOrganizationsEnvgroupsAttachmentsRequest {
 }
 
 export const GetOrganizationsEnvgroupsAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -12491,7 +12491,7 @@ export const GetOrganizationsEnvgroupsAttachmentsRequest =
 export type GetOrganizationsEnvgroupsAttachmentsResponse =
   GoogleCloudApigeeV1EnvironmentGroupAttachment;
 export const GetOrganizationsEnvgroupsAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupAttachment;
+  /*@__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupAttachment;
 
 export type GetOrganizationsEnvgroupsAttachmentsError =
   | DefaultErrors
@@ -12504,7 +12504,7 @@ export const getOrganizationsEnvgroupsAttachments: API.OperationMethod<
   GetOrganizationsEnvgroupsAttachmentsResponse,
   GetOrganizationsEnvgroupsAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvgroupsAttachmentsRequest,
   output: GetOrganizationsEnvgroupsAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -12518,7 +12518,7 @@ export interface CreateOrganizationsEnvgroupsAttachmentsRequest {
 }
 
 export const CreateOrganizationsEnvgroupsAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1EnvironmentGroupAttachment).pipe(
       T.HttpBody(),
@@ -12531,7 +12531,7 @@ export const CreateOrganizationsEnvgroupsAttachmentsRequest =
 export type CreateOrganizationsEnvgroupsAttachmentsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsEnvgroupsAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEnvgroupsAttachmentsError =
   | DefaultErrors
@@ -12546,7 +12546,7 @@ export const createOrganizationsEnvgroupsAttachments: API.OperationMethod<
   CreateOrganizationsEnvgroupsAttachmentsResponse,
   CreateOrganizationsEnvgroupsAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvgroupsAttachmentsRequest,
   output: CreateOrganizationsEnvgroupsAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12558,7 +12558,7 @@ export interface DeleteOrganizationsEnvgroupsAttachmentsRequest {
 }
 
 export const DeleteOrganizationsEnvgroupsAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -12568,7 +12568,7 @@ export const DeleteOrganizationsEnvgroupsAttachmentsRequest =
 export type DeleteOrganizationsEnvgroupsAttachmentsResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsEnvgroupsAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsEnvgroupsAttachmentsError =
   | DefaultErrors
@@ -12583,7 +12583,7 @@ export const deleteOrganizationsEnvgroupsAttachments: API.OperationMethod<
   DeleteOrganizationsEnvgroupsAttachmentsResponse,
   DeleteOrganizationsEnvgroupsAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvgroupsAttachmentsRequest,
   output: DeleteOrganizationsEnvgroupsAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12599,7 +12599,7 @@ export interface CreateOrganizationsApimServiceExtensionsRequest {
 }
 
 export const CreateOrganizationsApimServiceExtensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     apimServiceExtensionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("apimServiceExtensionId"),
@@ -12619,7 +12619,7 @@ export const CreateOrganizationsApimServiceExtensionsRequest =
 export type CreateOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsApimServiceExtensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsApimServiceExtensionsError =
   | DefaultErrors
@@ -12634,7 +12634,7 @@ export const createOrganizationsApimServiceExtensions: API.OperationMethod<
   CreateOrganizationsApimServiceExtensionsResponse,
   CreateOrganizationsApimServiceExtensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApimServiceExtensionsRequest,
   output: CreateOrganizationsApimServiceExtensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12652,7 +12652,7 @@ export interface PatchOrganizationsApimServiceExtensionsRequest {
 }
 
 export const PatchOrganizationsApimServiceExtensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
@@ -12669,7 +12669,7 @@ export const PatchOrganizationsApimServiceExtensionsRequest =
 export type PatchOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
 export const PatchOrganizationsApimServiceExtensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchOrganizationsApimServiceExtensionsError =
   | DefaultErrors
@@ -12684,7 +12684,7 @@ export const patchOrganizationsApimServiceExtensions: API.OperationMethod<
   PatchOrganizationsApimServiceExtensionsResponse,
   PatchOrganizationsApimServiceExtensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsApimServiceExtensionsRequest,
   output: PatchOrganizationsApimServiceExtensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12700,7 +12700,7 @@ export interface ListOrganizationsApimServiceExtensionsRequest {
 }
 
 export const ListOrganizationsApimServiceExtensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -12712,7 +12712,7 @@ export const ListOrganizationsApimServiceExtensionsRequest =
 export type ListOrganizationsApimServiceExtensionsResponse =
   GoogleCloudApigeeV1ListApimServiceExtensionsResponse;
 export const ListOrganizationsApimServiceExtensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApimServiceExtensionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListApimServiceExtensionsResponse;
 
 export type ListOrganizationsApimServiceExtensionsError =
   | DefaultErrors
@@ -12725,7 +12725,7 @@ export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMetho
   ListOrganizationsApimServiceExtensionsResponse,
   ListOrganizationsApimServiceExtensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApimServiceExtensionsRequest,
   output: ListOrganizationsApimServiceExtensionsResponse,
   errors: [NotFound, Forbidden],
@@ -12741,7 +12741,7 @@ export interface DeleteOrganizationsApimServiceExtensionsRequest {
 }
 
 export const DeleteOrganizationsApimServiceExtensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -12751,7 +12751,7 @@ export const DeleteOrganizationsApimServiceExtensionsRequest =
 export type DeleteOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsApimServiceExtensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsApimServiceExtensionsError =
   | DefaultErrors
@@ -12766,7 +12766,7 @@ export const deleteOrganizationsApimServiceExtensions: API.OperationMethod<
   DeleteOrganizationsApimServiceExtensionsResponse,
   DeleteOrganizationsApimServiceExtensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApimServiceExtensionsRequest,
   output: DeleteOrganizationsApimServiceExtensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12778,7 +12778,7 @@ export interface GetOrganizationsApimServiceExtensionsRequest {
 }
 
 export const GetOrganizationsApimServiceExtensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -12788,7 +12788,7 @@ export const GetOrganizationsApimServiceExtensionsRequest =
 export type GetOrganizationsApimServiceExtensionsResponse =
   GoogleCloudApigeeV1ApimServiceExtension;
 export const GetOrganizationsApimServiceExtensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApimServiceExtension;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApimServiceExtension;
 
 export type GetOrganizationsApimServiceExtensionsError =
   | DefaultErrors
@@ -12801,7 +12801,7 @@ export const getOrganizationsApimServiceExtensions: API.OperationMethod<
   GetOrganizationsApimServiceExtensionsResponse,
   GetOrganizationsApimServiceExtensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApimServiceExtensionsRequest,
   output: GetOrganizationsApimServiceExtensionsResponse,
   errors: [NotFound, Forbidden],
@@ -12841,7 +12841,7 @@ export interface GetOrganizationsHostStatsRequest {
 }
 
 export const GetOrganizationsHostStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
     name: Schema.String.pipe(T.HttpPath("name")),
     timeRange: Schema.optional(Schema.String).pipe(T.HttpQuery("timeRange")),
@@ -12868,7 +12868,7 @@ export const GetOrganizationsHostStatsRequest =
 
 export type GetOrganizationsHostStatsResponse = GoogleCloudApigeeV1Stats;
 export const GetOrganizationsHostStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Stats;
+  /*@__PURE__*/ GoogleCloudApigeeV1Stats;
 
 export type GetOrganizationsHostStatsError =
   | DefaultErrors
@@ -12881,7 +12881,7 @@ export const getOrganizationsHostStats: API.OperationMethod<
   GetOrganizationsHostStatsResponse,
   GetOrganizationsHostStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostStatsRequest,
   output: GetOrganizationsHostStatsResponse,
   errors: [NotFound, Forbidden],
@@ -12895,7 +12895,7 @@ export interface BatchComputeOrganizationsSecurityAssessmentResultsRequest {
 }
 
 export const BatchComputeOrganizationsSecurityAssessmentResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest,
@@ -12908,7 +12908,7 @@ export const BatchComputeOrganizationsSecurityAssessmentResultsRequest =
 export type BatchComputeOrganizationsSecurityAssessmentResultsResponse =
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse;
 export const BatchComputeOrganizationsSecurityAssessmentResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse;
 
 export type BatchComputeOrganizationsSecurityAssessmentResultsError =
   | DefaultErrors
@@ -12923,7 +12923,7 @@ export const batchComputeOrganizationsSecurityAssessmentResults: API.OperationMe
   BatchComputeOrganizationsSecurityAssessmentResultsResponse,
   BatchComputeOrganizationsSecurityAssessmentResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchComputeOrganizationsSecurityAssessmentResultsRequest,
   output: BatchComputeOrganizationsSecurityAssessmentResultsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12941,7 +12941,7 @@ export interface DeleteOrganizationsSecurityProfilesV2Request {
 }
 
 export const DeleteOrganizationsSecurityProfilesV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     riskAssessmentType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("riskAssessmentType"),
@@ -12953,7 +12953,7 @@ export const DeleteOrganizationsSecurityProfilesV2Request =
 
 export type DeleteOrganizationsSecurityProfilesV2Response = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityProfilesV2Error =
   | DefaultErrors
@@ -12968,7 +12968,7 @@ export const deleteOrganizationsSecurityProfilesV2: API.OperationMethod<
   DeleteOrganizationsSecurityProfilesV2Response,
   DeleteOrganizationsSecurityProfilesV2Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesV2Request,
   output: DeleteOrganizationsSecurityProfilesV2Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12986,7 +12986,7 @@ export interface GetOrganizationsSecurityProfilesV2Request {
 }
 
 export const GetOrganizationsSecurityProfilesV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     riskAssessmentType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("riskAssessmentType"),
     ),
@@ -12999,7 +12999,7 @@ export const GetOrganizationsSecurityProfilesV2Request =
 export type GetOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
 export const GetOrganizationsSecurityProfilesV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
 export type GetOrganizationsSecurityProfilesV2Error =
   | DefaultErrors
@@ -13012,7 +13012,7 @@ export const getOrganizationsSecurityProfilesV2: API.OperationMethod<
   GetOrganizationsSecurityProfilesV2Response,
   GetOrganizationsSecurityProfilesV2Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityProfilesV2Request,
   output: GetOrganizationsSecurityProfilesV2Response,
   errors: [NotFound, Forbidden],
@@ -13034,7 +13034,7 @@ export interface ListOrganizationsSecurityProfilesV2Request {
 }
 
 export const ListOrganizationsSecurityProfilesV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     riskAssessmentType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("riskAssessmentType"),
@@ -13049,7 +13049,7 @@ export const ListOrganizationsSecurityProfilesV2Request =
 export type ListOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1ListSecurityProfilesV2Response;
 export const ListOrganizationsSecurityProfilesV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesV2Response;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesV2Response;
 
 export type ListOrganizationsSecurityProfilesV2Error =
   | DefaultErrors
@@ -13062,7 +13062,7 @@ export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
   ListOrganizationsSecurityProfilesV2Response,
   ListOrganizationsSecurityProfilesV2Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesV2Request,
   output: ListOrganizationsSecurityProfilesV2Response,
   errors: [NotFound, Forbidden],
@@ -13082,7 +13082,7 @@ export interface CreateOrganizationsSecurityProfilesV2Request {
 }
 
 export const CreateOrganizationsSecurityProfilesV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     securityProfileV2Id: Schema.optional(Schema.String).pipe(
       T.HttpQuery("securityProfileV2Id"),
@@ -13102,7 +13102,7 @@ export const CreateOrganizationsSecurityProfilesV2Request =
 export type CreateOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
 export const CreateOrganizationsSecurityProfilesV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
 export type CreateOrganizationsSecurityProfilesV2Error =
   | DefaultErrors
@@ -13117,7 +13117,7 @@ export const createOrganizationsSecurityProfilesV2: API.OperationMethod<
   CreateOrganizationsSecurityProfilesV2Response,
   CreateOrganizationsSecurityProfilesV2Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesV2Request,
   output: CreateOrganizationsSecurityProfilesV2Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13133,7 +13133,7 @@ export interface PatchOrganizationsSecurityProfilesV2Request {
 }
 
 export const PatchOrganizationsSecurityProfilesV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityProfileV2).pipe(
@@ -13147,7 +13147,7 @@ export const PatchOrganizationsSecurityProfilesV2Request =
 export type PatchOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
 export const PatchOrganizationsSecurityProfilesV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
 export type PatchOrganizationsSecurityProfilesV2Error =
   | DefaultErrors
@@ -13162,7 +13162,7 @@ export const patchOrganizationsSecurityProfilesV2: API.OperationMethod<
   PatchOrganizationsSecurityProfilesV2Response,
   PatchOrganizationsSecurityProfilesV2Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityProfilesV2Request,
   output: PatchOrganizationsSecurityProfilesV2Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13176,7 +13176,7 @@ export interface ListOrganizationsDeploymentsRequest {
 }
 
 export const ListOrganizationsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     sharedFlows: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("sharedFlows"),
@@ -13189,7 +13189,7 @@ export const ListOrganizationsDeploymentsRequest =
 export type ListOrganizationsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsDeploymentsError =
   | DefaultErrors
@@ -13202,7 +13202,7 @@ export const listOrganizationsDeployments: API.OperationMethod<
   ListOrganizationsDeploymentsResponse,
   ListOrganizationsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsDeploymentsRequest,
   output: ListOrganizationsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -13216,7 +13216,7 @@ export interface ReportStatusOrganizationsInstancesRequest {
 }
 
 export const ReportStatusOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instance: Schema.String.pipe(T.HttpPath("instance")),
     body: Schema.optional(GoogleCloudApigeeV1ReportInstanceStatusRequest).pipe(
       T.HttpBody(),
@@ -13233,7 +13233,7 @@ export const ReportStatusOrganizationsInstancesRequest =
 export type ReportStatusOrganizationsInstancesResponse =
   GoogleCloudApigeeV1ReportInstanceStatusResponse;
 export const ReportStatusOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ReportInstanceStatusResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ReportInstanceStatusResponse;
 
 export type ReportStatusOrganizationsInstancesError =
   | DefaultErrors
@@ -13248,7 +13248,7 @@ export const reportStatusOrganizationsInstances: API.OperationMethod<
   ReportStatusOrganizationsInstancesResponse,
   ReportStatusOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportStatusOrganizationsInstancesRequest,
   output: ReportStatusOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13260,7 +13260,7 @@ export interface GetOrganizationsInstancesRequest {
 }
 
 export const GetOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -13269,7 +13269,7 @@ export const GetOrganizationsInstancesRequest =
 
 export type GetOrganizationsInstancesResponse = GoogleCloudApigeeV1Instance;
 export const GetOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Instance;
+  /*@__PURE__*/ GoogleCloudApigeeV1Instance;
 
 export type GetOrganizationsInstancesError =
   | DefaultErrors
@@ -13282,7 +13282,7 @@ export const getOrganizationsInstances: API.OperationMethod<
   GetOrganizationsInstancesResponse,
   GetOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesRequest,
   output: GetOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -13294,7 +13294,7 @@ export interface DeleteOrganizationsInstancesRequest {
 }
 
 export const DeleteOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -13303,7 +13303,7 @@ export const DeleteOrganizationsInstancesRequest =
 
 export type DeleteOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsInstancesError =
   | DefaultErrors
@@ -13318,7 +13318,7 @@ export const deleteOrganizationsInstances: API.OperationMethod<
   DeleteOrganizationsInstancesResponse,
   DeleteOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesRequest,
   output: DeleteOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13334,7 +13334,7 @@ export interface ListOrganizationsInstancesRequest {
 }
 
 export const ListOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -13346,7 +13346,7 @@ export const ListOrganizationsInstancesRequest =
 export type ListOrganizationsInstancesResponse =
   GoogleCloudApigeeV1ListInstancesResponse;
 export const ListOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListInstancesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListInstancesResponse;
 
 export type ListOrganizationsInstancesError =
   | DefaultErrors
@@ -13359,7 +13359,7 @@ export const listOrganizationsInstances: API.PaginatedOperationMethod<
   ListOrganizationsInstancesResponse,
   ListOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesRequest,
   output: ListOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden],
@@ -13379,7 +13379,7 @@ export interface PatchOrganizationsInstancesRequest {
 }
 
 export const PatchOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Instance).pipe(T.HttpBody()),
@@ -13390,7 +13390,7 @@ export const PatchOrganizationsInstancesRequest =
 
 export type PatchOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchOrganizationsInstancesError =
   | DefaultErrors
@@ -13405,7 +13405,7 @@ export const patchOrganizationsInstances: API.OperationMethod<
   PatchOrganizationsInstancesResponse,
   PatchOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsInstancesRequest,
   output: PatchOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13419,7 +13419,7 @@ export interface CreateOrganizationsInstancesRequest {
 }
 
 export const CreateOrganizationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Instance).pipe(T.HttpBody()),
   }).pipe(
@@ -13429,7 +13429,7 @@ export const CreateOrganizationsInstancesRequest =
 
 export type CreateOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsInstancesError =
   | DefaultErrors
@@ -13444,7 +13444,7 @@ export const createOrganizationsInstances: API.OperationMethod<
   CreateOrganizationsInstancesResponse,
   CreateOrganizationsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesRequest,
   output: CreateOrganizationsInstancesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13458,7 +13458,7 @@ export interface CreateOrganizationsInstancesCanaryevaluationsRequest {
 }
 
 export const CreateOrganizationsInstancesCanaryevaluationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1CanaryEvaluation).pipe(
       T.HttpBody(),
@@ -13475,7 +13475,7 @@ export const CreateOrganizationsInstancesCanaryevaluationsRequest =
 export type CreateOrganizationsInstancesCanaryevaluationsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesCanaryevaluationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsInstancesCanaryevaluationsError =
   | DefaultErrors
@@ -13490,7 +13490,7 @@ export const createOrganizationsInstancesCanaryevaluations: API.OperationMethod<
   CreateOrganizationsInstancesCanaryevaluationsResponse,
   CreateOrganizationsInstancesCanaryevaluationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesCanaryevaluationsRequest,
   output: CreateOrganizationsInstancesCanaryevaluationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13502,7 +13502,7 @@ export interface GetOrganizationsInstancesCanaryevaluationsRequest {
 }
 
 export const GetOrganizationsInstancesCanaryevaluationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -13512,7 +13512,7 @@ export const GetOrganizationsInstancesCanaryevaluationsRequest =
 export type GetOrganizationsInstancesCanaryevaluationsResponse =
   GoogleCloudApigeeV1CanaryEvaluation;
 export const GetOrganizationsInstancesCanaryevaluationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CanaryEvaluation;
+  /*@__PURE__*/ GoogleCloudApigeeV1CanaryEvaluation;
 
 export type GetOrganizationsInstancesCanaryevaluationsError =
   | DefaultErrors
@@ -13525,7 +13525,7 @@ export const getOrganizationsInstancesCanaryevaluations: API.OperationMethod<
   GetOrganizationsInstancesCanaryevaluationsResponse,
   GetOrganizationsInstancesCanaryevaluationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesCanaryevaluationsRequest,
   output: GetOrganizationsInstancesCanaryevaluationsResponse,
   errors: [NotFound, Forbidden],
@@ -13541,7 +13541,7 @@ export interface ListOrganizationsInstancesAttachmentsRequest {
 }
 
 export const ListOrganizationsInstancesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -13553,7 +13553,7 @@ export const ListOrganizationsInstancesAttachmentsRequest =
 export type ListOrganizationsInstancesAttachmentsResponse =
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse;
 export const ListOrganizationsInstancesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListInstanceAttachmentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListInstanceAttachmentsResponse;
 
 export type ListOrganizationsInstancesAttachmentsError =
   | DefaultErrors
@@ -13566,7 +13566,7 @@ export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod
   ListOrganizationsInstancesAttachmentsResponse,
   ListOrganizationsInstancesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesAttachmentsRequest,
   output: ListOrganizationsInstancesAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -13584,7 +13584,7 @@ export interface CreateOrganizationsInstancesAttachmentsRequest {
 }
 
 export const CreateOrganizationsInstancesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1InstanceAttachment).pipe(
       T.HttpBody(),
@@ -13597,7 +13597,7 @@ export const CreateOrganizationsInstancesAttachmentsRequest =
 export type CreateOrganizationsInstancesAttachmentsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsInstancesAttachmentsError =
   | DefaultErrors
@@ -13612,7 +13612,7 @@ export const createOrganizationsInstancesAttachments: API.OperationMethod<
   CreateOrganizationsInstancesAttachmentsResponse,
   CreateOrganizationsInstancesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesAttachmentsRequest,
   output: CreateOrganizationsInstancesAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13624,7 +13624,7 @@ export interface DeleteOrganizationsInstancesAttachmentsRequest {
 }
 
 export const DeleteOrganizationsInstancesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -13634,7 +13634,7 @@ export const DeleteOrganizationsInstancesAttachmentsRequest =
 export type DeleteOrganizationsInstancesAttachmentsResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsInstancesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsInstancesAttachmentsError =
   | DefaultErrors
@@ -13649,7 +13649,7 @@ export const deleteOrganizationsInstancesAttachments: API.OperationMethod<
   DeleteOrganizationsInstancesAttachmentsResponse,
   DeleteOrganizationsInstancesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesAttachmentsRequest,
   output: DeleteOrganizationsInstancesAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13661,7 +13661,7 @@ export interface GetOrganizationsInstancesAttachmentsRequest {
 }
 
 export const GetOrganizationsInstancesAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -13671,7 +13671,7 @@ export const GetOrganizationsInstancesAttachmentsRequest =
 export type GetOrganizationsInstancesAttachmentsResponse =
   GoogleCloudApigeeV1InstanceAttachment;
 export const GetOrganizationsInstancesAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1InstanceAttachment;
+  /*@__PURE__*/ GoogleCloudApigeeV1InstanceAttachment;
 
 export type GetOrganizationsInstancesAttachmentsError =
   | DefaultErrors
@@ -13684,7 +13684,7 @@ export const getOrganizationsInstancesAttachments: API.OperationMethod<
   GetOrganizationsInstancesAttachmentsResponse,
   GetOrganizationsInstancesAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesAttachmentsRequest,
   output: GetOrganizationsInstancesAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -13700,7 +13700,7 @@ export interface ListOrganizationsInstancesNatAddressesRequest {
 }
 
 export const ListOrganizationsInstancesNatAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -13712,7 +13712,7 @@ export const ListOrganizationsInstancesNatAddressesRequest =
 export type ListOrganizationsInstancesNatAddressesResponse =
   GoogleCloudApigeeV1ListNatAddressesResponse;
 export const ListOrganizationsInstancesNatAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListNatAddressesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListNatAddressesResponse;
 
 export type ListOrganizationsInstancesNatAddressesError =
   | DefaultErrors
@@ -13725,7 +13725,7 @@ export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMetho
   ListOrganizationsInstancesNatAddressesResponse,
   ListOrganizationsInstancesNatAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesNatAddressesRequest,
   output: ListOrganizationsInstancesNatAddressesResponse,
   errors: [NotFound, Forbidden],
@@ -13743,7 +13743,7 @@ export interface CreateOrganizationsInstancesNatAddressesRequest {
 }
 
 export const CreateOrganizationsInstancesNatAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1NatAddress).pipe(T.HttpBody()),
   }).pipe(
@@ -13758,7 +13758,7 @@ export const CreateOrganizationsInstancesNatAddressesRequest =
 export type CreateOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesNatAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsInstancesNatAddressesError =
   | DefaultErrors
@@ -13773,7 +13773,7 @@ export const createOrganizationsInstancesNatAddresses: API.OperationMethod<
   CreateOrganizationsInstancesNatAddressesResponse,
   CreateOrganizationsInstancesNatAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesNatAddressesRequest,
   output: CreateOrganizationsInstancesNatAddressesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13787,7 +13787,7 @@ export interface ActivateOrganizationsInstancesNatAddressesRequest {
 }
 
 export const ActivateOrganizationsInstancesNatAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ActivateNatAddressRequest).pipe(
       T.HttpBody(),
@@ -13800,7 +13800,7 @@ export const ActivateOrganizationsInstancesNatAddressesRequest =
 export type ActivateOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
 export const ActivateOrganizationsInstancesNatAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ActivateOrganizationsInstancesNatAddressesError =
   | DefaultErrors
@@ -13815,7 +13815,7 @@ export const activateOrganizationsInstancesNatAddresses: API.OperationMethod<
   ActivateOrganizationsInstancesNatAddressesResponse,
   ActivateOrganizationsInstancesNatAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateOrganizationsInstancesNatAddressesRequest,
   output: ActivateOrganizationsInstancesNatAddressesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13827,7 +13827,7 @@ export interface GetOrganizationsInstancesNatAddressesRequest {
 }
 
 export const GetOrganizationsInstancesNatAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -13837,7 +13837,7 @@ export const GetOrganizationsInstancesNatAddressesRequest =
 export type GetOrganizationsInstancesNatAddressesResponse =
   GoogleCloudApigeeV1NatAddress;
 export const GetOrganizationsInstancesNatAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1NatAddress;
+  /*@__PURE__*/ GoogleCloudApigeeV1NatAddress;
 
 export type GetOrganizationsInstancesNatAddressesError =
   | DefaultErrors
@@ -13850,7 +13850,7 @@ export const getOrganizationsInstancesNatAddresses: API.OperationMethod<
   GetOrganizationsInstancesNatAddressesResponse,
   GetOrganizationsInstancesNatAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesNatAddressesRequest,
   output: GetOrganizationsInstancesNatAddressesResponse,
   errors: [NotFound, Forbidden],
@@ -13862,7 +13862,7 @@ export interface DeleteOrganizationsInstancesNatAddressesRequest {
 }
 
 export const DeleteOrganizationsInstancesNatAddressesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -13872,7 +13872,7 @@ export const DeleteOrganizationsInstancesNatAddressesRequest =
 export type DeleteOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsInstancesNatAddressesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsInstancesNatAddressesError =
   | DefaultErrors
@@ -13887,7 +13887,7 @@ export const deleteOrganizationsInstancesNatAddresses: API.OperationMethod<
   DeleteOrganizationsInstancesNatAddressesResponse,
   DeleteOrganizationsInstancesNatAddressesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesNatAddressesRequest,
   output: DeleteOrganizationsInstancesNatAddressesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13899,7 +13899,7 @@ export interface GetOrganizationsEndpointAttachmentsRequest {
 }
 
 export const GetOrganizationsEndpointAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -13909,7 +13909,7 @@ export const GetOrganizationsEndpointAttachmentsRequest =
 export type GetOrganizationsEndpointAttachmentsResponse =
   GoogleCloudApigeeV1EndpointAttachment;
 export const GetOrganizationsEndpointAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EndpointAttachment;
+  /*@__PURE__*/ GoogleCloudApigeeV1EndpointAttachment;
 
 export type GetOrganizationsEndpointAttachmentsError =
   | DefaultErrors
@@ -13922,7 +13922,7 @@ export const getOrganizationsEndpointAttachments: API.OperationMethod<
   GetOrganizationsEndpointAttachmentsResponse,
   GetOrganizationsEndpointAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEndpointAttachmentsRequest,
   output: GetOrganizationsEndpointAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -13938,7 +13938,7 @@ export interface CreateOrganizationsEndpointAttachmentsRequest {
 }
 
 export const CreateOrganizationsEndpointAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     endpointAttachmentId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("endpointAttachmentId"),
@@ -13958,7 +13958,7 @@ export const CreateOrganizationsEndpointAttachmentsRequest =
 export type CreateOrganizationsEndpointAttachmentsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsEndpointAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEndpointAttachmentsError =
   | DefaultErrors
@@ -13973,7 +13973,7 @@ export const createOrganizationsEndpointAttachments: API.OperationMethod<
   CreateOrganizationsEndpointAttachmentsResponse,
   CreateOrganizationsEndpointAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEndpointAttachmentsRequest,
   output: CreateOrganizationsEndpointAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13985,7 +13985,7 @@ export interface DeleteOrganizationsEndpointAttachmentsRequest {
 }
 
 export const DeleteOrganizationsEndpointAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -13995,7 +13995,7 @@ export const DeleteOrganizationsEndpointAttachmentsRequest =
 export type DeleteOrganizationsEndpointAttachmentsResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsEndpointAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsEndpointAttachmentsError =
   | DefaultErrors
@@ -14010,7 +14010,7 @@ export const deleteOrganizationsEndpointAttachments: API.OperationMethod<
   DeleteOrganizationsEndpointAttachmentsResponse,
   DeleteOrganizationsEndpointAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEndpointAttachmentsRequest,
   output: DeleteOrganizationsEndpointAttachmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14026,7 +14026,7 @@ export interface ListOrganizationsEndpointAttachmentsRequest {
 }
 
 export const ListOrganizationsEndpointAttachmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -14038,7 +14038,7 @@ export const ListOrganizationsEndpointAttachmentsRequest =
 export type ListOrganizationsEndpointAttachmentsResponse =
   GoogleCloudApigeeV1ListEndpointAttachmentsResponse;
 export const ListOrganizationsEndpointAttachmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEndpointAttachmentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListEndpointAttachmentsResponse;
 
 export type ListOrganizationsEndpointAttachmentsError =
   | DefaultErrors
@@ -14051,7 +14051,7 @@ export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
   ListOrganizationsEndpointAttachmentsResponse,
   ListOrganizationsEndpointAttachmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEndpointAttachmentsRequest,
   output: ListOrganizationsEndpointAttachmentsResponse,
   errors: [NotFound, Forbidden],
@@ -14095,7 +14095,7 @@ export interface GetOrganizationsOptimizedHostStatsRequest {
 }
 
 export const GetOrganizationsOptimizedHostStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tzo: Schema.optional(Schema.String).pipe(T.HttpQuery("tzo")),
     envgroupHostname: Schema.optional(Schema.String).pipe(
       T.HttpQuery("envgroupHostname"),
@@ -14123,7 +14123,7 @@ export const GetOrganizationsOptimizedHostStatsRequest =
 export type GetOrganizationsOptimizedHostStatsResponse =
   GoogleCloudApigeeV1OptimizedStats;
 export const GetOrganizationsOptimizedHostStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
+  /*@__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
 
 export type GetOrganizationsOptimizedHostStatsError =
   | DefaultErrors
@@ -14136,7 +14136,7 @@ export const getOrganizationsOptimizedHostStats: API.OperationMethod<
   GetOrganizationsOptimizedHostStatsResponse,
   GetOrganizationsOptimizedHostStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsOptimizedHostStatsRequest,
   output: GetOrganizationsOptimizedHostStatsResponse,
   errors: [NotFound, Forbidden],
@@ -14148,7 +14148,7 @@ export interface DeleteOrganizationsSecurityFeedbackRequest {
 }
 
 export const DeleteOrganizationsSecurityFeedbackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -14157,7 +14157,7 @@ export const DeleteOrganizationsSecurityFeedbackRequest =
 
 export type DeleteOrganizationsSecurityFeedbackResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityFeedbackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityFeedbackError =
   | DefaultErrors
@@ -14172,7 +14172,7 @@ export const deleteOrganizationsSecurityFeedback: API.OperationMethod<
   DeleteOrganizationsSecurityFeedbackResponse,
   DeleteOrganizationsSecurityFeedbackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityFeedbackRequest,
   output: DeleteOrganizationsSecurityFeedbackResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14184,7 +14184,7 @@ export interface GetOrganizationsSecurityFeedbackRequest {
 }
 
 export const GetOrganizationsSecurityFeedbackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -14194,7 +14194,7 @@ export const GetOrganizationsSecurityFeedbackRequest =
 export type GetOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
 export const GetOrganizationsSecurityFeedbackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
 export type GetOrganizationsSecurityFeedbackError =
   | DefaultErrors
@@ -14207,7 +14207,7 @@ export const getOrganizationsSecurityFeedback: API.OperationMethod<
   GetOrganizationsSecurityFeedbackResponse,
   GetOrganizationsSecurityFeedbackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityFeedbackRequest,
   output: GetOrganizationsSecurityFeedbackResponse,
   errors: [NotFound, Forbidden],
@@ -14223,7 +14223,7 @@ export interface ListOrganizationsSecurityFeedbackRequest {
 }
 
 export const ListOrganizationsSecurityFeedbackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -14235,7 +14235,7 @@ export const ListOrganizationsSecurityFeedbackRequest =
 export type ListOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1ListSecurityFeedbackResponse;
 export const ListOrganizationsSecurityFeedbackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityFeedbackResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityFeedbackResponse;
 
 export type ListOrganizationsSecurityFeedbackError =
   | DefaultErrors
@@ -14248,7 +14248,7 @@ export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
   ListOrganizationsSecurityFeedbackResponse,
   ListOrganizationsSecurityFeedbackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityFeedbackRequest,
   output: ListOrganizationsSecurityFeedbackResponse,
   errors: [NotFound, Forbidden],
@@ -14268,7 +14268,7 @@ export interface CreateOrganizationsSecurityFeedbackRequest {
 }
 
 export const CreateOrganizationsSecurityFeedbackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securityFeedbackId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("securityFeedbackId"),
     ),
@@ -14288,7 +14288,7 @@ export const CreateOrganizationsSecurityFeedbackRequest =
 export type CreateOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
 export const CreateOrganizationsSecurityFeedbackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
 export type CreateOrganizationsSecurityFeedbackError =
   | DefaultErrors
@@ -14303,7 +14303,7 @@ export const createOrganizationsSecurityFeedback: API.OperationMethod<
   CreateOrganizationsSecurityFeedbackResponse,
   CreateOrganizationsSecurityFeedbackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityFeedbackRequest,
   output: CreateOrganizationsSecurityFeedbackResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14319,7 +14319,7 @@ export interface PatchOrganizationsSecurityFeedbackRequest {
 }
 
 export const PatchOrganizationsSecurityFeedbackRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityFeedback).pipe(
@@ -14333,7 +14333,7 @@ export const PatchOrganizationsSecurityFeedbackRequest =
 export type PatchOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
 export const PatchOrganizationsSecurityFeedbackResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
 export type PatchOrganizationsSecurityFeedbackError =
   | DefaultErrors
@@ -14348,7 +14348,7 @@ export const patchOrganizationsSecurityFeedback: API.OperationMethod<
   PatchOrganizationsSecurityFeedbackResponse,
   PatchOrganizationsSecurityFeedbackError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityFeedbackRequest,
   output: PatchOrganizationsSecurityFeedbackResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14364,7 +14364,7 @@ export interface ListOrganizationsSpacesRequest {
 }
 
 export const ListOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -14376,7 +14376,7 @@ export const ListOrganizationsSpacesRequest =
 export type ListOrganizationsSpacesResponse =
   GoogleCloudApigeeV1ListSpacesResponse;
 export const ListOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSpacesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSpacesResponse;
 
 export type ListOrganizationsSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -14386,7 +14386,7 @@ export const listOrganizationsSpaces: API.PaginatedOperationMethod<
   ListOrganizationsSpacesResponse,
   ListOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSpacesRequest,
   output: ListOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -14404,7 +14404,7 @@ export interface TestIamPermissionsOrganizationsSpacesRequest {
 }
 
 export const TestIamPermissionsOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -14421,7 +14421,7 @@ export const TestIamPermissionsOrganizationsSpacesRequest =
 export type TestIamPermissionsOrganizationsSpacesResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsOrganizationsSpacesError =
   | DefaultErrors
@@ -14436,7 +14436,7 @@ export const testIamPermissionsOrganizationsSpaces: API.OperationMethod<
   TestIamPermissionsOrganizationsSpacesResponse,
   TestIamPermissionsOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsSpacesRequest,
   output: TestIamPermissionsOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14452,7 +14452,7 @@ export interface PatchOrganizationsSpacesRequest {
 }
 
 export const PatchOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Space).pipe(T.HttpBody()),
@@ -14463,7 +14463,7 @@ export const PatchOrganizationsSpacesRequest =
 
 export type PatchOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const PatchOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
+  /*@__PURE__*/ GoogleCloudApigeeV1Space;
 
 export type PatchOrganizationsSpacesError =
   | DefaultErrors
@@ -14478,7 +14478,7 @@ export const patchOrganizationsSpaces: API.OperationMethod<
   PatchOrganizationsSpacesResponse,
   PatchOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSpacesRequest,
   output: PatchOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14492,7 +14492,7 @@ export interface SetIamPolicyOrganizationsSpacesRequest {
 }
 
 export const SetIamPolicyOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -14506,7 +14506,7 @@ export const SetIamPolicyOrganizationsSpacesRequest =
 
 export type SetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyOrganizationsSpacesError =
   | DefaultErrors
@@ -14521,7 +14521,7 @@ export const setIamPolicyOrganizationsSpaces: API.OperationMethod<
   SetIamPolicyOrganizationsSpacesResponse,
   SetIamPolicyOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsSpacesRequest,
   output: SetIamPolicyOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14537,7 +14537,7 @@ export interface CreateOrganizationsSpacesRequest {
 }
 
 export const CreateOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     spaceId: Schema.optional(Schema.String).pipe(T.HttpQuery("spaceId")),
     body: Schema.optional(GoogleCloudApigeeV1Space).pipe(T.HttpBody()),
@@ -14548,7 +14548,7 @@ export const CreateOrganizationsSpacesRequest =
 
 export type CreateOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const CreateOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
+  /*@__PURE__*/ GoogleCloudApigeeV1Space;
 
 export type CreateOrganizationsSpacesError =
   | DefaultErrors
@@ -14563,7 +14563,7 @@ export const createOrganizationsSpaces: API.OperationMethod<
   CreateOrganizationsSpacesResponse,
   CreateOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSpacesRequest,
   output: CreateOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14577,7 +14577,7 @@ export interface GetIamPolicyOrganizationsSpacesRequest {
 }
 
 export const GetIamPolicyOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -14589,7 +14589,7 @@ export const GetIamPolicyOrganizationsSpacesRequest =
 
 export type GetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyOrganizationsSpacesError =
   | DefaultErrors
@@ -14602,7 +14602,7 @@ export const getIamPolicyOrganizationsSpaces: API.OperationMethod<
   GetIamPolicyOrganizationsSpacesResponse,
   GetIamPolicyOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsSpacesRequest,
   output: GetIamPolicyOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -14614,7 +14614,7 @@ export interface GetOrganizationsSpacesRequest {
 }
 
 export const GetOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -14623,7 +14623,7 @@ export const GetOrganizationsSpacesRequest =
 
 export type GetOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const GetOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
+  /*@__PURE__*/ GoogleCloudApigeeV1Space;
 
 export type GetOrganizationsSpacesError = DefaultErrors | NotFound | Forbidden;
 
@@ -14633,7 +14633,7 @@ export const getOrganizationsSpaces: API.OperationMethod<
   GetOrganizationsSpacesResponse,
   GetOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSpacesRequest,
   output: GetOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden],
@@ -14645,7 +14645,7 @@ export interface DeleteOrganizationsSpacesRequest {
 }
 
 export const DeleteOrganizationsSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -14654,7 +14654,7 @@ export const DeleteOrganizationsSpacesRequest =
 
 export type DeleteOrganizationsSpacesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSpacesError =
   | DefaultErrors
@@ -14669,7 +14669,7 @@ export const deleteOrganizationsSpaces: API.OperationMethod<
   DeleteOrganizationsSpacesResponse,
   DeleteOrganizationsSpacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSpacesRequest,
   output: DeleteOrganizationsSpacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14687,7 +14687,7 @@ export interface UpdateDebugmaskOrganizationsEnvironmentsRequest {
 }
 
 export const UpdateDebugmaskOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     replaceRepeatedFields: Schema.optional(Schema.Boolean).pipe(
@@ -14702,7 +14702,7 @@ export const UpdateDebugmaskOrganizationsEnvironmentsRequest =
 export type UpdateDebugmaskOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1DebugMask;
 export const UpdateDebugmaskOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugMask;
+  /*@__PURE__*/ GoogleCloudApigeeV1DebugMask;
 
 export type UpdateDebugmaskOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14717,7 +14717,7 @@ export const updateDebugmaskOrganizationsEnvironments: API.OperationMethod<
   UpdateDebugmaskOrganizationsEnvironmentsResponse,
   UpdateDebugmaskOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDebugmaskOrganizationsEnvironmentsRequest,
   output: UpdateDebugmaskOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14729,7 +14729,7 @@ export interface SubscribeOrganizationsEnvironmentsRequest {
 }
 
 export const SubscribeOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:subscribe", hasBody: true }),
@@ -14739,7 +14739,7 @@ export const SubscribeOrganizationsEnvironmentsRequest =
 export type SubscribeOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Subscription;
 export const SubscribeOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Subscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1Subscription;
 
 export type SubscribeOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14754,7 +14754,7 @@ export const subscribeOrganizationsEnvironments: API.OperationMethod<
   SubscribeOrganizationsEnvironmentsResponse,
   SubscribeOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubscribeOrganizationsEnvironmentsRequest,
   output: SubscribeOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14766,7 +14766,7 @@ export interface GetDeployedConfigOrganizationsEnvironmentsRequest {
 }
 
 export const GetDeployedConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -14776,7 +14776,7 @@ export const GetDeployedConfigOrganizationsEnvironmentsRequest =
 export type GetDeployedConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1EnvironmentConfig;
 export const GetDeployedConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1EnvironmentConfig;
 
 export type GetDeployedConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14789,7 +14789,7 @@ export const getDeployedConfigOrganizationsEnvironments: API.OperationMethod<
   GetDeployedConfigOrganizationsEnvironmentsResponse,
   GetDeployedConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeployedConfigOrganizationsEnvironmentsRequest,
   output: GetDeployedConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -14803,7 +14803,7 @@ export interface SetIamPolicyOrganizationsEnvironmentsRequest {
 }
 
 export const SetIamPolicyOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -14817,7 +14817,7 @@ export const SetIamPolicyOrganizationsEnvironmentsRequest =
 
 export type SetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14832,7 +14832,7 @@ export const setIamPolicyOrganizationsEnvironments: API.OperationMethod<
   SetIamPolicyOrganizationsEnvironmentsResponse,
   SetIamPolicyOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsEnvironmentsRequest,
   output: SetIamPolicyOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14848,7 +14848,7 @@ export interface ModifyEnvironmentOrganizationsEnvironmentsRequest {
 }
 
 export const ModifyEnvironmentOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
@@ -14860,7 +14860,7 @@ export const ModifyEnvironmentOrganizationsEnvironmentsRequest =
 export type ModifyEnvironmentOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const ModifyEnvironmentOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ModifyEnvironmentOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14875,7 +14875,7 @@ export const modifyEnvironmentOrganizationsEnvironments: API.OperationMethod<
   ModifyEnvironmentOrganizationsEnvironmentsResponse,
   ModifyEnvironmentOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyEnvironmentOrganizationsEnvironmentsRequest,
   output: ModifyEnvironmentOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14891,7 +14891,7 @@ export interface UpdateTraceConfigOrganizationsEnvironmentsRequest {
 }
 
 export const UpdateTraceConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1TraceConfig).pipe(T.HttpBody()),
@@ -14903,7 +14903,7 @@ export const UpdateTraceConfigOrganizationsEnvironmentsRequest =
 export type UpdateTraceConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1TraceConfig;
 export const UpdateTraceConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1TraceConfig;
 
 export type UpdateTraceConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14918,7 +14918,7 @@ export const updateTraceConfigOrganizationsEnvironments: API.OperationMethod<
   UpdateTraceConfigOrganizationsEnvironmentsResponse,
   UpdateTraceConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTraceConfigOrganizationsEnvironmentsRequest,
   output: UpdateTraceConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14934,7 +14934,7 @@ export interface CreateOrganizationsEnvironmentsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
@@ -14950,7 +14950,7 @@ export const CreateOrganizationsEnvironmentsRequest =
 export type CreateOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -14965,7 +14965,7 @@ export const createOrganizationsEnvironments: API.OperationMethod<
   CreateOrganizationsEnvironmentsResponse,
   CreateOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsRequest,
   output: CreateOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14979,7 +14979,7 @@ export interface UpdateOrganizationsEnvironmentsRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
@@ -14990,7 +14990,7 @@ export const UpdateOrganizationsEnvironmentsRequest =
 export type UpdateOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
 export const UpdateOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Environment;
 
 export type UpdateOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15005,7 +15005,7 @@ export const updateOrganizationsEnvironments: API.OperationMethod<
   UpdateOrganizationsEnvironmentsResponse,
   UpdateOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsRequest,
   output: UpdateOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15019,7 +15019,7 @@ export interface GetIamPolicyOrganizationsEnvironmentsRequest {
 }
 
 export const GetIamPolicyOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -15031,7 +15031,7 @@ export const GetIamPolicyOrganizationsEnvironmentsRequest =
 
 export type GetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15044,7 +15044,7 @@ export const getIamPolicyOrganizationsEnvironments: API.OperationMethod<
   GetIamPolicyOrganizationsEnvironmentsResponse,
   GetIamPolicyOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsEnvironmentsRequest,
   output: GetIamPolicyOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15058,7 +15058,7 @@ export interface TestIamPermissionsOrganizationsEnvironmentsRequest {
 }
 
 export const TestIamPermissionsOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -15075,7 +15075,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsRequest =
 export type TestIamPermissionsOrganizationsEnvironmentsResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15090,7 +15090,7 @@ export const testIamPermissionsOrganizationsEnvironments: API.OperationMethod<
   TestIamPermissionsOrganizationsEnvironmentsResponse,
   TestIamPermissionsOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsEnvironmentsRequest,
   output: TestIamPermissionsOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15102,7 +15102,7 @@ export interface GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest {
 }
 
 export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15112,7 +15112,7 @@ export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest =
 export type GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1ApiSecurityRuntimeConfig;
 export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiSecurityRuntimeConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1ApiSecurityRuntimeConfig;
 
 export type GetApiSecurityRuntimeConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15125,7 +15125,7 @@ export const getApiSecurityRuntimeConfigOrganizationsEnvironments: API.Operation
   GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse,
   GetApiSecurityRuntimeConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest,
   output: GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15141,7 +15141,7 @@ export interface UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest {
 }
 
 export const UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityActionsConfig).pipe(
@@ -15155,7 +15155,7 @@ export const UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest =
 export type UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityActionsConfig;
 export const UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
 
 export type UpdateSecurityActionsConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15170,7 +15170,7 @@ export const updateSecurityActionsConfigOrganizationsEnvironments: API.Operation
   UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse,
   UpdateSecurityActionsConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest,
   output: UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15182,7 +15182,7 @@ export interface GetTraceConfigOrganizationsEnvironmentsRequest {
 }
 
 export const GetTraceConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15192,7 +15192,7 @@ export const GetTraceConfigOrganizationsEnvironmentsRequest =
 export type GetTraceConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1TraceConfig;
 export const GetTraceConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1TraceConfig;
 
 export type GetTraceConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15205,7 +15205,7 @@ export const getTraceConfigOrganizationsEnvironments: API.OperationMethod<
   GetTraceConfigOrganizationsEnvironmentsResponse,
   GetTraceConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTraceConfigOrganizationsEnvironmentsRequest,
   output: GetTraceConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15217,7 +15217,7 @@ export interface GetOrganizationsEnvironmentsRequest {
 }
 
 export const GetOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15227,7 +15227,7 @@ export const GetOrganizationsEnvironmentsRequest =
 export type GetOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
 export const GetOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Environment;
 
 export type GetOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15240,7 +15240,7 @@ export const getOrganizationsEnvironments: API.OperationMethod<
   GetOrganizationsEnvironmentsResponse,
   GetOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsRequest,
   output: GetOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15252,7 +15252,7 @@ export interface DeleteOrganizationsEnvironmentsRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -15262,7 +15262,7 @@ export const DeleteOrganizationsEnvironmentsRequest =
 export type DeleteOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const DeleteOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15277,7 +15277,7 @@ export const deleteOrganizationsEnvironments: API.OperationMethod<
   DeleteOrganizationsEnvironmentsResponse,
   DeleteOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsRequest,
   output: DeleteOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15289,7 +15289,7 @@ export interface GetDebugmaskOrganizationsEnvironmentsRequest {
 }
 
 export const GetDebugmaskOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15299,7 +15299,7 @@ export const GetDebugmaskOrganizationsEnvironmentsRequest =
 export type GetDebugmaskOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1DebugMask;
 export const GetDebugmaskOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugMask;
+  /*@__PURE__*/ GoogleCloudApigeeV1DebugMask;
 
 export type GetDebugmaskOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15312,7 +15312,7 @@ export const getDebugmaskOrganizationsEnvironments: API.OperationMethod<
   GetDebugmaskOrganizationsEnvironmentsResponse,
   GetDebugmaskOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDebugmaskOrganizationsEnvironmentsRequest,
   output: GetDebugmaskOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15326,7 +15326,7 @@ export interface UpdateEnvironmentOrganizationsEnvironmentsRequest {
 }
 
 export const UpdateEnvironmentOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
@@ -15337,7 +15337,7 @@ export const UpdateEnvironmentOrganizationsEnvironmentsRequest =
 export type UpdateEnvironmentOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
 export const UpdateEnvironmentOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Environment;
 
 export type UpdateEnvironmentOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15352,7 +15352,7 @@ export const updateEnvironmentOrganizationsEnvironments: API.OperationMethod<
   UpdateEnvironmentOrganizationsEnvironmentsResponse,
   UpdateEnvironmentOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentOrganizationsEnvironmentsRequest,
   output: UpdateEnvironmentOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15364,7 +15364,7 @@ export interface GetSecurityActionsConfigOrganizationsEnvironmentsRequest {
 }
 
 export const GetSecurityActionsConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15374,7 +15374,7 @@ export const GetSecurityActionsConfigOrganizationsEnvironmentsRequest =
 export type GetSecurityActionsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityActionsConfig;
 export const GetSecurityActionsConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
 
 export type GetSecurityActionsConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15387,7 +15387,7 @@ export const getSecurityActionsConfigOrganizationsEnvironments: API.OperationMet
   GetSecurityActionsConfigOrganizationsEnvironmentsResponse,
   GetSecurityActionsConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSecurityActionsConfigOrganizationsEnvironmentsRequest,
   output: GetSecurityActionsConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15401,7 +15401,7 @@ export interface UnsubscribeOrganizationsEnvironmentsRequest {
 }
 
 export const UnsubscribeOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Subscription).pipe(T.HttpBody()),
   }).pipe(
@@ -15411,7 +15411,7 @@ export const UnsubscribeOrganizationsEnvironmentsRequest =
 
 export type UnsubscribeOrganizationsEnvironmentsResponse = GoogleProtobufEmpty;
 export const UnsubscribeOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UnsubscribeOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15426,7 +15426,7 @@ export const unsubscribeOrganizationsEnvironments: API.OperationMethod<
   UnsubscribeOrganizationsEnvironmentsResponse,
   UnsubscribeOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnsubscribeOrganizationsEnvironmentsRequest,
   output: UnsubscribeOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15438,7 +15438,7 @@ export interface GetAddonsConfigOrganizationsEnvironmentsRequest {
 }
 
 export const GetAddonsConfigOrganizationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15448,7 +15448,7 @@ export const GetAddonsConfigOrganizationsEnvironmentsRequest =
 export type GetAddonsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1AddonsConfig;
 export const GetAddonsConfigOrganizationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AddonsConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1AddonsConfig;
 
 export type GetAddonsConfigOrganizationsEnvironmentsError =
   | DefaultErrors
@@ -15461,7 +15461,7 @@ export const getAddonsConfigOrganizationsEnvironments: API.OperationMethod<
   GetAddonsConfigOrganizationsEnvironmentsResponse,
   GetAddonsConfigOrganizationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAddonsConfigOrganizationsEnvironmentsRequest,
   output: GetAddonsConfigOrganizationsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15477,7 +15477,7 @@ export interface GetOrganizationsEnvironmentsResourcefilesRequest {
 }
 
 export const GetOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.String.pipe(T.HttpPath("name")),
     type: Schema.String.pipe(T.HttpPath("type")),
@@ -15489,7 +15489,7 @@ export const GetOrganizationsEnvironmentsResourcefilesRequest =
 export type GetOrganizationsEnvironmentsResourcefilesResponse =
   GoogleApiHttpBody;
 export const GetOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15502,7 +15502,7 @@ export const getOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   GetOrganizationsEnvironmentsResourcefilesResponse,
   GetOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsResourcefilesRequest,
   output: GetOrganizationsEnvironmentsResourcefilesResponse,
   errors: [NotFound, Forbidden],
@@ -15518,7 +15518,7 @@ export interface DeleteOrganizationsEnvironmentsResourcefilesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     type: Schema.String.pipe(T.HttpPath("type")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -15533,7 +15533,7 @@ export const DeleteOrganizationsEnvironmentsResourcefilesRequest =
 export type DeleteOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
 export const DeleteOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
+  /*@__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
 export type DeleteOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15548,7 +15548,7 @@ export const deleteOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   DeleteOrganizationsEnvironmentsResourcefilesResponse,
   DeleteOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsResourcefilesRequest,
   output: DeleteOrganizationsEnvironmentsResourcefilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15562,7 +15562,7 @@ export interface ListOrganizationsEnvironmentsResourcefilesRequest {
 }
 
 export const ListOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
   }).pipe(
@@ -15573,7 +15573,7 @@ export const ListOrganizationsEnvironmentsResourcefilesRequest =
 export type ListOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 export const ListOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
 export type ListOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15586,7 +15586,7 @@ export const listOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   ListOrganizationsEnvironmentsResourcefilesResponse,
   ListOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsResourcefilesRequest,
   output: ListOrganizationsEnvironmentsResourcefilesResponse,
   errors: [NotFound, Forbidden],
@@ -15600,7 +15600,7 @@ export interface ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesR
 }
 
 export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     type: Schema.String.pipe(T.HttpPath("type")),
   }).pipe(
@@ -15611,7 +15611,7 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesReque
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15624,7 +15624,7 @@ export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API
   ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse,
   ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest,
   output:
     ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse,
@@ -15643,7 +15643,7 @@ export interface CreateOrganizationsEnvironmentsResourcefilesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -15660,7 +15660,7 @@ export const CreateOrganizationsEnvironmentsResourcefilesRequest =
 export type CreateOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
 export const CreateOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
+  /*@__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
 export type CreateOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15675,7 +15675,7 @@ export const createOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   CreateOrganizationsEnvironmentsResourcefilesResponse,
   CreateOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsResourcefilesRequest,
   output: CreateOrganizationsEnvironmentsResourcefilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15693,7 +15693,7 @@ export interface UpdateOrganizationsEnvironmentsResourcefilesRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsResourcefilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     type: Schema.String.pipe(T.HttpPath("type")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -15710,7 +15710,7 @@ export const UpdateOrganizationsEnvironmentsResourcefilesRequest =
 export type UpdateOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
 export const UpdateOrganizationsEnvironmentsResourcefilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
+  /*@__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
 export type UpdateOrganizationsEnvironmentsResourcefilesError =
   | DefaultErrors
@@ -15725,7 +15725,7 @@ export const updateOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
   UpdateOrganizationsEnvironmentsResourcefilesResponse,
   UpdateOrganizationsEnvironmentsResourcefilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsResourcefilesRequest,
   output: UpdateOrganizationsEnvironmentsResourcefilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15741,7 +15741,7 @@ export interface CreateOrganizationsEnvironmentsTargetserversRequest {
 }
 
 export const CreateOrganizationsEnvironmentsTargetserversRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     body: Schema.optional(GoogleCloudApigeeV1TargetServer).pipe(T.HttpBody()),
@@ -15757,7 +15757,7 @@ export const CreateOrganizationsEnvironmentsTargetserversRequest =
 export type CreateOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
 export const CreateOrganizationsEnvironmentsTargetserversResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
+  /*@__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
 export type CreateOrganizationsEnvironmentsTargetserversError =
   | DefaultErrors
@@ -15772,7 +15772,7 @@ export const createOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   CreateOrganizationsEnvironmentsTargetserversResponse,
   CreateOrganizationsEnvironmentsTargetserversError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsTargetserversRequest,
   output: CreateOrganizationsEnvironmentsTargetserversResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15784,7 +15784,7 @@ export interface DeleteOrganizationsEnvironmentsTargetserversRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsTargetserversRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -15794,7 +15794,7 @@ export const DeleteOrganizationsEnvironmentsTargetserversRequest =
 export type DeleteOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
 export const DeleteOrganizationsEnvironmentsTargetserversResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
+  /*@__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
 export type DeleteOrganizationsEnvironmentsTargetserversError =
   | DefaultErrors
@@ -15809,7 +15809,7 @@ export const deleteOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   DeleteOrganizationsEnvironmentsTargetserversResponse,
   DeleteOrganizationsEnvironmentsTargetserversError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsTargetserversRequest,
   output: DeleteOrganizationsEnvironmentsTargetserversResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15823,7 +15823,7 @@ export interface UpdateOrganizationsEnvironmentsTargetserversRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsTargetserversRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1TargetServer).pipe(T.HttpBody()),
   }).pipe(
@@ -15834,7 +15834,7 @@ export const UpdateOrganizationsEnvironmentsTargetserversRequest =
 export type UpdateOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
 export const UpdateOrganizationsEnvironmentsTargetserversResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
+  /*@__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
 export type UpdateOrganizationsEnvironmentsTargetserversError =
   | DefaultErrors
@@ -15849,7 +15849,7 @@ export const updateOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   UpdateOrganizationsEnvironmentsTargetserversResponse,
   UpdateOrganizationsEnvironmentsTargetserversError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsTargetserversRequest,
   output: UpdateOrganizationsEnvironmentsTargetserversResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15861,7 +15861,7 @@ export interface GetOrganizationsEnvironmentsTargetserversRequest {
 }
 
 export const GetOrganizationsEnvironmentsTargetserversRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15871,7 +15871,7 @@ export const GetOrganizationsEnvironmentsTargetserversRequest =
 export type GetOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
 export const GetOrganizationsEnvironmentsTargetserversResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
+  /*@__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
 export type GetOrganizationsEnvironmentsTargetserversError =
   | DefaultErrors
@@ -15884,7 +15884,7 @@ export const getOrganizationsEnvironmentsTargetservers: API.OperationMethod<
   GetOrganizationsEnvironmentsTargetserversResponse,
   GetOrganizationsEnvironmentsTargetserversError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsTargetserversRequest,
   output: GetOrganizationsEnvironmentsTargetserversResponse,
   errors: [NotFound, Forbidden],
@@ -15896,7 +15896,7 @@ export interface GetOrganizationsEnvironmentsTraceConfigOverridesRequest {
 }
 
 export const GetOrganizationsEnvironmentsTraceConfigOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -15906,7 +15906,7 @@ export const GetOrganizationsEnvironmentsTraceConfigOverridesRequest =
 export type GetOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
 export const GetOrganizationsEnvironmentsTraceConfigOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
+  /*@__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type GetOrganizationsEnvironmentsTraceConfigOverridesError =
   | DefaultErrors
@@ -15919,7 +15919,7 @@ export const getOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMeth
   GetOrganizationsEnvironmentsTraceConfigOverridesResponse,
   GetOrganizationsEnvironmentsTraceConfigOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: GetOrganizationsEnvironmentsTraceConfigOverridesResponse,
   errors: [NotFound, Forbidden],
@@ -15931,7 +15931,7 @@ export interface DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -15941,7 +15941,7 @@ export const DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest =
 export type DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsTraceConfigOverridesError =
   | DefaultErrors
@@ -15956,7 +15956,7 @@ export const deleteOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
   DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse,
   DeleteOrganizationsEnvironmentsTraceConfigOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15972,7 +15972,7 @@ export interface PatchOrganizationsEnvironmentsTraceConfigOverridesRequest {
 }
 
 export const PatchOrganizationsEnvironmentsTraceConfigOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1TraceConfigOverride).pipe(
@@ -15986,7 +15986,7 @@ export const PatchOrganizationsEnvironmentsTraceConfigOverridesRequest =
 export type PatchOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
 export const PatchOrganizationsEnvironmentsTraceConfigOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
+  /*@__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type PatchOrganizationsEnvironmentsTraceConfigOverridesError =
   | DefaultErrors
@@ -16001,7 +16001,7 @@ export const patchOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMe
   PatchOrganizationsEnvironmentsTraceConfigOverridesResponse,
   PatchOrganizationsEnvironmentsTraceConfigOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: PatchOrganizationsEnvironmentsTraceConfigOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16015,7 +16015,7 @@ export interface CreateOrganizationsEnvironmentsTraceConfigOverridesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsTraceConfigOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1TraceConfigOverride).pipe(
       T.HttpBody(),
@@ -16028,7 +16028,7 @@ export const CreateOrganizationsEnvironmentsTraceConfigOverridesRequest =
 export type CreateOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
 export const CreateOrganizationsEnvironmentsTraceConfigOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
+  /*@__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type CreateOrganizationsEnvironmentsTraceConfigOverridesError =
   | DefaultErrors
@@ -16043,7 +16043,7 @@ export const createOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
   CreateOrganizationsEnvironmentsTraceConfigOverridesResponse,
   CreateOrganizationsEnvironmentsTraceConfigOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: CreateOrganizationsEnvironmentsTraceConfigOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16059,7 +16059,7 @@ export interface ListOrganizationsEnvironmentsTraceConfigOverridesRequest {
 }
 
 export const ListOrganizationsEnvironmentsTraceConfigOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -16071,7 +16071,7 @@ export const ListOrganizationsEnvironmentsTraceConfigOverridesRequest =
 export type ListOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1ListTraceConfigOverridesResponse;
 export const ListOrganizationsEnvironmentsTraceConfigOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListTraceConfigOverridesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListTraceConfigOverridesResponse;
 
 export type ListOrganizationsEnvironmentsTraceConfigOverridesError =
   | DefaultErrors
@@ -16084,7 +16084,7 @@ export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOpe
   ListOrganizationsEnvironmentsTraceConfigOverridesResponse,
   ListOrganizationsEnvironmentsTraceConfigOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: ListOrganizationsEnvironmentsTraceConfigOverridesResponse,
   errors: [NotFound, Forbidden],
@@ -16102,7 +16102,7 @@ export interface CreateOrganizationsEnvironmentsSecurityReportsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityReportQuery).pipe(
       T.HttpBody(),
@@ -16119,7 +16119,7 @@ export const CreateOrganizationsEnvironmentsSecurityReportsRequest =
 export type CreateOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
 export const CreateOrganizationsEnvironmentsSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
 export type CreateOrganizationsEnvironmentsSecurityReportsError =
   | DefaultErrors
@@ -16134,7 +16134,7 @@ export const createOrganizationsEnvironmentsSecurityReports: API.OperationMethod
   CreateOrganizationsEnvironmentsSecurityReportsResponse,
   CreateOrganizationsEnvironmentsSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsSecurityReportsRequest,
   output: CreateOrganizationsEnvironmentsSecurityReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16160,7 +16160,7 @@ export interface ListOrganizationsEnvironmentsSecurityReportsRequest {
 }
 
 export const ListOrganizationsEnvironmentsSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dataset: Schema.optional(Schema.String).pipe(T.HttpQuery("dataset")),
@@ -16179,7 +16179,7 @@ export const ListOrganizationsEnvironmentsSecurityReportsRequest =
 export type ListOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1ListSecurityReportsResponse;
 export const ListOrganizationsEnvironmentsSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
 
 export type ListOrganizationsEnvironmentsSecurityReportsError =
   | DefaultErrors
@@ -16192,7 +16192,7 @@ export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperatio
   ListOrganizationsEnvironmentsSecurityReportsResponse,
   ListOrganizationsEnvironmentsSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityReportsRequest,
   output: ListOrganizationsEnvironmentsSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -16208,7 +16208,7 @@ export interface GetResultViewOrganizationsEnvironmentsSecurityReportsRequest {
 }
 
 export const GetResultViewOrganizationsEnvironmentsSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16218,7 +16218,7 @@ export const GetResultViewOrganizationsEnvironmentsSecurityReportsRequest =
 export type GetResultViewOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReportResultView;
 export const GetResultViewOrganizationsEnvironmentsSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
 
 export type GetResultViewOrganizationsEnvironmentsSecurityReportsError =
   | DefaultErrors
@@ -16231,7 +16231,7 @@ export const getResultViewOrganizationsEnvironmentsSecurityReports: API.Operatio
   GetResultViewOrganizationsEnvironmentsSecurityReportsResponse,
   GetResultViewOrganizationsEnvironmentsSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetResultViewOrganizationsEnvironmentsSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -16243,7 +16243,7 @@ export interface GetOrganizationsEnvironmentsSecurityReportsRequest {
 }
 
 export const GetOrganizationsEnvironmentsSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16253,7 +16253,7 @@ export const GetOrganizationsEnvironmentsSecurityReportsRequest =
 export type GetOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
 export const GetOrganizationsEnvironmentsSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
 export type GetOrganizationsEnvironmentsSecurityReportsError =
   | DefaultErrors
@@ -16266,7 +16266,7 @@ export const getOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
   GetOrganizationsEnvironmentsSecurityReportsResponse,
   GetOrganizationsEnvironmentsSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetOrganizationsEnvironmentsSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -16278,7 +16278,7 @@ export interface GetResultOrganizationsEnvironmentsSecurityReportsRequest {
 }
 
 export const GetResultOrganizationsEnvironmentsSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16288,7 +16288,7 @@ export const GetResultOrganizationsEnvironmentsSecurityReportsRequest =
 export type GetResultOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleApiHttpBody;
 export const GetResultOrganizationsEnvironmentsSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetResultOrganizationsEnvironmentsSecurityReportsError =
   | DefaultErrors
@@ -16301,7 +16301,7 @@ export const getResultOrganizationsEnvironmentsSecurityReports: API.OperationMet
   GetResultOrganizationsEnvironmentsSecurityReportsResponse,
   GetResultOrganizationsEnvironmentsSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetResultOrganizationsEnvironmentsSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -16317,7 +16317,7 @@ export interface PatchOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const PatchOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityAction).pipe(T.HttpBody()),
@@ -16329,7 +16329,7 @@ export const PatchOrganizationsEnvironmentsSecurityActionsRequest =
 export type PatchOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
 export const PatchOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type PatchOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16344,7 +16344,7 @@ export const patchOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
   PatchOrganizationsEnvironmentsSecurityActionsResponse,
   PatchOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsSecurityActionsRequest,
   output: PatchOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16358,7 +16358,7 @@ export interface EnableOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const EnableOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1EnableSecurityActionRequest).pipe(
       T.HttpBody(),
@@ -16371,7 +16371,7 @@ export const EnableOrganizationsEnvironmentsSecurityActionsRequest =
 export type EnableOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
 export const EnableOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type EnableOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16386,7 +16386,7 @@ export const enableOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   EnableOrganizationsEnvironmentsSecurityActionsResponse,
   EnableOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableOrganizationsEnvironmentsSecurityActionsRequest,
   output: EnableOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16402,7 +16402,7 @@ export interface CreateOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     securityActionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("securityActionId"),
@@ -16420,7 +16420,7 @@ export const CreateOrganizationsEnvironmentsSecurityActionsRequest =
 export type CreateOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
 export const CreateOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type CreateOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16435,7 +16435,7 @@ export const createOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   CreateOrganizationsEnvironmentsSecurityActionsResponse,
   CreateOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsSecurityActionsRequest,
   output: CreateOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16453,7 +16453,7 @@ export interface ListOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const ListOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -16466,7 +16466,7 @@ export const ListOrganizationsEnvironmentsSecurityActionsRequest =
 export type ListOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1ListSecurityActionsResponse;
 export const ListOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityActionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityActionsResponse;
 
 export type ListOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16479,7 +16479,7 @@ export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperatio
   ListOrganizationsEnvironmentsSecurityActionsResponse,
   ListOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityActionsRequest,
   output: ListOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden],
@@ -16495,7 +16495,7 @@ export interface GetOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const GetOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16505,7 +16505,7 @@ export const GetOrganizationsEnvironmentsSecurityActionsRequest =
 export type GetOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
 export const GetOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type GetOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16518,7 +16518,7 @@ export const getOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
   GetOrganizationsEnvironmentsSecurityActionsResponse,
   GetOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityActionsRequest,
   output: GetOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden],
@@ -16530,7 +16530,7 @@ export interface DeleteOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -16540,7 +16540,7 @@ export const DeleteOrganizationsEnvironmentsSecurityActionsRequest =
 export type DeleteOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16555,7 +16555,7 @@ export const deleteOrganizationsEnvironmentsSecurityActions: API.OperationMethod
   DeleteOrganizationsEnvironmentsSecurityActionsResponse,
   DeleteOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsSecurityActionsRequest,
   output: DeleteOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16569,7 +16569,7 @@ export interface DisableOrganizationsEnvironmentsSecurityActionsRequest {
 }
 
 export const DisableOrganizationsEnvironmentsSecurityActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DisableSecurityActionRequest).pipe(
       T.HttpBody(),
@@ -16582,7 +16582,7 @@ export const DisableOrganizationsEnvironmentsSecurityActionsRequest =
 export type DisableOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
 export const DisableOrganizationsEnvironmentsSecurityActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type DisableOrganizationsEnvironmentsSecurityActionsError =
   | DefaultErrors
@@ -16597,7 +16597,7 @@ export const disableOrganizationsEnvironmentsSecurityActions: API.OperationMetho
   DisableOrganizationsEnvironmentsSecurityActionsResponse,
   DisableOrganizationsEnvironmentsSecurityActionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableOrganizationsEnvironmentsSecurityActionsRequest,
   output: DisableOrganizationsEnvironmentsSecurityActionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16615,7 +16615,7 @@ export interface DeployOrganizationsEnvironmentsApisRevisionsRequest {
 }
 
 export const DeployOrganizationsEnvironmentsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     override: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("override")),
     sequencedRollout: Schema.optional(Schema.Boolean).pipe(
@@ -16632,7 +16632,7 @@ export const DeployOrganizationsEnvironmentsApisRevisionsRequest =
 export type DeployOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
 export const DeployOrganizationsEnvironmentsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type DeployOrganizationsEnvironmentsApisRevisionsError =
   | DefaultErrors
@@ -16647,7 +16647,7 @@ export const deployOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
   DeployOrganizationsEnvironmentsApisRevisionsResponse,
   DeployOrganizationsEnvironmentsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeployOrganizationsEnvironmentsApisRevisionsRequest,
   output: DeployOrganizationsEnvironmentsApisRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16661,7 +16661,7 @@ export interface UndeployOrganizationsEnvironmentsApisRevisionsRequest {
 }
 
 export const UndeployOrganizationsEnvironmentsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     sequencedRollout: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("sequencedRollout"),
@@ -16674,7 +16674,7 @@ export const UndeployOrganizationsEnvironmentsApisRevisionsRequest =
 export type UndeployOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleProtobufEmpty;
 export const UndeployOrganizationsEnvironmentsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UndeployOrganizationsEnvironmentsApisRevisionsError =
   | DefaultErrors
@@ -16689,7 +16689,7 @@ export const undeployOrganizationsEnvironmentsApisRevisions: API.OperationMethod
   UndeployOrganizationsEnvironmentsApisRevisionsResponse,
   UndeployOrganizationsEnvironmentsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeployOrganizationsEnvironmentsApisRevisionsRequest,
   output: UndeployOrganizationsEnvironmentsApisRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16701,7 +16701,7 @@ export interface GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest {
 }
 
 export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
@@ -16711,7 +16711,7 @@ export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest =
 export type GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
 export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type GetDeploymentsOrganizationsEnvironmentsApisRevisionsError =
   | DefaultErrors
@@ -16724,7 +16724,7 @@ export const getDeploymentsOrganizationsEnvironmentsApisRevisions: API.Operation
   GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse,
   GetDeploymentsOrganizationsEnvironmentsApisRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest,
   output: GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -16738,7 +16738,7 @@ export interface GenerateDeployChangeReportOrganizationsEnvironmentsApisRevision
 }
 
 export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     override: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("override")),
   }).pipe(
@@ -16753,7 +16753,7 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1DeploymentChangeReport;
 export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
   | DefaultErrors
@@ -16768,7 +16768,7 @@ export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse,
   GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest,
   output:
@@ -16782,7 +16782,7 @@ export interface GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisi
 }
 
 export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
@@ -16796,7 +16796,7 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1DeploymentChangeReport;
 export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
   | DefaultErrors
@@ -16811,7 +16811,7 @@ export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse,
   GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest,
   output:
@@ -16829,7 +16829,7 @@ export interface CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsReques
 }
 
 export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DebugSession).pipe(T.HttpBody()),
@@ -16845,7 +16845,7 @@ export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
 export type CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1DebugSession;
 export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSession;
+  /*@__PURE__*/ GoogleCloudApigeeV1DebugSession;
 
 export type CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
   | DefaultErrors
@@ -16860,7 +16860,7 @@ export const createOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Oper
   CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16872,7 +16872,7 @@ export interface GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest {
 }
 
 export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16882,7 +16882,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1DebugSession;
 export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSession;
+  /*@__PURE__*/ GoogleCloudApigeeV1DebugSession;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
   | DefaultErrors
@@ -16895,7 +16895,7 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Operati
   GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   GetOrganizationsEnvironmentsApisRevisionsDebugsessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   errors: [NotFound, Forbidden],
@@ -16911,7 +16911,7 @@ export interface ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest 
 }
 
 export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -16923,7 +16923,7 @@ export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
 export type ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1ListDebugSessionsResponse;
 export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDebugSessionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDebugSessionsResponse;
 
 export type ListOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
   | DefaultErrors
@@ -16936,7 +16936,7 @@ export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Pagina
   ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   ListOrganizationsEnvironmentsApisRevisionsDebugsessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   errors: [NotFound, Forbidden],
@@ -16952,7 +16952,7 @@ export interface DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRe
 }
 
 export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/data" }),
@@ -16962,7 +16962,7 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsReques
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleProtobufEmpty;
 export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
   | DefaultErrors
@@ -16977,7 +16977,7 @@ export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.
   DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16989,7 +16989,7 @@ export interface GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataReque
 }
 
 export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -16999,7 +16999,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest =
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse =
   GoogleCloudApigeeV1DebugSessionTransaction;
 export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSessionTransaction;
+  /*@__PURE__*/ GoogleCloudApigeeV1DebugSessionTransaction;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataError =
   | DefaultErrors
@@ -17012,7 +17012,7 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessionsData: API.Ope
   GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse,
   GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest,
   output: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse,
   errors: [NotFound, Forbidden],
@@ -17024,7 +17024,7 @@ export interface ListOrganizationsEnvironmentsApisDeploymentsRequest {
 }
 
 export const ListOrganizationsEnvironmentsApisDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -17034,7 +17034,7 @@ export const ListOrganizationsEnvironmentsApisDeploymentsRequest =
 export type ListOrganizationsEnvironmentsApisDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsEnvironmentsApisDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsApisDeploymentsError =
   | DefaultErrors
@@ -17047,7 +17047,7 @@ export const listOrganizationsEnvironmentsApisDeployments: API.OperationMethod<
   ListOrganizationsEnvironmentsApisDeploymentsResponse,
   ListOrganizationsEnvironmentsApisDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsApisDeploymentsRequest,
   output: ListOrganizationsEnvironmentsApisDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -17059,7 +17059,7 @@ export interface GetOrganizationsEnvironmentsQueriesRequest {
 }
 
 export const GetOrganizationsEnvironmentsQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17069,7 +17069,7 @@ export const GetOrganizationsEnvironmentsQueriesRequest =
 export type GetOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
 export const GetOrganizationsEnvironmentsQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
+  /*@__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
 export type GetOrganizationsEnvironmentsQueriesError =
   | DefaultErrors
@@ -17082,7 +17082,7 @@ export const getOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetOrganizationsEnvironmentsQueriesResponse,
   GetOrganizationsEnvironmentsQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsQueriesRequest,
   output: GetOrganizationsEnvironmentsQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -17094,7 +17094,7 @@ export interface GetResultOrganizationsEnvironmentsQueriesRequest {
 }
 
 export const GetResultOrganizationsEnvironmentsQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17104,7 +17104,7 @@ export const GetResultOrganizationsEnvironmentsQueriesRequest =
 export type GetResultOrganizationsEnvironmentsQueriesResponse =
   GoogleApiHttpBody;
 export const GetResultOrganizationsEnvironmentsQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetResultOrganizationsEnvironmentsQueriesError =
   | DefaultErrors
@@ -17117,7 +17117,7 @@ export const getResultOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetResultOrganizationsEnvironmentsQueriesResponse,
   GetResultOrganizationsEnvironmentsQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsEnvironmentsQueriesRequest,
   output: GetResultOrganizationsEnvironmentsQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -17131,7 +17131,7 @@ export interface CreateOrganizationsEnvironmentsQueriesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Query).pipe(T.HttpBody()),
   }).pipe(
@@ -17142,7 +17142,7 @@ export const CreateOrganizationsEnvironmentsQueriesRequest =
 export type CreateOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
 export const CreateOrganizationsEnvironmentsQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
+  /*@__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
 export type CreateOrganizationsEnvironmentsQueriesError =
   | DefaultErrors
@@ -17157,7 +17157,7 @@ export const createOrganizationsEnvironmentsQueries: API.OperationMethod<
   CreateOrganizationsEnvironmentsQueriesResponse,
   CreateOrganizationsEnvironmentsQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsQueriesRequest,
   output: CreateOrganizationsEnvironmentsQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17169,7 +17169,7 @@ export interface GetResulturlOrganizationsEnvironmentsQueriesRequest {
 }
 
 export const GetResulturlOrganizationsEnvironmentsQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17179,7 +17179,7 @@ export const GetResulturlOrganizationsEnvironmentsQueriesRequest =
 export type GetResulturlOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse;
 export const GetResulturlOrganizationsEnvironmentsQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse;
 
 export type GetResulturlOrganizationsEnvironmentsQueriesError =
   | DefaultErrors
@@ -17192,7 +17192,7 @@ export const getResulturlOrganizationsEnvironmentsQueries: API.OperationMethod<
   GetResulturlOrganizationsEnvironmentsQueriesResponse,
   GetResulturlOrganizationsEnvironmentsQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResulturlOrganizationsEnvironmentsQueriesRequest,
   output: GetResulturlOrganizationsEnvironmentsQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -17216,7 +17216,7 @@ export interface ListOrganizationsEnvironmentsQueriesRequest {
 }
 
 export const ListOrganizationsEnvironmentsQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String).pipe(T.HttpQuery("dataset")),
     submittedBy: Schema.optional(Schema.String).pipe(
       T.HttpQuery("submittedBy"),
@@ -17236,7 +17236,7 @@ export const ListOrganizationsEnvironmentsQueriesRequest =
 export type ListOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1ListAsyncQueriesResponse;
 export const ListOrganizationsEnvironmentsQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
 
 export type ListOrganizationsEnvironmentsQueriesError =
   | DefaultErrors
@@ -17249,7 +17249,7 @@ export const listOrganizationsEnvironmentsQueries: API.OperationMethod<
   ListOrganizationsEnvironmentsQueriesResponse,
   ListOrganizationsEnvironmentsQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsQueriesRequest,
   output: ListOrganizationsEnvironmentsQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -17263,7 +17263,7 @@ export interface QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest 
 }
 
 export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgenv: Schema.String.pipe(T.HttpPath("orgenv")),
     body: Schema.optional(GoogleCloudApigeeV1QueryTabularStatsRequest).pipe(
       T.HttpBody(),
@@ -17280,7 +17280,7 @@ export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest =
 export type QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse =
   GoogleCloudApigeeV1QueryTabularStatsResponse;
 export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1QueryTabularStatsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1QueryTabularStatsResponse;
 
 export type QueryTabularStatsOrganizationsEnvironmentsSecurityStatsError =
   | DefaultErrors
@@ -17295,7 +17295,7 @@ export const queryTabularStatsOrganizationsEnvironmentsSecurityStats: API.Operat
   QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse,
   QueryTabularStatsOrganizationsEnvironmentsSecurityStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest,
   output: QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17309,7 +17309,7 @@ export interface QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsReque
 }
 
 export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgenv: Schema.String.pipe(T.HttpPath("orgenv")),
     body: Schema.optional(GoogleCloudApigeeV1QueryTimeSeriesStatsRequest).pipe(
       T.HttpBody(),
@@ -17326,7 +17326,7 @@ export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest =
 export type QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse =
   GoogleCloudApigeeV1QueryTimeSeriesStatsResponse;
 export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1QueryTimeSeriesStatsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1QueryTimeSeriesStatsResponse;
 
 export type QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsError =
   | DefaultErrors
@@ -17341,7 +17341,7 @@ export const queryTimeSeriesStatsOrganizationsEnvironmentsSecurityStats: API.Ope
   QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse,
   QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest,
   output: QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17355,7 +17355,7 @@ export interface AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksReq
 }
 
 export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1FlowHook).pipe(T.HttpBody()),
   }).pipe(
@@ -17366,7 +17366,7 @@ export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest
 export type AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
 export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
+  /*@__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksError =
   | DefaultErrors
@@ -17381,7 +17381,7 @@ export const attachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooks: API.O
   AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse,
   AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest,
   output: AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17393,7 +17393,7 @@ export interface GetOrganizationsEnvironmentsFlowhooksRequest {
 }
 
 export const GetOrganizationsEnvironmentsFlowhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17403,7 +17403,7 @@ export const GetOrganizationsEnvironmentsFlowhooksRequest =
 export type GetOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
 export const GetOrganizationsEnvironmentsFlowhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
+  /*@__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type GetOrganizationsEnvironmentsFlowhooksError =
   | DefaultErrors
@@ -17416,7 +17416,7 @@ export const getOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
   GetOrganizationsEnvironmentsFlowhooksResponse,
   GetOrganizationsEnvironmentsFlowhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsFlowhooksRequest,
   output: GetOrganizationsEnvironmentsFlowhooksResponse,
   errors: [NotFound, Forbidden],
@@ -17428,7 +17428,7 @@ export interface DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksR
 }
 
 export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -17438,7 +17438,7 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksReque
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
 export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
+  /*@__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksError =
   | DefaultErrors
@@ -17453,7 +17453,7 @@ export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API
   DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse,
   DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest,
   output:
     DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse,
@@ -17468,7 +17468,7 @@ export interface CreateOrganizationsEnvironmentsReferencesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsReferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Reference).pipe(T.HttpBody()),
   }).pipe(
@@ -17479,7 +17479,7 @@ export const CreateOrganizationsEnvironmentsReferencesRequest =
 export type CreateOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
 export const CreateOrganizationsEnvironmentsReferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
+  /*@__PURE__*/ GoogleCloudApigeeV1Reference;
 
 export type CreateOrganizationsEnvironmentsReferencesError =
   | DefaultErrors
@@ -17494,7 +17494,7 @@ export const createOrganizationsEnvironmentsReferences: API.OperationMethod<
   CreateOrganizationsEnvironmentsReferencesResponse,
   CreateOrganizationsEnvironmentsReferencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsReferencesRequest,
   output: CreateOrganizationsEnvironmentsReferencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17506,7 +17506,7 @@ export interface DeleteOrganizationsEnvironmentsReferencesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsReferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -17516,7 +17516,7 @@ export const DeleteOrganizationsEnvironmentsReferencesRequest =
 export type DeleteOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
 export const DeleteOrganizationsEnvironmentsReferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
+  /*@__PURE__*/ GoogleCloudApigeeV1Reference;
 
 export type DeleteOrganizationsEnvironmentsReferencesError =
   | DefaultErrors
@@ -17531,7 +17531,7 @@ export const deleteOrganizationsEnvironmentsReferences: API.OperationMethod<
   DeleteOrganizationsEnvironmentsReferencesResponse,
   DeleteOrganizationsEnvironmentsReferencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsReferencesRequest,
   output: DeleteOrganizationsEnvironmentsReferencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17545,7 +17545,7 @@ export interface UpdateOrganizationsEnvironmentsReferencesRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsReferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Reference).pipe(T.HttpBody()),
   }).pipe(
@@ -17556,7 +17556,7 @@ export const UpdateOrganizationsEnvironmentsReferencesRequest =
 export type UpdateOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
 export const UpdateOrganizationsEnvironmentsReferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
+  /*@__PURE__*/ GoogleCloudApigeeV1Reference;
 
 export type UpdateOrganizationsEnvironmentsReferencesError =
   | DefaultErrors
@@ -17571,7 +17571,7 @@ export const updateOrganizationsEnvironmentsReferences: API.OperationMethod<
   UpdateOrganizationsEnvironmentsReferencesResponse,
   UpdateOrganizationsEnvironmentsReferencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsReferencesRequest,
   output: UpdateOrganizationsEnvironmentsReferencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17583,7 +17583,7 @@ export interface GetOrganizationsEnvironmentsReferencesRequest {
 }
 
 export const GetOrganizationsEnvironmentsReferencesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17593,7 +17593,7 @@ export const GetOrganizationsEnvironmentsReferencesRequest =
 export type GetOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
 export const GetOrganizationsEnvironmentsReferencesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
+  /*@__PURE__*/ GoogleCloudApigeeV1Reference;
 
 export type GetOrganizationsEnvironmentsReferencesError =
   | DefaultErrors
@@ -17606,7 +17606,7 @@ export const getOrganizationsEnvironmentsReferences: API.OperationMethod<
   GetOrganizationsEnvironmentsReferencesResponse,
   GetOrganizationsEnvironmentsReferencesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsReferencesRequest,
   output: GetOrganizationsEnvironmentsReferencesResponse,
   errors: [NotFound, Forbidden],
@@ -17620,7 +17620,7 @@ export interface CreateOrganizationsEnvironmentsKeyvaluemapsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -17635,7 +17635,7 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsRequest =
 export type CreateOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const CreateOrganizationsEnvironmentsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type CreateOrganizationsEnvironmentsKeyvaluemapsError =
   | DefaultErrors
@@ -17650,7 +17650,7 @@ export const createOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsEnvironmentsKeyvaluemapsResponse,
   CreateOrganizationsEnvironmentsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: CreateOrganizationsEnvironmentsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17664,7 +17664,7 @@ export interface UpdateOrganizationsEnvironmentsKeyvaluemapsRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -17675,7 +17675,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsRequest =
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const UpdateOrganizationsEnvironmentsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsError =
   | DefaultErrors
@@ -17690,7 +17690,7 @@ export const updateOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsEnvironmentsKeyvaluemapsResponse,
   UpdateOrganizationsEnvironmentsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: UpdateOrganizationsEnvironmentsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17702,7 +17702,7 @@ export interface DeleteOrganizationsEnvironmentsKeyvaluemapsRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -17712,7 +17712,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsRequest =
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const DeleteOrganizationsEnvironmentsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsError =
   | DefaultErrors
@@ -17727,7 +17727,7 @@ export const deleteOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsEnvironmentsKeyvaluemapsResponse,
   DeleteOrganizationsEnvironmentsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: DeleteOrganizationsEnvironmentsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17739,7 +17739,7 @@ export interface GetOrganizationsEnvironmentsKeyvaluemapsRequest {
 }
 
 export const GetOrganizationsEnvironmentsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17749,7 +17749,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsRequest =
 export type GetOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const GetOrganizationsEnvironmentsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type GetOrganizationsEnvironmentsKeyvaluemapsError =
   | DefaultErrors
@@ -17762,7 +17762,7 @@ export const getOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
   GetOrganizationsEnvironmentsKeyvaluemapsResponse,
   GetOrganizationsEnvironmentsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: GetOrganizationsEnvironmentsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden],
@@ -17776,7 +17776,7 @@ export interface CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -17787,7 +17787,7 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
 export type CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type CreateOrganizationsEnvironmentsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -17802,7 +17802,7 @@ export const createOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   CreateOrganizationsEnvironmentsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17816,7 +17816,7 @@ export interface UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -17827,7 +17827,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -17842,7 +17842,7 @@ export const updateOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17858,7 +17858,7 @@ export interface ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
 }
 
 export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -17870,7 +17870,7 @@ export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
 export type ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
 export type ListOrganizationsEnvironmentsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -17883,7 +17883,7 @@ export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOper
   ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   ListOrganizationsEnvironmentsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -17899,7 +17899,7 @@ export interface DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -17909,7 +17909,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -17924,7 +17924,7 @@ export const deleteOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
   DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17936,7 +17936,7 @@ export interface GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
 }
 
 export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -17946,7 +17946,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
 export type GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type GetOrganizationsEnvironmentsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -17959,7 +17959,7 @@ export const getOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMetho
   GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   GetOrganizationsEnvironmentsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -17971,7 +17971,7 @@ export interface ListOrganizationsEnvironmentsAnalyticsExportsRequest {
 }
 
 export const ListOrganizationsEnvironmentsAnalyticsExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/analytics/exports" }),
@@ -17981,7 +17981,7 @@ export const ListOrganizationsEnvironmentsAnalyticsExportsRequest =
 export type ListOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1ListExportsResponse;
 export const ListOrganizationsEnvironmentsAnalyticsExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListExportsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListExportsResponse;
 
 export type ListOrganizationsEnvironmentsAnalyticsExportsError =
   | DefaultErrors
@@ -17994,7 +17994,7 @@ export const listOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
   ListOrganizationsEnvironmentsAnalyticsExportsResponse,
   ListOrganizationsEnvironmentsAnalyticsExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: ListOrganizationsEnvironmentsAnalyticsExportsResponse,
   errors: [NotFound, Forbidden],
@@ -18008,7 +18008,7 @@ export interface CreateOrganizationsEnvironmentsAnalyticsExportsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsAnalyticsExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ExportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -18023,7 +18023,7 @@ export const CreateOrganizationsEnvironmentsAnalyticsExportsRequest =
 export type CreateOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1Export;
 export const CreateOrganizationsEnvironmentsAnalyticsExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Export;
+  /*@__PURE__*/ GoogleCloudApigeeV1Export;
 
 export type CreateOrganizationsEnvironmentsAnalyticsExportsError =
   | DefaultErrors
@@ -18038,7 +18038,7 @@ export const createOrganizationsEnvironmentsAnalyticsExports: API.OperationMetho
   CreateOrganizationsEnvironmentsAnalyticsExportsResponse,
   CreateOrganizationsEnvironmentsAnalyticsExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: CreateOrganizationsEnvironmentsAnalyticsExportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18050,7 +18050,7 @@ export interface GetOrganizationsEnvironmentsAnalyticsExportsRequest {
 }
 
 export const GetOrganizationsEnvironmentsAnalyticsExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -18060,7 +18060,7 @@ export const GetOrganizationsEnvironmentsAnalyticsExportsRequest =
 export type GetOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1Export;
 export const GetOrganizationsEnvironmentsAnalyticsExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Export;
+  /*@__PURE__*/ GoogleCloudApigeeV1Export;
 
 export type GetOrganizationsEnvironmentsAnalyticsExportsError =
   | DefaultErrors
@@ -18073,7 +18073,7 @@ export const getOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
   GetOrganizationsEnvironmentsAnalyticsExportsResponse,
   GetOrganizationsEnvironmentsAnalyticsExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: GetOrganizationsEnvironmentsAnalyticsExportsResponse,
   errors: [NotFound, Forbidden],
@@ -18089,7 +18089,7 @@ export interface GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest {
 }
 
 export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     disableCache: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("disableCache"),
@@ -18103,7 +18103,7 @@ export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest =
 export type GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse =
   GoogleCloudApigeeV1Schema;
 export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Schema;
+  /*@__PURE__*/ GoogleCloudApigeeV1Schema;
 
 export type GetSchemav2OrganizationsEnvironmentsAnalyticsAdminError =
   | DefaultErrors
@@ -18116,7 +18116,7 @@ export const getSchemav2OrganizationsEnvironmentsAnalyticsAdmin: API.OperationMe
   GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse,
   GetSchemav2OrganizationsEnvironmentsAnalyticsAdminError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest,
   output: GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse,
   errors: [NotFound, Forbidden],
@@ -18158,7 +18158,7 @@ export interface GetOrganizationsEnvironmentsStatsRequest {
 }
 
 export const GetOrganizationsEnvironmentsStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeRange: Schema.optional(Schema.String).pipe(T.HttpQuery("timeRange")),
     tsAscending: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("tsAscending"),
@@ -18185,7 +18185,7 @@ export const GetOrganizationsEnvironmentsStatsRequest =
 export type GetOrganizationsEnvironmentsStatsResponse =
   GoogleCloudApigeeV1Stats;
 export const GetOrganizationsEnvironmentsStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Stats;
+  /*@__PURE__*/ GoogleCloudApigeeV1Stats;
 
 export type GetOrganizationsEnvironmentsStatsError =
   | DefaultErrors
@@ -18198,7 +18198,7 @@ export const getOrganizationsEnvironmentsStats: API.OperationMethod<
   GetOrganizationsEnvironmentsStatsResponse,
   GetOrganizationsEnvironmentsStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsStatsRequest,
   output: GetOrganizationsEnvironmentsStatsResponse,
   errors: [NotFound, Forbidden],
@@ -18216,7 +18216,7 @@ export interface ListOrganizationsEnvironmentsSecurityIncidentsRequest {
 }
 
 export const ListOrganizationsEnvironmentsSecurityIncidentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -18229,7 +18229,7 @@ export const ListOrganizationsEnvironmentsSecurityIncidentsRequest =
 export type ListOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1ListSecurityIncidentsResponse;
 export const ListOrganizationsEnvironmentsSecurityIncidentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityIncidentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityIncidentsResponse;
 
 export type ListOrganizationsEnvironmentsSecurityIncidentsError =
   | DefaultErrors
@@ -18242,7 +18242,7 @@ export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperat
   ListOrganizationsEnvironmentsSecurityIncidentsResponse,
   ListOrganizationsEnvironmentsSecurityIncidentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: ListOrganizationsEnvironmentsSecurityIncidentsResponse,
   errors: [NotFound, Forbidden],
@@ -18258,7 +18258,7 @@ export interface GetOrganizationsEnvironmentsSecurityIncidentsRequest {
 }
 
 export const GetOrganizationsEnvironmentsSecurityIncidentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -18268,7 +18268,7 @@ export const GetOrganizationsEnvironmentsSecurityIncidentsRequest =
 export type GetOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1SecurityIncident;
 export const GetOrganizationsEnvironmentsSecurityIncidentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
 
 export type GetOrganizationsEnvironmentsSecurityIncidentsError =
   | DefaultErrors
@@ -18281,7 +18281,7 @@ export const getOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
   GetOrganizationsEnvironmentsSecurityIncidentsResponse,
   GetOrganizationsEnvironmentsSecurityIncidentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: GetOrganizationsEnvironmentsSecurityIncidentsResponse,
   errors: [NotFound, Forbidden],
@@ -18297,7 +18297,7 @@ export interface PatchOrganizationsEnvironmentsSecurityIncidentsRequest {
 }
 
 export const PatchOrganizationsEnvironmentsSecurityIncidentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityIncident).pipe(
@@ -18311,7 +18311,7 @@ export const PatchOrganizationsEnvironmentsSecurityIncidentsRequest =
 export type PatchOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1SecurityIncident;
 export const PatchOrganizationsEnvironmentsSecurityIncidentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
 
 export type PatchOrganizationsEnvironmentsSecurityIncidentsError =
   | DefaultErrors
@@ -18326,7 +18326,7 @@ export const patchOrganizationsEnvironmentsSecurityIncidents: API.OperationMetho
   PatchOrganizationsEnvironmentsSecurityIncidentsResponse,
   PatchOrganizationsEnvironmentsSecurityIncidentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: PatchOrganizationsEnvironmentsSecurityIncidentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18340,7 +18340,7 @@ export interface BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest {
 }
 
 export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest,
@@ -18357,7 +18357,7 @@ export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
 export type BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse;
 export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse;
 
 export type BatchUpdateOrganizationsEnvironmentsSecurityIncidentsError =
   | DefaultErrors
@@ -18372,7 +18372,7 @@ export const batchUpdateOrganizationsEnvironmentsSecurityIncidents: API.Operatio
   BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse,
   BatchUpdateOrganizationsEnvironmentsSecurityIncidentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18386,7 +18386,7 @@ export interface GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest {
 }
 
 export const GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
@@ -18399,7 +18399,7 @@ export const GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
 export type GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyOrganizationsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -18412,7 +18412,7 @@ export const getIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
   GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
   GetIamPolicyOrganizationsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest,
   output: GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -18424,7 +18424,7 @@ export interface GetOrganizationsEnvironmentsDeploymentsRequest {
 }
 
 export const GetOrganizationsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -18434,7 +18434,7 @@ export const GetOrganizationsEnvironmentsDeploymentsRequest =
 export type GetOrganizationsEnvironmentsDeploymentsResponse =
   GoogleCloudApigeeV1Deployment;
 export const GetOrganizationsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type GetOrganizationsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -18447,7 +18447,7 @@ export const getOrganizationsEnvironmentsDeployments: API.OperationMethod<
   GetOrganizationsEnvironmentsDeploymentsResponse,
   GetOrganizationsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsDeploymentsRequest,
   output: GetOrganizationsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -18461,7 +18461,7 @@ export interface ListOrganizationsEnvironmentsDeploymentsRequest {
 }
 
 export const ListOrganizationsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     sharedFlows: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("sharedFlows"),
@@ -18474,7 +18474,7 @@ export const ListOrganizationsEnvironmentsDeploymentsRequest =
 export type ListOrganizationsEnvironmentsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -18487,7 +18487,7 @@ export const listOrganizationsEnvironmentsDeployments: API.OperationMethod<
   ListOrganizationsEnvironmentsDeploymentsResponse,
   ListOrganizationsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsDeploymentsRequest,
   output: ListOrganizationsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -18501,7 +18501,7 @@ export interface TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest {
 }
 
 export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -18518,7 +18518,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest =
 export type TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsOrganizationsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -18533,7 +18533,7 @@ export const testIamPermissionsOrganizationsEnvironmentsDeployments: API.Operati
   TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse,
   TestIamPermissionsOrganizationsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest,
   output: TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18547,7 +18547,7 @@ export interface SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest {
 }
 
 export const SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -18562,7 +18562,7 @@ export const SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
 export type SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+  /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyOrganizationsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -18577,7 +18577,7 @@ export const setIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
   SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
   SetIamPolicyOrganizationsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest,
   output: SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18589,7 +18589,7 @@ export interface DeleteOrganizationsEnvironmentsCachesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsCachesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -18598,7 +18598,7 @@ export const DeleteOrganizationsEnvironmentsCachesRequest =
 
 export type DeleteOrganizationsEnvironmentsCachesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsCachesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsCachesError =
   | DefaultErrors
@@ -18613,7 +18613,7 @@ export const deleteOrganizationsEnvironmentsCaches: API.OperationMethod<
   DeleteOrganizationsEnvironmentsCachesResponse,
   DeleteOrganizationsEnvironmentsCachesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsCachesRequest,
   output: DeleteOrganizationsEnvironmentsCachesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18627,7 +18627,7 @@ export interface SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest 
 }
 
 export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SetAddonEnablementRequest).pipe(
       T.HttpBody(),
@@ -18644,7 +18644,7 @@ export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest =
 export type SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse =
   GoogleLongrunningOperation;
 export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type SetAddonEnablementOrganizationsEnvironmentsAddonsConfigError =
   | DefaultErrors
@@ -18659,7 +18659,7 @@ export const setAddonEnablementOrganizationsEnvironmentsAddonsConfig: API.Operat
   SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse,
   SetAddonEnablementOrganizationsEnvironmentsAddonsConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest,
   output: SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18675,7 +18675,7 @@ export interface DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest {
 }
 
 export const DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String).pipe(
       T.HttpQuery("serviceAccount"),
     ),
@@ -18689,7 +18689,7 @@ export const DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
 export type DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
 export const DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type DeployOrganizationsEnvironmentsSharedflowsRevisionsError =
   | DefaultErrors
@@ -18704,7 +18704,7 @@ export const deployOrganizationsEnvironmentsSharedflowsRevisions: API.OperationM
   DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   DeployOrganizationsEnvironmentsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18716,7 +18716,7 @@ export interface UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest {
 }
 
 export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/deployments" }),
@@ -18726,7 +18726,7 @@ export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
 export type UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleProtobufEmpty;
 export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UndeployOrganizationsEnvironmentsSharedflowsRevisionsError =
   | DefaultErrors
@@ -18741,7 +18741,7 @@ export const undeployOrganizationsEnvironmentsSharedflowsRevisions: API.Operatio
   UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   UndeployOrganizationsEnvironmentsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18753,7 +18753,7 @@ export interface GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequ
 }
 
 export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
@@ -18763,7 +18763,7 @@ export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest 
 export type GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
 export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsError =
   | DefaultErrors
@@ -18776,7 +18776,7 @@ export const getDeploymentsOrganizationsEnvironmentsSharedflowsRevisions: API.Op
   GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -18788,7 +18788,7 @@ export interface ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest {
 }
 
 export const ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -18798,7 +18798,7 @@ export const ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest =
 export type ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsSharedflowsDeploymentsError =
   | DefaultErrors
@@ -18811,7 +18811,7 @@ export const listOrganizationsEnvironmentsSharedflowsDeployments: API.OperationM
   ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse,
   ListOrganizationsEnvironmentsSharedflowsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest,
   output: ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -18853,7 +18853,7 @@ export interface GetOrganizationsEnvironmentsOptimizedStatsRequest {
 }
 
 export const GetOrganizationsEnvironmentsOptimizedStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accuracy: Schema.optional(Schema.String).pipe(T.HttpQuery("accuracy")),
     select: Schema.optional(Schema.String).pipe(T.HttpQuery("select")),
     timeRange: Schema.optional(Schema.String).pipe(T.HttpQuery("timeRange")),
@@ -18880,7 +18880,7 @@ export const GetOrganizationsEnvironmentsOptimizedStatsRequest =
 export type GetOrganizationsEnvironmentsOptimizedStatsResponse =
   GoogleCloudApigeeV1OptimizedStats;
 export const GetOrganizationsEnvironmentsOptimizedStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
+  /*@__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
 
 export type GetOrganizationsEnvironmentsOptimizedStatsError =
   | DefaultErrors
@@ -18893,7 +18893,7 @@ export const getOrganizationsEnvironmentsOptimizedStats: API.OperationMethod<
   GetOrganizationsEnvironmentsOptimizedStatsResponse,
   GetOrganizationsEnvironmentsOptimizedStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsOptimizedStatsRequest,
   output: GetOrganizationsEnvironmentsOptimizedStatsResponse,
   errors: [NotFound, Forbidden],
@@ -18907,7 +18907,7 @@ export interface GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsR
 }
 
 export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1GenerateDownloadUrlRequest).pipe(
       T.HttpBody(),
@@ -18924,7 +18924,7 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsReque
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1GenerateDownloadUrlResponse;
 export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateDownloadUrlResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1GenerateDownloadUrlResponse;
 
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -18939,7 +18939,7 @@ export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API
   GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
   GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output:
     GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
@@ -18952,7 +18952,7 @@ export interface GetOrganizationsEnvironmentsArchiveDeploymentsRequest {
 }
 
 export const GetOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -18962,7 +18962,7 @@ export const GetOrganizationsEnvironmentsArchiveDeploymentsRequest =
 export type GetOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ArchiveDeployment;
 export const GetOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
 
 export type GetOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -18975,7 +18975,7 @@ export const getOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod
   GetOrganizationsEnvironmentsArchiveDeploymentsResponse,
   GetOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: GetOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -18987,7 +18987,7 @@ export interface DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -18997,7 +18997,7 @@ export const DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest =
 export type DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -19012,7 +19012,7 @@ export const deleteOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
   DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse,
   DeleteOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19030,7 +19030,7 @@ export interface ListOrganizationsEnvironmentsArchiveDeploymentsRequest {
 }
 
 export const ListOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -19043,7 +19043,7 @@ export const ListOrganizationsEnvironmentsArchiveDeploymentsRequest =
 export type ListOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ListArchiveDeploymentsResponse;
 export const ListOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListArchiveDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListArchiveDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -19056,7 +19056,7 @@ export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOpera
   ListOrganizationsEnvironmentsArchiveDeploymentsResponse,
   ListOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: ListOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -19074,7 +19074,7 @@ export interface GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsReq
 }
 
 export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1GenerateUploadUrlRequest).pipe(
       T.HttpBody(),
@@ -19091,7 +19091,7 @@ export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest
 export type GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1GenerateUploadUrlResponse;
 export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateUploadUrlResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1GenerateUploadUrlResponse;
 
 export type GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -19106,7 +19106,7 @@ export const generateUploadUrlOrganizationsEnvironmentsArchiveDeployments: API.O
   GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
   GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19122,7 +19122,7 @@ export interface PatchOrganizationsEnvironmentsArchiveDeploymentsRequest {
 }
 
 export const PatchOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1ArchiveDeployment).pipe(
@@ -19136,7 +19136,7 @@ export const PatchOrganizationsEnvironmentsArchiveDeploymentsRequest =
 export type PatchOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ArchiveDeployment;
 export const PatchOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
+  /*@__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
 
 export type PatchOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -19151,7 +19151,7 @@ export const patchOrganizationsEnvironmentsArchiveDeployments: API.OperationMeth
   PatchOrganizationsEnvironmentsArchiveDeploymentsResponse,
   PatchOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: PatchOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19165,7 +19165,7 @@ export interface CreateOrganizationsEnvironmentsArchiveDeploymentsRequest {
 }
 
 export const CreateOrganizationsEnvironmentsArchiveDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ArchiveDeployment).pipe(
       T.HttpBody(),
@@ -19182,7 +19182,7 @@ export const CreateOrganizationsEnvironmentsArchiveDeploymentsRequest =
 export type CreateOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleLongrunningOperation;
 export const CreateOrganizationsEnvironmentsArchiveDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEnvironmentsArchiveDeploymentsError =
   | DefaultErrors
@@ -19197,7 +19197,7 @@ export const createOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
   CreateOrganizationsEnvironmentsArchiveDeploymentsResponse,
   CreateOrganizationsEnvironmentsArchiveDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: CreateOrganizationsEnvironmentsArchiveDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19213,7 +19213,7 @@ export interface CreateOrganizationsEnvironmentsKeystoresRequest {
 }
 
 export const CreateOrganizationsEnvironmentsKeystoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     body: Schema.optional(GoogleCloudApigeeV1Keystore).pipe(T.HttpBody()),
@@ -19225,7 +19225,7 @@ export const CreateOrganizationsEnvironmentsKeystoresRequest =
 export type CreateOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
 export const CreateOrganizationsEnvironmentsKeystoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Keystore;
 
 export type CreateOrganizationsEnvironmentsKeystoresError =
   | DefaultErrors
@@ -19240,7 +19240,7 @@ export const createOrganizationsEnvironmentsKeystores: API.OperationMethod<
   CreateOrganizationsEnvironmentsKeystoresResponse,
   CreateOrganizationsEnvironmentsKeystoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeystoresRequest,
   output: CreateOrganizationsEnvironmentsKeystoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19252,7 +19252,7 @@ export interface DeleteOrganizationsEnvironmentsKeystoresRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsKeystoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -19262,7 +19262,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresRequest =
 export type DeleteOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
 export const DeleteOrganizationsEnvironmentsKeystoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Keystore;
 
 export type DeleteOrganizationsEnvironmentsKeystoresError =
   | DefaultErrors
@@ -19277,7 +19277,7 @@ export const deleteOrganizationsEnvironmentsKeystores: API.OperationMethod<
   DeleteOrganizationsEnvironmentsKeystoresResponse,
   DeleteOrganizationsEnvironmentsKeystoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeystoresRequest,
   output: DeleteOrganizationsEnvironmentsKeystoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19289,7 +19289,7 @@ export interface GetOrganizationsEnvironmentsKeystoresRequest {
 }
 
 export const GetOrganizationsEnvironmentsKeystoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19299,7 +19299,7 @@ export const GetOrganizationsEnvironmentsKeystoresRequest =
 export type GetOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
 export const GetOrganizationsEnvironmentsKeystoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Keystore;
 
 export type GetOrganizationsEnvironmentsKeystoresError =
   | DefaultErrors
@@ -19312,7 +19312,7 @@ export const getOrganizationsEnvironmentsKeystores: API.OperationMethod<
   GetOrganizationsEnvironmentsKeystoresResponse,
   GetOrganizationsEnvironmentsKeystoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeystoresRequest,
   output: GetOrganizationsEnvironmentsKeystoresResponse,
   errors: [NotFound, Forbidden],
@@ -19324,7 +19324,7 @@ export interface GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest 
 }
 
 export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/certificate" }),
@@ -19334,7 +19334,7 @@ export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleApiHttpBody;
 export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetCertificateOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19347,7 +19347,7 @@ export const getCertificateOrganizationsEnvironmentsKeystoresAliases: API.Operat
   GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse,
   GetCertificateOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden],
@@ -19359,7 +19359,7 @@ export interface DeleteOrganizationsEnvironmentsKeystoresAliasesRequest {
 }
 
 export const DeleteOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -19369,7 +19369,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type DeleteOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
 export const DeleteOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
+  /*@__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type DeleteOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19384,7 +19384,7 @@ export const deleteOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   DeleteOrganizationsEnvironmentsKeystoresAliasesResponse,
   DeleteOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: DeleteOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19396,7 +19396,7 @@ export interface GetOrganizationsEnvironmentsKeystoresAliasesRequest {
 }
 
 export const GetOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19406,7 +19406,7 @@ export const GetOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type GetOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
 export const GetOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
+  /*@__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type GetOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19419,7 +19419,7 @@ export const getOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
   GetOrganizationsEnvironmentsKeystoresAliasesResponse,
   GetOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: GetOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden],
@@ -19431,7 +19431,7 @@ export interface CsrOrganizationsEnvironmentsKeystoresAliasesRequest {
 }
 
 export const CsrOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/csr" }),
@@ -19441,7 +19441,7 @@ export const CsrOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type CsrOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleApiHttpBody;
 export const CsrOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type CsrOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19454,7 +19454,7 @@ export const csrOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
   CsrOrganizationsEnvironmentsKeystoresAliasesResponse,
   CsrOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CsrOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: CsrOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden],
@@ -19478,7 +19478,7 @@ export interface CreateOrganizationsEnvironmentsKeystoresAliasesRequest {
 }
 
 export const CreateOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreNewlineValidation: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("ignoreNewlineValidation"),
     ),
@@ -19498,7 +19498,7 @@ export const CreateOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type CreateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
 export const CreateOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
+  /*@__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type CreateOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19513,7 +19513,7 @@ export const createOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   CreateOrganizationsEnvironmentsKeystoresAliasesResponse,
   CreateOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: CreateOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19531,7 +19531,7 @@ export interface UpdateOrganizationsEnvironmentsKeystoresAliasesRequest {
 }
 
 export const UpdateOrganizationsEnvironmentsKeystoresAliasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ignoreNewlineValidation: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("ignoreNewlineValidation"),
     ),
@@ -19548,7 +19548,7 @@ export const UpdateOrganizationsEnvironmentsKeystoresAliasesRequest =
 export type UpdateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
 export const UpdateOrganizationsEnvironmentsKeystoresAliasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
+  /*@__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type UpdateOrganizationsEnvironmentsKeystoresAliasesError =
   | DefaultErrors
@@ -19563,7 +19563,7 @@ export const updateOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
   UpdateOrganizationsEnvironmentsKeystoresAliasesResponse,
   UpdateOrganizationsEnvironmentsKeystoresAliasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: UpdateOrganizationsEnvironmentsKeystoresAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19577,7 +19577,7 @@ export interface CreateOrganizationsAppgroupsRequest {
 }
 
 export const CreateOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroup).pipe(T.HttpBody()),
   }).pipe(
@@ -19587,7 +19587,7 @@ export const CreateOrganizationsAppgroupsRequest =
 
 export type CreateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const CreateOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
 export type CreateOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19602,7 +19602,7 @@ export const createOrganizationsAppgroups: API.OperationMethod<
   CreateOrganizationsAppgroupsResponse,
   CreateOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsRequest,
   output: CreateOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19618,7 +19618,7 @@ export interface UpdateOrganizationsAppgroupsRequest {
 }
 
 export const UpdateOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroup).pipe(T.HttpBody()),
@@ -19629,7 +19629,7 @@ export const UpdateOrganizationsAppgroupsRequest =
 
 export type UpdateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const UpdateOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
 export type UpdateOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19644,7 +19644,7 @@ export const updateOrganizationsAppgroups: API.OperationMethod<
   UpdateOrganizationsAppgroupsResponse,
   UpdateOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAppgroupsRequest,
   output: UpdateOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19656,7 +19656,7 @@ export interface GetBalanceOrganizationsAppgroupsRequest {
 }
 
 export const GetBalanceOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19666,7 +19666,7 @@ export const GetBalanceOrganizationsAppgroupsRequest =
 export type GetBalanceOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupBalance;
 export const GetBalanceOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
 export type GetBalanceOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19679,7 +19679,7 @@ export const getBalanceOrganizationsAppgroups: API.OperationMethod<
   GetBalanceOrganizationsAppgroupsResponse,
   GetBalanceOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBalanceOrganizationsAppgroupsRequest,
   output: GetBalanceOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19697,7 +19697,7 @@ export interface ListOrganizationsAppgroupsRequest {
 }
 
 export const ListOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -19710,7 +19710,7 @@ export const ListOrganizationsAppgroupsRequest =
 export type ListOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1ListAppGroupsResponse;
 export const ListOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAppGroupsResponse;
 
 export type ListOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19723,7 +19723,7 @@ export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
   ListOrganizationsAppgroupsResponse,
   ListOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsRequest,
   output: ListOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19739,7 +19739,7 @@ export interface DeleteOrganizationsAppgroupsRequest {
 }
 
 export const DeleteOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -19748,7 +19748,7 @@ export const DeleteOrganizationsAppgroupsRequest =
 
 export type DeleteOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const DeleteOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
 export type DeleteOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19763,7 +19763,7 @@ export const deleteOrganizationsAppgroups: API.OperationMethod<
   DeleteOrganizationsAppgroupsResponse,
   DeleteOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsRequest,
   output: DeleteOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19775,7 +19775,7 @@ export interface GetOrganizationsAppgroupsRequest {
 }
 
 export const GetOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19784,7 +19784,7 @@ export const GetOrganizationsAppgroupsRequest =
 
 export type GetOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const GetOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
 export type GetOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19797,7 +19797,7 @@ export const getOrganizationsAppgroups: API.OperationMethod<
   GetOrganizationsAppgroupsResponse,
   GetOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsRequest,
   output: GetOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19809,7 +19809,7 @@ export interface GetMonetizationConfigOrganizationsAppgroupsRequest {
 }
 
 export const GetMonetizationConfigOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19819,7 +19819,7 @@ export const GetMonetizationConfigOrganizationsAppgroupsRequest =
 export type GetMonetizationConfigOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupMonetizationConfig;
 export const GetMonetizationConfigOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
 
 export type GetMonetizationConfigOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19832,7 +19832,7 @@ export const getMonetizationConfigOrganizationsAppgroups: API.OperationMethod<
   GetMonetizationConfigOrganizationsAppgroupsResponse,
   GetMonetizationConfigOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonetizationConfigOrganizationsAppgroupsRequest,
   output: GetMonetizationConfigOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19846,7 +19846,7 @@ export interface UpdateMonetizationConfigOrganizationsAppgroupsRequest {
 }
 
 export const UpdateMonetizationConfigOrganizationsAppgroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupMonetizationConfig).pipe(
       T.HttpBody(),
@@ -19859,7 +19859,7 @@ export const UpdateMonetizationConfigOrganizationsAppgroupsRequest =
 export type UpdateMonetizationConfigOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupMonetizationConfig;
 export const UpdateMonetizationConfigOrganizationsAppgroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
 
 export type UpdateMonetizationConfigOrganizationsAppgroupsError =
   | DefaultErrors
@@ -19874,7 +19874,7 @@ export const updateMonetizationConfigOrganizationsAppgroups: API.OperationMethod
   UpdateMonetizationConfigOrganizationsAppgroupsResponse,
   UpdateMonetizationConfigOrganizationsAppgroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonetizationConfigOrganizationsAppgroupsRequest,
   output: UpdateMonetizationConfigOrganizationsAppgroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19888,7 +19888,7 @@ export interface CreditOrganizationsAppgroupsBalanceRequest {
 }
 
 export const CreditOrganizationsAppgroupsBalanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1CreditAppGroupBalanceRequest).pipe(
       T.HttpBody(),
@@ -19901,7 +19901,7 @@ export const CreditOrganizationsAppgroupsBalanceRequest =
 export type CreditOrganizationsAppgroupsBalanceResponse =
   GoogleCloudApigeeV1AppGroupBalance;
 export const CreditOrganizationsAppgroupsBalanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
 export type CreditOrganizationsAppgroupsBalanceError =
   | DefaultErrors
@@ -19916,7 +19916,7 @@ export const creditOrganizationsAppgroupsBalance: API.OperationMethod<
   CreditOrganizationsAppgroupsBalanceResponse,
   CreditOrganizationsAppgroupsBalanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreditOrganizationsAppgroupsBalanceRequest,
   output: CreditOrganizationsAppgroupsBalanceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19930,7 +19930,7 @@ export interface AdjustOrganizationsAppgroupsBalanceRequest {
 }
 
 export const AdjustOrganizationsAppgroupsBalanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1AdjustAppGroupBalanceRequest).pipe(
       T.HttpBody(),
@@ -19943,7 +19943,7 @@ export const AdjustOrganizationsAppgroupsBalanceRequest =
 export type AdjustOrganizationsAppgroupsBalanceResponse =
   GoogleCloudApigeeV1AppGroupBalance;
 export const AdjustOrganizationsAppgroupsBalanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
 export type AdjustOrganizationsAppgroupsBalanceError =
   | DefaultErrors
@@ -19958,7 +19958,7 @@ export const adjustOrganizationsAppgroupsBalance: API.OperationMethod<
   AdjustOrganizationsAppgroupsBalanceResponse,
   AdjustOrganizationsAppgroupsBalanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AdjustOrganizationsAppgroupsBalanceRequest,
   output: AdjustOrganizationsAppgroupsBalanceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19970,7 +19970,7 @@ export interface GetOrganizationsAppgroupsAppsRequest {
 }
 
 export const GetOrganizationsAppgroupsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -19980,7 +19980,7 @@ export const GetOrganizationsAppgroupsAppsRequest =
 export type GetOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
 export const GetOrganizationsAppgroupsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
 export type GetOrganizationsAppgroupsAppsError =
   | DefaultErrors
@@ -19993,7 +19993,7 @@ export const getOrganizationsAppgroupsApps: API.OperationMethod<
   GetOrganizationsAppgroupsAppsResponse,
   GetOrganizationsAppgroupsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsAppsRequest,
   output: GetOrganizationsAppgroupsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -20005,7 +20005,7 @@ export interface DeleteOrganizationsAppgroupsAppsRequest {
 }
 
 export const DeleteOrganizationsAppgroupsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -20015,7 +20015,7 @@ export const DeleteOrganizationsAppgroupsAppsRequest =
 export type DeleteOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
 export const DeleteOrganizationsAppgroupsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
 export type DeleteOrganizationsAppgroupsAppsError =
   | DefaultErrors
@@ -20030,7 +20030,7 @@ export const deleteOrganizationsAppgroupsApps: API.OperationMethod<
   DeleteOrganizationsAppgroupsAppsResponse,
   DeleteOrganizationsAppgroupsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsRequest,
   output: DeleteOrganizationsAppgroupsAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20046,7 +20046,7 @@ export interface ListOrganizationsAppgroupsAppsRequest {
 }
 
 export const ListOrganizationsAppgroupsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -20058,7 +20058,7 @@ export const ListOrganizationsAppgroupsAppsRequest =
 export type ListOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1ListAppGroupAppsResponse;
 export const ListOrganizationsAppgroupsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupAppsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAppGroupAppsResponse;
 
 export type ListOrganizationsAppgroupsAppsError =
   | DefaultErrors
@@ -20071,7 +20071,7 @@ export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
   ListOrganizationsAppgroupsAppsResponse,
   ListOrganizationsAppgroupsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsAppsRequest,
   output: ListOrganizationsAppgroupsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -20089,7 +20089,7 @@ export interface CreateOrganizationsAppgroupsAppsRequest {
 }
 
 export const CreateOrganizationsAppgroupsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupApp).pipe(T.HttpBody()),
   }).pipe(
@@ -20100,7 +20100,7 @@ export const CreateOrganizationsAppgroupsAppsRequest =
 export type CreateOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
 export const CreateOrganizationsAppgroupsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
 export type CreateOrganizationsAppgroupsAppsError =
   | DefaultErrors
@@ -20115,7 +20115,7 @@ export const createOrganizationsAppgroupsApps: API.OperationMethod<
   CreateOrganizationsAppgroupsAppsResponse,
   CreateOrganizationsAppgroupsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsAppsRequest,
   output: CreateOrganizationsAppgroupsAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20131,7 +20131,7 @@ export interface UpdateOrganizationsAppgroupsAppsRequest {
 }
 
 export const UpdateOrganizationsAppgroupsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupApp).pipe(T.HttpBody()),
@@ -20143,7 +20143,7 @@ export const UpdateOrganizationsAppgroupsAppsRequest =
 export type UpdateOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
 export const UpdateOrganizationsAppgroupsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
 export type UpdateOrganizationsAppgroupsAppsError =
   | DefaultErrors
@@ -20158,7 +20158,7 @@ export const updateOrganizationsAppgroupsApps: API.OperationMethod<
   UpdateOrganizationsAppgroupsAppsResponse,
   UpdateOrganizationsAppgroupsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAppgroupsAppsRequest,
   output: UpdateOrganizationsAppgroupsAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20172,7 +20172,7 @@ export interface CreateOrganizationsAppgroupsAppsKeysRequest {
 }
 
 export const CreateOrganizationsAppgroupsAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupAppKey).pipe(T.HttpBody()),
   }).pipe(
@@ -20183,7 +20183,7 @@ export const CreateOrganizationsAppgroupsAppsKeysRequest =
 export type CreateOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
 export const CreateOrganizationsAppgroupsAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type CreateOrganizationsAppgroupsAppsKeysError =
   | DefaultErrors
@@ -20198,7 +20198,7 @@ export const createOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   CreateOrganizationsAppgroupsAppsKeysResponse,
   CreateOrganizationsAppgroupsAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsAppsKeysRequest,
   output: CreateOrganizationsAppgroupsAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20210,7 +20210,7 @@ export interface DeleteOrganizationsAppgroupsAppsKeysRequest {
 }
 
 export const DeleteOrganizationsAppgroupsAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -20220,7 +20220,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysRequest =
 export type DeleteOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
 export const DeleteOrganizationsAppgroupsAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type DeleteOrganizationsAppgroupsAppsKeysError =
   | DefaultErrors
@@ -20235,7 +20235,7 @@ export const deleteOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   DeleteOrganizationsAppgroupsAppsKeysResponse,
   DeleteOrganizationsAppgroupsAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsKeysRequest,
   output: DeleteOrganizationsAppgroupsAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20249,7 +20249,7 @@ export interface UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest {
 }
 
 export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest).pipe(
       T.HttpBody(),
@@ -20262,7 +20262,7 @@ export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest =
 export type UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
 export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysError =
   | DefaultErrors
@@ -20277,7 +20277,7 @@ export const updateAppGroupAppKeyOrganizationsAppgroupsAppsKeys: API.OperationMe
   UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse,
   UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest,
   output: UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20289,7 +20289,7 @@ export interface GetOrganizationsAppgroupsAppsKeysRequest {
 }
 
 export const GetOrganizationsAppgroupsAppsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -20299,7 +20299,7 @@ export const GetOrganizationsAppgroupsAppsKeysRequest =
 export type GetOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
 export const GetOrganizationsAppgroupsAppsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type GetOrganizationsAppgroupsAppsKeysError =
   | DefaultErrors
@@ -20312,7 +20312,7 @@ export const getOrganizationsAppgroupsAppsKeys: API.OperationMethod<
   GetOrganizationsAppgroupsAppsKeysResponse,
   GetOrganizationsAppgroupsAppsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsAppsKeysRequest,
   output: GetOrganizationsAppgroupsAppsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -20326,7 +20326,7 @@ export interface UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApi
 }
 
 export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -20337,7 +20337,7 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsResponse =
   GoogleProtobufEmpty;
 export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsError =
   | DefaultErrors
@@ -20352,7 +20352,7 @@ export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsResponse,
   UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest,
   output:
@@ -20366,7 +20366,7 @@ export interface DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest {
 }
 
 export const DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -20376,7 +20376,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest =
 export type DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
 export const DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type DeleteOrganizationsAppgroupsAppsKeysApiproductsError =
   | DefaultErrors
@@ -20391,7 +20391,7 @@ export const deleteOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMetho
   DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse,
   DeleteOrganizationsAppgroupsAppsKeysApiproductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest,
   output: DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20403,7 +20403,7 @@ export interface GetOrganizationsAppgroupsSubscriptionsRequest {
 }
 
 export const GetOrganizationsAppgroupsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -20413,7 +20413,7 @@ export const GetOrganizationsAppgroupsSubscriptionsRequest =
 export type GetOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
 export const GetOrganizationsAppgroupsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
 export type GetOrganizationsAppgroupsSubscriptionsError =
   | DefaultErrors
@@ -20426,7 +20426,7 @@ export const getOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   GetOrganizationsAppgroupsSubscriptionsResponse,
   GetOrganizationsAppgroupsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsSubscriptionsRequest,
   output: GetOrganizationsAppgroupsSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -20440,7 +20440,7 @@ export interface ExpireOrganizationsAppgroupsSubscriptionsRequest {
 }
 
 export const ExpireOrganizationsAppgroupsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest,
@@ -20453,7 +20453,7 @@ export const ExpireOrganizationsAppgroupsSubscriptionsRequest =
 export type ExpireOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
 export const ExpireOrganizationsAppgroupsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
 export type ExpireOrganizationsAppgroupsSubscriptionsError =
   | DefaultErrors
@@ -20468,7 +20468,7 @@ export const expireOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   ExpireOrganizationsAppgroupsSubscriptionsResponse,
   ExpireOrganizationsAppgroupsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExpireOrganizationsAppgroupsSubscriptionsRequest,
   output: ExpireOrganizationsAppgroupsSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20482,7 +20482,7 @@ export interface CreateOrganizationsAppgroupsSubscriptionsRequest {
 }
 
 export const CreateOrganizationsAppgroupsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupSubscription).pipe(
       T.HttpBody(),
@@ -20499,7 +20499,7 @@ export const CreateOrganizationsAppgroupsSubscriptionsRequest =
 export type CreateOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
 export const CreateOrganizationsAppgroupsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
+  /*@__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
 export type CreateOrganizationsAppgroupsSubscriptionsError =
   | DefaultErrors
@@ -20514,7 +20514,7 @@ export const createOrganizationsAppgroupsSubscriptions: API.OperationMethod<
   CreateOrganizationsAppgroupsSubscriptionsResponse,
   CreateOrganizationsAppgroupsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsSubscriptionsRequest,
   output: CreateOrganizationsAppgroupsSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20530,7 +20530,7 @@ export interface ListOrganizationsAppgroupsSubscriptionsRequest {
 }
 
 export const ListOrganizationsAppgroupsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -20542,7 +20542,7 @@ export const ListOrganizationsAppgroupsSubscriptionsRequest =
 export type ListOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse;
 export const ListOrganizationsAppgroupsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse;
 
 export type ListOrganizationsAppgroupsSubscriptionsError =
   | DefaultErrors
@@ -20555,7 +20555,7 @@ export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMeth
   ListOrganizationsAppgroupsSubscriptionsResponse,
   ListOrganizationsAppgroupsSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsSubscriptionsRequest,
   output: ListOrganizationsAppgroupsSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -20579,7 +20579,7 @@ export interface ListOrganizationsOperationsRequest {
 }
 
 export const ListOrganizationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -20595,7 +20595,7 @@ export const ListOrganizationsOperationsRequest =
 export type ListOrganizationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListOrganizationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOrganizationsOperationsError =
   | DefaultErrors
@@ -20608,7 +20608,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsOperationsResponse,
   ListOrganizationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOrganizationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -20624,7 +20624,7 @@ export interface GetOrganizationsOperationsRequest {
 }
 
 export const GetOrganizationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -20633,7 +20633,7 @@ export const GetOrganizationsOperationsRequest =
 
 export type GetOrganizationsOperationsResponse = GoogleLongrunningOperation;
 export const GetOrganizationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsOperationsError =
   | DefaultErrors
@@ -20646,7 +20646,7 @@ export const getOrganizationsOperations: API.OperationMethod<
   GetOrganizationsOperationsResponse,
   GetOrganizationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -20658,7 +20658,7 @@ export interface DeleteOrganizationsSharedflowsRequest {
 }
 
 export const DeleteOrganizationsSharedflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -20668,7 +20668,7 @@ export const DeleteOrganizationsSharedflowsRequest =
 export type DeleteOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlow;
 export const DeleteOrganizationsSharedflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
 export type DeleteOrganizationsSharedflowsError =
   | DefaultErrors
@@ -20683,7 +20683,7 @@ export const deleteOrganizationsSharedflows: API.OperationMethod<
   DeleteOrganizationsSharedflowsResponse,
   DeleteOrganizationsSharedflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSharedflowsRequest,
   output: DeleteOrganizationsSharedflowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20695,7 +20695,7 @@ export interface GetOrganizationsSharedflowsRequest {
 }
 
 export const GetOrganizationsSharedflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -20704,7 +20704,7 @@ export const GetOrganizationsSharedflowsRequest =
 
 export type GetOrganizationsSharedflowsResponse = GoogleCloudApigeeV1SharedFlow;
 export const GetOrganizationsSharedflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
 export type GetOrganizationsSharedflowsError =
   | DefaultErrors
@@ -20717,7 +20717,7 @@ export const getOrganizationsSharedflows: API.OperationMethod<
   GetOrganizationsSharedflowsResponse,
   GetOrganizationsSharedflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSharedflowsRequest,
   output: GetOrganizationsSharedflowsResponse,
   errors: [NotFound, Forbidden],
@@ -20735,7 +20735,7 @@ export interface ListOrganizationsSharedflowsRequest {
 }
 
 export const ListOrganizationsSharedflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeRevisions: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("includeRevisions"),
     ),
@@ -20752,7 +20752,7 @@ export const ListOrganizationsSharedflowsRequest =
 export type ListOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1ListSharedFlowsResponse;
 export const ListOrganizationsSharedflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSharedFlowsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSharedFlowsResponse;
 
 export type ListOrganizationsSharedflowsError =
   | DefaultErrors
@@ -20765,7 +20765,7 @@ export const listOrganizationsSharedflows: API.OperationMethod<
   ListOrganizationsSharedflowsResponse,
   ListOrganizationsSharedflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsRequest,
   output: ListOrganizationsSharedflowsResponse,
   errors: [NotFound, Forbidden],
@@ -20785,7 +20785,7 @@ export interface CreateOrganizationsSharedflowsRequest {
 }
 
 export const CreateOrganizationsSharedflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     space: Schema.optional(Schema.String).pipe(T.HttpQuery("space")),
@@ -20799,7 +20799,7 @@ export const CreateOrganizationsSharedflowsRequest =
 export type CreateOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
 export const CreateOrganizationsSharedflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
 export type CreateOrganizationsSharedflowsError =
   | DefaultErrors
@@ -20814,7 +20814,7 @@ export const createOrganizationsSharedflows: API.OperationMethod<
   CreateOrganizationsSharedflowsResponse,
   CreateOrganizationsSharedflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSharedflowsRequest,
   output: CreateOrganizationsSharedflowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20828,7 +20828,7 @@ export interface MoveOrganizationsSharedflowsRequest {
 }
 
 export const MoveOrganizationsSharedflowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1MoveSharedFlowRequest).pipe(
       T.HttpBody(),
@@ -20841,7 +20841,7 @@ export const MoveOrganizationsSharedflowsRequest =
 export type MoveOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlow;
 export const MoveOrganizationsSharedflowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
 export type MoveOrganizationsSharedflowsError =
   | DefaultErrors
@@ -20856,7 +20856,7 @@ export const moveOrganizationsSharedflows: API.OperationMethod<
   MoveOrganizationsSharedflowsResponse,
   MoveOrganizationsSharedflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveOrganizationsSharedflowsRequest,
   output: MoveOrganizationsSharedflowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20868,7 +20868,7 @@ export interface ListOrganizationsSharedflowsDeploymentsRequest {
 }
 
 export const ListOrganizationsSharedflowsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -20878,7 +20878,7 @@ export const ListOrganizationsSharedflowsDeploymentsRequest =
 export type ListOrganizationsSharedflowsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsSharedflowsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsSharedflowsDeploymentsError =
   | DefaultErrors
@@ -20891,7 +20891,7 @@ export const listOrganizationsSharedflowsDeployments: API.OperationMethod<
   ListOrganizationsSharedflowsDeploymentsResponse,
   ListOrganizationsSharedflowsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsDeploymentsRequest,
   output: ListOrganizationsSharedflowsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -20907,7 +20907,7 @@ export interface UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsReques
 }
 
 export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     validate: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("validate")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
@@ -20919,7 +20919,7 @@ export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest =
 export type UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
 export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
 export type UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsError =
   | DefaultErrors
@@ -20934,7 +20934,7 @@ export const updateSharedFlowRevisionOrganizationsSharedflowsRevisions: API.Oper
   UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse,
   UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest,
   output: UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -20948,7 +20948,7 @@ export interface GetOrganizationsSharedflowsRevisionsRequest {
 }
 
 export const GetOrganizationsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
   }).pipe(
@@ -20958,7 +20958,7 @@ export const GetOrganizationsSharedflowsRevisionsRequest =
 
 export type GetOrganizationsSharedflowsRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetOrganizationsSharedflowsRevisionsError =
   | DefaultErrors
@@ -20971,7 +20971,7 @@ export const getOrganizationsSharedflowsRevisions: API.OperationMethod<
   GetOrganizationsSharedflowsRevisionsResponse,
   GetOrganizationsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSharedflowsRevisionsRequest,
   output: GetOrganizationsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden],
@@ -20983,7 +20983,7 @@ export interface DeleteOrganizationsSharedflowsRevisionsRequest {
 }
 
 export const DeleteOrganizationsSharedflowsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -20993,7 +20993,7 @@ export const DeleteOrganizationsSharedflowsRevisionsRequest =
 export type DeleteOrganizationsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
 export const DeleteOrganizationsSharedflowsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
+  /*@__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
 export type DeleteOrganizationsSharedflowsRevisionsError =
   | DefaultErrors
@@ -21008,7 +21008,7 @@ export const deleteOrganizationsSharedflowsRevisions: API.OperationMethod<
   DeleteOrganizationsSharedflowsRevisionsResponse,
   DeleteOrganizationsSharedflowsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSharedflowsRevisionsRequest,
   output: DeleteOrganizationsSharedflowsRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21020,7 +21020,7 @@ export interface ListOrganizationsSharedflowsRevisionsDeploymentsRequest {
 }
 
 export const ListOrganizationsSharedflowsRevisionsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
@@ -21030,7 +21030,7 @@ export const ListOrganizationsSharedflowsRevisionsDeploymentsRequest =
 export type ListOrganizationsSharedflowsRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
 export const ListOrganizationsSharedflowsRevisionsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsSharedflowsRevisionsDeploymentsError =
   | DefaultErrors
@@ -21043,7 +21043,7 @@ export const listOrganizationsSharedflowsRevisionsDeployments: API.OperationMeth
   ListOrganizationsSharedflowsRevisionsDeploymentsResponse,
   ListOrganizationsSharedflowsRevisionsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsRevisionsDeploymentsRequest,
   output: ListOrganizationsSharedflowsRevisionsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -21055,7 +21055,7 @@ export interface GetOrganizationsAppsRequest {
 }
 
 export const GetOrganizationsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -21064,7 +21064,7 @@ export const GetOrganizationsAppsRequest =
 
 export type GetOrganizationsAppsResponse = GoogleCloudApigeeV1App;
 export const GetOrganizationsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1App;
+  /*@__PURE__*/ GoogleCloudApigeeV1App;
 
 export type GetOrganizationsAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -21074,7 +21074,7 @@ export const getOrganizationsApps: API.OperationMethod<
   GetOrganizationsAppsResponse,
   GetOrganizationsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppsRequest,
   output: GetOrganizationsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -21110,7 +21110,7 @@ export interface ListOrganizationsAppsRequest {
 }
 
 export const ListOrganizationsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("expand")),
     apiProduct: Schema.optional(Schema.String).pipe(T.HttpQuery("apiProduct")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -21133,7 +21133,7 @@ export const ListOrganizationsAppsRequest =
 
 export type ListOrganizationsAppsResponse = GoogleCloudApigeeV1ListAppsResponse;
 export const ListOrganizationsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListAppsResponse;
 
 export type ListOrganizationsAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -21143,7 +21143,7 @@ export const listOrganizationsApps: API.PaginatedOperationMethod<
   ListOrganizationsAppsResponse,
   ListOrganizationsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppsRequest,
   output: ListOrganizationsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -21161,7 +21161,7 @@ export interface CreateOrganizationsReportsRequest {
 }
 
 export const CreateOrganizationsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1CustomReport).pipe(T.HttpBody()),
   }).pipe(
@@ -21172,7 +21172,7 @@ export const CreateOrganizationsReportsRequest =
 export type CreateOrganizationsReportsResponse =
   GoogleCloudApigeeV1CustomReport;
 export const CreateOrganizationsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
 export type CreateOrganizationsReportsError =
   | DefaultErrors
@@ -21187,7 +21187,7 @@ export const createOrganizationsReports: API.OperationMethod<
   CreateOrganizationsReportsResponse,
   CreateOrganizationsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsReportsRequest,
   output: CreateOrganizationsReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21201,7 +21201,7 @@ export interface UpdateOrganizationsReportsRequest {
 }
 
 export const UpdateOrganizationsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1CustomReport).pipe(T.HttpBody()),
   }).pipe(
@@ -21212,7 +21212,7 @@ export const UpdateOrganizationsReportsRequest =
 export type UpdateOrganizationsReportsResponse =
   GoogleCloudApigeeV1CustomReport;
 export const UpdateOrganizationsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
 export type UpdateOrganizationsReportsError =
   | DefaultErrors
@@ -21227,7 +21227,7 @@ export const updateOrganizationsReports: API.OperationMethod<
   UpdateOrganizationsReportsResponse,
   UpdateOrganizationsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsReportsRequest,
   output: UpdateOrganizationsReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21241,7 +21241,7 @@ export interface ListOrganizationsReportsRequest {
 }
 
 export const ListOrganizationsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     expand: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("expand")),
   }).pipe(
@@ -21252,7 +21252,7 @@ export const ListOrganizationsReportsRequest =
 export type ListOrganizationsReportsResponse =
   GoogleCloudApigeeV1ListCustomReportsResponse;
 export const ListOrganizationsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListCustomReportsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListCustomReportsResponse;
 
 export type ListOrganizationsReportsError =
   | DefaultErrors
@@ -21265,7 +21265,7 @@ export const listOrganizationsReports: API.OperationMethod<
   ListOrganizationsReportsResponse,
   ListOrganizationsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsReportsRequest,
   output: ListOrganizationsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -21277,7 +21277,7 @@ export interface GetOrganizationsReportsRequest {
 }
 
 export const GetOrganizationsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -21286,7 +21286,7 @@ export const GetOrganizationsReportsRequest =
 
 export type GetOrganizationsReportsResponse = GoogleCloudApigeeV1CustomReport;
 export const GetOrganizationsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
 export type GetOrganizationsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -21296,7 +21296,7 @@ export const getOrganizationsReports: API.OperationMethod<
   GetOrganizationsReportsResponse,
   GetOrganizationsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsReportsRequest,
   output: GetOrganizationsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -21308,7 +21308,7 @@ export interface DeleteOrganizationsReportsRequest {
 }
 
 export const DeleteOrganizationsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -21318,7 +21318,7 @@ export const DeleteOrganizationsReportsRequest =
 export type DeleteOrganizationsReportsResponse =
   GoogleCloudApigeeV1DeleteCustomReportResponse;
 export const DeleteOrganizationsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteCustomReportResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1DeleteCustomReportResponse;
 
 export type DeleteOrganizationsReportsError =
   | DefaultErrors
@@ -21333,7 +21333,7 @@ export const deleteOrganizationsReports: API.OperationMethod<
   DeleteOrganizationsReportsResponse,
   DeleteOrganizationsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsReportsRequest,
   output: DeleteOrganizationsReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21351,7 +21351,7 @@ export interface DeleteOrganizationsSecurityMonitoringConditionsRequest {
 }
 
 export const DeleteOrganizationsSecurityMonitoringConditionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     riskAssessmentType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("riskAssessmentType"),
@@ -21364,7 +21364,7 @@ export const DeleteOrganizationsSecurityMonitoringConditionsRequest =
 export type DeleteOrganizationsSecurityMonitoringConditionsResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityMonitoringConditionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityMonitoringConditionsError =
   | DefaultErrors
@@ -21379,7 +21379,7 @@ export const deleteOrganizationsSecurityMonitoringConditions: API.OperationMetho
   DeleteOrganizationsSecurityMonitoringConditionsResponse,
   DeleteOrganizationsSecurityMonitoringConditionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityMonitoringConditionsRequest,
   output: DeleteOrganizationsSecurityMonitoringConditionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21397,7 +21397,7 @@ export interface GetOrganizationsSecurityMonitoringConditionsRequest {
 }
 
 export const GetOrganizationsSecurityMonitoringConditionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     riskAssessmentType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("riskAssessmentType"),
@@ -21410,7 +21410,7 @@ export const GetOrganizationsSecurityMonitoringConditionsRequest =
 export type GetOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
 export const GetOrganizationsSecurityMonitoringConditionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
 export type GetOrganizationsSecurityMonitoringConditionsError =
   | DefaultErrors
@@ -21423,7 +21423,7 @@ export const getOrganizationsSecurityMonitoringConditions: API.OperationMethod<
   GetOrganizationsSecurityMonitoringConditionsResponse,
   GetOrganizationsSecurityMonitoringConditionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityMonitoringConditionsRequest,
   output: GetOrganizationsSecurityMonitoringConditionsResponse,
   errors: [NotFound, Forbidden],
@@ -21439,7 +21439,7 @@ export interface CreateOrganizationsSecurityMonitoringConditionsRequest {
 }
 
 export const CreateOrganizationsSecurityMonitoringConditionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     securityMonitoringConditionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("securityMonitoringConditionId"),
@@ -21459,7 +21459,7 @@ export const CreateOrganizationsSecurityMonitoringConditionsRequest =
 export type CreateOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
 export const CreateOrganizationsSecurityMonitoringConditionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
 export type CreateOrganizationsSecurityMonitoringConditionsError =
   | DefaultErrors
@@ -21474,7 +21474,7 @@ export const createOrganizationsSecurityMonitoringConditions: API.OperationMetho
   CreateOrganizationsSecurityMonitoringConditionsResponse,
   CreateOrganizationsSecurityMonitoringConditionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityMonitoringConditionsRequest,
   output: CreateOrganizationsSecurityMonitoringConditionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21490,7 +21490,7 @@ export interface PatchOrganizationsSecurityMonitoringConditionsRequest {
 }
 
 export const PatchOrganizationsSecurityMonitoringConditionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityMonitoringCondition).pipe(
@@ -21504,7 +21504,7 @@ export const PatchOrganizationsSecurityMonitoringConditionsRequest =
 export type PatchOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
 export const PatchOrganizationsSecurityMonitoringConditionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
 export type PatchOrganizationsSecurityMonitoringConditionsError =
   | DefaultErrors
@@ -21519,7 +21519,7 @@ export const patchOrganizationsSecurityMonitoringConditions: API.OperationMethod
   PatchOrganizationsSecurityMonitoringConditionsResponse,
   PatchOrganizationsSecurityMonitoringConditionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityMonitoringConditionsRequest,
   output: PatchOrganizationsSecurityMonitoringConditionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21543,7 +21543,7 @@ export interface ListOrganizationsSecurityMonitoringConditionsRequest {
 }
 
 export const ListOrganizationsSecurityMonitoringConditionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     riskAssessmentType: Schema.optional(Schema.String).pipe(
@@ -21562,7 +21562,7 @@ export const ListOrganizationsSecurityMonitoringConditionsRequest =
 export type ListOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse;
 export const ListOrganizationsSecurityMonitoringConditionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse;
 
 export type ListOrganizationsSecurityMonitoringConditionsError =
   | DefaultErrors
@@ -21575,7 +21575,7 @@ export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperati
   ListOrganizationsSecurityMonitoringConditionsResponse,
   ListOrganizationsSecurityMonitoringConditionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityMonitoringConditionsRequest,
   output: ListOrganizationsSecurityMonitoringConditionsResponse,
   errors: [NotFound, Forbidden],
@@ -21595,7 +21595,7 @@ export interface ListOrganizationsDnsZonesRequest {
 }
 
 export const ListOrganizationsDnsZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -21607,7 +21607,7 @@ export const ListOrganizationsDnsZonesRequest =
 export type ListOrganizationsDnsZonesResponse =
   GoogleCloudApigeeV1ListDnsZonesResponse;
 export const ListOrganizationsDnsZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDnsZonesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDnsZonesResponse;
 
 export type ListOrganizationsDnsZonesError =
   | DefaultErrors
@@ -21620,7 +21620,7 @@ export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
   ListOrganizationsDnsZonesResponse,
   ListOrganizationsDnsZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDnsZonesRequest,
   output: ListOrganizationsDnsZonesResponse,
   errors: [NotFound, Forbidden],
@@ -21636,7 +21636,7 @@ export interface GetOrganizationsDnsZonesRequest {
 }
 
 export const GetOrganizationsDnsZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -21645,7 +21645,7 @@ export const GetOrganizationsDnsZonesRequest =
 
 export type GetOrganizationsDnsZonesResponse = GoogleCloudApigeeV1DnsZone;
 export const GetOrganizationsDnsZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DnsZone;
+  /*@__PURE__*/ GoogleCloudApigeeV1DnsZone;
 
 export type GetOrganizationsDnsZonesError =
   | DefaultErrors
@@ -21658,7 +21658,7 @@ export const getOrganizationsDnsZones: API.OperationMethod<
   GetOrganizationsDnsZonesResponse,
   GetOrganizationsDnsZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsDnsZonesRequest,
   output: GetOrganizationsDnsZonesResponse,
   errors: [NotFound, Forbidden],
@@ -21674,7 +21674,7 @@ export interface CreateOrganizationsDnsZonesRequest {
 }
 
 export const CreateOrganizationsDnsZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dnsZoneId: Schema.optional(Schema.String).pipe(T.HttpQuery("dnsZoneId")),
     body: Schema.optional(GoogleCloudApigeeV1DnsZone).pipe(T.HttpBody()),
@@ -21685,7 +21685,7 @@ export const CreateOrganizationsDnsZonesRequest =
 
 export type CreateOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsDnsZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsDnsZonesError =
   | DefaultErrors
@@ -21700,7 +21700,7 @@ export const createOrganizationsDnsZones: API.OperationMethod<
   CreateOrganizationsDnsZonesResponse,
   CreateOrganizationsDnsZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDnsZonesRequest,
   output: CreateOrganizationsDnsZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21712,7 +21712,7 @@ export interface DeleteOrganizationsDnsZonesRequest {
 }
 
 export const DeleteOrganizationsDnsZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -21721,7 +21721,7 @@ export const DeleteOrganizationsDnsZonesRequest =
 
 export type DeleteOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsDnsZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteOrganizationsDnsZonesError =
   | DefaultErrors
@@ -21736,7 +21736,7 @@ export const deleteOrganizationsDnsZones: API.OperationMethod<
   DeleteOrganizationsDnsZonesResponse,
   DeleteOrganizationsDnsZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDnsZonesRequest,
   output: DeleteOrganizationsDnsZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21750,7 +21750,7 @@ export interface ListOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const ListOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     targetType: Schema.optional(Schema.String).pipe(T.HttpQuery("targetType")),
   }).pipe(
@@ -21761,7 +21761,7 @@ export const ListOrganizationsAnalyticsDatastoresRequest =
 export type ListOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1ListDatastoresResponse;
 export const ListOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDatastoresResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListDatastoresResponse;
 
 export type ListOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21774,7 +21774,7 @@ export const listOrganizationsAnalyticsDatastores: API.OperationMethod<
   ListOrganizationsAnalyticsDatastoresResponse,
   ListOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsAnalyticsDatastoresRequest,
   output: ListOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden],
@@ -21788,7 +21788,7 @@ export interface CreateOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const CreateOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Datastore).pipe(T.HttpBody()),
   }).pipe(
@@ -21803,7 +21803,7 @@ export const CreateOrganizationsAnalyticsDatastoresRequest =
 export type CreateOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
 export const CreateOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Datastore;
 
 export type CreateOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21818,7 +21818,7 @@ export const createOrganizationsAnalyticsDatastores: API.OperationMethod<
   CreateOrganizationsAnalyticsDatastoresResponse,
   CreateOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAnalyticsDatastoresRequest,
   output: CreateOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21832,7 +21832,7 @@ export interface UpdateOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const UpdateOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Datastore).pipe(T.HttpBody()),
   }).pipe(
@@ -21843,7 +21843,7 @@ export const UpdateOrganizationsAnalyticsDatastoresRequest =
 export type UpdateOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
 export const UpdateOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Datastore;
 
 export type UpdateOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21858,7 +21858,7 @@ export const updateOrganizationsAnalyticsDatastores: API.OperationMethod<
   UpdateOrganizationsAnalyticsDatastoresResponse,
   UpdateOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAnalyticsDatastoresRequest,
   output: UpdateOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21872,7 +21872,7 @@ export interface TestOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const TestOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Datastore).pipe(T.HttpBody()),
   }).pipe(
@@ -21887,7 +21887,7 @@ export const TestOrganizationsAnalyticsDatastoresRequest =
 export type TestOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1TestDatastoreResponse;
 export const TestOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TestDatastoreResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1TestDatastoreResponse;
 
 export type TestOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21902,7 +21902,7 @@ export const testOrganizationsAnalyticsDatastores: API.OperationMethod<
   TestOrganizationsAnalyticsDatastoresResponse,
   TestOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestOrganizationsAnalyticsDatastoresRequest,
   output: TestOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21914,7 +21914,7 @@ export interface GetOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const GetOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -21924,7 +21924,7 @@ export const GetOrganizationsAnalyticsDatastoresRequest =
 export type GetOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
 export const GetOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
+  /*@__PURE__*/ GoogleCloudApigeeV1Datastore;
 
 export type GetOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21937,7 +21937,7 @@ export const getOrganizationsAnalyticsDatastores: API.OperationMethod<
   GetOrganizationsAnalyticsDatastoresResponse,
   GetOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsAnalyticsDatastoresRequest,
   output: GetOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden],
@@ -21949,7 +21949,7 @@ export interface DeleteOrganizationsAnalyticsDatastoresRequest {
 }
 
 export const DeleteOrganizationsAnalyticsDatastoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -21959,7 +21959,7 @@ export const DeleteOrganizationsAnalyticsDatastoresRequest =
 export type DeleteOrganizationsAnalyticsDatastoresResponse =
   GoogleProtobufEmpty;
 export const DeleteOrganizationsAnalyticsDatastoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsAnalyticsDatastoresError =
   | DefaultErrors
@@ -21974,7 +21974,7 @@ export const deleteOrganizationsAnalyticsDatastores: API.OperationMethod<
   DeleteOrganizationsAnalyticsDatastoresResponse,
   DeleteOrganizationsAnalyticsDatastoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAnalyticsDatastoresRequest,
   output: DeleteOrganizationsAnalyticsDatastoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -21986,7 +21986,7 @@ export interface GetResultOrganizationsHostSecurityReportsRequest {
 }
 
 export const GetResultOrganizationsHostSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -21996,7 +21996,7 @@ export const GetResultOrganizationsHostSecurityReportsRequest =
 export type GetResultOrganizationsHostSecurityReportsResponse =
   GoogleApiHttpBody;
 export const GetResultOrganizationsHostSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
+  /*@__PURE__*/ GoogleApiHttpBody;
 
 export type GetResultOrganizationsHostSecurityReportsError =
   | DefaultErrors
@@ -22009,7 +22009,7 @@ export const getResultOrganizationsHostSecurityReports: API.OperationMethod<
   GetResultOrganizationsHostSecurityReportsResponse,
   GetResultOrganizationsHostSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsHostSecurityReportsRequest,
   output: GetResultOrganizationsHostSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -22021,7 +22021,7 @@ export interface GetOrganizationsHostSecurityReportsRequest {
 }
 
 export const GetOrganizationsHostSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -22031,7 +22031,7 @@ export const GetOrganizationsHostSecurityReportsRequest =
 export type GetOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
 export const GetOrganizationsHostSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
 export type GetOrganizationsHostSecurityReportsError =
   | DefaultErrors
@@ -22044,7 +22044,7 @@ export const getOrganizationsHostSecurityReports: API.OperationMethod<
   GetOrganizationsHostSecurityReportsResponse,
   GetOrganizationsHostSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostSecurityReportsRequest,
   output: GetOrganizationsHostSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -22056,7 +22056,7 @@ export interface GetResultViewOrganizationsHostSecurityReportsRequest {
 }
 
 export const GetResultViewOrganizationsHostSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -22066,7 +22066,7 @@ export const GetResultViewOrganizationsHostSecurityReportsRequest =
 export type GetResultViewOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReportResultView;
 export const GetResultViewOrganizationsHostSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
 
 export type GetResultViewOrganizationsHostSecurityReportsError =
   | DefaultErrors
@@ -22079,7 +22079,7 @@ export const getResultViewOrganizationsHostSecurityReports: API.OperationMethod<
   GetResultViewOrganizationsHostSecurityReportsResponse,
   GetResultViewOrganizationsHostSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsHostSecurityReportsRequest,
   output: GetResultViewOrganizationsHostSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -22107,7 +22107,7 @@ export interface ListOrganizationsHostSecurityReportsRequest {
 }
 
 export const ListOrganizationsHostSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envgroupHostname: Schema.optional(Schema.String).pipe(
       T.HttpQuery("envgroupHostname"),
     ),
@@ -22129,7 +22129,7 @@ export const ListOrganizationsHostSecurityReportsRequest =
 export type ListOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1ListSecurityReportsResponse;
 export const ListOrganizationsHostSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
 
 export type ListOrganizationsHostSecurityReportsError =
   | DefaultErrors
@@ -22142,7 +22142,7 @@ export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
   ListOrganizationsHostSecurityReportsResponse,
   ListOrganizationsHostSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsHostSecurityReportsRequest,
   output: ListOrganizationsHostSecurityReportsResponse,
   errors: [NotFound, Forbidden],
@@ -22160,7 +22160,7 @@ export interface CreateOrganizationsHostSecurityReportsRequest {
 }
 
 export const CreateOrganizationsHostSecurityReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityReportQuery).pipe(
       T.HttpBody(),
@@ -22177,7 +22177,7 @@ export const CreateOrganizationsHostSecurityReportsRequest =
 export type CreateOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
 export const CreateOrganizationsHostSecurityReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
+  /*@__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
 export type CreateOrganizationsHostSecurityReportsError =
   | DefaultErrors
@@ -22192,7 +22192,7 @@ export const createOrganizationsHostSecurityReports: API.OperationMethod<
   CreateOrganizationsHostSecurityReportsResponse,
   CreateOrganizationsHostSecurityReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsHostSecurityReportsRequest,
   output: CreateOrganizationsHostSecurityReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22206,7 +22206,7 @@ export interface CreateOrganizationsKeyvaluemapsRequest {
 }
 
 export const CreateOrganizationsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -22221,7 +22221,7 @@ export const CreateOrganizationsKeyvaluemapsRequest =
 export type CreateOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const CreateOrganizationsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type CreateOrganizationsKeyvaluemapsError =
   | DefaultErrors
@@ -22236,7 +22236,7 @@ export const createOrganizationsKeyvaluemaps: API.OperationMethod<
   CreateOrganizationsKeyvaluemapsResponse,
   CreateOrganizationsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsKeyvaluemapsRequest,
   output: CreateOrganizationsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22248,7 +22248,7 @@ export interface DeleteOrganizationsKeyvaluemapsRequest {
 }
 
 export const DeleteOrganizationsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -22258,7 +22258,7 @@ export const DeleteOrganizationsKeyvaluemapsRequest =
 export type DeleteOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const DeleteOrganizationsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type DeleteOrganizationsKeyvaluemapsError =
   | DefaultErrors
@@ -22273,7 +22273,7 @@ export const deleteOrganizationsKeyvaluemaps: API.OperationMethod<
   DeleteOrganizationsKeyvaluemapsResponse,
   DeleteOrganizationsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsKeyvaluemapsRequest,
   output: DeleteOrganizationsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22287,7 +22287,7 @@ export interface UpdateOrganizationsKeyvaluemapsRequest {
 }
 
 export const UpdateOrganizationsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
@@ -22298,7 +22298,7 @@ export const UpdateOrganizationsKeyvaluemapsRequest =
 export type UpdateOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const UpdateOrganizationsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type UpdateOrganizationsKeyvaluemapsError =
   | DefaultErrors
@@ -22313,7 +22313,7 @@ export const updateOrganizationsKeyvaluemaps: API.OperationMethod<
   UpdateOrganizationsKeyvaluemapsResponse,
   UpdateOrganizationsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsKeyvaluemapsRequest,
   output: UpdateOrganizationsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22325,7 +22325,7 @@ export interface GetOrganizationsKeyvaluemapsRequest {
 }
 
 export const GetOrganizationsKeyvaluemapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -22335,7 +22335,7 @@ export const GetOrganizationsKeyvaluemapsRequest =
 export type GetOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
 export const GetOrganizationsKeyvaluemapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
 export type GetOrganizationsKeyvaluemapsError =
   | DefaultErrors
@@ -22348,7 +22348,7 @@ export const getOrganizationsKeyvaluemaps: API.OperationMethod<
   GetOrganizationsKeyvaluemapsResponse,
   GetOrganizationsKeyvaluemapsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsKeyvaluemapsRequest,
   output: GetOrganizationsKeyvaluemapsResponse,
   errors: [NotFound, Forbidden],
@@ -22360,7 +22360,7 @@ export interface GetOrganizationsKeyvaluemapsEntriesRequest {
 }
 
 export const GetOrganizationsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -22370,7 +22370,7 @@ export const GetOrganizationsKeyvaluemapsEntriesRequest =
 export type GetOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const GetOrganizationsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type GetOrganizationsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -22383,7 +22383,7 @@ export const getOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   GetOrganizationsKeyvaluemapsEntriesResponse,
   GetOrganizationsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsKeyvaluemapsEntriesRequest,
   output: GetOrganizationsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -22395,7 +22395,7 @@ export interface DeleteOrganizationsKeyvaluemapsEntriesRequest {
 }
 
 export const DeleteOrganizationsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -22405,7 +22405,7 @@ export const DeleteOrganizationsKeyvaluemapsEntriesRequest =
 export type DeleteOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const DeleteOrganizationsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type DeleteOrganizationsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -22420,7 +22420,7 @@ export const deleteOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   DeleteOrganizationsKeyvaluemapsEntriesResponse,
   DeleteOrganizationsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22436,7 +22436,7 @@ export interface ListOrganizationsKeyvaluemapsEntriesRequest {
 }
 
 export const ListOrganizationsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -22448,7 +22448,7 @@ export const ListOrganizationsKeyvaluemapsEntriesRequest =
 export type ListOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 export const ListOrganizationsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
+  /*@__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
 export type ListOrganizationsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -22461,7 +22461,7 @@ export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
   ListOrganizationsKeyvaluemapsEntriesResponse,
   ListOrganizationsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsKeyvaluemapsEntriesRequest,
   output: ListOrganizationsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden],
@@ -22479,7 +22479,7 @@ export interface CreateOrganizationsKeyvaluemapsEntriesRequest {
 }
 
 export const CreateOrganizationsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -22490,7 +22490,7 @@ export const CreateOrganizationsKeyvaluemapsEntriesRequest =
 export type CreateOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const CreateOrganizationsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type CreateOrganizationsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -22505,7 +22505,7 @@ export const createOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   CreateOrganizationsKeyvaluemapsEntriesResponse,
   CreateOrganizationsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -22519,7 +22519,7 @@ export interface UpdateOrganizationsKeyvaluemapsEntriesRequest {
 }
 
 export const UpdateOrganizationsKeyvaluemapsEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
@@ -22530,7 +22530,7 @@ export const UpdateOrganizationsKeyvaluemapsEntriesRequest =
 export type UpdateOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
 export const UpdateOrganizationsKeyvaluemapsEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
+  /*@__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type UpdateOrganizationsKeyvaluemapsEntriesError =
   | DefaultErrors
@@ -22545,7 +22545,7 @@ export const updateOrganizationsKeyvaluemapsEntries: API.OperationMethod<
   UpdateOrganizationsKeyvaluemapsEntriesResponse,
   UpdateOrganizationsKeyvaluemapsEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsKeyvaluemapsEntriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

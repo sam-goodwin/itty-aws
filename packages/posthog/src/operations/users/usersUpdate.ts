@@ -722,7 +722,7 @@ export interface UsersUpdateInput {
   }[];
   requires_credential_review?: boolean;
 }
-export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateInput = /*@__PURE__*/ Schema.Struct({
   uuid: Schema.String.pipe(T.PathParam()),
   date_joined: Schema.optional(Schema.String),
   distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2233,7 +2233,7 @@ export interface UsersUpdateOutput {
   }[];
   requires_credential_review?: boolean;
 }
-export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   date_joined: Schema.optional(Schema.String),
   uuid: Schema.optional(Schema.String),
   distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -3029,7 +3029,7 @@ export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Replace the authenticated user's profile and settings. Pass `@me` as the UUID to update the authenticated user. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided.
  */
-export const usersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersUpdateInput,
   outputSchema: UsersUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

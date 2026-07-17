@@ -8,7 +8,7 @@ export interface GetTaxCalculationsCalculationInput {
   expand?: string;
 }
 export const GetTaxCalculationsCalculationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calculation: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -340,7 +340,7 @@ export interface GetTaxCalculationsCalculationOutput {
   tax_date: number;
 }
 export const GetTaxCalculationsCalculationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_total: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -730,7 +730,7 @@ export const GetTaxCalculationsCalculationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTaxCalculationsCalculation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTaxCalculationsCalculationInput,
     outputSchema: GetTaxCalculationsCalculationOutput,
   }));

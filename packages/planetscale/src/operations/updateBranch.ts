@@ -10,7 +10,7 @@ export interface UpdateBranchInput {
   branch: string;
   new_name: string;
 }
-export const UpdateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -66,7 +66,7 @@ export interface UpdateBranchOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -78,7 +78,7 @@ export interface UpdateBranchOutput {
   vtgate_options?: Record<string, unknown>;
   cluster_architecture?: string;
 }
-export const UpdateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -157,7 +157,7 @@ export const UpdateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - The name of the branch
  * @param new_name - The name to update the branch
  */
-export const updateBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateBranchInput,
   outputSchema: UpdateBranchOutput,
   errors: [Forbidden, NotFound] as const,

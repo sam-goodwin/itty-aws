@@ -9,7 +9,7 @@ export interface IntegrationsGithubLinkExistingCreateInput {
   installation_id?: string;
 }
 export const IntegrationsGithubLinkExistingCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_team_id: Schema.optional(Schema.NullOr(Schema.Number)),
     installation_id: Schema.optional(Schema.String),
@@ -90,7 +90,7 @@ export interface IntegrationsGithubLinkExistingCreateOutput {
   display_name?: string;
 }
 export const IntegrationsGithubLinkExistingCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     kind: Schema.optional(
       Schema.Literals([
@@ -181,7 +181,7 @@ export const IntegrationsGithubLinkExistingCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGithubLinkExistingCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGithubLinkExistingCreateInput,
     outputSchema: IntegrationsGithubLinkExistingCreateOutput,
   }));

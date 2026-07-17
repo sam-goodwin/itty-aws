@@ -10,7 +10,7 @@ export interface GetV2CoreEventDestinationsInput {
   limit?: number;
 }
 export const GetV2CoreEventDestinationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     include: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
   }).pipe(
@@ -67,7 +67,7 @@ export interface GetV2CoreEventDestinationsOutput {
   previous_page_url: string | null;
 }
 export const GetV2CoreEventDestinationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amazon_eventbridge: Schema.optional(
@@ -148,9 +148,7 @@ export const GetV2CoreEventDestinationsOutput =
  * @param include - Additional fields to include in the response. Currently supports `webhook_endpoint.url`.
  * @param limit - The page size.
  */
-export const GetV2CoreEventDestinations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV2CoreEventDestinationsInput,
-    outputSchema: GetV2CoreEventDestinationsOutput,
-  }),
-);
+export const GetV2CoreEventDestinations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV2CoreEventDestinationsInput,
+  outputSchema: GetV2CoreEventDestinationsOutput,
+}));

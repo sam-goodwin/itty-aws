@@ -8,13 +8,11 @@ export interface GetV1IntegrationsInput {
   limit?: number;
   workspaceId: string;
 }
-export const GetV1IntegrationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    cursor: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    workspaceId: Schema.String,
-  },
-).pipe(
+export const GetV1IntegrationsInput = /*@__PURE__*/ Schema.Struct({
+  cursor: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  workspaceId: Schema.String,
+}).pipe(
   T.Http({ method: "GET", path: "/v1/integrations" }),
 ) as unknown as Schema.Codec<GetV1IntegrationsInput>;
 
@@ -31,7 +29,7 @@ export interface GetV1IntegrationsOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1IntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -62,7 +60,7 @@ export const GetV1IntegrationsOutput =
  *
  * Returns integrations filtered by workspace ID.
  */
-export const getV1Integrations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Integrations = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1IntegrationsInput,
   outputSchema: GetV1IntegrationsOutput,
 }));

@@ -77,7 +77,7 @@ export interface ActivityLogListInput {
   scopes?: string;
   user?: string;
 }
-export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityLogListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   item_id: Schema.optional(Schema.String),
   page: Schema.optional(Schema.Number),
@@ -198,7 +198,7 @@ export interface ActivityLogListOutput {
     created_at?: string;
   }[];
 }
-export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActivityLogListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -332,7 +332,7 @@ export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param scopes - Filter by multiple activity scopes, comma-separated. Values must be valid ActivityScope enum values. E.g. "FeatureFlag,Insight".
  * @param user - Filter by user UUID who performed the action.
  */
-export const activityLogList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const activityLogList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActivityLogListInput,
   outputSchema: ActivityLogListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

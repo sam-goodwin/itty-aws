@@ -9,7 +9,7 @@ export interface DeleteOrganizationInviteByEmailV2Input {
   email: string;
 }
 export const DeleteOrganizationInviteByEmailV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     email: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const DeleteOrganizationInviteByEmailV2Input =
 // Output Schema
 export type DeleteOrganizationInviteByEmailV2Output = void;
 export const DeleteOrganizationInviteByEmailV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationInviteByEmailV2Output>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationInviteByEmailV2Output>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const DeleteOrganizationInviteByEmailV2Output =
  * @param organizationSlug - The slug of the organization or user account.
  */
 export const deleteOrganizationInviteByEmailV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrganizationInviteByEmailV2Input,
     outputSchema: DeleteOrganizationInviteByEmailV2Output,
     errors: [NotFound] as const,

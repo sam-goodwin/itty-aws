@@ -9,7 +9,7 @@ export interface DeleteBranchNeonAuthUserInput {
   auth_user_id: string;
 }
 export const DeleteBranchNeonAuthUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     auth_user_id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const DeleteBranchNeonAuthUserInput =
 // Output Schema
 export type DeleteBranchNeonAuthUserOutput = void;
 export const DeleteBranchNeonAuthUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthUserOutput>;
 
 // The operation
 /**
@@ -36,9 +36,7 @@ export const DeleteBranchNeonAuthUserOutput =
  * @param branch_id - The Neon branch ID
  * @param auth_user_id - The Neon user ID
  */
-export const deleteBranchNeonAuthUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteBranchNeonAuthUserInput,
-    outputSchema: DeleteBranchNeonAuthUserOutput,
-  }),
-);
+export const deleteBranchNeonAuthUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteBranchNeonAuthUserInput,
+  outputSchema: DeleteBranchNeonAuthUserOutput,
+}));

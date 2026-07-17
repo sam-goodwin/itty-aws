@@ -36,7 +36,7 @@ export interface UrlNotification {
 }
 
 export const UrlNotification: Schema.Codec<UrlNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notifyTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface UrlNotificationMetadata {
 }
 
 export const UrlNotificationMetadata: Schema.Codec<UrlNotificationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestUpdate: Schema.optional(UrlNotification),
     url: Schema.optional(Schema.String),
     latestRemove: Schema.optional(UrlNotification),
@@ -64,7 +64,7 @@ export interface PublishUrlNotificationResponse {
 }
 
 export const PublishUrlNotificationResponse: Schema.Codec<PublishUrlNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
   }).annotate({ identifier: "PublishUrlNotificationResponse" });
 
@@ -128,7 +128,7 @@ export interface PublishUrlNotificationsRequest {
 }
 
 export const PublishUrlNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(UrlNotification).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -141,7 +141,7 @@ export const PublishUrlNotificationsRequest =
 
 export type PublishUrlNotificationsResponse = PublishUrlNotificationResponse;
 export const PublishUrlNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PublishUrlNotificationResponse;
+  /*@__PURE__*/ PublishUrlNotificationResponse;
 
 export type PublishUrlNotificationsError =
   | DefaultErrors
@@ -156,7 +156,7 @@ export const publishUrlNotifications: API.OperationMethod<
   PublishUrlNotificationsResponse,
   PublishUrlNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishUrlNotificationsRequest,
   output: PublishUrlNotificationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -168,7 +168,7 @@ export interface GetMetadataUrlNotificationsRequest {
 }
 
 export const GetMetadataUrlNotificationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String).pipe(T.HttpQuery("url")),
   }).pipe(
     T.Http({ method: "GET", path: "v3/urlNotifications/metadata" }),
@@ -177,7 +177,7 @@ export const GetMetadataUrlNotificationsRequest =
 
 export type GetMetadataUrlNotificationsResponse = UrlNotificationMetadata;
 export const GetMetadataUrlNotificationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UrlNotificationMetadata;
+  /*@__PURE__*/ UrlNotificationMetadata;
 
 export type GetMetadataUrlNotificationsError =
   | DefaultErrors
@@ -190,7 +190,7 @@ export const getMetadataUrlNotifications: API.OperationMethod<
   GetMetadataUrlNotificationsResponse,
   GetMetadataUrlNotificationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataUrlNotificationsRequest,
   output: GetMetadataUrlNotificationsResponse,
   errors: [NotFound, Forbidden],

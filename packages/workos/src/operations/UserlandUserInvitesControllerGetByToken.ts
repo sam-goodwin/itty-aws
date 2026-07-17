@@ -8,7 +8,7 @@ export interface UserlandUserInvitesControllerGetByTokenInput {
   token: string;
 }
 export const UserlandUserInvitesControllerGetByTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -36,7 +36,7 @@ export interface UserlandUserInvitesControllerGetByTokenOutput {
   accept_invitation_url?: string;
 }
 export const UserlandUserInvitesControllerGetByTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export const UserlandUserInvitesControllerGetByTokenOutput =
  * @param token - The token used to accept the invitation.
  */
 export const UserlandUserInvitesControllerGetByToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerGetByTokenInput,
     outputSchema: UserlandUserInvitesControllerGetByTokenOutput,
     errors: [NotFound] as const,

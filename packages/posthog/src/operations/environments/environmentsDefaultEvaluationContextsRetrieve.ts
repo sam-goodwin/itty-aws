@@ -9,7 +9,7 @@ export interface EnvironmentsDefaultEvaluationContextsRetrieveInput {
   project_id: string;
 }
 export const EnvironmentsDefaultEvaluationContextsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const EnvironmentsDefaultEvaluationContextsRetrieveInput =
 // Output Schema
 export type EnvironmentsDefaultEvaluationContextsRetrieveOutput = void;
 export const EnvironmentsDefaultEvaluationContextsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultEvaluationContextsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultEvaluationContextsRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const EnvironmentsDefaultEvaluationContextsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDefaultEvaluationContextsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDefaultEvaluationContextsRetrieveInput,
     outputSchema: EnvironmentsDefaultEvaluationContextsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

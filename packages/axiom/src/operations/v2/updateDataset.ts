@@ -10,7 +10,7 @@ export interface UpdateDatasetInput {
   retentionDays?: number;
   useRetentionPeriod?: boolean;
 }
-export const UpdateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   retentionDays: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface UpdateDatasetOutput {
   useRetentionPeriod?: boolean;
   who: string;
 }
-export const UpdateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -66,7 +66,7 @@ export const UpdateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Update dataset
  */
-export const updateDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDatasetInput,
   outputSchema: UpdateDatasetOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

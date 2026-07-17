@@ -8,7 +8,7 @@ export interface DeleteV1DatabasesByDatabaseIdInput {
   databaseId: string;
 }
 export const DeleteV1DatabasesByDatabaseIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/databases/{databaseId}" }),
@@ -17,7 +17,7 @@ export const DeleteV1DatabasesByDatabaseIdInput =
 // Output Schema
 export type DeleteV1DatabasesByDatabaseIdOutput = void;
 export const DeleteV1DatabasesByDatabaseIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DatabasesByDatabaseIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DatabasesByDatabaseIdOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const DeleteV1DatabasesByDatabaseIdOutput =
  * Deletes the database with the given ID.
  */
 export const deleteV1DatabasesByDatabaseId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1DatabasesByDatabaseIdInput,
     outputSchema: DeleteV1DatabasesByDatabaseIdOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

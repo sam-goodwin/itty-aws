@@ -8,7 +8,7 @@ export interface GetReportingReportRunsReportRunInput {
   expand?: string;
 }
 export const GetReportingReportRunsReportRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report_run: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -90,7 +90,7 @@ export interface GetReportingReportRunsReportRunOutput {
   succeeded_at: number | null;
 }
 export const GetReportingReportRunsReportRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     error: Schema.NullOr(Schema.String),
     id: Schema.String,
@@ -178,7 +178,7 @@ export const GetReportingReportRunsReportRunOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetReportingReportRunsReportRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetReportingReportRunsReportRunInput,
     outputSchema: GetReportingReportRunsReportRunOutput,
   }));

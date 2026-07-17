@@ -20,7 +20,7 @@ export interface AccountCapabilityHostsCreateOrUpdateInput {
   };
 }
 export const AccountCapabilityHostsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -54,7 +54,7 @@ export interface AccountCapabilityHostsCreateOrUpdateOutput {
   };
 }
 export const AccountCapabilityHostsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export const AccountCapabilityHostsCreateOrUpdateOutput =
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const AccountCapabilityHostsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountCapabilityHostsCreateOrUpdateInput,
     outputSchema: AccountCapabilityHostsCreateOrUpdateOutput,
   }));
@@ -97,7 +97,7 @@ export interface AccountCapabilityHostsDeleteInput {
   capabilityHostName: string;
 }
 export const AccountCapabilityHostsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -113,7 +113,7 @@ export const AccountCapabilityHostsDeleteInput =
 // Output Schema
 export type AccountCapabilityHostsDeleteOutput = void;
 export const AccountCapabilityHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountCapabilityHostsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountCapabilityHostsDeleteOutput>;
 
 // The operation
 /**
@@ -126,7 +126,7 @@ export const AccountCapabilityHostsDeleteOutput =
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const AccountCapabilityHostsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountCapabilityHostsDeleteInput,
     outputSchema: AccountCapabilityHostsDeleteOutput,
   }));
@@ -138,7 +138,7 @@ export interface AccountCapabilityHostsGetInput {
   capabilityHostName: string;
 }
 export const AccountCapabilityHostsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -166,7 +166,7 @@ export interface AccountCapabilityHostsGetOutput {
   };
 }
 export const AccountCapabilityHostsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -196,12 +196,10 @@ export const AccountCapabilityHostsGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
-export const AccountCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountCapabilityHostsGetInput,
-    outputSchema: AccountCapabilityHostsGetOutput,
-  }),
-);
+export const AccountCapabilityHostsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountCapabilityHostsGetInput,
+  outputSchema: AccountCapabilityHostsGetOutput,
+}));
 // Input Schema
 export interface AccountCapabilityHostsListInput {
   subscriptionId: string;
@@ -209,7 +207,7 @@ export interface AccountCapabilityHostsListInput {
   accountName: string;
 }
 export const AccountCapabilityHostsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -239,7 +237,7 @@ export interface AccountCapabilityHostsListOutput {
   }[];
 }
 export const AccountCapabilityHostsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -285,12 +283,10 @@ export const AccountCapabilityHostsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountCapabilityHostsListInput,
-    outputSchema: AccountCapabilityHostsListOutput,
-  }),
-);
+export const AccountCapabilityHostsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountCapabilityHostsListInput,
+  outputSchema: AccountCapabilityHostsListOutput,
+}));
 // Input Schema
 export interface AccountConnectionsCreateInput {
   subscriptionId: string;
@@ -460,7 +456,7 @@ export interface AccountConnectionsCreateInput {
   };
 }
 export const AccountConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -660,7 +656,7 @@ export interface AccountConnectionsCreateOutput {
   };
 }
 export const AccountConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -690,12 +686,10 @@ export const AccountConnectionsCreateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param connectionName - Friendly name of the connection
  */
-export const AccountConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountConnectionsCreateInput,
-    outputSchema: AccountConnectionsCreateOutput,
-  }),
-);
+export const AccountConnectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountConnectionsCreateInput,
+  outputSchema: AccountConnectionsCreateOutput,
+}));
 // Input Schema
 export interface AccountConnectionsDeleteInput {
   subscriptionId: string;
@@ -704,7 +698,7 @@ export interface AccountConnectionsDeleteInput {
   connectionName: string;
 }
 export const AccountConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -720,7 +714,7 @@ export const AccountConnectionsDeleteInput =
 // Output Schema
 export type AccountConnectionsDeleteOutput = void;
 export const AccountConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -732,12 +726,10 @@ export const AccountConnectionsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param connectionName - Friendly name of the connection
  */
-export const AccountConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountConnectionsDeleteInput,
-    outputSchema: AccountConnectionsDeleteOutput,
-  }),
-);
+export const AccountConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountConnectionsDeleteInput,
+  outputSchema: AccountConnectionsDeleteOutput,
+}));
 // Input Schema
 export interface AccountConnectionsGetInput {
   subscriptionId: string;
@@ -746,7 +738,7 @@ export interface AccountConnectionsGetInput {
   connectionName: string;
 }
 export const AccountConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -774,7 +766,7 @@ export interface AccountConnectionsGetOutput {
   };
 }
 export const AccountConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -804,12 +796,10 @@ export const AccountConnectionsGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param connectionName - Friendly name of the connection
  */
-export const AccountConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountConnectionsGetInput,
-    outputSchema: AccountConnectionsGetOutput,
-  }),
-);
+export const AccountConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountConnectionsGetInput,
+  outputSchema: AccountConnectionsGetOutput,
+}));
 // Input Schema
 export interface AccountConnectionsListInput {
   subscriptionId: string;
@@ -820,7 +810,7 @@ export interface AccountConnectionsListInput {
   includeAll?: boolean;
 }
 export const AccountConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -853,7 +843,7 @@ export interface AccountConnectionsListOutput {
   }[];
 }
 export const AccountConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -902,12 +892,10 @@ export const AccountConnectionsListOutput =
  * @param category - Category of the connection.
  * @param includeAll - query parameter that indicates if get connection call should return both connections and datastores
  */
-export const AccountConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountConnectionsListInput,
-    outputSchema: AccountConnectionsListOutput,
-  }),
-);
+export const AccountConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountConnectionsListInput,
+  outputSchema: AccountConnectionsListOutput,
+}));
 // Input Schema
 export interface AccountConnectionsUpdateInput {
   subscriptionId: string;
@@ -1077,7 +1065,7 @@ export interface AccountConnectionsUpdateInput {
   };
 }
 export const AccountConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1279,7 +1267,7 @@ export interface AccountConnectionsUpdateOutput {
   };
 }
 export const AccountConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1309,12 +1297,10 @@ export const AccountConnectionsUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param connectionName - Friendly name of the connection
  */
-export const AccountConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountConnectionsUpdateInput,
-    outputSchema: AccountConnectionsUpdateOutput,
-  }),
-);
+export const AccountConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountConnectionsUpdateInput,
+  outputSchema: AccountConnectionsUpdateOutput,
+}));
 // Input Schema
 export interface AccountsCreateInput {
   subscriptionId: string;
@@ -1473,7 +1459,7 @@ export interface AccountsCreateInput {
     >;
   };
 }
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1788,7 +1774,7 @@ export interface AccountsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1817,7 +1803,7 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
@@ -1827,7 +1813,7 @@ export interface AccountsDeleteInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1842,7 +1828,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -1853,7 +1839,7 @@ export const AccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -1863,7 +1849,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1889,7 +1875,7 @@ export interface AccountsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1918,7 +1904,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -1926,7 +1912,7 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface AccountsListInput {
   subscriptionId: string;
 }
-export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1953,7 +1939,7 @@ export interface AccountsListOutput {
     };
   }[];
 }
-export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -1997,7 +1983,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
   outputSchema: AccountsListOutput,
 }));
@@ -2007,7 +1993,7 @@ export interface AccountsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2036,7 +2022,7 @@ export interface AccountsListByResourceGroupOutput {
   }[];
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2081,19 +2067,17 @@ export const AccountsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListKeysInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListKeysInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2110,12 +2094,10 @@ export interface AccountsListKeysOutput {
   key1?: string;
   key2?: string;
 }
-export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    key1: Schema.optional(Schema.String),
-    key2: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AccountsListKeysOutput>;
+export const AccountsListKeysOutput = /*@__PURE__*/ Schema.Struct({
+  key1: Schema.optional(Schema.String),
+  key2: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AccountsListKeysOutput>;
 
 // The operation
 /**
@@ -2126,7 +2108,7 @@ export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListKeysInput,
   outputSchema: AccountsListKeysOutput,
 }));
@@ -2137,7 +2119,7 @@ export interface AccountsListModelsInput {
   accountName: string;
 }
 export const AccountsListModelsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2174,7 +2156,7 @@ export interface AccountsListModelsOutput {
   }[];
 }
 export const AccountsListModelsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2224,7 +2206,7 @@ export const AccountsListModelsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsListModels = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsListModels = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListModelsInput,
   outputSchema: AccountsListModelsOutput,
 }));
@@ -2234,7 +2216,7 @@ export interface AccountsListSkusInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2259,34 +2241,32 @@ export interface AccountsListSkusOutput {
     };
   }[];
 }
-export const AccountsListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals([
-                  "Free",
-                  "Basic",
-                  "Standard",
-                  "Premium",
-                  "Enterprise",
-                ]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+export const AccountsListSkusOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        sku: Schema.optional(
+          Schema.Struct({
+            name: Schema.String,
+            tier: Schema.optional(
+              Schema.Literals([
+                "Free",
+                "Basic",
+                "Standard",
+                "Premium",
+                "Enterprise",
+              ]),
+            ),
+            size: Schema.optional(Schema.String),
+            family: Schema.optional(Schema.String),
+            capacity: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<AccountsListSkusOutput>;
+  ),
+}) as unknown as Schema.Codec<AccountsListSkusOutput>;
 
 // The operation
 /**
@@ -2297,7 +2277,7 @@ export const AccountsListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListSkusInput,
   outputSchema: AccountsListSkusOutput,
 }));
@@ -2309,7 +2289,7 @@ export interface AccountsListUsagesInput {
   $filter?: string;
 }
 export const AccountsListUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2343,7 +2323,7 @@ export interface AccountsListUsagesOutput {
   }[];
 }
 export const AccountsListUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2387,7 +2367,7 @@ export const AccountsListUsagesOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
-export const AccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsListUsages = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListUsagesInput,
   outputSchema: AccountsListUsagesOutput,
 }));
@@ -2399,7 +2379,7 @@ export interface AccountsRegenerateKeyInput {
   keyName: "Key1" | "Key2";
 }
 export const AccountsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2418,7 +2398,7 @@ export interface AccountsRegenerateKeyOutput {
   key2?: string;
 }
 export const AccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<AccountsRegenerateKeyOutput>;
@@ -2432,12 +2412,10 @@ export const AccountsRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsRegenerateKeyInput,
-    outputSchema: AccountsRegenerateKeyOutput,
-  }),
-);
+export const AccountsRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsRegenerateKeyInput,
+  outputSchema: AccountsRegenerateKeyOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -2596,7 +2574,7 @@ export interface AccountsUpdateInput {
     >;
   };
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2911,7 +2889,7 @@ export interface AccountsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2940,7 +2918,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -2957,7 +2935,7 @@ export interface AgentApplicationsCreateOrUpdateInput {
   };
 }
 export const AgentApplicationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2992,7 +2970,7 @@ export interface AgentApplicationsCreateOrUpdateOutput {
   };
 }
 export const AgentApplicationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3024,7 +3002,7 @@ export const AgentApplicationsCreateOrUpdateOutput =
  * @param name - Name for the Agent Application.
  */
 export const AgentApplicationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsCreateOrUpdateInput,
     outputSchema: AgentApplicationsCreateOrUpdateOutput,
   }));
@@ -3037,7 +3015,7 @@ export interface AgentApplicationsDeleteInput {
   name: string;
 }
 export const AgentApplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3054,7 +3032,7 @@ export const AgentApplicationsDeleteInput =
 // Output Schema
 export type AgentApplicationsDeleteOutput = void;
 export const AgentApplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -3067,12 +3045,10 @@ export const AgentApplicationsDeleteOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param name - Name for the Agent Application.
  */
-export const AgentApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsDeleteInput,
-    outputSchema: AgentApplicationsDeleteOutput,
-  }),
-);
+export const AgentApplicationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsDeleteInput,
+  outputSchema: AgentApplicationsDeleteOutput,
+}));
 // Input Schema
 export interface AgentApplicationsDisableInput {
   subscriptionId: string;
@@ -3082,7 +3058,7 @@ export interface AgentApplicationsDisableInput {
   name: string;
 }
 export const AgentApplicationsDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3099,7 +3075,7 @@ export const AgentApplicationsDisableInput =
 // Output Schema
 export type AgentApplicationsDisableOutput = void;
 export const AgentApplicationsDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDisableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDisableOutput>;
 
 // The operation
 /**
@@ -3112,12 +3088,10 @@ export const AgentApplicationsDisableOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param name - Name for the Agent Application.
  */
-export const AgentApplicationsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsDisableInput,
-    outputSchema: AgentApplicationsDisableOutput,
-  }),
-);
+export const AgentApplicationsDisable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsDisableInput,
+  outputSchema: AgentApplicationsDisableOutput,
+}));
 // Input Schema
 export interface AgentApplicationsEnableInput {
   subscriptionId: string;
@@ -3127,7 +3101,7 @@ export interface AgentApplicationsEnableInput {
   name: string;
 }
 export const AgentApplicationsEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3144,7 +3118,7 @@ export const AgentApplicationsEnableInput =
 // Output Schema
 export type AgentApplicationsEnableOutput = void;
 export const AgentApplicationsEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsEnableOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsEnableOutput>;
 
 // The operation
 /**
@@ -3157,12 +3131,10 @@ export const AgentApplicationsEnableOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param name - Name for the Agent Application.
  */
-export const AgentApplicationsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsEnableInput,
-    outputSchema: AgentApplicationsEnableOutput,
-  }),
-);
+export const AgentApplicationsEnable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsEnableInput,
+  outputSchema: AgentApplicationsEnableOutput,
+}));
 // Input Schema
 export interface AgentApplicationsGetInput {
   subscriptionId: string;
@@ -3172,7 +3144,7 @@ export interface AgentApplicationsGetInput {
   name: string;
 }
 export const AgentApplicationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3201,7 +3173,7 @@ export interface AgentApplicationsGetOutput {
   };
 }
 export const AgentApplicationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3232,12 +3204,10 @@ export const AgentApplicationsGetOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param name - Name for the Agent Application.
  */
-export const AgentApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsGetInput,
-    outputSchema: AgentApplicationsGetOutput,
-  }),
-);
+export const AgentApplicationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsGetInput,
+  outputSchema: AgentApplicationsGetOutput,
+}));
 // Input Schema
 export interface AgentApplicationsListInput {
   subscriptionId: string;
@@ -3253,7 +3223,7 @@ export interface AgentApplicationsListInput {
   orderByAsc?: boolean;
 }
 export const AgentApplicationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3291,7 +3261,7 @@ export interface AgentApplicationsListOutput {
   }[];
 }
 export const AgentApplicationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -3345,12 +3315,10 @@ export const AgentApplicationsListOutput =
  * @param orderBy - Field to order by.
  * @param orderByAsc - Whether to order in ascending order.
  */
-export const AgentApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsListInput,
-    outputSchema: AgentApplicationsListOutput,
-  }),
-);
+export const AgentApplicationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsListInput,
+  outputSchema: AgentApplicationsListOutput,
+}));
 // Input Schema
 export interface AgentApplicationsListAgentsInput {
   subscriptionId: string;
@@ -3360,7 +3328,7 @@ export interface AgentApplicationsListAgentsInput {
   name: string;
 }
 export const AgentApplicationsListAgentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3398,7 +3366,7 @@ export interface AgentApplicationsListAgentsOutput {
     | null;
 }
 export const AgentApplicationsListAgentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.NullOr(
@@ -3448,12 +3416,10 @@ export const AgentApplicationsListAgentsOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param name - Name for the Agent Application.
  */
-export const AgentApplicationsListAgents = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsListAgentsInput,
-    outputSchema: AgentApplicationsListAgentsOutput,
-  }),
-);
+export const AgentApplicationsListAgents = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsListAgentsInput,
+  outputSchema: AgentApplicationsListAgentsOutput,
+}));
 // Input Schema
 export interface AgentDeploymentsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3468,7 +3434,7 @@ export interface AgentDeploymentsCreateOrUpdateInput {
   };
 }
 export const AgentDeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3504,7 +3470,7 @@ export interface AgentDeploymentsCreateOrUpdateOutput {
   };
 }
 export const AgentDeploymentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3537,7 +3503,7 @@ export const AgentDeploymentsCreateOrUpdateOutput =
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const AgentDeploymentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentDeploymentsCreateOrUpdateInput,
     outputSchema: AgentDeploymentsCreateOrUpdateOutput,
   }));
@@ -3551,7 +3517,7 @@ export interface AgentDeploymentsDeleteInput {
   deploymentName: string;
 }
 export const AgentDeploymentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3569,7 +3535,7 @@ export const AgentDeploymentsDeleteInput =
 // Output Schema
 export type AgentDeploymentsDeleteOutput = void;
 export const AgentDeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -3583,12 +3549,10 @@ export const AgentDeploymentsDeleteOutput =
  * @param appName - The name of the application associated with the Cognitive Services Account
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const AgentDeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentDeploymentsDeleteInput,
-    outputSchema: AgentDeploymentsDeleteOutput,
-  }),
-);
+export const AgentDeploymentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentDeploymentsDeleteInput,
+  outputSchema: AgentDeploymentsDeleteOutput,
+}));
 // Input Schema
 export interface AgentDeploymentsGetInput {
   subscriptionId: string;
@@ -3599,7 +3563,7 @@ export interface AgentDeploymentsGetInput {
   deploymentName: string;
 }
 export const AgentDeploymentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3629,7 +3593,7 @@ export interface AgentDeploymentsGetOutput {
   };
 }
 export const AgentDeploymentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3661,7 +3625,7 @@ export const AgentDeploymentsGetOutput =
  * @param appName - The name of the application associated with the Cognitive Services Account
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const AgentDeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentDeploymentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentDeploymentsGetInput,
   outputSchema: AgentDeploymentsGetOutput,
 }));
@@ -3679,7 +3643,7 @@ export interface AgentDeploymentsListInput {
   orderByAsc?: boolean;
 }
 export const AgentDeploymentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3716,7 +3680,7 @@ export interface AgentDeploymentsListOutput {
   }[];
 }
 export const AgentDeploymentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -3769,12 +3733,10 @@ export const AgentDeploymentsListOutput =
  * @param orderBy - Field to order by.
  * @param orderByAsc - Whether to order in ascending order.
  */
-export const AgentDeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentDeploymentsListInput,
-    outputSchema: AgentDeploymentsListOutput,
-  }),
-);
+export const AgentDeploymentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentDeploymentsListInput,
+  outputSchema: AgentDeploymentsListOutput,
+}));
 // Input Schema
 export interface AgentDeploymentsStartInput {
   subscriptionId: string;
@@ -3785,7 +3747,7 @@ export interface AgentDeploymentsStartInput {
   deploymentName: string;
 }
 export const AgentDeploymentsStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3803,7 +3765,7 @@ export const AgentDeploymentsStartInput =
 // Output Schema
 export type AgentDeploymentsStartOutput = void;
 export const AgentDeploymentsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStartOutput>;
 
 // The operation
 /**
@@ -3817,12 +3779,10 @@ export const AgentDeploymentsStartOutput =
  * @param appName - The name of the application associated with the Cognitive Services Account
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const AgentDeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentDeploymentsStartInput,
-    outputSchema: AgentDeploymentsStartOutput,
-  }),
-);
+export const AgentDeploymentsStart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentDeploymentsStartInput,
+  outputSchema: AgentDeploymentsStartOutput,
+}));
 // Input Schema
 export interface AgentDeploymentsStopInput {
   subscriptionId: string;
@@ -3833,7 +3793,7 @@ export interface AgentDeploymentsStopInput {
   deploymentName: string;
 }
 export const AgentDeploymentsStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3851,7 +3811,7 @@ export const AgentDeploymentsStopInput =
 // Output Schema
 export type AgentDeploymentsStopOutput = void;
 export const AgentDeploymentsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStopOutput>;
 
 // The operation
 /**
@@ -3865,12 +3825,10 @@ export const AgentDeploymentsStopOutput =
  * @param appName - The name of the application associated with the Cognitive Services Account
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const AgentDeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentDeploymentsStopInput,
-    outputSchema: AgentDeploymentsStopOutput,
-  }),
-);
+export const AgentDeploymentsStop = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentDeploymentsStopInput,
+  outputSchema: AgentDeploymentsStopOutput,
+}));
 // Input Schema
 export interface CalculateModelCapacityInput {
   subscriptionId: string;
@@ -3904,7 +3862,7 @@ export interface CalculateModelCapacityInput {
   }[];
 }
 export const CalculateModelCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     model: Schema.optional(
       Schema.Struct({
@@ -3989,7 +3947,7 @@ export interface CalculateModelCapacityOutput {
   estimatedCapacity?: { value?: number; deployableValue?: number };
 }
 export const CalculateModelCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(
       Schema.Struct({
         publisher: Schema.optional(Schema.String),
@@ -4041,12 +3999,10 @@ export const CalculateModelCapacityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const calculateModelCapacity = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CalculateModelCapacityInput,
-    outputSchema: CalculateModelCapacityOutput,
-  }),
-);
+export const calculateModelCapacity = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CalculateModelCapacityInput,
+  outputSchema: CalculateModelCapacityOutput,
+}));
 // Input Schema
 export interface CheckDomainAvailabilityInput {
   subscriptionId: string;
@@ -4055,7 +4011,7 @@ export interface CheckDomainAvailabilityInput {
   kind?: string;
 }
 export const CheckDomainAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     subdomainName: Schema.String,
     type: Schema.String,
@@ -4077,7 +4033,7 @@ export interface CheckDomainAvailabilityOutput {
   kind?: string;
 }
 export const CheckDomainAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isSubdomainAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     subdomainName: Schema.optional(Schema.String),
@@ -4092,12 +4048,10 @@ export const CheckDomainAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CheckDomainAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckDomainAvailabilityInput,
-    outputSchema: CheckDomainAvailabilityOutput,
-  }),
-);
+export const CheckDomainAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckDomainAvailabilityInput,
+  outputSchema: CheckDomainAvailabilityOutput,
+}));
 // Input Schema
 export interface CheckSkuAvailabilityInput {
   subscriptionId: string;
@@ -4107,7 +4061,7 @@ export interface CheckSkuAvailabilityInput {
   type: string;
 }
 export const CheckSkuAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     skus: Schema.Array(Schema.String),
@@ -4133,7 +4087,7 @@ export interface CheckSkuAvailabilityOutput {
   }[];
 }
 export const CheckSkuAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4156,12 +4110,10 @@ export const CheckSkuAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const CheckSkuAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckSkuAvailabilityInput,
-    outputSchema: CheckSkuAvailabilityOutput,
-  }),
-);
+export const CheckSkuAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckSkuAvailabilityInput,
+  outputSchema: CheckSkuAvailabilityOutput,
+}));
 // Input Schema
 export interface CommitmentPlansCreateOrUpdateInput {
   subscriptionId: string;
@@ -4221,7 +4173,7 @@ export interface CommitmentPlansCreateOrUpdateInput {
   };
 }
 export const CommitmentPlansCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4339,7 +4291,7 @@ export interface CommitmentPlansCreateOrUpdateOutput {
   };
 }
 export const CommitmentPlansCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4370,7 +4322,7 @@ export const CommitmentPlansCreateOrUpdateOutput =
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansCreateOrUpdateInput,
     outputSchema: CommitmentPlansCreateOrUpdateOutput,
   }));
@@ -4385,7 +4337,7 @@ export interface CommitmentPlansCreateOrUpdateAssociationInput {
   tags?: Record<string, string>;
 }
 export const CommitmentPlansCreateOrUpdateAssociationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4420,7 +4372,7 @@ export interface CommitmentPlansCreateOrUpdateAssociationOutput {
   };
 }
 export const CommitmentPlansCreateOrUpdateAssociationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4451,7 +4403,7 @@ export const CommitmentPlansCreateOrUpdateAssociationOutput =
  * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdateAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansCreateOrUpdateAssociationInput,
     outputSchema: CommitmentPlansCreateOrUpdateAssociationOutput,
   }));
@@ -4513,7 +4465,7 @@ export interface CommitmentPlansCreateOrUpdatePlanInput {
   };
 }
 export const CommitmentPlansCreateOrUpdatePlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4630,7 +4582,7 @@ export interface CommitmentPlansCreateOrUpdatePlanOutput {
   };
 }
 export const CommitmentPlansCreateOrUpdatePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4660,7 +4612,7 @@ export const CommitmentPlansCreateOrUpdatePlanOutput =
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdatePlan =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansCreateOrUpdatePlanInput,
     outputSchema: CommitmentPlansCreateOrUpdatePlanOutput,
   }));
@@ -4672,7 +4624,7 @@ export interface CommitmentPlansDeleteInput {
   commitmentPlanName: string;
 }
 export const CommitmentPlansDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4688,7 +4640,7 @@ export const CommitmentPlansDeleteInput =
 // Output Schema
 export type CommitmentPlansDeleteOutput = void;
 export const CommitmentPlansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteOutput>;
 
 // The operation
 /**
@@ -4700,12 +4652,10 @@ export const CommitmentPlansDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
-export const CommitmentPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommitmentPlansDeleteInput,
-    outputSchema: CommitmentPlansDeleteOutput,
-  }),
-);
+export const CommitmentPlansDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommitmentPlansDeleteInput,
+  outputSchema: CommitmentPlansDeleteOutput,
+}));
 // Input Schema
 export interface CommitmentPlansDeleteAssociationInput {
   subscriptionId: string;
@@ -4714,7 +4664,7 @@ export interface CommitmentPlansDeleteAssociationInput {
   commitmentPlanAssociationName: string;
 }
 export const CommitmentPlansDeleteAssociationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4730,7 +4680,7 @@ export const CommitmentPlansDeleteAssociationInput =
 // Output Schema
 export type CommitmentPlansDeleteAssociationOutput = void;
 export const CommitmentPlansDeleteAssociationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteAssociationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteAssociationOutput>;
 
 // The operation
 /**
@@ -4743,7 +4693,7 @@ export const CommitmentPlansDeleteAssociationOutput =
  * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansDeleteAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansDeleteAssociationInput,
     outputSchema: CommitmentPlansDeleteAssociationOutput,
   }));
@@ -4754,7 +4704,7 @@ export interface CommitmentPlansDeletePlanInput {
   commitmentPlanName: string;
 }
 export const CommitmentPlansDeletePlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4769,7 +4719,7 @@ export const CommitmentPlansDeletePlanInput =
 // Output Schema
 export type CommitmentPlansDeletePlanOutput = void;
 export const CommitmentPlansDeletePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeletePlanOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeletePlanOutput>;
 
 // The operation
 /**
@@ -4780,12 +4730,10 @@ export const CommitmentPlansDeletePlanOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
-export const CommitmentPlansDeletePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommitmentPlansDeletePlanInput,
-    outputSchema: CommitmentPlansDeletePlanOutput,
-  }),
-);
+export const CommitmentPlansDeletePlan = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommitmentPlansDeletePlanInput,
+  outputSchema: CommitmentPlansDeletePlanOutput,
+}));
 // Input Schema
 export interface CommitmentPlansGetInput {
   subscriptionId: string;
@@ -4794,7 +4742,7 @@ export interface CommitmentPlansGetInput {
   commitmentPlanName: string;
 }
 export const CommitmentPlansGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4822,7 +4770,7 @@ export interface CommitmentPlansGetOutput {
   };
 }
 export const CommitmentPlansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4852,7 +4800,7 @@ export const CommitmentPlansGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
-export const CommitmentPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommitmentPlansGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommitmentPlansGetInput,
   outputSchema: CommitmentPlansGetOutput,
 }));
@@ -4864,7 +4812,7 @@ export interface CommitmentPlansGetAssociationInput {
   commitmentPlanAssociationName: string;
 }
 export const CommitmentPlansGetAssociationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4892,7 +4840,7 @@ export interface CommitmentPlansGetAssociationOutput {
   };
 }
 export const CommitmentPlansGetAssociationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4923,7 +4871,7 @@ export const CommitmentPlansGetAssociationOutput =
  * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansGetAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansGetAssociationInput,
     outputSchema: CommitmentPlansGetAssociationOutput,
   }));
@@ -4934,7 +4882,7 @@ export interface CommitmentPlansGetPlanInput {
   commitmentPlanName: string;
 }
 export const CommitmentPlansGetPlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -4961,7 +4909,7 @@ export interface CommitmentPlansGetPlanOutput {
   };
 }
 export const CommitmentPlansGetPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4990,12 +4938,10 @@ export const CommitmentPlansGetPlanOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
-export const CommitmentPlansGetPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommitmentPlansGetPlanInput,
-    outputSchema: CommitmentPlansGetPlanOutput,
-  }),
-);
+export const CommitmentPlansGetPlan = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommitmentPlansGetPlanInput,
+  outputSchema: CommitmentPlansGetPlanOutput,
+}));
 // Input Schema
 export interface CommitmentPlansListInput {
   subscriptionId: string;
@@ -5003,7 +4949,7 @@ export interface CommitmentPlansListInput {
   accountName: string;
 }
 export const CommitmentPlansListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5033,7 +4979,7 @@ export interface CommitmentPlansListOutput {
   }[];
 }
 export const CommitmentPlansListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5079,7 +5025,7 @@ export const CommitmentPlansListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const CommitmentPlansList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommitmentPlansList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommitmentPlansListInput,
   outputSchema: CommitmentPlansListOutput,
 }));
@@ -5090,7 +5036,7 @@ export interface CommitmentPlansListAssociationsInput {
   commitmentPlanName: string;
 }
 export const CommitmentPlansListAssociationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -5120,7 +5066,7 @@ export interface CommitmentPlansListAssociationsOutput {
   }[];
 }
 export const CommitmentPlansListAssociationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5167,7 +5113,7 @@ export const CommitmentPlansListAssociationsOutput =
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansListAssociations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansListAssociationsInput,
     outputSchema: CommitmentPlansListAssociationsOutput,
   }));
@@ -5177,7 +5123,7 @@ export interface CommitmentPlansListPlansByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CommitmentPlansListPlansByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5206,7 +5152,7 @@ export interface CommitmentPlansListPlansByResourceGroupOutput {
   }[];
 }
 export const CommitmentPlansListPlansByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5252,7 +5198,7 @@ export const CommitmentPlansListPlansByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CommitmentPlansListPlansByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansListPlansByResourceGroupInput,
     outputSchema: CommitmentPlansListPlansByResourceGroupOutput,
   }));
@@ -5261,7 +5207,7 @@ export interface CommitmentPlansListPlansBySubscriptionInput {
   subscriptionId: string;
 }
 export const CommitmentPlansListPlansBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5289,7 +5235,7 @@ export interface CommitmentPlansListPlansBySubscriptionOutput {
   }[];
 }
 export const CommitmentPlansListPlansBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5334,7 +5280,7 @@ export const CommitmentPlansListPlansBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const CommitmentPlansListPlansBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommitmentPlansListPlansBySubscriptionInput,
     outputSchema: CommitmentPlansListPlansBySubscriptionOutput,
   }));
@@ -5353,7 +5299,7 @@ export interface CommitmentPlansUpdatePlanInput {
   tags?: Record<string, string>;
 }
 export const CommitmentPlansUpdatePlanInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     commitmentPlanName: Schema.String.pipe(T.PathParam()),
@@ -5398,7 +5344,7 @@ export interface CommitmentPlansUpdatePlanOutput {
   };
 }
 export const CommitmentPlansUpdatePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5427,19 +5373,17 @@ export const CommitmentPlansUpdatePlanOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
-export const CommitmentPlansUpdatePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommitmentPlansUpdatePlanInput,
-    outputSchema: CommitmentPlansUpdatePlanOutput,
-  }),
-);
+export const CommitmentPlansUpdatePlan = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommitmentPlansUpdatePlanInput,
+  outputSchema: CommitmentPlansUpdatePlanOutput,
+}));
 // Input Schema
 export interface CommitmentTiersListInput {
   subscriptionId: string;
   location: string;
 }
 export const CommitmentTiersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5469,7 +5413,7 @@ export interface CommitmentTiersListOutput {
   }[];
 }
 export const CommitmentTiersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5512,7 +5456,7 @@ export const CommitmentTiersListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const CommitmentTiersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommitmentTiersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommitmentTiersListInput,
   outputSchema: CommitmentTiersListOutput,
 }));
@@ -5527,7 +5471,7 @@ export interface DefenderForAISettingsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DefenderForAISettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5562,7 +5506,7 @@ export interface DefenderForAISettingsCreateOrUpdateOutput {
   };
 }
 export const DefenderForAISettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5593,7 +5537,7 @@ export const DefenderForAISettingsCreateOrUpdateOutput =
  * @param defenderForAISettingName - The name of the defender for AI setting.
  */
 export const DefenderForAISettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DefenderForAISettingsCreateOrUpdateInput,
     outputSchema: DefenderForAISettingsCreateOrUpdateOutput,
   }));
@@ -5605,7 +5549,7 @@ export interface DefenderForAISettingsGetInput {
   defenderForAISettingName: string;
 }
 export const DefenderForAISettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5633,7 +5577,7 @@ export interface DefenderForAISettingsGetOutput {
   };
 }
 export const DefenderForAISettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5663,12 +5607,10 @@ export const DefenderForAISettingsGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param defenderForAISettingName - The name of the defender for AI setting.
  */
-export const DefenderForAISettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DefenderForAISettingsGetInput,
-    outputSchema: DefenderForAISettingsGetOutput,
-  }),
-);
+export const DefenderForAISettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DefenderForAISettingsGetInput,
+  outputSchema: DefenderForAISettingsGetOutput,
+}));
 // Input Schema
 export interface DefenderForAISettingsListInput {
   subscriptionId: string;
@@ -5676,7 +5618,7 @@ export interface DefenderForAISettingsListInput {
   accountName: string;
 }
 export const DefenderForAISettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5706,7 +5648,7 @@ export interface DefenderForAISettingsListOutput {
   }[];
 }
 export const DefenderForAISettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5752,12 +5694,10 @@ export const DefenderForAISettingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const DefenderForAISettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DefenderForAISettingsListInput,
-    outputSchema: DefenderForAISettingsListOutput,
-  }),
-);
+export const DefenderForAISettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DefenderForAISettingsListInput,
+  outputSchema: DefenderForAISettingsListOutput,
+}));
 // Input Schema
 export interface DefenderForAISettingsUpdateInput {
   subscriptionId: string;
@@ -5769,7 +5709,7 @@ export interface DefenderForAISettingsUpdateInput {
   tags?: Record<string, string>;
 }
 export const DefenderForAISettingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5804,7 +5744,7 @@ export interface DefenderForAISettingsUpdateOutput {
   };
 }
 export const DefenderForAISettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5834,12 +5774,10 @@ export const DefenderForAISettingsUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param defenderForAISettingName - The name of the defender for AI setting.
  */
-export const DefenderForAISettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DefenderForAISettingsUpdateInput,
-    outputSchema: DefenderForAISettingsUpdateOutput,
-  }),
-);
+export const DefenderForAISettingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DefenderForAISettingsUpdateInput,
+  outputSchema: DefenderForAISettingsUpdateOutput,
+}));
 // Input Schema
 export interface DeletedAccountsGetInput {
   subscriptionId: string;
@@ -5848,7 +5786,7 @@ export interface DeletedAccountsGetInput {
   accountName: string;
 }
 export const DeletedAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5876,7 +5814,7 @@ export interface DeletedAccountsGetOutput {
   };
 }
 export const DeletedAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5906,7 +5844,7 @@ export const DeletedAccountsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsGetInput,
   outputSchema: DeletedAccountsGetOutput,
 }));
@@ -5915,7 +5853,7 @@ export interface DeletedAccountsListInput {
   subscriptionId: string;
 }
 export const DeletedAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5943,7 +5881,7 @@ export interface DeletedAccountsListOutput {
   }[];
 }
 export const DeletedAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5987,7 +5925,7 @@ export const DeletedAccountsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsListInput,
   outputSchema: DeletedAccountsListOutput,
 }));
@@ -5999,7 +5937,7 @@ export interface DeletedAccountsPurgeInput {
   accountName: string;
 }
 export const DeletedAccountsPurgeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6015,7 +5953,7 @@ export const DeletedAccountsPurgeInput =
 // Output Schema
 export type DeletedAccountsPurgeOutput = void;
 export const DeletedAccountsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletedAccountsPurgeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletedAccountsPurgeOutput>;
 
 // The operation
 /**
@@ -6027,12 +5965,10 @@ export const DeletedAccountsPurgeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const DeletedAccountsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedAccountsPurgeInput,
-    outputSchema: DeletedAccountsPurgeOutput,
-  }),
-);
+export const DeletedAccountsPurge = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedAccountsPurgeInput,
+  outputSchema: DeletedAccountsPurgeOutput,
+}));
 // Input Schema
 export interface DeploymentsCreateOrUpdateInput {
   subscriptionId: string;
@@ -6142,7 +6078,7 @@ export interface DeploymentsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const DeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6362,7 +6298,7 @@ export interface DeploymentsCreateOrUpdateOutput {
   };
 }
 export const DeploymentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6392,12 +6328,10 @@ export const DeploymentsCreateOrUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsCreateOrUpdateInput,
-    outputSchema: DeploymentsCreateOrUpdateOutput,
-  }),
-);
+export const DeploymentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsCreateOrUpdateInput,
+  outputSchema: DeploymentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DeploymentsDeleteInput {
   subscriptionId: string;
@@ -6405,14 +6339,12 @@ export interface DeploymentsDeleteInput {
   accountName: string;
   deploymentName: string;
 }
-export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    deploymentName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
@@ -6423,7 +6355,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DeploymentsDeleteOutput = void;
 export const DeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -6435,7 +6367,7 @@ export const DeploymentsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
   outputSchema: DeploymentsDeleteOutput,
 }));
@@ -6446,7 +6378,7 @@ export interface DeploymentsGetInput {
   accountName: string;
   deploymentName: string;
 }
-export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6473,7 +6405,7 @@ export interface DeploymentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6503,7 +6435,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
   outputSchema: DeploymentsGetOutput,
 }));
@@ -6513,7 +6445,7 @@ export interface DeploymentsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6542,7 +6474,7 @@ export interface DeploymentsListOutput {
     };
   }[];
 }
-export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -6588,7 +6520,7 @@ export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListInput,
   outputSchema: DeploymentsListOutput,
 }));
@@ -6600,7 +6532,7 @@ export interface DeploymentsListSkusInput {
   deploymentName: string;
 }
 export const DeploymentsListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6635,7 +6567,7 @@ export interface DeploymentsListSkusOutput {
   }[];
 }
 export const DeploymentsListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -6682,7 +6614,7 @@ export const DeploymentsListSkusOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListSkusInput,
   outputSchema: DeploymentsListSkusOutput,
 }));
@@ -6693,7 +6625,7 @@ export interface DeploymentsPauseInput {
   accountName: string;
   deploymentName: string;
 }
-export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsPauseInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6720,27 +6652,25 @@ export interface DeploymentsPauseOutput {
     lastModifiedAt?: string;
   };
 }
-export const DeploymentsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<DeploymentsPauseOutput>;
+export const DeploymentsPauseOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<DeploymentsPauseOutput>;
 
 // The operation
 /**
@@ -6754,7 +6684,7 @@ export const DeploymentsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsPause = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsPauseInput,
   outputSchema: DeploymentsPauseOutput,
 }));
@@ -6765,14 +6695,12 @@ export interface DeploymentsResumeInput {
   accountName: string;
   deploymentName: string;
 }
-export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    deploymentName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DeploymentsResumeInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/resume",
@@ -6795,7 +6723,7 @@ export interface DeploymentsResumeOutput {
   };
 }
 export const DeploymentsResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6827,7 +6755,7 @@ export const DeploymentsResumeOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsResumeInput,
   outputSchema: DeploymentsResumeOutput,
 }));
@@ -6846,32 +6774,24 @@ export interface DeploymentsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    deploymentName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals([
-            "Free",
-            "Basic",
-            "Standard",
-            "Premium",
-            "Enterprise",
-          ]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+export const DeploymentsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      tier: Schema.optional(
+        Schema.Literals(["Free", "Basic", "Standard", "Premium", "Enterprise"]),
+      ),
+      size: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      capacity: Schema.optional(Schema.Number),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
@@ -6894,7 +6814,7 @@ export interface DeploymentsUpdateOutput {
   };
 }
 export const DeploymentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6924,7 +6844,7 @@ export const DeploymentsUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
-export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsUpdateInput,
   outputSchema: DeploymentsUpdateOutput,
 }));
@@ -6947,7 +6867,7 @@ export interface EncryptionScopesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const EncryptionScopesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6995,7 +6915,7 @@ export interface EncryptionScopesCreateOrUpdateOutput {
   };
 }
 export const EncryptionScopesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7026,7 +6946,7 @@ export const EncryptionScopesCreateOrUpdateOutput =
  * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
 export const EncryptionScopesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EncryptionScopesCreateOrUpdateInput,
     outputSchema: EncryptionScopesCreateOrUpdateOutput,
   }));
@@ -7038,7 +6958,7 @@ export interface EncryptionScopesDeleteInput {
   encryptionScopeName: string;
 }
 export const EncryptionScopesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7054,7 +6974,7 @@ export const EncryptionScopesDeleteInput =
 // Output Schema
 export type EncryptionScopesDeleteOutput = void;
 export const EncryptionScopesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EncryptionScopesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EncryptionScopesDeleteOutput>;
 
 // The operation
 /**
@@ -7066,12 +6986,10 @@ export const EncryptionScopesDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
-export const EncryptionScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesDeleteInput,
-    outputSchema: EncryptionScopesDeleteOutput,
-  }),
-);
+export const EncryptionScopesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesDeleteInput,
+  outputSchema: EncryptionScopesDeleteOutput,
+}));
 // Input Schema
 export interface EncryptionScopesGetInput {
   subscriptionId: string;
@@ -7080,7 +6998,7 @@ export interface EncryptionScopesGetInput {
   encryptionScopeName: string;
 }
 export const EncryptionScopesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7108,7 +7026,7 @@ export interface EncryptionScopesGetOutput {
   };
 }
 export const EncryptionScopesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7138,7 +7056,7 @@ export const EncryptionScopesGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
-export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EncryptionScopesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesGetInput,
   outputSchema: EncryptionScopesGetOutput,
 }));
@@ -7149,7 +7067,7 @@ export interface EncryptionScopesListInput {
   accountName: string;
 }
 export const EncryptionScopesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7179,7 +7097,7 @@ export interface EncryptionScopesListOutput {
   }[];
 }
 export const EncryptionScopesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -7225,12 +7143,10 @@ export const EncryptionScopesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesListInput,
-    outputSchema: EncryptionScopesListOutput,
-  }),
-);
+export const EncryptionScopesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesListInput,
+  outputSchema: EncryptionScopesListOutput,
+}));
 // Input Schema
 export interface LocationBasedModelCapacitiesListInput {
   subscriptionId: string;
@@ -7240,7 +7156,7 @@ export interface LocationBasedModelCapacitiesListInput {
   modelVersion: string;
 }
 export const LocationBasedModelCapacitiesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     modelFormat: Schema.String,
@@ -7272,7 +7188,7 @@ export interface LocationBasedModelCapacitiesListOutput {
   }[];
 }
 export const LocationBasedModelCapacitiesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -7321,7 +7237,7 @@ export const LocationBasedModelCapacitiesListOutput =
  * @param modelVersion - The version of the Model
  */
 export const LocationBasedModelCapacitiesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationBasedModelCapacitiesListInput,
     outputSchema: LocationBasedModelCapacitiesListOutput,
   }));
@@ -7333,7 +7249,7 @@ export interface ManagedNetworkProvisionsProvisionManagedNetworkInput {
   managedNetworkName: string;
 }
 export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7351,7 +7267,7 @@ export interface ManagedNetworkProvisionsProvisionManagedNetworkOutput {
   status?: "Inactive" | "Active";
 }
 export const ManagedNetworkProvisionsProvisionManagedNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
   }) as unknown as Schema.Codec<ManagedNetworkProvisionsProvisionManagedNetworkOutput>;
 
@@ -7366,7 +7282,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkOutput =
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
 export const ManagedNetworkProvisionsProvisionManagedNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedNetworkProvisionsProvisionManagedNetworkInput,
     outputSchema: ManagedNetworkProvisionsProvisionManagedNetworkOutput,
   }));
@@ -7378,7 +7294,7 @@ export interface ManagedNetworkSettingsDeleteInput {
   managedNetworkName: string;
 }
 export const ManagedNetworkSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7394,7 +7310,7 @@ export const ManagedNetworkSettingsDeleteInput =
 // Output Schema
 export type ManagedNetworkSettingsDeleteOutput = void;
 export const ManagedNetworkSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedNetworkSettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedNetworkSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -7407,7 +7323,7 @@ export const ManagedNetworkSettingsDeleteOutput =
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
 export const ManagedNetworkSettingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagedNetworkSettingsDeleteInput,
     outputSchema: ManagedNetworkSettingsDeleteOutput,
   }));
@@ -7419,7 +7335,7 @@ export interface ManagedNetworkSettingsGetInput {
   managedNetworkName: string;
 }
 export const ManagedNetworkSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7447,7 +7363,7 @@ export interface ManagedNetworkSettingsGetOutput {
   };
 }
 export const ManagedNetworkSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7477,12 +7393,10 @@ export const ManagedNetworkSettingsGetOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
-export const ManagedNetworkSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedNetworkSettingsGetInput,
-    outputSchema: ManagedNetworkSettingsGetOutput,
-  }),
-);
+export const ManagedNetworkSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNetworkSettingsGetInput,
+  outputSchema: ManagedNetworkSettingsGetOutput,
+}));
 // Input Schema
 export interface ManagedNetworkSettingsListInput {
   subscriptionId: string;
@@ -7490,7 +7404,7 @@ export interface ManagedNetworkSettingsListInput {
   accountName: string;
 }
 export const ManagedNetworkSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7520,7 +7434,7 @@ export interface ManagedNetworkSettingsListOutput {
   }[];
 }
 export const ManagedNetworkSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -7566,12 +7480,10 @@ export const ManagedNetworkSettingsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const ManagedNetworkSettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedNetworkSettingsListInput,
-    outputSchema: ManagedNetworkSettingsListOutput,
-  }),
-);
+export const ManagedNetworkSettingsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNetworkSettingsListInput,
+  outputSchema: ManagedNetworkSettingsListOutput,
+}));
 // Input Schema
 export interface ManagedNetworkSettingsPatchInput {
   subscriptionId: string;
@@ -7622,7 +7534,7 @@ export interface ManagedNetworkSettingsPatchInput {
   };
 }
 export const ManagedNetworkSettingsPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7735,7 +7647,7 @@ export interface ManagedNetworkSettingsPatchOutput {
   };
 }
 export const ManagedNetworkSettingsPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7765,12 +7677,10 @@ export const ManagedNetworkSettingsPatchOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
-export const ManagedNetworkSettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedNetworkSettingsPatchInput,
-    outputSchema: ManagedNetworkSettingsPatchOutput,
-  }),
-);
+export const ManagedNetworkSettingsPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNetworkSettingsPatchInput,
+  outputSchema: ManagedNetworkSettingsPatchOutput,
+}));
 // Input Schema
 export interface ManagedNetworkSettingsPutInput {
   subscriptionId: string;
@@ -7821,7 +7731,7 @@ export interface ManagedNetworkSettingsPutInput {
   };
 }
 export const ManagedNetworkSettingsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7934,7 +7844,7 @@ export interface ManagedNetworkSettingsPutOutput {
   };
 }
 export const ManagedNetworkSettingsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7964,12 +7874,10 @@ export const ManagedNetworkSettingsPutOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
-export const ManagedNetworkSettingsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagedNetworkSettingsPutInput,
-    outputSchema: ManagedNetworkSettingsPutOutput,
-  }),
-);
+export const ManagedNetworkSettingsPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagedNetworkSettingsPutInput,
+  outputSchema: ManagedNetworkSettingsPutOutput,
+}));
 // Input Schema
 export interface ModelCapacitiesListInput {
   subscriptionId: string;
@@ -7978,7 +7886,7 @@ export interface ModelCapacitiesListInput {
   modelVersion: string;
 }
 export const ModelCapacitiesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     modelFormat: Schema.String,
     modelName: Schema.String,
@@ -8009,7 +7917,7 @@ export interface ModelCapacitiesListOutput {
   }[];
 }
 export const ModelCapacitiesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -8056,7 +7964,7 @@ export const ModelCapacitiesListOutput =
  * @param modelName - The name of the Model
  * @param modelVersion - The version of the Model
  */
-export const ModelCapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelCapacitiesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelCapacitiesListInput,
   outputSchema: ModelCapacitiesListOutput,
 }));
@@ -8065,7 +7973,7 @@ export interface ModelsListInput {
   subscriptionId: string;
   location: string;
 }
-export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -8105,7 +8013,7 @@ export interface ModelsListOutput {
     description?: string;
   }[];
 }
-export const ModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -8161,7 +8069,7 @@ export const ModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const ModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelsListInput,
   outputSchema: ModelsListOutput,
 }));
@@ -8173,7 +8081,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetInput {
   nspConfigurationName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8201,7 +8109,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetOutput {
   };
 }
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8232,7 +8140,7 @@ export const NetworkSecurityPerimeterConfigurationsGetOutput =
  * @param nspConfigurationName - The name of the NSP Configuration.
  */
 export const NetworkSecurityPerimeterConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsGetInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
   }));
@@ -8243,7 +8151,7 @@ export interface NetworkSecurityPerimeterConfigurationsListInput {
   accountName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8273,7 +8181,7 @@ export interface NetworkSecurityPerimeterConfigurationsListOutput {
   nextLink?: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8320,7 +8228,7 @@ export const NetworkSecurityPerimeterConfigurationsListOutput =
  * @param accountName - The name of Cognitive Services account.
  */
 export const NetworkSecurityPerimeterConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsListInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsListOutput,
   }));
@@ -8332,7 +8240,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileInput {
   nspConfigurationName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8360,7 +8268,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileOutput {
   };
 }
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8391,15 +8299,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
  * @param nspConfigurationName - The name of the NSP Configuration.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsReconcileInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CognitiveServices/operations",
@@ -8423,7 +8329,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -8453,7 +8359,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -8473,7 +8379,7 @@ export interface OutboundRuleCreateOrUpdateInput {
   };
 }
 export const OutboundRuleCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8524,7 +8430,7 @@ export interface OutboundRuleCreateOrUpdateOutput {
   };
 }
 export const OutboundRuleCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8555,12 +8461,10 @@ export const OutboundRuleCreateOrUpdateOutput =
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  * @param ruleName - Name of the cognitive services account managed network outbound rule
  */
-export const OutboundRuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundRuleCreateOrUpdateInput,
-    outputSchema: OutboundRuleCreateOrUpdateOutput,
-  }),
-);
+export const OutboundRuleCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundRuleCreateOrUpdateInput,
+  outputSchema: OutboundRuleCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface OutboundRuleDeleteInput {
   subscriptionId: string;
@@ -8570,7 +8474,7 @@ export interface OutboundRuleDeleteInput {
   ruleName: string;
 }
 export const OutboundRuleDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8587,7 +8491,7 @@ export const OutboundRuleDeleteInput =
 // Output Schema
 export type OutboundRuleDeleteOutput = void;
 export const OutboundRuleDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundRuleDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundRuleDeleteOutput>;
 
 // The operation
 /**
@@ -8600,7 +8504,7 @@ export const OutboundRuleDeleteOutput =
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  * @param ruleName - Name of the cognitive services account managed network outbound rule
  */
-export const OutboundRuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutboundRuleDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutboundRuleDeleteInput,
   outputSchema: OutboundRuleDeleteOutput,
 }));
@@ -8612,7 +8516,7 @@ export interface OutboundRuleGetInput {
   managedNetworkName: string;
   ruleName: string;
 }
-export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutboundRuleGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -8640,7 +8544,7 @@ export interface OutboundRuleGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OutboundRuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutboundRuleGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8671,7 +8575,7 @@ export const OutboundRuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  * @param ruleName - Name of the cognitive services account managed network outbound rule
  */
-export const OutboundRuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutboundRuleGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutboundRuleGetInput,
   outputSchema: OutboundRuleGetOutput,
 }));
@@ -8682,7 +8586,7 @@ export interface OutboundRuleListInput {
   accountName: string;
   managedNetworkName: string;
 }
-export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OutboundRuleListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -8712,44 +8616,42 @@ export interface OutboundRuleListOutput {
     };
   }[];
 }
-export const OutboundRuleListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const OutboundRuleListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<OutboundRuleListOutput>;
+  ),
+}) as unknown as Schema.Codec<OutboundRuleListOutput>;
 
 // The operation
 /**
@@ -8761,7 +8663,7 @@ export const OutboundRuleListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of Cognitive Services account.
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
-export const OutboundRuleList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutboundRuleList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutboundRuleListInput,
   outputSchema: OutboundRuleListOutput,
 }));
@@ -8811,94 +8713,88 @@ export interface OutboundRulesPostInput {
     lastModifiedAt?: string;
   };
 }
-export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    managedNetworkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        isolationMode: Schema.optional(
-          Schema.Literals([
-            "Disabled",
-            "AllowInternetOutbound",
-            "AllowOnlyApprovedOutbound",
-          ]),
-        ),
-        networkId: Schema.optional(Schema.String),
-        outboundRules: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                category: Schema.optional(
-                  Schema.Literals([
-                    "Required",
-                    "Recommended",
-                    "UserDefined",
-                    "Dependency",
-                  ]),
-                ),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Inactive",
-                    "Active",
-                    "Provisioning",
-                    "Deleting",
-                    "Failed",
-                  ]),
-                ),
-                type: Schema.Literals([
-                  "FQDN",
-                  "PrivateEndpoint",
-                  "ServiceTag",
+export const OutboundRulesPostInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  managedNetworkName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      isolationMode: Schema.optional(
+        Schema.Literals([
+          "Disabled",
+          "AllowInternetOutbound",
+          "AllowOnlyApprovedOutbound",
+        ]),
+      ),
+      networkId: Schema.optional(Schema.String),
+      outboundRules: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.Struct({
+              category: Schema.optional(
+                Schema.Literals([
+                  "Required",
+                  "Recommended",
+                  "UserDefined",
+                  "Dependency",
                 ]),
-                errorInformation: Schema.optional(Schema.String),
-                parentRuleNames: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
+              ),
+              status: Schema.optional(
+                Schema.Literals([
+                  "Inactive",
+                  "Active",
+                  "Provisioning",
+                  "Deleting",
+                  "Failed",
+                ]),
+              ),
+              type: Schema.Literals(["FQDN", "PrivateEndpoint", "ServiceTag"]),
+              errorInformation: Schema.optional(Schema.String),
+              parentRuleNames: Schema.optional(Schema.Array(Schema.String)),
+            }),
           ),
         ),
-        status: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
-          }),
-        ),
-        firewallSku: Schema.optional(Schema.Literals(["Standard", "Basic"])),
-        managedNetworkKind: Schema.optional(Schema.Literals(["V1", "V2"])),
-        firewallPublicIpAddress: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Deferred",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Deleting",
-            "Deleted",
-          ]),
-        ),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+      ),
+      status: Schema.optional(
+        Schema.Struct({
+          status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
+        }),
+      ),
+      firewallSku: Schema.optional(Schema.Literals(["Standard", "Basic"])),
+      managedNetworkKind: Schema.optional(Schema.Literals(["V1", "V2"])),
+      firewallPublicIpAddress: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Deferred",
+          "Updating",
+          "Succeeded",
+          "Failed",
+          "Deleting",
+          "Deleted",
+        ]),
+      ),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
@@ -8924,7 +8820,7 @@ export interface OutboundRulesPostOutput {
   }[];
 }
 export const OutboundRulesPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -8971,7 +8867,7 @@ export const OutboundRulesPostOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
-export const OutboundRulesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OutboundRulesPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: OutboundRulesPostInput,
   outputSchema: OutboundRulesPostOutput,
 }));
@@ -8995,7 +8891,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   location?: string;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9045,7 +8941,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9076,7 +8972,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -9088,7 +8984,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9104,7 +9000,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -9117,7 +9013,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -9129,7 +9025,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9157,7 +9053,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9188,7 +9084,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -9199,7 +9095,7 @@ export interface PrivateEndpointConnectionsListInput {
   accountName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9228,7 +9124,7 @@ export interface PrivateEndpointConnectionsListOutput {
   }[];
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9274,7 +9170,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param accountName - The name of Cognitive Services account.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -9285,7 +9181,7 @@ export interface PrivateLinkResourcesListInput {
   accountName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9314,7 +9210,7 @@ export interface PrivateLinkResourcesListOutput {
   }[];
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9359,12 +9255,10 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
 // Input Schema
 export interface ProjectCapabilityHostsCreateOrUpdateInput {
   subscriptionId: string;
@@ -9387,7 +9281,7 @@ export interface ProjectCapabilityHostsCreateOrUpdateInput {
   };
 }
 export const ProjectCapabilityHostsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9440,7 +9334,7 @@ export interface ProjectCapabilityHostsCreateOrUpdateOutput {
   };
 }
 export const ProjectCapabilityHostsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9472,7 +9366,7 @@ export const ProjectCapabilityHostsCreateOrUpdateOutput =
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const ProjectCapabilityHostsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProjectCapabilityHostsCreateOrUpdateInput,
     outputSchema: ProjectCapabilityHostsCreateOrUpdateOutput,
   }));
@@ -9485,7 +9379,7 @@ export interface ProjectCapabilityHostsDeleteInput {
   capabilityHostName: string;
 }
 export const ProjectCapabilityHostsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9502,7 +9396,7 @@ export const ProjectCapabilityHostsDeleteInput =
 // Output Schema
 export type ProjectCapabilityHostsDeleteOutput = void;
 export const ProjectCapabilityHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCapabilityHostsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCapabilityHostsDeleteOutput>;
 
 // The operation
 /**
@@ -9516,7 +9410,7 @@ export const ProjectCapabilityHostsDeleteOutput =
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const ProjectCapabilityHostsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProjectCapabilityHostsDeleteInput,
     outputSchema: ProjectCapabilityHostsDeleteOutput,
   }));
@@ -9529,7 +9423,7 @@ export interface ProjectCapabilityHostsGetInput {
   capabilityHostName: string;
 }
 export const ProjectCapabilityHostsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9558,7 +9452,7 @@ export interface ProjectCapabilityHostsGetOutput {
   };
 }
 export const ProjectCapabilityHostsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9589,12 +9483,10 @@ export const ProjectCapabilityHostsGetOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
-export const ProjectCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectCapabilityHostsGetInput,
-    outputSchema: ProjectCapabilityHostsGetOutput,
-  }),
-);
+export const ProjectCapabilityHostsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectCapabilityHostsGetInput,
+  outputSchema: ProjectCapabilityHostsGetOutput,
+}));
 // Input Schema
 export interface ProjectCapabilityHostsListInput {
   subscriptionId: string;
@@ -9603,7 +9495,7 @@ export interface ProjectCapabilityHostsListInput {
   projectName: string;
 }
 export const ProjectCapabilityHostsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9634,7 +9526,7 @@ export interface ProjectCapabilityHostsListOutput {
   }[];
 }
 export const ProjectCapabilityHostsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -9681,12 +9573,10 @@ export const ProjectCapabilityHostsListOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param projectName - The name of Cognitive Services account's project.
  */
-export const ProjectCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectCapabilityHostsListInput,
-    outputSchema: ProjectCapabilityHostsListOutput,
-  }),
-);
+export const ProjectCapabilityHostsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectCapabilityHostsListInput,
+  outputSchema: ProjectCapabilityHostsListOutput,
+}));
 // Input Schema
 export interface ProjectConnectionsCreateInput {
   subscriptionId: string;
@@ -9857,7 +9747,7 @@ export interface ProjectConnectionsCreateInput {
   };
 }
 export const ProjectConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10058,7 +9948,7 @@ export interface ProjectConnectionsCreateOutput {
   };
 }
 export const ProjectConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10089,12 +9979,10 @@ export const ProjectConnectionsCreateOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param connectionName - Friendly name of the connection
  */
-export const ProjectConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectConnectionsCreateInput,
-    outputSchema: ProjectConnectionsCreateOutput,
-  }),
-);
+export const ProjectConnectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectConnectionsCreateInput,
+  outputSchema: ProjectConnectionsCreateOutput,
+}));
 // Input Schema
 export interface ProjectConnectionsDeleteInput {
   subscriptionId: string;
@@ -10104,7 +9992,7 @@ export interface ProjectConnectionsDeleteInput {
   connectionName: string;
 }
 export const ProjectConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10121,7 +10009,7 @@ export const ProjectConnectionsDeleteInput =
 // Output Schema
 export type ProjectConnectionsDeleteOutput = void;
 export const ProjectConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -10134,12 +10022,10 @@ export const ProjectConnectionsDeleteOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param connectionName - Friendly name of the connection
  */
-export const ProjectConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectConnectionsDeleteInput,
-    outputSchema: ProjectConnectionsDeleteOutput,
-  }),
-);
+export const ProjectConnectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectConnectionsDeleteInput,
+  outputSchema: ProjectConnectionsDeleteOutput,
+}));
 // Input Schema
 export interface ProjectConnectionsGetInput {
   subscriptionId: string;
@@ -10149,7 +10035,7 @@ export interface ProjectConnectionsGetInput {
   connectionName: string;
 }
 export const ProjectConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10178,7 +10064,7 @@ export interface ProjectConnectionsGetOutput {
   };
 }
 export const ProjectConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10209,12 +10095,10 @@ export const ProjectConnectionsGetOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param connectionName - Friendly name of the connection
  */
-export const ProjectConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectConnectionsGetInput,
-    outputSchema: ProjectConnectionsGetOutput,
-  }),
-);
+export const ProjectConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectConnectionsGetInput,
+  outputSchema: ProjectConnectionsGetOutput,
+}));
 // Input Schema
 export interface ProjectConnectionsListInput {
   subscriptionId: string;
@@ -10226,7 +10110,7 @@ export interface ProjectConnectionsListInput {
   includeAll?: boolean;
 }
 export const ProjectConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10260,7 +10144,7 @@ export interface ProjectConnectionsListOutput {
   }[];
 }
 export const ProjectConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -10310,12 +10194,10 @@ export const ProjectConnectionsListOutput =
  * @param category - Category of the connection.
  * @param includeAll - query parameter that indicates if get connection call should return both connections and datastores
  */
-export const ProjectConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectConnectionsListInput,
-    outputSchema: ProjectConnectionsListOutput,
-  }),
-);
+export const ProjectConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectConnectionsListInput,
+  outputSchema: ProjectConnectionsListOutput,
+}));
 // Input Schema
 export interface ProjectConnectionsUpdateInput {
   subscriptionId: string;
@@ -10486,7 +10368,7 @@ export interface ProjectConnectionsUpdateInput {
   };
 }
 export const ProjectConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10689,7 +10571,7 @@ export interface ProjectConnectionsUpdateOutput {
   };
 }
 export const ProjectConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10720,12 +10602,10 @@ export const ProjectConnectionsUpdateOutput =
  * @param projectName - The name of Cognitive Services account's project.
  * @param connectionName - Friendly name of the connection
  */
-export const ProjectConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProjectConnectionsUpdateInput,
-    outputSchema: ProjectConnectionsUpdateOutput,
-  }),
-);
+export const ProjectConnectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProjectConnectionsUpdateInput,
+  outputSchema: ProjectConnectionsUpdateOutput,
+}));
 // Input Schema
 export interface ProjectsCreateInput {
   subscriptionId: string;
@@ -10764,7 +10644,7 @@ export interface ProjectsCreateInput {
     >;
   };
 }
-export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10837,7 +10717,7 @@ export interface ProjectsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProjectsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10867,7 +10747,7 @@ export const ProjectsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param projectName - The name of Cognitive Services account's project.
  */
-export const ProjectsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsCreateInput,
   outputSchema: ProjectsCreateOutput,
 }));
@@ -10878,7 +10758,7 @@ export interface ProjectsDeleteInput {
   accountName: string;
   projectName: string;
 }
-export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10894,7 +10774,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ProjectsDeleteOutput = void;
 export const ProjectsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -10906,7 +10786,7 @@ export const ProjectsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param projectName - The name of Cognitive Services account's project.
  */
-export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsDeleteInput,
   outputSchema: ProjectsDeleteOutput,
 }));
@@ -10917,7 +10797,7 @@ export interface ProjectsGetInput {
   accountName: string;
   projectName: string;
 }
-export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10944,7 +10824,7 @@ export interface ProjectsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10974,7 +10854,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param projectName - The name of Cognitive Services account's project.
  */
-export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsGetInput,
   outputSchema: ProjectsGetOutput,
 }));
@@ -10984,7 +10864,7 @@ export interface ProjectsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -11013,7 +10893,7 @@ export interface ProjectsListOutput {
     };
   }[];
 }
-export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -11059,7 +10939,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsListInput,
   outputSchema: ProjectsListOutput,
 }));
@@ -11101,7 +10981,7 @@ export interface ProjectsUpdateInput {
     >;
   };
 }
-export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -11174,7 +11054,7 @@ export interface ProjectsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProjectsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11204,7 +11084,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param projectName - The name of Cognitive Services account's project.
  */
-export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProjectsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
   outputSchema: ProjectsUpdateOutput,
 }));
@@ -11225,7 +11105,7 @@ export interface QuotaTiersCreateOrUpdateInput {
   };
 }
 export const QuotaTiersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     default: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -11274,7 +11154,7 @@ export interface QuotaTiersCreateOrUpdateOutput {
   };
 }
 export const QuotaTiersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11304,18 +11184,16 @@ export const QuotaTiersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param default - Default parameter. Leave the value as default.
  */
-export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: QuotaTiersCreateOrUpdateInput,
-    outputSchema: QuotaTiersCreateOrUpdateOutput,
-  }),
-);
+export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: QuotaTiersCreateOrUpdateInput,
+  outputSchema: QuotaTiersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface QuotaTiersGetInput {
   subscriptionId: string;
   default: string;
 }
-export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaTiersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -11340,7 +11218,7 @@ export interface QuotaTiersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotaTiersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaTiersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11370,7 +11248,7 @@ export const QuotaTiersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param default - Default parameter. Leave the value as default.
  */
-export const QuotaTiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaTiersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaTiersGetInput,
   outputSchema: QuotaTiersGetOutput,
 }));
@@ -11379,7 +11257,7 @@ export interface QuotaTiersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const QuotaTiersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11407,7 +11285,7 @@ export interface QuotaTiersListBySubscriptionOutput {
   }[];
 }
 export const QuotaTiersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -11452,7 +11330,7 @@ export const QuotaTiersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const QuotaTiersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QuotaTiersListBySubscriptionInput,
     outputSchema: QuotaTiersListBySubscriptionOutput,
   }));
@@ -11472,7 +11350,7 @@ export interface QuotaTiersUpdateInput {
     };
   };
 }
-export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaTiersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -11518,27 +11396,25 @@ export interface QuotaTiersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const QuotaTiersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<QuotaTiersUpdateOutput>;
+export const QuotaTiersUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<QuotaTiersUpdateOutput>;
 
 // The operation
 /**
@@ -11550,7 +11426,7 @@ export const QuotaTiersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription.
  * @param default - Default parameter. Leave the value as default.
  */
-export const QuotaTiersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QuotaTiersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaTiersUpdateInput,
   outputSchema: QuotaTiersUpdateOutput,
 }));
@@ -11562,7 +11438,7 @@ export interface RaiBlocklistItemsBatchAddInput {
   raiBlocklistName: string;
 }
 export const RaiBlocklistItemsBatchAddInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11590,7 +11466,7 @@ export interface RaiBlocklistItemsBatchAddOutput {
   };
 }
 export const RaiBlocklistItemsBatchAddOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11620,12 +11496,10 @@ export const RaiBlocklistItemsBatchAddOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
-export const RaiBlocklistItemsBatchAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiBlocklistItemsBatchAddInput,
-    outputSchema: RaiBlocklistItemsBatchAddOutput,
-  }),
-);
+export const RaiBlocklistItemsBatchAdd = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiBlocklistItemsBatchAddInput,
+  outputSchema: RaiBlocklistItemsBatchAddOutput,
+}));
 // Input Schema
 export interface RaiBlocklistItemsBatchDeleteInput {
   subscriptionId: string;
@@ -11634,7 +11508,7 @@ export interface RaiBlocklistItemsBatchDeleteInput {
   raiBlocklistName: string;
 }
 export const RaiBlocklistItemsBatchDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11650,7 +11524,7 @@ export const RaiBlocklistItemsBatchDeleteInput =
 // Output Schema
 export type RaiBlocklistItemsBatchDeleteOutput = void;
 export const RaiBlocklistItemsBatchDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsBatchDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsBatchDeleteOutput>;
 
 // The operation
 /**
@@ -11663,7 +11537,7 @@ export const RaiBlocklistItemsBatchDeleteOutput =
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistItemsBatchDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiBlocklistItemsBatchDeleteInput,
     outputSchema: RaiBlocklistItemsBatchDeleteOutput,
   }));
@@ -11679,7 +11553,7 @@ export interface RaiBlocklistItemsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiBlocklistItemsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11716,7 +11590,7 @@ export interface RaiBlocklistItemsCreateOrUpdateOutput {
   };
 }
 export const RaiBlocklistItemsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11748,7 +11622,7 @@ export const RaiBlocklistItemsCreateOrUpdateOutput =
  * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
 export const RaiBlocklistItemsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiBlocklistItemsCreateOrUpdateInput,
     outputSchema: RaiBlocklistItemsCreateOrUpdateOutput,
   }));
@@ -11761,7 +11635,7 @@ export interface RaiBlocklistItemsDeleteInput {
   raiBlocklistItemName: string;
 }
 export const RaiBlocklistItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11778,7 +11652,7 @@ export const RaiBlocklistItemsDeleteInput =
 // Output Schema
 export type RaiBlocklistItemsDeleteOutput = void;
 export const RaiBlocklistItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsDeleteOutput>;
 
 // The operation
 /**
@@ -11791,12 +11665,10 @@ export const RaiBlocklistItemsDeleteOutput =
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
-export const RaiBlocklistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiBlocklistItemsDeleteInput,
-    outputSchema: RaiBlocklistItemsDeleteOutput,
-  }),
-);
+export const RaiBlocklistItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiBlocklistItemsDeleteInput,
+  outputSchema: RaiBlocklistItemsDeleteOutput,
+}));
 // Input Schema
 export interface RaiBlocklistItemsGetInput {
   subscriptionId: string;
@@ -11806,7 +11678,7 @@ export interface RaiBlocklistItemsGetInput {
   raiBlocklistItemName: string;
 }
 export const RaiBlocklistItemsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11835,7 +11707,7 @@ export interface RaiBlocklistItemsGetOutput {
   };
 }
 export const RaiBlocklistItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11866,12 +11738,10 @@ export const RaiBlocklistItemsGetOutput =
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
-export const RaiBlocklistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiBlocklistItemsGetInput,
-    outputSchema: RaiBlocklistItemsGetOutput,
-  }),
-);
+export const RaiBlocklistItemsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiBlocklistItemsGetInput,
+  outputSchema: RaiBlocklistItemsGetOutput,
+}));
 // Input Schema
 export interface RaiBlocklistItemsListInput {
   subscriptionId: string;
@@ -11880,7 +11750,7 @@ export interface RaiBlocklistItemsListInput {
   raiBlocklistName: string;
 }
 export const RaiBlocklistItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -11911,7 +11781,7 @@ export interface RaiBlocklistItemsListOutput {
   }[];
 }
 export const RaiBlocklistItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -11958,12 +11828,10 @@ export const RaiBlocklistItemsListOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
-export const RaiBlocklistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiBlocklistItemsListInput,
-    outputSchema: RaiBlocklistItemsListOutput,
-  }),
-);
+export const RaiBlocklistItemsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiBlocklistItemsListInput,
+  outputSchema: RaiBlocklistItemsListOutput,
+}));
 // Input Schema
 export interface RaiBlocklistsCreateOrUpdateInput {
   subscriptionId: string;
@@ -11975,7 +11843,7 @@ export interface RaiBlocklistsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiBlocklistsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12010,7 +11878,7 @@ export interface RaiBlocklistsCreateOrUpdateOutput {
   };
 }
 export const RaiBlocklistsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12040,12 +11908,10 @@ export const RaiBlocklistsCreateOrUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
-export const RaiBlocklistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiBlocklistsCreateOrUpdateInput,
-    outputSchema: RaiBlocklistsCreateOrUpdateOutput,
-  }),
-);
+export const RaiBlocklistsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiBlocklistsCreateOrUpdateInput,
+  outputSchema: RaiBlocklistsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RaiBlocklistsDeleteInput {
   subscriptionId: string;
@@ -12054,7 +11920,7 @@ export interface RaiBlocklistsDeleteInput {
   raiBlocklistName: string;
 }
 export const RaiBlocklistsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12070,7 +11936,7 @@ export const RaiBlocklistsDeleteInput =
 // Output Schema
 export type RaiBlocklistsDeleteOutput = void;
 export const RaiBlocklistsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistsDeleteOutput>;
 
 // The operation
 /**
@@ -12082,7 +11948,7 @@ export const RaiBlocklistsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
-export const RaiBlocklistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiBlocklistsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsDeleteInput,
   outputSchema: RaiBlocklistsDeleteOutput,
 }));
@@ -12093,7 +11959,7 @@ export interface RaiBlocklistsGetInput {
   accountName: string;
   raiBlocklistName: string;
 }
-export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiBlocklistsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -12120,27 +11986,25 @@ export interface RaiBlocklistsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RaiBlocklistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RaiBlocklistsGetOutput>;
+export const RaiBlocklistsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RaiBlocklistsGetOutput>;
 
 // The operation
 /**
@@ -12152,7 +12016,7 @@ export const RaiBlocklistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of Cognitive Services account.
  * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
-export const RaiBlocklistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiBlocklistsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsGetInput,
   outputSchema: RaiBlocklistsGetOutput,
 }));
@@ -12162,13 +12026,11 @@ export interface RaiBlocklistsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RaiBlocklistsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
@@ -12194,7 +12056,7 @@ export interface RaiBlocklistsListOutput {
   }[];
 }
 export const RaiBlocklistsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -12240,7 +12102,7 @@ export const RaiBlocklistsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const RaiBlocklistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiBlocklistsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsListInput,
   outputSchema: RaiBlocklistsListOutput,
 }));
@@ -12251,7 +12113,7 @@ export interface RaiContentFiltersGetInput {
   filterName: string;
 }
 export const RaiContentFiltersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     filterName: Schema.String.pipe(T.PathParam()),
@@ -12278,7 +12140,7 @@ export interface RaiContentFiltersGetOutput {
   };
 }
 export const RaiContentFiltersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12307,19 +12169,17 @@ export const RaiContentFiltersGetOutput =
  * @param location - The name of Azure region.
  * @param filterName - The name of the RAI Content Filter.
  */
-export const RaiContentFiltersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiContentFiltersGetInput,
-    outputSchema: RaiContentFiltersGetOutput,
-  }),
-);
+export const RaiContentFiltersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiContentFiltersGetInput,
+  outputSchema: RaiContentFiltersGetOutput,
+}));
 // Input Schema
 export interface RaiContentFiltersListInput {
   subscriptionId: string;
   location: string;
 }
 export const RaiContentFiltersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12348,7 +12208,7 @@ export interface RaiContentFiltersListOutput {
   }[];
 }
 export const RaiContentFiltersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -12393,12 +12253,10 @@ export const RaiContentFiltersListOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const RaiContentFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiContentFiltersListInput,
-    outputSchema: RaiContentFiltersListOutput,
-  }),
-);
+export const RaiContentFiltersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiContentFiltersListInput,
+  outputSchema: RaiContentFiltersListOutput,
+}));
 // Input Schema
 export interface RaiExternalSafetyProviderCreateOrUpdateInput {
   subscriptionId: string;
@@ -12418,7 +12276,7 @@ export interface RaiExternalSafetyProviderCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiExternalSafetyProviderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -12459,7 +12317,7 @@ export interface RaiExternalSafetyProviderCreateOrUpdateOutput {
   };
 }
 export const RaiExternalSafetyProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12488,7 +12346,7 @@ export const RaiExternalSafetyProviderCreateOrUpdateOutput =
  * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
  */
 export const RaiExternalSafetyProviderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiExternalSafetyProviderCreateOrUpdateInput,
     outputSchema: RaiExternalSafetyProviderCreateOrUpdateOutput,
   }));
@@ -12498,7 +12356,7 @@ export interface RaiExternalSafetyProviderDeleteInput {
   safetyProviderName: string;
 }
 export const RaiExternalSafetyProviderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12512,7 +12370,7 @@ export const RaiExternalSafetyProviderDeleteInput =
 // Output Schema
 export type RaiExternalSafetyProviderDeleteOutput = void;
 export const RaiExternalSafetyProviderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiExternalSafetyProviderDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiExternalSafetyProviderDeleteOutput>;
 
 // The operation
 /**
@@ -12523,7 +12381,7 @@ export const RaiExternalSafetyProviderDeleteOutput =
  * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
  */
 export const RaiExternalSafetyProviderDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiExternalSafetyProviderDeleteInput,
     outputSchema: RaiExternalSafetyProviderDeleteOutput,
   }));
@@ -12533,7 +12391,7 @@ export interface RaiExternalSafetyProviderGetInput {
   safetyProviderName: string;
 }
 export const RaiExternalSafetyProviderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     safetyProviderName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12559,7 +12417,7 @@ export interface RaiExternalSafetyProviderGetOutput {
   };
 }
 export const RaiExternalSafetyProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12588,7 +12446,7 @@ export const RaiExternalSafetyProviderGetOutput =
  * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
  */
 export const RaiExternalSafetyProviderGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiExternalSafetyProviderGetInput,
     outputSchema: RaiExternalSafetyProviderGetOutput,
   }));
@@ -12597,7 +12455,7 @@ export interface RaiExternalSafetyProvidersListInput {
   subscriptionId: string;
 }
 export const RaiExternalSafetyProvidersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12625,7 +12483,7 @@ export interface RaiExternalSafetyProvidersListOutput {
   }[];
 }
 export const RaiExternalSafetyProvidersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -12670,7 +12528,7 @@ export const RaiExternalSafetyProvidersListOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const RaiExternalSafetyProvidersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RaiExternalSafetyProvidersListInput,
     outputSchema: RaiExternalSafetyProvidersListOutput,
   }));
@@ -12705,7 +12563,7 @@ export interface RaiPoliciesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -12798,7 +12656,7 @@ export interface RaiPoliciesCreateOrUpdateOutput {
   };
 }
 export const RaiPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12828,12 +12686,10 @@ export const RaiPoliciesCreateOrUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
-export const RaiPoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiPoliciesCreateOrUpdateInput,
-    outputSchema: RaiPoliciesCreateOrUpdateOutput,
-  }),
-);
+export const RaiPoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiPoliciesCreateOrUpdateInput,
+  outputSchema: RaiPoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RaiPoliciesDeleteInput {
   subscriptionId: string;
@@ -12841,14 +12697,12 @@ export interface RaiPoliciesDeleteInput {
   accountName: string;
   raiPolicyName: string;
 }
-export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    raiPolicyName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RaiPoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiPolicyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
@@ -12859,7 +12713,7 @@ export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type RaiPoliciesDeleteOutput = void;
 export const RaiPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -12871,7 +12725,7 @@ export const RaiPoliciesDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
-export const RaiPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiPoliciesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesDeleteInput,
   outputSchema: RaiPoliciesDeleteOutput,
 }));
@@ -12882,7 +12736,7 @@ export interface RaiPoliciesGetInput {
   accountName: string;
   raiPolicyName: string;
 }
-export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -12909,7 +12763,7 @@ export interface RaiPoliciesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RaiPoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiPoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12939,7 +12793,7 @@ export const RaiPoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
-export const RaiPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesGetInput,
   outputSchema: RaiPoliciesGetOutput,
 }));
@@ -12949,7 +12803,7 @@ export interface RaiPoliciesListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiPoliciesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -12978,7 +12832,7 @@ export interface RaiPoliciesListOutput {
     };
   }[];
 }
-export const RaiPoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiPoliciesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -13024,7 +12878,7 @@ export const RaiPoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const RaiPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiPoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesListInput,
   outputSchema: RaiPoliciesListOutput,
 }));
@@ -13043,7 +12897,7 @@ export interface RaiToolLabelsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiToolLabelsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13093,7 +12947,7 @@ export interface RaiToolLabelsCreateOrUpdateOutput {
   };
 }
 export const RaiToolLabelsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13123,12 +12977,10 @@ export const RaiToolLabelsCreateOrUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiToolConnectionName - The name of the Rai Tool Label
  */
-export const RaiToolLabelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiToolLabelsCreateOrUpdateInput,
-    outputSchema: RaiToolLabelsCreateOrUpdateOutput,
-  }),
-);
+export const RaiToolLabelsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiToolLabelsCreateOrUpdateInput,
+  outputSchema: RaiToolLabelsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RaiToolLabelsDeleteInput {
   subscriptionId: string;
@@ -13137,7 +12989,7 @@ export interface RaiToolLabelsDeleteInput {
   raiToolConnectionName: string;
 }
 export const RaiToolLabelsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13153,7 +13005,7 @@ export const RaiToolLabelsDeleteInput =
 // Output Schema
 export type RaiToolLabelsDeleteOutput = void;
 export const RaiToolLabelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiToolLabelsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiToolLabelsDeleteOutput>;
 
 // The operation
 /**
@@ -13165,7 +13017,7 @@ export const RaiToolLabelsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiToolConnectionName - The name of the Rai Tool Label
  */
-export const RaiToolLabelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiToolLabelsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiToolLabelsDeleteInput,
   outputSchema: RaiToolLabelsDeleteOutput,
 }));
@@ -13176,7 +13028,7 @@ export interface RaiToolLabelsGetInput {
   accountName: string;
   raiToolConnectionName: string;
 }
-export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiToolLabelsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -13203,27 +13055,25 @@ export interface RaiToolLabelsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RaiToolLabelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RaiToolLabelsGetOutput>;
+export const RaiToolLabelsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RaiToolLabelsGetOutput>;
 
 // The operation
 /**
@@ -13235,7 +13085,7 @@ export const RaiToolLabelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of Cognitive Services account.
  * @param raiToolConnectionName - The name of the Rai Tool Label
  */
-export const RaiToolLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiToolLabelsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiToolLabelsGetInput,
   outputSchema: RaiToolLabelsGetOutput,
 }));
@@ -13245,13 +13095,11 @@ export interface RaiToolLabelsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RaiToolLabelsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
@@ -13277,7 +13125,7 @@ export interface RaiToolLabelsListOutput {
   }[];
 }
 export const RaiToolLabelsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -13323,7 +13171,7 @@ export const RaiToolLabelsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const RaiToolLabelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiToolLabelsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiToolLabelsListInput,
   outputSchema: RaiToolLabelsListOutput,
 }));
@@ -13347,7 +13195,7 @@ export interface RaiTopicsCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const RaiTopicsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -13389,7 +13237,7 @@ export interface RaiTopicsCreateOrUpdateOutput {
   };
 }
 export const RaiTopicsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13419,12 +13267,10 @@ export const RaiTopicsCreateOrUpdateOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
-export const RaiTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RaiTopicsCreateOrUpdateInput,
-    outputSchema: RaiTopicsCreateOrUpdateOutput,
-  }),
-);
+export const RaiTopicsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RaiTopicsCreateOrUpdateInput,
+  outputSchema: RaiTopicsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RaiTopicsDeleteInput {
   subscriptionId: string;
@@ -13432,7 +13278,7 @@ export interface RaiTopicsDeleteInput {
   accountName: string;
   raiTopicName: string;
 }
-export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiTopicsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -13448,7 +13294,7 @@ export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RaiTopicsDeleteOutput = void;
 export const RaiTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiTopicsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -13460,7 +13306,7 @@ export const RaiTopicsDeleteOutput =
  * @param accountName - The name of Cognitive Services account.
  * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
-export const RaiTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiTopicsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsDeleteInput,
   outputSchema: RaiTopicsDeleteOutput,
 }));
@@ -13471,7 +13317,7 @@ export interface RaiTopicsGetInput {
   accountName: string;
   raiTopicName: string;
 }
-export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiTopicsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -13498,7 +13344,7 @@ export interface RaiTopicsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RaiTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiTopicsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -13528,7 +13374,7 @@ export const RaiTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of Cognitive Services account.
  * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
-export const RaiTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiTopicsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsGetInput,
   outputSchema: RaiTopicsGetOutput,
 }));
@@ -13538,7 +13384,7 @@ export interface RaiTopicsListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiTopicsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -13567,7 +13413,7 @@ export interface RaiTopicsListOutput {
     };
   }[];
 }
-export const RaiTopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RaiTopicsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -13613,7 +13459,7 @@ export const RaiTopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
  */
-export const RaiTopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RaiTopicsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsListInput,
   outputSchema: RaiTopicsListOutput,
 }));
@@ -13621,7 +13467,7 @@ export const RaiTopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ResourceSkusListInput {
   subscriptionId: string;
 }
-export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResourceSkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -13648,37 +13494,35 @@ export interface ResourceSkusListOutput {
   }[];
   nextLink?: string;
 }
-export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        restrictions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Location", "Zone"])),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              restrictionInfo: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  zones: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              reasonCode: Schema.optional(
-                Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
-              ),
-            }),
-          ),
+export const ResourceSkusListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      resourceType: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      tier: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      locations: Schema.optional(Schema.Array(Schema.String)),
+      restrictions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.Literals(["Location", "Zone"])),
+            values: Schema.optional(Schema.Array(Schema.String)),
+            restrictionInfo: Schema.optional(
+              Schema.Struct({
+                locations: Schema.optional(Schema.Array(Schema.String)),
+                zones: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+            reasonCode: Schema.optional(
+              Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
+            ),
+          }),
         ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ResourceSkusListOutput>;
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ResourceSkusListOutput>;
 
 // The operation
 /**
@@ -13687,7 +13531,7 @@ export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ResourceSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceSkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceSkusListInput,
   outputSchema: ResourceSkusListOutput,
 }));
@@ -13720,7 +13564,7 @@ export interface SubscriptionRaiPolicyCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const SubscriptionRaiPolicyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -13811,7 +13655,7 @@ export interface SubscriptionRaiPolicyCreateOrUpdateOutput {
   };
 }
 export const SubscriptionRaiPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13840,7 +13684,7 @@ export const SubscriptionRaiPolicyCreateOrUpdateOutput =
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
 export const SubscriptionRaiPolicyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SubscriptionRaiPolicyCreateOrUpdateInput,
     outputSchema: SubscriptionRaiPolicyCreateOrUpdateOutput,
   }));
@@ -13850,7 +13694,7 @@ export interface SubscriptionRaiPolicyDeleteInput {
   raiPolicyName: string;
 }
 export const SubscriptionRaiPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -13864,7 +13708,7 @@ export const SubscriptionRaiPolicyDeleteInput =
 // Output Schema
 export type SubscriptionRaiPolicyDeleteOutput = void;
 export const SubscriptionRaiPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SubscriptionRaiPolicyDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SubscriptionRaiPolicyDeleteOutput>;
 
 // The operation
 /**
@@ -13874,19 +13718,17 @@ export const SubscriptionRaiPolicyDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
-export const SubscriptionRaiPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionRaiPolicyDeleteInput,
-    outputSchema: SubscriptionRaiPolicyDeleteOutput,
-  }),
-);
+export const SubscriptionRaiPolicyDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionRaiPolicyDeleteInput,
+  outputSchema: SubscriptionRaiPolicyDeleteOutput,
+}));
 // Input Schema
 export interface SubscriptionRaiPolicyGetInput {
   subscriptionId: string;
   raiPolicyName: string;
 }
 export const SubscriptionRaiPolicyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     raiPolicyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -13912,7 +13754,7 @@ export interface SubscriptionRaiPolicyGetOutput {
   };
 }
 export const SubscriptionRaiPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13940,12 +13782,10 @@ export const SubscriptionRaiPolicyGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
-export const SubscriptionRaiPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionRaiPolicyGetInput,
-    outputSchema: SubscriptionRaiPolicyGetOutput,
-  }),
-);
+export const SubscriptionRaiPolicyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionRaiPolicyGetInput,
+  outputSchema: SubscriptionRaiPolicyGetOutput,
+}));
 // Input Schema
 export interface TestRaiExternalSafetyProviderCreateOrUpdateInput {
   subscriptionId: string;
@@ -13967,7 +13807,7 @@ export interface TestRaiExternalSafetyProviderCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -14010,7 +13850,7 @@ export interface TestRaiExternalSafetyProviderCreateOrUpdateOutput {
   };
 }
 export const TestRaiExternalSafetyProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14041,7 +13881,7 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateOutput =
  * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
  */
 export const TestRaiExternalSafetyProviderCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TestRaiExternalSafetyProviderCreateOrUpdateInput,
     outputSchema: TestRaiExternalSafetyProviderCreateOrUpdateOutput,
   }));
@@ -14051,7 +13891,7 @@ export interface UsagesListInput {
   location: string;
   $filter?: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
@@ -14083,7 +13923,7 @@ export interface UsagesListOutput {
     status?: "Included" | "Blocked" | "InOverage" | "Unknown";
   }[];
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -14126,7 +13966,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param location - The name of Azure region.
  * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));

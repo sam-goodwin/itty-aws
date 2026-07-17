@@ -12,7 +12,7 @@ export interface UpdateKeyspaceVschemaInput {
   vschema: string;
 }
 export const UpdateKeyspaceVschemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -30,7 +30,7 @@ export interface UpdateKeyspaceVschemaOutput {
   raw: string;
 }
 export const UpdateKeyspaceVschemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     raw: Schema.String,
   }) as unknown as Schema.Codec<UpdateKeyspaceVschemaOutput>;
 
@@ -44,10 +44,8 @@ export const UpdateKeyspaceVschemaOutput =
  * @param keyspace - The name of the keyspace
  * @param vschema - The new VSchema for the keyspace
  */
-export const updateKeyspaceVschema = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateKeyspaceVschemaInput,
-    outputSchema: UpdateKeyspaceVschemaOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateKeyspaceVschema = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateKeyspaceVschemaInput,
+  outputSchema: UpdateKeyspaceVschemaOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

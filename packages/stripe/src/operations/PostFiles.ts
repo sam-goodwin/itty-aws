@@ -28,7 +28,7 @@ export interface PostFilesInput {
     | "terminal_wifi_certificate"
     | "terminal_wifi_private_key";
 }
-export const PostFilesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFilesInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   file: Schema.String,
   file_link_data: Schema.optional(
@@ -154,7 +154,7 @@ export interface PostFilesOutput {
   type: string | null;
   url: string | null;
 }
-export const PostFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFilesOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   expires_at: Schema.NullOr(Schema.Number),
   filename: Schema.NullOr(Schema.String),
@@ -264,7 +264,7 @@ export const PostFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * <p>To upload a file to Stripe, you need to send a request of type <code>multipart/form-data</code>. Include the file you want to upload in the request, and the parameters for creating a file.</p>
  * <p>All of Stripe’s officially supported Client libraries support sending <code>multipart/form-data</code>.</p>
  */
-export const PostFiles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostFiles = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostFilesInput,
   outputSchema: PostFilesOutput,
 }));

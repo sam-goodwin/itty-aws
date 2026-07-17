@@ -9,7 +9,7 @@ export interface IndexDocumentInput {
   action?: string;
   dirty_values?: string;
 }
-export const IndexDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IndexDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   action: Schema.optional(Schema.String),
   dirty_values: Schema.optional(Schema.String),
@@ -20,7 +20,7 @@ export const IndexDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type IndexDocumentOutput = unknown;
 export const IndexDocumentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<IndexDocumentOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<IndexDocumentOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const IndexDocumentOutput =
  * @param action - Additional action to perform
  * @param dirty_values - Dealing with Dirty Data
  */
-export const indexDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const indexDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: IndexDocumentInput,
   outputSchema: IndexDocumentOutput,
   errors: [NotFound] as const,

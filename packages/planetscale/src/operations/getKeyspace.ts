@@ -10,7 +10,7 @@ export interface GetKeyspaceInput {
   branch: string;
   keyspace: string;
 }
-export const GetKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyspaceInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -57,7 +57,7 @@ export interface GetKeyspaceOutput {
   mysqld_options: Record<string, unknown>;
   vttablet_options: Record<string, unknown>;
 }
-export const GetKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyspaceOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   shards: Schema.Number,
@@ -104,7 +104,7 @@ export const GetKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const getKeyspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKeyspace = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyspaceInput,
   outputSchema: GetKeyspaceOutput,
   errors: [Forbidden, NotFound] as const,

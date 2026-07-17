@@ -9,7 +9,7 @@ export interface PostPaymentMethodDomainsPaymentMethodDomainInput {
   expand?: string[];
 }
 export const PostPaymentMethodDomainsPaymentMethodDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method_domain: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -55,7 +55,7 @@ export interface PostPaymentMethodDomainsPaymentMethodDomainOutput {
   };
 }
 export const PostPaymentMethodDomainsPaymentMethodDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
       status: Schema.Literals(["active", "inactive"]),
       status_details: Schema.optional(
@@ -119,7 +119,7 @@ export const PostPaymentMethodDomainsPaymentMethodDomainOutput =
  * <p>Updates an existing payment method domain.</p>
  */
 export const PostPaymentMethodDomainsPaymentMethodDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodDomainsPaymentMethodDomainInput,
     outputSchema: PostPaymentMethodDomainsPaymentMethodDomainOutput,
   }));

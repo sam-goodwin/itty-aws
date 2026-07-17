@@ -38,7 +38,7 @@ export interface MembersPartialUpdateInput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const MembersPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     user__uuid: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface MembersPartialUpdateOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const MembersPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.NullOr(
@@ -175,10 +175,8 @@ export const MembersPartialUpdateOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const membersPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MembersPartialUpdateInput,
-    outputSchema: MembersPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const membersPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MembersPartialUpdateInput,
+  outputSchema: MembersPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -10,7 +10,7 @@ export interface GetOrgBillingCostExplorerUsageInput {
   envelope?: boolean;
 }
 export const GetOrgBillingCostExplorerUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     token: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetOrgBillingCostExplorerUsageInput =
 // Output Schema
 export type GetOrgBillingCostExplorerUsageOutput = void;
 export const GetOrgBillingCostExplorerUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgBillingCostExplorerUsageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgBillingCostExplorerUsageOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const GetOrgBillingCostExplorerUsageOutput =
  * @param token - Unique 64 digit string that identifies the Cost Explorer query.
  */
 export const getOrgBillingCostExplorerUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetOrgBillingCostExplorerUsageInput,
     outputSchema: GetOrgBillingCostExplorerUsageOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

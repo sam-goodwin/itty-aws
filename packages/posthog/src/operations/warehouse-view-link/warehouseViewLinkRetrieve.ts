@@ -8,7 +8,7 @@ export interface WarehouseViewLinkRetrieveInput {
   project_id: string;
 }
 export const WarehouseViewLinkRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -52,7 +52,7 @@ export interface WarehouseViewLinkRetrieveOutput {
   configuration?: unknown;
 }
 export const WarehouseViewLinkRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_by: Schema.Struct({
@@ -100,9 +100,7 @@ export const WarehouseViewLinkRetrieveOutput =
  * @param id - A UUID string identifying this data warehouse join.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseViewLinkRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WarehouseViewLinkRetrieveInput,
-    outputSchema: WarehouseViewLinkRetrieveOutput,
-  }),
-);
+export const warehouseViewLinkRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WarehouseViewLinkRetrieveInput,
+  outputSchema: WarehouseViewLinkRetrieveOutput,
+}));

@@ -8,7 +8,7 @@ export interface OrganizationDomainsControllerGetInput {
   id: string;
 }
 export const OrganizationDomainsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organization_domains/{id}" }),
@@ -28,7 +28,7 @@ export interface OrganizationDomainsControllerGetOutput {
   updated_at?: string;
 }
 export const OrganizationDomainsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const OrganizationDomainsControllerGetOutput =
  * @param id - Unique identifier of the organization domain.
  */
 export const OrganizationDomainsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationDomainsControllerGetInput,
     outputSchema: OrganizationDomainsControllerGetOutput,
     errors: [NotFound] as const,

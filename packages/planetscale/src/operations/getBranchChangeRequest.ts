@@ -11,7 +11,7 @@ export interface GetBranchChangeRequestInput {
   id: string;
 }
 export const GetBranchChangeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const GetBranchChangeRequestInput =
 // Output Schema
 export interface GetBranchChangeRequestOutput {
   id: string;
-  restart: number[];
+  restart: ReadonlyArray<number>;
   state: "queued" | "pending" | "resizing" | "canceled" | "completed";
   started_at: string | null;
   completed_at?: string | null;
@@ -59,7 +59,7 @@ export interface GetBranchChangeRequestOutput {
   previous_storage_throughput_mibs: number;
 }
 export const GetBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     restart: Schema.Array(Schema.Number),
     state: Schema.Literals([
@@ -113,10 +113,8 @@ export const GetBranchChangeRequestOutput =
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param id - The ID of the change request
  */
-export const getBranchChangeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetBranchChangeRequestInput,
-    outputSchema: GetBranchChangeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getBranchChangeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBranchChangeRequestInput,
+  outputSchema: GetBranchChangeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

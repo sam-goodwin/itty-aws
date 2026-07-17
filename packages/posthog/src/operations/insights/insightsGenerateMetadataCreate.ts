@@ -90,7 +90,7 @@ export interface InsightsGenerateMetadataCreateInput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const InsightsGenerateMetadataCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     id: Schema.optional(Schema.Number),
@@ -221,7 +221,7 @@ export const InsightsGenerateMetadataCreateInput =
 // Output Schema
 export type InsightsGenerateMetadataCreateOutput = void;
 export const InsightsGenerateMetadataCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsGenerateMetadataCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsGenerateMetadataCreateOutput>;
 
 // The operation
 /**
@@ -230,7 +230,7 @@ export const InsightsGenerateMetadataCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const insightsGenerateMetadataCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InsightsGenerateMetadataCreateInput,
     outputSchema: InsightsGenerateMetadataCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

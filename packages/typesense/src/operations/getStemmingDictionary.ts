@@ -8,7 +8,7 @@ export interface GetStemmingDictionaryInput {
   dictionaryId: string;
 }
 export const GetStemmingDictionaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dictionaryId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/stemming/dictionaries/{dictionaryId}" }),
@@ -20,7 +20,7 @@ export interface GetStemmingDictionaryOutput {
   words: { word: string; root: string }[];
 }
 export const GetStemmingDictionaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     words: Schema.Array(
       Schema.Struct({
@@ -38,10 +38,8 @@ export const GetStemmingDictionaryOutput =
  *
  * @param dictionaryId - The ID of the dictionary to retrieve
  */
-export const getStemmingDictionary = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetStemmingDictionaryInput,
-    outputSchema: GetStemmingDictionaryOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getStemmingDictionary = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetStemmingDictionaryInput,
+  outputSchema: GetStemmingDictionaryOutput,
+  errors: [NotFound] as const,
+}));

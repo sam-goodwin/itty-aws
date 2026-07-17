@@ -8,13 +8,11 @@ export interface SendUserOperationInput {
   userOpHash: string;
   signature: string;
 }
-export const SendUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String.pipe(T.PathParam()),
-    userOpHash: Schema.String.pipe(T.PathParam()),
-    signature: Schema.String,
-  },
-).pipe(
+export const SendUserOperationInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  userOpHash: Schema.String.pipe(T.PathParam()),
+  signature: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v2/evm/smart-accounts/{address}/user-operations/{userOpHash}/send",
@@ -59,7 +57,7 @@ export interface SendUserOperationOutput {
   expiresAt?: string;
 }
 export const SendUserOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -121,7 +119,7 @@ export const SendUserOperationOutput =
  * @param address - The address of the Smart Account to send the user operation from.
  * @param userOpHash - The hash of the user operation to send.
  */
-export const sendUserOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sendUserOperation = /*@__PURE__*/ API.make(() => ({
   inputSchema: SendUserOperationInput,
   outputSchema: SendUserOperationOutput,
 }));

@@ -13,7 +13,7 @@ export interface VisualReviewReposQuarantineListInput {
   run_type?: string;
 }
 export const VisualReviewReposQuarantineListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     identifier: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface VisualReviewReposQuarantineListOutput {
   }[];
 }
 export const VisualReviewReposQuarantineListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -101,7 +101,7 @@ export const VisualReviewReposQuarantineListOutput =
  * @param run_type - Filter by run type
  */
 export const visualReviewReposQuarantineList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewReposQuarantineListInput,
     outputSchema: VisualReviewReposQuarantineListOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

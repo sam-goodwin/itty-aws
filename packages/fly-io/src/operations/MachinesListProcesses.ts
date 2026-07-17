@@ -11,7 +11,7 @@ export interface MachinesListProcessesInput {
   order?: string;
 }
 export const MachinesListProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     sort_by: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export type MachinesListProcessesOutput = {
   stime?: number;
 }[];
 export const MachinesListProcessesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       command: Schema.optional(Schema.String),
       cpu: Schema.optional(Schema.Number),
@@ -66,10 +66,8 @@ export const MachinesListProcessesOutput =
  * @param sort_by - Sort by
  * @param order - Order
  */
-export const MachinesListProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesListProcessesInput,
-    outputSchema: MachinesListProcessesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesListProcesses = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesListProcessesInput,
+  outputSchema: MachinesListProcessesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

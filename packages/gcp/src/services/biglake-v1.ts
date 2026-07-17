@@ -28,7 +28,7 @@ export interface SerDeInfo {
 }
 
 export const SerDeInfo: Schema.Codec<SerDeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serializationLib: Schema.optional(Schema.String),
   }).annotate({ identifier: "SerDeInfo" });
 
@@ -46,7 +46,7 @@ export interface Catalog {
 }
 
 export const Catalog: Schema.Codec<Catalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface ListCatalogsResponse {
 }
 
 export const ListCatalogsResponse: Schema.Codec<ListCatalogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     catalogs: Schema.optional(Schema.Array(Catalog)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListCatalogsResponse" });
@@ -75,7 +75,7 @@ export interface HiveDatabaseOptions {
 }
 
 export const HiveDatabaseOptions: Schema.Codec<HiveDatabaseOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationUri: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "HiveDatabaseOptions" });
@@ -98,7 +98,7 @@ export interface Database {
 }
 
 export const Database: Schema.Codec<Database> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     deleteTime: Schema.optional(Schema.String),
     hiveOptions: Schema.optional(HiveDatabaseOptions),
@@ -120,7 +120,7 @@ export interface StorageDescriptor {
 }
 
 export const StorageDescriptor: Schema.Codec<StorageDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputFormat: Schema.optional(Schema.String),
     serdeInfo: Schema.optional(SerDeInfo),
     inputFormat: Schema.optional(Schema.String),
@@ -137,7 +137,7 @@ export interface HiveTableOptions {
 }
 
 export const HiveTableOptions: Schema.Codec<HiveTableOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableType: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     storageDescriptor: Schema.optional(StorageDescriptor),
@@ -156,7 +156,7 @@ export interface AuditLogConfig {
 }
 
 export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuditLogConfig" });
@@ -169,7 +169,7 @@ export interface AuditConfig {
 }
 
 export const AuditConfig: Schema.Codec<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
@@ -182,7 +182,7 @@ export interface ListDatabasesResponse {
 }
 
 export const ListDatabasesResponse: Schema.Codec<ListDatabasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databases: Schema.optional(Schema.Array(Database)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDatabasesResponse" });
@@ -199,7 +199,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -216,7 +216,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     bindings: Schema.optional(Schema.Array(Binding)),
     version: Schema.optional(Schema.Number),
@@ -249,7 +249,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -260,7 +260,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -284,7 +284,7 @@ export interface Table {
 }
 
 export const Table: Schema.Codec<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     hiveOptions: Schema.optional(HiveTableOptions),
     type: Schema.optional(Schema.String),
@@ -303,7 +303,7 @@ export interface ListTablesResponse {
 }
 
 export const ListTablesResponse: Schema.Codec<ListTablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tables: Schema.optional(Schema.Array(Table)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTablesResponse" });
@@ -314,7 +314,7 @@ export interface RenameTableRequest {
 }
 
 export const RenameTableRequest: Schema.Codec<RenameTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newName: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenameTableRequest" });
 
@@ -324,7 +324,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -392,7 +392,7 @@ export interface CreateProjectsLocationsCatalogsRequest {
 }
 
 export const CreateProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     catalogId: Schema.optional(Schema.String).pipe(T.HttpQuery("catalogId")),
     body: Schema.optional(Catalog).pipe(T.HttpBody()),
@@ -402,8 +402,7 @@ export const CreateProjectsLocationsCatalogsRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsCatalogsRequest>;
 
 export type CreateProjectsLocationsCatalogsResponse = Catalog;
-export const CreateProjectsLocationsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Catalog;
+export const CreateProjectsLocationsCatalogsResponse = /*@__PURE__*/ Catalog;
 
 export type CreateProjectsLocationsCatalogsError =
   | DefaultErrors
@@ -418,7 +417,7 @@ export const createProjectsLocationsCatalogs: API.OperationMethod<
   CreateProjectsLocationsCatalogsResponse,
   CreateProjectsLocationsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsRequest,
   output: CreateProjectsLocationsCatalogsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -430,7 +429,7 @@ export interface GetProjectsLocationsCatalogsRequest {
 }
 
 export const GetProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -438,8 +437,7 @@ export const GetProjectsLocationsCatalogsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsCatalogsRequest>;
 
 export type GetProjectsLocationsCatalogsResponse = Catalog;
-export const GetProjectsLocationsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Catalog;
+export const GetProjectsLocationsCatalogsResponse = /*@__PURE__*/ Catalog;
 
 export type GetProjectsLocationsCatalogsError =
   | DefaultErrors
@@ -452,7 +450,7 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
   GetProjectsLocationsCatalogsResponse,
   GetProjectsLocationsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsRequest,
   output: GetProjectsLocationsCatalogsResponse,
   errors: [NotFound, Forbidden],
@@ -468,7 +466,7 @@ export interface ListProjectsLocationsCatalogsRequest {
 }
 
 export const ListProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -479,7 +477,7 @@ export const ListProjectsLocationsCatalogsRequest =
 
 export type ListProjectsLocationsCatalogsResponse = ListCatalogsResponse;
 export const ListProjectsLocationsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCatalogsResponse;
+  /*@__PURE__*/ ListCatalogsResponse;
 
 export type ListProjectsLocationsCatalogsError =
   | DefaultErrors
@@ -492,7 +490,7 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsResponse,
   ListProjectsLocationsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsRequest,
   output: ListProjectsLocationsCatalogsResponse,
   errors: [NotFound, Forbidden],
@@ -508,7 +506,7 @@ export interface DeleteProjectsLocationsCatalogsRequest {
 }
 
 export const DeleteProjectsLocationsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -516,8 +514,7 @@ export const DeleteProjectsLocationsCatalogsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsCatalogsRequest>;
 
 export type DeleteProjectsLocationsCatalogsResponse = Catalog;
-export const DeleteProjectsLocationsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Catalog;
+export const DeleteProjectsLocationsCatalogsResponse = /*@__PURE__*/ Catalog;
 
 export type DeleteProjectsLocationsCatalogsError =
   | DefaultErrors
@@ -532,7 +529,7 @@ export const deleteProjectsLocationsCatalogs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsResponse,
   DeleteProjectsLocationsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsRequest,
   output: DeleteProjectsLocationsCatalogsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -548,7 +545,7 @@ export interface CreateProjectsLocationsCatalogsDatabasesRequest {
 }
 
 export const CreateProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     databaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("databaseId")),
     body: Schema.optional(Database).pipe(T.HttpBody()),
@@ -559,7 +556,7 @@ export const CreateProjectsLocationsCatalogsDatabasesRequest =
 
 export type CreateProjectsLocationsCatalogsDatabasesResponse = Database;
 export const CreateProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
+  /*@__PURE__*/ Database;
 
 export type CreateProjectsLocationsCatalogsDatabasesError =
   | DefaultErrors
@@ -574,7 +571,7 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   CreateProjectsLocationsCatalogsDatabasesResponse,
   CreateProjectsLocationsCatalogsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsDatabasesRequest,
   output: CreateProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -586,7 +583,7 @@ export interface GetProjectsLocationsCatalogsDatabasesRequest {
 }
 
 export const GetProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -595,7 +592,7 @@ export const GetProjectsLocationsCatalogsDatabasesRequest =
 
 export type GetProjectsLocationsCatalogsDatabasesResponse = Database;
 export const GetProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
+  /*@__PURE__*/ Database;
 
 export type GetProjectsLocationsCatalogsDatabasesError =
   | DefaultErrors
@@ -608,7 +605,7 @@ export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesResponse,
   GetProjectsLocationsCatalogsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsDatabasesRequest,
   output: GetProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden],
@@ -620,7 +617,7 @@ export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
 }
 
 export const DeleteProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -629,7 +626,7 @@ export const DeleteProjectsLocationsCatalogsDatabasesRequest =
 
 export type DeleteProjectsLocationsCatalogsDatabasesResponse = Database;
 export const DeleteProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
+  /*@__PURE__*/ Database;
 
 export type DeleteProjectsLocationsCatalogsDatabasesError =
   | DefaultErrors
@@ -644,7 +641,7 @@ export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
   DeleteProjectsLocationsCatalogsDatabasesResponse,
   DeleteProjectsLocationsCatalogsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsDatabasesRequest,
   output: DeleteProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -660,7 +657,7 @@ export interface PatchProjectsLocationsCatalogsDatabasesRequest {
 }
 
 export const PatchProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Database).pipe(T.HttpBody()),
@@ -671,7 +668,7 @@ export const PatchProjectsLocationsCatalogsDatabasesRequest =
 
 export type PatchProjectsLocationsCatalogsDatabasesResponse = Database;
 export const PatchProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Database;
+  /*@__PURE__*/ Database;
 
 export type PatchProjectsLocationsCatalogsDatabasesError =
   | DefaultErrors
@@ -686,7 +683,7 @@ export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesResponse,
   PatchProjectsLocationsCatalogsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsDatabasesRequest,
   output: PatchProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -702,7 +699,7 @@ export interface ListProjectsLocationsCatalogsDatabasesRequest {
 }
 
 export const ListProjectsLocationsCatalogsDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -714,7 +711,7 @@ export const ListProjectsLocationsCatalogsDatabasesRequest =
 export type ListProjectsLocationsCatalogsDatabasesResponse =
   ListDatabasesResponse;
 export const ListProjectsLocationsCatalogsDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDatabasesResponse;
+  /*@__PURE__*/ ListDatabasesResponse;
 
 export type ListProjectsLocationsCatalogsDatabasesError =
   | DefaultErrors
@@ -727,7 +724,7 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   ListProjectsLocationsCatalogsDatabasesResponse,
   ListProjectsLocationsCatalogsDatabasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesRequest,
   output: ListProjectsLocationsCatalogsDatabasesResponse,
   errors: [NotFound, Forbidden],
@@ -743,7 +740,7 @@ export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const GetProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -752,7 +749,7 @@ export const GetProjectsLocationsCatalogsDatabasesTablesRequest =
 
 export type GetProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const GetProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type GetProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -765,7 +762,7 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesTablesResponse,
   GetProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsDatabasesTablesRequest,
   output: GetProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden],
@@ -781,7 +778,7 @@ export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const CreateProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String).pipe(T.HttpQuery("tableId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Table).pipe(T.HttpBody()),
@@ -792,7 +789,7 @@ export const CreateProjectsLocationsCatalogsDatabasesTablesRequest =
 
 export type CreateProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const CreateProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type CreateProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -807,7 +804,7 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   CreateProjectsLocationsCatalogsDatabasesTablesResponse,
   CreateProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsDatabasesTablesRequest,
   output: CreateProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -825,7 +822,7 @@ export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -838,7 +835,7 @@ export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
 export type ListProjectsLocationsCatalogsDatabasesTablesResponse =
   ListTablesResponse;
 export const ListProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
+  /*@__PURE__*/ ListTablesResponse;
 
 export type ListProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -851,7 +848,7 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
   ListProjectsLocationsCatalogsDatabasesTablesResponse,
   ListProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
   output: ListProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden],
@@ -871,7 +868,7 @@ export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const PatchProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Table).pipe(T.HttpBody()),
@@ -882,7 +879,7 @@ export const PatchProjectsLocationsCatalogsDatabasesTablesRequest =
 
 export type PatchProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const PatchProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type PatchProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -897,7 +894,7 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesTablesResponse,
   PatchProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsDatabasesTablesRequest,
   output: PatchProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -911,7 +908,7 @@ export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const RenameProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RenameTableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -921,7 +918,7 @@ export const RenameProjectsLocationsCatalogsDatabasesTablesRequest =
 
 export type RenameProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const RenameProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type RenameProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -936,7 +933,7 @@ export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   RenameProjectsLocationsCatalogsDatabasesTablesResponse,
   RenameProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenameProjectsLocationsCatalogsDatabasesTablesRequest,
   output: RenameProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -948,7 +945,7 @@ export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
 }
 
 export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -957,7 +954,7 @@ export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest =
 
 export type DeleteProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const DeleteProjectsLocationsCatalogsDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+  /*@__PURE__*/ Table;
 
 export type DeleteProjectsLocationsCatalogsDatabasesTablesError =
   | DefaultErrors
@@ -972,7 +969,7 @@ export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
   DeleteProjectsLocationsCatalogsDatabasesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
   output: DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -986,7 +983,7 @@ export interface SetIamPolicyProjectsCatalogsRequest {
 }
 
 export const SetIamPolicyProjectsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -999,8 +996,7 @@ export const SetIamPolicyProjectsCatalogsRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsCatalogsRequest>;
 
 export type SetIamPolicyProjectsCatalogsResponse = Policy;
-export const SetIamPolicyProjectsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyProjectsCatalogsResponse = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsCatalogsError =
   | DefaultErrors
@@ -1015,7 +1011,7 @@ export const setIamPolicyProjectsCatalogs: API.OperationMethod<
   SetIamPolicyProjectsCatalogsResponse,
   SetIamPolicyProjectsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsRequest,
   output: SetIamPolicyProjectsCatalogsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1029,7 +1025,7 @@ export interface GetIamPolicyProjectsCatalogsRequest {
 }
 
 export const GetIamPolicyProjectsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1040,8 +1036,7 @@ export const GetIamPolicyProjectsCatalogsRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsCatalogsRequest>;
 
 export type GetIamPolicyProjectsCatalogsResponse = Policy;
-export const GetIamPolicyProjectsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyProjectsCatalogsResponse = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsCatalogsError =
   | DefaultErrors
@@ -1054,7 +1049,7 @@ export const getIamPolicyProjectsCatalogs: API.OperationMethod<
   GetIamPolicyProjectsCatalogsResponse,
   GetIamPolicyProjectsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsRequest,
   output: GetIamPolicyProjectsCatalogsResponse,
   errors: [NotFound, Forbidden],
@@ -1068,7 +1063,7 @@ export interface TestIamPermissionsProjectsCatalogsRequest {
 }
 
 export const TestIamPermissionsProjectsCatalogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1083,7 +1078,7 @@ export const TestIamPermissionsProjectsCatalogsRequest =
 export type TestIamPermissionsProjectsCatalogsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsCatalogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsCatalogsError =
   | DefaultErrors
@@ -1098,7 +1093,7 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsResponse,
   TestIamPermissionsProjectsCatalogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsRequest,
   output: TestIamPermissionsProjectsCatalogsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1112,7 +1107,7 @@ export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
 }
 
 export const SetIamPolicyProjectsCatalogsNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1126,7 +1121,7 @@ export const SetIamPolicyProjectsCatalogsNamespacesRequest =
 
 export type SetIamPolicyProjectsCatalogsNamespacesResponse = Policy;
 export const SetIamPolicyProjectsCatalogsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsCatalogsNamespacesError =
   | DefaultErrors
@@ -1141,7 +1136,7 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesResponse,
   SetIamPolicyProjectsCatalogsNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsNamespacesRequest,
   output: SetIamPolicyProjectsCatalogsNamespacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1155,7 +1150,7 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
 }
 
 export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1170,7 +1165,7 @@ export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
 export type TestIamPermissionsProjectsCatalogsNamespacesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsCatalogsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsCatalogsNamespacesError =
   | DefaultErrors
@@ -1185,7 +1180,7 @@ export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsNamespacesResponse,
   TestIamPermissionsProjectsCatalogsNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsNamespacesRequest,
   output: TestIamPermissionsProjectsCatalogsNamespacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1199,7 +1194,7 @@ export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
 }
 
 export const GetIamPolicyProjectsCatalogsNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1211,7 +1206,7 @@ export const GetIamPolicyProjectsCatalogsNamespacesRequest =
 
 export type GetIamPolicyProjectsCatalogsNamespacesResponse = Policy;
 export const GetIamPolicyProjectsCatalogsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsCatalogsNamespacesError =
   | DefaultErrors
@@ -1224,7 +1219,7 @@ export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesResponse,
   GetIamPolicyProjectsCatalogsNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsNamespacesRequest,
   output: GetIamPolicyProjectsCatalogsNamespacesResponse,
   errors: [NotFound, Forbidden],
@@ -1238,7 +1233,7 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
 }
 
 export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1253,7 +1248,7 @@ export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest =
 export type TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsCatalogsNamespacesTablesError =
   | DefaultErrors
@@ -1268,7 +1263,7 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
   TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
   TestIamPermissionsProjectsCatalogsNamespacesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
   output: TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1282,7 +1277,7 @@ export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
 }
 
 export const GetIamPolicyProjectsCatalogsNamespacesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -1294,7 +1289,7 @@ export const GetIamPolicyProjectsCatalogsNamespacesTablesRequest =
 
 export type GetIamPolicyProjectsCatalogsNamespacesTablesResponse = Policy;
 export const GetIamPolicyProjectsCatalogsNamespacesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsCatalogsNamespacesTablesError =
   | DefaultErrors
@@ -1307,7 +1302,7 @@ export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesTablesResponse,
   GetIamPolicyProjectsCatalogsNamespacesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsNamespacesTablesRequest,
   output: GetIamPolicyProjectsCatalogsNamespacesTablesResponse,
   errors: [NotFound, Forbidden],
@@ -1321,7 +1316,7 @@ export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
 }
 
 export const SetIamPolicyProjectsCatalogsNamespacesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1335,7 +1330,7 @@ export const SetIamPolicyProjectsCatalogsNamespacesTablesRequest =
 
 export type SetIamPolicyProjectsCatalogsNamespacesTablesResponse = Policy;
 export const SetIamPolicyProjectsCatalogsNamespacesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+  /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsCatalogsNamespacesTablesError =
   | DefaultErrors
@@ -1350,7 +1345,7 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesTablesResponse,
   SetIamPolicyProjectsCatalogsNamespacesTablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsNamespacesTablesRequest,
   output: SetIamPolicyProjectsCatalogsNamespacesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

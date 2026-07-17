@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetSolanaAccountInput {
   address: string;
 }
-export const GetSolanaAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSolanaAccountInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/solana/accounts/{address}" }),
@@ -20,15 +20,13 @@ export interface GetSolanaAccountOutput {
   createdAt?: string;
   updatedAt?: string;
 }
-export const GetSolanaAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String,
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<GetSolanaAccountOutput>;
+export const GetSolanaAccountOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<GetSolanaAccountOutput>;
 
 // The operation
 /**
@@ -38,7 +36,7 @@ export const GetSolanaAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param address - The base58 encoded address of the Solana account.
  */
-export const getSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSolanaAccountInput,
   outputSchema: GetSolanaAccountOutput,
 }));

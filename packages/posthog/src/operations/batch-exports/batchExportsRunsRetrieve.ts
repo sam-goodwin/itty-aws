@@ -10,7 +10,7 @@ export interface BatchExportsRunsRetrieveInput {
   project_id: string;
 }
 export const BatchExportsRunsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -51,7 +51,7 @@ export interface BatchExportsRunsRetrieveOutput {
   backfill?: string | null;
 }
 export const BatchExportsRunsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
@@ -89,10 +89,8 @@ export const BatchExportsRunsRetrieveOutput =
  * @param id - A UUID string identifying this batch export run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsRunsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsRunsRetrieveInput,
-    outputSchema: BatchExportsRunsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsRunsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsRunsRetrieveInput,
+  outputSchema: BatchExportsRunsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

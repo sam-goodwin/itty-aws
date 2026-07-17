@@ -134,7 +134,7 @@ export interface GetAgentTaskResponseUrlRequest {
   taskId: string;
 }
 export const GetAgentTaskResponseUrlRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentId: S.String.pipe(T.HttpLabel("agentId")),
       taskId: S.String.pipe(T.HttpLabel("taskId")),
@@ -157,7 +157,7 @@ export interface GetAgentTaskResponseUrlResponse {
   presignedLogUrl: string;
 }
 export const GetAgentTaskResponseUrlResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentId: S.String,
       taskId: S.String,
@@ -170,7 +170,7 @@ export interface GetMinuteUsageRequest {
   month: number;
   year: number;
 }
-export const GetMinuteUsageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMinuteUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ month: S.Number, year: S.Number }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/minute-usage" }),
@@ -191,38 +191,36 @@ export interface GetMinuteUsageResponse {
   totalScheduledMinutes?: number;
   estimatedMinutesRemaining?: number;
 }
-export const GetMinuteUsageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isReservedMinutesCustomer: S.optional(S.Boolean),
-      totalReservedMinuteAllocation: S.optional(S.Number),
-      upcomingMinutesScheduled: S.optional(S.Number),
-      totalScheduledMinutes: S.optional(S.Number),
-      estimatedMinutesRemaining: S.optional(S.Number),
-    }),
+export const GetMinuteUsageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isReservedMinutesCustomer: S.optional(S.Boolean),
+    totalReservedMinuteAllocation: S.optional(S.Number),
+    upcomingMinutesScheduled: S.optional(S.Number),
+    totalScheduledMinutes: S.optional(S.Number),
+    estimatedMinutesRemaining: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetMinuteUsageResponse",
 }) as any as S.Schema<GetMinuteUsageResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -230,7 +228,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagsMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -239,7 +237,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagsMap,
@@ -257,18 +255,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -286,21 +284,21 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type IpAddressList = string[];
-export const IpAddressList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IpAddressList = /*@__PURE__*/ S.Array(S.String);
 export type CapabilityArnList = string[];
-export const CapabilityArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CapabilityArnList = /*@__PURE__*/ S.Array(S.String);
 export interface DiscoveryData {
   publicIpAddresses: string[];
   privateIpAddresses: string[];
   capabilityArns: string[];
 }
-export const DiscoveryData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DiscoveryData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicIpAddresses: IpAddressList,
     privateIpAddresses: IpAddressList,
@@ -308,21 +306,20 @@ export const DiscoveryData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiscoveryData" }) as any as S.Schema<DiscoveryData>;
 export type AgentCpuCoresList = number[];
-export const AgentCpuCoresList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const AgentCpuCoresList = /*@__PURE__*/ S.Array(S.Number);
 export type VersionStringList = string[];
-export const VersionStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const VersionStringList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentVersion {
   componentType: string;
   versions: string[];
 }
-export const ComponentVersion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ componentType: S.String, versions: VersionStringList }),
 ).annotate({
   identifier: "ComponentVersion",
 }) as any as S.Schema<ComponentVersion>;
 export type ComponentVersionList = ComponentVersion[];
-export const ComponentVersionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComponentVersion);
+export const ComponentVersionList = /*@__PURE__*/ S.Array(ComponentVersion);
 export interface AgentDetails {
   agentVersion: string;
   instanceId: string;
@@ -331,7 +328,7 @@ export interface AgentDetails {
   agentCpuCores?: number[];
   componentVersions: ComponentVersion[];
 }
-export const AgentDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AgentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentVersion: S.String,
     instanceId: S.String,
@@ -346,7 +343,7 @@ export interface RegisterAgentRequest {
   agentDetails: AgentDetails;
   tags?: { [key: string]: string | undefined };
 }
-export const RegisterAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegisterAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: DiscoveryData,
     agentDetails: AgentDetails,
@@ -367,7 +364,7 @@ export const RegisterAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RegisterAgentResponse {
   agentId?: string;
 }
-export const RegisterAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegisterAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.optional(S.String) }),
 ).annotate({
   identifier: "RegisterAgentResponse",
@@ -376,7 +373,7 @@ export interface GetAgentConfigurationRequest {
   agentId: string;
 }
 export const GetAgentConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ agentId: S.String.pipe(T.HttpLabel("agentId")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/agent/{agentId}/configuration" }),
@@ -395,7 +392,7 @@ export interface GetAgentConfigurationResponse {
   taskingDocument?: string;
 }
 export const GetAgentConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentId: S.optional(S.String),
       taskingDocument: S.optional(S.String),
@@ -409,9 +406,9 @@ export type AgentStatus =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
-export const AgentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AgentStatus = /*@__PURE__*/ S.String;
 export type SignatureMap = { [key: string]: boolean | undefined };
-export const SignatureMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SignatureMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean.pipe(S.optional),
 );
@@ -419,7 +416,7 @@ export interface AggregateStatus {
   status: AgentStatus;
   signatureMap?: { [key: string]: boolean | undefined };
 }
-export const AggregateStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AggregateStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: AgentStatus, signatureMap: S.optional(SignatureMap) }),
 ).annotate({
   identifier: "AggregateStatus",
@@ -433,7 +430,7 @@ export interface ComponentStatusData {
   packetsDropped?: number;
   dataflowId: string;
 }
-export const ComponentStatusData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentStatusData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentType: S.String,
     capabilityArn: S.String,
@@ -447,70 +444,68 @@ export const ComponentStatusData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ComponentStatusData",
 }) as any as S.Schema<ComponentStatusData>;
 export type ComponentStatusList = ComponentStatusData[];
-export const ComponentStatusList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComponentStatusData);
+export const ComponentStatusList = /*@__PURE__*/ S.Array(ComponentStatusData);
 export interface UpdateAgentStatusRequest {
   agentId: string;
   taskId: string;
   aggregateStatus: AggregateStatus;
   componentStatuses: ComponentStatusData[];
 }
-export const UpdateAgentStatusRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentId: S.String.pipe(T.HttpLabel("agentId")),
-      taskId: S.String,
-      aggregateStatus: AggregateStatus,
-      componentStatuses: ComponentStatusList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/agent/{agentId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentId: S.String.pipe(T.HttpLabel("agentId")),
+    taskId: S.String,
+    aggregateStatus: AggregateStatus,
+    componentStatuses: ComponentStatusList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/agent/{agentId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateAgentStatusRequest",
 }) as any as S.Schema<UpdateAgentStatusRequest>;
 export interface UpdateAgentStatusResponse {
   agentId: string;
 }
-export const UpdateAgentStatusResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ agentId: S.String }),
+export const UpdateAgentStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentId: S.String }),
 ).annotate({
   identifier: "UpdateAgentStatusResponse",
 }) as any as S.Schema<UpdateAgentStatusResponse>;
 export type FrequencyUnits = "GHz" | "MHz" | "kHz" | (string & {});
-export const FrequencyUnits = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FrequencyUnits = /*@__PURE__*/ S.String;
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
 }
-export const Frequency = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Frequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: FrequencyUnits }),
 ).annotate({ identifier: "Frequency" }) as any as S.Schema<Frequency>;
 export type BandwidthUnits = "GHz" | "MHz" | "kHz" | (string & {});
-export const BandwidthUnits = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BandwidthUnits = /*@__PURE__*/ S.String;
 export interface FrequencyBandwidth {
   value: number;
   units: BandwidthUnits;
 }
-export const FrequencyBandwidth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FrequencyBandwidth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: BandwidthUnits }),
 ).annotate({
   identifier: "FrequencyBandwidth",
 }) as any as S.Schema<FrequencyBandwidth>;
 export type Polarization = "RIGHT_HAND" | "LEFT_HAND" | "NONE" | (string & {});
-export const Polarization = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Polarization = /*@__PURE__*/ S.String;
 export interface SpectrumConfig {
   centerFrequency: Frequency;
   bandwidth: FrequencyBandwidth;
   polarization?: Polarization;
 }
-export const SpectrumConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     centerFrequency: Frequency,
     bandwidth: FrequencyBandwidth,
@@ -520,36 +515,35 @@ export const SpectrumConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AntennaDownlinkConfig {
   spectrumConfig: SpectrumConfig;
 }
-export const AntennaDownlinkConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AntennaDownlinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spectrumConfig: SpectrumConfig }),
 ).annotate({
   identifier: "AntennaDownlinkConfig",
 }) as any as S.Schema<AntennaDownlinkConfig>;
 export type Criticality = "REQUIRED" | "PREFERRED" | "REMOVED" | (string & {});
-export const Criticality = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Criticality = /*@__PURE__*/ S.String;
 export interface TrackingConfig {
   autotrack: Criticality;
 }
-export const TrackingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrackingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ autotrack: Criticality }),
 ).annotate({ identifier: "TrackingConfig" }) as any as S.Schema<TrackingConfig>;
 export interface DataflowEndpointConfig {
   dataflowEndpointName: string;
   dataflowEndpointRegion?: string;
 }
-export const DataflowEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataflowEndpointName: S.String,
-      dataflowEndpointRegion: S.optional(S.String),
-    }),
+export const DataflowEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataflowEndpointName: S.String,
+    dataflowEndpointRegion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DataflowEndpointConfig",
 }) as any as S.Schema<DataflowEndpointConfig>;
 export interface DemodulationConfig {
   unvalidatedJSON: string;
 }
-export const DemodulationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DemodulationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ unvalidatedJSON: S.String }),
 ).annotate({
   identifier: "DemodulationConfig",
@@ -557,7 +551,7 @@ export const DemodulationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DecodeConfig {
   unvalidatedJSON: string;
 }
-export const DecodeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DecodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ unvalidatedJSON: S.String }),
 ).annotate({ identifier: "DecodeConfig" }) as any as S.Schema<DecodeConfig>;
 export interface AntennaDownlinkDemodDecodeConfig {
@@ -566,7 +560,7 @@ export interface AntennaDownlinkDemodDecodeConfig {
   decodeConfig: DecodeConfig;
 }
 export const AntennaDownlinkDemodDecodeConfig =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       spectrumConfig: SpectrumConfig,
       demodulationConfig: DemodulationConfig,
@@ -579,7 +573,7 @@ export interface UplinkSpectrumConfig {
   centerFrequency: Frequency;
   polarization?: Polarization;
 }
-export const UplinkSpectrumConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UplinkSpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     centerFrequency: Frequency,
     polarization: S.optional(Polarization),
@@ -588,12 +582,12 @@ export const UplinkSpectrumConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UplinkSpectrumConfig",
 }) as any as S.Schema<UplinkSpectrumConfig>;
 export type EirpUnits = "dBW" | (string & {});
-export const EirpUnits = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EirpUnits = /*@__PURE__*/ S.String;
 export interface Eirp {
   value: number;
   units: EirpUnits;
 }
-export const Eirp = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Eirp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: EirpUnits }),
 ).annotate({ identifier: "Eirp" }) as any as S.Schema<Eirp>;
 export interface AntennaUplinkConfig {
@@ -601,7 +595,7 @@ export interface AntennaUplinkConfig {
   spectrumConfig: UplinkSpectrumConfig;
   targetEirp: Eirp;
 }
-export const AntennaUplinkConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AntennaUplinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transmitDisabled: S.optional(S.Boolean),
     spectrumConfig: UplinkSpectrumConfig,
@@ -614,7 +608,7 @@ export interface UplinkEchoConfig {
   enabled: boolean;
   antennaUplinkConfigArn: string;
 }
-export const UplinkEchoConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UplinkEchoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ enabled: S.Boolean, antennaUplinkConfigArn: S.String }),
 ).annotate({
   identifier: "UplinkEchoConfig",
@@ -624,7 +618,7 @@ export interface S3RecordingConfig {
   roleArn: string;
   prefix?: string;
 }
-export const S3RecordingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3RecordingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketArn: S.String,
     roleArn: S.String,
@@ -634,12 +628,12 @@ export const S3RecordingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "S3RecordingConfig",
 }) as any as S.Schema<S3RecordingConfig>;
 export type TelemetrySinkType = "KINESIS_DATA_STREAM" | (string & {});
-export const TelemetrySinkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TelemetrySinkType = /*@__PURE__*/ S.String;
 export interface KinesisDataStreamData {
   kinesisRoleArn: string;
   kinesisDataStreamArn: string;
 }
-export const KinesisDataStreamData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KinesisDataStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kinesisRoleArn: S.String, kinesisDataStreamArn: S.String }),
 ).annotate({
   identifier: "KinesisDataStreamData",
@@ -647,14 +641,14 @@ export const KinesisDataStreamData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type TelemetrySinkData = {
   kinesisDataStreamData: KinesisDataStreamData;
 };
-export const TelemetrySinkData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TelemetrySinkData = /*@__PURE__*/ S.Union([
   S.Struct({ kinesisDataStreamData: KinesisDataStreamData }),
 ]);
 export interface TelemetrySinkConfig {
   telemetrySinkType: TelemetrySinkType;
   telemetrySinkData: TelemetrySinkData;
 }
-export const TelemetrySinkConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TelemetrySinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     telemetrySinkType: TelemetrySinkType,
     telemetrySinkData: TelemetrySinkData,
@@ -743,7 +737,7 @@ export type ConfigTypeData =
       s3RecordingConfig?: never;
       telemetrySinkConfig: TelemetrySinkConfig;
     };
-export const ConfigTypeData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ConfigTypeData = /*@__PURE__*/ S.Union([
   S.Struct({ antennaDownlinkConfig: AntennaDownlinkConfig }),
   S.Struct({ trackingConfig: TrackingConfig }),
   S.Struct({ dataflowEndpointConfig: DataflowEndpointConfig }),
@@ -760,7 +754,7 @@ export interface CreateConfigRequest {
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     configData: ConfigTypeData,
@@ -788,13 +782,13 @@ export type ConfigCapabilityType =
   | "s3-recording"
   | "telemetry-sink"
   | (string & {});
-export const ConfigCapabilityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfigCapabilityType = /*@__PURE__*/ S.String;
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
   configArn?: string;
 }
-export const ConfigIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.optional(S.String),
     configType: S.optional(ConfigCapabilityType),
@@ -807,7 +801,7 @@ export interface GetConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
@@ -832,7 +826,7 @@ export interface GetConfigResponse {
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String,
     configArn: S.String,
@@ -850,7 +844,7 @@ export interface UpdateConfigRequest {
   configType: ConfigCapabilityType;
   configData: ConfigTypeData;
 }
-export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     name: S.String,
@@ -873,7 +867,7 @@ export interface DeleteConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
-export const DeleteConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
@@ -894,7 +888,7 @@ export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConfigsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -917,7 +911,7 @@ export interface ConfigListItem {
   configArn?: string;
   name?: string;
 }
-export const ConfigListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConfigListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.optional(S.String),
     configType: S.optional(ConfigCapabilityType),
@@ -926,12 +920,12 @@ export const ConfigListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConfigListItem" }) as any as S.Schema<ConfigListItem>;
 export type ConfigList = ConfigListItem[];
-export const ConfigList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigListItem);
+export const ConfigList = /*@__PURE__*/ S.Array(ConfigListItem);
 export interface ListConfigsResponse {
   nextToken?: string;
   configList?: ConfigListItem[];
 }
-export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     configList: S.optional(ConfigList),
@@ -942,24 +936,24 @@ export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AzElProgramTrackSettings {
   ephemerisId: string;
 }
-export const AzElProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ephemerisId: S.String }),
+export const AzElProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ephemerisId: S.String }),
 ).annotate({
   identifier: "AzElProgramTrackSettings",
 }) as any as S.Schema<AzElProgramTrackSettings>;
 export interface OemProgramTrackSettings {
   ephemerisId: string;
 }
-export const OemProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ephemerisId: S.String }),
+export const OemProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ephemerisId: S.String }),
 ).annotate({
   identifier: "OemProgramTrackSettings",
 }) as any as S.Schema<OemProgramTrackSettings>;
 export interface TleProgramTrackSettings {
   ephemerisId: string;
 }
-export const TleProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ephemerisId: S.String }),
+export const TleProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ephemerisId: S.String }),
 ).annotate({
   identifier: "TleProgramTrackSettings",
 }) as any as S.Schema<TleProgramTrackSettings>;
@@ -967,7 +961,7 @@ export type ProgramTrackSettings =
   | { azEl: AzElProgramTrackSettings; oem?: never; tle?: never }
   | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
   | { azEl?: never; oem?: never; tle: TleProgramTrackSettings };
-export const ProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ProgramTrackSettings = /*@__PURE__*/ S.Union([
   S.Struct({ azEl: AzElProgramTrackSettings }),
   S.Struct({ oem: OemProgramTrackSettings }),
   S.Struct({ tle: TleProgramTrackSettings }),
@@ -975,7 +969,7 @@ export const ProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 export interface TrackingOverrides {
   programTrackSettings?: ProgramTrackSettings;
 }
-export const TrackingOverrides = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TrackingOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ programTrackSettings: S.optional(ProgramTrackSettings) }),
 ).annotate({
   identifier: "TrackingOverrides",
@@ -989,7 +983,7 @@ export interface ReserveContactRequest {
   tags?: { [key: string]: string | undefined };
   trackingOverrides?: TrackingOverrides;
 }
-export const ReserveContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReserveContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missionProfileArn: S.String,
     satelliteArn: S.optional(S.String),
@@ -1015,7 +1009,7 @@ export interface ContactIdResponse {
   contactId?: string;
   versionId?: number;
 }
-export const ContactIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContactIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     versionId: S.optional(S.Number),
@@ -1026,18 +1020,17 @@ export const ContactIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeContactRequest {
   contactId: string;
 }
-export const DescribeContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ contactId: S.String.pipe(T.HttpLabel("contactId")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/contact/{contactId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeContactRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ contactId: S.String.pipe(T.HttpLabel("contactId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/contact/{contactId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeContactRequest",
 }) as any as S.Schema<DescribeContactRequest>;
@@ -1056,28 +1049,26 @@ export type ContactStatus =
   | "CANCELLING"
   | "AWS_FAILED"
   | (string & {});
-export const ContactStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContactStatus = /*@__PURE__*/ S.String;
 export type AngleUnits = "DEGREE_ANGLE" | "RADIAN" | (string & {});
-export const AngleUnits = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AngleUnits = /*@__PURE__*/ S.String;
 export interface Elevation {
   value: number;
   unit: AngleUnits;
 }
-export const Elevation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Elevation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, unit: AngleUnits }),
 ).annotate({ identifier: "Elevation" }) as any as S.Schema<Elevation>;
 export type SubnetList = string[];
-export const SubnetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface SecurityDetails {
   subnetIds: string[];
   securityGroupIds: string[];
   roleArn: string;
 }
-export const SecurityDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SecurityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetIds: SubnetList,
     securityGroupIds: SecurityGroupIdList,
@@ -1090,7 +1081,7 @@ export interface SocketAddress {
   name: string;
   port: number;
 }
-export const SocketAddress = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, port: S.Number }),
 ).annotate({ identifier: "SocketAddress" }) as any as S.Schema<SocketAddress>;
 export type EndpointStatus =
@@ -1100,14 +1091,14 @@ export type EndpointStatus =
   | "deleting"
   | "failed"
   | (string & {});
-export const EndpointStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EndpointStatus = /*@__PURE__*/ S.String;
 export interface DataflowEndpoint {
   name?: string;
   address?: SocketAddress;
   status?: EndpointStatus;
   mtu?: number;
 }
-export const DataflowEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataflowEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     address: S.optional(SocketAddress),
@@ -1121,7 +1112,7 @@ export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
 }
-export const ConnectionDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ socketAddress: SocketAddress, mtu: S.optional(S.Number) }),
 ).annotate({
   identifier: "ConnectionDetails",
@@ -1130,14 +1121,14 @@ export interface IntegerRange {
   minimum: number;
   maximum: number;
 }
-export const IntegerRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntegerRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimum: S.Number, maximum: S.Number }),
 ).annotate({ identifier: "IntegerRange" }) as any as S.Schema<IntegerRange>;
 export interface RangedSocketAddress {
   name: string;
   portRange: IntegerRange;
 }
-export const RangedSocketAddress = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RangedSocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, portRange: IntegerRange }),
 ).annotate({
   identifier: "RangedSocketAddress",
@@ -1146,14 +1137,13 @@ export interface RangedConnectionDetails {
   socketAddress: RangedSocketAddress;
   mtu?: number;
 }
-export const RangedConnectionDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ socketAddress: RangedSocketAddress, mtu: S.optional(S.Number) }),
+export const RangedConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ socketAddress: RangedSocketAddress, mtu: S.optional(S.Number) }),
 ).annotate({
   identifier: "RangedConnectionDetails",
 }) as any as S.Schema<RangedConnectionDetails>;
 export type AuditResults = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const AuditResults = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AuditResults = /*@__PURE__*/ S.String;
 export interface AwsGroundStationAgentEndpoint {
   name: string;
   egressAddress: ConnectionDetails;
@@ -1162,7 +1152,7 @@ export interface AwsGroundStationAgentEndpoint {
   auditResults?: AuditResults;
 }
 export const AwsGroundStationAgentEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       egressAddress: ConnectionDetails,
@@ -1177,19 +1167,18 @@ export interface UplinkConnectionDetails {
   ingressAddressAndPort: ConnectionDetails;
   agentIpAndPortAddress: RangedConnectionDetails;
 }
-export const UplinkConnectionDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ingressAddressAndPort: ConnectionDetails,
-      agentIpAndPortAddress: RangedConnectionDetails,
-    }),
+export const UplinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingressAddressAndPort: ConnectionDetails,
+    agentIpAndPortAddress: RangedConnectionDetails,
+  }),
 ).annotate({
   identifier: "UplinkConnectionDetails",
 }) as any as S.Schema<UplinkConnectionDetails>;
 export type UplinkDataflowDetails = {
   agentConnectionDetails: UplinkConnectionDetails;
 };
-export const UplinkDataflowDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const UplinkDataflowDetails = /*@__PURE__*/ S.Union([
   S.Struct({ agentConnectionDetails: UplinkConnectionDetails }),
 ]);
 export interface UplinkAwsGroundStationAgentEndpointDetails {
@@ -1199,7 +1188,7 @@ export interface UplinkAwsGroundStationAgentEndpointDetails {
   auditResults?: AuditResults;
 }
 export const UplinkAwsGroundStationAgentEndpointDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       dataflowDetails: UplinkDataflowDetails,
@@ -1213,19 +1202,18 @@ export interface DownlinkConnectionDetails {
   agentIpAndPortAddress: RangedConnectionDetails;
   egressAddressAndPort: ConnectionDetails;
 }
-export const DownlinkConnectionDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentIpAndPortAddress: RangedConnectionDetails,
-      egressAddressAndPort: ConnectionDetails,
-    }),
+export const DownlinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentIpAndPortAddress: RangedConnectionDetails,
+    egressAddressAndPort: ConnectionDetails,
+  }),
 ).annotate({
   identifier: "DownlinkConnectionDetails",
 }) as any as S.Schema<DownlinkConnectionDetails>;
 export type DownlinkDataflowDetails = {
   agentConnectionDetails: DownlinkConnectionDetails;
 };
-export const DownlinkDataflowDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DownlinkDataflowDetails = /*@__PURE__*/ S.Union([
   S.Struct({ agentConnectionDetails: DownlinkConnectionDetails }),
 ]);
 export interface DownlinkAwsGroundStationAgentEndpointDetails {
@@ -1235,7 +1223,7 @@ export interface DownlinkAwsGroundStationAgentEndpointDetails {
   auditResults?: AuditResults;
 }
 export const DownlinkAwsGroundStationAgentEndpointDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       dataflowDetails: DownlinkDataflowDetails,
@@ -1246,7 +1234,7 @@ export const DownlinkAwsGroundStationAgentEndpointDetails =
     identifier: "DownlinkAwsGroundStationAgentEndpointDetails",
   }) as any as S.Schema<DownlinkAwsGroundStationAgentEndpointDetails>;
 export type CapabilityHealth = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const CapabilityHealth = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CapabilityHealth = /*@__PURE__*/ S.String;
 export type CapabilityHealthReason =
   | "NO_REGISTERED_AGENT"
   | "INVALID_IP_OWNERSHIP"
@@ -1256,9 +1244,9 @@ export type CapabilityHealthReason =
   | "DATAPLANE_FAILURE"
   | "HEALTHY"
   | (string & {});
-export const CapabilityHealthReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CapabilityHealthReason = /*@__PURE__*/ S.String;
 export type CapabilityHealthReasonList = CapabilityHealthReason[];
-export const CapabilityHealthReasonList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CapabilityHealthReasonList = /*@__PURE__*/ S.Array(
   CapabilityHealthReason,
 );
 export interface EndpointDetails {
@@ -1270,7 +1258,7 @@ export interface EndpointDetails {
   healthStatus?: CapabilityHealth;
   healthReasons?: CapabilityHealthReason[];
 }
-export const EndpointDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityDetails: S.optional(SecurityDetails),
     endpoint: S.optional(DataflowEndpoint),
@@ -1290,8 +1278,8 @@ export const EndpointDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AntennaDemodDecodeDetails {
   outputNode?: string;
 }
-export const AntennaDemodDecodeDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ outputNode: S.optional(S.String) }),
+export const AntennaDemodDecodeDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ outputNode: S.optional(S.String) }),
 ).annotate({
   identifier: "AntennaDemodDecodeDetails",
 }) as any as S.Schema<AntennaDemodDecodeDetails>;
@@ -1299,7 +1287,7 @@ export interface S3RecordingDetails {
   bucketArn?: string;
   keyTemplate?: string;
 }
-export const S3RecordingDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3RecordingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketArn: S.optional(S.String),
     keyTemplate: S.optional(S.String),
@@ -1323,7 +1311,7 @@ export type ConfigDetails =
       antennaDemodDecodeDetails?: never;
       s3RecordingDetails: S3RecordingDetails;
     };
-export const ConfigDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ConfigDetails = /*@__PURE__*/ S.Union([
   S.Struct({ endpointDetails: EndpointDetails }),
   S.Struct({ antennaDemodDecodeDetails: AntennaDemodDecodeDetails }),
   S.Struct({ s3RecordingDetails: S3RecordingDetails }),
@@ -1334,7 +1322,7 @@ export interface Source {
   configDetails?: ConfigDetails;
   dataflowSourceRegion?: string;
 }
-export const Source = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configType: S.optional(ConfigCapabilityType),
     configId: S.optional(S.String),
@@ -1348,7 +1336,7 @@ export interface Destination {
   configDetails?: ConfigDetails;
   dataflowDestinationRegion?: string;
 }
-export const Destination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configType: S.optional(ConfigCapabilityType),
     configId: S.optional(S.String),
@@ -1361,7 +1349,7 @@ export interface DataflowDetail {
   destination?: Destination;
   errorMessage?: string;
 }
-export const DataflowDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataflowDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     destination: S.optional(Destination),
@@ -1369,19 +1357,19 @@ export const DataflowDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataflowDetail" }) as any as S.Schema<DataflowDetail>;
 export type DataflowList = DataflowDetail[];
-export const DataflowList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DataflowDetail);
+export const DataflowList = /*@__PURE__*/ S.Array(DataflowDetail);
 export type EphemerisType =
   | "TLE"
   | "OEM"
   | "AZ_EL"
   | "SERVICE_MANAGED"
   | (string & {});
-export const EphemerisType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EphemerisType = /*@__PURE__*/ S.String;
 export interface EphemerisResponseData {
   ephemerisId?: string;
   ephemerisType: EphemerisType;
 }
-export const EphemerisResponseData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.optional(S.String), ephemerisType: EphemerisType }),
 ).annotate({
   identifier: "EphemerisResponseData",
@@ -1392,7 +1380,7 @@ export type VersionStatus =
   | "SUPERSEDED"
   | "FAILED_TO_UPDATE"
   | (string & {});
-export const VersionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VersionStatus = /*@__PURE__*/ S.String;
 export type VersionFailureReasonCode =
   | "INTERNAL_ERROR"
   | "INVALID_SATELLITE_ARN"
@@ -1407,9 +1395,9 @@ export type VersionFailureReasonCode =
   | "AZEL_EPHEMERIS_INVALID_STATUS"
   | "AZEL_EPHEMERIS_TIME_RANGE_INVALID"
   | (string & {});
-export const VersionFailureReasonCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VersionFailureReasonCode = /*@__PURE__*/ S.String;
 export type VersionFailureReasonCodes = VersionFailureReasonCode[];
-export const VersionFailureReasonCodes = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const VersionFailureReasonCodes = /*@__PURE__*/ S.Array(
   VersionFailureReasonCode,
 );
 export interface ContactVersion {
@@ -1422,7 +1410,7 @@ export interface ContactVersion {
   failureCodes?: VersionFailureReasonCode[];
   failureMessage?: string;
 }
-export const ContactVersion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContactVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionId: S.optional(S.Number),
     created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1455,37 +1443,36 @@ export interface DescribeContactResponse {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
-export const DescribeContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contactId: S.optional(S.String),
-      missionProfileArn: S.optional(S.String),
-      satelliteArn: S.optional(S.String),
-      startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      prePassStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      postPassEndTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      groundStation: S.optional(S.String),
-      contactStatus: S.optional(ContactStatus),
-      errorMessage: S.optional(S.String),
-      maximumElevation: S.optional(Elevation),
-      tags: S.optional(TagsMap),
-      region: S.optional(S.String),
-      dataflowList: S.optional(DataflowList),
-      visibilityStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      visibilityEndTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      trackingOverrides: S.optional(TrackingOverrides),
-      ephemeris: S.optional(EphemerisResponseData),
-      version: S.optional(ContactVersion),
-    }),
+export const DescribeContactResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactId: S.optional(S.String),
+    missionProfileArn: S.optional(S.String),
+    satelliteArn: S.optional(S.String),
+    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    prePassStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    postPassEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    groundStation: S.optional(S.String),
+    contactStatus: S.optional(ContactStatus),
+    errorMessage: S.optional(S.String),
+    maximumElevation: S.optional(Elevation),
+    tags: S.optional(TagsMap),
+    region: S.optional(S.String),
+    dataflowList: S.optional(DataflowList),
+    visibilityStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    visibilityEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    trackingOverrides: S.optional(TrackingOverrides),
+    ephemeris: S.optional(EphemerisResponseData),
+    version: S.optional(ContactVersion),
+  }),
 ).annotate({
   identifier: "DescribeContactResponse",
 }) as any as S.Schema<DescribeContactResponse>;
@@ -1495,7 +1482,7 @@ export interface UpdateContactRequest {
   trackingOverrides?: TrackingOverrides;
   satelliteArn?: string;
 }
-export const UpdateContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.HttpLabel("contactId")),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1518,7 +1505,7 @@ export interface UpdateContactResponse {
   contactId?: string;
   versionId?: number;
 }
-export const UpdateContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     versionId: S.optional(S.Number),
@@ -1529,7 +1516,7 @@ export const UpdateContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CancelContactRequest {
   contactId: string;
 }
-export const CancelContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CancelContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contactId: S.String.pipe(T.HttpLabel("contactId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/contact/{contactId}" }),
@@ -1544,17 +1531,17 @@ export const CancelContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CancelContactRequest",
 }) as any as S.Schema<CancelContactRequest>;
 export type StatusList = ContactStatus[];
-export const StatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactStatus);
+export const StatusList = /*@__PURE__*/ S.Array(ContactStatus);
 export interface AzElEphemerisFilter {
   id: string;
 }
-export const AzElEphemerisFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AzElEphemerisFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String }),
 ).annotate({
   identifier: "AzElEphemerisFilter",
 }) as any as S.Schema<AzElEphemerisFilter>;
 export type EphemerisFilter = { azEl: AzElEphemerisFilter };
-export const EphemerisFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const EphemerisFilter = /*@__PURE__*/ S.Union([
   S.Struct({ azEl: AzElEphemerisFilter }),
 ]);
 export interface ListContactsRequest {
@@ -1568,7 +1555,7 @@ export interface ListContactsRequest {
   missionProfileArn?: string;
   ephemeris?: EphemerisFilter;
 }
-export const ListContactsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -1611,7 +1598,7 @@ export interface ContactData {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
-export const ContactData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContactData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -1641,12 +1628,12 @@ export const ContactData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactData" }) as any as S.Schema<ContactData>;
 export type ContactList = ContactData[];
-export const ContactList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactData);
+export const ContactList = /*@__PURE__*/ S.Array(ContactData);
 export interface ListContactsResponse {
   nextToken?: string;
   contactList?: ContactData[];
 }
-export const ListContactsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     contactList: S.optional(ContactList),
@@ -1659,7 +1646,7 @@ export interface DescribeContactVersionRequest {
   versionId: number;
 }
 export const DescribeContactVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contactId: S.String.pipe(T.HttpLabel("contactId")),
       versionId: S.Number.pipe(T.HttpLabel("versionId")),
@@ -1701,7 +1688,7 @@ export interface DescribeContactVersionResponse {
   version?: ContactVersion;
 }
 export const DescribeContactVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contactId: S.optional(S.String),
       missionProfileArn: S.optional(S.String),
@@ -1739,34 +1726,32 @@ export interface ListContactVersionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListContactVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contactId: S.String.pipe(T.HttpLabel("contactId")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/contact/{contactId}/versions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListContactVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactId: S.String.pipe(T.HttpLabel("contactId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/contact/{contactId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListContactVersionsRequest",
 }) as any as S.Schema<ListContactVersionsRequest>;
 export type ContactVersionsList = ContactVersion[];
-export const ContactVersionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactVersion);
+export const ContactVersionsList = /*@__PURE__*/ S.Array(ContactVersion);
 export interface ListContactVersionsResponse {
   nextToken?: string;
   contactVersionsList?: ContactVersion[];
 }
 export const ListContactVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       contactVersionsList: S.optional(ContactVersionsList),
@@ -1775,8 +1760,7 @@ export const ListContactVersionsResponse =
     identifier: "ListContactVersionsResponse",
   }) as any as S.Schema<ListContactVersionsResponse>;
 export type EndpointDetailsList = EndpointDetails[];
-export const EndpointDetailsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EndpointDetails);
+export const EndpointDetailsList = /*@__PURE__*/ S.Array(EndpointDetails);
 export interface CreateDataflowEndpointGroupRequest {
   endpointDetails: EndpointDetails[];
   tags?: { [key: string]: string | undefined };
@@ -1784,7 +1768,7 @@ export interface CreateDataflowEndpointGroupRequest {
   contactPostPassDurationSeconds?: number;
 }
 export const CreateDataflowEndpointGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       endpointDetails: EndpointDetailsList,
       tags: S.optional(TagsMap),
@@ -1807,7 +1791,7 @@ export interface DataflowEndpointGroupIdResponse {
   dataflowEndpointGroupId?: string;
 }
 export const DataflowEndpointGroupIdResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dataflowEndpointGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "DataflowEndpointGroupIdResponse",
@@ -1816,7 +1800,7 @@ export interface GetDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
 export const GetDataflowEndpointGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataflowEndpointGroupId: S.String.pipe(
         T.HttpLabel("dataflowEndpointGroupId"),
@@ -1846,7 +1830,7 @@ export interface GetDataflowEndpointGroupResponse {
   contactPostPassDurationSeconds?: number;
 }
 export const GetDataflowEndpointGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataflowEndpointGroupId: S.optional(S.String),
       dataflowEndpointGroupArn: S.optional(S.String),
@@ -1862,7 +1846,7 @@ export interface DeleteDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
 export const DeleteDataflowEndpointGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataflowEndpointGroupId: S.String.pipe(
         T.HttpLabel("dataflowEndpointGroupId"),
@@ -1888,7 +1872,7 @@ export interface ListDataflowEndpointGroupsRequest {
   nextToken?: string;
 }
 export const ListDataflowEndpointGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1909,17 +1893,16 @@ export interface DataflowEndpointListItem {
   dataflowEndpointGroupId?: string;
   dataflowEndpointGroupArn?: string;
 }
-export const DataflowEndpointListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataflowEndpointGroupId: S.optional(S.String),
-      dataflowEndpointGroupArn: S.optional(S.String),
-    }),
+export const DataflowEndpointListItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataflowEndpointGroupId: S.optional(S.String),
+    dataflowEndpointGroupArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DataflowEndpointListItem",
 }) as any as S.Schema<DataflowEndpointListItem>;
 export type DataflowEndpointGroupList = DataflowEndpointListItem[];
-export const DataflowEndpointGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DataflowEndpointGroupList = /*@__PURE__*/ S.Array(
   DataflowEndpointListItem,
 );
 export interface ListDataflowEndpointGroupsResponse {
@@ -1927,7 +1910,7 @@ export interface ListDataflowEndpointGroupsResponse {
   dataflowEndpointGroupList?: DataflowEndpointListItem[];
 }
 export const ListDataflowEndpointGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       dataflowEndpointGroupList: S.optional(DataflowEndpointGroupList),
@@ -1940,7 +1923,7 @@ export interface UplinkAwsGroundStationAgentEndpoint {
   dataflowDetails: UplinkDataflowDetails;
 }
 export const UplinkAwsGroundStationAgentEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ name: S.String, dataflowDetails: UplinkDataflowDetails }),
   ).annotate({
     identifier: "UplinkAwsGroundStationAgentEndpoint",
@@ -1950,7 +1933,7 @@ export interface DownlinkAwsGroundStationAgentEndpoint {
   dataflowDetails: DownlinkDataflowDetails;
 }
 export const DownlinkAwsGroundStationAgentEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ name: S.String, dataflowDetails: DownlinkDataflowDetails }),
   ).annotate({
     identifier: "DownlinkAwsGroundStationAgentEndpoint",
@@ -1964,7 +1947,7 @@ export type CreateEndpointDetails =
       uplinkAwsGroundStationAgentEndpoint?: never;
       downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint;
     };
-export const CreateEndpointDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const CreateEndpointDetails = /*@__PURE__*/ S.Union([
   S.Struct({
     uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint,
   }),
@@ -1974,7 +1957,7 @@ export const CreateEndpointDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   }),
 ]);
 export type CreateEndpointDetailsList = CreateEndpointDetails[];
-export const CreateEndpointDetailsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CreateEndpointDetailsList = /*@__PURE__*/ S.Array(
   CreateEndpointDetails,
 );
 export interface CreateDataflowEndpointGroupV2Request {
@@ -1984,7 +1967,7 @@ export interface CreateDataflowEndpointGroupV2Request {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateDataflowEndpointGroupV2Request =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       endpoints: CreateEndpointDetailsList,
       contactPrePassDurationSeconds: S.optional(S.Number),
@@ -2007,7 +1990,7 @@ export interface CreateDataflowEndpointGroupV2Response {
   dataflowEndpointGroupId?: string;
 }
 export const CreateDataflowEndpointGroupV2Response =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dataflowEndpointGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateDataflowEndpointGroupV2Response",
@@ -2017,7 +2000,7 @@ export interface S3Object {
   key?: string;
   version?: string;
 }
-export const S3Object = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     key: S.optional(S.String),
@@ -2028,7 +2011,7 @@ export interface TimeRange {
   startTime: Date;
   endTime: Date;
 }
-export const TimeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2039,7 +2022,7 @@ export interface TLEData {
   tleLine2: string;
   validTimeRange: TimeRange;
 }
-export const TLEData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TLEData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tleLine1: S.String,
     tleLine2: S.String,
@@ -2047,12 +2030,12 @@ export const TLEData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TLEData" }) as any as S.Schema<TLEData>;
 export type TLEDataList = TLEData[];
-export const TLEDataList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TLEData);
+export const TLEDataList = /*@__PURE__*/ S.Array(TLEData);
 export interface TLEEphemeris {
   s3Object?: S3Object;
   tleData?: TLEData[];
 }
-export const TLEEphemeris = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TLEEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3Object: S.optional(S3Object),
     tleData: S.optional(TLEDataList),
@@ -2062,14 +2045,14 @@ export interface OEMEphemeris {
   s3Object?: S3Object;
   oemData?: string;
 }
-export const OEMEphemeris = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OEMEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Object: S.optional(S3Object), oemData: S.optional(S.String) }),
 ).annotate({ identifier: "OEMEphemeris" }) as any as S.Schema<OEMEphemeris>;
 export interface ISO8601TimeRange {
   startTime: Date;
   endTime: Date;
 }
-export const ISO8601TimeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ISO8601TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2082,17 +2065,17 @@ export interface TimeAzEl {
   az: number;
   el: number;
 }
-export const TimeAzEl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TimeAzEl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dt: S.Number, az: S.Number, el: S.Number }),
 ).annotate({ identifier: "TimeAzEl" }) as any as S.Schema<TimeAzEl>;
 export type TimeAzElList = TimeAzEl[];
-export const TimeAzElList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TimeAzEl);
+export const TimeAzElList = /*@__PURE__*/ S.Array(TimeAzEl);
 export interface AzElSegment {
   referenceEpoch: Date;
   validTimeRange: ISO8601TimeRange;
   azElList: TimeAzEl[];
 }
-export const AzElSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AzElSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceEpoch: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     validTimeRange: ISO8601TimeRange,
@@ -2100,18 +2083,18 @@ export const AzElSegment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AzElSegment" }) as any as S.Schema<AzElSegment>;
 export type AzElSegmentList = AzElSegment[];
-export const AzElSegmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AzElSegment);
+export const AzElSegmentList = /*@__PURE__*/ S.Array(AzElSegment);
 export interface AzElSegments {
   angleUnit: AngleUnits;
   azElSegmentList: AzElSegment[];
 }
-export const AzElSegments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AzElSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ angleUnit: AngleUnits, azElSegmentList: AzElSegmentList }),
 ).annotate({ identifier: "AzElSegments" }) as any as S.Schema<AzElSegments>;
 export type AzElSegmentsData =
   | { s3Object: S3Object; azElData?: never }
   | { s3Object?: never; azElData: AzElSegments };
-export const AzElSegmentsData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const AzElSegmentsData = /*@__PURE__*/ S.Union([
   S.Struct({ s3Object: S3Object }),
   S.Struct({ azElData: AzElSegments }),
 ]);
@@ -2119,14 +2102,14 @@ export interface AzElEphemeris {
   groundStation: string;
   data: AzElSegmentsData;
 }
-export const AzElEphemeris = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AzElEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groundStation: S.String, data: AzElSegmentsData }),
 ).annotate({ identifier: "AzElEphemeris" }) as any as S.Schema<AzElEphemeris>;
 export type EphemerisData =
   | { tle: TLEEphemeris; oem?: never; azEl?: never }
   | { tle?: never; oem: OEMEphemeris; azEl?: never }
   | { tle?: never; oem?: never; azEl: AzElEphemeris };
-export const EphemerisData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const EphemerisData = /*@__PURE__*/ S.Union([
   S.Struct({ tle: TLEEphemeris }),
   S.Struct({ oem: OEMEphemeris }),
   S.Struct({ azEl: AzElEphemeris }),
@@ -2141,36 +2124,33 @@ export interface CreateEphemerisRequest {
   ephemeris?: EphemerisData;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateEphemerisRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      satelliteId: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      priority: S.optional(S.Number),
-      expirationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      name: S.String,
-      kmsKeyArn: S.optional(S.String),
-      ephemeris: S.optional(EphemerisData),
-      tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ephemeris" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    satelliteId: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    name: S.String,
+    kmsKeyArn: S.optional(S.String),
+    ephemeris: S.optional(EphemerisData),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ephemeris" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateEphemerisRequest",
 }) as any as S.Schema<CreateEphemerisRequest>;
 export interface EphemerisIdResponse {
   ephemerisId?: string;
 }
-export const EphemerisIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.optional(S.String) }),
 ).annotate({
   identifier: "EphemerisIdResponse",
@@ -2178,18 +2158,17 @@ export const EphemerisIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeEphemerisRequest {
   ephemerisId: string;
 }
-export const DescribeEphemerisRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/ephemeris/{ephemerisId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ephemeris/{ephemerisId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DescribeEphemerisRequest",
 }) as any as S.Schema<DescribeEphemerisRequest>;
@@ -2201,12 +2180,12 @@ export type EphemerisStatus =
   | "DISABLED"
   | "EXPIRED"
   | (string & {});
-export const EphemerisStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EphemerisStatus = /*@__PURE__*/ S.String;
 export interface EphemerisDescription {
   sourceS3Object?: S3Object;
   ephemerisData?: string;
 }
-export const EphemerisDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceS3Object: S.optional(S3Object),
     ephemerisData: S.optional(S.String),
@@ -2218,7 +2197,7 @@ export type EphemerisTypeDescription =
   | { tle: EphemerisDescription; oem?: never; azEl?: never }
   | { tle?: never; oem: EphemerisDescription; azEl?: never }
   | { tle?: never; oem?: never; azEl: EphemerisDescription };
-export const EphemerisTypeDescription = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const EphemerisTypeDescription = /*@__PURE__*/ S.Union([
   S.Struct({ tle: EphemerisDescription }),
   S.Struct({ oem: EphemerisDescription }),
   S.Struct({ azEl: EphemerisDescription }),
@@ -2230,7 +2209,7 @@ export type EphemerisInvalidReason =
   | "KMS_KEY_INVALID"
   | "VALIDATION_ERROR"
   | (string & {});
-export const EphemerisInvalidReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EphemerisInvalidReason = /*@__PURE__*/ S.String;
 export type EphemerisErrorCode =
   | "INTERNAL_ERROR"
   | "MISMATCHED_SATCAT_ID"
@@ -2271,19 +2250,19 @@ export type EphemerisErrorCode =
   | "AZ_EL_SEGMENT_END_TIME_TOO_LATE"
   | "AZ_EL_TOTAL_DURATION_EXCEEDED"
   | (string & {});
-export const EphemerisErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EphemerisErrorCode = /*@__PURE__*/ S.String;
 export interface EphemerisErrorReason {
   errorCode: EphemerisErrorCode;
   errorMessage: string;
 }
-export const EphemerisErrorReason = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisErrorReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorCode: EphemerisErrorCode, errorMessage: S.String }),
 ).annotate({
   identifier: "EphemerisErrorReason",
 }) as any as S.Schema<EphemerisErrorReason>;
 export type EphemerisErrorReasonList = EphemerisErrorReason[];
 export const EphemerisErrorReasonList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EphemerisErrorReason);
+  /*@__PURE__*/ S.Array(EphemerisErrorReason);
 export interface DescribeEphemerisResponse {
   ephemerisId?: string;
   satelliteId?: string;
@@ -2297,21 +2276,20 @@ export interface DescribeEphemerisResponse {
   invalidReason?: EphemerisInvalidReason;
   errorReasons?: EphemerisErrorReason[];
 }
-export const DescribeEphemerisResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ephemerisId: S.optional(S.String),
-      satelliteId: S.optional(S.String),
-      status: S.optional(EphemerisStatus),
-      priority: S.optional(S.Number),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      enabled: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      tags: S.optional(TagsMap),
-      suppliedData: S.optional(EphemerisTypeDescription),
-      invalidReason: S.optional(EphemerisInvalidReason),
-      errorReasons: S.optional(EphemerisErrorReasonList),
-    }),
+export const DescribeEphemerisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ephemerisId: S.optional(S.String),
+    satelliteId: S.optional(S.String),
+    status: S.optional(EphemerisStatus),
+    priority: S.optional(S.Number),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    enabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    tags: S.optional(TagsMap),
+    suppliedData: S.optional(EphemerisTypeDescription),
+    invalidReason: S.optional(EphemerisInvalidReason),
+    errorReasons: S.optional(EphemerisErrorReasonList),
+  }),
 ).annotate({
   identifier: "DescribeEphemerisResponse",
 }) as any as S.Schema<DescribeEphemerisResponse>;
@@ -2321,47 +2299,44 @@ export interface UpdateEphemerisRequest {
   name?: string;
   priority?: number;
 }
-export const UpdateEphemerisRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")),
-      enabled: S.Boolean,
-      name: S.optional(S.String),
-      priority: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/ephemeris/{ephemerisId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")),
+    enabled: S.Boolean,
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/ephemeris/{ephemerisId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateEphemerisRequest",
 }) as any as S.Schema<UpdateEphemerisRequest>;
 export interface DeleteEphemerisRequest {
   ephemerisId: string;
 }
-export const DeleteEphemerisRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/ephemeris/{ephemerisId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/ephemeris/{ephemerisId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteEphemerisRequest",
 }) as any as S.Schema<DeleteEphemerisRequest>;
 export type EphemerisStatusList = EphemerisStatus[];
-export const EphemerisStatusList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EphemerisStatus);
+export const EphemerisStatusList = /*@__PURE__*/ S.Array(EphemerisStatus);
 export interface ListEphemeridesRequest {
   satelliteId?: string;
   ephemerisType?: EphemerisType;
@@ -2371,26 +2346,25 @@ export interface ListEphemeridesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListEphemeridesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      satelliteId: S.optional(S.String),
-      ephemerisType: S.optional(EphemerisType),
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      statusList: S.optional(EphemerisStatusList),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ephemerides" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEphemeridesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    satelliteId: S.optional(S.String),
+    ephemerisType: S.optional(EphemerisType),
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    statusList: S.optional(EphemerisStatusList),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ephemerides" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListEphemeridesRequest",
 }) as any as S.Schema<ListEphemeridesRequest>;
@@ -2404,7 +2378,7 @@ export interface EphemerisItem {
   name?: string;
   sourceS3Object?: S3Object;
 }
-export const EphemerisItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ephemerisId: S.optional(S.String),
     ephemerisType: S.optional(EphemerisType),
@@ -2417,18 +2391,16 @@ export const EphemerisItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EphemerisItem" }) as any as S.Schema<EphemerisItem>;
 export type EphemeridesList = EphemerisItem[];
-export const EphemeridesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EphemerisItem);
+export const EphemeridesList = /*@__PURE__*/ S.Array(EphemerisItem);
 export interface ListEphemeridesResponse {
   nextToken?: string;
   ephemerides?: EphemerisItem[];
 }
-export const ListEphemeridesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      ephemerides: S.optional(EphemeridesList),
-    }),
+export const ListEphemeridesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    ephemerides: S.optional(EphemeridesList),
+  }),
 ).annotate({
   identifier: "ListEphemeridesResponse",
 }) as any as S.Schema<ListEphemeridesResponse>;
@@ -2437,22 +2409,21 @@ export interface ListGroundStationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListGroundStationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      satelliteId: S.optional(S.String).pipe(T.HttpQuery("satelliteId")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/groundstation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListGroundStationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    satelliteId: S.optional(S.String).pipe(T.HttpQuery("satelliteId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/groundstation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListGroundStationsRequest",
 }) as any as S.Schema<ListGroundStationsRequest>;
@@ -2461,7 +2432,7 @@ export interface GroundStationData {
   groundStationName?: string;
   region?: string;
 }
-export const GroundStationData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroundStationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationId: S.optional(S.String),
     groundStationName: S.optional(S.String),
@@ -2471,18 +2442,16 @@ export const GroundStationData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GroundStationData",
 }) as any as S.Schema<GroundStationData>;
 export type GroundStationList = GroundStationData[];
-export const GroundStationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroundStationData);
+export const GroundStationList = /*@__PURE__*/ S.Array(GroundStationData);
 export interface ListGroundStationsResponse {
   nextToken?: string;
   groundStationList?: GroundStationData[];
 }
-export const ListGroundStationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      groundStationList: S.optional(GroundStationList),
-    }),
+export const ListGroundStationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    groundStationList: S.optional(GroundStationList),
+  }),
 ).annotate({
   identifier: "ListGroundStationsResponse",
 }) as any as S.Schema<ListGroundStationsResponse>;
@@ -2491,7 +2460,7 @@ export interface ListAntennasRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAntennasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAntennasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2517,7 +2486,7 @@ export interface AntennaListItem {
   antennaName: string;
   region: string;
 }
-export const AntennaListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AntennaListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationName: S.String,
     antennaName: S.String,
@@ -2527,21 +2496,20 @@ export const AntennaListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AntennaListItem",
 }) as any as S.Schema<AntennaListItem>;
 export type AntennaList = AntennaListItem[];
-export const AntennaList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AntennaListItem);
+export const AntennaList = /*@__PURE__*/ S.Array(AntennaListItem);
 export interface ListAntennasResponse {
   antennaList: AntennaListItem[];
   nextToken?: string;
 }
-export const ListAntennasResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAntennasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ antennaList: AntennaList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAntennasResponse",
 }) as any as S.Schema<ListAntennasResponse>;
 export type ReservationType = "MAINTENANCE" | "CONTACT" | (string & {});
-export const ReservationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReservationType = /*@__PURE__*/ S.String;
 export type ReservationTypeFilterList = ReservationType[];
-export const ReservationTypeFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReservationType);
+export const ReservationTypeFilterList = /*@__PURE__*/ S.Array(ReservationType);
 export interface ListGroundStationReservationsRequest {
   groundStationId: string;
   startTime: Date;
@@ -2551,7 +2519,7 @@ export interface ListGroundStationReservationsRequest {
   nextToken?: string;
 }
 export const ListGroundStationReservationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
       startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
@@ -2582,12 +2550,12 @@ export const ListGroundStationReservationsRequest =
     identifier: "ListGroundStationReservationsRequest",
   }) as any as S.Schema<ListGroundStationReservationsRequest>;
 export type MaintenanceType = "PLANNED" | "UNPLANNED" | (string & {});
-export const MaintenanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MaintenanceType = /*@__PURE__*/ S.String;
 export interface MaintenanceReservationDetails {
   maintenanceType: MaintenanceType;
 }
 export const MaintenanceReservationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ maintenanceType: MaintenanceType }),
   ).annotate({
     identifier: "MaintenanceReservationDetails",
@@ -2595,15 +2563,15 @@ export const MaintenanceReservationDetails =
 export interface ContactReservationDetails {
   contactId?: string;
 }
-export const ContactReservationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ contactId: S.optional(S.String) }),
+export const ContactReservationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ contactId: S.optional(S.String) }),
 ).annotate({
   identifier: "ContactReservationDetails",
 }) as any as S.Schema<ContactReservationDetails>;
 export type ReservationDetails =
   | { maintenance: MaintenanceReservationDetails; contact?: never }
   | { maintenance?: never; contact: ContactReservationDetails };
-export const ReservationDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ReservationDetails = /*@__PURE__*/ S.Union([
   S.Struct({ maintenance: MaintenanceReservationDetails }),
   S.Struct({ contact: ContactReservationDetails }),
 ]);
@@ -2616,7 +2584,7 @@ export interface GroundStationReservationListItem {
   reservationDetails: ReservationDetails;
 }
 export const GroundStationReservationListItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reservationType: ReservationType,
       groundStationId: S.String,
@@ -2629,7 +2597,7 @@ export const GroundStationReservationListItem =
     identifier: "GroundStationReservationListItem",
   }) as any as S.Schema<GroundStationReservationListItem>;
 export type GroundStationReservationList = GroundStationReservationListItem[];
-export const GroundStationReservationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const GroundStationReservationList = /*@__PURE__*/ S.Array(
   GroundStationReservationListItem,
 );
 export interface ListGroundStationReservationsResponse {
@@ -2637,7 +2605,7 @@ export interface ListGroundStationReservationsResponse {
   nextToken?: string;
 }
 export const ListGroundStationReservationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reservationList: GroundStationReservationList,
       nextToken: S.optional(S.String),
@@ -2646,15 +2614,14 @@ export const ListGroundStationReservationsResponse =
     identifier: "ListGroundStationReservationsResponse",
   }) as any as S.Schema<ListGroundStationReservationsResponse>;
 export type DataflowEdge = string[];
-export const DataflowEdge = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DataflowEdge = /*@__PURE__*/ S.Array(S.String);
 export type DataflowEdgeList = string[][];
-export const DataflowEdgeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataflowEdge);
+export const DataflowEdgeList = /*@__PURE__*/ S.Array(DataflowEdge);
 export type KmsKey =
   | { kmsKeyArn: string; kmsAliasArn?: never; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn: string; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn?: never; kmsAliasName: string };
-export const KmsKey = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const KmsKey = /*@__PURE__*/ S.Union([
   S.Struct({ kmsKeyArn: S.String }),
   S.Struct({ kmsAliasArn: S.String }),
   S.Struct({ kmsAliasName: S.String }),
@@ -2672,7 +2639,7 @@ export interface CreateMissionProfileRequest {
   streamsKmsRole?: string;
 }
 export const CreateMissionProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       contactPrePassDurationSeconds: S.optional(S.Number),
@@ -2700,28 +2667,27 @@ export const CreateMissionProfileRequest =
 export interface MissionProfileIdResponse {
   missionProfileId?: string;
 }
-export const MissionProfileIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ missionProfileId: S.optional(S.String) }),
+export const MissionProfileIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ missionProfileId: S.optional(S.String) }),
 ).annotate({
   identifier: "MissionProfileIdResponse",
 }) as any as S.Schema<MissionProfileIdResponse>;
 export interface GetMissionProfileRequest {
   missionProfileId: string;
 }
-export const GetMissionProfileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/missionprofile/{missionProfileId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/missionprofile/{missionProfileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetMissionProfileRequest",
 }) as any as S.Schema<GetMissionProfileRequest>;
@@ -2740,23 +2706,22 @@ export interface GetMissionProfileResponse {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
-export const GetMissionProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      missionProfileId: S.optional(S.String),
-      missionProfileArn: S.optional(S.String),
-      name: S.optional(S.String),
-      region: S.optional(S.String),
-      contactPrePassDurationSeconds: S.optional(S.Number),
-      contactPostPassDurationSeconds: S.optional(S.Number),
-      minimumViableContactDurationSeconds: S.optional(S.Number),
-      dataflowEdges: S.optional(DataflowEdgeList),
-      trackingConfigArn: S.optional(S.String),
-      telemetrySinkConfigArn: S.optional(S.String),
-      tags: S.optional(TagsMap),
-      streamsKmsKey: S.optional(KmsKey),
-      streamsKmsRole: S.optional(S.String),
-    }),
+export const GetMissionProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    missionProfileId: S.optional(S.String),
+    missionProfileArn: S.optional(S.String),
+    name: S.optional(S.String),
+    region: S.optional(S.String),
+    contactPrePassDurationSeconds: S.optional(S.Number),
+    contactPostPassDurationSeconds: S.optional(S.Number),
+    minimumViableContactDurationSeconds: S.optional(S.Number),
+    dataflowEdges: S.optional(DataflowEdgeList),
+    trackingConfigArn: S.optional(S.String),
+    telemetrySinkConfigArn: S.optional(S.String),
+    tags: S.optional(TagsMap),
+    streamsKmsKey: S.optional(KmsKey),
+    streamsKmsRole: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetMissionProfileResponse",
 }) as any as S.Schema<GetMissionProfileResponse>;
@@ -2773,7 +2738,7 @@ export interface UpdateMissionProfileRequest {
   streamsKmsRole?: string;
 }
 export const UpdateMissionProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")),
       name: S.optional(S.String),
@@ -2802,7 +2767,7 @@ export interface DeleteMissionProfileRequest {
   missionProfileId: string;
 }
 export const DeleteMissionProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")),
     }).pipe(
@@ -2822,21 +2787,20 @@ export interface ListMissionProfilesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListMissionProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/missionprofile" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMissionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/missionprofile" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListMissionProfilesRequest",
 }) as any as S.Schema<ListMissionProfilesRequest>;
@@ -2846,27 +2810,24 @@ export interface MissionProfileListItem {
   region?: string;
   name?: string;
 }
-export const MissionProfileListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      missionProfileId: S.optional(S.String),
-      missionProfileArn: S.optional(S.String),
-      region: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+export const MissionProfileListItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    missionProfileId: S.optional(S.String),
+    missionProfileArn: S.optional(S.String),
+    region: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "MissionProfileListItem",
 }) as any as S.Schema<MissionProfileListItem>;
 export type MissionProfileList = MissionProfileListItem[];
-export const MissionProfileList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  MissionProfileListItem,
-);
+export const MissionProfileList = /*@__PURE__*/ S.Array(MissionProfileListItem);
 export interface ListMissionProfilesResponse {
   nextToken?: string;
   missionProfileList?: MissionProfileListItem[];
 }
 export const ListMissionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       missionProfileList: S.optional(MissionProfileList),
@@ -2877,7 +2838,7 @@ export const ListMissionProfilesResponse =
 export interface GetSatelliteRequest {
   satelliteId: string;
 }
-export const GetSatelliteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSatelliteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ satelliteId: S.String.pipe(T.HttpLabel("satelliteId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/satellite/{satelliteId}" }),
@@ -2892,21 +2853,19 @@ export const GetSatelliteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetSatelliteRequest",
 }) as any as S.Schema<GetSatelliteRequest>;
 export type GroundStationIdList = string[];
-export const GroundStationIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const GroundStationIdList = /*@__PURE__*/ S.Array(S.String);
 export type EphemerisSource =
   | "CUSTOMER_PROVIDED"
   | "SPACE_TRACK"
   | (string & {});
-export const EphemerisSource = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EphemerisSource = /*@__PURE__*/ S.String;
 export interface EphemerisMetaData {
   source: EphemerisSource;
   ephemerisId?: string;
   epoch?: Date;
   name?: string;
 }
-export const EphemerisMetaData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EphemerisMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: EphemerisSource,
     ephemerisId: S.optional(S.String),
@@ -2923,7 +2882,7 @@ export interface GetSatelliteResponse {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
-export const GetSatelliteResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSatelliteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String),
     satelliteArn: S.optional(S.String),
@@ -2938,7 +2897,7 @@ export interface ListSatellitesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSatellitesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSatellitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2962,7 +2921,7 @@ export interface SatelliteListItem {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
-export const SatelliteListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SatelliteListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String),
     satelliteArn: S.optional(S.String),
@@ -2974,18 +2933,16 @@ export const SatelliteListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SatelliteListItem",
 }) as any as S.Schema<SatelliteListItem>;
 export type SatelliteList = SatelliteListItem[];
-export const SatelliteList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SatelliteListItem);
+export const SatelliteList = /*@__PURE__*/ S.Array(SatelliteListItem);
 export interface ListSatellitesResponse {
   nextToken?: string;
   satellites?: SatelliteListItem[];
 }
-export const ListSatellitesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      satellites: S.optional(SatelliteList),
-    }),
+export const ListSatellitesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    satellites: S.optional(SatelliteList),
+  }),
 ).annotate({
   identifier: "ListSatellitesResponse",
 }) as any as S.Schema<ListSatellitesResponse>;
@@ -3032,7 +2989,7 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
   GetAgentTaskResponseUrlResponse,
   GetAgentTaskResponseUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgentTaskResponseUrlRequest,
   output: GetAgentTaskResponseUrlResponse,
   errors: [
@@ -3055,7 +3012,7 @@ export const getMinuteUsage: API.OperationMethod<
   GetMinuteUsageResponse,
   GetMinuteUsageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMinuteUsageRequest,
   output: GetMinuteUsageResponse,
   errors: [
@@ -3078,7 +3035,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -3101,7 +3058,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -3124,7 +3081,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -3149,7 +3106,7 @@ export const registerAgent: API.OperationMethod<
   RegisterAgentResponse,
   RegisterAgentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAgentRequest,
   output: RegisterAgentResponse,
   errors: [
@@ -3174,7 +3131,7 @@ export const getAgentConfiguration: API.OperationMethod<
   GetAgentConfigurationResponse,
   GetAgentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAgentConfigurationRequest,
   output: GetAgentConfigurationResponse,
   errors: [
@@ -3199,7 +3156,7 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusResponse,
   UpdateAgentStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAgentStatusRequest,
   output: UpdateAgentStatusResponse,
   errors: [
@@ -3225,7 +3182,7 @@ export const createConfig: API.OperationMethod<
   ConfigIdResponse,
   CreateConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -3251,7 +3208,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [
@@ -3276,7 +3233,7 @@ export const updateConfig: API.OperationMethod<
   ConfigIdResponse,
   UpdateConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -3299,7 +3256,7 @@ export const deleteConfig: API.OperationMethod<
   ConfigIdResponse,
   DeleteConfigError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: ConfigIdResponse,
   errors: [
@@ -3337,7 +3294,7 @@ export const listConfigs: API.OperationMethod<
     ListConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [
@@ -3367,7 +3324,7 @@ export const reserveContact: API.OperationMethod<
   ContactIdResponse,
   ReserveContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReserveContactRequest,
   output: ContactIdResponse,
   errors: [
@@ -3391,7 +3348,7 @@ export const describeContact: API.OperationMethod<
   DescribeContactResponse,
   DescribeContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContactRequest,
   output: DescribeContactResponse,
   errors: [
@@ -3415,7 +3372,7 @@ export const updateContact: API.OperationMethod<
   UpdateContactResponse,
   UpdateContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContactRequest,
   output: UpdateContactResponse,
   errors: [
@@ -3445,7 +3402,7 @@ export const cancelContact: API.OperationMethod<
   ContactIdResponse,
   CancelContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelContactRequest,
   output: ContactIdResponse,
   errors: [
@@ -3485,7 +3442,7 @@ export const listContacts: API.OperationMethod<
     ListContactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResponse,
   errors: [
@@ -3514,7 +3471,7 @@ export const describeContactVersion: API.OperationMethod<
   DescribeContactVersionResponse,
   DescribeContactVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeContactVersionRequest,
   output: DescribeContactVersionResponse,
   errors: [
@@ -3552,7 +3509,7 @@ export const listContactVersions: API.OperationMethod<
     ListContactVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactVersionsRequest,
   output: ListContactVersionsResponse,
   errors: [
@@ -3585,7 +3542,7 @@ export const createDataflowEndpointGroup: API.OperationMethod<
   DataflowEndpointGroupIdResponse,
   CreateDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
   errors: [
@@ -3608,7 +3565,7 @@ export const getDataflowEndpointGroup: API.OperationMethod<
   GetDataflowEndpointGroupResponse,
   GetDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataflowEndpointGroupRequest,
   output: GetDataflowEndpointGroupResponse,
   errors: [
@@ -3631,7 +3588,7 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
   DataflowEndpointGroupIdResponse,
   DeleteDataflowEndpointGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataflowEndpointGroupRequest,
   output: DataflowEndpointGroupIdResponse,
   errors: [
@@ -3669,7 +3626,7 @@ export const listDataflowEndpointGroups: API.OperationMethod<
     ListDataflowEndpointGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataflowEndpointGroupsRequest,
   output: ListDataflowEndpointGroupsResponse,
   errors: [
@@ -3703,7 +3660,7 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
   CreateDataflowEndpointGroupV2Response,
   CreateDataflowEndpointGroupV2Error,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataflowEndpointGroupV2Request,
   output: CreateDataflowEndpointGroupV2Response,
   errors: [
@@ -3727,7 +3684,7 @@ export const createEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   CreateEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3750,7 +3707,7 @@ export const describeEphemeris: API.OperationMethod<
   DescribeEphemerisResponse,
   DescribeEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEphemerisRequest,
   output: DescribeEphemerisResponse,
   errors: [
@@ -3773,7 +3730,7 @@ export const updateEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   UpdateEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3797,7 +3754,7 @@ export const deleteEphemeris: API.OperationMethod<
   EphemerisIdResponse,
   DeleteEphemerisError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEphemerisRequest,
   output: EphemerisIdResponse,
   errors: [
@@ -3836,7 +3793,7 @@ export const listEphemerides: API.OperationMethod<
     ListEphemeridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEphemeridesRequest,
   output: ListEphemeridesResponse,
   errors: [
@@ -3880,7 +3837,7 @@ export const listGroundStations: API.OperationMethod<
     ListGroundStationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationsRequest,
   output: ListGroundStationsResponse,
   errors: [
@@ -3923,7 +3880,7 @@ export const listAntennas: API.OperationMethod<
     ListAntennasError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAntennasRequest,
   output: ListAntennasResponse,
   errors: [DependencyException, InvalidParameterException],
@@ -3962,7 +3919,7 @@ export const listGroundStationReservations: API.OperationMethod<
     ListGroundStationReservationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationReservationsRequest,
   output: ListGroundStationReservationsResponse,
   errors: [DependencyException, InvalidParameterException],
@@ -3989,7 +3946,7 @@ export const createMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   CreateMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -4012,7 +3969,7 @@ export const getMissionProfile: API.OperationMethod<
   GetMissionProfileResponse,
   GetMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMissionProfileRequest,
   output: GetMissionProfileResponse,
   errors: [
@@ -4037,7 +3994,7 @@ export const updateMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   UpdateMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -4060,7 +4017,7 @@ export const deleteMissionProfile: API.OperationMethod<
   MissionProfileIdResponse,
   DeleteMissionProfileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMissionProfileRequest,
   output: MissionProfileIdResponse,
   errors: [
@@ -4098,7 +4055,7 @@ export const listMissionProfiles: API.OperationMethod<
     ListMissionProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMissionProfilesRequest,
   output: ListMissionProfilesResponse,
   errors: [
@@ -4127,7 +4084,7 @@ export const getSatellite: API.OperationMethod<
   GetSatelliteResponse,
   GetSatelliteError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSatelliteRequest,
   output: GetSatelliteResponse,
   errors: [
@@ -4165,7 +4122,7 @@ export const listSatellites: API.OperationMethod<
     ListSatellitesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSatellitesRequest,
   output: ListSatellitesResponse,
   errors: [

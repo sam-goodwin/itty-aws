@@ -10,7 +10,7 @@ export interface V1RunAQueryInput {
   parameters?: unknown[];
   read_only?: boolean;
 }
-export const V1RunAQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1RunAQueryInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
   parameters: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -22,7 +22,7 @@ export const V1RunAQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type V1RunAQueryOutput = void;
 export const V1RunAQueryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RunAQueryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RunAQueryOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const V1RunAQueryOutput =
  *
  * @param ref - Project ref
  */
-export const v1RunAQuery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RunAQuery = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RunAQueryInput,
   outputSchema: V1RunAQueryOutput,
   errors: [BadRequest, Forbidden] as const,

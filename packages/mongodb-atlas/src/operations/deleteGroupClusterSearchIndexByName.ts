@@ -14,7 +14,7 @@ export interface DeleteGroupClusterSearchIndexByNameInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterSearchIndexByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     collectionName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export const DeleteGroupClusterSearchIndexByNameInput =
 // Output Schema
 export type DeleteGroupClusterSearchIndexByNameOutput = void;
 export const DeleteGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchIndexByNameOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchIndexByNameOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const DeleteGroupClusterSearchIndexByNameOutput =
  * @param indexName - Name of the Atlas Search index to delete.
  */
 export const deleteGroupClusterSearchIndexByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterSearchIndexByNameInput,
     outputSchema: DeleteGroupClusterSearchIndexByNameOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

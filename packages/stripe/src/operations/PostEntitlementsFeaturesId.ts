@@ -11,7 +11,7 @@ export interface PostEntitlementsFeaturesIdInput {
   name?: string;
 }
 export const PostEntitlementsFeaturesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -41,7 +41,7 @@ export interface PostEntitlementsFeaturesIdOutput {
   object: "entitlements.feature";
 }
 export const PostEntitlementsFeaturesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -57,9 +57,7 @@ export const PostEntitlementsFeaturesIdOutput =
  *
  * <p>Update a feature’s metadata or permanently deactivate it.</p>
  */
-export const PostEntitlementsFeaturesId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostEntitlementsFeaturesIdInput,
-    outputSchema: PostEntitlementsFeaturesIdOutput,
-  }),
-);
+export const PostEntitlementsFeaturesId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostEntitlementsFeaturesIdInput,
+  outputSchema: PostEntitlementsFeaturesIdOutput,
+}));

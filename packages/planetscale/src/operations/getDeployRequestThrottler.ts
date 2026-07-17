@@ -10,7 +10,7 @@ export interface GetDeployRequestThrottlerInput {
   number: number;
 }
 export const GetDeployRequestThrottlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const GetDeployRequestThrottlerInput =
 
 // Output Schema
 export interface GetDeployRequestThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -31,10 +31,10 @@ export interface GetDeployRequestThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const GetDeployRequestThrottlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
     configurable: Schema.Struct({
       id: Schema.String,
@@ -59,10 +59,8 @@ export const GetDeployRequestThrottlerOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const getDeployRequestThrottler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDeployRequestThrottlerInput,
-    outputSchema: GetDeployRequestThrottlerOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getDeployRequestThrottler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDeployRequestThrottlerInput,
+  outputSchema: GetDeployRequestThrottlerOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

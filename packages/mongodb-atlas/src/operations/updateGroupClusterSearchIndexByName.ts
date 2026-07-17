@@ -14,7 +14,7 @@ export interface UpdateGroupClusterSearchIndexByNameInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterSearchIndexByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     collectionName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export const UpdateGroupClusterSearchIndexByNameInput =
 // Output Schema
 export type UpdateGroupClusterSearchIndexByNameOutput = void;
 export const UpdateGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchIndexByNameOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchIndexByNameOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const UpdateGroupClusterSearchIndexByNameOutput =
  * @param indexName - Name of the Atlas Search index to update.
  */
 export const updateGroupClusterSearchIndexByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterSearchIndexByNameInput,
     outputSchema: UpdateGroupClusterSearchIndexByNameOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

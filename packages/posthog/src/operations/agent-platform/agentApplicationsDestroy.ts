@@ -8,7 +8,7 @@ export interface AgentApplicationsDestroyInput {
   project_id: string;
 }
 export const AgentApplicationsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const AgentApplicationsDestroyInput =
 // Output Schema
 export type AgentApplicationsDestroyOutput = void;
 export const AgentApplicationsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDestroyOutput>;
 
 // The operation
 /**
@@ -41,9 +41,7 @@ export const AgentApplicationsDestroyOutput =
  * @param id - A UUID string identifying this agent application.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentApplicationsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentApplicationsDestroyInput,
-    outputSchema: AgentApplicationsDestroyOutput,
-  }),
-);
+export const agentApplicationsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentApplicationsDestroyInput,
+  outputSchema: AgentApplicationsDestroyOutput,
+}));

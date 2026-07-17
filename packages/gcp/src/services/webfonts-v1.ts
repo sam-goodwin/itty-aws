@@ -32,7 +32,7 @@ export interface Axis {
 }
 
 export const Axis: Schema.Codec<Axis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.Number),
     tag: Schema.optional(Schema.String),
     start: Schema.optional(Schema.Number),
@@ -45,12 +45,10 @@ export interface Tag {
   name?: string;
 }
 
-export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    weight: Schema.optional(Schema.Number),
-    name: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Tag" });
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ Schema.Struct({
+  weight: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface Webfont {
   /** The font version. */
@@ -80,7 +78,7 @@ export interface Webfont {
 }
 
 export const Webfont: Schema.Codec<Webfont> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     lastModified: Schema.optional(Schema.String),
     menu: Schema.optional(Schema.String),
@@ -103,7 +101,7 @@ export interface WebfontList {
 }
 
 export const WebfontList: Schema.Codec<WebfontList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Webfont)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebfontList" });
@@ -164,7 +162,7 @@ export interface ListWebfontsRequest {
     | (string & {})[];
 }
 
-export const ListWebfontsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWebfontsRequest = /*@__PURE__*/ Schema.Struct({
   sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
   category: Schema.optional(Schema.String).pipe(T.HttpQuery("category")),
   subset: Schema.optional(Schema.String).pipe(T.HttpQuery("subset")),
@@ -180,7 +178,7 @@ export const ListWebfontsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListWebfontsRequest>;
 
 export type ListWebfontsResponse = WebfontList;
-export const ListWebfontsResponse = /*@__PURE__*/ /*#__PURE__*/ WebfontList;
+export const ListWebfontsResponse = /*@__PURE__*/ WebfontList;
 
 export type ListWebfontsError = DefaultErrors | NotFound | Forbidden;
 
@@ -190,7 +188,7 @@ export const listWebfonts: API.OperationMethod<
   ListWebfontsResponse,
   ListWebfontsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListWebfontsRequest,
   output: ListWebfontsResponse,
   errors: [NotFound, Forbidden],

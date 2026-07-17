@@ -11,7 +11,7 @@ export interface CreateSnapshotInput {
   name?: string;
   expires_at?: string;
 }
-export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   lsn: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export interface CreateSnapshotOutput {
     total_duration_ms: number;
   }[];
 }
-export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateSnapshotOutput = /*@__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -188,7 +188,7 @@ Use ISO 8601 format (e.g. 2025-08-05T22:00:00Z). Cannot be used with `lsn`.
 Use ISO 8601 format (e.g. 2025-08-05T22:00:00Z).
 
  */
-export const createSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateSnapshotInput,
   outputSchema: CreateSnapshotOutput,
 }));

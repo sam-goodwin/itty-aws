@@ -10,7 +10,7 @@ export interface PropertyAccessControlsDestroyInput {
   role?: string;
 }
 export const PropertyAccessControlsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     organization_member: Schema.optional(Schema.String),
     property_definition_id: Schema.String,
@@ -25,7 +25,7 @@ export const PropertyAccessControlsDestroyInput =
 // Output Schema
 export type PropertyAccessControlsDestroyOutput = void;
 export const PropertyAccessControlsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyAccessControlsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyAccessControlsDestroyOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const PropertyAccessControlsDestroyOutput =
  * @param role - The role UUID whose override should be deleted.
  */
 export const propertyAccessControlsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PropertyAccessControlsDestroyInput,
     outputSchema: PropertyAccessControlsDestroyOutput,
   }));

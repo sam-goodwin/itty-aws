@@ -12,7 +12,7 @@ export interface LlmAnalyticsPersonalSpendListInput {
   refresh?: boolean;
 }
 export const LlmAnalyticsPersonalSpendListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -68,7 +68,7 @@ export type LlmAnalyticsPersonalSpendListOutput = {
   };
 }[];
 export const LlmAnalyticsPersonalSpendListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       summary: Schema.Struct({
         date_from: Schema.String,
@@ -138,7 +138,7 @@ export const LlmAnalyticsPersonalSpendListOutput =
  * @param refresh - If true, bypass the result cache and re-run the underlying queries against ClickHouse.
  */
 export const llmAnalyticsPersonalSpendList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsPersonalSpendListInput,
     outputSchema: LlmAnalyticsPersonalSpendListOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

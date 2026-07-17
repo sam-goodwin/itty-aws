@@ -11,7 +11,7 @@ export interface ListMaintenanceSchedulesInput {
   per_page?: number;
 }
 export const ListMaintenanceSchedulesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -31,7 +31,7 @@ export interface ListMaintenanceSchedulesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     created_at: string;
@@ -52,10 +52,10 @@ export interface ListMaintenanceSchedulesOutput {
     pending_vitess_version: string | null;
     pending_mysql_version_update: boolean;
     pending_mysql_version: string | null;
-  }[];
+  }>;
 }
 export const ListMaintenanceSchedulesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -98,7 +98,7 @@ export const ListMaintenanceSchedulesOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listMaintenanceSchedules =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListMaintenanceSchedulesInput,
     outputSchema: ListMaintenanceSchedulesOutput,
     errors: [Forbidden, NotFound] as const,

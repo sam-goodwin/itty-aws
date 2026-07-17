@@ -15,7 +15,7 @@ export interface PostV1AppsByAppIdPromoteInput {
   versionId?: string;
 }
 export const PostV1AppsByAppIdPromoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     deploymentId: Schema.optional(Schema.String),
     versionId: Schema.optional(Schema.String),
@@ -28,7 +28,7 @@ export interface PostV1AppsByAppIdPromoteOutput {
   data: { appEndpointDomain: string; reassignedDomains: number };
 }
 export const PostV1AppsByAppIdPromoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       appEndpointDomain: Schema.String,
       reassignedDomains: Schema.Number,
@@ -42,10 +42,8 @@ export const PostV1AppsByAppIdPromoteOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Promotes a deployment to be the active deployment behind the app's stable endpoint. The deployment must be running. Returns the app endpoint domain.
  */
-export const postV1AppsByAppIdPromote = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1AppsByAppIdPromoteInput,
-    outputSchema: PostV1AppsByAppIdPromoteOutput,
-    errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const postV1AppsByAppIdPromote = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1AppsByAppIdPromoteInput,
+  outputSchema: PostV1AppsByAppIdPromoteOutput,
+  errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
+}));

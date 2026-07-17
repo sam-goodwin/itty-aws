@@ -16,7 +16,7 @@ export interface GetConsumptionHistoryPerProjectInput {
   metrics?: string;
 }
 export const GetConsumptionHistoryPerProjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     project_ids: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface GetConsumptionHistoryPerProjectOutput {
   pagination?: { cursor: string };
 }
 export const GetConsumptionHistoryPerProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         project_id: Schema.String,
@@ -154,7 +154,7 @@ A list of metrics can be specified as an array of parameter values or as a comma
 
  */
 export const getConsumptionHistoryPerProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetConsumptionHistoryPerProjectInput,
     outputSchema: GetConsumptionHistoryPerProjectOutput,
     errors: [Forbidden, NotFound] as const,

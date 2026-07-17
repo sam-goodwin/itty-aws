@@ -8,7 +8,7 @@ export interface UpdateUserRoleInput {
   id: string;
   role: string;
 }
-export const UpdateUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateUserRoleInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   role: Schema.String,
 }).pipe(
@@ -22,7 +22,7 @@ export interface UpdateUserRoleOutput {
   name: string;
   role?: { id: string; name: string };
 }
-export const UpdateUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateUserRoleOutput = /*@__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
@@ -38,7 +38,7 @@ export const UpdateUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Update user role
  */
-export const updateUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateUserRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateUserRoleInput,
   outputSchema: UpdateUserRoleOutput,
   errors: [NotFound, UnprocessableEntity] as const,

@@ -27,7 +27,7 @@ export interface PrepareUserOperationInput {
   dataSuffix?: string;
 }
 export const PrepareUserOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base-sepolia",
@@ -99,7 +99,7 @@ export interface PrepareUserOperationOutput {
   expiresAt?: string;
 }
 export const PrepareUserOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -157,9 +157,7 @@ export const PrepareUserOperationOutput =
  *
  * @param address - The address of the Smart Account to create the user operation on.
  */
-export const prepareUserOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrepareUserOperationInput,
-    outputSchema: PrepareUserOperationOutput,
-  }),
-);
+export const prepareUserOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrepareUserOperationInput,
+  outputSchema: PrepareUserOperationOutput,
+}));

@@ -673,7 +673,7 @@ export interface PostV2CoreAccountsIdInput {
   metadata?: Record<string, string | null>;
 }
 export const PostV2CoreAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     account_token: Schema.optional(Schema.String),
     configuration: Schema.optional(
@@ -3537,7 +3537,7 @@ export interface PostV2CoreAccountsIdOutput {
   };
 }
 export const PostV2CoreAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applied_configurations: Schema.Array(
       Schema.Literals(["customer", "merchant", "recipient"]),
     ),
@@ -6330,9 +6330,7 @@ export const PostV2CoreAccountsIdOutput =
  *
  * @param id - The ID of the Account to update.
  */
-export const PostV2CoreAccountsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV2CoreAccountsIdInput,
-    outputSchema: PostV2CoreAccountsIdOutput,
-  }),
-);
+export const PostV2CoreAccountsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV2CoreAccountsIdInput,
+  outputSchema: PostV2CoreAccountsIdOutput,
+}));

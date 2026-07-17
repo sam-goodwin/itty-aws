@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface GetKeyInput {
   keyId: number;
 }
-export const GetKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyInput = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.Number.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/keys/{keyId}" }),
@@ -23,7 +23,7 @@ export interface GetKeyOutput {
   id?: number;
   value_prefix?: string;
 }
-export const GetKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeyOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
   actions: Schema.Array(Schema.String),
@@ -41,7 +41,7 @@ export const GetKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param keyId - The ID of the key to retrieve
  */
-export const getKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyInput,
   outputSchema: GetKeyOutput,
   errors: [NotFound] as const,

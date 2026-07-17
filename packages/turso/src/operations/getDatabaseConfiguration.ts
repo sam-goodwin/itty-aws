@@ -9,7 +9,7 @@ export interface GetDatabaseConfigurationInput {
   databaseName: string;
 }
 export const GetDatabaseConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export interface GetDatabaseConfigurationOutput {
   allowed_aws_vpc_ids?: string[];
 }
 export const GetDatabaseConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     size_limit: Schema.optional(Schema.String),
     allow_attach: Schema.optional(Schema.Boolean),
     block_reads: Schema.optional(Schema.Boolean),
@@ -49,10 +49,8 @@ export const GetDatabaseConfigurationOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const getDatabaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDatabaseConfigurationInput,
-    outputSchema: GetDatabaseConfigurationOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getDatabaseConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDatabaseConfigurationInput,
+  outputSchema: GetDatabaseConfigurationOutput,
+  errors: [NotFound] as const,
+}));

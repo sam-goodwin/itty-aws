@@ -12,7 +12,7 @@ export interface ListDeployRequestReviewsInput {
   per_page?: number;
 }
 export const ListDeployRequestReviewsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface ListDeployRequestReviewsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     body: string;
     html_body: string;
@@ -41,10 +41,10 @@ export interface ListDeployRequestReviewsOutput {
     created_at: string;
     updated_at: string;
     actor: { id: string; display_name: string; avatar_url: string };
-  }[];
+  }>;
 }
 export const ListDeployRequestReviewsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -79,7 +79,7 @@ export const ListDeployRequestReviewsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listDeployRequestReviews =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListDeployRequestReviewsInput,
     outputSchema: ListDeployRequestReviewsOutput,
     errors: [Forbidden, NotFound] as const,

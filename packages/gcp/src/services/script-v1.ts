@@ -34,7 +34,7 @@ export interface ExecutionRequest {
 }
 
 export const ExecutionRequest: Schema.Codec<ExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionState: Schema.optional(Schema.String),
     devMode: Schema.optional(Schema.Boolean),
     function: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface GoogleAppsScriptTypeWebAppConfig {
 }
 
 export const GoogleAppsScriptTypeWebAppConfig: Schema.Codec<GoogleAppsScriptTypeWebAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
     executeAs: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsScriptTypeWebAppConfig" });
@@ -72,7 +72,7 @@ export interface GoogleAppsScriptTypeWebAppEntryPoint {
 }
 
 export const GoogleAppsScriptTypeWebAppEntryPoint: Schema.Codec<GoogleAppsScriptTypeWebAppEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entryPointConfig: Schema.optional(GoogleAppsScriptTypeWebAppConfig),
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsScriptTypeWebAppEntryPoint" });
@@ -89,7 +89,7 @@ export interface DeploymentConfig {
 }
 
 export const DeploymentConfig: Schema.Codec<DeploymentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
     versionNumber: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface GoogleAppsScriptTypeExecutionApiConfig {
 }
 
 export const GoogleAppsScriptTypeExecutionApiConfig: Schema.Codec<GoogleAppsScriptTypeExecutionApiConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiConfig" });
 
@@ -118,7 +118,7 @@ export interface GoogleAppsScriptTypeExecutionApiEntryPoint {
 }
 
 export const GoogleAppsScriptTypeExecutionApiEntryPoint: Schema.Codec<GoogleAppsScriptTypeExecutionApiEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entryPointConfig: Schema.optional(GoogleAppsScriptTypeExecutionApiConfig),
   }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint" });
 
@@ -138,7 +138,7 @@ export interface GoogleAppsScriptTypeAddOnEntryPoint {
 }
 
 export const GoogleAppsScriptTypeAddOnEntryPoint: Schema.Codec<GoogleAppsScriptTypeAddOnEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     postInstallTipUrl: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface EntryPoint {
 }
 
 export const EntryPoint: Schema.Codec<EntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entryPointType: Schema.optional(Schema.String),
     executionApi: Schema.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
     webApp: Schema.optional(GoogleAppsScriptTypeWebAppEntryPoint),
@@ -183,7 +183,7 @@ export interface Deployment {
 }
 
 export const Deployment: Schema.Codec<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentId: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     deploymentConfig: Schema.optional(DeploymentConfig),
@@ -198,7 +198,7 @@ export interface ListDeploymentsResponse {
 }
 
 export const ListDeploymentsResponse: Schema.Codec<ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     deployments: Schema.optional(Schema.Array(Deployment)),
   }).annotate({ identifier: "ListDeploymentsResponse" });
@@ -213,7 +213,7 @@ export interface MetricsValue {
 }
 
 export const MetricsValue: Schema.Codec<MetricsValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface Metrics {
 }
 
 export const Metrics: Schema.Codec<Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeUsers: Schema.optional(Schema.Array(MetricsValue)),
     failedExecutions: Schema.optional(Schema.Array(MetricsValue)),
     totalExecutions: Schema.optional(Schema.Array(MetricsValue)),
@@ -245,7 +245,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -263,7 +263,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -277,7 +277,7 @@ export interface GoogleAppsScriptTypeFunction {
 }
 
 export const GoogleAppsScriptTypeFunction: Schema.Codec<GoogleAppsScriptTypeFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsScriptTypeFunction" });
@@ -288,7 +288,7 @@ export interface GoogleAppsScriptTypeFunctionSet {
 }
 
 export const GoogleAppsScriptTypeFunctionSet: Schema.Codec<GoogleAppsScriptTypeFunctionSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(GoogleAppsScriptTypeFunction)),
   }).annotate({ identifier: "GoogleAppsScriptTypeFunctionSet" });
 
@@ -298,7 +298,7 @@ export interface UpdateDeploymentRequest {
 }
 
 export const UpdateDeploymentRequest: Schema.Codec<UpdateDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentConfig: Schema.optional(DeploymentConfig),
   }).annotate({ identifier: "UpdateDeploymentRequest" });
 
@@ -314,7 +314,7 @@ export interface GoogleAppsScriptTypeUser {
 }
 
 export const GoogleAppsScriptTypeUser: Schema.Codec<GoogleAppsScriptTypeUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     photoUrl: Schema.optional(Schema.String),
@@ -344,7 +344,7 @@ export interface File {
 }
 
 export const File: Schema.Codec<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     functionSet: Schema.optional(GoogleAppsScriptTypeFunctionSet),
     type: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface CreateProjectRequest {
 }
 
 export const CreateProjectRequest: Schema.Codec<CreateProjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parentId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateProjectRequest" });
@@ -419,7 +419,7 @@ export interface GoogleAppsScriptTypeProcess {
 }
 
 export const GoogleAppsScriptTypeProcess: Schema.Codec<GoogleAppsScriptTypeProcess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAccessLevel: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     projectName: Schema.optional(Schema.String),
@@ -438,7 +438,7 @@ export interface ListUserProcessesResponse {
 }
 
 export const ListUserProcessesResponse: Schema.Codec<ListUserProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListUserProcessesResponse" });
@@ -455,7 +455,7 @@ export interface Version {
 }
 
 export const Version: Schema.Codec<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
     versionNumber: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -470,7 +470,7 @@ export interface ScriptStackTraceElement {
 }
 
 export const ScriptStackTraceElement: Schema.Codec<ScriptStackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     function: Schema.optional(Schema.String),
     lineNumber: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ScriptStackTraceElement" });
@@ -478,7 +478,7 @@ export const ScriptStackTraceElement: Schema.Codec<ScriptStackTraceElement> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -488,7 +488,7 @@ export interface ExecutionResponse {
 }
 
 export const ExecutionResponse: Schema.Codec<ExecutionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "ExecutionResponse" });
 
@@ -500,7 +500,7 @@ export interface ListVersionsResponse {
 }
 
 export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListVersionsResponse" });
@@ -523,7 +523,7 @@ export interface Project {
 }
 
 export const Project: Schema.Codec<Project> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     scriptId: Schema.optional(Schema.String),
     parentId: Schema.optional(Schema.String),
@@ -543,7 +543,7 @@ export interface ExecutionError {
 }
 
 export const ExecutionError: Schema.Codec<ExecutionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptStackTraceElements: Schema.optional(
       Schema.Array(ScriptStackTraceElement),
     ),
@@ -559,7 +559,7 @@ export interface Content {
 }
 
 export const Content: Schema.Codec<Content> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(File)),
     scriptId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Content" });
@@ -572,7 +572,7 @@ export interface ListScriptProcessesResponse {
 }
 
 export const ListScriptProcessesResponse: Schema.Codec<ListScriptProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
   }).annotate({ identifier: "ListScriptProcessesResponse" });
@@ -684,7 +684,7 @@ export interface ListProcessesRequest {
     | (string & {})[];
 }
 
-export const ListProcessesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProcessesRequest = /*@__PURE__*/ Schema.Struct({
   "userProcessFilter.scriptId": Schema.optional(Schema.String).pipe(
     T.HttpQuery("userProcessFilter.scriptId"),
   ),
@@ -720,8 +720,7 @@ export const ListProcessesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListProcessesRequest>;
 
 export type ListProcessesResponse = ListUserProcessesResponse;
-export const ListProcessesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListUserProcessesResponse;
+export const ListProcessesResponse = /*@__PURE__*/ ListUserProcessesResponse;
 
 export type ListProcessesError = DefaultErrors | NotFound | Forbidden;
 
@@ -731,7 +730,7 @@ export const listProcesses: API.PaginatedOperationMethod<
   ListProcessesResponse,
   ListProcessesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProcessesRequest,
   output: ListProcessesResponse,
   errors: [NotFound, Forbidden],
@@ -793,7 +792,7 @@ export interface ListScriptProcessesProcessesRequest {
 }
 
 export const ListScriptProcessesProcessesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "scriptProcessFilter.statuses": Schema.optional(
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("scriptProcessFilter.statuses")),
@@ -825,7 +824,7 @@ export const ListScriptProcessesProcessesRequest =
 
 export type ListScriptProcessesProcessesResponse = ListScriptProcessesResponse;
 export const ListScriptProcessesProcessesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListScriptProcessesResponse;
+  /*@__PURE__*/ ListScriptProcessesResponse;
 
 export type ListScriptProcessesProcessesError =
   | DefaultErrors
@@ -838,7 +837,7 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
   ListScriptProcessesProcessesResponse,
   ListScriptProcessesProcessesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScriptProcessesProcessesRequest,
   output: ListScriptProcessesProcessesResponse,
   errors: [NotFound, Forbidden],
@@ -855,7 +854,7 @@ export interface RunScriptsRequest {
   body?: ExecutionRequest;
 }
 
-export const RunScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunScriptsRequest = /*@__PURE__*/ Schema.Struct({
   scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
   body: Schema.optional(ExecutionRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -864,7 +863,7 @@ export const RunScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<RunScriptsRequest>;
 
 export type RunScriptsResponse = Operation;
-export const RunScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RunScriptsResponse = /*@__PURE__*/ Operation;
 
 export type RunScriptsError =
   | DefaultErrors
@@ -878,7 +877,7 @@ export const runScripts: API.OperationMethod<
   RunScriptsResponse,
   RunScriptsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunScriptsRequest,
   output: RunScriptsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -892,7 +891,7 @@ export interface GetContentProjectsRequest {
 }
 
 export const GetContentProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     versionNumber: Schema.optional(Schema.Number).pipe(
       T.HttpQuery("versionNumber"),
@@ -903,7 +902,7 @@ export const GetContentProjectsRequest =
   ) as unknown as Schema.Codec<GetContentProjectsRequest>;
 
 export type GetContentProjectsResponse = Content;
-export const GetContentProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Content;
+export const GetContentProjectsResponse = /*@__PURE__*/ Content;
 
 export type GetContentProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -913,7 +912,7 @@ export const getContentProjects: API.OperationMethod<
   GetContentProjectsResponse,
   GetContentProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContentProjectsRequest,
   output: GetContentProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -927,7 +926,7 @@ export interface UpdateContentProjectsRequest {
 }
 
 export const UpdateContentProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     body: Schema.optional(Content).pipe(T.HttpBody()),
   }).pipe(
@@ -940,8 +939,7 @@ export const UpdateContentProjectsRequest =
   ) as unknown as Schema.Codec<UpdateContentProjectsRequest>;
 
 export type UpdateContentProjectsResponse = Content;
-export const UpdateContentProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Content;
+export const UpdateContentProjectsResponse = /*@__PURE__*/ Content;
 
 export type UpdateContentProjectsError =
   | DefaultErrors
@@ -956,7 +954,7 @@ export const updateContentProjects: API.OperationMethod<
   UpdateContentProjectsResponse,
   UpdateContentProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContentProjectsRequest,
   output: UpdateContentProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -967,7 +965,7 @@ export interface GetProjectsRequest {
   scriptId: string;
 }
 
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectsRequest = /*@__PURE__*/ Schema.Struct({
   scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/projects/{scriptId}" }),
@@ -975,7 +973,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+export const GetProjectsResponse = /*@__PURE__*/ Project;
 
 export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -985,7 +983,7 @@ export const getProjects: API.OperationMethod<
   GetProjectsResponse,
   GetProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1005,7 +1003,7 @@ export interface GetMetricsProjectsRequest {
 }
 
 export const GetMetricsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     metricsGranularity: Schema.optional(Schema.String).pipe(
       T.HttpQuery("metricsGranularity"),
@@ -1019,7 +1017,7 @@ export const GetMetricsProjectsRequest =
   ) as unknown as Schema.Codec<GetMetricsProjectsRequest>;
 
 export type GetMetricsProjectsResponse = Metrics;
-export const GetMetricsProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Metrics;
+export const GetMetricsProjectsResponse = /*@__PURE__*/ Metrics;
 
 export type GetMetricsProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1029,7 +1027,7 @@ export const getMetricsProjects: API.OperationMethod<
   GetMetricsProjectsResponse,
   GetMetricsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsRequest,
   output: GetMetricsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1040,7 +1038,7 @@ export interface CreateProjectsRequest {
   body?: CreateProjectRequest;
 }
 
-export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateProjectsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(CreateProjectRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/projects", hasBody: true }),
@@ -1048,7 +1046,7 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateProjectsRequest>;
 
 export type CreateProjectsResponse = Project;
-export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+export const CreateProjectsResponse = /*@__PURE__*/ Project;
 
 export type CreateProjectsError =
   | DefaultErrors
@@ -1063,7 +1061,7 @@ export const createProjects: API.OperationMethod<
   CreateProjectsResponse,
   CreateProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1077,7 +1075,7 @@ export interface DeleteProjectsDeploymentsRequest {
 }
 
 export const DeleteProjectsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
   }).pipe(
@@ -1089,8 +1087,7 @@ export const DeleteProjectsDeploymentsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsDeploymentsRequest>;
 
 export type DeleteProjectsDeploymentsResponse = Empty;
-export const DeleteProjectsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsDeploymentsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsDeploymentsError =
   | DefaultErrors
@@ -1105,7 +1102,7 @@ export const deleteProjectsDeployments: API.OperationMethod<
   DeleteProjectsDeploymentsResponse,
   DeleteProjectsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsDeploymentsRequest,
   output: DeleteProjectsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1119,7 +1116,7 @@ export interface GetProjectsDeploymentsRequest {
 }
 
 export const GetProjectsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
   }).pipe(
@@ -1131,8 +1128,7 @@ export const GetProjectsDeploymentsRequest =
   ) as unknown as Schema.Codec<GetProjectsDeploymentsRequest>;
 
 export type GetProjectsDeploymentsResponse = Deployment;
-export const GetProjectsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Deployment;
+export const GetProjectsDeploymentsResponse = /*@__PURE__*/ Deployment;
 
 export type GetProjectsDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1142,7 +1138,7 @@ export const getProjectsDeployments: API.OperationMethod<
   GetProjectsDeploymentsResponse,
   GetProjectsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsDeploymentsRequest,
   output: GetProjectsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -1156,7 +1152,7 @@ export interface CreateProjectsDeploymentsRequest {
 }
 
 export const CreateProjectsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     body: Schema.optional(DeploymentConfig).pipe(T.HttpBody()),
   }).pipe(
@@ -1169,8 +1165,7 @@ export const CreateProjectsDeploymentsRequest =
   ) as unknown as Schema.Codec<CreateProjectsDeploymentsRequest>;
 
 export type CreateProjectsDeploymentsResponse = Deployment;
-export const CreateProjectsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Deployment;
+export const CreateProjectsDeploymentsResponse = /*@__PURE__*/ Deployment;
 
 export type CreateProjectsDeploymentsError =
   | DefaultErrors
@@ -1185,7 +1180,7 @@ export const createProjectsDeployments: API.OperationMethod<
   CreateProjectsDeploymentsResponse,
   CreateProjectsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsDeploymentsRequest,
   output: CreateProjectsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1201,7 +1196,7 @@ export interface ListProjectsDeploymentsRequest {
 }
 
 export const ListProjectsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
@@ -1212,7 +1207,7 @@ export const ListProjectsDeploymentsRequest =
 
 export type ListProjectsDeploymentsResponse = ListDeploymentsResponse;
 export const ListProjectsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentsResponse;
+  /*@__PURE__*/ ListDeploymentsResponse;
 
 export type ListProjectsDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1222,7 +1217,7 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
   ListProjectsDeploymentsResponse,
   ListProjectsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeploymentsRequest,
   output: ListProjectsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -1242,7 +1237,7 @@ export interface UpdateProjectsDeploymentsRequest {
 }
 
 export const UpdateProjectsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
     body: Schema.optional(UpdateDeploymentRequest).pipe(T.HttpBody()),
@@ -1256,8 +1251,7 @@ export const UpdateProjectsDeploymentsRequest =
   ) as unknown as Schema.Codec<UpdateProjectsDeploymentsRequest>;
 
 export type UpdateProjectsDeploymentsResponse = Deployment;
-export const UpdateProjectsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Deployment;
+export const UpdateProjectsDeploymentsResponse = /*@__PURE__*/ Deployment;
 
 export type UpdateProjectsDeploymentsError =
   | DefaultErrors
@@ -1272,7 +1266,7 @@ export const updateProjectsDeployments: API.OperationMethod<
   UpdateProjectsDeploymentsResponse,
   UpdateProjectsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsDeploymentsRequest,
   output: UpdateProjectsDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1286,7 +1280,7 @@ export interface CreateProjectsVersionsRequest {
 }
 
 export const CreateProjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     body: Schema.optional(Version).pipe(T.HttpBody()),
   }).pipe(
@@ -1299,8 +1293,7 @@ export const CreateProjectsVersionsRequest =
   ) as unknown as Schema.Codec<CreateProjectsVersionsRequest>;
 
 export type CreateProjectsVersionsResponse = Version;
-export const CreateProjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Version;
+export const CreateProjectsVersionsResponse = /*@__PURE__*/ Version;
 
 export type CreateProjectsVersionsError =
   | DefaultErrors
@@ -1315,7 +1308,7 @@ export const createProjectsVersions: API.OperationMethod<
   CreateProjectsVersionsResponse,
   CreateProjectsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsVersionsRequest,
   output: CreateProjectsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1331,7 +1324,7 @@ export interface ListProjectsVersionsRequest {
 }
 
 export const ListProjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1341,8 +1334,7 @@ export const ListProjectsVersionsRequest =
   ) as unknown as Schema.Codec<ListProjectsVersionsRequest>;
 
 export type ListProjectsVersionsResponse = ListVersionsResponse;
-export const ListProjectsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
+export const ListProjectsVersionsResponse = /*@__PURE__*/ ListVersionsResponse;
 
 export type ListProjectsVersionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1352,7 +1344,7 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
   ListProjectsVersionsResponse,
   ListProjectsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsVersionsRequest,
   output: ListProjectsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -1370,7 +1362,7 @@ export interface GetProjectsVersionsRequest {
 }
 
 export const GetProjectsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scriptId: Schema.String.pipe(T.HttpPath("scriptId")),
     versionNumber: Schema.Number.pipe(T.HttpPath("versionNumber")),
   }).pipe(
@@ -1382,7 +1374,7 @@ export const GetProjectsVersionsRequest =
   ) as unknown as Schema.Codec<GetProjectsVersionsRequest>;
 
 export type GetProjectsVersionsResponse = Version;
-export const GetProjectsVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
+export const GetProjectsVersionsResponse = /*@__PURE__*/ Version;
 
 export type GetProjectsVersionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1392,7 +1384,7 @@ export const getProjectsVersions: API.OperationMethod<
   GetProjectsVersionsResponse,
   GetProjectsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsVersionsRequest,
   output: GetProjectsVersionsResponse,
   errors: [NotFound, Forbidden],

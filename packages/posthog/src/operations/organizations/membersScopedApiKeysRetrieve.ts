@@ -9,7 +9,7 @@ export interface MembersScopedApiKeysRetrieveInput {
   user__uuid: string;
 }
 export const MembersScopedApiKeysRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     user__uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -52,7 +52,7 @@ export interface MembersScopedApiKeysRetrieveOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const MembersScopedApiKeysRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     user: Schema.optional(
       Schema.NullOr(
@@ -104,7 +104,7 @@ export const MembersScopedApiKeysRetrieveOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const membersScopedApiKeysRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MembersScopedApiKeysRetrieveInput,
     outputSchema: MembersScopedApiKeysRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

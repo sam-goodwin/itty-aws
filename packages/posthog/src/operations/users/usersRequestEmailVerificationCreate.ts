@@ -723,7 +723,7 @@ export interface UsersRequestEmailVerificationCreateInput {
   requires_credential_review?: boolean;
 }
 export const UsersRequestEmailVerificationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1524,11 +1524,11 @@ export const UsersRequestEmailVerificationCreateInput =
 // Output Schema
 export type UsersRequestEmailVerificationCreateOutput = void;
 export const UsersRequestEmailVerificationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersRequestEmailVerificationCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersRequestEmailVerificationCreateOutput>;
 
 // The operation
 export const usersRequestEmailVerificationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersRequestEmailVerificationCreateInput,
     outputSchema: UsersRequestEmailVerificationCreateOutput,
     errors: [BadRequest, Forbidden] as const,

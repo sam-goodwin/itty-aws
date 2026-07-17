@@ -10,7 +10,7 @@ export interface ListSolanaTokenBalancesInput {
   pageToken?: string;
 }
 export const ListSolanaTokenBalancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
@@ -31,7 +31,7 @@ export interface ListSolanaTokenBalancesOutput {
   nextPageToken?: string;
 }
 export const ListSolanaTokenBalancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balances: Schema.Array(
       Schema.Struct({
         amount: Schema.Struct({
@@ -60,9 +60,7 @@ export const ListSolanaTokenBalancesOutput =
  * @param pageSize - The number of balances to return per page.
  * @param pageToken - The token for the next page of balances. Will be empty if there are no more balances to fetch.
  */
-export const listSolanaTokenBalances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListSolanaTokenBalancesInput,
-    outputSchema: ListSolanaTokenBalancesOutput,
-  }),
-);
+export const listSolanaTokenBalances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListSolanaTokenBalancesInput,
+  outputSchema: ListSolanaTokenBalancesOutput,
+}));

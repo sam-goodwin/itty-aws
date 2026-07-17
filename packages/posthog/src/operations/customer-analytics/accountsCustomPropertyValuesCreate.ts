@@ -10,7 +10,7 @@ export interface AccountsCustomPropertyValuesCreateInput {
   value: string | number | boolean;
 }
 export const AccountsCustomPropertyValuesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     definition: Schema.String,
@@ -32,7 +32,7 @@ export interface AccountsCustomPropertyValuesCreateOutput {
   created_by_id: number | null;
 }
 export const AccountsCustomPropertyValuesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     account_id: Schema.String,
     definition_id: Schema.String,
@@ -48,7 +48,7 @@ export const AccountsCustomPropertyValuesCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const accountsCustomPropertyValuesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsCustomPropertyValuesCreateInput,
     outputSchema: AccountsCustomPropertyValuesCreateOutput,
   }));

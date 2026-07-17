@@ -13,7 +13,7 @@ export interface AuthorizationControllerListEffectivePermissionsInput {
   order?: string;
 }
 export const AuthorizationControllerListEffectivePermissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     resource_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface AuthorizationControllerListEffectivePermissionsOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationControllerListEffectivePermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -83,7 +83,7 @@ export const AuthorizationControllerListEffectivePermissionsOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const AuthorizationControllerListEffectivePermissions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationControllerListEffectivePermissionsInput,
     outputSchema: AuthorizationControllerListEffectivePermissionsOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

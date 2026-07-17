@@ -8,7 +8,7 @@ export interface AppIPAssignmentsListInput {
   app_name: string;
 }
 export const AppIPAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/apps/{app_name}/ip_assignments" }),
@@ -25,7 +25,7 @@ export interface AppIPAssignmentsListOutput {
   }[];
 }
 export const AppIPAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ips: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -45,10 +45,8 @@ export const AppIPAssignmentsListOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppIPAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppIPAssignmentsListInput,
-    outputSchema: AppIPAssignmentsListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const AppIPAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppIPAssignmentsListInput,
+  outputSchema: AppIPAssignmentsListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

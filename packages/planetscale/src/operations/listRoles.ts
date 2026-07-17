@@ -15,7 +15,7 @@ export interface ListRolesInput {
   status?: string;
   q?: string;
 }
-export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -38,7 +38,7 @@ export interface ListRolesOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     access_host_url: string;
@@ -58,7 +58,7 @@ export interface ListRolesOutput {
     expired: boolean;
     default: boolean;
     ttl: number | null;
-    inherited_roles: (
+    inherited_roles: ReadonlyArray<
       | "pscale_managed"
       | "pg_checkpoint"
       | "pg_create_subscription"
@@ -72,7 +72,8 @@ export interface ListRolesOutput {
       | "pg_use_reserved_connections"
       | "pg_write_all_data"
       | "postgres"
-    )[];
+    >;
+    with_replication: boolean;
     branch: {
       id: string;
       name: string;
@@ -85,9 +86,9 @@ export interface ListRolesOutput {
       require_where_on_delete: "off" | "warn" | "on";
       require_where_on_update: "off" | "warn" | "on";
     };
-  }[];
+  }>;
 }
-export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -132,6 +133,7 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "postgres",
         ]),
       ),
+      with_replication: Schema.Boolean,
       branch: Schema.Struct({
         id: Schema.String,
         name: Schema.String,
@@ -164,7 +166,7 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param status - Filter roles by status
  * @param q - Search roles by name or username
  */
-export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listRoles = /*@__PURE__*/ API.makePaginated(() => ({
   inputSchema: ListRolesInput,
   outputSchema: ListRolesOutput,
   errors: [Forbidden, NotFound] as const,

@@ -14,7 +14,7 @@ export interface DashboardsRunInsightsRetrieveInput {
   variables_override?: string;
 }
 export const DashboardsRunInsightsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters_override: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface DashboardsRunInsightsRetrieveOutput {
   }[];
 }
 export const DashboardsRunInsightsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -76,7 +76,7 @@ export const DashboardsRunInsightsRetrieveOutput =
  * @param variables_override - Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.
  */
 export const dashboardsRunInsightsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsRunInsightsRetrieveInput,
     outputSchema: DashboardsRunInsightsRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

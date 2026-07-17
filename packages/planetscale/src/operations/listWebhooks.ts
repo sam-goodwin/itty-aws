@@ -12,7 +12,7 @@ export interface ListWebhooksInput {
   page?: number;
   per_page?: number;
 }
-export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWebhooksInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -32,7 +32,7 @@ export interface ListWebhooksOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     url: string;
     secret: Redacted.Redacted<string>;
@@ -42,7 +42,7 @@ export interface ListWebhooksOutput {
     last_sent_at: string | null;
     created_at: string;
     updated_at: string;
-    events: (
+    events: ReadonlyArray<
       | "branch.ready"
       | "branch.anomaly"
       | "branch.out_of_memory"
@@ -62,10 +62,10 @@ export interface ListWebhooksOutput {
       | "deploy_request.schema_applied"
       | "keyspace.storage"
       | "webhook.test"
-    )[];
-  }[];
+    >;
+  }>;
 }
-export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListWebhooksOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -121,16 +121,14 @@ export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWebhooks = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListWebhooksInput,
-    outputSchema: ListWebhooksOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listWebhooks = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListWebhooksInput,
+  outputSchema: ListWebhooksOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

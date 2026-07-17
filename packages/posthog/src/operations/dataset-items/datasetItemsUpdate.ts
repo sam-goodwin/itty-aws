@@ -41,7 +41,7 @@ export interface DatasetItemsUpdateInput {
   team?: number;
 }
 export const DatasetItemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     dataset: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface DatasetItemsUpdateOutput {
   team?: number;
 }
 export const DatasetItemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
     input: Schema.optional(Schema.Unknown),
@@ -186,7 +186,7 @@ export const DatasetItemsUpdateOutput =
  * @param id - A UUID string identifying this dataset item.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const datasetItemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const datasetItemsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatasetItemsUpdateInput,
   outputSchema: DatasetItemsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

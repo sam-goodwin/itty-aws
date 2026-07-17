@@ -26,7 +26,7 @@ export interface DomainsUpdateInput {
   id_jag_jwks_url?: string | null;
   id_jag_allowed_clients?: string[];
 }
-export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization_id: Schema.String.pipe(T.PathParam()),
   domain: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface DomainsUpdateOutput {
   id_jag_jwks_url?: string | null;
   id_jag_allowed_clients?: string[];
 }
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
   is_verified: Schema.optional(Schema.Boolean),
@@ -104,7 +104,7 @@ export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this domain.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsUpdateInput,
   outputSchema: DomainsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

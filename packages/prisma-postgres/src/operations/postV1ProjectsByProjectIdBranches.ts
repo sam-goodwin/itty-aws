@@ -10,7 +10,7 @@ export interface PostV1ProjectsByProjectIdBranchesInput {
   isDefault?: boolean;
 }
 export const PostV1ProjectsByProjectIdBranchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     gitName: Schema.String,
     isDefault: Schema.optional(Schema.Boolean),
@@ -33,7 +33,7 @@ export interface PostV1ProjectsByProjectIdBranchesOutput {
   };
 }
 export const PostV1ProjectsByProjectIdBranchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -59,7 +59,7 @@ export const PostV1ProjectsByProjectIdBranchesOutput =
  * Creates a Branch under the specified Project. The first Branch in a Project is always created with isDefault=true and role=production regardless of the body value. Later Branches are created with role=preview. Setting isDefault=true while another Branch already holds the default atomically swaps the default flag only.
  */
 export const postV1ProjectsByProjectIdBranches =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ProjectsByProjectIdBranchesInput,
     outputSchema: PostV1ProjectsByProjectIdBranchesOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,

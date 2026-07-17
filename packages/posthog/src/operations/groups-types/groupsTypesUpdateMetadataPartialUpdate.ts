@@ -15,7 +15,7 @@ export interface GroupsTypesUpdateMetadataPartialUpdateInput {
   created_at?: string | null;
 }
 export const GroupsTypesUpdateMetadataPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     group_type: Schema.optional(Schema.String),
     group_type_index: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export const GroupsTypesUpdateMetadataPartialUpdateInput =
 // Output Schema
 export type GroupsTypesUpdateMetadataPartialUpdateOutput = void;
 export const GroupsTypesUpdateMetadataPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesUpdateMetadataPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesUpdateMetadataPartialUpdateOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const GroupsTypesUpdateMetadataPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const groupsTypesUpdateMetadataPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroupsTypesUpdateMetadataPartialUpdateInput,
     outputSchema: GroupsTypesUpdateMetadataPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

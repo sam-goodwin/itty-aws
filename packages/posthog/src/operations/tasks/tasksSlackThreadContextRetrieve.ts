@@ -9,7 +9,7 @@ export interface TasksSlackThreadContextRetrieveInput {
   url: string;
 }
 export const TasksSlackThreadContextRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     url: Schema.String,
   }).pipe(
@@ -64,7 +64,7 @@ export interface TasksSlackThreadContextRetrieveOutput {
   }[];
 }
 export const TasksSlackThreadContextRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thread: Schema.Struct({
       url: Schema.String,
       channel: Schema.String,
@@ -124,7 +124,7 @@ export const TasksSlackThreadContextRetrieveOutput =
  * @param url - Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C…/p1779956938619299). Replies inside the thread are accepted too — the `thread_ts` query param (when present) takes precedence over the in-path message ts.
  */
 export const tasksSlackThreadContextRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TasksSlackThreadContextRetrieveInput,
     outputSchema: TasksSlackThreadContextRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

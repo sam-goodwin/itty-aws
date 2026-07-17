@@ -70,7 +70,7 @@ export interface ProductToursPartialUpdateInput {
   creation_context?: "app" | "toolbar";
 }
 export const ProductToursPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface ProductToursPartialUpdateOutput {
   creation_context?: "app" | "toolbar";
 }
 export const ProductToursPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -374,10 +374,8 @@ export const ProductToursPartialUpdateOutput =
  * @param id - A UUID string identifying this product tour.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const productToursPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductToursPartialUpdateInput,
-    outputSchema: ProductToursPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const productToursPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductToursPartialUpdateInput,
+  outputSchema: ProductToursPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

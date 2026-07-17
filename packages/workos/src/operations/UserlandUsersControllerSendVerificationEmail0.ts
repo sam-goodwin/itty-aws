@@ -8,7 +8,7 @@ export interface UserlandUsersControllerSendVerificationEmail0Input {
   id: string;
 }
 export const UserlandUsersControllerSendVerificationEmail0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -37,7 +37,7 @@ export interface UserlandUsersControllerSendVerificationEmail0Output {
   };
 }
 export const UserlandUsersControllerSendVerificationEmail0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export const UserlandUsersControllerSendVerificationEmail0Output =
  * @param id - The ID of the user.
  */
 export const UserlandUsersControllerSendVerificationEmail0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerSendVerificationEmail0Input,
     outputSchema: UserlandUsersControllerSendVerificationEmail0Output,
     errors: [BadRequest, NotFound] as const,

@@ -18,7 +18,7 @@ export interface AppCertificatesCustomCreateInput {
   private_key?: string | Redacted.Redacted<string>;
 }
 export const AppCertificatesCustomCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     fullchain: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface AppCertificatesCustomCreateOutput {
   }[];
 }
 export const AppCertificatesCustomCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -147,10 +147,8 @@ export const AppCertificatesCustomCreateOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppCertificatesCustomCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppCertificatesCustomCreateInput,
-    outputSchema: AppCertificatesCustomCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const AppCertificatesCustomCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppCertificatesCustomCreateInput,
+  outputSchema: AppCertificatesCustomCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

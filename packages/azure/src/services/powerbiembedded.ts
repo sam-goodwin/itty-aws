@@ -11,7 +11,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetAvailableOperationsInput {}
 export const GetAvailableOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.PowerBI/operations",
@@ -33,7 +33,7 @@ export interface GetAvailableOperationsOutput {
   }[];
 }
 export const GetAvailableOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -58,12 +58,10 @@ export const GetAvailableOperationsOutput =
  *
  * @param api-version - Client Api Version.
  */
-export const getAvailableOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAvailableOperationsInput,
-    outputSchema: GetAvailableOperationsOutput,
-  }),
-);
+export const getAvailableOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAvailableOperationsInput,
+  outputSchema: GetAvailableOperationsOutput,
+}));
 // Input Schema
 export interface WorkspaceCollectionsCheckNameAvailabilityInput {
   subscriptionId: string;
@@ -72,7 +70,7 @@ export interface WorkspaceCollectionsCheckNameAvailabilityInput {
   type?: string;
 }
 export const WorkspaceCollectionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -92,7 +90,7 @@ export interface WorkspaceCollectionsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const WorkspaceCollectionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Unavailable", "Invalid"])),
     message: Schema.optional(Schema.String),
@@ -107,7 +105,7 @@ export const WorkspaceCollectionsCheckNameAvailabilityOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsCheckNameAvailabilityInput,
     outputSchema: WorkspaceCollectionsCheckNameAvailabilityOutput,
   }));
@@ -121,7 +119,7 @@ export interface WorkspaceCollectionsCreateInput {
   sku?: { name: "S1"; tier: "Standard" };
 }
 export const WorkspaceCollectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -152,7 +150,7 @@ export interface WorkspaceCollectionsCreateOutput {
   properties?: unknown;
 }
 export const WorkspaceCollectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -176,12 +174,10 @@ export const WorkspaceCollectionsCreateOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  * @param api-version - Client Api Version.
  */
-export const WorkspaceCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsCreateInput,
-    outputSchema: WorkspaceCollectionsCreateOutput,
-  }),
-);
+export const WorkspaceCollectionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsCreateInput,
+  outputSchema: WorkspaceCollectionsCreateOutput,
+}));
 // Input Schema
 export interface WorkspaceCollectionsDeleteInput {
   subscriptionId: string;
@@ -189,7 +185,7 @@ export interface WorkspaceCollectionsDeleteInput {
   workspaceCollectionName: string;
 }
 export const WorkspaceCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -204,7 +200,7 @@ export const WorkspaceCollectionsDeleteInput =
 // Output Schema
 export type WorkspaceCollectionsDeleteOutput = void;
 export const WorkspaceCollectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspaceCollectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspaceCollectionsDeleteOutput>;
 
 // The operation
 /**
@@ -215,12 +211,10 @@ export const WorkspaceCollectionsDeleteOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  * @param api-version - Client Api Version.
  */
-export const WorkspaceCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsDeleteInput,
-    outputSchema: WorkspaceCollectionsDeleteOutput,
-  }),
-);
+export const WorkspaceCollectionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsDeleteInput,
+  outputSchema: WorkspaceCollectionsDeleteOutput,
+}));
 // Input Schema
 export interface WorkspaceCollectionsGetAccessKeysInput {
   subscriptionId: string;
@@ -228,7 +222,7 @@ export interface WorkspaceCollectionsGetAccessKeysInput {
   workspaceCollectionName: string;
 }
 export const WorkspaceCollectionsGetAccessKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -246,7 +240,7 @@ export interface WorkspaceCollectionsGetAccessKeysOutput {
   key2?: string;
 }
 export const WorkspaceCollectionsGetAccessKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkspaceCollectionsGetAccessKeysOutput>;
@@ -261,7 +255,7 @@ export const WorkspaceCollectionsGetAccessKeysOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsGetAccessKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsGetAccessKeysInput,
     outputSchema: WorkspaceCollectionsGetAccessKeysOutput,
   }));
@@ -272,7 +266,7 @@ export interface WorkspaceCollectionsGetByNameInput {
   workspaceCollectionName: string;
 }
 export const WorkspaceCollectionsGetByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -295,7 +289,7 @@ export interface WorkspaceCollectionsGetByNameOutput {
   properties?: unknown;
 }
 export const WorkspaceCollectionsGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -320,7 +314,7 @@ export const WorkspaceCollectionsGetByNameOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsGetByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsGetByNameInput,
     outputSchema: WorkspaceCollectionsGetByNameOutput,
   }));
@@ -330,7 +324,7 @@ export interface WorkspaceCollectionsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const WorkspaceCollectionsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -354,7 +348,7 @@ export interface WorkspaceCollectionsListByResourceGroupOutput {
   }[];
 }
 export const WorkspaceCollectionsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -384,7 +378,7 @@ export const WorkspaceCollectionsListByResourceGroupOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsListByResourceGroupInput,
     outputSchema: WorkspaceCollectionsListByResourceGroupOutput,
   }));
@@ -393,7 +387,7 @@ export interface WorkspaceCollectionsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const WorkspaceCollectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -416,7 +410,7 @@ export interface WorkspaceCollectionsListBySubscriptionOutput {
   }[];
 }
 export const WorkspaceCollectionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -445,7 +439,7 @@ export const WorkspaceCollectionsListBySubscriptionOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsListBySubscriptionInput,
     outputSchema: WorkspaceCollectionsListBySubscriptionOutput,
   }));
@@ -457,7 +451,7 @@ export interface WorkspaceCollectionsMigrateInput {
   resources?: string[];
 }
 export const WorkspaceCollectionsMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     targetResourceGroup: Schema.optional(Schema.String),
@@ -473,7 +467,7 @@ export const WorkspaceCollectionsMigrateInput =
 // Output Schema
 export type WorkspaceCollectionsMigrateOutput = void;
 export const WorkspaceCollectionsMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspaceCollectionsMigrateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspaceCollectionsMigrateOutput>;
 
 // The operation
 /**
@@ -483,12 +477,10 @@ export const WorkspaceCollectionsMigrateOutput =
  * @param resourceGroupName - Azure resource group
  * @param api-version - Client Api Version.
  */
-export const WorkspaceCollectionsMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsMigrateInput,
-    outputSchema: WorkspaceCollectionsMigrateOutput,
-  }),
-);
+export const WorkspaceCollectionsMigrate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsMigrateInput,
+  outputSchema: WorkspaceCollectionsMigrateOutput,
+}));
 // Input Schema
 export interface WorkspaceCollectionsRegenerateKeyInput {
   subscriptionId: string;
@@ -497,7 +489,7 @@ export interface WorkspaceCollectionsRegenerateKeyInput {
   keyName?: "key1" | "key2";
 }
 export const WorkspaceCollectionsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -516,7 +508,7 @@ export interface WorkspaceCollectionsRegenerateKeyOutput {
   key2?: string;
 }
 export const WorkspaceCollectionsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WorkspaceCollectionsRegenerateKeyOutput>;
@@ -531,7 +523,7 @@ export const WorkspaceCollectionsRegenerateKeyOutput =
  * @param api-version - Client Api Version.
  */
 export const WorkspaceCollectionsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkspaceCollectionsRegenerateKeyInput,
     outputSchema: WorkspaceCollectionsRegenerateKeyOutput,
   }));
@@ -544,7 +536,7 @@ export interface WorkspaceCollectionsUpdateInput {
   sku?: { name: "S1"; tier: "Standard" };
 }
 export const WorkspaceCollectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +566,7 @@ export interface WorkspaceCollectionsUpdateOutput {
   properties?: unknown;
 }
 export const WorkspaceCollectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -598,19 +590,17 @@ export const WorkspaceCollectionsUpdateOutput =
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  * @param api-version - Client Api Version.
  */
-export const WorkspaceCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkspaceCollectionsUpdateInput,
-    outputSchema: WorkspaceCollectionsUpdateOutput,
-  }),
-);
+export const WorkspaceCollectionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkspaceCollectionsUpdateInput,
+  outputSchema: WorkspaceCollectionsUpdateOutput,
+}));
 // Input Schema
 export interface WorkspacesListInput {
   subscriptionId: string;
   resourceGroupName: string;
   workspaceCollectionName: string;
 }
-export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceCollectionName: Schema.String.pipe(T.PathParam()),
@@ -626,7 +616,7 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WorkspacesListOutput {
   value?: { id?: string; name?: string; type?: string; properties?: unknown }[];
 }
-export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WorkspacesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -648,7 +638,7 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceCollectionName - Power BI Embedded Workspace Collection name
  * @param api-version - Client Api Version.
  */
-export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkspacesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesListInput,
   outputSchema: WorkspacesListOutput,
 }));

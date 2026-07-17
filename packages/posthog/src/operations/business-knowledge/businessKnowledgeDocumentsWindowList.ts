@@ -10,7 +10,7 @@ export interface BusinessKnowledgeDocumentsWindowListInput {
   radius?: number;
 }
 export const BusinessKnowledgeDocumentsWindowListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     around_ordinal: Schema.Number,
@@ -32,7 +32,7 @@ export type BusinessKnowledgeDocumentsWindowListOutput = {
   document_title: string;
 }[];
 export const BusinessKnowledgeDocumentsWindowListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       chunk_id: Schema.String,
       ordinal: Schema.Number,
@@ -55,7 +55,7 @@ export const BusinessKnowledgeDocumentsWindowListOutput =
  * @param radius - Number of chunks before and after the center to include. Defaults to 5, clamped to [0, 15].
  */
 export const businessKnowledgeDocumentsWindowList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BusinessKnowledgeDocumentsWindowListInput,
     outputSchema: BusinessKnowledgeDocumentsWindowListOutput,
   }));

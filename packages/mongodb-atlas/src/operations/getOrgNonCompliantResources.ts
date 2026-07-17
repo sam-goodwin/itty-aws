@@ -10,7 +10,7 @@ export interface GetOrgNonCompliantResourcesInput {
   pretty?: boolean;
 }
 export const GetOrgNonCompliantResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetOrgNonCompliantResourcesInput =
 // Output Schema
 export type GetOrgNonCompliantResourcesOutput = void;
 export const GetOrgNonCompliantResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgNonCompliantResourcesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgNonCompliantResourcesOutput>;
 
 // The operation
 /**
@@ -36,10 +36,8 @@ export const GetOrgNonCompliantResourcesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
-export const getOrgNonCompliantResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgNonCompliantResourcesInput,
-    outputSchema: GetOrgNonCompliantResourcesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getOrgNonCompliantResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgNonCompliantResourcesInput,
+  outputSchema: GetOrgNonCompliantResourcesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

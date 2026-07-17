@@ -7,7 +7,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1GetProjectInput {
   ref: string;
 }
-export const V1GetProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetProjectInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}" }),
@@ -45,7 +45,7 @@ export interface V1GetProjectOutput {
     release_channel: string;
   };
 }
-export const V1GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetProjectOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   ref: Schema.String,
   organization_id: Schema.String,
@@ -84,7 +84,7 @@ export const V1GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param ref - Project ref
  */
-export const v1GetProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetProjectInput,
   outputSchema: V1GetProjectOutput,
   errors: [BadRequest, Forbidden] as const,

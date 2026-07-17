@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 export interface GetV1AppsByAppIdInput {
   appId: string;
 }
-export const GetV1AppsByAppIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1AppsByAppIdInput = /*@__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/apps/{appId}" }),
@@ -28,25 +28,23 @@ export interface GetV1AppsByAppIdOutput {
     createdAt: string;
   };
 }
-export const GetV1AppsByAppIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Struct({
+export const GetV1AppsByAppIdOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Struct({
+    id: Schema.String,
+    type: Schema.String,
+    url: Schema.String,
+    name: Schema.String,
+    region: Schema.Struct({
       id: Schema.String,
-      type: Schema.String,
-      url: Schema.String,
       name: Schema.String,
-      region: Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-      }),
-      projectId: Schema.String,
-      branchId: Schema.NullOr(Schema.String),
-      latestDeploymentId: Schema.NullOr(Schema.String),
-      appEndpointDomain: Schema.String,
-      createdAt: Schema.String,
     }),
-  },
-) as unknown as Schema.Codec<GetV1AppsByAppIdOutput>;
+    projectId: Schema.String,
+    branchId: Schema.NullOr(Schema.String),
+    latestDeploymentId: Schema.NullOr(Schema.String),
+    appEndpointDomain: Schema.String,
+    createdAt: Schema.String,
+  }),
+}) as unknown as Schema.Codec<GetV1AppsByAppIdOutput>;
 
 // The operation
 /**
@@ -55,7 +53,7 @@ export const GetV1AppsByAppIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns an app by ID, including its region and active promoted deployment reference.
  */
-export const getV1AppsByAppId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1AppsByAppId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1AppsByAppIdInput,
   outputSchema: GetV1AppsByAppIdOutput,
   errors: [Forbidden, NotFound] as const,

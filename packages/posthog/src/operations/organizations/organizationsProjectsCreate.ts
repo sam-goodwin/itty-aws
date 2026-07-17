@@ -1100,7 +1100,7 @@ export interface OrganizationsProjectsCreateInput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
@@ -3380,7 +3380,7 @@ export interface OrganizationsProjectsCreateOutput {
   events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     organization: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4566,10 +4566,8 @@ export const OrganizationsProjectsCreateOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const organizationsProjectsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsProjectsCreateInput,
-    outputSchema: OrganizationsProjectsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const organizationsProjectsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsProjectsCreateInput,
+  outputSchema: OrganizationsProjectsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -10,7 +10,7 @@ export interface RemoveOrgUserInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const RemoveOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemoveOrgUserInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const RemoveOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RemoveOrgUserOutput = void;
 export const RemoveOrgUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrgUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrgUserOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const RemoveOrgUserOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) resource and filter by `username`.
  */
-export const removeOrgUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeOrgUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveOrgUserInput,
   outputSchema: RemoveOrgUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

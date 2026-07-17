@@ -8,7 +8,7 @@ export interface GetDelegationForEndUserInput {
   projectID?: string;
 }
 export const GetDelegationForEndUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
   }).pipe(
@@ -23,7 +23,7 @@ export interface GetDelegationForEndUserOutput {
   expiresAt: string;
 }
 export const GetDelegationForEndUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresAt: Schema.String,
   }) as unknown as Schema.Codec<GetDelegationForEndUserOutput>;
 
@@ -36,9 +36,7 @@ export const GetDelegationForEndUserOutput =
  * @param userId - The ID of the end user.
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
-export const getDelegationForEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDelegationForEndUserInput,
-    outputSchema: GetDelegationForEndUserOutput,
-  }),
-);
+export const getDelegationForEndUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDelegationForEndUserInput,
+  outputSchema: GetDelegationForEndUserOutput,
+}));

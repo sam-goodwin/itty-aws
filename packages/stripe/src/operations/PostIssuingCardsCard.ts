@@ -939,7 +939,7 @@ export interface PostIssuingCardsCardInput {
   status?: "active" | "canceled" | "inactive";
 }
 export const PostIssuingCardsCardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.String.pipe(T.PathParam()),
     cancellation_reason: Schema.optional(Schema.Literals(["lost", "stolen"])),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -3243,7 +3243,7 @@ export interface PostIssuingCardsCardOutput {
   } | null;
 }
 export const PostIssuingCardsCardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
       Schema.Literals([
@@ -4528,9 +4528,7 @@ export const PostIssuingCardsCardOutput =
  *
  * <p>Updates the specified Issuing <code>Card</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostIssuingCardsCard = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostIssuingCardsCardInput,
-    outputSchema: PostIssuingCardsCardOutput,
-  }),
-);
+export const PostIssuingCardsCard = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingCardsCardInput,
+  outputSchema: PostIssuingCardsCardOutput,
+}));

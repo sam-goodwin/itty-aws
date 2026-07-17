@@ -12,7 +12,7 @@ export interface VisualReviewRunsSnapshotsListInput {
   offset?: number;
 }
 export const VisualReviewRunsSnapshotsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     include_quarantined: Schema.optional(Schema.Boolean),
@@ -86,7 +86,7 @@ export interface VisualReviewRunsSnapshotsListOutput {
   quarantined_count?: number;
 }
 export const VisualReviewRunsSnapshotsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -188,7 +188,7 @@ export const VisualReviewRunsSnapshotsListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewRunsSnapshotsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewRunsSnapshotsListInput,
     outputSchema: VisualReviewRunsSnapshotsListOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

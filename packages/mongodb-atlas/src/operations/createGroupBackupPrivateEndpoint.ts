@@ -11,7 +11,7 @@ export interface CreateGroupBackupPrivateEndpointInput {
   envelope?: boolean;
 }
 export const CreateGroupBackupPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
     pretty: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupBackupPrivateEndpointInput =
 // Output Schema
 export type CreateGroupBackupPrivateEndpointOutput = void;
 export const CreateGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupBackupPrivateEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupBackupPrivateEndpointOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupBackupPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoint to create.
  */
 export const createGroupBackupPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupBackupPrivateEndpointInput,
     outputSchema: CreateGroupBackupPrivateEndpointOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

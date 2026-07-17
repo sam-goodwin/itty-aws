@@ -23,7 +23,7 @@ export interface PropertyDefinitionsListInput {
   verified?: string;
 }
 export const PropertyDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     event_names: Schema.optional(Schema.String),
     exclude_core_properties: Schema.optional(Schema.Boolean),
@@ -118,7 +118,7 @@ export interface PropertyDefinitionsListOutput {
   }[];
 }
 export const PropertyDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -251,10 +251,8 @@ export const PropertyDefinitionsListOutput =
 * `session` - session
  * @param verified - Filter by verified status. True returns only verified, false returns only unverified.
  */
-export const propertyDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PropertyDefinitionsListInput,
-    outputSchema: PropertyDefinitionsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const propertyDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PropertyDefinitionsListInput,
+  outputSchema: PropertyDefinitionsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

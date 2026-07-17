@@ -8,7 +8,7 @@ export interface GetV1DeploymentsByDeploymentIdInput {
   deploymentId: string;
 }
 export const GetV1DeploymentsByDeploymentIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/deployments/{deploymentId}" }),
@@ -29,7 +29,7 @@ export interface GetV1DeploymentsByDeploymentIdOutput {
   };
 }
 export const GetV1DeploymentsByDeploymentIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -55,7 +55,7 @@ export const GetV1DeploymentsByDeploymentIdOutput =
  * Returns a deployment by ID, including its current status derived from the underlying VM state.
  */
 export const getV1DeploymentsByDeploymentId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1DeploymentsByDeploymentIdInput,
     outputSchema: GetV1DeploymentsByDeploymentIdOutput,
     errors: [Forbidden, NotFound] as const,

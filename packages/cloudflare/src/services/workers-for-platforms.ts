@@ -152,7 +152,7 @@ interface ListDispatchNamespacesResponseResult {
   trustedWorkers?: boolean | null;
 }
 const ListDispatchNamespacesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -186,7 +186,7 @@ interface NamedHandler {
   /** The name of the export. */
   name?: string | null;
 }
-const NamedHandler = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NamedHandler = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     handlers: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -207,7 +207,7 @@ interface Logs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-const Logs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Logs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     invocationLogs: Schema.Boolean,
@@ -241,7 +241,7 @@ interface Traces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth */
   propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
 }
-const Traces = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Traces = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     destinations: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -293,7 +293,7 @@ interface Observability {
     propagationPolicy?: "authenticated" | "accept" | (string & {}) | null;
   } | null;
 }
-const Observability = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Observability = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     headSamplingRate: Schema.optional(
@@ -325,7 +325,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("smart"),
       lastAnalyzedAt: Schema.optional(
@@ -367,7 +367,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement1 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       region: Schema.String,
       lastAnalyzedAt: Schema.optional(
@@ -409,7 +409,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement2 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostname: Schema.String,
       lastAnalyzedAt: Schema.optional(
@@ -451,7 +451,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement3 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement3 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
       lastAnalyzedAt: Schema.optional(
@@ -495,7 +495,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement4 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement4 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       region: Schema.String,
@@ -541,7 +541,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement5 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement5 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostname: Schema.String,
       mode: Schema.Literal("targeted"),
@@ -587,7 +587,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement6 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement6 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
       mode: Schema.Literal("targeted"),
@@ -621,7 +621,7 @@ interface Region {
   /** Cloud region in format 'provider:region'. */
   region: string;
 }
-const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Region = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     region: Schema.String,
   }),
@@ -631,7 +631,7 @@ interface Hostname {
   /** HTTP hostname for targeted placement. */
   hostname: string;
 }
-const Hostname = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Hostname = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hostname: Schema.String,
   }),
@@ -641,7 +641,7 @@ interface Host {
   /** TCP host:port for targeted placement. */
   host: string;
 }
-const Host = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Host = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.String,
   }),
@@ -663,7 +663,7 @@ interface GetDispatchNamespaceScriptResponseScriptPlacement7 {
     | null;
 }
 const GetDispatchNamespaceScriptResponseScriptPlacement7 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       target: Schema.Array(Schema.Union([Region, Hostname, Host])),
@@ -701,7 +701,7 @@ interface ConsumerScript {
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string | null;
 }
-const ConsumerScript = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConsumerScript = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     service: Schema.String,
     environment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -870,7 +870,7 @@ interface Script {
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
-const Script = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Script = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     compatibilityDate: Schema.optional(
@@ -998,7 +998,7 @@ interface Config {
   /** @deprecated When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script. */
   serveDirectly?: boolean | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     headers: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     redirects: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1068,7 +1068,7 @@ interface Assets {
   /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string | null;
 }
-const Assets = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Assets = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Schema.optional(Schema.Union([Config, Schema.Null])),
     jwt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1081,7 +1081,7 @@ interface WorkersBindingKindAI {
   /** The kind of resource that the binding provides. */
   type: "ai";
 }
-const WorkersBindingKindAI = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindAI = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     type: Schema.Literal("ai"),
@@ -1098,21 +1098,20 @@ interface WorkersBindingKindAISearch {
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-const WorkersBindingKindAISearch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      instanceName: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("ai_search"),
-      namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        instanceName: "instance_name",
-        name: "name",
-        type: "type",
-        namespace: "namespace",
-      }),
-    ),
+const WorkersBindingKindAISearch = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    instanceName: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("ai_search"),
+    namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      instanceName: "instance_name",
+      name: "name",
+      type: "type",
+      namespace: "namespace",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindAISearch>;
 
 interface WorkersBindingKindAISearchNamespace {
@@ -1124,7 +1123,7 @@ interface WorkersBindingKindAISearchNamespace {
   type: "ai_search_namespace";
 }
 const WorkersBindingKindAISearchNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       namespace: Schema.String,
@@ -1141,7 +1140,7 @@ interface WorkersBindingKindAnalyticsEngine {
   type: "analytics_engine";
 }
 const WorkersBindingKindAnalyticsEngine =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataset: Schema.String,
       name: Schema.String,
@@ -1155,12 +1154,11 @@ interface WorkersBindingKindAssets {
   /** The kind of resource that the binding provides. */
   type: "assets";
 }
-const WorkersBindingKindAssets = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("assets"),
-    }),
+const WorkersBindingKindAssets = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("assets"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindAssets>;
 
 interface WorkersBindingKindBrowser {
@@ -1169,12 +1167,11 @@ interface WorkersBindingKindBrowser {
   /** The kind of resource that the binding provides. */
   type: "browser";
 }
-const WorkersBindingKindBrowser = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("browser"),
-    }),
+const WorkersBindingKindBrowser = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("browser"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindBrowser>;
 
 interface WorkersBindingKindD1 {
@@ -1187,7 +1184,7 @@ interface WorkersBindingKindD1 {
   /** @deprecated This property has been renamed to `database_id`. */
   id?: string | null;
 }
-const WorkersBindingKindD1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindD1 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     databaseId: Schema.String,
     name: Schema.String,
@@ -1211,20 +1208,19 @@ interface WorkersBindingKindDataBlob {
   /** @deprecated The kind of resource that the binding provides. */
   type: "data_blob";
 }
-const WorkersBindingKindDataBlob = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      part: Schema.String,
-      type: Schema.Literal("data_blob"),
-    }),
+const WorkersBindingKindDataBlob = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    part: Schema.String,
+    type: Schema.Literal("data_blob"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindDataBlob>;
 
 interface Param {
   /** Name of the parameter. */
   name: string;
 }
-const Param = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Param = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
   }),
@@ -1238,7 +1234,7 @@ interface Worker {
   /** Name of the outbound worker. */
   service?: string | null;
 }
-const Worker = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Worker = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     entrypoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     environment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1256,7 +1252,7 @@ interface Outbound {
     service?: string | null;
   } | null;
 }
-const Outbound = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Outbound = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     params: Schema.optional(Schema.Union([Schema.Array(Param), Schema.Null])),
     worker: Schema.optional(Schema.Union([Worker, Schema.Null])),
@@ -1281,7 +1277,7 @@ interface WorkersBindingKindDispatchNamespace {
   } | null;
 }
 const WorkersBindingKindDispatchNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       namespace: Schema.String,
@@ -1307,7 +1303,7 @@ interface WorkersBindingKindDurableObjectNamespace {
   scriptName?: string | null;
 }
 const WorkersBindingKindDurableObjectNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("durable_object_namespace"),
@@ -1339,13 +1335,12 @@ interface WorkersBindingKindHyperdrive {
   /** The kind of resource that the binding provides. */
   type: "hyperdrive";
 }
-const WorkersBindingKindHyperdrive = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("hyperdrive"),
-    }),
+const WorkersBindingKindHyperdrive = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("hyperdrive"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindHyperdrive>;
 
 interface WorkersBindingKindInherit {
@@ -1358,21 +1353,20 @@ interface WorkersBindingKindInherit {
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest versi */
   versionId?: string | null;
 }
-const WorkersBindingKindInherit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("inherit"),
-      oldName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      versionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        oldName: "old_name",
-        versionId: "version_id",
-      }),
-    ),
+const WorkersBindingKindInherit = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("inherit"),
+    oldName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    versionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      oldName: "old_name",
+      versionId: "version_id",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindInherit>;
 
 interface WorkersBindingKindImages {
@@ -1381,12 +1375,11 @@ interface WorkersBindingKindImages {
   /** The kind of resource that the binding provides. */
   type: "images";
 }
-const WorkersBindingKindImages = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("images"),
-    }),
+const WorkersBindingKindImages = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("images"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindImages>;
 
 interface WorkersBindingKindJson {
@@ -1397,7 +1390,7 @@ interface WorkersBindingKindJson {
   /** The kind of resource that the binding provides. */
   type: "json";
 }
-const WorkersBindingKindJson = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindJson = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     json: Schema.Unknown,
     name: Schema.String,
@@ -1414,7 +1407,7 @@ interface WorkersBindingKindKVNamespace {
   type: "kv_namespace";
 }
 const WorkersBindingKindKVNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       namespaceId: Schema.String,
@@ -1434,7 +1427,7 @@ interface WorkersBindingKindMedia {
   /** The kind of resource that the binding provides. */
   type: "media";
 }
-const WorkersBindingKindMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindMedia = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     type: Schema.Literal("media"),
@@ -1450,7 +1443,7 @@ interface WorkersBindingKindMTLSCertificate {
   type: "mtls_certificate";
 }
 const WorkersBindingKindMTLSCertificate =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String,
       name: Schema.String,
@@ -1472,13 +1465,12 @@ interface WorkersBindingKindPlainText {
   /** The kind of resource that the binding provides. */
   type: "plain_text";
 }
-const WorkersBindingKindPlainText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      text: Schema.String,
-      type: Schema.Literal("plain_text"),
-    }),
+const WorkersBindingKindPlainText = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    text: Schema.String,
+    type: Schema.Literal("plain_text"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindPlainText>;
 
 interface WorkersBindingKindPipelines {
@@ -1489,13 +1481,12 @@ interface WorkersBindingKindPipelines {
   /** The kind of resource that the binding provides. */
   type: "pipelines";
 }
-const WorkersBindingKindPipelines = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      pipeline: Schema.String,
-      type: Schema.Literal("pipelines"),
-    }),
+const WorkersBindingKindPipelines = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    pipeline: Schema.String,
+    type: Schema.Literal("pipelines"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindPipelines>;
 
 interface WorkersBindingKindQueue {
@@ -1506,7 +1497,7 @@ interface WorkersBindingKindQueue {
   /** The kind of resource that the binding provides. */
   type: "queue";
 }
-const WorkersBindingKindQueue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindQueue = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     queueName: Schema.String,
@@ -1524,7 +1515,7 @@ interface Simple {
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when */
   mitigationTimeout?: number | null;
 }
-const Simple = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Simple = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     limit: Schema.Number,
     period: Schema.Number,
@@ -1550,21 +1541,20 @@ interface WorkersBindingKindRatelimit {
   /** The kind of resource that the binding provides. */
   type: "ratelimit";
 }
-const WorkersBindingKindRatelimit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      namespaceId: Schema.String,
-      simple: Simple,
-      type: Schema.Literal("ratelimit"),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        namespaceId: "namespace_id",
-        simple: "simple",
-        type: "type",
-      }),
-    ),
+const WorkersBindingKindRatelimit = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    namespaceId: Schema.String,
+    simple: Simple,
+    type: Schema.Literal("ratelimit"),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      namespaceId: "namespace_id",
+      simple: "simple",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindRatelimit>;
 
 interface WorkersBindingKindR2Bucket {
@@ -1577,29 +1567,28 @@ interface WorkersBindingKindR2Bucket {
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: "eu" | "fedramp" | "fedramp-high" | (string & {}) | null;
 }
-const WorkersBindingKindR2Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      bucketName: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("r2_bucket"),
-      jurisdiction: Schema.optional(
+const WorkersBindingKindR2Bucket = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    bucketName: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("r2_bucket"),
+    jurisdiction: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["eu", "fedramp", "fedramp-high"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["eu", "fedramp", "fedramp-high"]),
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        bucketName: "bucket_name",
-        name: "name",
-        type: "type",
-        jurisdiction: "jurisdiction",
-      }),
+        Schema.Null,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      bucketName: "bucket_name",
+      name: "name",
+      type: "type",
+      jurisdiction: "jurisdiction",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindR2Bucket>;
 
 interface WorkersBindingKindSecretText {
@@ -1610,13 +1599,12 @@ interface WorkersBindingKindSecretText {
   /** The kind of resource that the binding provides. */
   type: "secret_text";
 }
-const WorkersBindingKindSecretText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      text: Schema.String,
-      type: Schema.Literal("secret_text"),
-    }),
+const WorkersBindingKindSecretText = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    text: Schema.String,
+    type: Schema.Literal("secret_text"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretText>;
 
 interface WorkersBindingKindSendEmail {
@@ -1631,29 +1619,28 @@ interface WorkersBindingKindSendEmail {
   /** Destination address for the email. */
   destinationAddress?: string | null;
 }
-const WorkersBindingKindSendEmail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("send_email"),
-      allowedDestinationAddresses: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      allowedSenderAddresses: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      destinationAddress: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        allowedDestinationAddresses: "allowed_destination_addresses",
-        allowedSenderAddresses: "allowed_sender_addresses",
-        destinationAddress: "destination_address",
-      }),
+const WorkersBindingKindSendEmail = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("send_email"),
+    allowedDestinationAddresses: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
+    allowedSenderAddresses: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    destinationAddress: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      allowedDestinationAddresses: "allowed_destination_addresses",
+      allowedSenderAddresses: "allowed_sender_addresses",
+      destinationAddress: "destination_address",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindSendEmail>;
 
 interface WorkersBindingKindService {
@@ -1668,15 +1655,14 @@ interface WorkersBindingKindService {
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-const WorkersBindingKindService = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      service: Schema.String,
-      type: Schema.Literal("service"),
-      entrypoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      environment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const WorkersBindingKindService = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    service: Schema.String,
+    type: Schema.Literal("service"),
+    entrypoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    environment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindService>;
 
 interface WorkersBindingKindTextBlob {
@@ -1687,13 +1673,12 @@ interface WorkersBindingKindTextBlob {
   /** @deprecated The kind of resource that the binding provides. */
   type: "text_blob";
 }
-const WorkersBindingKindTextBlob = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      part: Schema.String,
-      type: Schema.Literal("text_blob"),
-    }),
+const WorkersBindingKindTextBlob = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    part: Schema.String,
+    type: Schema.Literal("text_blob"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindTextBlob>;
 
 interface WorkersBindingKindVectorize {
@@ -1704,19 +1689,18 @@ interface WorkersBindingKindVectorize {
   /** The kind of resource that the binding provides. */
   type: "vectorize";
 }
-const WorkersBindingKindVectorize = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      indexName: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("vectorize"),
-    }).pipe(
-      Schema.encodeKeys({
-        indexName: "index_name",
-        name: "name",
-        type: "type",
-      }),
-    ),
+const WorkersBindingKindVectorize = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    indexName: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("vectorize"),
+  }).pipe(
+    Schema.encodeKeys({
+      indexName: "index_name",
+      name: "name",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindVectorize>;
 
 interface WorkersBindingKindVersionMetadata {
@@ -1726,7 +1710,7 @@ interface WorkersBindingKindVersionMetadata {
   type: "version_metadata";
 }
 const WorkersBindingKindVersionMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("version_metadata"),
@@ -1744,7 +1728,7 @@ interface WorkersBindingKindSecretsStoreSecret {
   type: "secrets_store_secret";
 }
 const WorkersBindingKindSecretsStoreSecret =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       secretName: Schema.String,
@@ -1768,13 +1752,12 @@ interface WorkersBindingKindFlagship {
   /** The kind of resource that the binding provides. */
   type: "flagship";
 }
-const WorkersBindingKindFlagship = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("flagship"),
-    }).pipe(Schema.encodeKeys({ appId: "app_id", name: "name", type: "type" })),
+const WorkersBindingKindFlagship = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("flagship"),
+  }).pipe(Schema.encodeKeys({ appId: "app_id", name: "name", type: "type" })),
 ) as unknown as Schema.Codec<WorkersBindingKindFlagship>;
 
 interface WorkersBindingKindSecretKey {
@@ -1803,44 +1786,43 @@ interface WorkersBindingKindSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-const WorkersBindingKindSecretKey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      algorithm: Schema.Unknown,
-      format: Schema.Union([
-        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+const WorkersBindingKindSecretKey = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    algorithm: Schema.Unknown,
+    format: Schema.Union([
+      Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      Schema.String,
+    ]),
+    name: Schema.String,
+    type: Schema.Literal("secret_key"),
+    usages: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "encrypt",
+          "decrypt",
+          "sign",
+          "verify",
+          "deriveKey",
+          "deriveBits",
+          "wrapKey",
+          "unwrapKey",
+        ]),
         Schema.String,
       ]),
-      name: Schema.String,
-      type: Schema.Literal("secret_key"),
-      usages: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify",
-            "deriveKey",
-            "deriveBits",
-            "wrapKey",
-            "unwrapKey",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      keyBase64: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      keyJwk: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        algorithm: "algorithm",
-        format: "format",
-        name: "name",
-        type: "type",
-        usages: "usages",
-        keyBase64: "key_base64",
-        keyJwk: "key_jwk",
-      }),
     ),
+    keyBase64: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    keyJwk: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      algorithm: "algorithm",
+      format: "format",
+      name: "name",
+      type: "type",
+      usages: "usages",
+      keyBase64: "key_base64",
+      keyJwk: "key_jwk",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretKey>;
 
 interface WorkersBindingKindWorkflow {
@@ -1855,23 +1837,22 @@ interface WorkersBindingKindWorkflow {
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-const WorkersBindingKindWorkflow = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("workflow"),
-      workflowName: Schema.String,
-      className: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        workflowName: "workflow_name",
-        className: "class_name",
-        scriptName: "script_name",
-      }),
-    ),
+const WorkersBindingKindWorkflow = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("workflow"),
+    workflowName: Schema.String,
+    className: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      workflowName: "workflow_name",
+      className: "class_name",
+      scriptName: "script_name",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindWorkflow>;
 
 interface WorkersBindingKindWasmModule {
@@ -1882,13 +1863,12 @@ interface WorkersBindingKindWasmModule {
   /** @deprecated The kind of resource that the binding provides. */
   type: "wasm_module";
 }
-const WorkersBindingKindWasmModule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      part: Schema.String,
-      type: Schema.Literal("wasm_module"),
-    }),
+const WorkersBindingKindWasmModule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    part: Schema.String,
+    type: Schema.Literal("wasm_module"),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindWasmModule>;
 
 interface WorkersBindingKindVPCService {
@@ -1899,19 +1879,18 @@ interface WorkersBindingKindVPCService {
   /** The kind of resource that the binding provides. */
   type: "vpc_service";
 }
-const WorkersBindingKindVPCService = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      serviceId: Schema.String,
-      type: Schema.Literal("vpc_service"),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        serviceId: "service_id",
-        type: "type",
-      }),
-    ),
+const WorkersBindingKindVPCService = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    serviceId: Schema.String,
+    type: Schema.Literal("vpc_service"),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      serviceId: "service_id",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindVPCService>;
 
 interface WorkersBindingKindVPCNetwork {
@@ -1924,21 +1903,20 @@ interface WorkersBindingKindVPCNetwork {
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-const WorkersBindingKindVPCNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("vpc_network"),
-      networkId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tunnelId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        networkId: "network_id",
-        tunnelId: "tunnel_id",
-      }),
-    ),
+const WorkersBindingKindVPCNetwork = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("vpc_network"),
+    networkId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tunnelId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      networkId: "network_id",
+      tunnelId: "tunnel_id",
+    }),
+  ),
 ) as unknown as Schema.Codec<WorkersBindingKindVPCNetwork>;
 
 interface Limits {
@@ -1947,7 +1925,7 @@ interface Limits {
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number | null;
 }
-const Limits = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Limits = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cpuMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     subrequests: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1958,7 +1936,7 @@ interface RenamedClass {
   from?: string | null;
   to?: string | null;
 }
-const RenamedClass = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RenamedClass = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     from: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     to: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1970,7 +1948,7 @@ interface TransferredClass {
   fromScript?: string | null;
   to?: string | null;
 }
-const TransferredClass = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TransferredClass = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     from: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     fromScript: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1998,37 +1976,36 @@ interface SingleStepMigrationParam {
     | { from?: string | null; fromScript?: string | null; to?: string | null }[]
     | null;
 }
-const SingleStepMigrationParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      deletedClasses: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      newClasses: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      newSqliteClasses: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      renamedClasses: Schema.optional(
-        Schema.Union([Schema.Array(RenamedClass), Schema.Null]),
-      ),
-      transferredClasses: Schema.optional(
-        Schema.Union([Schema.Array(TransferredClass), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        deletedClasses: "deleted_classes",
-        newClasses: "new_classes",
-        newSqliteClasses: "new_sqlite_classes",
-        newTag: "new_tag",
-        oldTag: "old_tag",
-        renamedClasses: "renamed_classes",
-        transferredClasses: "transferred_classes",
-      }),
+const SingleStepMigrationParam = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deletedClasses: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
+    newClasses: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    newSqliteClasses: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    renamedClasses: Schema.optional(
+      Schema.Union([Schema.Array(RenamedClass), Schema.Null]),
+    ),
+    transferredClasses: Schema.optional(
+      Schema.Union([Schema.Array(TransferredClass), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      deletedClasses: "deleted_classes",
+      newClasses: "new_classes",
+      newSqliteClasses: "new_sqlite_classes",
+      newTag: "new_tag",
+      oldTag: "old_tag",
+      renamedClasses: "renamed_classes",
+      transferredClasses: "transferred_classes",
+    }),
+  ),
 ) as unknown as Schema.Codec<SingleStepMigrationParam>;
 
 interface MigrationStepParam {
@@ -2045,7 +2022,7 @@ interface MigrationStepParam {
     | { from?: string | null; fromScript?: string | null; to?: string | null }[]
     | null;
 }
-const MigrationStepParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MigrationStepParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deletedClasses: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -2096,7 +2073,7 @@ interface WorkersMultipleStepMigrations {
     | null;
 }
 const WorkersMultipleStepMigrations =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2117,7 +2094,7 @@ interface PutDispatchNamespaceScriptRequestMetadataPlacement {
   mode: "smart";
 }
 const PutDispatchNamespaceScriptRequestMetadataPlacement =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("smart"),
     }),
@@ -2130,7 +2107,7 @@ interface PutDispatchNamespaceScriptRequestMetadataPlacement4 {
   region: string;
 }
 const PutDispatchNamespaceScriptRequestMetadataPlacement4 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       region: Schema.String,
@@ -2144,7 +2121,7 @@ interface PutDispatchNamespaceScriptRequestMetadataPlacement5 {
   mode: "targeted";
 }
 const PutDispatchNamespaceScriptRequestMetadataPlacement5 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostname: Schema.String,
       mode: Schema.Literal("targeted"),
@@ -2158,7 +2135,7 @@ interface PutDispatchNamespaceScriptRequestMetadataPlacement6 {
   mode: "targeted";
 }
 const PutDispatchNamespaceScriptRequestMetadataPlacement6 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
       mode: Schema.Literal("targeted"),
@@ -2172,7 +2149,7 @@ interface PutDispatchNamespaceScriptRequestMetadataPlacement7 {
   target: ({ region: string } | { hostname: string } | { host: string })[];
 }
 const PutDispatchNamespaceScriptRequestMetadataPlacement7 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       target: Schema.Array(Schema.Union([Region, Hostname, Host])),
@@ -2443,7 +2420,7 @@ interface Metadata {
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     assets: Schema.optional(Schema.Union([Assets, Schema.Null])),
     bindings: Schema.optional(
@@ -2570,7 +2547,7 @@ interface WorkersBindingKindSecretText2 {
   type: "secret_text";
 }
 const WorkersBindingKindSecretText2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("secret_text"),
@@ -2599,32 +2576,31 @@ interface WorkersBindingKindSecretKey2 {
     | (string & {})
   )[];
 }
-const WorkersBindingKindSecretKey2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      algorithm: Schema.Unknown,
-      format: Schema.Union([
-        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+const WorkersBindingKindSecretKey2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    algorithm: Schema.Unknown,
+    format: Schema.Union([
+      Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+      Schema.String,
+    ]),
+    name: Schema.String,
+    type: Schema.Literal("secret_key"),
+    usages: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "encrypt",
+          "decrypt",
+          "sign",
+          "verify",
+          "deriveKey",
+          "deriveBits",
+          "wrapKey",
+          "unwrapKey",
+        ]),
         Schema.String,
       ]),
-      name: Schema.String,
-      type: Schema.Literal("secret_key"),
-      usages: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify",
-            "deriveKey",
-            "deriveBits",
-            "wrapKey",
-            "unwrapKey",
-          ]),
-          Schema.String,
-        ]),
-      ),
-    }),
+    ),
+  }),
 ) as unknown as Schema.Codec<WorkersBindingKindSecretKey2>;
 
 interface WorkerMetadataParam {
@@ -2633,7 +2609,7 @@ interface WorkerMetadataParam {
   /** Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker. */
   mainModule?: string | null;
 }
-const WorkerMetadataParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkerMetadataParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bodyPart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2653,7 +2629,7 @@ interface GetDispatchNamespaceScriptSettingResponsePlacement8 {
   lastAnalyzedAt?: string | null;
 }
 const GetDispatchNamespaceScriptSettingResponsePlacement8 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mode: Schema.optional(
         Schema.Union([Schema.Literal("smart"), Schema.Null]),
@@ -2916,7 +2892,7 @@ interface Settings {
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bindings: Schema.optional(
       Schema.Union([
@@ -3035,7 +3011,7 @@ export interface GetDispatchNamespaceRequest {
 }
 
 export const GetDispatchNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3067,7 +3043,7 @@ export interface GetDispatchNamespaceResponse {
 }
 
 export const GetDispatchNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3107,7 +3083,7 @@ export const getDispatchNamespace: API.OperationMethod<
   GetDispatchNamespaceResponse,
   GetDispatchNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceRequest,
   output: GetDispatchNamespaceResponse,
   errors: [DispatchNamespaceNotFound, Forbidden],
@@ -3119,7 +3095,7 @@ export interface ListDispatchNamespacesRequest {
 }
 
 export const ListDispatchNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -3144,7 +3120,7 @@ export interface ListDispatchNamespacesResponse {
 }
 
 export const ListDispatchNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDispatchNamespacesResponseResult),
     }),
@@ -3157,7 +3133,7 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
   ListDispatchNamespacesResponse,
   ListDispatchNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespacesRequest,
   output: ListDispatchNamespacesResponse,
   errors: [],
@@ -3175,7 +3151,7 @@ export interface CreateDispatchNamespaceRequest {
 }
 
 export const CreateDispatchNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String),
@@ -3207,7 +3183,7 @@ export interface CreateDispatchNamespaceResponse {
 }
 
 export const CreateDispatchNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3247,7 +3223,7 @@ export const createDispatchNamespace: API.OperationMethod<
   CreateDispatchNamespaceResponse,
   CreateDispatchNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDispatchNamespaceRequest,
   output: CreateDispatchNamespaceResponse,
   errors: [DispatchNamespaceAlreadyExists, Forbidden],
@@ -3260,7 +3236,7 @@ export interface DeleteDispatchNamespaceRequest {
 }
 
 export const DeleteDispatchNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3275,7 +3251,7 @@ export const DeleteDispatchNamespaceRequest =
 export type DeleteDispatchNamespaceResponse = unknown;
 
 export const DeleteDispatchNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDispatchNamespaceResponse>;
 
@@ -3289,7 +3265,7 @@ export const deleteDispatchNamespace: API.OperationMethod<
   DeleteDispatchNamespaceResponse,
   DeleteDispatchNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceRequest,
   output: DeleteDispatchNamespaceResponse,
   errors: [DispatchNamespaceNotFound, Forbidden],
@@ -3307,7 +3283,7 @@ export interface GetDispatchNamespaceScriptRequest {
 }
 
 export const GetDispatchNamespaceScriptRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -3472,7 +3448,7 @@ export interface GetDispatchNamespaceScriptResponse {
 }
 
 export const GetDispatchNamespaceScriptResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       dispatchNamespace: Schema.optional(
@@ -3503,7 +3479,7 @@ export const getDispatchNamespaceScript: API.OperationMethod<
   GetDispatchNamespaceScriptResponse,
   GetDispatchNamespaceScriptError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptRequest,
   output: GetDispatchNamespaceScriptResponse,
   errors: [
@@ -3742,7 +3718,7 @@ export interface PutDispatchNamespaceScriptRequest {
 }
 
 export const PutDispatchNamespaceScriptRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -3929,7 +3905,7 @@ export interface PutDispatchNamespaceScriptResponse {
 }
 
 export const PutDispatchNamespaceScriptResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       startupTimeMs: Schema.Number,
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4060,7 +4036,7 @@ export const putDispatchNamespaceScript: API.OperationMethod<
   PutDispatchNamespaceScriptResponse,
   PutDispatchNamespaceScriptError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDispatchNamespaceScriptRequest,
   output: PutDispatchNamespaceScriptResponse,
   errors: [
@@ -4089,7 +4065,7 @@ export interface DeleteDispatchNamespaceScriptRequest {
 }
 
 export const DeleteDispatchNamespaceScriptRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4106,7 +4082,7 @@ export const DeleteDispatchNamespaceScriptRequest =
 export type DeleteDispatchNamespaceScriptResponse = unknown;
 
 export const DeleteDispatchNamespaceScriptResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDispatchNamespaceScriptResponse>;
 
@@ -4121,7 +4097,7 @@ export const deleteDispatchNamespaceScript: API.OperationMethod<
   DeleteDispatchNamespaceScriptResponse,
   DeleteDispatchNamespaceScriptError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceScriptRequest,
   output: DeleteDispatchNamespaceScriptResponse,
   errors: [
@@ -4145,7 +4121,7 @@ export interface CreateDispatchNamespaceScriptAssetUploadRequest {
 }
 
 export const CreateDispatchNamespaceScriptAssetUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4167,7 +4143,7 @@ export interface CreateDispatchNamespaceScriptAssetUploadResponse {
 }
 
 export const CreateDispatchNamespaceScriptAssetUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       buckets: Schema.optional(
         Schema.Union([Schema.Array(Schema.Array(Schema.String)), Schema.Null]),
@@ -4183,7 +4159,7 @@ export const createDispatchNamespaceScriptAssetUpload: API.OperationMethod<
   CreateDispatchNamespaceScriptAssetUploadResponse,
   CreateDispatchNamespaceScriptAssetUploadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDispatchNamespaceScriptAssetUploadRequest,
   output: CreateDispatchNamespaceScriptAssetUploadResponse,
   errors: [],
@@ -4201,7 +4177,7 @@ export interface GetDispatchNamespaceScriptBindingRequest {
 }
 
 export const GetDispatchNamespaceScriptBindingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4343,7 +4319,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
 }
 
 export const GetDispatchNamespaceScriptBindingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -4394,7 +4370,7 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
   GetDispatchNamespaceScriptBindingResponse,
   GetDispatchNamespaceScriptBindingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDispatchNamespaceScriptBindingRequest,
   output: GetDispatchNamespaceScriptBindingResponse,
   errors: [],
@@ -4416,7 +4392,7 @@ export interface GetDispatchNamespaceScriptContentRequest {
 }
 
 export const GetDispatchNamespaceScriptContentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4432,7 +4408,7 @@ export const GetDispatchNamespaceScriptContentRequest =
 export type GetDispatchNamespaceScriptContentResponse = unknown;
 
 export const GetDispatchNamespaceScriptContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetDispatchNamespaceScriptContentResponse>;
 
@@ -4443,7 +4419,7 @@ export const getDispatchNamespaceScriptContent: API.OperationMethod<
   GetDispatchNamespaceScriptContentResponse,
   GetDispatchNamespaceScriptContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptContentRequest,
   output: GetDispatchNamespaceScriptContentResponse,
   errors: [],
@@ -4465,7 +4441,7 @@ export interface PutDispatchNamespaceScriptContentRequest {
 }
 
 export const PutDispatchNamespaceScriptContentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4652,7 +4628,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
 }
 
 export const PutDispatchNamespaceScriptContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       compatibilityDate: Schema.optional(
@@ -4766,7 +4742,7 @@ export const putDispatchNamespaceScriptContent: API.OperationMethod<
   PutDispatchNamespaceScriptContentResponse,
   PutDispatchNamespaceScriptContentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDispatchNamespaceScriptContentRequest,
   output: PutDispatchNamespaceScriptContentResponse,
   errors: [],
@@ -4787,7 +4763,7 @@ export interface GetDispatchNamespaceScriptSecretRequest {
 }
 
 export const GetDispatchNamespaceScriptSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4825,7 +4801,7 @@ export type GetDispatchNamespaceScriptSecretResponse =
     };
 
 export const GetDispatchNamespaceScriptSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       WorkersBindingKindSecretKey2,
       WorkersBindingKindSecretText2,
@@ -4839,7 +4815,7 @@ export const getDispatchNamespaceScriptSecret: API.OperationMethod<
   GetDispatchNamespaceScriptSecretResponse,
   GetDispatchNamespaceScriptSecretError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptSecretRequest,
   output: GetDispatchNamespaceScriptSecretResponse,
   errors: [],
@@ -4853,7 +4829,7 @@ export interface ListDispatchNamespaceScriptSecretsRequest {
 }
 
 export const ListDispatchNamespaceScriptSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -4890,7 +4866,7 @@ export interface ListDispatchNamespaceScriptSecretsResponse {
 }
 
 export const ListDispatchNamespaceScriptSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -4908,7 +4884,7 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptSecretsResponse,
   ListDispatchNamespaceScriptSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespaceScriptSecretsRequest,
   output: ListDispatchNamespaceScriptSecretsResponse,
   errors: [],
@@ -4952,7 +4928,7 @@ export interface PutDispatchNamespaceScriptSecretRequest {
 }
 
 export const PutDispatchNamespaceScriptSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -5028,7 +5004,7 @@ export type PutDispatchNamespaceScriptSecretResponse =
     };
 
 export const PutDispatchNamespaceScriptSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       WorkersBindingKindSecretKey2,
       WorkersBindingKindSecretText2,
@@ -5042,7 +5018,7 @@ export const putDispatchNamespaceScriptSecret: API.OperationMethod<
   PutDispatchNamespaceScriptSecretResponse,
   PutDispatchNamespaceScriptSecretError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDispatchNamespaceScriptSecretRequest,
   output: PutDispatchNamespaceScriptSecretResponse,
   errors: [],
@@ -5059,7 +5035,7 @@ export interface DeleteDispatchNamespaceScriptSecretRequest {
 }
 
 export const DeleteDispatchNamespaceScriptSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -5079,7 +5055,7 @@ export const DeleteDispatchNamespaceScriptSecretRequest =
 export type DeleteDispatchNamespaceScriptSecretResponse = unknown;
 
 export const DeleteDispatchNamespaceScriptSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDispatchNamespaceScriptSecretResponse>;
 
@@ -5090,7 +5066,7 @@ export const deleteDispatchNamespaceScriptSecret: API.OperationMethod<
   DeleteDispatchNamespaceScriptSecretResponse,
   DeleteDispatchNamespaceScriptSecretError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceScriptSecretRequest,
   output: DeleteDispatchNamespaceScriptSecretResponse,
   errors: [],
@@ -5108,7 +5084,7 @@ export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
 }
 
 export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -5132,7 +5108,7 @@ export type BulkUpdateDispatchNamespaceScriptSecretsResponse = Record<
 >;
 
 export const BulkUpdateDispatchNamespaceScriptSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<BulkUpdateDispatchNamespaceScriptSecretsResponse>;
 
@@ -5143,7 +5119,7 @@ export const bulkUpdateDispatchNamespaceScriptSecrets: API.OperationMethod<
   BulkUpdateDispatchNamespaceScriptSecretsResponse,
   BulkUpdateDispatchNamespaceScriptSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkUpdateDispatchNamespaceScriptSecretsRequest,
   output: BulkUpdateDispatchNamespaceScriptSecretsResponse,
   errors: [],
@@ -5161,7 +5137,7 @@ export interface GetDispatchNamespaceScriptSettingRequest {
 }
 
 export const GetDispatchNamespaceScriptSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -5378,7 +5354,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
 }
 
 export const GetDispatchNamespaceScriptSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bindings: Schema.optional(
         Schema.Union([
@@ -5495,7 +5471,7 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
   GetDispatchNamespaceScriptSettingResponse,
   GetDispatchNamespaceScriptSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptSettingRequest,
   output: GetDispatchNamespaceScriptSettingResponse,
   errors: [
@@ -5706,7 +5682,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
 }
 
 export const PatchDispatchNamespaceScriptSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -5915,7 +5891,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
 }
 
 export const PatchDispatchNamespaceScriptSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bindings: Schema.optional(
         Schema.Union([
@@ -6027,7 +6003,7 @@ export const patchDispatchNamespaceScriptSetting: API.OperationMethod<
   PatchDispatchNamespaceScriptSettingResponse,
   PatchDispatchNamespaceScriptSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDispatchNamespaceScriptSettingRequest,
   output: PatchDispatchNamespaceScriptSettingResponse,
   errors: [],
@@ -6045,7 +6021,7 @@ export interface ListDispatchNamespaceScriptTagsRequest {
 }
 
 export const ListDispatchNamespaceScriptTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -6063,7 +6039,7 @@ export interface ListDispatchNamespaceScriptTagsResponse {
 }
 
 export const ListDispatchNamespaceScriptTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -6076,7 +6052,7 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptTagsResponse,
   ListDispatchNamespaceScriptTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespaceScriptTagsRequest,
   output: ListDispatchNamespaceScriptTagsResponse,
   errors: [],
@@ -6096,7 +6072,7 @@ export interface PutDispatchNamespaceScriptTagRequest {
 }
 
 export const PutDispatchNamespaceScriptTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -6117,7 +6093,7 @@ export interface PutDispatchNamespaceScriptTagResponse {
 }
 
 export const PutDispatchNamespaceScriptTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
@@ -6130,7 +6106,7 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
   PutDispatchNamespaceScriptTagResponse,
   PutDispatchNamespaceScriptTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDispatchNamespaceScriptTagRequest,
   output: PutDispatchNamespaceScriptTagResponse,
   errors: [],
@@ -6149,7 +6125,7 @@ export interface DeleteDispatchNamespaceScriptTagRequest {
 }
 
 export const DeleteDispatchNamespaceScriptTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dispatchNamespace: Schema.String.pipe(T.HttpPath("dispatchNamespace")),
       scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
@@ -6166,7 +6142,7 @@ export const DeleteDispatchNamespaceScriptTagRequest =
 export type DeleteDispatchNamespaceScriptTagResponse = unknown;
 
 export const DeleteDispatchNamespaceScriptTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDispatchNamespaceScriptTagResponse>;
 
@@ -6177,7 +6153,7 @@ export const deleteDispatchNamespaceScriptTag: API.OperationMethod<
   DeleteDispatchNamespaceScriptTagResponse,
   DeleteDispatchNamespaceScriptTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDispatchNamespaceScriptTagRequest,
   output: DeleteDispatchNamespaceScriptTagResponse,
   errors: [],

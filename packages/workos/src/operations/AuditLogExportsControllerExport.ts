@@ -8,7 +8,7 @@ export interface AuditLogExportsControllerExportInput {
   auditLogExportId: string;
 }
 export const AuditLogExportsControllerExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     auditLogExportId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/audit_logs/exports/{auditLogExportId}" }),
@@ -24,7 +24,7 @@ export interface AuditLogExportsControllerExportOutput {
   updated_at?: string;
 }
 export const AuditLogExportsControllerExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     state: Schema.optional(
@@ -44,7 +44,7 @@ export const AuditLogExportsControllerExportOutput =
  * @param auditLogExportId - The unique ID of the Audit Log Export.
  */
 export const AuditLogExportsControllerExport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogExportsControllerExportInput,
     outputSchema: AuditLogExportsControllerExportOutput,
     errors: [NotFound] as const,

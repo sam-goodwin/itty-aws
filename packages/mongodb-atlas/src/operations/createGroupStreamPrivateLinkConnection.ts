@@ -10,7 +10,7 @@ export interface CreateGroupStreamPrivateLinkConnectionInput {
   pretty?: boolean;
 }
 export const CreateGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupStreamPrivateLinkConnectionInput =
 // Output Schema
 export type CreateGroupStreamPrivateLinkConnectionOutput = void;
 export const CreateGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamPrivateLinkConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamPrivateLinkConnectionOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const CreateGroupStreamPrivateLinkConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
 export const createGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupStreamPrivateLinkConnectionInput,
     outputSchema: CreateGroupStreamPrivateLinkConnectionOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

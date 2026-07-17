@@ -77,7 +77,7 @@ export interface CreateDiscoveryV1NamespacedEndpointSliceInput {
   }[];
 }
 export const CreateDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface CreateDiscoveryV1NamespacedEndpointSliceOutput {
   }[];
 }
 export const CreateDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressType: Schema.String,
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
@@ -379,7 +379,7 @@ export const CreateDiscoveryV1NamespacedEndpointSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: CreateDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -407,7 +407,7 @@ export interface DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -466,7 +466,7 @@ export interface DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput {
   status?: string;
 }
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -569,7 +569,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteDiscoveryV1CollectionNamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput,
     outputSchema: DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput,
   }));
@@ -588,7 +588,7 @@ export interface DeleteDiscoveryV1NamespacedEndpointSliceInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -639,7 +639,7 @@ export interface DeleteDiscoveryV1NamespacedEndpointSliceOutput {
   status?: string;
 }
 export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -693,7 +693,7 @@ export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: DeleteDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict] as const,
@@ -701,7 +701,7 @@ export const deleteDiscoveryV1NamespacedEndpointSlice =
 // Input Schema
 export interface GetDiscoveryAPIGroupInput {}
 export const GetDiscoveryAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/discovery.k8s.io/" }),
   ) as unknown as Schema.Codec<GetDiscoveryAPIGroupInput>;
 
@@ -715,7 +715,7 @@ export interface GetDiscoveryAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetDiscoveryAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -745,16 +745,14 @@ export const GetDiscoveryAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getDiscoveryAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDiscoveryAPIGroupInput,
-    outputSchema: GetDiscoveryAPIGroupOutput,
-  }),
-);
+export const getDiscoveryAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDiscoveryAPIGroupInput,
+  outputSchema: GetDiscoveryAPIGroupOutput,
+}));
 // Input Schema
 export interface GetDiscoveryV1APIResourcesInput {}
 export const GetDiscoveryV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/discovery.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetDiscoveryV1APIResourcesInput>;
 
@@ -777,7 +775,7 @@ export interface GetDiscoveryV1APIResourcesOutput {
   }[];
 }
 export const GetDiscoveryV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -801,12 +799,10 @@ export const GetDiscoveryV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getDiscoveryV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDiscoveryV1APIResourcesInput,
-    outputSchema: GetDiscoveryV1APIResourcesOutput,
-  }),
-);
+export const getDiscoveryV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDiscoveryV1APIResourcesInput,
+  outputSchema: GetDiscoveryV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListDiscoveryV1EndpointSliceForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -823,7 +819,7 @@ export interface ListDiscoveryV1EndpointSliceForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListDiscoveryV1EndpointSliceForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -918,7 +914,7 @@ export interface ListDiscoveryV1EndpointSliceForAllNamespacesOutput {
   };
 }
 export const ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1107,7 +1103,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listDiscoveryV1EndpointSliceForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListDiscoveryV1EndpointSliceForAllNamespacesInput,
     outputSchema: ListDiscoveryV1EndpointSliceForAllNamespacesOutput,
   }));
@@ -1128,7 +1124,7 @@ export interface ListDiscoveryV1NamespacedEndpointSliceInput {
   watch?: boolean;
 }
 export const ListDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1227,7 +1223,7 @@ export interface ListDiscoveryV1NamespacedEndpointSliceOutput {
   };
 }
 export const ListDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1417,7 +1413,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ListDiscoveryV1NamespacedEndpointSliceOutput,
   }));
@@ -1432,7 +1428,7 @@ export interface PatchDiscoveryV1NamespacedEndpointSliceInput {
   force?: boolean;
 }
 export const PatchDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1510,7 +1506,7 @@ export interface PatchDiscoveryV1NamespacedEndpointSliceOutput {
   }[];
 }
 export const PatchDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressType: Schema.String,
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
@@ -1632,7 +1628,7 @@ export const PatchDiscoveryV1NamespacedEndpointSliceOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: PatchDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1644,7 +1640,7 @@ export interface ReadDiscoveryV1NamespacedEndpointSliceInput {
   pretty?: string;
 }
 export const ReadDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1718,7 +1714,7 @@ export interface ReadDiscoveryV1NamespacedEndpointSliceOutput {
   }[];
 }
 export const ReadDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressType: Schema.String,
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
@@ -1836,7 +1832,7 @@ export const ReadDiscoveryV1NamespacedEndpointSliceOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReadDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound] as const,
@@ -1910,7 +1906,7 @@ export interface ReplaceDiscoveryV1NamespacedEndpointSliceInput {
   }[];
 }
 export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2093,7 +2089,7 @@ export interface ReplaceDiscoveryV1NamespacedEndpointSliceOutput {
   }[];
 }
 export const ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addressType: Schema.String,
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
@@ -2214,7 +2210,7 @@ export const ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2235,7 +2231,7 @@ export interface WatchDiscoveryV1EndpointSliceListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2261,7 +2257,7 @@ export interface WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput {
   type: string;
 }
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput>;
@@ -2325,7 +2321,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchDiscoveryV1EndpointSliceListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchDiscoveryV1EndpointSliceListForAllNamespacesInput,
     outputSchema: WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput,
   }));
@@ -2347,7 +2343,7 @@ export interface WatchDiscoveryV1NamespacedEndpointSliceInput {
   watch?: boolean;
 }
 export const WatchDiscoveryV1NamespacedEndpointSliceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2375,7 +2371,7 @@ export interface WatchDiscoveryV1NamespacedEndpointSliceOutput {
   type: string;
 }
 export const WatchDiscoveryV1NamespacedEndpointSliceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceOutput>;
@@ -2441,7 +2437,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchDiscoveryV1NamespacedEndpointSlice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: WatchDiscoveryV1NamespacedEndpointSliceOutput,
   }));
@@ -2462,7 +2458,7 @@ export interface WatchDiscoveryV1NamespacedEndpointSliceListInput {
   watch?: boolean;
 }
 export const WatchDiscoveryV1NamespacedEndpointSliceListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2489,7 +2485,7 @@ export interface WatchDiscoveryV1NamespacedEndpointSliceListOutput {
   type: string;
 }
 export const WatchDiscoveryV1NamespacedEndpointSliceListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceListOutput>;
@@ -2554,7 +2550,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchDiscoveryV1NamespacedEndpointSliceList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchDiscoveryV1NamespacedEndpointSliceListInput,
     outputSchema: WatchDiscoveryV1NamespacedEndpointSliceListOutput,
   }));

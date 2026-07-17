@@ -14,7 +14,7 @@ export interface CreateDeployRequestInput {
   auto_delete_branch?: boolean;
 }
 export const CreateDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String,
@@ -110,8 +110,8 @@ export interface CreateDeployRequestOutput {
     into_branch: string;
     deploy_request_number: number;
     deployable: boolean;
-    preceding_deployments: Record<string, unknown>[];
-    deploy_operations: {
+    preceding_deployments: ReadonlyArray<Record<string, unknown>>;
+    deploy_operations: ReadonlyArray<{
       id: string;
       state:
         | "pending"
@@ -135,10 +135,10 @@ export interface CreateDeployRequestOutput {
       table_locked: boolean;
       table_recently_used: boolean;
       table_recently_used_at: string | null;
-      removed_foreign_key_names: string[] | null;
+      removed_foreign_key_names: ReadonlyArray<string> | null;
       deploy_errors: string | null;
-    }[];
-    deploy_operation_summaries: {
+    }>;
+    deploy_operation_summaries: ReadonlyArray<{
       id: string;
       created_at: string;
       deploy_errors: string;
@@ -152,13 +152,13 @@ export interface CreateDeployRequestOutput {
       table_name: string;
       table_recently_used_at: string | null;
       throttled_at: string | null;
-      removed_foreign_key_names: string[];
+      removed_foreign_key_names: ReadonlyArray<string>;
       shard_count: number;
-      shard_names: string[];
+      shard_names: ReadonlyArray<string>;
       can_drop_data: boolean;
       table_recently_used: boolean;
       sharded: boolean;
-      operations: {
+      operations: ReadonlyArray<{
         id: string;
         shard: string;
         state:
@@ -170,11 +170,11 @@ export interface CreateDeployRequestOutput {
           | "error";
         progress_percentage: number;
         eta_seconds: number;
-      }[];
-    }[];
-    lint_errors: Record<string, unknown>[];
-    sequential_diff_dependencies: Record<string, unknown>[];
-    lookup_vindex_operations: Record<string, unknown>[];
+      }>;
+    }>;
+    lint_errors: ReadonlyArray<Record<string, unknown>>;
+    sequential_diff_dependencies: ReadonlyArray<Record<string, unknown>>;
+    lookup_vindex_operations: ReadonlyArray<Record<string, unknown>>;
     throttler_configurations?: Record<string, unknown> | null;
     deployment_revert_request: Record<string, unknown> | null;
     actor?: { id: string; display_name: string; avatar_url: string } | null;
@@ -206,7 +206,7 @@ export interface CreateDeployRequestOutput {
   deployed_at: string | null;
 }
 export const CreateDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -452,7 +452,7 @@ export const CreateDeployRequestOutput =
  * @param auto_cutover - Whether or not to enable auto_cutover for the deploy request. When enabled, will auto cutover to the new schema as soon as it is ready.
  * @param auto_delete_branch - Whether or not to enable auto_delete_branch for the deploy request. When enabled, will delete the branch once the DR successfully completes.
  */
-export const createDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDeployRequestInput,
   outputSchema: CreateDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

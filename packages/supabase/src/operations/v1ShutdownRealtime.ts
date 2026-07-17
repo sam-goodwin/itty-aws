@@ -8,7 +8,7 @@ export interface V1ShutdownRealtimeInput {
   ref: string;
 }
 export const V1ShutdownRealtimeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const V1ShutdownRealtimeInput =
 // Output Schema
 export type V1ShutdownRealtimeOutput = void;
 export const V1ShutdownRealtimeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ShutdownRealtimeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ShutdownRealtimeOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const V1ShutdownRealtimeOutput =
  *
  * @param ref - Project ref
  */
-export const v1ShutdownRealtime = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ShutdownRealtime = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ShutdownRealtimeInput,
   outputSchema: V1ShutdownRealtimeOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

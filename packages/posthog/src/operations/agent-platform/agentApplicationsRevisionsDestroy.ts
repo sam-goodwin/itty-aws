@@ -9,7 +9,7 @@ export interface AgentApplicationsRevisionsDestroyInput {
   project_id: string;
 }
 export const AgentApplicationsRevisionsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const AgentApplicationsRevisionsDestroyInput =
 // Output Schema
 export type AgentApplicationsRevisionsDestroyOutput = void;
 export const AgentApplicationsRevisionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsRevisionsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsRevisionsDestroyOutput>;
 
 // The operation
 /**
@@ -53,7 +53,7 @@ export const AgentApplicationsRevisionsDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsDestroyInput,
     outputSchema: AgentApplicationsRevisionsDestroyOutput,
   }));

@@ -34,7 +34,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelDisplayHints {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelDisplayHints: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelDisplayHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
     shownInApply: Schema.optional(Schema.Boolean),
     hiddenInSearch: Schema.optional(Schema.Boolean),
@@ -47,7 +47,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldListOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldListOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldListOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxEntries: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldListOptions" });
 
@@ -57,7 +57,7 @@ export interface GoogleAppsDriveLabelsV2betaLockStatus {
 }
 
 export const GoogleAppsDriveLabelsV2betaLockStatus: Schema.Codec<GoogleAppsDriveLabelsV2betaLockStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locked: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLockStatus" });
 
@@ -67,7 +67,7 @@ export interface GoogleAppsDriveLabelsV2betaUserInfo {
 }
 
 export const GoogleAppsDriveLabelsV2betaUserInfo: Schema.Codec<GoogleAppsDriveLabelsV2betaUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     person: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUserInfo" });
 
@@ -83,7 +83,7 @@ export interface GoogleTypeColor {
 }
 
 export const GoogleTypeColor: Schema.Codec<GoogleTypeColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blue: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
     alpha: Schema.optional(Schema.Number),
@@ -100,7 +100,7 @@ export interface GoogleAppsDriveLabelsV2betaBadgeColors {
 }
 
 export const GoogleAppsDriveLabelsV2betaBadgeColors: Schema.Codec<GoogleAppsDriveLabelsV2betaBadgeColors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     foregroundColor: Schema.optional(GoogleTypeColor),
     backgroundColor: Schema.optional(GoogleTypeColor),
     soloColor: Schema.optional(GoogleTypeColor),
@@ -122,7 +122,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHi
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     badgeColors: Schema.optional(GoogleAppsDriveLabelsV2betaBadgeColors),
     hiddenInSearch: Schema.optional(Schema.Boolean),
     shownInApply: Schema.optional(Schema.Boolean),
@@ -142,7 +142,7 @@ export interface GoogleAppsDriveLabelsV2betaBadgeConfig {
 }
 
 export const GoogleAppsDriveLabelsV2betaBadgeConfig: Schema.Codec<GoogleAppsDriveLabelsV2betaBadgeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priorityOverride: Schema.optional(Schema.String),
     color: Schema.optional(GoogleTypeColor),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBadgeConfig" });
@@ -159,7 +159,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoicePropertie
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     badgeConfig: Schema.optional(GoogleAppsDriveLabelsV2betaBadgeConfig),
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy {
 }
 
 export const GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy: Schema.Codec<GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hideInSearch: Schema.optional(Schema.Boolean),
     showInApply: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -200,7 +200,7 @@ export interface GoogleAppsDriveLabelsV2betaLifecycle {
 }
 
 export const GoogleAppsDriveLabelsV2betaLifecycle: Schema.Codec<GoogleAppsDriveLabelsV2betaLifecycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disabledPolicy: Schema.optional(
       GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
     ),
@@ -220,7 +220,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCap
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canUpdate: Schema.optional(Schema.Boolean),
     canDisable: Schema.optional(Schema.Boolean),
     canDelete: Schema.optional(Schema.Boolean),
@@ -240,7 +240,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCa
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canRead: Schema.optional(Schema.Boolean),
     canSelect: Schema.optional(Schema.Boolean),
     canSearch: Schema.optional(Schema.Boolean),
@@ -283,7 +283,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lockStatus: Schema.optional(GoogleAppsDriveLabelsV2betaLockStatus),
     disableTime: Schema.optional(Schema.String),
     creator: Schema.optional(GoogleAppsDriveLabelsV2betaUserInfo),
@@ -319,7 +319,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSelectionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listOptions: Schema.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
     choices: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice),
@@ -338,7 +338,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canSearch: Schema.optional(Schema.Boolean),
     canRead: Schema.optional(Schema.Boolean),
     canWrite: Schema.optional(Schema.Boolean),
@@ -358,7 +358,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canUpdate: Schema.optional(Schema.Boolean),
     canDisable: Schema.optional(Schema.Boolean),
     canDelete: Schema.optional(Schema.Boolean),
@@ -375,7 +375,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldTextOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldTextOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldTextOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minLength: Schema.optional(Schema.Number),
     maxLength: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldTextOptions" });
@@ -386,7 +386,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldUserOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldUserOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldUserOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listOptions: Schema.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldUserOptions" });
 
@@ -400,7 +400,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldProperties {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldProperties: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     required: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
     insertBeforeField: Schema.optional(Schema.String),
@@ -416,7 +416,7 @@ export interface GoogleTypeDate {
 }
 
 export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -438,7 +438,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldDateOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldDateOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldDateOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateFormat: Schema.optional(Schema.String),
     minValue: Schema.optional(GoogleTypeDate),
     dateFormatType: Schema.optional(Schema.String),
@@ -457,7 +457,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldDisplayHints {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldDisplayHints: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldDisplayHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
     shownInApply: Schema.optional(Schema.Boolean),
     required: Schema.optional(Schema.Boolean),
@@ -472,7 +472,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldIntegerOptions {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldIntegerOptions: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldIntegerOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(Schema.String),
     minValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldIntegerOptions" });
@@ -521,7 +521,7 @@ export interface GoogleAppsDriveLabelsV2betaField {
 }
 
 export const GoogleAppsDriveLabelsV2betaField: Schema.Codec<GoogleAppsDriveLabelsV2betaField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectionOptions: Schema.optional(
       GoogleAppsDriveLabelsV2betaFieldSelectionOptions,
     ),
@@ -560,7 +560,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelProperties {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelProperties: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelProperties" });
@@ -571,7 +571,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp",
@@ -583,7 +583,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabledApps: Schema.optional(
       Schema.Array(
         GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp,
@@ -604,7 +604,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     copyMode: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy",
@@ -622,7 +622,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canDelete: Schema.optional(Schema.Boolean),
     canEnable: Schema.optional(Schema.Boolean),
     canUpdate: Schema.optional(Schema.Boolean),
@@ -641,7 +641,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canRead: Schema.optional(Schema.Boolean),
     canRemove: Schema.optional(Schema.Boolean),
     canApply: Schema.optional(Schema.Boolean),
@@ -704,7 +704,7 @@ export interface GoogleAppsDriveLabelsV2betaLabel {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabel: Schema.Codec<GoogleAppsDriveLabelsV2betaLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayHints: Schema.optional(GoogleAppsDriveLabelsV2betaLabelDisplayHints),
     name: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Array(GoogleAppsDriveLabelsV2betaField)),
@@ -744,14 +744,14 @@ export interface GoogleAppsDriveLabelsV2betaListLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaListLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaListLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxEntries: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLimits" });
 
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse",
   });
@@ -764,7 +764,7 @@ export interface GoogleAppsDriveLabelsV2betaTextLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaTextLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaTextLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxLength: Schema.optional(Schema.Number),
     minLength: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaTextLimits" });
@@ -777,7 +777,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelect
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     fieldId: Schema.optional(Schema.String),
   }).annotate({
@@ -788,7 +788,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionC
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse",
   });
@@ -796,7 +796,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelection
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse",
   });
@@ -807,7 +807,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelect
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -817,7 +817,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionC
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse",
   });
@@ -828,7 +828,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldP
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.Number),
   }).annotate({
     identifier:
@@ -838,7 +838,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPrope
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse",
   });
@@ -846,7 +846,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldRespo
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse",
   });
@@ -854,7 +854,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPrope
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse",
   });
@@ -862,7 +862,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldRespo
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse {}
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse",
   });
@@ -875,7 +875,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldR
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     priority: Schema.optional(Schema.Number),
   }).annotate({
@@ -911,7 +911,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse {
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createSelectionChoice: Schema.optional(
       GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse,
     ),
@@ -960,7 +960,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse {
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse),
     ),
@@ -975,7 +975,7 @@ export interface GoogleAppsDriveLabelsV2betaWriteControl {
 }
 
 export const GoogleAppsDriveLabelsV2betaWriteControl: Schema.Codec<GoogleAppsDriveLabelsV2betaWriteControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requiredRevisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaWriteControl" });
 
@@ -987,7 +987,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelecti
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -1001,7 +1001,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelLockCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelLockCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelLockCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canViewPolicy: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleAppsDriveLabelsV2betaLabelLockCapabilities",
@@ -1027,7 +1027,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelLock {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelLock: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelLock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1048,7 +1048,7 @@ export interface GoogleAppsDriveLabelsV2betaListLabelLocksResponse {
 }
 
 export const GoogleAppsDriveLabelsV2betaListLabelLocksResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaListLabelLocksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     labelLocks: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaLabelLock),
@@ -1063,7 +1063,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRe
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1092,7 +1092,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelPermission {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelPermission: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     person: Schema.optional(Schema.String),
     audience: Schema.optional(Schema.String),
@@ -1111,7 +1111,7 @@ export interface GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelPermission: Schema.optional(
       GoogleAppsDriveLabelsV2betaLabelPermission,
     ),
@@ -1127,7 +1127,7 @@ export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse 
 }
 
 export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaLabelPermission),
     ),
@@ -1154,7 +1154,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTy
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textOptions: Schema.optional(GoogleAppsDriveLabelsV2betaFieldTextOptions),
     dateOptions: Schema.optional(GoogleAppsDriveLabelsV2betaFieldDateOptions),
     integerOptions: Schema.optional(
@@ -1179,7 +1179,7 @@ export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAdminAccess: Schema.optional(Schema.Boolean),
     requests: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest),
@@ -1196,7 +1196,7 @@ export interface GoogleAppsDriveLabelsV2betaLongTextLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaLongTextLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaLongTextLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxLength: Schema.optional(Schema.Number),
     minLength: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLongTextLimits" });
@@ -1215,7 +1215,7 @@ export interface GoogleAppsDriveLabelsV2betaSelectionLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaSelectionLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaSelectionLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxDeletedChoices: Schema.optional(Schema.Number),
     maxIdLength: Schema.optional(Schema.Number),
     listLimits: Schema.optional(GoogleAppsDriveLabelsV2betaListLimits),
@@ -1229,7 +1229,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRe
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     field: Schema.optional(GoogleAppsDriveLabelsV2betaField),
   }).annotate({
     identifier:
@@ -1244,7 +1244,7 @@ export interface GoogleAppsDriveLabelsV2betaIntegerLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaIntegerLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaIntegerLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(Schema.String),
     minValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaIntegerLimits" });
@@ -1257,7 +1257,7 @@ export interface GoogleAppsDriveLabelsV2betaDateLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaDateLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaDateLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(GoogleTypeDate),
     minValue: Schema.optional(GoogleTypeDate),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDateLimits" });
@@ -1268,7 +1268,7 @@ export interface GoogleAppsDriveLabelsV2betaUserLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaUserLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaUserLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     listLimits: Schema.optional(GoogleAppsDriveLabelsV2betaListLimits),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUserLimits" });
 
@@ -1294,7 +1294,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaFieldLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textLimits: Schema.optional(GoogleAppsDriveLabelsV2betaTextLimits),
     maxDescriptionLength: Schema.optional(Schema.Number),
     integerLimits: Schema.optional(GoogleAppsDriveLabelsV2betaIntegerLimits),
@@ -1326,7 +1326,7 @@ export interface GoogleAppsDriveLabelsV2betaLabelLimits {
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelLimits: Schema.Codec<GoogleAppsDriveLabelsV2betaLabelLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxFields: Schema.optional(Schema.Number),
     fieldLimits: Schema.optional(GoogleAppsDriveLabelsV2betaFieldLimits),
     maxTitleLength: Schema.optional(Schema.Number),
@@ -1344,7 +1344,7 @@ export interface GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     useAdminAccess: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1359,7 +1359,7 @@ export interface GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAdminAccess: Schema.optional(Schema.Boolean),
     requests: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest),
@@ -1380,7 +1380,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelecti
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
       GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties,
@@ -1400,7 +1400,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelecti
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     choice: Schema.optional(
       GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice,
@@ -1422,7 +1422,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelect
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -1444,7 +1444,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldR
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     disabledPolicy: Schema.optional(
       GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
@@ -1463,7 +1463,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelecti
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -1481,7 +1481,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPr
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     properties: Schema.optional(GoogleAppsDriveLabelsV2betaFieldProperties),
     updateMask: Schema.optional(Schema.String),
@@ -1498,7 +1498,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPr
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(GoogleAppsDriveLabelsV2betaLabelProperties),
     updateMask: Schema.optional(Schema.String),
   }).annotate({
@@ -1512,7 +1512,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRe
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1547,7 +1547,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createSelectionChoice: Schema.optional(
       GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest,
     ),
@@ -1600,7 +1600,7 @@ export interface GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest
 }
 
 export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabledAppSettings: Schema.optional(
       GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings,
     ),
@@ -1626,7 +1626,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String),
     requests: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest),
@@ -1648,7 +1648,7 @@ export interface GoogleAppsDriveLabelsV2betaPublishLabelRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaPublishLabelRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaPublishLabelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(GoogleAppsDriveLabelsV2betaWriteControl),
     useAdminAccess: Schema.optional(Schema.Boolean),
     languageCode: Schema.optional(Schema.String),
@@ -1662,7 +1662,7 @@ export interface GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse {
 }
 
 export const GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelPermissions: Schema.optional(
       Schema.Array(GoogleAppsDriveLabelsV2betaLabelPermission),
     ),
@@ -1685,7 +1685,7 @@ export interface GoogleAppsDriveLabelsV2betaUserCapabilities {
 }
 
 export const GoogleAppsDriveLabelsV2betaUserCapabilities: Schema.Codec<GoogleAppsDriveLabelsV2betaUserCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canAdministrateLabels: Schema.optional(Schema.Boolean),
     canCreateSharedLabels: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -1710,7 +1710,7 @@ export interface GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     useAdminAccess: Schema.optional(Schema.Boolean),
     copyMode: Schema.optional(Schema.String),
@@ -1722,7 +1722,7 @@ export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest: Schema.Codec
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -1734,7 +1734,7 @@ export interface GoogleAppsDriveLabelsV2betaListLabelsResponse {
 }
 
 export const GoogleAppsDriveLabelsV2betaListLabelsResponse: Schema.Codec<GoogleAppsDriveLabelsV2betaListLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(GoogleAppsDriveLabelsV2betaLabel)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLabelsResponse" });
@@ -1749,7 +1749,7 @@ export interface GoogleAppsDriveLabelsV2betaEnableLabelRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaEnableLabelRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaEnableLabelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(GoogleAppsDriveLabelsV2betaWriteControl),
     languageCode: Schema.optional(Schema.String),
     useAdminAccess: Schema.optional(Schema.Boolean),
@@ -1769,7 +1769,7 @@ export interface GoogleAppsDriveLabelsV2betaDisableLabelRequest {
 }
 
 export const GoogleAppsDriveLabelsV2betaDisableLabelRequest: Schema.Codec<GoogleAppsDriveLabelsV2betaDisableLabelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(GoogleAppsDriveLabelsV2betaWriteControl),
     useAdminAccess: Schema.optional(Schema.Boolean),
     updateMask: Schema.optional(Schema.String),
@@ -1841,7 +1841,7 @@ export interface GetCapabilitiesUsersRequest {
 }
 
 export const GetCapabilitiesUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   }).pipe(
@@ -1852,7 +1852,7 @@ export const GetCapabilitiesUsersRequest =
 export type GetCapabilitiesUsersResponse =
   GoogleAppsDriveLabelsV2betaUserCapabilities;
 export const GetCapabilitiesUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaUserCapabilities;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaUserCapabilities;
 
 export type GetCapabilitiesUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1862,7 +1862,7 @@ export const getCapabilitiesUsers: API.OperationMethod<
   GetCapabilitiesUsersResponse,
   GetCapabilitiesUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCapabilitiesUsersRequest,
   output: GetCapabilitiesUsersResponse,
   errors: [NotFound, Forbidden],
@@ -1873,7 +1873,7 @@ export interface GetLabelLimitsRequest {
   name?: string;
 }
 
-export const GetLabelLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLabelLimitsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2beta/limits/label" }),
@@ -1882,7 +1882,7 @@ export const GetLabelLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetLabelLimitsResponse = GoogleAppsDriveLabelsV2betaLabelLimits;
 export const GetLabelLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelLimits;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabelLimits;
 
 export type GetLabelLimitsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1892,7 +1892,7 @@ export const getLabelLimits: API.OperationMethod<
   GetLabelLimitsResponse,
   GetLabelLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLabelLimitsRequest,
   output: GetLabelLimitsResponse,
   errors: [NotFound, Forbidden],
@@ -1906,7 +1906,7 @@ export interface UpdateLabelEnabledAppSettingsLabelsRequest {
 }
 
 export const UpdateLabelEnabledAppSettingsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest,
@@ -1923,7 +1923,7 @@ export const UpdateLabelEnabledAppSettingsLabelsRequest =
 export type UpdateLabelEnabledAppSettingsLabelsResponse =
   GoogleAppsDriveLabelsV2betaLabel;
 export const UpdateLabelEnabledAppSettingsLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type UpdateLabelEnabledAppSettingsLabelsError =
   | DefaultErrors
@@ -1938,7 +1938,7 @@ export const updateLabelEnabledAppSettingsLabels: API.OperationMethod<
   UpdateLabelEnabledAppSettingsLabelsResponse,
   UpdateLabelEnabledAppSettingsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLabelEnabledAppSettingsLabelsRequest,
   output: UpdateLabelEnabledAppSettingsLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1952,7 +1952,7 @@ export interface UpdateLabelCopyModeLabelsRequest {
 }
 
 export const UpdateLabelCopyModeLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest,
@@ -1969,7 +1969,7 @@ export const UpdateLabelCopyModeLabelsRequest =
 export type UpdateLabelCopyModeLabelsResponse =
   GoogleAppsDriveLabelsV2betaLabel;
 export const UpdateLabelCopyModeLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type UpdateLabelCopyModeLabelsError =
   | DefaultErrors
@@ -1984,7 +1984,7 @@ export const updateLabelCopyModeLabels: API.OperationMethod<
   UpdateLabelCopyModeLabelsResponse,
   UpdateLabelCopyModeLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLabelCopyModeLabelsRequest,
   output: UpdateLabelCopyModeLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1997,7 +1997,7 @@ export interface DeltaLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest;
 }
 
-export const DeltaLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeltaLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(
     GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest,
@@ -2010,7 +2010,7 @@ export const DeltaLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeltaLabelsResponse =
   GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse;
 export const DeltaLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse;
 
 export type DeltaLabelsError =
   | DefaultErrors
@@ -2025,7 +2025,7 @@ export const deltaLabels: API.OperationMethod<
   DeltaLabelsResponse,
   DeltaLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeltaLabelsRequest,
   output: DeltaLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2038,7 +2038,7 @@ export interface PublishLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaPublishLabelRequest;
 }
 
-export const PublishLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleAppsDriveLabelsV2betaPublishLabelRequest).pipe(
     T.HttpBody(),
@@ -2050,7 +2050,7 @@ export const PublishLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PublishLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const PublishLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type PublishLabelsError =
   | DefaultErrors
@@ -2065,7 +2065,7 @@ export const publishLabels: API.OperationMethod<
   PublishLabelsResponse,
   PublishLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishLabelsRequest,
   output: PublishLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2096,7 +2096,7 @@ export interface ListLabelsRequest {
   languageCode?: string;
 }
 
-export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListLabelsRequest = /*@__PURE__*/ Schema.Struct({
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   minimumRole: Schema.optional(Schema.String).pipe(T.HttpQuery("minimumRole")),
@@ -2118,7 +2118,7 @@ export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListLabelsResponse = GoogleAppsDriveLabelsV2betaListLabelsResponse;
 export const ListLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelsResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelsResponse;
 
 export type ListLabelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2128,7 +2128,7 @@ export const listLabels: API.PaginatedOperationMethod<
   ListLabelsResponse,
   ListLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: ListLabelsResponse,
   errors: [NotFound, Forbidden],
@@ -2145,7 +2145,7 @@ export interface DisableLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaDisableLabelRequest;
 }
 
-export const DisableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleAppsDriveLabelsV2betaDisableLabelRequest).pipe(
     T.HttpBody(),
@@ -2157,7 +2157,7 @@ export const DisableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DisableLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const DisableLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type DisableLabelsError =
   | DefaultErrors
@@ -2172,7 +2172,7 @@ export const disableLabels: API.OperationMethod<
   DisableLabelsResponse,
   DisableLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableLabelsRequest,
   output: DisableLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2185,7 +2185,7 @@ export interface EnableLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaEnableLabelRequest;
 }
 
-export const EnableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EnableLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleAppsDriveLabelsV2betaEnableLabelRequest).pipe(
     T.HttpBody(),
@@ -2197,7 +2197,7 @@ export const EnableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type EnableLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const EnableLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type EnableLabelsError =
   | DefaultErrors
@@ -2212,7 +2212,7 @@ export const enableLabels: API.OperationMethod<
   EnableLabelsResponse,
   EnableLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableLabelsRequest,
   output: EnableLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2227,7 +2227,7 @@ export interface DeleteLabelsRequest {
   "writeControl.requiredRevisionId"?: string;
 }
 
-export const DeleteLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   useAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useAdminAccess"),
@@ -2241,8 +2241,7 @@ export const DeleteLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteLabelsRequest>;
 
 export type DeleteLabelsResponse = GoogleProtobufEmpty;
-export const DeleteLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeleteLabelsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteLabelsError =
   | DefaultErrors
@@ -2257,7 +2256,7 @@ export const deleteLabels: API.OperationMethod<
   DeleteLabelsResponse,
   DeleteLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelsRequest,
   output: DeleteLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2272,7 +2271,7 @@ export interface CreateLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaLabel;
 }
 
-export const CreateLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateLabelsRequest = /*@__PURE__*/ Schema.Struct({
   useAdminAccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("useAdminAccess"),
   ),
@@ -2287,7 +2286,7 @@ export const CreateLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const CreateLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type CreateLabelsError =
   | DefaultErrors
@@ -2302,7 +2301,7 @@ export const createLabels: API.OperationMethod<
   CreateLabelsResponse,
   CreateLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelsRequest,
   output: CreateLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2318,7 +2317,7 @@ export interface UpdatePermissionsLabelsRequest {
 }
 
 export const UpdatePermissionsLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -2338,7 +2337,7 @@ export const UpdatePermissionsLabelsRequest =
 export type UpdatePermissionsLabelsResponse =
   GoogleAppsDriveLabelsV2betaLabelPermission;
 export const UpdatePermissionsLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
 export type UpdatePermissionsLabelsError =
   | DefaultErrors
@@ -2353,7 +2352,7 @@ export const updatePermissionsLabels: API.OperationMethod<
   UpdatePermissionsLabelsResponse,
   UpdatePermissionsLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionsLabelsRequest,
   output: UpdatePermissionsLabelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2370,7 +2369,7 @@ export interface GetLabelsRequest {
   view?: "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL" | (string & {});
 }
 
-export const GetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLabelsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   languageCode: Schema.optional(Schema.String).pipe(
     T.HttpQuery("languageCode"),
@@ -2385,8 +2384,7 @@ export const GetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetLabelsRequest>;
 
 export type GetLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
-export const GetLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
+export const GetLabelsResponse = /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
 export type GetLabelsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2396,7 +2394,7 @@ export const getLabels: API.OperationMethod<
   GetLabelsResponse,
   GetLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLabelsRequest,
   output: GetLabelsResponse,
   errors: [NotFound, Forbidden],
@@ -2410,7 +2408,7 @@ export interface BatchUpdateLabelsPermissionsRequest {
 }
 
 export const BatchUpdateLabelsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest,
@@ -2427,7 +2425,7 @@ export const BatchUpdateLabelsPermissionsRequest =
 export type BatchUpdateLabelsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 export const BatchUpdateLabelsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 
 export type BatchUpdateLabelsPermissionsError =
   | DefaultErrors
@@ -2442,7 +2440,7 @@ export const batchUpdateLabelsPermissions: API.OperationMethod<
   BatchUpdateLabelsPermissionsResponse,
   BatchUpdateLabelsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateLabelsPermissionsRequest,
   output: BatchUpdateLabelsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2458,7 +2456,7 @@ export interface CreateLabelsPermissionsRequest {
 }
 
 export const CreateLabelsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -2478,7 +2476,7 @@ export const CreateLabelsPermissionsRequest =
 export type CreateLabelsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaLabelPermission;
 export const CreateLabelsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
 export type CreateLabelsPermissionsError =
   | DefaultErrors
@@ -2493,7 +2491,7 @@ export const createLabelsPermissions: API.OperationMethod<
   CreateLabelsPermissionsResponse,
   CreateLabelsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelsPermissionsRequest,
   output: CreateLabelsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2507,7 +2505,7 @@ export interface DeleteLabelsPermissionsRequest {
 }
 
 export const DeleteLabelsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
     ),
@@ -2519,7 +2517,7 @@ export const DeleteLabelsPermissionsRequest =
 
 export type DeleteLabelsPermissionsResponse = GoogleProtobufEmpty;
 export const DeleteLabelsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteLabelsPermissionsError =
   | DefaultErrors
@@ -2534,7 +2532,7 @@ export const deleteLabelsPermissions: API.OperationMethod<
   DeleteLabelsPermissionsResponse,
   DeleteLabelsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelsPermissionsRequest,
   output: DeleteLabelsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2548,7 +2546,7 @@ export interface BatchDeleteLabelsPermissionsRequest {
 }
 
 export const BatchDeleteLabelsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest,
@@ -2564,7 +2562,7 @@ export const BatchDeleteLabelsPermissionsRequest =
 
 export type BatchDeleteLabelsPermissionsResponse = GoogleProtobufEmpty;
 export const BatchDeleteLabelsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchDeleteLabelsPermissionsError =
   | DefaultErrors
@@ -2579,7 +2577,7 @@ export const batchDeleteLabelsPermissions: API.OperationMethod<
   BatchDeleteLabelsPermissionsResponse,
   BatchDeleteLabelsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteLabelsPermissionsRequest,
   output: BatchDeleteLabelsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2597,7 +2595,7 @@ export interface ListLabelsPermissionsRequest {
 }
 
 export const ListLabelsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2612,7 +2610,7 @@ export const ListLabelsPermissionsRequest =
 export type ListLabelsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 export const ListLabelsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 
 export type ListLabelsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2622,7 +2620,7 @@ export const listLabelsPermissions: API.PaginatedOperationMethod<
   ListLabelsPermissionsResponse,
   ListLabelsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsPermissionsRequest,
   output: ListLabelsPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -2642,7 +2640,7 @@ export interface UpdatePermissionsLabelsRevisionsRequest {
 }
 
 export const UpdatePermissionsLabelsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -2662,7 +2660,7 @@ export const UpdatePermissionsLabelsRevisionsRequest =
 export type UpdatePermissionsLabelsRevisionsResponse =
   GoogleAppsDriveLabelsV2betaLabelPermission;
 export const UpdatePermissionsLabelsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
 export type UpdatePermissionsLabelsRevisionsError =
   | DefaultErrors
@@ -2677,7 +2675,7 @@ export const updatePermissionsLabelsRevisions: API.OperationMethod<
   UpdatePermissionsLabelsRevisionsResponse,
   UpdatePermissionsLabelsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePermissionsLabelsRevisionsRequest,
   output: UpdatePermissionsLabelsRevisionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2691,7 +2689,7 @@ export interface DeleteLabelsRevisionsPermissionsRequest {
 }
 
 export const DeleteLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -2703,7 +2701,7 @@ export const DeleteLabelsRevisionsPermissionsRequest =
 
 export type DeleteLabelsRevisionsPermissionsResponse = GoogleProtobufEmpty;
 export const DeleteLabelsRevisionsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteLabelsRevisionsPermissionsError =
   | DefaultErrors
@@ -2718,7 +2716,7 @@ export const deleteLabelsRevisionsPermissions: API.OperationMethod<
   DeleteLabelsRevisionsPermissionsResponse,
   DeleteLabelsRevisionsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelsRevisionsPermissionsRequest,
   output: DeleteLabelsRevisionsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2732,7 +2730,7 @@ export interface BatchDeleteLabelsRevisionsPermissionsRequest {
 }
 
 export const BatchDeleteLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest,
@@ -2748,7 +2746,7 @@ export const BatchDeleteLabelsRevisionsPermissionsRequest =
 
 export type BatchDeleteLabelsRevisionsPermissionsResponse = GoogleProtobufEmpty;
 export const BatchDeleteLabelsRevisionsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchDeleteLabelsRevisionsPermissionsError =
   | DefaultErrors
@@ -2763,7 +2761,7 @@ export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
   BatchDeleteLabelsRevisionsPermissionsResponse,
   BatchDeleteLabelsRevisionsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteLabelsRevisionsPermissionsRequest,
   output: BatchDeleteLabelsRevisionsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2781,7 +2779,7 @@ export interface ListLabelsRevisionsPermissionsRequest {
 }
 
 export const ListLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
     ),
@@ -2796,7 +2794,7 @@ export const ListLabelsRevisionsPermissionsRequest =
 export type ListLabelsRevisionsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 export const ListLabelsRevisionsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 
 export type ListLabelsRevisionsPermissionsError =
   | DefaultErrors
@@ -2809,7 +2807,7 @@ export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
   ListLabelsRevisionsPermissionsResponse,
   ListLabelsRevisionsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsPermissionsRequest,
   output: ListLabelsRevisionsPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -2829,7 +2827,7 @@ export interface CreateLabelsRevisionsPermissionsRequest {
 }
 
 export const CreateLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     useAdminAccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("useAdminAccess"),
@@ -2849,7 +2847,7 @@ export const CreateLabelsRevisionsPermissionsRequest =
 export type CreateLabelsRevisionsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaLabelPermission;
 export const CreateLabelsRevisionsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
 export type CreateLabelsRevisionsPermissionsError =
   | DefaultErrors
@@ -2864,7 +2862,7 @@ export const createLabelsRevisionsPermissions: API.OperationMethod<
   CreateLabelsRevisionsPermissionsResponse,
   CreateLabelsRevisionsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLabelsRevisionsPermissionsRequest,
   output: CreateLabelsRevisionsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2878,7 +2876,7 @@ export interface BatchUpdateLabelsRevisionsPermissionsRequest {
 }
 
 export const BatchUpdateLabelsRevisionsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest,
@@ -2895,7 +2893,7 @@ export const BatchUpdateLabelsRevisionsPermissionsRequest =
 export type BatchUpdateLabelsRevisionsPermissionsResponse =
   GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 export const BatchUpdateLabelsRevisionsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 
 export type BatchUpdateLabelsRevisionsPermissionsError =
   | DefaultErrors
@@ -2910,7 +2908,7 @@ export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
   BatchUpdateLabelsRevisionsPermissionsResponse,
   BatchUpdateLabelsRevisionsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateLabelsRevisionsPermissionsRequest,
   output: BatchUpdateLabelsRevisionsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2926,7 +2924,7 @@ export interface ListLabelsRevisionsLocksRequest {
 }
 
 export const ListLabelsRevisionsLocksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2938,7 +2936,7 @@ export const ListLabelsRevisionsLocksRequest =
 export type ListLabelsRevisionsLocksResponse =
   GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 export const ListLabelsRevisionsLocksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 
 export type ListLabelsRevisionsLocksError =
   | DefaultErrors
@@ -2951,7 +2949,7 @@ export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
   ListLabelsRevisionsLocksResponse,
   ListLabelsRevisionsLocksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsLocksRequest,
   output: ListLabelsRevisionsLocksResponse,
   errors: [NotFound, Forbidden],
@@ -2970,13 +2968,11 @@ export interface ListLabelsLocksRequest {
   pageSize?: number;
 }
 
-export const ListLabelsLocksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  },
-).pipe(
+export const ListLabelsLocksRequest = /*@__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
   T.Http({ method: "GET", path: "v2beta/{+parent}/locks" }),
   svc,
 ) as unknown as Schema.Codec<ListLabelsLocksRequest>;
@@ -2984,7 +2980,7 @@ export const ListLabelsLocksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListLabelsLocksResponse =
   GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 export const ListLabelsLocksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
+  /*@__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 
 export type ListLabelsLocksError = DefaultErrors | NotFound | Forbidden;
 
@@ -2994,7 +2990,7 @@ export const listLabelsLocks: API.PaginatedOperationMethod<
   ListLabelsLocksResponse,
   ListLabelsLocksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsLocksRequest,
   output: ListLabelsLocksResponse,
   errors: [NotFound, Forbidden],

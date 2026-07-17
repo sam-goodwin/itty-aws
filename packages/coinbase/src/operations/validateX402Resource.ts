@@ -8,7 +8,7 @@ export interface ValidateX402ResourceInput {
   method?: "GET" | "POST";
 }
 export const ValidateX402ResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String,
     method: Schema.optional(Schema.Literals(["GET", "POST"])),
   }).pipe(
@@ -73,7 +73,7 @@ export interface ValidateX402ResourceOutput {
   } | null;
 }
 export const ValidateX402ResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     valid: Schema.Boolean,
     statusCode: Schema.NullOr(Schema.Number),
     x402Version: Schema.NullOr(Schema.Number),
@@ -164,9 +164,7 @@ export const ValidateX402ResourceOutput =
  * Returns a uniform array of preflight check results (reachable, returns402, hasBazaarExtension, parse) and a simulated facilitator accept/reject decision so sellers and agents can confirm their endpoint is ready to be discovered before going live.
  * This operation is read-only: it performs no payment and does not index the resource.
  */
-export const validateX402Resource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ValidateX402ResourceInput,
-    outputSchema: ValidateX402ResourceOutput,
-  }),
-);
+export const validateX402Resource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ValidateX402ResourceInput,
+  outputSchema: ValidateX402ResourceOutput,
+}));

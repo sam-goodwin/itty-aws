@@ -8,7 +8,7 @@ export interface PostV1DomainsByDomainIdRetryInput {
   domainId: string;
 }
 export const PostV1DomainsByDomainIdRetryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/domains/{domainId}/retry" }),
@@ -46,7 +46,7 @@ export interface PostV1DomainsByDomainIdRetryOutput {
   };
 }
 export const PostV1DomainsByDomainIdRetryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -90,7 +90,7 @@ export const PostV1DomainsByDomainIdRetryOutput =
  * Retries DNS verification and certificate issuance for a failed or pending domain. Returns 409 if the domain is not yet eligible for retry (e.g. still provisioning).
  */
 export const postV1DomainsByDomainIdRetry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1DomainsByDomainIdRetryInput,
     outputSchema: PostV1DomainsByDomainIdRetryOutput,
     errors: [Forbidden, NotFound, Conflict] as const,

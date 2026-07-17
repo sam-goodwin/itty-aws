@@ -7,7 +7,7 @@ export interface GetEvmSmartAccountInput {
   address: string;
 }
 export const GetEvmSmartAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/evm/smart-accounts/{address}" }),
@@ -23,7 +23,7 @@ export interface GetEvmSmartAccountOutput {
   updatedAt?: string;
 }
 export const GetEvmSmartAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     owners: Schema.Array(Schema.String),
     name: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const GetEvmSmartAccountOutput =
  *
  * @param address - The 0x-prefixed address of the Smart Account.
  */
-export const getEvmSmartAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEvmSmartAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEvmSmartAccountInput,
   outputSchema: GetEvmSmartAccountOutput,
 }));

@@ -8,7 +8,7 @@ export interface V1ListMigrationHistoryInput {
   ref: string;
 }
 export const V1ListMigrationHistoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/database/migrations" }),
@@ -17,7 +17,7 @@ export const V1ListMigrationHistoryInput =
 // Output Schema
 export type V1ListMigrationHistoryOutput = { version: string; name?: string }[];
 export const V1ListMigrationHistoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       version: Schema.String,
       name: Schema.optional(Schema.String),
@@ -32,10 +32,8 @@ export const V1ListMigrationHistoryOutput =
  *
  * @param ref - Project ref
  */
-export const v1ListMigrationHistory = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListMigrationHistoryInput,
-    outputSchema: V1ListMigrationHistoryOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1ListMigrationHistory = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListMigrationHistoryInput,
+  outputSchema: V1ListMigrationHistoryOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

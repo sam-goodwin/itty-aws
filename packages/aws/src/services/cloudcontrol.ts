@@ -111,11 +111,10 @@ export type PatchDocument = string | redacted.Redacted<string>;
 export interface CancelResourceRequestInput {
   RequestToken: string;
 }
-export const CancelResourceRequestInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ RequestToken: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CancelResourceRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestToken: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CancelResourceRequestInput",
 }) as any as S.Schema<CancelResourceRequestInput>;
@@ -132,7 +131,7 @@ export interface ProgressEvent {
   ErrorCode?: string;
   RetryAfter?: Date;
 }
-export const ProgressEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProgressEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.optional(S.String),
     Identifier: S.optional(S.String),
@@ -151,7 +150,7 @@ export interface CancelResourceRequestOutput {
   ProgressEvent?: ProgressEvent;
 }
 export const CancelResourceRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
   ).annotate({
     identifier: "CancelResourceRequestOutput",
@@ -163,7 +162,7 @@ export interface CreateResourceInput {
   ClientToken?: string;
   DesiredState: string | redacted.Redacted<string>;
 }
-export const CreateResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.String,
     TypeVersionId: S.optional(S.String),
@@ -179,7 +178,7 @@ export const CreateResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const CreateResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
 ).annotate({
   identifier: "CreateResourceOutput",
@@ -191,7 +190,7 @@ export interface DeleteResourceInput {
   ClientToken?: string;
   Identifier: string;
 }
-export const DeleteResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.String,
     TypeVersionId: S.optional(S.String),
@@ -207,7 +206,7 @@ export const DeleteResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const DeleteResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
 ).annotate({
   identifier: "DeleteResourceOutput",
@@ -218,7 +217,7 @@ export interface GetResourceInput {
   RoleArn?: string;
   Identifier: string;
 }
-export const GetResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.String,
     TypeVersionId: S.optional(S.String),
@@ -234,7 +233,7 @@ export interface ResourceDescription {
   Identifier?: string;
   Properties?: string | redacted.Redacted<string>;
 }
-export const ResourceDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.optional(S.String),
     Properties: S.optional(SensitiveString),
@@ -246,7 +245,7 @@ export interface GetResourceOutput {
   TypeName?: string;
   ResourceDescription?: ResourceDescription;
 }
-export const GetResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.optional(S.String),
     ResourceDescription: S.optional(ResourceDescription),
@@ -258,7 +257,7 @@ export interface GetResourceRequestStatusInput {
   RequestToken: string;
 }
 export const GetResourceRequestStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ RequestToken: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -275,7 +274,7 @@ export interface HookProgressEvent {
   HookStatusMessage?: string;
   FailureMode?: string;
 }
-export const HookProgressEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HookProgressEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HookTypeName: S.optional(S.String),
     HookTypeVersionId: S.optional(S.String),
@@ -290,14 +289,13 @@ export const HookProgressEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "HookProgressEvent",
 }) as any as S.Schema<HookProgressEvent>;
 export type HooksProgressEvent = HookProgressEvent[];
-export const HooksProgressEvent =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HookProgressEvent);
+export const HooksProgressEvent = /*@__PURE__*/ S.Array(HookProgressEvent);
 export interface GetResourceRequestStatusOutput {
   ProgressEvent?: ProgressEvent;
   HooksProgressEvent?: HookProgressEvent[];
 }
 export const GetResourceRequestStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressEvent: S.optional(ProgressEvent),
       HooksProgressEvent: S.optional(HooksProgressEvent),
@@ -306,15 +304,15 @@ export const GetResourceRequestStatusOutput =
     identifier: "GetResourceRequestStatusOutput",
   }) as any as S.Schema<GetResourceRequestStatusOutput>;
 export type Operations = string[];
-export const Operations = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Operations = /*@__PURE__*/ S.Array(S.String);
 export type OperationStatuses = string[];
-export const OperationStatuses = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const OperationStatuses = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceRequestStatusFilter {
   Operations?: string[];
   OperationStatuses?: string[];
 }
 export const ResourceRequestStatusFilter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Operations: S.optional(Operations),
       OperationStatuses: S.optional(OperationStatuses),
@@ -327,33 +325,29 @@ export interface ListResourceRequestsInput {
   NextToken?: string;
   ResourceRequestStatusFilter?: ResourceRequestStatusFilter;
 }
-export const ListResourceRequestsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      ResourceRequestStatusFilter: S.optional(ResourceRequestStatusFilter),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListResourceRequestsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    ResourceRequestStatusFilter: S.optional(ResourceRequestStatusFilter),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListResourceRequestsInput",
 }) as any as S.Schema<ListResourceRequestsInput>;
 export type ResourceRequestStatusSummaries = ProgressEvent[];
 export const ResourceRequestStatusSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProgressEvent);
+  /*@__PURE__*/ S.Array(ProgressEvent);
 export interface ListResourceRequestsOutput {
   ResourceRequestStatusSummaries?: ProgressEvent[];
   NextToken?: string;
 }
-export const ListResourceRequestsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceRequestStatusSummaries: S.optional(
-        ResourceRequestStatusSummaries,
-      ),
-      NextToken: S.optional(S.String),
-    }),
+export const ListResourceRequestsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceRequestStatusSummaries: S.optional(ResourceRequestStatusSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListResourceRequestsOutput",
 }) as any as S.Schema<ListResourceRequestsOutput>;
@@ -365,7 +359,7 @@ export interface ListResourcesInput {
   MaxResults?: number;
   ResourceModel?: string | redacted.Redacted<string>;
 }
-export const ListResourcesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.String,
     TypeVersionId: S.optional(S.String),
@@ -380,14 +374,13 @@ export const ListResourcesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesInput",
 }) as any as S.Schema<ListResourcesInput>;
 export type ResourceDescriptions = ResourceDescription[];
-export const ResourceDescriptions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceDescription);
+export const ResourceDescriptions = /*@__PURE__*/ S.Array(ResourceDescription);
 export interface ListResourcesOutput {
   TypeName?: string;
   ResourceDescriptions?: ResourceDescription[];
   NextToken?: string;
 }
-export const ListResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.optional(S.String),
     ResourceDescriptions: S.optional(ResourceDescriptions),
@@ -404,7 +397,7 @@ export interface UpdateResourceInput {
   Identifier: string;
   PatchDocument: string | redacted.Redacted<string>;
 }
-export const UpdateResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TypeName: S.String,
     TypeVersionId: S.optional(S.String),
@@ -421,7 +414,7 @@ export const UpdateResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const UpdateResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
 ).annotate({
   identifier: "UpdateResourceOutput",
@@ -578,7 +571,7 @@ export const cancelResourceRequest: API.OperationMethod<
   CancelResourceRequestOutput,
   CancelResourceRequestError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
@@ -618,7 +611,7 @@ export const createResource: API.OperationMethod<
   CreateResourceOutput,
   CreateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceInput,
   output: CreateResourceOutput,
   errors: [
@@ -678,7 +671,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceOutput,
   DeleteResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceInput,
   output: DeleteResourceOutput,
   errors: [
@@ -735,7 +728,7 @@ export const getResource: API.OperationMethod<
   GetResourceOutput,
   GetResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceInput,
   output: GetResourceOutput,
   errors: [
@@ -772,7 +765,7 @@ export const getResourceRequestStatus: API.OperationMethod<
   GetResourceRequestStatusOutput,
   GetResourceRequestStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
   errors: [RequestTokenNotFoundException],
@@ -806,7 +799,7 @@ export const listResourceRequests: API.OperationMethod<
     ListResourceRequestsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
@@ -863,7 +856,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
   output: ListResourcesOutput,
   errors: [
@@ -937,7 +930,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceOutput,
   UpdateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceInput,
   output: UpdateResourceOutput,
   errors: [

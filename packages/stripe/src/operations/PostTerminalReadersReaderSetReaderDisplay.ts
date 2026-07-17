@@ -20,7 +20,7 @@ export interface PostTerminalReadersReaderSetReaderDisplayInput {
   type: "cart";
 }
 export const PostTerminalReadersReaderSetReaderDisplayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     cart: Schema.optional(
       Schema.Struct({
@@ -121,7 +121,7 @@ export interface PostTerminalReadersReaderSetReaderDisplayOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersReaderSetReaderDisplayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -209,7 +209,7 @@ export const PostTerminalReadersReaderSetReaderDisplayOutput =
  * <p>Sets the reader display to show <a href="/docs/terminal/features/display">cart details</a>.</p>
  */
 export const PostTerminalReadersReaderSetReaderDisplay =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderSetReaderDisplayInput,
     outputSchema: PostTerminalReadersReaderSetReaderDisplayOutput,
   }));

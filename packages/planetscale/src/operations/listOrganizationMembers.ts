@@ -11,7 +11,7 @@ export interface ListOrganizationMembersInput {
   per_page?: number;
 }
 export const ListOrganizationMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     q: Schema.optional(Schema.String),
     page: Schema.optional(Schema.Number),
@@ -28,7 +28,7 @@ export interface ListOrganizationMembersOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     user: {
       id: string;
@@ -54,10 +54,10 @@ export interface ListOrganizationMembersOutput {
     role: "member" | "admin";
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
 }
 export const ListOrganizationMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -109,7 +109,7 @@ export const ListOrganizationMembersOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOrganizationMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOrganizationMembersInput,
     outputSchema: ListOrganizationMembersOutput,
     errors: [Forbidden, NotFound] as const,

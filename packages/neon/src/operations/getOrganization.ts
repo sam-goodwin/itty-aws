@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetOrganizationInput {
   org_id: string;
 }
-export const GetOrganizationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrganizationInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/organizations/{org_id}" }),
@@ -24,7 +24,7 @@ export interface GetOrganizationOutput {
   allow_hipaa_projects?: boolean;
   require_mfa?: boolean;
 }
-export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrganizationOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   handle: Schema.String,
@@ -44,7 +44,7 @@ export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param org_id - The Neon organization ID
  */
-export const getOrganization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrganization = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrganizationInput,
   outputSchema: GetOrganizationOutput,
 }));

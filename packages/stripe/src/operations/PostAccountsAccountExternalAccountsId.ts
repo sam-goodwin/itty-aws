@@ -29,7 +29,7 @@ export interface PostAccountsAccountExternalAccountsIdInput {
   name?: string;
 }
 export const PostAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     account_holder_name: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export type PostAccountsAccountExternalAccountsIdOutput =
       tokenization_method: string | null;
     };
 export const PostAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
       account_holder_name: Schema.NullOr(Schema.String),
@@ -217,7 +217,7 @@ export const PostAccountsAccountExternalAccountsIdOutput =
  * arguments or changes.</p>
  */
 export const PostAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostAccountsAccountExternalAccountsIdInput,
     outputSchema: PostAccountsAccountExternalAccountsIdOutput,
   }));

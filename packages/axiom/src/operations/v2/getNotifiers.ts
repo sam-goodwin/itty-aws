@@ -6,9 +6,7 @@ import * as Redacted from "effect/Redacted";
 
 // Input Schema
 export interface GetNotifiersInput {}
-export const GetNotifiersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetNotifiersInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/notifiers" }),
 ) as unknown as Schema.Codec<GetNotifiersInput>;
 
@@ -37,7 +35,7 @@ export type GetNotifiersOutput = ReadonlyArray<{
   updatedAt?: string;
   id?: string;
 }>;
-export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetNotifiersOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     createdBy: Schema.optional(Schema.String),
@@ -107,7 +105,7 @@ export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * Lists all configured notifiers. Returns an array of notification configurations including their IDs and current status.
  */
-export const getNotifiers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getNotifiers = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetNotifiersInput,
   outputSchema: GetNotifiersOutput,
 }));

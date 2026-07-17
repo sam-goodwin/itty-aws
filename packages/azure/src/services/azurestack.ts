@@ -14,7 +14,7 @@ export interface CloudManifestFileGetInput {
   versionCreationDate?: string;
 }
 export const CloudManifestFileGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verificationVersion: Schema.String.pipe(T.PathParam()),
     versionCreationDate: Schema.optional(Schema.String),
   }).pipe(
@@ -33,7 +33,7 @@ export interface CloudManifestFileGetOutput {
   etag?: string;
 }
 export const CloudManifestFileGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -48,16 +48,14 @@ export const CloudManifestFileGetOutput =
  * @param versionCreationDate - Signing verification key version creation date.
  * @param api-version - Client API Version.
  */
-export const CloudManifestFileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudManifestFileGetInput,
-    outputSchema: CloudManifestFileGetOutput,
-  }),
-);
+export const CloudManifestFileGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudManifestFileGetInput,
+  outputSchema: CloudManifestFileGetOutput,
+}));
 // Input Schema
 export interface CloudManifestFileListInput {}
 export const CloudManifestFileListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.AzureStack/cloudManifestFiles",
@@ -73,7 +71,7 @@ export interface CloudManifestFileListOutput {
   etag?: string;
 }
 export const CloudManifestFileListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -86,12 +84,10 @@ export const CloudManifestFileListOutput =
  *
  * @param api-version - Client API Version.
  */
-export const CloudManifestFileList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudManifestFileListInput,
-    outputSchema: CloudManifestFileListOutput,
-  }),
-);
+export const CloudManifestFileList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudManifestFileListInput,
+  outputSchema: CloudManifestFileListOutput,
+}));
 // Input Schema
 export interface CustomerSubscriptionsCreateInput {
   subscriptionId: string;
@@ -105,7 +101,7 @@ export interface CustomerSubscriptionsCreateInput {
   etag?: string;
 }
 export const CustomerSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -135,7 +131,7 @@ export interface CustomerSubscriptionsCreateOutput {
   etag?: string;
 }
 export const CustomerSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -152,12 +148,10 @@ export const CustomerSubscriptionsCreateOutput =
  * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsCreateInput,
-    outputSchema: CustomerSubscriptionsCreateOutput,
-  }),
-);
+export const CustomerSubscriptionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsCreateInput,
+  outputSchema: CustomerSubscriptionsCreateOutput,
+}));
 // Input Schema
 export interface CustomerSubscriptionsDeleteInput {
   subscriptionId: string;
@@ -166,7 +160,7 @@ export interface CustomerSubscriptionsDeleteInput {
   customerSubscriptionName: string;
 }
 export const CustomerSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -182,7 +176,7 @@ export const CustomerSubscriptionsDeleteInput =
 // Output Schema
 export type CustomerSubscriptionsDeleteOutput = void;
 export const CustomerSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomerSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomerSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -194,12 +188,10 @@ export const CustomerSubscriptionsDeleteOutput =
  * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsDeleteInput,
-    outputSchema: CustomerSubscriptionsDeleteOutput,
-  }),
-);
+export const CustomerSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsDeleteInput,
+  outputSchema: CustomerSubscriptionsDeleteOutput,
+}));
 // Input Schema
 export interface CustomerSubscriptionsGetInput {
   subscriptionId: string;
@@ -208,7 +200,7 @@ export interface CustomerSubscriptionsGetInput {
   customerSubscriptionName: string;
 }
 export const CustomerSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -229,7 +221,7 @@ export interface CustomerSubscriptionsGetOutput {
   etag?: string;
 }
 export const CustomerSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -246,12 +238,10 @@ export const CustomerSubscriptionsGetOutput =
  * @param customerSubscriptionName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsGetInput,
-    outputSchema: CustomerSubscriptionsGetOutput,
-  }),
-);
+export const CustomerSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsGetInput,
+  outputSchema: CustomerSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface CustomerSubscriptionsListInput {
   subscriptionId: string;
@@ -259,7 +249,7 @@ export interface CustomerSubscriptionsListInput {
   registrationName: string;
 }
 export const CustomerSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -277,7 +267,7 @@ export interface CustomerSubscriptionsListOutput {
   value?: { id?: string; name?: string; type?: string; etag?: string }[];
 }
 export const CustomerSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -300,19 +290,17 @@ export const CustomerSubscriptionsListOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const CustomerSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerSubscriptionsListInput,
-    outputSchema: CustomerSubscriptionsListOutput,
-  }),
-);
+export const CustomerSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerSubscriptionsListInput,
+  outputSchema: CustomerSubscriptionsListOutput,
+}));
 // Input Schema
 export interface DeploymentLicenseCreateInput {
   subscriptionId: string;
   verificationVersion?: string;
 }
 export const DeploymentLicenseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     verificationVersion: Schema.optional(Schema.String),
   }).pipe(
@@ -329,7 +317,7 @@ export interface DeploymentLicenseCreateOutput {
   signature?: string;
 }
 export const DeploymentLicenseCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     temporaryLicenseChain: Schema.optional(Schema.Array(Schema.String)),
     signature: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DeploymentLicenseCreateOutput>;
@@ -341,17 +329,13 @@ export const DeploymentLicenseCreateOutput =
  * @param subscriptionId - Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param api-version - Client API Version.
  */
-export const DeploymentLicenseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentLicenseCreateInput,
-    outputSchema: DeploymentLicenseCreateOutput,
-  }),
-);
+export const DeploymentLicenseCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentLicenseCreateInput,
+  outputSchema: DeploymentLicenseCreateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureStack/operations",
@@ -373,7 +357,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -399,7 +383,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client API Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -410,7 +394,7 @@ export interface ProductsGetInput {
   registrationName: string;
   productName: string;
 }
-export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -430,7 +414,7 @@ export interface ProductsGetOutput {
   type?: string;
   etag?: string;
 }
-export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -447,7 +431,7 @@ export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetInput,
   outputSchema: ProductsGetOutput,
 }));
@@ -461,7 +445,7 @@ export interface ProductsGetProductInput {
   identitySystem?: "AzureAD" | "ADFS";
 }
 export const ProductsGetProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -484,7 +468,7 @@ export interface ProductsGetProductOutput {
   etag?: string;
 }
 export const ProductsGetProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -501,7 +485,7 @@ export const ProductsGetProductOutput =
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsGetProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGetProduct = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetProductInput,
   outputSchema: ProductsGetProductOutput,
 }));
@@ -515,7 +499,7 @@ export interface ProductsGetProductsInput {
   identitySystem?: "AzureAD" | "ADFS";
 }
 export const ProductsGetProductsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -536,7 +520,7 @@ export interface ProductsGetProductsOutput {
   value?: { id?: string; name?: string; type?: string; etag?: string }[];
 }
 export const ProductsGetProductsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -560,7 +544,7 @@ export const ProductsGetProductsOutput =
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsGetProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGetProducts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetProductsInput,
   outputSchema: ProductsGetProductsOutput,
 }));
@@ -570,7 +554,7 @@ export interface ProductsListInput {
   resourceGroup: string;
   registrationName: string;
 }
-export const ProductsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -587,7 +571,7 @@ export interface ProductsListOutput {
   nextLink?: string;
   value?: { id?: string; name?: string; type?: string; etag?: string }[];
 }
-export const ProductsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -610,7 +594,7 @@ export const ProductsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const ProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsListInput,
   outputSchema: ProductsListOutput,
 }));
@@ -622,7 +606,7 @@ export interface ProductsListDetailsInput {
   productName: string;
 }
 export const ProductsListDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -655,7 +639,7 @@ export interface ProductsListDetailsOutput {
   };
 }
 export const ProductsListDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     galleryPackageBlobSasUri: Schema.optional(Schema.String),
     productKind: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -703,7 +687,7 @@ export const ProductsListDetailsOutput =
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsListDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsListDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsListDetailsInput,
   outputSchema: ProductsListDetailsOutput,
 }));
@@ -717,7 +701,7 @@ export interface ProductsListProductsInput {
   identitySystem?: "AzureAD" | "ADFS";
 }
 export const ProductsListProductsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -738,7 +722,7 @@ export interface ProductsListProductsOutput {
   value?: { id?: string; name?: string; type?: string; etag?: string }[];
 }
 export const ProductsListProductsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -762,12 +746,10 @@ export const ProductsListProductsOutput =
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsListProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsListProductsInput,
-    outputSchema: ProductsListProductsOutput,
-  }),
-);
+export const ProductsListProducts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsListProductsInput,
+  outputSchema: ProductsListProductsOutput,
+}));
 // Input Schema
 export interface ProductsUploadLogInput {
   subscriptionId: string;
@@ -779,18 +761,16 @@ export interface ProductsUploadLogInput {
   error?: string;
   details?: string;
 }
-export const ProductsUploadLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroup: Schema.String.pipe(T.PathParam()),
-    registrationName: Schema.String.pipe(T.PathParam()),
-    productName: Schema.String.pipe(T.PathParam()),
-    operation: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    error: Schema.optional(Schema.String),
-    details: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ProductsUploadLogInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroup: Schema.String.pipe(T.PathParam()),
+  registrationName: Schema.String.pipe(T.PathParam()),
+  productName: Schema.String.pipe(T.PathParam()),
+  operation: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products/{productName}/uploadProductLog",
@@ -813,7 +793,7 @@ export interface ProductsUploadLogOutput {
   details?: string;
 }
 export const ProductsUploadLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
     subscriptionId: Schema.optional(Schema.String),
@@ -837,7 +817,7 @@ export const ProductsUploadLogOutput =
  * @param productName - Name of the product.
  * @param api-version - Client API Version.
  */
-export const ProductsUploadLog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsUploadLog = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsUploadLogInput,
   outputSchema: ProductsUploadLogOutput,
 }));
@@ -850,7 +830,7 @@ export interface RegistrationsCreateOrUpdateInput {
   location: "global";
 }
 export const RegistrationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -876,7 +856,7 @@ export interface RegistrationsCreateOrUpdateOutput {
   etag?: string;
 }
 export const RegistrationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -894,12 +874,10 @@ export const RegistrationsCreateOrUpdateOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationsCreateOrUpdateInput,
-    outputSchema: RegistrationsCreateOrUpdateOutput,
-  }),
-);
+export const RegistrationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationsCreateOrUpdateInput,
+  outputSchema: RegistrationsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface RegistrationsDeleteInput {
   subscriptionId: string;
@@ -907,7 +885,7 @@ export interface RegistrationsDeleteInput {
   registrationName: string;
 }
 export const RegistrationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -922,7 +900,7 @@ export const RegistrationsDeleteInput =
 // Output Schema
 export type RegistrationsDeleteOutput = void;
 export const RegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -933,7 +911,7 @@ export const RegistrationsDeleteOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsDeleteInput,
   outputSchema: RegistrationsDeleteOutput,
 }));
@@ -944,7 +922,7 @@ export interface RegistrationsEnableRemoteManagementInput {
   registrationName: string;
 }
 export const RegistrationsEnableRemoteManagementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -959,7 +937,7 @@ export const RegistrationsEnableRemoteManagementInput =
 // Output Schema
 export type RegistrationsEnableRemoteManagementOutput = void;
 export const RegistrationsEnableRemoteManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationsEnableRemoteManagementOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationsEnableRemoteManagementOutput>;
 
 // The operation
 /**
@@ -970,7 +948,7 @@ export const RegistrationsEnableRemoteManagementOutput =
  * @param registrationName - Name of the Azure Stack registration.
  */
 export const RegistrationsEnableRemoteManagement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsEnableRemoteManagementInput,
     outputSchema: RegistrationsEnableRemoteManagementOutput,
   }));
@@ -980,7 +958,7 @@ export interface RegistrationsGetInput {
   resourceGroup: string;
   registrationName: string;
 }
-export const RegistrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RegistrationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroup: Schema.String.pipe(T.PathParam()),
   registrationName: Schema.String.pipe(T.PathParam()),
@@ -1001,16 +979,14 @@ export interface RegistrationsGetOutput {
   tags?: Record<string, string>;
   etag?: string;
 }
-export const RegistrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.Literals(["global"]),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    etag: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<RegistrationsGetOutput>;
+export const RegistrationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.Literals(["global"]),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<RegistrationsGetOutput>;
 
 // The operation
 /**
@@ -1021,7 +997,7 @@ export const RegistrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsGetInput,
   outputSchema: RegistrationsGetOutput,
 }));
@@ -1032,7 +1008,7 @@ export interface RegistrationsGetActivationKeyInput {
   registrationName: string;
 }
 export const RegistrationsGetActivationKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -1049,7 +1025,7 @@ export interface RegistrationsGetActivationKeyOutput {
   activationKey?: string;
 }
 export const RegistrationsGetActivationKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RegistrationsGetActivationKeyOutput>;
 
@@ -1063,7 +1039,7 @@ export const RegistrationsGetActivationKeyOutput =
  * @param api-version - Client API Version.
  */
 export const RegistrationsGetActivationKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsGetActivationKeyInput,
     outputSchema: RegistrationsGetActivationKeyOutput,
   }));
@@ -1072,12 +1048,10 @@ export interface RegistrationsListInput {
   subscriptionId: string;
   resourceGroup: string;
 }
-export const RegistrationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroup: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RegistrationsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroup: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
@@ -1098,7 +1072,7 @@ export interface RegistrationsListOutput {
   }[];
 }
 export const RegistrationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1122,7 +1096,7 @@ export const RegistrationsListOutput =
  * @param resourceGroup - Name of the resource group.
  * @param api-version - Client API Version.
  */
-export const RegistrationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsListInput,
   outputSchema: RegistrationsListOutput,
 }));
@@ -1131,7 +1105,7 @@ export interface RegistrationsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const RegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1154,7 +1128,7 @@ export interface RegistrationsListBySubscriptionOutput {
   }[];
 }
 export const RegistrationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1178,7 +1152,7 @@ export const RegistrationsListBySubscriptionOutput =
  * @param api-version - Client API Version.
  */
 export const RegistrationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationsListBySubscriptionInput,
     outputSchema: RegistrationsListBySubscriptionOutput,
   }));
@@ -1191,7 +1165,7 @@ export interface RegistrationsUpdateInput {
   location: "global";
 }
 export const RegistrationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     registrationName: Schema.String.pipe(T.PathParam()),
@@ -1217,7 +1191,7 @@ export interface RegistrationsUpdateOutput {
   etag?: string;
 }
 export const RegistrationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1235,7 +1209,7 @@ export const RegistrationsUpdateOutput =
  * @param registrationName - Name of the Azure Stack registration.
  * @param api-version - Client API Version.
  */
-export const RegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RegistrationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegistrationsUpdateInput,
   outputSchema: RegistrationsUpdateOutput,
 }));

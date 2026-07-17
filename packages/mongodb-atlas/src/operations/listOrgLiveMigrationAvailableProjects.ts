@@ -10,7 +10,7 @@ export interface ListOrgLiveMigrationAvailableProjectsInput {
   pretty?: boolean;
 }
 export const ListOrgLiveMigrationAvailableProjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ListOrgLiveMigrationAvailableProjectsInput =
 // Output Schema
 export type ListOrgLiveMigrationAvailableProjectsOutput = void;
 export const ListOrgLiveMigrationAvailableProjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgLiveMigrationAvailableProjectsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgLiveMigrationAvailableProjectsOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const ListOrgLiveMigrationAvailableProjectsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listOrgLiveMigrationAvailableProjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListOrgLiveMigrationAvailableProjectsInput,
     outputSchema: ListOrgLiveMigrationAvailableProjectsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

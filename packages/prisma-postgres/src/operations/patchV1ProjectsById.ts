@@ -10,7 +10,7 @@ export interface PatchV1ProjectsByIdInput {
   settings?: Record<string, unknown>;
 }
 export const PatchV1ProjectsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -31,7 +31,7 @@ export interface PatchV1ProjectsByIdOutput {
   };
 }
 export const PatchV1ProjectsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -53,7 +53,7 @@ export const PatchV1ProjectsByIdOutput =
  *
  * Updates the project with the given ID.
  */
-export const patchV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchV1ProjectsById = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchV1ProjectsByIdInput,
   outputSchema: PatchV1ProjectsByIdOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

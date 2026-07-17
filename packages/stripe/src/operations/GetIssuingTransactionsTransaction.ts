@@ -13,7 +13,7 @@ export interface GetIssuingTransactionsTransactionInput {
   expand?: string;
 }
 export const GetIssuingTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -456,7 +456,7 @@ export interface GetIssuingTransactionsTransactionOutput {
   wallet: "apple_pay" | "google_pay" | "samsung_pay" | null;
 }
 export const GetIssuingTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -872,7 +872,7 @@ export const GetIssuingTransactionsTransactionOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIssuingTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingTransactionsTransactionInput,
     outputSchema: GetIssuingTransactionsTransactionOutput,
   }));

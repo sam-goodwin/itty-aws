@@ -18,7 +18,7 @@ export interface AmlFilesystemsArchiveInput {
   filesystemPath?: string;
 }
 export const AmlFilesystemsArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export const AmlFilesystemsArchiveInput =
 // Output Schema
 export type AmlFilesystemsArchiveOutput = void;
 export const AmlFilesystemsArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsArchiveOutput>;
 
 // The operation
 /**
@@ -45,12 +45,10 @@ export const AmlFilesystemsArchiveOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsArchiveInput,
-    outputSchema: AmlFilesystemsArchiveOutput,
-  }),
-);
+export const amlFilesystemsArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsArchiveInput,
+  outputSchema: AmlFilesystemsArchiveOutput,
+}));
 // Input Schema
 export interface AmlFilesystemsCancelArchiveInput {
   subscriptionId: string;
@@ -58,7 +56,7 @@ export interface AmlFilesystemsCancelArchiveInput {
   amlFilesystemName: string;
 }
 export const AmlFilesystemsCancelArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -73,7 +71,7 @@ export const AmlFilesystemsCancelArchiveInput =
 // Output Schema
 export type AmlFilesystemsCancelArchiveOutput = void;
 export const AmlFilesystemsCancelArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsCancelArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsCancelArchiveOutput>;
 
 // The operation
 /**
@@ -84,12 +82,10 @@ export const AmlFilesystemsCancelArchiveOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsCancelArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsCancelArchiveInput,
-    outputSchema: AmlFilesystemsCancelArchiveOutput,
-  }),
-);
+export const amlFilesystemsCancelArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsCancelArchiveInput,
+  outputSchema: AmlFilesystemsCancelArchiveOutput,
+}));
 // Input Schema
 export interface AmlFilesystemsCreateOrUpdateInput {
   subscriptionId: string;
@@ -193,7 +189,7 @@ export interface AmlFilesystemsCreateOrUpdateInput {
   location: string;
 }
 export const AmlFilesystemsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -370,7 +366,7 @@ export interface AmlFilesystemsCreateOrUpdateOutput {
   };
 }
 export const AmlFilesystemsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -400,7 +396,7 @@ export const AmlFilesystemsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AmlFilesystemsCreateOrUpdateInput,
     outputSchema: AmlFilesystemsCreateOrUpdateOutput,
   }));
@@ -411,7 +407,7 @@ export interface AmlFilesystemsDeleteInput {
   amlFilesystemName: string;
 }
 export const AmlFilesystemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -426,7 +422,7 @@ export const AmlFilesystemsDeleteInput =
 // Output Schema
 export type AmlFilesystemsDeleteOutput = void;
 export const AmlFilesystemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AmlFilesystemsDeleteOutput>;
 
 // The operation
 /**
@@ -437,25 +433,21 @@ export const AmlFilesystemsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsDeleteInput,
-    outputSchema: AmlFilesystemsDeleteOutput,
-  }),
-);
+export const amlFilesystemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsDeleteInput,
+  outputSchema: AmlFilesystemsDeleteOutput,
+}));
 // Input Schema
 export interface AmlFilesystemsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   amlFilesystemName: string;
 }
-export const AmlFilesystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AmlFilesystemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
@@ -478,7 +470,7 @@ export interface AmlFilesystemsGetOutput {
   };
 }
 export const AmlFilesystemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -507,7 +499,7 @@ export const AmlFilesystemsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const amlFilesystemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AmlFilesystemsGetInput,
   outputSchema: AmlFilesystemsGetOutput,
 }));
@@ -516,7 +508,7 @@ export interface AmlFilesystemsListInput {
   subscriptionId: string;
 }
 export const AmlFilesystemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -544,7 +536,7 @@ export interface AmlFilesystemsListOutput {
   nextLink?: string;
 }
 export const AmlFilesystemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -588,7 +580,7 @@ export const AmlFilesystemsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const amlFilesystemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const amlFilesystemsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AmlFilesystemsListInput,
   outputSchema: AmlFilesystemsListOutput,
 }));
@@ -598,7 +590,7 @@ export interface AmlFilesystemsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AmlFilesystemsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -627,7 +619,7 @@ export interface AmlFilesystemsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AmlFilesystemsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -673,7 +665,7 @@ export const AmlFilesystemsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const amlFilesystemsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AmlFilesystemsListByResourceGroupInput,
     outputSchema: AmlFilesystemsListByResourceGroupOutput,
   }));
@@ -708,7 +700,7 @@ export interface AmlFilesystemsUpdateInput {
   };
 }
 export const AmlFilesystemsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -777,7 +769,7 @@ export interface AmlFilesystemsUpdateOutput {
   };
 }
 export const AmlFilesystemsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -806,19 +798,17 @@ export const AmlFilesystemsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const amlFilesystemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AmlFilesystemsUpdateInput,
-    outputSchema: AmlFilesystemsUpdateOutput,
-  }),
-);
+export const amlFilesystemsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AmlFilesystemsUpdateInput,
+  outputSchema: AmlFilesystemsUpdateOutput,
+}));
 // Input Schema
 export interface AscOperationsGetInput {
   subscriptionId: string;
   location: string;
   operationId: string;
 }
-export const AscOperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscOperationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   operationId: Schema.String.pipe(T.PathParam()),
@@ -840,26 +830,24 @@ export interface AscOperationsGetOutput {
   error?: { code?: string; message?: string };
   properties?: { output?: Record<string, unknown> };
 }
-export const AscOperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        output: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AscOperationsGetOutput>;
+export const AscOperationsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      output: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ),
+}) as unknown as Schema.Codec<AscOperationsGetOutput>;
 
 // The operation
 /**
@@ -870,7 +858,7 @@ export const AscOperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const AscOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AscOperationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AscOperationsGetInput,
   outputSchema: AscOperationsGetOutput,
 }));
@@ -879,7 +867,7 @@ export interface AscUsagesListInput {
   subscriptionId: string;
   location: string;
 }
-export const AscUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscUsagesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -900,7 +888,7 @@ export interface AscUsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const AscUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AscUsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -927,7 +915,7 @@ export const AscUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const AscUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AscUsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AscUsagesListInput,
   outputSchema: AscUsagesListOutput,
 }));
@@ -974,7 +962,7 @@ export interface AutoExportJobsCreateOrUpdateInput {
   location: string;
 }
 export const AutoExportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1049,7 +1037,7 @@ export interface AutoExportJobsCreateOrUpdateOutput {
   };
 }
 export const AutoExportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1080,7 +1068,7 @@ export const AutoExportJobsCreateOrUpdateOutput =
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoExportJobsCreateOrUpdateInput,
     outputSchema: AutoExportJobsCreateOrUpdateOutput,
   }));
@@ -1092,7 +1080,7 @@ export interface AutoExportJobsDeleteInput {
   autoExportJobName: string;
 }
 export const AutoExportJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1108,7 +1096,7 @@ export const AutoExportJobsDeleteInput =
 // Output Schema
 export type AutoExportJobsDeleteOutput = void;
 export const AutoExportJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoExportJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoExportJobsDeleteOutput>;
 
 // The operation
 /**
@@ -1120,12 +1108,10 @@ export const AutoExportJobsDeleteOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoExportJobsDeleteInput,
-    outputSchema: AutoExportJobsDeleteOutput,
-  }),
-);
+export const autoExportJobsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsDeleteInput,
+  outputSchema: AutoExportJobsDeleteOutput,
+}));
 // Input Schema
 export interface AutoExportJobsGetInput {
   subscriptionId: string;
@@ -1133,14 +1119,12 @@ export interface AutoExportJobsGetInput {
   amlFilesystemName: string;
   autoExportJobName: string;
 }
-export const AutoExportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoExportJobName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AutoExportJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoExportJobName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
@@ -1163,7 +1147,7 @@ export interface AutoExportJobsGetOutput {
   };
 }
 export const AutoExportJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1193,7 +1177,7 @@ export const AutoExportJobsGetOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const autoExportJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoExportJobsGetInput,
   outputSchema: AutoExportJobsGetOutput,
 }));
@@ -1204,7 +1188,7 @@ export interface AutoExportJobsListByAmlFilesystemInput {
   amlFilesystemName: string;
 }
 export const AutoExportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1234,7 +1218,7 @@ export interface AutoExportJobsListByAmlFilesystemOutput {
   nextLink?: string;
 }
 export const AutoExportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1281,7 +1265,7 @@ export const AutoExportJobsListByAmlFilesystemOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoExportJobsListByAmlFilesystemInput,
     outputSchema: AutoExportJobsListByAmlFilesystemOutput,
   }));
@@ -1295,7 +1279,7 @@ export interface AutoExportJobsUpdateInput {
   properties?: { adminStatus?: "Enable" | "Disable" };
 }
 export const AutoExportJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1329,7 +1313,7 @@ export interface AutoExportJobsUpdateOutput {
   };
 }
 export const AutoExportJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1359,12 +1343,10 @@ export const AutoExportJobsUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoExportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoExportJobsUpdateInput,
-    outputSchema: AutoExportJobsUpdateOutput,
-  }),
-);
+export const autoExportJobsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoExportJobsUpdateInput,
+  outputSchema: AutoExportJobsUpdateOutput,
+}));
 // Input Schema
 export interface AutoImportJobsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1429,7 +1411,7 @@ export interface AutoImportJobsCreateOrUpdateInput {
   location: string;
 }
 export const AutoImportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1532,7 +1514,7 @@ export interface AutoImportJobsCreateOrUpdateOutput {
   };
 }
 export const AutoImportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1563,7 +1545,7 @@ export const AutoImportJobsCreateOrUpdateOutput =
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoImportJobsCreateOrUpdateInput,
     outputSchema: AutoImportJobsCreateOrUpdateOutput,
   }));
@@ -1575,7 +1557,7 @@ export interface AutoImportJobsDeleteInput {
   autoImportJobName: string;
 }
 export const AutoImportJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1591,7 +1573,7 @@ export const AutoImportJobsDeleteInput =
 // Output Schema
 export type AutoImportJobsDeleteOutput = void;
 export const AutoImportJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoImportJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AutoImportJobsDeleteOutput>;
 
 // The operation
 /**
@@ -1603,12 +1585,10 @@ export const AutoImportJobsDeleteOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoImportJobsDeleteInput,
-    outputSchema: AutoImportJobsDeleteOutput,
-  }),
-);
+export const autoImportJobsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsDeleteInput,
+  outputSchema: AutoImportJobsDeleteOutput,
+}));
 // Input Schema
 export interface AutoImportJobsGetInput {
   subscriptionId: string;
@@ -1616,14 +1596,12 @@ export interface AutoImportJobsGetInput {
   amlFilesystemName: string;
   autoImportJobName: string;
 }
-export const AutoImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    amlFilesystemName: Schema.String.pipe(T.PathParam()),
-    autoImportJobName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AutoImportJobsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  autoImportJobName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
@@ -1646,7 +1624,7 @@ export interface AutoImportJobsGetOutput {
   };
 }
 export const AutoImportJobsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1676,7 +1654,7 @@ export const AutoImportJobsGetOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const autoImportJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutoImportJobsGetInput,
   outputSchema: AutoImportJobsGetOutput,
 }));
@@ -1687,7 +1665,7 @@ export interface AutoImportJobsListByAmlFilesystemInput {
   amlFilesystemName: string;
 }
 export const AutoImportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1717,7 +1695,7 @@ export interface AutoImportJobsListByAmlFilesystemOutput {
   nextLink?: string;
 }
 export const AutoImportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1764,7 +1742,7 @@ export const AutoImportJobsListByAmlFilesystemOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutoImportJobsListByAmlFilesystemInput,
     outputSchema: AutoImportJobsListByAmlFilesystemOutput,
   }));
@@ -1778,7 +1756,7 @@ export interface AutoImportJobsUpdateInput {
   properties?: { adminStatus?: "Enable" | "Disable" };
 }
 export const AutoImportJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -1812,7 +1790,7 @@ export interface AutoImportJobsUpdateOutput {
   };
 }
 export const AutoImportJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1842,12 +1820,10 @@ export const AutoImportJobsUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const autoImportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutoImportJobsUpdateInput,
-    outputSchema: AutoImportJobsUpdateOutput,
-  }),
-);
+export const autoImportJobsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutoImportJobsUpdateInput,
+  outputSchema: AutoImportJobsUpdateOutput,
+}));
 // Input Schema
 export interface CachesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1979,7 +1955,7 @@ export interface CachesCreateOrUpdateInput {
   sku?: { name?: string };
 }
 export const CachesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2215,7 +2191,7 @@ export interface CachesCreateOrUpdateOutput {
   };
 }
 export const CachesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2244,19 +2220,17 @@ export const CachesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesCreateOrUpdateInput,
-    outputSchema: CachesCreateOrUpdateOutput,
-  }),
-);
+export const CachesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesCreateOrUpdateInput,
+  outputSchema: CachesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CachesDebugInfoInput {
   subscriptionId: string;
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesDebugInfoInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2271,7 +2245,7 @@ export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesDebugInfoOutput = void;
 export const CachesDebugInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDebugInfoOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDebugInfoOutput>;
 
 // The operation
 /**
@@ -2282,7 +2256,7 @@ export const CachesDebugInfoOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesDebugInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesDebugInfo = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesDebugInfoInput,
   outputSchema: CachesDebugInfoOutput,
 }));
@@ -2292,7 +2266,7 @@ export interface CachesDeleteInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2307,7 +2281,7 @@ export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesDeleteOutput = void;
 export const CachesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesDeleteOutput>;
 
 // The operation
 /**
@@ -2318,7 +2292,7 @@ export const CachesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesDeleteInput,
   outputSchema: CachesDeleteOutput,
 }));
@@ -2328,7 +2302,7 @@ export interface CachesFlushInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesFlushInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2343,7 +2317,7 @@ export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesFlushOutput = void;
 export const CachesFlushOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesFlushOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesFlushOutput>;
 
 // The operation
 /**
@@ -2354,7 +2328,7 @@ export const CachesFlushOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesFlushInput,
   outputSchema: CachesFlushOutput,
 }));
@@ -2364,7 +2338,7 @@ export interface CachesGetInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2390,7 +2364,7 @@ export interface CachesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2419,7 +2393,7 @@ export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesGetInput,
   outputSchema: CachesGetOutput,
 }));
@@ -2427,7 +2401,7 @@ export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface CachesListInput {
   subscriptionId: string;
 }
-export const CachesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2454,7 +2428,7 @@ export interface CachesListOutput {
   }[];
   nextLink?: string;
 }
-export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2498,7 +2472,7 @@ export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CachesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesListInput,
   outputSchema: CachesListOutput,
 }));
@@ -2508,7 +2482,7 @@ export interface CachesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CachesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2537,7 +2511,7 @@ export interface CachesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CachesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2582,12 +2556,10 @@ export const CachesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CachesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesListByResourceGroupInput,
-    outputSchema: CachesListByResourceGroupOutput,
-  }),
-);
+export const CachesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesListByResourceGroupInput,
+  outputSchema: CachesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface CachesPausePrimingJobInput {
   subscriptionId: string;
@@ -2596,7 +2568,7 @@ export interface CachesPausePrimingJobInput {
   primingJobId: string;
 }
 export const CachesPausePrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2612,7 +2584,7 @@ export const CachesPausePrimingJobInput =
 // Output Schema
 export type CachesPausePrimingJobOutput = void;
 export const CachesPausePrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesPausePrimingJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesPausePrimingJobOutput>;
 
 // The operation
 /**
@@ -2623,12 +2595,10 @@ export const CachesPausePrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesPausePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesPausePrimingJobInput,
-    outputSchema: CachesPausePrimingJobOutput,
-  }),
-);
+export const CachesPausePrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesPausePrimingJobInput,
+  outputSchema: CachesPausePrimingJobOutput,
+}));
 // Input Schema
 export interface CachesResumePrimingJobInput {
   subscriptionId: string;
@@ -2637,7 +2607,7 @@ export interface CachesResumePrimingJobInput {
   primingJobId: string;
 }
 export const CachesResumePrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2653,7 +2623,7 @@ export const CachesResumePrimingJobInput =
 // Output Schema
 export type CachesResumePrimingJobOutput = void;
 export const CachesResumePrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesResumePrimingJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesResumePrimingJobOutput>;
 
 // The operation
 /**
@@ -2664,12 +2634,10 @@ export const CachesResumePrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesResumePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesResumePrimingJobInput,
-    outputSchema: CachesResumePrimingJobOutput,
-  }),
-);
+export const CachesResumePrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesResumePrimingJobInput,
+  outputSchema: CachesResumePrimingJobOutput,
+}));
 // Input Schema
 export interface CachesSpaceAllocationInput {
   subscriptionId: string;
@@ -2677,7 +2645,7 @@ export interface CachesSpaceAllocationInput {
   cacheName: string;
 }
 export const CachesSpaceAllocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2692,7 +2660,7 @@ export const CachesSpaceAllocationInput =
 // Output Schema
 export type CachesSpaceAllocationOutput = void;
 export const CachesSpaceAllocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesSpaceAllocationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesSpaceAllocationOutput>;
 
 // The operation
 /**
@@ -2703,19 +2671,17 @@ export const CachesSpaceAllocationOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesSpaceAllocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesSpaceAllocationInput,
-    outputSchema: CachesSpaceAllocationOutput,
-  }),
-);
+export const CachesSpaceAllocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesSpaceAllocationInput,
+  outputSchema: CachesSpaceAllocationOutput,
+}));
 // Input Schema
 export interface CachesStartInput {
   subscriptionId: string;
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2730,7 +2696,7 @@ export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesStartOutput = void;
 export const CachesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStartOutput>;
 
 // The operation
 /**
@@ -2741,7 +2707,7 @@ export const CachesStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesStartInput,
   outputSchema: CachesStartOutput,
 }));
@@ -2759,7 +2725,7 @@ export interface CachesStartPrimingJobInput {
   primingJobPercentComplete?: number;
 }
 export const CachesStartPrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2783,7 +2749,7 @@ export const CachesStartPrimingJobInput =
 // Output Schema
 export type CachesStartPrimingJobOutput = void;
 export const CachesStartPrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStartPrimingJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStartPrimingJobOutput>;
 
 // The operation
 /**
@@ -2794,19 +2760,17 @@ export const CachesStartPrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStartPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesStartPrimingJobInput,
-    outputSchema: CachesStartPrimingJobOutput,
-  }),
-);
+export const CachesStartPrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesStartPrimingJobInput,
+  outputSchema: CachesStartPrimingJobOutput,
+}));
 // Input Schema
 export interface CachesStopInput {
   subscriptionId: string;
   resourceGroupName: string;
   cacheName: string;
 }
-export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2821,7 +2785,7 @@ export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CachesStopOutput = void;
 export const CachesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStopOutput>;
 
 // The operation
 /**
@@ -2832,7 +2796,7 @@ export const CachesStopOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesStopInput,
   outputSchema: CachesStopOutput,
 }));
@@ -2844,7 +2808,7 @@ export interface CachesStopPrimingJobInput {
   primingJobId: string;
 }
 export const CachesStopPrimingJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -2860,7 +2824,7 @@ export const CachesStopPrimingJobInput =
 // Output Schema
 export type CachesStopPrimingJobOutput = void;
 export const CachesStopPrimingJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStopPrimingJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesStopPrimingJobOutput>;
 
 // The operation
 /**
@@ -2871,12 +2835,10 @@ export const CachesStopPrimingJobOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesStopPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesStopPrimingJobInput,
-    outputSchema: CachesStopPrimingJobOutput,
-  }),
-);
+export const CachesStopPrimingJob = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesStopPrimingJobInput,
+  outputSchema: CachesStopPrimingJobOutput,
+}));
 // Input Schema
 export interface CachesUpdateInput {
   subscriptionId: string;
@@ -3007,7 +2969,7 @@ export interface CachesUpdateInput {
   };
   sku?: { name?: string };
 }
-export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -3242,7 +3204,7 @@ export interface CachesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CachesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3271,7 +3233,7 @@ export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CachesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CachesUpdateInput,
   outputSchema: CachesUpdateOutput,
 }));
@@ -3282,7 +3244,7 @@ export interface CachesUpgradeFirmwareInput {
   cacheName: string;
 }
 export const CachesUpgradeFirmwareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -3297,7 +3259,7 @@ export const CachesUpgradeFirmwareInput =
 // Output Schema
 export type CachesUpgradeFirmwareOutput = void;
 export const CachesUpgradeFirmwareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesUpgradeFirmwareOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CachesUpgradeFirmwareOutput>;
 
 // The operation
 /**
@@ -3308,12 +3270,10 @@ export const CachesUpgradeFirmwareOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const CachesUpgradeFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CachesUpgradeFirmwareInput,
-    outputSchema: CachesUpgradeFirmwareOutput,
-  }),
-);
+export const CachesUpgradeFirmware = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CachesUpgradeFirmwareInput,
+  outputSchema: CachesUpgradeFirmwareOutput,
+}));
 // Input Schema
 export interface CheckAmlFSSubnetsInput {
   subscriptionId: string;
@@ -3322,19 +3282,17 @@ export interface CheckAmlFSSubnetsInput {
   sku?: { name?: string };
   location?: string;
 }
-export const CheckAmlFSSubnetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    filesystemSubnet: Schema.optional(Schema.String),
-    storageCapacityTiB: Schema.optional(Schema.Number),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-    location: Schema.optional(Schema.String),
-  },
-).pipe(
+export const CheckAmlFSSubnetsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  filesystemSubnet: Schema.optional(Schema.String),
+  storageCapacityTiB: Schema.optional(Schema.Number),
+  sku: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
@@ -3345,7 +3303,7 @@ export const CheckAmlFSSubnetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type CheckAmlFSSubnetsOutput = void;
 export const CheckAmlFSSubnetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CheckAmlFSSubnetsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CheckAmlFSSubnetsOutput>;
 
 // The operation
 /**
@@ -3354,7 +3312,7 @@ export const CheckAmlFSSubnetsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const checkAmlFSSubnets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const checkAmlFSSubnets = /*@__PURE__*/ API.make(() => ({
   inputSchema: CheckAmlFSSubnetsInput,
   outputSchema: CheckAmlFSSubnetsOutput,
 }));
@@ -3391,7 +3349,7 @@ export interface ExpansionJobsCreateOrUpdateInput {
   location: string;
 }
 export const ExpansionJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3454,7 +3412,7 @@ export interface ExpansionJobsCreateOrUpdateOutput {
   };
 }
 export const ExpansionJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3484,12 +3442,10 @@ export const ExpansionJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExpansionJobsCreateOrUpdateInput,
-    outputSchema: ExpansionJobsCreateOrUpdateOutput,
-  }),
-);
+export const expansionJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExpansionJobsCreateOrUpdateInput,
+  outputSchema: ExpansionJobsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ExpansionJobsDeleteInput {
   subscriptionId: string;
@@ -3498,7 +3454,7 @@ export interface ExpansionJobsDeleteInput {
   expansionJobName: string;
 }
 export const ExpansionJobsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3514,7 +3470,7 @@ export const ExpansionJobsDeleteInput =
 // Output Schema
 export type ExpansionJobsDeleteOutput = void;
 export const ExpansionJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExpansionJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExpansionJobsDeleteOutput>;
 
 // The operation
 /**
@@ -3526,7 +3482,7 @@ export const ExpansionJobsDeleteOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsDeleteInput,
   outputSchema: ExpansionJobsDeleteOutput,
 }));
@@ -3537,7 +3493,7 @@ export interface ExpansionJobsGetInput {
   amlFilesystemName: string;
   expansionJobName: string;
 }
-export const ExpansionJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExpansionJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3564,27 +3520,25 @@ export interface ExpansionJobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ExpansionJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ExpansionJobsGetOutput>;
+export const ExpansionJobsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ExpansionJobsGetOutput>;
 
 // The operation
 /**
@@ -3596,7 +3550,7 @@ export const ExpansionJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsGetInput,
   outputSchema: ExpansionJobsGetOutput,
 }));
@@ -3607,7 +3561,7 @@ export interface ExpansionJobsListByAmlFilesystemInput {
   amlFilesystemName: string;
 }
 export const ExpansionJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3637,7 +3591,7 @@ export interface ExpansionJobsListByAmlFilesystemOutput {
   nextLink?: string;
 }
 export const ExpansionJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3684,7 +3638,7 @@ export const ExpansionJobsListByAmlFilesystemOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExpansionJobsListByAmlFilesystemInput,
     outputSchema: ExpansionJobsListByAmlFilesystemOutput,
   }));
@@ -3697,7 +3651,7 @@ export interface ExpansionJobsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ExpansionJobsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3726,7 +3680,7 @@ export interface ExpansionJobsUpdateOutput {
   };
 }
 export const ExpansionJobsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3756,7 +3710,7 @@ export const ExpansionJobsUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const expansionJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const expansionJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsUpdateInput,
   outputSchema: ExpansionJobsUpdateOutput,
 }));
@@ -3767,7 +3721,7 @@ export interface GetRequiredAmlFSSubnetsSizeInput {
   sku?: { name?: string };
 }
 export const GetRequiredAmlFSSubnetsSizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     storageCapacityTiB: Schema.optional(Schema.Number),
     sku: Schema.optional(
@@ -3788,7 +3742,7 @@ export interface GetRequiredAmlFSSubnetsSizeOutput {
   filesystemSubnetSize?: number;
 }
 export const GetRequiredAmlFSSubnetsSizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filesystemSubnetSize: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<GetRequiredAmlFSSubnetsSizeOutput>;
 
@@ -3799,12 +3753,10 @@ export const GetRequiredAmlFSSubnetsSizeOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const getRequiredAmlFSSubnetsSize = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetRequiredAmlFSSubnetsSizeInput,
-    outputSchema: GetRequiredAmlFSSubnetsSizeOutput,
-  }),
-);
+export const getRequiredAmlFSSubnetsSize = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRequiredAmlFSSubnetsSizeInput,
+  outputSchema: GetRequiredAmlFSSubnetsSizeOutput,
+}));
 // Input Schema
 export interface ImportJobsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3856,7 +3808,7 @@ export interface ImportJobsCreateOrUpdateInput {
   location: string;
 }
 export const ImportJobsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3940,7 +3892,7 @@ export interface ImportJobsCreateOrUpdateOutput {
   };
 }
 export const ImportJobsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3970,12 +3922,10 @@ export const ImportJobsCreateOrUpdateOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImportJobsCreateOrUpdateInput,
-    outputSchema: ImportJobsCreateOrUpdateOutput,
-  }),
-);
+export const importJobsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImportJobsCreateOrUpdateInput,
+  outputSchema: ImportJobsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ImportJobsDeleteInput {
   subscriptionId: string;
@@ -3983,7 +3933,7 @@ export interface ImportJobsDeleteInput {
   amlFilesystemName: string;
   importJobName: string;
 }
-export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -3999,7 +3949,7 @@ export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ImportJobsDeleteOutput = void;
 export const ImportJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportJobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportJobsDeleteOutput>;
 
 // The operation
 /**
@@ -4011,7 +3961,7 @@ export const ImportJobsDeleteOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsDeleteInput,
   outputSchema: ImportJobsDeleteOutput,
 }));
@@ -4022,7 +3972,7 @@ export interface ImportJobsGetInput {
   amlFilesystemName: string;
   importJobName: string;
 }
-export const ImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -4049,7 +3999,7 @@ export interface ImportJobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ImportJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4079,7 +4029,7 @@ export const ImportJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsGetInput,
   outputSchema: ImportJobsGetOutput,
 }));
@@ -4090,7 +4040,7 @@ export interface ImportJobsListByAmlFilesystemInput {
   amlFilesystemName: string;
 }
 export const ImportJobsListByAmlFilesystemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -4120,7 +4070,7 @@ export interface ImportJobsListByAmlFilesystemOutput {
   nextLink?: string;
 }
 export const ImportJobsListByAmlFilesystemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4167,7 +4117,7 @@ export const ImportJobsListByAmlFilesystemOutput =
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsListByAmlFilesystem =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ImportJobsListByAmlFilesystemInput,
     outputSchema: ImportJobsListByAmlFilesystemOutput,
   }));
@@ -4180,7 +4130,7 @@ export interface ImportJobsUpdateInput {
   tags?: Record<string, string>;
   properties?: { adminStatus?: "Active" | "Cancel" };
 }
-export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportJobsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   amlFilesystemName: Schema.String.pipe(T.PathParam()),
@@ -4213,27 +4163,25 @@ export interface ImportJobsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ImportJobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ImportJobsUpdateOutput>;
+export const ImportJobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ImportJobsUpdateOutput>;
 
 // The operation
 /**
@@ -4245,15 +4193,13 @@ export const ImportJobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
-export const importJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importJobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsUpdateInput,
   outputSchema: ImportJobsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StorageCache/operations",
@@ -4304,7 +4250,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4384,7 +4330,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -4392,7 +4338,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface SkusListInput {
   subscriptionId: string;
 }
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -4418,7 +4364,7 @@ export interface SkusListOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -4465,7 +4411,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
@@ -4477,7 +4423,7 @@ export interface StorageTargetFlushInput {
   storageTargetName: string;
 }
 export const StorageTargetFlushInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4493,7 +4439,7 @@ export const StorageTargetFlushInput =
 // Output Schema
 export type StorageTargetFlushOutput = void;
 export const StorageTargetFlushOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetFlushOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetFlushOutput>;
 
 // The operation
 /**
@@ -4505,7 +4451,7 @@ export const StorageTargetFlushOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetFlushInput,
   outputSchema: StorageTargetFlushOutput,
 }));
@@ -4517,7 +4463,7 @@ export interface StorageTargetInvalidateInput {
   storageTargetName: string;
 }
 export const StorageTargetInvalidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4533,7 +4479,7 @@ export const StorageTargetInvalidateInput =
 // Output Schema
 export type StorageTargetInvalidateOutput = void;
 export const StorageTargetInvalidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetInvalidateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetInvalidateOutput>;
 
 // The operation
 /**
@@ -4545,12 +4491,10 @@ export const StorageTargetInvalidateOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetInvalidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetInvalidateInput,
-    outputSchema: StorageTargetInvalidateOutput,
-  }),
-);
+export const StorageTargetInvalidate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetInvalidateInput,
+  outputSchema: StorageTargetInvalidateOutput,
+}));
 // Input Schema
 export interface StorageTargetResumeInput {
   subscriptionId: string;
@@ -4559,7 +4503,7 @@ export interface StorageTargetResumeInput {
   storageTargetName: string;
 }
 export const StorageTargetResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4575,7 +4519,7 @@ export const StorageTargetResumeInput =
 // Output Schema
 export type StorageTargetResumeOutput = void;
 export const StorageTargetResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetResumeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetResumeOutput>;
 
 // The operation
 /**
@@ -4587,7 +4531,7 @@ export const StorageTargetResumeOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetResume = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetResumeInput,
   outputSchema: StorageTargetResumeOutput,
 }));
@@ -4632,7 +4576,7 @@ export interface StorageTargetsCreateOrUpdateInput {
   location?: string;
 }
 export const StorageTargetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4718,7 +4662,7 @@ export interface StorageTargetsCreateOrUpdateOutput {
   };
 }
 export const StorageTargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4749,7 +4693,7 @@ export const StorageTargetsCreateOrUpdateOutput =
  * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTargetsCreateOrUpdateInput,
     outputSchema: StorageTargetsCreateOrUpdateOutput,
   }));
@@ -4762,7 +4706,7 @@ export interface StorageTargetsDeleteInput {
   force?: string;
 }
 export const StorageTargetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4779,7 +4723,7 @@ export const StorageTargetsDeleteInput =
 // Output Schema
 export type StorageTargetsDeleteOutput = void;
 export const StorageTargetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsDeleteOutput>;
 
 // The operation
 /**
@@ -4792,12 +4736,10 @@ export const StorageTargetsDeleteOutput =
  * @param storageTargetName - Name of Storage Target.
  * @param force - Boolean value requesting the force delete operation for a storage target. Force delete discards unwritten-data in the cache instead of flushing it to back-end storage.
  */
-export const StorageTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsDeleteInput,
-    outputSchema: StorageTargetsDeleteOutput,
-  }),
-);
+export const StorageTargetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsDeleteInput,
+  outputSchema: StorageTargetsDeleteOutput,
+}));
 // Input Schema
 export interface StorageTargetsDnsRefreshInput {
   subscriptionId: string;
@@ -4806,7 +4748,7 @@ export interface StorageTargetsDnsRefreshInput {
   storageTargetName: string;
 }
 export const StorageTargetsDnsRefreshInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4822,7 +4764,7 @@ export const StorageTargetsDnsRefreshInput =
 // Output Schema
 export type StorageTargetsDnsRefreshOutput = void;
 export const StorageTargetsDnsRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsDnsRefreshOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsDnsRefreshOutput>;
 
 // The operation
 /**
@@ -4834,12 +4776,10 @@ export const StorageTargetsDnsRefreshOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsDnsRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsDnsRefreshInput,
-    outputSchema: StorageTargetsDnsRefreshOutput,
-  }),
-);
+export const StorageTargetsDnsRefresh = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsDnsRefreshInput,
+  outputSchema: StorageTargetsDnsRefreshOutput,
+}));
 // Input Schema
 export interface StorageTargetsGetInput {
   subscriptionId: string;
@@ -4847,14 +4787,12 @@ export interface StorageTargetsGetInput {
   cacheName: string;
   storageTargetName: string;
 }
-export const StorageTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-    storageTargetName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const StorageTargetsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  storageTargetName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
@@ -4877,7 +4815,7 @@ export interface StorageTargetsGetOutput {
   };
 }
 export const StorageTargetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4907,7 +4845,7 @@ export const StorageTargetsGetOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageTargetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetsGetInput,
   outputSchema: StorageTargetsGetOutput,
 }));
@@ -4918,7 +4856,7 @@ export interface StorageTargetsListByCacheInput {
   cacheName: string;
 }
 export const StorageTargetsListByCacheInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -4948,7 +4886,7 @@ export interface StorageTargetsListByCacheOutput {
   nextLink?: string;
 }
 export const StorageTargetsListByCacheOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4994,12 +4932,10 @@ export const StorageTargetsListByCacheOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
-export const StorageTargetsListByCache = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetsListByCacheInput,
-    outputSchema: StorageTargetsListByCacheOutput,
-  }),
-);
+export const StorageTargetsListByCache = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetsListByCacheInput,
+  outputSchema: StorageTargetsListByCacheOutput,
+}));
 // Input Schema
 export interface StorageTargetsRestoreDefaultsInput {
   subscriptionId: string;
@@ -5008,7 +4944,7 @@ export interface StorageTargetsRestoreDefaultsInput {
   storageTargetName: string;
 }
 export const StorageTargetsRestoreDefaultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -5024,7 +4960,7 @@ export const StorageTargetsRestoreDefaultsInput =
 // Output Schema
 export type StorageTargetsRestoreDefaultsOutput = void;
 export const StorageTargetsRestoreDefaultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsRestoreDefaultsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetsRestoreDefaultsOutput>;
 
 // The operation
 /**
@@ -5037,7 +4973,7 @@ export const StorageTargetsRestoreDefaultsOutput =
  * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsRestoreDefaults =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTargetsRestoreDefaultsInput,
     outputSchema: StorageTargetsRestoreDefaultsOutput,
   }));
@@ -5049,7 +4985,7 @@ export interface StorageTargetSuspendInput {
   storageTargetName: string;
 }
 export const StorageTargetSuspendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -5065,7 +5001,7 @@ export const StorageTargetSuspendInput =
 // Output Schema
 export type StorageTargetSuspendOutput = void;
 export const StorageTargetSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTargetSuspendOutput>;
 
 // The operation
 /**
@@ -5077,17 +5013,15 @@ export const StorageTargetSuspendOutput =
  * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  * @param storageTargetName - Name of Storage Target.
  */
-export const StorageTargetSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTargetSuspendInput,
-    outputSchema: StorageTargetSuspendOutput,
-  }),
-);
+export const StorageTargetSuspend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTargetSuspendInput,
+  outputSchema: StorageTargetSuspendOutput,
+}));
 // Input Schema
 export interface UsageModelsListInput {
   subscriptionId: string;
 }
-export const UsageModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageModelsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -5106,7 +5040,7 @@ export interface UsageModelsListOutput {
   }[];
   nextLink?: string;
 }
-export const UsageModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsageModelsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5130,7 +5064,7 @@ export const UsageModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const UsageModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsageModelsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsageModelsListInput,
   outputSchema: UsageModelsListOutput,
 }));

@@ -30,7 +30,7 @@ export interface FilePart {
 }
 
 export const FilePart: Schema.Codec<FilePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     fileWithBytes: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface DataPart {
 }
 
 export const DataPart: Schema.Codec<DataPart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "DataPart" });
 
@@ -55,7 +55,7 @@ export interface Part {
 }
 
 export const Part: Schema.Codec<Part> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(FilePart),
     text: Schema.optional(Schema.String),
     data: Schema.optional(DataPart),
@@ -78,7 +78,7 @@ export interface Artifact {
 }
 
 export const Artifact: Schema.Codec<Artifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifactId: Schema.optional(Schema.String),
     parts: Schema.optional(Schema.Array(Part)),
     extensions: Schema.optional(Schema.Array(Schema.String)),
@@ -103,7 +103,7 @@ export interface TaskArtifactUpdateEvent {
 }
 
 export const TaskArtifactUpdateEvent: Schema.Codec<TaskArtifactUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contextId: Schema.optional(Schema.String),
     artifact: Schema.optional(Artifact),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -118,7 +118,7 @@ export interface NotificationEndpoint {
 }
 
 export const NotificationEndpoint: Schema.Codec<NotificationEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotificationEndpoint" });
 
@@ -130,7 +130,7 @@ export interface PayloadOptions {
 }
 
 export const PayloadOptions: Schema.Codec<PayloadOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeResource: Schema.optional(Schema.Boolean),
     fieldMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "PayloadOptions" });
@@ -141,7 +141,7 @@ export interface DriveOptions {
 }
 
 export const DriveOptions: Schema.Codec<DriveOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeDescendants: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DriveOptions" });
 
@@ -201,7 +201,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAuthority: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface ListSubscriptionsResponse {
 }
 
 export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSubscriptionsResponse" });
@@ -238,14 +238,14 @@ export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface ReactivateSubscriptionRequest {}
 
 export const ReactivateSubscriptionRequest: Schema.Codec<ReactivateSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReactivateSubscriptionRequest",
   });
 
@@ -267,7 +267,7 @@ export interface Message {
 }
 
 export const Message: Schema.Codec<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.Array(Part)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     contextId: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export interface TaskStatus {
 }
 
 export const TaskStatus: Schema.Codec<TaskStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
     timestamp: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export interface TaskStatusUpdateEvent {
 }
 
 export const TaskStatusUpdateEvent: Schema.Codec<TaskStatusUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contextId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     status: Schema.optional(TaskStatus),
@@ -333,7 +333,7 @@ export interface AuthenticationInfo {
 }
 
 export const AuthenticationInfo: Schema.Codec<AuthenticationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemes: Schema.optional(Schema.Array(Schema.String)),
     credentials: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthenticationInfo" });
@@ -350,7 +350,7 @@ export interface PushNotificationConfig {
 }
 
 export const PushNotificationConfig: Schema.Codec<PushNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     authentication: Schema.optional(AuthenticationInfo),
     token: Schema.optional(Schema.String),
@@ -369,7 +369,7 @@ export interface SendMessageConfiguration {
 }
 
 export const SendMessageConfiguration: Schema.Codec<SendMessageConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blocking: Schema.optional(Schema.Boolean),
     pushNotification: Schema.optional(PushNotificationConfig),
     historyLength: Schema.optional(Schema.Number),
@@ -388,7 +388,7 @@ export interface SendMessageRequest {
 }
 
 export const SendMessageRequest: Schema.Codec<SendMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenant: Schema.optional(Schema.String),
     configuration: Schema.optional(SendMessageConfiguration),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -403,7 +403,7 @@ export interface TaskPushNotificationConfig {
 }
 
 export const TaskPushNotificationConfig: Schema.Codec<TaskPushNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pushNotificationConfig: Schema.optional(PushNotificationConfig),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "TaskPushNotificationConfig" });
@@ -416,7 +416,7 @@ export interface ListTaskPushNotificationConfigResponse {
 }
 
 export const ListTaskPushNotificationConfigResponse: Schema.Codec<ListTaskPushNotificationConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configs: Schema.optional(Schema.Array(TaskPushNotificationConfig)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTaskPushNotificationConfigResponse" });
@@ -437,7 +437,7 @@ export interface Task {
 }
 
 export const Task: Schema.Codec<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(TaskStatus),
     history: Schema.optional(Schema.Array(Message)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -454,7 +454,7 @@ export interface StreamResponse {
 }
 
 export const StreamResponse: Schema.Codec<StreamResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     task: Schema.optional(Task),
     message: Schema.optional(Message),
     statusUpdate: Schema.optional(TaskStatusUpdateEvent),
@@ -471,7 +471,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -493,7 +493,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -507,7 +507,7 @@ export interface CancelTaskRequest {
 }
 
 export const CancelTaskRequest: Schema.Codec<CancelTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenant: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancelTaskRequest" });
 
@@ -577,7 +577,7 @@ export interface DeleteSubscriptionsRequest {
 }
 
 export const DeleteSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -592,8 +592,7 @@ export const DeleteSubscriptionsRequest =
   ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export type DeleteSubscriptionsResponse = Operation;
-export const DeleteSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteSubscriptionsResponse = /*@__PURE__*/ Operation;
 
 export type DeleteSubscriptionsError =
   | DefaultErrors
@@ -608,7 +607,7 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsResponse,
   DeleteSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -622,7 +621,7 @@ export interface ReactivateSubscriptionsRequest {
 }
 
 export const ReactivateSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ReactivateSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -631,8 +630,7 @@ export const ReactivateSubscriptionsRequest =
   ) as unknown as Schema.Codec<ReactivateSubscriptionsRequest>;
 
 export type ReactivateSubscriptionsResponse = Operation;
-export const ReactivateSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const ReactivateSubscriptionsResponse = /*@__PURE__*/ Operation;
 
 export type ReactivateSubscriptionsError =
   | DefaultErrors
@@ -647,7 +645,7 @@ export const reactivateSubscriptions: API.OperationMethod<
   ReactivateSubscriptionsResponse,
   ReactivateSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReactivateSubscriptionsRequest,
   output: ReactivateSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -663,7 +661,7 @@ export interface ListSubscriptionsRequest {
 }
 
 export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -674,7 +672,7 @@ export const ListSubscriptionsRequest =
 
 export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+  /*@__PURE__*/ ListSubscriptionsResponse;
 
 export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -684,7 +682,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse_Op,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -700,7 +698,7 @@ export interface GetSubscriptionsRequest {
 }
 
 export const GetSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -708,8 +706,7 @@ export const GetSubscriptionsRequest =
   ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
-export const GetSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const GetSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -719,7 +716,7 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsResponse,
   GetSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -737,7 +734,7 @@ export interface PatchSubscriptionsRequest {
 }
 
 export const PatchSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -750,7 +747,7 @@ export const PatchSubscriptionsRequest =
   ) as unknown as Schema.Codec<PatchSubscriptionsRequest>;
 
 export type PatchSubscriptionsResponse = Operation;
-export const PatchSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchSubscriptionsResponse = /*@__PURE__*/ Operation;
 
 export type PatchSubscriptionsError =
   | DefaultErrors
@@ -765,7 +762,7 @@ export const patchSubscriptions: API.OperationMethod<
   PatchSubscriptionsResponse,
   PatchSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSubscriptionsRequest,
   output: PatchSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -779,7 +776,7 @@ export interface CreateSubscriptionsRequest {
 }
 
 export const CreateSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -790,8 +787,7 @@ export const CreateSubscriptionsRequest =
   ) as unknown as Schema.Codec<CreateSubscriptionsRequest>;
 
 export type CreateSubscriptionsResponse = Operation;
-export const CreateSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateSubscriptionsResponse = /*@__PURE__*/ Operation;
 
 export type CreateSubscriptionsError =
   | DefaultErrors
@@ -806,7 +802,7 @@ export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsResponse,
   CreateSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionsRequest,
   output: CreateSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -821,7 +817,7 @@ export interface GetTasksRequest {
   name: string;
 }
 
-export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTasksRequest = /*@__PURE__*/ Schema.Struct({
   tenant: Schema.optional(Schema.String).pipe(T.HttpQuery("tenant")),
   historyLength: Schema.optional(Schema.Number).pipe(
     T.HttpQuery("historyLength"),
@@ -833,7 +829,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTasksRequest>;
 
 export type GetTasksResponse = Task;
-export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const GetTasksResponse = /*@__PURE__*/ Task;
 
 export type GetTasksError = DefaultErrors | NotFound | Forbidden;
 
@@ -843,7 +839,7 @@ export const getTasks: API.OperationMethod<
   GetTasksResponse,
   GetTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTasksRequest,
   output: GetTasksResponse,
   errors: [NotFound, Forbidden],
@@ -856,7 +852,7 @@ export interface SubscribeTasksRequest {
   tenant?: string;
 }
 
-export const SubscribeTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SubscribeTasksRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   tenant: Schema.optional(Schema.String).pipe(T.HttpQuery("tenant")),
 }).pipe(
@@ -865,8 +861,7 @@ export const SubscribeTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SubscribeTasksRequest>;
 
 export type SubscribeTasksResponse = StreamResponse;
-export const SubscribeTasksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StreamResponse;
+export const SubscribeTasksResponse = /*@__PURE__*/ StreamResponse;
 
 export type SubscribeTasksError = DefaultErrors | NotFound | Forbidden;
 
@@ -876,7 +871,7 @@ export const subscribeTasks: API.OperationMethod<
   SubscribeTasksResponse,
   SubscribeTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubscribeTasksRequest,
   output: SubscribeTasksResponse,
   errors: [NotFound, Forbidden],
@@ -889,7 +884,7 @@ export interface CancelTasksRequest {
   body?: CancelTaskRequest;
 }
 
-export const CancelTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CancelTasksRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(CancelTaskRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -898,7 +893,7 @@ export const CancelTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CancelTasksRequest>;
 
 export type CancelTasksResponse = Task;
-export const CancelTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const CancelTasksResponse = /*@__PURE__*/ Task;
 
 export type CancelTasksError =
   | DefaultErrors
@@ -913,7 +908,7 @@ export const cancelTasks: API.OperationMethod<
   CancelTasksResponse,
   CancelTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelTasksRequest,
   output: CancelTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -931,7 +926,7 @@ export interface ListTasksPushNotificationConfigsRequest {
 }
 
 export const ListTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -944,7 +939,7 @@ export const ListTasksPushNotificationConfigsRequest =
 export type ListTasksPushNotificationConfigsResponse =
   ListTaskPushNotificationConfigResponse;
 export const ListTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTaskPushNotificationConfigResponse;
+  /*@__PURE__*/ ListTaskPushNotificationConfigResponse;
 
 export type ListTasksPushNotificationConfigsError =
   | DefaultErrors
@@ -957,7 +952,7 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   ListTasksPushNotificationConfigsResponse,
   ListTasksPushNotificationConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksPushNotificationConfigsRequest,
   output: ListTasksPushNotificationConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -975,7 +970,7 @@ export interface GetTasksPushNotificationConfigsRequest {
 }
 
 export const GetTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     tenant: Schema.optional(Schema.String).pipe(T.HttpQuery("tenant")),
   }).pipe(
@@ -986,7 +981,7 @@ export const GetTasksPushNotificationConfigsRequest =
 export type GetTasksPushNotificationConfigsResponse =
   TaskPushNotificationConfig;
 export const GetTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TaskPushNotificationConfig;
+  /*@__PURE__*/ TaskPushNotificationConfig;
 
 export type GetTasksPushNotificationConfigsError =
   | DefaultErrors
@@ -999,7 +994,7 @@ export const getTasksPushNotificationConfigs: API.OperationMethod<
   GetTasksPushNotificationConfigsResponse,
   GetTasksPushNotificationConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTasksPushNotificationConfigsRequest,
   output: GetTasksPushNotificationConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -1017,7 +1012,7 @@ export interface CreateTasksPushNotificationConfigsRequest {
 }
 
 export const CreateTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     tenant: Schema.optional(Schema.String).pipe(T.HttpQuery("tenant")),
@@ -1030,7 +1025,7 @@ export const CreateTasksPushNotificationConfigsRequest =
 export type CreateTasksPushNotificationConfigsResponse =
   TaskPushNotificationConfig;
 export const CreateTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TaskPushNotificationConfig;
+  /*@__PURE__*/ TaskPushNotificationConfig;
 
 export type CreateTasksPushNotificationConfigsError =
   | DefaultErrors
@@ -1045,7 +1040,7 @@ export const createTasksPushNotificationConfigs: API.OperationMethod<
   CreateTasksPushNotificationConfigsResponse,
   CreateTasksPushNotificationConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTasksPushNotificationConfigsRequest,
   output: CreateTasksPushNotificationConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1059,7 +1054,7 @@ export interface DeleteTasksPushNotificationConfigsRequest {
 }
 
 export const DeleteTasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     tenant: Schema.optional(Schema.String).pipe(T.HttpQuery("tenant")),
   }).pipe(
@@ -1068,8 +1063,7 @@ export const DeleteTasksPushNotificationConfigsRequest =
   ) as unknown as Schema.Codec<DeleteTasksPushNotificationConfigsRequest>;
 
 export type DeleteTasksPushNotificationConfigsResponse = Empty;
-export const DeleteTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteTasksPushNotificationConfigsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteTasksPushNotificationConfigsError =
   | DefaultErrors
@@ -1084,7 +1078,7 @@ export const deleteTasksPushNotificationConfigs: API.OperationMethod<
   DeleteTasksPushNotificationConfigsResponse,
   DeleteTasksPushNotificationConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTasksPushNotificationConfigsRequest,
   output: DeleteTasksPushNotificationConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1095,7 +1089,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1103,7 +1097,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1113,7 +1107,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1124,7 +1118,7 @@ export interface StreamMessageRequest {
   body?: SendMessageRequest;
 }
 
-export const StreamMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StreamMessageRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(SendMessageRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/message:stream", hasBody: true }),
@@ -1132,7 +1126,7 @@ export const StreamMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<StreamMessageRequest>;
 
 export type StreamMessageResponse = StreamResponse;
-export const StreamMessageResponse = /*@__PURE__*/ /*#__PURE__*/ StreamResponse;
+export const StreamMessageResponse = /*@__PURE__*/ StreamResponse;
 
 export type StreamMessageError =
   | DefaultErrors
@@ -1147,7 +1141,7 @@ export const streamMessage: API.OperationMethod<
   StreamMessageResponse,
   StreamMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StreamMessageRequest,
   output: StreamMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -10,7 +10,7 @@ export interface TasksRunsConnectionTokenRetrieveInput {
   task_id: string;
 }
 export const TasksRunsConnectionTokenRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export interface TasksRunsConnectionTokenRetrieveOutput {
   token?: string;
 }
 export const TasksRunsConnectionTokenRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<TasksRunsConnectionTokenRetrieveOutput>;
 
@@ -39,7 +39,7 @@ export const TasksRunsConnectionTokenRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsConnectionTokenRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TasksRunsConnectionTokenRetrieveInput,
     outputSchema: TasksRunsConnectionTokenRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

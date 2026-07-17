@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface RetrieveAllPresetsInput {}
 export const RetrieveAllPresetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/presets" }),
   ) as unknown as Schema.Codec<RetrieveAllPresetsInput>;
 
@@ -167,7 +167,7 @@ export interface RetrieveAllPresetsOutput {
   }[];
 }
 export const RetrieveAllPresetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     presets: Schema.Array(
       Schema.Struct({
         value: Schema.Unknown,
@@ -182,7 +182,7 @@ export const RetrieveAllPresetsOutput =
  *
  * Retrieve the details of all presets
  */
-export const retrieveAllPresets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrieveAllPresets = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrieveAllPresetsInput,
   outputSchema: RetrieveAllPresetsOutput,
 }));

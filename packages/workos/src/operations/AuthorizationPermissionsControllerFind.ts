@@ -8,7 +8,7 @@ export interface AuthorizationPermissionsControllerFindInput {
   slug: string;
 }
 export const AuthorizationPermissionsControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/authorization/permissions/{slug}" }),
@@ -27,7 +27,7 @@ export interface AuthorizationPermissionsControllerFindOutput {
   updated_at?: string;
 }
 export const AuthorizationPermissionsControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export const AuthorizationPermissionsControllerFindOutput =
  * @param slug - A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks.
  */
 export const AuthorizationPermissionsControllerFind =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationPermissionsControllerFindInput,
     outputSchema: AuthorizationPermissionsControllerFindOutput,
     errors: [NotFound] as const,

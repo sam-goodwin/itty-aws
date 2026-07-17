@@ -14,7 +14,7 @@ export interface GetGroupStreamProcessorsInput {
   includeCount?: boolean;
 }
 export const GetGroupStreamProcessorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const GetGroupStreamProcessorsInput =
 // Output Schema
 export type GetGroupStreamProcessorsOutput = void;
 export const GetGroupStreamProcessorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamProcessorsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamProcessorsOutput>;
 
 // The operation
 /**
@@ -50,10 +50,8 @@ export const GetGroupStreamProcessorsOutput =
  * @param includeCount - Flag that indicates whether the response returns the total number of items (`totalCount`) in the response.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const getGroupStreamProcessors = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamProcessorsInput,
-    outputSchema: GetGroupStreamProcessorsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamProcessors = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamProcessorsInput,
+  outputSchema: GetGroupStreamProcessorsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

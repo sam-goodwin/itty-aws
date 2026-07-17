@@ -14,7 +14,7 @@ export interface ListGroupDatabaseUserCertsInput {
   pretty?: boolean;
 }
 export const ListGroupDatabaseUserCertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     username: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupDatabaseUserCertsInput =
 // Output Schema
 export type ListGroupDatabaseUserCertsOutput = void;
 export const ListGroupDatabaseUserCertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDatabaseUserCertsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDatabaseUserCertsOutput>;
 
 // The operation
 /**
@@ -50,10 +50,8 @@ export const ListGroupDatabaseUserCertsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param username - Human-readable label that represents the MongoDB database user account whose certificates you want to return.
  */
-export const listGroupDatabaseUserCerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupDatabaseUserCertsInput,
-    outputSchema: ListGroupDatabaseUserCertsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupDatabaseUserCerts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupDatabaseUserCertsInput,
+  outputSchema: ListGroupDatabaseUserCertsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -14,7 +14,7 @@ export interface AuthorizationControllerListEffectivePermissionsByExternalIdInpu
   order?: string;
 }
 export const AuthorizationControllerListEffectivePermissionsByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -46,7 +46,7 @@ export interface AuthorizationControllerListEffectivePermissionsByExternalIdOutp
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationControllerListEffectivePermissionsByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -86,7 +86,7 @@ export const AuthorizationControllerListEffectivePermissionsByExternalIdOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const AuthorizationControllerListEffectivePermissionsByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationControllerListEffectivePermissionsByExternalIdInput,
     outputSchema:

@@ -32,7 +32,7 @@ export interface AccountsCreateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -81,7 +81,7 @@ export interface AccountsCreateOutput {
   };
   type?: string;
 }
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -112,7 +112,7 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the share account.
  * @param api-version - The api version to use.
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
@@ -122,7 +122,7 @@ export interface AccountsDeleteInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -152,7 +152,7 @@ export interface AccountsDeleteOutput {
     | "Failed"
     | "Canceled";
 }
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -184,7 +184,7 @@ export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the share account.
  * @param api-version - The api version to use.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -194,7 +194,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -220,7 +220,7 @@ export interface AccountsGetOutput {
   };
   type?: string;
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -251,7 +251,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the share account.
  * @param api-version - The api version to use.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -262,7 +262,7 @@ export interface AccountsListByResourceGroupInput {
   $skipToken?: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
@@ -292,7 +292,7 @@ export interface AccountsListByResourceGroupOutput {
   }[];
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -338,19 +338,17 @@ export const AccountsListByResourceGroupOutput =
  * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
   $skipToken?: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -379,7 +377,7 @@ export interface AccountsListBySubscriptionOutput {
   }[];
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -424,12 +422,10 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -437,7 +433,7 @@ export interface AccountsUpdateInput {
   accountName: string;
   tags?: Record<string, string>;
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -464,7 +460,7 @@ export interface AccountsUpdateOutput {
   };
   type?: string;
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -495,7 +491,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the share account.
  * @param api-version - The api version to use.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -505,7 +501,7 @@ export interface ConsumerInvitationsGetInput {
   invitationId: string;
 }
 export const ConsumerInvitationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     invitationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -531,7 +527,7 @@ export interface ConsumerInvitationsGetOutput {
   type?: string;
 }
 export const ConsumerInvitationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -561,18 +557,16 @@ export const ConsumerInvitationsGetOutput =
  * @param invitationId - An invitation id
  * @param api-version - The api version to use.
  */
-export const ConsumerInvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConsumerInvitationsGetInput,
-    outputSchema: ConsumerInvitationsGetOutput,
-  }),
-);
+export const ConsumerInvitationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConsumerInvitationsGetInput,
+  outputSchema: ConsumerInvitationsGetOutput,
+}));
 // Input Schema
 export interface ConsumerInvitationsListInvitationsInput {
   $skipToken?: string;
 }
 export const ConsumerInvitationsListInvitationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -600,7 +594,7 @@ export interface ConsumerInvitationsListInvitationsOutput {
   }[];
 }
 export const ConsumerInvitationsListInvitationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -645,7 +639,7 @@ export const ConsumerInvitationsListInvitationsOutput =
  * @param $skipToken - The continuation token
  */
 export const ConsumerInvitationsListInvitations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConsumerInvitationsListInvitationsInput,
     outputSchema: ConsumerInvitationsListInvitationsOutput,
   }));
@@ -682,7 +676,7 @@ export interface ConsumerInvitationsRejectInvitationInput {
   type?: string;
 }
 export const ConsumerInvitationsRejectInvitationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       dataSetCount: Schema.optional(Schema.Number),
@@ -743,7 +737,7 @@ export interface ConsumerInvitationsRejectInvitationOutput {
   type?: string;
 }
 export const ConsumerInvitationsRejectInvitationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -773,7 +767,7 @@ export const ConsumerInvitationsRejectInvitationOutput =
  * @param api-version - The api version to use.
  */
 export const ConsumerInvitationsRejectInvitation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConsumerInvitationsRejectInvitationInput,
     outputSchema: ConsumerInvitationsRejectInvitationOutput,
   }));
@@ -786,7 +780,7 @@ export interface ConsumerSourceDataSetsListByShareSubscriptionInput {
   $skipToken?: string;
 }
 export const ConsumerSourceDataSetsListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -818,7 +812,7 @@ export interface ConsumerSourceDataSetsListByShareSubscriptionOutput {
   }[];
 }
 export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -867,7 +861,7 @@ export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
  * @param $skipToken - Continuation token
  */
 export const ConsumerSourceDataSetsListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConsumerSourceDataSetsListByShareSubscriptionInput,
     outputSchema: ConsumerSourceDataSetsListByShareSubscriptionOutput,
   }));
@@ -904,7 +898,7 @@ export interface DataSetMappingsCreateInput {
   type?: string;
 }
 export const DataSetMappingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -964,7 +958,7 @@ export interface DataSetMappingsCreateOutput {
   type?: string;
 }
 export const DataSetMappingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -998,12 +992,10 @@ Enables copying the data set from source to destination.
  * @param dataSetMappingName - The name of the data set mapping to be created.
  * @param api-version - The api version to use.
  */
-export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSetMappingsCreateInput,
-    outputSchema: DataSetMappingsCreateOutput,
-  }),
-);
+export const DataSetMappingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSetMappingsCreateInput,
+  outputSchema: DataSetMappingsCreateOutput,
+}));
 // Input Schema
 export interface DataSetMappingsDeleteInput {
   subscriptionId: string;
@@ -1013,7 +1005,7 @@ export interface DataSetMappingsDeleteInput {
   dataSetMappingName: string;
 }
 export const DataSetMappingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1030,7 +1022,7 @@ export const DataSetMappingsDeleteInput =
 // Output Schema
 export type DataSetMappingsDeleteOutput = void;
 export const DataSetMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetMappingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -1045,12 +1037,10 @@ export const DataSetMappingsDeleteOutput =
  * @param dataSetMappingName - The name of the dataSetMapping.
  * @param api-version - The api version to use.
  */
-export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataSetMappingsDeleteInput,
-    outputSchema: DataSetMappingsDeleteOutput,
-  }),
-);
+export const DataSetMappingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataSetMappingsDeleteInput,
+  outputSchema: DataSetMappingsDeleteOutput,
+}));
 // Input Schema
 export interface DataSetMappingsGetInput {
   subscriptionId: string;
@@ -1060,7 +1050,7 @@ export interface DataSetMappingsGetInput {
   dataSetMappingName: string;
 }
 export const DataSetMappingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1089,7 +1079,7 @@ export interface DataSetMappingsGetOutput {
   type?: string;
 }
 export const DataSetMappingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1122,7 +1112,7 @@ export const DataSetMappingsGetOutput =
  * @param dataSetMappingName - The name of the dataSetMapping.
  * @param api-version - The api version to use.
  */
-export const DataSetMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetMappingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetMappingsGetInput,
   outputSchema: DataSetMappingsGetOutput,
 }));
@@ -1137,7 +1127,7 @@ export interface DataSetMappingsListByShareSubscriptionInput {
   $orderby?: string;
 }
 export const DataSetMappingsListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1171,7 +1161,7 @@ export interface DataSetMappingsListByShareSubscriptionOutput {
   }[];
 }
 export const DataSetMappingsListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1222,7 +1212,7 @@ export const DataSetMappingsListByShareSubscriptionOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const DataSetMappingsListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataSetMappingsListByShareSubscriptionInput,
     outputSchema: DataSetMappingsListByShareSubscriptionOutput,
   }));
@@ -1260,7 +1250,7 @@ export interface DataSetsCreateInput {
   };
   type?: string;
 }
-export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1321,7 +1311,7 @@ export interface DataSetsCreateOutput {
   };
   type?: string;
 }
-export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1354,7 +1344,7 @@ export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param dataSetName - The name of the dataSet.
  * @param api-version - The api version to use.
  */
-export const DataSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsCreateInput,
   outputSchema: DataSetsCreateOutput,
 }));
@@ -1366,7 +1356,7 @@ export interface DataSetsDeleteInput {
   shareName: string;
   dataSetName: string;
 }
-export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1383,7 +1373,7 @@ export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DataSetsDeleteOutput = void;
 export const DataSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetsDeleteOutput>;
 
 // The operation
 /**
@@ -1398,7 +1388,7 @@ export const DataSetsDeleteOutput =
  * @param dataSetName - The name of the dataSet.
  * @param api-version - The api version to use.
  */
-export const DataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsDeleteInput,
   outputSchema: DataSetsDeleteOutput,
 }));
@@ -1410,7 +1400,7 @@ export interface DataSetsGetInput {
   shareName: string;
   dataSetName: string;
 }
-export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1438,7 +1428,7 @@ export interface DataSetsGetOutput {
   };
   type?: string;
 }
-export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1471,7 +1461,7 @@ export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param dataSetName - The name of the dataSet.
  * @param api-version - The api version to use.
  */
-export const DataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsGetInput,
   outputSchema: DataSetsGetOutput,
 }));
@@ -1486,7 +1476,7 @@ export interface DataSetsListByShareInput {
   $orderby?: string;
 }
 export const DataSetsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1520,7 +1510,7 @@ export interface DataSetsListByShareOutput {
   }[];
 }
 export const DataSetsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1570,7 +1560,7 @@ export const DataSetsListByShareOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const DataSetsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSetsListByShare = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSetsListByShareInput,
   outputSchema: DataSetsListByShareOutput,
 }));
@@ -1587,7 +1577,7 @@ export interface EmailRegistrationsActivateEmailInput {
   tenantId?: string;
 }
 export const EmailRegistrationsActivateEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     activationCode: Schema.optional(Schema.String),
     activationExpirationDate: Schema.optional(Schema.String),
@@ -1620,7 +1610,7 @@ export interface EmailRegistrationsActivateEmailOutput {
   tenantId?: string;
 }
 export const EmailRegistrationsActivateEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
     activationExpirationDate: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -1644,7 +1634,7 @@ export const EmailRegistrationsActivateEmailOutput =
  * @param api-version - The api version to use.
  */
 export const EmailRegistrationsActivateEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EmailRegistrationsActivateEmailInput,
     outputSchema: EmailRegistrationsActivateEmailOutput,
   }));
@@ -1653,7 +1643,7 @@ export interface EmailRegistrationsRegisterEmailInput {
   location: string;
 }
 export const EmailRegistrationsRegisterEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1675,7 +1665,7 @@ export interface EmailRegistrationsRegisterEmailOutput {
   tenantId?: string;
 }
 export const EmailRegistrationsRegisterEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
     activationExpirationDate: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -1699,7 +1689,7 @@ export const EmailRegistrationsRegisterEmailOutput =
  * @param api-version - The api version to use.
  */
 export const EmailRegistrationsRegisterEmail =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EmailRegistrationsRegisterEmailInput,
     outputSchema: EmailRegistrationsRegisterEmailOutput,
   }));
@@ -1734,48 +1724,46 @@ export interface InvitationsCreateInput {
   };
   type?: string;
 }
-export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    shareName: Schema.String.pipe(T.PathParam()),
-    invitationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        expirationDate: Schema.optional(Schema.String),
-        invitationId: Schema.optional(Schema.String),
-        invitationStatus: Schema.optional(
-          Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
-        ),
-        respondedAt: Schema.optional(Schema.String),
-        sentAt: Schema.optional(Schema.String),
-        targetActiveDirectoryId: Schema.optional(Schema.String),
-        targetEmail: Schema.optional(Schema.String),
-        targetObjectId: Schema.optional(Schema.String),
-        userEmail: Schema.optional(Schema.String),
-        userName: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-  },
-).pipe(
+export const InvitationsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  shareName: Schema.String.pipe(T.PathParam()),
+  invitationName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      expirationDate: Schema.optional(Schema.String),
+      invitationId: Schema.optional(Schema.String),
+      invitationStatus: Schema.optional(
+        Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
+      ),
+      respondedAt: Schema.optional(Schema.String),
+      sentAt: Schema.optional(Schema.String),
+      targetActiveDirectoryId: Schema.optional(Schema.String),
+      targetEmail: Schema.optional(Schema.String),
+      targetObjectId: Schema.optional(Schema.String),
+      userEmail: Schema.optional(Schema.String),
+      userName: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
@@ -1798,7 +1786,7 @@ export interface InvitationsCreateOutput {
   type?: string;
 }
 export const InvitationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -1831,7 +1819,7 @@ export const InvitationsCreateOutput =
  * @param invitationName - The name of the invitation.
  * @param api-version - The api version to use.
  */
-export const InvitationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsCreateInput,
   outputSchema: InvitationsCreateOutput,
 }));
@@ -1843,15 +1831,13 @@ export interface InvitationsDeleteInput {
   shareName: string;
   invitationName: string;
 }
-export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    shareName: Schema.String.pipe(T.PathParam()),
-    invitationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const InvitationsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  shareName: Schema.String.pipe(T.PathParam()),
+  invitationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
@@ -1862,7 +1848,7 @@ export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type InvitationsDeleteOutput = void;
 export const InvitationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvitationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InvitationsDeleteOutput>;
 
 // The operation
 /**
@@ -1877,7 +1863,7 @@ export const InvitationsDeleteOutput =
  * @param invitationName - The name of the invitation.
  * @param api-version - The api version to use.
  */
-export const InvitationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsDeleteInput,
   outputSchema: InvitationsDeleteOutput,
 }));
@@ -1889,7 +1875,7 @@ export interface InvitationsGetInput {
   shareName: string;
   invitationName: string;
 }
-export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -1917,7 +1903,7 @@ export interface InvitationsGetOutput {
   };
   type?: string;
 }
-export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InvitationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -1950,7 +1936,7 @@ export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param invitationName - The name of the invitation.
  * @param api-version - The api version to use.
  */
-export const InvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InvitationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InvitationsGetInput,
   outputSchema: InvitationsGetOutput,
 }));
@@ -1965,7 +1951,7 @@ export interface InvitationsListByShareInput {
   $orderby?: string;
 }
 export const InvitationsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1999,7 +1985,7 @@ export interface InvitationsListByShareOutput {
   }[];
 }
 export const InvitationsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2049,17 +2035,13 @@ export const InvitationsListByShareOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const InvitationsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InvitationsListByShareInput,
-    outputSchema: InvitationsListByShareOutput,
-  }),
-);
+export const InvitationsListByShare = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InvitationsListByShareInput,
+  outputSchema: InvitationsListByShareOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataShare/operations",
@@ -2104,7 +2086,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -2178,7 +2160,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The api version to use.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2218,7 +2200,7 @@ export interface ProviderShareSubscriptionsAdjustInput {
   type?: string;
 }
 export const ProviderShareSubscriptionsAdjustInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2280,7 +2262,7 @@ export interface ProviderShareSubscriptionsAdjustOutput {
   type?: string;
 }
 export const ProviderShareSubscriptionsAdjustOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2314,7 +2296,7 @@ export const ProviderShareSubscriptionsAdjustOutput =
  * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsAdjust =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderShareSubscriptionsAdjustInput,
     outputSchema: ProviderShareSubscriptionsAdjustOutput,
   }));
@@ -2327,7 +2309,7 @@ export interface ProviderShareSubscriptionsGetByShareInput {
   providerShareSubscriptionId: string;
 }
 export const ProviderShareSubscriptionsGetByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2356,7 +2338,7 @@ export interface ProviderShareSubscriptionsGetByShareOutput {
   type?: string;
 }
 export const ProviderShareSubscriptionsGetByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2390,7 +2372,7 @@ export const ProviderShareSubscriptionsGetByShareOutput =
  * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsGetByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderShareSubscriptionsGetByShareInput,
     outputSchema: ProviderShareSubscriptionsGetByShareOutput,
   }));
@@ -2403,7 +2385,7 @@ export interface ProviderShareSubscriptionsListByShareInput {
   $skipToken?: string;
 }
 export const ProviderShareSubscriptionsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2435,7 +2417,7 @@ export interface ProviderShareSubscriptionsListByShareOutput {
   }[];
 }
 export const ProviderShareSubscriptionsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2484,7 +2466,7 @@ export const ProviderShareSubscriptionsListByShareOutput =
  * @param $skipToken - Continuation Token
  */
 export const ProviderShareSubscriptionsListByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderShareSubscriptionsListByShareInput,
     outputSchema: ProviderShareSubscriptionsListByShareOutput,
   }));
@@ -2524,7 +2506,7 @@ export interface ProviderShareSubscriptionsReinstateInput {
   type?: string;
 }
 export const ProviderShareSubscriptionsReinstateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2586,7 +2568,7 @@ export interface ProviderShareSubscriptionsReinstateOutput {
   type?: string;
 }
 export const ProviderShareSubscriptionsReinstateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2620,7 +2602,7 @@ export const ProviderShareSubscriptionsReinstateOutput =
  * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsReinstate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderShareSubscriptionsReinstateInput,
     outputSchema: ProviderShareSubscriptionsReinstateOutput,
   }));
@@ -2633,7 +2615,7 @@ export interface ProviderShareSubscriptionsRevokeInput {
   providerShareSubscriptionId: string;
 }
 export const ProviderShareSubscriptionsRevokeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2662,7 +2644,7 @@ export interface ProviderShareSubscriptionsRevokeOutput {
   type?: string;
 }
 export const ProviderShareSubscriptionsRevokeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -2696,7 +2678,7 @@ export const ProviderShareSubscriptionsRevokeOutput =
  * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsRevoke =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderShareSubscriptionsRevokeInput,
     outputSchema: ProviderShareSubscriptionsRevokeOutput,
   }));
@@ -2732,7 +2714,7 @@ export interface SharesCreateInput {
   };
   type?: string;
 }
-export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2795,7 +2777,7 @@ export interface SharesCreateOutput {
   };
   type?: string;
 }
-export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -2827,7 +2809,7 @@ export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param shareName - The name of the share.
  * @param api-version - The api version to use.
  */
-export const SharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesCreateInput,
   outputSchema: SharesCreateOutput,
 }));
@@ -2838,7 +2820,7 @@ export interface SharesDeleteInput {
   accountName: string;
   shareName: string;
 }
-export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2869,7 +2851,7 @@ export interface SharesDeleteOutput {
     | "Failed"
     | "Canceled";
 }
-export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -2902,7 +2884,7 @@ export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param shareName - The name of the share.
  * @param api-version - The api version to use.
  */
-export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesDeleteInput,
   outputSchema: SharesDeleteOutput,
 }));
@@ -2913,7 +2895,7 @@ export interface SharesGetInput {
   accountName: string;
   shareName: string;
 }
-export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2940,7 +2922,7 @@ export interface SharesGetOutput {
   };
   type?: string;
 }
-export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -2972,7 +2954,7 @@ export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param shareName - The name of the share to retrieve.
  * @param api-version - The api version to use.
  */
-export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesGetInput,
   outputSchema: SharesGetOutput,
 }));
@@ -2986,7 +2968,7 @@ export interface SharesListByAccountInput {
   $orderby?: string;
 }
 export const SharesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3019,7 +3001,7 @@ export interface SharesListByAccountOutput {
   }[];
 }
 export const SharesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3068,7 +3050,7 @@ export const SharesListByAccountOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const SharesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesListByAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesListByAccountInput,
   outputSchema: SharesListByAccountOutput,
 }));
@@ -3093,7 +3075,7 @@ export interface SharesListSynchronizationDetailsInput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const SharesListSynchronizationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3157,7 +3139,7 @@ export interface SharesListSynchronizationDetailsOutput {
   }[];
 }
 export const SharesListSynchronizationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3213,7 +3195,7 @@ export const SharesListSynchronizationDetailsOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const SharesListSynchronizationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharesListSynchronizationDetailsInput,
     outputSchema: SharesListSynchronizationDetailsOutput,
   }));
@@ -3228,7 +3210,7 @@ export interface SharesListSynchronizationsInput {
   $orderby?: string;
 }
 export const SharesListSynchronizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3261,7 +3243,7 @@ export interface SharesListSynchronizationsOutput {
   }[];
 }
 export const SharesListSynchronizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3296,12 +3278,10 @@ export const SharesListSynchronizationsOutput =
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
  */
-export const SharesListSynchronizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SharesListSynchronizationsInput,
-    outputSchema: SharesListSynchronizationsOutput,
-  }),
-);
+export const SharesListSynchronizations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharesListSynchronizationsInput,
+  outputSchema: SharesListSynchronizationsOutput,
+}));
 // Input Schema
 export interface ShareSubscriptionsCancelSynchronizationInput {
   subscriptionId: string;
@@ -3317,7 +3297,7 @@ export interface ShareSubscriptionsCancelSynchronizationInput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const ShareSubscriptionsCancelSynchronizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3350,7 +3330,7 @@ export interface ShareSubscriptionsCancelSynchronizationOutput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const ShareSubscriptionsCancelSynchronizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -3375,7 +3355,7 @@ export const ShareSubscriptionsCancelSynchronizationOutput =
  * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsCancelSynchronization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsCancelSynchronizationInput,
     outputSchema: ShareSubscriptionsCancelSynchronizationOutput,
   }));
@@ -3424,7 +3404,7 @@ export interface ShareSubscriptionsCreateInput {
   type?: string;
 }
 export const ShareSubscriptionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3496,7 +3476,7 @@ export interface ShareSubscriptionsCreateOutput {
   type?: string;
 }
 export const ShareSubscriptionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -3528,12 +3508,10 @@ export const ShareSubscriptionsCreateOutput =
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param api-version - The api version to use.
  */
-export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsCreateInput,
-    outputSchema: ShareSubscriptionsCreateOutput,
-  }),
-);
+export const ShareSubscriptionsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsCreateInput,
+  outputSchema: ShareSubscriptionsCreateOutput,
+}));
 // Input Schema
 export interface ShareSubscriptionsDeleteInput {
   subscriptionId: string;
@@ -3542,7 +3520,7 @@ export interface ShareSubscriptionsDeleteInput {
   shareSubscriptionName: string;
 }
 export const ShareSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3574,7 +3552,7 @@ export interface ShareSubscriptionsDeleteOutput {
     | "Canceled";
 }
 export const ShareSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -3607,12 +3585,10 @@ export const ShareSubscriptionsDeleteOutput =
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param api-version - The api version to use.
  */
-export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsDeleteInput,
-    outputSchema: ShareSubscriptionsDeleteOutput,
-  }),
-);
+export const ShareSubscriptionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsDeleteInput,
+  outputSchema: ShareSubscriptionsDeleteOutput,
+}));
 // Input Schema
 export interface ShareSubscriptionsGetInput {
   subscriptionId: string;
@@ -3621,7 +3597,7 @@ export interface ShareSubscriptionsGetInput {
   shareSubscriptionName: string;
 }
 export const ShareSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3649,7 +3625,7 @@ export interface ShareSubscriptionsGetOutput {
   type?: string;
 }
 export const ShareSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -3681,12 +3657,10 @@ export const ShareSubscriptionsGetOutput =
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param api-version - The api version to use.
  */
-export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ShareSubscriptionsGetInput,
-    outputSchema: ShareSubscriptionsGetOutput,
-  }),
-);
+export const ShareSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ShareSubscriptionsGetInput,
+  outputSchema: ShareSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface ShareSubscriptionsListByAccountInput {
   subscriptionId: string;
@@ -3697,7 +3671,7 @@ export interface ShareSubscriptionsListByAccountInput {
   $orderby?: string;
 }
 export const ShareSubscriptionsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3730,7 +3704,7 @@ export interface ShareSubscriptionsListByAccountOutput {
   }[];
 }
 export const ShareSubscriptionsListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3780,7 +3754,7 @@ export const ShareSubscriptionsListByAccountOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const ShareSubscriptionsListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListByAccountInput,
     outputSchema: ShareSubscriptionsListByAccountOutput,
   }));
@@ -3793,7 +3767,7 @@ export interface ShareSubscriptionsListSourceShareSynchronizationSettingsInput {
   $skipToken?: string;
 }
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3813,7 +3787,7 @@ export interface ShareSubscriptionsListSourceShareSynchronizationSettingsOutput 
   value: { kind: "ScheduleBased" }[];
 }
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3836,7 +3810,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
  * @param $skipToken - Continuation token
  */
 export const ShareSubscriptionsListSourceShareSynchronizationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListSourceShareSynchronizationSettingsInput,
     outputSchema:
       ShareSubscriptionsListSourceShareSynchronizationSettingsOutput,
@@ -3859,7 +3833,7 @@ export interface ShareSubscriptionsListSynchronizationDetailsInput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const ShareSubscriptionsListSynchronizationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3920,7 +3894,7 @@ export interface ShareSubscriptionsListSynchronizationDetailsOutput {
   }[];
 }
 export const ShareSubscriptionsListSynchronizationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3976,7 +3950,7 @@ export const ShareSubscriptionsListSynchronizationDetailsOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const ShareSubscriptionsListSynchronizationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListSynchronizationDetailsInput,
     outputSchema: ShareSubscriptionsListSynchronizationDetailsOutput,
   }));
@@ -3991,7 +3965,7 @@ export interface ShareSubscriptionsListSynchronizationsInput {
   $orderby?: string;
 }
 export const ShareSubscriptionsListSynchronizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4021,7 +3995,7 @@ export interface ShareSubscriptionsListSynchronizationsOutput {
   }[];
 }
 export const ShareSubscriptionsListSynchronizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4054,7 +4028,7 @@ export const ShareSubscriptionsListSynchronizationsOutput =
  * @param $orderby - Sorts the results using OData syntax.
  */
 export const ShareSubscriptionsListSynchronizations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsListSynchronizationsInput,
     outputSchema: ShareSubscriptionsListSynchronizationsOutput,
   }));
@@ -4067,7 +4041,7 @@ export interface ShareSubscriptionsSynchronizeInput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const ShareSubscriptionsSynchronizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4094,7 +4068,7 @@ export interface ShareSubscriptionsSynchronizeOutput {
   synchronizationMode?: "Incremental" | "FullSync";
 }
 export const ShareSubscriptionsSynchronizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4119,7 +4093,7 @@ export const ShareSubscriptionsSynchronizeOutput =
  * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsSynchronize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ShareSubscriptionsSynchronizeInput,
     outputSchema: ShareSubscriptionsSynchronizeOutput,
   }));
@@ -4144,7 +4118,7 @@ export interface SynchronizationSettingsCreateInput {
   type?: string;
 }
 export const SynchronizationSettingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4191,7 +4165,7 @@ export interface SynchronizationSettingsCreateOutput {
   type?: string;
 }
 export const SynchronizationSettingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -4225,7 +4199,7 @@ export const SynchronizationSettingsCreateOutput =
  * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SynchronizationSettingsCreateInput,
     outputSchema: SynchronizationSettingsCreateOutput,
   }));
@@ -4238,7 +4212,7 @@ export interface SynchronizationSettingsDeleteInput {
   synchronizationSettingName: string;
 }
 export const SynchronizationSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4271,7 +4245,7 @@ export interface SynchronizationSettingsDeleteOutput {
     | "Canceled";
 }
 export const SynchronizationSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -4306,7 +4280,7 @@ export const SynchronizationSettingsDeleteOutput =
  * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SynchronizationSettingsDeleteInput,
     outputSchema: SynchronizationSettingsDeleteOutput,
   }));
@@ -4319,7 +4293,7 @@ export interface SynchronizationSettingsGetInput {
   synchronizationSettingName: string;
 }
 export const SynchronizationSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4348,7 +4322,7 @@ export interface SynchronizationSettingsGetOutput {
   type?: string;
 }
 export const SynchronizationSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     systemData: Schema.optional(
@@ -4381,12 +4355,10 @@ export const SynchronizationSettingsGetOutput =
  * @param synchronizationSettingName - The name of the synchronizationSetting.
  * @param api-version - The api version to use.
  */
-export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SynchronizationSettingsGetInput,
-    outputSchema: SynchronizationSettingsGetOutput,
-  }),
-);
+export const SynchronizationSettingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SynchronizationSettingsGetInput,
+  outputSchema: SynchronizationSettingsGetOutput,
+}));
 // Input Schema
 export interface SynchronizationSettingsListByShareInput {
   subscriptionId: string;
@@ -4396,7 +4368,7 @@ export interface SynchronizationSettingsListByShareInput {
   $skipToken?: string;
 }
 export const SynchronizationSettingsListByShareInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4428,7 +4400,7 @@ export interface SynchronizationSettingsListByShareOutput {
   }[];
 }
 export const SynchronizationSettingsListByShareOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4477,7 +4449,7 @@ export const SynchronizationSettingsListByShareOutput =
  * @param $skipToken - continuation token
  */
 export const SynchronizationSettingsListByShare =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SynchronizationSettingsListByShareInput,
     outputSchema: SynchronizationSettingsListByShareOutput,
   }));
@@ -4501,7 +4473,7 @@ export interface TriggersCreateInput {
   };
   type?: string;
 }
-export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4547,7 +4519,7 @@ export interface TriggersCreateOutput {
   };
   type?: string;
 }
-export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -4580,7 +4552,7 @@ export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param triggerName - The name of the trigger.
  * @param api-version - The api version to use.
  */
-export const TriggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersCreateInput,
   outputSchema: TriggersCreateOutput,
 }));
@@ -4592,7 +4564,7 @@ export interface TriggersDeleteInput {
   shareSubscriptionName: string;
   triggerName: string;
 }
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4624,7 +4596,7 @@ export interface TriggersDeleteOutput {
     | "Failed"
     | "Canceled";
 }
-export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteOutput = /*@__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
     Schema.Struct({
@@ -4658,7 +4630,7 @@ export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param triggerName - The name of the trigger.
  * @param api-version - The api version to use.
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
@@ -4670,7 +4642,7 @@ export interface TriggersGetInput {
   shareSubscriptionName: string;
   triggerName: string;
 }
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4698,7 +4670,7 @@ export interface TriggersGetOutput {
   };
   type?: string;
 }
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   systemData: Schema.optional(
@@ -4731,7 +4703,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param triggerName - The name of the trigger.
  * @param api-version - The api version to use.
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
@@ -4744,7 +4716,7 @@ export interface TriggersListByShareSubscriptionInput {
   $skipToken?: string;
 }
 export const TriggersListByShareSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4776,7 +4748,7 @@ export interface TriggersListByShareSubscriptionOutput {
   }[];
 }
 export const TriggersListByShareSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -4825,7 +4797,7 @@ export const TriggersListByShareSubscriptionOutput =
  * @param $skipToken - Continuation token
  */
 export const TriggersListByShareSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TriggersListByShareSubscriptionInput,
     outputSchema: TriggersListByShareSubscriptionOutput,
   }));

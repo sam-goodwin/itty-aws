@@ -10,7 +10,7 @@ export interface GetFederationSettingIdentityProviderInput {
   envelope?: boolean;
 }
 export const GetFederationSettingIdentityProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     identityProviderId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetFederationSettingIdentityProviderInput =
 // Output Schema
 export type GetFederationSettingIdentityProviderOutput = void;
 export const GetFederationSettingIdentityProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetFederationSettingIdentityProviderOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetFederationSettingIdentityProviderOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const GetFederationSettingIdentityProviderOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
 export const getFederationSettingIdentityProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFederationSettingIdentityProviderInput,
     outputSchema: GetFederationSettingIdentityProviderOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

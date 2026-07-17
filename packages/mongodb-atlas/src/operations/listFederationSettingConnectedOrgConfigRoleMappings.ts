@@ -10,7 +10,7 @@ export interface ListFederationSettingConnectedOrgConfigRoleMappingsInput {
   envelope?: boolean;
 }
 export const ListFederationSettingConnectedOrgConfigRoleMappingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ListFederationSettingConnectedOrgConfigRoleMappingsInput =
 // Output Schema
 export type ListFederationSettingConnectedOrgConfigRoleMappingsOutput = void;
 export const ListFederationSettingConnectedOrgConfigRoleMappingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigRoleMappingsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigRoleMappingsOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const ListFederationSettingConnectedOrgConfigRoleMappingsOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
 export const listFederationSettingConnectedOrgConfigRoleMappings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListFederationSettingConnectedOrgConfigRoleMappingsInput,
     outputSchema: ListFederationSettingConnectedOrgConfigRoleMappingsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

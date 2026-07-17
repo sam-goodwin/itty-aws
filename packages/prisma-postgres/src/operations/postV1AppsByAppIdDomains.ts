@@ -15,7 +15,7 @@ export interface PostV1AppsByAppIdDomainsInput {
   hostname: string;
 }
 export const PostV1AppsByAppIdDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String,
   }).pipe(
@@ -54,7 +54,7 @@ export interface PostV1AppsByAppIdDomainsOutput {
   };
 }
 export const PostV1AppsByAppIdDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -97,16 +97,14 @@ export const PostV1AppsByAppIdDomainsOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Registers a custom hostname for the app. The hostname must CNAME to the regional switchboard target before DNS verification can succeed. Returns 429 if the app has reached its domain quota (default: 3).
  */
-export const postV1AppsByAppIdDomains = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1AppsByAppIdDomainsInput,
-    outputSchema: PostV1AppsByAppIdDomainsOutput,
-    errors: [
-      BadRequest,
-      Forbidden,
-      NotFound,
-      Conflict,
-      UnprocessableEntity,
-    ] as const,
-  }),
-);
+export const postV1AppsByAppIdDomains = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1AppsByAppIdDomainsInput,
+  outputSchema: PostV1AppsByAppIdDomainsOutput,
+  errors: [
+    BadRequest,
+    Forbidden,
+    NotFound,
+    Conflict,
+    UnprocessableEntity,
+  ] as const,
+}));

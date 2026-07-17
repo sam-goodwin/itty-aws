@@ -40,7 +40,7 @@ export interface GdataContentTypeInfo {
 }
 
 export const GdataContentTypeInfo: Schema.Codec<GdataContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fromBytes: Schema.optional(Schema.String),
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
     bestGuess: Schema.optional(Schema.String),
@@ -60,7 +60,7 @@ export interface GdataObjectId {
 }
 
 export const GdataObjectId: Schema.Codec<GdataObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectName: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
     generation: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface GdataBlobstore2Info {
 }
 
 export const GdataBlobstore2Info: Schema.Codec<GdataBlobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readToken: Schema.optional(Schema.String),
     uploadMetadataContainer: Schema.optional(Schema.String),
     downloadReadHandle: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface GdataCompositeMedia {
 }
 
 export const GdataCompositeMedia: Schema.Codec<GdataCompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     crc32cHash: Schema.optional(Schema.Number),
     sha1Hash: Schema.optional(Schema.String),
     length: Schema.optional(Schema.String),
@@ -150,7 +150,7 @@ export interface GdataDiffUploadRequest {
 }
 
 export const GdataDiffUploadRequest: Schema.Codec<GdataDiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectInfo: Schema.optional(GdataCompositeMedia),
     checksumsInfo: Schema.optional(GdataCompositeMedia),
@@ -164,7 +164,7 @@ export interface GdataDiffVersionResponse {
 }
 
 export const GdataDiffVersionResponse: Schema.Codec<GdataDiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "GdataDiffVersionResponse" });
@@ -177,7 +177,7 @@ export interface GdataDownloadParameters {
 }
 
 export const GdataDownloadParameters: Schema.Codec<GdataDownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GdataDownloadParameters" });
@@ -196,7 +196,7 @@ export interface GdataDiffChecksumsResponse {
 }
 
 export const GdataDiffChecksumsResponse: Schema.Codec<GdataDiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checksumsLocation: Schema.optional(GdataCompositeMedia),
     objectSizeBytes: Schema.optional(Schema.String),
     objectVersion: Schema.optional(Schema.String),
@@ -212,7 +212,7 @@ export interface GdataDiffUploadResponse {
 }
 
 export const GdataDiffUploadResponse: Schema.Codec<GdataDiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     originalObject: Schema.optional(GdataCompositeMedia),
   }).annotate({ identifier: "GdataDiffUploadResponse" });
@@ -223,7 +223,7 @@ export interface GdataDiffDownloadResponse {
 }
 
 export const GdataDiffDownloadResponse: Schema.Codec<GdataDiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(GdataCompositeMedia),
   }).annotate({ identifier: "GdataDiffDownloadResponse" });
 
@@ -307,7 +307,7 @@ export interface GdataMedia {
 }
 
 export const GdataMedia: Schema.Codec<GdataMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     length: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
     contentTypeInfo: Schema.optional(GdataContentTypeInfo),
@@ -356,16 +356,14 @@ export interface Job {
   id?: string;
 }
 
-export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    expireTime: Schema.optional(Schema.String),
-    reportTypeId: Schema.optional(Schema.String),
-    systemManaged: Schema.optional(Schema.Boolean),
-    createTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Job" });
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  reportTypeId: Schema.optional(Schema.String),
+  systemManaged: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Job" });
 
 export interface ListJobsResponse {
   /** The list of jobs. */
@@ -375,7 +373,7 @@ export interface ListJobsResponse {
 }
 
 export const ListJobsResponse: Schema.Codec<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Job)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListJobsResponse" });
@@ -398,7 +396,7 @@ export interface Report {
 }
 
 export const Report: Schema.Codec<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     jobExpireTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -420,7 +418,7 @@ export interface ReportType {
 }
 
 export const ReportType: Schema.Codec<ReportType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     systemManaged: Schema.optional(Schema.Boolean),
     deprecateTime: Schema.optional(Schema.String),
@@ -435,7 +433,7 @@ export interface ListReportTypesResponse {
 }
 
 export const ListReportTypesResponse: Schema.Codec<ListReportTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportTypes: Schema.optional(Schema.Array(ReportType)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReportTypesResponse" });
@@ -443,7 +441,7 @@ export const ListReportTypesResponse: Schema.Codec<ListReportTypesResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -455,7 +453,7 @@ export interface ListReportsResponse {
 }
 
 export const ListReportsResponse: Schema.Codec<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReportsResponse" });
@@ -521,7 +519,7 @@ export interface DeleteJobsRequest {
   onBehalfOfContentOwner?: string;
 }
 
-export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteJobsRequest = /*@__PURE__*/ Schema.Struct({
   jobId: Schema.String.pipe(T.HttpPath("jobId")),
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
@@ -532,7 +530,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteJobsRequest>;
 
 export type DeleteJobsResponse = Empty;
-export const DeleteJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteJobsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteJobsError =
   | DefaultErrors
@@ -547,7 +545,7 @@ export const deleteJobs: API.OperationMethod<
   DeleteJobsResponse,
   DeleteJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobsRequest,
   output: DeleteJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -560,7 +558,7 @@ export interface GetJobsRequest {
   jobId: string;
 }
 
-export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetJobsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -571,7 +569,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetJobsRequest>;
 
 export type GetJobsResponse = Job;
-export const GetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const GetJobsResponse = /*@__PURE__*/ Job;
 
 export type GetJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -581,7 +579,7 @@ export const getJobs: API.OperationMethod<
   GetJobsResponse,
   GetJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobsRequest,
   output: GetJobsResponse,
   errors: [NotFound, Forbidden],
@@ -594,7 +592,7 @@ export interface CreateJobsRequest {
   body?: Job;
 }
 
-export const CreateJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateJobsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -605,7 +603,7 @@ export const CreateJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateJobsRequest>;
 
 export type CreateJobsResponse = Job;
-export const CreateJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateJobsResponse = /*@__PURE__*/ Job;
 
 export type CreateJobsError =
   | DefaultErrors
@@ -620,7 +618,7 @@ export const createJobs: API.OperationMethod<
   CreateJobsResponse,
   CreateJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobsRequest,
   output: CreateJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -637,7 +635,7 @@ export interface ListJobsRequest {
   pageToken?: string;
 }
 
-export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListJobsRequest = /*@__PURE__*/ Schema.Struct({
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
   ),
@@ -652,7 +650,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListJobsRequest>;
 
 export type ListJobsResponse_Op = ListJobsResponse;
-export const ListJobsResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
+export const ListJobsResponse_Op = /*@__PURE__*/ ListJobsResponse;
 
 export type ListJobsError = DefaultErrors | NotFound | Forbidden;
 
@@ -662,7 +660,7 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsResponse_Op,
   ListJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -689,32 +687,29 @@ export interface ListJobsReportsRequest {
   createdAfter?: string;
 }
 
-export const ListJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    startTimeAtOrAfter: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("startTimeAtOrAfter"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    jobId: Schema.String.pipe(T.HttpPath("jobId")),
-    startTimeBefore: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("startTimeBefore"),
-    ),
-    onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("onBehalfOfContentOwner"),
-    ),
-    createdAfter: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("createdAfter"),
-    ),
-  },
-).pipe(
+export const ListJobsReportsRequest = /*@__PURE__*/ Schema.Struct({
+  startTimeAtOrAfter: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("startTimeAtOrAfter"),
+  ),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  jobId: Schema.String.pipe(T.HttpPath("jobId")),
+  startTimeBefore: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("startTimeBefore"),
+  ),
+  onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("onBehalfOfContentOwner"),
+  ),
+  createdAfter: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("createdAfter"),
+  ),
+}).pipe(
   T.Http({ method: "GET", path: "v1/jobs/{jobId}/reports" }),
   svc,
 ) as unknown as Schema.Codec<ListJobsReportsRequest>;
 
 export type ListJobsReportsResponse = ListReportsResponse;
-export const ListJobsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReportsResponse;
+export const ListJobsReportsResponse = /*@__PURE__*/ ListReportsResponse;
 
 export type ListJobsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -724,7 +719,7 @@ export const listJobsReports: API.PaginatedOperationMethod<
   ListJobsReportsResponse,
   ListJobsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsReportsRequest,
   output: ListJobsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -743,7 +738,7 @@ export interface GetJobsReportsRequest {
   jobId: string;
 }
 
-export const GetJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetJobsReportsRequest = /*@__PURE__*/ Schema.Struct({
   reportId: Schema.String.pipe(T.HttpPath("reportId")),
   onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
     T.HttpQuery("onBehalfOfContentOwner"),
@@ -755,7 +750,7 @@ export const GetJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetJobsReportsRequest>;
 
 export type GetJobsReportsResponse = Report;
-export const GetJobsReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const GetJobsReportsResponse = /*@__PURE__*/ Report;
 
 export type GetJobsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -765,7 +760,7 @@ export const getJobsReports: API.OperationMethod<
   GetJobsReportsResponse,
   GetJobsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobsReportsRequest,
   output: GetJobsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -776,7 +771,7 @@ export interface DownloadMediaRequest {
   resourceName: string;
 }
 
-export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DownloadMediaRequest = /*@__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/media/{+resourceName}" }),
@@ -784,7 +779,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = GdataMedia;
-export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ GdataMedia;
+export const DownloadMediaResponse = /*@__PURE__*/ GdataMedia;
 
 export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
@@ -794,7 +789,7 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaResponse,
   DownloadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
   errors: [NotFound, Forbidden],
@@ -811,25 +806,22 @@ export interface ListReportTypesRequest {
   pageSize?: number;
 }
 
-export const ListReportTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("onBehalfOfContentOwner"),
-    ),
-    includeSystemManaged: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeSystemManaged"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  },
-).pipe(
+export const ListReportTypesRequest = /*@__PURE__*/ Schema.Struct({
+  onBehalfOfContentOwner: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("onBehalfOfContentOwner"),
+  ),
+  includeSystemManaged: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("includeSystemManaged"),
+  ),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
   T.Http({ method: "GET", path: "v1/reportTypes" }),
   svc,
 ) as unknown as Schema.Codec<ListReportTypesRequest>;
 
 export type ListReportTypesResponse_Op = ListReportTypesResponse;
-export const ListReportTypesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListReportTypesResponse;
+export const ListReportTypesResponse_Op = /*@__PURE__*/ ListReportTypesResponse;
 
 export type ListReportTypesError = DefaultErrors | NotFound | Forbidden;
 
@@ -839,7 +831,7 @@ export const listReportTypes: API.PaginatedOperationMethod<
   ListReportTypesResponse_Op,
   ListReportTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportTypesRequest,
   output: ListReportTypesResponse_Op,
   errors: [NotFound, Forbidden],

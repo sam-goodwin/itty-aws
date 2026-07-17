@@ -11,7 +11,7 @@ export interface ListBouncersInput {
   page?: number;
   per_page?: number;
 }
-export const ListBouncersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBouncersInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export interface ListBouncersOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     sku: {
@@ -55,7 +55,7 @@ export interface ListBouncersOutput {
       updated_at: string;
       deleted_at: string | null;
     };
-    parameters: {
+    parameters: ReadonlyArray<{
       id: string;
       namespace: "pgbouncer";
       name: string;
@@ -74,12 +74,12 @@ export interface ListBouncersOutput {
       min: number;
       step: number;
       url: string;
-      options: string[];
+      options: ReadonlyArray<string>;
       actor: { id: string; display_name: string; avatar_url: string };
-    }[];
-  }[];
+    }>;
+  }>;
 }
-export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBouncersOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -162,16 +162,14 @@ export const ListBouncersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBouncers = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBouncersInput,
-    outputSchema: ListBouncersOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBouncers = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBouncersInput,
+  outputSchema: ListBouncersOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

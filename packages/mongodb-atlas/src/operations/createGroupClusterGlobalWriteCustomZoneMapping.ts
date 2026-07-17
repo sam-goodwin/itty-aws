@@ -11,7 +11,7 @@ export interface CreateGroupClusterGlobalWriteCustomZoneMappingInput {
   pretty?: boolean;
 }
 export const CreateGroupClusterGlobalWriteCustomZoneMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupClusterGlobalWriteCustomZoneMappingInput =
 // Output Schema
 export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput = void;
 export const CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterGlobalWriteCustomZoneMappingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterGlobalWriteCustomZoneMappingOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const createGroupClusterGlobalWriteCustomZoneMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingInput,
     outputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -6,7 +6,7 @@ import { NotFound } from "../errors.ts";
 // Input Schema
 export interface SsoControllerGetProfileInput {}
 export const SsoControllerGetProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/sso/profile" }),
   ) as unknown as Schema.Codec<SsoControllerGetProfileInput>;
 
@@ -80,7 +80,7 @@ export interface SsoControllerGetProfileOutput {
   raw_attributes?: Record<string, unknown>;
 }
 export const SsoControllerGetProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -176,10 +176,8 @@ export const SsoControllerGetProfileOutput =
  *
  * Exchange an access token for a user's [Profile](/reference/sso/profile). Because this profile is returned in the [Get a Profile and Token endpoint](/reference/sso/profile/get-profile-and-token) your application usually does not need to call this endpoint. It is available for any authentication flows that require an additional endpoint to retrieve a user's profile.
  */
-export const SsoControllerGetProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SsoControllerGetProfileInput,
-    outputSchema: SsoControllerGetProfileOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const SsoControllerGetProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SsoControllerGetProfileInput,
+  outputSchema: SsoControllerGetProfileOutput,
+  errors: [NotFound] as const,
+}));

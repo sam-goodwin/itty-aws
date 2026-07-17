@@ -18,7 +18,7 @@ export interface GetQuotesInput {
   status?: "accepted" | "canceled" | "draft" | "open";
   test_clock?: string;
 }
-export const GetQuotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesInput = /*@__PURE__*/ Schema.Struct({
   customer: Schema.optional(Schema.String),
   customer_account: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -909,7 +909,7 @@ export interface GetQuotesOutput {
   object: "list";
   url: string;
 }
-export const GetQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQuotesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount_subtotal: Schema.Number,
@@ -1968,7 +1968,7 @@ export const GetQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param status - The status of the quote.
  * @param test_clock - Provides a list of quotes that are associated with the specified test clock. The response will not include quotes with test clocks if this and the customer parameter is not set.
  */
-export const GetQuotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetQuotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetQuotesInput,
   outputSchema: GetQuotesOutput,
 }));

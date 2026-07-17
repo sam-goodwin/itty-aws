@@ -12,7 +12,7 @@ export interface GetGroupBackupPrivateEndpointInput {
   envelope?: boolean;
 }
 export const GetGroupBackupPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
     endpointId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const GetGroupBackupPrivateEndpointInput =
 // Output Schema
 export type GetGroupBackupPrivateEndpointOutput = void;
 export const GetGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupBackupPrivateEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupBackupPrivateEndpointOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const GetGroupBackupPrivateEndpointOutput =
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint.
  */
 export const getGroupBackupPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupBackupPrivateEndpointInput,
     outputSchema: GetGroupBackupPrivateEndpointOutput,
     errors: [Forbidden, NotFound] as const,

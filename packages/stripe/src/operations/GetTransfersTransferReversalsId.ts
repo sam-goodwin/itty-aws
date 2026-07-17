@@ -14,7 +14,7 @@ export interface GetTransfersTransferReversalsIdInput {
   expand?: string;
 }
 export const GetTransfersTransferReversalsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -316,7 +316,7 @@ export interface GetTransfersTransferReversalsIdOutput {
       };
 }
 export const GetTransfersTransferReversalsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -424,7 +424,7 @@ export const GetTransfersTransferReversalsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTransfersTransferReversalsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTransfersTransferReversalsIdInput,
     outputSchema: GetTransfersTransferReversalsIdOutput,
   }));

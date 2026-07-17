@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetVirtualFieldInput {
   id: string;
 }
-export const GetVirtualFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVirtualFieldInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/vfields/{id}" }),
@@ -23,7 +23,7 @@ export interface GetVirtualFieldOutput {
   unit?: string;
   id: string;
 }
-export const GetVirtualFieldOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVirtualFieldOutput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.String,
   description: Schema.optional(Schema.String),
   expression: Schema.String,
@@ -34,7 +34,7 @@ export const GetVirtualFieldOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<GetVirtualFieldOutput>;
 
 // The operation
-export const getVirtualField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getVirtualField = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetVirtualFieldInput,
   outputSchema: GetVirtualFieldOutput,
   errors: [NotFound] as const,

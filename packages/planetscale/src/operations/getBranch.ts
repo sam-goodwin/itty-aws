@@ -9,7 +9,7 @@ export interface GetBranchInput {
   database: string;
   branch: string;
 }
-export const GetBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -64,7 +64,7 @@ export interface GetBranchOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -76,7 +76,7 @@ export interface GetBranchOutput {
   vtgate_options?: Record<string, unknown>;
   cluster_architecture?: string;
 }
-export const GetBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -154,7 +154,7 @@ export const GetBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param branch - Branch name from `list_branches`. Example: `main`.
  */
-export const getBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBranchInput,
   outputSchema: GetBranchOutput,
   errors: [Forbidden, NotFound] as const,

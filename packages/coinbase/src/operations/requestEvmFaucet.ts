@@ -8,7 +8,7 @@ export interface RequestEvmFaucetInput {
   address: string;
   token: "eth" | "usdc" | "eurc" | "cbbtc";
 }
-export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RequestEvmFaucetInput = /*@__PURE__*/ Schema.Struct({
   network: Schema.Literals([
     "base-sepolia",
     "ethereum-sepolia",
@@ -24,11 +24,9 @@ export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RequestEvmFaucetOutput {
   transactionHash: string;
 }
-export const RequestEvmFaucetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    transactionHash: Schema.String,
-  },
-) as unknown as Schema.Codec<RequestEvmFaucetOutput>;
+export const RequestEvmFaucetOutput = /*@__PURE__*/ Schema.Struct({
+  transactionHash: Schema.String,
+}) as unknown as Schema.Codec<RequestEvmFaucetOutput>;
 
 // The operation
 /**
@@ -40,7 +38,7 @@ export const RequestEvmFaucetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * These limits are applied at both the CDP User level and the blockchain address level.
  * A single blockchain address cannot exceed the specified limits, even if multiple users submit requests to the same address.
  */
-export const requestEvmFaucet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const requestEvmFaucet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RequestEvmFaucetInput,
   outputSchema: RequestEvmFaucetOutput,
 }));

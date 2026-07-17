@@ -9,7 +9,7 @@ export interface DeleteProjectEndpointInput {
   endpoint_id: string;
 }
 export const DeleteProjectEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoint_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -112,7 +112,7 @@ export interface DeleteProjectEndpointOutput {
   }[];
 }
 export const DeleteProjectEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
       host: Schema.String,
       id: Schema.String,
@@ -230,10 +230,8 @@ export const DeleteProjectEndpointOutput =
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID
  */
-export const deleteProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteProjectEndpointInput,
-    outputSchema: DeleteProjectEndpointOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const deleteProjectEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteProjectEndpointInput,
+  outputSchema: DeleteProjectEndpointOutput,
+  errors: [NotFound] as const,
+}));

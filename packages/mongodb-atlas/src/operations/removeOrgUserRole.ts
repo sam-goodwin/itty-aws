@@ -10,14 +10,12 @@ export interface RemoveOrgUserRoleInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    orgId: Schema.String.pipe(T.PathParam()),
-    userId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
+export const RemoveOrgUserRoleInput = /*@__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  userId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole",
@@ -27,7 +25,7 @@ export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type RemoveOrgUserRoleOutput = void;
 export const RemoveOrgUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrgUserRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrgUserRoleOutput>;
 
 // The operation
 /**
@@ -42,7 +40,7 @@ export const RemoveOrgUserRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the organization. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Organization resource and filter by `username`.
  */
-export const removeOrgUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeOrgUserRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveOrgUserRoleInput,
   outputSchema: RemoveOrgUserRoleOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

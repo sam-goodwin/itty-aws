@@ -13,7 +13,7 @@ export interface GetInvoicesInvoiceInput {
   expand?: string;
 }
 export const GetInvoicesInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2210,7 +2210,7 @@ export interface GetInvoicesInvoiceOutput {
   webhooks_delivered_at: number | null;
 }
 export const GetInvoicesInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3921,7 +3921,7 @@ export const GetInvoicesInvoiceOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetInvoicesInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetInvoicesInvoice = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetInvoicesInvoiceInput,
   outputSchema: GetInvoicesInvoiceOutput,
 }));

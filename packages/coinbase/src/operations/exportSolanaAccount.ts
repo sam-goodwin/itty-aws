@@ -8,7 +8,7 @@ export interface ExportSolanaAccountInput {
   exportEncryptionKey: string;
 }
 export const ExportSolanaAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     exportEncryptionKey: Schema.String,
   }).pipe(
@@ -20,7 +20,7 @@ export interface ExportSolanaAccountOutput {
   encryptedPrivateKey: string;
 }
 export const ExportSolanaAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptedPrivateKey: Schema.String,
   }) as unknown as Schema.Codec<ExportSolanaAccountOutput>;
 
@@ -40,7 +40,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The base58 encoded address of the Solana account.
  */
-export const exportSolanaAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const exportSolanaAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportSolanaAccountInput,
   outputSchema: ExportSolanaAccountOutput,
 }));

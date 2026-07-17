@@ -11,7 +11,7 @@ export interface PostV1DatabasesByDatabaseIdConnectionsInput {
   name: string;
 }
 export const PostV1DatabasesByDatabaseIdConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
@@ -53,7 +53,7 @@ export interface PostV1DatabasesByDatabaseIdConnectionsOutput {
   };
 }
 export const PostV1DatabasesByDatabaseIdConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -112,7 +112,7 @@ export const PostV1DatabasesByDatabaseIdConnectionsOutput =
  * Creates a new connection string for the given database.
  */
 export const postV1DatabasesByDatabaseIdConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1DatabasesByDatabaseIdConnectionsInput,
     outputSchema: PostV1DatabasesByDatabaseIdConnectionsOutput,
     errors: [NotFound, UnprocessableEntity] as const,

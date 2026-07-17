@@ -17,7 +17,7 @@ export interface ContainerHostMappingsGetContainerHostMappingInput {
   mappedControllerResourceId?: string;
 }
 export const ContainerHostMappingsGetContainerHostMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -37,7 +37,7 @@ export interface ContainerHostMappingsGetContainerHostMappingOutput {
   mappedControllerResourceId?: string;
 }
 export const ContainerHostMappingsGetContainerHostMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerHostResourceId: Schema.optional(Schema.String),
     mappedControllerResourceId: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ContainerHostMappingsGetContainerHostMappingOutput>;
@@ -52,7 +52,7 @@ export const ContainerHostMappingsGetContainerHostMappingOutput =
  * @param location - Location of the container host.
  */
 export const ContainerHostMappingsGetContainerHostMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerHostMappingsGetContainerHostMappingInput,
     outputSchema: ContainerHostMappingsGetContainerHostMappingOutput,
   }));
@@ -80,37 +80,35 @@ export interface ControllersCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ControllersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Updating",
-          "Creating",
-          "Deleting",
-          "Deleted",
-        ]),
-      ),
-      hostSuffix: Schema.optional(Schema.String),
-      dataPlaneFqdn: Schema.optional(Schema.String),
-      targetContainerHostApiServerFqdn: Schema.optional(Schema.String),
-      targetContainerHostResourceId: Schema.String,
-      targetContainerHostCredentialsBase64: Schema.String,
-    }),
-    sku: Schema.Struct({
-      name: Schema.Literals(["S1"]),
-      tier: Schema.optional(Schema.Literals(["Standard"])),
-    }),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  },
-).pipe(
+export const ControllersCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Updating",
+        "Creating",
+        "Deleting",
+        "Deleted",
+      ]),
+    ),
+    hostSuffix: Schema.optional(Schema.String),
+    dataPlaneFqdn: Schema.optional(Schema.String),
+    targetContainerHostApiServerFqdn: Schema.optional(Schema.String),
+    targetContainerHostResourceId: Schema.String,
+    targetContainerHostCredentialsBase64: Schema.String,
+  }),
+  sku: Schema.Struct({
+    name: Schema.Literals(["S1"]),
+    tier: Schema.optional(Schema.Literals(["Standard"])),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
@@ -125,7 +123,7 @@ export interface ControllersCreateOutput {
   type?: string;
 }
 export const ControllersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -142,7 +140,7 @@ export const ControllersCreateOutput =
  * @param resourceGroupName - Resource group to which the resource belongs.
  * @param name - Name of the resource.
  */
-export const ControllersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllersCreateInput,
   outputSchema: ControllersCreateOutput,
 }));
@@ -152,13 +150,11 @@ export interface ControllersDeleteInput {
   resourceGroupName: string;
   name: string;
 }
-export const ControllersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ControllersDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
@@ -169,7 +165,7 @@ export const ControllersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ControllersDeleteOutput = void;
 export const ControllersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ControllersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ControllersDeleteOutput>;
 
 // The operation
 /**
@@ -182,7 +178,7 @@ export const ControllersDeleteOutput =
  * @param resourceGroupName - Resource group to which the resource belongs.
  * @param name - Name of the resource.
  */
-export const ControllersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllersDeleteInput,
   outputSchema: ControllersDeleteOutput,
 }));
@@ -192,7 +188,7 @@ export interface ControllersGetInput {
   resourceGroupName: string;
   name: string;
 }
-export const ControllersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -210,7 +206,7 @@ export interface ControllersGetOutput {
   name?: string;
   type?: string;
 }
-export const ControllersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -227,7 +223,7 @@ export const ControllersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - Resource group to which the resource belongs.
  * @param name - Name of the resource.
  */
-export const ControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllersGetInput,
   outputSchema: ControllersGetOutput,
 }));
@@ -235,7 +231,7 @@ export const ControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ControllersListInput {
   subscriptionId: string;
 }
-export const ControllersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -250,7 +246,7 @@ export interface ControllersListOutput {
   value?: { id?: string; name?: string; type?: string }[];
   nextLink?: string;
 }
-export const ControllersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -272,7 +268,7 @@ export const ControllersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - Client API version.
  * @param subscriptionId - Azure subscription ID.
  */
-export const ControllersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllersListInput,
   outputSchema: ControllersListOutput,
 }));
@@ -282,7 +278,7 @@ export interface ControllersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ControllersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -299,7 +295,7 @@ export interface ControllersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ControllersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -323,7 +319,7 @@ export const ControllersListByResourceGroupOutput =
  * @param resourceGroupName - Resource group to which the resource belongs.
  */
 export const ControllersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ControllersListByResourceGroupInput,
     outputSchema: ControllersListByResourceGroupOutput,
   }));
@@ -335,7 +331,7 @@ export interface ControllersListConnectionDetailsInput {
   targetContainerHostResourceId: string;
 }
 export const ControllersListConnectionDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -355,7 +351,7 @@ export interface ControllersListConnectionDetailsOutput {
   }[];
 }
 export const ControllersListConnectionDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionDetailsList: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -381,7 +377,7 @@ export const ControllersListConnectionDetailsOutput =
  * @param name - Name of the resource.
  */
 export const ControllersListConnectionDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ControllersListConnectionDetailsInput,
     outputSchema: ControllersListConnectionDetailsOutput,
   }));
@@ -393,19 +389,17 @@ export interface ControllersUpdateInput {
   tags?: unknown;
   properties?: { targetContainerHostCredentialsBase64?: string };
 }
-export const ControllersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Unknown),
-    properties: Schema.optional(
-      Schema.Struct({
-        targetContainerHostCredentialsBase64: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+export const ControllersUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      targetContainerHostCredentialsBase64: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
@@ -420,7 +414,7 @@ export interface ControllersUpdateOutput {
   type?: string;
 }
 export const ControllersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -437,15 +431,13 @@ export const ControllersUpdateOutput =
  * @param resourceGroupName - Resource group to which the resource belongs.
  * @param name - Name of the resource.
  */
-export const ControllersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllersUpdateInput,
   outputSchema: ControllersUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DevSpaces/operations",
@@ -466,7 +458,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -493,7 +485,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client API version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

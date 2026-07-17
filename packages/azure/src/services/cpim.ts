@@ -15,7 +15,7 @@ export interface B2CTenantsCheckNameAvailabilityInput {
   countryCode: string;
 }
 export const B2CTenantsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     countryCode: Schema.String,
@@ -34,7 +34,7 @@ export interface B2CTenantsCheckNameAvailabilityOutput {
   reason?: "AlreadyExists" | "Invalid";
 }
 export const B2CTenantsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
@@ -48,7 +48,7 @@ export const B2CTenantsCheckNameAvailabilityOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const B2CTenantsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: B2CTenantsCheckNameAvailabilityInput,
     outputSchema: B2CTenantsCheckNameAvailabilityOutput,
   }));
@@ -64,7 +64,7 @@ export interface B2CTenantsCreateInput {
   sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
   tags?: Record<string, string>;
 }
-export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const B2CTenantsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -116,48 +116,46 @@ export interface B2CTenantsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const B2CTenantsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    type: Schema.optional(
-      Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
+export const B2CTenantsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
+  ),
+  sku: Schema.Struct({
+    name: Schema.optional(
+      Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
+    tier: Schema.optional(Schema.Literals(["A0"])),
+  }),
+  properties: Schema.optional(
+    Schema.Struct({
+      billingConfig: Schema.optional(
+        Schema.Struct({
+          billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
+          effectiveStartDateUtc: Schema.optional(Schema.String),
+        }),
       ),
-      tier: Schema.optional(Schema.Literals(["A0"])),
+      tenantId: Schema.optional(Schema.String),
     }),
-    properties: Schema.optional(
-      Schema.Struct({
-        billingConfig: Schema.optional(
-          Schema.Struct({
-            billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-            effectiveStartDateUtc: Schema.optional(Schema.String),
-          }),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<B2CTenantsCreateOutput>;
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<B2CTenantsCreateOutput>;
 
 // The operation
 /**
@@ -168,7 +166,7 @@ export const B2CTenantsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const B2CTenantsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const B2CTenantsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: B2CTenantsCreateInput,
   outputSchema: B2CTenantsCreateOutput,
 }));
@@ -178,7 +176,7 @@ export interface B2CTenantsDeleteInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const B2CTenantsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -193,7 +191,7 @@ export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type B2CTenantsDeleteOutput = void;
 export const B2CTenantsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<B2CTenantsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<B2CTenantsDeleteOutput>;
 
 // The operation
 /**
@@ -204,7 +202,7 @@ export const B2CTenantsDeleteOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const B2CTenantsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const B2CTenantsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: B2CTenantsDeleteInput,
   outputSchema: B2CTenantsDeleteOutput,
 }));
@@ -214,7 +212,7 @@ export interface B2CTenantsGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const B2CTenantsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const B2CTenantsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -250,7 +248,7 @@ export interface B2CTenantsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const B2CTenantsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const B2CTenantsGetOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.optional(
     Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
   ),
@@ -300,7 +298,7 @@ export const B2CTenantsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const B2CTenantsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const B2CTenantsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: B2CTenantsGetInput,
   outputSchema: B2CTenantsGetOutput,
 }));
@@ -310,7 +308,7 @@ export interface B2CTenantsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const B2CTenantsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -348,7 +346,7 @@ export interface B2CTenantsListByResourceGroupOutput {
   }[];
 }
 export const B2CTenantsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -416,7 +414,7 @@ export const B2CTenantsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group.
  */
 export const B2CTenantsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: B2CTenantsListByResourceGroupInput,
     outputSchema: B2CTenantsListByResourceGroupOutput,
   }));
@@ -425,7 +423,7 @@ export interface B2CTenantsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const B2CTenantsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -462,7 +460,7 @@ export interface B2CTenantsListBySubscriptionOutput {
   }[];
 }
 export const B2CTenantsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -529,7 +527,7 @@ export const B2CTenantsListBySubscriptionOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const B2CTenantsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: B2CTenantsListBySubscriptionInput,
     outputSchema: B2CTenantsListBySubscriptionOutput,
   }));
@@ -548,7 +546,7 @@ export interface B2CTenantsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const B2CTenantsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -604,48 +602,46 @@ export interface B2CTenantsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const B2CTenantsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    type: Schema.optional(
-      Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
+export const B2CTenantsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
+  ),
+  sku: Schema.Struct({
+    name: Schema.optional(
+      Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
+    tier: Schema.optional(Schema.Literals(["A0"])),
+  }),
+  properties: Schema.optional(
+    Schema.Struct({
+      billingConfig: Schema.optional(
+        Schema.Struct({
+          billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
+          effectiveStartDateUtc: Schema.optional(Schema.String),
+        }),
       ),
-      tier: Schema.optional(Schema.Literals(["A0"])),
+      tenantId: Schema.optional(Schema.String),
     }),
-    properties: Schema.optional(
-      Schema.Struct({
-        billingConfig: Schema.optional(
-          Schema.Struct({
-            billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-            effectiveStartDateUtc: Schema.optional(Schema.String),
-          }),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<B2CTenantsUpdateOutput>;
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<B2CTenantsUpdateOutput>;
 
 // The operation
 /**
@@ -656,7 +652,7 @@ export const B2CTenantsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const B2CTenantsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const B2CTenantsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: B2CTenantsUpdateInput,
   outputSchema: B2CTenantsUpdateOutput,
 }));
@@ -680,37 +676,35 @@ export interface GuestUsagesCreateInput {
     lastModifiedAt?: string;
   };
 }
-export const GuestUsagesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-).pipe(
+export const GuestUsagesCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.Struct({
+      tenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
@@ -736,7 +730,7 @@ export interface GuestUsagesCreateOutput {
   };
 }
 export const GuestUsagesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -774,7 +768,7 @@ export const GuestUsagesCreateOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const GuestUsagesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestUsagesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestUsagesCreateInput,
   outputSchema: GuestUsagesCreateOutput,
 }));
@@ -784,13 +778,11 @@ export interface GuestUsagesDeleteInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const GuestUsagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GuestUsagesDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
@@ -801,7 +793,7 @@ export const GuestUsagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type GuestUsagesDeleteOutput = void;
 export const GuestUsagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestUsagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestUsagesDeleteOutput>;
 
 // The operation
 /**
@@ -814,7 +806,7 @@ export const GuestUsagesDeleteOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const GuestUsagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestUsagesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestUsagesDeleteInput,
   outputSchema: GuestUsagesDeleteOutput,
 }));
@@ -824,7 +816,7 @@ export interface GuestUsagesGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const GuestUsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestUsagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -853,7 +845,7 @@ export interface GuestUsagesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GuestUsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GuestUsagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -891,7 +883,7 @@ export const GuestUsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const GuestUsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestUsagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestUsagesGetInput,
   outputSchema: GuestUsagesGetOutput,
 }));
@@ -901,7 +893,7 @@ export interface GuestUsagesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const GuestUsagesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -932,7 +924,7 @@ export interface GuestUsagesListByResourceGroupOutput {
   }[];
 }
 export const GuestUsagesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -986,7 +978,7 @@ export const GuestUsagesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group.
  */
 export const GuestUsagesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestUsagesListByResourceGroupInput,
     outputSchema: GuestUsagesListByResourceGroupOutput,
   }));
@@ -995,7 +987,7 @@ export interface GuestUsagesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const GuestUsagesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1025,7 +1017,7 @@ export interface GuestUsagesListBySubscriptionOutput {
   }[];
 }
 export const GuestUsagesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1078,7 +1070,7 @@ export const GuestUsagesListBySubscriptionOutput =
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const GuestUsagesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestUsagesListBySubscriptionInput,
     outputSchema: GuestUsagesListBySubscriptionOutput,
   }));
@@ -1089,14 +1081,12 @@ export interface GuestUsagesUpdateInput {
   resourceName: string;
   tags?: Record<string, string>;
 }
-export const GuestUsagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+export const GuestUsagesUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
@@ -1122,7 +1112,7 @@ export interface GuestUsagesUpdateOutput {
   };
 }
 export const GuestUsagesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1160,15 +1150,13 @@ export const GuestUsagesUpdateOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param resourceName - The initial domain name of the Azure AD B2C tenant.
  */
-export const GuestUsagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GuestUsagesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GuestUsagesUpdateInput,
   outputSchema: GuestUsagesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureActiveDirectory/operations",
@@ -1191,7 +1179,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1218,7 +1206,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

@@ -10,7 +10,7 @@ export interface GetV2CoreEventDestinationsIdInput {
   include?: string;
 }
 export const GetV2CoreEventDestinationsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     include: Schema.optional(Schema.String),
   }).pipe(
@@ -63,7 +63,7 @@ export interface GetV2CoreEventDestinationsIdOutput {
   };
 }
 export const GetV2CoreEventDestinationsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -139,7 +139,7 @@ export const GetV2CoreEventDestinationsIdOutput =
  * @param include - Additional fields to include in the response.
  */
 export const GetV2CoreEventDestinationsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CoreEventDestinationsIdInput,
     outputSchema: GetV2CoreEventDestinationsIdOutput,
   }));

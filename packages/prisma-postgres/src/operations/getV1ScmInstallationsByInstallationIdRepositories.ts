@@ -10,7 +10,7 @@ export interface GetV1ScmInstallationsByInstallationIdRepositoriesInput {
   limit?: number;
 }
 export const GetV1ScmInstallationsByInstallationIdRepositoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installationId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -33,7 +33,7 @@ export interface GetV1ScmInstallationsByInstallationIdRepositoriesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1ScmInstallationsByInstallationIdRepositoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.Number,
@@ -57,7 +57,7 @@ export const GetV1ScmInstallationsByInstallationIdRepositoriesOutput =
  * Lists repositories accessible to the given SCM installation.
  */
 export const getV1ScmInstallationsByInstallationIdRepositories =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ScmInstallationsByInstallationIdRepositoriesInput,
     outputSchema: GetV1ScmInstallationsByInstallationIdRepositoriesOutput,
     errors: [NotFound, UnprocessableEntity] as const,

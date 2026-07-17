@@ -281,7 +281,7 @@ export interface ExperimentsDuplicateCreateInput {
   user_access_level?: string | null;
 }
 export const ExperimentsDuplicateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -773,7 +773,7 @@ export const ExperimentsDuplicateCreateInput =
 // Output Schema
 export type ExperimentsDuplicateCreateOutput = void;
 export const ExperimentsDuplicateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDuplicateCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDuplicateCreateOutput>;
 
 // The operation
 /**
@@ -785,10 +785,8 @@ export const ExperimentsDuplicateCreateOutput =
  * @param id - A unique integer value identifying this experiment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsDuplicateCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExperimentsDuplicateCreateInput,
-    outputSchema: ExperimentsDuplicateCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const experimentsDuplicateCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExperimentsDuplicateCreateInput,
+  outputSchema: ExperimentsDuplicateCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

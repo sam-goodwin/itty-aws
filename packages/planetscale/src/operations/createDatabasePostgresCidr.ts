@@ -9,10 +9,10 @@ export interface CreateDatabasePostgresCidrInput {
   database: string;
   schema?: string;
   role?: string;
-  cidrs: string[];
+  cidrs: ReadonlyArray<string>;
 }
 export const CreateDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     schema: Schema.optional(Schema.String),
@@ -30,14 +30,14 @@ export interface CreateDatabasePostgresCidrOutput {
   id: string;
   schema: string;
   role: string;
-  cidrs: string[];
+  cidrs: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const CreateDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     schema: Schema.String,
     role: Schema.String,
@@ -62,10 +62,8 @@ export const CreateDatabasePostgresCidrOutput =
  * @param role - The PostgreSQL role to restrict access to. Leave empty or omit to allow access for all roles.
  * @param cidrs - List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range.
  */
-export const createDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateDatabasePostgresCidrInput,
-    outputSchema: CreateDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const createDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateDatabasePostgresCidrInput,
+  outputSchema: CreateDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

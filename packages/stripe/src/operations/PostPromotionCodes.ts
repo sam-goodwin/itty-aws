@@ -26,7 +26,7 @@ export interface PostPromotionCodesInput {
   };
 }
 export const PostPromotionCodesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.optional(Schema.Boolean),
     code: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface PostPromotionCodesOutput {
   times_redeemed: number;
 }
 export const PostPromotionCodesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     code: Schema.String,
     created: Schema.Number,
@@ -183,7 +183,7 @@ export const PostPromotionCodesOutput =
  *
  * <p>A promotion code points to an underlying promotion. You can optionally restrict the code to a specific customer, redemption limit, and expiration date.</p>
  */
-export const PostPromotionCodes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPromotionCodes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPromotionCodesInput,
   outputSchema: PostPromotionCodesOutput,
 }));

@@ -12,7 +12,7 @@ export interface UserlandUserFeatureFlagsControllerListInput {
   order?: string;
 }
 export const UserlandUserFeatureFlagsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface UserlandUserFeatureFlagsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const UserlandUserFeatureFlagsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -96,7 +96,7 @@ export const UserlandUserFeatureFlagsControllerListOutput =
  * @param order - Order the results by the creation time.
  */
 export const UserlandUserFeatureFlagsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserFeatureFlagsControllerListInput,
     outputSchema: UserlandUserFeatureFlagsControllerListOutput,
     errors: [NotFound] as const,

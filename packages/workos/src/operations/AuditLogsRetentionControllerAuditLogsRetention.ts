@@ -8,7 +8,7 @@ export interface AuditLogsRetentionControllerAuditLogsRetentionInput {
   id: string;
 }
 export const AuditLogsRetentionControllerAuditLogsRetentionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{id}/audit_logs_retention" }),
@@ -19,7 +19,7 @@ export interface AuditLogsRetentionControllerAuditLogsRetentionOutput {
   retention_period_in_days?: number | null;
 }
 export const AuditLogsRetentionControllerAuditLogsRetentionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
   }) as unknown as Schema.Codec<AuditLogsRetentionControllerAuditLogsRetentionOutput>;
 
@@ -32,7 +32,7 @@ export const AuditLogsRetentionControllerAuditLogsRetentionOutput =
  * @param id - Unique identifier of the Organization.
  */
 export const AuditLogsRetentionControllerAuditLogsRetention =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogsRetentionControllerAuditLogsRetentionInput,
     outputSchema: AuditLogsRetentionControllerAuditLogsRetentionOutput,
     errors: [NotFound] as const,

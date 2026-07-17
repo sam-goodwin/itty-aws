@@ -15,7 +15,7 @@ export interface ListTrafficBudgetsInput {
   fingerprint?: string;
 }
 export const ListTrafficBudgetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -39,7 +39,7 @@ export interface ListTrafficBudgetsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     mode: "enforce" | "warn" | "off";
@@ -49,28 +49,28 @@ export interface ListTrafficBudgetsOutput {
     concurrency?: number | null;
     warning_threshold?: number | null;
     actor: { id: string; display_name: string; avatar_url: string };
-    rules: {
+    rules: ReadonlyArray<{
       id: string;
       kind: "match" | "each";
-      tags: {
+      tags: ReadonlyArray<{
         key_id: string;
         key: string;
         value: string;
         source: "sql" | "system";
-      }[];
+      }>;
       fingerprint?: string | null;
       keyspace?: string | null;
       actor: { id: string; display_name: string; avatar_url: string };
       syntax_highlighted_sql: string;
       created_at: string;
       updated_at: string;
-    }[];
+    }>;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
 }
 export const ListTrafficBudgetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -135,16 +135,14 @@ export const ListTrafficBudgetsOutput =
  * @param created_at - Filter by creation date range (format: 'start..end')
  * @param fingerprint - Filter budgets by query fingerprint
  */
-export const listTrafficBudgets = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListTrafficBudgetsInput,
-    outputSchema: ListTrafficBudgetsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listTrafficBudgets = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListTrafficBudgetsInput,
+  outputSchema: ListTrafficBudgetsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

@@ -10,7 +10,7 @@ export interface DeleteProjectBranchDatabaseInput {
   database_name: string;
 }
 export const DeleteProjectBranchDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String.pipe(T.PathParam()),
@@ -87,7 +87,7 @@ export interface DeleteProjectBranchDatabaseOutput {
   }[];
 }
 export const DeleteProjectBranchDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.Struct({
       id: Schema.Number,
       branch_id: Schema.String,
@@ -167,10 +167,8 @@ export const DeleteProjectBranchDatabaseOutput =
  * @param branch_id - The branch ID
  * @param database_name - The database name
  */
-export const deleteProjectBranchDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteProjectBranchDatabaseInput,
-    outputSchema: DeleteProjectBranchDatabaseOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const deleteProjectBranchDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteProjectBranchDatabaseInput,
+  outputSchema: DeleteProjectBranchDatabaseOutput,
+  errors: [NotFound] as const,
+}));

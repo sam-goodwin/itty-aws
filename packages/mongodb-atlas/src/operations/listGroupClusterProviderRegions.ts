@@ -15,7 +15,7 @@ export interface ListGroupClusterProviderRegionsInput {
   tier?: string;
 }
 export const ListGroupClusterProviderRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -34,7 +34,7 @@ export const ListGroupClusterProviderRegionsInput =
 // Output Schema
 export type ListGroupClusterProviderRegionsOutput = void;
 export const ListGroupClusterProviderRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterProviderRegionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterProviderRegionsOutput>;
 
 // The operation
 /**
@@ -54,7 +54,7 @@ export const ListGroupClusterProviderRegionsOutput =
  * @param tier - Cluster tier for which to retrieve the regions.
  */
 export const listGroupClusterProviderRegions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterProviderRegionsInput,
     outputSchema: ListGroupClusterProviderRegionsOutput,
     errors: [Forbidden, NotFound] as const,

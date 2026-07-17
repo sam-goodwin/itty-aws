@@ -8,7 +8,7 @@ export interface DeleteStopwordsSetInput {
   setId: string;
 }
 export const DeleteStopwordsSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/stopwords/{setId}" }),
@@ -19,7 +19,7 @@ export interface DeleteStopwordsSetOutput {
   id: string;
 }
 export const DeleteStopwordsSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<DeleteStopwordsSetOutput>;
 
@@ -31,7 +31,7 @@ export const DeleteStopwordsSetOutput =
  *
  * @param setId - The ID of the stopwords set to delete.
  */
-export const deleteStopwordsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteStopwordsSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteStopwordsSetInput,
   outputSchema: DeleteStopwordsSetOutput,
   errors: [NotFound] as const,

@@ -9,7 +9,7 @@ export interface PostBillingMetersIdInput {
   expand?: string[];
 }
 export const PostBillingMetersIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     display_name: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -38,7 +38,7 @@ export interface PostBillingMetersIdOutput {
   value_settings: { event_payload_key: string };
 }
 export const PostBillingMetersIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     customer_mapping: Schema.Struct({
       event_payload_key: Schema.String,
@@ -69,7 +69,7 @@ export const PostBillingMetersIdOutput =
  *
  * <p>Updates a billing meter.</p>
  */
-export const PostBillingMetersId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostBillingMetersId = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostBillingMetersIdInput,
   outputSchema: PostBillingMetersIdOutput,
 }));

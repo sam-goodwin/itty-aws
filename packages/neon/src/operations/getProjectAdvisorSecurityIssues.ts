@@ -11,7 +11,7 @@ export interface GetProjectAdvisorSecurityIssuesInput {
   min_severity?: "INFO" | "WARN" | "ERROR";
 }
 export const GetProjectAdvisorSecurityIssuesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.optional(Schema.String),
     database_name: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface GetProjectAdvisorSecurityIssuesOutput {
   }[];
 }
 export const GetProjectAdvisorSecurityIssuesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issues: Schema.Array(
       Schema.Struct({
         name: Schema.String,
@@ -69,7 +69,7 @@ export const GetProjectAdvisorSecurityIssuesOutput =
  * @param min_severity - Minimum severity level to include. For example, WARN returns WARN and ERROR issues, excluding INFO.
  */
 export const getProjectAdvisorSecurityIssues =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetProjectAdvisorSecurityIssuesInput,
     outputSchema: GetProjectAdvisorSecurityIssuesOutput,
   }));

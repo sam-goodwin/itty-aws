@@ -31,7 +31,7 @@ export interface AdvancedPlatformMetricsCreateOrUpdateInput {
   };
 }
 export const AdvancedPlatformMetricsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -85,7 +85,7 @@ export interface AdvancedPlatformMetricsCreateOrUpdateOutput {
   };
 }
 export const AdvancedPlatformMetricsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export const AdvancedPlatformMetricsCreateOrUpdateOutput =
  * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
  */
 export const AdvancedPlatformMetricsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdvancedPlatformMetricsCreateOrUpdateInput,
     outputSchema: AdvancedPlatformMetricsCreateOrUpdateOutput,
   }));
@@ -128,7 +128,7 @@ export interface AdvancedPlatformMetricsDeleteInput {
   advancedPlatformMetricsRuleType: "ContainerLevelCapacityMetrics";
 }
 export const AdvancedPlatformMetricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -146,7 +146,7 @@ export const AdvancedPlatformMetricsDeleteInput =
 // Output Schema
 export type AdvancedPlatformMetricsDeleteOutput = void;
 export const AdvancedPlatformMetricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AdvancedPlatformMetricsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AdvancedPlatformMetricsDeleteOutput>;
 
 // The operation
 /**
@@ -159,7 +159,7 @@ export const AdvancedPlatformMetricsDeleteOutput =
  * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
  */
 export const AdvancedPlatformMetricsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdvancedPlatformMetricsDeleteInput,
     outputSchema: AdvancedPlatformMetricsDeleteOutput,
   }));
@@ -171,7 +171,7 @@ export interface AdvancedPlatformMetricsGetInput {
   advancedPlatformMetricsRuleType: "ContainerLevelCapacityMetrics";
 }
 export const AdvancedPlatformMetricsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -201,7 +201,7 @@ export interface AdvancedPlatformMetricsGetOutput {
   };
 }
 export const AdvancedPlatformMetricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -231,12 +231,10 @@ export const AdvancedPlatformMetricsGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param advancedPlatformMetricsRuleType - The type of the advanced platform metrics rule.
  */
-export const AdvancedPlatformMetricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AdvancedPlatformMetricsGetInput,
-    outputSchema: AdvancedPlatformMetricsGetOutput,
-  }),
-);
+export const AdvancedPlatformMetricsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AdvancedPlatformMetricsGetInput,
+  outputSchema: AdvancedPlatformMetricsGetOutput,
+}));
 // Input Schema
 export interface AdvancedPlatformMetricsListInput {
   subscriptionId: string;
@@ -244,7 +242,7 @@ export interface AdvancedPlatformMetricsListInput {
   accountName: string;
 }
 export const AdvancedPlatformMetricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -274,7 +272,7 @@ export interface AdvancedPlatformMetricsListOutput {
   nextLink?: string;
 }
 export const AdvancedPlatformMetricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -318,12 +316,10 @@ export const AdvancedPlatformMetricsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const AdvancedPlatformMetricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AdvancedPlatformMetricsListInput,
-    outputSchema: AdvancedPlatformMetricsListOutput,
-  }),
-);
+export const AdvancedPlatformMetricsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AdvancedPlatformMetricsListInput,
+  outputSchema: AdvancedPlatformMetricsListOutput,
+}));
 // Input Schema
 export interface BlobContainersClearLegalHoldInput {
   subscriptionId: string;
@@ -335,7 +331,7 @@ export interface BlobContainersClearLegalHoldInput {
   allowProtectedAppendWritesAll?: boolean;
 }
 export const BlobContainersClearLegalHoldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -358,7 +354,7 @@ export interface BlobContainersClearLegalHoldOutput {
   allowProtectedAppendWritesAll?: boolean;
 }
 export const BlobContainersClearLegalHoldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hasLegalHold: Schema.optional(Schema.Boolean),
     tags: Schema.Array(Schema.String),
     allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
@@ -375,7 +371,7 @@ export const BlobContainersClearLegalHoldOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
 export const BlobContainersClearLegalHold =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersClearLegalHoldInput,
     outputSchema: BlobContainersClearLegalHoldOutput,
   }));
@@ -444,7 +440,7 @@ export interface BlobContainersCreateInput {
   etag?: string;
 }
 export const BlobContainersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -569,7 +565,7 @@ export interface BlobContainersCreateOutput {
   };
 }
 export const BlobContainersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -599,12 +595,10 @@ export const BlobContainersCreateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersCreateInput,
-    outputSchema: BlobContainersCreateOutput,
-  }),
-);
+export const BlobContainersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersCreateInput,
+  outputSchema: BlobContainersCreateOutput,
+}));
 // Input Schema
 export interface BlobContainersCreateOrUpdateImmutabilityPolicyInput {
   subscriptionId: string;
@@ -620,7 +614,7 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyInput {
   etag?: string;
 }
 export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -655,7 +649,7 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyOutput {
   };
 }
 export const BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -687,7 +681,7 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersCreateOrUpdateImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersCreateOrUpdateImmutabilityPolicyInput,
     outputSchema: BlobContainersCreateOrUpdateImmutabilityPolicyOutput,
   }));
@@ -699,7 +693,7 @@ export interface BlobContainersDeleteInput {
   containerName: string;
 }
 export const BlobContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -715,7 +709,7 @@ export const BlobContainersDeleteInput =
 // Output Schema
 export type BlobContainersDeleteOutput = void;
 export const BlobContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersDeleteOutput>;
 
 // The operation
 /**
@@ -727,12 +721,10 @@ export const BlobContainersDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersDeleteInput,
-    outputSchema: BlobContainersDeleteOutput,
-  }),
-);
+export const BlobContainersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersDeleteInput,
+  outputSchema: BlobContainersDeleteOutput,
+}));
 // Input Schema
 export interface BlobContainersDeleteImmutabilityPolicyInput {
   subscriptionId: string;
@@ -741,7 +733,7 @@ export interface BlobContainersDeleteImmutabilityPolicyInput {
   containerName: string;
 }
 export const BlobContainersDeleteImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -769,7 +761,7 @@ export interface BlobContainersDeleteImmutabilityPolicyOutput {
   };
 }
 export const BlobContainersDeleteImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -801,7 +793,7 @@ export const BlobContainersDeleteImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersDeleteImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersDeleteImmutabilityPolicyInput,
     outputSchema: BlobContainersDeleteImmutabilityPolicyOutput,
   }));
@@ -820,7 +812,7 @@ export interface BlobContainersExtendImmutabilityPolicyInput {
   etag?: string;
 }
 export const BlobContainersExtendImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -855,7 +847,7 @@ export interface BlobContainersExtendImmutabilityPolicyOutput {
   };
 }
 export const BlobContainersExtendImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -887,7 +879,7 @@ export const BlobContainersExtendImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersExtendImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersExtendImmutabilityPolicyInput,
     outputSchema: BlobContainersExtendImmutabilityPolicyOutput,
   }));
@@ -898,14 +890,12 @@ export interface BlobContainersGetInput {
   accountName: string;
   containerName: string;
 }
-export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const BlobContainersGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
@@ -928,7 +918,7 @@ export interface BlobContainersGetOutput {
   };
 }
 export const BlobContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -958,7 +948,7 @@ export const BlobContainersGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersGetInput,
   outputSchema: BlobContainersGetOutput,
 }));
@@ -970,7 +960,7 @@ export interface BlobContainersGetImmutabilityPolicyInput {
   containerName: string;
 }
 export const BlobContainersGetImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -998,7 +988,7 @@ export interface BlobContainersGetImmutabilityPolicyOutput {
   };
 }
 export const BlobContainersGetImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1030,7 +1020,7 @@ export const BlobContainersGetImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersGetImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersGetImmutabilityPolicyInput,
     outputSchema: BlobContainersGetImmutabilityPolicyOutput,
   }));
@@ -1047,7 +1037,7 @@ export interface BlobContainersLeaseInput {
   proposedLeaseId?: string;
 }
 export const BlobContainersLeaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1071,7 +1061,7 @@ export interface BlobContainersLeaseOutput {
   leaseTimeSeconds?: string;
 }
 export const BlobContainersLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leaseId: Schema.optional(Schema.String),
     leaseTimeSeconds: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BlobContainersLeaseOutput>;
@@ -1086,7 +1076,7 @@ export const BlobContainersLeaseOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersLeaseInput,
   outputSchema: BlobContainersLeaseOutput,
 }));
@@ -1100,7 +1090,7 @@ export interface BlobContainersListInput {
   $include?: "deleted";
 }
 export const BlobContainersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1133,7 +1123,7 @@ export interface BlobContainersListOutput {
   nextLink?: string;
 }
 export const BlobContainersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1180,7 +1170,7 @@ export const BlobContainersListOutput =
  * @param $filter - Optional. When specified, only container names starting with the filter will be listed.
  * @param $include - Optional, used to include the properties for soft deleted blob containers.
  */
-export const BlobContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobContainersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobContainersListInput,
   outputSchema: BlobContainersListOutput,
 }));
@@ -1192,7 +1182,7 @@ export interface BlobContainersLockImmutabilityPolicyInput {
   containerName: string;
 }
 export const BlobContainersLockImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1220,7 +1210,7 @@ export interface BlobContainersLockImmutabilityPolicyOutput {
   };
 }
 export const BlobContainersLockImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1252,7 +1242,7 @@ export const BlobContainersLockImmutabilityPolicyOutput =
  * @param If-Match - The entity state (ETag) version of the immutability policy to update must be returned to the server for all update operations. The ETag value must include the leading and trailing double quotes as returned by the service.
  */
 export const BlobContainersLockImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersLockImmutabilityPolicyInput,
     outputSchema: BlobContainersLockImmutabilityPolicyOutput,
   }));
@@ -1264,7 +1254,7 @@ export interface BlobContainersObjectLevelWormInput {
   containerName: string;
 }
 export const BlobContainersObjectLevelWormInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1280,7 +1270,7 @@ export const BlobContainersObjectLevelWormInput =
 // Output Schema
 export type BlobContainersObjectLevelWormOutput = void;
 export const BlobContainersObjectLevelWormOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersObjectLevelWormOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersObjectLevelWormOutput>;
 
 // The operation
 /**
@@ -1293,7 +1283,7 @@ export const BlobContainersObjectLevelWormOutput =
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
 export const BlobContainersObjectLevelWorm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobContainersObjectLevelWormInput,
     outputSchema: BlobContainersObjectLevelWormOutput,
   }));
@@ -1308,7 +1298,7 @@ export interface BlobContainersSetLegalHoldInput {
   allowProtectedAppendWritesAll?: boolean;
 }
 export const BlobContainersSetLegalHoldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1331,7 +1321,7 @@ export interface BlobContainersSetLegalHoldOutput {
   allowProtectedAppendWritesAll?: boolean;
 }
 export const BlobContainersSetLegalHoldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hasLegalHold: Schema.optional(Schema.Boolean),
     tags: Schema.Array(Schema.String),
     allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
@@ -1347,12 +1337,10 @@ export const BlobContainersSetLegalHoldOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersSetLegalHold = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersSetLegalHoldInput,
-    outputSchema: BlobContainersSetLegalHoldOutput,
-  }),
-);
+export const BlobContainersSetLegalHold = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersSetLegalHoldInput,
+  outputSchema: BlobContainersSetLegalHoldOutput,
+}));
 // Input Schema
 export interface BlobContainersUpdateInput {
   subscriptionId: string;
@@ -1418,7 +1406,7 @@ export interface BlobContainersUpdateInput {
   etag?: string;
 }
 export const BlobContainersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1543,7 +1531,7 @@ export interface BlobContainersUpdateOutput {
   };
 }
 export const BlobContainersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1573,12 +1561,10 @@ export const BlobContainersUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param containerName - The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const BlobContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobContainersUpdateInput,
-    outputSchema: BlobContainersUpdateOutput,
-  }),
-);
+export const BlobContainersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobContainersUpdateInput,
+  outputSchema: BlobContainersUpdateOutput,
+}));
 // Input Schema
 export interface BlobInventoryPoliciesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1615,7 +1601,7 @@ export interface BlobInventoryPoliciesCreateOrUpdateInput {
   };
 }
 export const BlobInventoryPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1681,7 +1667,7 @@ export interface BlobInventoryPoliciesCreateOrUpdateOutput {
   };
 }
 export const BlobInventoryPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1712,7 +1698,7 @@ export const BlobInventoryPoliciesCreateOrUpdateOutput =
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
 export const BlobInventoryPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobInventoryPoliciesCreateOrUpdateInput,
     outputSchema: BlobInventoryPoliciesCreateOrUpdateOutput,
   }));
@@ -1724,7 +1710,7 @@ export interface BlobInventoryPoliciesDeleteInput {
   blobInventoryPolicyName: "default";
 }
 export const BlobInventoryPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1740,7 +1726,7 @@ export const BlobInventoryPoliciesDeleteInput =
 // Output Schema
 export type BlobInventoryPoliciesDeleteOutput = void;
 export const BlobInventoryPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobInventoryPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobInventoryPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1752,12 +1738,10 @@ export const BlobInventoryPoliciesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
-export const BlobInventoryPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesDeleteInput,
-    outputSchema: BlobInventoryPoliciesDeleteOutput,
-  }),
-);
+export const BlobInventoryPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesDeleteInput,
+  outputSchema: BlobInventoryPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface BlobInventoryPoliciesGetInput {
   subscriptionId: string;
@@ -1766,7 +1750,7 @@ export interface BlobInventoryPoliciesGetInput {
   blobInventoryPolicyName: "default";
 }
 export const BlobInventoryPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1794,7 +1778,7 @@ export interface BlobInventoryPoliciesGetOutput {
   };
 }
 export const BlobInventoryPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1824,12 +1808,10 @@ export const BlobInventoryPoliciesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param blobInventoryPolicyName - The name of the storage account blob inventory policy. It should always be 'default'
  */
-export const BlobInventoryPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesGetInput,
-    outputSchema: BlobInventoryPoliciesGetOutput,
-  }),
-);
+export const BlobInventoryPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesGetInput,
+  outputSchema: BlobInventoryPoliciesGetOutput,
+}));
 // Input Schema
 export interface BlobInventoryPoliciesListInput {
   subscriptionId: string;
@@ -1837,7 +1819,7 @@ export interface BlobInventoryPoliciesListInput {
   accountName: string;
 }
 export const BlobInventoryPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1867,7 +1849,7 @@ export interface BlobInventoryPoliciesListOutput {
   nextLink?: string;
 }
 export const BlobInventoryPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1913,12 +1895,10 @@ export const BlobInventoryPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobInventoryPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BlobInventoryPoliciesListInput,
-    outputSchema: BlobInventoryPoliciesListOutput,
-  }),
-);
+export const BlobInventoryPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BlobInventoryPoliciesListInput,
+  outputSchema: BlobInventoryPoliciesListOutput,
+}));
 // Input Schema
 export interface BlobServicesGetServicePropertiesInput {
   subscriptionId: string;
@@ -1926,7 +1906,7 @@ export interface BlobServicesGetServicePropertiesInput {
   accountName: string;
 }
 export const BlobServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1953,7 +1933,7 @@ export interface BlobServicesGetServicePropertiesOutput {
   };
 }
 export const BlobServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1983,7 +1963,7 @@ export const BlobServicesGetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const BlobServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobServicesGetServicePropertiesInput,
     outputSchema: BlobServicesGetServicePropertiesOutput,
   }));
@@ -1993,7 +1973,7 @@ export interface BlobServicesListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BlobServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2022,44 +2002,42 @@ export interface BlobServicesListOutput {
   }[];
   nextLink?: string;
 }
-export const BlobServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const BlobServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<BlobServicesListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<BlobServicesListOutput>;
 
 // The operation
 /**
@@ -2070,7 +2048,7 @@ export const BlobServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const BlobServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BlobServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BlobServicesListInput,
   outputSchema: BlobServicesListOutput,
 }));
@@ -2153,7 +2131,7 @@ export interface BlobServicesSetServicePropertiesInput {
   };
 }
 export const BlobServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2280,7 +2258,7 @@ export interface BlobServicesSetServicePropertiesOutput {
   };
 }
 export const BlobServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2310,7 +2288,7 @@ export const BlobServicesSetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const BlobServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BlobServicesSetServicePropertiesInput,
     outputSchema: BlobServicesSetServicePropertiesOutput,
   }));
@@ -2339,7 +2317,7 @@ export interface ConnectorsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2389,27 +2367,25 @@ export interface ConnectorsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ConnectorsCreateOutput>;
+export const ConnectorsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ConnectorsCreateOutput>;
 
 // The operation
 /**
@@ -2421,7 +2397,7 @@ export const ConnectorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsCreateInput,
   outputSchema: ConnectorsCreateOutput,
 }));
@@ -2432,7 +2408,7 @@ export interface ConnectorsDeleteInput {
   accountName: string;
   connectorName: string;
 }
-export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2448,7 +2424,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ConnectorsDeleteOutput = void;
 export const ConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -2460,7 +2436,7 @@ export const ConnectorsDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsDeleteInput,
   outputSchema: ConnectorsDeleteOutput,
 }));
@@ -2471,7 +2447,7 @@ export interface ConnectorsGetInput {
   accountName: string;
   connectorName: string;
 }
-export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2498,7 +2474,7 @@ export interface ConnectorsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2528,7 +2504,7 @@ export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsGetInput,
   outputSchema: ConnectorsGetOutput,
 }));
@@ -2539,7 +2515,7 @@ export interface ConnectorsListByStorageAccountInput {
   accountName: string;
 }
 export const ConnectorsListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2569,7 +2545,7 @@ export interface ConnectorsListByStorageAccountOutput {
   nextLink?: string;
 }
 export const ConnectorsListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2614,7 +2590,7 @@ export const ConnectorsListByStorageAccountOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const ConnectorsListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectorsListByStorageAccountInput,
     outputSchema: ConnectorsListByStorageAccountOutput,
   }));
@@ -2627,7 +2603,7 @@ export interface ConnectorsTestExistingConnectionInput {
   uniqueId: string;
 }
 export const ConnectorsTestExistingConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2648,7 +2624,7 @@ export interface ConnectorsTestExistingConnectionOutput {
   storageConnectorRequestId: string;
 }
 export const ConnectorsTestExistingConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageConnectorMethodName: Schema.String,
     storageConnectorErrorMessage: Schema.optional(Schema.String),
     storageConnectorRequestId: Schema.String,
@@ -2668,7 +2644,7 @@ export const ConnectorsTestExistingConnectionOutput =
  * @param connectorName - The name of the Storage Connector.
  */
 export const ConnectorsTestExistingConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectorsTestExistingConnectionInput,
     outputSchema: ConnectorsTestExistingConnectionOutput,
   }));
@@ -2686,7 +2662,7 @@ export interface ConnectorsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ConnectorsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2726,27 +2702,25 @@ export interface ConnectorsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ConnectorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ConnectorsUpdateOutput>;
+export const ConnectorsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ConnectorsUpdateOutput>;
 
 // The operation
 /**
@@ -2758,7 +2732,7 @@ export const ConnectorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param connectorName - The name of the Storage Connector.
  */
-export const ConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ConnectorsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConnectorsUpdateInput,
   outputSchema: ConnectorsUpdateOutput,
 }));
@@ -2789,7 +2763,7 @@ export interface DataSharesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2846,27 +2820,25 @@ export interface DataSharesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<DataSharesCreateOutput>;
+export const DataSharesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<DataSharesCreateOutput>;
 
 // The operation
 /**
@@ -2878,7 +2850,7 @@ export const DataSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesCreateInput,
   outputSchema: DataSharesCreateOutput,
 }));
@@ -2889,7 +2861,7 @@ export interface DataSharesDeleteInput {
   accountName: string;
   dataShareName: string;
 }
-export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2905,7 +2877,7 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DataSharesDeleteOutput = void;
 export const DataSharesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSharesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSharesDeleteOutput>;
 
 // The operation
 /**
@@ -2917,7 +2889,7 @@ export const DataSharesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesDeleteInput,
   outputSchema: DataSharesDeleteOutput,
 }));
@@ -2928,7 +2900,7 @@ export interface DataSharesGetInput {
   accountName: string;
   dataShareName: string;
 }
-export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -2955,7 +2927,7 @@ export interface DataSharesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2985,7 +2957,7 @@ export const DataSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesGetInput,
   outputSchema: DataSharesGetOutput,
 }));
@@ -2996,7 +2968,7 @@ export interface DataSharesListByStorageAccountInput {
   accountName: string;
 }
 export const DataSharesListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3026,7 +2998,7 @@ export interface DataSharesListByStorageAccountOutput {
   nextLink?: string;
 }
 export const DataSharesListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3071,7 +3043,7 @@ export const DataSharesListByStorageAccountOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const DataSharesListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataSharesListByStorageAccountInput,
     outputSchema: DataSharesListByStorageAccountOutput,
   }));
@@ -3092,7 +3064,7 @@ export interface DataSharesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DataSharesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3142,27 +3114,25 @@ export interface DataSharesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DataSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<DataSharesUpdateOutput>;
+export const DataSharesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<DataSharesUpdateOutput>;
 
 // The operation
 /**
@@ -3174,7 +3144,7 @@ export const DataSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param dataShareName - The name of the Storage DataShare.
  */
-export const DataSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataSharesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataSharesUpdateInput,
   outputSchema: DataSharesUpdateOutput,
 }));
@@ -3185,7 +3155,7 @@ export interface DeletedAccountsGetInput {
   deletedAccountName: string;
 }
 export const DeletedAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedAccountName: Schema.String.pipe(T.PathParam()),
@@ -3212,7 +3182,7 @@ export interface DeletedAccountsGetOutput {
   };
 }
 export const DeletedAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3241,7 +3211,7 @@ export const DeletedAccountsGetOutput =
  * @param location - The name of the Azure region.
  * @param deletedAccountName - Name of the deleted storage account.
  */
-export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsGetInput,
   outputSchema: DeletedAccountsGetOutput,
 }));
@@ -3250,7 +3220,7 @@ export interface DeletedAccountsListInput {
   subscriptionId: string;
 }
 export const DeletedAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3278,7 +3248,7 @@ export interface DeletedAccountsListOutput {
   nextLink?: string;
 }
 export const DeletedAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3320,7 +3290,7 @@ export const DeletedAccountsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeletedAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsListInput,
   outputSchema: DeletedAccountsListOutput,
 }));
@@ -3332,7 +3302,7 @@ export interface EncryptionScopesGetInput {
   encryptionScopeName: string;
 }
 export const EncryptionScopesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3360,7 +3330,7 @@ export interface EncryptionScopesGetOutput {
   };
 }
 export const EncryptionScopesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3390,7 +3360,7 @@ export const EncryptionScopesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EncryptionScopesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesGetInput,
   outputSchema: EncryptionScopesGetOutput,
 }));
@@ -3404,7 +3374,7 @@ export interface EncryptionScopesListInput {
   $include?: "All" | "Enabled" | "Disabled";
 }
 export const EncryptionScopesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3437,7 +3407,7 @@ export interface EncryptionScopesListOutput {
   nextLink?: string;
 }
 export const EncryptionScopesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3484,12 +3454,10 @@ export const EncryptionScopesListOutput =
  * @param $filter - Optional. When specified, only encryption scope names starting with the filter will be listed.
  * @param $include - Optional, when specified, will list encryption scopes with the specific state. Defaults to All
  */
-export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesListInput,
-    outputSchema: EncryptionScopesListOutput,
-  }),
-);
+export const EncryptionScopesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesListInput,
+  outputSchema: EncryptionScopesListOutput,
+}));
 // Input Schema
 export interface EncryptionScopesPatchInput {
   subscriptionId: string;
@@ -3510,7 +3478,7 @@ export interface EncryptionScopesPatchInput {
   };
 }
 export const EncryptionScopesPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3556,7 +3524,7 @@ export interface EncryptionScopesPatchOutput {
   };
 }
 export const EncryptionScopesPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3586,12 +3554,10 @@ export const EncryptionScopesPatchOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EncryptionScopesPatchInput,
-    outputSchema: EncryptionScopesPatchOutput,
-  }),
-);
+export const EncryptionScopesPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EncryptionScopesPatchInput,
+  outputSchema: EncryptionScopesPatchOutput,
+}));
 // Input Schema
 export interface EncryptionScopesPutInput {
   subscriptionId: string;
@@ -3612,7 +3578,7 @@ export interface EncryptionScopesPutInput {
   };
 }
 export const EncryptionScopesPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3658,7 +3624,7 @@ export interface EncryptionScopesPutOutput {
   };
 }
 export const EncryptionScopesPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3688,7 +3654,7 @@ export const EncryptionScopesPutOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param encryptionScopeName - The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const EncryptionScopesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EncryptionScopesPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesPutInput,
   outputSchema: EncryptionScopesPutOutput,
 }));
@@ -3699,7 +3665,7 @@ export interface FileServicesGetServicePropertiesInput {
   accountName: string;
 }
 export const FileServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3726,7 +3692,7 @@ export interface FileServicesGetServicePropertiesOutput {
   };
 }
 export const FileServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3756,7 +3722,7 @@ export const FileServicesGetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const FileServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileServicesGetServicePropertiesInput,
     outputSchema: FileServicesGetServicePropertiesOutput,
   }));
@@ -3767,7 +3733,7 @@ export interface FileServicesGetServiceUsageInput {
   accountName: string;
 }
 export const FileServicesGetServiceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3794,7 +3760,7 @@ export interface FileServicesGetServiceUsageOutput {
   };
 }
 export const FileServicesGetServiceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3823,19 +3789,17 @@ export const FileServicesGetServiceUsageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const FileServicesGetServiceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileServicesGetServiceUsageInput,
-    outputSchema: FileServicesGetServiceUsageOutput,
-  }),
-);
+export const FileServicesGetServiceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileServicesGetServiceUsageInput,
+  outputSchema: FileServicesGetServiceUsageOutput,
+}));
 // Input Schema
 export interface FileServicesListInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -3863,43 +3827,41 @@ export interface FileServicesListOutput {
     };
   }[];
 }
-export const FileServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const FileServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<FileServicesListOutput>;
+  ),
+}) as unknown as Schema.Codec<FileServicesListOutput>;
 
 // The operation
 /**
@@ -3910,7 +3872,7 @@ export const FileServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const FileServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileServicesListInput,
   outputSchema: FileServicesListOutput,
 }));
@@ -3922,7 +3884,7 @@ export interface FileServicesListServiceUsagesInput {
   $maxpagesize?: number;
 }
 export const FileServicesListServiceUsagesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -3953,7 +3915,7 @@ export interface FileServicesListServiceUsagesOutput {
   nextLink?: string;
 }
 export const FileServicesListServiceUsagesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3999,7 +3961,7 @@ export const FileServicesListServiceUsagesOutput =
  * @param $maxpagesize - Optional, specifies the maximum number of file service usages to be included in the list response.
  */
 export const FileServicesListServiceUsages =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileServicesListServiceUsagesInput,
     outputSchema: FileServicesListServiceUsagesOutput,
   }));
@@ -4066,7 +4028,7 @@ export interface FileServicesSetServicePropertiesInput {
   };
 }
 export const FileServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4184,7 +4146,7 @@ export interface FileServicesSetServicePropertiesOutput {
   };
 }
 export const FileServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4214,7 +4176,7 @@ export const FileServicesSetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const FileServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileServicesSetServicePropertiesInput,
     outputSchema: FileServicesSetServicePropertiesOutput,
   }));
@@ -4266,7 +4228,7 @@ export interface FileSharesCreateInput {
   };
   etag?: string;
 }
-export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4358,27 +4320,25 @@ export interface FileSharesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FileSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FileSharesCreateOutput>;
+export const FileSharesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FileSharesCreateOutput>;
 
 // The operation
 /**
@@ -4391,7 +4351,7 @@ export const FileSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: snapshots. Should be passed as a string with delimiter ','
  */
-export const FileSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesCreateInput,
   outputSchema: FileSharesCreateOutput,
 }));
@@ -4403,7 +4363,7 @@ export interface FileSharesDeleteInput {
   shareName: string;
   $include?: string;
 }
-export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4420,7 +4380,7 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FileSharesDeleteOutput = void;
 export const FileSharesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
 
 // The operation
 /**
@@ -4434,7 +4394,7 @@ export const FileSharesDeleteOutput =
  * @param x-ms-snapshot - Optional, used to delete a snapshot.
  * @param $include - Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased/unleased). For 'none', the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails.
  */
-export const FileSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesDeleteInput,
   outputSchema: FileSharesDeleteOutput,
 }));
@@ -4446,7 +4406,7 @@ export interface FileSharesGetInput {
   shareName: string;
   $expand?: string;
 }
-export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4474,7 +4434,7 @@ export interface FileSharesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4506,7 +4466,7 @@ export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: stats. Should be passed as a string with delimiter ','.
  * @param x-ms-snapshot - Optional, used to retrieve properties of a snapshot.
  */
-export const FileSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesGetInput,
   outputSchema: FileSharesGetOutput,
 }));
@@ -4522,7 +4482,7 @@ export interface FileSharesLeaseInput {
   leaseDuration?: number;
   proposedLeaseId?: string;
 }
-export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesLeaseInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4545,7 +4505,7 @@ export interface FileSharesLeaseOutput {
   leaseId?: string;
   leaseTimeSeconds?: string;
 }
-export const FileSharesLeaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesLeaseOutput = /*@__PURE__*/ Schema.Struct({
   leaseId: Schema.optional(Schema.String),
   leaseTimeSeconds: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<FileSharesLeaseOutput>;
@@ -4561,7 +4521,7 @@ export const FileSharesLeaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  * @param x-ms-snapshot - Optional. Specify the snapshot time to lease a snapshot.
  */
-export const FileSharesLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesLease = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesLeaseInput,
   outputSchema: FileSharesLeaseOutput,
 }));
@@ -4574,7 +4534,7 @@ export interface FileSharesListInput {
   $filter?: string;
   $expand?: string;
 }
-export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4606,7 +4566,7 @@ export interface FileSharesListOutput {
   }[];
   nextLink?: string;
 }
-export const FileSharesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -4643,7 +4603,7 @@ export const FileSharesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - Optional. When specified, only share names starting with the filter will be listed.
  * @param $expand - Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ','
  */
-export const FileSharesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesListInput,
   outputSchema: FileSharesListOutput,
 }));
@@ -4656,16 +4616,14 @@ export interface FileSharesRestoreInput {
   deletedShareName: string;
   deletedShareVersion: string;
 }
-export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-    shareName: Schema.String.pipe(T.PathParam()),
-    deletedShareName: Schema.String,
-    deletedShareVersion: Schema.String,
-  },
-).pipe(
+export const FileSharesRestoreInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  shareName: Schema.String.pipe(T.PathParam()),
+  deletedShareName: Schema.String,
+  deletedShareVersion: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
@@ -4676,7 +4634,7 @@ export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type FileSharesRestoreOutput = void;
 export const FileSharesRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesRestoreOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesRestoreOutput>;
 
 // The operation
 /**
@@ -4688,7 +4646,7 @@ export const FileSharesRestoreOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const FileSharesRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesRestore = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesRestoreInput,
   outputSchema: FileSharesRestoreOutput,
 }));
@@ -4739,7 +4697,7 @@ export interface FileSharesUpdateInput {
   };
   etag?: string;
 }
-export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FileSharesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -4830,27 +4788,25 @@ export interface FileSharesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FileSharesUpdateOutput>;
+export const FileSharesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FileSharesUpdateOutput>;
 
 // The operation
 /**
@@ -4862,7 +4818,7 @@ export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param shareName - The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
  */
-export const FileSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileSharesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSharesUpdateInput,
   outputSchema: FileSharesUpdateOutput,
 }));
@@ -4892,7 +4848,7 @@ export interface LocalUsersCreateOrUpdateInput {
   };
 }
 export const LocalUsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -4951,7 +4907,7 @@ export interface LocalUsersCreateOrUpdateOutput {
   };
 }
 export const LocalUsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4981,12 +4937,10 @@ export const LocalUsersCreateOrUpdateOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocalUsersCreateOrUpdateInput,
-    outputSchema: LocalUsersCreateOrUpdateOutput,
-  }),
-);
+export const LocalUsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocalUsersCreateOrUpdateInput,
+  outputSchema: LocalUsersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LocalUsersDeleteInput {
   subscriptionId: string;
@@ -4994,7 +4948,7 @@ export interface LocalUsersDeleteInput {
   accountName: string;
   username: string;
 }
-export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5010,7 +4964,7 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LocalUsersDeleteOutput = void;
 export const LocalUsersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LocalUsersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LocalUsersDeleteOutput>;
 
 // The operation
 /**
@@ -5022,7 +4976,7 @@ export const LocalUsersDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersDeleteInput,
   outputSchema: LocalUsersDeleteOutput,
 }));
@@ -5033,7 +4987,7 @@ export interface LocalUsersGetInput {
   accountName: string;
   username: string;
 }
-export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5060,7 +5014,7 @@ export interface LocalUsersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LocalUsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5090,7 +5044,7 @@ export const LocalUsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersGetInput,
   outputSchema: LocalUsersGetOutput,
 }));
@@ -5103,7 +5057,7 @@ export interface LocalUsersListInput {
   $filter?: string;
   $include?: "nfsv3";
 }
-export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -5135,7 +5089,7 @@ export interface LocalUsersListOutput {
   }[];
   nextLink?: string;
 }
-export const LocalUsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LocalUsersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -5172,7 +5126,7 @@ export const LocalUsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $filter - Optional. When specified, only local user names starting with the filter will be listed.
  * @param $include - Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default.
  */
-export const LocalUsersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersListInput,
   outputSchema: LocalUsersListOutput,
 }));
@@ -5184,7 +5138,7 @@ export interface LocalUsersListKeysInput {
   username: string;
 }
 export const LocalUsersListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5203,7 +5157,7 @@ export interface LocalUsersListKeysOutput {
   sharedKey?: string;
 }
 export const LocalUsersListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sshAuthorizedKeys: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5225,7 +5179,7 @@ export const LocalUsersListKeysOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
-export const LocalUsersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocalUsersListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocalUsersListKeysInput,
   outputSchema: LocalUsersListKeysOutput,
 }));
@@ -5237,7 +5191,7 @@ export interface LocalUsersRegeneratePasswordInput {
   username: string;
 }
 export const LocalUsersRegeneratePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5255,7 +5209,7 @@ export interface LocalUsersRegeneratePasswordOutput {
   sshPassword?: Redacted.Redacted<string>;
 }
 export const LocalUsersRegeneratePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sshPassword: Schema.optional(SensitiveOutputString),
   }) as unknown as Schema.Codec<LocalUsersRegeneratePasswordOutput>;
 
@@ -5270,7 +5224,7 @@ export const LocalUsersRegeneratePasswordOutput =
  * @param username - The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
  */
 export const LocalUsersRegeneratePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocalUsersRegeneratePasswordInput,
     outputSchema: LocalUsersRegeneratePasswordOutput,
   }));
@@ -5378,7 +5332,7 @@ export interface ManagementPoliciesCreateOrUpdateInput {
   };
 }
 export const ManagementPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5614,7 +5568,7 @@ export interface ManagementPoliciesCreateOrUpdateOutput {
   };
 }
 export const ManagementPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5645,7 +5599,7 @@ export const ManagementPoliciesCreateOrUpdateOutput =
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
 export const ManagementPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ManagementPoliciesCreateOrUpdateInput,
     outputSchema: ManagementPoliciesCreateOrUpdateOutput,
   }));
@@ -5657,7 +5611,7 @@ export interface ManagementPoliciesDeleteInput {
   managementPolicyName: "default";
 }
 export const ManagementPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5673,7 +5627,7 @@ export const ManagementPoliciesDeleteInput =
 // Output Schema
 export type ManagementPoliciesDeleteOutput = void;
 export const ManagementPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -5685,12 +5639,10 @@ export const ManagementPoliciesDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
-export const ManagementPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementPoliciesDeleteInput,
-    outputSchema: ManagementPoliciesDeleteOutput,
-  }),
-);
+export const ManagementPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementPoliciesDeleteInput,
+  outputSchema: ManagementPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface ManagementPoliciesGetInput {
   subscriptionId: string;
@@ -5699,7 +5651,7 @@ export interface ManagementPoliciesGetInput {
   managementPolicyName: "default";
 }
 export const ManagementPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5727,7 +5679,7 @@ export interface ManagementPoliciesGetOutput {
   };
 }
 export const ManagementPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5757,12 +5709,10 @@ export const ManagementPoliciesGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param managementPolicyName - The name of the Storage Account Management Policy. It should always be 'default'
  */
-export const ManagementPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ManagementPoliciesGetInput,
-    outputSchema: ManagementPoliciesGetOutput,
-  }),
-);
+export const ManagementPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ManagementPoliciesGetInput,
+  outputSchema: ManagementPoliciesGetOutput,
+}));
 // Input Schema
 export interface NetworkSecurityPerimeterConfigurationsGetInput {
   subscriptionId: string;
@@ -5771,7 +5721,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetInput {
   networkSecurityPerimeterConfigurationName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5801,7 +5751,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetOutput {
   };
 }
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5832,7 +5782,7 @@ export const NetworkSecurityPerimeterConfigurationsGetOutput =
  * @param networkSecurityPerimeterConfigurationName - The name for Network Security Perimeter configuration
  */
 export const NetworkSecurityPerimeterConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsGetInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
   }));
@@ -5843,7 +5793,7 @@ export interface NetworkSecurityPerimeterConfigurationsListInput {
   accountName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5873,7 +5823,7 @@ export interface NetworkSecurityPerimeterConfigurationsListOutput {
   nextLink?: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5918,7 +5868,7 @@ export const NetworkSecurityPerimeterConfigurationsListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const NetworkSecurityPerimeterConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsListInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsListOutput,
   }));
@@ -5930,7 +5880,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileInput {
   networkSecurityPerimeterConfigurationName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -5948,7 +5898,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
 // Output Schema
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput = void;
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileOutput>;
 
 // The operation
 /**
@@ -5961,7 +5911,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
  * @param networkSecurityPerimeterConfigurationName - The name for Network Security Perimeter configuration
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkSecurityPerimeterConfigurationsReconcileInput,
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
@@ -5988,7 +5938,7 @@ export interface ObjectReplicationPoliciesCreateOrUpdateInput {
   };
 }
 export const ObjectReplicationPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6054,7 +6004,7 @@ export interface ObjectReplicationPoliciesCreateOrUpdateOutput {
   };
 }
 export const ObjectReplicationPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6085,7 +6035,7 @@ export const ObjectReplicationPoliciesCreateOrUpdateOutput =
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
 export const ObjectReplicationPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectReplicationPoliciesCreateOrUpdateInput,
     outputSchema: ObjectReplicationPoliciesCreateOrUpdateOutput,
   }));
@@ -6097,7 +6047,7 @@ export interface ObjectReplicationPoliciesDeleteInput {
   objectReplicationPolicyId: string;
 }
 export const ObjectReplicationPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6113,7 +6063,7 @@ export const ObjectReplicationPoliciesDeleteInput =
 // Output Schema
 export type ObjectReplicationPoliciesDeleteOutput = void;
 export const ObjectReplicationPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectReplicationPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectReplicationPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -6126,7 +6076,7 @@ export const ObjectReplicationPoliciesDeleteOutput =
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
 export const ObjectReplicationPoliciesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectReplicationPoliciesDeleteInput,
     outputSchema: ObjectReplicationPoliciesDeleteOutput,
   }));
@@ -6138,7 +6088,7 @@ export interface ObjectReplicationPoliciesGetInput {
   objectReplicationPolicyId: string;
 }
 export const ObjectReplicationPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6166,7 +6116,7 @@ export interface ObjectReplicationPoliciesGetOutput {
   };
 }
 export const ObjectReplicationPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6197,7 +6147,7 @@ export const ObjectReplicationPoliciesGetOutput =
  * @param objectReplicationPolicyId - For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
  */
 export const ObjectReplicationPoliciesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectReplicationPoliciesGetInput,
     outputSchema: ObjectReplicationPoliciesGetOutput,
   }));
@@ -6208,7 +6158,7 @@ export interface ObjectReplicationPoliciesListInput {
   accountName: string;
 }
 export const ObjectReplicationPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6238,7 +6188,7 @@ export interface ObjectReplicationPoliciesListOutput {
   nextLink?: string;
 }
 export const ObjectReplicationPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6285,15 +6235,13 @@ export const ObjectReplicationPoliciesListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const ObjectReplicationPoliciesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ObjectReplicationPoliciesListInput,
     outputSchema: ObjectReplicationPoliciesListOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Storage/operations",
@@ -6330,7 +6278,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6388,7 +6336,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -6400,7 +6348,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6416,7 +6364,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -6429,7 +6377,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -6441,7 +6389,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6469,7 +6417,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6500,7 +6448,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -6511,7 +6459,7 @@ export interface PrivateEndpointConnectionsListInput {
   accountName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6541,7 +6489,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6588,7 +6536,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -6609,7 +6557,7 @@ export interface PrivateEndpointConnectionsPutInput {
   };
 }
 export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6656,7 +6604,7 @@ export interface PrivateEndpointConnectionsPutOutput {
   };
 }
 export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6687,7 +6635,7 @@ export const PrivateEndpointConnectionsPutOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPutInput,
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
@@ -6698,7 +6646,7 @@ export interface PrivateLinkResourcesListByStorageAccountInput {
   accountName: string;
 }
 export const PrivateLinkResourcesListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -6727,7 +6675,7 @@ export interface PrivateLinkResourcesListByStorageAccountOutput {
   }[];
 }
 export const PrivateLinkResourcesListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6773,7 +6721,7 @@ export const PrivateLinkResourcesListByStorageAccountOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const PrivateLinkResourcesListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByStorageAccountInput,
     outputSchema: PrivateLinkResourcesListByStorageAccountOutput,
   }));
@@ -6788,7 +6736,7 @@ export interface QueueCreateInput {
     approximateMessageCount?: number;
   };
 }
-export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6821,7 +6769,7 @@ export interface QueueCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6851,7 +6799,7 @@ export const QueueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueCreateInput,
   outputSchema: QueueCreateOutput,
 }));
@@ -6862,7 +6810,7 @@ export interface QueueDeleteInput {
   accountName: string;
   queueName: string;
 }
-export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6878,7 +6826,7 @@ export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type QueueDeleteOutput = void;
 export const QueueDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueueDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<QueueDeleteOutput>;
 
 // The operation
 /**
@@ -6890,7 +6838,7 @@ export const QueueDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueDeleteInput,
   outputSchema: QueueDeleteOutput,
 }));
@@ -6901,7 +6849,7 @@ export interface QueueGetInput {
   accountName: string;
   queueName: string;
 }
-export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -6928,7 +6876,7 @@ export interface QueueGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6958,7 +6906,7 @@ export const QueueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueGetInput,
   outputSchema: QueueGetOutput,
 }));
@@ -6970,7 +6918,7 @@ export interface QueueListInput {
   $maxpagesize?: string;
   $filter?: string;
 }
-export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -7001,7 +6949,7 @@ export interface QueueListOutput {
   }[];
   nextLink?: string;
 }
-export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7037,7 +6985,7 @@ export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $maxpagesize - Optional, a maximum number of queues that should be included in a list queue response
  * @param $filter - Optional, When specified, only the queues with a name starting with the given filter will be listed.
  */
-export const QueueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueListInput,
   outputSchema: QueueListOutput,
 }));
@@ -7048,7 +6996,7 @@ export interface QueueServicesGetServicePropertiesInput {
   accountName: string;
 }
 export const QueueServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7075,7 +7023,7 @@ export interface QueueServicesGetServicePropertiesOutput {
   };
 }
 export const QueueServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7105,7 +7053,7 @@ export const QueueServicesGetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const QueueServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QueueServicesGetServicePropertiesInput,
     outputSchema: QueueServicesGetServicePropertiesOutput,
   }));
@@ -7115,13 +7063,11 @@ export interface QueueServicesListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const QueueServicesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
@@ -7146,7 +7092,7 @@ export interface QueueServicesListOutput {
   }[];
 }
 export const QueueServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7191,7 +7137,7 @@ export const QueueServicesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const QueueServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueServicesListInput,
   outputSchema: QueueServicesListOutput,
 }));
@@ -7224,7 +7170,7 @@ export interface QueueServicesSetServicePropertiesInput {
   };
 }
 export const QueueServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7283,7 +7229,7 @@ export interface QueueServicesSetServicePropertiesOutput {
   };
 }
 export const QueueServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7313,7 +7259,7 @@ export const QueueServicesSetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const QueueServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: QueueServicesSetServicePropertiesInput,
     outputSchema: QueueServicesSetServicePropertiesOutput,
   }));
@@ -7328,7 +7274,7 @@ export interface QueueUpdateInput {
     approximateMessageCount?: number;
   };
 }
-export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -7361,7 +7307,7 @@ export interface QueueUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const QueueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueueUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7391,7 +7337,7 @@ export const QueueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param queueName - A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
  */
-export const QueueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const QueueUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueUpdateInput,
   outputSchema: QueueUpdateOutput,
 }));
@@ -7399,7 +7345,7 @@ export const QueueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface SkusListInput {
   subscriptionId: string;
 }
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -7446,7 +7392,7 @@ export interface SkusListOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7518,7 +7464,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
@@ -7529,7 +7475,7 @@ export interface StorageAccountsAbortHierarchicalNamespaceMigrationInput {
   accountName: string;
 }
 export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -7544,7 +7490,7 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
 // Output Schema
 export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput = void;
 export const StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsAbortHierarchicalNamespaceMigrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsAbortHierarchicalNamespaceMigrationOutput>;
 
 // The operation
 /**
@@ -7556,7 +7502,7 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsAbortHierarchicalNamespaceMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsAbortHierarchicalNamespaceMigrationInput,
     outputSchema: StorageAccountsAbortHierarchicalNamespaceMigrationOutput,
   }));
@@ -7567,7 +7513,7 @@ export interface StorageAccountsCheckNameAvailabilityInput {
   type: "Microsoft.Storage/storageAccounts";
 }
 export const StorageAccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals(["Microsoft.Storage/storageAccounts"]),
@@ -7586,7 +7532,7 @@ export interface StorageAccountsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const StorageAccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
@@ -7602,7 +7548,7 @@ export const StorageAccountsCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const StorageAccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsCheckNameAvailabilityInput,
     outputSchema: StorageAccountsCheckNameAvailabilityOutput,
   }));
@@ -7779,7 +7725,7 @@ export interface StorageAccountsCreateInput {
   };
 }
 export const StorageAccountsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8134,7 +8080,7 @@ export interface StorageAccountsCreateOutput {
   };
 }
 export const StorageAccountsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8163,12 +8109,10 @@ export const StorageAccountsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsCreateInput,
-    outputSchema: StorageAccountsCreateOutput,
-  }),
-);
+export const StorageAccountsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsCreateInput,
+  outputSchema: StorageAccountsCreateOutput,
+}));
 // Input Schema
 export interface StorageAccountsCustomerInitiatedMigrationInput {
   subscriptionId: string;
@@ -8201,7 +8145,7 @@ export interface StorageAccountsCustomerInitiatedMigrationInput {
   };
 }
 export const StorageAccountsCustomerInitiatedMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8245,7 +8189,7 @@ export const StorageAccountsCustomerInitiatedMigrationInput =
 // Output Schema
 export type StorageAccountsCustomerInitiatedMigrationOutput = void;
 export const StorageAccountsCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsCustomerInitiatedMigrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsCustomerInitiatedMigrationOutput>;
 
 // The operation
 /**
@@ -8257,7 +8201,7 @@ export const StorageAccountsCustomerInitiatedMigrationOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsCustomerInitiatedMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsCustomerInitiatedMigrationInput,
     outputSchema: StorageAccountsCustomerInitiatedMigrationOutput,
   }));
@@ -8268,7 +8212,7 @@ export interface StorageAccountsDeleteInput {
   accountName: string;
 }
 export const StorageAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8283,7 +8227,7 @@ export const StorageAccountsDeleteInput =
 // Output Schema
 export type StorageAccountsDeleteOutput = void;
 export const StorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -8294,12 +8238,10 @@ export const StorageAccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsDeleteInput,
-    outputSchema: StorageAccountsDeleteOutput,
-  }),
-);
+export const StorageAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsDeleteInput,
+  outputSchema: StorageAccountsDeleteOutput,
+}));
 // Input Schema
 export interface StorageAccountsFailoverInput {
   subscriptionId: string;
@@ -8308,7 +8250,7 @@ export interface StorageAccountsFailoverInput {
   failoverType?: "Planned";
 }
 export const StorageAccountsFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8324,7 +8266,7 @@ export const StorageAccountsFailoverInput =
 // Output Schema
 export type StorageAccountsFailoverOutput = void;
 export const StorageAccountsFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsFailoverOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsFailoverOutput>;
 
 // The operation
 /**
@@ -8336,12 +8278,10 @@ export const StorageAccountsFailoverOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param failoverType - The parameter is set to 'Planned' to indicate whether a Planned failover is requested.
  */
-export const StorageAccountsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsFailoverInput,
-    outputSchema: StorageAccountsFailoverOutput,
-  }),
-);
+export const StorageAccountsFailover = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsFailoverInput,
+  outputSchema: StorageAccountsFailoverOutput,
+}));
 // Input Schema
 export interface StorageAccountsGetCustomerInitiatedMigrationInput {
   subscriptionId: string;
@@ -8350,7 +8290,7 @@ export interface StorageAccountsGetCustomerInitiatedMigrationInput {
   migrationName: "default";
 }
 export const StorageAccountsGetCustomerInitiatedMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8378,7 +8318,7 @@ export interface StorageAccountsGetCustomerInitiatedMigrationOutput {
   };
 }
 export const StorageAccountsGetCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8409,7 +8349,7 @@ export const StorageAccountsGetCustomerInitiatedMigrationOutput =
  * @param migrationName - The name of the Storage Account Migration. It should always be 'default'
  */
 export const StorageAccountsGetCustomerInitiatedMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsGetCustomerInitiatedMigrationInput,
     outputSchema: StorageAccountsGetCustomerInitiatedMigrationOutput,
   }));
@@ -8421,7 +8361,7 @@ export interface StorageAccountsGetPropertiesInput {
   $expand?: "geoReplicationStats" | "blobRestoreStatus";
 }
 export const StorageAccountsGetPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8451,7 +8391,7 @@ export interface StorageAccountsGetPropertiesOutput {
   };
 }
 export const StorageAccountsGetPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8482,7 +8422,7 @@ export const StorageAccountsGetPropertiesOutput =
  * @param $expand - May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus.
  */
 export const StorageAccountsGetProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsGetPropertiesInput,
     outputSchema: StorageAccountsGetPropertiesOutput,
   }));
@@ -8494,7 +8434,7 @@ export interface StorageAccountsHierarchicalNamespaceMigrationInput {
   requestType: string;
 }
 export const StorageAccountsHierarchicalNamespaceMigrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8510,7 +8450,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationInput =
 // Output Schema
 export type StorageAccountsHierarchicalNamespaceMigrationOutput = void;
 export const StorageAccountsHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsHierarchicalNamespaceMigrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsHierarchicalNamespaceMigrationOutput>;
 
 // The operation
 /**
@@ -8523,7 +8463,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationOutput =
  * @param requestType - Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request 'HnsOnValidationRequest' or a hydration request 'HnsOnHydrationRequest'. The validation request will validate the migration whereas the hydration request will migrate the account.
  */
 export const StorageAccountsHierarchicalNamespaceMigration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsHierarchicalNamespaceMigrationInput,
     outputSchema: StorageAccountsHierarchicalNamespaceMigrationOutput,
   }));
@@ -8532,7 +8472,7 @@ export interface StorageAccountsListInput {
   subscriptionId: string;
 }
 export const StorageAccountsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -8560,7 +8500,7 @@ export interface StorageAccountsListOutput {
   nextLink?: string;
 }
 export const StorageAccountsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8602,7 +8542,7 @@ export const StorageAccountsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const StorageAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageAccountsListInput,
   outputSchema: StorageAccountsListOutput,
 }));
@@ -8621,7 +8561,7 @@ export interface StorageAccountsListAccountSASInput {
   keyToSign?: string;
 }
 export const StorageAccountsListAccountSASInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8646,7 +8586,7 @@ export interface StorageAccountsListAccountSASOutput {
   accountSasToken?: string;
 }
 export const StorageAccountsListAccountSASOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountSasToken: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<StorageAccountsListAccountSASOutput>;
 
@@ -8660,7 +8600,7 @@ export const StorageAccountsListAccountSASOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsListAccountSAS =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsListAccountSASInput,
     outputSchema: StorageAccountsListAccountSASOutput,
   }));
@@ -8670,7 +8610,7 @@ export interface StorageAccountsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const StorageAccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8699,7 +8639,7 @@ export interface StorageAccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const StorageAccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8743,7 +8683,7 @@ export const StorageAccountsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const StorageAccountsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsListByResourceGroupInput,
     outputSchema: StorageAccountsListByResourceGroupOutput,
   }));
@@ -8755,7 +8695,7 @@ export interface StorageAccountsListKeysInput {
   $expand?: "kerb";
 }
 export const StorageAccountsListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8778,7 +8718,7 @@ export interface StorageAccountsListKeysOutput {
   }[];
 }
 export const StorageAccountsListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8801,12 +8741,10 @@ export const StorageAccountsListKeysOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $expand - Specifies type of the key to be listed. Possible value is kerb.
  */
-export const StorageAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsListKeysInput,
-    outputSchema: StorageAccountsListKeysOutput,
-  }),
-);
+export const StorageAccountsListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsListKeysInput,
+  outputSchema: StorageAccountsListKeysOutput,
+}));
 // Input Schema
 export interface StorageAccountsListServiceSASInput {
   subscriptionId: string;
@@ -8832,7 +8770,7 @@ export interface StorageAccountsListServiceSASInput {
   rsct?: string;
 }
 export const StorageAccountsListServiceSASInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8869,7 +8807,7 @@ export interface StorageAccountsListServiceSASOutput {
   serviceSasToken?: string;
 }
 export const StorageAccountsListServiceSASOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceSasToken: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<StorageAccountsListServiceSASOutput>;
 
@@ -8883,7 +8821,7 @@ export const StorageAccountsListServiceSASOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsListServiceSAS =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsListServiceSASInput,
     outputSchema: StorageAccountsListServiceSASOutput,
   }));
@@ -8895,7 +8833,7 @@ export interface StorageAccountsRegenerateKeyInput {
   keyName: string;
 }
 export const StorageAccountsRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8918,7 +8856,7 @@ export interface StorageAccountsRegenerateKeyOutput {
   }[];
 }
 export const StorageAccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8941,7 +8879,7 @@ export const StorageAccountsRegenerateKeyOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsRegenerateKeyInput,
     outputSchema: StorageAccountsRegenerateKeyOutput,
   }));
@@ -8954,7 +8892,7 @@ export interface StorageAccountsRestoreBlobRangesInput {
   blobRanges: { startRange: string; endRange: string }[];
 }
 export const StorageAccountsRestoreBlobRangesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -8984,7 +8922,7 @@ export interface StorageAccountsRestoreBlobRangesOutput {
   };
 }
 export const StorageAccountsRestoreBlobRangesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["InProgress", "Complete", "Failed"]),
     ),
@@ -9013,7 +8951,7 @@ export const StorageAccountsRestoreBlobRangesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsRestoreBlobRanges =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsRestoreBlobRangesInput,
     outputSchema: StorageAccountsRestoreBlobRangesOutput,
   }));
@@ -9024,7 +8962,7 @@ export interface StorageAccountsRevokeUserDelegationKeysInput {
   accountName: string;
 }
 export const StorageAccountsRevokeUserDelegationKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9039,7 +8977,7 @@ export const StorageAccountsRevokeUserDelegationKeysInput =
 // Output Schema
 export type StorageAccountsRevokeUserDelegationKeysOutput = void;
 export const StorageAccountsRevokeUserDelegationKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsRevokeUserDelegationKeysOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsRevokeUserDelegationKeysOutput>;
 
 // The operation
 /**
@@ -9051,7 +8989,7 @@ export const StorageAccountsRevokeUserDelegationKeysOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageAccountsRevokeUserDelegationKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsRevokeUserDelegationKeysInput,
     outputSchema: StorageAccountsRevokeUserDelegationKeysOutput,
   }));
@@ -9224,7 +9162,7 @@ export interface StorageAccountsUpdateInput {
   placement?: { zonePlacementPolicy?: "Any" | "None" };
 }
 export const StorageAccountsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9574,7 +9512,7 @@ export interface StorageAccountsUpdateOutput {
   };
 }
 export const StorageAccountsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9603,12 +9541,10 @@ export const StorageAccountsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsUpdateInput,
-    outputSchema: StorageAccountsUpdateOutput,
-  }),
-);
+export const StorageAccountsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsUpdateInput,
+  outputSchema: StorageAccountsUpdateOutput,
+}));
 // Input Schema
 export interface StorageTaskAssignmentInstancesReportListInput {
   subscriptionId: string;
@@ -9619,7 +9555,7 @@ export interface StorageTaskAssignmentInstancesReportListInput {
   $filter?: string;
 }
 export const StorageTaskAssignmentInstancesReportListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9652,7 +9588,7 @@ export interface StorageTaskAssignmentInstancesReportListOutput {
   nextLink?: string;
 }
 export const StorageTaskAssignmentInstancesReportListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9700,7 +9636,7 @@ export const StorageTaskAssignmentInstancesReportListOutput =
  * @param $filter - Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
  */
 export const StorageTaskAssignmentInstancesReportList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentInstancesReportListInput,
     outputSchema: StorageTaskAssignmentInstancesReportListOutput,
   }));
@@ -9756,7 +9692,7 @@ export interface StorageTaskAssignmentsCreateInput {
   };
 }
 export const StorageTaskAssignmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9846,7 +9782,7 @@ export interface StorageTaskAssignmentsCreateOutput {
   };
 }
 export const StorageTaskAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9877,7 +9813,7 @@ export const StorageTaskAssignmentsCreateOutput =
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageTaskAssignmentsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentsCreateInput,
     outputSchema: StorageTaskAssignmentsCreateOutput,
   }));
@@ -9889,7 +9825,7 @@ export interface StorageTaskAssignmentsDeleteInput {
   storageTaskAssignmentName: string;
 }
 export const StorageTaskAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9905,7 +9841,7 @@ export const StorageTaskAssignmentsDeleteInput =
 // Output Schema
 export type StorageTaskAssignmentsDeleteOutput = void;
 export const StorageTaskAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -9918,7 +9854,7 @@ export const StorageTaskAssignmentsDeleteOutput =
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageTaskAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentsDeleteInput,
     outputSchema: StorageTaskAssignmentsDeleteOutput,
   }));
@@ -9930,7 +9866,7 @@ export interface StorageTaskAssignmentsGetInput {
   storageTaskAssignmentName: string;
 }
 export const StorageTaskAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -9958,7 +9894,7 @@ export interface StorageTaskAssignmentsGetOutput {
   };
 }
 export const StorageTaskAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9988,12 +9924,10 @@ export const StorageTaskAssignmentsGetOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const StorageTaskAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTaskAssignmentsGetInput,
-    outputSchema: StorageTaskAssignmentsGetOutput,
-  }),
-);
+export const StorageTaskAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsGetInput,
+  outputSchema: StorageTaskAssignmentsGetOutput,
+}));
 // Input Schema
 export interface StorageTaskAssignmentsInstancesReportListInput {
   subscriptionId: string;
@@ -10003,7 +9937,7 @@ export interface StorageTaskAssignmentsInstancesReportListInput {
   $filter?: string;
 }
 export const StorageTaskAssignmentsInstancesReportListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10035,7 +9969,7 @@ export interface StorageTaskAssignmentsInstancesReportListOutput {
   nextLink?: string;
 }
 export const StorageTaskAssignmentsInstancesReportListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10082,7 +10016,7 @@ export const StorageTaskAssignmentsInstancesReportListOutput =
  * @param $filter - Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
  */
 export const StorageTaskAssignmentsInstancesReportList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentsInstancesReportListInput,
     outputSchema: StorageTaskAssignmentsInstancesReportListOutput,
   }));
@@ -10094,7 +10028,7 @@ export interface StorageTaskAssignmentsListInput {
   $top?: number;
 }
 export const StorageTaskAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10125,7 +10059,7 @@ export interface StorageTaskAssignmentsListOutput {
   nextLink?: string;
 }
 export const StorageTaskAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10170,12 +10104,10 @@ export const StorageTaskAssignmentsListOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param $top - Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
  */
-export const StorageTaskAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageTaskAssignmentsListInput,
-    outputSchema: StorageTaskAssignmentsListOutput,
-  }),
-);
+export const StorageTaskAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageTaskAssignmentsListInput,
+  outputSchema: StorageTaskAssignmentsListOutput,
+}));
 // Input Schema
 export interface StorageTaskAssignmentsStopAssignmentInput {
   subscriptionId: string;
@@ -10184,7 +10116,7 @@ export interface StorageTaskAssignmentsStopAssignmentInput {
   storageTaskAssignmentName: string;
 }
 export const StorageTaskAssignmentsStopAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10200,7 +10132,7 @@ export const StorageTaskAssignmentsStopAssignmentInput =
 // Output Schema
 export type StorageTaskAssignmentsStopAssignmentOutput = void;
 export const StorageTaskAssignmentsStopAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsStopAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsStopAssignmentOutput>;
 
 // The operation
 /**
@@ -10213,7 +10145,7 @@ export const StorageTaskAssignmentsStopAssignmentOutput =
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageTaskAssignmentsStopAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentsStopAssignmentInput,
     outputSchema: StorageTaskAssignmentsStopAssignmentOutput,
   }));
@@ -10269,7 +10201,7 @@ export interface StorageTaskAssignmentsUpdateInput {
   };
 }
 export const StorageTaskAssignmentsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10369,7 +10301,7 @@ export interface StorageTaskAssignmentsUpdateOutput {
   };
 }
 export const StorageTaskAssignmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10400,7 +10332,7 @@ export const StorageTaskAssignmentsUpdateOutput =
  * @param storageTaskAssignmentName - The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const StorageTaskAssignmentsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageTaskAssignmentsUpdateInput,
     outputSchema: StorageTaskAssignmentsUpdateOutput,
   }));
@@ -10422,7 +10354,7 @@ export interface TableCreateInput {
     }[];
   };
 }
-export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10468,7 +10400,7 @@ export interface TableCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TableCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10498,7 +10430,7 @@ export const TableCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableCreateInput,
   outputSchema: TableCreateOutput,
 }));
@@ -10509,7 +10441,7 @@ export interface TableDeleteInput {
   accountName: string;
   tableName: string;
 }
-export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10525,7 +10457,7 @@ export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TableDeleteOutput = void;
 export const TableDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TableDeleteOutput>;
 
 // The operation
 /**
@@ -10537,7 +10469,7 @@ export const TableDeleteOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableDeleteInput,
   outputSchema: TableDeleteOutput,
 }));
@@ -10548,7 +10480,7 @@ export interface TableGetInput {
   accountName: string;
   tableName: string;
 }
-export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10575,7 +10507,7 @@ export interface TableGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10605,7 +10537,7 @@ export const TableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableGetInput,
   outputSchema: TableGetOutput,
 }));
@@ -10615,7 +10547,7 @@ export interface TableListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -10644,7 +10576,7 @@ export interface TableListOutput {
   }[];
   nextLink?: string;
 }
-export const TableListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -10678,7 +10610,7 @@ export const TableListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableListInput,
   outputSchema: TableListOutput,
 }));
@@ -10689,7 +10621,7 @@ export interface TableServicesGetServicePropertiesInput {
   accountName: string;
 }
 export const TableServicesGetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10716,7 +10648,7 @@ export interface TableServicesGetServicePropertiesOutput {
   };
 }
 export const TableServicesGetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10746,7 +10678,7 @@ export const TableServicesGetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const TableServicesGetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableServicesGetServicePropertiesInput,
     outputSchema: TableServicesGetServicePropertiesOutput,
   }));
@@ -10756,13 +10688,11 @@ export interface TableServicesListInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const TableServicesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
@@ -10787,7 +10717,7 @@ export interface TableServicesListOutput {
   }[];
 }
 export const TableServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -10832,7 +10762,7 @@ export const TableServicesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
-export const TableServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableServicesListInput,
   outputSchema: TableServicesListOutput,
 }));
@@ -10865,7 +10795,7 @@ export interface TableServicesSetServicePropertiesInput {
   };
 }
 export const TableServicesSetServicePropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -10924,7 +10854,7 @@ export interface TableServicesSetServicePropertiesOutput {
   };
 }
 export const TableServicesSetServicePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10954,7 +10884,7 @@ export const TableServicesSetServicePropertiesOutput =
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  */
 export const TableServicesSetServiceProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TableServicesSetServicePropertiesInput,
     outputSchema: TableServicesSetServicePropertiesOutput,
   }));
@@ -10976,7 +10906,7 @@ export interface TableUpdateInput {
     }[];
   };
 }
-export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -11022,7 +10952,7 @@ export interface TableUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const TableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TableUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11052,7 +10982,7 @@ export const TableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
  * @param tableName - A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
  */
-export const TableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TableUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TableUpdateInput,
   outputSchema: TableUpdateOutput,
 }));
@@ -11062,7 +10992,7 @@ export interface UsagesListByLocationInput {
   location: string;
 }
 export const UsagesListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -11090,7 +11020,7 @@ export interface UsagesListByLocationOutput {
   nextLink?: string;
 }
 export const UsagesListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -11126,9 +11056,7 @@ export const UsagesListByLocationOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const UsagesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsagesListByLocationInput,
-    outputSchema: UsagesListByLocationOutput,
-  }),
-);
+export const UsagesListByLocation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListByLocationInput,
+  outputSchema: UsagesListByLocationOutput,
+}));

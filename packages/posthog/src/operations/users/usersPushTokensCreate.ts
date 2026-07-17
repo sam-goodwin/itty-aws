@@ -9,7 +9,7 @@ export interface UsersPushTokensCreateInput {
   platform: "ios" | "android" | "web";
 }
 export const UsersPushTokensCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     token: Schema.String,
     platform: Schema.Literals(["ios", "android", "web"]),
@@ -25,7 +25,7 @@ export interface UsersPushTokensCreateOutput {
   last_seen_at: string;
 }
 export const UsersPushTokensCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     platform: Schema.Literals(["ios", "android", "web"]),
     created_at: Schema.String,
@@ -38,9 +38,7 @@ export const UsersPushTokensCreateOutput =
  *
  * Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.
  */
-export const usersPushTokensCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersPushTokensCreateInput,
-    outputSchema: UsersPushTokensCreateOutput,
-  }),
-);
+export const usersPushTokensCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersPushTokensCreateInput,
+  outputSchema: UsersPushTokensCreateOutput,
+}));

@@ -10,7 +10,7 @@ export interface MarketingAnalyticsDiagnoseRetrieveInput {
   source_type?: string;
 }
 export const MarketingAnalyticsDiagnoseRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attribution_lookback_days: Schema.optional(Schema.Number),
     include_conversion_goals: Schema.optional(Schema.Boolean),
@@ -107,7 +107,7 @@ export interface MarketingAnalyticsDiagnoseRetrieveOutput {
   }[];
 }
 export const MarketingAnalyticsDiagnoseRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrations: Schema.Array(
       Schema.Struct({
         integration_key: Schema.String,
@@ -227,7 +227,7 @@ export const MarketingAnalyticsDiagnoseRetrieveOutput =
  * @param source_type - Optional integration filter
  */
 export const marketingAnalyticsDiagnoseRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketingAnalyticsDiagnoseRetrieveInput,
     outputSchema: MarketingAnalyticsDiagnoseRetrieveOutput,
   }));

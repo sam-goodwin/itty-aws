@@ -9,7 +9,7 @@ export interface RetrieveCurationSetItemInput {
   itemId: string;
 }
 export const RetrieveCurationSetItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
     itemId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -41,7 +41,7 @@ export interface RetrieveCurationSetItemOutput {
   id: string;
 }
 export const RetrieveCurationSetItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rule: Schema.Struct({
       tags: Schema.optional(Schema.Array(Schema.String)),
       query: Schema.optional(Schema.String),
@@ -84,10 +84,8 @@ export const RetrieveCurationSetItemOutput =
  * @param curationSetName - The name of the curation set
  * @param itemId - The id of the curation item to retrieve
  */
-export const retrieveCurationSetItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveCurationSetItemInput,
-    outputSchema: RetrieveCurationSetItemOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveCurationSetItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveCurationSetItemInput,
+  outputSchema: RetrieveCurationSetItemOutput,
+  errors: [NotFound] as const,
+}));

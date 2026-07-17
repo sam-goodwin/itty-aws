@@ -15,7 +15,7 @@ export interface PostApplicationFeesIdRefundsInput {
   metadata?: Record<string, string>;
 }
 export const PostApplicationFeesIdRefundsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -318,7 +318,7 @@ export interface PostApplicationFeesIdRefundsOutput {
   object: "fee_refund";
 }
 export const PostApplicationFeesIdRefundsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -428,7 +428,7 @@ export const PostApplicationFeesIdRefundsOutput =
  * or when trying to refund more money than is left on an application fee.</p>
  */
 export const PostApplicationFeesIdRefunds =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostApplicationFeesIdRefundsInput,
     outputSchema: PostApplicationFeesIdRefundsOutput,
   }));

@@ -8,7 +8,7 @@ export interface JumpWireWebDataVaultControllershowByNameInput {
   name: string;
 }
 export const JumpWireWebDataVaultControllershowByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/vault/v1/kv/name/{name}" }),
@@ -30,7 +30,7 @@ export interface JumpWireWebDataVaultControllershowByNameOutput {
   value: string;
 }
 export const JumpWireWebDataVaultControllershowByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     metadata: Schema.Struct({
       context: Schema.Record(Schema.String, Schema.String),
@@ -57,7 +57,7 @@ export const JumpWireWebDataVaultControllershowByNameOutput =
  * @param name - Unique name of the object.
  */
 export const JumpWireWebDataVaultControllershowByName =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllershowByNameInput,
     outputSchema: JumpWireWebDataVaultControllershowByNameOutput,
     errors: [BadRequest, NotFound] as const,

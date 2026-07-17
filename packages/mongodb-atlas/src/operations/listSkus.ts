@@ -11,7 +11,7 @@ export interface ListSkusInput {
   pageNum?: number;
   pretty?: boolean;
 }
-export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSkusInput = /*@__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListSkusOutput = void;
 export const ListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListSkusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListSkusOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const ListSkusOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListSkusInput,
   outputSchema: ListSkusOutput,
   errors: [Forbidden] as const,

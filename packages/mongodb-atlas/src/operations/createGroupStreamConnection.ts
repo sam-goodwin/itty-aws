@@ -11,7 +11,7 @@ export interface CreateGroupStreamConnectionInput {
   pretty?: boolean;
 }
 export const CreateGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupStreamConnectionInput =
 // Output Schema
 export type CreateGroupStreamConnectionOutput = void;
 export const CreateGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamConnectionOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const CreateGroupStreamConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const createGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupStreamConnectionInput,
-    outputSchema: CreateGroupStreamConnectionOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupStreamConnectionInput,
+  outputSchema: CreateGroupStreamConnectionOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

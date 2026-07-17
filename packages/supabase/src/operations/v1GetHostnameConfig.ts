@@ -8,7 +8,7 @@ export interface V1GetHostnameConfigInput {
   ref: string;
 }
 export const V1GetHostnameConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/custom-hostname" }),
@@ -43,7 +43,7 @@ export interface V1GetHostnameConfigOutput {
   };
 }
 export const V1GetHostnameConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals([
       "1_not_started",
       "2_initiated",
@@ -93,7 +93,7 @@ export const V1GetHostnameConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetHostnameConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetHostnameConfigInput,
   outputSchema: V1GetHostnameConfigOutput,
   errors: [BadRequest, Forbidden] as const,

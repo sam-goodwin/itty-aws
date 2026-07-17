@@ -36,7 +36,7 @@ export interface ProductSuite {
 }
 
 export const ProductSuite: Schema.Codec<ProductSuite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     replacement: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface LogicalProductVariant {
 }
 
 export const LogicalProductVariant: Schema.Codec<LogicalProductVariant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lifecycleState: Schema.optional(Schema.String),
     replaced: Schema.optional(Schema.Boolean),
@@ -80,7 +80,7 @@ export interface ListLogicalProductVariantsResponse {
 }
 
 export const ListLogicalProductVariantsResponse: Schema.Codec<ListLogicalProductVariantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logicalProductVariants: Schema.optional(
       Schema.Array(LogicalProductVariant),
     ),
@@ -111,7 +111,7 @@ export interface LogicalProduct {
 }
 
 export const LogicalProduct: Schema.Codec<LogicalProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     productSuite: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface LookupEntityResponse {
 }
 
 export const LookupEntityResponse: Schema.Codec<LookupEntityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logicalProduct: Schema.optional(LogicalProduct),
     logicalProductVariant: Schema.optional(LogicalProductVariant),
     productSuite: Schema.optional(ProductSuite),
@@ -145,7 +145,7 @@ export interface ListLogicalProductsResponse {
 }
 
 export const ListLogicalProductsResponse: Schema.Codec<ListLogicalProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logicalProducts: Schema.optional(Schema.Array(LogicalProduct)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLogicalProductsResponse" });
@@ -158,7 +158,7 @@ export interface ListProductSuitesResponse {
 }
 
 export const ListProductSuitesResponse: Schema.Codec<ListProductSuitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     productSuites: Schema.optional(Schema.Array(ProductSuite)),
   }).annotate({ identifier: "ListProductSuitesResponse" });
@@ -204,7 +204,7 @@ export interface ListLogicalProductsRequest {
 }
 
 export const ListLogicalProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -215,7 +215,7 @@ export const ListLogicalProductsRequest =
 
 export type ListLogicalProductsResponse_Op = ListLogicalProductsResponse;
 export const ListLogicalProductsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListLogicalProductsResponse;
+  /*@__PURE__*/ ListLogicalProductsResponse;
 
 export type ListLogicalProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -225,7 +225,7 @@ export const listLogicalProducts: API.PaginatedOperationMethod<
   ListLogicalProductsResponse_Op,
   ListLogicalProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogicalProductsRequest,
   output: ListLogicalProductsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -241,7 +241,7 @@ export interface GetLogicalProductsRequest {
 }
 
 export const GetLogicalProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -249,8 +249,7 @@ export const GetLogicalProductsRequest =
   ) as unknown as Schema.Codec<GetLogicalProductsRequest>;
 
 export type GetLogicalProductsResponse = LogicalProduct;
-export const GetLogicalProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LogicalProduct;
+export const GetLogicalProductsResponse = /*@__PURE__*/ LogicalProduct;
 
 export type GetLogicalProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -260,7 +259,7 @@ export const getLogicalProducts: API.OperationMethod<
   GetLogicalProductsResponse,
   GetLogicalProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogicalProductsRequest,
   output: GetLogicalProductsResponse,
   errors: [NotFound, Forbidden],
@@ -272,7 +271,7 @@ export interface LookupEntityLogicalProductsRequest {
 }
 
 export const LookupEntityLogicalProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lookupUri: Schema.String.pipe(T.HttpPath("lookupUri")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
@@ -281,7 +280,7 @@ export const LookupEntityLogicalProductsRequest =
 
 export type LookupEntityLogicalProductsResponse = LookupEntityResponse;
 export const LookupEntityLogicalProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LookupEntityResponse;
+  /*@__PURE__*/ LookupEntityResponse;
 
 export type LookupEntityLogicalProductsError =
   | DefaultErrors
@@ -294,7 +293,7 @@ export const lookupEntityLogicalProducts: API.OperationMethod<
   LookupEntityLogicalProductsResponse,
   LookupEntityLogicalProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupEntityLogicalProductsRequest,
   output: LookupEntityLogicalProductsResponse,
   errors: [NotFound, Forbidden],
@@ -310,7 +309,7 @@ export interface ListLogicalProductsVariantsRequest {
 }
 
 export const ListLogicalProductsVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -322,7 +321,7 @@ export const ListLogicalProductsVariantsRequest =
 export type ListLogicalProductsVariantsResponse =
   ListLogicalProductVariantsResponse;
 export const ListLogicalProductsVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLogicalProductVariantsResponse;
+  /*@__PURE__*/ ListLogicalProductVariantsResponse;
 
 export type ListLogicalProductsVariantsError =
   | DefaultErrors
@@ -335,7 +334,7 @@ export const listLogicalProductsVariants: API.PaginatedOperationMethod<
   ListLogicalProductsVariantsResponse,
   ListLogicalProductsVariantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogicalProductsVariantsRequest,
   output: ListLogicalProductsVariantsResponse,
   errors: [NotFound, Forbidden],
@@ -351,7 +350,7 @@ export interface GetLogicalProductsVariantsRequest {
 }
 
 export const GetLogicalProductsVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -360,7 +359,7 @@ export const GetLogicalProductsVariantsRequest =
 
 export type GetLogicalProductsVariantsResponse = LogicalProductVariant;
 export const GetLogicalProductsVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LogicalProductVariant;
+  /*@__PURE__*/ LogicalProductVariant;
 
 export type GetLogicalProductsVariantsError =
   | DefaultErrors
@@ -373,7 +372,7 @@ export const getLogicalProductsVariants: API.OperationMethod<
   GetLogicalProductsVariantsResponse,
   GetLogicalProductsVariantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLogicalProductsVariantsRequest,
   output: GetLogicalProductsVariantsResponse,
   errors: [NotFound, Forbidden],
@@ -385,7 +384,7 @@ export interface LookupEntityLogicalProductsVariantsRequest {
 }
 
 export const LookupEntityLogicalProductsVariantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lookupUri: Schema.String.pipe(T.HttpPath("lookupUri")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
@@ -394,7 +393,7 @@ export const LookupEntityLogicalProductsVariantsRequest =
 
 export type LookupEntityLogicalProductsVariantsResponse = LookupEntityResponse;
 export const LookupEntityLogicalProductsVariantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LookupEntityResponse;
+  /*@__PURE__*/ LookupEntityResponse;
 
 export type LookupEntityLogicalProductsVariantsError =
   | DefaultErrors
@@ -407,7 +406,7 @@ export const lookupEntityLogicalProductsVariants: API.OperationMethod<
   LookupEntityLogicalProductsVariantsResponse,
   LookupEntityLogicalProductsVariantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupEntityLogicalProductsVariantsRequest,
   output: LookupEntityLogicalProductsVariantsResponse,
   errors: [NotFound, Forbidden],
@@ -421,7 +420,7 @@ export interface ListProductSuitesRequest {
 }
 
 export const ListProductSuitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
@@ -431,7 +430,7 @@ export const ListProductSuitesRequest =
 
 export type ListProductSuitesResponse_Op = ListProductSuitesResponse;
 export const ListProductSuitesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductSuitesResponse;
+  /*@__PURE__*/ ListProductSuitesResponse;
 
 export type ListProductSuitesError = DefaultErrors | NotFound | Forbidden;
 
@@ -441,7 +440,7 @@ export const listProductSuites: API.PaginatedOperationMethod<
   ListProductSuitesResponse_Op,
   ListProductSuitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductSuitesRequest,
   output: ListProductSuitesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -457,7 +456,7 @@ export interface GetProductSuitesRequest {
 }
 
 export const GetProductSuitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -465,8 +464,7 @@ export const GetProductSuitesRequest =
   ) as unknown as Schema.Codec<GetProductSuitesRequest>;
 
 export type GetProductSuitesResponse = ProductSuite;
-export const GetProductSuitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductSuite;
+export const GetProductSuitesResponse = /*@__PURE__*/ ProductSuite;
 
 export type GetProductSuitesError = DefaultErrors | NotFound | Forbidden;
 
@@ -476,7 +474,7 @@ export const getProductSuites: API.OperationMethod<
   GetProductSuitesResponse,
   GetProductSuitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProductSuitesRequest,
   output: GetProductSuitesResponse,
   errors: [NotFound, Forbidden],
@@ -488,7 +486,7 @@ export interface LookupEntityProductSuitesRequest {
 }
 
 export const LookupEntityProductSuitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lookupUri: Schema.String.pipe(T.HttpPath("lookupUri")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
@@ -497,7 +495,7 @@ export const LookupEntityProductSuitesRequest =
 
 export type LookupEntityProductSuitesResponse = LookupEntityResponse;
 export const LookupEntityProductSuitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LookupEntityResponse;
+  /*@__PURE__*/ LookupEntityResponse;
 
 export type LookupEntityProductSuitesError =
   | DefaultErrors
@@ -510,7 +508,7 @@ export const lookupEntityProductSuites: API.OperationMethod<
   LookupEntityProductSuitesResponse,
   LookupEntityProductSuitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupEntityProductSuitesRequest,
   output: LookupEntityProductSuitesResponse,
   errors: [NotFound, Forbidden],

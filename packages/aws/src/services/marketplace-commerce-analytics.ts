@@ -121,9 +121,9 @@ export type DataSetType =
   | "sales_compensation_billed_revenue"
   | "us_sales_and_use_tax_records"
   | (string & {});
-export const DataSetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DataSetType = /*@__PURE__*/ S.String;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
-export const CustomerDefinedValues = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CustomerDefinedValues = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -136,26 +136,25 @@ export interface GenerateDataSetRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
-export const GenerateDataSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataSetType: DataSetType,
-      dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      roleNameArn: S.String,
-      destinationS3BucketName: S.String,
-      destinationS3Prefix: S.optional(S.String),
-      snsTopicArn: S.String,
-      customerDefinedValues: S.optional(CustomerDefinedValues),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GenerateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSetType: DataSetType,
+    dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    roleNameArn: S.String,
+    destinationS3BucketName: S.String,
+    destinationS3Prefix: S.optional(S.String),
+    snsTopicArn: S.String,
+    customerDefinedValues: S.optional(CustomerDefinedValues),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GenerateDataSetRequest",
 }) as any as S.Schema<GenerateDataSetRequest>;
 export interface GenerateDataSetResult {
   dataSetRequestId?: string;
 }
-export const GenerateDataSetResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GenerateDataSetResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSetRequestId: S.optional(S.String) }),
 ).annotate({
   identifier: "GenerateDataSetResult",
@@ -164,7 +163,7 @@ export type SupportDataSetType =
   | "customer_support_contacts_data"
   | "test_customer_support_contacts_data"
   | (string & {});
-export const SupportDataSetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SupportDataSetType = /*@__PURE__*/ S.String;
 export interface StartSupportDataExportRequest {
   dataSetType: SupportDataSetType;
   fromDate: Date;
@@ -175,7 +174,7 @@ export interface StartSupportDataExportRequest {
   customerDefinedValues?: { [key: string]: string | undefined };
 }
 export const StartSupportDataExportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataSetType: SupportDataSetType,
       fromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -194,7 +193,7 @@ export interface StartSupportDataExportResult {
   dataSetRequestId?: string;
 }
 export const StartSupportDataExportResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dataSetRequestId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartSupportDataExportResult",
@@ -225,7 +224,7 @@ export const generateDataSet: API.OperationMethod<
   GenerateDataSetResult,
   GenerateDataSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateDataSetRequest,
   output: GenerateDataSetResult,
   errors: [MarketplaceCommerceAnalyticsException],
@@ -249,7 +248,7 @@ export const startSupportDataExport: API.OperationMethod<
   StartSupportDataExportResult,
   StartSupportDataExportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartSupportDataExportRequest,
   output: StartSupportDataExportResult,
   errors: [MarketplaceCommerceAnalyticsException],

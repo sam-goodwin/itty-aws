@@ -8,7 +8,7 @@ export interface AddEndUserEvmSmartAccountInput {
   enableSpendPermissions?: boolean;
 }
 export const AddEndUserEvmSmartAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     enableSpendPermissions: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -27,7 +27,7 @@ export interface AddEndUserEvmSmartAccountOutput {
   };
 }
 export const AddEndUserEvmSmartAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     evmSmartAccount: Schema.Struct({
       address: Schema.String,
       ownerAddresses: Schema.Array(Schema.String),
@@ -52,9 +52,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const addEndUserEvmSmartAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddEndUserEvmSmartAccountInput,
-    outputSchema: AddEndUserEvmSmartAccountOutput,
-  }),
-);
+export const addEndUserEvmSmartAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddEndUserEvmSmartAccountInput,
+  outputSchema: AddEndUserEvmSmartAccountOutput,
+}));

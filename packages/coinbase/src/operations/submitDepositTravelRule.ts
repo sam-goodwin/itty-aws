@@ -24,7 +24,7 @@ export interface SubmitDepositTravelRuleInput {
   isSelf?: boolean;
 }
 export const SubmitDepositTravelRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferId: Schema.String.pipe(T.PathParam()),
     originator: Schema.optional(
       Schema.Struct({
@@ -75,7 +75,7 @@ export interface SubmitDepositTravelRuleOutput {
   reason?: string;
 }
 export const SubmitDepositTravelRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals(["incomplete", "completed"]),
     missingFields: Schema.optional(Schema.Array(Schema.String)),
     reason: Schema.optional(Schema.String),
@@ -95,9 +95,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const submitDepositTravelRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubmitDepositTravelRuleInput,
-    outputSchema: SubmitDepositTravelRuleOutput,
-  }),
-);
+export const submitDepositTravelRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubmitDepositTravelRuleInput,
+  outputSchema: SubmitDepositTravelRuleOutput,
+}));

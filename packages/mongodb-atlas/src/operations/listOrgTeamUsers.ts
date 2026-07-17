@@ -16,7 +16,7 @@ export interface ListOrgTeamUsersInput {
   orgMembershipStatuses?: string;
   userId?: string;
 }
-export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgTeamUsersInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -37,7 +37,7 @@ export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListOrgTeamUsersOutput = void;
 export const ListOrgTeamUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgTeamUsersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgTeamUsersOutput>;
 
 // The operation
 /**
@@ -58,7 +58,7 @@ export const ListOrgTeamUsersOutput =
  * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions.
  * @param userId - Unique 24-hexadecimal digit string to filter users by. Not supported in deprecated versions.
  */
-export const listOrgTeamUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgTeamUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgTeamUsersInput,
   outputSchema: ListOrgTeamUsersOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -47,7 +47,7 @@ export interface Document {
 }
 
 export const Document: Schema.Codec<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface DocumentChunk {
 }
 
 export const DocumentChunk: Schema.Codec<DocumentChunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface DocumentReference {
 }
 
 export const DocumentReference: Schema.Codec<DocumentReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentChunk: Schema.optional(DocumentChunk),
   }).annotate({ identifier: "DocumentReference" });
 
@@ -93,7 +93,7 @@ export interface AnswerReference {
 }
 
 export const AnswerReference: Schema.Codec<AnswerReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentReference: Schema.optional(DocumentReference),
   }).annotate({ identifier: "AnswerReference" });
 
@@ -103,7 +103,7 @@ export interface BatchGetDocumentsResponse {
 }
 
 export const BatchGetDocumentsResponse: Schema.Codec<BatchGetDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
@@ -113,7 +113,7 @@ export interface AnswerQueryRequest {
 }
 
 export const AnswerQueryRequest: Schema.Codec<AnswerQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnswerQueryRequest" });
 
@@ -123,7 +123,7 @@ export interface CitationSource {
 }
 
 export const CitationSource: Schema.Codec<CitationSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     referenceIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "CitationSource" });
 
@@ -137,7 +137,7 @@ export interface AnswerCitation {
 }
 
 export const AnswerCitation: Schema.Codec<AnswerCitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     endIndex: Schema.optional(Schema.Number),
     sources: Schema.optional(Schema.Array(CitationSource)),
@@ -153,7 +153,7 @@ export interface Answer {
 }
 
 export const Answer: Schema.Codec<Answer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     citations: Schema.optional(Schema.Array(AnswerCitation)),
     answerText: Schema.optional(Schema.String),
     references: Schema.optional(Schema.Array(AnswerReference)),
@@ -165,7 +165,7 @@ export interface AnswerQueryResponse {
 }
 
 export const AnswerQueryResponse: Schema.Codec<AnswerQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answer: Schema.optional(Answer),
   }).annotate({ identifier: "AnswerQueryResponse" });
 
@@ -177,7 +177,7 @@ export interface SearchDocumentChunksResponse {
 }
 
 export const SearchDocumentChunksResponse: Schema.Codec<SearchDocumentChunksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(DocumentChunk)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchDocumentChunksResponse" });
@@ -249,7 +249,7 @@ export interface BatchGetDocumentsRequest {
 }
 
 export const BatchGetDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("names"),
     ),
@@ -261,7 +261,7 @@ export const BatchGetDocumentsRequest =
 
 export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
+  /*@__PURE__*/ BatchGetDocumentsResponse;
 
 export type BatchGetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -271,7 +271,7 @@ export const batchGetDocuments: API.OperationMethod<
   BatchGetDocumentsResponse_Op,
   BatchGetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetDocumentsRequest,
   output: BatchGetDocumentsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -289,7 +289,7 @@ export interface SearchDocumentChunksDocumentsRequest {
 }
 
 export const SearchDocumentChunksDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -302,7 +302,7 @@ export const SearchDocumentChunksDocumentsRequest =
 export type SearchDocumentChunksDocumentsResponse =
   SearchDocumentChunksResponse;
 export const SearchDocumentChunksDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchDocumentChunksResponse;
+  /*@__PURE__*/ SearchDocumentChunksResponse;
 
 export type SearchDocumentChunksDocumentsError =
   | DefaultErrors
@@ -315,7 +315,7 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   SearchDocumentChunksDocumentsResponse,
   SearchDocumentChunksDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDocumentChunksDocumentsRequest,
   output: SearchDocumentChunksDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -337,7 +337,7 @@ export interface GetDocumentsRequest {
     | (string & {});
 }
 
-export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
@@ -346,7 +346,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
-export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
+export const GetDocumentsResponse = /*@__PURE__*/ Document;
 
 export type GetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -356,7 +356,7 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsResponse,
   GetDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDocumentsRequest,
   output: GetDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -368,7 +368,7 @@ export interface AnswerQueryV1alphaRequest {
 }
 
 export const AnswerQueryV1alphaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AnswerQueryRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha:answerQuery", hasBody: true }),
@@ -376,8 +376,7 @@ export const AnswerQueryV1alphaRequest =
   ) as unknown as Schema.Codec<AnswerQueryV1alphaRequest>;
 
 export type AnswerQueryV1alphaResponse = AnswerQueryResponse;
-export const AnswerQueryV1alphaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnswerQueryResponse;
+export const AnswerQueryV1alphaResponse = /*@__PURE__*/ AnswerQueryResponse;
 
 export type AnswerQueryV1alphaError =
   | DefaultErrors
@@ -392,7 +391,7 @@ export const answerQueryV1alpha: API.OperationMethod<
   AnswerQueryV1alphaResponse,
   AnswerQueryV1alphaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnswerQueryV1alphaRequest,
   output: AnswerQueryV1alphaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

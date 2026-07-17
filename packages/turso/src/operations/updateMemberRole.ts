@@ -9,7 +9,7 @@ export interface UpdateMemberRoleInput {
   username: string;
   role: "admin" | "member" | "viewer";
 }
-export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMemberRoleInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
   role: Schema.Literals(["admin", "member", "viewer"]),
@@ -28,17 +28,15 @@ export interface UpdateMemberRoleOutput {
     role?: "admin" | "member" | "viewer";
   };
 }
-export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    member: Schema.optional(
-      Schema.Struct({
-        username: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<UpdateMemberRoleOutput>;
+export const UpdateMemberRoleOutput = /*@__PURE__*/ Schema.Struct({
+  member: Schema.optional(
+    Schema.Struct({
+      username: Schema.optional(Schema.String),
+      email: Schema.optional(Schema.String),
+      role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
+    }),
+  ),
+}) as unknown as Schema.Codec<UpdateMemberRoleOutput>;
 
 // The operation
 /**
@@ -49,7 +47,7 @@ export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param organizationSlug - The slug of the organization or user account.
  * @param username - The username of a Turso user or organization member.
  */
-export const updateMemberRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateMemberRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateMemberRoleInput,
   outputSchema: UpdateMemberRoleOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export interface DeleteSynonymSetInput {
   synonymSetName: string;
 }
-export const DeleteSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSynonymSetInput = /*@__PURE__*/ Schema.Struct({
   synonymSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/synonym_sets/{synonymSetName}" }),
@@ -17,11 +17,9 @@ export const DeleteSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DeleteSynonymSetOutput {
   name: string;
 }
-export const DeleteSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String,
-  },
-) as unknown as Schema.Codec<DeleteSynonymSetOutput>;
+export const DeleteSynonymSetOutput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String,
+}) as unknown as Schema.Codec<DeleteSynonymSetOutput>;
 
 // The operation
 /**
@@ -31,7 +29,7 @@ export const DeleteSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param synonymSetName - The name of the synonym set to delete
  */
-export const deleteSynonymSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteSynonymSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteSynonymSetInput,
   outputSchema: DeleteSynonymSetOutput,
   errors: [NotFound] as const,

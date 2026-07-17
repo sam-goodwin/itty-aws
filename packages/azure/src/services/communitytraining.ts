@@ -53,7 +53,7 @@ export interface CommunityTrainingsCreateInput {
   location: string;
 }
 export const CommunityTrainingsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
@@ -125,7 +125,7 @@ export interface CommunityTrainingsCreateOutput {
   };
 }
 export const CommunityTrainingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -154,12 +154,10 @@ export const CommunityTrainingsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communityTrainingName - The name of the Community Training Resource
  */
-export const CommunityTrainingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunityTrainingsCreateInput,
-    outputSchema: CommunityTrainingsCreateOutput,
-  }),
-);
+export const CommunityTrainingsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunityTrainingsCreateInput,
+  outputSchema: CommunityTrainingsCreateOutput,
+}));
 // Input Schema
 export interface CommunityTrainingsDeleteInput {
   subscriptionId: string;
@@ -167,7 +165,7 @@ export interface CommunityTrainingsDeleteInput {
   communityTrainingName: string;
 }
 export const CommunityTrainingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
@@ -182,7 +180,7 @@ export const CommunityTrainingsDeleteInput =
 // Output Schema
 export type CommunityTrainingsDeleteOutput = void;
 export const CommunityTrainingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunityTrainingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunityTrainingsDeleteOutput>;
 
 // The operation
 /**
@@ -193,12 +191,10 @@ export const CommunityTrainingsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communityTrainingName - The name of the Community Training Resource
  */
-export const CommunityTrainingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunityTrainingsDeleteInput,
-    outputSchema: CommunityTrainingsDeleteOutput,
-  }),
-);
+export const CommunityTrainingsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunityTrainingsDeleteInput,
+  outputSchema: CommunityTrainingsDeleteOutput,
+}));
 // Input Schema
 export interface CommunityTrainingsGetInput {
   subscriptionId: string;
@@ -206,7 +202,7 @@ export interface CommunityTrainingsGetInput {
   communityTrainingName: string;
 }
 export const CommunityTrainingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
@@ -233,7 +229,7 @@ export interface CommunityTrainingsGetOutput {
   };
 }
 export const CommunityTrainingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -262,19 +258,17 @@ export const CommunityTrainingsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communityTrainingName - The name of the Community Training Resource
  */
-export const CommunityTrainingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunityTrainingsGetInput,
-    outputSchema: CommunityTrainingsGetOutput,
-  }),
-);
+export const CommunityTrainingsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunityTrainingsGetInput,
+  outputSchema: CommunityTrainingsGetOutput,
+}));
 // Input Schema
 export interface CommunityTrainingsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const CommunityTrainingsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -303,7 +297,7 @@ export interface CommunityTrainingsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CommunityTrainingsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -347,7 +341,7 @@ export const CommunityTrainingsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CommunityTrainingsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunityTrainingsListByResourceGroupInput,
     outputSchema: CommunityTrainingsListByResourceGroupOutput,
   }));
@@ -356,7 +350,7 @@ export interface CommunityTrainingsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CommunityTrainingsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -384,7 +378,7 @@ export interface CommunityTrainingsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CommunityTrainingsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -427,7 +421,7 @@ export const CommunityTrainingsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const CommunityTrainingsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunityTrainingsListBySubscriptionInput,
     outputSchema: CommunityTrainingsListBySubscriptionOutput,
   }));
@@ -459,7 +453,7 @@ export interface CommunityTrainingsUpdateInput {
   };
 }
 export const CommunityTrainingsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
@@ -515,7 +509,7 @@ export interface CommunityTrainingsUpdateOutput {
   };
 }
 export const CommunityTrainingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -544,17 +538,13 @@ export const CommunityTrainingsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param communityTrainingName - The name of the Community Training Resource
  */
-export const CommunityTrainingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunityTrainingsUpdateInput,
-    outputSchema: CommunityTrainingsUpdateOutput,
-  }),
-);
+export const CommunityTrainingsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunityTrainingsUpdateInput,
+  outputSchema: CommunityTrainingsUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Community/operations",
@@ -578,7 +568,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -608,7 +598,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

@@ -8,7 +8,7 @@ export interface MachinesSuspendInput {
   app_name: string;
   machine_id: string;
 }
-export const MachinesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesSuspendInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const MachinesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesSuspendOutput = void;
 export const MachinesSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesSuspendOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const MachinesSuspendOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesSuspend = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesSuspendInput,
   outputSchema: MachinesSuspendOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

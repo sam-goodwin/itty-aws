@@ -723,7 +723,7 @@ export interface UsersCancelEmailChangeRequestPartialUpdateInput {
   requires_credential_review?: boolean;
 }
 export const UsersCancelEmailChangeRequestPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1527,11 +1527,11 @@ export const UsersCancelEmailChangeRequestPartialUpdateInput =
 // Output Schema
 export type UsersCancelEmailChangeRequestPartialUpdateOutput = void;
 export const UsersCancelEmailChangeRequestPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersCancelEmailChangeRequestPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersCancelEmailChangeRequestPartialUpdateOutput>;
 
 // The operation
 export const usersCancelEmailChangeRequestPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersCancelEmailChangeRequestPartialUpdateInput,
     outputSchema: UsersCancelEmailChangeRequestPartialUpdateOutput,
     errors: [BadRequest, Forbidden] as const,

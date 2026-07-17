@@ -17,7 +17,7 @@ export interface AccountsCheckNameAvailabilityInput {
   type?: string;
 }
 export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface AccountsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export const AccountsCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsCheckNameAvailabilityInput,
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
@@ -90,7 +90,7 @@ export interface AccountsCreateOrUpdateInput {
   location: string;
 }
 export const AccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -154,7 +154,7 @@ export interface AccountsCreateOrUpdateOutput {
   type?: string;
 }
 export const AccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -169,19 +169,17 @@ export const AccountsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the RecommendationsService Account resource.
  */
-export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsCreateOrUpdateInput,
-    outputSchema: AccountsCreateOrUpdateOutput,
-  }),
-);
+export const AccountsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsCreateOrUpdateInput,
+  outputSchema: AccountsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AccountsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -196,7 +194,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -207,7 +205,7 @@ export const AccountsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the RecommendationsService Account resource.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -217,7 +215,7 @@ export interface AccountsGetInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -235,7 +233,7 @@ export interface AccountsGetOutput {
   name?: string;
   type?: string;
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -250,7 +248,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the RecommendationsService Account resource.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -260,13 +258,11 @@ export interface AccountsGetStatusInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    accountName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AccountsGetStatusInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/status",
@@ -282,7 +278,7 @@ export interface AccountsGetStatusOutput {
   }[];
 }
 export const AccountsGetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopesStatuses: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -310,7 +306,7 @@ export const AccountsGetStatusOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the RecommendationsService Account resource.
  */
-export const AccountsGetStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGetStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetStatusInput,
   outputSchema: AccountsGetStatusOutput,
 }));
@@ -320,7 +316,7 @@ export interface AccountsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -337,7 +333,7 @@ export interface AccountsListByResourceGroupOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -358,18 +354,16 @@ export const AccountsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -385,7 +379,7 @@ export interface AccountsListBySubscriptionOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -405,12 +399,10 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -433,7 +425,7 @@ export interface AccountsUpdateInput {
     reportsConnectionString?: string;
   };
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -479,7 +471,7 @@ export interface AccountsUpdateOutput {
   name?: string;
   type?: string;
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -494,7 +486,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of the RecommendationsService Account resource.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -523,7 +515,7 @@ export interface ModelingCreateOrUpdateInput {
   location: string;
 }
 export const ModelingCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +566,7 @@ export interface ModelingCreateOrUpdateOutput {
   type?: string;
 }
 export const ModelingCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -590,12 +582,10 @@ export const ModelingCreateOrUpdateOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param modelingName - The name of the Modeling resource.
  */
-export const ModelingCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ModelingCreateOrUpdateInput,
-    outputSchema: ModelingCreateOrUpdateOutput,
-  }),
-);
+export const ModelingCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ModelingCreateOrUpdateInput,
+  outputSchema: ModelingCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ModelingDeleteInput {
   subscriptionId: string;
@@ -603,7 +593,7 @@ export interface ModelingDeleteInput {
   accountName: string;
   modelingName: string;
 }
-export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -619,7 +609,7 @@ export const ModelingDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ModelingDeleteOutput = void;
 export const ModelingDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModelingDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ModelingDeleteOutput>;
 
 // The operation
 /**
@@ -631,7 +621,7 @@ export const ModelingDeleteOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param modelingName - The name of the Modeling resource.
  */
-export const ModelingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingDeleteInput,
   outputSchema: ModelingDeleteOutput,
 }));
@@ -642,7 +632,7 @@ export interface ModelingGetInput {
   accountName: string;
   modelingName: string;
 }
-export const ModelingGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -661,7 +651,7 @@ export interface ModelingGetOutput {
   name?: string;
   type?: string;
 }
-export const ModelingGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -677,7 +667,7 @@ export const ModelingGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param modelingName - The name of the Modeling resource.
  */
-export const ModelingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingGetInput,
   outputSchema: ModelingGetOutput,
 }));
@@ -688,7 +678,7 @@ export interface ModelingListByAccountResourceInput {
   accountName: string;
 }
 export const ModelingListByAccountResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -706,7 +696,7 @@ export interface ModelingListByAccountResourceOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const ModelingListByAccountResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -729,7 +719,7 @@ export const ModelingListByAccountResourceOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const ModelingListByAccountResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ModelingListByAccountResourceInput,
     outputSchema: ModelingListByAccountResourceOutput,
   }));
@@ -744,7 +734,7 @@ export interface ModelingUpdateInput {
     inputData?: { connectionString?: string | Redacted.Redacted<string> };
   };
 }
-export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -773,7 +763,7 @@ export interface ModelingUpdateOutput {
   name?: string;
   type?: string;
 }
-export const ModelingUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ModelingUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -789,15 +779,13 @@ export const ModelingUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param modelingName - The name of the Modeling resource.
  */
-export const ModelingUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ModelingUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ModelingUpdateInput,
   outputSchema: ModelingUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RecommendationsService/operations",
@@ -821,7 +809,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -851,7 +839,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -861,7 +849,7 @@ export interface OperationStatusesGetInput {
   operationId: string;
 }
 export const OperationStatusesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -907,7 +895,7 @@ export interface OperationStatusesGetOutput {
   };
 }
 export const OperationStatusesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -971,12 +959,10 @@ export const OperationStatusesGetOutput =
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationStatusesGetInput,
-    outputSchema: OperationStatusesGetOutput,
-  }),
-);
+export const OperationStatusesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusesGetInput,
+  outputSchema: OperationStatusesGetOutput,
+}));
 // Input Schema
 export interface ServiceEndpointsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1001,7 +987,7 @@ export interface ServiceEndpointsCreateOrUpdateInput {
   location: string;
 }
 export const ServiceEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1045,7 +1031,7 @@ export interface ServiceEndpointsCreateOrUpdateOutput {
   type?: string;
 }
 export const ServiceEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1062,7 +1048,7 @@ export const ServiceEndpointsCreateOrUpdateOutput =
  * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
 export const ServiceEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceEndpointsCreateOrUpdateInput,
     outputSchema: ServiceEndpointsCreateOrUpdateOutput,
   }));
@@ -1074,7 +1060,7 @@ export interface ServiceEndpointsDeleteInput {
   serviceEndpointName: string;
 }
 export const ServiceEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1090,7 +1076,7 @@ export const ServiceEndpointsDeleteInput =
 // Output Schema
 export type ServiceEndpointsDeleteOutput = void;
 export const ServiceEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -1102,12 +1088,10 @@ export const ServiceEndpointsDeleteOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
-export const ServiceEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceEndpointsDeleteInput,
-    outputSchema: ServiceEndpointsDeleteOutput,
-  }),
-);
+export const ServiceEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceEndpointsDeleteInput,
+  outputSchema: ServiceEndpointsDeleteOutput,
+}));
 // Input Schema
 export interface ServiceEndpointsGetInput {
   subscriptionId: string;
@@ -1116,7 +1100,7 @@ export interface ServiceEndpointsGetInput {
   serviceEndpointName: string;
 }
 export const ServiceEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1136,7 +1120,7 @@ export interface ServiceEndpointsGetOutput {
   type?: string;
 }
 export const ServiceEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1152,7 +1136,7 @@ export const ServiceEndpointsGetOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
-export const ServiceEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServiceEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceEndpointsGetInput,
   outputSchema: ServiceEndpointsGetOutput,
 }));
@@ -1163,7 +1147,7 @@ export interface ServiceEndpointsListByAccountResourceInput {
   accountName: string;
 }
 export const ServiceEndpointsListByAccountResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1181,7 +1165,7 @@ export interface ServiceEndpointsListByAccountResourceOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const ServiceEndpointsListByAccountResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1204,7 +1188,7 @@ export const ServiceEndpointsListByAccountResourceOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  */
 export const ServiceEndpointsListByAccountResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceEndpointsListByAccountResourceInput,
     outputSchema: ServiceEndpointsListByAccountResourceOutput,
   }));
@@ -1217,7 +1201,7 @@ export interface ServiceEndpointsUpdateInput {
   tags?: Record<string, string>;
 }
 export const ServiceEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1238,7 +1222,7 @@ export interface ServiceEndpointsUpdateOutput {
   type?: string;
 }
 export const ServiceEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1254,9 +1238,7 @@ export const ServiceEndpointsUpdateOutput =
  * @param accountName - The name of the RecommendationsService Account resource.
  * @param serviceEndpointName - The name of the ServiceEndpoint resource.
  */
-export const ServiceEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceEndpointsUpdateInput,
-    outputSchema: ServiceEndpointsUpdateOutput,
-  }),
-);
+export const ServiceEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceEndpointsUpdateInput,
+  outputSchema: ServiceEndpointsUpdateOutput,
+}));

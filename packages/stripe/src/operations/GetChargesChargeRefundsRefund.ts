@@ -14,7 +14,7 @@ export interface GetChargesChargeRefundsRefundInput {
   expand?: string;
 }
 export const GetChargesChargeRefundsRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     charge: Schema.String.pipe(T.PathParam()),
     refund: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -695,7 +695,7 @@ export interface GetChargesChargeRefundsRefundOutput {
     | null;
 }
 export const GetChargesChargeRefundsRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -1043,7 +1043,7 @@ export const GetChargesChargeRefundsRefundOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetChargesChargeRefundsRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetChargesChargeRefundsRefundInput,
     outputSchema: GetChargesChargeRefundsRefundOutput,
   }));

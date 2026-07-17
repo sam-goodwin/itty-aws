@@ -9,7 +9,7 @@ export interface PatchV1BranchesByBranchIdInput {
   isDefault?: boolean | null;
 }
 export const PatchV1BranchesByBranchIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branchId: Schema.String.pipe(T.PathParam()),
     isDefault: Schema.optional(Schema.NullOr(Schema.Boolean)),
   }).pipe(
@@ -31,7 +31,7 @@ export interface PatchV1BranchesByBranchIdOutput {
   };
 }
 export const PatchV1BranchesByBranchIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -56,10 +56,8 @@ export const PatchV1BranchesByBranchIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Promotes a Branch to be the Project's default. Only isDefault is mutable — gitName rename and role changes are rejected.
  */
-export const patchV1BranchesByBranchId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchV1BranchesByBranchIdInput,
-    outputSchema: PatchV1BranchesByBranchIdOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const patchV1BranchesByBranchId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchV1BranchesByBranchIdInput,
+  outputSchema: PatchV1BranchesByBranchIdOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

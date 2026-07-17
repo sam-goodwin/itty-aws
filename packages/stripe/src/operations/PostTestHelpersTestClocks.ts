@@ -10,7 +10,7 @@ export interface PostTestHelpersTestClocksInput {
   name?: string;
 }
 export const PostTestHelpersTestClocksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
     frozen_time: Schema.Number,
@@ -36,7 +36,7 @@ export interface PostTestHelpersTestClocksOutput {
   status_details: { advancing?: { target_frozen_time: number } };
 }
 export const PostTestHelpersTestClocksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deletes_after: Schema.Number,
     frozen_time: Schema.Number,
@@ -60,9 +60,7 @@ export const PostTestHelpersTestClocksOutput =
  *
  * <p>Creates a new test clock that can be attached to new customers and quotes.</p>
  */
-export const PostTestHelpersTestClocks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTestHelpersTestClocksInput,
-    outputSchema: PostTestHelpersTestClocksOutput,
-  }),
-);
+export const PostTestHelpersTestClocks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTestHelpersTestClocksInput,
+  outputSchema: PostTestHelpersTestClocksOutput,
+}));

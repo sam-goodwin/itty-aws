@@ -9,7 +9,7 @@ export interface GetDatabaseThrottlerInput {
   database: string;
 }
 export const GetDatabaseThrottlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const GetDatabaseThrottlerInput =
 
 // Output Schema
 export interface GetDatabaseThrottlerOutput {
-  keyspaces: string[];
+  keyspaces: ReadonlyArray<string>;
   configurable: {
     id: string;
     name: string;
@@ -29,10 +29,10 @@ export interface GetDatabaseThrottlerOutput {
     updated_at: string;
     deleted_at: string | null;
   };
-  configurations: { keyspace_name: string; ratio: number }[];
+  configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const GetDatabaseThrottlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
     configurable: Schema.Struct({
       id: Schema.String,
@@ -56,10 +56,8 @@ export const GetDatabaseThrottlerOutput =
  * @param organization - The name of the organization that the throttled deploy requests belong to
  * @param database - The name of the database that the throttled deploy requests belong to
  */
-export const getDatabaseThrottler = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDatabaseThrottlerInput,
-    outputSchema: GetDatabaseThrottlerOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getDatabaseThrottler = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDatabaseThrottlerInput,
+  outputSchema: GetDatabaseThrottlerOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

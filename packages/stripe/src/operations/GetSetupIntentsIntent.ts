@@ -14,7 +14,7 @@ export interface GetSetupIntentsIntentInput {
   expand?: string;
 }
 export const GetSetupIntentsIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     client_secret: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -505,7 +505,7 @@ export interface GetSetupIntentsIntentOutput {
   usage: string;
 }
 export const GetSetupIntentsIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -692,9 +692,7 @@ export const GetSetupIntentsIntentOutput =
  * @param client_secret - The client secret of the SetupIntent. We require this string if you use a publishable key to retrieve the SetupIntent.
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetSetupIntentsIntent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSetupIntentsIntentInput,
-    outputSchema: GetSetupIntentsIntentOutput,
-  }),
-);
+export const GetSetupIntentsIntent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSetupIntentsIntentInput,
+  outputSchema: GetSetupIntentsIntentOutput,
+}));

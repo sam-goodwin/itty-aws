@@ -10,7 +10,7 @@ export interface GetNeonAuthPluginConfigsInput {
   branch_id: string;
 }
 export const GetNeonAuthPluginConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -63,7 +63,7 @@ export interface GetNeonAuthPluginConfigsOutput {
   allow_localhost?: boolean;
 }
 export const GetNeonAuthPluginConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.optional(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -137,9 +137,7 @@ export const GetNeonAuthPluginConfigsOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const getNeonAuthPluginConfigs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNeonAuthPluginConfigsInput,
-    outputSchema: GetNeonAuthPluginConfigsOutput,
-  }),
-);
+export const getNeonAuthPluginConfigs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNeonAuthPluginConfigsInput,
+  outputSchema: GetNeonAuthPluginConfigsOutput,
+}));

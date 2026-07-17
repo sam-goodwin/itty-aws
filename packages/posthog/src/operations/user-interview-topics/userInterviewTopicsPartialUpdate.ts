@@ -37,7 +37,7 @@ export interface UserInterviewTopicsPartialUpdateInput {
   invite_message?: string;
 }
 export const UserInterviewTopicsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_by: Schema.optional(
@@ -120,7 +120,7 @@ export interface UserInterviewTopicsPartialUpdateOutput {
   invite_message?: string;
 }
 export const UserInterviewTopicsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_by: Schema.Struct({
       id: Schema.optional(Schema.Number),
@@ -169,7 +169,7 @@ export const UserInterviewTopicsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const userInterviewTopicsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserInterviewTopicsPartialUpdateInput,
     outputSchema: UserInterviewTopicsPartialUpdateOutput,
   }));

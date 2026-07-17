@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetEndUserInput {
   userId: string;
 }
-export const GetEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEndUserInput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/end-users/{userId}" }),
@@ -54,7 +54,7 @@ export interface GetEndUserOutput {
   solanaAccountObjects: { address: string; createdAt: string }[];
   createdAt: string;
 }
-export const GetEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEndUserOutput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String,
   authenticationMethods: Schema.Array(
     Schema.Union([
@@ -142,7 +142,7 @@ export const GetEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param userId - The ID of the end user to get.
  */
-export const getEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEndUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEndUserInput,
   outputSchema: GetEndUserOutput,
 }));

@@ -9,7 +9,7 @@ export interface V1DeleteInviteExternalJitAccessInput {
   invite_id: string;
 }
 export const V1DeleteInviteExternalJitAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     invite_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const V1DeleteInviteExternalJitAccessInput =
 // Output Schema
 export type V1DeleteInviteExternalJitAccessOutput = void;
 export const V1DeleteInviteExternalJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteInviteExternalJitAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteInviteExternalJitAccessOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const V1DeleteInviteExternalJitAccessOutput =
  * @param ref - Project ref
  */
 export const v1DeleteInviteExternalJitAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1DeleteInviteExternalJitAccessInput,
     outputSchema: V1DeleteInviteExternalJitAccessOutput,
     errors: [Forbidden] as const,

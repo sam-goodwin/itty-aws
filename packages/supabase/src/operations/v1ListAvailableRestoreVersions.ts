@@ -8,7 +8,7 @@ export interface V1ListAvailableRestoreVersionsInput {
   ref: string;
 }
 export const V1ListAvailableRestoreVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/restore" }),
@@ -29,7 +29,7 @@ export interface V1ListAvailableRestoreVersionsOutput {
   }[];
 }
 export const V1ListAvailableRestoreVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available_versions: Schema.Array(
       Schema.Struct({
         version: Schema.String,
@@ -53,7 +53,7 @@ export const V1ListAvailableRestoreVersionsOutput =
  * @param ref - Project ref
  */
 export const v1ListAvailableRestoreVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1ListAvailableRestoreVersionsInput,
     outputSchema: V1ListAvailableRestoreVersionsOutput,
     errors: [BadRequest, Forbidden] as const,

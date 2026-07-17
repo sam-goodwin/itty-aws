@@ -18,7 +18,7 @@ export interface ListBackupsInput {
   page?: number;
   per_page?: number;
 }
-export const ListBackupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBackupsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -55,7 +55,7 @@ export interface ListBackupsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     state:
@@ -77,13 +77,13 @@ export interface ListBackupsOutput {
     uncompressed_size: number;
     protected: boolean;
     required: boolean;
-    restored_branches: {
+    restored_branches: ReadonlyArray<{
       id: string;
       name: string;
       created_at: string;
       updated_at: string;
       deleted_at: string | null;
-    }[];
+    }>;
     actor: { id: string; display_name: string; avatar_url: string } | null;
     backup_policy?: {
       id: string;
@@ -118,9 +118,9 @@ export interface ListBackupsOutput {
       updated_at: string;
       deleted_at: string | null;
     } | null;
-  }[];
+  }>;
 }
-export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListBackupsOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -233,16 +233,14 @@ export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBackups = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBackupsInput,
-    outputSchema: ListBackupsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBackups = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBackupsInput,
+  outputSchema: ListBackupsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

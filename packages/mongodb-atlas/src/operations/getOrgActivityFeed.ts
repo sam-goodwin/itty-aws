@@ -12,7 +12,7 @@ export interface GetOrgActivityFeedInput {
   minDate?: string;
 }
 export const GetOrgActivityFeedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.Boolean),
     eventType: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export const GetOrgActivityFeedInput =
 // Output Schema
 export type GetOrgActivityFeedOutput = void;
 export const GetOrgActivityFeedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgActivityFeedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgActivityFeedOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const GetOrgActivityFeedOutput =
  * @param maxDate - End date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  * @param minDate - Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  */
-export const getOrgActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgActivityFeed = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgActivityFeedInput,
   outputSchema: GetOrgActivityFeedOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

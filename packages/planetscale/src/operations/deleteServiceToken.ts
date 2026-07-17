@@ -9,7 +9,7 @@ export interface DeleteServiceTokenInput {
   id: string;
 }
 export const DeleteServiceTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const DeleteServiceTokenInput =
 // Output Schema
 export type DeleteServiceTokenOutput = void;
 export const DeleteServiceTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteServiceTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteServiceTokenOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const DeleteServiceTokenOutput =
  * @param organization - The name of the organization
  * @param id - The ID of the service token
  */
-export const deleteServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteServiceTokenInput,
   outputSchema: DeleteServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

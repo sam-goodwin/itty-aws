@@ -20,7 +20,7 @@ export interface BackupInstancesAdhocBackupInput {
   };
 }
 export const BackupInstancesAdhocBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -44,7 +44,7 @@ export interface BackupInstancesAdhocBackupOutput {
   objectType: string;
 }
 export const BackupInstancesAdhocBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesAdhocBackupOutput>;
 
@@ -58,12 +58,10 @@ export const BackupInstancesAdhocBackupOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
-export const BackupInstancesAdhocBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupInstancesAdhocBackupInput,
-    outputSchema: BackupInstancesAdhocBackupOutput,
-  }),
-);
+export const BackupInstancesAdhocBackup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupInstancesAdhocBackupInput,
+  outputSchema: BackupInstancesAdhocBackupOutput,
+}));
 // Input Schema
 export interface BackupInstancesCreateOrUpdateInput {
   subscriptionId: string;
@@ -168,7 +166,7 @@ export interface BackupInstancesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const BackupInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -354,7 +352,7 @@ export interface BackupInstancesCreateOrUpdateOutput {
   };
 }
 export const BackupInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -385,7 +383,7 @@ export const BackupInstancesCreateOrUpdateOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesCreateOrUpdateInput,
     outputSchema: BackupInstancesCreateOrUpdateOutput,
   }));
@@ -397,7 +395,7 @@ export interface BackupInstancesDeleteInput {
   backupInstanceName: string;
 }
 export const BackupInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -413,7 +411,7 @@ export const BackupInstancesDeleteInput =
 // Output Schema
 export type BackupInstancesDeleteOutput = void;
 export const BackupInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -425,18 +423,16 @@ export const BackupInstancesDeleteOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
-export const BackupInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupInstancesDeleteInput,
-    outputSchema: BackupInstancesDeleteOutput,
-  }),
-);
+export const BackupInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupInstancesDeleteInput,
+  outputSchema: BackupInstancesDeleteOutput,
+}));
 // Input Schema
 export interface BackupInstancesExtensionRoutingListInput {
   resourceId: string;
 }
 export const BackupInstancesExtensionRoutingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -451,7 +447,7 @@ export interface BackupInstancesExtensionRoutingListOutput {
   nextLink?: string;
 }
 export const BackupInstancesExtensionRoutingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BackupInstancesExtensionRoutingListOutput>;
 
@@ -463,7 +459,7 @@ export const BackupInstancesExtensionRoutingListOutput =
  * @param resourceId - ARM path of the resource to be protected using Microsoft.DataProtection
  */
 export const BackupInstancesExtensionRoutingList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesExtensionRoutingListInput,
     outputSchema: BackupInstancesExtensionRoutingListOutput,
   }));
@@ -475,7 +471,7 @@ export interface BackupInstancesGetInput {
   backupInstanceName: string;
 }
 export const BackupInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -503,7 +499,7 @@ export interface BackupInstancesGetOutput {
   };
 }
 export const BackupInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -533,7 +529,7 @@ export const BackupInstancesGetOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
-export const BackupInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupInstancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupInstancesGetInput,
   outputSchema: BackupInstancesGetOutput,
 }));
@@ -546,7 +542,7 @@ export interface BackupInstancesGetBackupInstanceOperationResultInput {
   operationId: string;
 }
 export const BackupInstancesGetBackupInstanceOperationResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -575,7 +571,7 @@ export interface BackupInstancesGetBackupInstanceOperationResultOutput {
   };
 }
 export const BackupInstancesGetBackupInstanceOperationResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -607,7 +603,7 @@ export const BackupInstancesGetBackupInstanceOperationResultOutput =
  * @param operationId - The name of the BackupInstanceResource
  */
 export const BackupInstancesGetBackupInstanceOperationResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesGetBackupInstanceOperationResultInput,
     outputSchema: BackupInstancesGetBackupInstanceOperationResultOutput,
   }));
@@ -618,7 +614,7 @@ export interface BackupInstancesListInput {
   vaultName: string;
 }
 export const BackupInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -635,7 +631,7 @@ export interface BackupInstancesListOutput {
   nextLink?: string;
 }
 export const BackupInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BackupInstancesListOutput>;
 
@@ -648,7 +644,7 @@ export const BackupInstancesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const BackupInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupInstancesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupInstancesListInput,
   outputSchema: BackupInstancesListOutput,
 }));
@@ -660,7 +656,7 @@ export interface BackupInstancesResumeBackupsInput {
   backupInstanceName: string;
 }
 export const BackupInstancesResumeBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -676,7 +672,7 @@ export const BackupInstancesResumeBackupsInput =
 // Output Schema
 export type BackupInstancesResumeBackupsOutput = void;
 export const BackupInstancesResumeBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesResumeBackupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesResumeBackupsOutput>;
 
 // The operation
 /**
@@ -689,7 +685,7 @@ export const BackupInstancesResumeBackupsOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesResumeBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesResumeBackupsInput,
     outputSchema: BackupInstancesResumeBackupsOutput,
   }));
@@ -701,7 +697,7 @@ export interface BackupInstancesResumeProtectionInput {
   backupInstanceName: string;
 }
 export const BackupInstancesResumeProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -717,7 +713,7 @@ export const BackupInstancesResumeProtectionInput =
 // Output Schema
 export type BackupInstancesResumeProtectionOutput = void;
 export const BackupInstancesResumeProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesResumeProtectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesResumeProtectionOutput>;
 
 // The operation
 /**
@@ -730,7 +726,7 @@ export const BackupInstancesResumeProtectionOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesResumeProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesResumeProtectionInput,
     outputSchema: BackupInstancesResumeProtectionOutput,
   }));
@@ -743,7 +739,7 @@ export interface BackupInstancesStopProtectionInput {
   resourceGuardOperationRequests?: string[];
 }
 export const BackupInstancesStopProtectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -762,7 +758,7 @@ export const BackupInstancesStopProtectionInput =
 // Output Schema
 export type BackupInstancesStopProtectionOutput = void;
 export const BackupInstancesStopProtectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesStopProtectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesStopProtectionOutput>;
 
 // The operation
 /**
@@ -775,7 +771,7 @@ export const BackupInstancesStopProtectionOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesStopProtection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesStopProtectionInput,
     outputSchema: BackupInstancesStopProtectionOutput,
   }));
@@ -788,7 +784,7 @@ export interface BackupInstancesSuspendBackupsInput {
   resourceGuardOperationRequests?: string[];
 }
 export const BackupInstancesSuspendBackupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -807,7 +803,7 @@ export const BackupInstancesSuspendBackupsInput =
 // Output Schema
 export type BackupInstancesSuspendBackupsOutput = void;
 export const BackupInstancesSuspendBackupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesSuspendBackupsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesSuspendBackupsOutput>;
 
 // The operation
 /**
@@ -820,7 +816,7 @@ export const BackupInstancesSuspendBackupsOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesSuspendBackups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesSuspendBackupsInput,
     outputSchema: BackupInstancesSuspendBackupsOutput,
   }));
@@ -833,7 +829,7 @@ export interface BackupInstancesSyncBackupInstanceInput {
   syncType?: "Default" | "ForceResync";
 }
 export const BackupInstancesSyncBackupInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -850,7 +846,7 @@ export const BackupInstancesSyncBackupInstanceInput =
 // Output Schema
 export type BackupInstancesSyncBackupInstanceOutput = void;
 export const BackupInstancesSyncBackupInstanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesSyncBackupInstanceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesSyncBackupInstanceOutput>;
 
 // The operation
 /**
@@ -864,7 +860,7 @@ export const BackupInstancesSyncBackupInstanceOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesSyncBackupInstance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesSyncBackupInstanceInput,
     outputSchema: BackupInstancesSyncBackupInstanceOutput,
   }));
@@ -898,7 +894,7 @@ export interface BackupInstancesTriggerCrossRegionRestoreInput {
   };
 }
 export const BackupInstancesTriggerCrossRegionRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -943,7 +939,7 @@ export interface BackupInstancesTriggerCrossRegionRestoreOutput {
   objectType: string;
 }
 export const BackupInstancesTriggerCrossRegionRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesTriggerCrossRegionRestoreOutput>;
 
@@ -957,7 +953,7 @@ export const BackupInstancesTriggerCrossRegionRestoreOutput =
  * @param location - The name of the Azure region.
  */
 export const BackupInstancesTriggerCrossRegionRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesTriggerCrossRegionRestoreInput,
     outputSchema: BackupInstancesTriggerCrossRegionRestoreOutput,
   }));
@@ -972,7 +968,7 @@ export interface BackupInstancesTriggerRehydrateInput {
   rehydrationRetentionDuration: string;
 }
 export const BackupInstancesTriggerRehydrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -993,7 +989,7 @@ export const BackupInstancesTriggerRehydrateInput =
 // Output Schema
 export type BackupInstancesTriggerRehydrateOutput = void;
 export const BackupInstancesTriggerRehydrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesTriggerRehydrateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesTriggerRehydrateOutput>;
 
 // The operation
 /**
@@ -1006,7 +1002,7 @@ export const BackupInstancesTriggerRehydrateOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesTriggerRehydrate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesTriggerRehydrateInput,
     outputSchema: BackupInstancesTriggerRehydrateOutput,
   }));
@@ -1035,7 +1031,7 @@ export interface BackupInstancesTriggerRestoreInput {
   };
 }
 export const BackupInstancesTriggerRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1075,7 +1071,7 @@ export interface BackupInstancesTriggerRestoreOutput {
   objectType: string;
 }
 export const BackupInstancesTriggerRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesTriggerRestoreOutput>;
 
@@ -1090,7 +1086,7 @@ export const BackupInstancesTriggerRestoreOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesTriggerRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesTriggerRestoreInput,
     outputSchema: BackupInstancesTriggerRestoreOutput,
   }));
@@ -1124,7 +1120,7 @@ export interface BackupInstancesValidateCrossRegionRestoreInput {
   };
 }
 export const BackupInstancesValidateCrossRegionRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -1169,7 +1165,7 @@ export interface BackupInstancesValidateCrossRegionRestoreOutput {
   objectType: string;
 }
 export const BackupInstancesValidateCrossRegionRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesValidateCrossRegionRestoreOutput>;
 
@@ -1183,7 +1179,7 @@ export const BackupInstancesValidateCrossRegionRestoreOutput =
  * @param location - The name of the Azure region.
  */
 export const BackupInstancesValidateCrossRegionRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesValidateCrossRegionRestoreInput,
     outputSchema: BackupInstancesValidateCrossRegionRestoreOutput,
   }));
@@ -1289,7 +1285,7 @@ export interface BackupInstancesValidateForBackupInput {
   };
 }
 export const BackupInstancesValidateForBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1461,7 +1457,7 @@ export interface BackupInstancesValidateForBackupOutput {
   objectType: string;
 }
 export const BackupInstancesValidateForBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesValidateForBackupOutput>;
 
@@ -1475,7 +1471,7 @@ export const BackupInstancesValidateForBackupOutput =
  * @param vaultName - The name of the BackupVaultResource
  */
 export const BackupInstancesValidateForBackup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesValidateForBackupInput,
     outputSchema: BackupInstancesValidateForBackupOutput,
   }));
@@ -1582,7 +1578,7 @@ export interface BackupInstancesValidateForModifyBackupInput {
   };
 }
 export const BackupInstancesValidateForModifyBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1753,7 +1749,7 @@ export const BackupInstancesValidateForModifyBackupInput =
 // Output Schema
 export type BackupInstancesValidateForModifyBackupOutput = void;
 export const BackupInstancesValidateForModifyBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesValidateForModifyBackupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupInstancesValidateForModifyBackupOutput>;
 
 // The operation
 /**
@@ -1766,7 +1762,7 @@ export const BackupInstancesValidateForModifyBackupOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesValidateForModifyBackup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesValidateForModifyBackupInput,
     outputSchema: BackupInstancesValidateForModifyBackupOutput,
   }));
@@ -1797,7 +1793,7 @@ export interface BackupInstancesValidateForRestoreInput {
   };
 }
 export const BackupInstancesValidateForRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1839,7 +1835,7 @@ export interface BackupInstancesValidateForRestoreOutput {
   objectType: string;
 }
 export const BackupInstancesValidateForRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<BackupInstancesValidateForRestoreOutput>;
 
@@ -1854,7 +1850,7 @@ export const BackupInstancesValidateForRestoreOutput =
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
 export const BackupInstancesValidateForRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupInstancesValidateForRestoreInput,
     outputSchema: BackupInstancesValidateForRestoreOutput,
   }));
@@ -1867,7 +1863,7 @@ export interface BackupPoliciesCreateOrUpdateInput {
   properties?: { datasourceTypes: string[]; objectType: string };
 }
 export const BackupPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1901,7 +1897,7 @@ export interface BackupPoliciesCreateOrUpdateOutput {
   };
 }
 export const BackupPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1931,7 +1927,7 @@ export const BackupPoliciesCreateOrUpdateOutput =
  * @param vaultName - The name of the backup vault.
  */
 export const BackupPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupPoliciesCreateOrUpdateInput,
     outputSchema: BackupPoliciesCreateOrUpdateOutput,
   }));
@@ -1943,7 +1939,7 @@ export interface BackupPoliciesDeleteInput {
   backupPolicyName: string;
 }
 export const BackupPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1959,7 +1955,7 @@ export const BackupPoliciesDeleteInput =
 // Output Schema
 export type BackupPoliciesDeleteOutput = void;
 export const BackupPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1970,12 +1966,10 @@ export const BackupPoliciesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const BackupPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupPoliciesDeleteInput,
-    outputSchema: BackupPoliciesDeleteOutput,
-  }),
-);
+export const BackupPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupPoliciesDeleteInput,
+  outputSchema: BackupPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface BackupPoliciesGetInput {
   subscriptionId: string;
@@ -1983,14 +1977,12 @@ export interface BackupPoliciesGetInput {
   vaultName: string;
   backupPolicyName: string;
 }
-export const BackupPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    backupPolicyName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const BackupPoliciesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  backupPolicyName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
@@ -2013,7 +2005,7 @@ export interface BackupPoliciesGetOutput {
   };
 }
 export const BackupPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2042,7 +2034,7 @@ export const BackupPoliciesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const BackupPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupPoliciesGetInput,
   outputSchema: BackupPoliciesGetOutput,
 }));
@@ -2053,7 +2045,7 @@ export interface BackupPoliciesListInput {
   vaultName: string;
 }
 export const BackupPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2070,7 +2062,7 @@ export interface BackupPoliciesListOutput {
   nextLink?: string;
 }
 export const BackupPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BackupPoliciesListOutput>;
 
@@ -2083,7 +2075,7 @@ export const BackupPoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const BackupPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupPoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupPoliciesListInput,
   outputSchema: BackupPoliciesListOutput,
 }));
@@ -2095,7 +2087,7 @@ export interface BackupVaultOperationResultsGetInput {
   operationId: string;
 }
 export const BackupVaultOperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2123,7 +2115,7 @@ export interface BackupVaultOperationResultsGetOutput {
   };
 }
 export const BackupVaultOperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2154,7 +2146,7 @@ export const BackupVaultOperationResultsGetOutput =
  * @param operationId - The name of the BackupVaultResource
  */
 export const BackupVaultOperationResultsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupVaultOperationResultsGetInput,
     outputSchema: BackupVaultOperationResultsGetOutput,
   }));
@@ -2167,7 +2159,7 @@ export interface BackupVaultsCheckNameAvailabilityInput {
   type?: string;
 }
 export const BackupVaultsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -2188,7 +2180,7 @@ export interface BackupVaultsCheckNameAvailabilityOutput {
   reason?: string;
 }
 export const BackupVaultsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
@@ -2204,7 +2196,7 @@ export const BackupVaultsCheckNameAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const BackupVaultsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupVaultsCheckNameAvailabilityInput,
     outputSchema: BackupVaultsCheckNameAvailabilityOutput,
   }));
@@ -2289,7 +2281,7 @@ export interface BackupVaultsCreateOrUpdateInput {
   location: string;
 }
 export const BackupVaultsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2475,7 +2467,7 @@ export interface BackupVaultsCreateOrUpdateOutput {
   };
 }
 export const BackupVaultsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2505,12 +2497,10 @@ export const BackupVaultsCreateOrUpdateOutput =
  * @param vaultName - The name of the BackupVaultResource
  * @param x-ms-deleted-vault-id - The ID of the deleted backup vault to restore from during undelete flow.
  */
-export const BackupVaultsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BackupVaultsCreateOrUpdateInput,
-    outputSchema: BackupVaultsCreateOrUpdateOutput,
-  }),
-);
+export const BackupVaultsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BackupVaultsCreateOrUpdateInput,
+  outputSchema: BackupVaultsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BackupVaultsDeleteInput {
   subscriptionId: string;
@@ -2518,7 +2508,7 @@ export interface BackupVaultsDeleteInput {
   vaultName: string;
 }
 export const BackupVaultsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2533,7 +2523,7 @@ export const BackupVaultsDeleteInput =
 // Output Schema
 export type BackupVaultsDeleteOutput = void;
 export const BackupVaultsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupVaultsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupVaultsDeleteOutput>;
 
 // The operation
 /**
@@ -2544,7 +2534,7 @@ export const BackupVaultsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the BackupVaultResource
  */
-export const BackupVaultsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsDeleteInput,
   outputSchema: BackupVaultsDeleteOutput,
 }));
@@ -2554,7 +2544,7 @@ export interface BackupVaultsGetInput {
   resourceGroupName: string;
   vaultName: string;
 }
-export const BackupVaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupVaultsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -2580,7 +2570,7 @@ export interface BackupVaultsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BackupVaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BackupVaultsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2609,7 +2599,7 @@ export const BackupVaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the BackupVaultResource
  */
-export const BackupVaultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsGetInput,
   outputSchema: BackupVaultsGetOutput,
 }));
@@ -2619,7 +2609,7 @@ export interface BackupVaultsGetInResourceGroupInput {
   resourceGroupName: string;
 }
 export const BackupVaultsGetInResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2635,7 +2625,7 @@ export interface BackupVaultsGetInResourceGroupOutput {
   nextLink?: string;
 }
 export const BackupVaultsGetInResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BackupVaultsGetInResourceGroupOutput>;
 
@@ -2648,7 +2638,7 @@ export const BackupVaultsGetInResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const BackupVaultsGetInResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupVaultsGetInResourceGroupInput,
     outputSchema: BackupVaultsGetInResourceGroupOutput,
   }));
@@ -2657,7 +2647,7 @@ export interface BackupVaultsGetInSubscriptionInput {
   subscriptionId: string;
 }
 export const BackupVaultsGetInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2672,7 +2662,7 @@ export interface BackupVaultsGetInSubscriptionOutput {
   nextLink?: string;
 }
 export const BackupVaultsGetInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<BackupVaultsGetInSubscriptionOutput>;
 
@@ -2684,7 +2674,7 @@ export const BackupVaultsGetInSubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const BackupVaultsGetInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BackupVaultsGetInSubscriptionInput,
     outputSchema: BackupVaultsGetInSubscriptionOutput,
   }));
@@ -2735,7 +2725,7 @@ export interface BackupVaultsUpdateInput {
   tags?: Record<string, string>;
 }
 export const BackupVaultsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -2861,7 +2851,7 @@ export interface BackupVaultsUpdateOutput {
   };
 }
 export const BackupVaultsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2890,7 +2880,7 @@ export const BackupVaultsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the BackupVaultResource
  */
-export const BackupVaultsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BackupVaultsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: BackupVaultsUpdateInput,
   outputSchema: BackupVaultsUpdateOutput,
 }));
@@ -2901,7 +2891,7 @@ export interface DataProtectionCheckFeatureSupportInput {
   objectType: string;
 }
 export const DataProtectionCheckFeatureSupportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     objectType: Schema.String,
@@ -2918,7 +2908,7 @@ export interface DataProtectionCheckFeatureSupportOutput {
   objectType: string;
 }
 export const DataProtectionCheckFeatureSupportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<DataProtectionCheckFeatureSupportOutput>;
 
@@ -2931,14 +2921,14 @@ export const DataProtectionCheckFeatureSupportOutput =
  * @param location - The name of the Azure region.
  */
 export const DataProtectionCheckFeatureSupport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataProtectionCheckFeatureSupportInput,
     outputSchema: DataProtectionCheckFeatureSupportOutput,
   }));
 // Input Schema
 export interface DataProtectionOperationsListInput {}
 export const DataProtectionOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.DataProtection/operations",
@@ -2963,7 +2953,7 @@ export interface DataProtectionOperationsListOutput {
   nextLink?: string;
 }
 export const DataProtectionOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2994,7 +2984,7 @@ export const DataProtectionOperationsListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DataProtectionOperationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataProtectionOperationsListInput,
     outputSchema: DataProtectionOperationsListOutput,
   }));
@@ -3006,7 +2996,7 @@ export interface DeletedBackupInstancesGetInput {
   backupInstanceName: string;
 }
 export const DeletedBackupInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3034,7 +3024,7 @@ export interface DeletedBackupInstancesGetOutput {
   };
 }
 export const DeletedBackupInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3064,12 +3054,10 @@ export const DeletedBackupInstancesGetOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the deleted backup instance
  */
-export const DeletedBackupInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedBackupInstancesGetInput,
-    outputSchema: DeletedBackupInstancesGetOutput,
-  }),
-);
+export const DeletedBackupInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedBackupInstancesGetInput,
+  outputSchema: DeletedBackupInstancesGetOutput,
+}));
 // Input Schema
 export interface DeletedBackupInstancesListInput {
   subscriptionId: string;
@@ -3077,7 +3065,7 @@ export interface DeletedBackupInstancesListInput {
   vaultName: string;
 }
 export const DeletedBackupInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3094,7 +3082,7 @@ export interface DeletedBackupInstancesListOutput {
   nextLink?: string;
 }
 export const DeletedBackupInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DeletedBackupInstancesListOutput>;
 
@@ -3107,12 +3095,10 @@ export const DeletedBackupInstancesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const DeletedBackupInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedBackupInstancesListInput,
-    outputSchema: DeletedBackupInstancesListOutput,
-  }),
-);
+export const DeletedBackupInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedBackupInstancesListInput,
+  outputSchema: DeletedBackupInstancesListOutput,
+}));
 // Input Schema
 export interface DeletedBackupInstancesUndeleteInput {
   subscriptionId: string;
@@ -3121,7 +3107,7 @@ export interface DeletedBackupInstancesUndeleteInput {
   backupInstanceName: string;
 }
 export const DeletedBackupInstancesUndeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3137,7 +3123,7 @@ export const DeletedBackupInstancesUndeleteInput =
 // Output Schema
 export type DeletedBackupInstancesUndeleteOutput = void;
 export const DeletedBackupInstancesUndeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletedBackupInstancesUndeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletedBackupInstancesUndeleteOutput>;
 
 // The operation
 /**
@@ -3150,7 +3136,7 @@ export const DeletedBackupInstancesUndeleteOutput =
  * @param backupInstanceName - The name of the deleted backup instance
  */
 export const DeletedBackupInstancesUndelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedBackupInstancesUndeleteInput,
     outputSchema: DeletedBackupInstancesUndeleteOutput,
   }));
@@ -3161,7 +3147,7 @@ export interface DeletedBackupVaultsGetInput {
   deletedVaultName: string;
 }
 export const DeletedBackupVaultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deletedVaultName: Schema.String.pipe(T.PathParam()),
@@ -3188,7 +3174,7 @@ export interface DeletedBackupVaultsGetOutput {
   };
 }
 export const DeletedBackupVaultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3217,19 +3203,17 @@ export const DeletedBackupVaultsGetOutput =
  * @param location - The name of the Azure region.
  * @param deletedVaultName - The name of the DeletedBackupVaultResource
  */
-export const DeletedBackupVaultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeletedBackupVaultsGetInput,
-    outputSchema: DeletedBackupVaultsGetOutput,
-  }),
-);
+export const DeletedBackupVaultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeletedBackupVaultsGetInput,
+  outputSchema: DeletedBackupVaultsGetOutput,
+}));
 // Input Schema
 export interface DeletedBackupVaultsListByLocationInput {
   subscriptionId: string;
   location: string;
 }
 export const DeletedBackupVaultsListByLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3258,7 +3242,7 @@ export interface DeletedBackupVaultsListByLocationOutput {
   nextLink?: string;
 }
 export const DeletedBackupVaultsListByLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3302,7 +3286,7 @@ export const DeletedBackupVaultsListByLocationOutput =
  * @param location - The name of the Azure region.
  */
 export const DeletedBackupVaultsListByLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletedBackupVaultsListByLocationInput,
     outputSchema: DeletedBackupVaultsListByLocationOutput,
   }));
@@ -3323,7 +3307,7 @@ export interface DppResourceGuardProxyCreateOrUpdateInput {
   };
 }
 export const DppResourceGuardProxyCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3366,7 +3350,7 @@ export interface DppResourceGuardProxyCreateOrUpdateOutput {
   };
 }
 export const DppResourceGuardProxyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3397,7 +3381,7 @@ export const DppResourceGuardProxyCreateOrUpdateOutput =
  * @param resourceGuardProxyName - name of the resource guard proxy
  */
 export const DppResourceGuardProxyCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DppResourceGuardProxyCreateOrUpdateInput,
     outputSchema: DppResourceGuardProxyCreateOrUpdateOutput,
   }));
@@ -3409,7 +3393,7 @@ export interface DppResourceGuardProxyDeleteInput {
   resourceGuardProxyName: string;
 }
 export const DppResourceGuardProxyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3425,7 +3409,7 @@ export const DppResourceGuardProxyDeleteInput =
 // Output Schema
 export type DppResourceGuardProxyDeleteOutput = void;
 export const DppResourceGuardProxyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DppResourceGuardProxyDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DppResourceGuardProxyDeleteOutput>;
 
 // The operation
 /**
@@ -3437,12 +3421,10 @@ export const DppResourceGuardProxyDeleteOutput =
  * @param vaultName - The name of the backup vault.
  * @param resourceGuardProxyName - name of the resource guard proxy
  */
-export const DppResourceGuardProxyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DppResourceGuardProxyDeleteInput,
-    outputSchema: DppResourceGuardProxyDeleteOutput,
-  }),
-);
+export const DppResourceGuardProxyDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DppResourceGuardProxyDeleteInput,
+  outputSchema: DppResourceGuardProxyDeleteOutput,
+}));
 // Input Schema
 export interface DppResourceGuardProxyGetInput {
   subscriptionId: string;
@@ -3451,7 +3433,7 @@ export interface DppResourceGuardProxyGetInput {
   resourceGuardProxyName: string;
 }
 export const DppResourceGuardProxyGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3479,7 +3461,7 @@ export interface DppResourceGuardProxyGetOutput {
   };
 }
 export const DppResourceGuardProxyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3509,12 +3491,10 @@ export const DppResourceGuardProxyGetOutput =
  * @param vaultName - The name of the backup vault.
  * @param resourceGuardProxyName - name of the resource guard proxy
  */
-export const DppResourceGuardProxyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DppResourceGuardProxyGetInput,
-    outputSchema: DppResourceGuardProxyGetOutput,
-  }),
-);
+export const DppResourceGuardProxyGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DppResourceGuardProxyGetInput,
+  outputSchema: DppResourceGuardProxyGetOutput,
+}));
 // Input Schema
 export interface DppResourceGuardProxyListInput {
   subscriptionId: string;
@@ -3522,7 +3502,7 @@ export interface DppResourceGuardProxyListInput {
   vaultName: string;
 }
 export const DppResourceGuardProxyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3539,7 +3519,7 @@ export interface DppResourceGuardProxyListOutput {
   nextLink?: string;
 }
 export const DppResourceGuardProxyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DppResourceGuardProxyListOutput>;
 
@@ -3552,12 +3532,10 @@ export const DppResourceGuardProxyListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const DppResourceGuardProxyList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DppResourceGuardProxyListInput,
-    outputSchema: DppResourceGuardProxyListOutput,
-  }),
-);
+export const DppResourceGuardProxyList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DppResourceGuardProxyListInput,
+  outputSchema: DppResourceGuardProxyListOutput,
+}));
 // Input Schema
 export interface DppResourceGuardProxyUnlockDeleteInput {
   subscriptionId: string;
@@ -3568,7 +3546,7 @@ export interface DppResourceGuardProxyUnlockDeleteInput {
   resourceToBeDeleted?: string;
 }
 export const DppResourceGuardProxyUnlockDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3590,7 +3568,7 @@ export interface DppResourceGuardProxyUnlockDeleteOutput {
   unlockDeleteExpiryTime?: string;
 }
 export const DppResourceGuardProxyUnlockDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unlockDeleteExpiryTime: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DppResourceGuardProxyUnlockDeleteOutput>;
 
@@ -3605,7 +3583,7 @@ export const DppResourceGuardProxyUnlockDeleteOutput =
  * @param resourceGuardProxyName - name of the resource guard proxy
  */
 export const DppResourceGuardProxyUnlockDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DppResourceGuardProxyUnlockDeleteInput,
     outputSchema: DppResourceGuardProxyUnlockDeleteOutput,
   }));
@@ -3617,7 +3595,7 @@ export interface ExportJobsOperationResultGetInput {
   operationId: string;
 }
 export const ExportJobsOperationResultGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -3638,7 +3616,7 @@ export interface ExportJobsOperationResultGetOutput {
   excelFileBlobSasKey?: string;
 }
 export const ExportJobsOperationResultGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blobUrl: Schema.optional(Schema.String),
     blobSasKey: Schema.optional(Schema.String),
     excelFileBlobUrl: Schema.optional(Schema.String),
@@ -3656,7 +3634,7 @@ export const ExportJobsOperationResultGetOutput =
  * @param operationId - OperationID which represents the export job.
  */
 export const ExportJobsOperationResultGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExportJobsOperationResultGetInput,
     outputSchema: ExportJobsOperationResultGetOutput,
   }));
@@ -3666,13 +3644,11 @@ export interface ExportJobsTriggerInput {
   resourceGroupName: string;
   vaultName: string;
 }
-export const ExportJobsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ExportJobsTriggerInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/exportBackupJobs",
@@ -3683,7 +3659,7 @@ export const ExportJobsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ExportJobsTriggerOutput = void;
 export const ExportJobsTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExportJobsTriggerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExportJobsTriggerOutput>;
 
 // The operation
 /**
@@ -3694,7 +3670,7 @@ export const ExportJobsTriggerOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the BackupVaultResource
  */
-export const ExportJobsTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExportJobsTrigger = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExportJobsTriggerInput,
   outputSchema: ExportJobsTriggerOutput,
 }));
@@ -3708,7 +3684,7 @@ export interface FetchCrossRegionRestoreJobGetInput {
   jobId: string;
 }
 export const FetchCrossRegionRestoreJobGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -3738,7 +3714,7 @@ export interface FetchCrossRegionRestoreJobGetOutput {
   };
 }
 export const FetchCrossRegionRestoreJobGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3768,7 +3744,7 @@ export const FetchCrossRegionRestoreJobGetOutput =
  * @param location - The name of the Azure region.
  */
 export const FetchCrossRegionRestoreJobGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FetchCrossRegionRestoreJobGetInput,
     outputSchema: FetchCrossRegionRestoreJobGetOutput,
   }));
@@ -3782,7 +3758,7 @@ export interface FetchCrossRegionRestoreJobsListInput {
   sourceBackupVaultId: string;
 }
 export const FetchCrossRegionRestoreJobsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -3802,7 +3778,7 @@ export interface FetchCrossRegionRestoreJobsListOutput {
   nextLink?: string;
 }
 export const FetchCrossRegionRestoreJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<FetchCrossRegionRestoreJobsListOutput>;
 
@@ -3817,7 +3793,7 @@ export const FetchCrossRegionRestoreJobsListOutput =
  * @param $filter - OData filter options.
  */
 export const FetchCrossRegionRestoreJobsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FetchCrossRegionRestoreJobsListInput,
     outputSchema: FetchCrossRegionRestoreJobsListOutput,
   }));
@@ -3832,7 +3808,7 @@ export interface FetchSecondaryRecoveryPointsListInput {
   sourceBackupInstanceId?: string;
 }
 export const FetchSecondaryRecoveryPointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -3853,7 +3829,7 @@ export interface FetchSecondaryRecoveryPointsListOutput {
   nextLink?: string;
 }
 export const FetchSecondaryRecoveryPointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<FetchSecondaryRecoveryPointsListOutput>;
 
@@ -3869,7 +3845,7 @@ export const FetchSecondaryRecoveryPointsListOutput =
  * @param $skipToken - skipToken Filter.
  */
 export const FetchSecondaryRecoveryPointsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FetchSecondaryRecoveryPointsListInput,
     outputSchema: FetchSecondaryRecoveryPointsListOutput,
   }));
@@ -3880,7 +3856,7 @@ export interface JobsGetInput {
   vaultName: string;
   jobId: string;
 }
-export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -3907,7 +3883,7 @@ export interface JobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3937,7 +3913,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param vaultName - The name of the backup vault.
  * @param jobId - The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
  */
-export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
   outputSchema: JobsGetOutput,
 }));
@@ -3947,7 +3923,7 @@ export interface JobsListInput {
   resourceGroupName: string;
   vaultName: string;
 }
-export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vaultName: Schema.String.pipe(T.PathParam()),
@@ -3963,7 +3939,7 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface JobsListOutput {
   nextLink?: string;
 }
-export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<JobsListOutput>;
 
@@ -3976,7 +3952,7 @@ export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param vaultName - The name of the backup vault.
  */
-export const JobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsListInput,
   outputSchema: JobsListOutput,
 }));
@@ -3987,7 +3963,7 @@ export interface OperationResultGetInput {
   location: string;
 }
 export const OperationResultGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -4004,7 +3980,7 @@ export interface OperationResultGetOutput {
   objectType: string;
 }
 export const OperationResultGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectType: Schema.String,
   }) as unknown as Schema.Codec<OperationResultGetOutput>;
 
@@ -4018,7 +3994,7 @@ export const OperationResultGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const OperationResultGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationResultGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationResultGetInput,
   outputSchema: OperationResultGetOutput,
 }));
@@ -4030,7 +4006,7 @@ export interface OperationStatusBackupVaultContextGetInput {
   operationId: string;
 }
 export const OperationStatusBackupVaultContextGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -4060,7 +4036,7 @@ export interface OperationStatusBackupVaultContextGetOutput {
   status?: string;
 }
 export const OperationStatusBackupVaultContextGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -4099,7 +4075,7 @@ export const OperationStatusBackupVaultContextGetOutput =
  * @param vaultName - The name of the BackupVaultResource
  */
 export const OperationStatusBackupVaultContextGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OperationStatusBackupVaultContextGetInput,
     outputSchema: OperationStatusBackupVaultContextGetOutput,
   }));
@@ -4110,7 +4086,7 @@ export interface OperationStatusGetInput {
   operationId: string;
 }
 export const OperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -4139,7 +4115,7 @@ export interface OperationStatusGetOutput {
   status?: string;
 }
 export const OperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -4176,7 +4152,7 @@ export const OperationStatusGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationStatusGetInput,
   outputSchema: OperationStatusGetOutput,
 }));
@@ -4187,7 +4163,7 @@ export interface OperationStatusResourceGroupContextGetInput {
   operationId: string;
 }
 export const OperationStatusResourceGroupContextGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -4216,7 +4192,7 @@ export interface OperationStatusResourceGroupContextGetOutput {
   status?: string;
 }
 export const OperationStatusResourceGroupContextGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
@@ -4254,7 +4230,7 @@ export const OperationStatusResourceGroupContextGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OperationStatusResourceGroupContextGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OperationStatusResourceGroupContextGetInput,
     outputSchema: OperationStatusResourceGroupContextGetOutput,
   }));
@@ -4266,15 +4242,13 @@ export interface RecoveryPointsGetInput {
   backupInstanceName: string;
   recoveryPointId: string;
 }
-export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    vaultName: Schema.String.pipe(T.PathParam()),
-    backupInstanceName: Schema.String.pipe(T.PathParam()),
-    recoveryPointId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const RecoveryPointsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  backupInstanceName: Schema.String.pipe(T.PathParam()),
+  recoveryPointId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}",
@@ -4297,7 +4271,7 @@ export interface RecoveryPointsGetOutput {
   };
 }
 export const RecoveryPointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4327,7 +4301,7 @@ export const RecoveryPointsGetOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the backup instance.
  */
-export const RecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecoveryPointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoveryPointsGetInput,
   outputSchema: RecoveryPointsGetOutput,
 }));
@@ -4341,7 +4315,7 @@ export interface RecoveryPointsListInput {
   $skipToken?: string;
 }
 export const RecoveryPointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -4361,7 +4335,7 @@ export interface RecoveryPointsListOutput {
   nextLink?: string;
 }
 export const RecoveryPointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RecoveryPointsListOutput>;
 
@@ -4377,7 +4351,7 @@ export const RecoveryPointsListOutput =
  * @param $filter - OData filter options.
  * @param $skipToken - skipToken Filter.
  */
-export const RecoveryPointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecoveryPointsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecoveryPointsListInput,
   outputSchema: RecoveryPointsListOutput,
 }));
@@ -4388,7 +4362,7 @@ export interface ResourceGuardsDeleteInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4403,7 +4377,7 @@ export const ResourceGuardsDeleteInput =
 // Output Schema
 export type ResourceGuardsDeleteOutput = void;
 export const ResourceGuardsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceGuardsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceGuardsDeleteOutput>;
 
 // The operation
 /**
@@ -4414,25 +4388,21 @@ export const ResourceGuardsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceGuardsName - The name of ResourceGuard
  */
-export const ResourceGuardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ResourceGuardsDeleteInput,
-    outputSchema: ResourceGuardsDeleteOutput,
-  }),
-);
+export const ResourceGuardsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ResourceGuardsDeleteInput,
+  outputSchema: ResourceGuardsDeleteOutput,
+}));
 // Input Schema
 export interface ResourceGuardsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceGuardsName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ResourceGuardsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceGuardsName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
@@ -4455,7 +4425,7 @@ export interface ResourceGuardsGetOutput {
   };
 }
 export const ResourceGuardsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4484,7 +4454,7 @@ export const ResourceGuardsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceGuardsName - The name of ResourceGuard
  */
-export const ResourceGuardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceGuardsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceGuardsGetInput,
   outputSchema: ResourceGuardsGetOutput,
 }));
@@ -4495,7 +4465,7 @@ export interface ResourceGuardsGetBackupSecurityPINRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetBackupSecurityPINRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4525,7 +4495,7 @@ export interface ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4570,7 +4540,7 @@ export const ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetBackupSecurityPINRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetBackupSecurityPINRequestsObjectsInput,
     outputSchema: ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput,
   }));
@@ -4582,7 +4552,7 @@ export interface ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectInput {
   requestName: string;
 }
 export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4610,7 +4580,7 @@ export interface ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput {
   };
 }
 export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4641,7 +4611,7 @@ export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput =
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectInput,
     outputSchema: ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput,
   }));
@@ -4653,7 +4623,7 @@ export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectInput 
   requestName: string;
 }
 export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4681,7 +4651,7 @@ export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput
   };
 }
 export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4712,7 +4682,7 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput =
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectInput,
     outputSchema:
       ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput,
@@ -4725,7 +4695,7 @@ export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectI
   requestName: string;
 }
 export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4753,7 +4723,7 @@ export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectO
   };
 }
 export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4784,7 +4754,7 @@ export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectOutpu
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectInput,
     outputSchema:
@@ -4798,7 +4768,7 @@ export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectInput {
   requestName: string;
 }
 export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4826,7 +4796,7 @@ export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput {
   };
 }
 export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4857,7 +4827,7 @@ export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput =
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectInput,
     outputSchema: ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput,
   }));
@@ -4869,7 +4839,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectInput 
   requestName: string;
 }
 export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4897,7 +4867,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput
   };
 }
 export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4928,7 +4898,7 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput =
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectInput,
     outputSchema:
       ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput,
@@ -4941,7 +4911,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectInp
   requestName: string;
 }
 export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -4969,7 +4939,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOut
   };
 }
 export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5000,7 +4970,7 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOutput 
  * @param requestName - The name of the DppBaseResource
  */
 export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectInput,
     outputSchema:
@@ -5013,7 +4983,7 @@ export interface ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5043,7 +5013,7 @@ export interface ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5088,7 +5058,7 @@ export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetDeleteProtectedItemRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput,
     outputSchema: ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput,
   }));
@@ -5099,7 +5069,7 @@ export interface ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5129,7 +5099,7 @@ export interface ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput 
   nextLink?: string;
 }
 export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5174,7 +5144,7 @@ export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput,
     outputSchema:
       ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput,
@@ -5186,7 +5156,7 @@ export interface ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5216,7 +5186,7 @@ export interface ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5261,7 +5231,7 @@ export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetDisableSoftDeleteRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput,
     outputSchema: ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput,
   }));
@@ -5271,7 +5241,7 @@ export interface ResourceGuardsGetResourcesInResourceGroupInput {
   resourceGroupName: string;
 }
 export const ResourceGuardsGetResourcesInResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5287,7 +5257,7 @@ export interface ResourceGuardsGetResourcesInResourceGroupOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetResourcesInResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ResourceGuardsGetResourcesInResourceGroupOutput>;
 
@@ -5300,7 +5270,7 @@ export const ResourceGuardsGetResourcesInResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ResourceGuardsGetResourcesInResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetResourcesInResourceGroupInput,
     outputSchema: ResourceGuardsGetResourcesInResourceGroupOutput,
   }));
@@ -5309,7 +5279,7 @@ export interface ResourceGuardsGetResourcesInSubscriptionInput {
   subscriptionId: string;
 }
 export const ResourceGuardsGetResourcesInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5324,7 +5294,7 @@ export interface ResourceGuardsGetResourcesInSubscriptionOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetResourcesInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ResourceGuardsGetResourcesInSubscriptionOutput>;
 
@@ -5336,7 +5306,7 @@ export const ResourceGuardsGetResourcesInSubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ResourceGuardsGetResourcesInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetResourcesInSubscriptionInput,
     outputSchema: ResourceGuardsGetResourcesInSubscriptionOutput,
   }));
@@ -5347,7 +5317,7 @@ export interface ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5377,7 +5347,7 @@ export interface ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5422,7 +5392,7 @@ export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetUpdateProtectedItemRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput,
     outputSchema: ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput,
   }));
@@ -5433,7 +5403,7 @@ export interface ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput {
   resourceGuardsName: string;
 }
 export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5463,7 +5433,7 @@ export interface ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput {
   nextLink?: string;
 }
 export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5508,7 +5478,7 @@ export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput =
  * @param resourceGuardsName - The name of the ResourceGuardResource
  */
 export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjects =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput,
     outputSchema: ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput,
   }));
@@ -5520,7 +5490,7 @@ export interface ResourceGuardsPatchInput {
   tags?: Record<string, string>;
 }
 export const ResourceGuardsPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
@@ -5548,7 +5518,7 @@ export interface ResourceGuardsPatchOutput {
   };
 }
 export const ResourceGuardsPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5577,7 +5547,7 @@ export const ResourceGuardsPatchOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceGuardsName - The name of ResourceGuard
  */
-export const ResourceGuardsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceGuardsPatch = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceGuardsPatchInput,
   outputSchema: ResourceGuardsPatchOutput,
 }));
@@ -5605,42 +5575,40 @@ export interface ResourceGuardsPutInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ResourceGuardsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Failed",
-            "Provisioning",
-            "Succeeded",
-            "Unknown",
-            "Updating",
-          ]),
+export const ResourceGuardsPutInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceGuardsName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+          "Unknown",
+          "Updating",
+        ]),
+      ),
+      allowAutoApprovals: Schema.optional(Schema.Boolean),
+      resourceGuardOperations: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            vaultCriticalOperation: Schema.optional(Schema.String),
+            requestResourceType: Schema.optional(Schema.String),
+          }),
         ),
-        allowAutoApprovals: Schema.optional(Schema.Boolean),
-        resourceGuardOperations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vaultCriticalOperation: Schema.optional(Schema.String),
-              requestResourceType: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        vaultCriticalOperationExclusionList: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        description: Schema.optional(Schema.String),
-      }),
-    ),
-    eTag: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  },
-).pipe(
+      ),
+      vaultCriticalOperationExclusionList: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  eTag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
@@ -5663,7 +5631,7 @@ export interface ResourceGuardsPutOutput {
   };
 }
 export const ResourceGuardsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5692,7 +5660,7 @@ export const ResourceGuardsPutOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceGuardsName - The name of ResourceGuard
  */
-export const ResourceGuardsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceGuardsPut = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceGuardsPutInput,
   outputSchema: ResourceGuardsPutOutput,
 }));
@@ -5707,7 +5675,7 @@ export interface RestorableTimeRangesFindInput {
   endTime?: string;
 }
 export const RestorableTimeRangesFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -5742,7 +5710,7 @@ export interface RestorableTimeRangesFindOutput {
   };
 }
 export const RestorableTimeRangesFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5771,9 +5739,7 @@ export const RestorableTimeRangesFindOutput =
  * @param vaultName - The name of the backup vault.
  * @param backupInstanceName - The name of the BackupInstanceResource
  */
-export const RestorableTimeRangesFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestorableTimeRangesFindInput,
-    outputSchema: RestorableTimeRangesFindOutput,
-  }),
-);
+export const RestorableTimeRangesFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestorableTimeRangesFindInput,
+  outputSchema: RestorableTimeRangesFindOutput,
+}));

@@ -8,7 +8,7 @@ export interface DirectoriesControllerFindInput {
   id: string;
 }
 export const DirectoriesControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/directories/{id}" }),
@@ -55,7 +55,7 @@ export interface DirectoriesControllerFindOutput {
   updated_at?: string;
 }
 export const DirectoriesControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -117,10 +117,8 @@ export const DirectoriesControllerFindOutput =
  *
  * @param id - Unique identifier for the Directory.
  */
-export const DirectoriesControllerFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DirectoriesControllerFindInput,
-    outputSchema: DirectoriesControllerFindOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const DirectoriesControllerFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectoriesControllerFindInput,
+  outputSchema: DirectoriesControllerFindOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

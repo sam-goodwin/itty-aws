@@ -12,7 +12,7 @@ export interface GetPasswordInput {
   branch: string;
   id: string;
 }
-export const GetPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPasswordInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -29,24 +29,24 @@ export interface GetPasswordOutput {
   id: string;
   name: string;
   role: "reader" | "writer" | "admin" | "readwriter";
-  cidrs: string[] | null;
+  cidrs: ReadonlyArray<string> | null;
   created_at: string;
   deleted_at: string | null;
   expires_at: string | null;
   last_used_at: string | null;
   expired: boolean;
   direct_vtgate: boolean;
-  direct_vtgate_addresses: string[];
+  direct_vtgate_addresses: ReadonlyArray<string>;
   ttl_seconds: number | null;
   access_host_url: string;
   access_host_regional_url: string;
-  access_host_regional_urls: string[];
+  access_host_regional_urls: ReadonlyArray<string>;
   actor: { id: string; display_name: string; avatar_url: string } | null;
   region: {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -66,7 +66,7 @@ export interface GetPasswordOutput {
     private_edge_connectivity: boolean;
   };
 }
-export const GetPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPasswordOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   role: Schema.Literals(["reader", "writer", "admin", "readwriter"]),
@@ -123,7 +123,7 @@ export const GetPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - The name of the branch the password belongs to
  * @param id - The ID of the password
  */
-export const getPassword = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPassword = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPasswordInput,
   outputSchema: GetPasswordOutput,
   errors: [Forbidden, NotFound] as const,

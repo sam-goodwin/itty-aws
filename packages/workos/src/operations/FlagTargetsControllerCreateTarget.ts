@@ -9,7 +9,7 @@ export interface FlagTargetsControllerCreateTargetInput {
   slug: string;
 }
 export const FlagTargetsControllerCreateTargetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const FlagTargetsControllerCreateTargetInput =
 // Output Schema
 export type FlagTargetsControllerCreateTargetOutput = void;
 export const FlagTargetsControllerCreateTargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FlagTargetsControllerCreateTargetOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FlagTargetsControllerCreateTargetOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const FlagTargetsControllerCreateTargetOutput =
  * @param slug - The unique slug identifier of the feature flag.
  */
 export const FlagTargetsControllerCreateTarget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FlagTargetsControllerCreateTargetInput,
     outputSchema: FlagTargetsControllerCreateTargetOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

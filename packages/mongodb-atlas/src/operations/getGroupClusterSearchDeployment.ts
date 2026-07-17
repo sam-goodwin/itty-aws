@@ -11,7 +11,7 @@ export interface GetGroupClusterSearchDeploymentInput {
   pretty?: boolean;
 }
 export const GetGroupClusterSearchDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupClusterSearchDeploymentInput =
 // Output Schema
 export type GetGroupClusterSearchDeploymentOutput = void;
 export const GetGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterSearchDeploymentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterSearchDeploymentOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupClusterSearchDeploymentOutput =
  * @param clusterName - Label that identifies the cluster to return the Search Nodes for.
  */
 export const getGroupClusterSearchDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterSearchDeploymentInput,
     outputSchema: GetGroupClusterSearchDeploymentOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

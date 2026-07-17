@@ -7,7 +7,7 @@ export interface GetSolanaAccountByNameInput {
   name: string;
 }
 export const GetSolanaAccountByNameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/solana/accounts/by-name/{name}" }),
@@ -22,7 +22,7 @@ export interface GetSolanaAccountByNameOutput {
   updatedAt?: string;
 }
 export const GetSolanaAccountByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String,
     name: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(Schema.String)),
@@ -38,9 +38,7 @@ export const GetSolanaAccountByNameOutput =
  *
  * @param name - The name of the Solana account.
  */
-export const getSolanaAccountByName = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSolanaAccountByNameInput,
-    outputSchema: GetSolanaAccountByNameOutput,
-  }),
-);
+export const getSolanaAccountByName = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSolanaAccountByNameInput,
+  outputSchema: GetSolanaAccountByNameOutput,
+}));

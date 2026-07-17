@@ -19,7 +19,7 @@ export interface ActionsCreateOrUpdateInput {
   etag?: string;
 }
 export const ActionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -54,7 +54,7 @@ export interface ActionsCreateOrUpdateOutput {
   };
 }
 export const ActionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -85,12 +85,10 @@ export const ActionsCreateOrUpdateOutput =
  * @param ruleId - Alert rule ID
  * @param actionId - Action ID
  */
-export const ActionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActionsCreateOrUpdateInput,
-    outputSchema: ActionsCreateOrUpdateOutput,
-  }),
-);
+export const ActionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActionsCreateOrUpdateInput,
+  outputSchema: ActionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ActionsDeleteInput {
   subscriptionId: string;
@@ -99,7 +97,7 @@ export interface ActionsDeleteInput {
   ruleId: string;
   actionId: string;
 }
-export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -116,7 +114,7 @@ export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ActionsDeleteOutput = void;
 export const ActionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDeleteOutput>;
 
 // The operation
 /**
@@ -129,7 +127,7 @@ export const ActionsDeleteOutput =
  * @param ruleId - Alert rule ID
  * @param actionId - Action ID
  */
-export const ActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsDeleteInput,
   outputSchema: ActionsDeleteOutput,
 }));
@@ -141,7 +139,7 @@ export interface ActionsGetInput {
   ruleId: string;
   actionId: string;
 }
-export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -169,7 +167,7 @@ export interface ActionsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -200,7 +198,7 @@ export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ruleId - Alert rule ID
  * @param actionId - Action ID
  */
-export const ActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ActionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsGetInput,
   outputSchema: ActionsGetOutput,
 }));
@@ -212,7 +210,7 @@ export interface ActionsListByAlertRuleInput {
   ruleId: string;
 }
 export const ActionsListByAlertRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -243,7 +241,7 @@ export interface ActionsListByAlertRuleOutput {
   }[];
 }
 export const ActionsListByAlertRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -288,12 +286,10 @@ export const ActionsListByAlertRuleOutput =
  * @param workspaceName - The name of the workspace.
  * @param ruleId - Alert rule ID
  */
-export const ActionsListByAlertRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ActionsListByAlertRuleInput,
-    outputSchema: ActionsListByAlertRuleOutput,
-  }),
-);
+export const ActionsListByAlertRule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ActionsListByAlertRuleInput,
+  outputSchema: ActionsListByAlertRuleOutput,
+}));
 // Input Schema
 export interface AlertRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -304,7 +300,7 @@ export interface AlertRulesCreateOrUpdateInput {
   etag?: string;
 }
 export const AlertRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -338,7 +334,7 @@ export interface AlertRulesCreateOrUpdateOutput {
   };
 }
 export const AlertRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -368,12 +364,10 @@ export const AlertRulesCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param ruleId - Alert rule ID
  */
-export const AlertRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRulesCreateOrUpdateInput,
-    outputSchema: AlertRulesCreateOrUpdateOutput,
-  }),
-);
+export const AlertRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRulesCreateOrUpdateInput,
+  outputSchema: AlertRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AlertRulesDeleteInput {
   subscriptionId: string;
@@ -381,7 +375,7 @@ export interface AlertRulesDeleteInput {
   workspaceName: string;
   ruleId: string;
 }
-export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -397,7 +391,7 @@ export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AlertRulesDeleteOutput = void;
 export const AlertRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRulesDeleteOutput>;
 
 // The operation
 /**
@@ -409,7 +403,7 @@ export const AlertRulesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param ruleId - Alert rule ID
  */
-export const AlertRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesDeleteInput,
   outputSchema: AlertRulesDeleteOutput,
 }));
@@ -420,7 +414,7 @@ export interface AlertRulesGetInput {
   workspaceName: string;
   ruleId: string;
 }
-export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -447,7 +441,7 @@ export interface AlertRulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AlertRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -477,7 +471,7 @@ export const AlertRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param ruleId - Alert rule ID
  */
-export const AlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesGetInput,
   outputSchema: AlertRulesGetOutput,
 }));
@@ -487,7 +481,7 @@ export interface AlertRulesListInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const AlertRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -516,7 +510,7 @@ export interface AlertRulesListOutput {
     };
   }[];
 }
-export const AlertRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertRulesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -550,7 +544,7 @@ export const AlertRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesListInput,
   outputSchema: AlertRulesListOutput,
 }));
@@ -562,7 +556,7 @@ export interface AlertRuleTemplatesGetInput {
   alertRuleTemplateId: string;
 }
 export const AlertRuleTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -590,7 +584,7 @@ export interface AlertRuleTemplatesGetOutput {
   };
 }
 export const AlertRuleTemplatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -620,12 +614,10 @@ export const AlertRuleTemplatesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param alertRuleTemplateId - Alert rule template ID
  */
-export const AlertRuleTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleTemplatesGetInput,
-    outputSchema: AlertRuleTemplatesGetOutput,
-  }),
-);
+export const AlertRuleTemplatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleTemplatesGetInput,
+  outputSchema: AlertRuleTemplatesGetOutput,
+}));
 // Input Schema
 export interface AlertRuleTemplatesListInput {
   subscriptionId: string;
@@ -633,7 +625,7 @@ export interface AlertRuleTemplatesListInput {
   workspaceName: string;
 }
 export const AlertRuleTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -663,7 +655,7 @@ export interface AlertRuleTemplatesListOutput {
   }[];
 }
 export const AlertRuleTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -707,12 +699,10 @@ export const AlertRuleTemplatesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AlertRuleTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertRuleTemplatesListInput,
-    outputSchema: AlertRuleTemplatesListOutput,
-  }),
-);
+export const AlertRuleTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertRuleTemplatesListInput,
+  outputSchema: AlertRuleTemplatesListOutput,
+}));
 // Input Schema
 export interface AutomationRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -758,7 +748,7 @@ export interface AutomationRulesCreateOrUpdateInput {
   etag?: string;
 }
 export const AutomationRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -838,7 +828,7 @@ export interface AutomationRulesCreateOrUpdateOutput {
   };
 }
 export const AutomationRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -869,7 +859,7 @@ export const AutomationRulesCreateOrUpdateOutput =
  * @param automationRuleId - Automation rule ID
  */
 export const AutomationRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AutomationRulesCreateOrUpdateInput,
     outputSchema: AutomationRulesCreateOrUpdateOutput,
   }));
@@ -881,7 +871,7 @@ export interface AutomationRulesDeleteInput {
   automationRuleId: string;
 }
 export const AutomationRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -897,7 +887,7 @@ export const AutomationRulesDeleteInput =
 // Output Schema
 export type AutomationRulesDeleteOutput = unknown;
 export const AutomationRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<AutomationRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<AutomationRulesDeleteOutput>;
 
 // The operation
 /**
@@ -909,12 +899,10 @@ export const AutomationRulesDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param automationRuleId - Automation rule ID
  */
-export const AutomationRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AutomationRulesDeleteInput,
-    outputSchema: AutomationRulesDeleteOutput,
-  }),
-);
+export const AutomationRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AutomationRulesDeleteInput,
+  outputSchema: AutomationRulesDeleteOutput,
+}));
 // Input Schema
 export interface AutomationRulesGetInput {
   subscriptionId: string;
@@ -923,7 +911,7 @@ export interface AutomationRulesGetInput {
   automationRuleId: string;
 }
 export const AutomationRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -951,7 +939,7 @@ export interface AutomationRulesGetOutput {
   };
 }
 export const AutomationRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -981,7 +969,7 @@ export const AutomationRulesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param automationRuleId - Automation rule ID
  */
-export const AutomationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutomationRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutomationRulesGetInput,
   outputSchema: AutomationRulesGetOutput,
 }));
@@ -992,7 +980,7 @@ export interface AutomationRulesListInput {
   workspaceName: string;
 }
 export const AutomationRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1022,7 +1010,7 @@ export interface AutomationRulesListOutput {
   nextLink?: string;
 }
 export const AutomationRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1068,7 +1056,7 @@ export const AutomationRulesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const AutomationRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AutomationRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AutomationRulesListInput,
   outputSchema: AutomationRulesListOutput,
 }));
@@ -1101,7 +1089,7 @@ export interface BookmarksCreateOrUpdateInput {
   etag?: string;
 }
 export const BookmarksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1168,7 +1156,7 @@ export interface BookmarksCreateOrUpdateOutput {
   };
 }
 export const BookmarksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1198,12 +1186,10 @@ export const BookmarksCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param bookmarkId - Bookmark ID
  */
-export const BookmarksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BookmarksCreateOrUpdateInput,
-    outputSchema: BookmarksCreateOrUpdateOutput,
-  }),
-);
+export const BookmarksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BookmarksCreateOrUpdateInput,
+  outputSchema: BookmarksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BookmarksDeleteInput {
   subscriptionId: string;
@@ -1211,7 +1197,7 @@ export interface BookmarksDeleteInput {
   workspaceName: string;
   bookmarkId: string;
 }
-export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1227,7 +1213,7 @@ export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BookmarksDeleteOutput = void;
 export const BookmarksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BookmarksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BookmarksDeleteOutput>;
 
 // The operation
 /**
@@ -1239,7 +1225,7 @@ export const BookmarksDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param bookmarkId - Bookmark ID
  */
-export const BookmarksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksDeleteInput,
   outputSchema: BookmarksDeleteOutput,
 }));
@@ -1250,7 +1236,7 @@ export interface BookmarksGetInput {
   workspaceName: string;
   bookmarkId: string;
 }
-export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1277,7 +1263,7 @@ export interface BookmarksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BookmarksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1307,7 +1293,7 @@ export const BookmarksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param bookmarkId - Bookmark ID
  */
-export const BookmarksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksGetInput,
   outputSchema: BookmarksGetOutput,
 }));
@@ -1317,7 +1303,7 @@ export interface BookmarksListInput {
   resourceGroupName: string;
   workspaceName: string;
 }
-export const BookmarksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1346,7 +1332,7 @@ export interface BookmarksListOutput {
     };
   }[];
 }
-export const BookmarksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BookmarksListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -1380,7 +1366,7 @@ export const BookmarksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const BookmarksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BookmarksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BookmarksListInput,
   outputSchema: BookmarksListOutput,
 }));
@@ -1434,7 +1420,7 @@ export interface ContentPackageInstallInput {
   etag?: string;
 }
 export const ContentPackageInstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1530,7 +1516,7 @@ export interface ContentPackageInstallOutput {
   };
 }
 export const ContentPackageInstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1560,12 +1546,10 @@ export const ContentPackageInstallOutput =
  * @param workspaceName - The name of the workspace.
  * @param packageId - package Id
  */
-export const ContentPackageInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentPackageInstallInput,
-    outputSchema: ContentPackageInstallOutput,
-  }),
-);
+export const ContentPackageInstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentPackageInstallInput,
+  outputSchema: ContentPackageInstallOutput,
+}));
 // Input Schema
 export interface ContentPackagesGetInput {
   subscriptionId: string;
@@ -1574,7 +1558,7 @@ export interface ContentPackagesGetInput {
   packageId: string;
 }
 export const ContentPackagesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1602,7 +1586,7 @@ export interface ContentPackagesGetOutput {
   };
 }
 export const ContentPackagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1632,7 +1616,7 @@ export const ContentPackagesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param packageId - package Id
  */
-export const ContentPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentPackagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentPackagesGetInput,
   outputSchema: ContentPackagesGetOutput,
 }));
@@ -1650,7 +1634,7 @@ export interface ContentPackagesListInput {
   $skipToken?: string;
 }
 export const ContentPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1687,7 +1671,7 @@ export interface ContentPackagesListOutput {
   }[];
 }
 export const ContentPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1738,7 +1722,7 @@ export const ContentPackagesListOutput =
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ContentPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentPackagesListInput,
   outputSchema: ContentPackagesListOutput,
 }));
@@ -1750,7 +1734,7 @@ export interface ContentPackageUninstallInput {
   packageId: string;
 }
 export const ContentPackageUninstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1766,7 +1750,7 @@ export const ContentPackageUninstallInput =
 // Output Schema
 export type ContentPackageUninstallOutput = void;
 export const ContentPackageUninstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentPackageUninstallOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentPackageUninstallOutput>;
 
 // The operation
 /**
@@ -1778,12 +1762,10 @@ export const ContentPackageUninstallOutput =
  * @param workspaceName - The name of the workspace.
  * @param packageId - package Id
  */
-export const ContentPackageUninstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentPackageUninstallInput,
-    outputSchema: ContentPackageUninstallOutput,
-  }),
-);
+export const ContentPackageUninstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentPackageUninstallInput,
+  outputSchema: ContentPackageUninstallOutput,
+}));
 // Input Schema
 export interface ContentTemplateDeleteInput {
   subscriptionId: string;
@@ -1792,7 +1774,7 @@ export interface ContentTemplateDeleteInput {
   templateId: string;
 }
 export const ContentTemplateDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1808,7 +1790,7 @@ export const ContentTemplateDeleteInput =
 // Output Schema
 export type ContentTemplateDeleteOutput = void;
 export const ContentTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentTemplateDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentTemplateDeleteOutput>;
 
 // The operation
 /**
@@ -1820,12 +1802,10 @@ export const ContentTemplateDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param templateId - template Id
  */
-export const ContentTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplateDeleteInput,
-    outputSchema: ContentTemplateDeleteOutput,
-  }),
-);
+export const ContentTemplateDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplateDeleteInput,
+  outputSchema: ContentTemplateDeleteOutput,
+}));
 // Input Schema
 export interface ContentTemplateGetInput {
   subscriptionId: string;
@@ -1834,7 +1814,7 @@ export interface ContentTemplateGetInput {
   templateId: string;
 }
 export const ContentTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -1862,7 +1842,7 @@ export interface ContentTemplateGetOutput {
   };
 }
 export const ContentTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1895,7 +1875,7 @@ export const ContentTemplateGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param templateId - template Id
  */
-export const ContentTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContentTemplateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContentTemplateGetInput,
   outputSchema: ContentTemplateGetOutput,
 }));
@@ -1953,7 +1933,7 @@ export interface ContentTemplateInstallInput {
   etag?: string;
 }
 export const ContentTemplateInstallInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2053,7 +2033,7 @@ export interface ContentTemplateInstallOutput {
   };
 }
 export const ContentTemplateInstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2083,12 +2063,10 @@ export const ContentTemplateInstallOutput =
  * @param workspaceName - The name of the workspace.
  * @param templateId - template Id
  */
-export const ContentTemplateInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplateInstallInput,
-    outputSchema: ContentTemplateInstallOutput,
-  }),
-);
+export const ContentTemplateInstall = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplateInstallInput,
+  outputSchema: ContentTemplateInstallOutput,
+}));
 // Input Schema
 export interface ContentTemplatesListInput {
   subscriptionId: string;
@@ -2104,7 +2082,7 @@ export interface ContentTemplatesListInput {
   $skipToken?: string;
 }
 export const ContentTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2142,7 +2120,7 @@ export interface ContentTemplatesListOutput {
   nextLink?: string;
 }
 export const ContentTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2197,12 +2175,10 @@ export const ContentTemplatesListOutput =
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ContentTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContentTemplatesListInput,
-    outputSchema: ContentTemplatesListOutput,
-  }),
-);
+export const ContentTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContentTemplatesListInput,
+  outputSchema: ContentTemplatesListOutput,
+}));
 // Input Schema
 export interface DataConnectorDefinitionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -2213,7 +2189,7 @@ export interface DataConnectorDefinitionsCreateOrUpdateInput {
   etag?: string;
 }
 export const DataConnectorDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2243,7 +2219,7 @@ export interface DataConnectorDefinitionsCreateOrUpdateOutput {
   };
 }
 export const DataConnectorDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2274,7 +2250,7 @@ export const DataConnectorDefinitionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectorDefinitionsCreateOrUpdateInput,
     outputSchema: DataConnectorDefinitionsCreateOrUpdateOutput,
   }));
@@ -2286,7 +2262,7 @@ export interface DataConnectorDefinitionsDeleteInput {
   dataConnectorDefinitionName: string;
 }
 export const DataConnectorDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2302,7 +2278,7 @@ export const DataConnectorDefinitionsDeleteInput =
 // Output Schema
 export type DataConnectorDefinitionsDeleteOutput = void;
 export const DataConnectorDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorDefinitionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -2315,7 +2291,7 @@ export const DataConnectorDefinitionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectorDefinitionsDeleteInput,
     outputSchema: DataConnectorDefinitionsDeleteOutput,
   }));
@@ -2327,7 +2303,7 @@ export interface DataConnectorDefinitionsGetInput {
   dataConnectorDefinitionName: string;
 }
 export const DataConnectorDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2355,7 +2331,7 @@ export interface DataConnectorDefinitionsGetOutput {
   };
 }
 export const DataConnectorDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2385,12 +2361,10 @@ export const DataConnectorDefinitionsGetOutput =
  * @param dataConnectorDefinitionName - The data connector definition name.
  * @param api-version - The API version to use for this operation.
  */
-export const DataConnectorDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectorDefinitionsGetInput,
-    outputSchema: DataConnectorDefinitionsGetOutput,
-  }),
-);
+export const DataConnectorDefinitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorDefinitionsGetInput,
+  outputSchema: DataConnectorDefinitionsGetOutput,
+}));
 // Input Schema
 export interface DataConnectorDefinitionsListInput {
   subscriptionId: string;
@@ -2398,7 +2372,7 @@ export interface DataConnectorDefinitionsListInput {
   workspaceName: string;
 }
 export const DataConnectorDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2428,7 +2402,7 @@ export interface DataConnectorDefinitionsListOutput {
   nextLink?: string;
 }
 export const DataConnectorDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2475,7 +2449,7 @@ export const DataConnectorDefinitionsListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const DataConnectorDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectorDefinitionsListInput,
     outputSchema: DataConnectorDefinitionsListOutput,
   }));
@@ -2500,7 +2474,7 @@ export interface DataConnectorsCreateOrUpdateInput {
   etag?: string;
 }
 export const DataConnectorsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2542,7 +2516,7 @@ export interface DataConnectorsCreateOrUpdateOutput {
   };
 }
 export const DataConnectorsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2573,7 +2547,7 @@ export const DataConnectorsCreateOrUpdateOutput =
  * @param dataConnectorId - Connector ID
  */
 export const DataConnectorsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataConnectorsCreateOrUpdateInput,
     outputSchema: DataConnectorsCreateOrUpdateOutput,
   }));
@@ -2585,7 +2559,7 @@ export interface DataConnectorsDeleteInput {
   dataConnectorId: string;
 }
 export const DataConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2601,7 +2575,7 @@ export const DataConnectorsDeleteInput =
 // Output Schema
 export type DataConnectorsDeleteOutput = void;
 export const DataConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -2613,12 +2587,10 @@ export const DataConnectorsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataConnectorId - Connector ID
  */
-export const DataConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataConnectorsDeleteInput,
-    outputSchema: DataConnectorsDeleteOutput,
-  }),
-);
+export const DataConnectorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataConnectorsDeleteInput,
+  outputSchema: DataConnectorsDeleteOutput,
+}));
 // Input Schema
 export interface DataConnectorsGetInput {
   subscriptionId: string;
@@ -2626,14 +2598,12 @@ export interface DataConnectorsGetInput {
   workspaceName: string;
   dataConnectorId: string;
 }
-export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    dataConnectorId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DataConnectorsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  dataConnectorId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
@@ -2656,7 +2626,7 @@ export interface DataConnectorsGetOutput {
   };
 }
 export const DataConnectorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2686,7 +2656,7 @@ export const DataConnectorsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param dataConnectorId - Connector ID
  */
-export const DataConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataConnectorsGetInput,
   outputSchema: DataConnectorsGetOutput,
 }));
@@ -2697,7 +2667,7 @@ export interface DataConnectorsListInput {
   workspaceName: string;
 }
 export const DataConnectorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2727,7 +2697,7 @@ export interface DataConnectorsListOutput {
   }[];
 }
 export const DataConnectorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -2771,7 +2741,7 @@ export const DataConnectorsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const DataConnectorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DataConnectorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DataConnectorsListInput,
   outputSchema: DataConnectorsListOutput,
 }));
@@ -2786,7 +2756,7 @@ export interface EntitiesRunPlaybookInput {
   logicAppsResourceId: string;
 }
 export const EntitiesRunPlaybookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2805,7 +2775,7 @@ export const EntitiesRunPlaybookInput =
 // Output Schema
 export type EntitiesRunPlaybookOutput = void;
 export const EntitiesRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EntitiesRunPlaybookOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EntitiesRunPlaybookOutput>;
 
 // The operation
 /**
@@ -2817,7 +2787,7 @@ export const EntitiesRunPlaybookOutput =
  * @param workspaceName - The name of the workspace.
  * @param entityIdentifier - Entity ID
  */
-export const EntitiesRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EntitiesRunPlaybook = /*@__PURE__*/ API.make(() => ({
   inputSchema: EntitiesRunPlaybookInput,
   outputSchema: EntitiesRunPlaybookOutput,
 }));
@@ -2842,7 +2812,7 @@ export interface IncidentCommentsCreateOrUpdateInput {
   etag?: string;
 }
 export const IncidentCommentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2887,7 +2857,7 @@ export interface IncidentCommentsCreateOrUpdateOutput {
   };
 }
 export const IncidentCommentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2919,7 +2889,7 @@ export const IncidentCommentsCreateOrUpdateOutput =
  * @param incidentCommentId - Incident comment ID
  */
 export const IncidentCommentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IncidentCommentsCreateOrUpdateInput,
     outputSchema: IncidentCommentsCreateOrUpdateOutput,
   }));
@@ -2932,7 +2902,7 @@ export interface IncidentCommentsDeleteInput {
   incidentCommentId: string;
 }
 export const IncidentCommentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -2949,7 +2919,7 @@ export const IncidentCommentsDeleteInput =
 // Output Schema
 export type IncidentCommentsDeleteOutput = void;
 export const IncidentCommentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentCommentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentCommentsDeleteOutput>;
 
 // The operation
 /**
@@ -2962,12 +2932,10 @@ export const IncidentCommentsDeleteOutput =
  * @param incidentId - Incident ID
  * @param incidentCommentId - Incident comment ID
  */
-export const IncidentCommentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentCommentsDeleteInput,
-    outputSchema: IncidentCommentsDeleteOutput,
-  }),
-);
+export const IncidentCommentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentCommentsDeleteInput,
+  outputSchema: IncidentCommentsDeleteOutput,
+}));
 // Input Schema
 export interface IncidentCommentsGetInput {
   subscriptionId: string;
@@ -2977,7 +2945,7 @@ export interface IncidentCommentsGetInput {
   incidentCommentId: string;
 }
 export const IncidentCommentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3006,7 +2974,7 @@ export interface IncidentCommentsGetOutput {
   };
 }
 export const IncidentCommentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3037,7 +3005,7 @@ export const IncidentCommentsGetOutput =
  * @param incidentId - Incident ID
  * @param incidentCommentId - Incident comment ID
  */
-export const IncidentCommentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentCommentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentCommentsGetInput,
   outputSchema: IncidentCommentsGetOutput,
 }));
@@ -3053,7 +3021,7 @@ export interface IncidentCommentsListInput {
   $skipToken?: string;
 }
 export const IncidentCommentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3088,7 +3056,7 @@ export interface IncidentCommentsListOutput {
   }[];
 }
 export const IncidentCommentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3137,12 +3105,10 @@ export const IncidentCommentsListOutput =
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentCommentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentCommentsListInput,
-    outputSchema: IncidentCommentsListOutput,
-  }),
-);
+export const IncidentCommentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentCommentsListInput,
+  outputSchema: IncidentCommentsListOutput,
+}));
 // Input Schema
 export interface IncidentRelationsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3159,7 +3125,7 @@ export interface IncidentRelationsCreateOrUpdateInput {
   etag?: string;
 }
 export const IncidentRelationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3197,7 +3163,7 @@ export interface IncidentRelationsCreateOrUpdateOutput {
   };
 }
 export const IncidentRelationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3229,7 +3195,7 @@ export const IncidentRelationsCreateOrUpdateOutput =
  * @param relationName - Relation Name
  */
 export const IncidentRelationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IncidentRelationsCreateOrUpdateInput,
     outputSchema: IncidentRelationsCreateOrUpdateOutput,
   }));
@@ -3242,7 +3208,7 @@ export interface IncidentRelationsDeleteInput {
   relationName: string;
 }
 export const IncidentRelationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3259,7 +3225,7 @@ export const IncidentRelationsDeleteInput =
 // Output Schema
 export type IncidentRelationsDeleteOutput = void;
 export const IncidentRelationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentRelationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentRelationsDeleteOutput>;
 
 // The operation
 /**
@@ -3272,12 +3238,10 @@ export const IncidentRelationsDeleteOutput =
  * @param incidentId - Incident ID
  * @param relationName - Relation Name
  */
-export const IncidentRelationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsDeleteInput,
-    outputSchema: IncidentRelationsDeleteOutput,
-  }),
-);
+export const IncidentRelationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsDeleteInput,
+  outputSchema: IncidentRelationsDeleteOutput,
+}));
 // Input Schema
 export interface IncidentRelationsGetInput {
   subscriptionId: string;
@@ -3287,7 +3251,7 @@ export interface IncidentRelationsGetInput {
   relationName: string;
 }
 export const IncidentRelationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3316,7 +3280,7 @@ export interface IncidentRelationsGetOutput {
   };
 }
 export const IncidentRelationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3347,12 +3311,10 @@ export const IncidentRelationsGetOutput =
  * @param incidentId - Incident ID
  * @param relationName - Relation Name
  */
-export const IncidentRelationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsGetInput,
-    outputSchema: IncidentRelationsGetOutput,
-  }),
-);
+export const IncidentRelationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsGetInput,
+  outputSchema: IncidentRelationsGetOutput,
+}));
 // Input Schema
 export interface IncidentRelationsListInput {
   subscriptionId: string;
@@ -3365,7 +3327,7 @@ export interface IncidentRelationsListInput {
   $skipToken?: string;
 }
 export const IncidentRelationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3400,7 +3362,7 @@ export interface IncidentRelationsListOutput {
   }[];
 }
 export const IncidentRelationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -3449,12 +3411,10 @@ export const IncidentRelationsListOutput =
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentRelationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentRelationsListInput,
-    outputSchema: IncidentRelationsListOutput,
-  }),
-);
+export const IncidentRelationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentRelationsListInput,
+  outputSchema: IncidentRelationsListOutput,
+}));
 // Input Schema
 export interface IncidentsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3524,7 +3484,7 @@ export interface IncidentsCreateOrUpdateInput {
   etag?: string;
 }
 export const IncidentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3640,7 +3600,7 @@ export interface IncidentsCreateOrUpdateOutput {
   };
 }
 export const IncidentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3670,12 +3630,10 @@ export const IncidentsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsCreateOrUpdateInput,
-    outputSchema: IncidentsCreateOrUpdateOutput,
-  }),
-);
+export const IncidentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsCreateOrUpdateInput,
+  outputSchema: IncidentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface IncidentsDeleteInput {
   subscriptionId: string;
@@ -3683,7 +3641,7 @@ export interface IncidentsDeleteInput {
   workspaceName: string;
   incidentId: string;
 }
-export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3699,7 +3657,7 @@ export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type IncidentsDeleteOutput = void;
 export const IncidentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsDeleteOutput>;
 
 // The operation
 /**
@@ -3711,7 +3669,7 @@ export const IncidentsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsDeleteInput,
   outputSchema: IncidentsDeleteOutput,
 }));
@@ -3722,7 +3680,7 @@ export interface IncidentsGetInput {
   workspaceName: string;
   incidentId: string;
 }
-export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3749,7 +3707,7 @@ export interface IncidentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IncidentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3779,7 +3737,7 @@ export const IncidentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsGetInput,
   outputSchema: IncidentsGetOutput,
 }));
@@ -3793,7 +3751,7 @@ export interface IncidentsListInput {
   $top?: number;
   $skipToken?: string;
 }
-export const IncidentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3826,7 +3784,7 @@ export interface IncidentsListOutput {
     };
   }[];
 }
-export const IncidentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -3864,7 +3822,7 @@ export const IncidentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - Returns only the first n results. Optional.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const IncidentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListInput,
   outputSchema: IncidentsListOutput,
 }));
@@ -3876,7 +3834,7 @@ export interface IncidentsListAlertsInput {
   incidentId: string;
 }
 export const IncidentsListAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3906,7 +3864,7 @@ export interface IncidentsListAlertsOutput {
   }[];
 }
 export const IncidentsListAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3950,7 +3908,7 @@ export const IncidentsListAlertsOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentsListAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListAlertsInput,
   outputSchema: IncidentsListAlertsOutput,
 }));
@@ -3962,7 +3920,7 @@ export interface IncidentsListBookmarksInput {
   incidentId: string;
 }
 export const IncidentsListBookmarksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -3992,7 +3950,7 @@ export interface IncidentsListBookmarksOutput {
   }[];
 }
 export const IncidentsListBookmarksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4036,12 +3994,10 @@ export const IncidentsListBookmarksOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsListBookmarks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsListBookmarksInput,
-    outputSchema: IncidentsListBookmarksOutput,
-  }),
-);
+export const IncidentsListBookmarks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsListBookmarksInput,
+  outputSchema: IncidentsListBookmarksOutput,
+}));
 // Input Schema
 export interface IncidentsListEntitiesInput {
   subscriptionId: string;
@@ -4050,7 +4006,7 @@ export interface IncidentsListEntitiesInput {
   incidentId: string;
 }
 export const IncidentsListEntitiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4105,7 +4061,7 @@ export interface IncidentsListEntitiesOutput {
   }[];
 }
 export const IncidentsListEntitiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entities: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4181,12 +4137,10 @@ export const IncidentsListEntitiesOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentsListEntities = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsListEntitiesInput,
-    outputSchema: IncidentsListEntitiesOutput,
-  }),
-);
+export const IncidentsListEntities = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsListEntitiesInput,
+  outputSchema: IncidentsListEntitiesOutput,
+}));
 // Input Schema
 export interface IncidentsRunPlaybookInput {
   subscriptionId: string;
@@ -4197,7 +4151,7 @@ export interface IncidentsRunPlaybookInput {
   logicAppsResourceId: string;
 }
 export const IncidentsRunPlaybookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4215,7 +4169,7 @@ export const IncidentsRunPlaybookInput =
 // Output Schema
 export type IncidentsRunPlaybookOutput = void;
 export const IncidentsRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsRunPlaybookOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsRunPlaybookOutput>;
 
 // The operation
 /**
@@ -4227,12 +4181,10 @@ export const IncidentsRunPlaybookOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentIdentifier - Incident ID
  */
-export const IncidentsRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentsRunPlaybookInput,
-    outputSchema: IncidentsRunPlaybookOutput,
-  }),
-);
+export const IncidentsRunPlaybook = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsRunPlaybookInput,
+  outputSchema: IncidentsRunPlaybookOutput,
+}));
 // Input Schema
 export interface IncidentTasksCreateOrUpdateInput {
   subscriptionId: string;
@@ -4262,7 +4214,7 @@ export interface IncidentTasksCreateOrUpdateInput {
   etag?: string;
 }
 export const IncidentTasksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4315,7 +4267,7 @@ export interface IncidentTasksCreateOrUpdateOutput {
   };
 }
 export const IncidentTasksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4346,12 +4298,10 @@ export const IncidentTasksCreateOrUpdateOutput =
  * @param incidentId - Incident ID
  * @param incidentTaskId - Incident task ID
  */
-export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IncidentTasksCreateOrUpdateInput,
-    outputSchema: IncidentTasksCreateOrUpdateOutput,
-  }),
-);
+export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IncidentTasksCreateOrUpdateInput,
+  outputSchema: IncidentTasksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface IncidentTasksDeleteInput {
   subscriptionId: string;
@@ -4361,7 +4311,7 @@ export interface IncidentTasksDeleteInput {
   incidentTaskId: string;
 }
 export const IncidentTasksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4378,7 +4328,7 @@ export const IncidentTasksDeleteInput =
 // Output Schema
 export type IncidentTasksDeleteOutput = void;
 export const IncidentTasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentTasksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentTasksDeleteOutput>;
 
 // The operation
 /**
@@ -4391,7 +4341,7 @@ export const IncidentTasksDeleteOutput =
  * @param incidentId - Incident ID
  * @param incidentTaskId - Incident task ID
  */
-export const IncidentTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksDeleteInput,
   outputSchema: IncidentTasksDeleteOutput,
 }));
@@ -4403,7 +4353,7 @@ export interface IncidentTasksGetInput {
   incidentId: string;
   incidentTaskId: string;
 }
-export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IncidentTasksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4431,27 +4381,25 @@ export interface IncidentTasksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IncidentTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<IncidentTasksGetOutput>;
+export const IncidentTasksGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<IncidentTasksGetOutput>;
 
 // The operation
 /**
@@ -4464,7 +4412,7 @@ export const IncidentTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param incidentId - Incident ID
  * @param incidentTaskId - Incident task ID
  */
-export const IncidentTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksGetInput,
   outputSchema: IncidentTasksGetOutput,
 }));
@@ -4475,14 +4423,12 @@ export interface IncidentTasksListInput {
   workspaceName: string;
   incidentId: string;
 }
-export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    incidentId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const IncidentTasksListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  incidentId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks",
@@ -4508,7 +4454,7 @@ export interface IncidentTasksListOutput {
   nextLink?: string;
 }
 export const IncidentTasksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4555,7 +4501,7 @@ export const IncidentTasksListOutput =
  * @param workspaceName - The name of the workspace.
  * @param incidentId - Incident ID
  */
-export const IncidentTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IncidentTasksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: IncidentTasksListInput,
   outputSchema: IncidentTasksListOutput,
 }));
@@ -4611,7 +4557,7 @@ export interface MetadataCreateInput {
   };
   etag?: string;
 }
-export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4711,7 +4657,7 @@ export interface MetadataCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MetadataCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4741,7 +4687,7 @@ export const MetadataCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param metadataName - The Metadata name.
  */
-export const MetadataCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataCreateInput,
   outputSchema: MetadataCreateOutput,
 }));
@@ -4752,7 +4698,7 @@ export interface MetadataDeleteInput {
   workspaceName: string;
   metadataName: string;
 }
-export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4768,7 +4714,7 @@ export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MetadataDeleteOutput = void;
 export const MetadataDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MetadataDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MetadataDeleteOutput>;
 
 // The operation
 /**
@@ -4780,7 +4726,7 @@ export const MetadataDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param metadataName - The Metadata name.
  */
-export const MetadataDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataDeleteInput,
   outputSchema: MetadataDeleteOutput,
 }));
@@ -4791,7 +4737,7 @@ export interface MetadataGetInput {
   workspaceName: string;
   metadataName: string;
 }
-export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4818,7 +4764,7 @@ export interface MetadataGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MetadataGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4848,7 +4794,7 @@ export const MetadataGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param metadataName - The Metadata name.
  */
-export const MetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataGetInput,
   outputSchema: MetadataGetOutput,
 }));
@@ -4862,7 +4808,7 @@ export interface MetadataListInput {
   $top?: number;
   $skip?: number;
 }
-export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -4895,7 +4841,7 @@ export interface MetadataListOutput {
   }[];
   nextLink?: string;
 }
-export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -4933,7 +4879,7 @@ export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $top - Returns only the first n results. Optional.
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  */
-export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataListInput,
   outputSchema: MetadataListOutput,
 }));
@@ -4989,7 +4935,7 @@ export interface MetadataUpdateInput {
   };
   etag?: string;
 }
-export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5089,7 +5035,7 @@ export interface MetadataUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MetadataUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MetadataUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5119,15 +5065,13 @@ export const MetadataUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param metadataName - The Metadata name.
  */
-export const MetadataUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MetadataUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MetadataUpdateInput,
   outputSchema: MetadataUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SecurityInsights/operations",
@@ -5150,7 +5094,7 @@ export interface OperationsListOutput {
     isDataAction?: boolean;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -5175,7 +5119,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5186,14 +5130,12 @@ export interface ProductPackageGetInput {
   workspaceName: string;
   packageId: string;
 }
-export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    packageId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ProductPackageGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  packageId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages/{packageId}",
@@ -5216,7 +5158,7 @@ export interface ProductPackageGetOutput {
   };
 }
 export const ProductPackageGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5246,7 +5188,7 @@ export const ProductPackageGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param packageId - package Id
  */
-export const ProductPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPackageGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPackageGetInput,
   outputSchema: ProductPackageGetOutput,
 }));
@@ -5262,7 +5204,7 @@ export interface ProductPackagesListInput {
   $search?: string;
 }
 export const ProductPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5297,7 +5239,7 @@ export interface ProductPackagesListOutput {
   }[];
 }
 export const ProductPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -5349,7 +5291,7 @@ export const ProductPackagesListOutput =
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  * @param $search - Searches for a substring in the response. Optional.
  */
-export const ProductPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductPackagesListInput,
   outputSchema: ProductPackagesListOutput,
 }));
@@ -5361,7 +5303,7 @@ export interface ProductTemplateGetInput {
   templateId: string;
 }
 export const ProductTemplateGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5389,7 +5331,7 @@ export interface ProductTemplateGetOutput {
   };
 }
 export const ProductTemplateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5419,7 +5361,7 @@ export const ProductTemplateGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param templateId - template Id
  */
-export const ProductTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductTemplateGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductTemplateGetInput,
   outputSchema: ProductTemplateGetOutput,
 }));
@@ -5437,7 +5379,7 @@ export interface ProductTemplatesListInput {
   $skipToken?: string;
 }
 export const ProductTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5474,7 +5416,7 @@ export interface ProductTemplatesListOutput {
   nextLink?: string;
 }
 export const ProductTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5525,12 +5467,10 @@ export const ProductTemplatesListOutput =
  * @param $skip - Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const ProductTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductTemplatesListInput,
-    outputSchema: ProductTemplatesListOutput,
-  }),
-);
+export const ProductTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductTemplatesListInput,
+  outputSchema: ProductTemplatesListOutput,
+}));
 // Input Schema
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateInput {
   subscriptionId: string;
@@ -5541,7 +5481,7 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateInput {
   etag?: string;
 }
 export const SecurityMLAnalyticsSettingsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5571,7 +5511,7 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateOutput {
   };
 }
 export const SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5602,7 +5542,7 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
  * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityMLAnalyticsSettingsCreateOrUpdateInput,
     outputSchema: SecurityMLAnalyticsSettingsCreateOrUpdateOutput,
   }));
@@ -5614,7 +5554,7 @@ export interface SecurityMLAnalyticsSettingsDeleteInput {
   settingsResourceName: string;
 }
 export const SecurityMLAnalyticsSettingsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5630,7 +5570,7 @@ export const SecurityMLAnalyticsSettingsDeleteInput =
 // Output Schema
 export type SecurityMLAnalyticsSettingsDeleteOutput = void;
 export const SecurityMLAnalyticsSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityMLAnalyticsSettingsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityMLAnalyticsSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -5643,7 +5583,7 @@ export const SecurityMLAnalyticsSettingsDeleteOutput =
  * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityMLAnalyticsSettingsDeleteInput,
     outputSchema: SecurityMLAnalyticsSettingsDeleteOutput,
   }));
@@ -5655,7 +5595,7 @@ export interface SecurityMLAnalyticsSettingsGetInput {
   settingsResourceName: string;
 }
 export const SecurityMLAnalyticsSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5683,7 +5623,7 @@ export interface SecurityMLAnalyticsSettingsGetOutput {
   };
 }
 export const SecurityMLAnalyticsSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5714,7 +5654,7 @@ export const SecurityMLAnalyticsSettingsGetOutput =
  * @param settingsResourceName - Security ML Analytics Settings resource name
  */
 export const SecurityMLAnalyticsSettingsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityMLAnalyticsSettingsGetInput,
     outputSchema: SecurityMLAnalyticsSettingsGetOutput,
   }));
@@ -5725,7 +5665,7 @@ export interface SecurityMLAnalyticsSettingsListInput {
   workspaceName: string;
 }
 export const SecurityMLAnalyticsSettingsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5755,7 +5695,7 @@ export interface SecurityMLAnalyticsSettingsListOutput {
   }[];
 }
 export const SecurityMLAnalyticsSettingsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -5800,7 +5740,7 @@ export const SecurityMLAnalyticsSettingsListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const SecurityMLAnalyticsSettingsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityMLAnalyticsSettingsListInput,
     outputSchema: SecurityMLAnalyticsSettingsListOutput,
   }));
@@ -5814,7 +5754,7 @@ export interface SentinelOnboardingStatesCreateInput {
   etag?: string;
 }
 export const SentinelOnboardingStatesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5848,7 +5788,7 @@ export interface SentinelOnboardingStatesCreateOutput {
   };
 }
 export const SentinelOnboardingStatesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5879,7 +5819,7 @@ export const SentinelOnboardingStatesCreateOutput =
  * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
 export const SentinelOnboardingStatesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SentinelOnboardingStatesCreateInput,
     outputSchema: SentinelOnboardingStatesCreateOutput,
   }));
@@ -5891,7 +5831,7 @@ export interface SentinelOnboardingStatesDeleteInput {
   sentinelOnboardingStateName: string;
 }
 export const SentinelOnboardingStatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5907,7 +5847,7 @@ export const SentinelOnboardingStatesDeleteInput =
 // Output Schema
 export type SentinelOnboardingStatesDeleteOutput = void;
 export const SentinelOnboardingStatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SentinelOnboardingStatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SentinelOnboardingStatesDeleteOutput>;
 
 // The operation
 /**
@@ -5920,7 +5860,7 @@ export const SentinelOnboardingStatesDeleteOutput =
  * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
 export const SentinelOnboardingStatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SentinelOnboardingStatesDeleteInput,
     outputSchema: SentinelOnboardingStatesDeleteOutput,
   }));
@@ -5932,7 +5872,7 @@ export interface SentinelOnboardingStatesGetInput {
   sentinelOnboardingStateName: string;
 }
 export const SentinelOnboardingStatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -5960,7 +5900,7 @@ export interface SentinelOnboardingStatesGetOutput {
   };
 }
 export const SentinelOnboardingStatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5990,12 +5930,10 @@ export const SentinelOnboardingStatesGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param sentinelOnboardingStateName - The Sentinel onboarding state name. Supports - default
  */
-export const SentinelOnboardingStatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SentinelOnboardingStatesGetInput,
-    outputSchema: SentinelOnboardingStatesGetOutput,
-  }),
-);
+export const SentinelOnboardingStatesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SentinelOnboardingStatesGetInput,
+  outputSchema: SentinelOnboardingStatesGetOutput,
+}));
 // Input Schema
 export interface SentinelOnboardingStatesListInput {
   subscriptionId: string;
@@ -6003,7 +5941,7 @@ export interface SentinelOnboardingStatesListInput {
   workspaceName: string;
 }
 export const SentinelOnboardingStatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6032,7 +5970,7 @@ export interface SentinelOnboardingStatesListOutput {
   }[];
 }
 export const SentinelOnboardingStatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6076,7 +6014,7 @@ export const SentinelOnboardingStatesListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const SentinelOnboardingStatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SentinelOnboardingStatesListInput,
     outputSchema: SentinelOnboardingStatesListOutput,
   }));
@@ -6097,7 +6035,7 @@ export interface SourceControlListRepositoriesInput {
   };
 }
 export const SourceControlListRepositoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6130,7 +6068,7 @@ export interface SourceControlListRepositoriesOutput {
   }[];
 }
 export const SourceControlListRepositoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -6152,7 +6090,7 @@ export const SourceControlListRepositoriesOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const SourceControlListRepositories =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SourceControlListRepositoriesInput,
     outputSchema: SourceControlListRepositoriesOutput,
   }));
@@ -6232,7 +6170,7 @@ export interface SourceControlsCreateInput {
   etag?: string;
 }
 export const SourceControlsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6366,7 +6304,7 @@ export interface SourceControlsCreateOutput {
   };
 }
 export const SourceControlsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6396,12 +6334,10 @@ export const SourceControlsCreateOutput =
  * @param workspaceName - The name of the workspace.
  * @param sourceControlId - Source control Id
  */
-export const SourceControlsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlsCreateInput,
-    outputSchema: SourceControlsCreateOutput,
-  }),
-);
+export const SourceControlsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlsCreateInput,
+  outputSchema: SourceControlsCreateOutput,
+}));
 // Input Schema
 export interface SourceControlsDeleteInput {
   subscriptionId: string;
@@ -6420,7 +6356,7 @@ export interface SourceControlsDeleteInput {
   };
 }
 export const SourceControlsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6457,7 +6393,7 @@ export interface SourceControlsDeleteOutput {
   };
 }
 export const SourceControlsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
         code: Schema.optional(
@@ -6485,12 +6421,10 @@ export const SourceControlsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param sourceControlId - Source control Id
  */
-export const SourceControlsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SourceControlsDeleteInput,
-    outputSchema: SourceControlsDeleteOutput,
-  }),
-);
+export const SourceControlsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SourceControlsDeleteInput,
+  outputSchema: SourceControlsDeleteOutput,
+}));
 // Input Schema
 export interface SourceControlsGetInput {
   subscriptionId: string;
@@ -6498,14 +6432,12 @@ export interface SourceControlsGetInput {
   workspaceName: string;
   sourceControlId: string;
 }
-export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    sourceControlId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SourceControlsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  sourceControlId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
@@ -6528,7 +6460,7 @@ export interface SourceControlsGetOutput {
   };
 }
 export const SourceControlsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6558,7 +6490,7 @@ export const SourceControlsGetOutput =
  * @param workspaceName - The name of the workspace.
  * @param sourceControlId - Source control Id
  */
-export const SourceControlsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlsGetInput,
   outputSchema: SourceControlsGetOutput,
 }));
@@ -6569,7 +6501,7 @@ export interface SourceControlsListInput {
   workspaceName: string;
 }
 export const SourceControlsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6599,7 +6531,7 @@ export interface SourceControlsListOutput {
   }[];
 }
 export const SourceControlsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -6643,7 +6575,7 @@ export const SourceControlsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param workspaceName - The name of the workspace.
  */
-export const SourceControlsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SourceControlsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SourceControlsListInput,
   outputSchema: SourceControlsListOutput,
 }));
@@ -6656,7 +6588,7 @@ export interface ThreatIntelligenceIndicatorAppendTagsInput {
   threatIntelligenceTags?: string[];
 }
 export const ThreatIntelligenceIndicatorAppendTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6673,7 +6605,7 @@ export const ThreatIntelligenceIndicatorAppendTagsInput =
 // Output Schema
 export type ThreatIntelligenceIndicatorAppendTagsOutput = void;
 export const ThreatIntelligenceIndicatorAppendTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorAppendTagsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorAppendTagsOutput>;
 
 // The operation
 /**
@@ -6686,7 +6618,7 @@ export const ThreatIntelligenceIndicatorAppendTagsOutput =
  * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorAppendTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorAppendTagsInput,
     outputSchema: ThreatIntelligenceIndicatorAppendTagsOutput,
   }));
@@ -6703,7 +6635,7 @@ export interface ThreatIntelligenceIndicatorCreateInput {
   kind: "indicator";
 }
 export const ThreatIntelligenceIndicatorCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6740,7 +6672,7 @@ export interface ThreatIntelligenceIndicatorCreateOutput {
   };
 }
 export const ThreatIntelligenceIndicatorCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6771,7 +6703,7 @@ export const ThreatIntelligenceIndicatorCreateOutput =
  * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorCreateInput,
     outputSchema: ThreatIntelligenceIndicatorCreateOutput,
   }));
@@ -6787,7 +6719,7 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorInput {
   kind: "indicator";
 }
 export const ThreatIntelligenceIndicatorCreateIndicatorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6823,7 +6755,7 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorOutput {
   };
 }
 export const ThreatIntelligenceIndicatorCreateIndicatorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6853,7 +6785,7 @@ export const ThreatIntelligenceIndicatorCreateIndicatorOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const ThreatIntelligenceIndicatorCreateIndicator =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorCreateIndicatorInput,
     outputSchema: ThreatIntelligenceIndicatorCreateIndicatorOutput,
   }));
@@ -6865,7 +6797,7 @@ export interface ThreatIntelligenceIndicatorDeleteInput {
   name: string;
 }
 export const ThreatIntelligenceIndicatorDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6881,7 +6813,7 @@ export const ThreatIntelligenceIndicatorDeleteInput =
 // Output Schema
 export type ThreatIntelligenceIndicatorDeleteOutput = void;
 export const ThreatIntelligenceIndicatorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorDeleteOutput>;
 
 // The operation
 /**
@@ -6894,7 +6826,7 @@ export const ThreatIntelligenceIndicatorDeleteOutput =
  * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorDeleteInput,
     outputSchema: ThreatIntelligenceIndicatorDeleteOutput,
   }));
@@ -6906,7 +6838,7 @@ export interface ThreatIntelligenceIndicatorGetInput {
   name: string;
 }
 export const ThreatIntelligenceIndicatorGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -6934,7 +6866,7 @@ export interface ThreatIntelligenceIndicatorGetOutput {
   };
 }
 export const ThreatIntelligenceIndicatorGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6965,7 +6897,7 @@ export const ThreatIntelligenceIndicatorGetOutput =
  * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorGetInput,
     outputSchema: ThreatIntelligenceIndicatorGetOutput,
   }));
@@ -6976,7 +6908,7 @@ export interface ThreatIntelligenceIndicatorMetricsListInput {
   workspaceName: string;
 }
 export const ThreatIntelligenceIndicatorMetricsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7000,7 +6932,7 @@ export interface ThreatIntelligenceIndicatorMetricsListOutput {
   }[];
 }
 export const ThreatIntelligenceIndicatorMetricsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -7046,7 +6978,7 @@ export const ThreatIntelligenceIndicatorMetricsListOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const ThreatIntelligenceIndicatorMetricsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorMetricsListInput,
     outputSchema: ThreatIntelligenceIndicatorMetricsListOutput,
   }));
@@ -7073,7 +7005,7 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsInput {
   skipToken?: string;
 }
 export const ThreatIntelligenceIndicatorQueryIndicatorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7125,7 +7057,7 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsOutput {
   }[];
 }
 export const ThreatIntelligenceIndicatorQueryIndicatorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -7170,7 +7102,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsOutput =
  * @param workspaceName - The name of the workspace.
  */
 export const ThreatIntelligenceIndicatorQueryIndicators =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorQueryIndicatorsInput,
     outputSchema: ThreatIntelligenceIndicatorQueryIndicatorsOutput,
   }));
@@ -7187,7 +7119,7 @@ export interface ThreatIntelligenceIndicatorReplaceTagsInput {
   kind: "indicator";
 }
 export const ThreatIntelligenceIndicatorReplaceTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7224,7 +7156,7 @@ export interface ThreatIntelligenceIndicatorReplaceTagsOutput {
   };
 }
 export const ThreatIntelligenceIndicatorReplaceTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7255,7 +7187,7 @@ export const ThreatIntelligenceIndicatorReplaceTagsOutput =
  * @param name - Threat intelligence indicator name field.
  */
 export const ThreatIntelligenceIndicatorReplaceTags =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorReplaceTagsInput,
     outputSchema: ThreatIntelligenceIndicatorReplaceTagsOutput,
   }));
@@ -7270,7 +7202,7 @@ export interface ThreatIntelligenceIndicatorsListInput {
   $orderby?: string;
 }
 export const ThreatIntelligenceIndicatorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7304,7 +7236,7 @@ export interface ThreatIntelligenceIndicatorsListOutput {
   }[];
 }
 export const ThreatIntelligenceIndicatorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -7353,7 +7285,7 @@ export const ThreatIntelligenceIndicatorsListOutput =
  * @param $orderby - Sorts the results. Optional.
  */
 export const ThreatIntelligenceIndicatorsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ThreatIntelligenceIndicatorsListInput,
     outputSchema: ThreatIntelligenceIndicatorsListOutput,
   }));
@@ -7379,7 +7311,7 @@ export interface WatchlistItemsCreateOrUpdateInput {
   etag?: string;
 }
 export const WatchlistItemsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7435,7 +7367,7 @@ export interface WatchlistItemsCreateOrUpdateOutput {
   };
 }
 export const WatchlistItemsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7467,7 +7399,7 @@ export const WatchlistItemsCreateOrUpdateOutput =
  * @param watchlistItemId - The watchlist item id (GUID)
  */
 export const WatchlistItemsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchlistItemsCreateOrUpdateInput,
     outputSchema: WatchlistItemsCreateOrUpdateOutput,
   }));
@@ -7480,7 +7412,7 @@ export interface WatchlistItemsDeleteInput {
   watchlistItemId: string;
 }
 export const WatchlistItemsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7497,7 +7429,7 @@ export const WatchlistItemsDeleteInput =
 // Output Schema
 export type WatchlistItemsDeleteOutput = void;
 export const WatchlistItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistItemsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistItemsDeleteOutput>;
 
 // The operation
 /**
@@ -7510,12 +7442,10 @@ export const WatchlistItemsDeleteOutput =
  * @param watchlistAlias - The watchlist alias
  * @param watchlistItemId - The watchlist item id (GUID)
  */
-export const WatchlistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchlistItemsDeleteInput,
-    outputSchema: WatchlistItemsDeleteOutput,
-  }),
-);
+export const WatchlistItemsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchlistItemsDeleteInput,
+  outputSchema: WatchlistItemsDeleteOutput,
+}));
 // Input Schema
 export interface WatchlistItemsGetInput {
   subscriptionId: string;
@@ -7524,15 +7454,13 @@ export interface WatchlistItemsGetInput {
   watchlistAlias: string;
   watchlistItemId: string;
 }
-export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workspaceName: Schema.String.pipe(T.PathParam()),
-    watchlistAlias: Schema.String.pipe(T.PathParam()),
-    watchlistItemId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const WatchlistItemsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  watchlistAlias: Schema.String.pipe(T.PathParam()),
+  watchlistItemId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
@@ -7555,7 +7483,7 @@ export interface WatchlistItemsGetOutput {
   };
 }
 export const WatchlistItemsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7586,7 +7514,7 @@ export const WatchlistItemsGetOutput =
  * @param watchlistAlias - The watchlist alias
  * @param watchlistItemId - The watchlist item id (GUID)
  */
-export const WatchlistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistItemsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistItemsGetInput,
   outputSchema: WatchlistItemsGetOutput,
 }));
@@ -7599,7 +7527,7 @@ export interface WatchlistItemsListInput {
   $skipToken?: string;
 }
 export const WatchlistItemsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7631,7 +7559,7 @@ export interface WatchlistItemsListOutput {
   }[];
 }
 export const WatchlistItemsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -7677,7 +7605,7 @@ export const WatchlistItemsListOutput =
  * @param watchlistAlias - The watchlist alias
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const WatchlistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistItemsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistItemsListInput,
   outputSchema: WatchlistItemsListOutput,
 }));
@@ -7721,7 +7649,7 @@ export interface WatchlistsCreateOrUpdateInput {
   etag?: string;
 }
 export const WatchlistsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7798,7 +7726,7 @@ export interface WatchlistsCreateOrUpdateOutput {
   };
 }
 export const WatchlistsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7828,12 +7756,10 @@ export const WatchlistsCreateOrUpdateOutput =
  * @param workspaceName - The name of the workspace.
  * @param watchlistAlias - The watchlist alias
  */
-export const WatchlistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchlistsCreateOrUpdateInput,
-    outputSchema: WatchlistsCreateOrUpdateOutput,
-  }),
-);
+export const WatchlistsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchlistsCreateOrUpdateInput,
+  outputSchema: WatchlistsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WatchlistsDeleteInput {
   subscriptionId: string;
@@ -7841,7 +7767,7 @@ export interface WatchlistsDeleteInput {
   workspaceName: string;
   watchlistAlias: string;
 }
-export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7857,7 +7783,7 @@ export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WatchlistsDeleteOutput = void;
 export const WatchlistsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistsDeleteOutput>;
 
 // The operation
 /**
@@ -7869,7 +7795,7 @@ export const WatchlistsDeleteOutput =
  * @param workspaceName - The name of the workspace.
  * @param watchlistAlias - The watchlist alias
  */
-export const WatchlistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsDeleteInput,
   outputSchema: WatchlistsDeleteOutput,
 }));
@@ -7880,7 +7806,7 @@ export interface WatchlistsGetInput {
   workspaceName: string;
   watchlistAlias: string;
 }
-export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7907,7 +7833,7 @@ export interface WatchlistsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WatchlistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7937,7 +7863,7 @@ export const WatchlistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param watchlistAlias - The watchlist alias
  */
-export const WatchlistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsGetInput,
   outputSchema: WatchlistsGetOutput,
 }));
@@ -7948,7 +7874,7 @@ export interface WatchlistsListInput {
   workspaceName: string;
   $skipToken?: string;
 }
-export const WatchlistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
@@ -7978,7 +7904,7 @@ export interface WatchlistsListOutput {
     };
   }[];
 }
-export const WatchlistsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchlistsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
     Schema.Struct({
@@ -8013,7 +7939,7 @@ export const WatchlistsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param workspaceName - The name of the workspace.
  * @param $skipToken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional.
  */
-export const WatchlistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WatchlistsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WatchlistsListInput,
   outputSchema: WatchlistsListOutput,
 }));

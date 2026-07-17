@@ -9,7 +9,7 @@ export interface UpdateDocumentInput {
   documentId: string;
   dirty_values?: string;
 }
-export const UpdateDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
   dirty_values: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const UpdateDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdateDocumentOutput = unknown;
 export const UpdateDocumentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<UpdateDocumentOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<UpdateDocumentOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const UpdateDocumentOutput =
  * @param documentId - The Document ID
  * @param dirty_values - Dealing with Dirty Data
  */
-export const updateDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateDocumentInput,
   outputSchema: UpdateDocumentOutput,
   errors: [NotFound] as const,

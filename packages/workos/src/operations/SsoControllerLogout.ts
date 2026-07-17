@@ -8,7 +8,7 @@ export interface SsoControllerLogoutInput {
   token: string;
 }
 export const SsoControllerLogoutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String,
   }).pipe(
     T.Http({ method: "GET", path: "/sso/logout" }),
@@ -18,7 +18,7 @@ export const SsoControllerLogoutInput =
 // Output Schema
 export type SsoControllerLogoutOutput = void;
 export const SsoControllerLogoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SsoControllerLogoutOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SsoControllerLogoutOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const SsoControllerLogoutOutput =
  *
  * @param token - The logout token returned from the [Logout Authorize](/reference/sso/logout/authorize) endpoint.
  */
-export const SsoControllerLogout = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SsoControllerLogout = /*@__PURE__*/ API.make(() => ({
   inputSchema: SsoControllerLogoutInput,
   outputSchema: SsoControllerLogoutOutput,
   errors: [NotFound] as const,

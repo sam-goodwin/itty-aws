@@ -10,7 +10,7 @@ export interface PostBillingMeterEventAdjustmentsInput {
   type: "cancel";
 }
 export const PostBillingMeterEventAdjustmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.optional(
       Schema.Struct({
         identifier: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface PostBillingMeterEventAdjustmentsOutput {
   type: "cancel";
 }
 export const PostBillingMeterEventAdjustmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cancel: Schema.NullOr(
       Schema.Struct({
         identifier: Schema.NullOr(Schema.String),
@@ -57,7 +57,7 @@ export const PostBillingMeterEventAdjustmentsOutput =
  * <p>Creates a billing meter event adjustment.</p>
  */
 export const PostBillingMeterEventAdjustments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingMeterEventAdjustmentsInput,
     outputSchema: PostBillingMeterEventAdjustmentsOutput,
   }));

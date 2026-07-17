@@ -11,7 +11,7 @@ export interface SignalsReportArtefactsCreateInput {
   content: unknown;
 }
 export const SignalsReportArtefactsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     report_id: Schema.String.pipe(T.PathParam()),
     artefact_type: Schema.String,
@@ -34,7 +34,7 @@ export interface SignalsReportArtefactsCreateOutput {
   task_id: string | null;
 }
 export const SignalsReportArtefactsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     report_id: Schema.String,
     type: Schema.String,
@@ -54,7 +54,7 @@ export const SignalsReportArtefactsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const signalsReportArtefactsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsReportArtefactsCreateInput,
     outputSchema: SignalsReportArtefactsCreateOutput,
     errors: [BadRequest, NotFound] as const,

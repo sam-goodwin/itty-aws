@@ -11,7 +11,7 @@ export interface DashboardsSharingListInput {
   project_id: string;
 }
 export const DashboardsSharingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dashboard_id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -37,7 +37,7 @@ export type DashboardsSharingListOutput = {
   }[];
 }[];
 export const DashboardsSharingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       created_at: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
@@ -63,10 +63,8 @@ export const DashboardsSharingListOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardsSharingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardsSharingListInput,
-    outputSchema: DashboardsSharingListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardsSharingList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardsSharingListInput,
+  outputSchema: DashboardsSharingListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

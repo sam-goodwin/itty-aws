@@ -13,7 +13,7 @@ export interface GetTransfersTransferInput {
   expand?: string;
 }
 export const GetTransfersTransferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -326,7 +326,7 @@ export interface GetTransfersTransferOutput {
   transfer_group: string | null;
 }
 export const GetTransfersTransferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_reversed: Schema.Number,
     balance_transaction: Schema.NullOr(
@@ -660,9 +660,7 @@ export const GetTransfersTransferOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTransfersTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTransfersTransferInput,
-    outputSchema: GetTransfersTransferOutput,
-  }),
-);
+export const GetTransfersTransfer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTransfersTransferInput,
+  outputSchema: GetTransfersTransferOutput,
+}));

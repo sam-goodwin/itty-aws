@@ -13,7 +13,7 @@ export interface GetDisputesDisputeInput {
   expand?: string;
 }
 export const GetDisputesDisputeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dispute: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -703,7 +703,7 @@ export interface GetDisputesDisputeOutput {
     | "won";
 }
 export const GetDisputesDisputeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.Array(
       Schema.Struct({
@@ -1535,7 +1535,7 @@ export const GetDisputesDisputeOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetDisputesDispute = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetDisputesDispute = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDisputesDisputeInput,
   outputSchema: GetDisputesDisputeOutput,
 }));

@@ -13,7 +13,7 @@ export interface GetPromotionCodesPromotionCodeInput {
   expand?: string;
 }
 export const GetPromotionCodesPromotionCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     promotion_code: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -71,7 +71,7 @@ export interface GetPromotionCodesPromotionCodeOutput {
   times_redeemed: number;
 }
 export const GetPromotionCodesPromotionCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     code: Schema.String,
     created: Schema.Number,
@@ -148,7 +148,7 @@ export const GetPromotionCodesPromotionCodeOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetPromotionCodesPromotionCode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetPromotionCodesPromotionCodeInput,
     outputSchema: GetPromotionCodesPromotionCodeOutput,
   }));

@@ -11,7 +11,7 @@ export interface PatchV1AppsByAppIdInput {
   branchGitName?: string | null;
 }
 export const PatchV1AppsByAppIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.optional(Schema.String),
     branchId: Schema.optional(Schema.NullOr(Schema.String)),
@@ -36,7 +36,7 @@ export interface PatchV1AppsByAppIdOutput {
   };
 }
 export const PatchV1AppsByAppIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -61,7 +61,7 @@ export const PatchV1AppsByAppIdOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Updates the display name of an app.
  */
-export const patchV1AppsByAppId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchV1AppsByAppId = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchV1AppsByAppIdInput,
   outputSchema: PatchV1AppsByAppIdOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

@@ -11,7 +11,7 @@ export interface GetWebhookInput {
   database: string;
   id: string;
 }
-export const GetWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWebhookInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface GetWebhookOutput {
   last_sent_at: string | null;
   created_at: string;
   updated_at: string;
-  events: (
+  events: ReadonlyArray<
     | "branch.ready"
     | "branch.anomaly"
     | "branch.out_of_memory"
@@ -53,9 +53,9 @@ export interface GetWebhookOutput {
     | "deploy_request.schema_applied"
     | "keyspace.storage"
     | "webhook.test"
-  )[];
+  >;
 }
-export const GetWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWebhookOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
   secret: SensitiveOutputString,
@@ -98,7 +98,7 @@ export const GetWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database
  * @param id - The ID of the webhook
  */
-export const getWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getWebhook = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetWebhookInput,
   outputSchema: GetWebhookOutput,
   errors: [Forbidden, NotFound] as const,

@@ -10,7 +10,7 @@ export interface WarehouseColumnStatisticsListInput {
   table_id?: string;
 }
 export const WarehouseColumnStatisticsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -46,7 +46,7 @@ export interface WarehouseColumnStatisticsListOutput {
   }[];
 }
 export const WarehouseColumnStatisticsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -84,7 +84,7 @@ export const WarehouseColumnStatisticsListOutput =
  * @param table_id - Only return statistics for this data warehouse table.
  */
 export const warehouseColumnStatisticsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WarehouseColumnStatisticsListInput,
     outputSchema: WarehouseColumnStatisticsListOutput,
   }));

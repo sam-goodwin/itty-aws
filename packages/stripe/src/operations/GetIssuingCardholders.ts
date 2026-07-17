@@ -15,7 +15,7 @@ export interface GetIssuingCardholdersInput {
   type?: "company" | "individual";
 }
 export const GetIssuingCardholdersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
@@ -210,7 +210,7 @@ export interface GetIssuingCardholdersOutput {
   url: string;
 }
 export const GetIssuingCardholdersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         billing: Schema.Struct({
@@ -291,9 +291,7 @@ export const GetIssuingCardholdersOutput =
  * @param status - Only return cardholders that have the given status. One of `active`, `inactive`, or `blocked`.
  * @param type - Only return cardholders that have the given type. One of `individual` or `company`.
  */
-export const GetIssuingCardholders = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingCardholdersInput,
-    outputSchema: GetIssuingCardholdersOutput,
-  }),
-);
+export const GetIssuingCardholders = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingCardholdersInput,
+  outputSchema: GetIssuingCardholdersOutput,
+}));

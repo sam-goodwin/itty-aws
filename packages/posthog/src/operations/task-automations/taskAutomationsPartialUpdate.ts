@@ -17,7 +17,7 @@ export interface TaskAutomationsPartialUpdateInput {
   enabled?: boolean;
 }
 export const TaskAutomationsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface TaskAutomationsPartialUpdateOutput {
   updated_at: string;
 }
 export const TaskAutomationsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     prompt: Schema.String,
@@ -81,7 +81,7 @@ export const TaskAutomationsPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const taskAutomationsPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TaskAutomationsPartialUpdateInput,
     outputSchema: TaskAutomationsPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

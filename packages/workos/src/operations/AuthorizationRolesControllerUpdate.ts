@@ -15,7 +15,7 @@ export interface AuthorizationRolesControllerUpdateInput {
   description?: string | null;
 }
 export const AuthorizationRolesControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -37,7 +37,7 @@ export interface AuthorizationRolesControllerUpdateOutput {
   updated_at: string;
 }
 export const AuthorizationRolesControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -59,7 +59,7 @@ export const AuthorizationRolesControllerUpdateOutput =
  * @param slug - The slug of the environment role.
  */
 export const AuthorizationRolesControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationRolesControllerUpdateInput,
     outputSchema: AuthorizationRolesControllerUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

@@ -11,7 +11,7 @@ export interface V1CreateProjectTpaIntegrationInput {
   custom_jwks?: unknown;
 }
 export const V1CreateProjectTpaIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     oidc_issuer_url: Schema.optional(Schema.String),
     jwks_url: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface V1CreateProjectTpaIntegrationOutput {
   resolved_at?: string | null;
 }
 export const V1CreateProjectTpaIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     type: Schema.String,
     oidc_issuer_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -55,7 +55,7 @@ export const V1CreateProjectTpaIntegrationOutput =
  * @param ref - Project ref
  */
 export const v1CreateProjectTpaIntegration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1CreateProjectTpaIntegrationInput,
     outputSchema: V1CreateProjectTpaIntegrationOutput,
     errors: [BadRequest, Forbidden] as const,

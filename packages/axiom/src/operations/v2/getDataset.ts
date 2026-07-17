@@ -7,7 +7,7 @@ import { Forbidden, NotFound } from "../../errors.ts";
 export interface GetDatasetInput {
   dataset_id: string;
 }
-export const GetDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/datasets/{dataset_id}" }),
@@ -34,7 +34,7 @@ export interface GetDatasetOutput {
   useRetentionPeriod?: boolean;
   who: string;
 }
-export const GetDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDatasetOutput = /*@__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
@@ -60,7 +60,7 @@ export const GetDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Get dataset by ID
  */
-export const getDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDatasetInput,
   outputSchema: GetDatasetOutput,
   errors: [Forbidden, NotFound] as const,

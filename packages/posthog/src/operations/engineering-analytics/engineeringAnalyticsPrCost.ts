@@ -11,7 +11,7 @@ export interface EngineeringAnalyticsPrCostInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsPrCostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     pr_number: Schema.Number,
     repo: Schema.String,
@@ -47,7 +47,7 @@ export interface EngineeringAnalyticsPrCostOutput {
   excluded_jobs: number;
 }
 export const EngineeringAnalyticsPrCostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     by_workflow: Schema.Array(
       Schema.Struct({
         workflow_name: Schema.String,
@@ -83,10 +83,8 @@ export const EngineeringAnalyticsPrCostOutput =
  * @param repo - 'owner/name' repository the pull request belongs to.
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
-export const engineeringAnalyticsPrCost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EngineeringAnalyticsPrCostInput,
-    outputSchema: EngineeringAnalyticsPrCostOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const engineeringAnalyticsPrCost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EngineeringAnalyticsPrCostInput,
+  outputSchema: EngineeringAnalyticsPrCostOutput,
+  errors: [BadRequest] as const,
+}));

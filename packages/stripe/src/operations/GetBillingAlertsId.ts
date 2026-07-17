@@ -13,7 +13,7 @@ export interface GetBillingAlertsIdInput {
   expand?: string;
 }
 export const GetBillingAlertsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -56,7 +56,7 @@ export interface GetBillingAlertsIdOutput {
   } | null;
 }
 export const GetBillingAlertsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alert_type: Schema.Literals(["usage_threshold"]),
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -114,7 +114,7 @@ export const GetBillingAlertsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetBillingAlertsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBillingAlertsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBillingAlertsIdInput,
   outputSchema: GetBillingAlertsIdOutput,
 }));

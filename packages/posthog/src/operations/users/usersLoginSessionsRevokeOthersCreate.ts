@@ -7,7 +7,7 @@ export interface UsersLoginSessionsRevokeOthersCreateInput {
   uuid: string;
 }
 export const UsersLoginSessionsRevokeOthersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21,7 +21,7 @@ export interface UsersLoginSessionsRevokeOthersCreateOutput {
   revoked_count: number;
 }
 export const UsersLoginSessionsRevokeOthersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revoked_count: Schema.Number,
   }) as unknown as Schema.Codec<UsersLoginSessionsRevokeOthersCreateOutput>;
 
@@ -32,7 +32,7 @@ export const UsersLoginSessionsRevokeOthersCreateOutput =
  * "log out everywhere else" lock-out, and is blocked while impersonating.
  */
 export const usersLoginSessionsRevokeOthersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersLoginSessionsRevokeOthersCreateInput,
     outputSchema: UsersLoginSessionsRevokeOthersCreateOutput,
   }));

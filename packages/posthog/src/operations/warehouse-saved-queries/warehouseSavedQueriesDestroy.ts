@@ -9,7 +9,7 @@ export interface WarehouseSavedQueriesDestroyInput {
   project_id: string;
 }
 export const WarehouseSavedQueriesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const WarehouseSavedQueriesDestroyInput =
 // Output Schema
 export type WarehouseSavedQueriesDestroyOutput = void;
 export const WarehouseSavedQueriesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseSavedQueriesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseSavedQueriesDestroyOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const WarehouseSavedQueriesDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const warehouseSavedQueriesDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WarehouseSavedQueriesDestroyInput,
     outputSchema: WarehouseSavedQueriesDestroyOutput,
     errors: [Forbidden, NotFound] as const,

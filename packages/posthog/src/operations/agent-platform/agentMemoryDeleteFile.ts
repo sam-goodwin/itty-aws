@@ -9,7 +9,7 @@ export interface AgentMemoryDeleteFileInput {
   path: string;
 }
 export const AgentMemoryDeleteFileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     path: Schema.String,
@@ -23,7 +23,7 @@ export const AgentMemoryDeleteFileInput =
 // Output Schema
 export type AgentMemoryDeleteFileOutput = void;
 export const AgentMemoryDeleteFileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentMemoryDeleteFileOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentMemoryDeleteFileOutput>;
 
 // The operation
 /**
@@ -32,9 +32,7 @@ export const AgentMemoryDeleteFileOutput =
  * @param path - Memory path to delete.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryDeleteFile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentMemoryDeleteFileInput,
-    outputSchema: AgentMemoryDeleteFileOutput,
-  }),
-);
+export const agentMemoryDeleteFile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentMemoryDeleteFileInput,
+  outputSchema: AgentMemoryDeleteFileOutput,
+}));

@@ -12,7 +12,7 @@ export interface DeauthorizeGroupCloudProviderAccessRoleInput {
   pretty?: boolean;
 }
 export const DeauthorizeGroupCloudProviderAccessRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
     roleId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeauthorizeGroupCloudProviderAccessRoleInput =
 // Output Schema
 export type DeauthorizeGroupCloudProviderAccessRoleOutput = void;
 export const DeauthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeauthorizeGroupCloudProviderAccessRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeauthorizeGroupCloudProviderAccessRoleOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeauthorizeGroupCloudProviderAccessRoleOutput =
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
 export const deauthorizeGroupCloudProviderAccessRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeauthorizeGroupCloudProviderAccessRoleInput,
     outputSchema: DeauthorizeGroupCloudProviderAccessRoleOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

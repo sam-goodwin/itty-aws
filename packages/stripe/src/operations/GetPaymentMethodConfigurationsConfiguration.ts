@@ -8,7 +8,7 @@ export interface GetPaymentMethodConfigurationsConfigurationInput {
   expand?: string;
 }
 export const GetPaymentMethodConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -495,7 +495,7 @@ export interface GetPaymentMethodConfigurationsConfigurationOutput {
   };
 }
 export const GetPaymentMethodConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
@@ -1095,7 +1095,7 @@ export const GetPaymentMethodConfigurationsConfigurationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetPaymentMethodConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetPaymentMethodConfigurationsConfigurationInput,
     outputSchema: GetPaymentMethodConfigurationsConfigurationOutput,
   }));

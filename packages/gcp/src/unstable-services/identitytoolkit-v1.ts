@@ -28,7 +28,7 @@ export interface GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionCookie: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse",
@@ -47,7 +47,7 @@ export interface GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1DeleteAccountRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1DeleteAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegatedProjectNumber: Schema.optional(Schema.String),
     localId: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     localIds: Schema.optional(Schema.Array(Schema.String)),
     tenantId: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest: Schema.Code
 export interface GoogleCloudIdentitytoolkitV1TotpInfo {}
 
 export const GoogleCloudIdentitytoolkitV1TotpInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1TotpInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1TotpInfo",
   });
 
@@ -88,7 +88,7 @@ export interface GoogleCloudIdentitytoolkitV1EmailInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1EmailInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1EmailInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1EmailInfo" });
 
@@ -110,7 +110,7 @@ export interface GoogleCloudIdentitytoolkitV1MfaEnrollment {
 }
 
 export const GoogleCloudIdentitytoolkitV1MfaEnrollment: Schema.Codec<GoogleCloudIdentitytoolkitV1MfaEnrollment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totpInfo: Schema.optional(GoogleCloudIdentitytoolkitV1TotpInfo),
     mfaEnrollmentId: Schema.optional(Schema.String),
     unobfuscatedPhoneInfo: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1ResetPasswordRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1ResetPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oobCode: Schema.optional(Schema.String),
     newPassword: Schema.optional(Schema.String),
     oldPassword: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface GoogleCloudIdentitytoolkitV1ErrorInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1ErrorInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1ErrorInfo" });
@@ -165,7 +165,7 @@ export interface GoogleCloudIdentitytoolkitV1MfaFactor {
 }
 
 export const GoogleCloudIdentitytoolkitV1MfaFactor: Schema.Codec<GoogleCloudIdentitytoolkitV1MfaFactor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     phoneInfo: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1MfaFactor" });
@@ -214,7 +214,7 @@ export interface GoogleCloudIdentitytoolkitV1SignUpRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignUpRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignUpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localId: Schema.optional(Schema.String),
     mfaInfo: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1MfaFactor),
@@ -253,7 +253,7 @@ export interface GoogleCloudIdentitytoolkitV1SignUpResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignUpResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignUpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     idToken: Schema.optional(Schema.String),
     localId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -273,7 +273,7 @@ export interface GoogleCloudIdentitytoolkitV1SqlExpression {
 }
 
 export const GoogleCloudIdentitytoolkitV1SqlExpression: Schema.Codec<GoogleCloudIdentitytoolkitV1SqlExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export interface GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstName: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     lastName: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface GoogleCloudIdentitytoolkitV1DeleteAccountResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1DeleteAccountResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1DeleteAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1DeleteAccountResponse",
@@ -330,7 +330,7 @@ export interface GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recaptchaStoken: Schema.optional(Schema.String),
     recaptchaSiteKey: Schema.optional(Schema.String),
     producerProjectNumber: Schema.optional(Schema.String),
@@ -361,7 +361,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refreshToken: Schema.optional(Schema.String),
     localId: Schema.optional(Schema.String),
     playerId: Schema.optional(Schema.String),
@@ -383,7 +383,7 @@ export interface GoogleCloudIdentitytoolkitV1VerifyIosClientResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1VerifyIosClientResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1VerifyIosClientResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     receipt: Schema.optional(Schema.String),
     suggestedTimeout: Schema.optional(Schema.String),
   }).annotate({
@@ -418,7 +418,7 @@ export interface GoogleCloudIdentitytoolkitV1EmailTemplate {
 }
 
 export const GoogleCloudIdentitytoolkitV1EmailTemplate: Schema.Codec<GoogleCloudIdentitytoolkitV1EmailTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(Schema.String),
     replyTo: Schema.optional(Schema.String),
     customized: Schema.optional(Schema.Boolean),
@@ -459,7 +459,7 @@ export interface GoogleCloudIdentitytoolkitV1IdpConfig {
 }
 
 export const GoogleCloudIdentitytoolkitV1IdpConfig: Schema.Codec<GoogleCloudIdentitytoolkitV1IdpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experimentPercent: Schema.optional(Schema.Number),
     provider: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -498,7 +498,7 @@ export interface GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetProjectConfigResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1GetProjectConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revertSecondFactorAdditionTemplate: Schema.optional(
       GoogleCloudIdentitytoolkitV1EmailTemplate,
     ),
@@ -548,7 +548,7 @@ export interface GoogleCloudIdentitytoolkitV1ResetPasswordResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1ResetPasswordResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1ResetPasswordResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newEmail: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     mfaInfo: Schema.optional(GoogleCloudIdentitytoolkitV1MfaEnrollment),
@@ -568,7 +568,7 @@ export interface GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     localId: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -582,7 +582,7 @@ export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo),
     ),
@@ -610,7 +610,7 @@ export interface GoogleCloudIdentitytoolkitV1ProviderUserInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1ProviderUserInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1ProviderUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     providerId: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
@@ -679,7 +679,7 @@ export interface GoogleCloudIdentitytoolkitV1UserInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1UserInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emailVerified: Schema.optional(Schema.Boolean),
     photoUrl: Schema.optional(Schema.String),
     salt: Schema.optional(Schema.String),
@@ -736,7 +736,7 @@ export interface GoogleCloudIdentitytoolkitV1Argon2Parameters {
 }
 
 export const GoogleCloudIdentitytoolkitV1Argon2Parameters: Schema.Codec<GoogleCloudIdentitytoolkitV1Argon2Parameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hashType: Schema.optional(Schema.String),
     associatedData: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -784,7 +784,7 @@ export interface GoogleCloudIdentitytoolkitV1UploadAccountRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1UploadAccountRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1UploadAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parallelization: Schema.optional(Schema.Number),
     blockSize: Schema.optional(Schema.Number),
     dkLen: Schema.optional(Schema.Number),
@@ -823,7 +823,7 @@ export interface GoogleCloudIdentitytoolkitV1UserNotification {
 }
 
 export const GoogleCloudIdentitytoolkitV1UserNotification: Schema.Codec<GoogleCloudIdentitytoolkitV1UserNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationCode: Schema.optional(Schema.String),
     notificationMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1UserNotification" });
@@ -860,7 +860,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauthExpireIn: Schema.optional(Schema.Number),
     localId: Schema.optional(Schema.String),
     mfaInfo: Schema.optional(
@@ -895,7 +895,7 @@ export interface GoogleCloudIdentitytoolkitV1GetOobCodeResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetOobCodeResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1GetOobCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     oobLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -927,7 +927,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithIdpRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithIdpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegatedProjectNumber: Schema.optional(Schema.String),
     postBody: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -954,7 +954,7 @@ export interface GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validDuration: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -970,7 +970,7 @@ export interface GoogleCloudIdentitytoolkitV1FederatedUserIdentifier {
 }
 
 export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifier: Schema.Codec<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     providerId: Schema.optional(Schema.String),
     rawId: Schema.optional(Schema.String),
   }).annotate({
@@ -983,7 +983,7 @@ export interface GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionInfo: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse",
@@ -1020,7 +1020,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     returnSecureToken: Schema.optional(Schema.Boolean),
     captchaChallenge: Schema.optional(Schema.String),
@@ -1045,7 +1045,7 @@ export interface GoogleCloudIdentitytoolkitV1VerifyIosClientRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1VerifyIosClientRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1VerifyIosClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appToken: Schema.optional(Schema.String),
     isSandbox: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1115,7 +1115,7 @@ export interface GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1GetOobCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newEmail: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     returnOobLink: Schema.optional(Schema.Boolean),
@@ -1218,7 +1218,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithIdpResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputEmail: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     originalEmail: Schema.optional(Schema.String),
@@ -1288,7 +1288,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gamePlayerId: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -1319,7 +1319,7 @@ export interface GoogleCloudIdentitytoolkitV1OpenIdConnectKey {
 }
 
 export const GoogleCloudIdentitytoolkitV1OpenIdConnectKey: Schema.Codec<GoogleCloudIdentitytoolkitV1OpenIdConnectKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     e: Schema.optional(Schema.String),
     n: Schema.optional(Schema.String),
     kty: Schema.optional(Schema.String),
@@ -1337,7 +1337,7 @@ export interface GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1DownloadAccountResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1DownloadAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     users: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo)),
@@ -1357,7 +1357,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     returnSecureToken: Schema.optional(Schema.Boolean),
     delegatedProjectNumber: Schema.optional(Schema.String),
@@ -1388,7 +1388,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     refreshToken: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     mfaInfo: Schema.optional(
@@ -1424,7 +1424,7 @@ export interface GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1CreateAuthUriResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1CreateAuthUriResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     captchaRequired: Schema.optional(Schema.Boolean),
     sessionId: Schema.optional(Schema.String),
     signinMethods: Schema.optional(Schema.Array(Schema.String)),
@@ -1444,7 +1444,7 @@ export interface GoogleCloudIdentitytoolkitV1AutoRetrievalInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1AutoRetrievalInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1AutoRetrievalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appSignatureHash: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1AutoRetrievalInfo" });
 
@@ -1454,7 +1454,7 @@ export interface GoogleCloudIdentitytoolkitV1MfaInfo {
 }
 
 export const GoogleCloudIdentitytoolkitV1MfaInfo: Schema.Codec<GoogleCloudIdentitytoolkitV1MfaInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enrollments: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
     ),
@@ -1523,7 +1523,7 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SetAccountInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validSince: Schema.optional(Schema.String),
     delegatedProjectNumber: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -1577,7 +1577,7 @@ export interface GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetAccountInfoRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1GetAccountInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federatedUserId: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1FederatedUserIdentifier),
     ),
@@ -1600,7 +1600,7 @@ export interface GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1GetAccountInfoResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo)),
     kind: Schema.optional(Schema.String),
   }).annotate({
@@ -1613,7 +1613,7 @@ export interface GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse 
 }
 
 export const GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1OpenIdConnectKey),
     ),
@@ -1630,7 +1630,7 @@ export interface GoogleCloudIdentitytoolkitV1QueryUserInfoResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recordsCount: Schema.optional(Schema.String),
     userInfo: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
@@ -1673,7 +1673,7 @@ export interface GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     safetyNetToken: Schema.optional(Schema.String),
     iosReceipt: Schema.optional(Schema.String),
     autoRetrievalInfo: Schema.optional(
@@ -1701,7 +1701,7 @@ export interface GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     idToken: Schema.optional(Schema.String),
     samlAppEntityId: Schema.optional(Schema.String),
     rpId: Schema.optional(Schema.String),
@@ -1721,7 +1721,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     idToken: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
     oobCode: Schema.optional(Schema.String),
@@ -1755,7 +1755,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     temporaryProof: Schema.optional(Schema.String),
     sessionInfo: Schema.optional(Schema.String),
@@ -1775,7 +1775,7 @@ export interface GoogleCloudIdentitytoolkitV1UploadAccountResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1UploadAccountResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1UploadAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1ErrorInfo)),
     kind: Schema.optional(Schema.String),
   }).annotate({
@@ -1804,7 +1804,7 @@ export interface GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1QueryUserInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(
       Schema.Array(GoogleCloudIdentitytoolkitV1SqlExpression),
     ),
@@ -1842,7 +1842,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     idToken: Schema.optional(Schema.String),
     temporaryProofExpiresIn: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
@@ -1884,7 +1884,7 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SetAccountInfoResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresIn: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -1916,7 +1916,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse {
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse: Schema.Codec<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expiresIn: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     isNewUser: Schema.optional(Schema.Boolean),
@@ -1954,7 +1954,7 @@ export interface GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
 }
 
 export const GoogleCloudIdentitytoolkitV1CreateAuthUriRequest: Schema.Codec<GoogleCloudIdentitytoolkitV1CreateAuthUriRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     providerId: Schema.optional(Schema.String),
     otaApp: Schema.optional(Schema.String),
     sessionId: Schema.optional(Schema.String),
@@ -2037,7 +2037,7 @@ export interface AccountsProjectsRequest {
 }
 
 export const AccountsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(GoogleCloudIdentitytoolkitV1SignUpRequest).pipe(
       T.HttpBody(),
@@ -2054,7 +2054,7 @@ export const AccountsProjectsRequest =
 export type AccountsProjectsResponse =
   GoogleCloudIdentitytoolkitV1SignUpResponse;
 export const AccountsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
 export type AccountsProjectsError =
   | DefaultErrors
@@ -2069,7 +2069,7 @@ export const accountsProjects: API.OperationMethod<
   AccountsProjectsResponse,
   AccountsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AccountsProjectsRequest,
   output: AccountsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2083,7 +2083,7 @@ export interface CreateSessionCookieProjectsRequest {
 }
 
 export const CreateSessionCookieProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest,
@@ -2100,7 +2100,7 @@ export const CreateSessionCookieProjectsRequest =
 export type CreateSessionCookieProjectsResponse =
   GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 export const CreateSessionCookieProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 
 export type CreateSessionCookieProjectsError =
   | DefaultErrors
@@ -2115,7 +2115,7 @@ export const createSessionCookieProjects: API.OperationMethod<
   CreateSessionCookieProjectsResponse,
   CreateSessionCookieProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionCookieProjectsRequest,
   output: CreateSessionCookieProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2129,7 +2129,7 @@ export interface QueryAccountsProjectsRequest {
 }
 
 export const QueryAccountsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1QueryUserInfoRequest,
@@ -2146,7 +2146,7 @@ export const QueryAccountsProjectsRequest =
 export type QueryAccountsProjectsResponse =
   GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 export const QueryAccountsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
 export type QueryAccountsProjectsError =
   | DefaultErrors
@@ -2161,7 +2161,7 @@ export const queryAccountsProjects: API.OperationMethod<
   QueryAccountsProjectsResponse,
   QueryAccountsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryAccountsProjectsRequest,
   output: QueryAccountsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2177,7 +2177,7 @@ export interface AccountsProjectsTenantsRequest {
 }
 
 export const AccountsProjectsTenantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     body: Schema.optional(GoogleCloudIdentitytoolkitV1SignUpRequest).pipe(
@@ -2195,7 +2195,7 @@ export const AccountsProjectsTenantsRequest =
 export type AccountsProjectsTenantsResponse =
   GoogleCloudIdentitytoolkitV1SignUpResponse;
 export const AccountsProjectsTenantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
 export type AccountsProjectsTenantsError =
   | DefaultErrors
@@ -2210,7 +2210,7 @@ export const accountsProjectsTenants: API.OperationMethod<
   AccountsProjectsTenantsResponse,
   AccountsProjectsTenantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AccountsProjectsTenantsRequest,
   output: AccountsProjectsTenantsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2226,7 +2226,7 @@ export interface CreateSessionCookieProjectsTenantsRequest {
 }
 
 export const CreateSessionCookieProjectsTenantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     body: Schema.optional(
@@ -2244,7 +2244,7 @@ export const CreateSessionCookieProjectsTenantsRequest =
 export type CreateSessionCookieProjectsTenantsResponse =
   GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 export const CreateSessionCookieProjectsTenantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 
 export type CreateSessionCookieProjectsTenantsError =
   | DefaultErrors
@@ -2259,7 +2259,7 @@ export const createSessionCookieProjectsTenants: API.OperationMethod<
   CreateSessionCookieProjectsTenantsResponse,
   CreateSessionCookieProjectsTenantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSessionCookieProjectsTenantsRequest,
   output: CreateSessionCookieProjectsTenantsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2275,7 +2275,7 @@ export interface BatchCreateProjectsTenantsAccountsRequest {
 }
 
 export const BatchCreateProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
@@ -2293,7 +2293,7 @@ export const BatchCreateProjectsTenantsAccountsRequest =
 export type BatchCreateProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 export const BatchCreateProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 
 export type BatchCreateProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2308,7 +2308,7 @@ export const batchCreateProjectsTenantsAccounts: API.OperationMethod<
   BatchCreateProjectsTenantsAccountsResponse,
   BatchCreateProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsTenantsAccountsRequest,
   output: BatchCreateProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2324,7 +2324,7 @@ export interface QueryProjectsTenantsAccountsRequest {
 }
 
 export const QueryProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     body: Schema.optional(
@@ -2342,7 +2342,7 @@ export const QueryProjectsTenantsAccountsRequest =
 export type QueryProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 export const QueryProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
 export type QueryProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2357,7 +2357,7 @@ export const queryProjectsTenantsAccounts: API.OperationMethod<
   QueryProjectsTenantsAccountsResponse,
   QueryProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryProjectsTenantsAccountsRequest,
   output: QueryProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2373,7 +2373,7 @@ export interface UpdateProjectsTenantsAccountsRequest {
 }
 
 export const UpdateProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
@@ -2391,7 +2391,7 @@ export const UpdateProjectsTenantsAccountsRequest =
 export type UpdateProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 export const UpdateProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
 export type UpdateProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2406,7 +2406,7 @@ export const updateProjectsTenantsAccounts: API.OperationMethod<
   UpdateProjectsTenantsAccountsResponse,
   UpdateProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsTenantsAccountsRequest,
   output: UpdateProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2422,7 +2422,7 @@ export interface SendOobCodeProjectsTenantsAccountsRequest {
 }
 
 export const SendOobCodeProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     body: Schema.optional(GoogleCloudIdentitytoolkitV1GetOobCodeRequest).pipe(
@@ -2440,7 +2440,7 @@ export const SendOobCodeProjectsTenantsAccountsRequest =
 export type SendOobCodeProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 export const SendOobCodeProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
 export type SendOobCodeProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2455,7 +2455,7 @@ export const sendOobCodeProjectsTenantsAccounts: API.OperationMethod<
   SendOobCodeProjectsTenantsAccountsResponse,
   SendOobCodeProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendOobCodeProjectsTenantsAccountsRequest,
   output: SendOobCodeProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2471,7 +2471,7 @@ export interface BatchDeleteProjectsTenantsAccountsRequest {
 }
 
 export const BatchDeleteProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     body: Schema.optional(
@@ -2489,7 +2489,7 @@ export const BatchDeleteProjectsTenantsAccountsRequest =
 export type BatchDeleteProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 export const BatchDeleteProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 
 export type BatchDeleteProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2504,7 +2504,7 @@ export const batchDeleteProjectsTenantsAccounts: API.OperationMethod<
   BatchDeleteProjectsTenantsAccountsResponse,
   BatchDeleteProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsTenantsAccountsRequest,
   output: BatchDeleteProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2520,7 +2520,7 @@ export interface LookupProjectsTenantsAccountsRequest {
 }
 
 export const LookupProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
@@ -2538,7 +2538,7 @@ export const LookupProjectsTenantsAccountsRequest =
 export type LookupProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 export const LookupProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
 export type LookupProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2553,7 +2553,7 @@ export const lookupProjectsTenantsAccounts: API.OperationMethod<
   LookupProjectsTenantsAccountsResponse,
   LookupProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupProjectsTenantsAccountsRequest,
   output: LookupProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2569,7 +2569,7 @@ export interface DeleteProjectsTenantsAccountsRequest {
 }
 
 export const DeleteProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.String.pipe(T.HttpPath("tenantId")),
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
@@ -2587,7 +2587,7 @@ export const DeleteProjectsTenantsAccountsRequest =
 export type DeleteProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 export const DeleteProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
 export type DeleteProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2602,7 +2602,7 @@ export const deleteProjectsTenantsAccounts: API.OperationMethod<
   DeleteProjectsTenantsAccountsResponse,
   DeleteProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsAccountsRequest,
   output: DeleteProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2621,7 +2621,7 @@ export interface BatchGetProjectsTenantsAccountsRequest {
 }
 
 export const BatchGetProjectsTenantsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegatedProjectNumber: Schema.optional(Schema.String).pipe(
       T.HttpQuery("delegatedProjectNumber"),
     ),
@@ -2642,7 +2642,7 @@ export const BatchGetProjectsTenantsAccountsRequest =
 export type BatchGetProjectsTenantsAccountsResponse =
   GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 export const BatchGetProjectsTenantsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 
 export type BatchGetProjectsTenantsAccountsError =
   | DefaultErrors
@@ -2655,7 +2655,7 @@ export const batchGetProjectsTenantsAccounts: API.OperationMethod<
   BatchGetProjectsTenantsAccountsResponse,
   BatchGetProjectsTenantsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetProjectsTenantsAccountsRequest,
   output: BatchGetProjectsTenantsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -2669,7 +2669,7 @@ export interface DeleteProjectsAccountsRequest {
 }
 
 export const DeleteProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1DeleteAccountRequest,
@@ -2686,7 +2686,7 @@ export const DeleteProjectsAccountsRequest =
 export type DeleteProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 export const DeleteProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
 export type DeleteProjectsAccountsError =
   | DefaultErrors
@@ -2701,7 +2701,7 @@ export const deleteProjectsAccounts: API.OperationMethod<
   DeleteProjectsAccountsResponse,
   DeleteProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsAccountsRequest,
   output: DeleteProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2720,7 +2720,7 @@ export interface BatchGetProjectsAccountsRequest {
 }
 
 export const BatchGetProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     nextPageToken: Schema.optional(Schema.String).pipe(
       T.HttpQuery("nextPageToken"),
@@ -2741,7 +2741,7 @@ export const BatchGetProjectsAccountsRequest =
 export type BatchGetProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 export const BatchGetProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 
 export type BatchGetProjectsAccountsError =
   | DefaultErrors
@@ -2754,7 +2754,7 @@ export const batchGetProjectsAccounts: API.OperationMethod<
   BatchGetProjectsAccountsResponse,
   BatchGetProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAccountsRequest,
   output: BatchGetProjectsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -2768,7 +2768,7 @@ export interface BatchDeleteProjectsAccountsRequest {
 }
 
 export const BatchDeleteProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest,
@@ -2785,7 +2785,7 @@ export const BatchDeleteProjectsAccountsRequest =
 export type BatchDeleteProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 export const BatchDeleteProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 
 export type BatchDeleteProjectsAccountsError =
   | DefaultErrors
@@ -2800,7 +2800,7 @@ export const batchDeleteProjectsAccounts: API.OperationMethod<
   BatchDeleteProjectsAccountsResponse,
   BatchDeleteProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsAccountsRequest,
   output: BatchDeleteProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2814,7 +2814,7 @@ export interface LookupProjectsAccountsRequest {
 }
 
 export const LookupProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1GetAccountInfoRequest,
@@ -2831,7 +2831,7 @@ export const LookupProjectsAccountsRequest =
 export type LookupProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 export const LookupProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
 export type LookupProjectsAccountsError =
   | DefaultErrors
@@ -2846,7 +2846,7 @@ export const lookupProjectsAccounts: API.OperationMethod<
   LookupProjectsAccountsResponse,
   LookupProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupProjectsAccountsRequest,
   output: LookupProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2860,7 +2860,7 @@ export interface SendOobCodeProjectsAccountsRequest {
 }
 
 export const SendOobCodeProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(GoogleCloudIdentitytoolkitV1GetOobCodeRequest).pipe(
       T.HttpBody(),
@@ -2877,7 +2877,7 @@ export const SendOobCodeProjectsAccountsRequest =
 export type SendOobCodeProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 export const SendOobCodeProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
 export type SendOobCodeProjectsAccountsError =
   | DefaultErrors
@@ -2892,7 +2892,7 @@ export const sendOobCodeProjectsAccounts: API.OperationMethod<
   SendOobCodeProjectsAccountsResponse,
   SendOobCodeProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendOobCodeProjectsAccountsRequest,
   output: SendOobCodeProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2906,7 +2906,7 @@ export interface UpdateProjectsAccountsRequest {
 }
 
 export const UpdateProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SetAccountInfoRequest,
@@ -2923,7 +2923,7 @@ export const UpdateProjectsAccountsRequest =
 export type UpdateProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 export const UpdateProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
 export type UpdateProjectsAccountsError =
   | DefaultErrors
@@ -2938,7 +2938,7 @@ export const updateProjectsAccounts: API.OperationMethod<
   UpdateProjectsAccountsResponse,
   UpdateProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsAccountsRequest,
   output: UpdateProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2952,7 +2952,7 @@ export interface QueryProjectsAccountsRequest {
 }
 
 export const QueryProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1QueryUserInfoRequest,
@@ -2969,7 +2969,7 @@ export const QueryProjectsAccountsRequest =
 export type QueryProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 export const QueryProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
 export type QueryProjectsAccountsError =
   | DefaultErrors
@@ -2984,7 +2984,7 @@ export const queryProjectsAccounts: API.OperationMethod<
   QueryProjectsAccountsResponse,
   QueryProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryProjectsAccountsRequest,
   output: QueryProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2998,7 +2998,7 @@ export interface BatchCreateProjectsAccountsRequest {
 }
 
 export const BatchCreateProjectsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetProjectId: Schema.String.pipe(T.HttpPath("targetProjectId")),
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1UploadAccountRequest,
@@ -3015,7 +3015,7 @@ export const BatchCreateProjectsAccountsRequest =
 export type BatchCreateProjectsAccountsResponse =
   GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 export const BatchCreateProjectsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 
 export type BatchCreateProjectsAccountsError =
   | DefaultErrors
@@ -3030,7 +3030,7 @@ export const batchCreateProjectsAccounts: API.OperationMethod<
   BatchCreateProjectsAccountsResponse,
   BatchCreateProjectsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsAccountsRequest,
   output: BatchCreateProjectsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3042,7 +3042,7 @@ export interface SignInWithPasswordAccountsRequest {
 }
 
 export const SignInWithPasswordAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest,
     ).pipe(T.HttpBody()),
@@ -3058,7 +3058,7 @@ export const SignInWithPasswordAccountsRequest =
 export type SignInWithPasswordAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse;
 export const SignInWithPasswordAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse;
 
 export type SignInWithPasswordAccountsError =
   | DefaultErrors
@@ -3073,7 +3073,7 @@ export const signInWithPasswordAccounts: API.OperationMethod<
   SignInWithPasswordAccountsResponse,
   SignInWithPasswordAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithPasswordAccountsRequest,
   output: SignInWithPasswordAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3085,7 +3085,7 @@ export interface SignInWithIdpAccountsRequest {
 }
 
 export const SignInWithIdpAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithIdpRequest,
     ).pipe(T.HttpBody()),
@@ -3101,7 +3101,7 @@ export const SignInWithIdpAccountsRequest =
 export type SignInWithIdpAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithIdpResponse;
 export const SignInWithIdpAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithIdpResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithIdpResponse;
 
 export type SignInWithIdpAccountsError =
   | DefaultErrors
@@ -3116,7 +3116,7 @@ export const signInWithIdpAccounts: API.OperationMethod<
   SignInWithIdpAccountsResponse,
   SignInWithIdpAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithIdpAccountsRequest,
   output: SignInWithIdpAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3127,7 +3127,7 @@ export interface SignUpAccountsRequest {
   body?: GoogleCloudIdentitytoolkitV1SignUpRequest;
 }
 
-export const SignUpAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignUpAccountsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(GoogleCloudIdentitytoolkitV1SignUpRequest).pipe(
     T.HttpBody(),
   ),
@@ -3138,7 +3138,7 @@ export const SignUpAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type SignUpAccountsResponse = GoogleCloudIdentitytoolkitV1SignUpResponse;
 export const SignUpAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
 export type SignUpAccountsError =
   | DefaultErrors
@@ -3153,7 +3153,7 @@ export const signUpAccounts: API.OperationMethod<
   SignUpAccountsResponse,
   SignUpAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignUpAccountsRequest,
   output: SignUpAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3164,7 +3164,7 @@ export interface DeleteAccountsRequest {
   body?: GoogleCloudIdentitytoolkitV1DeleteAccountRequest;
 }
 
-export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAccountsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(GoogleCloudIdentitytoolkitV1DeleteAccountRequest).pipe(
     T.HttpBody(),
   ),
@@ -3176,7 +3176,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteAccountsResponse =
   GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 export const DeleteAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
 export type DeleteAccountsError =
   | DefaultErrors
@@ -3191,7 +3191,7 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsResponse,
   DeleteAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3202,7 +3202,7 @@ export interface UpdateAccountsRequest {
   body?: GoogleCloudIdentitytoolkitV1SetAccountInfoRequest;
 }
 
-export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAccountsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(GoogleCloudIdentitytoolkitV1SetAccountInfoRequest).pipe(
     T.HttpBody(),
   ),
@@ -3214,7 +3214,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAccountsResponse =
   GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 export const UpdateAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
 export type UpdateAccountsError =
   | DefaultErrors
@@ -3229,7 +3229,7 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsResponse,
   UpdateAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3241,7 +3241,7 @@ export interface SendOobCodeAccountsRequest {
 }
 
 export const SendOobCodeAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GoogleCloudIdentitytoolkitV1GetOobCodeRequest).pipe(
       T.HttpBody(),
     ),
@@ -3253,7 +3253,7 @@ export const SendOobCodeAccountsRequest =
 export type SendOobCodeAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 export const SendOobCodeAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
 export type SendOobCodeAccountsError =
   | DefaultErrors
@@ -3268,7 +3268,7 @@ export const sendOobCodeAccounts: API.OperationMethod<
   SendOobCodeAccountsResponse,
   SendOobCodeAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendOobCodeAccountsRequest,
   output: SendOobCodeAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3280,7 +3280,7 @@ export interface ResetPasswordAccountsRequest {
 }
 
 export const ResetPasswordAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1ResetPasswordRequest,
     ).pipe(T.HttpBody()),
@@ -3296,7 +3296,7 @@ export const ResetPasswordAccountsRequest =
 export type ResetPasswordAccountsResponse =
   GoogleCloudIdentitytoolkitV1ResetPasswordResponse;
 export const ResetPasswordAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1ResetPasswordResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1ResetPasswordResponse;
 
 export type ResetPasswordAccountsError =
   | DefaultErrors
@@ -3311,7 +3311,7 @@ export const resetPasswordAccounts: API.OperationMethod<
   ResetPasswordAccountsResponse,
   ResetPasswordAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetPasswordAccountsRequest,
   output: ResetPasswordAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3323,7 +3323,7 @@ export interface VerifyIosClientAccountsRequest {
 }
 
 export const VerifyIosClientAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1VerifyIosClientRequest,
     ).pipe(T.HttpBody()),
@@ -3339,7 +3339,7 @@ export const VerifyIosClientAccountsRequest =
 export type VerifyIosClientAccountsResponse =
   GoogleCloudIdentitytoolkitV1VerifyIosClientResponse;
 export const VerifyIosClientAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1VerifyIosClientResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1VerifyIosClientResponse;
 
 export type VerifyIosClientAccountsError =
   | DefaultErrors
@@ -3354,7 +3354,7 @@ export const verifyIosClientAccounts: API.OperationMethod<
   VerifyIosClientAccountsResponse,
   VerifyIosClientAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyIosClientAccountsRequest,
   output: VerifyIosClientAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3366,7 +3366,7 @@ export interface SendVerificationCodeAccountsRequest {
 }
 
 export const SendVerificationCodeAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest,
     ).pipe(T.HttpBody()),
@@ -3382,7 +3382,7 @@ export const SendVerificationCodeAccountsRequest =
 export type SendVerificationCodeAccountsResponse =
   GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse;
 export const SendVerificationCodeAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse;
 
 export type SendVerificationCodeAccountsError =
   | DefaultErrors
@@ -3397,7 +3397,7 @@ export const sendVerificationCodeAccounts: API.OperationMethod<
   SendVerificationCodeAccountsResponse,
   SendVerificationCodeAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendVerificationCodeAccountsRequest,
   output: SendVerificationCodeAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3409,7 +3409,7 @@ export interface SignInWithEmailLinkAccountsRequest {
 }
 
 export const SignInWithEmailLinkAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest,
     ).pipe(T.HttpBody()),
@@ -3425,7 +3425,7 @@ export const SignInWithEmailLinkAccountsRequest =
 export type SignInWithEmailLinkAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse;
 export const SignInWithEmailLinkAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse;
 
 export type SignInWithEmailLinkAccountsError =
   | DefaultErrors
@@ -3440,7 +3440,7 @@ export const signInWithEmailLinkAccounts: API.OperationMethod<
   SignInWithEmailLinkAccountsResponse,
   SignInWithEmailLinkAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithEmailLinkAccountsRequest,
   output: SignInWithEmailLinkAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3452,7 +3452,7 @@ export interface SignInWithGameCenterAccountsRequest {
 }
 
 export const SignInWithGameCenterAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest,
     ).pipe(T.HttpBody()),
@@ -3468,7 +3468,7 @@ export const SignInWithGameCenterAccountsRequest =
 export type SignInWithGameCenterAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse;
 export const SignInWithGameCenterAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse;
 
 export type SignInWithGameCenterAccountsError =
   | DefaultErrors
@@ -3483,7 +3483,7 @@ export const signInWithGameCenterAccounts: API.OperationMethod<
   SignInWithGameCenterAccountsResponse,
   SignInWithGameCenterAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithGameCenterAccountsRequest,
   output: SignInWithGameCenterAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3495,7 +3495,7 @@ export interface SignInWithPhoneNumberAccountsRequest {
 }
 
 export const SignInWithPhoneNumberAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest,
     ).pipe(T.HttpBody()),
@@ -3511,7 +3511,7 @@ export const SignInWithPhoneNumberAccountsRequest =
 export type SignInWithPhoneNumberAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse;
 export const SignInWithPhoneNumberAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse;
 
 export type SignInWithPhoneNumberAccountsError =
   | DefaultErrors
@@ -3526,7 +3526,7 @@ export const signInWithPhoneNumberAccounts: API.OperationMethod<
   SignInWithPhoneNumberAccountsResponse,
   SignInWithPhoneNumberAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithPhoneNumberAccountsRequest,
   output: SignInWithPhoneNumberAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3538,7 +3538,7 @@ export interface IssueSamlResponseAccountsRequest {
 }
 
 export const IssueSamlResponseAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest,
     ).pipe(T.HttpBody()),
@@ -3554,7 +3554,7 @@ export const IssueSamlResponseAccountsRequest =
 export type IssueSamlResponseAccountsResponse =
   GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse;
 export const IssueSamlResponseAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse;
 
 export type IssueSamlResponseAccountsError =
   | DefaultErrors
@@ -3569,7 +3569,7 @@ export const issueSamlResponseAccounts: API.OperationMethod<
   IssueSamlResponseAccountsResponse,
   IssueSamlResponseAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: IssueSamlResponseAccountsRequest,
   output: IssueSamlResponseAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3581,7 +3581,7 @@ export interface CreateAuthUriAccountsRequest {
 }
 
 export const CreateAuthUriAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1CreateAuthUriRequest,
     ).pipe(T.HttpBody()),
@@ -3597,7 +3597,7 @@ export const CreateAuthUriAccountsRequest =
 export type CreateAuthUriAccountsResponse =
   GoogleCloudIdentitytoolkitV1CreateAuthUriResponse;
 export const CreateAuthUriAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateAuthUriResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1CreateAuthUriResponse;
 
 export type CreateAuthUriAccountsError =
   | DefaultErrors
@@ -3612,7 +3612,7 @@ export const createAuthUriAccounts: API.OperationMethod<
   CreateAuthUriAccountsResponse,
   CreateAuthUriAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAuthUriAccountsRequest,
   output: CreateAuthUriAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3624,7 +3624,7 @@ export interface SignInWithCustomTokenAccountsRequest {
 }
 
 export const SignInWithCustomTokenAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest,
     ).pipe(T.HttpBody()),
@@ -3640,7 +3640,7 @@ export const SignInWithCustomTokenAccountsRequest =
 export type SignInWithCustomTokenAccountsResponse =
   GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse;
 export const SignInWithCustomTokenAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse;
 
 export type SignInWithCustomTokenAccountsError =
   | DefaultErrors
@@ -3655,7 +3655,7 @@ export const signInWithCustomTokenAccounts: API.OperationMethod<
   SignInWithCustomTokenAccountsResponse,
   SignInWithCustomTokenAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignInWithCustomTokenAccountsRequest,
   output: SignInWithCustomTokenAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3666,7 +3666,7 @@ export interface LookupAccountsRequest {
   body?: GoogleCloudIdentitytoolkitV1GetAccountInfoRequest;
 }
 
-export const LookupAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupAccountsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(GoogleCloudIdentitytoolkitV1GetAccountInfoRequest).pipe(
     T.HttpBody(),
   ),
@@ -3678,7 +3678,7 @@ export const LookupAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LookupAccountsResponse =
   GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 export const LookupAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
 export type LookupAccountsError =
   | DefaultErrors
@@ -3693,7 +3693,7 @@ export const lookupAccounts: API.OperationMethod<
   LookupAccountsResponse,
   LookupAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupAccountsRequest,
   output: LookupAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3701,16 +3701,14 @@ export const lookupAccounts: API.OperationMethod<
 
 export interface GetPublicKeysV1Request {}
 
-export const GetPublicKeysV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetPublicKeysV1Request = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "v1/publicKeys" }),
   svc,
 ) as unknown as Schema.Codec<GetPublicKeysV1Request>;
 
 export interface GetPublicKeysV1Response {}
 export const GetPublicKeysV1Response: Schema.Codec<GetPublicKeysV1Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<GetPublicKeysV1Response>;
 
@@ -3722,7 +3720,7 @@ export const getPublicKeysV1: API.OperationMethod<
   GetPublicKeysV1Response,
   GetPublicKeysV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPublicKeysV1Request,
   output: GetPublicKeysV1Response,
   errors: [NotFound, Forbidden],
@@ -3731,7 +3729,7 @@ export const getPublicKeysV1: API.OperationMethod<
 export interface GetRecaptchaParamsV1Request {}
 
 export const GetRecaptchaParamsV1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/recaptchaParams" }),
     svc,
   ) as unknown as Schema.Codec<GetRecaptchaParamsV1Request>;
@@ -3739,7 +3737,7 @@ export const GetRecaptchaParamsV1Request =
 export type GetRecaptchaParamsV1Response =
   GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse;
 export const GetRecaptchaParamsV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse;
 
 export type GetRecaptchaParamsV1Error = DefaultErrors | NotFound | Forbidden;
 
@@ -3749,7 +3747,7 @@ export const getRecaptchaParamsV1: API.OperationMethod<
   GetRecaptchaParamsV1Response,
   GetRecaptchaParamsV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecaptchaParamsV1Request,
   output: GetRecaptchaParamsV1Response,
   errors: [NotFound, Forbidden],
@@ -3774,7 +3772,7 @@ export interface GetProjectsV1Request {
   projectNumber?: string;
 }
 
-export const GetProjectsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectsV1Request = /*@__PURE__*/ Schema.Struct({
   iosBundleId: Schema.optional(Schema.String).pipe(T.HttpQuery("iosBundleId")),
   androidPackageName: Schema.optional(Schema.String).pipe(
     T.HttpQuery("androidPackageName"),
@@ -3801,7 +3799,7 @@ export const GetProjectsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsV1Response =
   GoogleCloudIdentitytoolkitV1GetProjectConfigResponse;
 export const GetProjectsV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetProjectConfigResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetProjectConfigResponse;
 
 export type GetProjectsV1Error = DefaultErrors | NotFound | Forbidden;
 
@@ -3811,7 +3809,7 @@ export const getProjectsV1: API.OperationMethod<
   GetProjectsV1Response,
   GetProjectsV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsV1Request,
   output: GetProjectsV1Response,
   errors: [NotFound, Forbidden],
@@ -3820,7 +3818,7 @@ export const getProjectsV1: API.OperationMethod<
 export interface GetSessionCookiePublicKeysV1Request {}
 
 export const GetSessionCookiePublicKeysV1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/sessionCookiePublicKeys" }),
     svc,
   ) as unknown as Schema.Codec<GetSessionCookiePublicKeysV1Request>;
@@ -3828,7 +3826,7 @@ export const GetSessionCookiePublicKeysV1Request =
 export type GetSessionCookiePublicKeysV1Response =
   GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse;
 export const GetSessionCookiePublicKeysV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse;
+  /*@__PURE__*/ GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse;
 
 export type GetSessionCookiePublicKeysV1Error =
   | DefaultErrors
@@ -3841,7 +3839,7 @@ export const getSessionCookiePublicKeysV1: API.OperationMethod<
   GetSessionCookiePublicKeysV1Response,
   GetSessionCookiePublicKeysV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionCookiePublicKeysV1Request,
   output: GetSessionCookiePublicKeysV1Response,
   errors: [NotFound, Forbidden],

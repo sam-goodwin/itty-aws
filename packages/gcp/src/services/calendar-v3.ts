@@ -30,7 +30,7 @@ export interface TimePeriod {
 }
 
 export const TimePeriod: Schema.Codec<TimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimePeriod" });
@@ -43,7 +43,7 @@ export interface Calendar_Error {
 }
 
 export const Calendar_Error: Schema.Codec<Calendar_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "Calendar_Error" });
@@ -56,7 +56,7 @@ export interface FreeBusyCalendar {
 }
 
 export const FreeBusyCalendar: Schema.Codec<FreeBusyCalendar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     busy: Schema.optional(Schema.Array(TimePeriod)),
     errors: Schema.optional(Schema.Array(Calendar_Error)),
   }).annotate({ identifier: "FreeBusyCalendar" });
@@ -79,7 +79,7 @@ export interface EventWorkingLocationProperties {
 }
 
 export const EventWorkingLocationProperties: Schema.Codec<EventWorkingLocationProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     officeLocation: Schema.optional(
       Schema.Struct({
         buildingId: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export interface EventOutOfOfficeProperties {
 }
 
 export const EventOutOfOfficeProperties: Schema.Codec<EventOutOfOfficeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoDeclineMode: Schema.optional(Schema.String),
     declineMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "EventOutOfOfficeProperties" });
@@ -117,7 +117,7 @@ export interface ColorDefinition {
 }
 
 export const ColorDefinition: Schema.Codec<ColorDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     background: Schema.optional(Schema.String),
     foreground: Schema.optional(Schema.String),
   }).annotate({ identifier: "ColorDefinition" });
@@ -130,7 +130,7 @@ export interface FreeBusyGroup {
 }
 
 export const FreeBusyGroup: Schema.Codec<FreeBusyGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendars: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Calendar_Error)),
   }).annotate({ identifier: "FreeBusyGroup" });
@@ -149,7 +149,7 @@ export interface FreeBusyResponse {
 }
 
 export const FreeBusyResponse: Schema.Codec<FreeBusyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Record(Schema.String, FreeBusyGroup)),
     timeMax: Schema.optional(Schema.String),
     timeMin: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export interface EventAttendee {
 }
 
 export const EventAttendee: Schema.Codec<EventAttendee> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     asyncOperation: Schema.optional(Schema.String),
     organizer: Schema.optional(Schema.Boolean),
     email: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface EventBirthdayProperties {
 }
 
 export const EventBirthdayProperties: Schema.Codec<EventBirthdayProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contact: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     customTypeName: Schema.optional(Schema.String),
@@ -227,7 +227,7 @@ export interface EventAttachment {
 }
 
 export const EventAttachment: Schema.Codec<EventAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iconLink: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     fileId: Schema.optional(Schema.String),
@@ -245,7 +245,7 @@ export interface EventDateTime {
 }
 
 export const EventDateTime: Schema.Codec<EventDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
     dateTime: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface EventReminder {
 }
 
 export const EventReminder: Schema.Codec<EventReminder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     minutes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "EventReminder" });
@@ -270,7 +270,7 @@ export interface ConferenceSolutionKey {
 }
 
 export const ConferenceSolutionKey: Schema.Codec<ConferenceSolutionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConferenceSolutionKey" });
 
@@ -284,7 +284,7 @@ export interface ConferenceSolution {
 }
 
 export const ConferenceSolution: Schema.Codec<ConferenceSolution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(ConferenceSolutionKey),
     iconUri: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -295,7 +295,7 @@ export interface ConferenceParametersAddOnParameters {
 }
 
 export const ConferenceParametersAddOnParameters: Schema.Codec<ConferenceParametersAddOnParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "ConferenceParametersAddOnParameters" });
 
@@ -305,7 +305,7 @@ export interface ConferenceParameters {
 }
 
 export const ConferenceParameters: Schema.Codec<ConferenceParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addOnParameters: Schema.optional(ConferenceParametersAddOnParameters),
   }).annotate({ identifier: "ConferenceParameters" });
 
@@ -315,7 +315,7 @@ export interface ConferenceRequestStatus {
 }
 
 export const ConferenceRequestStatus: Schema.Codec<ConferenceRequestStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConferenceRequestStatus" });
 
@@ -329,7 +329,7 @@ export interface CreateConferenceRequest {
 }
 
 export const CreateConferenceRequest: Schema.Codec<CreateConferenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     conferenceSolutionKey: Schema.optional(ConferenceSolutionKey),
     status: Schema.optional(ConferenceRequestStatus),
@@ -359,7 +359,7 @@ export interface EntryPoint {
 }
 
 export const EntryPoint: Schema.Codec<EntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     passcode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -390,7 +390,7 @@ export interface ConferenceData {
 }
 
 export const ConferenceData: Schema.Codec<ConferenceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conferenceId: Schema.optional(Schema.String),
     conferenceSolution: Schema.optional(ConferenceSolution),
     parameters: Schema.optional(ConferenceParameters),
@@ -410,7 +410,7 @@ export interface EventFocusTimeProperties {
 }
 
 export const EventFocusTimeProperties: Schema.Codec<EventFocusTimeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoDeclineMode: Schema.optional(Schema.String),
     declineMessage: Schema.optional(Schema.String),
     chatStatus: Schema.optional(Schema.String),
@@ -531,7 +531,7 @@ export interface Event {
 }
 
 export const Event: Schema.Codec<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     birthdayProperties: Schema.optional(EventBirthdayProperties),
     etag: Schema.optional(Schema.String),
     attachments: Schema.optional(Schema.Array(EventAttachment)),
@@ -645,7 +645,7 @@ export interface Events {
 }
 
 export const Events: Schema.Codec<Events> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Event)),
@@ -665,7 +665,7 @@ export interface ConferenceProperties {
 }
 
 export const ConferenceProperties: Schema.Codec<ConferenceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedConferenceSolutionTypes: Schema.optional(
       Schema.Array(Schema.String),
     ),
@@ -695,7 +695,7 @@ export interface Calendar {
 }
 
 export const Calendar: Schema.Codec<Calendar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     autoAcceptInvitations: Schema.optional(Schema.Boolean),
     timeZone: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
@@ -709,7 +709,7 @@ export const Calendar: Schema.Codec<Calendar> =
   }).annotate({ identifier: "Calendar" });
 
 export type EventLabel = unknown;
-export const EventLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const EventLabel = /*@__PURE__*/ Schema.Unknown;
 
 export interface Setting {
   /** The id of the user setting. */
@@ -723,7 +723,7 @@ export interface Setting {
 }
 
 export const Setting: Schema.Codec<Setting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -744,7 +744,7 @@ export interface Settings {
 }
 
 export const Settings: Schema.Codec<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Setting)),
     nextSyncToken: Schema.optional(Schema.String),
@@ -760,7 +760,7 @@ export interface CalendarNotification {
 }
 
 export const CalendarNotification: Schema.Codec<CalendarNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "CalendarNotification" });
@@ -779,7 +779,7 @@ export interface AclRule {
 }
 
 export const AclRule: Schema.Codec<AclRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     scope: Schema.optional(
       Schema.Struct({
@@ -805,18 +805,16 @@ export interface Acl {
   nextSyncToken?: string;
 }
 
-export const Acl: Schema.Codec<Acl> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    etag: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    nextPageToken: Schema.optional(Schema.String),
-    items: Schema.optional(Schema.Array(AclRule)),
-    nextSyncToken: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Acl" });
+export const Acl: Schema.Codec<Acl> = /*@__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(AclRule)),
+  nextSyncToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Acl" });
 
 export type LabelProperties = unknown;
-export const LabelProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const LabelProperties = /*@__PURE__*/ Schema.Unknown;
 
 export interface FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
@@ -824,7 +822,7 @@ export interface FreeBusyRequestItem {
 }
 
 export const FreeBusyRequestItem: Schema.Codec<FreeBusyRequestItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "FreeBusyRequestItem" });
 
@@ -844,7 +842,7 @@ export interface FreeBusyRequest {
 }
 
 export const FreeBusyRequest: Schema.Codec<FreeBusyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(FreeBusyRequestItem)),
     groupExpansionMax: Schema.optional(Schema.Number),
     timeZone: Schema.optional(Schema.String),
@@ -877,7 +875,7 @@ export interface Channel {
 }
 
 export const Channel: Schema.Codec<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -902,7 +900,7 @@ export interface Colors {
 }
 
 export const Colors: Schema.Codec<Colors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendar: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
     event: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
     kind: Schema.optional(Schema.String),
@@ -957,7 +955,7 @@ export interface CalendarListEntry {
 }
 
 export const CalendarListEntry: Schema.Codec<CalendarListEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessRole: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -999,7 +997,7 @@ export interface CalendarList {
 }
 
 export const CalendarList: Schema.Codec<CalendarList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(CalendarListEntry)),
     nextSyncToken: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1076,7 +1074,7 @@ export interface WatchAclRequest {
   body?: Channel;
 }
 
-export const WatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchAclRequest = /*@__PURE__*/ Schema.Struct({
   syncToken: Schema.optional(Schema.String).pipe(T.HttpQuery("syncToken")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -1093,7 +1091,7 @@ export const WatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchAclRequest>;
 
 export type WatchAclResponse = Channel;
-export const WatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchAclResponse = /*@__PURE__*/ Channel;
 
 export type WatchAclError =
   | DefaultErrors
@@ -1108,7 +1106,7 @@ export const watchAcl: API.OperationMethod<
   WatchAclResponse,
   WatchAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchAclRequest,
   output: WatchAclResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1123,7 +1121,7 @@ export interface InsertAclRequest {
   body?: AclRule;
 }
 
-export const InsertAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertAclRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("sendNotifications"),
@@ -1135,7 +1133,7 @@ export const InsertAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertAclRequest>;
 
 export type InsertAclResponse = AclRule;
-export const InsertAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
+export const InsertAclResponse = /*@__PURE__*/ AclRule;
 
 export type InsertAclError =
   | DefaultErrors
@@ -1150,7 +1148,7 @@ export const insertAcl: API.OperationMethod<
   InsertAclResponse,
   InsertAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAclRequest,
   output: InsertAclResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1167,7 +1165,7 @@ export interface PatchAclRequest {
   body?: AclRule;
 }
 
-export const PatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchAclRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
@@ -1184,7 +1182,7 @@ export const PatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchAclRequest>;
 
 export type PatchAclResponse = AclRule;
-export const PatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
+export const PatchAclResponse = /*@__PURE__*/ AclRule;
 
 export type PatchAclError =
   | DefaultErrors
@@ -1199,7 +1197,7 @@ export const patchAcl: API.OperationMethod<
   PatchAclResponse,
   PatchAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAclRequest,
   output: PatchAclResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1212,7 +1210,7 @@ export interface DeleteAclRequest {
   calendarId: string;
 }
 
-export const DeleteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAclRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
 }).pipe(
@@ -1222,9 +1220,7 @@ export const DeleteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteAclResponse {}
 export const DeleteAclResponse: Schema.Codec<DeleteAclResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteAclResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteAclResponse>;
 
 export type DeleteAclError =
   | DefaultErrors
@@ -1239,7 +1235,7 @@ export const deleteAcl: API.OperationMethod<
   DeleteAclResponse,
   DeleteAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAclRequest,
   output: DeleteAclResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1258,7 +1254,7 @@ export interface ListAclRequest {
   syncToken?: string;
 }
 
-export const ListAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAclRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
@@ -1270,7 +1266,7 @@ export const ListAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListAclRequest>;
 
 export type ListAclResponse = Acl;
-export const ListAclResponse = /*@__PURE__*/ /*#__PURE__*/ Acl;
+export const ListAclResponse = /*@__PURE__*/ Acl;
 
 export type ListAclError = DefaultErrors | NotFound | Forbidden;
 
@@ -1280,7 +1276,7 @@ export const listAcl: API.PaginatedOperationMethod<
   ListAclResponse,
   ListAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAclRequest,
   output: ListAclResponse,
   errors: [NotFound, Forbidden],
@@ -1302,7 +1298,7 @@ export interface UpdateAclRequest {
   body?: AclRule;
 }
 
-export const UpdateAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAclRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("sendNotifications"),
@@ -1319,7 +1315,7 @@ export const UpdateAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateAclRequest>;
 
 export type UpdateAclResponse = AclRule;
-export const UpdateAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
+export const UpdateAclResponse = /*@__PURE__*/ AclRule;
 
 export type UpdateAclError =
   | DefaultErrors
@@ -1334,7 +1330,7 @@ export const updateAcl: API.OperationMethod<
   UpdateAclResponse,
   UpdateAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAclRequest,
   output: UpdateAclResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1347,7 +1343,7 @@ export interface GetAclRequest {
   calendarId: string;
 }
 
-export const GetAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAclRequest = /*@__PURE__*/ Schema.Struct({
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
 }).pipe(
@@ -1356,7 +1352,7 @@ export const GetAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAclRequest>;
 
 export type GetAclResponse = AclRule;
-export const GetAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
+export const GetAclResponse = /*@__PURE__*/ AclRule;
 
 export type GetAclError = DefaultErrors | NotFound | Forbidden;
 
@@ -1366,7 +1362,7 @@ export const getAcl: API.OperationMethod<
   GetAclResponse,
   GetAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAclRequest,
   output: GetAclResponse,
   errors: [NotFound, Forbidden],
@@ -1377,7 +1373,7 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 
-export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StopChannelsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Channel).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "channels/stop", hasBody: true }),
@@ -1386,9 +1382,7 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<StopChannelsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -1403,7 +1397,7 @@ export const stopChannels: API.OperationMethod<
   StopChannelsResponse,
   StopChannelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1411,15 +1405,13 @@ export const stopChannels: API.OperationMethod<
 
 export interface GetColorsRequest {}
 
-export const GetColorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetColorsRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "colors" }),
   svc,
 ) as unknown as Schema.Codec<GetColorsRequest>;
 
 export type GetColorsResponse = Colors;
-export const GetColorsResponse = /*@__PURE__*/ /*#__PURE__*/ Colors;
+export const GetColorsResponse = /*@__PURE__*/ Colors;
 
 export type GetColorsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1429,7 +1421,7 @@ export const getColors: API.OperationMethod<
   GetColorsResponse,
   GetColorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetColorsRequest,
   output: GetColorsResponse,
   errors: [NotFound, Forbidden],
@@ -1445,7 +1437,7 @@ export interface TransferOwnershipCalendarsRequest {
 }
 
 export const TransferOwnershipCalendarsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newDataOwner: Schema.String.pipe(T.HttpQuery("newDataOwner")),
     calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
     useAdminAccess: Schema.Boolean.pipe(T.HttpQuery("useAdminAccess")),
@@ -1460,7 +1452,7 @@ export const TransferOwnershipCalendarsRequest =
 
 export interface TransferOwnershipCalendarsResponse {}
 export const TransferOwnershipCalendarsResponse: Schema.Codec<TransferOwnershipCalendarsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<TransferOwnershipCalendarsResponse>;
 
@@ -1477,7 +1469,7 @@ export const transferOwnershipCalendars: API.OperationMethod<
   TransferOwnershipCalendarsResponse,
   TransferOwnershipCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferOwnershipCalendarsRequest,
   output: TransferOwnershipCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1488,18 +1480,16 @@ export interface DeleteCalendarsRequest {
   calendarId: string;
 }
 
-export const DeleteCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
-  },
-).pipe(
+export const DeleteCalendarsRequest = /*@__PURE__*/ Schema.Struct({
+  calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
+}).pipe(
   T.Http({ method: "DELETE", path: "calendars/{calendarId}" }),
   svc,
 ) as unknown as Schema.Codec<DeleteCalendarsRequest>;
 
 export interface DeleteCalendarsResponse {}
 export const DeleteCalendarsResponse: Schema.Codec<DeleteCalendarsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteCalendarsResponse>;
 
@@ -1516,7 +1506,7 @@ export const deleteCalendars: API.OperationMethod<
   DeleteCalendarsResponse,
   DeleteCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCalendarsRequest,
   output: DeleteCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1527,17 +1517,15 @@ export interface InsertCalendarsRequest {
   body?: Calendar;
 }
 
-export const InsertCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(Calendar).pipe(T.HttpBody()),
-  },
-).pipe(
+export const InsertCalendarsRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(Calendar).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "calendars", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<InsertCalendarsRequest>;
 
 export type InsertCalendarsResponse = Calendar;
-export const InsertCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
+export const InsertCalendarsResponse = /*@__PURE__*/ Calendar;
 
 export type InsertCalendarsError =
   | DefaultErrors
@@ -1552,7 +1540,7 @@ export const insertCalendars: API.OperationMethod<
   InsertCalendarsResponse,
   InsertCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertCalendarsRequest,
   output: InsertCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1565,7 +1553,7 @@ export interface PatchCalendarsRequest {
   body?: Calendar;
 }
 
-export const PatchCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchCalendarsRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   body: Schema.optional(Calendar).pipe(T.HttpBody()),
 }).pipe(
@@ -1574,7 +1562,7 @@ export const PatchCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchCalendarsRequest>;
 
 export type PatchCalendarsResponse = Calendar;
-export const PatchCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
+export const PatchCalendarsResponse = /*@__PURE__*/ Calendar;
 
 export type PatchCalendarsError =
   | DefaultErrors
@@ -1589,7 +1577,7 @@ export const patchCalendars: API.OperationMethod<
   PatchCalendarsResponse,
   PatchCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCalendarsRequest,
   output: PatchCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1600,7 +1588,7 @@ export interface GetCalendarsRequest {
   calendarId: string;
 }
 
-export const GetCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCalendarsRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}" }),
@@ -1608,7 +1596,7 @@ export const GetCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetCalendarsRequest>;
 
 export type GetCalendarsResponse = Calendar;
-export const GetCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
+export const GetCalendarsResponse = /*@__PURE__*/ Calendar;
 
 export type GetCalendarsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1618,7 +1606,7 @@ export const getCalendars: API.OperationMethod<
   GetCalendarsResponse,
   GetCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalendarsRequest,
   output: GetCalendarsResponse,
   errors: [NotFound, Forbidden],
@@ -1631,18 +1619,16 @@ export interface UpdateCalendarsRequest {
   body?: Calendar;
 }
 
-export const UpdateCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
-    body: Schema.optional(Calendar).pipe(T.HttpBody()),
-  },
-).pipe(
+export const UpdateCalendarsRequest = /*@__PURE__*/ Schema.Struct({
+  calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
+  body: Schema.optional(Calendar).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "PUT", path: "calendars/{calendarId}", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<UpdateCalendarsRequest>;
 
 export type UpdateCalendarsResponse = Calendar;
-export const UpdateCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
+export const UpdateCalendarsResponse = /*@__PURE__*/ Calendar;
 
 export type UpdateCalendarsError =
   | DefaultErrors
@@ -1657,7 +1643,7 @@ export const updateCalendars: API.OperationMethod<
   UpdateCalendarsResponse,
   UpdateCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCalendarsRequest,
   output: UpdateCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1668,7 +1654,7 @@ export interface ClearCalendarsRequest {
   calendarId: string;
 }
 
-export const ClearCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClearCalendarsRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
 }).pipe(
   T.Http({
@@ -1681,7 +1667,7 @@ export const ClearCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClearCalendarsResponse {}
 export const ClearCalendarsResponse: Schema.Codec<ClearCalendarsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ClearCalendarsResponse>;
 
@@ -1698,7 +1684,7 @@ export const clearCalendars: API.OperationMethod<
   ClearCalendarsResponse,
   ClearCalendarsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearCalendarsRequest,
   output: ClearCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1728,7 +1714,7 @@ export interface WatchCalendarListRequest {
 }
 
 export const WatchCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minAccessRole: Schema.optional(Schema.String).pipe(
       T.HttpQuery("minAccessRole"),
     ),
@@ -1750,7 +1736,7 @@ export const WatchCalendarListRequest =
   ) as unknown as Schema.Codec<WatchCalendarListRequest>;
 
 export type WatchCalendarListResponse = Channel;
-export const WatchCalendarListResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchCalendarListResponse = /*@__PURE__*/ Channel;
 
 export type WatchCalendarListError =
   | DefaultErrors
@@ -1765,7 +1751,7 @@ export const watchCalendarList: API.OperationMethod<
   WatchCalendarListResponse,
   WatchCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchCalendarListRequest,
   output: WatchCalendarListResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1779,7 +1765,7 @@ export interface InsertCalendarListRequest {
 }
 
 export const InsertCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colorRgbFormat: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("colorRgbFormat"),
     ),
@@ -1790,8 +1776,7 @@ export const InsertCalendarListRequest =
   ) as unknown as Schema.Codec<InsertCalendarListRequest>;
 
 export type InsertCalendarListResponse = CalendarListEntry;
-export const InsertCalendarListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
+export const InsertCalendarListResponse = /*@__PURE__*/ CalendarListEntry;
 
 export type InsertCalendarListError =
   | DefaultErrors
@@ -1806,7 +1791,7 @@ export const insertCalendarList: API.OperationMethod<
   InsertCalendarListResponse,
   InsertCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertCalendarListRequest,
   output: InsertCalendarListResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1822,7 +1807,7 @@ export interface PatchCalendarListRequest {
 }
 
 export const PatchCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
     colorRgbFormat: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("colorRgbFormat"),
@@ -1838,8 +1823,7 @@ export const PatchCalendarListRequest =
   ) as unknown as Schema.Codec<PatchCalendarListRequest>;
 
 export type PatchCalendarListResponse = CalendarListEntry;
-export const PatchCalendarListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
+export const PatchCalendarListResponse = /*@__PURE__*/ CalendarListEntry;
 
 export type PatchCalendarListError =
   | DefaultErrors
@@ -1854,7 +1838,7 @@ export const patchCalendarList: API.OperationMethod<
   PatchCalendarListResponse,
   PatchCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchCalendarListRequest,
   output: PatchCalendarListResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1866,7 +1850,7 @@ export interface DeleteCalendarListRequest {
 }
 
 export const DeleteCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   }).pipe(
     T.Http({ method: "DELETE", path: "users/me/calendarList/{calendarId}" }),
@@ -1875,7 +1859,7 @@ export const DeleteCalendarListRequest =
 
 export interface DeleteCalendarListResponse {}
 export const DeleteCalendarListResponse: Schema.Codec<DeleteCalendarListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteCalendarListResponse>;
 
@@ -1892,7 +1876,7 @@ export const deleteCalendarList: API.OperationMethod<
   DeleteCalendarListResponse,
   DeleteCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCalendarListRequest,
   output: DeleteCalendarListResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1920,7 +1904,7 @@ export interface ListCalendarListRequest {
 }
 
 export const ListCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     showHidden: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showHidden")),
     syncToken: Schema.optional(Schema.String).pipe(T.HttpQuery("syncToken")),
@@ -1937,8 +1921,7 @@ export const ListCalendarListRequest =
   ) as unknown as Schema.Codec<ListCalendarListRequest>;
 
 export type ListCalendarListResponse = CalendarList;
-export const ListCalendarListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CalendarList;
+export const ListCalendarListResponse = /*@__PURE__*/ CalendarList;
 
 export type ListCalendarListError = DefaultErrors | NotFound | Forbidden;
 
@@ -1948,7 +1931,7 @@ export const listCalendarList: API.PaginatedOperationMethod<
   ListCalendarListResponse,
   ListCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCalendarListRequest,
   output: ListCalendarListResponse,
   errors: [NotFound, Forbidden],
@@ -1969,7 +1952,7 @@ export interface UpdateCalendarListRequest {
 }
 
 export const UpdateCalendarListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
     colorRgbFormat: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("colorRgbFormat"),
@@ -1985,8 +1968,7 @@ export const UpdateCalendarListRequest =
   ) as unknown as Schema.Codec<UpdateCalendarListRequest>;
 
 export type UpdateCalendarListResponse = CalendarListEntry;
-export const UpdateCalendarListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
+export const UpdateCalendarListResponse = /*@__PURE__*/ CalendarListEntry;
 
 export type UpdateCalendarListError =
   | DefaultErrors
@@ -2001,7 +1983,7 @@ export const updateCalendarList: API.OperationMethod<
   UpdateCalendarListResponse,
   UpdateCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateCalendarListRequest,
   output: UpdateCalendarListResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2012,18 +1994,15 @@ export interface GetCalendarListRequest {
   calendarId: string;
 }
 
-export const GetCalendarListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
-  },
-).pipe(
+export const GetCalendarListRequest = /*@__PURE__*/ Schema.Struct({
+  calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
+}).pipe(
   T.Http({ method: "GET", path: "users/me/calendarList/{calendarId}" }),
   svc,
 ) as unknown as Schema.Codec<GetCalendarListRequest>;
 
 export type GetCalendarListResponse = CalendarListEntry;
-export const GetCalendarListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
+export const GetCalendarListResponse = /*@__PURE__*/ CalendarListEntry;
 
 export type GetCalendarListError = DefaultErrors | NotFound | Forbidden;
 
@@ -2033,7 +2012,7 @@ export const getCalendarList: API.OperationMethod<
   GetCalendarListResponse,
   GetCalendarListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCalendarListRequest,
   output: GetCalendarListResponse,
   errors: [NotFound, Forbidden],
@@ -2044,7 +2023,7 @@ export interface QueryFreebusyRequest {
   body?: FreeBusyRequest;
 }
 
-export const QueryFreebusyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryFreebusyRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(FreeBusyRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "freeBusy", hasBody: true }),
@@ -2052,8 +2031,7 @@ export const QueryFreebusyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<QueryFreebusyRequest>;
 
 export type QueryFreebusyResponse = FreeBusyResponse;
-export const QueryFreebusyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FreeBusyResponse;
+export const QueryFreebusyResponse = /*@__PURE__*/ FreeBusyResponse;
 
 export type QueryFreebusyError =
   | DefaultErrors
@@ -2068,7 +2046,7 @@ export const queryFreebusy: API.OperationMethod<
   QueryFreebusyResponse,
   QueryFreebusyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryFreebusyRequest,
   output: QueryFreebusyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2091,7 +2069,7 @@ export interface InsertEventsRequest {
   body?: Event;
 }
 
-export const InsertEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertEventsRequest = /*@__PURE__*/ Schema.Struct({
   maxAttendees: Schema.optional(Schema.Number).pipe(
     T.HttpQuery("maxAttendees"),
   ),
@@ -2117,7 +2095,7 @@ export const InsertEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertEventsRequest>;
 
 export type InsertEventsResponse = Event;
-export const InsertEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const InsertEventsResponse = /*@__PURE__*/ Event;
 
 export type InsertEventsError =
   | DefaultErrors
@@ -2132,7 +2110,7 @@ export const insertEvents: API.OperationMethod<
   InsertEventsResponse,
   InsertEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertEventsRequest,
   output: InsertEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2149,7 +2127,7 @@ export interface DeleteEventsRequest {
   sendUpdates?: "all" | "externalOnly" | "none" | (string & {});
 }
 
-export const DeleteEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteEventsRequest = /*@__PURE__*/ Schema.Struct({
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
@@ -2163,9 +2141,7 @@ export const DeleteEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteEventsResponse {}
 export const DeleteEventsResponse: Schema.Codec<DeleteEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteEventsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteEventsResponse>;
 
 export type DeleteEventsError =
   | DefaultErrors
@@ -2180,7 +2156,7 @@ export const deleteEvents: API.OperationMethod<
   DeleteEventsResponse,
   DeleteEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventsRequest,
   output: DeleteEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2211,29 +2187,25 @@ export interface InstancesEventsRequest {
   alwaysIncludeEmail?: boolean;
 }
 
-export const InstancesEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    timeMax: Schema.optional(Schema.String).pipe(T.HttpQuery("timeMax")),
-    showDeleted: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("showDeleted"),
-    ),
-    eventId: Schema.String.pipe(T.HttpPath("eventId")),
-    timeZone: Schema.optional(Schema.String).pipe(T.HttpQuery("timeZone")),
-    calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
-    timeMin: Schema.optional(Schema.String).pipe(T.HttpQuery("timeMin")),
-    maxAttendees: Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("maxAttendees"),
-    ),
-    originalStart: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("originalStart"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    alwaysIncludeEmail: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("alwaysIncludeEmail"),
-    ),
-  },
-).pipe(
+export const InstancesEventsRequest = /*@__PURE__*/ Schema.Struct({
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  timeMax: Schema.optional(Schema.String).pipe(T.HttpQuery("timeMax")),
+  showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
+  eventId: Schema.String.pipe(T.HttpPath("eventId")),
+  timeZone: Schema.optional(Schema.String).pipe(T.HttpQuery("timeZone")),
+  calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
+  timeMin: Schema.optional(Schema.String).pipe(T.HttpQuery("timeMin")),
+  maxAttendees: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("maxAttendees"),
+  ),
+  originalStart: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("originalStart"),
+  ),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  alwaysIncludeEmail: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("alwaysIncludeEmail"),
+  ),
+}).pipe(
   T.Http({
     method: "GET",
     path: "calendars/{calendarId}/events/{eventId}/instances",
@@ -2242,7 +2214,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<InstancesEventsRequest>;
 
 export type InstancesEventsResponse = Events;
-export const InstancesEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
+export const InstancesEventsResponse = /*@__PURE__*/ Events;
 
 export type InstancesEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2252,7 +2224,7 @@ export const instancesEvents: API.PaginatedOperationMethod<
   InstancesEventsResponse,
   InstancesEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: InstancesEventsRequest,
   output: InstancesEventsResponse,
   errors: [NotFound, Forbidden],
@@ -2274,7 +2246,7 @@ export interface ImportEventsRequest {
   body?: Event;
 }
 
-export const ImportEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportEventsRequest = /*@__PURE__*/ Schema.Struct({
   conferenceDataVersion: Schema.optional(Schema.Number).pipe(
     T.HttpQuery("conferenceDataVersion"),
   ),
@@ -2293,7 +2265,7 @@ export const ImportEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ImportEventsRequest>;
 
 export type ImportEventsResponse = Event;
-export const ImportEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const ImportEventsResponse = /*@__PURE__*/ Event;
 
 export type ImportEventsError =
   | DefaultErrors
@@ -2308,7 +2280,7 @@ export const importEvents: API.OperationMethod<
   ImportEventsResponse,
   ImportEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportEventsRequest,
   output: ImportEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2327,7 +2299,7 @@ export interface MoveEventsRequest {
   eventId: string;
 }
 
-export const MoveEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MoveEventsRequest = /*@__PURE__*/ Schema.Struct({
   destination: Schema.String.pipe(T.HttpQuery("destination")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
@@ -2345,7 +2317,7 @@ export const MoveEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<MoveEventsRequest>;
 
 export type MoveEventsResponse = Event;
-export const MoveEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const MoveEventsResponse = /*@__PURE__*/ Event;
 
 export type MoveEventsError =
   | DefaultErrors
@@ -2360,7 +2332,7 @@ export const moveEvents: API.OperationMethod<
   MoveEventsResponse,
   MoveEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveEventsRequest,
   output: MoveEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2387,7 +2359,7 @@ export interface UpdateEventsRequest {
   body?: Event;
 }
 
-export const UpdateEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateEventsRequest = /*@__PURE__*/ Schema.Struct({
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
@@ -2417,7 +2389,7 @@ export const UpdateEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateEventsRequest>;
 
 export type UpdateEventsResponse = Event;
-export const UpdateEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const UpdateEventsResponse = /*@__PURE__*/ Event;
 
 export type UpdateEventsError =
   | DefaultErrors
@@ -2432,7 +2404,7 @@ export const updateEvents: API.OperationMethod<
   UpdateEventsResponse,
   UpdateEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventsRequest,
   output: UpdateEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2451,7 +2423,7 @@ export interface GetEventsRequest {
   alwaysIncludeEmail?: boolean;
 }
 
-export const GetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsRequest = /*@__PURE__*/ Schema.Struct({
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   timeZone: Schema.optional(Schema.String).pipe(T.HttpQuery("timeZone")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
@@ -2467,7 +2439,7 @@ export const GetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetEventsRequest>;
 
 export type GetEventsResponse = Event;
-export const GetEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const GetEventsResponse = /*@__PURE__*/ Event;
 
 export type GetEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2477,7 +2449,7 @@ export const getEvents: API.OperationMethod<
   GetEventsResponse,
   GetEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventsRequest,
   output: GetEventsResponse,
   errors: [NotFound, Forbidden],
@@ -2494,7 +2466,7 @@ export interface QuickAddEventsRequest {
   text: string;
 }
 
-export const QuickAddEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuickAddEventsRequest = /*@__PURE__*/ Schema.Struct({
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("sendNotifications"),
@@ -2511,7 +2483,7 @@ export const QuickAddEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<QuickAddEventsRequest>;
 
 export type QuickAddEventsResponse = Event;
-export const QuickAddEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const QuickAddEventsResponse = /*@__PURE__*/ Event;
 
 export type QuickAddEventsError =
   | DefaultErrors
@@ -2526,7 +2498,7 @@ export const quickAddEvents: API.OperationMethod<
   QuickAddEventsResponse,
   QuickAddEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QuickAddEventsRequest,
   output: QuickAddEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2553,7 +2525,7 @@ export interface PatchEventsRequest {
   body?: Event;
 }
 
-export const PatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchEventsRequest = /*@__PURE__*/ Schema.Struct({
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
   calendarId: Schema.String.pipe(T.HttpPath("calendarId")),
   sendNotifications: Schema.optional(Schema.Boolean).pipe(
@@ -2583,7 +2555,7 @@ export const PatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchEventsRequest>;
 
 export type PatchEventsResponse = Event;
-export const PatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
+export const PatchEventsResponse = /*@__PURE__*/ Event;
 
 export type PatchEventsError =
   | DefaultErrors
@@ -2598,7 +2570,7 @@ export const patchEvents: API.OperationMethod<
   PatchEventsResponse,
   PatchEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchEventsRequest,
   output: PatchEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2652,7 +2624,7 @@ export interface ListEventsRequest {
   privateExtendedProperty?: string[];
 }
 
-export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListEventsRequest = /*@__PURE__*/ Schema.Struct({
   timeMax: Schema.optional(Schema.String).pipe(T.HttpQuery("timeMax")),
   showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
   showHiddenInvitations: Schema.optional(Schema.Boolean).pipe(
@@ -2692,7 +2664,7 @@ export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListEventsRequest>;
 
 export type ListEventsResponse = Events;
-export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
+export const ListEventsResponse = /*@__PURE__*/ Events;
 
 export type ListEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2702,7 +2674,7 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsResponse,
   ListEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
   errors: [NotFound, Forbidden],
@@ -2763,7 +2735,7 @@ export interface WatchEventsRequest {
   body?: Channel;
 }
 
-export const WatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchEventsRequest = /*@__PURE__*/ Schema.Struct({
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
   maxAttendees: Schema.optional(Schema.Number).pipe(
@@ -2808,7 +2780,7 @@ export const WatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchEventsRequest>;
 
 export type WatchEventsResponse = Channel;
-export const WatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchEventsResponse = /*@__PURE__*/ Channel;
 
 export type WatchEventsError =
   | DefaultErrors
@@ -2823,7 +2795,7 @@ export const watchEvents: API.OperationMethod<
   WatchEventsResponse,
   WatchEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchEventsRequest,
   output: WatchEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2838,7 +2810,7 @@ export interface ListSettingsRequest {
   pageToken?: string;
 }
 
-export const ListSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListSettingsRequest = /*@__PURE__*/ Schema.Struct({
   syncToken: Schema.optional(Schema.String).pipe(T.HttpQuery("syncToken")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2848,7 +2820,7 @@ export const ListSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListSettingsRequest>;
 
 export type ListSettingsResponse = Settings;
-export const ListSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
+export const ListSettingsResponse = /*@__PURE__*/ Settings;
 
 export type ListSettingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2858,7 +2830,7 @@ export const listSettings: API.PaginatedOperationMethod<
   ListSettingsResponse,
   ListSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingsRequest,
   output: ListSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -2874,7 +2846,7 @@ export interface GetSettingsRequest {
   setting: string;
 }
 
-export const GetSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSettingsRequest = /*@__PURE__*/ Schema.Struct({
   setting: Schema.String.pipe(T.HttpPath("setting")),
 }).pipe(
   T.Http({ method: "GET", path: "users/me/settings/{setting}" }),
@@ -2882,7 +2854,7 @@ export const GetSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetSettingsRequest>;
 
 export type GetSettingsResponse = Setting;
-export const GetSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Setting;
+export const GetSettingsResponse = /*@__PURE__*/ Setting;
 
 export type GetSettingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2892,7 +2864,7 @@ export const getSettings: API.OperationMethod<
   GetSettingsResponse,
   GetSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingsRequest,
   output: GetSettingsResponse,
   errors: [NotFound, Forbidden],
@@ -2909,7 +2881,7 @@ export interface WatchSettingsRequest {
   body?: Channel;
 }
 
-export const WatchSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WatchSettingsRequest = /*@__PURE__*/ Schema.Struct({
   syncToken: Schema.optional(Schema.String).pipe(T.HttpQuery("syncToken")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2920,7 +2892,7 @@ export const WatchSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<WatchSettingsRequest>;
 
 export type WatchSettingsResponse = Channel;
-export const WatchSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
+export const WatchSettingsResponse = /*@__PURE__*/ Channel;
 
 export type WatchSettingsError =
   | DefaultErrors
@@ -2935,7 +2907,7 @@ export const watchSettings: API.OperationMethod<
   WatchSettingsResponse,
   WatchSettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WatchSettingsRequest,
   output: WatchSettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

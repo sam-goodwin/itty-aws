@@ -30,7 +30,7 @@ export interface GoogleCloudVisionV1p3beta1ImageAnnotationContext {
 }
 
 export const GoogleCloudVisionV1p3beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p3beta1ImageAnnotationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
   }).annotate({
@@ -47,7 +47,7 @@ export interface GoogleCloudVisionV1p2beta1Position {
 }
 
 export const GoogleCloudVisionV1p2beta1Position: Schema.Codec<GoogleCloudVisionV1p2beta1Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
@@ -63,7 +63,7 @@ export interface GoogleCloudVisionV1p1beta1Position {
 }
 
 export const GoogleCloudVisionV1p1beta1Position: Schema.Codec<GoogleCloudVisionV1p1beta1Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
@@ -85,7 +85,7 @@ export interface GoogleCloudVisionV1p2beta1OperationMetadata {
 }
 
 export const GoogleCloudVisionV1p2beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p2beta1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface GoogleCloudVisionV1p3beta1Vertex {
 }
 
 export const GoogleCloudVisionV1p3beta1Vertex: Schema.Codec<GoogleCloudVisionV1p3beta1Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1Vertex" });
@@ -112,7 +112,7 @@ export interface GoogleCloudVisionV1p3beta1NormalizedVertex {
 }
 
 export const GoogleCloudVisionV1p3beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p3beta1NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1NormalizedVertex" });
@@ -125,7 +125,7 @@ export interface GoogleCloudVisionV1p3beta1BoundingPoly {
 }
 
 export const GoogleCloudVisionV1p3beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p3beta1BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Vertex)),
     normalizedVertices: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1NormalizedVertex),
@@ -140,7 +140,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
 }
 
 export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({
@@ -162,7 +162,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
 }
 
 export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     isPrefix: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -177,7 +177,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
 }
 
 export const GoogleCloudVisionV1p3beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationTextProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage),
     ),
@@ -200,7 +200,7 @@ export interface GoogleCloudVisionV1p3beta1Symbol {
 }
 
 export const GoogleCloudVisionV1p3beta1Symbol: Schema.Codec<GoogleCloudVisionV1p3beta1Symbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     boundingBox: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     property: Schema.optional(
@@ -215,7 +215,7 @@ export interface GoogleCloudVisionV1p4beta1GcsDestination {
 }
 
 export const GoogleCloudVisionV1p4beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p4beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1GcsDestination" });
 
@@ -227,7 +227,7 @@ export interface GoogleCloudVisionV1p1beta1NormalizedVertex {
 }
 
 export const GoogleCloudVisionV1p1beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p1beta1NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1NormalizedVertex" });
@@ -240,7 +240,7 @@ export interface GoogleCloudVisionV1p1beta1Vertex {
 }
 
 export const GoogleCloudVisionV1p1beta1Vertex: Schema.Codec<GoogleCloudVisionV1p1beta1Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1Vertex" });
@@ -253,7 +253,7 @@ export interface GoogleCloudVisionV1p1beta1BoundingPoly {
 }
 
 export const GoogleCloudVisionV1p1beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p1beta1BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     normalizedVertices: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1NormalizedVertex),
     ),
@@ -275,7 +275,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
 }
 
 export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     isPrefix: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -290,7 +290,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
 }
 
 export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({
@@ -305,7 +305,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 }
 
 export const GoogleCloudVisionV1p1beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationTextProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedBreak: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak,
     ),
@@ -328,7 +328,7 @@ export interface GoogleCloudVisionV1p1beta1Symbol {
 }
 
 export const GoogleCloudVisionV1p1beta1Symbol: Schema.Codec<GoogleCloudVisionV1p1beta1Symbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
     ),
@@ -349,7 +349,7 @@ export interface GoogleCloudVisionV1p1beta1Word {
 }
 
 export const GoogleCloudVisionV1p1beta1Word: Schema.Codec<GoogleCloudVisionV1p1beta1Word> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
@@ -370,7 +370,7 @@ export interface GoogleCloudVisionV1p1beta1Paragraph {
 }
 
 export const GoogleCloudVisionV1p1beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p1beta1Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
@@ -400,7 +400,7 @@ export interface GoogleCloudVisionV1p1beta1Block {
 }
 
 export const GoogleCloudVisionV1p1beta1Block: Schema.Codec<GoogleCloudVisionV1p1beta1Block> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blockType: Schema.optional(Schema.String),
     paragraphs: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1Paragraph),
@@ -426,7 +426,7 @@ export interface GoogleCloudVisionV1p1beta1Page {
 }
 
 export const GoogleCloudVisionV1p1beta1Page: Schema.Codec<GoogleCloudVisionV1p1beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     blocks: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1Block)),
     property: Schema.optional(
@@ -444,7 +444,7 @@ export interface GoogleCloudVisionV1p1beta1ProductKeyValue {
 }
 
 export const GoogleCloudVisionV1p1beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p1beta1ProductKeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1ProductKeyValue" });
@@ -463,7 +463,7 @@ export interface GoogleCloudVisionV1p1beta1Product {
 }
 
 export const GoogleCloudVisionV1p1beta1Product: Schema.Codec<GoogleCloudVisionV1p1beta1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     productLabels: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1ProductKeyValue),
@@ -483,7 +483,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
     product: Schema.optional(GoogleCloudVisionV1p1beta1Product),
@@ -503,7 +503,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation 
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mid: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -523,7 +523,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1ProductSearchResultsResult),
@@ -547,7 +547,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResults {
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1ProductSearchResultsResult),
     ),
@@ -606,7 +606,7 @@ export interface SafeSearchAnnotation {
 }
 
 export const SafeSearchAnnotation: Schema.Codec<SafeSearchAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     medical: Schema.optional(Schema.String),
     racy: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
@@ -622,7 +622,7 @@ export interface ImageAnnotationContext {
 }
 
 export const ImageAnnotationContext: Schema.Codec<ImageAnnotationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ImageAnnotationContext" });
@@ -635,7 +635,7 @@ export interface KeyValue {
 }
 
 export const KeyValue: Schema.Codec<KeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "KeyValue" });
@@ -654,7 +654,7 @@ export interface Product {
 }
 
 export const Product: Schema.Codec<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productLabels: Schema.optional(Schema.Array(KeyValue)),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -672,7 +672,7 @@ export interface Result {
 }
 
 export const Result: Schema.Codec<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Product),
     image: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -690,7 +690,7 @@ export interface ObjectAnnotation {
 }
 
 export const ObjectAnnotation: Schema.Codec<ObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mid: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -705,7 +705,7 @@ export interface NormalizedVertex {
 }
 
 export const NormalizedVertex: Schema.Codec<NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "NormalizedVertex" });
@@ -718,7 +718,7 @@ export interface Vertex {
 }
 
 export const Vertex: Schema.Codec<Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Vertex" });
@@ -731,7 +731,7 @@ export interface BoundingPoly {
 }
 
 export const BoundingPoly: Schema.Codec<BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     normalizedVertices: Schema.optional(Schema.Array(NormalizedVertex)),
     vertices: Schema.optional(Schema.Array(Vertex)),
   }).annotate({ identifier: "BoundingPoly" });
@@ -746,7 +746,7 @@ export interface GroupedResult {
 }
 
 export const GroupedResult: Schema.Codec<GroupedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectAnnotations: Schema.optional(Schema.Array(ObjectAnnotation)),
     boundingPoly: Schema.optional(BoundingPoly),
     results: Schema.optional(Schema.Array(Result)),
@@ -762,7 +762,7 @@ export interface ProductSearchResults {
 }
 
 export const ProductSearchResults: Schema.Codec<ProductSearchResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(Result)),
     productGroupedResults: Schema.optional(Schema.Array(GroupedResult)),
@@ -778,7 +778,7 @@ export interface Position {
 }
 
 export const Position: Schema.Codec<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
@@ -830,7 +830,7 @@ export interface Landmark {
 }
 
 export const Landmark: Schema.Codec<Landmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(Position),
   }).annotate({ identifier: "Landmark" });
@@ -918,7 +918,7 @@ export interface FaceAnnotation {
 }
 
 export const FaceAnnotation: Schema.Codec<FaceAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     landmarks: Schema.optional(Schema.Array(Landmark)),
     tiltAngle: Schema.optional(Schema.Number),
     surpriseLikelihood: Schema.optional(Schema.String),
@@ -951,7 +951,7 @@ export interface DetectedBreak {
 }
 
 export const DetectedBreak: Schema.Codec<DetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DetectedBreak" });
@@ -964,7 +964,7 @@ export interface DetectedLanguage {
 }
 
 export const DetectedLanguage: Schema.Codec<DetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DetectedLanguage" });
@@ -977,7 +977,7 @@ export interface TextProperty {
 }
 
 export const TextProperty: Schema.Codec<TextProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedBreak: Schema.optional(DetectedBreak),
     detectedLanguages: Schema.optional(Schema.Array(DetectedLanguage)),
   }).annotate({ identifier: "TextProperty" });
@@ -994,7 +994,7 @@ export interface Vision_Symbol {
 }
 
 export const Vision_Symbol: Schema.Codec<Vision_Symbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(BoundingPoly),
     property: Schema.optional(TextProperty),
     confidence: Schema.optional(Schema.Number),
@@ -1013,7 +1013,7 @@ export interface Word {
 }
 
 export const Word: Schema.Codec<Word> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(TextProperty),
     symbols: Schema.optional(Schema.Array(Vision_Symbol)),
     confidence: Schema.optional(Schema.Number),
@@ -1032,7 +1032,7 @@ export interface Paragraph {
 }
 
 export const Paragraph: Schema.Codec<Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     words: Schema.optional(Schema.Array(Word)),
     boundingBox: Schema.optional(BoundingPoly),
     property: Schema.optional(TextProperty),
@@ -1060,7 +1060,7 @@ export interface Block {
 }
 
 export const Block: Schema.Codec<Block> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paragraphs: Schema.optional(Schema.Array(Paragraph)),
     blockType: Schema.optional(Schema.String),
     boundingBox: Schema.optional(BoundingPoly),
@@ -1082,7 +1082,7 @@ export interface Page {
 }
 
 export const Page: Schema.Codec<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
     blocks: Schema.optional(Schema.Array(Block)),
@@ -1098,7 +1098,7 @@ export interface TextAnnotation {
 }
 
 export const TextAnnotation: Schema.Codec<TextAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(Page)),
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextAnnotation" });
@@ -1115,7 +1115,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
     alpha: Schema.optional(Schema.Number),
@@ -1132,7 +1132,7 @@ export interface ColorInfo {
 }
 
 export const ColorInfo: Schema.Codec<ColorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     pixelFraction: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -1144,7 +1144,7 @@ export interface DominantColorsAnnotation {
 }
 
 export const DominantColorsAnnotation: Schema.Codec<DominantColorsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(ColorInfo)),
   }).annotate({ identifier: "DominantColorsAnnotation" });
 
@@ -1154,7 +1154,7 @@ export interface ImageProperties {
 }
 
 export const ImageProperties: Schema.Codec<ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(DominantColorsAnnotation),
   }).annotate({ identifier: "ImageProperties" });
 
@@ -1168,7 +1168,7 @@ export interface Property {
 }
 
 export const Property: Schema.Codec<Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1182,7 +1182,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -1193,7 +1193,7 @@ export interface LocationInfo {
 }
 
 export const LocationInfo: Schema.Codec<LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "LocationInfo" });
 
@@ -1219,7 +1219,7 @@ export interface EntityAnnotation {
 }
 
 export const EntityAnnotation: Schema.Codec<EntityAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicality: Schema.optional(Schema.Number),
     properties: Schema.optional(Schema.Array(Property)),
     confidence: Schema.optional(Schema.Number),
@@ -1241,7 +1241,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1263,7 +1263,7 @@ export interface LocalizedObjectAnnotation {
 }
 
 export const LocalizedObjectAnnotation: Schema.Codec<LocalizedObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     boundingPoly: Schema.optional(BoundingPoly),
@@ -1281,7 +1281,7 @@ export interface CropHint {
 }
 
 export const CropHint: Schema.Codec<CropHint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(BoundingPoly),
     confidence: Schema.optional(Schema.Number),
     importanceFraction: Schema.optional(Schema.Number),
@@ -1293,7 +1293,7 @@ export interface CropHintsAnnotation {
 }
 
 export const CropHintsAnnotation: Schema.Codec<CropHintsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(Schema.Array(CropHint)),
   }).annotate({ identifier: "CropHintsAnnotation" });
 
@@ -1305,7 +1305,7 @@ export interface WebImage {
 }
 
 export const WebImage: Schema.Codec<WebImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "WebImage" });
@@ -1320,7 +1320,7 @@ export interface WebEntity {
 }
 
 export const WebEntity: Schema.Codec<WebEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1334,7 +1334,7 @@ export interface WebLabel {
 }
 
 export const WebLabel: Schema.Codec<WebLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebLabel" });
@@ -1353,7 +1353,7 @@ export interface WebPage {
 }
 
 export const WebPage: Schema.Codec<WebPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
     pageTitle: Schema.optional(Schema.String),
@@ -1377,7 +1377,7 @@ export interface WebDetection {
 }
 
 export const WebDetection: Schema.Codec<WebDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullMatchingImages: Schema.optional(Schema.Array(WebImage)),
     visuallySimilarImages: Schema.optional(Schema.Array(WebImage)),
     partialMatchingImages: Schema.optional(Schema.Array(WebImage)),
@@ -1418,7 +1418,7 @@ export interface AnnotateImageResponse {
 }
 
 export const AnnotateImageResponse: Schema.Codec<AnnotateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     safeSearchAnnotation: Schema.optional(SafeSearchAnnotation),
     context: Schema.optional(ImageAnnotationContext),
     productSearchResults: Schema.optional(ProductSearchResults),
@@ -1443,7 +1443,7 @@ export interface ImportProductSetsGcsSource {
 }
 
 export const ImportProductSetsGcsSource: Schema.Codec<ImportProductSetsGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     csvFileUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImportProductSetsGcsSource" });
 
@@ -1453,7 +1453,7 @@ export interface ImportProductSetsInputConfig {
 }
 
 export const ImportProductSetsInputConfig: Schema.Codec<ImportProductSetsInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportProductSetsGcsSource),
   }).annotate({ identifier: "ImportProductSetsInputConfig" });
 
@@ -1463,7 +1463,7 @@ export interface ImportProductSetsRequest {
 }
 
 export const ImportProductSetsRequest: Schema.Codec<ImportProductSetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(ImportProductSetsInputConfig),
   }).annotate({ identifier: "ImportProductSetsRequest" });
 
@@ -1481,7 +1481,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1499,7 +1499,7 @@ export interface GoogleCloudVisionV1p4beta1Position {
 }
 
 export const GoogleCloudVisionV1p4beta1Position: Schema.Codec<GoogleCloudVisionV1p4beta1Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
@@ -1551,7 +1551,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
 }
 
 export const GoogleCloudVisionV1p4beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p4beta1Position),
   }).annotate({
@@ -1566,7 +1566,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1WebDetectionWebLabel" });
@@ -1579,7 +1579,7 @@ export interface GoogleCloudVisionV1p2beta1ProductKeyValue {
 }
 
 export const GoogleCloudVisionV1p2beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p2beta1ProductKeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1ProductKeyValue" });
@@ -1598,7 +1598,7 @@ export interface GoogleCloudVisionV1p2beta1Product {
 }
 
 export const GoogleCloudVisionV1p2beta1Product: Schema.Codec<GoogleCloudVisionV1p2beta1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     productCategory: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1618,7 +1618,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(GoogleCloudVisionV1p2beta1Product),
     score: Schema.optional(Schema.Number),
     image: Schema.optional(Schema.String),
@@ -1634,7 +1634,7 @@ export interface GoogleCloudVisionV1p2beta1Vertex {
 }
 
 export const GoogleCloudVisionV1p2beta1Vertex: Schema.Codec<GoogleCloudVisionV1p2beta1Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1Vertex" });
@@ -1647,7 +1647,7 @@ export interface GoogleCloudVisionV1p2beta1NormalizedVertex {
 }
 
 export const GoogleCloudVisionV1p2beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p2beta1NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1NormalizedVertex" });
@@ -1660,7 +1660,7 @@ export interface GoogleCloudVisionV1p2beta1BoundingPoly {
 }
 
 export const GoogleCloudVisionV1p2beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p2beta1BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Vertex)),
     normalizedVertices: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1NormalizedVertex),
@@ -1679,7 +1679,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation 
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -1699,7 +1699,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1ProductSearchResultsResult),
@@ -1723,7 +1723,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResults {
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1ProductSearchResultsResult),
     ),
@@ -1757,7 +1757,7 @@ export interface Feature {
 }
 
 export const Feature: Schema.Codec<Feature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     maxResults: Schema.optional(Schema.Number),
@@ -1771,7 +1771,7 @@ export interface TextDetectionParams {
 }
 
 export const TextDetectionParams: Schema.Codec<TextDetectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableTextDetectionConfidenceScore: Schema.optional(Schema.Boolean),
     advancedOcrOptions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TextDetectionParams" });
@@ -1782,7 +1782,7 @@ export interface CropHintsParams {
 }
 
 export const CropHintsParams: Schema.Codec<CropHintsParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aspectRatios: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "CropHintsParams" });
 
@@ -1794,7 +1794,7 @@ export interface LatLongRect {
 }
 
 export const LatLongRect: Schema.Codec<LatLongRect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minLatLng: Schema.optional(LatLng),
     maxLatLng: Schema.optional(LatLng),
   }).annotate({ identifier: "LatLongRect" });
@@ -1805,7 +1805,7 @@ export interface WebDetectionParams {
 }
 
 export const WebDetectionParams: Schema.Codec<WebDetectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeGeoResults: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "WebDetectionParams" });
 
@@ -1821,7 +1821,7 @@ export interface ProductSearchParams {
 }
 
 export const ProductSearchParams: Schema.Codec<ProductSearchParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     boundingPoly: Schema.optional(BoundingPoly),
     productCategories: Schema.optional(Schema.Array(Schema.String)),
@@ -1844,7 +1844,7 @@ export interface ImageContext {
 }
 
 export const ImageContext: Schema.Codec<ImageContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textDetectionParams: Schema.optional(TextDetectionParams),
     cropHintsParams: Schema.optional(CropHintsParams),
     latLongRect: Schema.optional(LatLongRect),
@@ -1859,7 +1859,7 @@ export interface GcsSource {
 }
 
 export const GcsSource: Schema.Codec<GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsSource" });
 
@@ -1873,7 +1873,7 @@ export interface InputConfig {
 }
 
 export const InputConfig: Schema.Codec<InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -1891,7 +1891,7 @@ export interface AnnotateFileRequest {
 }
 
 export const AnnotateFileRequest: Schema.Codec<AnnotateFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Array(Feature)),
     pages: Schema.optional(Schema.Array(Schema.Number)),
     imageContext: Schema.optional(ImageContext),
@@ -1904,7 +1904,7 @@ export interface GoogleCloudVisionV1p3beta1LocationInfo {
 }
 
 export const GoogleCloudVisionV1p3beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p3beta1LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1LocationInfo" });
 
@@ -1918,7 +1918,7 @@ export interface GoogleCloudVisionV1p3beta1ColorInfo {
 }
 
 export const GoogleCloudVisionV1p3beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p3beta1ColorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     pixelFraction: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -1934,7 +1934,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -1950,7 +1950,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebImage {
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1WebDetectionWebImage" });
@@ -1969,7 +1969,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebPage {
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
     partialMatchingImages: Schema.optional(
@@ -1997,7 +1997,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetection {
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webEntities: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1WebDetectionWebEntity),
     ),
@@ -2026,7 +2026,7 @@ export interface ListProductsResponse {
 }
 
 export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductsResponse" });
@@ -2041,7 +2041,7 @@ export interface GoogleCloudVisionV1p2beta1Property {
 }
 
 export const GoogleCloudVisionV1p2beta1Property: Schema.Codec<GoogleCloudVisionV1p2beta1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
@@ -2053,7 +2053,7 @@ export interface GoogleCloudVisionV1p2beta1LocationInfo {
 }
 
 export const GoogleCloudVisionV1p2beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p2beta1LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1LocationInfo" });
 
@@ -2079,7 +2079,7 @@ export interface GoogleCloudVisionV1p2beta1EntityAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1EntityAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicality: Schema.optional(Schema.Number),
     properties: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1Property),
@@ -2101,7 +2101,7 @@ export interface GcsDestination {
 }
 
 export const GcsDestination: Schema.Codec<GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsDestination" });
 
@@ -2113,7 +2113,7 @@ export interface OutputConfig {
 }
 
 export const OutputConfig: Schema.Codec<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
     batchSize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "OutputConfig" });
@@ -2133,7 +2133,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
 }
 
 export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -2148,7 +2148,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
 }
 
 export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({
@@ -2163,7 +2163,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
 }
 
 export const GoogleCloudVisionV1p2beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationTextProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedBreak: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak,
     ),
@@ -2186,7 +2186,7 @@ export interface GoogleCloudVisionV1p2beta1Symbol {
 }
 
 export const GoogleCloudVisionV1p2beta1Symbol: Schema.Codec<GoogleCloudVisionV1p2beta1Symbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
@@ -2207,7 +2207,7 @@ export interface GoogleCloudVisionV1p2beta1Word {
 }
 
 export const GoogleCloudVisionV1p2beta1Word: Schema.Codec<GoogleCloudVisionV1p2beta1Word> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
     ),
@@ -2228,7 +2228,7 @@ export interface GoogleCloudVisionV1p2beta1Paragraph {
 }
 
 export const GoogleCloudVisionV1p2beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p2beta1Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     words: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Word)),
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
@@ -2258,7 +2258,7 @@ export interface GoogleCloudVisionV1p2beta1Block {
 }
 
 export const GoogleCloudVisionV1p2beta1Block: Schema.Codec<GoogleCloudVisionV1p2beta1Block> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
@@ -2284,7 +2284,7 @@ export interface GoogleCloudVisionV1p2beta1Page {
 }
 
 export const GoogleCloudVisionV1p2beta1Page: Schema.Codec<GoogleCloudVisionV1p2beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
     blocks: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Block)),
@@ -2302,7 +2302,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Page)),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1TextAnnotation" });
@@ -2317,7 +2317,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -2331,7 +2331,7 @@ export interface GoogleCloudVisionV1p3beta1GcsSource {
 }
 
 export const GoogleCloudVisionV1p3beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p3beta1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1GcsSource" });
 
@@ -2345,7 +2345,7 @@ export interface GoogleCloudVisionV1p3beta1InputConfig {
 }
 
 export const GoogleCloudVisionV1p3beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p3beta1InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudVisionV1p3beta1GcsSource),
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -2359,7 +2359,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebImage {
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1WebDetectionWebImage" });
@@ -2378,7 +2378,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebPage {
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
     partialMatchingImages: Schema.optional(
@@ -2398,7 +2398,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1WebDetectionWebLabel" });
@@ -2419,7 +2419,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetection {
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1WebDetectionWebImage),
     ),
@@ -2446,7 +2446,7 @@ export interface GoogleCloudVisionV1p4beta1GcsSource {
 }
 
 export const GoogleCloudVisionV1p4beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p4beta1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1GcsSource" });
 
@@ -2460,7 +2460,7 @@ export interface GoogleCloudVisionV1p4beta1InputConfig {
 }
 
 export const GoogleCloudVisionV1p4beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p4beta1InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GoogleCloudVisionV1p4beta1GcsSource),
@@ -2472,7 +2472,7 @@ export interface GoogleCloudVisionV1p1beta1GcsDestination {
 }
 
 export const GoogleCloudVisionV1p1beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p1beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1GcsDestination" });
 
@@ -2484,7 +2484,7 @@ export interface GoogleCloudVisionV1p1beta1OutputConfig {
 }
 
 export const GoogleCloudVisionV1p1beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p1beta1OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batchSize: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(GoogleCloudVisionV1p1beta1GcsDestination),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1OutputConfig" });
@@ -2495,7 +2495,7 @@ export interface GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p1beta1OutputConfig),
   }).annotate({
     identifier: "GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse",
@@ -2516,7 +2516,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
 }
 
 export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -2533,7 +2533,7 @@ export interface GoogleCloudVisionV1p4beta1Celebrity {
 }
 
 export const GoogleCloudVisionV1p4beta1Celebrity: Schema.Codec<GoogleCloudVisionV1p4beta1Celebrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2547,7 +2547,7 @@ export interface GoogleCloudVisionV1p4beta1FaceRecognitionResult {
 }
 
 export const GoogleCloudVisionV1p4beta1FaceRecognitionResult: Schema.Codec<GoogleCloudVisionV1p4beta1FaceRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     celebrity: Schema.optional(GoogleCloudVisionV1p4beta1Celebrity),
     confidence: Schema.optional(Schema.Number),
   }).annotate({
@@ -2562,7 +2562,7 @@ export interface GoogleCloudVisionV1p4beta1Vertex {
 }
 
 export const GoogleCloudVisionV1p4beta1Vertex: Schema.Codec<GoogleCloudVisionV1p4beta1Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1Vertex" });
@@ -2575,7 +2575,7 @@ export interface GoogleCloudVisionV1p4beta1NormalizedVertex {
 }
 
 export const GoogleCloudVisionV1p4beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p4beta1NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1NormalizedVertex" });
@@ -2588,7 +2588,7 @@ export interface GoogleCloudVisionV1p4beta1BoundingPoly {
 }
 
 export const GoogleCloudVisionV1p4beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p4beta1BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Vertex)),
     normalizedVertices: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1NormalizedVertex),
@@ -2680,7 +2680,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1FaceAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     landmarks: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1FaceAnnotationLandmark),
     ),
@@ -2752,7 +2752,7 @@ export interface GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1SafeSearchAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     racy: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
     spoof: Schema.optional(Schema.String),
@@ -2766,7 +2766,7 @@ export interface GoogleCloudVisionV1p1beta1LocationInfo {
 }
 
 export const GoogleCloudVisionV1p1beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p1beta1LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1LocationInfo" });
 
@@ -2780,7 +2780,7 @@ export interface GoogleCloudVisionV1p1beta1Property {
 }
 
 export const GoogleCloudVisionV1p1beta1Property: Schema.Codec<GoogleCloudVisionV1p1beta1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
@@ -2808,7 +2808,7 @@ export interface GoogleCloudVisionV1p1beta1EntityAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1EntityAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     mid: Schema.optional(Schema.String),
@@ -2832,7 +2832,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebImage {
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebImage" });
@@ -2851,7 +2851,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebPage {
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
     partialMatchingImages: Schema.optional(
@@ -2871,7 +2871,7 @@ export interface GoogleCloudVisionV1p4beta1OutputConfig {
 }
 
 export const GoogleCloudVisionV1p4beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p4beta1OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GoogleCloudVisionV1p4beta1GcsDestination),
     batchSize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1OutputConfig" });
@@ -2882,7 +2882,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p4beta1OutputConfig),
   }).annotate({
     identifier: "GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse",
@@ -2898,7 +2898,7 @@ export interface GoogleCloudVisionV1p4beta1CropHint {
 }
 
 export const GoogleCloudVisionV1p4beta1CropHint: Schema.Codec<GoogleCloudVisionV1p4beta1CropHint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     confidence: Schema.optional(Schema.Number),
     importanceFraction: Schema.optional(Schema.Number),
@@ -2910,7 +2910,7 @@ export interface ProductSetPurgeConfig {
 }
 
 export const ProductSetPurgeConfig: Schema.Codec<ProductSetPurgeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productSetId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductSetPurgeConfig" });
 
@@ -2924,7 +2924,7 @@ export interface PurgeProductsRequest {
 }
 
 export const PurgeProductsRequest: Schema.Codec<PurgeProductsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     deleteOrphanProducts: Schema.optional(Schema.Boolean),
     productSetPurgeConfig: Schema.optional(ProductSetPurgeConfig),
@@ -2979,7 +2979,7 @@ export interface GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1SafeSearchAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     medical: Schema.optional(Schema.String),
     racy: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
@@ -2997,7 +2997,7 @@ export interface BatchAnnotateFilesRequest {
 }
 
 export const BatchAnnotateFilesRequest: Schema.Codec<BatchAnnotateFilesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(AnnotateFileRequest)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     parent: Schema.optional(Schema.String),
@@ -3019,7 +3019,7 @@ export interface GoogleCloudVisionV1p3beta1OperationMetadata {
 }
 
 export const GoogleCloudVisionV1p3beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p3beta1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3031,7 +3031,7 @@ export interface AddProductToProductSetRequest {
 }
 
 export const AddProductToProductSetRequest: Schema.Codec<AddProductToProductSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddProductToProductSetRequest" });
 
@@ -3047,7 +3047,7 @@ export interface GoogleCloudVisionV1p3beta1Word {
 }
 
 export const GoogleCloudVisionV1p3beta1Word: Schema.Codec<GoogleCloudVisionV1p3beta1Word> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p3beta1TextAnnotationTextProperty,
     ),
@@ -3068,7 +3068,7 @@ export interface GoogleCloudVisionV1p3beta1Paragraph {
 }
 
 export const GoogleCloudVisionV1p3beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p3beta1Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p3beta1TextAnnotationTextProperty,
     ),
@@ -3098,7 +3098,7 @@ export interface GoogleCloudVisionV1p3beta1Block {
 }
 
 export const GoogleCloudVisionV1p3beta1Block: Schema.Codec<GoogleCloudVisionV1p3beta1Block> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p3beta1TextAnnotationTextProperty,
@@ -3122,7 +3122,7 @@ export interface ProductSet {
 }
 
 export const ProductSet: Schema.Codec<ProductSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     indexTime: Schema.optional(Schema.String),
@@ -3139,7 +3139,7 @@ export interface GoogleCloudVisionV1p3beta1Position {
 }
 
 export const GoogleCloudVisionV1p3beta1Position: Schema.Codec<GoogleCloudVisionV1p3beta1Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
@@ -3191,7 +3191,7 @@ export interface GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
 }
 
 export const GoogleCloudVisionV1p3beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p3beta1Position),
   }).annotate({
@@ -3281,7 +3281,7 @@ export interface GoogleCloudVisionV1p3beta1FaceAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1FaceAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sorrowLikelihood: Schema.optional(Schema.String),
     landmarkingConfidence: Schema.optional(Schema.Number),
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
@@ -3311,7 +3311,7 @@ export interface GoogleCloudVisionV1p3beta1CropHint {
 }
 
 export const GoogleCloudVisionV1p3beta1CropHint: Schema.Codec<GoogleCloudVisionV1p3beta1CropHint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     confidence: Schema.optional(Schema.Number),
     importanceFraction: Schema.optional(Schema.Number),
@@ -3323,7 +3323,7 @@ export interface GoogleCloudVisionV1p1beta1GcsSource {
 }
 
 export const GoogleCloudVisionV1p1beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p1beta1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1GcsSource" });
 
@@ -3337,7 +3337,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -3353,7 +3353,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1WebDetectionWebLabel" });
@@ -3374,7 +3374,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetection {
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webEntities: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1WebDetectionWebEntity),
     ),
@@ -3401,7 +3401,7 @@ export interface GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
 }
 
 export const GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse),
     ),
@@ -3423,7 +3423,7 @@ export interface GoogleCloudVisionV1p3beta1Page {
 }
 
 export const GoogleCloudVisionV1p3beta1Page: Schema.Codec<GoogleCloudVisionV1p3beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
     blocks: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Block)),
@@ -3447,7 +3447,7 @@ export interface GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3467,7 +3467,7 @@ export interface GoogleCloudVisionV1p1beta1CropHint {
 }
 
 export const GoogleCloudVisionV1p1beta1CropHint: Schema.Codec<GoogleCloudVisionV1p1beta1CropHint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     confidence: Schema.optional(Schema.Number),
     importanceFraction: Schema.optional(Schema.Number),
@@ -3479,7 +3479,7 @@ export interface GoogleCloudVisionV1p1beta1CropHintsAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1CropHintsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1CropHint),
     ),
@@ -3493,7 +3493,7 @@ export interface GoogleCloudVisionV1p1beta1ImageAnnotationContext {
 }
 
 export const GoogleCloudVisionV1p1beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p1beta1ImageAnnotationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
   }).annotate({
@@ -3546,7 +3546,7 @@ export interface GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
 }
 
 export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p1beta1Position),
   }).annotate({
@@ -3636,7 +3636,7 @@ export interface GoogleCloudVisionV1p1beta1FaceAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1FaceAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectionConfidence: Schema.optional(Schema.Number),
     joyLikelihood: Schema.optional(Schema.String),
     surpriseLikelihood: Schema.optional(Schema.String),
@@ -3664,7 +3664,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1Page)),
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1TextAnnotation" });
@@ -3679,7 +3679,7 @@ export interface GoogleCloudVisionV1p1beta1ColorInfo {
 }
 
 export const GoogleCloudVisionV1p1beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p1beta1ColorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     color: Schema.optional(Color),
     pixelFraction: Schema.optional(Schema.Number),
@@ -3691,7 +3691,7 @@ export interface GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
 }
 
 export const GoogleCloudVisionV1p1beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1DominantColorsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1ColorInfo)),
   }).annotate({
     identifier: "GoogleCloudVisionV1p1beta1DominantColorsAnnotation",
@@ -3703,7 +3703,7 @@ export interface GoogleCloudVisionV1p1beta1ImageProperties {
 }
 
 export const GoogleCloudVisionV1p1beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p1beta1ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p1beta1DominantColorsAnnotation,
     ),
@@ -3741,7 +3741,7 @@ export interface GoogleCloudVisionV1p1beta1AnnotateImageResponse {
 }
 
 export const GoogleCloudVisionV1p1beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AnnotateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1EntityAnnotation),
     ),
@@ -3831,7 +3831,7 @@ export interface GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1SafeSearchAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violence: Schema.optional(Schema.String),
     racy: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
@@ -3849,7 +3849,7 @@ export interface GoogleCloudVisionV1p4beta1ReferenceImage {
 }
 
 export const GoogleCloudVisionV1p4beta1ReferenceImage: Schema.Codec<GoogleCloudVisionV1p4beta1ReferenceImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPolys: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1BoundingPoly),
     ),
@@ -3871,7 +3871,7 @@ export interface GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     mid: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -3889,7 +3889,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
 }
 
 export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
   }).annotate({
@@ -3904,7 +3904,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
 }
 
 export const GoogleCloudVisionV1p4beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationTextProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectedBreak: Schema.optional(
       GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak,
     ),
@@ -3927,7 +3927,7 @@ export interface GoogleCloudVisionV1p4beta1Symbol {
 }
 
 export const GoogleCloudVisionV1p4beta1Symbol: Schema.Codec<GoogleCloudVisionV1p4beta1Symbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     boundingBox: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     property: Schema.optional(
@@ -3948,7 +3948,7 @@ export interface GoogleCloudVisionV1p4beta1Word {
 }
 
 export const GoogleCloudVisionV1p4beta1Word: Schema.Codec<GoogleCloudVisionV1p4beta1Word> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p4beta1TextAnnotationTextProperty,
@@ -3969,7 +3969,7 @@ export interface GoogleCloudVisionV1p4beta1Paragraph {
 }
 
 export const GoogleCloudVisionV1p4beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p4beta1Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     words: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Word)),
     boundingBox: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     property: Schema.optional(
@@ -3999,7 +3999,7 @@ export interface GoogleCloudVisionV1p4beta1Block {
 }
 
 export const GoogleCloudVisionV1p4beta1Block: Schema.Codec<GoogleCloudVisionV1p4beta1Block> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     property: Schema.optional(
       GoogleCloudVisionV1p4beta1TextAnnotationTextProperty,
@@ -4019,7 +4019,7 @@ export interface GoogleCloudVisionV1p2beta1ImageAnnotationContext {
 }
 
 export const GoogleCloudVisionV1p2beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p2beta1ImageAnnotationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
   }).annotate({
@@ -4034,7 +4034,7 @@ export interface ImageSource {
 }
 
 export const ImageSource: Schema.Codec<ImageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsImageUri: Schema.optional(Schema.String),
     imageUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImageSource" });
@@ -4047,7 +4047,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     source: Schema.optional(ImageSource),
   }).annotate({ identifier: "Image" });
@@ -4060,7 +4060,7 @@ export interface GoogleCloudVisionV1p4beta1ProductKeyValue {
 }
 
 export const GoogleCloudVisionV1p4beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p4beta1ProductKeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1ProductKeyValue" });
@@ -4071,7 +4071,7 @@ export interface GoogleCloudVisionV1p2beta1GcsSource {
 }
 
 export const GoogleCloudVisionV1p2beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p2beta1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1GcsSource" });
 
@@ -4085,7 +4085,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4103,7 +4103,7 @@ export interface GoogleCloudVisionV1p2beta1CropHint {
 }
 
 export const GoogleCloudVisionV1p2beta1CropHint: Schema.Codec<GoogleCloudVisionV1p2beta1CropHint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     confidence: Schema.optional(Schema.Number),
     importanceFraction: Schema.optional(Schema.Number),
@@ -4117,7 +4117,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebImage {
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1WebDetectionWebImage" });
@@ -4136,7 +4136,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebPage {
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fullMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1WebDetectionWebImage),
     ),
@@ -4156,7 +4156,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1WebDetectionWebLabel" });
@@ -4177,7 +4177,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetection {
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1WebDetectionWebImage),
     ),
@@ -4208,7 +4208,7 @@ export interface GoogleCloudVisionV1p4beta1ColorInfo {
 }
 
 export const GoogleCloudVisionV1p4beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p4beta1ColorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     color: Schema.optional(Color),
     pixelFraction: Schema.optional(Schema.Number),
@@ -4220,7 +4220,7 @@ export interface GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1DominantColorsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1ColorInfo)),
   }).annotate({
     identifier: "GoogleCloudVisionV1p4beta1DominantColorsAnnotation",
@@ -4232,7 +4232,7 @@ export interface GoogleCloudVisionV1p4beta1ImageProperties {
 }
 
 export const GoogleCloudVisionV1p4beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p4beta1ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p4beta1DominantColorsAnnotation,
     ),
@@ -4248,7 +4248,7 @@ export interface GoogleCloudVisionV1p3beta1Property {
 }
 
 export const GoogleCloudVisionV1p3beta1Property: Schema.Codec<GoogleCloudVisionV1p3beta1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
@@ -4276,7 +4276,7 @@ export interface GoogleCloudVisionV1p3beta1EntityAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1EntityAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     properties: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1Property),
@@ -4298,7 +4298,7 @@ export interface GoogleCloudVisionV1p2beta1GcsDestination {
 }
 
 export const GoogleCloudVisionV1p2beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p2beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1GcsDestination" });
 
@@ -4310,7 +4310,7 @@ export interface GoogleCloudVisionV1p2beta1OutputConfig {
 }
 
 export const GoogleCloudVisionV1p2beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p2beta1OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GoogleCloudVisionV1p2beta1GcsDestination),
     batchSize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1OutputConfig" });
@@ -4325,7 +4325,7 @@ export interface AnnotateImageRequest {
 }
 
 export const AnnotateImageRequest: Schema.Codec<AnnotateImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageContext: Schema.optional(ImageContext),
     image: Schema.optional(Image),
     features: Schema.optional(Schema.Array(Feature)),
@@ -4337,7 +4337,7 @@ export interface GoogleCloudVisionV1p4beta1LocationInfo {
 }
 
 export const GoogleCloudVisionV1p4beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p4beta1LocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1LocationInfo" });
 
@@ -4353,7 +4353,7 @@ export interface AnnotateFileResponse {
 }
 
 export const AnnotateFileResponse: Schema.Codec<AnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalPages: Schema.optional(Schema.Number),
     inputConfig: Schema.optional(InputConfig),
     error: Schema.optional(Status),
@@ -4366,7 +4366,7 @@ export interface BatchAnnotateFilesResponse {
 }
 
 export const BatchAnnotateFilesResponse: Schema.Codec<BatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AnnotateFileResponse)),
   }).annotate({ identifier: "BatchAnnotateFilesResponse" });
 
@@ -4380,7 +4380,7 @@ export interface GoogleCloudVisionV1p3beta1ReferenceImage {
 }
 
 export const GoogleCloudVisionV1p3beta1ReferenceImage: Schema.Codec<GoogleCloudVisionV1p3beta1ReferenceImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     boundingPolys: Schema.optional(
@@ -4396,7 +4396,7 @@ export interface GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
 }
 
 export const GoogleCloudVisionV1p3beta1ImportProductSetsResponse: Schema.Codec<GoogleCloudVisionV1p3beta1ImportProductSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(Status)),
     referenceImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ReferenceImage),
@@ -4413,7 +4413,7 @@ export interface GoogleCloudVisionV1p3beta1ProductKeyValue {
 }
 
 export const GoogleCloudVisionV1p3beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p3beta1ProductKeyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1ProductKeyValue" });
@@ -4432,7 +4432,7 @@ export interface GoogleCloudVisionV1p3beta1Product {
 }
 
 export const GoogleCloudVisionV1p3beta1Product: Schema.Codec<GoogleCloudVisionV1p3beta1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     productCategory: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4452,7 +4452,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(GoogleCloudVisionV1p3beta1Product),
     image: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -4466,7 +4466,7 @@ export interface AsyncBatchAnnotateImagesResponse {
 }
 
 export const AsyncBatchAnnotateImagesResponse: Schema.Codec<AsyncBatchAnnotateImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(OutputConfig),
   }).annotate({ identifier: "AsyncBatchAnnotateImagesResponse" });
 
@@ -4480,7 +4480,7 @@ export interface GoogleCloudVisionV1p2beta1ColorInfo {
 }
 
 export const GoogleCloudVisionV1p2beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p2beta1ColorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     pixelFraction: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -4492,7 +4492,7 @@ export interface GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1DominantColorsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1ColorInfo)),
   }).annotate({
     identifier: "GoogleCloudVisionV1p2beta1DominantColorsAnnotation",
@@ -4504,7 +4504,7 @@ export interface GoogleCloudVisionV1p2beta1ImageProperties {
 }
 
 export const GoogleCloudVisionV1p2beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p2beta1ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p2beta1DominantColorsAnnotation,
     ),
@@ -4526,7 +4526,7 @@ export interface GoogleCloudVisionV1p3beta1BatchOperationMetadata {
 }
 
 export const GoogleCloudVisionV1p3beta1BatchOperationMetadata: Schema.Codec<GoogleCloudVisionV1p3beta1BatchOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     submitTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -4550,7 +4550,7 @@ export interface GoogleCloudVisionV1p1beta1OperationMetadata {
 }
 
 export const GoogleCloudVisionV1p1beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p1beta1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -4568,7 +4568,7 @@ export interface AsyncBatchAnnotateImagesRequest {
 }
 
 export const AsyncBatchAnnotateImagesRequest: Schema.Codec<AsyncBatchAnnotateImagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     requests: Schema.optional(Schema.Array(AnnotateImageRequest)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -4581,7 +4581,7 @@ export interface BatchAnnotateImagesResponse {
 }
 
 export const BatchAnnotateImagesResponse: Schema.Codec<BatchAnnotateImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AnnotateImageResponse)),
   }).annotate({ identifier: "BatchAnnotateImagesResponse" });
 
@@ -4593,7 +4593,7 @@ export interface GoogleCloudVisionV1p4beta1ImageAnnotationContext {
 }
 
 export const GoogleCloudVisionV1p4beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p4beta1ImageAnnotationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
   }).annotate({
@@ -4612,7 +4612,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation 
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -4628,7 +4628,7 @@ export interface GoogleCloudVisionV1p3beta1CropHintsAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1CropHintsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1CropHint),
     ),
@@ -4648,7 +4648,7 @@ export interface GoogleCloudVisionV1p4beta1Page {
 }
 
 export const GoogleCloudVisionV1p4beta1Page: Schema.Codec<GoogleCloudVisionV1p4beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
     blocks: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Block)),
@@ -4666,7 +4666,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Page)),
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1TextAnnotation" });
@@ -4685,7 +4685,7 @@ export interface GoogleCloudVisionV1p4beta1Product {
 }
 
 export const GoogleCloudVisionV1p4beta1Product: Schema.Codec<GoogleCloudVisionV1p4beta1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     productCategory: Schema.optional(Schema.String),
@@ -4705,7 +4705,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
     product: Schema.optional(GoogleCloudVisionV1p4beta1Product),
@@ -4723,7 +4723,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     objectAnnotations: Schema.optional(
       Schema.Array(
         GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation,
@@ -4747,7 +4747,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResults {
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1ProductSearchResultsResult),
@@ -4767,7 +4767,7 @@ export interface GoogleCloudVisionV1p4beta1Property {
 }
 
 export const GoogleCloudVisionV1p4beta1Property: Schema.Codec<GoogleCloudVisionV1p4beta1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -4795,7 +4795,7 @@ export interface GoogleCloudVisionV1p4beta1EntityAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1EntityAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topicality: Schema.optional(Schema.Number),
     properties: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1Property),
@@ -4817,7 +4817,7 @@ export interface GoogleCloudVisionV1p4beta1CropHintsAnnotation {
 }
 
 export const GoogleCloudVisionV1p4beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1CropHintsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1CropHint),
     ),
@@ -4855,7 +4855,7 @@ export interface GoogleCloudVisionV1p4beta1AnnotateImageResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AnnotateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     context: Schema.optional(GoogleCloudVisionV1p4beta1ImageAnnotationContext),
     safeSearchAnnotation: Schema.optional(
       GoogleCloudVisionV1p4beta1SafeSearchAnnotation,
@@ -4908,7 +4908,7 @@ export interface GoogleCloudVisionV1p4beta1AnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1AnnotateImageResponse),
@@ -4923,7 +4923,7 @@ export interface GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1DominantColorsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1ColorInfo)),
   }).annotate({
     identifier: "GoogleCloudVisionV1p3beta1DominantColorsAnnotation",
@@ -4935,7 +4935,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p2beta1OutputConfig),
   }).annotate({
     identifier: "GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse",
@@ -4987,7 +4987,7 @@ export interface GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
 }
 
 export const GoogleCloudVisionV1p2beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p2beta1Position),
   }).annotate({
@@ -5004,7 +5004,7 @@ export interface GoogleCloudVisionV1p1beta1InputConfig {
 }
 
 export const GoogleCloudVisionV1p1beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p1beta1InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudVisionV1p1beta1GcsSource),
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -5020,7 +5020,7 @@ export interface BatchAnnotateImagesRequest {
 }
 
 export const BatchAnnotateImagesRequest: Schema.Codec<BatchAnnotateImagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     requests: Schema.optional(Schema.Array(AnnotateImageRequest)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5029,7 +5029,7 @@ export const BatchAnnotateImagesRequest: Schema.Codec<BatchAnnotateImagesRequest
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -5039,7 +5039,7 @@ export interface GoogleCloudVisionV1p3beta1GcsDestination {
 }
 
 export const GoogleCloudVisionV1p3beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p3beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1GcsDestination" });
 
@@ -5051,7 +5051,7 @@ export interface GoogleCloudVisionV1p3beta1OutputConfig {
 }
 
 export const GoogleCloudVisionV1p3beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p3beta1OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batchSize: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(GoogleCloudVisionV1p3beta1GcsDestination),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1OutputConfig" });
@@ -5070,7 +5070,7 @@ export interface GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     mid: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -5086,7 +5086,7 @@ export interface GoogleCloudVisionV1p2beta1CropHintsAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1CropHintsAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1CropHint),
     ),
@@ -5108,7 +5108,7 @@ export interface BatchOperationMetadata {
 }
 
 export const BatchOperationMetadata: Schema.Codec<BatchOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     submitTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5163,7 +5163,7 @@ export interface GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1SafeSearchAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     medical: Schema.optional(Schema.String),
     violence: Schema.optional(Schema.String),
     racy: Schema.optional(Schema.String),
@@ -5179,7 +5179,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotation {
 }
 
 export const GoogleCloudVisionV1p3beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Page)),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1TextAnnotation" });
@@ -5190,7 +5190,7 @@ export interface GoogleCloudVisionV1p3beta1ImageProperties {
 }
 
 export const GoogleCloudVisionV1p3beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p3beta1ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p3beta1DominantColorsAnnotation,
     ),
@@ -5208,7 +5208,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation 
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -5228,7 +5228,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ProductSearchResultsResult),
@@ -5252,7 +5252,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResults {
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ProductSearchResultsResult),
@@ -5294,7 +5294,7 @@ export interface GoogleCloudVisionV1p3beta1AnnotateImageResponse {
 }
 
 export const GoogleCloudVisionV1p3beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AnnotateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logoAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1EntityAnnotation),
     ),
@@ -5347,7 +5347,7 @@ export interface GoogleCloudVisionV1p3beta1AnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p3beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1AnnotateImageResponse),
@@ -5372,7 +5372,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -5390,7 +5390,7 @@ export interface AsyncAnnotateFileRequest {
 }
 
 export const AsyncAnnotateFileRequest: Schema.Codec<AsyncAnnotateFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Array(Feature)),
     inputConfig: Schema.optional(InputConfig),
     imageContext: Schema.optional(ImageContext),
@@ -5411,7 +5411,7 @@ export interface GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mid: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5504,7 +5504,7 @@ export interface GoogleCloudVisionV1p2beta1FaceAnnotation {
 }
 
 export const GoogleCloudVisionV1p2beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1FaceAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     landmarks: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1FaceAnnotationLandmark),
     ),
@@ -5556,7 +5556,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateImageResponse {
 }
 
 export const GoogleCloudVisionV1p2beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labelAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1EntityAnnotation),
     ),
@@ -5603,7 +5603,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p4beta1OutputConfig),
   }).annotate({
     identifier: "GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse",
@@ -5615,7 +5615,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse),
     ),
@@ -5629,7 +5629,7 @@ export interface RemoveProductFromProductSetRequest {
 }
 
 export const RemoveProductFromProductSetRequest: Schema.Codec<RemoveProductFromProductSetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveProductFromProductSetRequest" });
 
@@ -5643,7 +5643,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -5655,7 +5655,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
 }
 
 export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse),
     ),
@@ -5679,7 +5679,7 @@ export interface GoogleCloudVisionV1p4beta1BatchOperationMetadata {
 }
 
 export const GoogleCloudVisionV1p4beta1BatchOperationMetadata: Schema.Codec<GoogleCloudVisionV1p4beta1BatchOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     submitTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5693,7 +5693,7 @@ export interface AsyncAnnotateFileResponse {
 }
 
 export const AsyncAnnotateFileResponse: Schema.Codec<AsyncAnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(OutputConfig),
   }).annotate({ identifier: "AsyncAnnotateFileResponse" });
 
@@ -5707,7 +5707,7 @@ export interface GoogleCloudVisionV1p2beta1InputConfig {
 }
 
 export const GoogleCloudVisionV1p2beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p2beta1InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GoogleCloudVisionV1p2beta1GcsSource),
@@ -5719,7 +5719,7 @@ export interface GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1AnnotateFileResponse),
     ),
@@ -5743,7 +5743,7 @@ export interface GoogleCloudVisionV1p4beta1OperationMetadata {
 }
 
 export const GoogleCloudVisionV1p4beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p4beta1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -5761,7 +5761,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p2beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AnnotateImageResponse),
@@ -5778,7 +5778,7 @@ export interface GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
 }
 
 export const GoogleCloudVisionV1p4beta1ImportProductSetsResponse: Schema.Codec<GoogleCloudVisionV1p4beta1ImportProductSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(Status)),
     referenceImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1ReferenceImage),
@@ -5797,7 +5797,7 @@ export interface AsyncBatchAnnotateFilesRequest {
 }
 
 export const AsyncBatchAnnotateFilesRequest: Schema.Codec<AsyncBatchAnnotateFilesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(AsyncAnnotateFileRequest)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     parent: Schema.optional(Schema.String),
@@ -5813,7 +5813,7 @@ export interface ReferenceImage {
 }
 
 export const ReferenceImage: Schema.Codec<ReferenceImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boundingPolys: Schema.optional(Schema.Array(BoundingPoly)),
     name: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -5829,7 +5829,7 @@ export interface ListReferenceImagesResponse {
 }
 
 export const ListReferenceImagesResponse: Schema.Codec<ListReferenceImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
     referenceImages: Schema.optional(Schema.Array(ReferenceImage)),
@@ -5841,7 +5841,7 @@ export interface GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p3beta1OutputConfig),
   }).annotate({
     identifier: "GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse",
@@ -5850,7 +5850,7 @@ export const GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse: Schema.Codec<G
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -5862,7 +5862,7 @@ export interface ListProductSetsResponse {
 }
 
 export const ListProductSetsResponse: Schema.Codec<ListProductSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productSets: Schema.optional(Schema.Array(ProductSet)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductSetsResponse" });
@@ -5875,7 +5875,7 @@ export interface ImportProductSetsResponse {
 }
 
 export const ImportProductSetsResponse: Schema.Codec<ImportProductSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(Status)),
     referenceImages: Schema.optional(Schema.Array(ReferenceImage)),
   }).annotate({ identifier: "ImportProductSetsResponse" });
@@ -5886,7 +5886,7 @@ export interface GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
 }
 
 export const GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse),
     ),
@@ -5902,7 +5902,7 @@ export interface ListProductsInProductSetResponse {
 }
 
 export const ListProductsInProductSetResponse: Schema.Codec<ListProductsInProductSetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListProductsInProductSetResponse" });
@@ -5919,7 +5919,7 @@ export interface GoogleCloudVisionV1p1beta1AnnotateFileResponse {
 }
 
 export const GoogleCloudVisionV1p1beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AnnotateFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalPages: Schema.optional(Schema.Number),
     inputConfig: Schema.optional(GoogleCloudVisionV1p1beta1InputConfig),
     error: Schema.optional(Status),
@@ -5934,7 +5934,7 @@ export interface AsyncBatchAnnotateFilesResponse {
 }
 
 export const AsyncBatchAnnotateFilesResponse: Schema.Codec<AsyncBatchAnnotateFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AsyncAnnotateFileResponse)),
   }).annotate({ identifier: "AsyncBatchAnnotateFilesResponse" });
 
@@ -6005,7 +6005,7 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -6019,8 +6019,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -6030,7 +6029,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -6045,7 +6044,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6053,7 +6052,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -6063,7 +6062,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6075,7 +6074,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -6083,7 +6082,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -6098,7 +6097,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6112,7 +6111,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6121,7 +6120,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -6136,7 +6135,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6147,7 +6146,7 @@ export interface AnnotateImagesRequest {
   body?: BatchAnnotateImagesRequest;
 }
 
-export const AnnotateImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AnnotateImagesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(BatchAnnotateImagesRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/images:annotate", hasBody: true }),
@@ -6155,8 +6154,7 @@ export const AnnotateImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<AnnotateImagesRequest>;
 
 export type AnnotateImagesResponse = BatchAnnotateImagesResponse;
-export const AnnotateImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
+export const AnnotateImagesResponse = /*@__PURE__*/ BatchAnnotateImagesResponse;
 
 export type AnnotateImagesError =
   | DefaultErrors
@@ -6171,7 +6169,7 @@ export const annotateImages: API.OperationMethod<
   AnnotateImagesResponse,
   AnnotateImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateImagesRequest,
   output: AnnotateImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6183,7 +6181,7 @@ export interface AsyncBatchAnnotateImagesRequest_Op {
 }
 
 export const AsyncBatchAnnotateImagesRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AsyncBatchAnnotateImagesRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -6195,8 +6193,7 @@ export const AsyncBatchAnnotateImagesRequest_Op =
   ) as unknown as Schema.Codec<AsyncBatchAnnotateImagesRequest_Op>;
 
 export type AsyncBatchAnnotateImagesResponse_Op = Operation;
-export const AsyncBatchAnnotateImagesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AsyncBatchAnnotateImagesResponse_Op = /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateImagesError =
   | DefaultErrors
@@ -6211,7 +6208,7 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
   AsyncBatchAnnotateImagesResponse_Op,
   AsyncBatchAnnotateImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateImagesRequest_Op,
   output: AsyncBatchAnnotateImagesResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6223,7 +6220,7 @@ export interface GetLocationsOperationsRequest {
 }
 
 export const GetLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6231,8 +6228,7 @@ export const GetLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetLocationsOperationsRequest>;
 
 export type GetLocationsOperationsResponse = Operation;
-export const GetLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetLocationsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -6242,7 +6238,7 @@ export const getLocationsOperations: API.OperationMethod<
   GetLocationsOperationsResponse,
   GetLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLocationsOperationsRequest,
   output: GetLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6253,7 +6249,7 @@ export interface AnnotateFilesRequest {
   body?: BatchAnnotateFilesRequest;
 }
 
-export const AnnotateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AnnotateFilesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(BatchAnnotateFilesRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/files:annotate", hasBody: true }),
@@ -6261,8 +6257,7 @@ export const AnnotateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<AnnotateFilesRequest>;
 
 export type AnnotateFilesResponse = BatchAnnotateFilesResponse;
-export const AnnotateFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
+export const AnnotateFilesResponse = /*@__PURE__*/ BatchAnnotateFilesResponse;
 
 export type AnnotateFilesError =
   | DefaultErrors
@@ -6277,7 +6272,7 @@ export const annotateFiles: API.OperationMethod<
   AnnotateFilesResponse,
   AnnotateFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateFilesRequest,
   output: AnnotateFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6289,7 +6284,7 @@ export interface AsyncBatchAnnotateFilesRequest_Op {
 }
 
 export const AsyncBatchAnnotateFilesRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AsyncBatchAnnotateFilesRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -6301,8 +6296,7 @@ export const AsyncBatchAnnotateFilesRequest_Op =
   ) as unknown as Schema.Codec<AsyncBatchAnnotateFilesRequest_Op>;
 
 export type AsyncBatchAnnotateFilesResponse_Op = Operation;
-export const AsyncBatchAnnotateFilesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AsyncBatchAnnotateFilesResponse_Op = /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateFilesError =
   | DefaultErrors
@@ -6317,7 +6311,7 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
   AsyncBatchAnnotateFilesResponse_Op,
   AsyncBatchAnnotateFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateFilesRequest_Op,
   output: AsyncBatchAnnotateFilesResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6331,7 +6325,7 @@ export interface AnnotateProjectsFilesRequest {
 }
 
 export const AnnotateProjectsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchAnnotateFilesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6345,7 +6339,7 @@ export const AnnotateProjectsFilesRequest =
 
 export type AnnotateProjectsFilesResponse = BatchAnnotateFilesResponse;
 export const AnnotateProjectsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
+  /*@__PURE__*/ BatchAnnotateFilesResponse;
 
 export type AnnotateProjectsFilesError =
   | DefaultErrors
@@ -6360,7 +6354,7 @@ export const annotateProjectsFiles: API.OperationMethod<
   AnnotateProjectsFilesResponse,
   AnnotateProjectsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateProjectsFilesRequest,
   output: AnnotateProjectsFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6374,7 +6368,7 @@ export interface AsyncBatchAnnotateProjectsFilesRequest {
 }
 
 export const AsyncBatchAnnotateProjectsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AsyncBatchAnnotateFilesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6387,8 +6381,7 @@ export const AsyncBatchAnnotateProjectsFilesRequest =
   ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsFilesRequest>;
 
 export type AsyncBatchAnnotateProjectsFilesResponse = Operation;
-export const AsyncBatchAnnotateProjectsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AsyncBatchAnnotateProjectsFilesResponse = /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateProjectsFilesError =
   | DefaultErrors
@@ -6403,7 +6396,7 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsFilesResponse,
   AsyncBatchAnnotateProjectsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsFilesRequest,
   output: AsyncBatchAnnotateProjectsFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6417,7 +6410,7 @@ export interface AnnotateProjectsImagesRequest {
 }
 
 export const AnnotateProjectsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchAnnotateImagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6431,7 +6424,7 @@ export const AnnotateProjectsImagesRequest =
 
 export type AnnotateProjectsImagesResponse = BatchAnnotateImagesResponse;
 export const AnnotateProjectsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
+  /*@__PURE__*/ BatchAnnotateImagesResponse;
 
 export type AnnotateProjectsImagesError =
   | DefaultErrors
@@ -6446,7 +6439,7 @@ export const annotateProjectsImages: API.OperationMethod<
   AnnotateProjectsImagesResponse,
   AnnotateProjectsImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateProjectsImagesRequest,
   output: AnnotateProjectsImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6460,7 +6453,7 @@ export interface AsyncBatchAnnotateProjectsImagesRequest {
 }
 
 export const AsyncBatchAnnotateProjectsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AsyncBatchAnnotateImagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6473,8 +6466,7 @@ export const AsyncBatchAnnotateProjectsImagesRequest =
   ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsImagesRequest>;
 
 export type AsyncBatchAnnotateProjectsImagesResponse = Operation;
-export const AsyncBatchAnnotateProjectsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AsyncBatchAnnotateProjectsImagesResponse = /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateProjectsImagesError =
   | DefaultErrors
@@ -6489,7 +6481,7 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsImagesResponse,
   AsyncBatchAnnotateProjectsImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsImagesRequest,
   output: AsyncBatchAnnotateProjectsImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6501,7 +6493,7 @@ export interface GetProjectsOperationsRequest {
 }
 
 export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6509,8 +6501,7 @@ export const GetProjectsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
-export const GetProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -6520,7 +6511,7 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsResponse,
   GetProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6532,7 +6523,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6540,8 +6531,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -6554,7 +6544,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -6566,7 +6556,7 @@ export interface GetProjectsLocationsProductSetsRequest {
 }
 
 export const GetProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -6574,8 +6564,7 @@ export const GetProjectsLocationsProductSetsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsProductSetsRequest>;
 
 export type GetProjectsLocationsProductSetsResponse = ProductSet;
-export const GetProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductSet;
+export const GetProjectsLocationsProductSetsResponse = /*@__PURE__*/ ProductSet;
 
 export type GetProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6588,7 +6577,7 @@ export const getProjectsLocationsProductSets: API.OperationMethod<
   GetProjectsLocationsProductSetsResponse,
   GetProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductSetsRequest,
   output: GetProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden],
@@ -6604,7 +6593,7 @@ export interface ListProjectsLocationsProductSetsRequest {
 }
 
 export const ListProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -6615,7 +6604,7 @@ export const ListProjectsLocationsProductSetsRequest =
 
 export type ListProjectsLocationsProductSetsResponse = ListProductSetsResponse;
 export const ListProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductSetsResponse;
+  /*@__PURE__*/ ListProductSetsResponse;
 
 export type ListProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6628,7 +6617,7 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   ListProjectsLocationsProductSetsResponse,
   ListProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsRequest,
   output: ListProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden],
@@ -6644,7 +6633,7 @@ export interface DeleteProjectsLocationsProductSetsRequest {
 }
 
 export const DeleteProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -6652,8 +6641,7 @@ export const DeleteProjectsLocationsProductSetsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsProductSetsRequest>;
 
 export type DeleteProjectsLocationsProductSetsResponse = Empty;
-export const DeleteProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsProductSetsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6668,7 +6656,7 @@ export const deleteProjectsLocationsProductSets: API.OperationMethod<
   DeleteProjectsLocationsProductSetsResponse,
   DeleteProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductSetsRequest,
   output: DeleteProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6684,7 +6672,7 @@ export interface CreateProjectsLocationsProductSetsRequest {
 }
 
 export const CreateProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productSetId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("productSetId"),
     ),
@@ -6697,7 +6685,7 @@ export const CreateProjectsLocationsProductSetsRequest =
 
 export type CreateProjectsLocationsProductSetsResponse = ProductSet;
 export const CreateProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductSet;
+  /*@__PURE__*/ ProductSet;
 
 export type CreateProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6712,7 +6700,7 @@ export const createProjectsLocationsProductSets: API.OperationMethod<
   CreateProjectsLocationsProductSetsResponse,
   CreateProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductSetsRequest,
   output: CreateProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6726,7 +6714,7 @@ export interface AddProductProjectsLocationsProductSetsRequest {
 }
 
 export const AddProductProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AddProductToProductSetRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6736,7 +6724,7 @@ export const AddProductProjectsLocationsProductSetsRequest =
 
 export type AddProductProjectsLocationsProductSetsResponse = Empty;
 export const AddProductProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type AddProductProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6751,7 +6739,7 @@ export const addProductProjectsLocationsProductSets: API.OperationMethod<
   AddProductProjectsLocationsProductSetsResponse,
   AddProductProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddProductProjectsLocationsProductSetsRequest,
   output: AddProductProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6767,7 +6755,7 @@ export interface PatchProjectsLocationsProductSetsRequest {
 }
 
 export const PatchProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ProductSet).pipe(T.HttpBody()),
@@ -6778,7 +6766,7 @@ export const PatchProjectsLocationsProductSetsRequest =
 
 export type PatchProjectsLocationsProductSetsResponse = ProductSet;
 export const PatchProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductSet;
+  /*@__PURE__*/ ProductSet;
 
 export type PatchProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6793,7 +6781,7 @@ export const patchProjectsLocationsProductSets: API.OperationMethod<
   PatchProjectsLocationsProductSetsResponse,
   PatchProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductSetsRequest,
   output: PatchProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6807,7 +6795,7 @@ export interface RemoveProductProjectsLocationsProductSetsRequest {
 }
 
 export const RemoveProductProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveProductFromProductSetRequest).pipe(
       T.HttpBody(),
@@ -6819,7 +6807,7 @@ export const RemoveProductProjectsLocationsProductSetsRequest =
 
 export type RemoveProductProjectsLocationsProductSetsResponse = Empty;
 export const RemoveProductProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type RemoveProductProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6834,7 +6822,7 @@ export const removeProductProjectsLocationsProductSets: API.OperationMethod<
   RemoveProductProjectsLocationsProductSetsResponse,
   RemoveProductProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveProductProjectsLocationsProductSetsRequest,
   output: RemoveProductProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6848,7 +6836,7 @@ export interface ImportProjectsLocationsProductSetsRequest {
 }
 
 export const ImportProjectsLocationsProductSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ImportProductSetsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -6862,7 +6850,7 @@ export const ImportProjectsLocationsProductSetsRequest =
 
 export type ImportProjectsLocationsProductSetsResponse = Operation;
 export const ImportProjectsLocationsProductSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ImportProjectsLocationsProductSetsError =
   | DefaultErrors
@@ -6877,7 +6865,7 @@ export const importProjectsLocationsProductSets: API.OperationMethod<
   ImportProjectsLocationsProductSetsResponse,
   ImportProjectsLocationsProductSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsProductSetsRequest,
   output: ImportProjectsLocationsProductSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6893,7 +6881,7 @@ export interface ListProjectsLocationsProductSetsProductsRequest {
 }
 
 export const ListProjectsLocationsProductSetsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -6905,7 +6893,7 @@ export const ListProjectsLocationsProductSetsProductsRequest =
 export type ListProjectsLocationsProductSetsProductsResponse =
   ListProductsInProductSetResponse;
 export const ListProjectsLocationsProductSetsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductsInProductSetResponse;
+  /*@__PURE__*/ ListProductsInProductSetResponse;
 
 export type ListProjectsLocationsProductSetsProductsError =
   | DefaultErrors
@@ -6918,7 +6906,7 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
   ListProjectsLocationsProductSetsProductsResponse,
   ListProjectsLocationsProductSetsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsProductsRequest,
   output: ListProjectsLocationsProductSetsProductsResponse,
   errors: [NotFound, Forbidden],
@@ -6938,7 +6926,7 @@ export interface PatchProjectsLocationsProductsRequest {
 }
 
 export const PatchProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Product).pipe(T.HttpBody()),
@@ -6948,8 +6936,7 @@ export const PatchProjectsLocationsProductsRequest =
   ) as unknown as Schema.Codec<PatchProjectsLocationsProductsRequest>;
 
 export type PatchProjectsLocationsProductsResponse = Product;
-export const PatchProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Product;
+export const PatchProjectsLocationsProductsResponse = /*@__PURE__*/ Product;
 
 export type PatchProjectsLocationsProductsError =
   | DefaultErrors
@@ -6964,7 +6951,7 @@ export const patchProjectsLocationsProducts: API.OperationMethod<
   PatchProjectsLocationsProductsResponse,
   PatchProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsRequest,
   output: PatchProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -6980,7 +6967,7 @@ export interface ListProjectsLocationsProductsRequest {
 }
 
 export const ListProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -6991,7 +6978,7 @@ export const ListProjectsLocationsProductsRequest =
 
 export type ListProjectsLocationsProductsResponse = ListProductsResponse;
 export const ListProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
+  /*@__PURE__*/ ListProductsResponse;
 
 export type ListProjectsLocationsProductsError =
   | DefaultErrors
@@ -7004,7 +6991,7 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   ListProjectsLocationsProductsResponse,
   ListProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsRequest,
   output: ListProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden],
@@ -7020,7 +7007,7 @@ export interface GetProjectsLocationsProductsRequest {
 }
 
 export const GetProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7028,8 +7015,7 @@ export const GetProjectsLocationsProductsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsProductsRequest>;
 
 export type GetProjectsLocationsProductsResponse = Product;
-export const GetProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Product;
+export const GetProjectsLocationsProductsResponse = /*@__PURE__*/ Product;
 
 export type GetProjectsLocationsProductsError =
   | DefaultErrors
@@ -7042,7 +7028,7 @@ export const getProjectsLocationsProducts: API.OperationMethod<
   GetProjectsLocationsProductsResponse,
   GetProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsRequest,
   output: GetProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden],
@@ -7056,7 +7042,7 @@ export interface PurgeProjectsLocationsProductsRequest {
 }
 
 export const PurgeProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(PurgeProductsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7069,8 +7055,7 @@ export const PurgeProjectsLocationsProductsRequest =
   ) as unknown as Schema.Codec<PurgeProjectsLocationsProductsRequest>;
 
 export type PurgeProjectsLocationsProductsResponse = Operation;
-export const PurgeProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PurgeProjectsLocationsProductsResponse = /*@__PURE__*/ Operation;
 
 export type PurgeProjectsLocationsProductsError =
   | DefaultErrors
@@ -7085,7 +7070,7 @@ export const purgeProjectsLocationsProducts: API.OperationMethod<
   PurgeProjectsLocationsProductsResponse,
   PurgeProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsProductsRequest,
   output: PurgeProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7101,7 +7086,7 @@ export interface CreateProjectsLocationsProductsRequest {
 }
 
 export const CreateProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     productId: Schema.optional(Schema.String).pipe(T.HttpQuery("productId")),
     body: Schema.optional(Product).pipe(T.HttpBody()),
@@ -7111,8 +7096,7 @@ export const CreateProjectsLocationsProductsRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsProductsRequest>;
 
 export type CreateProjectsLocationsProductsResponse = Product;
-export const CreateProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Product;
+export const CreateProjectsLocationsProductsResponse = /*@__PURE__*/ Product;
 
 export type CreateProjectsLocationsProductsError =
   | DefaultErrors
@@ -7127,7 +7111,7 @@ export const createProjectsLocationsProducts: API.OperationMethod<
   CreateProjectsLocationsProductsResponse,
   CreateProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsRequest,
   output: CreateProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7139,7 +7123,7 @@ export interface DeleteProjectsLocationsProductsRequest {
 }
 
 export const DeleteProjectsLocationsProductsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -7147,8 +7131,7 @@ export const DeleteProjectsLocationsProductsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsRequest>;
 
 export type DeleteProjectsLocationsProductsResponse = Empty;
-export const DeleteProjectsLocationsProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsProductsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsProductsError =
   | DefaultErrors
@@ -7163,7 +7146,7 @@ export const deleteProjectsLocationsProducts: API.OperationMethod<
   DeleteProjectsLocationsProductsResponse,
   DeleteProjectsLocationsProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsRequest,
   output: DeleteProjectsLocationsProductsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7175,7 +7158,7 @@ export interface DeleteProjectsLocationsProductsReferenceImagesRequest {
 }
 
 export const DeleteProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -7184,7 +7167,7 @@ export const DeleteProjectsLocationsProductsReferenceImagesRequest =
 
 export type DeleteProjectsLocationsProductsReferenceImagesResponse = Empty;
 export const DeleteProjectsLocationsProductsReferenceImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsProductsReferenceImagesError =
   | DefaultErrors
@@ -7199,7 +7182,7 @@ export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod
   DeleteProjectsLocationsProductsReferenceImagesResponse,
   DeleteProjectsLocationsProductsReferenceImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsReferenceImagesRequest,
   output: DeleteProjectsLocationsProductsReferenceImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7215,7 +7198,7 @@ export interface CreateProjectsLocationsProductsReferenceImagesRequest {
 }
 
 export const CreateProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     referenceImageId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("referenceImageId"),
@@ -7233,7 +7216,7 @@ export const CreateProjectsLocationsProductsReferenceImagesRequest =
 export type CreateProjectsLocationsProductsReferenceImagesResponse =
   ReferenceImage;
 export const CreateProjectsLocationsProductsReferenceImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReferenceImage;
+  /*@__PURE__*/ ReferenceImage;
 
 export type CreateProjectsLocationsProductsReferenceImagesError =
   | DefaultErrors
@@ -7248,7 +7231,7 @@ export const createProjectsLocationsProductsReferenceImages: API.OperationMethod
   CreateProjectsLocationsProductsReferenceImagesResponse,
   CreateProjectsLocationsProductsReferenceImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsReferenceImagesRequest,
   output: CreateProjectsLocationsProductsReferenceImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7260,7 +7243,7 @@ export interface GetProjectsLocationsProductsReferenceImagesRequest {
 }
 
 export const GetProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -7270,7 +7253,7 @@ export const GetProjectsLocationsProductsReferenceImagesRequest =
 export type GetProjectsLocationsProductsReferenceImagesResponse =
   ReferenceImage;
 export const GetProjectsLocationsProductsReferenceImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReferenceImage;
+  /*@__PURE__*/ ReferenceImage;
 
 export type GetProjectsLocationsProductsReferenceImagesError =
   | DefaultErrors
@@ -7283,7 +7266,7 @@ export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
   GetProjectsLocationsProductsReferenceImagesResponse,
   GetProjectsLocationsProductsReferenceImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsReferenceImagesRequest,
   output: GetProjectsLocationsProductsReferenceImagesResponse,
   errors: [NotFound, Forbidden],
@@ -7299,7 +7282,7 @@ export interface ListProjectsLocationsProductsReferenceImagesRequest {
 }
 
 export const ListProjectsLocationsProductsReferenceImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -7311,7 +7294,7 @@ export const ListProjectsLocationsProductsReferenceImagesRequest =
 export type ListProjectsLocationsProductsReferenceImagesResponse =
   ListReferenceImagesResponse;
 export const ListProjectsLocationsProductsReferenceImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReferenceImagesResponse;
+  /*@__PURE__*/ ListReferenceImagesResponse;
 
 export type ListProjectsLocationsProductsReferenceImagesError =
   | DefaultErrors
@@ -7324,7 +7307,7 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
   ListProjectsLocationsProductsReferenceImagesResponse,
   ListProjectsLocationsProductsReferenceImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsReferenceImagesRequest,
   output: ListProjectsLocationsProductsReferenceImagesResponse,
   errors: [NotFound, Forbidden],
@@ -7342,7 +7325,7 @@ export interface AnnotateProjectsLocationsImagesRequest {
 }
 
 export const AnnotateProjectsLocationsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchAnnotateImagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7357,7 +7340,7 @@ export const AnnotateProjectsLocationsImagesRequest =
 export type AnnotateProjectsLocationsImagesResponse =
   BatchAnnotateImagesResponse;
 export const AnnotateProjectsLocationsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
+  /*@__PURE__*/ BatchAnnotateImagesResponse;
 
 export type AnnotateProjectsLocationsImagesError =
   | DefaultErrors
@@ -7372,7 +7355,7 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
   AnnotateProjectsLocationsImagesResponse,
   AnnotateProjectsLocationsImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsImagesRequest,
   output: AnnotateProjectsLocationsImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7386,7 +7369,7 @@ export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
 }
 
 export const AsyncBatchAnnotateProjectsLocationsImagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AsyncBatchAnnotateImagesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7400,7 +7383,7 @@ export const AsyncBatchAnnotateProjectsLocationsImagesRequest =
 
 export type AsyncBatchAnnotateProjectsLocationsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsImagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateProjectsLocationsImagesError =
   | DefaultErrors
@@ -7415,7 +7398,7 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsImagesResponse,
   AsyncBatchAnnotateProjectsLocationsImagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsImagesRequest,
   output: AsyncBatchAnnotateProjectsLocationsImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7429,7 +7412,7 @@ export interface AnnotateProjectsLocationsFilesRequest {
 }
 
 export const AnnotateProjectsLocationsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchAnnotateFilesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7443,7 +7426,7 @@ export const AnnotateProjectsLocationsFilesRequest =
 
 export type AnnotateProjectsLocationsFilesResponse = BatchAnnotateFilesResponse;
 export const AnnotateProjectsLocationsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
+  /*@__PURE__*/ BatchAnnotateFilesResponse;
 
 export type AnnotateProjectsLocationsFilesError =
   | DefaultErrors
@@ -7458,7 +7441,7 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
   AnnotateProjectsLocationsFilesResponse,
   AnnotateProjectsLocationsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsFilesRequest,
   output: AnnotateProjectsLocationsFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -7472,7 +7455,7 @@ export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
 }
 
 export const AsyncBatchAnnotateProjectsLocationsFilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AsyncBatchAnnotateFilesRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -7486,7 +7469,7 @@ export const AsyncBatchAnnotateProjectsLocationsFilesRequest =
 
 export type AsyncBatchAnnotateProjectsLocationsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsFilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type AsyncBatchAnnotateProjectsLocationsFilesError =
   | DefaultErrors
@@ -7501,7 +7484,7 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsFilesResponse,
   AsyncBatchAnnotateProjectsLocationsFilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsFilesRequest,
   output: AsyncBatchAnnotateProjectsLocationsFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

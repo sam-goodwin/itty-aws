@@ -11,7 +11,7 @@ export interface SecretkeyVerifyInput {
   plaintext?: number[];
   signature?: number[];
 }
-export const SecretkeyVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretkeyVerifyInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export const SecretkeyVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SecretkeyVerifyOutput = void;
 export const SecretkeyVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretkeyVerifyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretkeyVerifyOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const SecretkeyVerifyOutput =
  * @param secret_name - Secret key name
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  */
-export const SecretkeyVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretkeyVerify = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyVerifyInput,
   outputSchema: SecretkeyVerifyOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

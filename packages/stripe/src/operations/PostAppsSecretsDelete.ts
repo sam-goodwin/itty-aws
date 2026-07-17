@@ -9,7 +9,7 @@ export interface PostAppsSecretsDeleteInput {
   scope: { type: "account" | "user"; user?: string };
 }
 export const PostAppsSecretsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.String,
     scope: Schema.Struct({
@@ -37,7 +37,7 @@ export interface PostAppsSecretsDeleteOutput {
   scope: { type: "account" | "user"; user?: string };
 }
 export const PostAppsSecretsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deleted: Schema.optional(Schema.Boolean),
     expires_at: Schema.NullOr(Schema.Number),
@@ -58,9 +58,7 @@ export const PostAppsSecretsDeleteOutput =
  *
  * <p>Deletes a secret from the secret store by name and scope.</p>
  */
-export const PostAppsSecretsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostAppsSecretsDeleteInput,
-    outputSchema: PostAppsSecretsDeleteOutput,
-  }),
-);
+export const PostAppsSecretsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostAppsSecretsDeleteInput,
+  outputSchema: PostAppsSecretsDeleteOutput,
+}));

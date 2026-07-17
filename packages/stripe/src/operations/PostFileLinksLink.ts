@@ -9,25 +9,23 @@ export interface PostFileLinksLinkInput {
   expires_at?: "now" | number | "";
   metadata?: Record<string, string> | "";
 }
-export const PostFileLinksLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    link: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    expires_at: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["now"]),
-        Schema.Number,
-        Schema.Literals([""]),
-      ]),
-    ),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-  },
-).pipe(
+export const PostFileLinksLinkInput = /*@__PURE__*/ Schema.Struct({
+  link: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  expires_at: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["now"]),
+      Schema.Number,
+      Schema.Literals([""]),
+    ]),
+  ),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/file_links/{link}",
@@ -98,7 +96,7 @@ export interface PostFileLinksLinkOutput {
   url: string | null;
 }
 export const PostFileLinksLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expired: Schema.Boolean,
     expires_at: Schema.NullOr(Schema.Number),
@@ -174,7 +172,7 @@ export const PostFileLinksLinkOutput =
  *
  * <p>Updates an existing file link object. Expired links can no longer be updated.</p>
  */
-export const PostFileLinksLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostFileLinksLink = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostFileLinksLinkInput,
   outputSchema: PostFileLinksLinkOutput,
 }));

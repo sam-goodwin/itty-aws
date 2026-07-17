@@ -5,7 +5,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerEmailVerificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     code: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export type UserlandUsersControllerEmailVerificationInput =
 
 // Output Schema
 export const UserlandUsersControllerEmailVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export type UserlandUsersControllerEmailVerificationOutput =
  * @param id - The ID of the user.
  */
 export const UserlandUsersControllerEmailVerification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerEmailVerificationInput,
     outputSchema: UserlandUsersControllerEmailVerificationOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

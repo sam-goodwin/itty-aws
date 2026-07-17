@@ -10,7 +10,7 @@ export interface ListRegionsForOrganizationInput {
   per_page?: number;
 }
 export const ListRegionsForOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
@@ -26,21 +26,21 @@ export interface ListRegionsForOrganizationOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
     current_default: boolean;
     mysql_supported: boolean;
     postgresql_supported: boolean;
-  }[];
+  }>;
 }
 export const ListRegionsForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -72,7 +72,7 @@ export const ListRegionsForOrganizationOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listRegionsForOrganization =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListRegionsForOrganizationInput,
     outputSchema: ListRegionsForOrganizationOutput,
     errors: [Forbidden, NotFound] as const,

@@ -46,7 +46,7 @@ export interface SiteSummaryResponse {
 }
 
 export const SiteSummaryResponse: Schema.Codec<SiteSummaryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enforcementTime: Schema.optional(Schema.String),
     reportUrl: Schema.optional(Schema.String),
     filterStatus: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface ViolatingSitesResponse {
 }
 
 export const ViolatingSitesResponse: Schema.Codec<ViolatingSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
   }).annotate({ identifier: "ViolatingSitesResponse" });
 
@@ -102,7 +102,7 @@ export interface GetSitesRequest {
   name: string;
 }
 
-export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSitesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -110,7 +110,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetSitesRequest>;
 
 export type GetSitesResponse = SiteSummaryResponse;
-export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteSummaryResponse;
+export const GetSitesResponse = /*@__PURE__*/ SiteSummaryResponse;
 
 export type GetSitesError = DefaultErrors | NotFound | Forbidden;
 
@@ -120,7 +120,7 @@ export const getSites: API.OperationMethod<
   GetSitesResponse,
   GetSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
   errors: [NotFound, Forbidden],
@@ -129,14 +129,13 @@ export const getSites: API.OperationMethod<
 export interface ListViolatingSitesRequest {}
 
 export const ListViolatingSitesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/violatingSites" }),
     svc,
   ) as unknown as Schema.Codec<ListViolatingSitesRequest>;
 
 export type ListViolatingSitesResponse = ViolatingSitesResponse;
-export const ListViolatingSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ViolatingSitesResponse;
+export const ListViolatingSitesResponse = /*@__PURE__*/ ViolatingSitesResponse;
 
 export type ListViolatingSitesError = DefaultErrors | NotFound | Forbidden;
 
@@ -146,7 +145,7 @@ export const listViolatingSites: API.OperationMethod<
   ListViolatingSitesResponse,
   ListViolatingSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListViolatingSitesRequest,
   output: ListViolatingSitesResponse,
   errors: [NotFound, Forbidden],

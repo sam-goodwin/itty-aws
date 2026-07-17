@@ -8,7 +8,7 @@ export interface ExternalDataSourcesWizardRetrieveInput {
   project_id: string;
 }
 export const ExternalDataSourcesWizardRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const ExternalDataSourcesWizardRetrieveInput =
 // Output Schema
 export type ExternalDataSourcesWizardRetrieveOutput = void;
 export const ExternalDataSourcesWizardRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesWizardRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesWizardRetrieveOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const ExternalDataSourcesWizardRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesWizardRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesWizardRetrieveInput,
     outputSchema: ExternalDataSourcesWizardRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

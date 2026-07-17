@@ -18,7 +18,7 @@ export interface AuthorizationResourcesControllerCreateInput {
   organization_id: string;
 }
 export const AuthorizationResourcesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     external_id: Schema.String,
     name: Schema.String,
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -42,7 +42,7 @@ export interface AuthorizationResourcesControllerCreateOutput {
   updated_at: string;
 }
 export const AuthorizationResourcesControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     name: Schema.String,
     description: Schema.NullOr(Schema.String),
@@ -62,7 +62,7 @@ export const AuthorizationResourcesControllerCreateOutput =
  * Create a new authorization resource.
  */
 export const AuthorizationResourcesControllerCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationResourcesControllerCreateInput,
     outputSchema: AuthorizationResourcesControllerCreateOutput,
     errors: [

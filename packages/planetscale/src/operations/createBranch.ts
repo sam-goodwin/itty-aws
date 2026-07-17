@@ -19,7 +19,7 @@ export interface CreateBranchInput {
   create_database_if_missing?: boolean;
   kind?: "mysql" | "postgresql";
 }
-export const CreateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
@@ -89,7 +89,7 @@ export interface CreateBranchOutput {
     id: string;
     provider: string;
     enabled: boolean;
-    public_ip_addresses: string[];
+    public_ip_addresses: ReadonlyArray<string>;
     display_name: string;
     location: string;
     slug: string;
@@ -101,7 +101,7 @@ export interface CreateBranchOutput {
   vtgate_options?: Record<string, unknown>;
   cluster_architecture?: string;
 }
-export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -188,7 +188,7 @@ export const CreateBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param create_database_if_missing - Create a new database for the branch if the database does not exist. Defaults to false.
  * @param kind - The kind of branch to create. Required when create_database_if_missing is set.
  */
-export const createBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateBranchInput,
   outputSchema: CreateBranchOutput,
   errors: [Forbidden, NotFound] as const,

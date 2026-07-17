@@ -31,7 +31,7 @@ export interface SendUserOperationWithEndUserAccountInput {
   dataSuffix?: string;
 }
 export const SendUserOperationWithEndUserAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     address: Schema.String.pipe(T.PathParam()),
     projectID: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface SendUserOperationWithEndUserAccountOutput {
   expiresAt?: string;
 }
 export const SendUserOperationWithEndUserAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -180,7 +180,7 @@ section of our Authentication docs for more details on how to generate your Wall
  * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const sendUserOperationWithEndUserAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SendUserOperationWithEndUserAccountInput,
     outputSchema: SendUserOperationWithEndUserAccountOutput,
   }));

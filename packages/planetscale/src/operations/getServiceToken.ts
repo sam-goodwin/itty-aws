@@ -10,7 +10,7 @@ export interface GetServiceTokenInput {
   organization: string;
   id: string;
 }
-export const GetServiceTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServiceTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -35,54 +35,52 @@ export interface GetServiceTokenOutput {
   actor_id: string | null;
   actor_display_name: string | null;
   actor_type: string | null;
-  service_token_accesses?:
-    | {
-        id: string;
-        access: string;
-        description: string;
-        resource_name: string;
-        resource_id: string;
-        resource_type: string;
-        resource: {
-          id: string;
-          name: string;
-          created_at: string;
-          updated_at: string;
-          deleted_at: string | null;
-        };
-      }[]
-    | null;
+  service_token_accesses?: ReadonlyArray<{
+    id: string;
+    access: string;
+    description: string;
+    resource_name: string;
+    resource_id: string;
+    resource_type: string;
+    resource: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+  }> | null;
   oauth_accesses_by_resource?: {
     database: {
-      databases: {
+      databases: ReadonlyArray<{
         name: string;
         id: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     organization: {
-      organizations: { name: string; id: string; url: string }[];
-      accesses: { name: string; description: string }[];
+      organizations: ReadonlyArray<{ name: string; id: string; url: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     branch: {
-      branches: {
+      branches: ReadonlyArray<{
         name: string;
         id: string;
         database: string;
         organization: string;
         url: string;
-      }[];
-      accesses: { name: string; description: string }[];
+      }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
     user: {
-      users: { name: string; id: string }[];
-      accesses: { name: string; description: string }[];
+      users: ReadonlyArray<{ name: string; id: string }>;
+      accesses: ReadonlyArray<{ name: string; description: string }>;
     };
   } | null;
 }
-export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetServiceTokenOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
   display_name: Schema.String,
@@ -196,7 +194,7 @@ export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization - The name of the organization
  * @param id - The ID of the service token
  */
-export const getServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetServiceTokenInput,
   outputSchema: GetServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

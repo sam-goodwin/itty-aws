@@ -11,7 +11,7 @@ export interface GetGroupClusterBackupExportInput {
   envelope?: boolean;
 }
 export const GetGroupClusterBackupExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     exportId: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const GetGroupClusterBackupExportInput =
 // Output Schema
 export type GetGroupClusterBackupExportOutput = void;
 export const GetGroupClusterBackupExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupExportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupExportOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupClusterBackupExportOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param exportId - Unique 24-hexadecimal character string that identifies the Export Job.
  */
-export const getGroupClusterBackupExport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterBackupExportInput,
-    outputSchema: GetGroupClusterBackupExportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupClusterBackupExport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterBackupExportInput,
+  outputSchema: GetGroupClusterBackupExportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

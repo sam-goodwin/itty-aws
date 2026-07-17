@@ -11,7 +11,7 @@ export interface ListGroupDataFederationLimitsInput {
   pretty?: boolean;
 }
 export const ListGroupDataFederationLimitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const ListGroupDataFederationLimitsInput =
 // Output Schema
 export type ListGroupDataFederationLimitsOutput = void;
 export const ListGroupDataFederationLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationLimitsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationLimitsOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const ListGroupDataFederationLimitsOutput =
  * @param tenantName - Human-readable label that identifies the federated database instance for which you want to retrieve query limits.
  */
 export const listGroupDataFederationLimits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupDataFederationLimitsInput,
     outputSchema: ListGroupDataFederationLimitsOutput,
     errors: [Forbidden, NotFound] as const,

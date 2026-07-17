@@ -9,7 +9,7 @@ export interface UserlandSessionsControllerLogoutInput {
   return_to?: string;
 }
 export const UserlandSessionsControllerLogoutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session_id: Schema.String,
     return_to: Schema.optional(Schema.String),
   }).pipe(
@@ -19,7 +19,7 @@ export const UserlandSessionsControllerLogoutInput =
 // Output Schema
 export type UserlandSessionsControllerLogoutOutput = void;
 export const UserlandSessionsControllerLogoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandSessionsControllerLogoutOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandSessionsControllerLogoutOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const UserlandSessionsControllerLogoutOutput =
  * @param return_to - The URL to redirect the user to after logout.
  */
 export const UserlandSessionsControllerLogout =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandSessionsControllerLogoutInput,
     outputSchema: UserlandSessionsControllerLogoutOutput,
     errors: [UnprocessableEntity] as const,

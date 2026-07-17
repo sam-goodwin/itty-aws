@@ -11,7 +11,7 @@ export interface GrantGroupClusterMongoDbEmployeeAccessInput {
   pretty?: boolean;
 }
 export const GrantGroupClusterMongoDbEmployeeAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GrantGroupClusterMongoDbEmployeeAccessInput =
 // Output Schema
 export type GrantGroupClusterMongoDbEmployeeAccessOutput = void;
 export const GrantGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GrantGroupClusterMongoDbEmployeeAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GrantGroupClusterMongoDbEmployeeAccessOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GrantGroupClusterMongoDbEmployeeAccessOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const grantGroupClusterMongoDbEmployeeAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GrantGroupClusterMongoDbEmployeeAccessInput,
     outputSchema: GrantGroupClusterMongoDbEmployeeAccessOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -37,7 +37,7 @@ interface ListByInsightInsightAuditLogResponseResult {
   zoneId?: number | null;
 }
 const ListByInsightInsightAuditLogResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       changedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79,7 +79,7 @@ interface ListByInsightInsightAuditLogResponseResultInfo {
   perPage?: number | null;
 }
 const ListByInsightInsightAuditLogResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -98,7 +98,7 @@ interface Payload {
   detectionMethod?: string | null;
   zoneTag?: string | null;
 }
-const Payload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Payload = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     detectionMethod: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -139,7 +139,7 @@ interface Issue {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   userClassification?: "false_positive" | "accept_risk" | "other" | null;
 }
-const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Issue = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -250,7 +250,7 @@ interface ListInsightsResponseResultItem {
   perPage?: number | null;
 }
 const ListInsightsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       issues: Schema.optional(Schema.Union([Schema.Array(Issue), Schema.Null])),
@@ -308,16 +308,12 @@ interface ListInsightsResponseResult {
       }[]
     | null;
 }
-const ListInsightsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Union([
-          Schema.Array(ListInsightsResponseResultItem),
-          Schema.Null,
-        ]),
-      ),
-    }),
+const ListInsightsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    items: Schema.optional(
+      Schema.Union([Schema.Array(ListInsightsResponseResultItem), Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListInsightsResponseResult>;
 
 interface ListInsightsResponseResultInfo {
@@ -327,7 +323,7 @@ interface ListInsightsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListInsightsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -346,7 +342,7 @@ const ListInsightsResponseResultInfo =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -358,7 +354,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -380,7 +376,7 @@ interface ClassGetResponseItem {
   count?: number | null;
   value?: string | null;
 }
-const ClassGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ClassGetResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -436,7 +432,7 @@ export interface ListByInsightInsightAuditLogForZoneRequest extends ListByInsigh
 }
 
 export const ListByInsightInsightAuditLogForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListByInsightInsightAuditLogBaseFields,
@@ -449,7 +445,7 @@ export const ListByInsightInsightAuditLogForAccountRequest =
   ) as unknown as Schema.Codec<ListByInsightInsightAuditLogForAccountRequest>;
 
 export const ListByInsightInsightAuditLogForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListByInsightInsightAuditLogBaseFields,
@@ -481,7 +477,7 @@ export interface ListByInsightInsightAuditLogResponse {
 }
 
 export const ListByInsightInsightAuditLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListByInsightInsightAuditLogResponseResult),
       resultInfo: Schema.optional(
@@ -500,7 +496,7 @@ export const listByInsightInsightAuditLogForAccount: API.PaginatedOperationMetho
   ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByInsightInsightAuditLogForAccountRequest,
   output: ListByInsightInsightAuditLogResponse,
   errors: [],
@@ -518,7 +514,7 @@ export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
   ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByInsightInsightAuditLogForZoneRequest,
   output: ListByInsightInsightAuditLogResponse,
   errors: [],
@@ -659,7 +655,7 @@ export interface ListInsightsForZoneRequest extends ListInsightsBaseRequest {
 }
 
 export const ListInsightsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListInsightsBaseFields,
@@ -672,7 +668,7 @@ export const ListInsightsForAccountRequest =
   ) as unknown as Schema.Codec<ListInsightsForAccountRequest>;
 
 export const ListInsightsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListInsightsBaseFields,
@@ -740,14 +736,13 @@ export interface ListInsightsResponse {
   } | null;
 }
 
-export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: ListInsightsResponseResult,
-      resultInfo: Schema.optional(
-        Schema.Union([ListInsightsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListInsightsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: ListInsightsResponseResult,
+    resultInfo: Schema.optional(
+      Schema.Union([ListInsightsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListInsightsResponse>;
 
 export type ListInsightsError = DefaultErrors;
@@ -757,7 +752,7 @@ export const listInsightsForAccount: API.PaginatedOperationMethod<
   ListInsightsResponse,
   ListInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsForAccountRequest,
   output: ListInsightsResponse,
   errors: [],
@@ -775,7 +770,7 @@ export const listInsightsForZone: API.PaginatedOperationMethod<
   ListInsightsResponse,
   ListInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsForZoneRequest,
   output: ListInsightsResponse,
   errors: [],
@@ -810,7 +805,7 @@ export interface DismissInsightForZoneRequest extends DismissInsightBaseRequest 
 }
 
 export const DismissInsightForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DismissInsightBaseFields,
@@ -823,7 +818,7 @@ export const DismissInsightForAccountRequest =
   ) as unknown as Schema.Codec<DismissInsightForAccountRequest>;
 
 export const DismissInsightForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DismissInsightBaseFields,
@@ -853,7 +848,7 @@ export interface DismissInsightResponse {
 }
 
 export const DismissInsightResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -868,7 +863,7 @@ export const dismissInsightForAccount: API.OperationMethod<
   DismissInsightResponse,
   DismissInsightError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissInsightForAccountRequest,
   output: DismissInsightResponse,
   errors: [],
@@ -879,7 +874,7 @@ export const dismissInsightForZone: API.OperationMethod<
   DismissInsightResponse,
   DismissInsightError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissInsightForZoneRequest,
   output: DismissInsightResponse,
   errors: [],
@@ -932,7 +927,7 @@ export interface ListInsightAuditLogsForZoneRequest extends ListInsightAuditLogs
 }
 
 export const ListInsightAuditLogsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListInsightAuditLogsBaseFields,
@@ -945,7 +940,7 @@ export const ListInsightAuditLogsForAccountRequest =
   ) as unknown as Schema.Codec<ListInsightAuditLogsForAccountRequest>;
 
 export const ListInsightAuditLogsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListInsightAuditLogsBaseFields,
@@ -977,7 +972,7 @@ export interface ListInsightAuditLogsResponse {
 }
 
 export const ListInsightAuditLogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListByInsightInsightAuditLogResponseResult),
       resultInfo: Schema.optional(
@@ -996,7 +991,7 @@ export const listInsightAuditLogsForAccount: API.PaginatedOperationMethod<
   ListInsightAuditLogsResponse,
   ListInsightAuditLogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightAuditLogsForAccountRequest,
   output: ListInsightAuditLogsResponse,
   errors: [],
@@ -1014,7 +1009,7 @@ export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
   ListInsightAuditLogsResponse,
   ListInsightAuditLogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightAuditLogsForZoneRequest,
   output: ListInsightAuditLogsResponse,
   errors: [],
@@ -1151,7 +1146,7 @@ export interface GetInsightClassForZoneRequest extends GetInsightClassBaseReques
 }
 
 export const GetInsightClassForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetInsightClassBaseFields,
@@ -1164,7 +1159,7 @@ export const GetInsightClassForAccountRequest =
   ) as unknown as Schema.Codec<GetInsightClassForAccountRequest>;
 
 export const GetInsightClassForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetInsightClassBaseFields,
@@ -1182,7 +1177,7 @@ export type GetInsightClassResponse = {
 }[];
 
 export const GetInsightClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetInsightClassResponse>;
 
@@ -1193,7 +1188,7 @@ export const getInsightClassForAccount: API.OperationMethod<
   GetInsightClassResponse,
   GetInsightClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightClassForAccountRequest,
   output: GetInsightClassResponse,
   errors: [],
@@ -1204,7 +1199,7 @@ export const getInsightClassForZone: API.OperationMethod<
   GetInsightClassResponse,
   GetInsightClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightClassForZoneRequest,
   output: GetInsightClassResponse,
   errors: [],
@@ -1246,7 +1241,7 @@ export interface PatchInsightClassificationForZoneRequest extends PatchInsightCl
 }
 
 export const PatchInsightClassificationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PatchInsightClassificationBaseFields,
@@ -1259,7 +1254,7 @@ export const PatchInsightClassificationForAccountRequest =
   ) as unknown as Schema.Codec<PatchInsightClassificationForAccountRequest>;
 
 export const PatchInsightClassificationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PatchInsightClassificationBaseFields,
@@ -1289,7 +1284,7 @@ export interface PatchInsightClassificationResponse {
 }
 
 export const PatchInsightClassificationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -1304,7 +1299,7 @@ export const patchInsightClassificationForAccount: API.OperationMethod<
   PatchInsightClassificationResponse,
   PatchInsightClassificationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchInsightClassificationForAccountRequest,
   output: PatchInsightClassificationResponse,
   errors: [],
@@ -1315,7 +1310,7 @@ export const patchInsightClassificationForZone: API.OperationMethod<
   PatchInsightClassificationResponse,
   PatchInsightClassificationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchInsightClassificationForZoneRequest,
   output: PatchInsightClassificationResponse,
   errors: [],
@@ -1332,7 +1327,7 @@ export interface GetInsightContextRequest {
 }
 
 export const GetInsightContextRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       issueId: Schema.String.pipe(T.HttpPath("issueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1347,7 +1342,7 @@ export const GetInsightContextRequest =
 export type GetInsightContextResponse = Record<string, unknown>;
 
 export const GetInsightContextResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetInsightContextResponse>;
 
@@ -1358,7 +1353,7 @@ export const getInsightContext: API.OperationMethod<
   GetInsightContextResponse,
   GetInsightContextError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightContextRequest,
   output: GetInsightContextResponse,
   errors: [],
@@ -1488,7 +1483,7 @@ export interface GetInsightSeverityForZoneRequest extends GetInsightSeverityBase
 }
 
 export const GetInsightSeverityForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetInsightSeverityBaseFields,
@@ -1501,7 +1496,7 @@ export const GetInsightSeverityForAccountRequest =
   ) as unknown as Schema.Codec<GetInsightSeverityForAccountRequest>;
 
 export const GetInsightSeverityForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetInsightSeverityBaseFields,
@@ -1519,7 +1514,7 @@ export type GetInsightSeverityResponse = {
 }[];
 
 export const GetInsightSeverityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetInsightSeverityResponse>;
 
@@ -1530,7 +1525,7 @@ export const getInsightSeverityForAccount: API.OperationMethod<
   GetInsightSeverityResponse,
   GetInsightSeverityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightSeverityForAccountRequest,
   output: GetInsightSeverityResponse,
   errors: [],
@@ -1541,7 +1536,7 @@ export const getInsightSeverityForZone: API.OperationMethod<
   GetInsightSeverityResponse,
   GetInsightSeverityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightSeverityForZoneRequest,
   output: GetInsightSeverityResponse,
   errors: [],
@@ -1671,7 +1666,7 @@ export interface GetInsightTypeForZoneRequest extends GetInsightTypeBaseRequest 
 }
 
 export const GetInsightTypeForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetInsightTypeBaseFields,
@@ -1684,7 +1679,7 @@ export const GetInsightTypeForAccountRequest =
   ) as unknown as Schema.Codec<GetInsightTypeForAccountRequest>;
 
 export const GetInsightTypeForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetInsightTypeBaseFields,
@@ -1702,7 +1697,7 @@ export type GetInsightTypeResponse = {
 }[];
 
 export const GetInsightTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetInsightTypeResponse>;
 
@@ -1713,7 +1708,7 @@ export const getInsightTypeForAccount: API.OperationMethod<
   GetInsightTypeResponse,
   GetInsightTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightTypeForAccountRequest,
   output: GetInsightTypeResponse,
   errors: [],
@@ -1724,7 +1719,7 @@ export const getInsightTypeForZone: API.OperationMethod<
   GetInsightTypeResponse,
   GetInsightTypeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInsightTypeForZoneRequest,
   output: GetInsightTypeResponse,
   errors: [],

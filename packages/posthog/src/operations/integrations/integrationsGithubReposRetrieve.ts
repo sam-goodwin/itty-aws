@@ -12,7 +12,7 @@ export interface IntegrationsGithubReposRetrieveInput {
   search?: string;
 }
 export const IntegrationsGithubReposRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -31,7 +31,7 @@ export interface IntegrationsGithubReposRetrieveOutput {
   has_more?: boolean;
 }
 export const IntegrationsGithubReposRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -54,7 +54,7 @@ export const IntegrationsGithubReposRetrieveOutput =
  * @param search - Optional case-insensitive repository name search query.
  */
 export const integrationsGithubReposRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGithubReposRetrieveInput,
     outputSchema: IntegrationsGithubReposRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

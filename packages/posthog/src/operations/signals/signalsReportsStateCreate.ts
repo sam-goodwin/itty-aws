@@ -18,7 +18,7 @@ export interface SignalsReportsStateCreateInput {
   snooze_for?: number;
 }
 export const SignalsReportsStateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     state: Schema.Literals(["suppressed", "potential"]),
@@ -72,7 +72,7 @@ export interface SignalsReportsStateCreateOutput {
   implementation_pr_url: string | null;
 }
 export const SignalsReportsStateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     title: Schema.NullOr(Schema.String),
     summary: Schema.NullOr(Schema.String),
@@ -122,9 +122,7 @@ export const SignalsReportsStateCreateOutput =
  * @param id - A UUID string identifying this signal report.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsReportsStateCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsReportsStateCreateInput,
-    outputSchema: SignalsReportsStateCreateOutput,
-  }),
-);
+export const signalsReportsStateCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsReportsStateCreateInput,
+  outputSchema: SignalsReportsStateCreateOutput,
+}));

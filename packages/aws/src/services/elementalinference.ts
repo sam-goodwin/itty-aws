@@ -100,23 +100,22 @@ export type AssociatedResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -124,7 +123,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -133,7 +132,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -151,18 +150,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -180,7 +179,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -193,30 +192,29 @@ export type DictionaryLanguage =
   | "spa"
   | "por"
   | (string & {});
-export const DictionaryLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DictionaryLanguage = /*@__PURE__*/ S.String;
 export interface CreateDictionaryRequest {
   name: string;
   language: DictionaryLanguage;
   entries?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      language: DictionaryLanguage,
-      entries: S.optional(S.String),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/dictionary" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    language: DictionaryLanguage,
+    entries: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/dictionary" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateDictionaryRequest",
 }) as any as S.Schema<CreateDictionaryRequest>;
@@ -227,9 +225,9 @@ export type DictionaryStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const DictionaryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DictionaryStatus = /*@__PURE__*/ S.String;
 export type FeedReferences = string[];
-export const FeedReferences = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FeedReferences = /*@__PURE__*/ S.Array(S.String);
 export interface CreateDictionaryResponse {
   name: string;
   arn: string;
@@ -239,24 +237,23 @@ export interface CreateDictionaryResponse {
   references?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      arn: S.String,
-      id: S.String,
-      language: DictionaryLanguage,
-      status: DictionaryStatus,
-      references: S.optional(FeedReferences),
-      tags: S.optional(TagMap),
-    }),
+export const CreateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    id: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+    references: S.optional(FeedReferences),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "CreateDictionaryResponse",
 }) as any as S.Schema<CreateDictionaryResponse>;
 export interface GetDictionaryRequest {
   id: string;
 }
-export const GetDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v1/dictionary/{id}" }),
@@ -279,7 +276,7 @@ export interface GetDictionaryResponse {
   references?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const GetDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -298,23 +295,22 @@ export interface UpdateDictionaryRequest {
   language?: DictionaryLanguage;
   entries?: string;
 }
-export const UpdateDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      name: S.optional(S.String),
-      language: S.optional(DictionaryLanguage),
-      entries: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/v1/dictionary/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    name: S.optional(S.String),
+    language: S.optional(DictionaryLanguage),
+    entries: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/v1/dictionary/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateDictionaryRequest",
 }) as any as S.Schema<UpdateDictionaryRequest>;
@@ -327,35 +323,33 @@ export interface UpdateDictionaryResponse {
   references?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      arn: S.String,
-      id: S.String,
-      language: DictionaryLanguage,
-      status: DictionaryStatus,
-      references: S.optional(FeedReferences),
-      tags: S.optional(TagMap),
-    }),
+export const UpdateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    id: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+    references: S.optional(FeedReferences),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "UpdateDictionaryResponse",
 }) as any as S.Schema<UpdateDictionaryResponse>;
 export interface DeleteDictionaryRequest {
   id: string;
 }
-export const DeleteDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/v1/dictionary/{id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/v1/dictionary/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteDictionaryRequest",
 }) as any as S.Schema<DeleteDictionaryRequest>;
@@ -364,8 +358,8 @@ export interface DeleteDictionaryResponse {
   id: string;
   status: DictionaryStatus;
 }
-export const DeleteDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String, id: S.String, status: DictionaryStatus }),
+export const DeleteDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String, status: DictionaryStatus }),
 ).annotate({
   identifier: "DeleteDictionaryResponse",
 }) as any as S.Schema<DeleteDictionaryResponse>;
@@ -373,21 +367,20 @@ export interface ListDictionariesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDictionariesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/dictionaries" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/dictionaries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListDictionariesRequest",
 }) as any as S.Schema<ListDictionariesRequest>;
@@ -398,7 +391,7 @@ export interface DictionarySummary {
   language: DictionaryLanguage;
   status: DictionaryStatus;
 }
-export const DictionarySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DictionarySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     id: S.String,
@@ -410,18 +403,16 @@ export const DictionarySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DictionarySummary",
 }) as any as S.Schema<DictionarySummary>;
 export type DictionarySummaryList = DictionarySummary[];
-export const DictionarySummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DictionarySummary);
+export const DictionarySummaryList = /*@__PURE__*/ S.Array(DictionarySummary);
 export interface ListDictionariesResponse {
   dictionaries: DictionarySummary[];
   nextToken?: string;
 }
-export const ListDictionariesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dictionaries: DictionarySummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictionaries: DictionarySummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListDictionariesResponse",
 }) as any as S.Schema<ListDictionariesResponse>;
@@ -429,7 +420,7 @@ export interface ExportDictionaryEntriesRequest {
   id: string;
 }
 export const ExportDictionaryEntriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/v1/dictionary/{id}/entries/export" }),
@@ -447,19 +438,19 @@ export interface ExportDictionaryEntriesResponse {
   entries?: string;
 }
 export const ExportDictionaryEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ entries: S.optional(S.String) }),
   ).annotate({
     identifier: "ExportDictionaryEntriesResponse",
   }) as any as S.Schema<ExportDictionaryEntriesResponse>;
 export interface CroppingConfig {}
-export const CroppingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CroppingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "CroppingConfig" }) as any as S.Schema<CroppingConfig>;
 export interface ClippingConfig {
   callbackMetadata?: string;
 }
-export const ClippingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClippingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ callbackMetadata: S.optional(S.String) }),
 ).annotate({ identifier: "ClippingConfig" }) as any as S.Schema<ClippingConfig>;
 export type TranscriptionLanguage =
@@ -473,12 +464,12 @@ export type TranscriptionLanguage =
   | "spa"
   | "por"
   | (string & {});
-export const TranscriptionLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TranscriptionLanguage = /*@__PURE__*/ S.String;
 export interface AspectRatio {
   width: number;
   height: number;
 }
-export const AspectRatio = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ width: S.Number, height: S.Number }),
 ).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
 export type ProfanityFilterMode =
@@ -486,14 +477,14 @@ export type ProfanityFilterMode =
   | "CENSOR"
   | "DROP"
   | (string & {});
-export const ProfanityFilterMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProfanityFilterMode = /*@__PURE__*/ S.String;
 export interface SubtitlingConfig {
   language: TranscriptionLanguage;
   aspectRatio?: AspectRatio;
   dictionary?: string;
   profanityFilter?: ProfanityFilterMode;
 }
-export const SubtitlingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SubtitlingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: TranscriptionLanguage,
     aspectRatio: S.optional(AspectRatio),
@@ -507,20 +498,20 @@ export type OutputConfig =
   | { cropping: CroppingConfig; clipping?: never; subtitling?: never }
   | { cropping?: never; clipping: ClippingConfig; subtitling?: never }
   | { cropping?: never; clipping?: never; subtitling: SubtitlingConfig };
-export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OutputConfig = /*@__PURE__*/ S.Union([
   S.Struct({ cropping: CroppingConfig }),
   S.Struct({ clipping: ClippingConfig }),
   S.Struct({ subtitling: SubtitlingConfig }),
 ]);
 export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
-export const OutputStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OutputStatus = /*@__PURE__*/ S.String;
 export interface CreateOutput {
   name: string;
   outputConfig: OutputConfig;
   status: OutputStatus;
   description?: string;
 }
-export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     outputConfig: OutputConfig,
@@ -529,14 +520,13 @@ export const CreateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateOutput" }) as any as S.Schema<CreateOutput>;
 export type CreateOutputList = CreateOutput[];
-export const CreateOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CreateOutput);
+export const CreateOutputList = /*@__PURE__*/ S.Array(CreateOutput);
 export interface CreateFeedRequest {
   name: string;
   outputs: CreateOutput[];
   tags?: { [key: string]: string | undefined };
 }
-export const CreateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     outputs: CreateOutputList,
@@ -555,7 +545,7 @@ export const CreateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateFeedRequest",
 }) as any as S.Schema<CreateFeedRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GetOutput {
   name: string;
   outputConfig: OutputConfig;
@@ -563,7 +553,7 @@ export interface GetOutput {
   description?: string;
   fromAssociation?: boolean;
 }
-export const GetOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     outputConfig: OutputConfig,
@@ -573,7 +563,7 @@ export const GetOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetOutput" }) as any as S.Schema<GetOutput>;
 export type GetOutputList = GetOutput[];
-export const GetOutputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(GetOutput);
+export const GetOutputList = /*@__PURE__*/ S.Array(GetOutput);
 export type FeedStatus =
   | "CREATING"
   | "AVAILABLE"
@@ -583,11 +573,11 @@ export type FeedStatus =
   | "DELETED"
   | "ARCHIVED"
   | (string & {});
-export const FeedStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FeedStatus = /*@__PURE__*/ S.String;
 export interface FeedAssociation {
   associatedResourceName: string;
 }
-export const FeedAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FeedAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ associatedResourceName: S.String }),
 ).annotate({
   identifier: "FeedAssociation",
@@ -602,7 +592,7 @@ export interface CreateFeedResponse {
   association?: FeedAssociation;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -619,7 +609,7 @@ export const CreateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetFeedRequest {
   id: string;
 }
-export const GetFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v1/feed/{id}" }),
@@ -641,7 +631,7 @@ export interface GetFeedResponse {
   association?: FeedAssociation;
   tags?: { [key: string]: string | undefined };
 }
-export const GetFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -662,7 +652,7 @@ export interface UpdateOutput {
   description?: string;
   fromAssociation?: boolean;
 }
-export const UpdateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     outputConfig: OutputConfig,
@@ -672,14 +662,13 @@ export const UpdateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateOutput" }) as any as S.Schema<UpdateOutput>;
 export type UpdateOutputList = UpdateOutput[];
-export const UpdateOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UpdateOutput);
+export const UpdateOutputList = /*@__PURE__*/ S.Array(UpdateOutput);
 export interface UpdateFeedRequest {
   name: string;
   id: string;
   outputs: UpdateOutput[];
 }
-export const UpdateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String.pipe(T.HttpLabel("id")),
@@ -707,7 +696,7 @@ export interface UpdateFeedResponse {
   association?: FeedAssociation;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -724,7 +713,7 @@ export const UpdateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteFeedRequest {
   id: string;
 }
-export const DeleteFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v1/feed/{id}" }),
@@ -743,7 +732,7 @@ export interface DeleteFeedResponse {
   id: string;
   status: FeedStatus;
 }
-export const DeleteFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, id: S.String, status: FeedStatus }),
 ).annotate({
   identifier: "DeleteFeedResponse",
@@ -752,7 +741,7 @@ export interface ListFeedsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -776,7 +765,7 @@ export interface FeedSummary {
   association?: FeedAssociation;
   status: FeedStatus;
 }
-export const FeedSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FeedSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     id: S.String,
@@ -786,12 +775,12 @@ export const FeedSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedSummary" }) as any as S.Schema<FeedSummary>;
 export type FeedSummaryList = FeedSummary[];
-export const FeedSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FeedSummary);
+export const FeedSummaryList = /*@__PURE__*/ S.Array(FeedSummary);
 export interface ListFeedsResponse {
   feeds: FeedSummary[];
   nextToken?: string;
 }
-export const ListFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ feeds: FeedSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFeedsResponse",
@@ -802,7 +791,7 @@ export interface AssociateFeedRequest {
   outputs: CreateOutput[];
   dryRun?: boolean;
 }
-export const AssociateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     associatedResourceName: S.String.pipe(T.IdempotencyToken()),
@@ -825,7 +814,7 @@ export interface AssociateFeedResponse {
   arn: string;
   id: string;
 }
-export const AssociateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, id: S.String }),
 ).annotate({
   identifier: "AssociateFeedResponse",
@@ -835,22 +824,21 @@ export interface DisassociateFeedRequest {
   associatedResourceName: string;
   dryRun?: boolean;
 }
-export const DisassociateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      associatedResourceName: S.String.pipe(T.IdempotencyToken()),
-      dryRun: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/feed/{id}/disassociate" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    associatedResourceName: S.String.pipe(T.IdempotencyToken()),
+    dryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/feed/{id}/disassociate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DisassociateFeedRequest",
 }) as any as S.Schema<DisassociateFeedRequest>;
@@ -858,8 +846,8 @@ export interface DisassociateFeedResponse {
   arn: string;
   id: string;
 }
-export const DisassociateFeedResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String, id: S.String }),
+export const DisassociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String }),
 ).annotate({
   identifier: "DisassociateFeedResponse",
 }) as any as S.Schema<DisassociateFeedResponse>;
@@ -913,7 +901,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -941,7 +929,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -970,7 +958,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -999,7 +987,7 @@ export const createDictionary: API.OperationMethod<
   CreateDictionaryResponse,
   CreateDictionaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDictionaryRequest,
   output: CreateDictionaryResponse,
   errors: [
@@ -1027,7 +1015,7 @@ export const getDictionary: API.OperationMethod<
   GetDictionaryResponse,
   GetDictionaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDictionaryRequest,
   output: GetDictionaryResponse,
   errors: [
@@ -1055,7 +1043,7 @@ export const updateDictionary: API.OperationMethod<
   UpdateDictionaryResponse,
   UpdateDictionaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDictionaryRequest,
   output: UpdateDictionaryResponse,
   errors: [
@@ -1084,7 +1072,7 @@ export const deleteDictionary: API.OperationMethod<
   DeleteDictionaryResponse,
   DeleteDictionaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDictionaryRequest,
   output: DeleteDictionaryResponse,
   errors: [
@@ -1126,7 +1114,7 @@ export const listDictionaries: API.OperationMethod<
     ListDictionariesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDictionariesRequest,
   output: ListDictionariesResponse,
   errors: [
@@ -1158,7 +1146,7 @@ export const exportDictionaryEntries: API.OperationMethod<
   ExportDictionaryEntriesResponse,
   ExportDictionaryEntriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportDictionaryEntriesRequest,
   output: ExportDictionaryEntriesResponse,
   errors: [
@@ -1188,7 +1176,7 @@ export const createFeed: API.OperationMethod<
   CreateFeedResponse,
   CreateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFeedRequest,
   output: CreateFeedResponse,
   errors: [
@@ -1215,7 +1203,7 @@ export const getFeed: API.OperationMethod<
   GetFeedResponse,
   GetFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFeedRequest,
   output: GetFeedResponse,
   errors: [
@@ -1249,7 +1237,7 @@ export const updateFeed: API.OperationMethod<
   UpdateFeedResponse,
   UpdateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFeedRequest,
   output: UpdateFeedResponse,
   errors: [
@@ -1279,7 +1267,7 @@ export const deleteFeed: API.OperationMethod<
   DeleteFeedResponse,
   DeleteFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFeedRequest,
   output: DeleteFeedResponse,
   errors: [
@@ -1322,7 +1310,7 @@ export const listFeeds: API.OperationMethod<
     ListFeedsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFeedsRequest,
   output: ListFeedsResponse,
   errors: [
@@ -1369,7 +1357,7 @@ export const associateFeed: API.OperationMethod<
   AssociateFeedResponse,
   AssociateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateFeedRequest,
   output: AssociateFeedResponse,
   errors: [
@@ -1399,7 +1387,7 @@ export const disassociateFeed: API.OperationMethod<
   DisassociateFeedResponse,
   DisassociateFeedError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateFeedRequest,
   output: DisassociateFeedResponse,
   errors: [

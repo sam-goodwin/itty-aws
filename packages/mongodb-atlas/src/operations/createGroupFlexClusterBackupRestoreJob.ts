@@ -11,7 +11,7 @@ export interface CreateGroupFlexClusterBackupRestoreJobInput {
   pretty?: boolean;
 }
 export const CreateGroupFlexClusterBackupRestoreJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupFlexClusterBackupRestoreJobInput =
 // Output Schema
 export type CreateGroupFlexClusterBackupRestoreJobOutput = void;
 export const CreateGroupFlexClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterBackupRestoreJobOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterBackupRestoreJobOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupFlexClusterBackupRestoreJobOutput =
  * @param name - Human-readable label that identifies the flex cluster whose snapshot you want to restore.
  */
 export const createGroupFlexClusterBackupRestoreJob =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupFlexClusterBackupRestoreJobInput,
     outputSchema: CreateGroupFlexClusterBackupRestoreJobOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

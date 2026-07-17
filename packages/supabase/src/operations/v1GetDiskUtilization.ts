@@ -8,7 +8,7 @@ export interface V1GetDiskUtilizationInput {
   ref: string;
 }
 export const V1GetDiskUtilizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/disk/util" }),
@@ -24,7 +24,7 @@ export interface V1GetDiskUtilizationOutput {
   };
 }
 export const V1GetDiskUtilizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timestamp: Schema.String,
     metrics: Schema.Struct({
       fs_size_bytes: Schema.Number,
@@ -39,10 +39,8 @@ export const V1GetDiskUtilizationOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetDiskUtilization = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetDiskUtilizationInput,
-    outputSchema: V1GetDiskUtilizationOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetDiskUtilization = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetDiskUtilizationInput,
+  outputSchema: V1GetDiskUtilizationOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

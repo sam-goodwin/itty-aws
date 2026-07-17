@@ -8,7 +8,7 @@ export interface MachinesUncordonInput {
   app_name: string;
   machine_id: string;
 }
-export const MachinesUncordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesUncordonInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const MachinesUncordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesUncordonOutput = void;
 export const MachinesUncordonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUncordonOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUncordonOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const MachinesUncordonOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesUncordon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesUncordon = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesUncordonInput,
   outputSchema: MachinesUncordonOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

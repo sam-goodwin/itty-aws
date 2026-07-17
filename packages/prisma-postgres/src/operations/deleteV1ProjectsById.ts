@@ -8,7 +8,7 @@ export interface DeleteV1ProjectsByIdInput {
   id: string;
 }
 export const DeleteV1ProjectsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{id}" }),
@@ -17,7 +17,7 @@ export const DeleteV1ProjectsByIdInput =
 // Output Schema
 export type DeleteV1ProjectsByIdOutput = void;
 export const DeleteV1ProjectsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1ProjectsByIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1ProjectsByIdOutput>;
 
 // The operation
 /**
@@ -25,10 +25,8 @@ export const DeleteV1ProjectsByIdOutput =
  *
  * Deletes the project with the given ID.
  */
-export const deleteV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteV1ProjectsByIdInput,
-    outputSchema: DeleteV1ProjectsByIdOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteV1ProjectsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteV1ProjectsByIdInput,
+  outputSchema: DeleteV1ProjectsByIdOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

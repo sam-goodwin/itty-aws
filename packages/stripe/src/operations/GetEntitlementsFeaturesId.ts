@@ -8,7 +8,7 @@ export interface GetEntitlementsFeaturesIdInput {
   expand?: string;
 }
 export const GetEntitlementsFeaturesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -30,7 +30,7 @@ export interface GetEntitlementsFeaturesIdOutput {
   object: "entitlements.feature";
 }
 export const GetEntitlementsFeaturesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -49,9 +49,7 @@ export const GetEntitlementsFeaturesIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  * @param id - The ID of the feature.
  */
-export const GetEntitlementsFeaturesId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetEntitlementsFeaturesIdInput,
-    outputSchema: GetEntitlementsFeaturesIdOutput,
-  }),
-);
+export const GetEntitlementsFeaturesId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetEntitlementsFeaturesIdInput,
+  outputSchema: GetEntitlementsFeaturesIdOutput,
+}));

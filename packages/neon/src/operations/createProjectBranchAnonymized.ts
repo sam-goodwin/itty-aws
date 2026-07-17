@@ -46,7 +46,7 @@ export interface CreateProjectBranchAnonymizedInput {
   start_anonymization?: boolean;
 }
 export const CreateProjectBranchAnonymizedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     annotation_value: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -273,7 +273,7 @@ export interface CreateProjectBranchAnonymizedOutput {
   }[];
 }
 export const CreateProjectBranchAnonymizedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -480,7 +480,7 @@ export const CreateProjectBranchAnonymizedOutput =
  * @param project_id - The Neon project ID
  */
 export const createProjectBranchAnonymized =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateProjectBranchAnonymizedInput,
     outputSchema: CreateProjectBranchAnonymizedOutput,
   }));

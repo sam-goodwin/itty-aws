@@ -10,7 +10,7 @@ export interface ListOauthApplicationsInput {
   per_page?: number;
 }
 export const ListOauthApplicationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
@@ -29,7 +29,7 @@ export interface ListOauthApplicationsOutput {
   next_page_url: string | null;
   prev_page: number | null;
   prev_page_url: string | null;
-  data: {
+  data: ReadonlyArray<{
     id: string;
     name: string;
     redirect_uri: string;
@@ -45,10 +45,10 @@ export interface ListOauthApplicationsOutput {
     requires_org_scope: boolean;
     scopes_by_resource: Record<string, unknown>;
     all_scopes_by_resource: Record<string, unknown>;
-  }[];
+  }>;
 }
 export const ListOauthApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -85,7 +85,7 @@ export const ListOauthApplicationsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOauthApplications =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOauthApplicationsInput,
     outputSchema: ListOauthApplicationsOutput,
     errors: [Forbidden, NotFound] as const,

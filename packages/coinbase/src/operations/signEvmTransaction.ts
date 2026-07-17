@@ -8,7 +8,7 @@ export interface SignEvmTransactionInput {
   transaction: string;
 }
 export const SignEvmTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     transaction: Schema.String,
   }).pipe(
@@ -23,7 +23,7 @@ export interface SignEvmTransactionOutput {
   signedTransaction: string;
 }
 export const SignEvmTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signedTransaction: Schema.String,
   }) as unknown as Schema.Codec<SignEvmTransactionOutput>;
 
@@ -45,7 +45,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account.
  */
-export const signEvmTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const signEvmTransaction = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignEvmTransactionInput,
   outputSchema: SignEvmTransactionOutput,
 }));

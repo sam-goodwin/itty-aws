@@ -8,7 +8,7 @@ export interface V1GetPostgresUpgradeEligibilityInput {
   ref: string;
 }
 export const V1GetPostgresUpgradeEligibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/upgrade/eligibility" }),
@@ -85,7 +85,7 @@ export interface V1GetPostgresUpgradeEligibilityOutput {
   )[];
 }
 export const V1GetPostgresUpgradeEligibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eligible: Schema.Boolean,
     current_app_version: Schema.String,
     current_app_version_release_channel: Schema.Literals([
@@ -195,7 +195,7 @@ export const V1GetPostgresUpgradeEligibilityOutput =
  * @param ref - Project ref
  */
 export const v1GetPostgresUpgradeEligibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetPostgresUpgradeEligibilityInput,
     outputSchema: V1GetPostgresUpgradeEligibilityOutput,
     errors: [BadRequest, Forbidden] as const,

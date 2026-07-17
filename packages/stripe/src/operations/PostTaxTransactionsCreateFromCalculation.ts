@@ -11,7 +11,7 @@ export interface PostTaxTransactionsCreateFromCalculationInput {
   reference: string;
 }
 export const PostTaxTransactionsCreateFromCalculationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     calculation: Schema.String,
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -258,7 +258,7 @@ export interface PostTaxTransactionsCreateFromCalculationOutput {
   type: "reversal" | "transaction";
 }
 export const PostTaxTransactionsCreateFromCalculationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -540,7 +540,7 @@ export const PostTaxTransactionsCreateFromCalculationOutput =
  * <p>Creates a Tax Transaction from a calculation, if that calculation hasn’t expired. Calculations expire after 90 days.</p>
  */
 export const PostTaxTransactionsCreateFromCalculation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTaxTransactionsCreateFromCalculationInput,
     outputSchema: PostTaxTransactionsCreateFromCalculationOutput,
   }));

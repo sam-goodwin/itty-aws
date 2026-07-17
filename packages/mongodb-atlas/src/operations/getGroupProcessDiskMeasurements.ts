@@ -17,7 +17,7 @@ export interface GetGroupProcessDiskMeasurementsInput {
   end?: string;
 }
 export const GetGroupProcessDiskMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     partitionName: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
@@ -38,7 +38,7 @@ export const GetGroupProcessDiskMeasurementsInput =
 // Output Schema
 export type GetGroupProcessDiskMeasurementsOutput = void;
 export const GetGroupProcessDiskMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsOutput>;
 
 // The operation
 /**
@@ -64,7 +64,7 @@ export const GetGroupProcessDiskMeasurementsOutput =
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  */
 export const getGroupProcessDiskMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupProcessDiskMeasurementsInput,
     outputSchema: GetGroupProcessDiskMeasurementsOutput,
     errors: [Forbidden, NotFound] as const,

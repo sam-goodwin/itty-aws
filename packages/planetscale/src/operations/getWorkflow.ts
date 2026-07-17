@@ -9,7 +9,7 @@ export interface GetWorkflowInput {
   database: string;
   number: number;
 }
-export const GetWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -107,7 +107,7 @@ export interface GetWorkflowOutput {
     deleted_at: string | null;
   };
 }
-export const GetWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetWorkflowOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   number: Schema.Number,
@@ -243,7 +243,7 @@ export const GetWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database the workflow belongs to
  * @param number - The sequence number of the workflow
  */
-export const getWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getWorkflow = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetWorkflowInput,
   outputSchema: GetWorkflowOutput,
   errors: [Forbidden, NotFound] as const,

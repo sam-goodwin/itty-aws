@@ -9,7 +9,7 @@ export interface ProductToursRetrieveInput {
   project_id: string;
 }
 export const ProductToursRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -86,7 +86,7 @@ export interface ProductToursRetrieveOutput {
   search_match_type?: "exact" | "similar" | null;
 }
 export const ProductToursRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -210,10 +210,8 @@ export const ProductToursRetrieveOutput =
  * @param id - A UUID string identifying this product tour.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const productToursRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductToursRetrieveInput,
-    outputSchema: ProductToursRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const productToursRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductToursRetrieveInput,
+  outputSchema: ProductToursRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

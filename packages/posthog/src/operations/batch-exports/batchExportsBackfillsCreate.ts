@@ -34,7 +34,7 @@ export interface BatchExportsBackfillsCreateInput {
   batch_export?: string;
 }
 export const BatchExportsBackfillsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export interface BatchExportsBackfillsCreateOutput {
   batch_export?: string;
 }
 export const BatchExportsBackfillsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     progress: Schema.optional(
       Schema.NullOr(
@@ -146,10 +146,8 @@ export const BatchExportsBackfillsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const batchExportsBackfillsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BatchExportsBackfillsCreateInput,
-    outputSchema: BatchExportsBackfillsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const batchExportsBackfillsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BatchExportsBackfillsCreateInput,
+  outputSchema: BatchExportsBackfillsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

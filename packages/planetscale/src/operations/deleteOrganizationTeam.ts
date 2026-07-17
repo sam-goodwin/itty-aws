@@ -14,7 +14,7 @@ export interface DeleteOrganizationTeamInput {
   team: string;
 }
 export const DeleteOrganizationTeamInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -27,7 +27,7 @@ export const DeleteOrganizationTeamInput =
 // Output Schema
 export type DeleteOrganizationTeamOutput = void;
 export const DeleteOrganizationTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationTeamOutput>;
 
 // The operation
 /**
@@ -36,10 +36,8 @@ export const DeleteOrganizationTeamOutput =
  * @param organization - The name of the organization
  * @param team - The slug of the team
  */
-export const deleteOrganizationTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteOrganizationTeamInput,
-    outputSchema: DeleteOrganizationTeamOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteOrganizationTeam = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteOrganizationTeamInput,
+  outputSchema: DeleteOrganizationTeamOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));
