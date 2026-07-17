@@ -1,0 +1,20 @@
+[submodule "packages/aws/specs/api-models-aws"]
+	path = packages/aws/specs/api-models-aws
+	url = https://github.com/aws/api-models-aws.git
+	shallow = true
+	ignore = dirty
+[submodule "packages/aws/specs/aws-sdk-js-v3"]
+	path = packages/aws/specs/aws-sdk-js-v3
+	url = https://github.com/aws/aws-sdk-js-v3.git
+	shallow = true
+	ignore = dirty
+[submodule "packages/aws/specs/smithy"]
+	path = packages/aws/specs/smithy
+	url = https://github.com/smithy-lang/smithy.git
+	shallow = true
+	ignore = dirty
+[submodule "packages/aws/specs/smithy-typescript"]
+	path = packages/aws/specs/smithy-typescript
+	url = https://github.com/smithy-lang/smithy-typescript.git
+	shallow = true
+	ignore = dirty
