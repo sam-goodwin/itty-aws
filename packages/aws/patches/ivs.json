@@ -5,7 +5,9 @@
     "createStreamKey": { "errors": ["ThrottlingException"] },
     "deleteAdConfiguration": { "errors": ["ThrottlingException"] },
     "deleteChannel": { "errors": ["ThrottlingException"] },
-    "deletePlaybackKeyPair": { "errors": ["ThrottlingException"] },
+    "deletePlaybackKeyPair": {
+      "errors": ["ThrottlingException", "InternalServerException"]
+    },
     "deletePlaybackRestrictionPolicy": { "errors": ["ThrottlingException"] },
     "deleteRecordingConfiguration": { "errors": ["ThrottlingException"] },
     "deleteStreamKey": { "errors": ["ThrottlingException"] },

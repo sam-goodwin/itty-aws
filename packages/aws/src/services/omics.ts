@@ -6695,6 +6695,10 @@ export class RangeNotSatisfiableException extends S.TaggedErrorClass<RangeNotSat
   { message: S.String },
   T.all(T.HttpError(416), T.Retryable()),
 ).pipe(C.withRetryableError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 
 //# Operations
 export type DeleteS3AccessPolicyError =
@@ -10275,6 +10279,7 @@ export type GetVariantStoreError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
@@ -10295,6 +10300,7 @@ export const getVariantStore: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "GetVariantStore",
   endpointHostPrefix: "analytics-",
